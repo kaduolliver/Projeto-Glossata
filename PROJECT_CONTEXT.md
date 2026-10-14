@@ -9,7 +9,7 @@ O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20
 ## Workspace e ambiente
 
 - Raiz canônica: C:\glossata_game. Não editar a cópia antiga do Desktop, cujo caminho com acentos e & já provocou problemas de moc/autogen.
-- Git local: main contém a base; feat/cinco-reinos contém a expansão. Nenhum remoto configurado.
+- Git: main integra a expansão dos cinco reinos; feat/cinco-reinos preserva seu desenvolvimento. origin aponta para https://github.com/kaduolliver/Das-Glossata-Projekt.
 - Código, recursos, testes, documentação e configurações compartilhadas são versionados. Build, pacote gerado, capturas, cache e bancos pessoais são ignorados.
 - C++17, Qt 6 Quick/QML, Qt Sql/QSQLITE, CMake/Ninja, MSYS2 UCRT64.
 - Ambiente validado: Qt 6.11.2 e GCC 16.2.0. Importação/testes auxiliares usam Python 3.11+ e sua biblioteca padrão.
