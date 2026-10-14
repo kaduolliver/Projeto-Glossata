@@ -1,0 +1,200 @@
+[
+  {
+    "id": 1,
+    "name": "Papilio machaon",
+    "fact": "As lagartas alimentam-se de plantas da família Apiaceae, como funcho e cenoura-selvagem.",
+    "hint": "É uma borboleta da família Papilionidae, conhecida pelas caudas nas asas posteriores.",
+    "family": "Papilionidae",
+    "region": "Europa e Ásia",
+    "image": ""
+  },
+  {
+    "id": 2,
+    "name": "Vanessa atalanta",
+    "fact": "Populações desta espécie realizam migrações sazonais entre regiões da Europa e do norte da África.",
+    "hint": "As asas escuras têm faixas vermelho-alaranjadas bem marcadas.",
+    "family": "Nymphalidae",
+    "region": "Europa",
+    "image": ""
+  },
+  {
+    "id": 3,
+    "name": "Acherontia atropos",
+    "fact": "Quando perturbada, esta mariposa pode produzir um ruído audível usando estruturas da faringe.",
+    "hint": "É uma esfinge noturna; o tórax tem uma marca que lembra um crânio.",
+    "family": "Sphingidae",
+    "region": "Europa e África",
+    "image": ""
+  },
+  {
+    "id": 4,
+    "name": "Brahmaea wallichii",
+    "fact": "As asas exibem linhas onduladas e concêntricas que formam um padrão visual complexo.",
+    "hint": "Pertence à família Brahmaeidae e ocorre no leste da Ásia.",
+    "family": "Brahmaeidae",
+    "region": "Ásia",
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "Lymantria dispar",
+    "fact": "As lagartas alimentam-se de muitas árvores de folhas largas e, em surtos, podem desfolhar florestas.",
+    "hint": "É uma mariposa da família Erebidae; fêmeas e machos adultos têm aparência diferente.",
+    "family": "Erebidae",
+    "region": "Europa e América do Norte",
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "Danaus plexippus",
+    "fact": "As lagartas comem algodoeiros-de-seda (Asclepias) e acumulam substâncias que as tornam desagradáveis a muitos predadores.",
+    "hint": "É famosa por migrações de longa distância na América do Norte e pelas asas laranja e pretas.",
+    "family": "Nymphalidae",
+    "region": "Américas",
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Aglais io",
+    "fact": "Ao abrir as asas, exibe grandes ocelos que podem assustar ou confundir predadores.",
+    "hint": "É uma ninfalídea europeia também conhecida como pavão-diurno.",
+    "family": "Nymphalidae",
+    "region": "Europa e Ásia temperada",
+    "image": ""
+  },
+  {
+    "id": 8,
+    "name": "Vanessa cardui",
+    "fact": "É uma das borboletas com distribuição natural mais ampla e realiza migrações em várias partes do mundo.",
+    "hint": "Seu nome comum em inglês é painted lady; pertence à família Nymphalidae.",
+    "family": "Nymphalidae",
+    "region": "Todos os continentes exceto a Antártida",
+    "image": ""
+  },
+  {
+    "id": 9,
+    "name": "Bombyx mori",
+    "fact": "A seda comercial é obtida do casulo produzido pela lagarta desta espécie domesticada.",
+    "hint": "A domesticação reduziu sua capacidade de voo; é conhecida como bicho-da-seda.",
+    "family": "Bombycidae",
+    "region": "Domesticada a partir de populações asiáticas",
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "Attacus atlas",
+    "fact": "Os adultos têm peças bucais muito reduzidas e vivem principalmente das reservas acumuladas na fase larval.",
+    "hint": "É uma mariposa asiática da família Saturniidae, conhecida pelo grande tamanho das asas.",
+    "family": "Saturniidae",
+    "region": "Sul e sudeste da Ásia",
+    "image": ""
+  },
+  {
+    "id": 11,
+    "name": "Actias luna",
+    "fact": "As longas caudas das asas posteriores podem desviar ataques de morcegos que caçam por ecolocalização.",
+    "hint": "É uma saturniídea noturna da América do Norte, com asas verde-claras.",
+    "family": "Saturniidae",
+    "region": "América do Norte",
+    "image": ""
+  },
+  {
+    "id": 12,
+    "name": "Hyalophora cecropia",
+    "fact": "Os adultos não se alimentam: suas peças bucais são reduzidas e sua vida adulta é sustentada por reservas.",
+    "hint": "É uma das maiores mariposas nativas da América do Norte e pertence à família Saturniidae.",
+    "family": "Saturniidae",
+    "region": "América do Norte",
+    "image": ""
+  },
+  {
+    "id": 13,
+    "name": "Automeris io",
+    "fact": "As lagartas possuem espinhos urticantes que podem causar irritação ao contato com a pele.",
+    "hint": "Os adultos têm ocelos evidentes nas asas posteriores; é uma saturniídea americana.",
+    "family": "Saturniidae",
+    "region": "América do Norte e América Central",
+    "image": ""
+  },
+  {
+    "id": 14,
+    "name": "Antheraea polyphemus",
+    "fact": "Grandes ocelos nas asas posteriores podem ser expostos de repente quando a mariposa é perturbada.",
+    "hint": "O nome faz referência ao ciclope Polifemo da mitologia grega.",
+    "family": "Saturniidae",
+    "region": "América do Norte",
+    "image": ""
+  },
+  {
+    "id": 15,
+    "name": "Heliconius melpomene",
+    "fact": "As lagartas alimentam-se de maracujazeiros (Passiflora), plantas hospedeiras de várias espécies de heliconíneos.",
+    "hint": "Seus padrões de advertência variam entre regiões e se assemelham aos de outras espécies impalatáveis.",
+    "family": "Nymphalidae",
+    "region": "América Central e América do Sul",
+    "image": ""
+  },
+  {
+    "id": 16,
+    "name": "Papilio ulysses",
+    "fact": "O azul intenso das asas resulta da interação da luz com estruturas microscópicas, não de pigmento azul simples.",
+    "hint": "É uma grande borboleta da família Papilionidae encontrada na região australásia.",
+    "family": "Papilionidae",
+    "region": "Austrália e ilhas próximas",
+    "image": ""
+  },
+  {
+    "id": 17,
+    "name": "Morpho peleides",
+    "fact": "A coloração azul iridescente é produzida por estruturas microscópicas nas escamas das asas.",
+    "hint": "É uma borboleta neotropical da família Nymphalidae.",
+    "family": "Nymphalidae",
+    "region": "América Central e norte da América do Sul",
+    "image": ""
+  },
+  {
+    "id": 18,
+    "name": "Pieris brassicae",
+    "fact": "As lagartas alimentam-se de plantas da família Brassicaceae, incluindo espécies cultivadas de couve.",
+    "hint": "É uma borboleta branca da família Pieridae, comum em partes da Europa, Ásia e norte da África.",
+    "family": "Pieridae",
+    "region": "Europa, Ásia e norte da África",
+    "image": ""
+  },
+  {
+    "id": 19,
+    "name": "Galleria mellonella",
+    "fact": "As larvas vivem em colmeias e alimentam-se de cera e outros materiais dos favos.",
+    "hint": "É uma pequena mariposa da família Pyralidae conhecida como traça-da-cera.",
+    "family": "Pyralidae",
+    "region": "Distribuição ampla associada à apicultura",
+    "image": ""
+  },
+  {
+    "id": 20,
+    "name": "Plodia interpunctella",
+    "fact": "As larvas infestam alimentos secos armazenados e podem deixar fios de seda entre os grãos e embalagens.",
+    "hint": "É conhecida como traça-dos-alimentos e pertence à família Pyralidae.",
+    "family": "Pyralidae",
+    "region": "Distribuição mundial associada a alimentos armazenados",
+    "image": ""
+  },
+  {
+    "id": 21,
+    "name": "Manduca sexta",
+    "fact": "As lagartas alimentam-se de plantas da família Solanaceae, incluindo tabaco e tomateiro.",
+    "hint": "É uma grande esfinge americana; a lagarta costuma ter um apêndice semelhante a um chifre na extremidade do corpo.",
+    "family": "Sphingidae",
+    "region": "Américas",
+    "image": ""
+  },
+  {
+    "id": 22,
+    "name": "Caligo memnon",
+    "fact": "Os grandes ocelos nas asas posteriores lembram olhos e inspiraram o nome popular de borboleta-coruja.",
+    "hint": "É uma borboleta de hábitos crepusculares da família Nymphalidae.",
+    "family": "Nymphalidae",
+    "region": "América Central e norte da América do Sul",
+    "image": ""
+  }
+]

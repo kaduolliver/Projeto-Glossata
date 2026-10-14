@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/data/species.json</file>
+        <file>resources/data/discord.json</file>
+        <file>resources/branding/glossata.png</file>
+        <file>resources/branding/glossata.ico</file>
+        <file>resources/qml/Main.qml</file>
+        <file>resources/qml/components/UiIcon.qml</file>
+        <file>resources/qml/components/UiButton.qml</file>
+        <file>resources/qml/components/NavItem.qml</file>
+        <file>resources/qml/components/StatCard.qml</file>
+        <file>resources/qml/components/SpeciesArtwork.qml</file>
+        <file>resources/qml/views/HomeView.qml</file>
+        <file>resources/qml/views/CategoryView.qml</file>
+        <file>resources/qml/views/QuizView.qml</file>
+        <file>resources/qml/views/FeedbackView.qml</file>
+        <file>resources/qml/views/InfoView.qml</file>
+        <file>resources/qml/views/ResultsView.qml</file>
+        <file>resources/qml/views/StatisticsView.qml</file>
+        <file>resources/qml/views/AchievementsView.qml</file>
+        <file>resources/qml/views/SettingsView.qml</file>
+    </qresource>
+</RCC>

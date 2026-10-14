@@ -1,0 +1,109 @@
+pragma ComponentBehavior: Bound
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import "../components"
+
+Item {
+    id: view
+    required property var app
+    required property var backend
+    implicitHeight: 780
+    Connections {
+        target: view.backend
+        function onCurrentPlayerNameChanged() { profileName.text = view.backend.currentPlayerName }
+    }
+    ColumnLayout {
+        anchors.fill: parent; spacing: 22
+        Label { text: "Seu espaço"; color: "#EDF7F0"; font.pixelSize: 30; font.weight: Font.DemiBold }
+        Label { text: "Escolha seu perfil e deixe a próxima descoberta com a sua cara."; color: "#8EAAB1"; font.pixelSize: 13; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Rectangle {
+            Layout.fillWidth: true; implicitHeight: 340; radius: 18; color: "#112831"; border.color: "#28424C"
+            ColumnLayout {
+                anchors.fill: parent; anchors.margins: 28; spacing: 16
+                RowLayout { UiIcon { name: "user"; ink: "#6BD49A"; implicitWidth: 23; implicitHeight: 23 } Label { text: "Perfis de jogador"; color: "#DDEDE3"; font.pixelSize: 20; font.weight: Font.DemiBold } }
+                Label { text: "O perfil selecionado vale para a próxima partida. A partida em andamento mantém seu jogador original."; color: "#7F9FA6"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                RowLayout {
+                    Layout.fillWidth: true; spacing: 20
+                    Label { text: "Perfil selecionado"; color: "#A9C2C7"; font.pixelSize: 13 }
+                    ComboBox {
+                        id: playerSelector
+                        objectName: "playerSelector"
+                        Layout.fillWidth: true
+                        Layout.maximumWidth: 330
+                        implicitHeight: 42
+                        model: view.backend.playerProfiles
+                        currentIndex: view.backend.playerProfiles.indexOf(view.backend.currentPlayerName)
+                        onActivated: view.backend.currentPlayerName = currentText
+                        contentItem: Text { text: playerSelector.displayText; color: "#E1EDE8"; font.pixelSize: 13; verticalAlignment: Text.AlignVCenter; leftPadding: 12; rightPadding: 32; elide: Text.ElideRight }
+                        background: Rectangle { radius: 10; color: "#192F39"; border.color: playerSelector.activeFocus ? "#55CC8D" : "#34515B" }
+                    }
+                }
+                TextField {
+                    id: profileName
+                    objectName: "profileNameField"
+                    Layout.fillWidth: true
+                    implicitHeight: 46
+                    text: view.backend.currentPlayerName
+                    maximumLength: 32
+                    placeholderText: "Nome do perfil"
+                    placeholderTextColor: "#61828C"
+                    color: "#DEF0E3"
+                    padding: 14
+                    selectByMouse: true
+                    background: Rectangle { radius: 10; color: "#0E222B"; border.color: profileName.activeFocus ? "#53C68B" : "#2B454F" }
+                }
+                RowLayout {
+                    Layout.fillWidth: true; spacing: 12
+                    UiButton { text: "Criar perfil"; iconName: "user"; compact: true; onClicked: { if (view.backend.addPlayerProfile(profileName.text)) profileName.text = view.backend.currentPlayerName } }
+                    UiButton { text: "Renomear"; secondary: true; compact: true; onClicked: { if (view.backend.renameCurrentPlayerProfile(profileName.text)) profileName.text = view.backend.currentPlayerName } }
+                    Item { Layout.fillWidth: true }
+                    UiButton { text: "Excluir perfil"; secondary: true; compact: true; enabled: view.backend.playerProfiles.length > 1; onClicked: deleteDialog.open() }
+                }
+                Label { text: view.backend.feedbackText; color: "#A9C5AF"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            }
+        }
+        Rectangle {
+            Layout.fillWidth: true; implicitHeight: 108; radius: 18; color: "#112831"; border.color: "#28424C"
+            RowLayout {
+                anchors.fill: parent; anchors.margins: 26; spacing: 16
+                UiIcon { name: "spark"; ink: "#A5BCE3"; implicitWidth: 26; implicitHeight: 26 }
+                ColumnLayout {
+                    Layout.fillWidth: true; spacing: 7
+                    Label { text: "Transições suaves"; color: "#DDEAE2"; font.pixelSize: 15; font.weight: Font.DemiBold }
+                    Label { text: "Ative ou reduza a animação entre telas nesta sessão."; color: "#7E9CA5"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                }
+                Switch { checked: view.app.motionEnabled; Accessible.name: "Transições suaves"; onToggled: view.app.motionEnabled = checked }
+            }
+        }
+        Rectangle {
+            Layout.fillWidth: true; implicitHeight: 108; radius: 18; color: "#112831"; border.color: "#28424C"
+            RowLayout {
+                anchors.fill: parent; anchors.margins: 26; spacing: 16
+                UiIcon { name: "butterfly"; ink: "#A5BCE3"; implicitWidth: 26; implicitHeight: 26 }
+                ColumnLayout {
+                    Layout.fillWidth: true; spacing: 7
+                    Label { text: "Atividade no Discord"; color: "#DDEAE2"; font.pixelSize: 15; font.weight: Font.DemiBold }
+                    Label { text: view.app.presence.status; color: "#7E9CA5"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                }
+                Switch { checked: view.app.presence.enabled; Accessible.name: "Compartilhar atividade no Discord"; onToggled: view.app.presence.enabled = checked }
+            }
+        }
+        Label { text: "Glossata Quiz · Aprender sobre a natureza, uma espécie por vez."; color: "#527782"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Item { Layout.fillHeight: true }
+    }
+    Dialog {
+        id: deleteDialog
+        width: 400
+        anchors.centerIn: parent
+        modal: true
+        title: "Excluir este perfil?"
+        footer: DialogButtonBox {
+            UiButton { text: "Cancelar"; secondary: true; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole }
+            UiButton { text: "Excluir"; danger: true; DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole }
+        }
+        background: Rectangle { radius: 16; color: "#18313B"; border.color: "#38535B" }
+        contentItem: Label { text: "Os resultados já salvos no ranking serão mantidos."; color: "#B3C9C7"; wrapMode: Text.WordWrap }
+        onAccepted: { view.backend.deleteCurrentPlayerProfile(); profileName.text = view.backend.currentPlayerName }
+    }
+}

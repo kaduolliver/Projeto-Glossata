@@ -1,0 +1,48 @@
+# Build outputs and generated previews
+/build/
+/build-*/
+/cmake-build-*/
+/previews/
+/CMakeFiles/
+/CMakeCache.txt
+/compile_commands.json
+
+# Deployed runtime; keep the launcher and Qt configuration as source files
+/package/*
+!/package/run_glossata_game.cmd
+!/package/qt.conf
+
+# Local game data and diagnostic logs
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.db
+*.db-*
+*.log
+
+# Compiler and editor artifacts
+*.obj
+*.o
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.user
+*.suo
+/.vs/
+/.idea/
+/.vscode/*
+!/.vscode/settings.json
+!/.vscode/tasks.json
+!/.vscode/launch.json
+!/.vscode/extensions.json
+
+# Machine-specific configuration and credentials
+/.codex/
+/.agents/
+/.aws/
+.env
+.env.*
+!.env.example
+Thumbs.db
+Desktop.ini

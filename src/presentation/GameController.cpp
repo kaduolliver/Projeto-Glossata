@@ -1,0 +1,330 @@
+#include "presentation/GameController.h"
+
+#include <QStandardPaths>
+#include <QSet>
+#include <algorithm>
+
+GameController::GameController(QObject *parent, const QString &databasePath)
+    : QObject(parent),
+      catalog_(QStringLiteral(":/resources/data/species.json")),
+      historyRepository_(databasePath.isEmpty()
+          ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_history.sqlite")
+          : databasePath),
+      service_(&catalog_, &historyRepository_)
+{
+    if (historyRepository_.loadPlayerProfiles().isEmpty()) {
+        historyRepository_.addPlayerProfile(QStringLiteral("Jogador 1"));
+    }
+    const QStringList profiles = historyRepository_.loadPlayerProfiles();
+    if (!profiles.isEmpty()) {
+        currentPlayerName_ = profiles.first();
+    }
+    startGame();
+}
+
+QString GameController::questionText() const
+{
+    return service_.currentQuestion().prompt;
+}
+
+QString GameController::factText() const
+{
+    return service_.currentFact();
+}
+
+QString GameController::extraHint() const
+{
+    return service_.extraHint();
+}
+
+bool GameController::hintRevealed() const
+{
+    return service_.hintRevealed();
+}
+
+QStringList GameController::answerOptions() const
+{
+    return service_.currentQuestion().options;
+}
+
+QStringList GameController::playerProfiles() const
+{
+    return historyRepository_.loadPlayerProfiles();
+}
+
+QString GameController::currentPlayerName() const
+{
+    return currentPlayerName_;
+}
+
+void GameController::setCurrentPlayerName(const QString &name)
+{
+    if (currentPlayerName_ == name || !playerProfiles().contains(name)) {
+        return;
+    }
+
+    currentPlayerName_ = name;
+    emit currentPlayerNameChanged();
+}
+
+int GameController::score() const
+{
+    return service_.score();
+}
+
+int GameController::round() const
+{
+    return service_.round();
+}
+
+bool GameController::gameFinished() const
+{
+    return service_.isFinished();
+}
+
+QString GameController::feedbackText() const
+{
+    return feedbackText_;
+}
+
+QVariantList GameController::ranking() const
+{
+    QVariantList list;
+    const QVector<HistoryEntry> entries = service_.history();
+    for (const HistoryEntry &entry : entries) {
+        QVariantMap row;
+        row.insert(QStringLiteral("playerName"), entry.playerName);
+        row.insert(QStringLiteral("score"), entry.score);
+        row.insert(QStringLiteral("correctAnswers"), entry.correctAnswers);
+        row.insert(QStringLiteral("playedAt"), entry.playedAt.toString(QStringLiteral("dd/MM/yyyy")));
+        list.append(row);
+    }
+    return list;
+}
+
+void GameController::startGame()
+{
+    startCategoryGame(QString());
+}
+
+void GameController::startCategoryGame(const QString &family)
+{
+    if (resultPending_) {
+        feedbackText_ = QStringLiteral("Salve o resultado pendente antes de iniciar outra partida.");
+        emit feedbackTextChanged();
+        return;
+    }
+    sessionPlayerName_ = currentPlayerName_;
+    categoryName_ = family.isEmpty() ? QStringLiteral("Todas as espécies") : family;
+    answerPending_ = false;
+    answerDetails_.clear();
+    categoryStats_.clear();
+    correctStreak_ = 0;
+    bestStreak_ = 0;
+    service_.startNewGame(family);
+    feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
+        ? QStringLiteral("É preciso haver pelo menos quatro espécies válidas para iniciar.")
+        : QStringLiteral("Escolha a opção correta para continuar.");
+    emit questionTextChanged();
+    emit factTextChanged();
+    emit extraHintChanged();
+    emit answerOptionsChanged();
+    emit scoreChanged();
+    emit roundChanged();
+    emit gameFinishedChanged();
+    emit feedbackTextChanged();
+    emit answerDetailsChanged();
+    loadRanking();
+}
+
+void GameController::answerSelected(const QString &selectedOption)
+{
+    if (service_.isFinished() || answerPending_ || !service_.currentQuestion().options.contains(selectedOption)) {
+        return;
+    }
+
+    const Question answeredQuestion = service_.currentQuestion();
+    const bool correct = service_.submitAnswer(selectedOption);
+    answerPending_ = true;
+    answerDetails_ = {
+        {QStringLiteral("correct"), correct},
+        {QStringLiteral("selectedAnswer"), selectedOption},
+        {QStringLiteral("name"), answeredQuestion.correctAnswer},
+        {QStringLiteral("fact"), answeredQuestion.fact},
+        {QStringLiteral("hint"), answeredQuestion.extraHint},
+        {QStringLiteral("family"), answeredQuestion.species.family},
+        {QStringLiteral("region"), answeredQuestion.species.region},
+        {QStringLiteral("image"), answeredQuestion.species.image}
+    };
+    auto &statistics = categoryStats_[answeredQuestion.species.family];
+    ++statistics.first;
+    if (correct) ++statistics.second;
+    correctStreak_ = correct ? correctStreak_ + 1 : 0;
+    bestStreak_ = std::max(bestStreak_, correctStreak_);
+    emit scoreChanged();
+    emit roundChanged();
+    feedbackText_ = correct
+        ? QStringLiteral("Correto! Próxima rodada.")
+        : QStringLiteral("Incorreto. Continue tentando.");
+    emit questionTextChanged();
+    emit factTextChanged();
+    emit extraHintChanged();
+    emit answerOptionsChanged();
+    emit feedbackTextChanged();
+    emit answerDetailsChanged();
+}
+
+void GameController::nextQuestion()
+{
+    if (!answerPending_ || service_.isFinished()) return;
+    answerPending_ = false;
+    emit answerDetailsChanged();
+}
+
+void GameController::revealHint()
+{
+    if (answerPending_ || !service_.revealHint()) {
+        return;
+    }
+
+    feedbackText_ = QStringLiteral("Dica adicional revelada.");
+    emit extraHintChanged();
+    emit feedbackTextChanged();
+}
+
+void GameController::stopGame()
+{
+    if (service_.isFinished()) {
+        return;
+    }
+
+    service_.finishGame();
+    retrySaveResult();
+    emit answerOptionsChanged();
+    emit gameFinishedChanged();
+}
+
+void GameController::retrySaveResult()
+{
+    if (!service_.isFinished()) {
+        return;
+    }
+    resultPending_ = service_.saveCurrentResult(sessionPlayerName_) == GameService::SaveStatus::Failed;
+    feedbackText_ = resultPending_
+        ? QStringLiteral("Não foi possível salvar a pontuação. Tente salvar novamente antes de fechar o jogo.")
+        : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(service_.score());
+    emit resultPendingChanged();
+    emit feedbackTextChanged();
+    loadRanking();
+}
+
+void GameController::loadRanking()
+{
+    emit rankingChanged();
+}
+
+QVariantList GameController::categories() const
+{
+    QMap<QString, QSet<QString>> namesByFamily;
+    QSet<QString> allNames;
+    for (const Species &species : catalog_.loadSpecies()) {
+        const QString name = species.name.toCaseFolded();
+        allNames.insert(name);
+        namesByFamily[species.family].insert(name);
+    }
+    QVariantList list{QVariantMap{
+        {QStringLiteral("id"), QString()}, {QStringLiteral("title"), QStringLiteral("Todas as espécies")},
+        {QStringLiteral("count"), allNames.size()}, {QStringLiteral("description"), QStringLiteral("Explore borboletas e mariposas em um só lugar.")}
+    }};
+    for (auto it = namesByFamily.cbegin(); it != namesByFamily.cend(); ++it) {
+        if (it.key().isEmpty() || it.value().size() < 4) continue;
+        list.append(QVariantMap{
+            {QStringLiteral("id"), it.key()}, {QStringLiteral("title"), it.key()},
+            {QStringLiteral("count"), it.value().size()}, {QStringLiteral("description"), QStringLiteral("Conheça as espécies desta família.")}
+        });
+    }
+    return list;
+}
+
+QVariantList GameController::categoryStats() const
+{
+    QVariantList list;
+    for (auto it = categoryStats_.cbegin(); it != categoryStats_.cend(); ++it) {
+        list.append(QVariantMap{
+            {QStringLiteral("family"), it.key()}, {QStringLiteral("answered"), it.value().first},
+            {QStringLiteral("correct"), it.value().second},
+            {QStringLiteral("accuracy"), 100 * it.value().second / it.value().first}
+        });
+    }
+    return list;
+}
+
+QVariantList GameController::achievements() const
+{
+    QVariantList list;
+    const auto add = [&list](const QString &name, const QString &description, const QString &icon, int value, int target) {
+        list.append(QVariantMap{
+            {QStringLiteral("title"), name}, {QStringLiteral("description"), description},
+            {QStringLiteral("icon"), icon}, {QStringLiteral("progress"), std::min(value, target)},
+            {QStringLiteral("target"), target}, {QStringLiteral("unlocked"), value >= target}
+        });
+    };
+    add(QStringLiteral("Primeiro voo"), QStringLiteral("Responda sua primeira pergunta."), "leaf", answeredCount(), 1);
+    add(QStringLiteral("Olhar atento"), QStringLiteral("Acerte cinco perguntas."), "target", score(), 5);
+    add(QStringLiteral("Explorador"), QStringLiteral("Responda dez perguntas."), "butterfly", answeredCount(), 10);
+    add(QStringLiteral("Em sequência"), QStringLiteral("Faça três acertos seguidos."), "spark", bestStreak_, 3);
+    add(QStringLiteral("Conhecedor"), QStringLiteral("Acerte vinte perguntas."), "book", score(), 20);
+    add(QStringLiteral("Um ciclo completo"), QStringLiteral("Explore todo o grupo escolhido."), "trophy", answeredCount(), std::max(1, catalogSize()));
+    return list;
+}
+
+bool GameController::addPlayerProfile(const QString &name)
+{
+    const QString profileName = name.trimmed();
+    if (profileName.isEmpty() || profileName.size() > 32
+        || !historyRepository_.addPlayerProfile(profileName)) {
+        feedbackText_ = QStringLiteral("Nome inválido ou já cadastrado.");
+        emit feedbackTextChanged();
+        return false;
+    }
+
+    emit playerProfilesChanged();
+    setCurrentPlayerName(profileName);
+    feedbackText_ = QStringLiteral("Perfil criado.");
+    emit feedbackTextChanged();
+    return true;
+}
+
+bool GameController::renameCurrentPlayerProfile(const QString &name)
+{
+    const QString profileName = name.trimmed();
+    if (profileName.isEmpty() || profileName.size() > 32
+        || !historyRepository_.renamePlayerProfile(currentPlayerName_, profileName)) {
+        feedbackText_ = QStringLiteral("Não foi possível renomear o perfil.");
+        emit feedbackTextChanged();
+        return false;
+    }
+
+    currentPlayerName_ = profileName;
+    emit currentPlayerNameChanged();
+    emit playerProfilesChanged();
+    feedbackText_ = QStringLiteral("Perfil renomeado.");
+    emit feedbackTextChanged();
+    return true;
+}
+
+bool GameController::deleteCurrentPlayerProfile()
+{
+    if (playerProfiles().size() <= 1 || !historyRepository_.deletePlayerProfile(currentPlayerName_)) {
+        feedbackText_ = QStringLiteral("Mantenha ao menos um perfil cadastrado.");
+        emit feedbackTextChanged();
+        return false;
+    }
+
+    currentPlayerName_ = playerProfiles().first();
+    emit currentPlayerNameChanged();
+    emit playerProfilesChanged();
+    feedbackText_ = QStringLiteral("Perfil removido.");
+    emit feedbackTextChanged();
+    return true;
+}
