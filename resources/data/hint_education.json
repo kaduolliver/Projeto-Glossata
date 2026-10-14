@@ -59,7 +59,10 @@
         "genus"
       ],
       "photo_id": "745707969"
-    }
+    },
+    "morphology_traits": [
+      "lattice-fruiting-body"
+    ]
   },
   "67": {
     "scientific_name": "Trametes versicolor",
@@ -90,7 +93,10 @@
         "genus"
       ],
       "photo_id": "27005174"
-    }
+    },
+    "morphology_traits": [
+      "banded-bracket"
+    ]
   },
   "136": {
     "scientific_name": "Amanita muscaria",
@@ -144,7 +150,10 @@
         "genus"
       ],
       "photo_id": "93399523"
-    }
+    },
+    "morphology_traits": [
+      "shaggy-cap"
+    ]
   },
   "138": {
     "scientific_name": "Phallus impudicus",
@@ -206,7 +215,10 @@
         "genus"
       ],
       "photo_id": "139143137"
-    }
+    },
+    "morphology_traits": [
+      "star-shaped-fruiting-body"
+    ]
   },
   "140": {
     "scientific_name": "Hericium erinaceus",
@@ -237,7 +249,10 @@
         "genus"
       ],
       "photo_id": "5466254"
-    }
+    },
+    "morphology_traits": [
+      "hanging-spines"
+    ]
   },
   "103": {
     "scientific_name": "Sphingomonas phyllosphaerae",
@@ -483,7 +498,10 @@
         "genus"
       ],
       "photo_id": "734005336"
-    }
+    },
+    "morphology_traits": [
+      "fan-shaped-leaves"
+    ]
   },
   "61": {
     "scientific_name": "Verbascum thapsus",
@@ -690,7 +708,11 @@
         "genus"
       ],
       "photo_id": "707161720"
-    }
+    },
+    "morphology_traits": [
+      "fur",
+      "stripes"
+    ]
   },
   "10": {
     "scientific_name": "Attacus atlas",
@@ -756,7 +778,19 @@
         "genus"
       ],
       "photo_id": "560140869"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico remete à musa da tragédia na mitologia grega.",
+        "source_url": "https://www.heliconius.org/species/heliconius-melpomene/",
+        "source_title": "Heliconius research community · etimologia e descrição original",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "16": {
     "scientific_name": "Papilio ulysses",
@@ -778,7 +812,11 @@
         "genus"
       ],
       "photo_id": "748172022"
-    }
+    },
+    "morphology_traits": [
+      "fur",
+      "mane"
+    ]
   },
   "18": {
     "scientific_name": "Pieris brassicae",
@@ -817,7 +855,11 @@
         "genus"
       ],
       "photo_id": "742746729"
-    }
+    },
+    "morphology_traits": [
+      "fur",
+      "rosettes"
+    ]
   },
   "23": {
     "scientific_name": "Titanomis sisyrota"
@@ -878,7 +920,27 @@
         "genus"
       ],
       "photo_id": "659755043"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero deriva de um termo latino para fantasmas ou espectros.",
+        "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+        "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "species": {
+        "text": "O epíteto tem origem no latim científico e se refere a um gato.",
+        "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+        "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ]
   },
   "30": {
     "scientific_name": "Xenocnema spinipes"
@@ -980,7 +1042,11 @@
         "genus"
       ],
       "photo_id": "50371107"
-    }
+    },
+    "morphology_traits": [
+      "fur",
+      "stripes"
+    ]
   },
   "41": {
     "scientific_name": "Ovalimantis maculata",
@@ -1137,7 +1203,27 @@
         "genus"
       ],
       "photo_id": "111803110"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O gênero recebeu um nome de origem grega com o sentido de dragão fêmea.",
+        "source_url": "https://plants.ces.ncsu.edu/plants/dracaena/",
+        "source_title": "North Carolina State University · Plant Toolbox",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "species": {
+        "text": "O epíteto está relacionado ao nome grego de um mineral vermelho, associado à cor da resina.",
+        "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+        "source_title": "J. Ethnobiology and Ethnomedicine · estudo etnobotânico",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ]
   },
   "134": {
     "scientific_name": "Dionaea muscipula",
@@ -1148,7 +1234,22 @@
         "genus"
       ],
       "photo_id": "721575702"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto significa pequena ratoeira em latim, em alusão ao fechamento das folhas.",
+        "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+        "source_title": "North Carolina State University · Plant Toolbox",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphology_traits": [
+      "hinged-leaf-traps"
+    ]
   },
   "60": {
     "scientific_name": "Huperzia lucidula"
@@ -1165,6 +1266,25 @@
         "genus"
       ],
       "photo_id": "345801259"
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O gênero combina uma referência latina a favos de mel e uma homenagem histórica ao botânico Wilhelm Gottfried Lasch.",
+        "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
+        "source_title": "Pat O’Reilly · nomenclatura dos fungos",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ],
+    "etymology_pending": {
+      "species": {
+        "status": "uncertain",
+        "interpretation": "A página consultada apresenta uma interpretação expressamente incerta para o epíteto; aguardando confirmação na descrição original.",
+        "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php"
+      }
     }
   },
   "65": {
@@ -1187,7 +1307,19 @@
         "genus"
       ],
       "photo_id": "349810134"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de superfície brilhante.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "71": {
     "scientific_name": "Marasmius haematocephalus",
@@ -1198,7 +1330,19 @@
         "genus"
       ],
       "photo_id": "606817545"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de murcho.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "137": {
     "scientific_name": "Morchella esculenta",
@@ -1209,7 +1353,19 @@
         "genus"
       ],
       "photo_id": "169965177"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa comestível em latim. Esse significado histórico não determina a segurança de consumo.",
+        "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+        "source_title": "First Nature · nomenclatura dos cogumelos",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "75": {
     "scientific_name": "Cortinarius archeri",
@@ -1220,7 +1376,19 @@
         "genus"
       ],
       "photo_id": "130004238"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de cortina.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "76": {
     "scientific_name": "Xylaria tentaculata",
@@ -1231,7 +1399,19 @@
         "genus"
       ],
       "photo_id": "2279530"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de madeira.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "79": {
     "scientific_name": "Panellus stipticus",
@@ -1242,7 +1422,19 @@
         "genus"
       ],
       "photo_id": "178409675"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto registra uma propriedade de conter sangramentos atribuída historicamente ao fungo; não é uma recomendação de uso.",
+        "source_url": "https://www.first-nature.com/fungi/panellus-stipticus.php",
+        "source_title": "First Nature · etimologia histórica",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "80": {
     "scientific_name": "Wawelia microspora"
@@ -1256,7 +1448,19 @@
         "genus"
       ],
       "photo_id": "245357302"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de borda enrolada para dentro.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "82": {
     "scientific_name": "Pseudoboletus parasiticus",
@@ -1267,7 +1471,19 @@
         "genus"
       ],
       "photo_id": "151574414"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto surgiu da interpretação histórica de que este fungo parasitava corpos de frutificação de outro fungo.",
+        "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+        "source_title": "First Nature · etimologia histórica",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "83": {
     "scientific_name": "Comatricha nigra"
@@ -1393,7 +1609,19 @@
         "genus"
       ],
       "photo_id": "660405215"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico faz referência à região antártica.",
+        "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+        "source_title": "New Zealand Plant Conservation Network · etimologia",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "150": {
     "scientific_name": "Turbinaria ornata",
@@ -1416,7 +1644,19 @@
         "genus"
       ],
       "photo_id": "459952778"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero foi formado com o sentido de organismo com sementes longas; trata-se da terminologia histórica do nome.",
+        "source_url": "https://lpsn.dsmz.de/genus/dolichospermum",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "107": {
     "scientific_name": "Merismopedia convoluta",
@@ -1428,7 +1668,19 @@
         "genus"
       ],
       "photo_id": "257195754"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+        "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
+        "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "108": {
     "scientific_name": "Arthrospira jenneri",
@@ -1440,7 +1692,27 @@
         "genus"
       ],
       "photo_id": "241649713"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de espiral articulada.",
+        "source_url": "https://lpsn.dsmz.de/genus/arthrospira",
+        "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "species": {
+        "text": "O epíteto homenageia Edward Jenner, médico e cientista inglês.",
+        "source_url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
+        "source_title": "DSMZ · LPSN, entrada nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ]
   },
   "110": {
     "scientific_name": "Gomphosphaeria aponina",
@@ -1452,6 +1724,25 @@
         "genus"
       ],
       "photo_id": "160680326"
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto remete ao nome de uma antiga divindade associada a fontes termais na região dos montes Eugâneos.",
+        "source_url": "https://lpsn.dsmz.de/species/gomphosphaeria-aponina",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "etymology_pending": {
+      "genus": {
+        "status": "uncertain",
+        "interpretation": "A LPSN apresenta esferas unidas como interpretação provável, não definitiva. Não disponibilizada como dica.",
+        "source_url": "https://lpsn.dsmz.de/genus/gomphosphaeria"
+      }
     }
   },
   "111": {
@@ -1464,7 +1755,19 @@
         "genus"
       ],
       "photo_id": "459952778"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero deriva de um verbo grego relacionado a subir ou flutuar.",
+        "source_url": "https://lpsn.dsmz.de/genus/anabaena",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "112": {
     "scientific_name": "Phytoplasma asteris",
@@ -1476,7 +1779,19 @@
         "genus"
       ],
       "photo_id": "48790280"
-    }
+    },
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto está ligado ao nome do primeiro hospedeiro conhecido, associado a um termo grego para estrela.",
+        "source_url": "https://lpsn.dsmz.de/species/phytoplasma-asteris",
+        "source_title": "DSMZ · LPSN, nome Candidatus registrado",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ]
   },
   "113": {
     "scientific_name": "Gloeotrichia intermedia",
@@ -1488,7 +1803,27 @@
         "genus"
       ],
       "photo_id": "443586440"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de fio ou pelo pegajoso.",
+        "source_url": "https://lpsn.dsmz.de/genus/gloeotrichia",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "species": {
+        "text": "O epíteto específico significa intermediária em latim.",
+        "source_url": "https://lpsn.dsmz.de/species/gloeotrichia-intermedia",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ]
   },
   "115": {
     "scientific_name": "Johanseninema constrictum",
@@ -1500,7 +1835,19 @@
         "genus"
       ],
       "photo_id": "407087233"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "Um elemento do nome do gênero é uma palavra grega com o significado de fio.",
+        "source_url": "https://lpsn.dsmz.de/genus/johanseninema",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "117": {
     "scientific_name": "Hassallia byssoidea",
@@ -1512,7 +1859,19 @@
         "genus"
       ],
       "photo_id": "459952778"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero homenageia Arthur Hill Hassall, médico e estudioso de organismos microscópicos.",
+        "source_url": "https://lpsn.dsmz.de/genus/hassallia",
+        "source_title": "DSMZ · LPSN, etimologia registrada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "120": {
     "scientific_name": "Achromatium oxaliferum",
@@ -1524,7 +1883,27 @@
         "genus"
       ],
       "photo_id": "581394987"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de aquilo que não é colorido.",
+        "source_url": "https://lpsn.dsmz.de/genus/achromatium",
+        "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "species": {
+        "text": "O epíteto foi criado com o sentido de portador de oxalato; essa origem histórica não confirma a composição das inclusões celulares.",
+        "source_url": "https://lpsn.dsmz.de/species/achromatium-oxaliferum",
+        "source_title": "DSMZ · LPSN, entrada nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ]
   },
   "122": {
     "scientific_name": "Chroococcus turgidus",
@@ -1536,7 +1915,19 @@
         "genus"
       ],
       "photo_id": "441792181"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de célula arredondada colorida.",
+        "source_url": "https://lpsn.dsmz.de/genus/chroococcus",
+        "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "123": {
     "scientific_name": "Psilocybe allenii",
@@ -1547,7 +1938,19 @@
         "genus"
       ],
       "photo_id": "5668201"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero está relacionado ao sentido de cabeça lisa ou sem revestimento.",
+        "source_url": "https://www.first-nature.com/fungi/~naming.php",
+        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   },
   "124": {
     "scientific_name": "Merismopedia tranquilla",
@@ -1559,6 +1962,18 @@
         "genus"
       ],
       "photo_id": "43700642"
-    }
+    },
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+        "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
+        "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ]
   }
 }

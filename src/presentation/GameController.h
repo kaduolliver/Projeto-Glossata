@@ -31,6 +31,14 @@ class GameController : public QObject {
     Q_PROPERTY(bool gameFinished READ gameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(QString feedbackText READ feedbackText NOTIFY feedbackTextChanged)
     Q_PROPERTY(QVariantList ranking READ ranking NOTIFY rankingChanged)
+    Q_PROPERTY(QString rankingMode READ rankingMode WRITE setRankingMode NOTIFY rankingChanged)
+    Q_PROPERTY(QVariantMap personalRecord READ personalRecord NOTIFY rankingChanged)
+    Q_PROPERTY(QVariantMap sessionMetrics READ sessionMetrics NOTIFY scoreChanged)
+    Q_PROPERTY(QVariantMap playerMetrics READ playerMetrics NOTIFY rankingChanged)
+    Q_PROPERTY(QString gameMode READ gameMode NOTIFY gameFinishedChanged)
+    Q_PROPERTY(int questionLimit READ questionLimit NOTIFY gameFinishedChanged)
+    Q_PROPERTY(int competitiveQuestionCount READ competitiveQuestionCount CONSTANT)
+    Q_PROPERTY(QString difficulty READ difficulty WRITE setDifficulty NOTIFY difficultyChanged)
     Q_PROPERTY(int answeredCount READ answeredCount NOTIFY scoreChanged)
     Q_PROPERTY(int catalogSize READ catalogSize NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool answerPending READ answerPending NOTIFY answerDetailsChanged)
@@ -72,6 +80,16 @@ public:
     bool gameFinished() const;
     QString feedbackText() const;
     QVariantList ranking() const;
+    QString rankingMode() const { return rankingMode_; }
+    void setRankingMode(const QString &mode);
+    QVariantMap personalRecord() const { return personalRecord_; }
+    QVariantMap sessionMetrics() const;
+    QVariantMap playerMetrics() const { return playerMetrics_; }
+    QString gameMode() const { return service_.configuration().modeKey(); }
+    int questionLimit() const { return service_.configuration().questionLimit; }
+    int competitiveQuestionCount() const { return GameConfiguration::CompetitiveQuestionCount; }
+    QString difficulty() const { return difficulty_; }
+    void setDifficulty(const QString &difficulty);
     int answeredCount() const { return service_.answeredCount(); }
     int catalogSize() const { return service_.catalogSize(); }
     bool answerPending() const { return answerPending_; }
@@ -94,6 +112,7 @@ public slots:
     void startGame();
     void startCategoryGame(const QString &family);
     void startTaxonGame(const QString &taxonId, const QString &rank);
+    void startCompetitiveGame();
     void exploreTaxon(const QString &taxonId);
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
@@ -121,8 +140,10 @@ signals:
     void resultPendingChanged();
     void answerDetailsChanged();
     void explorationChanged();
+    void difficultyChanged();
 
 private:
+    void startWithConfiguration(const GameConfiguration &configuration);
     SqliteSpeciesCatalog catalog_;
     TaxonomyIndex taxonomy_;
     SqliteGameHistoryRepository historyRepository_;
@@ -142,4 +163,9 @@ private:
     EducationalContent content_;
     int correctStreak_ = 0;
     int bestStreak_ = 0;
+    QString rankingMode_ = "free";
+    QString difficulty_ = "balanced";
+    QVariantList ranking_;
+    QVariantMap personalRecord_;
+    QVariantMap playerMetrics_;
 };

@@ -9495,6 +9495,16 @@
       ],
       "photo_id": "664105606"
     },
+    "species:15:etymology:species": {
+      "text": "O epíteto específico remete à musa da tragédia na mitologia grega.",
+      "source_url": "https://www.heliconius.org/species/heliconius-melpomene/",
+      "source_title": "Heliconius research community · etimologia e descrição original",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:15:morphological_hint": {
       "text": "Observe as faixas vivas sobre o fundo escuro das asas.",
       "source_url": "https://www.inaturalist.org/observations/310362605",
@@ -9624,6 +9634,26 @@
         "genus"
       ],
       "photo_id": "254703040"
+    },
+    "species:128:etymology:genus": {
+      "text": "O nome do gênero deriva de um termo latino para fantasmas ou espectros.",
+      "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+      "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:128:etymology:species": {
+      "text": "O epíteto tem origem no latim científico e se refere a um gato.",
+      "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+      "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:128:morphological_hint": {
       "text": "A cauda comprida com anéis pretos e brancos é a pista mais evidente.",
@@ -9924,6 +9954,26 @@
       ],
       "photo_id": "20397049"
     },
+    "species:58:etymology:genus": {
+      "text": "O gênero recebeu um nome de origem grega com o sentido de dragão fêmea.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/dracaena/",
+      "source_title": "North Carolina State University · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:58:etymology:species": {
+      "text": "O epíteto está relacionado ao nome grego de um mineral vermelho, associado à cor da resina.",
+      "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+      "source_title": "J. Ethnobiology and Ethnomedicine · estudo etnobotânico",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:58:morphological_hint": {
       "text": "Procure uma copa muito densa, parecida com um guarda-chuva.",
       "source_url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A534145-1",
@@ -9937,6 +9987,16 @@
       ],
       "photo_id": "111803110"
     },
+    "species:134:etymology:species": {
+      "text": "O epíteto significa pequena ratoeira em latim, em alusão ao fechamento das folhas.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+      "source_title": "North Carolina State University · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:134:morphological_hint": {
       "text": "Procure folhas que se fecham como uma armadilha, com bordas semelhantes a dentes.",
       "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
@@ -9949,6 +10009,16 @@
         "genus"
       ],
       "photo_id": "721575702"
+    },
+    "species:64:etymology:genus": {
+      "text": "O gênero combina uma referência latina a favos de mel e uma homenagem histórica ao botânico Wilhelm Gottfried Lasch.",
+      "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
+      "source_title": "Pat O’Reilly · nomenclatura dos fungos",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:64:morphological_hint": {
       "text": "Procure a cor alaranjada e os grandes poros na parte inferior.",
@@ -9976,6 +10046,16 @@
       ],
       "photo_id": "231974984"
     },
+    "species:70:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de superfície brilhante.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:70:morphological_hint": {
       "text": "Procure uma estrutura larga e rígida saindo da madeira como uma prateleira.",
       "source_url": "https://www.inaturalist.org/observations/198464364",
@@ -9988,6 +10068,16 @@
         "genus"
       ],
       "photo_id": "349810134"
+    },
+    "species:71:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de murcho.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:71:morphological_hint": {
       "text": "Observe o pequeno chapéu pregueado e o pé fino.",
@@ -10002,6 +10092,16 @@
       ],
       "photo_id": "606817545"
     },
+    "species:137:etymology:species": {
+      "text": "O epíteto específico significa comestível em latim. Esse significado histórico não determina a segurança de consumo.",
+      "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+      "source_title": "First Nature · nomenclatura dos cogumelos",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:137:morphological_hint": {
       "text": "Procure um chapéu com muitas cavidades, semelhante a um favo.",
       "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
@@ -10014,6 +10114,16 @@
         "genus"
       ],
       "photo_id": "169965177"
+    },
+    "species:75:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de cortina.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:75:morphological_hint": {
       "text": "Observe os tons violetas no chapéu e no pé.",
@@ -10028,6 +10138,16 @@
       ],
       "photo_id": "130004238"
     },
+    "species:76:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de madeira.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:76:morphological_hint": {
       "text": "Procure estruturas estreitas e alongadas que lembram pequenos tentáculos.",
       "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4838588/",
@@ -10040,6 +10160,16 @@
         "genus"
       ],
       "photo_id": "2279530"
+    },
+    "species:79:etymology:species": {
+      "text": "O epíteto registra uma propriedade de conter sangramentos atribuída historicamente ao fungo; não é uma recomendação de uso.",
+      "source_url": "https://www.first-nature.com/fungi/panellus-stipticus.php",
+      "source_title": "First Nature · etimologia histórica",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:79:morphological_hint": {
       "text": "Procure pequenos chapéus saindo lateralmente da madeira.",
@@ -10054,6 +10184,16 @@
       ],
       "photo_id": "178409675"
     },
+    "species:81:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de borda enrolada para dentro.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:81:morphological_hint": {
       "text": "Observe os tons azuis e o chapéu mais escuro.",
       "source_url": "https://www.inaturalist.org/observations/143074966",
@@ -10066,6 +10206,16 @@
         "genus"
       ],
       "photo_id": "245357302"
+    },
+    "species:82:etymology:species": {
+      "text": "O epíteto surgiu da interpretação histórica de que este fungo parasitava corpos de frutificação de outro fungo.",
+      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+      "source_title": "First Nature · etimologia histórica",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:82:morphological_hint": {
       "text": "Procure um cogumelo pequeno crescendo diretamente junto de uma bola-da-terra.",
@@ -10184,6 +10334,16 @@
       ],
       "photo_id": "149679081"
     },
+    "species:148:etymology:species": {
+      "text": "O epíteto específico faz referência à região antártica.",
+      "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+      "source_title": "New Zealand Plant Conservation Network · etimologia",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:148:morphological_hint": {
       "text": "Procure tiras grossas e flexíveis, de aparência semelhante a couro.",
       "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
@@ -10210,6 +10370,16 @@
       ],
       "photo_id": "134408"
     },
+    "species:104:etymology:genus": {
+      "text": "O nome do gênero foi formado com o sentido de organismo com sementes longas; trata-se da terminologia histórica do nome.",
+      "source_url": "https://lpsn.dsmz.de/genus/dolichospermum",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:104:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células microscópicas unidas em filamentos, que podem se curvar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://limnolfwbiol.com/index.php/LFWB/article/view/773",
@@ -10222,6 +10392,16 @@
         "genus"
       ],
       "photo_id": "459952778"
+    },
+    "species:107:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+      "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
+      "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:107:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células pequenas dispostas em filas, formando colônias que podem se dobrar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10236,6 +10416,26 @@
       ],
       "photo_id": "257195754"
     },
+    "species:108:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de espiral articulada.",
+      "source_url": "https://lpsn.dsmz.de/genus/arthrospira",
+      "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:108:etymology:species": {
+      "text": "O epíteto homenageia Edward Jenner, médico e cientista inglês.",
+      "source_url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
+      "source_title": "DSMZ · LPSN, entrada nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:108:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos em espiral, formados por células ligadas em sequência. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6345927/",
@@ -10248,6 +10448,16 @@
         "genus"
       ],
       "photo_id": "241649713"
+    },
+    "species:110:etymology:species": {
+      "text": "O epíteto remete ao nome de uma antiga divindade associada a fontes termais na região dos montes Eugâneos.",
+      "source_url": "https://lpsn.dsmz.de/species/gomphosphaeria-aponina",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:110:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10262,6 +10472,16 @@
       ],
       "photo_id": "160680326"
     },
+    "species:111:etymology:genus": {
+      "text": "O nome do gênero deriva de um verbo grego relacionado a subir ou flutuar.",
+      "source_url": "https://lpsn.dsmz.de/genus/anabaena",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:111:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células microscópicas ligadas em filamentos, com algumas células de aspecto diferente das vizinhas. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001",
@@ -10274,6 +10494,16 @@
         "genus"
       ],
       "photo_id": "459952778"
+    },
+    "species:112:etymology:species": {
+      "text": "O epíteto está ligado ao nome do primeiro hospedeiro conhecido, associado a um termo grego para estrela.",
+      "source_url": "https://lpsn.dsmz.de/species/phytoplasma-asteris",
+      "source_title": "DSMZ · LPSN, nome Candidatus registrado",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:112:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Muito pequena e sem parede celular rígida; fotografias da planta afetada não mostram sua forma real. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10288,6 +10518,26 @@
       ],
       "photo_id": "48790280"
     },
+    "species:113:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de fio ou pelo pegajoso.",
+      "source_url": "https://lpsn.dsmz.de/genus/gloeotrichia",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:113:etymology:species": {
+      "text": "O epíteto específico significa intermediária em latim.",
+      "source_url": "https://lpsn.dsmz.de/species/gloeotrichia-intermedia",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
     "species:113:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos reunidos em colônias, com partes mais largas próximas da base. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://www.ebr.or.kr/journal/article.php?Array=&code=95553",
@@ -10300,6 +10550,16 @@
         "genus"
       ],
       "photo_id": "443586440"
+    },
+    "species:115:etymology:genus": {
+      "text": "Um elemento do nome do gênero é uma palavra grega com o significado de fio.",
+      "source_url": "https://lpsn.dsmz.de/genus/johanseninema",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:115:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com células em sequência e pequenas constrições entre elas. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10314,6 +10574,16 @@
       ],
       "photo_id": "407087233"
     },
+    "species:117:etymology:genus": {
+      "text": "O nome do gênero homenageia Arthur Hill Hassall, médico e estudioso de organismos microscópicos.",
+      "source_url": "https://lpsn.dsmz.de/genus/hassallia",
+      "source_title": "DSMZ · LPSN, etimologia registrada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:117:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com envoltório; detalhes das células são usados para comparar espécies. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://www.mapress.com/phytotaxa/content/2013/f/pt00137p047.pdf",
@@ -10326,6 +10596,26 @@
         "genus"
       ],
       "photo_id": "459952778"
+    },
+    "species:120:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de aquilo que não é colorido.",
+      "source_url": "https://lpsn.dsmz.de/genus/achromatium",
+      "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:120:etymology:species": {
+      "text": "O epíteto foi criado com o sentido de portador de oxalato; essa origem histórica não confirma a composição das inclusões celulares.",
+      "source_url": "https://lpsn.dsmz.de/species/achromatium-oxaliferum",
+      "source_title": "DSMZ · LPSN, entrada nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
     },
     "species:120:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células grandes para uma bactéria, com grânulos internos de carbonato de cálcio e enxofre. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10340,6 +10630,16 @@
       ],
       "photo_id": "581394987"
     },
+    "species:122:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de célula arredondada colorida.",
+      "source_url": "https://lpsn.dsmz.de/genus/chroococcus",
+      "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:122:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células arredondadas ou parcialmente arredondadas, envolvidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
       "source_url": "https://sagdb.uni-goettingen.de/detailedList.php?str_number=36.85",
@@ -10353,6 +10653,16 @@
       ],
       "photo_id": "441792181"
     },
+    "species:123:etymology:genus": {
+      "text": "O nome do gênero está relacionado ao sentido de cabeça lisa ou sem revestimento.",
+      "source_url": "https://www.first-nature.com/fungi/~naming.php",
+      "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
     "species:123:morphological_hint": {
       "text": "Procure um pequeno cogumelo castanho crescendo sobre restos de madeira.",
       "source_url": "https://www.mykoweb.com/CAF/species/Psilocybe_allenii.html",
@@ -10365,6 +10675,16 @@
         "genus"
       ],
       "photo_id": "5668201"
+    },
+    "species:124:etymology:genus": {
+      "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+      "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
+      "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
     },
     "species:124:morphological_hint": {
       "text": "Informação complementar (a imagem é de apoio): Células microscópicas dispostas em filas regulares, formando placas pequenas. A imagem do jogo é apenas apoio e não confirma essas características.",
@@ -10480,6 +10800,18 @@
         "species:1:hint"
       ],
       "curiosity": "species:1:curiosity",
+      "review": {
+        "scientific_name": "Papilio machaon",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "280989671",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:1:morphological_hint"
     },
     "6": {
@@ -10496,6 +10828,18 @@
         "species:6:hint"
       ],
       "curiosity": "species:6:curiosity",
+      "review": {
+        "scientific_name": "Danaus plexippus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "322926715",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:6:morphological_hint"
     },
     "125": {
@@ -10512,6 +10856,21 @@
         "species:125:hint"
       ],
       "curiosity": "species:125:curiosity",
+      "review": {
+        "scientific_name": "Panthera tigris",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "707161720",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "fur",
+        "stripes"
+      ],
       "morphological_hint": "species:125:morphological_hint"
     },
     "126": {
@@ -10528,6 +10887,21 @@
         "species:126:hint"
       ],
       "curiosity": "species:126:curiosity",
+      "review": {
+        "scientific_name": "Panthera leo",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "748172022",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "fur",
+        "mane"
+      ],
       "morphological_hint": "species:126:morphological_hint"
     },
     "127": {
@@ -10544,6 +10918,21 @@
         "species:127:hint"
       ],
       "curiosity": "species:127:curiosity",
+      "review": {
+        "scientific_name": "Panthera onca",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "742746729",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "fur",
+        "rosettes"
+      ],
       "morphological_hint": "species:127:morphological_hint"
     },
     "128": {
@@ -10560,6 +10949,28 @@
         "species:128:hint"
       ],
       "curiosity": "species:128:curiosity",
+      "review": {
+        "scientific_name": "Lemur catta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "659755043",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:128:etymology:genus",
+        "species": "species:128:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:128:etymology:genus",
+          "species:128:etymology:species"
+        ]
+      },
       "morphological_hint": "species:128:morphological_hint"
     },
     "129": {
@@ -10576,6 +10987,18 @@
         "species:129:hint"
       ],
       "curiosity": "species:129:curiosity",
+      "review": {
+        "scientific_name": "Pavo cristatus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "307026691",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:129:morphological_hint"
     },
     "130": {
@@ -10592,6 +11015,18 @@
         "species:130:hint"
       ],
       "curiosity": "species:130:curiosity",
+      "review": {
+        "scientific_name": "Agalychnis callidryas",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "289704683",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:130:morphological_hint"
     },
     "131": {
@@ -10608,6 +11043,18 @@
         "species:131:hint"
       ],
       "curiosity": "species:131:curiosity",
+      "review": {
+        "scientific_name": "Rhinoceros unicornis",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "120750026",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:131:etymology:species",
         "genus": "species:131:etymology:genus"
@@ -10634,6 +11081,21 @@
         "species:132:hint"
       ],
       "curiosity": "species:132:curiosity",
+      "review": {
+        "scientific_name": "Equus quagga",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "50371107",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "fur",
+        "stripes"
+      ],
       "morphological_hint": "species:132:morphological_hint"
     },
     "10": {
@@ -10650,6 +11112,18 @@
         "species:10:hint"
       ],
       "curiosity": "species:10:curiosity",
+      "review": {
+        "scientific_name": "Attacus atlas",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "60643931",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:10:morphological_hint"
     },
     "11": {
@@ -10666,6 +11140,18 @@
         "species:11:hint"
       ],
       "curiosity": "species:11:curiosity",
+      "review": {
+        "scientific_name": "Actias luna",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "34980868",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:11:morphological_hint"
     },
     "12": {
@@ -10682,6 +11168,18 @@
         "species:12:hint"
       ],
       "curiosity": "species:12:curiosity",
+      "review": {
+        "scientific_name": "Hyalophora cecropia",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "137265535",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:12:morphological_hint"
     },
     "13": {
@@ -10698,6 +11196,18 @@
         "species:13:hint"
       ],
       "curiosity": "species:13:curiosity",
+      "review": {
+        "scientific_name": "Automeris io",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "44218494",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:13:morphological_hint"
     },
     "14": {
@@ -10714,6 +11224,18 @@
         "species:14:hint"
       ],
       "curiosity": "species:14:curiosity",
+      "review": {
+        "scientific_name": "Antheraea polyphemus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "664105606",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:14:morphological_hint"
     },
     "19": {
@@ -10729,7 +11251,19 @@
       "hints": [
         "species:19:hint"
       ],
-      "curiosity": "species:19:curiosity"
+      "curiosity": "species:19:curiosity",
+      "review": {
+        "scientific_name": "Galleria mellonella",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "321803659",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "20": {
       "scientific_name": "Plodia interpunctella",
@@ -10744,7 +11278,19 @@
       "hints": [
         "species:20:hint"
       ],
-      "curiosity": "species:20:curiosity"
+      "curiosity": "species:20:curiosity",
+      "review": {
+        "scientific_name": "Plodia interpunctella",
+        "taxonomy": "approved",
+        "photo": "in_review",
+        "photo_id": "655494534",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "O padrão de asas da foto 655494534 diverge da descrição de Plodia interpunctella publicada por UF/IFAS (IN153). Suspensa das perguntas até confirmação independente."
+      },
+      "morphology_traits": []
     },
     "21": {
       "scientific_name": "Manduca sexta",
@@ -10760,6 +11306,18 @@
         "species:21:hint"
       ],
       "curiosity": "species:21:curiosity",
+      "review": {
+        "scientific_name": "Manduca sexta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "43280362",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:21:morphological_hint"
     },
     "24": {
@@ -10775,6 +11333,18 @@
         "species:24:hint"
       ],
       "curiosity": "species:24:curiosity",
+      "review": {
+        "scientific_name": "Macrocilix maia",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "53637930",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:24:morphological_hint"
     },
     "37": {
@@ -10790,6 +11360,18 @@
         "species:37:hint"
       ],
       "curiosity": "species:37:curiosity",
+      "review": {
+        "scientific_name": "Laterallus rogersi",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "104246",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:37:morphological_hint"
     },
     "42": {
@@ -10805,6 +11387,18 @@
         "species:42:hint"
       ],
       "curiosity": "species:42:curiosity",
+      "review": {
+        "scientific_name": "Incilius periglenes",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "98915545",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:42:morphological_hint"
     },
     "133": {
@@ -10821,6 +11415,20 @@
         "species:133:hint"
       ],
       "curiosity": "species:133:curiosity",
+      "review": {
+        "scientific_name": "Ginkgo biloba",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "734005336",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "fan-shaped-leaves"
+      ],
       "etymology_hints": {
         "species": "species:133:etymology:species"
       },
@@ -10845,6 +11453,28 @@
         "species:134:hint"
       ],
       "curiosity": "species:134:curiosity",
+      "review": {
+        "scientific_name": "Dionaea muscipula",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "721575702",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "hinged-leaf-traps"
+      ],
+      "etymology_hints": {
+        "species": "species:134:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:134:etymology:species"
+        ]
+      },
       "morphological_hint": "species:134:morphological_hint"
     },
     "53": {
@@ -10861,6 +11491,18 @@
         "species:53:hint"
       ],
       "curiosity": "species:53:curiosity",
+      "review": {
+        "scientific_name": "Viburnum opulus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "167101616",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:53:morphological_hint"
     },
     "61": {
@@ -10877,6 +11519,18 @@
         "species:61:hint"
       ],
       "curiosity": "species:61:curiosity",
+      "review": {
+        "scientific_name": "Verbascum thapsus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "93034327",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:61:etymology:species",
         "genus": "species:61:etymology:genus"
@@ -10903,6 +11557,18 @@
         "species:45:hint"
       ],
       "curiosity": "species:45:curiosity",
+      "review": {
+        "scientific_name": "Hydnora esculenta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "251673570",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:45:morphological_hint"
     },
     "44": {
@@ -10919,6 +11585,18 @@
         "species:44:hint"
       ],
       "curiosity": "species:44:curiosity",
+      "review": {
+        "scientific_name": "Dictyanthus pavonii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "47249680",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:44:morphological_hint"
     },
     "47": {
@@ -10935,6 +11613,18 @@
         "species:47:hint"
       ],
       "curiosity": "species:47:curiosity",
+      "review": {
+        "scientific_name": "Polypodium glycyrrhiza",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "13657957",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:47:morphological_hint"
     },
     "43": {
@@ -10951,6 +11641,18 @@
         "species:43:hint"
       ],
       "curiosity": "species:43:curiosity",
+      "review": {
+        "scientific_name": "Kindbergia oregana",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "613353234",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:43:morphological_hint"
     },
     "48": {
@@ -10967,6 +11669,18 @@
         "species:48:hint"
       ],
       "curiosity": "species:48:curiosity",
+      "review": {
+        "scientific_name": "Marah macrocarpa",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "489573459",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:48:morphological_hint"
     },
     "49": {
@@ -10983,6 +11697,18 @@
         "species:49:hint"
       ],
       "curiosity": "species:49:curiosity",
+      "review": {
+        "scientific_name": "Mastigostyla macbridei",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "540416886",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:49:morphological_hint"
     },
     "51": {
@@ -10999,6 +11725,18 @@
         "species:51:hint"
       ],
       "curiosity": "species:51:curiosity",
+      "review": {
+        "scientific_name": "Mimetes chrysanthus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "371617112",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:51:etymology:species"
       },
@@ -11023,6 +11761,18 @@
         "species:54:hint"
       ],
       "curiosity": "species:54:curiosity",
+      "review": {
+        "scientific_name": "Xanthosoma robustum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "45341427",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:54:morphological_hint"
     },
     "57": {
@@ -11039,6 +11789,18 @@
         "species:57:hint"
       ],
       "curiosity": "species:57:curiosity",
+      "review": {
+        "scientific_name": "Pleurophyllum speciosum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "251548988",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "genus": "species:57:etymology:genus"
       },
@@ -11063,6 +11825,28 @@
         "species:58:hint"
       ],
       "curiosity": "species:58:curiosity",
+      "review": {
+        "scientific_name": "Dracaena cinnabari",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "111803110",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:58:etymology:genus",
+        "species": "species:58:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:58:etymology:genus",
+          "species:58:etymology:species"
+        ]
+      },
       "morphological_hint": "species:58:morphological_hint"
     },
     "73": {
@@ -11079,6 +11863,20 @@
         "species:73:hint"
       ],
       "curiosity": "species:73:curiosity",
+      "review": {
+        "scientific_name": "Coprinus comatus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "93399523",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "shaggy-cap"
+      ],
       "etymology_hints": {
         "species": "species:73:etymology:species",
         "genus": "species:73:etymology:genus"
@@ -11105,6 +11903,20 @@
         "species:139:hint"
       ],
       "curiosity": "species:139:curiosity",
+      "review": {
+        "scientific_name": "Geastrum triplex",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "139143137",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "star-shaped-fruiting-body"
+      ],
       "etymology_hints": {
         "species": "species:139:etymology:species",
         "genus": "species:139:etymology:genus"
@@ -11131,6 +11943,20 @@
         "species:140:hint"
       ],
       "curiosity": "species:140:curiosity",
+      "review": {
+        "scientific_name": "Hericium erinaceus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "5466254",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "hanging-spines"
+      ],
       "etymology_hints": {
         "species": "species:140:etymology:species",
         "genus": "species:140:etymology:genus"
@@ -11157,6 +11983,26 @@
         "species:75:hint"
       ],
       "curiosity": "species:75:curiosity",
+      "review": {
+        "scientific_name": "Cortinarius archeri",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "130004238",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:75:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:75:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:75:morphological_hint"
     },
     "76": {
@@ -11173,6 +12019,26 @@
         "species:76:hint"
       ],
       "curiosity": "species:76:curiosity",
+      "review": {
+        "scientific_name": "Xylaria tentaculata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "2279530",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:76:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:76:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:76:morphological_hint"
     },
     "80": {
@@ -11188,7 +12054,19 @@
       "hints": [
         "species:80:hint"
       ],
-      "curiosity": "species:80:curiosity"
+      "curiosity": "species:80:curiosity",
+      "review": {
+        "scientific_name": "Wawelia microspora",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "351186569",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "123": {
       "scientific_name": "Psilocybe allenii",
@@ -11204,6 +12082,26 @@
         "species:123:hint"
       ],
       "curiosity": "species:123:curiosity",
+      "review": {
+        "scientific_name": "Psilocybe allenii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "5668201",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:123:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:123:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:123:morphological_hint"
     },
     "141": {
@@ -11220,6 +12118,18 @@
         "species:141:hint"
       ],
       "curiosity": "species:141:curiosity",
+      "review": {
+        "scientific_name": "Macrocystis pyrifera",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "742656850",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:141:morphological_hint"
     },
     "142": {
@@ -11236,6 +12146,18 @@
         "species:142:hint"
       ],
       "curiosity": "species:142:curiosity",
+      "review": {
+        "scientific_name": "Nereocystis luetkeana",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "749313945",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:142:morphological_hint"
     },
     "143": {
@@ -11252,6 +12174,18 @@
         "species:143:hint"
       ],
       "curiosity": "species:143:curiosity",
+      "review": {
+        "scientific_name": "Fucus vesiculosus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "749738938",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:143:morphological_hint"
     },
     "144": {
@@ -11268,6 +12202,18 @@
         "species:144:hint"
       ],
       "curiosity": "species:144:curiosity",
+      "review": {
+        "scientific_name": "Himanthalia elongata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "729466339",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:144:morphological_hint"
     },
     "145": {
@@ -11284,6 +12230,18 @@
         "species:145:hint"
       ],
       "curiosity": "species:145:curiosity",
+      "review": {
+        "scientific_name": "Egregia menziesii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "741404235",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:145:morphological_hint"
     },
     "146": {
@@ -11300,6 +12258,18 @@
         "species:146:hint"
       ],
       "curiosity": "species:146:curiosity",
+      "review": {
+        "scientific_name": "Dictyota dichotoma",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "647286388",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:146:morphological_hint"
     },
     "147": {
@@ -11316,6 +12286,18 @@
         "species:147:hint"
       ],
       "curiosity": "species:147:curiosity",
+      "review": {
+        "scientific_name": "Sargassum muticum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "149679081",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:147:morphological_hint"
     },
     "148": {
@@ -11332,6 +12314,26 @@
         "species:148:hint"
       ],
       "curiosity": "species:148:curiosity",
+      "review": {
+        "scientific_name": "Durvillaea antarctica",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "660405215",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:148:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:148:etymology:species"
+        ]
+      },
       "morphological_hint": "species:148:morphological_hint"
     },
     "149": {
@@ -11348,6 +12350,18 @@
         "species:149:hint"
       ],
       "curiosity": "species:149:curiosity",
+      "review": {
+        "scientific_name": "Alaria esculenta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "141679612",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:149:etymology:species",
         "genus": "species:149:etymology:genus"
@@ -11374,6 +12388,18 @@
         "species:27:hint"
       ],
       "curiosity": "species:27:curiosity",
+      "review": {
+        "scientific_name": "Stegodyphus dumicola",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "12637215",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:27:morphological_hint"
     },
     "28": {
@@ -11390,6 +12416,18 @@
         "species:28:hint"
       ],
       "curiosity": "species:28:curiosity",
+      "review": {
+        "scientific_name": "Astroscopus zephyreus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "254703040",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:28:morphological_hint"
     },
     "36": {
@@ -11406,6 +12444,18 @@
         "species:36:hint"
       ],
       "curiosity": "species:36:curiosity",
+      "review": {
+        "scientific_name": "Chortophaga viridifasciata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "31118856",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:36:morphological_hint"
     },
     "38": {
@@ -11422,6 +12472,18 @@
         "species:38:hint"
       ],
       "curiosity": "species:38:curiosity",
+      "review": {
+        "scientific_name": "Cyphonia clavata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "5726540",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:38:morphological_hint"
     },
     "46": {
@@ -11438,6 +12500,18 @@
         "species:46:hint"
       ],
       "curiosity": "species:46:curiosity",
+      "review": {
+        "scientific_name": "Lunularia cruciata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "61481606",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:46:morphological_hint"
     },
     "50": {
@@ -11454,6 +12528,18 @@
         "species:50:hint"
       ],
       "curiosity": "species:50:curiosity",
+      "review": {
+        "scientific_name": "Tulipa regelii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "482684019",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:50:morphological_hint"
     },
     "55": {
@@ -11470,6 +12556,18 @@
         "species:55:hint"
       ],
       "curiosity": "species:55:curiosity",
+      "review": {
+        "scientific_name": "Pleurothallis maitamae",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "20397049",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:55:morphological_hint"
     },
     "23": {
@@ -11484,7 +12582,19 @@
       "hints": [
         "species:23:hint"
       ],
-      "curiosity": "species:23:curiosity"
+      "curiosity": "species:23:curiosity",
+      "review": {
+        "scientific_name": "Titanomis sisyrota",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "357771622",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "26": {
       "scientific_name": "Geminaria canalis",
@@ -11498,7 +12608,19 @@
       "hints": [
         "species:26:hint"
       ],
-      "curiosity": "species:26:curiosity"
+      "curiosity": "species:26:curiosity",
+      "review": {
+        "scientific_name": "Geminaria canalis",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "8658322",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "30": {
       "scientific_name": "Xenocnema spinipes",
@@ -11512,7 +12634,19 @@
       "hints": [
         "species:30:hint"
       ],
-      "curiosity": "species:30:curiosity"
+      "curiosity": "species:30:curiosity",
+      "review": {
+        "scientific_name": "Xenocnema spinipes",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "422526180",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "31": {
       "scientific_name": "Sphaerocoris annulus",
@@ -11527,6 +12661,18 @@
         "species:31:hint"
       ],
       "curiosity": "species:31:curiosity",
+      "review": {
+        "scientific_name": "Sphaerocoris annulus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "29250775",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:31:morphological_hint"
     },
     "34": {
@@ -11542,6 +12688,18 @@
         "species:34:hint"
       ],
       "curiosity": "species:34:curiosity",
+      "review": {
+        "scientific_name": "Dicarnosis erythrocephala",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "123931576",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:34:morphological_hint"
     },
     "35": {
@@ -11557,6 +12715,18 @@
         "species:35:hint"
       ],
       "curiosity": "species:35:curiosity",
+      "review": {
+        "scientific_name": "Pachypodistes angulata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "68055096",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:35:morphological_hint"
     },
     "41": {
@@ -11573,6 +12743,18 @@
         "species:41:hint"
       ],
       "curiosity": "species:41:curiosity",
+      "review": {
+        "scientific_name": "Ovalimantis maculata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "338534567",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:41:morphological_hint"
     },
     "52": {
@@ -11588,7 +12770,19 @@
       "hints": [
         "species:52:hint"
       ],
-      "curiosity": "species:52:curiosity"
+      "curiosity": "species:52:curiosity",
+      "review": {
+        "scientific_name": "Asterella drummondii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "230066559",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "60": {
       "scientific_name": "Huperzia lucidula",
@@ -11603,7 +12797,19 @@
       "hints": [
         "species:60:hint"
       ],
-      "curiosity": "species:60:curiosity"
+      "curiosity": "species:60:curiosity",
+      "review": {
+        "scientific_name": "Huperzia lucidula",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "185341429",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "62": {
       "scientific_name": "Euphorbia duckei",
@@ -11618,7 +12824,19 @@
       "hints": [
         "species:62:hint"
       ],
-      "curiosity": "species:62:curiosity"
+      "curiosity": "species:62:curiosity",
+      "review": {
+        "scientific_name": "Euphorbia duckei",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "108445674",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "65": {
       "scientific_name": "Cladonia imperialis",
@@ -11634,6 +12852,18 @@
         "species:65:hint"
       ],
       "curiosity": "species:65:curiosity",
+      "review": {
+        "scientific_name": "Cladonia imperialis",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "231974984",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:65:morphological_hint"
     },
     "70": {
@@ -11649,6 +12879,26 @@
         "species:70:hint"
       ],
       "curiosity": "species:70:curiosity",
+      "review": {
+        "scientific_name": "Ganoderma brownii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "349810134",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:70:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:70:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:70:morphological_hint"
     },
     "71": {
@@ -11664,6 +12914,26 @@
         "species:71:hint"
       ],
       "curiosity": "species:71:curiosity",
+      "review": {
+        "scientific_name": "Marasmius haematocephalus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "606817545",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:71:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:71:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:71:morphological_hint"
     },
     "79": {
@@ -11680,6 +12950,26 @@
         "species:79:hint"
       ],
       "curiosity": "species:79:curiosity",
+      "review": {
+        "scientific_name": "Panellus stipticus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "178409675",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:79:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:79:etymology:species"
+        ]
+      },
       "morphological_hint": "species:79:morphological_hint"
     },
     "81": {
@@ -11695,6 +12985,26 @@
         "species:81:hint"
       ],
       "curiosity": "species:81:curiosity",
+      "review": {
+        "scientific_name": "Entoloma trachyosporum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "245357302",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:81:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:81:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:81:morphological_hint"
     },
     "83": {
@@ -11710,7 +13020,19 @@
       "hints": [
         "species:83:hint"
       ],
-      "curiosity": "species:83:curiosity"
+      "curiosity": "species:83:curiosity",
+      "review": {
+        "scientific_name": "Comatricha nigra",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "176600250",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "84": {
       "scientific_name": "Hemitrichia serpula",
@@ -11725,7 +13047,19 @@
       "hints": [
         "species:84:hint"
       ],
-      "curiosity": "species:84:curiosity"
+      "curiosity": "species:84:curiosity",
+      "review": {
+        "scientific_name": "Hemitrichia serpula",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "596675431",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "85": {
       "scientific_name": "Metatrichia vesparia",
@@ -11740,7 +13074,19 @@
       "hints": [
         "species:85:hint"
       ],
-      "curiosity": "species:85:curiosity"
+      "curiosity": "species:85:curiosity",
+      "review": {
+        "scientific_name": "Metatrichia vesparia",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "80915734",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "88": {
       "scientific_name": "Physarum psittacinum",
@@ -11755,7 +13101,19 @@
       "hints": [
         "species:88:hint"
       ],
-      "curiosity": "species:88:curiosity"
+      "curiosity": "species:88:curiosity",
+      "review": {
+        "scientific_name": "Physarum psittacinum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "31473154",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "89": {
       "scientific_name": "Ceratiomyxa fruticulosa",
@@ -11770,7 +13128,19 @@
       "hints": [
         "species:89:hint"
       ],
-      "curiosity": "species:89:curiosity"
+      "curiosity": "species:89:curiosity",
+      "review": {
+        "scientific_name": "Ceratiomyxa fruticulosa",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "342355226",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "95": {
       "scientific_name": "Heterotrichia versicolor",
@@ -11785,7 +13155,19 @@
       "hints": [
         "species:95:hint"
       ],
-      "curiosity": "species:95:curiosity"
+      "curiosity": "species:95:curiosity",
+      "review": {
+        "scientific_name": "Heterotrichia versicolor",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "185087187",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "96": {
       "scientific_name": "Leocarpus fragilis",
@@ -11800,7 +13182,19 @@
       "hints": [
         "species:96:hint"
       ],
-      "curiosity": "species:96:curiosity"
+      "curiosity": "species:96:curiosity",
+      "review": {
+        "scientific_name": "Leocarpus fragilis",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "251110486",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "97": {
       "scientific_name": "Badhamia polycephala",
@@ -11815,7 +13209,19 @@
       "hints": [
         "species:97:hint"
       ],
-      "curiosity": "species:97:curiosity"
+      "curiosity": "species:97:curiosity",
+      "review": {
+        "scientific_name": "Badhamia polycephala",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "291002427",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "99": {
       "scientific_name": "Diderma effusum",
@@ -11830,7 +13236,19 @@
       "hints": [
         "species:99:hint"
       ],
-      "curiosity": "species:99:curiosity"
+      "curiosity": "species:99:curiosity",
+      "review": {
+        "scientific_name": "Diderma effusum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "59617028",
+        "etymology": "pending",
+        "morphology": "pending",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": []
     },
     "2": {
       "scientific_name": "Vanessa atalanta",
@@ -11846,6 +13264,18 @@
         "species:2:hint"
       ],
       "curiosity": "species:2:curiosity",
+      "review": {
+        "scientific_name": "Vanessa atalanta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "376647594",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:2:morphological_hint"
     },
     "3": {
@@ -11862,6 +13292,18 @@
         "species:3:hint"
       ],
       "curiosity": "species:3:curiosity",
+      "review": {
+        "scientific_name": "Acherontia atropos",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "586365614",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:3:morphological_hint"
     },
     "4": {
@@ -11877,6 +13319,18 @@
         "species:4:hint"
       ],
       "curiosity": "species:4:curiosity",
+      "review": {
+        "scientific_name": "Brahmaea wallichii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "175474265",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:4:morphological_hint"
     },
     "5": {
@@ -11893,6 +13347,18 @@
         "species:5:hint"
       ],
       "curiosity": "species:5:curiosity",
+      "review": {
+        "scientific_name": "Lymantria dispar",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "401685857",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:5:morphological_hint"
     },
     "7": {
@@ -11909,6 +13375,18 @@
         "species:7:hint"
       ],
       "curiosity": "species:7:curiosity",
+      "review": {
+        "scientific_name": "Aglais io",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "359063525",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:7:morphological_hint"
     },
     "8": {
@@ -11925,6 +13403,18 @@
         "species:8:hint"
       ],
       "curiosity": "species:8:curiosity",
+      "review": {
+        "scientific_name": "Vanessa cardui",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "749769318",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:8:morphological_hint"
     },
     "15": {
@@ -11940,6 +13430,26 @@
         "species:15:hint"
       ],
       "curiosity": "species:15:curiosity",
+      "review": {
+        "scientific_name": "Heliconius melpomene",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "560140869",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:15:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:15:etymology:species"
+        ]
+      },
       "morphological_hint": "species:15:morphological_hint"
     },
     "16": {
@@ -11955,6 +13465,18 @@
         "species:16:hint"
       ],
       "curiosity": "species:16:curiosity",
+      "review": {
+        "scientific_name": "Papilio ulysses",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "45110154",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:16:morphological_hint"
     },
     "18": {
@@ -11971,6 +13493,18 @@
         "species:18:hint"
       ],
       "curiosity": "species:18:curiosity",
+      "review": {
+        "scientific_name": "Pieris brassicae",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "221780102",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:18:morphological_hint"
     },
     "25": {
@@ -11987,6 +13521,18 @@
         "species:25:hint"
       ],
       "curiosity": "species:25:curiosity",
+      "review": {
+        "scientific_name": "Chiton glaucus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "155300806",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:25:morphological_hint"
     },
     "63": {
@@ -12003,6 +13549,18 @@
         "species:63:hint"
       ],
       "curiosity": "species:63:curiosity",
+      "review": {
+        "scientific_name": "Stropharia caerulea",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "330405159",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:63:etymology:species",
         "genus": "species:63:etymology:genus"
@@ -12029,6 +13587,26 @@
         "species:64:hint"
       ],
       "curiosity": "species:64:curiosity",
+      "review": {
+        "scientific_name": "Favolaschia claudopus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "345801259",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:64:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:64:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:64:morphological_hint"
     },
     "135": {
@@ -12045,6 +13623,20 @@
         "species:135:hint"
       ],
       "curiosity": "species:135:curiosity",
+      "review": {
+        "scientific_name": "Clathrus ruber",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "745707969",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "lattice-fruiting-body"
+      ],
       "etymology_hints": {
         "species": "species:135:etymology:species",
         "genus": "species:135:etymology:genus"
@@ -12071,6 +13663,20 @@
         "species:67:hint"
       ],
       "curiosity": "species:67:curiosity",
+      "review": {
+        "scientific_name": "Trametes versicolor",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "27005174",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [
+        "banded-bracket"
+      ],
       "etymology_hints": {
         "species": "species:67:etymology:species",
         "genus": "species:67:etymology:genus"
@@ -12097,6 +13703,18 @@
         "species:136:hint"
       ],
       "curiosity": "species:136:curiosity",
+      "review": {
+        "scientific_name": "Amanita muscaria",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "432197409",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:136:etymology:species"
       },
@@ -12121,6 +13739,26 @@
         "species:137:hint"
       ],
       "curiosity": "species:137:curiosity",
+      "review": {
+        "scientific_name": "Morchella esculenta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "169965177",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:137:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:137:etymology:species"
+        ]
+      },
       "morphological_hint": "species:137:morphological_hint"
     },
     "138": {
@@ -12137,6 +13775,18 @@
         "species:138:hint"
       ],
       "curiosity": "species:138:curiosity",
+      "review": {
+        "scientific_name": "Phallus impudicus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "159628472",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:138:etymology:species",
         "genus": "species:138:etymology:genus"
@@ -12163,6 +13813,26 @@
         "species:82:hint"
       ],
       "curiosity": "species:82:curiosity",
+      "review": {
+        "scientific_name": "Pseudoboletus parasiticus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "151574414",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:82:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:82:etymology:species"
+        ]
+      },
       "morphological_hint": "species:82:morphological_hint"
     },
     "90": {
@@ -12179,6 +13849,18 @@
         "species:90:hint"
       ],
       "curiosity": "species:90:curiosity",
+      "review": {
+        "scientific_name": "Arcyria denudata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "4592237",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:90:morphological_hint"
     },
     "150": {
@@ -12195,6 +13877,18 @@
         "species:150:hint"
       ],
       "curiosity": "species:150:curiosity",
+      "review": {
+        "scientific_name": "Turbinaria ornata",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "134408",
+        "etymology": "pending",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "morphological_hint": "species:150:morphological_hint"
     },
     "103": {
@@ -12211,6 +13905,18 @@
         "species:103:hint"
       ],
       "curiosity": "species:103:curiosity",
+      "review": {
+        "scientific_name": "Sphingomonas phyllosphaerae",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "7906556",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:103:etymology:species"
       },
@@ -12235,6 +13941,26 @@
         "species:104:hint"
       ],
       "curiosity": "species:104:curiosity",
+      "review": {
+        "scientific_name": "Dolichospermum lemmermannii",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "459952778",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:104:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:104:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:104:morphological_hint"
     },
     "105": {
@@ -12251,6 +13977,18 @@
         "species:105:hint"
       ],
       "curiosity": "species:105:curiosity",
+      "review": {
+        "scientific_name": "Serratia marcescens",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "58089762",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:105:etymology:species"
       },
@@ -12275,6 +14013,18 @@
         "species:106:hint"
       ],
       "curiosity": "species:106:curiosity",
+      "review": {
+        "scientific_name": "Thiohalocapsa halophila",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "77725233",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:106:etymology:species"
       },
@@ -12299,6 +14049,26 @@
         "species:107:hint"
       ],
       "curiosity": "species:107:curiosity",
+      "review": {
+        "scientific_name": "Merismopedia convoluta",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "257195754",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:107:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:107:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:107:morphological_hint"
     },
     "108": {
@@ -12315,6 +14085,28 @@
         "species:108:hint"
       ],
       "curiosity": "species:108:curiosity",
+      "review": {
+        "scientific_name": "Arthrospira jenneri",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "241649713",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:108:etymology:genus",
+        "species": "species:108:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:108:etymology:genus",
+          "species:108:etymology:species"
+        ]
+      },
       "morphological_hint": "species:108:morphological_hint"
     },
     "109": {
@@ -12331,6 +14123,18 @@
         "species:109:hint"
       ],
       "curiosity": "species:109:curiosity",
+      "review": {
+        "scientific_name": "Beggiatoa alba",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "629567196",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:109:etymology:species"
       },
@@ -12355,6 +14159,26 @@
         "species:110:hint"
       ],
       "curiosity": "species:110:curiosity",
+      "review": {
+        "scientific_name": "Gomphosphaeria aponina",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "160680326",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:110:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:110:etymology:species"
+        ]
+      },
       "morphological_hint": "species:110:morphological_hint"
     },
     "111": {
@@ -12371,6 +14195,26 @@
         "species:111:hint"
       ],
       "curiosity": "species:111:curiosity",
+      "review": {
+        "scientific_name": "Anabaena torulosa",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "459952778",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:111:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:111:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:111:morphological_hint"
     },
     "112": {
@@ -12387,6 +14231,26 @@
         "species:112:hint"
       ],
       "curiosity": "species:112:curiosity",
+      "review": {
+        "scientific_name": "Phytoplasma asteris",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "48790280",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "species": "species:112:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:112:etymology:species"
+        ]
+      },
       "morphological_hint": "species:112:morphological_hint"
     },
     "113": {
@@ -12403,6 +14267,28 @@
         "species:113:hint"
       ],
       "curiosity": "species:113:curiosity",
+      "review": {
+        "scientific_name": "Gloeotrichia intermedia",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "443586440",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:113:etymology:genus",
+        "species": "species:113:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:113:etymology:genus",
+          "species:113:etymology:species"
+        ]
+      },
       "morphological_hint": "species:113:morphological_hint"
     },
     "114": {
@@ -12419,6 +14305,18 @@
         "species:114:hint"
       ],
       "curiosity": "species:114:curiosity",
+      "review": {
+        "scientific_name": "Leptothrix discophora",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "3221562",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:114:etymology:species"
       },
@@ -12443,6 +14341,26 @@
         "species:115:hint"
       ],
       "curiosity": "species:115:curiosity",
+      "review": {
+        "scientific_name": "Johanseninema constrictum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "407087233",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:115:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:115:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:115:morphological_hint"
     },
     "116": {
@@ -12459,6 +14377,18 @@
         "species:116:hint"
       ],
       "curiosity": "species:116:curiosity",
+      "review": {
+        "scientific_name": "Chlamydophila pecorum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "320741885",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:116:etymology:species"
       },
@@ -12483,6 +14413,26 @@
         "species:117:hint"
       ],
       "curiosity": "species:117:curiosity",
+      "review": {
+        "scientific_name": "Hassallia byssoidea",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "459952778",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:117:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:117:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:117:morphological_hint"
     },
     "118": {
@@ -12499,6 +14449,18 @@
         "species:118:hint"
       ],
       "curiosity": "species:118:curiosity",
+      "review": {
+        "scientific_name": "Aeromonas caviae",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "64447665",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:118:etymology:species"
       },
@@ -12523,6 +14485,18 @@
         "species:119:hint"
       ],
       "curiosity": "species:119:curiosity",
+      "review": {
+        "scientific_name": "Pseudomonas fluorescens",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "64448584",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
       "etymology_hints": {
         "species": "species:119:etymology:species"
       },
@@ -12547,6 +14521,28 @@
         "species:120:hint"
       ],
       "curiosity": "species:120:curiosity",
+      "review": {
+        "scientific_name": "Achromatium oxaliferum",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "581394987",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:120:etymology:genus",
+        "species": "species:120:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:120:etymology:genus",
+          "species:120:etymology:species"
+        ]
+      },
       "morphological_hint": "species:120:morphological_hint"
     },
     "122": {
@@ -12563,6 +14559,26 @@
         "species:122:hint"
       ],
       "curiosity": "species:122:curiosity",
+      "review": {
+        "scientific_name": "Chroococcus turgidus",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "441792181",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:122:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:122:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:122:morphological_hint"
     },
     "124": {
@@ -12579,6 +14595,26 @@
         "species:124:hint"
       ],
       "curiosity": "species:124:curiosity",
+      "review": {
+        "scientific_name": "Merismopedia tranquilla",
+        "taxonomy": "approved",
+        "photo": "approved",
+        "photo_id": "43700642",
+        "etymology": "approved",
+        "morphology": "approved",
+        "education": "approved",
+        "reviewed_on": "2026-10-14",
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+      },
+      "morphology_traits": [],
+      "etymology_hints": {
+        "genus": "species:124:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:124:etymology:genus"
+        ]
+      },
       "morphological_hint": "species:124:morphological_hint"
     }
   }

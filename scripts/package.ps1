@@ -30,7 +30,7 @@ if (-not ('GlossataShellNotify' -as [type])) {
 [GlossataShellNotify]::SHChangeNotify(0x00002000, 0x00001005, $executable, [IntPtr]::Zero)
 # Reload executable icons as well as the versioned shortcut icon.
 [GlossataShellNotify]::SHChangeNotify(0x08000000, 0, $null, [IntPtr]::Zero)
-& $deployTool --release --verbose 0 --exclude-plugins qsqlibase,qsqlmysql,qsqlodbc,qsqlpsql --qmldir (Join-Path $projectRoot 'resources/qml') $executable
+& $deployTool --release --verbose 0 --include-plugins qoffscreen --exclude-plugins qsqlibase,qsqlmysql,qsqlodbc,qsqlpsql --qmldir (Join-Path $projectRoot 'resources/qml') $executable
 if ($LASTEXITCODE -ne 0) { throw 'Falha no windeployqt6.' }
 
 # Remove unused SQL plugins left by earlier deployments; the game uses QSQLITE.

@@ -14,6 +14,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include "infrastructure/content/PhotoResolver.h"
+#include "infrastructure/content/ReviewResolver.h"
 
 SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     : database_(QSqlDatabase::addDatabase("QSQLITE", "catalog-" + QUuid::createUuid().toString()))
@@ -137,6 +138,7 @@ bool SqliteSpeciesCatalog::readCache()
         }
         const auto metadata=QJsonDocument::fromJson(query.value(17).toString().toUtf8()).object();
         PhotoResolver::attach(item,PhotoResolver::fromJson(metadata,item.image));
+        ReviewResolver::apply(item);
         species.append(item);
     }
     taxons_=taxons; species_=species;

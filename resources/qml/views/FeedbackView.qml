@@ -73,7 +73,7 @@ Item {
                 }
                 Item { Layout.fillHeight: true }
                 UiButton { text: "Ver mais informações"; iconName: "book"; secondary: true; Layout.fillWidth: true; onClicked: view.app.navigate("info") }
-                UiButton { objectName: "nextQuestionButton"; text: "Próxima pergunta"; iconName: "arrow"; danger: !view.correct; Layout.fillWidth: true; onClicked: view.app.nextQuestion() }
+                UiButton { objectName: "nextQuestionButton"; text: view.backend.gameFinished ? "Ver resultado final" : "Próxima pergunta"; iconName: "arrow"; danger: !view.correct; Layout.fillWidth: true; onClicked: view.app.nextQuestion() }
                 UiButton { text: "Voltar"; iconName: "back"; secondary: true; compact: true; Layout.fillWidth: true; onClicked: finishDialog.open() }
             }
         }

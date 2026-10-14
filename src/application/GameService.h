@@ -8,6 +8,7 @@
 #include <QStringList>
 #include "application/EducationalContent.h"
 #include "domain/TaxonomicPerformance.h"
+#include "application/QuestionGenerator.h"
 
 class GameService {
 public:
@@ -15,6 +16,10 @@ public:
     explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr);
 
     void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"));
+    void startConfiguredGame(GameConfiguration configuration);
+    static GameConfiguration competitiveConfiguration();
+    GameConfiguration configuration() const { return session_.configuration; }
+    SessionMetrics metrics() const { return SessionMetrics::fromAnswers(session_.answers); }
     Question currentQuestion() const;
     QString currentFact() const;
     QString extraHint() const;
@@ -43,6 +48,7 @@ private:
     SpeciesCatalog *catalog_ = nullptr;
     GameHistoryRepository *history_ = nullptr;
     QVector<Species> species_;
+    QVector<Species> optionPool_;
     int currentSpeciesIndex_ = 0;
     bool resultSaved_ = false;
     int revealedHints_ = 0;
@@ -50,5 +56,6 @@ private:
     Question currentQuestion_;
     QString identificationRank_ = QStringLiteral("species");
     EducationalContent content_;
+    std::mt19937 random_{std::random_device{}()};
     TaxonomicPerformance performance_;
 };

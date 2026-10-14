@@ -68,6 +68,7 @@ void GameController::setCurrentPlayerName(const QString &name)
 
     currentPlayerName_ = name;
     emit currentPlayerNameChanged();
+    loadRanking();
 }
 
 qint64 GameController::scoreUnits() const
@@ -92,18 +93,34 @@ QString GameController::feedbackText() const
 
 QVariantList GameController::ranking() const
 {
-    QVariantList list;
-    const QVector<HistoryEntry> entries = service_.history();
-    for (const HistoryEntry &entry : entries) {
-        QVariantMap row;
-        row.insert(QStringLiteral("playerName"), entry.playerName);
-        row.insert(QStringLiteral("scoreUnits"), entry.scoreUnits);
-        row.insert(QStringLiteral("scoreText"), formatScore(entry.scoreUnits));
-        row.insert(QStringLiteral("correctAnswers"), entry.correctAnswers);
-        row.insert(QStringLiteral("playedAt"), entry.playedAt.toString(QStringLiteral("dd/MM/yyyy")));
-        list.append(row);
-    }
-    return list;
+    return ranking_;
+}
+
+void GameController::setRankingMode(const QString &mode)
+{
+    if (mode != "free" && mode != "competitive") return;
+    rankingMode_ = mode;
+    loadRanking();
+}
+void GameController::setDifficulty(const QString &difficulty)
+{
+    if (difficulty != "broad" && difficulty != "balanced" && difficulty != "close") return;
+    difficulty_ = difficulty;
+    emit difficultyChanged();
+}
+namespace {
+QVariantMap presentMetrics(const SessionMetrics &metrics)
+{
+    return {{"answered",metrics.answered},{"correct",metrics.correct},{"scoreText",formatScore(metrics.units)},{"accuracy",QString::number(metrics.accuracy(),'f',1).replace('.',',')},
+        {"efficiency",QString::number(metrics.efficiency(),'f',1).replace('.',',')},
+        {"average",metrics.averageText()},{"unassistedCorrect",metrics.unassistedCorrect},
+        {"hintedQuestions",metrics.hintedQuestions},{"revealedCategories",metrics.revealedCategories},
+        {"taxonomic",metrics.categoryUse[0]},{"etymological",metrics.categoryUse[1]},{"morphological",metrics.categoryUse[2]}};
+}
+}
+QVariantMap GameController::sessionMetrics() const
+{
+    return presentMetrics(service_.metrics());
 }
 
 void GameController::startGame()
@@ -134,6 +151,23 @@ QVariantMap GameController::questionPhoto() const
 
 void GameController::startTaxonGame(const QString &family, const QString &rank)
 {
+    GameConfiguration configuration;
+    configuration.group = family;
+    configuration.rank = rank;
+    configuration.difficulty = difficulty_ == "broad" ? QuestionDifficulty::Broad
+        : difficulty_ == "close" ? QuestionDifficulty::Close : QuestionDifficulty::Balanced;
+    startWithConfiguration(configuration);
+}
+
+void GameController::startCompetitiveGame()
+{
+    startWithConfiguration(GameService::competitiveConfiguration());
+}
+
+void GameController::startWithConfiguration(const GameConfiguration &configuration)
+{
+    const QString family = configuration.group;
+    const QString rank = configuration.rank;
     if (resultPending_) {
         feedbackText_ = QStringLiteral("Salve o resultado pendente antes de iniciar outra partida.");
         emit feedbackTextChanged();
@@ -149,10 +183,11 @@ void GameController::startTaxonGame(const QString &family, const QString &rank)
     displayedRevealedHints_=0;
     correctStreak_ = 0;
     bestStreak_ = 0;
-    service_.startNewGame(family, rank);
+    service_.startConfiguredGame(configuration);
+    rankingMode_ = configuration.modeKey();
     displayedQuestion_=service_.currentQuestion();
     feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
-        ? QStringLiteral("Fotografias aprovadas insuficientes: são necessárias quatro respostas distintas neste nível.")
+        ? QStringLiteral("Não há quatro alternativas aprovadas adequadas a este nível e à dificuldade selecionada.")
         : QStringLiteral("Escolha a opção correta para continuar.");
     emit questionTextChanged();
     emit factTextChanged();
@@ -228,11 +263,13 @@ void GameController::answerSelected(const QString &selectedOption)
     emit answerOptionsChanged();
     emit feedbackTextChanged();
     emit answerDetailsChanged();
+    if (service_.isFinished()) { retrySaveResult(); emit gameFinishedChanged(); }
 }
 
 void GameController::nextQuestion()
 {
-    if (!answerPending_ || service_.isFinished()) return;
+    if (!answerPending_) return;
+    if (service_.isFinished()) { answerPending_ = false; emit answerDetailsChanged(); return; }
     answerPending_ = false;
     displayedQuestion_=service_.currentQuestion();
     displayedRevealedHints_=0;
@@ -293,6 +330,19 @@ void GameController::retrySaveResult()
 
 void GameController::loadRanking()
 {
+    const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
+    auto row = [](const HistoryEntry &entry) {
+        return QVariantMap{{"playerName",entry.playerName},{"scoreUnits",entry.scoreUnits},
+            {"scoreText",formatScore(entry.scoreUnits)},{"correctAnswers",entry.correctAnswers},
+            {"playedAt",entry.playedAt.toString("dd/MM/yyyy")},{"lastScoreText",formatScore(entry.lastScoreUnits)},
+            {"lastScoreUnits",entry.lastScoreUnits},{"lastCorrectAnswers",entry.lastCorrectAnswers},
+            {"lastPlayedAt",entry.lastPlayedAt.toString("dd/MM/yyyy")}};
+    };
+    ranking_.clear();
+    for (const auto &entry : historyRepository_.loadRanking(key,5)) ranking_.append(row(entry));
+    const auto personal = historyRepository_.loadPlayerResult(key,currentPlayerName_);
+    personalRecord_ = personal.isEmpty() ? QVariantMap{} : row(personal.first());
+    playerMetrics_ = presentMetrics(historyRepository_.playerMetrics(key,currentPlayerName_));
     emit rankingChanged();
 }
 
@@ -363,6 +413,7 @@ bool GameController::renameCurrentPlayerProfile(const QString &name)
 
     currentPlayerName_ = profileName;
     emit currentPlayerNameChanged();
+    loadRanking();
     emit playerProfilesChanged();
     feedbackText_ = QStringLiteral("Perfil renomeado.");
     emit feedbackTextChanged();
@@ -379,6 +430,7 @@ bool GameController::deleteCurrentPlayerProfile()
 
     currentPlayerName_ = playerProfiles().first();
     emit currentPlayerNameChanged();
+    loadRanking();
     emit playerProfilesChanged();
     feedbackText_ = QStringLiteral("Perfil removido.");
     emit feedbackTextChanged();

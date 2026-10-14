@@ -22,4 +22,5 @@ private:
     QHash<QString, int> counts_;
     QHash<QString, QVector<QString>> children_;
     EducationalContent content_;
+    mutable QHash<QString, QVariantList> levelCache_;
 };

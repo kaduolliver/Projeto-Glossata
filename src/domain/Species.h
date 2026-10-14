@@ -25,6 +25,9 @@ struct Species {
     QString imageSource;
     bool visualQuiz = false;
     Photo photo;
+    bool taxonomyApproved = true;
+    bool photoApproved = true;
+    QStringList morphologyTraits;
 
     QString answerAtRank(const QString &rank) const {
         if (rank == "species") return name;

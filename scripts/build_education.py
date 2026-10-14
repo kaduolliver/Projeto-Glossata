@@ -138,10 +138,19 @@ def build():
         data["species"][sid]=values
     hints=json.loads((ROOT/"resources/data/hint_education.json").read_text(encoding="utf8"))
     profiles=load_profiles()
+    reviews=json.loads((ROOT/"resources/data/curation_reviews.json").read_text(encoding="utf8"))
+    if set(reviews)!=set(profiles): raise ValueError("Revisões não correspondem ao catálogo.")
+    states={"pending","in_review","approved","rejected"}
+    for sid,review in reviews.items():
+        if review.get("scientific_name")!=profiles[sid]["scientific_name"]: raise ValueError("Revisão de outra espécie: "+sid)
+        if any(review.get(field) not in states for field in ("taxonomy","photo","etymology","morphology","education")):
+            raise ValueError("Estado de revisão inválido: "+sid)
+        data["species"][sid]["review"]=review
     for sid,content in hints.items():
         if sid not in profiles or content.get("scientific_name")!=profiles[sid]["scientific_name"]:
             raise ValueError("Identidade incompatível no corpus de dicas: "+sid)
         values=data["species"][sid]
+        values["morphology_traits"]=content.get("morphology_traits",[])
         for rank,item in content.get("etymology_hints",{}).items():
             url=item.get("source_url","")
             if rank not in RANKS or not item.get("verified") or not url.startswith("https://") or "inaturalist.org" in url or not item.get("text"):
@@ -156,6 +165,8 @@ def build():
         if "morphological_hint" in content:
             review=content["morphological_hint"];reference=review["reference"]
             if reference not in profiles[sid]:raise ValueError("Morfologia sem conteúdo revisado: "+sid)
+            if not review.get("photo_id") or not review.get("ranks") or any(rank not in RANKS for rank in review["ranks"]):
+                raise ValueError("Morfologia sem fotografia ou nível válido: "+sid)
             item=dict(profiles[sid][reference]);item.update(ranks=review["ranks"],photo_id=review["photo_id"])
             item["text"]=review.get("prefix","")+item["text"]
             key=f"species:{sid}:morphological_hint"

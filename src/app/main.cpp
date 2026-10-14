@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QDateTime>
 #include <QTextStream>
+#include <QTemporaryDir>
+#include <memory>
 
 namespace {
 QJsonObject discordConfiguration()
@@ -47,14 +49,20 @@ int main(int argc, char *argv[])
     }
     qputenv("QT_QUICK_CONTROLS_STYLE", "Basic");
     QGuiApplication app(argc, argv);
+    const bool smokeTest = app.arguments().contains(QStringLiteral("--smoke-test"));
+    std::unique_ptr<QTemporaryDir> smokeDirectory;
+    if (smokeTest) {
+        smokeDirectory = std::make_unique<QTemporaryDir>();
+        if (!smokeDirectory->isValid()) return 4;
+    }
     app.setWindowIcon(QIcon(QStringLiteral(":/resources/branding/glossata.ico")));
 
     const QJsonObject config = discordConfiguration();
     DiscordRichPresence presence(config.value("applicationId").toString(), config.value("largeImage").toString());
-    if (config.value("enabled").toBool()) presence.start();
+    if (!smokeTest && config.value("enabled").toBool()) presence.start();
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &presence, &DiscordRichPresence::stop);
 
-    GameController controller;
+    GameController controller(nullptr, smokeTest ? smokeDirectory->filePath("smoke.sqlite") : QString());
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
@@ -62,6 +70,15 @@ int main(int argc, char *argv[])
 
     if (engine.rootObjects().isEmpty()) {
         return -1;
+    }
+
+    if (smokeTest) {
+        QTimer::singleShot(500, &app, [&] {
+            controller.startCompetitiveGame();
+            engine.rootObjects().first()->setProperty("page", "quiz");
+            const bool valid = !controller.gameFinished() && controller.answerOptions().size() == 4;
+            QTimer::singleShot(500, &app, [&app, valid] { app.exit(valid ? 0 : 5); });
+        });
     }
 
     return app.exec();

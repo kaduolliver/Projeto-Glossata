@@ -4,19 +4,32 @@
 #include <QString>
 #include <QVector>
 #include "domain/Hint.h"
+#include "domain/GameConfiguration.h"
 
 struct HistoryEntry {
     QString playerName;
     qint64 scoreUnits = 0;
     int correctAnswers = 0;
     QDateTime playedAt;
+    qint64 lastScoreUnits = 0;
+    int lastCorrectAnswers = 0;
+    QDateTime lastPlayedAt;
 };
 
 class GameHistoryRepository {
 public:
     virtual ~GameHistoryRepository() = default;
-    // Replaces the previous result for this player name with the latest game.
+    // Retains the best score and records the latest game separately.
     virtual bool saveResult(const QString &playerName, qint64 scoreUnits, int correctAnswers,
                             const QVector<AnswerRecord> &answers={},const QString &gameId={}) = 0;
     virtual QVector<HistoryEntry> loadTopResults(int limit = 10) const = 0;
+    virtual SessionMetrics playerMetrics(const QString &, const QString &) const { return {}; }
+    virtual bool saveConfiguredResult(const QString &name, qint64 units, int correct,
+        const QVector<AnswerRecord> &answers, const QString &id, const GameConfiguration &configuration) {
+        Q_UNUSED(configuration);
+        return saveResult(name, units, correct, answers, id);
+    }
+    virtual QVector<HistoryEntry> loadRanking(const QString &key, int limit = 10) const {
+        return key == "free" ? loadTopResults(limit) : QVector<HistoryEntry>{};
+    }
 };

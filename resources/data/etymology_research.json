@@ -1,0 +1,2215 @@
+{
+  "checked_on": "2026-10-14",
+  "scope": "Reference triage, not an exhaustive search or automatic scientific approval.",
+  "species": {
+    "1": {
+      "scientific_name": "Papilio machaon",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Papilio_machaon/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Papilio machaon\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "2": {
+      "scientific_name": "Vanessa atalanta",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Vanessa atalanta\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "3": {
+      "scientific_name": "Acherontia atropos",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Acherontia atropos\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "4": {
+      "scientific_name": "Brahmaea wallichii",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Brahmaea wallichii\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "5": {
+      "scientific_name": "Lymantria dispar",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Lymantria dispar\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "6": {
+      "scientific_name": "Danaus plexippus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Danaus_plexippus/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Danaus plexippus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "7": {
+      "scientific_name": "Aglais io",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Aglais io\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "8": {
+      "scientific_name": "Vanessa cardui",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Vanessa cardui\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "125": {
+      "scientific_name": "Panthera tigris",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Panthera_tigris/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Panthera tigris\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "10": {
+      "scientific_name": "Attacus atlas",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Attacus_atlas/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Attacus atlas\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "11": {
+      "scientific_name": "Actias luna",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Actias_luna/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Actias luna\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "12": {
+      "scientific_name": "Hyalophora cecropia",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Hyalophora_cecropia/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Hyalophora cecropia\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "13": {
+      "scientific_name": "Automeris io",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://entnemdept.ufl.edu/creatures/misc/io_moth.htm"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Automeris io\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "14": {
+      "scientific_name": "Antheraea polyphemus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://ask.ifas.ufl.edu/publication/IN945"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Antheraea polyphemus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "15": {
+      "scientific_name": "Heliconius melpomene",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.heliconius.org/species/heliconius-melpomene/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Heliconius melpomene\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": [
+        "https://www.heliconius.org/species/heliconius-melpomene/"
+      ]
+    },
+    "16": {
+      "scientific_name": "Papilio ulysses",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Papilio ulysses\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "126": {
+      "scientific_name": "Panthera leo",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Panthera_leo/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Panthera leo\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "18": {
+      "scientific_name": "Pieris brassicae",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Pieris brassicae\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "19": {
+      "scientific_name": "Galleria mellonella",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://blogs.ifas.ufl.edu/entnemdept/2021/12/09/research-update-thymol-shows-promise-as-a-potential-control-for-greater-wax-moths/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Galleria mellonella\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "20": {
+      "scientific_name": "Plodia interpunctella",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://ask.ifas.ufl.edu/publication/IN153"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Plodia interpunctella\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "21": {
+      "scientific_name": "Manduca sexta",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://ask.ifas.ufl.edu/publication/IN1187"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Manduca sexta\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "127": {
+      "scientific_name": "Panthera onca",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Panthera_onca/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Panthera onca\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "23": {
+      "scientific_name": "Titanomis sisyrota",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Titanomis sisyrota\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "24": {
+      "scientific_name": "Macrocilix maia",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.biointeractive.org/sites/default/files/media/file/2023-05/ArtofHiding-StudentHO-PI.pdf"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Macrocilix maia\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "25": {
+      "scientific_name": "Chiton glaucus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Chiton glaucus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "26": {
+      "scientific_name": "Geminaria canalis",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Geminaria canalis\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "27": {
+      "scientific_name": "Stegodyphus dumicola",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://ditsong.org.za/en/social-spiders/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Stegodyphus dumicola\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "28": {
+      "scientific_name": "Astroscopus zephyreus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.fishbase.se/summary/Astroscopus-zephyreus.html"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Astroscopus zephyreus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "128": {
+      "scientific_name": "Lemur catta",
+      "verified_ranks": [
+        "genus",
+        "species"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Lemur_catta/",
+        "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "30": {
+      "scientific_name": "Xenocnema spinipes",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Xenocnema spinipes\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "31": {
+      "scientific_name": "Sphaerocoris annulus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Sphaerocoris annulus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "129": {
+      "scientific_name": "Pavo cristatus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Pavo_cristatus/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Pavo cristatus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "130": {
+      "scientific_name": "Agalychnis callidryas",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animaldiversity.org/accounts/Agalychnis_callidryas/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Agalychnis callidryas\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "34": {
+      "scientific_name": "Dicarnosis erythrocephala",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Dicarnosis erythrocephala\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "35": {
+      "scientific_name": "Pachypodistes angulata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Pachypodistes angulata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "36": {
+      "scientific_name": "Chortophaga viridifasciata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.uwyo.edu/entomology/grasshoppers/field-guide/chvi.html"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Chortophaga viridifasciata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "37": {
+      "scientific_name": "Laterallus rogersi",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Laterallus rogersi\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "38": {
+      "scientific_name": "Cyphonia clavata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.amnh.org/explore/ology/ology-cards/367-cyphonia-clavata"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Cyphonia clavata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "131": {
+      "scientific_name": "Rhinoceros unicornis",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "132": {
+      "scientific_name": "Equus quagga",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://animals.sandiegozoo.org/animals/zebra"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Equus quagga\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "41": {
+      "scientific_name": "Ovalimantis maculata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Ovalimantis maculata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "42": {
+      "scientific_name": "Incilius periglenes",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Incilius periglenes\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": [
+        "https://amphibiansoftheworld.amnh.org/Amphibia/Anura/Bufonidae/Incilius/Incilius-periglenes"
+      ]
+    },
+    "43": {
+      "scientific_name": "Kindbergia oregana",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://bryophyteportal.org/portal/taxa/index.php?clid=75&taxauthid=1&tid=159612"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Kindbergia oregana\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "44": {
+      "scientific_name": "Dictyanthus pavonii",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Dictyanthus pavonii\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "45": {
+      "scientific_name": "Hydnora esculenta",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://link.springer.com/article/10.1007/s12225-024-10193-5"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Hydnora esculenta\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "46": {
+      "scientific_name": "Lunularia cruciata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.britishbryologicalsociety.org.uk/learning/species-finder/lunularia-cruciata/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Lunularia cruciata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "47": {
+      "scientific_name": "Polypodium glycyrrhiza",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Polypodium+glycyrrhiza"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Polypodium glycyrrhiza\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "48": {
+      "scientific_name": "Marah macrocarpa",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://plants.sdsu.edu/sdpls/plants/Marah_macrocarpa/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Marah macrocarpa\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "49": {
+      "scientific_name": "Mastigostyla macbridei",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Mastigostyla macbridei\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "50": {
+      "scientific_name": "Tulipa regelii",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Tulipa regelii\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "51": {
+      "scientific_name": "Mimetes chrysanthus",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://pza.sanbi.org/mimetes-chrysanthus"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "52": {
+      "scientific_name": "Asterella drummondii",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Asterella drummondii\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "53": {
+      "scientific_name": "Viburnum opulus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://plants.ces.ncsu.edu/plants/viburnum-opulus/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Viburnum opulus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "54": {
+      "scientific_name": "Xanthosoma robustum",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Xanthosoma robustum\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "55": {
+      "scientific_name": "Pleurothallis maitamae",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.cornare.gov.co/noticias-corporativas/pleurothallis-maitamae-la-nueva-orquidea-que-el-paramo-de-sonson-regalo-a-la-ciencia/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Pleurothallis maitamae\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "133": {
+      "scientific_name": "Ginkgo biloba",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "57": {
+      "scientific_name": "Pleurophyllum speciosum",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "58": {
+      "scientific_name": "Dracaena cinnabari",
+      "verified_ranks": [
+        "genus",
+        "species"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+        "https://plants.ces.ncsu.edu/plants/dracaena/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "134": {
+      "scientific_name": "Dionaea muscipula",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "60": {
+      "scientific_name": "Huperzia lucidula",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Huperzia lucidula\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "61": {
+      "scientific_name": "Verbascum thapsus",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "62": {
+      "scientific_name": "Euphorbia duckei",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Euphorbia duckei\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "63": {
+      "scientific_name": "Stropharia caerulea",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/stropharia-caerulea.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "64": {
+      "scientific_name": "Favolaschia claudopus",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/favolaschia-claudopus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Favolaschia claudopus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "65": {
+      "scientific_name": "Cladonia imperialis",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/cladonia-imperialis.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Cladonia imperialis\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "135": {
+      "scientific_name": "Clathrus ruber",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/clathrus-ruber.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "67": {
+      "scientific_name": "Trametes versicolor",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/trametes-versicolor.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "136": {
+      "scientific_name": "Amanita muscaria",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/amanita-muscaria.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "70": {
+      "scientific_name": "Ganoderma brownii",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "71": {
+      "scientific_name": "Marasmius haematocephalus",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "137": {
+      "scientific_name": "Morchella esculenta",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/morchella-esculenta.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "73": {
+      "scientific_name": "Coprinus comatus",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/coprinus-comatus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "138": {
+      "scientific_name": "Phallus impudicus",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/phallus-impudicus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "75": {
+      "scientific_name": "Cortinarius archeri",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "76": {
+      "scientific_name": "Xylaria tentaculata",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "139": {
+      "scientific_name": "Geastrum triplex",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/geastrum-triplex.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "140": {
+      "scientific_name": "Hericium erinaceus",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/hericium-erinaceus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "79": {
+      "scientific_name": "Panellus stipticus",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/panellus-stipticus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "80": {
+      "scientific_name": "Wawelia microspora",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.atcc.org/products/204456",
+        "https://www.first-nature.com/fungi/wawelia-microspora.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Wawelia microspora\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "81": {
+      "scientific_name": "Entoloma trachyosporum",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "82": {
+      "scientific_name": "Pseudoboletus parasiticus",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "83": {
+      "scientific_name": "Comatricha nigra",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Comatricha nigra\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "84": {
+      "scientific_name": "Hemitrichia serpula",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Hemitrichia serpula\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "85": {
+      "scientific_name": "Metatrichia vesparia",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Metatrichia vesparia\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "141": {
+      "scientific_name": "Macrocystis pyrifera",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/giant-kelp"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Macrocystis pyrifera\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "142": {
+      "scientific_name": "Nereocystis luetkeana",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://seanet.stanford.edu/Ochrophyta"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Nereocystis luetkeana\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "88": {
+      "scientific_name": "Physarum psittacinum",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Physarum psittacinum\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "89": {
+      "scientific_name": "Ceratiomyxa fruticulosa",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Ceratiomyxa fruticulosa\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "90": {
+      "scientific_name": "Arcyria denudata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Arcyria denudata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "143": {
+      "scientific_name": "Fucus vesiculosus",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.marlin.ac.uk/species/detail/1330"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Fucus vesiculosus\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "144": {
+      "scientific_name": "Himanthalia elongata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.marlin.ac.uk/species/detail/1358"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Himanthalia elongata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "145": {
+      "scientific_name": "Egregia menziesii",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://seanet.stanford.edu/Ochrophyta"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Egregia menziesii\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "146": {
+      "scientific_name": "Dictyota dichotoma",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.habitas.org.uk/marinelife/species.asp?item=ZR4570"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Dictyota dichotoma\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "95": {
+      "scientific_name": "Heterotrichia versicolor",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Heterotrichia versicolor\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "96": {
+      "scientific_name": "Leocarpus fragilis",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Leocarpus fragilis\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "97": {
+      "scientific_name": "Badhamia polycephala",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Badhamia polycephala\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "147": {
+      "scientific_name": "Sargassum muticum",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.marlin.ac.uk/species/detail/1477"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Sargassum muticum\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "99": {
+      "scientific_name": "Diderma effusum",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Diderma effusum\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "148": {
+      "scientific_name": "Durvillaea antarctica",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Durvillaea antarctica\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "149": {
+      "scientific_name": "Alaria esculenta",
+      "verified_ranks": [
+        "species",
+        "genus"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://www.marlin.ac.uk/species/detail/1291"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "150": {
+      "scientific_name": "Turbinaria ornata",
+      "verified_ranks": [],
+      "pending_parts": [
+        "genus",
+        "species"
+      ],
+      "sources_checked": [],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Turbinaria ornata\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": []
+    },
+    "103": {
+      "scientific_name": "Sphingomonas phyllosphaerae",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "104": {
+      "scientific_name": "Dolichospermum lemmermannii",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://limnolfwbiol.com/index.php/LFWB/article/view/773",
+        "https://lpsn.dsmz.de/genus/dolichospermum"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "105": {
+      "scientific_name": "Serratia marcescens",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/serratia-marcescens"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "106": {
+      "scientific_name": "Thiohalocapsa halophila",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/thiohalocapsa-halophila"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "107": {
+      "scientific_name": "Merismopedia convoluta",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/merismopedia"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "108": {
+      "scientific_name": "Arthrospira jenneri",
+      "verified_ranks": [
+        "genus",
+        "species"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/arthrospira",
+        "https://lpsn.dsmz.de/species/arthrospira-jenneri"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "109": {
+      "scientific_name": "Beggiatoa alba",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/beggiatoa-alba"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "110": {
+      "scientific_name": "Gomphosphaeria aponina",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/gomphosphaeria",
+        "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
+        "https://lpsn.dsmz.de/species/gomphosphaeria-aponina"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "111": {
+      "scientific_name": "Anabaena torulosa",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001",
+        "https://lpsn.dsmz.de/genus/anabaena"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "112": {
+      "scientific_name": "Phytoplasma asteris",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/phytoplasma",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640453/",
+        "https://lpsn.dsmz.de/species/phytoplasma-asteris"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica.",
+      "search_queries": [
+        "\"Phytoplasma asteris\" etymology genus specific epithet original description"
+      ],
+      "search_candidates": [
+        "https://www.lpsn.dsmz.de/species/phytoplasma-asteris"
+      ]
+    },
+    "113": {
+      "scientific_name": "Gloeotrichia intermedia",
+      "verified_ranks": [
+        "genus",
+        "species"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/gloeotrichia",
+        "https://www.ebr.or.kr/journal/article.php?Array=&code=95553",
+        "https://lpsn.dsmz.de/species/gloeotrichia-intermedia"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "114": {
+      "scientific_name": "Leptothrix discophora",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/leptothrix-discophora"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "115": {
+      "scientific_name": "Johanseninema constrictum",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/johanseninema",
+        "https://www.preslia.cz/article/pdf?id=111"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "116": {
+      "scientific_name": "Chlamydophila pecorum",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/chlamydia-pecorum"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "117": {
+      "scientific_name": "Hassallia byssoidea",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/hassallia",
+        "https://www.mapress.com/phytotaxa/content/2013/f/pt00137p047.pdf"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "118": {
+      "scientific_name": "Aeromonas caviae",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/aeromonas-caviae"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "119": {
+      "scientific_name": "Pseudomonas fluorescens",
+      "verified_ranks": [
+        "species"
+      ],
+      "pending_parts": [
+        "genus"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/species/pseudomonas-fluorescens"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "120": {
+      "scientific_name": "Achromatium oxaliferum",
+      "verified_ranks": [
+        "genus",
+        "species"
+      ],
+      "pending_parts": [],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/achromatium",
+        "https://lpsn.dsmz.de/species/achromatium-oxaliferum"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "122": {
+      "scientific_name": "Chroococcus turgidus",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/chroococcus"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "123": {
+      "scientific_name": "Psilocybe allenii",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://www.first-nature.com/fungi/~naming.php"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    },
+    "124": {
+      "scientific_name": "Merismopedia tranquilla",
+      "verified_ranks": [
+        "genus"
+      ],
+      "pending_parts": [
+        "species"
+      ],
+      "sources_checked": [
+        "https://lpsn.dsmz.de/genus/merismopedia"
+      ],
+      "verification_note": "Somente as notas do corpus aprovadas foram incorporadas; a triagem HTTP não equivale a validação científica."
+    }
+  },
+  "reference_checks": {
+    "https://animaldiversity.org/accounts/Actias_luna/": {
+      "url": "https://animaldiversity.org/accounts/Actias_luna/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Agalychnis_callidryas/": {
+      "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Attacus_atlas/": {
+      "url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Danaus_plexippus/": {
+      "url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Hyalophora_cecropia/": {
+      "url": "https://animaldiversity.org/accounts/Hyalophora_cecropia/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Lemur_catta/": {
+      "url": "https://animaldiversity.org/accounts/Lemur_catta/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Panthera_leo/": {
+      "url": "https://animaldiversity.org/accounts/Panthera_leo/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Panthera_onca/": {
+      "url": "https://animaldiversity.org/accounts/Panthera_onca/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Panthera_tigris/": {
+      "url": "https://animaldiversity.org/accounts/Panthera_tigris/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Papilio_machaon/": {
+      "url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animaldiversity.org/accounts/Pavo_cristatus/": {
+      "url": "https://animaldiversity.org/accounts/Pavo_cristatus/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://animals.sandiegozoo.org/animals/zebra": {
+      "url": "https://animals.sandiegozoo.org/animals/zebra",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://ask.ifas.ufl.edu/publication/IN1187": {
+      "url": "https://ask.ifas.ufl.edu/publication/IN1187",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://ask.ifas.ufl.edu/publication/IN153": {
+      "url": "https://ask.ifas.ufl.edu/publication/IN153",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://ask.ifas.ufl.edu/publication/IN945": {
+      "url": "https://ask.ifas.ufl.edu/publication/IN945",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://blogs.ifas.ufl.edu/entnemdept/2021/12/09/research-update-thymol-shows-promise-as-a-potential-control-for-greater-wax-moths/": {
+      "url": "https://blogs.ifas.ufl.edu/entnemdept/2021/12/09/research-update-thymol-shows-promise-as-a-potential-control-for-greater-wax-moths/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://bryophyteportal.org/portal/taxa/index.php?clid=75&taxauthid=1&tid=159612": {
+      "url": "https://bryophyteportal.org/portal/taxa/index.php?clid=75&taxauthid=1&tid=159612",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Polypodium+glycyrrhiza": {
+      "url": "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Polypodium+glycyrrhiza",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://ditsong.org.za/en/social-spiders/": {
+      "url": "https://ditsong.org.za/en/social-spiders/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://entnemdept.ufl.edu/creatures/misc/io_moth.htm": {
+      "url": "https://entnemdept.ufl.edu/creatures/misc/io_moth.htm",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001": {
+      "url": "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://limnolfwbiol.com/index.php/LFWB/article/view/773": {
+      "url": "https://limnolfwbiol.com/index.php/LFWB/article/view/773",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://link.springer.com/article/10.1007/s12225-024-10193-5": {
+      "url": "https://link.springer.com/article/10.1007/s12225-024-10193-5",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://link.springer.com/article/10.1186/s13002-021-00452-1": {
+      "url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://lpsn.dsmz.de/genus/achromatium": {
+      "url": "https://lpsn.dsmz.de/genus/achromatium",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/anabaena": {
+      "url": "https://lpsn.dsmz.de/genus/anabaena",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/arthrospira": {
+      "url": "https://lpsn.dsmz.de/genus/arthrospira",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/chroococcus": {
+      "url": "https://lpsn.dsmz.de/genus/chroococcus",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/dolichospermum": {
+      "url": "https://lpsn.dsmz.de/genus/dolichospermum",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/gloeotrichia": {
+      "url": "https://lpsn.dsmz.de/genus/gloeotrichia",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/gomphosphaeria": {
+      "url": "https://lpsn.dsmz.de/genus/gomphosphaeria",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/hassallia": {
+      "url": "https://lpsn.dsmz.de/genus/hassallia",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/johanseninema": {
+      "url": "https://lpsn.dsmz.de/genus/johanseninema",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/merismopedia": {
+      "url": "https://lpsn.dsmz.de/genus/merismopedia",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/genus/phytoplasma": {
+      "url": "https://lpsn.dsmz.de/genus/phytoplasma",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/achromatium-oxaliferum": {
+      "url": "https://lpsn.dsmz.de/species/achromatium-oxaliferum",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/aeromonas-caviae": {
+      "url": "https://lpsn.dsmz.de/species/aeromonas-caviae",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/arthrospira-jenneri": {
+      "url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/beggiatoa-alba": {
+      "url": "https://lpsn.dsmz.de/species/beggiatoa-alba",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/chlamydia-pecorum": {
+      "url": "https://lpsn.dsmz.de/species/chlamydia-pecorum",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/leptothrix-discophora": {
+      "url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/pseudomonas-fluorescens": {
+      "url": "https://lpsn.dsmz.de/species/pseudomonas-fluorescens",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/serratia-marcescens": {
+      "url": "https://lpsn.dsmz.de/species/serratia-marcescens",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae": {
+      "url": "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://lpsn.dsmz.de/species/thiohalocapsa-halophila": {
+      "url": "https://lpsn.dsmz.de/species/thiohalocapsa-halophila",
+      "retrieved": false,
+      "error": "URLError"
+    },
+    "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity": {
+      "url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/": {
+      "url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.ces.ncsu.edu/plants/dracaena/": {
+      "url": "https://plants.ces.ncsu.edu/plants/dracaena/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/": {
+      "url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/": {
+      "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.ces.ncsu.edu/plants/viburnum-opulus/": {
+      "url": "https://plants.ces.ncsu.edu/plants/viburnum-opulus/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://plants.sdsu.edu/sdpls/plants/Marah_macrocarpa/": {
+      "url": "https://plants.sdsu.edu/sdpls/plants/Marah_macrocarpa/",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640453/": {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640453/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://pza.sanbi.org/mimetes-chrysanthus": {
+      "url": "https://pza.sanbi.org/mimetes-chrysanthus",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf": {
+      "url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://seanet.stanford.edu/Ochrophyta": {
+      "url": "https://seanet.stanford.edu/Ochrophyta",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.amnh.org/explore/ology/ology-cards/367-cyphonia-clavata": {
+      "url": "https://www.amnh.org/explore/ology/ology-cards/367-cyphonia-clavata",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.atcc.org/products/204456": {
+      "url": "https://www.atcc.org/products/204456",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.biointeractive.org/sites/default/files/media/file/2023-05/ArtofHiding-StudentHO-PI.pdf": {
+      "url": "https://www.biointeractive.org/sites/default/files/media/file/2023-05/ArtofHiding-StudentHO-PI.pdf",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.britishbryologicalsociety.org.uk/learning/species-finder/lunularia-cruciata/": {
+      "url": "https://www.britishbryologicalsociety.org.uk/learning/species-finder/lunularia-cruciata/",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.cornare.gov.co/noticias-corporativas/pleurothallis-maitamae-la-nueva-orquidea-que-el-paramo-de-sonson-regalo-a-la-ciencia/": {
+      "url": "https://www.cornare.gov.co/noticias-corporativas/pleurothallis-maitamae-la-nueva-orquidea-que-el-paramo-de-sonson-regalo-a-la-ciencia/",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.ebr.or.kr/journal/article.php?Array=&code=95553": {
+      "url": "https://www.ebr.or.kr/journal/article.php?Array=&code=95553",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.first-nature.com/fungi/amanita-muscaria.php": {
+      "url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/cladonia-imperialis.php": {
+      "url": "https://www.first-nature.com/fungi/cladonia-imperialis.php",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.first-nature.com/fungi/clathrus-ruber.php": {
+      "url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/coprinus-comatus.php": {
+      "url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/favolaschia-claudopus.php": {
+      "url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/geastrum-triplex.php": {
+      "url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/hericium-erinaceus.php": {
+      "url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/morchella-esculenta.php": {
+      "url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/panellus-stipticus.php": {
+      "url": "https://www.first-nature.com/fungi/panellus-stipticus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/phallus-impudicus.php": {
+      "url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php": {
+      "url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/stropharia-caerulea.php": {
+      "url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/trametes-versicolor.php": {
+      "url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.first-nature.com/fungi/wawelia-microspora.php": {
+      "url": "https://www.first-nature.com/fungi/wawelia-microspora.php",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.first-nature.com/fungi/~naming.php": {
+      "url": "https://www.first-nature.com/fungi/~naming.php",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.fishbase.se/summary/Astroscopus-zephyreus.html": {
+      "url": "https://www.fishbase.se/summary/Astroscopus-zephyreus.html",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.habitas.org.uk/marinelife/species.asp?item=ZR4570": {
+      "url": "https://www.habitas.org.uk/marinelife/species.asp?item=ZR4570",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.mapress.com/phytotaxa/content/2013/f/pt00137p047.pdf": {
+      "url": "https://www.mapress.com/phytotaxa/content/2013/f/pt00137p047.pdf",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.marlin.ac.uk/species/detail/1291": {
+      "url": "https://www.marlin.ac.uk/species/detail/1291",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.marlin.ac.uk/species/detail/1330": {
+      "url": "https://www.marlin.ac.uk/species/detail/1330",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.marlin.ac.uk/species/detail/1358": {
+      "url": "https://www.marlin.ac.uk/species/detail/1358",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.marlin.ac.uk/species/detail/1477": {
+      "url": "https://www.marlin.ac.uk/species/detail/1477",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/giant-kelp": {
+      "url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/giant-kelp",
+      "retrieved": false,
+      "error": "HTTPError"
+    },
+    "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons": {
+      "url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/": {
+      "url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/": {
+      "url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
+      "retrieved": true,
+      "etymology_keyword": true
+    },
+    "https://www.preslia.cz/article/pdf?id=111": {
+      "url": "https://www.preslia.cz/article/pdf?id=111",
+      "retrieved": true,
+      "etymology_keyword": false
+    },
+    "https://www.uwyo.edu/entomology/grasshoppers/field-guide/chvi.html": {
+      "url": "https://www.uwyo.edu/entomology/grasshoppers/field-guide/chvi.html",
+      "retrieved": true,
+      "etymology_keyword": false
+    }
+  }
+}

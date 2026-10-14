@@ -47,7 +47,7 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
     const Taxon taxon = taxons_.value(id);
     const QString kingdom = kingdomFor(id);
     int visualCount=0,supportingCount=0;
-    for (const Species &s : speciesFor(id)) if (s.photo.valid && !s.photo.approvedRanks.isEmpty()) {
+    for (const Species &s : speciesFor(id)) if (s.taxonomyApproved && s.photoApproved && s.photo.valid && !s.photo.approvedRanks.isEmpty()) {
         if (s.photo.role=="supporting") ++supportingCount; else ++visualCount;
     }
     return {{"id", id}, {"title", taxon.name}, {"rank", taxon.rank},
@@ -104,6 +104,7 @@ QVariantList TaxonomyIndex::breadcrumbs(const QString &id) const
 
 QVariantList TaxonomyIndex::identificationLevels(const QString &id) const
 {
+    if (levelCache_.contains(id)) return levelCache_.value(id);
     const QVector<Species> selected = speciesFor(id);
     QVariantList levels;
     for (const QString &rank : {QString("species"), QString("genus"), QString("family"), QString("order"), QString("class"), QString("phylum"), QString("kingdom")}) {
@@ -116,5 +117,6 @@ QVariantList TaxonomyIndex::identificationLevels(const QString &id) const
         if (answers.size() >= 4) levels.append(QVariantMap{{"id", rank}, {"title", taxonomicRankLabel(rank)},
             {"answers", answers.size()}, {"count", eligible}});
     }
+    levelCache_.insert(id,levels);
     return levels;
 }

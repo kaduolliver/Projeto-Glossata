@@ -2,6 +2,12 @@
 #include "domain/Species.h"
 #include <QSet>
 
+inline bool approvedForQuiz(const Species &s, const QString &rank)
+{
+    return !s.name.trimmed().isEmpty() && s.taxonomyApproved && s.photoApproved && s.photo.valid
+        && s.photo.approvedRanks.contains(rank) && !s.answerAtRank(rank).trimmed().isEmpty();
+}
+
 inline bool canBeDistractor(const Species &candidate, const Species &correct, const QString &rank)
 {
     if (candidate.answerAtRank(rank).compare(correct.answerAtRank(rank), Qt::CaseInsensitive) == 0) return false;
@@ -12,20 +18,9 @@ inline QVector<Species> eligibleQuizSpecies(QVector<Species> pool, const QString
 {
     for (int i = static_cast<int>(pool.size()) - 1; i >= 0; --i) {
         const Species &s = pool.at(i);
-        if (s.name.trimmed().isEmpty() || !s.photo.valid || !s.photo.approvedRanks.contains(rank)
-            || s.answerAtRank(rank).trimmed().isEmpty()) pool.removeAt(i);
+        if (!approvedForQuiz(s,rank)) pool.removeAt(i);
     }
-    bool changed;
-    do {
-        QVector<Species> valid;
-        for (const Species &s : pool) {
-            QSet<QString> alternatives;
-            for (const Species &candidate : pool)
-                if (canBeDistractor(candidate, s, rank)) alternatives.insert(candidate.answerAtRank(rank).toCaseFolded());
-            if (alternatives.size() >= 3) valid.append(s);
-        }
-        changed = valid.size() != pool.size();
-        pool = valid;
-    } while (changed && !pool.isEmpty());
-    return pool;
+    QSet<QString> answers;
+    for (const auto &s : pool) answers.insert(s.answerAtRank(rank).trimmed().toCaseFolded());
+    return answers.size() >= 4 ? pool : QVector<Species>{};
 }

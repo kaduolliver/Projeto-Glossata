@@ -1,6 +1,7 @@
 #pragma once
 
 #include "domain/Hint.h"
+#include "domain/GameConfiguration.h"
 #include <QVector>
 struct GameSession {
     qint64 scoreUnits = 0;
@@ -10,4 +11,5 @@ struct GameSession {
     bool finished = false;
     QString id;
     QVector<AnswerRecord> answers;
+    GameConfiguration configuration;
 };

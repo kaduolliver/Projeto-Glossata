@@ -32,6 +32,8 @@ Item {
             Label { text: view.backend.browseTaxon.introduction.text || "Introdução científica ainda não disponível para este grupo."; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
             TextAction { visible: !!view.backend.browseTaxon.introduction.source_url; text: "Fonte: " + (view.backend.browseTaxon.introduction.source_title || "Referência científica"); onClicked: Qt.openUrlExternally(view.backend.browseTaxon.introduction.source_url) }
         }
+        PlayModeSelector { app: view.app; backend: view.backend }
+        Label { visible: view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
             Layout.fillWidth: true; implicitHeight: controls.implicitHeight + 36
             radius: 16; color: "#17372D"; border.color: "#365C47"

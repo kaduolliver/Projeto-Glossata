@@ -55,11 +55,16 @@ ApplicationWindow {
         if (backend.sessionTaxonId) openTaxon(backend.sessionTaxonId)
         else page = "categories"
     }
-    function nextQuestion() { backend.nextQuestion(); page = "quiz" }
+    function beginCompetitiveGame() {
+        backend.startCompetitiveGame()
+        sessionStarted = !backend.gameFinished
+        page = backend.gameFinished ? "results" : "quiz"
+    }
+    function nextQuestion() { backend.nextQuestion(); page = backend.gameFinished ? "results" : "quiz" }
     function finishGame() { backend.stopGame(); page = "results" }
     function leaveGame() {
         backend.stopGame()
-        if (backend.resultPending) page = "results"
+        if (backend.resultPending || backend.gameMode === "competitive") page = "results"
         else returnToExploration()
     }
 

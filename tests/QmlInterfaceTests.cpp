@@ -11,6 +11,7 @@
 #include <QDir>
 #include <functional>
 #include <QColor>
+#include <QSet>
 
 namespace {
 QStringList interfaceWarnings;
@@ -307,7 +308,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         if (controller.identificationLevels().at(i).toMap().value("id").toString() == "family") familyIndex = i;
     QVERIFY(familyIndex >= 0);
     selector->setProperty("currentIndex", familyIndex);
-    auto comboBackground=findVisualItem(window->contentItem(),"taxonComboBackground");
+    auto comboBackground=findVisualItem(selector,"taxonComboBackground");
     QVERIFY(comboBackground);
     QCOMPARE(comboBackground->property("radius").toInt(),12);
     QVERIFY(comboBackground->property("color").value<QColor>().lightness()<160);
@@ -315,7 +316,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(selector->hasActiveFocus());
     QTest::keyClick(window,Qt::Key_Space);
     QTest::qWait(50);
-    auto popup=window->findChild<QObject *>("taxonComboPopup");
+    auto popup=selector->findChild<QObject *>("taxonComboPopup");
     QVERIFY(popup && popup->property("visible").toBool());
     QVERIFY(snapshot("compact-taxonomy-popup"));
     auto popupBackground=findVisualItem(window->contentItem(),"taxonPopupBackground");
@@ -413,6 +414,32 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QCOMPARE(controller.possibleScoreText(),QString("1,00"));
     QVERIFY(snapshot("unavailable-hint-categories"));
     QVERIFY(click("closeHintPanelButton"));
+    controller.stopGame(); showPage("categories");
+    QVERIFY(click("startCompetitiveButton"));
+    QCOMPARE(window->property("page").toString(),QString("quiz"));
+    QCOMPARE(controller.gameMode(),QString("competitive"));
+    QSet<int> competitiveSpecies;
+    for(int i=0;i<20;++i) {
+        const int id=controller.questionPhoto().value("speciesId").toInt();
+        QVERIFY(!competitiveSpecies.contains(id)); competitiveSpecies.insert(id);
+        const QString correct=correctAnswer();
+        const int option=controller.answerOptions().indexOf(correct);QVERIFY(option>=0);
+        QVERIFY(click("answerOption"+QString::number(option)));
+        QVERIFY(click("confirmAnswerButton"));
+        QCOMPARE(window->property("page").toString(),QString("feedback"));
+        const int answered=controller.answeredCount();
+        controller.answerSelected(correct);QCOMPARE(controller.answeredCount(),answered);
+        if(i==19) { QVERIFY(controller.gameFinished()); QVERIFY(snapshot("competitive-final-feedback")); }
+        QVERIFY(click("nextQuestionButton"));
+        QCOMPARE(window->property("page").toString(),i==19 ? QString("results") : QString("quiz"));
+    }
+    QCOMPARE(controller.scoreUnits(),qint64(120));QCOMPARE(controller.answeredCount(),20);
+    QVERIFY(!controller.resultPending()); QVERIFY(snapshot("competitive-results"));
+    showPage("statistics");
+    QVERIFY(click("competitiveRankingButton"));QCOMPARE(controller.rankingMode(),QString("competitive"));
+    QVERIFY(!controller.ranking().isEmpty());
+    QVERIFY(snapshot("competitive-statistics"));
+    QVERIFY(click("freeRankingButton"));QCOMPARE(controller.rankingMode(),QString("free"));
     qInstallMessageHandler(runtimeHandler);
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }

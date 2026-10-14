@@ -1,5 +1,7 @@
 # Dicas estratégicas e pontuação exata
 
+Registro da etapa inicial de dicas. Para a implementação atual — recordes, modo Competitivo, três alternativas compatíveis e etimologias ampliadas — consulte [EVOLUCAO_COMPETITIVA.md](EVOLUCAO_COMPETITIVA.md) e [COBERTURA_TAXONOMICA.md](COBERTURA_TAXONOMICA.md).
+
 Implementação validada em 14/10/2026, mantendo o catálogo de 122 organismos, a navegação, os perfis, a sidebar e o encerramento voluntário pelo botão Voltar.
 
 ## Auditoria e funcionalidades

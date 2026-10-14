@@ -3,6 +3,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QRegularExpression>
+#include <algorithm>
 namespace {
 QVariantMap note(const QJsonObject &item)
 {
@@ -40,6 +41,7 @@ QJsonObject EducationalContent::speciesContent(const Species &s) const
 }
 QVariantMap EducationalContent::nameOrigin(const Species &s) const
 {
+    if (speciesContent(s).value("review").toObject().value("etymology").toString() != "approved") return {};
     const auto refs=speciesContent(s).value("name_origin").toObject().value("parts").toArray();
     QStringList texts,urls;
     QString title;
@@ -83,6 +85,7 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
     const QStringList ranks={"kingdom","phylum","class","order","family","genus","species"};
     const int asked=ranks.indexOf(rank);
     for(auto it=s.taxonomy.crbegin();it!=s.taxonomy.crend();++it) {
+        if (!s.taxonomyApproved) break;
         const int level=ranks.indexOf(it->rank);
         if(level<0 || asked<0 || level>=asked || it->source!="inaturalist" || it->sourceTaxonId.isEmpty())continue;
         int compatible=0;
@@ -93,18 +96,37 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
             }
             compatible+=known && all;
         }
-        if(compatible<2 || (it->rank=="kingdom" && compatible==options.size()))continue;
+        if(compatible<3 || (it->rank=="kingdom" && compatible==options.size()))continue;
         assign(0,{{"text",QStringLiteral("Na classificação científica, pertence ao grupo %1: %2. Compare os integrantes pela fotografia e pelas outras informações.").arg(taxonomicRankLabel(it->rank),it->name)},
                   {"source_url","https://www.inaturalist.org/taxa/"+it->sourceTaxonId},
                   {"source_title","iNaturalist · classificação do grupo"}});
         if(result[0].available())break;
     }
     const auto item=speciesContent(s);
-    assign(1,note(resolve(item.value("etymology_hints").toObject().value(rank))));
+    const auto review=item.value("review").toObject();
+    if (review.value("etymology").toString()=="approved")
+        assign(1,note(resolve(item.value("etymology_hints").toObject().value(rank))));
     // Existing reviewed appearance notes are reused, but habitat/diet clues and
     // vague group fallbacks must not silently become high-assistance morphology.
     const auto morphology=note(resolve(item.value("morphological_hint")));
-    if(morphology.value("ranks").toList().contains(rank)
+    bool distinguishes = true;
+    if (!s.morphologyTraits.isEmpty()) {
+        int documentedAlternatives = 0, sharedAlternatives = 0;
+        for (const auto &option : options) {
+            if (option == s.answerAtRank(rank)) continue;
+            bool documented = false, shared = false;
+            for (const auto &candidate : pool) if (candidate.answerAtRank(rank)==option) {
+                documented = documented || !candidate.morphologyTraits.isEmpty();
+                shared = shared || std::all_of(s.morphologyTraits.begin(),s.morphologyTraits.end(),
+                    [&](const QString &trait) { return candidate.morphologyTraits.contains(trait); });
+            }
+            documentedAlternatives += documented;
+            sharedAlternatives += shared;
+        }
+        distinguishes = documentedAlternatives < 3 || sharedAlternatives < 3;
+    }
+    if(review.value("morphology").toString()=="approved" && distinguishes
+       && morphology.value("ranks").toList().contains(rank)
        && morphology.value("photo_id").toString()==s.photo.id
        && !leaks(morphology.value("text").toString(),s,options))assign(2,morphology);
     return result;
@@ -113,6 +135,7 @@ QVariantMap EducationalContent::profile(const Species &s) const
 {
     const auto item=speciesContent(s);
     if (item.isEmpty()) return {};
+    if (item.value("review").toObject().value("education").toString() != "approved") return {};
     QVariantMap result{{"commonName",item.value("common_name").toString()},
                        {"displayName",item.value("display_name").toString()},
                        {"reviewedOn",item.value("reviewed_on").toString()}};

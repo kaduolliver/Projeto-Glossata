@@ -8,7 +8,7 @@ Item {
     id: view
     required property var app
     required property var backend
-    implicitHeight: 540
+    implicitHeight: 620
     Rectangle {
         anchors.fill: parent; radius: 24; color: "#102E28"; border.color: "#30563D"
         LifeArtwork { anchors.fill: parent; opacity: 0.18 }
@@ -18,7 +18,9 @@ Item {
             UiIcon { name: "trophy"; ink: "#F1C656"; implicitWidth: 64; implicitHeight: 64; Layout.alignment: Qt.AlignHCenter }
             Label { text: view.backend.answeredCount > 0 ? "Partida concluída!" : "Pronto para descobrir?"; color: "#F0F7ED"; font.pixelSize: 34; font.weight: Font.DemiBold; horizontalAlignment: Text.AlignHCenter; Layout.fillWidth: true; wrapMode: Text.WordWrap }
             Label { text: view.backend.sessionPlayerName + " · " + view.backend.categoryName; color: "#91B7A1"; font.pixelSize: 13; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap }
+            Label { text: view.backend.gameMode === "competitive" ? (view.backend.answeredCount === view.backend.questionLimit ? "Competitivo · formato completo" : "Competitivo interrompido · fora do ranking") : "Livre · aprendizagem contínua"; color: "#91B7A1"; font.pixelSize: 13; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
             Label { text: "Pontuação: " + view.backend.scoreText; color: "#71DCA0"; font.pixelSize: 19; horizontalAlignment: Text.AlignHCenter; Layout.fillWidth: true }
+            Label { visible: !!view.backend.personalRecord.scoreText; text: "Recorde do perfil selecionado: " + (view.backend.personalRecord.scoreText || "0,00") + " · Última partida: " + (view.backend.personalRecord.lastScoreText || "0,00"); color: "#A7C5B1"; font.pixelSize: 12; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap }
             RowLayout {
                 Layout.fillWidth: true; Layout.topMargin: 16; Layout.bottomMargin: 12; spacing: 16
                 StatCard { Layout.fillWidth: true; title: "Acertos"; value: String(view.backend.correctAnswers); iconName: "check"; accent: "#43D189" }

@@ -150,7 +150,7 @@ class ImportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
@@ -173,7 +173,7 @@ class ImportTests(unittest.TestCase):
         original=json.loads((PROJECT/'resources/data/hint_education.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','curation_reviews.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             for invalid_identity in (True,False):
                 hints=json.loads(json.dumps(original))
@@ -182,6 +182,52 @@ class ImportTests(unittest.TestCase):
                 (root/'resources/data/hint_education.json').write_text(json.dumps(hints),encoding='utf8')
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):education.build()
                 self.assertFalse((root/'resources/data/education.json').exists())
+
+    def test_independent_review_states_and_catalog_audit(self):
+        sys.path.insert(0,str(PROJECT/'scripts'))
+        import audit_catalog
+        result=audit_catalog.audit(PROJECT)
+        self.assertEqual(result['total_species'],122)
+        self.assertEqual(result['valid_photo_records'],122)
+        self.assertEqual(result['competitive_pool'],80)
+        self.assertEqual(result['verified_etymology'],49)
+        self.assertEqual(result['incompatible_photo_licenses'],[])
+        self.assertEqual(result['errors'],[])
+        self.assertNotIn('20',result['eligible_ids_by_rank']['species'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json'):
+                shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
+            path=root/'resources/data/curation_reviews.json'
+            reviews=json.loads(path.read_text(encoding='utf8'))
+            reviews['135']['etymology']='pending'
+            path.write_text(json.dumps(reviews),encoding='utf8')
+            with mock.patch.object(education,'ROOT',root),contextlib.redirect_stdout(io.StringIO()):
+                data=education.build()
+            self.assertEqual(data['species']['135']['review']['etymology'],'pending')
+            self.assertEqual(data['species']['135']['review']['photo'],'approved')
+            reviews['135']['photo']='invented'
+            path.write_text(json.dumps(reviews),encoding='utf8')
+            with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):education.build()
+
+    def test_research_triage_preserves_manual_queries_and_never_approves_a_name(self):
+        spec=importlib.util.spec_from_file_location("research",PROJECT/'scripts/research_etymology.py')
+        research=importlib.util.module_from_spec(spec);spec.loader.exec_module(research)
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory);folder=root/'resources/data';folder.mkdir(parents=True)
+            species=[{'id':1,'name':'Example species','educational_kingdom':'Animalia'}]
+            hints={'1':{'scientific_name':'Example species'}}
+            profiles={'1':{'morphology':{'source_url':'https://example.org/reference'}}}
+            prior={'species':{'1':{'scientific_name':'Example species','search_queries':['manual original-description query']}}}
+            for name,data in [('species.json',species),('hint_education.json',hints),('species_profiles.json',profiles),('etymology_research.json',prior)]:
+                (folder/name).write_text(json.dumps(data),encoding='utf8')
+            with mock.patch.object(research,'ROOT',root),mock.patch.object(research,'inspect',return_value={'retrieved':True,'etymology_keyword':True}),contextlib.redirect_stdout(io.StringIO()):
+                research.research()
+            result=json.loads((folder/'etymology_research.json').read_text(encoding='utf8'))['species']['1']
+            self.assertEqual(result['search_queries'],prior['species']['1']['search_queries'])
+            self.assertEqual(result['verified_ranks'],[])
+            self.assertEqual(result['pending_parts'],['genus','species'])
+            self.assertEqual(json.loads((folder/'hint_education.json').read_text(encoding='utf8')),hints)
 
     def test_missing_offline_cache_and_failed_import_leave_catalog_untouched(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -38,7 +38,7 @@ Item {
             UiIcon { name: view.backend.questionPhoto.kingdom === "Animalia" ? "butterfly" : (view.backend.questionPhoto.kingdom === "Plantae" ? "leaf" : "book"); ink: "#E2B969"; implicitWidth: 20; implicitHeight: 20 }
             Label { text: view.backend.categoryName + " · " + view.backend.identificationRankLabel; color: "#C9DCD2"; font.pixelSize: 13 }
             Item { Layout.fillWidth: true }
-            Label { text: "Pergunta " + view.backend.round; color: "#D3E4DD"; font.pixelSize: 13; font.weight: Font.DemiBold }
+            Label { text: "Pergunta " + view.backend.round + (view.backend.gameMode === "competitive" ? " / " + view.backend.questionLimit : ""); color: "#D3E4DD"; font.pixelSize: 13; font.weight: Font.DemiBold }
         }
         RowLayout {
             Layout.fillWidth: true
@@ -118,8 +118,9 @@ Item {
         }
         RowLayout {
             Layout.fillWidth: true
-            Label { text: "Ciclo atual · " + (((view.backend.round - 1) % Math.max(1, view.backend.catalogSize)) + 1) + " de " + view.backend.catalogSize + " espécies"; color: "#688B94"; font.pixelSize: 11 }
+            Label { visible: view.backend.gameMode !== "competitive"; text: "Ciclo atual · " + (((view.backend.round - 1) % Math.max(1, view.backend.catalogSize)) + 1) + " de " + view.backend.catalogSize + " espécies"; color: "#688B94"; font.pixelSize: 11 }
             ProgressBar {
+                visible: view.backend.gameMode !== "competitive"
                 Layout.preferredWidth: 160
                 from: 0; to: Math.max(1, view.backend.catalogSize); value: (view.backend.round - 1) % Math.max(1, view.backend.catalogSize)
                 background: Rectangle { implicitHeight: 5; color: "#203943"; radius: 3 }

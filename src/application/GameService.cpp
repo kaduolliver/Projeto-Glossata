@@ -7,32 +7,8 @@
 #include <QMap>
 #include <QSet>
 #include <QUuid>
-
-namespace {
-QStringList buildOptionSet(const QVector<Species> &species, const Species &correct, const QString &rank)
-{
-    const QString correctName = correct.answerAtRank(rank).trimmed();
-    QStringList distractors;
-    for (const Species &candidate : species) {
-        const QString candidateName = candidate.answerAtRank(rank).trimmed();
-        if (!canBeDistractor(candidate, correct, rank)
-            || distractors.contains(candidateName, Qt::CaseInsensitive)) {
-            continue;
-        }
-        distractors << candidateName;
-    }
-
-    std::shuffle(distractors.begin(), distractors.end(), std::mt19937(std::random_device{}()));
-
-    QStringList options{correctName};
-    while (options.size() < 4 && !distractors.isEmpty()) {
-        options << distractors.takeFirst();
-    }
-
-    std::shuffle(options.begin(), options.end(), std::mt19937(std::random_device{}()));
-    return options;
-}
-}
+#include <QFile>
+#include <QCryptographicHash>
 
 GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history)
     : catalog_(catalog), history_(history)
@@ -41,12 +17,42 @@ GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history
 
 void GameService::startNewGame(const QString &filter, const QString &rank)
 {
+    GameConfiguration configuration;
+    configuration.group = filter;
+    configuration.rank = rank;
+    startConfiguredGame(configuration);
+}
+
+GameConfiguration GameService::competitiveConfiguration()
+{
+    GameConfiguration configuration;
+    configuration.mode = GameMode::Competitive;
+    configuration.questionLimit = GameConfiguration::CompetitiveQuestionCount;
+    configuration.rank = "genus";
+    static const QString fingerprint = [] {
+        QByteArray bytes;
+        for (const QString &path : {QString(":/resources/data/species.json"), QString(":/resources/data/taxonomy.json"), QString(":/resources/data/education.json")}) {
+            QFile file(path);
+            if (!file.open(QIODevice::ReadOnly)) return QString();
+            bytes += file.readAll();
+        }
+        return QString::fromLatin1(QCryptographicHash::hash(bytes, QCryptographicHash::Sha256).toHex());
+    }();
+    configuration.contentVersion = fingerprint;
+    return configuration;
+}
+
+void GameService::startConfiguredGame(GameConfiguration configuration)
+{
+    const QString filter = configuration.group;
+    const QString rank = configuration.rank;
     identificationRank_ = rank;
     species_.clear();
     currentSpeciesIndex_ = 0;
     resultSaved_ = false;
     revealedHints_ = 0;
     session_ = GameSession();
+    session_.configuration = configuration;
     session_.id=QUuid::createUuid().toString(QUuid::WithoutBraces);
     performance_ = TaxonomicPerformance();
     currentQuestion_ = Question();
@@ -79,6 +85,20 @@ void GameService::startNewGame(const QString &filter, const QString &rank)
     }
 
     species_ = eligibleQuizSpecies(species_, rank);
+    if (configuration.mode == GameMode::Competitive) {
+        for (int i = int(species_.size()) - 1; i >= 0; --i)
+            if (species_[i].photo.role != "identification") species_.removeAt(i);
+    }
+    optionPool_ = species_;
+    const QuestionGenerator generator(content_);
+    if (configuration.difficulty == QuestionDifficulty::Close)
+        for (int i = int(species_.size()) - 1; i >= 0; --i)
+            if (generator.generate(species_[i], optionPool_, configuration, random_).options.size() != 4) species_.removeAt(i);
+    if (configuration.mode == GameMode::Competitive && (configuration.questionLimit <= 0 || species_.size() < configuration.questionLimit)) {
+        session_.round = 0;
+        session_.finished = true;
+        return;
+    }
     QSet<QString> distinctAnswers;
     for (const Species &species : species_) distinctAnswers.insert(species.answerAtRank(rank).toCaseFolded());
     if (distinctAnswers.size() < 4) {
@@ -129,6 +149,13 @@ bool GameService::submitAnswer(const QString &selectedOption)
         ++session_.correctAnswers;
     }
 
+    if (session_.configuration.mode == GameMode::Competitive
+        && session_.answeredCount >= session_.configuration.questionLimit) {
+        session_.finished = true;
+        revealedHints_ = 0;
+        currentQuestion_.options.clear();
+        return isCorrect;
+    }
     ++session_.round;
     ++currentSpeciesIndex_;
     revealedHints_ = 0;
@@ -188,7 +215,7 @@ QVector<HistoryEntry> GameService::history() const
         return {};
     }
 
-    return history_->loadTopResults(5);
+    return history_->loadRanking(session_.configuration.rankingKey(), 5);
 }
 
 GameService::SaveStatus GameService::saveCurrentResult(const QString &playerName)
@@ -198,7 +225,7 @@ GameService::SaveStatus GameService::saveCurrentResult(const QString &playerName
     }
 
     if (history_ == nullptr || playerName.trimmed().isEmpty()
-        || !history_->saveResult(playerName.trimmed(), session_.scoreUnits, session_.correctAnswers,session_.answers,session_.id)) {
+        || !history_->saveConfiguredResult(playerName.trimmed(), session_.scoreUnits, session_.correctAnswers, session_.answers, session_.id, session_.configuration)) {
         return SaveStatus::Failed;
     }
     resultSaved_ = true;
@@ -213,44 +240,8 @@ void GameService::buildQuestionForCurrentSpecies()
         return;
     }
 
-    const Species correct = species_.at(currentSpeciesIndex_);
-    QStringList options = buildOptionSet(species_, correct, identificationRank_);
-    if (options.size() != 4) {
-        currentQuestion_ = Question{};
-        session_.finished = true;
-        return;
-    }
-    auto hints=content_.questionHints(correct,identificationRank_,options,species_);
-    // Bounded resampling tries to retain educational context while keeping four
-    // distinct answers. Every candidate arrangement passes the same safety gate.
-    if(identificationRank_!="kingdom")for(int attempt=0;attempt<8 && !hints[0].available();++attempt) {
-        const auto candidateOptions=buildOptionSet(species_,correct,identificationRank_);
-        const auto candidateHints=content_.questionHints(correct,identificationRank_,candidateOptions,species_);
-        if(candidateHints[0].available()){options=candidateOptions;hints=candidateHints;}
-    }
-
-    const bool supporting=correct.photo.role=="supporting";
-    const bool visual = !supporting && correct.photo.valid && correct.photo.approvedRanks.contains(identificationRank_);
-    const QString prompt = supporting ? QStringLiteral("Identifique pelas pistas: %1").arg(taxonomicRankLabel(identificationRank_)) : identificationRank_ == "species"
-        ? QStringLiteral("Qual espécie está registrada nesta fotografia?")
-        : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(identificationRank_));
-    QString fact = QStringLiteral("Observe a fotografia. Compare a forma, as estruturas e os padrões visíveis.");
-    if (supporting) fact=QStringLiteral("A imagem é apenas apoio. Consulte as categorias de dicas para identificar o organismo pelas informações documentadas.");
-    currentQuestion_ = Question{
-        prompt,
-        fact,
-        hints[2].text,
-        correct.answerAtRank(identificationRank_),
-        options,
-        correct,
-        identificationRank_,
-        visual,
-        correct.photo,
-        hints[2].sourceUrl,
-        hints[2].sourceTitle,
-        hints
-    };
-
+    currentQuestion_ = QuestionGenerator(content_).generate(species_.at(currentSpeciesIndex_), optionPool_, session_.configuration, random_);
+    if (currentQuestion_.options.size() != 4) session_.finished = true;
 }
 
 void GameService::shuffleCycle()

@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QHash>
 #include "infrastructure/content/PhotoResolver.h"
+#include "infrastructure/content/ReviewResolver.h"
 
 QVector<Taxon> JsonSpeciesCatalog::loadTaxons() const
 {
@@ -75,6 +76,7 @@ QVector<Species> JsonSpeciesCatalog::loadSpecies() const
             if (taxons.contains(id.toString())) item.taxonomy.append(taxons.value(id.toString()));
         }
         PhotoResolver::attach(item,PhotoResolver::fromJson(object.value("photo").toObject(),item.image));
+        ReviewResolver::apply(item);
         if (!item.name.isEmpty()) {
             species.push_back(item);
         }

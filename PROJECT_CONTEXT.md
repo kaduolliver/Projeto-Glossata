@@ -2,7 +2,7 @@
 
 ## Objetivo e estado atual
 
-Aplicativo desktop educativo em português para explorar Animalia, Plantae, Fungi, Protista e Monera no modelo didático tradicional dos cinco reinos. Cada pergunta tem quatro alternativas do mesmo nível taxonômico, seleção e confirmação, uma dica opcional e ficha da espécie. A partida continua até o jogador encerrá-la.
+Aplicativo desktop educativo em português para explorar Animalia, Plantae, Fungi, Protista e Monera no modelo didático tradicional dos cinco reinos. Cada pergunta tem quatro alternativas do mesmo nível taxonômico, seleção e confirmação, painel de três dicas e ficha da espécie. O modo Livre continua até o jogador encerrá-lo; o Competitivo padronizado tem 20 questões.
 
 O catálogo ativo possui 122 espécies, com 42 Animalia e 20 em cada um dos outros reinos. Após autorização do usuário, 26 organismos sem cobertura visual foram substituídos; os dados anteriores foram arquivados. Monera mantém os mesmos 20 organismos, com imagens de apoio para identificação por pistas. Consulte [docs/SUBSTITUICOES_CATALOGO.md](docs/SUBSTITUICOES_CATALOGO.md) para o estado atual e [docs/PHOTO_CREDITS.md](docs/PHOTO_CREDITS.md) para créditos.
 
@@ -41,9 +41,9 @@ Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O mo
 
 Responder prepara a próxima pergunta no serviço; o controller mantém o snapshot da pergunta, foto, dica e alternativas até nextQuestion e bloqueia confirmações duplicadas. Voltar abre uma confirmação modal. Continuar preserva a seleção; confirmar registra uma vez e retorna ao grupo anterior ou aos reinos. Falha de gravação leva ao resultado pendente para nova tentativa.
 
-Todos os 122 registros ativos possuem imagem tecnicamente válida: 102 têm fotos para identificação visual e os 20 de Monera usam imagens de apoio com aviso explícito, conforme solicitação do usuário. Monera possui descrições biológicas e pistas em linguagem simples. O modo misto inicia em gênero, com 101 registros dos cinco reinos. Há 16 introduções de grupos e 122 fichas com apresentação, distribuição/ocorrências documentadas, morfologia, conservação, curiosidade e dica; 107 incluem alimentação/nutrição. Há 22 categorias globais da IUCN registradas no iNaturalist e 100 fichas sem categoria global confirmada. Fontes e classificação completa podem ser expandidas na ficha. Níveis sem quatro alternativas distintas continuam bloqueados. Registros substituídos recebem novos IDs e os antigos ficam arquivados em catalog_replacements.json.
+Todos os 122 registros ativos possuem imagem tecnicamente válida: 102 têm fotos para identificação visual e os 20 de Monera usam imagens de apoio com aviso explícito, conforme solicitação do usuário. Monera possui descrições biológicas e pistas em linguagem simples. O modo misto inicia em gênero, com 100 registros dos cinco reinos; Plodia interpunctella está suspensa das perguntas por revisão fotográfica. Há 16 introduções de grupos e 122 fichas com apresentação, distribuição/ocorrências documentadas, morfologia, conservação, curiosidade e dica; 107 incluem alimentação/nutrição. Há 22 categorias globais da IUCN registradas no iNaturalist e 100 fichas sem categoria global confirmada. Fontes e classificação completa podem ser expandidas na ficha. Níveis sem quatro alternativas distintas continuam bloqueados. Registros substituídos recebem novos IDs e os antigos ficam arquivados em catalog_replacements.json.
 
-Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte, independentemente do nível perguntado. Um filo ausente ou ambíguo usa Classificação não disponível. Estatísticas e seis conquistas permanecem relativas à partida atual/última partida, sem progresso cumulativo persistido.
+Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte, independentemente do nível perguntado. Um filo ausente ou ambíguo usa Classificação não disponível. O desempenho taxonômico e as seis conquistas permanecem relativos à partida atual/última partida. Estatísticas adicionais do histórico são derivadas das respostas persistidas por perfil e modalidade.
 
 ## Dados locais e migrações
 
@@ -56,7 +56,7 @@ O catálogo usa chaves estrangeiras, índices e consultas recursivas. Carga/atua
 
 Perfis têm nomes aparados, limite de 32 caracteres e unicidade COLLATE NOCASE. É possível criar, selecionar, renomear e excluir; o último perfil não pode ser excluído. Instalação vazia cria Jogador 1. A partida captura o nome ao iniciar; mudanças de perfil durante o jogo não transferem seu resultado.
 
-O ranking mantém o resultado mais recente por nome, ignorando caixa, mesmo com pontuação menor. Não acumula pontos. Bancos antigos são migrados por transação, consolidando duplicatas pelo maior played_at e depois id. A UI mostra os cinco melhores. Falha ao salvar mantém resultado pendente, permite repetir e bloqueia nova partida até sucesso.
+O ranking mostra a melhor pontuação por nome e modalidade; a última partida fica separada. O Competitivo usa uma chave com limite, grupo, nível, dificuldade, regras e SHA-256 do conteúdo. PRAGMA user_version=2 migra o histórico transacionalmente, preservando linhas legadas e reconstruindo somente partidas com respostas disponíveis. Falha ao salvar mantém resultado pendente e permite repetir sem duplicação. Consulte docs/EVOLUCAO_COMPETITIVA.md.
 
 ## Discord e ícones
 
@@ -84,18 +84,26 @@ Quatro suítes CTest:
 1. GlossataTests: regressões do jogo, perfis/ranking, filtros, níveis, grupos pequenos, mistura, fotos offline, licenças e migração/reabertura do catálogo.
 2. GlossataInterfaceTests: cliques e confirmação, cinco reinos, subgrupos, caminho de volta, retorno ao grupo e capturas em 1240×820 e 1000×700; rejeita avisos QML.
 3. GlossataDiscordTests: IPC isolado, handshake, frames fragmentados, PONG, confirmação/erro e ausência de Discord.
-4. GlossataImportTests: doze testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte, falha segura sem cache e geração educacional reproduzível com validação de identidade/fontes/escopo e rejeição de classificação como etimologia.
+4. GlossataImportTests: quatorze testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte, falha segura sem cache e geração educacional reproduzível com validação de identidade/fontes/escopo e rejeição de classificação como etimologia.
 
 Testes usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests/core-results.txt, ui-test-results.txt e catalog-audit.json. Consulte docs/REFINAMENTO_IDENTIFICACAO.md para resultados, limitações científicas e registros pendentes desta etapa.
 
 ## Próximas prioridades e retomada
 
-Revisar cientificamente fatos/dicas anteriores e novos registros, acrescentar curiosidades com fontes, ampliar representatividade e avaliar progresso persistido por perfil se solicitado. A amostra inicial de Protista contém Protozoa; Monera contém Bacteria, embora o mapeamento também suporte Chromista e Archaea. Falta validar o pacote em um Windows sem Qt/MSYS2 instalado.
+Revisar cientificamente fatos/dicas anteriores e novos registros, acrescentar curiosidades com fontes, ampliar representatividade e avaliar progresso persistido por perfil se solicitado. Protista contém dez Protozoa e dez Chromista; Monera contém vinte Bacteria e nenhuma Archaea. Falta validar o pacote em um Windows sem Qt/MSYS2 instalado.
 
 Preservar C++17, Qt Quick, SQLite, portas/adaptadores, IDs originais, dados dos jogadores e testes. Trabalhar apenas em C:\glossata_game. Ao alterar regras/catálogo, testar comportamento; ao mudar QML, conferir lint/capturas; ao recompilar o executável, atualizar o pacote. A API é usada na importação, nunca para jogar ou navegar.
 
 ## Dicas estratégicas e revisão após a resposta
 
-A pontuação usa unidades inteiras de 64 bits: 6 por ponto, 3 por meio ponto e 2 por um terço. A interface mostra duas casas decimais. O ranking continua guardando o resultado mais recente por nome e ordena por unidades. Cada resposta preserva organismo, foto, nível, alternativas escolhida/correta, acerto, categorias, teto e unidades obtidas. O domínio calcula a combinação; QML apresenta os valores. A revisão educativa é opcional e não altera pontos.
+A pontuação usa unidades inteiras de 64 bits: 6 por ponto, 3 por meio ponto e 2 por um terço. A interface mostra duas casas decimais. O ranking mantém recorde e última partida separadamente e ordena por unidades. Cada resposta preserva organismo, foto, nível, alternativas escolhida/correta, acerto, categorias, teto e unidades obtidas. O domínio calcula a combinação; QML apresenta os valores. A revisão educativa é opcional e não altera pontos.
 
-As dicas taxonômicas citam ancestrais verificados mais amplos e deixam ao menos duas alternativas compatíveis. Etimologia tem referências para 22 organismos; 104 têm morfologia curada, vinculada à fotografia. Etimologia/morfologia estão revisadas para espécie/gênero, com disponibilidade dependente do conteúdo, elegibilidade e questão. Corpus em resources/data/hint_education.json, incorporado offline pelo gerador; nenhuma consulta de rede ocorre nas partidas. Detalhes, pendências e testes em docs/DICAS_E_PONTUACAO.md.
+As dicas taxonômicas citam ancestrais verificados mais amplos e deixam ao menos três alternativas compatíveis. Etimologia tem referências para 49 organismos; 104 têm morfologia curada, vinculada à fotografia. Etimologia/morfologia estão revisadas para espécie/gênero, com disponibilidade dependente do conteúdo, elegibilidade e questão. Corpus em resources/data/hint_education.json, incorporado offline pelo gerador; nenhuma consulta de rede ocorre nas partidas. Detalhes, pendências e testes em docs/DICAS_E_PONTUACAO.md.
+
+## Evolução de engenharia e competição
+
+QuestionGenerator separa a geração contextual do ciclo de GameService. GameConfiguration define modo, limite, filtros, dificuldade e versões; SessionMetrics compartilha a acumulação entre respostas atuais e persistidas. QuizSelection usa uma passagem linear e TaxonomyIndex guarda níveis em cache. ReviewResolver aplica a mesma revisão na carga JSON e SQLite; reviews opcionais pendentes não bloqueiam fotografias aprovadas.
+
+Livre oferece alternativas mais amplas, equilibradas ou próximas. Competitivo usa 20 questões de gênero, alternativas equilibradas e fotografias de identificação, com 80 organismos elegíveis; as 20 imagens de apoio de Monera ficam no Livre. A última resposta pode ser revisada antes do resultado final; partidas interrompidas são guardadas e ficam fora do ranking competitivo. Nenhuma espécie foi removida.
+
+Corpus, revisões e diagnóstico: resources/data/curation_reviews.json, resources/data/etymology_research.json e scripts/audit_catalog.py. Há 49 etimologias ao menos parciais, 104 registros morfológicos e 16 introduções. O teste scripts/validate_package.ps1 utiliza bancos temporários e PATH isolado; ainda falta um Windows limpo sem Qt/MSYS2. Relatórios em docs/EVOLUCAO_COMPETITIVA.md e docs/COBERTURA_TAXONOMICA.md.

@@ -7,16 +7,16 @@ Educational desktop quiz built with C++17, Qt 6 Quick/QML, and SQLite. Explore t
 - A dark botanical interface provides a home screen, kingdom selection, a taxonomic explorer with clickable breadcrumbs, quiz, answer review, species information, results, statistics, achievements, and profile settings.
 - The player selects one of four distinct choices at the same taxonomic rank and confirms it. Correct/incorrect feedback stays visible until they continue to the next question.
 - Games can use the mixed catalog or descendants of a selected group. Identification levels are offered only when at least four distinct valid answers exist.
-- A game starts at question 1 and continues until **Voltar → Encerrar partida**. Canceling the confirmation preserves the question, selection and hint. Confirming saves once and returns to the previous explorer.
-- Questions use a neutral observation prompt and an optional sourced biological hint. Unreviewed facts and generic import descriptions are kept as historical data and are not used as clues.
-- The final score is saved once to the local SQLite ranking when the player ends a game.
-- The ranking has one entry per player name (case insensitive using SQLite NOCASE). A new completed game replaces that name's previous score, even if lower. Existing duplicate entries are consolidated, retaining the latest game.
+- A Free game starts at question 1 and continues until **Voltar → Encerrar partida**. Canceling the confirmation preserves the question, selection and hint. Confirming saves once and returns to the previous explorer.
+- Questions use a neutral observation prompt and three optional categories of sourced hints. Unreviewed facts and generic import descriptions are kept as historical data and are not used as clues.
+- The final score is saved once to the local SQLite ranking when the player ends a Free game or completes the Competitive format.
+- The ranking has one entry per player name (case insensitive using SQLite NOCASE). Best scores and latest games are kept separately. Competitive records are isolated by question count, group, rank, difficulty, rules and content version.
 - The offline catalog contains 122 active species: 42 Animalia and 20 each in Plantae, Fungi, Protista and Monera. Scientific taxonomy and source identifiers remain separate from the educational grouping. Former organisms explicitly replaced by the user are archived with their original IDs.
 - Player profiles are stored locally in SQLite and can be created, renamed, selected, or deleted. The last profile cannot be deleted.
 - Each game retains the player name captured at its start; profile changes apply to future games.
 - Failed score saves are shown in the UI and can be retried without duplicates. A pending score blocks a new game and remains in memory until saved or the app closes.
-- Statistics and six achievement challenges reflect the current game and reset for a new game; the local ranking persists.
-- All 122 active organisms have a validated local image; there are 120 distinct image files. The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Every question and its review use the same photo snapshot.
+- Statistics show the current game and available per-profile answer history. Six achievement challenges remain relative to the current game; the local ranking persists.
+- All 122 active organisms have an image file that passes technical validation; there are 120 distinct image files. The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Every question and its review use the same photo snapshot.
 - The visual catalog has 102 organisms approved for at least one rank. Monera retains its 20 organisms and uses clearly labeled supporting photographs and classification clues; these images do not establish species identity. Mixed genus play currently includes 101 records across the five educational kingdoms.
 - The explorer loads 16 sourced taxon introductions, rounded selectors and styled breadcrumbs. Taxonomic performance groups real answers by educational kingdom and source phylum/division ID.
 - Species information provides 122 Portuguese profiles with an introduction, distribution or documented occurrence, morphology, conservation, plain-language curiosity and hint, plus feeding/nutrition where documented. Scientific classification and dated references expand within the same dark interface. See [species profiles](docs/FICHAS_ESPECIES.md).
@@ -67,9 +67,17 @@ See the [current replacements and Monera policy](docs/SUBSTITUICOES_CATALOGO.md)
 
 - Continue reviewing and expanding species facts against reliable taxonomic/natural-history references.
 - Broaden representation beyond the initial Protozoa and Bacteria samples within Protista and Monera.
-- Add cumulative profile statistics, persistent achievements, and richer ranking filters if desired.
+- Expand persistent achievements and ranking history filters if desired.
 
 The Windows runtime package and launcher are generated in `package/`.
 After building, update it with `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`. This deploys Qt/QML and the additional MSYS2 runtime dependencies while preserving the existing launcher and `qt.conf`.
 
 Compiled executables, Qt DLLs, import caches, generated screenshots, and personal SQLite databases are excluded from Git. A fresh clone must be built and packaged locally.
+
+## Livre e Competitivo
+
+O modo Livre permanece contínuo, com filtros e três políticas de alternativas. O Competitivo oferece 20 questões sem repetição de organismos, identificação de gênero e condições padronizadas. Recordes e última partida são separados; rankings competitivos não misturam configurações. Estatísticas incluem precisão, média, eficiência e uso de dicas na partida e no histórico disponível do perfil.
+
+A curadoria possui estados independentes por identificação, fotografia, etimologia, morfologia e informações educativas. Execute `python scripts/audit_catalog.py --strict` para o diagnóstico offline e `powershell -ExecutionPolicy Bypass -File scripts/validate_package.ps1` após empacotar para a verificação isolada.
+
+Consulte [o relatório técnico](docs/EVOLUCAO_COMPETITIVA.md) e [a cobertura taxonômica e pendências](docs/COBERTURA_TAXONOMICA.md).
