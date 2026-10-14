@@ -46,6 +46,7 @@ void GameService::startNewGame(const QString &filter, const QString &rank)
     resultSaved_ = false;
     hintRevealed_ = false;
     session_ = GameSession();
+    performance_ = TaxonomicPerformance();
     currentQuestion_ = Question();
 
     if (catalog_ == nullptr) {
@@ -62,7 +63,7 @@ void GameService::startNewGame(const QString &filter, const QString &rank)
         species.name = species.name.trimmed();
         species.fact = species.fact.trimmed();
         species.hint = species.hint.trimmed();
-        if (species.name.isEmpty() || species.fact.isEmpty() || species.hint.isEmpty()
+        if (species.name.isEmpty()
             || species.answerAtRank(rank).trimmed().isEmpty()) {
             continue;
         }
@@ -115,6 +116,7 @@ bool GameService::submitAnswer(const QString &selectedOption)
     }
 
     const bool isCorrect = selectedOption == currentQuestion_.correctAnswer;
+    performance_.record(currentQuestion_.species,isCorrect);
     ++session_.answeredCount;
     if (isCorrect) {
         ++session_.score;
@@ -209,21 +211,24 @@ void GameService::buildQuestionForCurrentSpecies()
         return;
     }
 
-    const bool visual = identificationRank_ == "species" && correct.visualQuiz && !correct.image.isEmpty();
+    const bool visual = correct.photo.valid && correct.photo.approvedRanks.contains(identificationRank_);
     const QString prompt = identificationRank_ == "species"
-        ? (visual ? QStringLiteral("Qual espécie está registrada nesta fotografia?") : QStringLiteral("Qual nome corresponde a esta espécie?"))
+        ? QStringLiteral("Qual espécie está registrada nesta fotografia?")
         : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(identificationRank_));
-    const QString fact = visual ? QStringLiteral("Observe o organismo e compare as quatro alternativas.")
-        : (identificationRank_ == "species" ? correct.fact : QStringLiteral("A espécie %1 pertence a qual grupo neste nível?").arg(correct.name));
+    const QString fact = QStringLiteral("Observe a fotografia. Compare a forma, as estruturas e os padrões visíveis.");
+    const auto hint=content_.hint(correct,identificationRank_,options);
     currentQuestion_ = Question{
         prompt,
         fact,
-        correct.hint,
+        hint.value("text").toString(),
         correct.answerAtRank(identificationRank_),
         options,
         correct,
         identificationRank_,
-        visual
+        visual,
+        correct.photo,
+        hint.value("source_url").toString(),
+        hint.value("source_title").toString()
     };
 }
 

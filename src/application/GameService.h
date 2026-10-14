@@ -6,6 +6,8 @@
 #include "domain/Question.h"
 #include <QVector>
 #include <QStringList>
+#include "application/EducationalContent.h"
+#include "domain/TaxonomicPerformance.h"
 
 class GameService {
 public:
@@ -25,6 +27,7 @@ public:
     int answeredCount() const { return session_.answeredCount; }
     int catalogSize() const { return static_cast<int>(species_.size()); }
     bool isFinished() const;
+    TaxonomicPerformance performance() const { return performance_; }
     QVector<HistoryEntry> history() const;
     SaveStatus saveCurrentResult(const QString &playerName);
 
@@ -41,4 +44,6 @@ private:
     GameSession session_;
     Question currentQuestion_;
     QString identificationRank_ = QStringLiteral("species");
+    EducationalContent content_;
+    TaxonomicPerformance performance_;
 };

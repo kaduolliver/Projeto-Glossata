@@ -2,11 +2,14 @@ find_package(Qt6 REQUIRED COMPONENTS Core Sql Test)
 
 add_executable(glossata_tests
     GameServiceTests.cpp
+    photo_fixtures.qrc
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/EducationalContent.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -31,6 +34,8 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/EducationalContent.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc

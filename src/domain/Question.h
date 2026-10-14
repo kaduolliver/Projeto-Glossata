@@ -13,4 +13,7 @@ struct Question {
     Species species;
     QString identificationRank = QStringLiteral("species");
     bool visual = false;
+    Photo photo;
+    QString hintSourceUrl;
+    QString hintSourceTitle;
 };

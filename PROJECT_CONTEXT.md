@@ -9,7 +9,7 @@ O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20
 ## Workspace e ambiente
 
 - Raiz canônica: C:\glossata_game. Não editar a cópia antiga do Desktop, cujo caminho com acentos e & já provocou problemas de moc/autogen.
-- Git: main integra a expansão dos cinco reinos; feat/cinco-reinos preserva seu desenvolvimento. origin aponta para https://github.com/kaduolliver/Das-Glossata-Projekt.
+- Git: main integra a expansão dos cinco reinos; feat/refinamento-identificacao contém esta etapa de refinamento. origin aponta para https://github.com/kaduolliver/Das-Glossata-Projekt.
 - Código, recursos, testes, documentação e configurações compartilhadas são versionados. Build, pacote gerado, capturas, cache e bancos pessoais são ignorados.
 - C++17, Qt 6 Quick/QML, Qt Sql/QSQLITE, CMake/Ninja, MSYS2 UCRT64.
 - Ambiente validado: Qt 6.11.2 e GCC 16.2.0. Importação/testes auxiliares usam Python 3.11+ e sua biblioteca padrão.
@@ -17,7 +17,7 @@ O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20
 
 ## Arquitetura
 
-- Domínio: Species preserva os campos originais e acrescenta linhagem, reino didático, origem e créditos. Taxon representa nome, rank, parentId e referência da fonte. Question guarda nível e modalidade; GameSession guarda pontuação e estado.
+- Domínio: Species preserva os campos originais e acrescenta linhagem, reino didático, origem e Photo. Question vincula a fotografia e a referência da dica; GameSession guarda pontuação e estado. TaxonomicPerformance agrega respostas por IDs de reino e filo/divisão.
 - QuizSelection centraliza elegibilidade e distratores. GameService filtra descendentes/família, embaralha, intercala reinos, controla dicas e salva resultados.
 - TaxonomyIndex mantém árvore, contagens, caminhos e níveis disponíveis em memória. Navegar não relê arquivos nem acessa a API.
 - As portas SpeciesCatalog, GameHistoryRepository e PlayerProfileRepository mantêm a separação entre aplicação e infraestrutura.
@@ -25,8 +25,10 @@ O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20
 - SqliteGameHistoryRepository mantém ranking/perfis, com conexões exclusivas e fechamento correto.
 - GameController expõe o estado ao QML como gameController e preserva a pergunta respondida durante a revisão.
 - Main.qml mantém sidebar, Loader, rolagem e transições. views contém Home, categorias, TaxonomyView, quiz, feedback, informações, resultado, estatísticas, conquistas e ajustes.
-- ExploreCard, KingdomArtwork, LifeArtwork e SpeciesPortrait reutilizam o padrão visual existente; arte em Canvas, fotos/fallback e créditos.
-- resources/data contém species.json, taxonomy.json, photo_reviews.json, import_report.json e discord.json. Fotos selecionadas ficam em resources/images/inaturalist e são embarcadas em resources.qrc.
+- PhotoResolver centraliza associação, fonte verificada, licença, autoria, SHA-256, existência, decodificação e resolução mínima de 300 pixels em ambas as dimensões. Aprovação por nível fica em photo_reviews.json e é vinculada ao ID da foto; metadados e aprovação são persistidos em photo_json no catálogo SQLite.
+- EducationalContent lê education.json: introduções por ID e dicas/curiosidades validadas por espécie ou grupo. Rejeita pistas que contenham alternativas, gênero ou nomes da linhagem; não usa fatos legados não revisados.
+- ExploreCard distingue cadastro de cobertura visual; SpeciesPortrait exibe fotos e créditos sem substituição decorativa no quiz. TextAction e TaxonComboBox compartilham os estados arredondados, escuros e com foco acessível; EndGameDialog confirma o encerramento.
+- resources/data contém species.json, taxonomy.json, photo_reviews.json, photo_audit.json, education.json, import_report.json e discord.json. As 120 fotos selecionadas são embarcadas em resources.qrc; candidatos não selecionados não entram no executável.
 - scripts/import_inaturalist.py importa, verifica licenças individuais, deduplica e mantém cache local.
 
 ## Fluxos e regras
@@ -37,11 +39,11 @@ Grupos são gerados pelos dados e podem ter profundidades e ranks diferentes. O 
 
 Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O modo misto intercala reinos proporcionalmente ao tamanho dos grupos e embaralha internamente. Espécies não repetem dentro de um ciclo nem imediatamente entre ciclos. Resposta inválida não altera a rodada. A dica pode ser usada uma vez por pergunta.
 
-Responder prepara a próxima pergunta no serviço; o controller mantém os metadados anteriores e bloqueia confirmações duplicadas até nextQuestion. Pausar e continuar preservam a partida, inclusive antes da primeira resposta.
+Responder prepara a próxima pergunta no serviço; o controller mantém o snapshot da pergunta, foto, dica e alternativas até nextQuestion e bloqueia confirmações duplicadas. Voltar abre uma confirmação modal. Continuar preserva a seleção; confirmar registra uma vez e retorna ao grupo anterior ou aos reinos. Falha de gravação leva ao resultado pendente para nova tentativa.
 
-Uma fotografia só habilita pergunta visual após triagem vinculada ao seu ID. Os 20 registros de Monera usam pistas taxonômicas; fotos adequadas aparecem na ficha. Sem foto, a pergunta usa texto e arte identificada como Ilustração decorativa. As 22 curiosidades originais continuam iguais e ainda precisam da revisão científica prevista.
+O catálogo mantém 122 espécies e 120 fotos. São 76 registros aprovados em pelo menos um nível, 13 em espécie e 55 em gênero. Todas as perguntas são visuais: foto inválida ou sem aprovação para o nível exclui o registro daquele sorteio. Monera permanece na exploração e não possui quiz visual elegível. Todas as espécies inicia um jogo de gêneros com quatro reinos representados. Os 22 textos originais e os textos genéricos importados permanecem arquivados, mas o quiz utiliza somente conteúdo educativo revisado ou indica sua ausência. Há 18 introduções e duas revisões específicas de espécie, além de dicas gerais com escopo validado.
 
-Estatísticas por família/grupo e as seis conquistas são relativas à partida atual/última partida, como antes; não representam progresso cumulativo persistido.
+Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte, independentemente do nível perguntado. Um filo ausente ou ambíguo usa Classificação não disponível. Estatísticas e seis conquistas permanecem relativas à partida atual/última partida, sem progresso cumulativo persistido.
 
 ## Dados locais e migrações
 
@@ -82,9 +84,9 @@ Quatro suítes CTest:
 1. GlossataTests: regressões do jogo, perfis/ranking, filtros, níveis, grupos pequenos, mistura, fotos offline, licenças e migração/reabertura do catálogo.
 2. GlossataInterfaceTests: cliques e confirmação, cinco reinos, subgrupos, caminho de volta, retorno ao grupo e capturas em 1240×820 e 1000×700; rejeita avisos QML.
 3. GlossataDiscordTests: IPC isolado, handshake, frames fragmentados, PONG, confirmação/erro e ausência de Discord.
-4. GlossataImportTests: sete testes Python sem rede para preservação dos 22 registros, licenças, mapeamento conservador, árvore, hashes, reimportação idempotente, revisão de fotos e falha segura sem cache.
+4. GlossataImportTests: nove testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte e falha segura sem cache.
 
-Testes usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests/core-results.txt e ui-test-results.txt. Build Release, quatro suítes CTest e lint QML foram verificados nesta expansão.
+Testes usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests/core-results.txt, ui-test-results.txt e catalog-audit.json. Consulte docs/REFINAMENTO_IDENTIFICACAO.md para resultados, limitações científicas e registros pendentes desta etapa.
 
 ## Próximas prioridades e retomada
 

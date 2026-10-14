@@ -1,602 +1,1684 @@
 {
+  "legacy:1": {
+    "photo_id": "280989671",
+    "scientific_name": "Papilio machaon",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/162503499",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:2": {
+    "photo_id": "376647594",
+    "scientific_name": "Vanessa atalanta",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/213128873",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:3": {
+    "photo_id": "586365614",
+    "scientific_name": "Acherontia atropos",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/324010008",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:4": {
+    "photo_id": "175474265",
+    "scientific_name": "Brahmaea wallichii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/104690605",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:5": {
+    "photo_id": "401685857",
+    "scientific_name": "Lymantria dispar",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/226487361",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:6": {
+    "photo_id": "322926715",
+    "scientific_name": "Danaus plexippus",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/184955820",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:7": {
+    "photo_id": "359063525",
+    "scientific_name": "Aglais io",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/203242996",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:8": {
+    "photo_id": "749769318",
+    "scientific_name": "Vanessa cardui",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/407941868",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:9": {
+    "photo_id": "51317278",
+    "scientific_name": "Bombyx mori",
+    "approved_ranks": [],
+    "display": true,
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/32707174",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:10": {
+    "photo_id": "60643931",
+    "scientific_name": "Attacus atlas",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/38181000",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:11": {
+    "photo_id": "34980868",
+    "scientific_name": "Actias luna",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/22577683",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:12": {
+    "photo_id": "137265535",
+    "scientific_name": "Hyalophora cecropia",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/83569600",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:13": {
+    "photo_id": "44218494",
+    "scientific_name": "Automeris io",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/28369492",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:14": {
+    "photo_id": "664105606",
+    "scientific_name": "Antheraea polyphemus",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/363800853",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:15": {
+    "photo_id": "560140869",
+    "scientific_name": "Heliconius melpomene",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/310362605",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:16": {
+    "photo_id": "45110154",
+    "scientific_name": "Papilio ulysses",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/28921401",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:18": {
+    "photo_id": "221780102",
+    "scientific_name": "Pieris brassicae",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/130413689",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:19": {
+    "photo_id": "321803659",
+    "scientific_name": "Galleria mellonella",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/184361474",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:20": {
+    "photo_id": "655494534",
+    "scientific_name": "Plodia interpunctella",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/359284633",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
+  "legacy:21": {
+    "photo_id": "43280362",
+    "scientific_name": "Manduca sexta",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/27792711",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+  },
   "398171": {
     "photo_id": "357771622",
+    "scientific_name": "Titanomis sisyrota",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/202565126",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "321235": {
     "photo_id": "53637930",
+    "scientific_name": "Macrocilix maia",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/34107659",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "416608": {
-    "photo_id": "4016368",
+    "photo_id": "155300806",
+    "scientific_name": "Chiton glaucus",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/93687784",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "259535": {
     "photo_id": "8658322",
+    "scientific_name": "Geminaria canalis",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/6805086",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "415113": {
     "photo_id": "12637215",
+    "scientific_name": "Stegodyphus dumicola",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/9319352",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "94762": {
     "photo_id": "254703040",
+    "scientific_name": "Astroscopus zephyreus",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/147961173",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "143636": {
     "photo_id": "111492748",
+    "scientific_name": "Latia neritoides",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/68799348",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "398792": {
     "photo_id": "422526180",
+    "scientific_name": "Xenocnema spinipes",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/237414880",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "357668": {
     "photo_id": "29250775",
+    "scientific_name": "Sphaerocoris annulus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/19068005",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "4246": {
     "photo_id": "70152459",
+    "scientific_name": "Podilymbus podiceps",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/44246965",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1113785": {
     "photo_id": "211654606",
+    "scientific_name": "Polyergus longicornis",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/124844189",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1238320": {
     "photo_id": "123931576",
+    "scientific_name": "Dicarnosis erythrocephala",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/75731994",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1075803": {
     "photo_id": "68055096",
+    "scientific_name": "Pachypodistes angulata",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/42850346",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "126600": {
     "photo_id": "31118856",
+    "scientific_name": "Chortophaga viridifasciata",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/20169754",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1583664": {
     "photo_id": "104246",
+    "scientific_name": "Laterallus rogersi",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/68907",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "518287": {
     "photo_id": "5726540",
+    "scientific_name": "Cyphonia clavata",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/4735295",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1238899": {
     "photo_id": "234592351",
+    "scientific_name": "Bassia bassensis",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/137370445",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "397920": {
     "photo_id": "471069278",
+    "scientific_name": "Teleogryllus commodus",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/262185667",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "748796": {
     "photo_id": "338534567",
+    "scientific_name": "Ovalimantis maculata",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/192798616",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "65851": {
     "photo_id": "98915545",
+    "scientific_name": "Incilius periglenes",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/61788630",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "120909": {
-    "photo_id": "137831916",
+    "photo_id": "613353234",
+    "scientific_name": "Kindbergia oregana",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/337405964",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "277452": {
     "photo_id": "47249680",
+    "scientific_name": "Dictyanthus pavonii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/30249730",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "429583": {
     "photo_id": "251673570",
+    "scientific_name": "Hydnora esculenta",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/146391901",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "55703": {
     "photo_id": "61481606",
+    "scientific_name": "Lunularia cruciata",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/38663465",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "55104": {
-    "photo_id": "31018368",
+    "photo_id": "13657957",
+    "scientific_name": "Polypodium glycyrrhiza",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/9948504",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "77959": {
     "photo_id": "489573459",
+    "scientific_name": "Marah macrocarpa",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/4053660",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1619676": {
     "photo_id": "540416886",
+    "scientific_name": "Mastigostyla macbridei",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/299954114",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "565848": {
     "photo_id": "482684019",
+    "scientific_name": "Tulipa regelii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/268524549",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "440714": {
-    "photo_id": "120009929",
+    "photo_id": "371617112",
+    "scientific_name": "Mimetes chrysanthus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/210059896",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "625511": {
     "photo_id": "230066559",
+    "scientific_name": "Asterella drummondii",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/134929063",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "55969": {
     "photo_id": "167101616",
+    "scientific_name": "Viburnum opulus",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/100141825",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "284200": {
     "photo_id": "45341427",
+    "scientific_name": "Xanthosoma robustum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/29063155",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1658711": {
     "photo_id": "20397049",
+    "scientific_name": "Pleurothallis maitamae",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/13824305",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "159229": {
     "photo_id": "344593119",
+    "scientific_name": "Betula neoalaskana",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/195817555",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "405006": {
     "photo_id": "251548988",
+    "scientific_name": "Pleurophyllum speciosum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/146328086",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "124825": {
     "photo_id": "111803110",
+    "scientific_name": "Dracaena cinnabari",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/68966536",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "126251": {
     "photo_id": "321855344",
+    "scientific_name": "Coptis trifolia",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/184388306",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "82407": {
     "photo_id": "185341429",
+    "scientific_name": "Huperzia lucidula",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/109915205",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "59029": {
     "photo_id": "93034327",
+    "scientific_name": "Verbascum thapsus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/58282668",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "936461": {
     "photo_id": "108445674",
+    "scientific_name": "Euphorbia duckei",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/67163775",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "118196": {
     "photo_id": "330405159",
+    "scientific_name": "Stropharia caerulea",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/188728693",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1367786": {
     "photo_id": "345801259",
+    "scientific_name": "Favolaschia claudopus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/196416305",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1228995": {
     "photo_id": "231974984",
+    "scientific_name": "Cladonia imperialis",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/135963380",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "518862": {
     "photo_id": "59270879",
+    "scientific_name": "Dendrostilbella smaragdina",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/37392583",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "54134": {
     "photo_id": "27005174",
+    "scientific_name": "Trametes versicolor",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/17714364",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "54573": {
     "photo_id": "356956710",
+    "scientific_name": "Schizophyllum commune",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/202142361",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "348812": {
     "photo_id": "349810134",
+    "scientific_name": "Ganoderma brownii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/198464364",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "328225": {
     "photo_id": "606817545",
+    "scientific_name": "Marasmius haematocephalus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/261552464",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "798039": {
     "photo_id": "5777965",
+    "scientific_name": "Mycena globulispora",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/4751190",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "47392": {
     "photo_id": "93399523",
+    "scientific_name": "Coprinus comatus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/58497477",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "534312": {
     "photo_id": "320712583",
+    "scientific_name": "Erysiphe abbreviata",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/183798421",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "355974": {
     "photo_id": "130004238",
+    "scientific_name": "Cortinarius archeri",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/79370907",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "352953": {
     "photo_id": "2279530",
+    "scientific_name": "Xylaria tentaculata",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/1871910",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1540909": {
     "photo_id": "357886873",
+    "scientific_name": "Pandora batallata",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/202624970",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "505333": {
     "photo_id": "291136956",
+    "scientific_name": "Psathyrella aquatica",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/167950227",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "68309": {
-    "photo_id": "178409678",
+    "photo_id": "178409675",
+    "scientific_name": "Panellus stipticus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/106224223",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1651769": {
     "photo_id": "351186569",
+    "scientific_name": "Wawelia microspora",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/195694513",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1423743": {
     "photo_id": "245357302",
+    "scientific_name": "Entoloma trachyosporum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/143074966",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "125724": {
     "photo_id": "151574414",
+    "scientific_name": "Pseudoboletus parasiticus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/91615355",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "56565": {
     "photo_id": "176600250",
+    "scientific_name": "Comatricha nigra",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/105275177",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "179151": {
     "photo_id": "596675431",
+    "scientific_name": "Hemitrichia serpula",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/329195316",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "552574": {
     "photo_id": "80915734",
+    "scientific_name": "Metatrichia vesparia",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/50942703",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "126522": {
     "photo_id": "144194751",
+    "scientific_name": "Tubifera ferruginosa",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/87457453",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "951636": {
     "photo_id": "157125794",
+    "scientific_name": "Arcella conica",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/94700479",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "503891": {
     "photo_id": "31473154",
+    "scientific_name": "Physarum psittacinum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/20379678",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "56252": {
     "photo_id": "342355226",
+    "scientific_name": "Ceratiomyxa fruticulosa",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/194721193",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "56262": {
     "photo_id": "4592237",
+    "scientific_name": "Arcyria denudata",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/3907100",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1071933": {
     "photo_id": "588568892",
+    "scientific_name": "Planocarina marginata",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/325109392",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1390975": {
     "photo_id": "322085831",
+    "scientific_name": "Galeripora dentata",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/184510219",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "865889": {
     "photo_id": "156970348",
+    "scientific_name": "Lepocinclis fusca",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/94616465",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1491099": {
     "photo_id": "588721568",
+    "scientific_name": "Difflugia bacillifera",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/325184447",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1581564": {
     "photo_id": "185087187",
+    "scientific_name": "Heterotrichia versicolor",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/109708228",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "56273": {
     "photo_id": "251110486",
+    "scientific_name": "Leocarpus fragilis",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/146101517",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1598948": {
-    "photo_id": "448498951",
+    "photo_id": "291002427",
+    "scientific_name": "Badhamia polycephala",
+    "approved_ranks": [
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/167950949",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "950783": {
     "photo_id": "513628641",
+    "scientific_name": "Netzelia corona",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/285749329",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "327919": {
     "photo_id": "59617028",
+    "scientific_name": "Diderma effusum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/37588396",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1592311": {
     "photo_id": "465907310",
+    "scientific_name": "Nebela penardiana",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/259535658",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1585018": {
     "photo_id": "594387576",
+    "scientific_name": "Cyclopyxis pirini",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/328056416",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1646783": {
     "photo_id": "583650058",
+    "scientific_name": "Awerintzewia cyclostoma",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/322616541",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "534769": {
     "photo_id": "7906556",
+    "scientific_name": "Sphingomonas phyllosphaerae",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/5210293",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "566238": {
     "photo_id": "459952778",
+    "scientific_name": "Dolichospermum lemmermannii",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/256522774",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "356660": {
     "photo_id": "58089762",
+    "scientific_name": "Serratia marcescens",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/36720806",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1096796": {
     "photo_id": "77725233",
+    "scientific_name": "Thiohalocapsa halophila",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/48970815",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "533816": {
     "photo_id": "257195754",
+    "scientific_name": "Merismopedia convoluta",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/149274179",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "503775": {
     "photo_id": "337864904",
+    "scientific_name": "Arthrospira jenneri",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/192464305",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1277012": {
     "photo_id": "243782262",
+    "scientific_name": "Beggiatoa alba",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/142212922",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "733075": {
     "photo_id": "523634183",
+    "scientific_name": "Gomphosphaeria aponina",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/291052878",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "968458": {
     "photo_id": "654470799",
+    "scientific_name": "Anabaena torulosa",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/358747771",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "773806": {
     "photo_id": "48790280",
+    "scientific_name": "Phytoplasma asteris",
+    "approved_ranks": [],
     "display": false,
-    "visual_quiz": false,
-    "note": "Foto mostra hospedeiro ou sintomas, sem representar o microrganismo. Imagem omitida."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/31189604",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "992168": {
     "photo_id": "443586440",
+    "scientific_name": "Gloeotrichia intermedia",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/248283498",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "490808": {
     "photo_id": "3221562",
+    "scientific_name": "Leptothrix discophora",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/2829419",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1583266": {
     "photo_id": "407087233",
+    "scientific_name": "Johanseninema constrictum",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/229347803",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1161132": {
     "photo_id": "320741885",
+    "scientific_name": "Chlamydophila pecorum",
+    "approved_ranks": [],
     "display": false,
-    "visual_quiz": false,
-    "note": "Foto mostra hospedeiro ou sintomas, sem representar o microrganismo. Imagem omitida."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/183812776",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1523336": {
     "photo_id": "368743189",
+    "scientific_name": "Hassallia byssoidea",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/208411876",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1051359": {
     "photo_id": "64447665",
+    "scientific_name": "Aeromonas caviae",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/40658345",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1051363": {
     "photo_id": "64448584",
+    "scientific_name": "Pseudomonas fluorescens",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/40658395",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1282552": {
     "photo_id": "581394987",
+    "scientific_name": "Achromatium oxaliferum",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/321473852",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "491434": {
     "photo_id": "513524942",
+    "scientific_name": "Chroococcus turgidus",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/285693377",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "348831": {
     "photo_id": "5668201",
+    "scientific_name": "Psilocybe allenii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "visual_quiz": true,
-    "note": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+    "note": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/4676262",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1558826": {
     "photo_id": "469510982",
+    "scientific_name": "Merismopedia tranquilla",
+    "approved_ranks": [],
     "display": true,
-    "visual_quiz": false,
-    "note": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/261354576",
+    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   }
 }

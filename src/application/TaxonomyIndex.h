@@ -3,6 +3,7 @@
 #include <QHash>
 #include <QVariantList>
 #include <QVariantMap>
+#include "application/EducationalContent.h"
 
 class TaxonomyIndex {
 public:
@@ -20,4 +21,5 @@ private:
     QHash<QString, Taxon> taxons_;
     QHash<QString, int> counts_;
     QHash<QString, QVector<QString>> children_;
+    EducationalContent content_;
 };

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resources/images">
+        <file alias="test-small.png">fixtures/small.png</file>
+        <file alias="test-invalid.jpg">fixtures/invalid.jpg</file>
+    </qresource>
+</RCC>

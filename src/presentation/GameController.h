@@ -42,6 +42,9 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantMap questionPhoto READ questionPhoto NOTIFY questionTextChanged)
     Q_PROPERTY(QString identificationRankLabel READ identificationRankLabel NOTIFY gameFinishedChanged)
     Q_PROPERTY(QString sessionTaxonId READ sessionTaxonId NOTIFY gameFinishedChanged)
+    Q_PROPERTY(bool hasHint READ hasHint NOTIFY extraHintChanged)
+    Q_PROPERTY(QString hintSourceUrl READ hintSourceUrl NOTIFY extraHintChanged)
+    Q_PROPERTY(QVariantList taxonomicStats READ categoryStats NOTIFY scoreChanged)
 
 public:
     explicit GameController(QObject *parent = nullptr, const QString &databasePath = QString());
@@ -76,6 +79,8 @@ public:
     QVariantMap questionPhoto() const;
     QString identificationRankLabel() const { return taxonomicRankLabel(identificationRank_); }
     QString sessionTaxonId() const { return sessionTaxonId_; }
+    bool hasHint() const { return !displayedQuestion_.extraHint.isEmpty(); }
+    QString hintSourceUrl() const { return displayedQuestion_.hintSourceUrl; }
 
 public slots:
     void startGame();
@@ -123,7 +128,9 @@ private:
     QString identificationRank_ = "species";
     bool answerPending_ = false;
     QVariantMap answerDetails_;
-    QMap<QString, QPair<int, int>> categoryStats_;
+    Question displayedQuestion_;
+    bool displayedHintRevealed_=false;
+    EducationalContent content_;
     int correctStreak_ = 0;
     int bestStreak_ = 0;
 };

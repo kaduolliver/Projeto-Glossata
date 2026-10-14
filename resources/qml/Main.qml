@@ -25,6 +25,8 @@ ApplicationWindow {
     palette.buttonText: "#E6F1E9"
     palette.highlight: "#218653"
     palette.highlightedText: "#FFFFFF"
+    palette.mid: "#2A424C"
+    palette.light: "#BCF6D9"
     property var backend: gameController
     property var presence: discordPresence
     property string page: "home"
@@ -55,6 +57,11 @@ ApplicationWindow {
     }
     function nextQuestion() { backend.nextQuestion(); page = "quiz" }
     function finishGame() { backend.stopGame(); page = "results" }
+    function leaveGame() {
+        backend.stopGame()
+        if (backend.resultPending) page = "results"
+        else returnToExploration()
+    }
 
     RowLayout {
         anchors.fill: parent

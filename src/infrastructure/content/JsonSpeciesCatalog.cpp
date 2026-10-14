@@ -7,6 +7,7 @@
 #include <QJsonValue>
 #include <QDebug>
 #include <QHash>
+#include "infrastructure/content/PhotoResolver.h"
 
 QVector<Taxon> JsonSpeciesCatalog::loadTaxons() const
 {
@@ -73,17 +74,8 @@ QVector<Species> JsonSpeciesCatalog::loadSpecies() const
         for (const auto &id : object.value("taxonomy").toArray()) {
             if (taxons.contains(id.toString())) item.taxonomy.append(taxons.value(id.toString()));
         }
-        const QJsonObject photo = object.value("photo").toObject();
-        item.imageAuthor = photo.value("author").toString();
-        item.imageLicense = photo.value("license").toString();
-        item.imageLicenseUrl = photo.value("license_url").toString();
-        item.imageSource = photo.value("source").toString();
-        item.visualQuiz = photo.value("visual_quiz").toBool();
-        const bool validImage = (item.imageLicense == "cc0" || item.imageLicense == "cc-by")
-            && !item.imageAuthor.isEmpty() && !item.imageSource.isEmpty()
-            && item.image.startsWith("qrc:/") && QFile::exists(":" + item.image.mid(4));
-        if (!validImage) { item.image.clear(); item.visualQuiz = false; }
-        if (!item.name.isEmpty() && !item.fact.isEmpty() && !item.hint.isEmpty()) {
+        PhotoResolver::attach(item,PhotoResolver::fromJson(object.value("photo").toObject(),item.image));
+        if (!item.name.isEmpty()) {
             species.push_back(item);
         }
     }

@@ -8,8 +8,9 @@ Item {
     id: view
     required property var app
     required property var backend
-    implicitHeight: 600
+    implicitHeight: Math.max(600,statisticsLayout.implicitHeight)
     ColumnLayout {
+        id: statisticsLayout
         anchors.fill: parent; spacing: 22
         RowLayout {
             Layout.fillWidth: true
@@ -30,43 +31,57 @@ Item {
         RowLayout {
             Layout.fillWidth: true; Layout.fillHeight: true; spacing: 20
             Rectangle {
-                Layout.fillWidth: true; Layout.fillHeight: true; radius: 18; color: "#10242D"; border.color: "#233E48"
+                Layout.fillWidth: true; Layout.fillHeight: true; implicitHeight: performanceLayout.implicitHeight+48; radius: 18; color: "#10242D"; border.color: "#233E48"
                 ColumnLayout {
+                    id: performanceLayout
                     anchors.fill: parent; anchors.margins: 24; spacing: 18
-                    Label { text: "Desempenho por família"; color: "#E0EDE6"; font.pixelSize: 17; font.weight: Font.DemiBold }
+                    Label { text: "Desempenho taxonômico"; color: "#E0EDE6"; font.pixelSize: 17; font.weight: Font.DemiBold }
                     Label { visible: view.backend.categoryStats.length === 0; text: "Seu próximo voo começa com uma pergunta. Jogue para acompanhar seu desempenho aqui."; color: "#73939B"; wrapMode: Text.WordWrap; Layout.fillWidth: true; font.pixelSize: 13; lineHeight: 1.5 }
-                    ListView {
-                        id: familyList
+                    ColumnLayout {
+                        id: performanceGroups
                         Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        clip: true
                         spacing: 18
-                        ScrollBar.vertical: ScrollBar { }
-                        model: view.backend.categoryStats
+                        Repeater {
+                        model: view.backend.taxonomicStats
                         delegate: ColumnLayout {
                             id: familyRow
                             required property var modelData
                             required property int index
                             readonly property color accent: ["#3CCD83", "#61A8E8", "#E5B858", "#B590E0"][index % 4]
-                            width: familyList.width; spacing: 8
+                            Layout.fillWidth: true; spacing: 8
                             RowLayout {
                                 Layout.fillWidth: true
-                                UiIcon { name: "butterfly"; ink: familyRow.accent; implicitWidth: 18; implicitHeight: 18 }
-                                Label { text: familyRow.modelData.family; color: "#A7C0C5"; font.pixelSize: 12; Layout.fillWidth: true }
-                                Label { text: familyRow.modelData.accuracy + "%"; color: "#DAEAE1"; font.pixelSize: 12 }
+                                KingdomArtwork { objectName: "performanceIcon" + familyRow.index; kingdom: familyRow.modelData.kingdom; implicitWidth: 38; implicitHeight: 38 }
+                                Label { text: familyRow.modelData.title; color: "#D5E4DA"; font.pixelSize: 14; font.weight: Font.DemiBold; Layout.fillWidth: true }
+                                Label { text: familyRow.modelData.correct + "/" + familyRow.modelData.answered; color: "#DAEAE1"; font.pixelSize: 12 }
                             }
-                            Rectangle {
-                                Layout.fillWidth: true; implicitHeight: 7; radius: 4; color: "#203943"
-                                Rectangle { implicitHeight: 7; radius: 4; width: parent.width * familyRow.modelData.accuracy / 100; color: familyRow.accent }
+                            Repeater {
+                                model: familyRow.modelData.phyla
+                                delegate: ColumnLayout {
+                                    id: phylum
+                                    required property var modelData
+                                    Layout.fillWidth: true; spacing: 7
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Label { text: phylum.modelData.title; color: "#A7C0C5"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                                        Label { text: phylum.modelData.accuracy + "%"; color: "#DAEAE1"; font.pixelSize: 12 }
+                                    }
+                                    Rectangle {
+                                        Layout.fillWidth: true; implicitHeight: 7; radius: 4; color: "#203943"
+                                        Rectangle { implicitHeight: 7; radius: 4; width: parent.width * phylum.modelData.accuracy / 100; color: familyRow.accent }
+                                    }
+                                    Label { text: phylum.modelData.correct + " acertos em " + phylum.modelData.answered + " respostas"; color: "#63858F"; font.pixelSize: 10 }
+                                }
                             }
-                            Label { text: familyRow.modelData.correct + " acertos em " + familyRow.modelData.answered + " respostas"; color: "#63858F"; font.pixelSize: 10 }
+                        }
                         }
                     }
+                    Item { Layout.fillHeight: true }
                     UiButton { text: view.app.playing ? "Continuar partida" : "Começar uma partida"; iconName: "play"; compact: true; onClicked: view.app.openPlay() }
                 }
             }
             Rectangle {
-                Layout.preferredWidth: view.width * 0.4; Layout.fillHeight: true; radius: 18; color: "#10242D"; border.color: "#233E48"
+                Layout.preferredWidth: view.width * 0.4; Layout.fillHeight: true; Layout.minimumHeight: 400; radius: 18; color: "#10242D"; border.color: "#233E48"
                 ColumnLayout {
                     anchors.fill: parent; anchors.margins: 22; spacing: 14
                     RowLayout { UiIcon { name: "trophy"; ink: "#E4BE69"; implicitWidth: 21; implicitHeight: 21 } Label { text: "Ranking local"; color: "#E5EEE6"; font.pixelSize: 17; font.weight: Font.DemiBold } }

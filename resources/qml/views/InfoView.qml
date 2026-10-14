@@ -19,7 +19,7 @@ Item {
         }
         RowLayout {
             Layout.fillWidth: true; Layout.fillHeight: true; spacing: 32
-            SpeciesPortrait { Layout.preferredWidth: view.width * 0.4; Layout.fillHeight: true; Layout.minimumHeight: 450; info: view.backend.answerDetails }
+            SpeciesPortrait { Layout.preferredWidth: view.width * 0.4; Layout.preferredHeight: view.width < 850 ? 450 : 520; Layout.minimumHeight: 350; Layout.maximumHeight: 520; Layout.alignment: Qt.AlignTop; info: view.backend.answerDetails }
             ColumnLayout {
                 Layout.fillWidth: true; Layout.fillHeight: true; spacing: 18
                 Label { text: view.backend.answerDetails.speciesName || ""; color: "#F2F8EE"; font.pixelSize: 29; font.weight: Font.DemiBold; font.italic: true; wrapMode: Text.WordWrap; Layout.fillWidth: true }
@@ -29,8 +29,8 @@ Item {
                     model: [
                         {title: "Classificação", body: view.backend.answerDetails.classification || "Não informada", icon: "book", color: "#72D585"},
                         {title: "Distribuição", body: view.backend.answerDetails.region || "Não informada", icon: "pin", color: "#67ABEE"},
-                        {title: "Curiosidade", body: view.backend.answerDetails.fact || "", icon: "spark", color: "#E0B75C"},
-                        {title: "Mais uma pista", body: view.backend.answerDetails.hint || "", icon: "leaf", color: "#A4CE9E"}
+                        {title: "Curiosidade" + (view.backend.answerDetails.curiosityScope ? " · " + view.backend.answerDetails.curiosityScope : ""), body: view.backend.answerDetails.fact || "", icon: "spark", color: "#E0B75C"},
+                        {title: "Mais uma pista", body: view.backend.answerDetails.hint || "Ainda não há dica validada para esta questão.", icon: "leaf", color: "#A4CE9E"}
                     ]
                     delegate: RowLayout {
                         id: detail
@@ -44,7 +44,9 @@ Item {
                         }
                     }
                 }
-                Button { visible: !!view.backend.answerDetails.sourceUrl; text: "Consultar classificação no iNaturalist ↗"; flat: true; onClicked: Qt.openUrlExternally(view.backend.answerDetails.sourceUrl) }
+                TextAction { visible: !!view.backend.answerDetails.sourceUrl; text: "Consultar classificação no iNaturalist ↗"; onClicked: Qt.openUrlExternally(view.backend.answerDetails.sourceUrl) }
+                TextAction { visible: !!view.backend.answerDetails.curiositySource; text: "Fonte da curiosidade"; onClicked: Qt.openUrlExternally(view.backend.answerDetails.curiositySource) }
+                TextAction { visible: !!view.backend.answerDetails.hintSource; text: "Fonte da dica"; onClicked: Qt.openUrlExternally(view.backend.answerDetails.hintSource) }
                 Item { Layout.fillHeight: true }
                 UiButton { text: "Continuar explorando"; iconName: "arrow"; Layout.fillWidth: true; onClicked: view.app.nextQuestion() }
             }

@@ -3,6 +3,7 @@
 #include <QString>
 #include <QVector>
 #include "domain/Taxon.h"
+#include "domain/Photo.h"
 
 struct Species {
     int id = 0;
@@ -23,6 +24,7 @@ struct Species {
     QString imageLicenseUrl;
     QString imageSource;
     bool visualQuiz = false;
+    Photo photo;
 
     QString answerAtRank(const QString &rank) const {
         if (rank == "species") return name;

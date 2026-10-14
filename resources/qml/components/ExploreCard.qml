@@ -17,9 +17,9 @@ Button {
         ColumnLayout {
             anchors.left: parent.left; anchors.bottom: parent.bottom
             width: card.wide ? parent.width * 0.65 : parent.width; spacing: 6
-            Label { text: card.entry.rankLabel || "JOGO MISTO"; color: card.accent; font.pixelSize: 9; font.letterSpacing: 1 }
+            Label { text: card.wide ? "JOGO MISTO · GÊNEROS" : card.entry.rankLabel; color: card.accent; font.pixelSize: 9; font.letterSpacing: 1 }
             Label { text: card.entry.title; color: "#E8F1E9"; font.pixelSize: card.wide ? 24 : 21; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            Label { text: card.entry.count + " espécies disponíveis"; color: "#91ABB0"; font.pixelSize: 12 }
+            Label { text: card.entry.count + " cadastradas · " + (card.wide ? card.entry.playableCount + " disponíveis neste modo" : (card.entry.visualCount || 0) + " com foto aprovada"); color: "#91ABB0"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         }
     }
 }

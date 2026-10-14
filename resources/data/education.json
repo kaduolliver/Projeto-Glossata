@@ -1,0 +1,846 @@
+{
+  "notes": {
+    "note:0:intro": {
+      "text": "Animalia reúne organismos eucariontes multicelulares que obtêm alimento de outros seres vivos ou de matéria orgânica. Suas células não possuem parede celular. O grupo apresenta diversidade de formas corporais, modos de reprodução e relações ecológicas, incluindo organismos aquáticos, terrestres e parasitas.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Animalia"
+    },
+    "note:0:hint": {
+      "text": "As células deste grupo não possuem parede celular.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Animalia"
+    },
+    "note:0:curiosity": {
+      "text": "O desenvolvimento embrionário e a organização dos tecidos ajudam a compreender a diversidade de planos corporais.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Animalia"
+    },
+    "note:1:intro": {
+      "text": "Plantae reúne linhagens de organismos eucariontes com paredes celulares que contêm celulose. Muitas realizam fotossíntese, embora existam formas parasitas. Nas plantas terrestres, a proteção do embrião e adaptações contra a perda de água foram importantes para a ocupação de ambientes fora da água.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Plantae"
+    },
+    "note:1:hint": {
+      "text": "A parede celular contém celulose, que contribui para a sustentação.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Plantae"
+    },
+    "note:1:curiosity": {
+      "text": "A colonização terrestre envolveu adaptações para conservar água e proteger estruturas reprodutivas.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Plantae"
+    },
+    "note:2:intro": {
+      "text": "Fungi reúne organismos eucariontes heterotróficos que absorvem nutrientes do ambiente. Muitos crescem como filamentos chamados hifas, formando um micélio, enquanto outros são unicelulares. Suas paredes celulares contêm quitina. Decomposição, associações com plantas e relações parasitárias estão entre os papéis ecológicos presentes neste grupo.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fungi"
+    },
+    "note:2:hint": {
+      "text": "A nutrição ocorre por absorção após digestão externa.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fungi"
+    },
+    "note:2:curiosity": {
+      "text": "Enzimas liberadas no ambiente decompõem moléculas; os produtos menores podem então ser absorvidos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fungi"
+    },
+    "note:3:intro": {
+      "text": "Protista é utilizado aqui como uma organização didática de linhagens eucariontes diversas. Há formas unicelulares, coloniais e com fases multicelulares, além de diferentes modos de alimentação e locomoção. Essas características variam entre os grupos. A classificação científica original permanece registrada e não é substituída por este agrupamento.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/23-2-characteristics-of-protists",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Protista"
+    },
+    "note:3:curiosity": {
+      "text": "A diversidade inclui formas com nutrição, organização celular e estruturas de locomoção diferentes.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/23-2-characteristics-of-protists",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Protista"
+    },
+    "note:4:intro": {
+      "text": "Monera é o agrupamento didático tradicional adotado neste jogo para Bacteria e Archaea. Seus integrantes possuem organização procariótica, sem núcleo delimitado por membrana. As duas linhagens diferem em aspectos moleculares e celulares. Apresentam ampla diversidade metabólica e participam de muitos processos ecológicos em ambientes distintos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Monera"
+    },
+    "note:5:intro": {
+      "text": "Arthropoda reúne animais com corpo segmentado, apêndices articulados e exoesqueleto. O revestimento externo fornece proteção e pontos de inserção muscular, mas exige mudas durante o crescimento. Seus representantes ocupam ambientes terrestres e aquáticos, com apêndices especializados para locomoção, alimentação e percepção do ambiente.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Arthropoda"
+    },
+    "note:5:hint": {
+      "text": "Apêndices articulados e revestimento externo sustentam o corpo.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Arthropoda"
+    },
+    "note:6:intro": {
+      "text": "Insecta reúne artrópodes cujo corpo adulto se organiza em cabeça, tórax e abdome. Possuem três pares de pernas ligados ao tórax e um par de antenas. As asas, quando presentes, ampliam a capacidade de dispersão. O grupo participa de processos como polinização e de numerosas relações alimentares.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Insecta"
+    },
+    "note:7:intro": {
+      "text": "Chordata reúne animais que apresentam notocorda, tubo nervoso dorsal e outras características em algum momento do desenvolvimento. Nos vertebrados, algumas dessas estruturas são modificadas durante a formação do corpo. O filo também inclui linhagens sem coluna vertebral, mostrando que cordados e vertebrados não são termos equivalentes.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chordata"
+    },
+    "note:7:hint": {
+      "text": "Uma estrutura de suporte axial aparece durante o desenvolvimento.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chordata"
+    },
+    "note:7:curiosity": {
+      "text": "Algumas características compartilhadas aparecem apenas no embrião e mudam posteriormente.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chordata"
+    },
+    "note:8:intro": {
+      "text": "Tracheophyta reúne plantas com tecidos vasculares especializados no transporte interno de substâncias. O xilema participa da condução de água e minerais, enquanto o floema transporta compostos orgânicos. Essa organização está associada à diferenciação de órgãos e permite compreender a diversidade de formas das plantas vasculares.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Tracheophyta"
+    },
+    "note:8:hint": {
+      "text": "Tecidos especializados transportam água e compostos orgânicos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Tracheophyta"
+    },
+    "note:8:curiosity": {
+      "text": "Transporte interno e sustentação foram importantes na diversificação das plantas vasculares.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Tracheophyta"
+    },
+    "note:9:intro": {
+      "text": "Ascomycota é uma linhagem de fungos caracterizada pela formação de esporos sexuais em estruturas chamadas ascos. Inclui formas unicelulares e filamentosas. Seus representantes apresentam modos de vida variados, incluindo decomposição, parasitismo e associações simbióticas. As estruturas reprodutivas são importantes para reconhecer e estudar seus grupos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Ascomycota"
+    },
+    "note:10:intro": {
+      "text": "Basidiomycota reúne fungos que produzem esporos sexuais associados a estruturas chamadas basídios. O grupo inclui muitos cogumelos, mas também outras formas de organização. Alguns representantes decompõem matéria orgânica ou estabelecem associações com plantas. Estruturas microscópicas e reprodutivas complementam a observação do corpo de frutificação.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Basidiomycota"
+    },
+    "note:10:hint": {
+      "text": "A reprodução sexual envolve estruturas produtoras de esporos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Basidiomycota"
+    },
+    "note:11:intro": {
+      "text": "Amoebozoa reúne eucariontes com formas de organização variadas, incluindo organismos ameboides e linhagens com fases multinucleadas. Pseudópodes lobosos ou tubulares participam do movimento e da alimentação em muitos representantes. Algumas linhagens possuem estruturas protetoras, enquanto outras apresentam fases e corpos produtores de esporos.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Amoebozoa"
+    },
+    "note:11:hint": {
+      "text": "Projeções celulares podem participar de locomoção e alimentação.",
+      "source_title": "OpenStax — Biology 2e",
+      "source_url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Amoebozoa"
+    },
+    "note:13:intro": {
+      "text": "Lepidoptera é a ordem de insetos que inclui borboletas e mariposas. As asas dos adultos apresentam pequenas escamas, e o ciclo de vida passa por ovo, lagarta, pupa e adulto. Características das asas, das antenas e de outras estruturas ajudam a reconhecer seus diferentes grupos.",
+      "source_title": "Amateur Entomologists' Society",
+      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Lepidoptera"
+    },
+    "note:13:hint": {
+      "text": "O ciclo de vida inclui uma fase de pupa entre lagarta e adulto.",
+      "source_title": "Amateur Entomologists' Society",
+      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Lepidoptera"
+    },
+    "note:13:curiosity": {
+      "text": "A cobertura de pequenas escamas participa dos padrões observados nas asas.",
+      "source_title": "Amateur Entomologists' Society",
+      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Lepidoptera"
+    },
+    "note:14:intro": {
+      "text": "Papilionidae reúne borboletas entre as quais muitas apresentam prolongamentos nas asas posteriores. Esse caráter ajuda na observação, embora não esteja presente em todas as espécies. A identificação dos representantes deve considerar um conjunto de estruturas e padrões, em vez de depender somente de cor ou tamanho.",
+      "source_title": "North Carolina State University",
+      "source_url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Papilionidae"
+    },
+    "note:14:hint": {
+      "text": "Muitas formas apresentam prolongamentos nas asas posteriores.",
+      "source_title": "North Carolina State University",
+      "source_url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Papilionidae"
+    },
+    "note:15:intro": {
+      "text": "Saturniidae reúne mariposas que incluem numerosas formas de grande porte. Em muitas espécies, os adultos têm vida breve e não se alimentam, dependendo de reservas acumuladas anteriormente. A diversidade apresenta particularidades de comportamento e desenvolvimento. A identificação pode exigir a comparação cuidadosa de características e dados adicionais.",
+      "source_title": "Publicação científica — Ecology and Evolution",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Saturniidae"
+    },
+    "note:15:hint": {
+      "text": "Em muitas espécies, o adulto depende de reservas da fase larval.",
+      "source_title": "Publicação científica — Ecology and Evolution",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Saturniidae"
+    },
+    "note:16:intro": {
+      "text": "Mycetozoa é um agrupamento conservado na classificação da fonte deste catálogo. Seus representantes incluem formas com fases ameboides e plasmodiais, além de estruturas produtoras de esporos. A semelhança visual com fungos em certas fases não indica a mesma organização celular ou uma relação de parentesco próxima.",
+      "source_title": "University of California, Berkeley — Museum of Paleontology",
+      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Mycetozoa"
+    },
+    "note:16:hint": {
+      "text": "Algumas fases são massas celulares com numerosos núcleos.",
+      "source_title": "University of California, Berkeley — Museum of Paleontology",
+      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Mycetozoa"
+    },
+    "note:16:curiosity": {
+      "text": "A formação de estruturas com esporos não significa que esse organismo seja um fungo.",
+      "source_title": "University of California, Berkeley — Museum of Paleontology",
+      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Mycetozoa"
+    },
+    "note:17:intro": {
+      "text": "Euglenida reúne eucariontes unicelulares flagelados com uma película rica em proteínas. O grupo inclui linhagens fotossintetizantes e heterotróficas, com diversidade de alimentação e de organização celular. A película pode permitir mudanças de forma em alguns representantes. Características microscópicas e dados moleculares são importantes na identificação.",
+      "source_title": "Publicação científica — Open Biology",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Euglenida"
+    },
+    "note:18:intro": {
+      "text": "Chiton é um gênero de moluscos pertencente à classe Polyplacophora. Os caracteres compartilhados nessa classe incluem oito placas de concha e uma faixa de tecidos ao redor delas. A organização do revestimento e do pé muscular ajuda esses animais a permanecerem associados a superfícies rochosas.",
+      "source_title": "Queensland Museum",
+      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chiton"
+    },
+    "note:18:hint": {
+      "text": "O revestimento apresenta uma sequência de placas articuladas.",
+      "source_title": "Queensland Museum",
+      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chiton"
+    },
+    "note:18:curiosity": {
+      "text": "As placas permitem proteção e flexibilidade sobre superfícies irregulares.",
+      "source_title": "Queensland Museum",
+      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Chiton"
+    },
+    "species:1:hint": {
+      "text": "Na fase adulta, o fundo amarelado contrasta com áreas escuras e detalhes azulados nas asas posteriores.",
+      "source_title": "Animal Diversity Web — University of Michigan",
+      "source_url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14"
+    },
+    "species:1:curiosity": {
+      "text": "A espécie apresenta variação de coloração; sua distribuição inclui regiões da Europa e da Ásia.",
+      "source_title": "Animal Diversity Web — University of Michigan",
+      "source_url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14"
+    },
+    "species:6:hint": {
+      "text": "Na fase larval, compostos de plantas hospedeiras podem ser acumulados como defesa.",
+      "source_title": "Animal Diversity Web — University of Michigan",
+      "source_url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14"
+    },
+    "species:6:curiosity": {
+      "text": "Populações norte-americanas realizam deslocamentos sazonais, com locais de reprodução e de invernada distintos.",
+      "source_title": "Animal Diversity Web — University of Michigan",
+      "source_url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+      "verified": true,
+      "ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "reviewed_on": "2026-10-14"
+    }
+  },
+  "taxons": {
+    "edu:Animalia": "note:0:intro",
+    "edu:Plantae": "note:1:intro",
+    "edu:Fungi": "note:2:intro",
+    "edu:Protista": "note:3:intro",
+    "edu:Monera": "note:4:intro",
+    "taxon:5ad28aa5499d178f4f0d": "note:5:intro",
+    "taxon:e8799f7a826b70f11770": "note:6:intro",
+    "taxon:ec44ee69ac562708b6ed": "note:7:intro",
+    "taxon:a00f38df238c41138073": "note:8:intro",
+    "taxon:94fd234704e94181294b": "note:9:intro",
+    "taxon:4308023432e31216af47": "note:10:intro",
+    "taxon:f2f92dd7e4835ba0033f": "note:11:intro",
+    "taxon:befdeedc26d96d8aeb9f": "note:13:intro",
+    "taxon:43d28ce77c090ecb7e1f": "note:14:intro",
+    "taxon:785c93ec1fd86284887d": "note:15:intro",
+    "taxon:d46f885a1e90011db84f": "note:16:intro",
+    "taxon:6c64ace2dec48e0090c2": "note:17:intro",
+    "taxon:a2d364c48b9ac7a2e66e": "note:18:intro"
+  },
+  "group_hints": {
+    "edu:Animalia": [
+      "note:0:hint"
+    ],
+    "taxon:cac47417164883d60794": [
+      "note:0:hint"
+    ],
+    "edu:Plantae": [
+      "note:1:hint"
+    ],
+    "taxon:56956496cf600779dc1f": [
+      "note:1:hint"
+    ],
+    "edu:Fungi": [
+      "note:2:hint"
+    ],
+    "taxon:31fdb10b7300d45a9dcf": [
+      "note:2:hint"
+    ],
+    "taxon:5ad28aa5499d178f4f0d": [
+      "note:5:hint"
+    ],
+    "taxon:ec44ee69ac562708b6ed": [
+      "note:7:hint"
+    ],
+    "taxon:a00f38df238c41138073": [
+      "note:8:hint"
+    ],
+    "taxon:4308023432e31216af47": [
+      "note:10:hint"
+    ],
+    "taxon:f2f92dd7e4835ba0033f": [
+      "note:11:hint"
+    ],
+    "taxon:befdeedc26d96d8aeb9f": [
+      "note:13:hint"
+    ],
+    "taxon:43d28ce77c090ecb7e1f": [
+      "note:14:hint"
+    ],
+    "taxon:785c93ec1fd86284887d": [
+      "note:15:hint"
+    ],
+    "taxon:d46f885a1e90011db84f": [
+      "note:16:hint"
+    ],
+    "taxon:a2d364c48b9ac7a2e66e": [
+      "note:18:hint"
+    ]
+  },
+  "group_curiosities": {
+    "edu:Animalia": "note:0:curiosity",
+    "taxon:cac47417164883d60794": "note:0:curiosity",
+    "edu:Plantae": "note:1:curiosity",
+    "taxon:56956496cf600779dc1f": "note:1:curiosity",
+    "edu:Fungi": "note:2:curiosity",
+    "taxon:31fdb10b7300d45a9dcf": "note:2:curiosity",
+    "edu:Protista": "note:3:curiosity",
+    "taxon:ec44ee69ac562708b6ed": "note:7:curiosity",
+    "taxon:a00f38df238c41138073": "note:8:curiosity",
+    "taxon:befdeedc26d96d8aeb9f": "note:13:curiosity",
+    "taxon:d46f885a1e90011db84f": "note:16:curiosity",
+    "taxon:a2d364c48b9ac7a2e66e": "note:18:curiosity"
+  },
+  "species": {
+    "1": {
+      "hints": [
+        "species:1:hint"
+      ],
+      "curiosity": "species:1:curiosity"
+    },
+    "6": {
+      "hints": [
+        "species:6:hint"
+      ],
+      "curiosity": "species:6:curiosity"
+    }
+  }
+}

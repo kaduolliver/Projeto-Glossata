@@ -19,6 +19,8 @@ add_executable(glossata_quiz
     src/infrastructure/content/JsonSpeciesCatalog.cpp
     src/infrastructure/content/SqliteSpeciesCatalog.cpp
     src/application/TaxonomyIndex.cpp
+    src/application/EducationalContent.cpp
+    src/infrastructure/content/PhotoResolver.cpp
     src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     src/presentation/GameController.cpp
     resources.qrc

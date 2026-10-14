@@ -46,9 +46,12 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
 {
     const Taxon taxon = taxons_.value(id);
     const QString kingdom = kingdomFor(id);
+    int visualCount=0;
+    for (const Species &s : speciesFor(id)) if (s.photo.valid && !s.photo.approvedRanks.isEmpty()) ++visualCount;
     return {{"id", id}, {"title", taxon.name}, {"rank", taxon.rank},
         {"rankLabel", taxonomicRankLabel(taxon.rank)}, {"kingdom", kingdom},
-        {"count", count(id)}, {"source", taxon.source}, {"sourceTaxonId", taxon.sourceTaxonId},
+        {"count", count(id)}, {"visualCount",visualCount},{"introduction",content_.introduction(id)},
+        {"source", taxon.source}, {"sourceTaxonId", taxon.sourceTaxonId},
         {"description", taxon.rank == "educational_kingdom"
             ? QStringLiteral("Explore a diversidade de %1.").arg(taxon.name)
             : QStringLiteral("%1 · Conheça os grupos e suas espécies.").arg(taxonomicRankLabel(taxon.rank))}};
@@ -58,8 +61,10 @@ QVariantList TaxonomyIndex::kingdoms() const
 {
     QVariantList list;
     list.append(QVariantMap{{"id", QString()}, {"title", QStringLiteral("Todas as espécies")},
-        {"kingdom", QString()}, {"count", count()},
-        {"description", QStringLiteral("A diversidade dos cinco reinos, uma descoberta por vez.")}});
+        {"kingdom", QString()}, {"count", count()}, {"visualCount",describe(QString()).value("visualCount")},
+        {"defaultRank",QStringLiteral("genus")},
+        {"playableCount", eligibleQuizSpecies(species_,QStringLiteral("genus")).size()},
+        {"description", QStringLiteral("Identifique gêneros com fotografias aprovadas de diferentes reinos.")}});
     for (const QString &name : {QString("Animalia"), QString("Plantae"), QString("Fungi"), QString("Protista"), QString("Monera")}) {
         list.append(describe("edu:" + name));
     }

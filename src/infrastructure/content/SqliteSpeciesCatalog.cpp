@@ -10,6 +10,8 @@
 #include <QDebug>
 #include <QSet>
 #include <QHash>
+#include <QJsonDocument>
+#include "infrastructure/content/PhotoResolver.h"
 
 SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     : database_(QSqlDatabase::addDatabase("QSQLITE", "catalog-" + QUuid::createUuid().toString()))
@@ -32,7 +34,7 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     query.exec("PRAGMA table_info(species)");
     while (query.next()) columns.insert(query.value(1).toString());
     bool upgraded = false;
-    for (const QString &column : QStringList{"fact", "hint", "region", "source_url", "image_license_url", "visual_quiz"}) {
+    for (const QString &column : QStringList{"fact", "hint", "region", "source_url", "image_license_url", "visual_quiz", "photo_json"}) {
         if (!columns.contains(column)) {
             if (!query.exec("ALTER TABLE species ADD COLUMN " + column + (column == "visual_quiz" ? " INTEGER DEFAULT 0" : " TEXT"))) return;
             upgraded = true;
@@ -71,11 +73,11 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     }
     for (const Species &item : species_) {
         if (item.taxonomy.isEmpty()) continue;
-        query.prepare("INSERT INTO species (id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET scientific_name=excluded.scientific_name, common_name=excluded.common_name, taxon_id=excluded.taxon_id, educational_kingdom=excluded.educational_kingdom, image_path=excluded.image_path, image_author=excluded.image_author, image_license=excluded.image_license, image_source=excluded.image_source, source=excluded.source, source_taxon_id=excluded.source_taxon_id, fact=excluded.fact,hint=excluded.hint,region=excluded.region,source_url=excluded.source_url,image_license_url=excluded.image_license_url,visual_quiz=excluded.visual_quiz");
+        query.prepare("INSERT INTO species (id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz,photo_json) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET scientific_name=excluded.scientific_name, common_name=excluded.common_name, taxon_id=excluded.taxon_id, educational_kingdom=excluded.educational_kingdom, image_path=excluded.image_path, image_author=excluded.image_author, image_license=excluded.image_license, image_source=excluded.image_source, source=excluded.source, source_taxon_id=excluded.source_taxon_id, fact=excluded.fact,hint=excluded.hint,region=excluded.region,source_url=excluded.source_url,image_license_url=excluded.image_license_url,visual_quiz=excluded.visual_quiz,photo_json=excluded.photo_json");
         for (const QVariant &value : QVector<QVariant>{item.id, item.name, item.commonName, item.taxonomy.last().id,
             item.educationalKingdom, item.image, item.imageAuthor, item.imageLicense, item.imageSource, item.source,
             item.sourceTaxonId.isEmpty() ? QVariant() : QVariant(item.sourceTaxonId),
-            item.fact,item.hint,item.region,item.sourceUrl,item.imageLicenseUrl,item.visualQuiz}) query.addBindValue(value);
+            item.fact,item.hint,item.region,item.sourceUrl,item.imageLicenseUrl,item.visualQuiz,QString::fromUtf8(QJsonDocument(PhotoResolver::toJson(item.photo)).toJson(QJsonDocument::Compact))}) query.addBindValue(value);
         if (!query.exec()) { fail(); return; }
     }
     query.prepare("INSERT INTO catalog_meta(key,value) VALUES('bundle_hash',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value");
@@ -95,7 +97,7 @@ bool SqliteSpeciesCatalog::readCache()
                    query.value(3).toString(),query.value(4).toString(),query.value(5).toString()};
         taxons.append(node); index.insert(node.id,node);
     }
-    if (!query.exec("SELECT id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz FROM species ORDER BY id")) return false;
+    if (!query.exec("SELECT id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz,photo_json FROM species ORDER BY id")) return false;
     QVector<Species> species;
     while (query.next()) {
         Species item;
@@ -114,11 +116,8 @@ bool SqliteSpeciesCatalog::readCache()
             if (node.rank == "family") item.family=node.name;
             id=node.parentId;
         }
-        if (!(item.imageLicense == "cc0" || item.imageLicense == "cc-by")
-            || item.imageAuthor.isEmpty() || item.imageSource.isEmpty()
-            || !item.image.startsWith("qrc:/") || !QFile::exists(item.image.mid(3))) {
-            item.image.clear(); item.visualQuiz=false;
-        }
+        const auto metadata=QJsonDocument::fromJson(query.value(17).toString().toUtf8()).object();
+        PhotoResolver::attach(item,PhotoResolver::fromJson(metadata,item.image));
         species.append(item);
     }
     taxons_=taxons; species_=species;

@@ -6,7 +6,7 @@
     "hint": "É uma borboleta da família Papilionidae, conhecida pelas caudas nas asas posteriores.",
     "family": "Papilionidae",
     "region": "Europa e Ásia",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/280989671.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -15,12 +15,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:43d28ce77c090ecb7e1f",
+      "taxon:e6ceb602dc0cf1698eb1",
+      "taxon:e2cb7a13013a0ee4f953",
       "taxon:06638735b2da14e3910c",
+      "taxon:1fadaa7f38a91f5a7601",
       "taxon:fa8da3610a622ad8f1d5"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "280989671",
+      "scientific_name": "Papilio machaon",
+      "taxon_id": "56529",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Fyodor Pudovikov, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/162503499",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/280989671/large.jpeg",
+      "path": "resources/images/inaturalist/280989671.jpeg",
+      "sha256": "3864765f0240a261dbe9531550591bf99538227b8f2ccbf2d870f951b86da2fe",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 2,
@@ -29,7 +59,7 @@
     "hint": "As asas escuras têm faixas vermelho-alaranjadas bem marcadas.",
     "family": "Nymphalidae",
     "region": "Europa",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/376647594.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -38,12 +68,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
+      "taxon:1514ca722590a3defa96",
+      "taxon:ce8d36f300a10e0a312f",
       "taxon:f7ed5ce58071941fa6d7",
       "taxon:6e3a3254a1bce628a5a0"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "376647594",
+      "scientific_name": "Vanessa atalanta",
+      "taxon_id": "49133",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Shirley Zundell, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/213128873",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/376647594/medium.jpeg",
+      "path": "resources/images/inaturalist/376647594.jpeg",
+      "sha256": "b0df1d38363777752b9d153d474ee0c08a9438db2e86fb23b3f851a8e0819228",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 3,
@@ -52,7 +111,7 @@
     "hint": "É uma esfinge noturna; o tórax tem uma marca que lembra um crânio.",
     "family": "Sphingidae",
     "region": "Europa e África",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/586365614.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -61,12 +120,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:4b9123c80ff896020ceb",
+      "taxon:e217d1b283c8e3628d12",
+      "taxon:152b878377ba3f6be054",
+      "taxon:457eb336c0e5339345f5",
       "taxon:08a45d52136c58397a8a",
       "taxon:7a526a24f0009bbaa841"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "586365614",
+      "scientific_name": "Acherontia atropos",
+      "taxon_id": "56530",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Emad Tahaei, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/324010008",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/586365614/medium.jpg",
+      "path": "resources/images/inaturalist/586365614.jpg",
+      "sha256": "958e6abd3bbd5a69cdb8fbf9dacdb325666a4045f7ee787af6fde4d6b549e542",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 4,
@@ -75,7 +164,7 @@
     "hint": "Pertence à família Brahmaeidae e ocorre no leste da Ásia.",
     "family": "Brahmaeidae",
     "region": "Ásia",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/175474265.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -84,12 +173,38 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:1b5b35a2aaa7222fca93",
       "taxon:29ff81edb97a79268d55",
       "taxon:0e8b165bc80dd4e7755d"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "175474265",
+      "scientific_name": "Brahmaea wallichii",
+      "taxon_id": "700944",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Ashwin Viswanathan, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/104690605",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/175474265/medium.jpeg",
+      "path": "resources/images/inaturalist/175474265.jpeg",
+      "sha256": "1e526073bc7c587e3f81c7c7b6b4c5efcc3b6291fe79f600c05304b8c7404cd1",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 5,
@@ -98,7 +213,7 @@
     "hint": "É uma mariposa da família Erebidae; fêmeas e machos adultos têm aparência diferente.",
     "family": "Erebidae",
     "region": "Europa e América do Norte",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/401685857.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -107,12 +222,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:8b82443701a440f456e2",
       "taxon:35a33e7f95471bb27c7f",
+      "taxon:2a26c193d0b1cd86a924",
+      "taxon:7953cf4e6b1fdf103e54",
       "taxon:ab95857b44aa6530a7d4",
+      "taxon:516478a3b8737e219396",
       "taxon:65b7a9614a5fe52da4bb"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "401685857",
+      "scientific_name": "Lymantria dispar",
+      "taxon_id": "47802",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Christine Young, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/226487361",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/401685857/medium.jpg",
+      "path": "resources/images/inaturalist/401685857.jpg",
+      "sha256": "aafa9709ee0a7f6ef0636cd6e744bebabfd0250537e08c608d84b3c16781f7cd",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 6,
@@ -121,7 +265,7 @@
     "hint": "É famosa por migrações de longa distância na América do Norte e pelas asas laranja e pretas.",
     "family": "Nymphalidae",
     "region": "Américas",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/322926715.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -130,12 +274,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
+      "taxon:37de64728257435b773e",
+      "taxon:98c4f45766edc6e9095b",
+      "taxon:5175d7ac205bf87796b4",
       "taxon:c21e6ec44d81d9da86c6",
       "taxon:9d5092d54f66feda5986"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "322926715",
+      "scientific_name": "Danaus plexippus",
+      "taxon_id": "48662",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Leila Dasher, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/184955820",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/322926715/large.jpg",
+      "path": "resources/images/inaturalist/322926715.jpg",
+      "sha256": "224dd80a26beeb1f7be0b9dbeab8bd2330018968db2477b173ed4535218886d9",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 7,
@@ -144,7 +318,7 @@
     "hint": "É uma ninfalídea europeia também conhecida como pavão-diurno.",
     "family": "Nymphalidae",
     "region": "Europa e Ásia temperada",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/359063525.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -153,12 +327,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
+      "taxon:1514ca722590a3defa96",
+      "taxon:ce8d36f300a10e0a312f",
       "taxon:96be2785fe52d6343c31",
       "taxon:865eb98c84930cd9e2c5"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "359063525",
+      "scientific_name": "Aglais io",
+      "taxon_id": "207977",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Dimitǎr Boevski, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/203242996",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/359063525/medium.jpeg",
+      "path": "resources/images/inaturalist/359063525.jpeg",
+      "sha256": "a32b295d87ac290e1413f823ad693a0a9fb51af7233d9bbc0162a48713a3bc0e",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 8,
@@ -167,7 +370,7 @@
     "hint": "Seu nome comum em inglês é painted lady; pertence à família Nymphalidae.",
     "family": "Nymphalidae",
     "region": "Todos os continentes exceto a Antártida",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/749769318.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -176,12 +379,40 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
+      "taxon:1514ca722590a3defa96",
+      "taxon:ce8d36f300a10e0a312f",
       "taxon:f7ed5ce58071941fa6d7",
       "taxon:e0b8e94379158ef987a0"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "749769318",
+      "scientific_name": "Vanessa cardui",
+      "taxon_id": "48548",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Chet Burrier, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/407941868",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/749769318/large.jpg",
+      "path": "resources/images/inaturalist/749769318.jpg",
+      "sha256": "ab4281d92dcf6090a430113ce309bbfd603c7a722176f4daf0e675b34b5a8612",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 9,
@@ -190,7 +421,7 @@
     "hint": "A domesticação reduziu sua capacidade de voo; é conhecida como bicho-da-seda.",
     "family": "Bombycidae",
     "region": "Domesticada a partir de populações asiáticas",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/51317278.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -199,12 +430,32 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:4b90ebad6d4beafef9db",
+      "taxon:5e96ea9a7c7458d339f9",
       "taxon:dead6b83b9ad936fd69b",
       "taxon:ad77eaeef805a975b4f6"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "51317278",
+      "scientific_name": "Bombyx mori",
+      "taxon_id": "143506",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) malanfcm, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/32707174",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/51317278/large.jpeg",
+      "path": "resources/images/inaturalist/51317278.jpeg",
+      "sha256": "a70a58f01b7e0c2183e9896bea78b8063d492f17ac5a57e0d201e1e0f7585e2e",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": false,
+      "visual_quiz": false,
+      "approved_ranks": [],
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "source_verified": true
+    }
   },
   {
     "id": 10,
@@ -213,7 +464,7 @@
     "hint": "É uma mariposa asiática da família Saturniidae, conhecida pelo grande tamanho das asas.",
     "family": "Saturniidae",
     "region": "Sul e sudeste da Ásia",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/60643931.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -222,12 +473,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:785c93ec1fd86284887d",
+      "taxon:6a5b63141c3c74f3ec37",
+      "taxon:acebd59f76f58c4c3d62",
       "taxon:c4eddf10552a99cad35b",
       "taxon:4631f998b9c0006e1c53"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "60643931",
+      "scientific_name": "Attacus atlas",
+      "taxon_id": "125071",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Oleg Kosterin, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/38181000",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/60643931/medium.jpg",
+      "path": "resources/images/inaturalist/60643931.jpg",
+      "sha256": "0486d0dd97109ea7b8fe80d3fbc2fbff6e1e7a16e2c721b027db89f963fc8fd7",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 11,
@@ -236,7 +516,7 @@
     "hint": "É uma saturniídea noturna da América do Norte, com asas verde-claras.",
     "family": "Saturniidae",
     "region": "América do Norte",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/34980868.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -245,12 +525,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:785c93ec1fd86284887d",
+      "taxon:6a5b63141c3c74f3ec37",
+      "taxon:92f700fe42533ae4b68e",
       "taxon:56306fdcc6db26b2a888",
       "taxon:88bf14021e4e514d082b"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "34980868",
+      "scientific_name": "Actias luna",
+      "taxon_id": "47916",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Michelle W. （鍾偉瑋）, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/22577683",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/34980868/medium.jpg",
+      "path": "resources/images/inaturalist/34980868.jpg",
+      "sha256": "10f1e3f4d672794e995dfe72a1d63f00961b1d744b4ebaa58ec7cb03950b0aed",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 12,
@@ -259,7 +568,7 @@
     "hint": "É uma das maiores mariposas nativas da América do Norte e pertence à família Saturniidae.",
     "family": "Saturniidae",
     "region": "América do Norte",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/137265535.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -268,12 +577,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:785c93ec1fd86284887d",
+      "taxon:6a5b63141c3c74f3ec37",
+      "taxon:acebd59f76f58c4c3d62",
       "taxon:bd73405a7425d502c958",
       "taxon:7f9c106826db6bb144e6"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "137265535",
+      "scientific_name": "Hyalophora cecropia",
+      "taxon_id": "81582",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Marilyne Busque-Dubois, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/83569600",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/137265535/large.jpg",
+      "path": "resources/images/inaturalist/137265535.jpg",
+      "sha256": "653b41be7423f17a5ceca76caa6557e4bea2fb512830e781818eb0feed07a347",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 13,
@@ -282,7 +620,7 @@
     "hint": "Os adultos têm ocelos evidentes nas asas posteriores; é uma saturniídea americana.",
     "family": "Saturniidae",
     "region": "América do Norte e América Central",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/44218494.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -291,12 +629,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:785c93ec1fd86284887d",
+      "taxon:9fcc265129219c46c6b5",
+      "taxon:75cfff10ae2f1c975ad7",
+      "taxon:3c0a65da23b478576a10",
       "taxon:0183a3d50469449f14f3",
       "taxon:04cacab7c9f968f91b13"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "44218494",
+      "scientific_name": "Automeris io",
+      "taxon_id": "82279",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Trevor Edmonson, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/28369492",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/44218494/large.jpg",
+      "path": "resources/images/inaturalist/44218494.jpg",
+      "sha256": "55be6f84c272f60772bc93a21e3d96b50a6ef0d33f4202d0914ced5afd486fe4",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 14,
@@ -305,7 +673,7 @@
     "hint": "O nome faz referência ao ciclope Polifemo da mitologia grega.",
     "family": "Saturniidae",
     "region": "América do Norte",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/664105606.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -314,12 +682,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:785c93ec1fd86284887d",
+      "taxon:6a5b63141c3c74f3ec37",
+      "taxon:92f700fe42533ae4b68e",
       "taxon:5d0109f3163dc51f76e2",
       "taxon:ed6a4069edd5984a9883"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "664105606",
+      "scientific_name": "Antheraea polyphemus",
+      "taxon_id": "47919",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Garth Harwood, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/363800853",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/664105606/large.jpg",
+      "path": "resources/images/inaturalist/664105606.jpg",
+      "sha256": "096ecd262c17b427cd3154407f59c373ac6e4c29c51ce36153f35fc4f2f73c68",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 15,
@@ -328,7 +725,7 @@
     "hint": "Seus padrões de advertência variam entre regiões e se assemelham aos de outras espécies impalatáveis.",
     "family": "Nymphalidae",
     "region": "América Central e América do Sul",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/560140869.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -337,12 +734,40 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
+      "taxon:ae53802129fdce11efb6",
+      "taxon:c9f3699ce18c2c91f274",
       "taxon:b8692166c9c3f4e20c71",
       "taxon:c53f972135b291b3042c"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "560140869",
+      "scientific_name": "Heliconius melpomene",
+      "taxon_id": "147200",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Dan Vickers, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/310362605",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/560140869/medium.jpg",
+      "path": "resources/images/inaturalist/560140869.jpg",
+      "sha256": "27f3b92731e68f68dbb1dda1b1bc3765e903f032354588bfc0f94d83f9ba3956",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 16,
@@ -351,7 +776,7 @@
     "hint": "É uma grande borboleta da família Papilionidae encontrada na região australásia.",
     "family": "Papilionidae",
     "region": "Austrália e ilhas próximas",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/45110154.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -360,12 +785,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:43d28ce77c090ecb7e1f",
+      "taxon:e6ceb602dc0cf1698eb1",
+      "taxon:e2cb7a13013a0ee4f953",
       "taxon:06638735b2da14e3910c",
+      "taxon:3d284e31496b31039d7f",
       "taxon:9669e6e417607ba35e1c"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "45110154",
+      "scientific_name": "Papilio ulysses",
+      "taxon_id": "67438",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Terra Occ, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/28921401",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45110154/medium.jpeg",
+      "path": "resources/images/inaturalist/45110154.jpeg",
+      "sha256": "ec59238ea7ddb958d6801f045dea1ae634400a152ebd7f5593c52660b901d99d",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 17,
@@ -383,6 +838,7 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
       "taxon:f35d95621fa4215dc7bf",
       "taxon:788609a1497a0c639a40"
@@ -397,7 +853,7 @@
     "hint": "É uma borboleta branca da família Pieridae, comum em partes da Europa, Ásia e norte da África.",
     "family": "Pieridae",
     "region": "Europa, Ásia e norte da África",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/221780102.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -406,12 +862,41 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:cc294a10be3b31359ded",
+      "taxon:1907c40a5e9af358792b",
+      "taxon:c1989d45f5643bc43264",
+      "taxon:1e636daebc91072f97c8",
       "taxon:fb143b2d7e67f3383722",
       "taxon:e969dfc3d5697875a9d8"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "221780102",
+      "scientific_name": "Pieris brassicae",
+      "taxon_id": "55401",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Gianni Del Bufalo bygdb, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/130413689",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/221780102/large.jpeg",
+      "path": "resources/images/inaturalist/221780102.jpeg",
+      "sha256": "58791341775619c2e6765b551f242c478068a34ef14c7311a793831ff794acc9",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 19,
@@ -420,7 +905,7 @@
     "hint": "É uma pequena mariposa da família Pyralidae conhecida como traça-da-cera.",
     "family": "Pyralidae",
     "region": "Distribuição ampla associada à apicultura",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/321803659.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -431,11 +916,38 @@
       "taxon:befdeedc26d96d8aeb9f",
       "taxon:3f43441bac2a647c57f1",
       "taxon:4f228f8f8b0a10a9ccca",
+      "taxon:1470e05010553f018536",
+      "taxon:bf81b62b2b6313b44dd0",
       "taxon:c9733bd058f9ff69cf0f",
       "taxon:62ede302aa9e7b2a65b1"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "321803659",
+      "scientific_name": "Galleria mellonella",
+      "taxon_id": "122940",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) SteveM4560, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/184361474",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/321803659/medium.jpg",
+      "path": "resources/images/inaturalist/321803659.jpg",
+      "sha256": "3c4cc4e39019105d8a46dc4f127199e96370a30b9bc6ca55d05cb8da13d903ca",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
+    }
   },
   {
     "id": 20,
@@ -444,7 +956,7 @@
     "hint": "É conhecida como traça-dos-alimentos e pertence à família Pyralidae.",
     "family": "Pyralidae",
     "region": "Distribuição mundial associada a alimentos armazenados",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/655494534.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -455,11 +967,39 @@
       "taxon:befdeedc26d96d8aeb9f",
       "taxon:3f43441bac2a647c57f1",
       "taxon:4f228f8f8b0a10a9ccca",
+      "taxon:8e8ae9ae27e174657312",
+      "taxon:70b42d244e73cfd8515b",
       "taxon:f1559915f3b8ea3bb2c2",
       "taxon:538c50016033a7ed6a2d"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "655494534",
+      "scientific_name": "Plodia interpunctella",
+      "taxon_id": "124184",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Rosario Douglas, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/359284633",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/655494534/large.jpg",
+      "path": "resources/images/inaturalist/655494534.jpg",
+      "sha256": "3e6422793053ebaa369a4027785a42388ab98843d4d4354a7e992edbe7d2d10c",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 21,
@@ -468,7 +1008,7 @@
     "hint": "É uma grande esfinge americana; a lagarta costuma ter um apêndice semelhante a um chifre na extremidade do corpo.",
     "family": "Sphingidae",
     "region": "Américas",
-    "image": "",
+    "image": "qrc:/resources/images/inaturalist/43280362.jpg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -477,12 +1017,42 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:4334cda9f1c3e42e4a3f",
       "taxon:4b9123c80ff896020ceb",
+      "taxon:e217d1b283c8e3628d12",
+      "taxon:152b878377ba3f6be054",
+      "taxon:77e1612cb55105f5d2a9",
       "taxon:01d3fa3239a88506681b",
       "taxon:747ff85d02b805c9b1a0"
     ],
     "source": "legacy",
-    "source_taxon_id": ""
+    "source_taxon_id": "",
+    "photo": {
+      "id": "43280362",
+      "scientific_name": "Manduca sexta",
+      "taxon_id": "61505",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Sandra H Statner, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/27792711",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/43280362/large.jpg",
+      "path": "resources/images/inaturalist/43280362.jpg",
+      "sha256": "fe8762fc6fd6975f918535a095d7eb5ed74933981e668bbe4f2aed920cd9b0c8",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "research_grade": true,
+      "visual_quiz": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Adulto visível, morfologia e padrão reconhecíveis entre as alternativas do catálogo; vínculo exato com a identificação comunitária conferido.",
+      "source_verified": true
+    }
   },
   {
     "id": 22,
@@ -500,6 +1070,7 @@
       "taxon:e8799f7a826b70f11770",
       "taxon:1ecdd7adb43cf1acf733",
       "taxon:befdeedc26d96d8aeb9f",
+      "taxon:aa9bbc2d6be1008a4b6c",
       "taxon:a5217b2ede7fdeb70d44",
       "taxon:9c343b2d6de005e28310",
       "taxon:e5fba6d04125b8cbe4b9"
@@ -538,12 +1109,24 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "author": "(c) Pav Johnsson, some rights reserved (CC BY)",
       "source": "https://www.inaturalist.org/observations/202565126",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/357771622/medium.jpeg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/357771622/large.jpeg",
       "path": "resources/images/inaturalist/357771622.jpeg",
-      "sha256": "13dd491236f380fffea467962b313a44561814473c5c74ae0847d99b58edcc65",
+      "sha256": "758c74cf23b83c61f815563b37b90911a00d5d457a08d463a988548ee11cd979",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Titanomis sisyrota",
+      "taxon_id": "398171",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -583,8 +1166,20 @@
       "path": "resources/images/inaturalist/53637930.jpg",
       "sha256": "3246e9e606f61cad5bd3318704bfd59a156a9b8bb0b47ecf9e13e52eb1124c64",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Macrocilix maia",
+      "taxon_id": "321235",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -595,7 +1190,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Chitonidae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/4016368.jpg",
+    "image": "qrc:/resources/images/inaturalist/155300806.jpeg",
     "educational_kingdom": "Animalia",
     "taxonomy": [
       "taxon:cac47417164883d60794",
@@ -614,17 +1209,26 @@
     "source_taxon_id": "416608",
     "source_url": "https://www.inaturalist.org/taxa/416608",
     "photo": {
-      "id": "4016368",
+      "id": "155300806",
+      "scientific_name": "Chiton glaucus",
+      "taxon_id": "416608",
       "license": "cc-by",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
-      "author": "(c) Emily Roberts, some rights reserved (CC BY)",
-      "source": "https://www.inaturalist.org/observations/3459686",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/4016368/medium.JPG",
-      "path": "resources/images/inaturalist/4016368.jpg",
-      "sha256": "344b8754e5bd123d5227b74f1f58dc5587f17071572767a915a7d938919d5026",
+      "author": "(c) Luca Davenport-Thomas, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/93687784",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/155300806/large.jpeg",
+      "path": "resources/images/inaturalist/155300806.jpeg",
+      "sha256": "2702a57dbdb77fcd3b96ecb6d676584b84fe7a17436904811506ed10fedf2731",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -665,8 +1269,17 @@
       "path": "resources/images/inaturalist/8658322.jpg",
       "sha256": "584da1ca070b5c0c72515f24e2d09cb2b7737ed1fe450699c04a8f4026ccec64",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Geminaria canalis",
+      "taxon_id": "259535",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -704,8 +1317,17 @@
       "path": "resources/images/inaturalist/12637215.jpg",
       "sha256": "0450a0beafaf4809b210f125e4b40e175b4d85df1c4b9de57567b8f4231f3a17",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Stegodyphus dumicola",
+      "taxon_id": "415113",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -743,8 +1365,17 @@
       "path": "resources/images/inaturalist/254703040.jpeg",
       "sha256": "fc105fdc7431932ee8c11cec026c73d3f03934b49ab86988113b60f67e1e9ba4",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Astroscopus zephyreus",
+      "taxon_id": "94762",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -783,8 +1414,13 @@
       "path": "resources/images/inaturalist/111492748.jpeg",
       "sha256": "9d6cfb8750c8a13f87b121ab25bcb3375830590450350f3180c10475caeaf4bd",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Latia neritoides",
+      "taxon_id": "143636",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -826,8 +1462,17 @@
       "path": "resources/images/inaturalist/422526180.jpeg",
       "sha256": "72c70663f988ff450629192311bb49ea64e6ab893777841aeef0acf6a8d2c776",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Xenocnema spinipes",
+      "taxon_id": "398792",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -869,8 +1514,20 @@
       "path": "resources/images/inaturalist/29250775.jpg",
       "sha256": "5bdc6d7fc1b852e8a8dd61e34da62b7e81fb14beb1822597d8898905e2d5161b",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Sphaerocoris annulus",
+      "taxon_id": "357668",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -906,8 +1563,13 @@
       "path": "resources/images/inaturalist/70152459.jpg",
       "sha256": "5cb7e5df1930835378700255b982170352253c246f09db0b0bdc4935551ec080",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+      "scientific_name": "Podilymbus podiceps",
+      "taxon_id": "4246",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -950,8 +1612,13 @@
       "path": "resources/images/inaturalist/211654606.jpeg",
       "sha256": "ef446bd1b274e9c481fe5f7f48160851677bf1eaee99df67d23ebc26e7924df6",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+      "scientific_name": "Polyergus longicornis",
+      "taxon_id": "1113785",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -992,8 +1659,17 @@
       "path": "resources/images/inaturalist/123931576.jpg",
       "sha256": "908419e30c8f48d536936d7a23913702511519d2421217150d8b73477422687f",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Dicarnosis erythrocephala",
+      "taxon_id": "1238320",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1026,14 +1702,23 @@
       "id": "68055096",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "Ferhat Gundogdu",
       "source": "https://www.inaturalist.org/observations/42850346",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/68055096/medium.jpg",
       "path": "resources/images/inaturalist/68055096.jpg",
       "sha256": "1acae2e9eb03009aabdf15e83d2fea9767943c910a3a42b29e61142d1963d579",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Pachypodistes angulata",
+      "taxon_id": "1075803",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1075,8 +1760,17 @@
       "path": "resources/images/inaturalist/31118856.jpeg",
       "sha256": "3750c75430d92ca74088a27a3e6623b442e508e8a1e45977db7bf5095dab80f6",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Chortophaga viridifasciata",
+      "taxon_id": "126600",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1112,8 +1806,17 @@
       "path": "resources/images/inaturalist/104246.jpg",
       "sha256": "a83f0d832ee50f530132bae4f3c323c68bb388c4ffd6a96841ef3ca6d472ab44",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Laterallus rogersi",
+      "taxon_id": "1583664",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1155,8 +1858,17 @@
       "path": "resources/images/inaturalist/5726540.jpg",
       "sha256": "6418b9df60e27e952ab67d4c1bd328496fbb935f2bd2eeb7e791af131ffe71b9",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Cyphonia clavata",
+      "taxon_id": "518287",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1195,7 +1907,12 @@
       "sha256": "8bf0e020df8fcfd308299fa961b012b70aca8850d241593ba0e0e6a952bf0c3a",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Bassia bassensis",
+      "taxon_id": "1238899",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -1238,8 +1955,13 @@
       "path": "resources/images/inaturalist/471069278.png",
       "sha256": "75065cf007adb31256cac32554380d23f691e79f40592c548894cfcd6f2cba46",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+      "scientific_name": "Teleogryllus commodus",
+      "taxon_id": "397920",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -1276,14 +1998,23 @@
       "id": "338534567",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "NINA WENÓLI",
       "source": "https://www.inaturalist.org/observations/192798616",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/338534567/medium.jpg",
       "path": "resources/images/inaturalist/338534567.jpg",
       "sha256": "17239ef76bdb8b417d20ba9ae311011fc21e1cf94841698adf8266981f55a542",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Ovalimantis maculata",
+      "taxon_id": "748796",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1319,8 +2050,17 @@
       "path": "resources/images/inaturalist/98915545.jpeg",
       "sha256": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Incilius periglenes",
+      "taxon_id": "65851",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1331,7 +2071,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Brachytheciaceae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/137831916.jpeg",
+    "image": "qrc:/resources/images/inaturalist/613353234.jpg",
     "educational_kingdom": "Plantae",
     "taxonomy": [
       "taxon:56956496cf600779dc1f",
@@ -1346,17 +2086,26 @@
     "source_taxon_id": "120909",
     "source_url": "https://www.inaturalist.org/taxa/120909",
     "photo": {
-      "id": "137831916",
-      "license": "cc0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
-      "source": "https://www.inaturalist.org/observations/83899790",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/137831916/medium.jpeg",
-      "path": "resources/images/inaturalist/137831916.jpeg",
-      "sha256": "a55e59f45864733cf00362c2435a786b589f535500d7c7d4145c5fd9e7d9afcd",
+      "id": "613353234",
+      "scientific_name": "Kindbergia oregana",
+      "taxon_id": "120909",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) elik03, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/337405964",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/613353234/large.jpg",
+      "path": "resources/images/inaturalist/613353234.jpg",
+      "sha256": "8a9e1fc340f164b5299351202b67a940e9d8a4e544916eaf43f780d053f85bad",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -1395,8 +2144,20 @@
       "path": "resources/images/inaturalist/47249680.jpeg",
       "sha256": "e16d1a10c573c798ab9c33a5bed978ab625a4e7b75b7b356690b3821831923ab",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Dictyanthus pavonii",
+      "taxon_id": "277452",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1433,8 +2194,20 @@
       "path": "resources/images/inaturalist/251673570.jpg",
       "sha256": "f7ac7a9967e66ed20f310f689b10ef7949fd2443ac512728703d042f449dada7",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Hydnora esculenta",
+      "taxon_id": "429583",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1470,8 +2243,20 @@
       "path": "resources/images/inaturalist/61481606.jpeg",
       "sha256": "6e92a5923d411e33971889c573b53c689b55d66e0a749a0551620f9dc4293d82",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Lunularia cruciata",
+      "taxon_id": "55703",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1482,7 +2267,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Polypodiaceae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/31018368.jpg",
+    "image": "qrc:/resources/images/inaturalist/13657957.jpg",
     "educational_kingdom": "Plantae",
     "taxonomy": [
       "taxon:56956496cf600779dc1f",
@@ -1500,17 +2285,26 @@
     "source_taxon_id": "55104",
     "source_url": "https://www.inaturalist.org/taxa/55104",
     "photo": {
-      "id": "31018368",
-      "license": "cc0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
-      "source": "https://www.inaturalist.org/observations/20086150",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/31018368/medium.jpg",
-      "path": "resources/images/inaturalist/31018368.jpg",
-      "sha256": "72b27e0842bcf52c121bc984f610b6203d587a62cb08a25b9de8601b4c80e504",
+      "id": "13657957",
+      "scientific_name": "Polypodium glycyrrhiza",
+      "taxon_id": "55104",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Harry Podschwit, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/9948504",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/13657957/large.jpg",
+      "path": "resources/images/inaturalist/13657957.jpg",
+      "sha256": "119e68b46b694b04d1b42a7a5c132721565241e30621e23185fdc08b8e972016",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -1547,8 +2341,17 @@
       "path": "resources/images/inaturalist/489573459.jpg",
       "sha256": "23f1d03c3141bfade44638a4d07c36898df5542d5bc1cda20abc18e38a521d62",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Marah macrocarpa",
+      "taxon_id": "77959",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1586,8 +2389,20 @@
       "path": "resources/images/inaturalist/540416886.jpg",
       "sha256": "1a119d345b08edfd4205b8f86544078e854eaa221ee29efe4feda9beab252c3f",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Mastigostyla macbridei",
+      "taxon_id": "1619676",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1627,8 +2442,20 @@
       "path": "resources/images/inaturalist/482684019.jpg",
       "sha256": "3d6416a0471a3808307f38f36dd93203bcf7678619c4e3eb5a7a65e4b9d73ce9",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Tulipa regelii",
+      "taxon_id": "565848",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1639,7 +2466,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Proteaceae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/120009929.jpeg",
+    "image": "qrc:/resources/images/inaturalist/371617112.jpeg",
     "educational_kingdom": "Plantae",
     "taxonomy": [
       "taxon:56956496cf600779dc1f",
@@ -1658,17 +2485,29 @@
     "source_taxon_id": "440714",
     "source_url": "https://www.inaturalist.org/taxa/440714",
     "photo": {
-      "id": "120009929",
-      "license": "cc0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
-      "source": "https://www.inaturalist.org/observations/73504860",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/120009929/medium.jpeg",
-      "path": "resources/images/inaturalist/120009929.jpeg",
-      "sha256": "9d8d592c3e7d2376ee1e84a38d4efc6dfc6387646faff905cb610ca5b29dbc1a",
+      "id": "371617112",
+      "scientific_name": "Mimetes chrysanthus",
+      "taxon_id": "440714",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Christiaan Viljoen, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/210059896",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/371617112/large.jpeg",
+      "path": "resources/images/inaturalist/371617112.jpeg",
+      "sha256": "578d9783098c12f6d268e4bee9d73ec9109b592ea36b82f8ad03d33fcbb613e0",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -1704,8 +2543,17 @@
       "path": "resources/images/inaturalist/230066559.jpg",
       "sha256": "41efd4f8f5d0edbdf562c6b045b719076a048f24b235839c8e35fda50cc15851",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Asterella drummondii",
+      "taxon_id": "625511",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1742,8 +2590,17 @@
       "path": "resources/images/inaturalist/167101616.jpeg",
       "sha256": "0880b1e0c45a88a72ab8b1f4ceeac04fc9256e5a31304dd66ede714d185513e1",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Viburnum opulus",
+      "taxon_id": "55969",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1777,12 +2634,24 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
       "source": "https://www.inaturalist.org/observations/29063155",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45341427/medium.jpeg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45341427/large.jpeg",
       "path": "resources/images/inaturalist/45341427.jpeg",
-      "sha256": "2a431aeca1b5d9508de5cd0dfb9d4401ded60df4c248b229213ad220acb00fca",
+      "sha256": "c0676380294745abf27001420cb576838999852d2dc973f09dfac0887d94477b",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Xanthosoma robustum",
+      "taxon_id": "284200",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1823,8 +2692,17 @@
       "path": "resources/images/inaturalist/20397049.jpeg",
       "sha256": "c3a5d8036ed431a770aba1e9adbe87b8529d23a94aa803ff323337fc2986cf71",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Pleurothallis maitamae",
+      "taxon_id": "1658711",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1861,7 +2739,12 @@
       "sha256": "fdd27606776ba824f4b4b02d4f7d74b5cc5ac80f84b1a9e112d57c555d63385f",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Betula neoalaskana",
+      "taxon_id": "159229",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -1900,8 +2783,20 @@
       "path": "resources/images/inaturalist/251548988.jpeg",
       "sha256": "ed8b59248c5718450fe0ac7c57f4c033294af62c7221fbdd95bffb795d2ad515",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Pleurophyllum speciosum",
+      "taxon_id": "405006",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1939,8 +2834,20 @@
       "path": "resources/images/inaturalist/111803110.jpeg",
       "sha256": "cb49802be933949c9379e838920b3623ac3b0031813828d4d64bbddc713fffbc",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Dracaena cinnabari",
+      "taxon_id": "124825",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -1977,8 +2884,13 @@
       "path": "resources/images/inaturalist/321855344.jpg",
       "sha256": "53043652fab15d79c9cb2ab5df1eeb527b3a7e9a8a2bbbfe7549b668512c7c5f",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Coptis trifolia",
+      "taxon_id": "126251",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2014,8 +2926,17 @@
       "path": "resources/images/inaturalist/185341429.jpeg",
       "sha256": "6757ea87c07e303966347a2599fc359e12dd0f0bf80618a691a65e2a30efaec7",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Huperzia lucidula",
+      "taxon_id": "82407",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2052,8 +2973,20 @@
       "path": "resources/images/inaturalist/93034327.jpeg",
       "sha256": "d3f7f61cb7a3406c348661b93ab27a228609425315f9733cc6e5528924671bdb",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Verbascum thapsus",
+      "taxon_id": "59029",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2094,8 +3027,17 @@
       "path": "resources/images/inaturalist/108445674.jpeg",
       "sha256": "79afa1078799f6b2c46a34b0b52324583aeb561d338da15ae71138e3936528ac",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Euphorbia duckei",
+      "taxon_id": "936461",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2134,8 +3076,20 @@
       "path": "resources/images/inaturalist/330405159.jpg",
       "sha256": "249dc036e2ec6cf588ff94d97bcb48598854eb49e1f734089792a025be431b3c",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Stropharia caerulea",
+      "taxon_id": "118196",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2175,8 +3129,20 @@
       "path": "resources/images/inaturalist/345801259.jpg",
       "sha256": "24aa1a336b91db54b284fbf57623ca07aeb047deb1012a821e082d7b620b86b6",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Favolaschia claudopus",
+      "taxon_id": "1367786",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2207,14 +3173,26 @@
       "id": "231974984",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "Paula Romano",
       "source": "https://www.inaturalist.org/observations/135963380",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/231974984/medium.jpeg",
       "path": "resources/images/inaturalist/231974984.jpeg",
       "sha256": "dc55d43d5eb127e999259917f0ac5bdd0593b1b68307f7243f66ef1528bbc1f2",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Cladonia imperialis",
+      "taxon_id": "1228995",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2248,8 +3226,13 @@
       "path": "resources/images/inaturalist/59270879.jpeg",
       "sha256": "168bee54c0adfd7561918efd3562e77e3349fa8c1b4b1315fabcbe75a9686fd9",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Dendrostilbella smaragdina",
+      "taxon_id": "518862",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2280,14 +3263,26 @@
       "id": "27005174",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "Ken Kneidel",
       "source": "https://www.inaturalist.org/observations/17714364",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/27005174/medium.jpg",
       "path": "resources/images/inaturalist/27005174.jpg",
       "sha256": "72838266acece553c47812e78fcd3bc6974acb5d8df9842a93a7334d2c5d82be",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Trametes versicolor",
+      "taxon_id": "54134",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2325,8 +3320,13 @@
       "path": "resources/images/inaturalist/356956710.jpg",
       "sha256": "4861fe304f9839a7b5f41f8cd0076bbd9959a17a326618c8dcb5a70747ee3d21",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Schizophyllum commune",
+      "taxon_id": "54573",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2363,8 +3363,20 @@
       "path": "resources/images/inaturalist/349810134.jpeg",
       "sha256": "6c220ee184956e70a6e21d53fe9189829eca0ee63e307954121f5a1f56af6510",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Ganoderma brownii",
+      "taxon_id": "348812",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2406,8 +3418,20 @@
       "path": "resources/images/inaturalist/606817545.jpg",
       "sha256": "954e18d79e26f39dffa7a9fe8fbfca7482469a65a4a265e19cca181c149aabb6",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Marasmius haematocephalus",
+      "taxon_id": "328225",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2441,12 +3465,17 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
       "source": "https://www.inaturalist.org/observations/4751190",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5777965/medium.jpeg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5777965/large.jpeg",
       "path": "resources/images/inaturalist/5777965.jpeg",
-      "sha256": "88ddd2ad80cfa2e0c5ae1bb193b5690b65c7d05b801ffc16838acadd81f92702",
+      "sha256": "7ec683e50cfb5ae0321c10aced492a53a2b883f032c94f4dfed8ddb62837c97a",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+      "scientific_name": "Mycena globulispora",
+      "taxon_id": "798039",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2484,8 +3513,20 @@
       "path": "resources/images/inaturalist/93399523.jpeg",
       "sha256": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Coprinus comatus",
+      "taxon_id": "47392",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2523,7 +3564,12 @@
       "sha256": "1e5663f7ffcf1fab79951d542be9faedb2387785764353cf5edbf76e5a8ca43a",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto contextual ou microsc?pica com limita??es; quiz textual baseado na classifica??o."
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Erysiphe abbreviata",
+      "taxon_id": "534312",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2562,8 +3608,20 @@
       "path": "resources/images/inaturalist/130004238.jpeg",
       "sha256": "234315f2a4fab7a0deff91d01d443b4c7ee1ad12f144daee911530736f714e28",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Cortinarius archeri",
+      "taxon_id": "355974",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2600,8 +3658,20 @@
       "path": "resources/images/inaturalist/2279530.jpg",
       "sha256": "6752f10fc706027bd884edb7e6dfee72311ca69c360079dc0f06743800610e02",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Xylaria tentaculata",
+      "taxon_id": "352953",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2636,8 +3706,13 @@
       "path": "resources/images/inaturalist/357886873.jpg",
       "sha256": "00312bf6a531fac4275e99493d06691eaa72324935c2617cd464a5ee2b1b38a5",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Pandora batallata",
+      "taxon_id": "1540909",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2675,8 +3750,13 @@
       "path": "resources/images/inaturalist/291136956.jpg",
       "sha256": "dea904ed8ff56051f9c297e84d28fec2629ef50ffc459f7cb7cf1a45f479a361",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+      "scientific_name": "Psathyrella aquatica",
+      "taxon_id": "505333",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -2687,7 +3767,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Mycenaceae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/178409678.jpeg",
+    "image": "qrc:/resources/images/inaturalist/178409675.jpeg",
     "educational_kingdom": "Fungi",
     "taxonomy": [
       "taxon:31fdb10b7300d45a9dcf",
@@ -2705,17 +3785,29 @@
     "source_taxon_id": "68309",
     "source_url": "https://www.inaturalist.org/taxa/68309",
     "photo": {
-      "id": "178409678",
+      "id": "178409675",
+      "scientific_name": "Panellus stipticus",
+      "taxon_id": "68309",
       "license": "cc-by",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
       "source": "https://www.inaturalist.org/observations/106224223",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/178409678/medium.jpeg",
-      "path": "resources/images/inaturalist/178409678.jpeg",
-      "sha256": "b054166781eba51345c722d8bb5f28995bd994855f942f7c38dc2b5f0c95a062",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/178409675/large.jpeg",
+      "path": "resources/images/inaturalist/178409675.jpeg",
+      "sha256": "2c39e33e296276f605a2ee144fe85fb3135a6c4bc69f26c69652057361f53082",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -2752,8 +3844,20 @@
       "path": "resources/images/inaturalist/351186569.jpeg",
       "sha256": "2bfd3d3b9708642e9ddb3ca01d94361b8df8e27229e8aeefc342d3d2995abd84",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Wawelia microspora",
+      "taxon_id": "1651769",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2793,8 +3897,20 @@
       "path": "resources/images/inaturalist/245357302.jpg",
       "sha256": "4cf5a8f0a3992421dbe59480cb140761a2a5acf0d57503faa66751ce35fde26f",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Entoloma trachyosporum",
+      "taxon_id": "1423743",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2831,8 +3947,20 @@
       "path": "resources/images/inaturalist/151574414.jpeg",
       "sha256": "679a9eb994f821f7f0b619dbf012470c1667cc44ccce90289e60eb41d048b1cb",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Pseudoboletus parasiticus",
+      "taxon_id": "125724",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2869,8 +3997,20 @@
       "path": "resources/images/inaturalist/176600250.jpeg",
       "sha256": "6ac3703a3f516192a2ba6462839c66eb8f59f683d51add77767a82745f3d429a",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Comatricha nigra",
+      "taxon_id": "56565",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2907,8 +4047,20 @@
       "path": "resources/images/inaturalist/596675431.jpg",
       "sha256": "8cc91f90882609eea79e56ac2407543969e3d49f7d5b116bd4d8c1089b6355ed",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Hemitrichia serpula",
+      "taxon_id": "179151",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2945,8 +4097,20 @@
       "path": "resources/images/inaturalist/80915734.jpg",
       "sha256": "42bf5da2a497e9de080294d1e01576666ebd71f0da415ddf143896ca2b9d9d43",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Metatrichia vesparia",
+      "taxon_id": "552574",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -2984,8 +4148,13 @@
       "path": "resources/images/inaturalist/144194751.jpg",
       "sha256": "806d108e60d39c633dbfb4ffe1a7c10d3000eb775cbe0e9f5ce6bea85338d1e1",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+      "scientific_name": "Tubifera ferruginosa",
+      "taxon_id": "126522",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3023,8 +4192,13 @@
       "path": "resources/images/inaturalist/157125794.jpg",
       "sha256": "3c4f2635d936bfab53602436d88cc4b373bcc1c1f421ac1cc8598a7cf5305db0",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Arcella conica",
+      "taxon_id": "951636",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3061,8 +4235,20 @@
       "path": "resources/images/inaturalist/31473154.jpg",
       "sha256": "b321dcd94291d6adfc1e5f89ef988dc0e82aece67f63636dc8a7015086455f98",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Physarum psittacinum",
+      "taxon_id": "503891",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3097,8 +4283,20 @@
       "path": "resources/images/inaturalist/342355226.jpg",
       "sha256": "a42736e64b6b2faea2b4c8f909c4b274cb83e41daa7795058d282b3017e54891",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Ceratiomyxa fruticulosa",
+      "taxon_id": "56252",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3135,8 +4333,20 @@
       "path": "resources/images/inaturalist/4592237.jpeg",
       "sha256": "2032dccfee1c90a14ceb4f89a14d91afdda804523616ca90fe53cc7a4c58fd3d",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Arcyria denudata",
+      "taxon_id": "56262",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3174,8 +4384,13 @@
       "path": "resources/images/inaturalist/588568892.jpg",
       "sha256": "1202804b7de53237b8ffd71250d0b2468162ac83b9fc59e7a573dafc128be75a",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Planocarina marginata",
+      "taxon_id": "1071933",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3213,8 +4428,13 @@
       "path": "resources/images/inaturalist/322085831.jpg",
       "sha256": "0b6bd4e27529028435c2f193f375c72dbbaaabb919fa1b6f68998e1792bfb072",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Galeripora dentata",
+      "taxon_id": "1390975",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3249,8 +4469,13 @@
       "path": "resources/images/inaturalist/156970348.jpg",
       "sha256": "b0b1bb60d34da054c462a06bc99b86821cd16b8879f543742d2f39f6ecd944bc",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Lepocinclis fusca",
+      "taxon_id": "865889",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3288,8 +4513,13 @@
       "path": "resources/images/inaturalist/588721568.jpg",
       "sha256": "b7f7c55ba662251c4f407a785a506476ac3cf806c39d87c94bbc949109713262",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Difflugia bacillifera",
+      "taxon_id": "1491099",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3326,8 +4556,20 @@
       "path": "resources/images/inaturalist/185087187.jpg",
       "sha256": "a83ccb0f07b258738cd1ae6a86786b9d7f4d8d05af17c49c4cd00d82ca456b50",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Heterotrichia versicolor",
+      "taxon_id": "1581564",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3364,8 +4606,20 @@
       "path": "resources/images/inaturalist/251110486.jpg",
       "sha256": "1b80107916b440bb32fe71a469f9d4712d8b4089abce5b43fab283c0ebe3df5d",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Leocarpus fragilis",
+      "taxon_id": "56273",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3376,7 +4630,7 @@
     "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
     "family": "Physaraceae",
     "region": "Distribuição não revisada; consulte o registro de origem.",
-    "image": "qrc:/resources/images/inaturalist/448498951.jpeg",
+    "image": "qrc:/resources/images/inaturalist/291002427.jpg",
     "educational_kingdom": "Protista",
     "taxonomy": [
       "taxon:60084ec45040753637d0",
@@ -3393,17 +4647,26 @@
     "source_taxon_id": "1598948",
     "source_url": "https://www.inaturalist.org/taxa/1598948",
     "photo": {
-      "id": "448498951",
-      "license": "cc0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
-      "source": "https://www.inaturalist.org/observations/250735459",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/448498951/medium.jpeg",
-      "path": "resources/images/inaturalist/448498951.jpeg",
-      "sha256": "25143ae24eaa61dc89fbeb0a8504ac23e84d382415e7d8b42c923397f96f9537",
+      "id": "291002427",
+      "scientific_name": "Badhamia polycephala",
+      "taxon_id": "1598948",
+      "license": "cc-by",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "author": "(c) Jeff, some rights reserved (CC BY)",
+      "source": "https://www.inaturalist.org/observations/167950949",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/291002427/large.jpg",
+      "path": "resources/images/inaturalist/291002427.jpg",
+      "sha256": "12cd5e62f5047a8bf22222a5423930c8e93b1207407f11a65b2385ac166c607d",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "source_verified": true
     }
   },
   {
@@ -3441,8 +4704,13 @@
       "path": "resources/images/inaturalist/513628641.jpg",
       "sha256": "e862ceb68814a787cf54a8b3934311202368337834e84dbb2ff01acb48e2b150",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Netzelia corona",
+      "taxon_id": "950783",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3479,8 +4747,20 @@
       "path": "resources/images/inaturalist/59617028.jpeg",
       "sha256": "9588735a6c1d138a1bf0518aec5b9e3dcf4a11998d046b2c17e03a4e8e62e5d8",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Diderma effusum",
+      "taxon_id": "327919",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -3518,8 +4798,13 @@
       "path": "resources/images/inaturalist/465907310.jpg",
       "sha256": "ecd57304e6d8e60a8845bfde61850c0a070d1fbbf775c1d9b3e1319b43fb3934",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Nebela penardiana",
+      "taxon_id": "1592311",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3557,8 +4842,13 @@
       "path": "resources/images/inaturalist/594387576.jpg",
       "sha256": "52096aef384b01ffb3298285bc7b77cf70be4cd4adddf600b4bb4a6f88d8bfc0",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Cyclopyxis pirini",
+      "taxon_id": "1585018",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3596,8 +4886,13 @@
       "path": "resources/images/inaturalist/583650058.jpg",
       "sha256": "3ad1de4f6cc066cbd74decc32ffb659e0e98ceaf818ad3380bb2b1a7f0d3baa6",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+      "scientific_name": "Awerintzewia cyclostoma",
+      "taxon_id": "1646783",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3633,7 +4928,12 @@
       "sha256": "0ebbed49cb9b35bea711edb780d93eeed56a21242c6f2ba87871c227c1d4c759",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Sphingomonas phyllosphaerae",
+      "taxon_id": "534769",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3670,7 +4970,12 @@
       "sha256": "88df346c60fe3fd4883c53494d18a015cdca8fa93a96776b938644ffb7da57c9",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Dolichospermum lemmermannii",
+      "taxon_id": "566238",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3699,14 +5004,19 @@
       "id": "58089762",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "Garrett Taylor",
       "source": "https://www.inaturalist.org/observations/36720806",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/58089762/medium.jpg",
       "path": "resources/images/inaturalist/58089762.jpg",
       "sha256": "fbe484235ee316145ce3de1cb4910ca47897062755d31d48b88883d1a7644f1d",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Serratia marcescens",
+      "taxon_id": "356660",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3742,7 +5052,12 @@
       "sha256": "e1af4224b406c3fff9510a66ce0c0798744e40356b92ed70e01b520e3e50bd26",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Thiohalocapsa halophila",
+      "taxon_id": "1096796",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3780,7 +5095,12 @@
       "sha256": "e45c0a1ddd56ff0e41bd997edb753eedc255464b3d7beb0305c64e3facc17bef",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Merismopedia convoluta",
+      "taxon_id": "533816",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3817,7 +5137,12 @@
       "sha256": "e34817d0339bbc66feafaf02cb9cb2c3314c1640fb7e67e53246677e107cf5b2",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Arthrospira jenneri",
+      "taxon_id": "503775",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3853,7 +5178,12 @@
       "sha256": "9f43271f0a316e1fda3e8726cbb6653e377898bad50156a9c010b334c6f4bc61",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Beggiatoa alba",
+      "taxon_id": "1277012",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3890,7 +5220,12 @@
       "sha256": "6170305c8642f8b5a73bc95df4ba7bc45edfc3678ae5a85a5f87d147af60b080",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Gomphosphaeria aponina",
+      "taxon_id": "733075",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3922,12 +5257,17 @@
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
       "author": "no rights reserved",
       "source": "https://www.inaturalist.org/observations/358747771",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/654470799/medium.jpg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/654470799/large.jpg",
       "path": "resources/images/inaturalist/654470799.jpg",
-      "sha256": "5b21e3bac9409285474ca8e0cc5f7a9d78493a825f08b72d3ca8cccadc11b5f3",
+      "sha256": "4f88fe22efaa9b62671aa78574678adc668aed5f27019abae5da766ae4f5f023",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Anabaena torulosa",
+      "taxon_id": "968458",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -3963,7 +5303,12 @@
       "sha256": "a7d9860aea207dcc90701af401b2a1a860272e1f9ca0a79c4caa4d798bb16ee7",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto mostra hospedeiro ou sintomas, sem representar o microrganismo. Imagem omitida."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Phytoplasma asteris",
+      "taxon_id": "773806",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4000,7 +5345,12 @@
       "sha256": "4408d469b1ace57fe590b0e05f1585eb1b7dfcfd027fa80363249a7f470b5fca",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Gloeotrichia intermedia",
+      "taxon_id": "992168",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4036,7 +5386,12 @@
       "sha256": "c264e3f949dcc6ffa0c352dc03dca26a75982a54141c0e4984cf39f37b389ca7",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Leptothrix discophora",
+      "taxon_id": "490808",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4066,14 +5421,19 @@
       "id": "407087233",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "David Bird",
       "source": "https://www.inaturalist.org/observations/229347803",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/407087233/medium.jpg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/407087233/large.jpg",
       "path": "resources/images/inaturalist/407087233.jpg",
-      "sha256": "49c35ddfe1acc2831951ff9a685866c5896920e78c38cc9bba7d9ed6138362a1",
+      "sha256": "c4b1e5a45000dead4374b31a530daa1896ff9b4fe5a2bc0ee1da36d6e6ed1cfc",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Johanseninema constrictum",
+      "taxon_id": "1583266",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4103,12 +5463,17 @@
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "author": "(c) Auradyme, some rights reserved (CC BY)",
       "source": "https://www.inaturalist.org/observations/183812776",
-      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/320741885/medium.jpeg",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/320741885/large.jpeg",
       "path": "resources/images/inaturalist/320741885.jpeg",
-      "sha256": "9c868c229a7f23988f31c9d4c28a98c74c3bf198352dc637024ad1cb623a2b02",
+      "sha256": "0818d489a6d6d6a41bfa593418f4845d0b4bbad1c8e95c5cca9523501c51524a",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto mostra hospedeiro ou sintomas, sem representar o microrganismo. Imagem omitida."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Chlamydophila pecorum",
+      "taxon_id": "1161132",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4145,7 +5510,12 @@
       "sha256": "b4e9517603a6ec04653561ea4724c805a5b2869eecdffab9399419c3fddb4430",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Hassallia byssoidea",
+      "taxon_id": "1523336",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4181,7 +5551,12 @@
       "sha256": "1cac4e49950f0d45bde2accb09b17acd01ea6089ca777b7876609f665ca553a6",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Aeromonas caviae",
+      "taxon_id": "1051359",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4217,7 +5592,12 @@
       "sha256": "eb944c162617801ea762314f8fcd392bc6814a98c7cd0f937ccb0a0f8ed4f7a9",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Pseudomonas fluorescens",
+      "taxon_id": "1051363",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4246,14 +5626,19 @@
       "id": "581394987",
       "license": "cc0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "author": "no rights reserved",
+      "author": "David Bird",
       "source": "https://www.inaturalist.org/observations/321473852",
       "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/581394987/medium.jpg",
       "path": "resources/images/inaturalist/581394987.jpg",
       "sha256": "5bffe8b45176e23a98f03b7619fb791fc097f2e0e3963a7d20f1750a66b5cf1b",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Achromatium oxaliferum",
+      "taxon_id": "1282552",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4290,7 +5675,12 @@
       "sha256": "7ad82fcc8cd4ff6472f1e70540d2451f1834f7b750aef2849f7aff95388cfbf9",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Chroococcus turgidus",
+      "taxon_id": "491434",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   },
   {
@@ -4328,8 +5718,20 @@
       "path": "resources/images/inaturalist/5668201.jpeg",
       "sha256": "8dab6253433186005b58ba886652597a2eb2b4ddd3294f0991f3522895b94a3d",
       "research_grade": true,
-      "visual_quiz": true,
-      "review": "Triagem visual: organismo vis?vel. Identifica??o comunit?ria; valida??o taxon?mica editorial pendente."
+      "visual_quiz": false,
+      "review": "Organismo visível e vínculo com o táxon da observação conferido. Identificação comunitária conservada; nível de espécie não aprovado sem caracteres diagnósticos suficientes.",
+      "scientific_name": "Psilocybe allenii",
+      "taxon_id": "348831",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "source_verified": true
     }
   },
   {
@@ -4367,7 +5769,12 @@
       "sha256": "a57a8e4928f9c1ed4da435fe656c639983dec1ff05be3123946ad49d4908ccc1",
       "research_grade": true,
       "visual_quiz": false,
-      "review": "Foto de registro comunit?rio; identifica??o de esp?cie exige confirma??o al?m da fotografia. Quiz textual."
+      "review": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+      "scientific_name": "Merismopedia tranquilla",
+      "taxon_id": "1558826",
+      "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+      "approved_ranks": [],
+      "source_verified": true
     }
   }
 ]

@@ -1,0 +1,1513 @@
+{
+  "date": "2026-10-14T18:49:59.899391+00:00",
+  "candidates": [],
+  "source_audit": [
+    {
+      "id": 1,
+      "photo_id": "280989671",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 2,
+      "photo_id": "376647594",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 3,
+      "photo_id": "586365614",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 4,
+      "photo_id": "175474265",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 5,
+      "photo_id": "401685857",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 6,
+      "photo_id": "322926715",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 7,
+      "photo_id": "359063525",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 8,
+      "photo_id": "749769318",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 9,
+      "photo_id": "51317278",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 10,
+      "photo_id": "60643931",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 11,
+      "photo_id": "34980868",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 12,
+      "photo_id": "137265535",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 13,
+      "photo_id": "44218494",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 14,
+      "photo_id": "664105606",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 15,
+      "photo_id": "560140869",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 16,
+      "photo_id": "45110154",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 18,
+      "photo_id": "221780102",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 19,
+      "photo_id": "321803659",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 20,
+      "photo_id": "655494534",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 21,
+      "photo_id": "43280362",
+      "source_match": true,
+      "approved_ranks": [
+        "species",
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 23,
+      "photo_id": "357771622",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 24,
+      "photo_id": "53637930",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 25,
+      "photo_id": "155300806",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 26,
+      "photo_id": "8658322",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 27,
+      "photo_id": "12637215",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 28,
+      "photo_id": "254703040",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 29,
+      "photo_id": "111492748",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 30,
+      "photo_id": "422526180",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 31,
+      "photo_id": "29250775",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 32,
+      "photo_id": "70152459",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 33,
+      "photo_id": "211654606",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 34,
+      "photo_id": "123931576",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 35,
+      "photo_id": "68055096",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 36,
+      "photo_id": "31118856",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 37,
+      "photo_id": "104246",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 38,
+      "photo_id": "5726540",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 39,
+      "photo_id": "234592351",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 40,
+      "photo_id": "471069278",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 41,
+      "photo_id": "338534567",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 42,
+      "photo_id": "98915545",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 43,
+      "photo_id": "613353234",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 44,
+      "photo_id": "47249680",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 45,
+      "photo_id": "251673570",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 46,
+      "photo_id": "61481606",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 47,
+      "photo_id": "13657957",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 48,
+      "photo_id": "489573459",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 49,
+      "photo_id": "540416886",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 50,
+      "photo_id": "482684019",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 51,
+      "photo_id": "371617112",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 52,
+      "photo_id": "230066559",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 53,
+      "photo_id": "167101616",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 54,
+      "photo_id": "45341427",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 55,
+      "photo_id": "20397049",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 56,
+      "photo_id": "344593119",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 57,
+      "photo_id": "251548988",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 58,
+      "photo_id": "111803110",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 59,
+      "photo_id": "321855344",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 60,
+      "photo_id": "185341429",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 61,
+      "photo_id": "93034327",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 62,
+      "photo_id": "108445674",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 63,
+      "photo_id": "330405159",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 64,
+      "photo_id": "345801259",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 65,
+      "photo_id": "231974984",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 66,
+      "photo_id": "59270879",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 67,
+      "photo_id": "27005174",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 69,
+      "photo_id": "356956710",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 70,
+      "photo_id": "349810134",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 71,
+      "photo_id": "606817545",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 72,
+      "photo_id": "5777965",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 73,
+      "photo_id": "93399523",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 74,
+      "photo_id": "320712583",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 75,
+      "photo_id": "130004238",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 76,
+      "photo_id": "2279530",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 77,
+      "photo_id": "357886873",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 78,
+      "photo_id": "291136956",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 79,
+      "photo_id": "178409675",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 80,
+      "photo_id": "351186569",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 81,
+      "photo_id": "245357302",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 82,
+      "photo_id": "151574414",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 83,
+      "photo_id": "176600250",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 84,
+      "photo_id": "596675431",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 85,
+      "photo_id": "80915734",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 86,
+      "photo_id": "144194751",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 87,
+      "photo_id": "157125794",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 88,
+      "photo_id": "31473154",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 89,
+      "photo_id": "342355226",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 90,
+      "photo_id": "4592237",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 91,
+      "photo_id": "588568892",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 92,
+      "photo_id": "322085831",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 93,
+      "photo_id": "156970348",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 94,
+      "photo_id": "588721568",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 95,
+      "photo_id": "185087187",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 96,
+      "photo_id": "251110486",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 97,
+      "photo_id": "291002427",
+      "source_match": true,
+      "approved_ranks": [
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 98,
+      "photo_id": "513628641",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 99,
+      "photo_id": "59617028",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 100,
+      "photo_id": "465907310",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 101,
+      "photo_id": "594387576",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 102,
+      "photo_id": "583650058",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 103,
+      "photo_id": "7906556",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 104,
+      "photo_id": "459952778",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 105,
+      "photo_id": "58089762",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 106,
+      "photo_id": "77725233",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 107,
+      "photo_id": "257195754",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 108,
+      "photo_id": "337864904",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 109,
+      "photo_id": "243782262",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 110,
+      "photo_id": "523634183",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 111,
+      "photo_id": "654470799",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 112,
+      "photo_id": "48790280",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 113,
+      "photo_id": "443586440",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 114,
+      "photo_id": "3221562",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 115,
+      "photo_id": "407087233",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 116,
+      "photo_id": "320741885",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 117,
+      "photo_id": "368743189",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 118,
+      "photo_id": "64447665",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 119,
+      "photo_id": "64448584",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 120,
+      "photo_id": "581394987",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": true
+    },
+    {
+      "id": 122,
+      "photo_id": "513524942",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    },
+    {
+      "id": 123,
+      "photo_id": "5668201",
+      "source_match": true,
+      "approved_ranks": [
+        "genus",
+        "family",
+        "order",
+        "class",
+        "phylum",
+        "kingdom"
+      ],
+      "author_available": true
+    },
+    {
+      "id": 124,
+      "photo_id": "469510982",
+      "source_match": true,
+      "approved_ranks": [],
+      "author_available": false
+    }
+  ],
+  "failures": [
+    {
+      "id": 17,
+      "reason": "Nome exato e espécie ativa não encontrados; não usar outro organismo."
+    },
+    {
+      "id": 22,
+      "reason": "Nome exato e espécie ativa não encontrados; não usar outro organismo."
+    }
+  ],
+  "baseline_commit": "c494a669b3d983042240230febca3c90f978579d",
+  "changes": {
+    "added": [
+      {
+        "id": 1,
+        "name": "Papilio machaon",
+        "photo_id": "280989671"
+      },
+      {
+        "id": 2,
+        "name": "Vanessa atalanta",
+        "photo_id": "376647594"
+      },
+      {
+        "id": 3,
+        "name": "Acherontia atropos",
+        "photo_id": "586365614"
+      },
+      {
+        "id": 4,
+        "name": "Brahmaea wallichii",
+        "photo_id": "175474265"
+      },
+      {
+        "id": 5,
+        "name": "Lymantria dispar",
+        "photo_id": "401685857"
+      },
+      {
+        "id": 6,
+        "name": "Danaus plexippus",
+        "photo_id": "322926715"
+      },
+      {
+        "id": 7,
+        "name": "Aglais io",
+        "photo_id": "359063525"
+      },
+      {
+        "id": 8,
+        "name": "Vanessa cardui",
+        "photo_id": "749769318"
+      },
+      {
+        "id": 9,
+        "name": "Bombyx mori",
+        "photo_id": "51317278"
+      },
+      {
+        "id": 10,
+        "name": "Attacus atlas",
+        "photo_id": "60643931"
+      },
+      {
+        "id": 11,
+        "name": "Actias luna",
+        "photo_id": "34980868"
+      },
+      {
+        "id": 12,
+        "name": "Hyalophora cecropia",
+        "photo_id": "137265535"
+      },
+      {
+        "id": 13,
+        "name": "Automeris io",
+        "photo_id": "44218494"
+      },
+      {
+        "id": 14,
+        "name": "Antheraea polyphemus",
+        "photo_id": "664105606"
+      },
+      {
+        "id": 15,
+        "name": "Heliconius melpomene",
+        "photo_id": "560140869"
+      },
+      {
+        "id": 16,
+        "name": "Papilio ulysses",
+        "photo_id": "45110154"
+      },
+      {
+        "id": 18,
+        "name": "Pieris brassicae",
+        "photo_id": "221780102"
+      },
+      {
+        "id": 19,
+        "name": "Galleria mellonella",
+        "photo_id": "321803659"
+      },
+      {
+        "id": 20,
+        "name": "Plodia interpunctella",
+        "photo_id": "655494534"
+      },
+      {
+        "id": 21,
+        "name": "Manduca sexta",
+        "photo_id": "43280362"
+      }
+    ],
+    "replaced": [
+      {
+        "id": 25,
+        "name": "Chiton glaucus",
+        "old_photo_id": "4016368",
+        "photo_id": "155300806"
+      },
+      {
+        "id": 43,
+        "name": "Kindbergia oregana",
+        "old_photo_id": "137831916",
+        "photo_id": "613353234"
+      },
+      {
+        "id": 47,
+        "name": "Polypodium glycyrrhiza",
+        "old_photo_id": "31018368",
+        "photo_id": "13657957"
+      },
+      {
+        "id": 51,
+        "name": "Mimetes chrysanthus",
+        "old_photo_id": "120009929",
+        "photo_id": "371617112"
+      },
+      {
+        "id": 79,
+        "name": "Panellus stipticus",
+        "old_photo_id": "178409678",
+        "photo_id": "178409675"
+      },
+      {
+        "id": 97,
+        "name": "Badhamia polycephala",
+        "old_photo_id": "448498951",
+        "photo_id": "291002427"
+      }
+    ],
+    "resolution_upgrades": [
+      {
+        "id": 23,
+        "name": "Titanomis sisyrota",
+        "photo_id": "357771622"
+      },
+      {
+        "id": 54,
+        "name": "Xanthosoma robustum",
+        "photo_id": "45341427"
+      },
+      {
+        "id": 72,
+        "name": "Mycena globulispora",
+        "photo_id": "5777965"
+      },
+      {
+        "id": 111,
+        "name": "Anabaena torulosa",
+        "photo_id": "654470799"
+      },
+      {
+        "id": 115,
+        "name": "Johanseninema constrictum",
+        "photo_id": "407087233"
+      },
+      {
+        "id": 116,
+        "name": "Chlamydophila pecorum",
+        "photo_id": "320741885"
+      }
+    ]
+  }
+}

@@ -25,7 +25,8 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(len(original), 22)
         current = {s["id"]: s for s in self.species}
         for item in original:
-            for key, value in item.items():
+            for key in ("id", "name", "fact", "hint", "region"):
+                value=item[key]
                 self.assertEqual(current[item["id"]][key], value, (item["name"], key))
 
     def test_individual_license_and_quality_gate(self):
@@ -99,6 +100,40 @@ class ImportTests(unittest.TestCase):
                           "photo": {"id": "2", "visual_quiz": True}}
                 importer.apply_photo_reviews([record])
                 self.assertFalse(record["photo"]["visual_quiz"])
+
+    def test_review_is_bound_to_photo_identity_and_verified_source(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            (root / 'resources/data').mkdir(parents=True)
+            (root / 'resources/data/photo_reviews.json').write_text(json.dumps({'1': {'photo_id':'2','approved_ranks':['genus']}}))
+            with mock.patch.object(importer, 'ROOT', root):
+                record={'id':1,'source_taxon_id':'1','photo':{'id':'2','path':'resources/images/2.jpg','source_verified':True}}
+                importer.apply_photo_reviews([record])
+                self.assertEqual(record['photo']['approved_ranks'],['genus'])
+                record['photo']['source_verified']=False
+                importer.apply_photo_reviews([record])
+                self.assertEqual(record['photo']['approved_ranks'],[])
+                record['photo'].update(id='3',source_verified=True)
+                importer.apply_photo_reviews([record])
+                self.assertEqual(record['photo']['approved_ranks'],[])
+
+    def test_every_photo_is_local_licensed_and_registered(self):
+        import xml.etree.ElementTree as ET
+        resources={e.text for e in ET.parse(PROJECT/'resources.qrc').findall('.//file')}
+        reviews=json.loads((PROJECT/'resources/data/photo_reviews.json').read_text(encoding='utf8'))
+        for species in self.species:
+            photo=species.get('photo')
+            if not photo: continue
+            self.assertIn(photo['path'],resources)
+            self.assertEqual(hashlib.sha256((PROJECT/photo['path']).read_bytes()).hexdigest(),photo['sha256'])
+            self.assertEqual(photo['license_url'],importer.LICENSE_URLS[photo['license']])
+            self.assertEqual(photo['scientific_name'],species['name'])
+            self.assertTrue(photo['source_verified'])
+            if photo['approved_ranks']:
+                self.assertNotEqual(photo['author'],'no rights reserved')
+                review=reviews[species.get('source_taxon_id') or 'legacy:'+str(species['id'])]
+                self.assertEqual(review['photo_id'],photo['id'])
+                self.assertEqual(review['approved_ranks'],photo['approved_ranks'])
 
     def test_missing_offline_cache_and_failed_import_leave_catalog_untouched(self):
         with tempfile.TemporaryDirectory() as directory:

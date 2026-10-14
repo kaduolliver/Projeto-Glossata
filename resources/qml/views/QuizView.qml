@@ -6,12 +6,14 @@ import "../components"
 
 Item {
     id: view
+    objectName: "quizView"
     required property var app
     required property var backend
     property string selectedOption: ""
     implicitHeight: 620
     focus: true
     Keys.onPressed: function(event) {
+        if (finishDialog.visible || !portrait.hasPhoto) return
         if (event.key >= Qt.Key_1 && event.key <= Qt.Key_4) {
             const index = event.key - Qt.Key_1
             if (index < backend.answerOptions.length) selectedOption = backend.answerOptions[index]
@@ -21,7 +23,7 @@ Item {
         }
     }
     function confirmAnswer() {
-        if (!selectedOption || backend.gameFinished || backend.answerPending) return
+        if (!selectedOption || backend.gameFinished || backend.answerPending || !portrait.hasPhoto) return
         backend.answerSelected(selectedOption)
         if (backend.answerPending) app.navigate("feedback")
     }
@@ -30,7 +32,7 @@ Item {
         spacing: 22
         RowLayout {
             Layout.fillWidth: true
-            UiButton { text: "Pausar"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate("home") }
+            UiButton { objectName: "backFromQuizButton"; text: "Voltar"; iconName: "back"; secondary: true; compact: true; onClicked: finishDialog.open() }
             Item { Layout.fillWidth: true }
             UiIcon { name: view.backend.questionPhoto.kingdom === "Animalia" ? "butterfly" : (view.backend.questionPhoto.kingdom === "Plantae" ? "leaf" : "book"); ink: "#E2B969"; implicitWidth: 20; implicitHeight: 20 }
             Label { text: view.backend.categoryName + " · " + view.backend.identificationRankLabel; color: "#C9DCD2"; font.pixelSize: 13 }
@@ -45,8 +47,8 @@ Item {
                 Layout.preferredWidth: view.width * 0.37
                 Layout.fillHeight: true
                 spacing: 12
-                SpeciesPortrait { objectName: "questionPortrait"; Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 360; info: view.backend.questionPhoto }
-                Label { text: "Observe as pistas. Descubra a espécie."; color: "#718F93"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
+                SpeciesPortrait { id: portrait; objectName: "questionPortrait"; Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 360; info: view.backend.questionPhoto }
+                Label { text: "Observe a fotografia. Identifique o grupo solicitado."; color: "#718F93"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
                 Rectangle {
                     Layout.fillWidth: true; implicitHeight: 54; radius: 12; color: "#102B2B"; border.color: "#28433C"
                     RowLayout {
@@ -104,9 +106,9 @@ Item {
                 Item { Layout.fillHeight: true }
                 RowLayout {
                     Layout.fillWidth: true
-                    UiButton { text: view.backend.hintRevealed ? "Dica revelada" : "Dica"; iconName: "hint"; secondary: true; enabled: !view.backend.hintRevealed; onClicked: view.backend.revealHint() }
+                    UiButton { objectName: "hintButton"; text: !view.backend.hasHint ? "Sem dica disponível" : (view.backend.hintRevealed ? "Dica revelada" : "Dica"); iconName: "hint"; secondary: true; enabled: view.backend.hasHint && !view.backend.hintRevealed; onClicked: view.backend.revealHint() }
                     Item { Layout.fillWidth: true }
-                    UiButton { objectName: "confirmAnswerButton"; text: "Confirmar"; iconName: "arrow"; enabled: view.selectedOption !== ""; onClicked: view.confirmAnswer() }
+                    UiButton { objectName: "confirmAnswerButton"; text: "Confirmar"; iconName: "arrow"; enabled: view.selectedOption !== "" && portrait.hasPhoto; onClicked: view.confirmAnswer() }
                 }
             }
         }
@@ -120,21 +122,7 @@ Item {
                 contentItem: Item { implicitHeight: 5; Rectangle { width: parent.width * ((view.backend.round - 1) % Math.max(1, view.backend.catalogSize)) / Math.max(1, view.backend.catalogSize); implicitHeight: 5; radius: 3; color: "#3ACA82" } }
             }
             Item { Layout.fillWidth: true }
-            UiButton { text: "Encerrar partida"; secondary: true; compact: true; onClicked: finishDialog.open() }
         }
     }
-    Dialog {
-        id: finishDialog
-        width: 400
-        anchors.centerIn: parent
-        modal: true
-        title: "Encerrar esta partida?"
-        footer: DialogButtonBox {
-            UiButton { text: "Continuar"; secondary: true; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole }
-            UiButton { text: "Encerrar"; DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole }
-        }
-        contentItem: Label { text: "Sua pontuação será salva no ranking local."; color: "#BED0C9"; wrapMode: Text.WordWrap }
-        background: Rectangle { radius: 16; color: "#18313B"; border.color: "#38535B" }
-        onAccepted: view.app.finishGame()
-    }
+    EndGameDialog { id: finishDialog; onAccepted: view.app.leaveGame() }
 }

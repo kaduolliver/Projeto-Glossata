@@ -47,15 +47,15 @@ def apply_photo_reviews(species):
     path = ROOT / "resources/data/photo_reviews.json"
     reviews = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
     for item in species:
-        if item.get("source") != "inaturalist":
+        if not item.get("photo"):
             continue
-        photo = item.get("photo", {})
-        review = reviews.get(item["source_taxon_id"], {})
+        photo = item["photo"]
+        review = reviews.get(item.get("source_taxon_id") or "legacy:" + str(item["id"]), {})
         matched = review.get("photo_id") == photo.get("id")
-        photo["visual_quiz"] = bool(matched and review.get("visual_quiz") and item["educational_kingdom"] != "Monera")
-        photo["review"] = review.get("note", "Triagem visual pendente; perguntas usam classificação taxonômica.") if matched else "Triagem visual pendente; perguntas usam classificação taxonômica."
-        if matched and not review.get("display", True):
-            item["image"] = ""
+        photo["approved_ranks"] = review.get("approved_ranks", []) if matched and photo.get("source_verified") else []
+        photo["visual_quiz"] = "species" in photo["approved_ranks"]
+        photo["review"] = review.get("note", "Triagem visual pendente.") if matched else "Triagem visual pendente."
+        item["image"] = "qrc:/" + photo["path"] if photo.get("path") and (not matched or review.get("display", True)) else ""
 
 
 class Api:
@@ -171,8 +171,10 @@ class Taxonomy:
             item["taxonomy"] = list(reversed(lineage))
 
 
-def download_photo(photo, offline=False):
-    source_url = photo["url"].replace("/square.", "/medium.")
+def download_photo(photo, offline=False, size="large", refresh=False):
+    if size not in {"medium","large"}:
+        raise ValueError("Tamanho de fotografia inválido")
+    source_url = photo["url"].replace("/square.", "/" + size + ".")
     host = urllib.parse.urlparse(source_url).hostname or ""
     if not (source_url.startswith("https://") and
             (host.endswith(".inaturalist.org") or host == "inaturalist-open-data.s3.amazonaws.com")):
@@ -182,7 +184,7 @@ def download_photo(photo, offline=False):
         raise ValueError("Formato de imagem não suportado")
     relative = f"resources/images/inaturalist/{photo['id']}{extension}"
     target = ROOT / relative
-    if not target.exists():
+    if not target.exists() or refresh:
         if offline:
             raise RuntimeError("Foto ausente no cache offline")
         request = urllib.request.Request(source_url, headers={"User-Agent": "GlossataQuiz/1.0 catalog-import"})
@@ -288,17 +290,19 @@ def import_catalog(count=20, max_pages=5, offline=False):
                     source = f"https://www.inaturalist.org/observations/{obs['id']}"
                     item = {"id": next_id, "name": taxon["name"],
                         "common_name": taxon.get("preferred_common_name", ""),
-                        "fact": f"O registro desta espécie pertence ao gênero {genus}" + (f" e à família {family}." if family else "."),
-                        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+                        "fact": "",
+                        "hint": "",
                         "family": family, "region": "Distribuição não revisada; consulte o registro de origem.",
                         "image": "qrc:/" + image_path, "educational_kingdom": kingdom, "taxonomy": lineage,
                         "source": "inaturalist", "source_taxon_id": source_id,
                         "source_url": f"https://www.inaturalist.org/taxa/{source_id}",
-                        "photo": {"id": str(photo["id"]), "license": photo["license_code"],
+                        "photo": {"id": str(photo["id"]), "scientific_name": taxon["name"], "taxon_id": source_id,
+                            "license": photo["license_code"],
                             "license_url": LICENSE_URLS[photo["license_code"]], "author": photo["attribution"],
                             "source": source, "url": image_url, "path": image_path,
                             "sha256": hashlib.sha256((ROOT / image_path).read_bytes()).hexdigest(),
-                            "research_grade": True, "visual_quiz": False,
+                            "research_grade": True, "visual_quiz": False, "approved_ranks": [],
+                            "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
                             "review": "Identificação comunitária de grau científico; revisão editorial pendente."}}
                     species.append(item)
                     known_names.add(item["name"].casefold())
@@ -335,11 +339,12 @@ def import_catalog(count=20, max_pages=5, offline=False):
             ET.SubElement(group, "file").text = name
     ET.indent(tree, space="    ")
     tree.write(resource_path, encoding="unicode")
-    credits = ["# Créditos das fotografias", "", "Somente CC0 e CC BY; licença conferida por fotografia. Arquivos medium não foram recortados ou retocados.", ""]
+    credits = ["# Créditos das fotografias", "", "Somente CC0 e CC BY; licença conferida por fotografia. Os arquivos são variantes originais do iNaturalist, sem recorte ou retoque. Uma licença aceita não constitui aprovação para o quiz. Autoria não identificada é uma pendência de curadoria.", ""]
     for item in species:
         photo = item.get("photo")
         if photo:
-            credits.append(f"- **{item['name']}** — {photo['author']} — [{photo['license'].upper()}]({photo['license_url']}) — [registro]({photo['source']}) — `{photo['path']}`")
+            author = photo['author'] if photo['author'] != 'no rights reserved' else 'Autoria não identificada; excluída do quiz'
+            credits.append(f"- **{item['name']}** — {author} — [{photo['license'].upper()}]({photo['license_url']}) — [registro]({photo['source']}) — `{photo['path']}` — {photo.get('modifications', 'Modificações não verificadas.')} — níveis: {', '.join(photo.get('approved_ranks', [])) or 'não aprovado'}")
     (ROOT / "docs/PHOTO_CREDITS.md").write_text("\n".join(credits) + "\n", encoding="utf-8")
     return report
 

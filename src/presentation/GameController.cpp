@@ -27,27 +27,27 @@ GameController::GameController(QObject *parent, const QString &databasePath)
 
 QString GameController::questionText() const
 {
-    return service_.currentQuestion().prompt;
+    return displayedQuestion_.prompt;
 }
 
 QString GameController::factText() const
 {
-    return service_.currentFact();
+    return displayedQuestion_.fact;
 }
 
 QString GameController::extraHint() const
 {
-    return service_.extraHint();
+    return displayedHintRevealed_ ? displayedQuestion_.extraHint : QString();
 }
 
 bool GameController::hintRevealed() const
 {
-    return service_.hintRevealed();
+    return displayedHintRevealed_;
 }
 
 QStringList GameController::answerOptions() const
 {
-    return service_.currentQuestion().options;
+    return displayedQuestion_.options;
 }
 
 QStringList GameController::playerProfiles() const
@@ -124,11 +124,10 @@ void GameController::exploreTaxon(const QString &taxonId)
 
 QVariantMap GameController::questionPhoto() const
 {
-    const Question question = service_.currentQuestion();
-    const Species &s = question.species;
-    return {{"image", question.visual ? s.image : QString()}, {"author", s.imageAuthor},
-        {"license", s.imageLicense}, {"licenseUrl", s.imageLicenseUrl}, {"source", s.imageSource},
-        {"kingdom", s.educationalKingdom}, {"visual", question.visual}};
+    const Photo &p=displayedQuestion_.photo;
+    return {{"image",p.valid ? p.image : QString()}, {"photoId",p.id},{"author",p.author},
+        {"license",p.license},{"licenseUrl",p.licenseUrl},{"source",p.sourceUrl},{"modifications",p.modifications},
+        {"kingdom",displayedQuestion_.species.educationalKingdom},{"visual",displayedQuestion_.visual}};
 }
 
 void GameController::startTaxonGame(const QString &family, const QString &rank)
@@ -145,12 +144,13 @@ void GameController::startTaxonGame(const QString &family, const QString &rank)
         : (sessionTaxonId_.isEmpty() ? family : taxonomy_.describe(family).value("title").toString());
     answerPending_ = false;
     answerDetails_.clear();
-    categoryStats_.clear();
+    displayedHintRevealed_=false;
     correctStreak_ = 0;
     bestStreak_ = 0;
     service_.startNewGame(family, rank);
+    displayedQuestion_=service_.currentQuestion();
     feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
-        ? QStringLiteral("Este grupo não possui quatro alternativas distintas para o nível escolhido.")
+        ? QStringLiteral("Fotografias aprovadas insuficientes: são necessárias quatro respostas distintas neste nível.")
         : QStringLiteral("Escolha a opção correta para continuar.");
     emit questionTextChanged();
     emit factTextChanged();
@@ -170,14 +170,15 @@ void GameController::answerSelected(const QString &selectedOption)
         return;
     }
 
-    const Question answeredQuestion = service_.currentQuestion();
+    const Question answeredQuestion = displayedQuestion_;
     const bool correct = service_.submitAnswer(selectedOption);
     answerPending_ = true;
     answerDetails_ = {
         {QStringLiteral("correct"), correct},
         {QStringLiteral("selectedAnswer"), selectedOption},
         {QStringLiteral("name"), answeredQuestion.correctAnswer},
-        {QStringLiteral("fact"), answeredQuestion.species.fact},
+        {QStringLiteral("fact"), content_.curiosity(answeredQuestion.species).value("text",QStringLiteral("Curiosidade validada ainda não disponível.")).toString()},
+        {QStringLiteral("curiositySource"),content_.curiosity(answeredQuestion.species).value("source_url")},
         {QStringLiteral("speciesName"), answeredQuestion.species.name},
         {QStringLiteral("commonName"), answeredQuestion.species.commonName},
         {QStringLiteral("kingdom"), answeredQuestion.species.educationalKingdom},
@@ -187,18 +188,18 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("licenseUrl"), answeredQuestion.species.imageLicenseUrl},
         {QStringLiteral("source"), answeredQuestion.species.imageSource},
         {QStringLiteral("hint"), answeredQuestion.extraHint},
+        {QStringLiteral("curiosityScope"),content_.curiosity(answeredQuestion.species).value("scope_name").toString()},
+        {QStringLiteral("hintSource"), answeredQuestion.hintSourceUrl},
+        {QStringLiteral("modifications"),answeredQuestion.photo.modifications},
         {QStringLiteral("family"), answeredQuestion.species.family},
         {QStringLiteral("region"), answeredQuestion.species.region},
-        {QStringLiteral("image"), answeredQuestion.species.image}
+        {QStringLiteral("image"), answeredQuestion.photo.image},
+        {QStringLiteral("photoId"),answeredQuestion.photo.id}
     };
     QStringList lineage;
     for (const Taxon &node : answeredQuestion.species.taxonomy)
         if (node.rank != "educational_kingdom") lineage << taxonomicRankLabel(node.rank) + ": " + node.name;
     answerDetails_.insert("classification", lineage.join(" · "));
-    auto &statistics = categoryStats_[answeredQuestion.species.family.isEmpty()
-        ? answeredQuestion.species.educationalKingdom : answeredQuestion.species.family];
-    ++statistics.first;
-    if (correct) ++statistics.second;
     correctStreak_ = correct ? correctStreak_ + 1 : 0;
     bestStreak_ = std::max(bestStreak_, correctStreak_);
     emit scoreChanged();
@@ -218,6 +219,9 @@ void GameController::nextQuestion()
 {
     if (!answerPending_ || service_.isFinished()) return;
     answerPending_ = false;
+    displayedQuestion_=service_.currentQuestion();
+    displayedHintRevealed_=false;
+    emit questionTextChanged(); emit factTextChanged(); emit extraHintChanged(); emit answerOptionsChanged();
     emit answerDetailsChanged();
 }
 
@@ -228,6 +232,7 @@ void GameController::revealHint()
     }
 
     feedbackText_ = QStringLiteral("Dica adicional revelada.");
+    displayedHintRevealed_=true;
     emit extraHintChanged();
     emit feedbackTextChanged();
 }
@@ -271,12 +276,13 @@ QVariantList GameController::categories() const
 QVariantList GameController::categoryStats() const
 {
     QVariantList list;
-    for (auto it = categoryStats_.cbegin(); it != categoryStats_.cend(); ++it) {
-        list.append(QVariantMap{
-            {QStringLiteral("family"), it.key()}, {QStringLiteral("answered"), it.value().first},
-            {QStringLiteral("correct"), it.value().second},
-            {QStringLiteral("accuracy"), 100 * it.value().second / it.value().first}
-        });
+    const auto performance=service_.performance();
+    for (const QString &id : QStringList{"edu:Animalia","edu:Plantae","edu:Fungi","edu:Protista","edu:Monera","edu:unknown"}) {
+        if (!performance.groups.contains(id)) continue;
+        const auto &group=performance.groups[id];
+        QVariantList phyla;
+        for (const auto &p : group.phyla) phyla.append(QVariantMap{{"id",p.id},{"title",p.name},{"answered",p.answered},{"correct",p.correct},{"accuracy",p.answered ? 100*p.correct/p.answered : 0}});
+        list.append(QVariantMap{{"id",group.id},{"title",group.name},{"kingdom",group.name},{"answered",group.answered},{"correct",group.correct},{"phyla",phyla}});
     }
     return list;
 }

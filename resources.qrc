@@ -68,11 +68,9 @@
         <file>resources/images/inaturalist/357771622.jpeg</file>
         <file>resources/images/inaturalist/357886873.jpg</file>
         <file>resources/images/inaturalist/368743189.jpg</file>
-        <file>resources/images/inaturalist/4016368.jpg</file>
         <file>resources/images/inaturalist/407087233.jpg</file>
         <file>resources/images/inaturalist/422526180.jpeg</file>
         <file>resources/images/inaturalist/443586440.jpeg</file>
-        <file>resources/images/inaturalist/448498951.jpeg</file>
         <file>resources/images/inaturalist/45341427.jpeg</file>
         <file>resources/images/inaturalist/4592237.jpeg</file>
         <file>resources/images/inaturalist/459952778.jpg</file>
@@ -118,13 +116,39 @@
         <file>resources/images/inaturalist/469510982.jpg</file>
         <file>resources/images/inaturalist/5668201.jpeg</file>
         <file>resources/images/inaturalist/111492748.jpeg</file>
-        <file>resources/images/inaturalist/120009929.jpeg</file>
-        <file>resources/images/inaturalist/137831916.jpeg</file>
         <file>resources/images/inaturalist/176600250.jpeg</file>
-        <file>resources/images/inaturalist/178409678.jpeg</file>
-        <file>resources/images/inaturalist/31018368.jpg</file>
         <file>resources/images/inaturalist/349810134.jpeg</file>
         <file>resources/images/inaturalist/471069278.png</file>
         <file>resources/images/inaturalist/98915545.jpeg</file>
+        <file>resources/images/inaturalist/13657957.jpg</file>
+        <file>resources/images/inaturalist/137265535.jpg</file>
+        <file>resources/images/inaturalist/155300806.jpeg</file>
+        <file>resources/images/inaturalist/175474265.jpeg</file>
+        <file>resources/images/inaturalist/178409675.jpeg</file>
+        <file>resources/images/inaturalist/221780102.jpeg</file>
+        <file>resources/images/inaturalist/280989671.jpeg</file>
+        <file>resources/images/inaturalist/291002427.jpg</file>
+        <file>resources/images/inaturalist/321803659.jpg</file>
+        <file>resources/images/inaturalist/322926715.jpg</file>
+        <file>resources/images/inaturalist/34980868.jpg</file>
+        <file>resources/images/inaturalist/359063525.jpeg</file>
+        <file>resources/images/inaturalist/371617112.jpeg</file>
+        <file>resources/images/inaturalist/376647594.jpeg</file>
+        <file>resources/images/inaturalist/401685857.jpg</file>
+        <file>resources/images/inaturalist/43280362.jpg</file>
+        <file>resources/images/inaturalist/44218494.jpg</file>
+        <file>resources/images/inaturalist/45110154.jpeg</file>
+        <file>resources/images/inaturalist/51317278.jpeg</file>
+        <file>resources/images/inaturalist/560140869.jpg</file>
+        <file>resources/images/inaturalist/586365614.jpg</file>
+        <file>resources/images/inaturalist/60643931.jpg</file>
+        <file>resources/images/inaturalist/613353234.jpg</file>
+        <file>resources/images/inaturalist/655494534.jpg</file>
+        <file>resources/images/inaturalist/664105606.jpg</file>
+        <file>resources/images/inaturalist/749769318.jpg</file>
+        <file>resources/data/education.json</file>
+        <file>resources/qml/components/TextAction.qml</file>
+        <file>resources/qml/components/EndGameDialog.qml</file>
+        <file>resources/qml/components/TaxonComboBox.qml</file>
     </qresource>
 </RCC>

@@ -26,7 +26,7 @@ Item {
                 RowLayout {
                     Layout.fillWidth: true; spacing: 20
                     Label { text: "Perfil selecionado"; color: "#A9C2C7"; font.pixelSize: 13 }
-                    ComboBox {
+                    TaxonComboBox {
                         id: playerSelector
                         objectName: "playerSelector"
                         Layout.fillWidth: true
@@ -35,8 +35,6 @@ Item {
                         model: view.backend.playerProfiles
                         currentIndex: view.backend.playerProfiles.indexOf(view.backend.currentPlayerName)
                         onActivated: view.backend.currentPlayerName = currentText
-                        contentItem: Text { text: playerSelector.displayText; color: "#E1EDE8"; font.pixelSize: 13; verticalAlignment: Text.AlignVCenter; leftPadding: 12; rightPadding: 32; elide: Text.ElideRight }
-                        background: Rectangle { radius: 10; color: "#192F39"; border.color: playerSelector.activeFocus ? "#55CC8D" : "#34515B" }
                     }
                 }
                 TextField {

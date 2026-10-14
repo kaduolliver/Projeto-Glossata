@@ -10,6 +10,7 @@
 #include <QTemporaryDir>
 #include <QDir>
 #include <functional>
+#include <QColor>
 
 namespace {
 QStringList interfaceWarnings;
@@ -72,6 +73,13 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QQuickItem *button = findItem(window->contentItem());
         if (!button || !button->isVisible() || !button->isEnabled()) return false;
         QPoint point = button->mapToScene(QPointF(button->width() / 2, button->height() / 2)).toPoint();
+        if (point.y()<90) {
+            if (QQuickItem *scroll=findVisualItem(window->contentItem(),"pageScroll")) {
+                scroll->setProperty("contentY",qMax(0.0,scroll->property("contentY").toReal()+point.y()-120));
+                QTest::qWait(40);
+                point=button->mapToScene(QPointF(button->width()/2,button->height()/2)).toPoint();
+            }
+        }
         if (point.y() > window->height() - 30) {
             if (QQuickItem *scroll = findVisualItem(window->contentItem(), "pageScroll")) {
                 scroll->setProperty("contentY", scroll->property("contentY").toReal() + point.y() - window->height() + 100);
@@ -87,7 +95,10 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     auto correctAnswer = [&controller]() {
         JsonSpeciesCatalog catalog;
         for (const Species &species : catalog.loadSpecies()) {
-            if ((!controller.questionPhoto().value("image").toString().isEmpty() && species.image == controller.questionPhoto().value("image").toString()) || (species.fact == controller.factText() && controller.answerOptions().contains(species.name))) return species.name;
+            if (species.image == controller.questionPhoto().value("image").toString()) {
+                for (const QString &rank : QStringList{"species","genus","family","order","class","phylum","kingdom"})
+                    if (taxonomicRankLabel(rank)==controller.identificationRankLabel()) return species.answerAtRank(rank);
+            }
         }
         return QString();
     };
@@ -105,8 +116,30 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QVERIFY(snapshot("kingdom-" + QString::number(kingdom)));
         QVERIFY(click("taxonButton0"));
         QVERIFY(controller.breadcrumbs().size() >= 2);
+        if (kingdom==3) {
+            // Protista first opens its scientific kingdom (Protozoa), then its phylum.
+            if (controller.browseTaxon().value("introduction").toMap().isEmpty()) {
+                int groupIndex=-1;
+                for (int i=0;i<controller.browseChildren().size();++i)
+                    if (controller.browseChildren().at(i).toMap().value("title").toString()=="Mycetozoa") groupIndex=i;
+                QVERIFY(groupIndex>=0); QVERIFY(click("taxonButton"+QString::number(groupIndex)));
+            }
+            QVERIFY(!controller.browseTaxon().value("introduction").toMap().isEmpty());
+            QVERIFY(!controller.identificationLevels().isEmpty());
+            QVERIFY(snapshot("protista-group-introduction"));
+            QVERIFY(click("startTaxonButton"));
+            QCOMPARE(window->property("page").toString(),QString("quiz"));
+            QVERIFY(controller.questionPhoto().value("visual").toBool());
+            controller.stopGame(); showPage("results");
+            QVERIFY(click("returnExplorationButton"));
+        }
         QVERIFY(click("breadcrumbButton0"));
         QCOMPARE(controller.breadcrumbs().size(), 1);
+        if (controller.identificationLevels().isEmpty()) {
+            QVERIFY(!click("startTaxonButton"));
+            QVERIFY(click("returnKingdomsButton"));
+            continue;
+        }
         QVERIFY(click("startTaxonButton"));
         QCOMPARE(window->property("page").toString(), QString("quiz"));
         controller.stopGame();
@@ -118,14 +151,36 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("categoryButton0"));
     QCOMPARE(window->property("page").toString(), QString("quiz"));
     QVERIFY(snapshot("03-quiz"));
+    const auto questionPhoto=controller.questionPhoto();
     const int correctIndex = controller.answerOptions().indexOf(correctAnswer());
     QVERIFY(correctIndex >= 0);
     QVERIFY(click("answerOption" + QString::number(correctIndex)));
     QCOMPARE(controller.answeredCount(), 0);
+    if (controller.hasHint()) QVERIFY(click("hintButton"));
+    const auto hint=controller.extraHint();
+    const auto choices=controller.answerOptions();
+    const auto round=controller.round();
+    const auto selected=findVisualItem(window->contentItem(),"quizView")->property("selectedOption");
+    QVERIFY(click("backFromQuizButton"));
+    QVERIFY(snapshot("end-confirmation"));
+    auto dialog=window->findChild<QObject *>("endGameDialog");
+    QVERIFY(dialog && dialog->property("visible").toBool());
+    QVERIFY(findVisualItem(window->contentItem(),"continueGameButton")->hasActiveFocus());
+    QTest::keyClick(window,Qt::Key_Return);
+    QTest::qWait(50);
+    QVERIFY(!dialog->property("visible").toBool());
+    QCOMPARE(controller.questionPhoto(),questionPhoto);
+    QCOMPARE(controller.answerOptions(),choices);
+    QCOMPARE(controller.extraHint(),hint);
+    QCOMPARE(controller.round(),round);
+    QCOMPARE(findVisualItem(window->contentItem(),"quizView")->property("selectedOption"),selected);
     QVERIFY(click("confirmAnswerButton"));
     QCOMPARE(window->property("page").toString(), QString("feedback"));
     QCOMPARE(controller.answeredCount(), 1);
     QVERIFY(controller.answerDetails().value("correct").toBool());
+    QCOMPARE(controller.answerDetails().value("image"),questionPhoto.value("image"));
+    QCOMPARE(controller.answerDetails().value("photoId"),questionPhoto.value("photoId"));
+    QCOMPARE(controller.questionPhoto(),questionPhoto);
     QVERIFY(snapshot("04-correct"));
     showPage("info");
     QVERIFY(snapshot("06-information"));
@@ -138,7 +193,17 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("confirmAnswerButton"));
     QVERIFY(!controller.answerDetails().value("correct").toBool());
     QVERIFY(snapshot("05-incorrect"));
+    controller.nextQuestion();
+    showPage("quiz");
+    QVERIFY(click("backFromQuizButton"));
+    QVERIFY(click("endGameButton"));
+    QCOMPARE(window->property("page").toString(),QString("categories"));
+    QVERIFY(controller.gameFinished());
+    QCOMPARE(controller.ranking().size(),1);
+    const auto savedScore=controller.score();
     controller.stopGame();
+    QCOMPARE(controller.ranking().size(),1);
+    QCOMPARE(controller.ranking().first().toMap().value("score").toInt(),savedScore);
     showPage("results");
     QVERIFY(snapshot("07-results"));
     for (const QString &page : {QString("statistics"), QString("achievements"), QString("settings")}) {
@@ -146,7 +211,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QVERIFY(snapshot(page));
     }
     window->resize(1000, 700);
-    controller.startGame();
+    controller.startTaxonGame({},"genus");
     showPage("quiz");
     QVERIFY(snapshot("compact-quiz"));
     controller.answerSelected(correctAnswer());
@@ -167,7 +232,19 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     controller.loadRanking();
     showPage("statistics");
     QVERIFY(snapshot("compact-full-statistics"));
-    controller.startTaxonGame("edu:Plantae", "species");
+    int aggregate=0;
+    for (int i=0;i<controller.categoryStats().size();++i) {
+        const auto kingdom=controller.categoryStats().at(i).toMap();
+        aggregate+=kingdom.value("answered").toInt();
+        auto icon=findVisualItem(window->contentItem(),"performanceIcon"+QString::number(i));
+        QVERIFY(icon); QCOMPARE(icon->property("kingdom").toString(),kingdom.value("kingdom").toString());
+    }
+    QCOMPARE(aggregate,controller.answeredCount());
+    auto statsScroll=findVisualItem(window->contentItem(),"pageScroll");
+    QVERIFY(statsScroll);
+    statsScroll->setProperty("contentY",qMax(0.0,statsScroll->property("contentHeight").toReal()-statsScroll->height()));
+    QVERIFY(snapshot("compact-statistics-lower-groups"));
+    controller.startTaxonGame("edu:Plantae", "genus");
     for (int i = 0; i < controller.catalogSize() && controller.questionPhoto().value("image").toString().isEmpty(); ++i) {
         controller.answerSelected(controller.answerOptions().first());
         controller.nextQuestion();
@@ -199,6 +276,30 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         if (controller.identificationLevels().at(i).toMap().value("id").toString() == "family") familyIndex = i;
     QVERIFY(familyIndex >= 0);
     selector->setProperty("currentIndex", familyIndex);
+    auto comboBackground=findVisualItem(window->contentItem(),"taxonComboBackground");
+    QVERIFY(comboBackground);
+    QCOMPARE(comboBackground->property("radius").toInt(),12);
+    QVERIFY(comboBackground->property("color").value<QColor>().lightness()<160);
+    selector->forceActiveFocus();
+    QVERIFY(selector->hasActiveFocus());
+    QTest::keyClick(window,Qt::Key_Space);
+    QTest::qWait(50);
+    auto popup=window->findChild<QObject *>("taxonComboPopup");
+    QVERIFY(popup && popup->property("visible").toBool());
+    QVERIFY(snapshot("compact-taxonomy-popup"));
+    auto popupBackground=findVisualItem(window->contentItem(),"taxonPopupBackground");
+    QVERIFY(popupBackground);
+    QCOMPARE(popupBackground->property("radius").toInt(),12);
+    QVERIFY(popupBackground->property("color").value<QColor>().lightness()<160);
+    QTest::keyClick(window,Qt::Key_Escape);
+    QTest::qWait(40);
+    auto breadcrumb=findVisualItem(window->contentItem(),"breadcrumbButton0");
+    QVERIFY(breadcrumb); breadcrumb->forceActiveFocus();
+    auto breadcrumbBackground=findVisualItem(breadcrumb,"textActionBackground");
+    QVERIFY(breadcrumbBackground);
+    QCOMPARE(breadcrumbBackground->property("radius").toInt(),10);
+    QVERIFY(breadcrumbBackground->property("color").value<QColor>().lightness()<160);
+    QVERIFY(breadcrumb->hasActiveFocus());
     QVERIFY(click("startTaxonButton"));
     QCOMPARE(window->property("page").toString(), QString("quiz"));
     QCOMPARE(controller.identificationRankLabel(), taxonomicRankLabel("family"));
@@ -206,6 +307,16 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     controller.answerSelected(controller.answerOptions().first());
     showPage("info");
     QVERIFY(snapshot("compact-family-information"));
+    controller.nextQuestion(); showPage("quiz");
+    const auto group=controller.sessionTaxonId();
+    QVERIFY(click("backFromQuizButton"));
+    QVERIFY(snapshot("compact-end-confirmation"));
+    QVERIFY(click("continueGameButton"));
+    QVERIFY(!controller.gameFinished());
+    QVERIFY(click("backFromQuizButton"));
+    QVERIFY(click("endGameButton"));
+    QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+    QCOMPARE(controller.browseTaxon().value("id").toString(),group);
     qInstallMessageHandler(runtimeHandler);
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }

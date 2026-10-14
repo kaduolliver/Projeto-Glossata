@@ -1,5 +1,5 @@
 {
-  "imported_at": "2026-10-14T16:12:36.225937+00:00",
+  "imported_at": "2026-10-14T18:50:27.191023+00:00",
   "target_new_per_kingdom": 20,
   "accepted_licenses": [
     "cc-by",
@@ -39,8 +39,8 @@
   },
   "skipped": [],
   "photos": {
-    "cc-by": 76,
-    "cc0": 24
+    "cc-by": 100,
+    "cc0": 20
   },
-  "visual_quiz_records": 77
+  "visual_quiz_records": 13
 }
