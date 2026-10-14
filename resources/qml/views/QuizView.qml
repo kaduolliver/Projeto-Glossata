@@ -32,8 +32,8 @@ Item {
             Layout.fillWidth: true
             UiButton { text: "Pausar"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate("home") }
             Item { Layout.fillWidth: true }
-            UiIcon { name: "butterfly"; ink: "#E2B969"; implicitWidth: 20; implicitHeight: 20 }
-            Label { text: view.backend.categoryName; color: "#C9DCD2"; font.pixelSize: 13 }
+            UiIcon { name: view.backend.questionPhoto.kingdom === "Animalia" ? "butterfly" : (view.backend.questionPhoto.kingdom === "Plantae" ? "leaf" : "book"); ink: "#E2B969"; implicitWidth: 20; implicitHeight: 20 }
+            Label { text: view.backend.categoryName + " · " + view.backend.identificationRankLabel; color: "#C9DCD2"; font.pixelSize: 13 }
             Item { Layout.fillWidth: true }
             Label { text: "Pergunta " + view.backend.round; color: "#D3E4DD"; font.pixelSize: 13; font.weight: Font.DemiBold }
         }
@@ -45,7 +45,7 @@ Item {
                 Layout.preferredWidth: view.width * 0.37
                 Layout.fillHeight: true
                 spacing: 12
-                SpeciesArtwork { Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 360 }
+                SpeciesPortrait { objectName: "questionPortrait"; Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 360; info: view.backend.questionPhoto }
                 Label { text: "Observe as pistas. Descubra a espécie."; color: "#718F93"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
                 Rectangle {
                     Layout.fillWidth: true; implicitHeight: 54; radius: 12; color: "#102B2B"; border.color: "#28433C"
@@ -61,7 +61,7 @@ Item {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 spacing: 12
-                Label { text: "DESCUBRA PELA CURIOSIDADE"; color: "#69C590"; font.pixelSize: 9; font.letterSpacing: 1.6 }
+                Label { text: "IDENTIFIQUE E DESCUBRA"; color: "#69C590"; font.pixelSize: 9; font.letterSpacing: 1.6 }
                 Label { text: view.backend.questionText; color: "#F2F8F4"; font.pixelSize: 25; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Label { text: view.backend.factText; color: "#B1C8CC"; font.pixelSize: 15; lineHeight: 1.35; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.topMargin: 2; Layout.bottomMargin: 10 }
                 Repeater {

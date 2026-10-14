@@ -1,4 +1,5 @@
 #include "presentation/GameController.h"
+#include "infrastructure/content/JsonSpeciesCatalog.h"
 #include "infrastructure/discord/DiscordRichPresence.h"
 #include <QIcon>
 #include <QtTest/QtTest>
@@ -12,6 +13,13 @@
 
 namespace {
 QStringList interfaceWarnings;
+QQuickItem *findVisualItem(QQuickItem *root, const QString &name)
+{
+    if (root->objectName() == name) return root;
+    for (QQuickItem *child : root->childItems())
+        if (QQuickItem *found = findVisualItem(child, name)) return found;
+    return nullptr;
+}
 void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &message)
 {
     if (type == QtWarningMsg || type == QtCriticalMsg || type == QtFatalMsg) interfaceWarnings << message;
@@ -63,7 +71,14 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         };
         QQuickItem *button = findItem(window->contentItem());
         if (!button || !button->isVisible() || !button->isEnabled()) return false;
-        const QPoint point = button->mapToScene(QPointF(button->width() / 2, button->height() / 2)).toPoint();
+        QPoint point = button->mapToScene(QPointF(button->width() / 2, button->height() / 2)).toPoint();
+        if (point.y() > window->height() - 30) {
+            if (QQuickItem *scroll = findVisualItem(window->contentItem(), "pageScroll")) {
+                scroll->setProperty("contentY", scroll->property("contentY").toReal() + point.y() - window->height() + 100);
+                QTest::qWait(40);
+                point = button->mapToScene(QPointF(button->width() / 2, button->height() / 2)).toPoint();
+            }
+        }
         QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, point);
         QTest::qWait(40);
         return true;
@@ -72,7 +87,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     auto correctAnswer = [&controller]() {
         JsonSpeciesCatalog catalog;
         for (const Species &species : catalog.loadSpecies()) {
-            if (species.fact == controller.factText()) return species.name;
+            if ((!controller.questionPhoto().value("image").toString().isEmpty() && species.image == controller.questionPhoto().value("image").toString()) || (species.fact == controller.factText() && controller.answerOptions().contains(species.name))) return species.name;
         }
         return QString();
     };
@@ -83,6 +98,23 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("homePlayButton"));
     QCOMPARE(window->property("page").toString(), QString("categories"));
     QVERIFY(snapshot("02-categories"));
+    for (int kingdom = 0; kingdom < 5; ++kingdom) {
+        QVERIFY(click("kingdomButton" + QString::number(kingdom)));
+        QCOMPARE(window->property("page").toString(), QString("taxonomy"));
+        QCOMPARE(controller.browseTaxon().value("id").toString(), controller.categories().at(kingdom + 1).toMap().value("id").toString());
+        QVERIFY(snapshot("kingdom-" + QString::number(kingdom)));
+        QVERIFY(click("taxonButton0"));
+        QVERIFY(controller.breadcrumbs().size() >= 2);
+        QVERIFY(click("breadcrumbButton0"));
+        QCOMPARE(controller.breadcrumbs().size(), 1);
+        QVERIFY(click("startTaxonButton"));
+        QCOMPARE(window->property("page").toString(), QString("quiz"));
+        controller.stopGame();
+        showPage("results");
+        QVERIFY(click("returnExplorationButton"));
+        QCOMPARE(window->property("page").toString(), QString("taxonomy"));
+        QVERIFY(click("returnKingdomsButton"));
+    }
     QVERIFY(click("categoryButton0"));
     QCOMPARE(window->property("page").toString(), QString("quiz"));
     QVERIFY(snapshot("03-quiz"));
@@ -118,7 +150,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     showPage("quiz");
     QVERIFY(snapshot("compact-quiz"));
     controller.answerSelected(correctAnswer());
-    for (const QString &page : {QString("home"), QString("categories"), QString("feedback"), QString("info"), QString("results"), QString("statistics"), QString("achievements"), QString("settings")}) {
+    for (const QString &page : {QString("home"), QString("categories"), QString("taxonomy"), QString("feedback"), QString("info"), QString("results"), QString("statistics"), QString("achievements"), QString("settings")}) {
         showPage(page);
         QVERIFY(snapshot("compact-" + page));
     }
@@ -135,6 +167,45 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     controller.loadRanking();
     showPage("statistics");
     QVERIFY(snapshot("compact-full-statistics"));
+    controller.startTaxonGame("edu:Plantae", "species");
+    for (int i = 0; i < controller.catalogSize() && controller.questionPhoto().value("image").toString().isEmpty(); ++i) {
+        controller.answerSelected(controller.answerOptions().first());
+        controller.nextQuestion();
+    }
+    QVERIFY(!controller.questionPhoto().value("image").toString().isEmpty());
+    window->resize(1240, 820);
+    showPage("quiz");
+    QVERIFY(snapshot("photo-quiz"));
+    auto portrait = findVisualItem(window->contentItem(), "questionPortrait");
+    QVERIFY(portrait);
+    QVERIFY(portrait->property("hasPhoto").toBool());
+    controller.answerSelected(correctAnswer());
+    QVERIFY(controller.answerPending());
+    showPage("info");
+    QVERIFY(snapshot("photo-information"));
+    window->resize(1000, 700);
+    QVERIFY(snapshot("compact-photo-information"));
+    controller.stopGame();
+    JsonSpeciesCatalog taxonomyCatalog;
+    QString orderId;
+    for (const Taxon &node : taxonomyCatalog.loadTaxons()) if (node.name == "Lepidoptera") orderId = node.id;
+    QVERIFY(!orderId.isEmpty());
+    controller.exploreTaxon(orderId);
+    showPage("taxonomy");
+    auto selector = findVisualItem(window->contentItem(), "identificationLevel");
+    QVERIFY(selector);
+    int familyIndex = -1;
+    for (int i = 0; i < controller.identificationLevels().size(); ++i)
+        if (controller.identificationLevels().at(i).toMap().value("id").toString() == "family") familyIndex = i;
+    QVERIFY(familyIndex >= 0);
+    selector->setProperty("currentIndex", familyIndex);
+    QVERIFY(click("startTaxonButton"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    QCOMPARE(controller.identificationRankLabel(), taxonomicRankLabel("family"));
+    QVERIFY(snapshot("compact-family-quiz"));
+    controller.answerSelected(controller.answerOptions().first());
+    showPage("info");
+    QVERIFY(snapshot("compact-family-information"));
     qInstallMessageHandler(runtimeHandler);
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }

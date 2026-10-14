@@ -17,6 +17,8 @@ add_executable(glossata_quiz
     src/infrastructure/discord/DiscordRichPresence.cpp
     src/application/GameService.cpp
     src/infrastructure/content/JsonSpeciesCatalog.cpp
+    src/infrastructure/content/SqliteSpeciesCatalog.cpp
+    src/application/TaxonomyIndex.cpp
     src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     src/presentation/GameController.cpp
     resources.qrc

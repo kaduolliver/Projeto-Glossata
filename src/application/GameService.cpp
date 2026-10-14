@@ -2,15 +2,19 @@
 
 #include <algorithm>
 #include <random>
+#include <limits>
+#include "domain/QuizSelection.h"
+#include <QMap>
+#include <QSet>
 
 namespace {
-QStringList buildOptionSet(const QVector<Species> &species, const Species &correct)
+QStringList buildOptionSet(const QVector<Species> &species, const Species &correct, const QString &rank)
 {
-    const QString correctName = correct.name.trimmed();
+    const QString correctName = correct.answerAtRank(rank).trimmed();
     QStringList distractors;
     for (const Species &candidate : species) {
-        const QString candidateName = candidate.name.trimmed();
-        if (candidateName.isEmpty() || candidateName.compare(correctName, Qt::CaseInsensitive) == 0
+        const QString candidateName = candidate.answerAtRank(rank).trimmed();
+        if (!canBeDistractor(candidate, correct, rank)
             || distractors.contains(candidateName, Qt::CaseInsensitive)) {
             continue;
         }
@@ -34,8 +38,9 @@ GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history
 {
 }
 
-void GameService::startNewGame(const QString &family)
+void GameService::startNewGame(const QString &filter, const QString &rank)
 {
+    identificationRank_ = rank;
     species_.clear();
     currentSpeciesIndex_ = 0;
     resultSaved_ = false;
@@ -51,13 +56,14 @@ void GameService::startNewGame(const QString &family)
 
     const QVector<Species> loadedSpecies = catalog_->loadSpecies();
     for (Species species : loadedSpecies) {
-        if (!family.isEmpty() && species.family != family) {
+        if (!filter.isEmpty() && !species.belongsTo(filter) && species.family != filter) {
             continue;
         }
         species.name = species.name.trimmed();
         species.fact = species.fact.trimmed();
         species.hint = species.hint.trimmed();
-        if (species.name.isEmpty() || species.fact.isEmpty() || species.hint.isEmpty()) {
+        if (species.name.isEmpty() || species.fact.isEmpty() || species.hint.isEmpty()
+            || species.answerAtRank(rank).trimmed().isEmpty()) {
             continue;
         }
 
@@ -69,13 +75,16 @@ void GameService::startNewGame(const QString &family)
         }
     }
 
-    if (species_.size() < 4) {
+    species_ = eligibleQuizSpecies(species_, rank);
+    QSet<QString> distinctAnswers;
+    for (const Species &species : species_) distinctAnswers.insert(species.answerAtRank(rank).toCaseFolded());
+    if (distinctAnswers.size() < 4) {
         session_.round = 0;
         session_.finished = true;
         return;
     }
 
-    std::shuffle(species_.begin(), species_.end(), std::mt19937(std::random_device{}()));
+    shuffleCycle();
     buildQuestionForCurrentSpecies();
 }
 
@@ -116,7 +125,7 @@ bool GameService::submitAnswer(const QString &selectedOption)
     hintRevealed_ = false;
     if (currentSpeciesIndex_ >= species_.size()) {
         const QString previousSpeciesName = species_.last().name;
-        std::shuffle(species_.begin(), species_.end(), std::mt19937(std::random_device{}()));
+        shuffleCycle();
         if (species_.size() > 1 && species_.front().name == previousSpeciesName) {
             std::swap(species_[0], species_[1]);
         }
@@ -193,19 +202,53 @@ void GameService::buildQuestionForCurrentSpecies()
     }
 
     const Species correct = species_.at(currentSpeciesIndex_);
-    const QStringList options = buildOptionSet(species_, correct);
+    const QStringList options = buildOptionSet(species_, correct, identificationRank_);
     if (options.size() != 4) {
         currentQuestion_ = Question{};
         session_.finished = true;
         return;
     }
 
+    const bool visual = identificationRank_ == "species" && correct.visualQuiz && !correct.image.isEmpty();
+    const QString prompt = identificationRank_ == "species"
+        ? (visual ? QStringLiteral("Qual espécie está registrada nesta fotografia?") : QStringLiteral("Qual nome corresponde a esta espécie?"))
+        : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(identificationRank_));
+    const QString fact = visual ? QStringLiteral("Observe o organismo e compare as quatro alternativas.")
+        : (identificationRank_ == "species" ? correct.fact : QStringLiteral("A espécie %1 pertence a qual grupo neste nível?").arg(correct.name));
     currentQuestion_ = Question{
-        QStringLiteral("Qual nome corresponde a esta espécie?"),
-        correct.fact,
+        prompt,
+        fact,
         correct.hint,
-        correct.name,
+        correct.answerAtRank(identificationRank_),
         options,
-        correct
+        correct,
+        identificationRank_,
+        visual
     };
+}
+
+void GameService::shuffleCycle()
+{
+    std::mt19937 random(std::random_device{}());
+    QMap<QString, QVector<Species>> groups;
+    for (const Species &species : species_) groups[species.educationalKingdom].append(species);
+    const int total = static_cast<int>(species_.size());
+    QMap<QString, int> weight, balance;
+    for (auto it = groups.begin(); it != groups.end(); ++it) {
+        std::shuffle(it.value().begin(), it.value().end(), random);
+        weight[it.key()] = static_cast<int>(it.value().size());
+        balance[it.key()] = std::uniform_int_distribution<int>(0, std::max(1, total / 3))(random);
+    }
+    species_.clear();
+    while (species_.size() < total) {
+        QString chosen;
+        int best = std::numeric_limits<int>::min();
+        for (auto it = groups.cbegin(); it != groups.cend(); ++it) {
+            if (it.value().isEmpty()) continue;
+            balance[it.key()] += weight[it.key()];
+            if (balance[it.key()] > best) { best = balance[it.key()]; chosen = it.key(); }
+        }
+        balance[chosen] -= total;
+        species_.append(groups[chosen].takeLast());
+    }
 }

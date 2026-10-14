@@ -7,6 +7,13 @@
 #include <QTemporaryDir>
 #include <QFile>
 #include <QSqlQuery>
+#include <QImageReader>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QCryptographicHash>
+#include <algorithm>
+#include "application/TaxonomyIndex.h"
 
 namespace {
 class MemoryCatalog final : public SpeciesCatalog {
@@ -52,6 +59,10 @@ private slots:
     void failedRankingUpdateKeepsPreviousResult();
     void categoryQuizUsesOnlySelectedFamily();
     void controllerKeepsAnswerUntilNextQuestion();
+    void taxonomyFiltersAndIdentificationLevels();
+    void offlinePhotosHaveAttributionAndDecode();
+    void catalogMigrationPreservesPlayerDataAndStoredRecords();
+    void invalidPhotoLicenseDisablesVisualQuestion();
 };
 
 void GameServiceTests::initialLoad_hasSpecies()
@@ -454,7 +465,7 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     JsonSpeciesCatalog catalog;
     Species correct;
     for (const Species &species : catalog.loadSpecies()) {
-        if (species.fact == controller.factText()) { correct = species; break; }
+        if ((!controller.questionPhoto().value("image").toString().isEmpty() && species.image == controller.questionPhoto().value("image").toString()) || (species.fact == controller.factText() && controller.answerOptions().contains(species.name))) { correct = species; break; }
     }
     QVERIFY(!correct.name.isEmpty());
     controller.answerSelected("Invalid answer");
@@ -480,6 +491,146 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     QVERIFY(controller.answerDetails().isEmpty());
     QVERIFY(controller.categoryStats().isEmpty());
     QVERIFY(!controller.achievements().first().toMap().value("unlocked").toBool());
+}
+
+void GameServiceTests::taxonomyFiltersAndIdentificationLevels()
+{
+    JsonSpeciesCatalog catalog;
+    TaxonomyIndex index(catalog);
+    QCOMPARE(index.kingdoms().size(), 6);
+    int total = 0;
+    for (const QVariant &entry : index.kingdoms().mid(1)) {
+        const QString id = entry.toMap().value("id").toString();
+        const auto selected = index.speciesFor(id);
+        QVERIFY(selected.size() >= 20);
+        QCOMPARE(index.count(id), selected.size());
+        total += selected.size();
+        for (const Species &s : selected) QVERIFY(s.belongsTo(id));
+        QVERIFY(!index.children(id).isEmpty());
+    }
+    QCOMPARE(total, catalog.loadSpecies().size());
+    QString lepidoptera;
+    for (const Taxon &t : catalog.loadTaxons()) if (t.name == "Lepidoptera") lepidoptera = t.id;
+    QVERIFY(!lepidoptera.isEmpty());
+    QStringList ranks;
+    for (const QVariant &level : index.identificationLevels(lepidoptera)) ranks << level.toMap().value("id").toString();
+    QVERIFY(ranks.contains("family"));
+    QVERIFY(!ranks.contains("order"));
+    GameService service(&catalog);
+    service.startNewGame(lepidoptera, "family");
+    QVERIFY(!service.isFinished());
+    for (int i = 0; i < service.catalogSize(); ++i) {
+        const auto question = service.currentQuestion();
+        QVERIFY(question.species.belongsTo(lepidoptera));
+        QCOMPARE(question.correctAnswer, question.species.answerAtRank("family"));
+        QCOMPARE(question.options.size(), 4);
+        QVERIFY(!question.visual);
+        QSet<QString> distinct;
+        for (const QString &option : question.options) distinct.insert(option.toCaseFolded());
+        QCOMPARE(distinct.size(), 4);
+        QVERIFY(service.submitAnswer(question.correctAnswer));
+    }
+    service.startNewGame(lepidoptera, "order");
+    QVERIFY(service.isFinished());
+    const Species leaf = catalog.loadSpecies().first();
+    const QString leafId = leaf.taxonomy.last().id;
+    QCOMPARE(index.count(leafId), 1);
+    QVERIFY(index.identificationLevels(leafId).isEmpty());
+    QVERIFY(index.children(leafId).isEmpty());
+    QVERIFY(index.breadcrumbs(leafId).size() >= 5);
+    service.startNewGame();
+    QSet<QString> realms;
+    for (int i = 0; i < 40; ++i) {
+        realms.insert(service.currentQuestion().species.educationalKingdom);
+        service.submitAnswer(service.currentQuestion().correctAnswer);
+    }
+    QCOMPARE(realms.size(), 5);
+}
+
+void GameServiceTests::offlinePhotosHaveAttributionAndDecode()
+{
+    JsonSpeciesCatalog catalog;
+    int imported = 0, original = 0;
+    QSet<int> ids;
+    QSet<QString> sources;
+    for (const Species &s : catalog.loadSpecies()) {
+        QVERIFY(!ids.contains(s.id)); ids.insert(s.id);
+        if (s.source == "legacy") { ++original; QVERIFY(s.id <= 22); continue; }
+        ++imported;
+        QVERIFY(!sources.contains(s.sourceTaxonId)); sources.insert(s.sourceTaxonId);
+        QVERIFY(s.imageLicense == "cc0" || s.imageLicense == "cc-by");
+        QVERIFY(!s.imageAuthor.isEmpty());
+        QVERIFY(s.imageSource.startsWith("https://www.inaturalist.org/observations/"));
+        QVERIFY(!s.taxonomy.isEmpty());
+        QVERIFY(!s.answerAtRank("species").isEmpty());
+        if (!s.image.isEmpty()) {
+            QVERIFY(s.image.startsWith("qrc:/"));
+            QImageReader reader(s.image.mid(3));
+            QVERIFY2(reader.canRead(), qPrintable(s.name + ": " + reader.errorString()));
+            QVERIFY(!reader.read().isNull());
+        }
+        if (s.educationalKingdom == "Monera") QVERIFY(!s.visualQuiz);
+    }
+    QCOMPARE(original, 22);
+    QVERIFY(imported >= 100);
+}
+
+void GameServiceTests::catalogMigrationPreservesPlayerDataAndStoredRecords()
+{
+    QTemporaryDir dir;
+    const QString historyPath = dir.filePath("history.sqlite");
+    const QString catalogPath = dir.filePath("catalog.sqlite");
+    SqliteGameHistoryRepository history(historyPath);
+    QVERIFY(history.addPlayerProfile("Ada"));
+    QVERIFY(history.saveResult("Ada", 17, 17));
+    {
+        auto db = QSqlDatabase::addDatabase("QSQLITE", "catalog_migration_test");
+        db.setDatabaseName(catalogPath); QVERIFY(db.open());
+        QSqlQuery q(db);
+        QVERIFY(q.exec("CREATE TABLE taxons(id TEXT PRIMARY KEY, scientific_name TEXT NOT NULL, rank TEXT NOT NULL,parent_id TEXT REFERENCES taxons(id), source TEXT,source_taxon_id TEXT,UNIQUE(source,source_taxon_id))"));
+        QVERIFY(q.exec("CREATE TABLE species(id INTEGER PRIMARY KEY,scientific_name TEXT NOT NULL,common_name TEXT,taxon_id TEXT NOT NULL REFERENCES taxons(id),educational_kingdom TEXT,image_path TEXT,image_author TEXT,image_license TEXT,image_source TEXT,source TEXT,source_taxon_id TEXT)"));
+        QVERIFY(q.exec("INSERT INTO taxons VALUES('stored:test','Stored species','species',NULL,'local',NULL)"));
+        QVERIFY(q.exec("INSERT INTO species(id,scientific_name,taxon_id,source) VALUES(99999,'Stored species','stored:test','local')"));
+    }
+    QSqlDatabase::removeDatabase("catalog_migration_test");
+    int size;
+    {
+        SqliteSpeciesCatalog catalog(catalogPath);
+        QVERIFY(catalog.isReady());
+        TaxonomyIndex index(catalog);
+        size = catalog.loadSpecies().size();
+        QVERIFY(size >= 123);
+        for (const QVariant &root : index.kingdoms().mid(1)) {
+            const QString id = root.toMap().value("id").toString();
+            QCOMPARE(catalog.descendantCount(id), index.count(id));
+        }
+    }
+    SqliteSpeciesCatalog reopened(catalogPath);
+    QVERIFY(reopened.isReady());
+    QCOMPARE(reopened.loadSpecies().size(), size);
+    const auto reopenedSpecies = reopened.loadSpecies();
+    QVERIFY(std::any_of(reopenedSpecies.begin(), reopenedSpecies.end(), [](const Species &s) { return s.id == 99999; }));
+    QCOMPARE(history.loadPlayerProfiles(), QStringList{"Ada"});
+    QCOMPARE(history.loadTopResults(5).first().score, 17);
+}
+
+void GameServiceTests::invalidPhotoLicenseDisablesVisualQuestion()
+{
+    QTemporaryDir dir;
+    QFile bundled(":/resources/data/species.json"); QVERIFY(bundled.open(QIODevice::ReadOnly));
+    const QJsonArray records = QJsonDocument::fromJson(bundled.readAll()).array();
+    QJsonObject record;
+    for (const auto &value : records) if (value.toObject().value("source") == "inaturalist") { record=value.toObject(); break; }
+    const QString path = dir.filePath("invalid-photo.json");
+    for (const QString &license : QStringList{"cc-by-nc", "cc-by-sa", "cc-by-nd", "", "unknown"}) {
+        QJsonObject photo = record.value("photo").toObject();
+        photo.insert("license", license); photo.insert("visual_quiz", true); record.insert("photo", photo);
+        QFile file(path); QVERIFY(file.open(QIODevice::WriteOnly)); file.write(QJsonDocument(QJsonArray{record}).toJson()); file.close();
+        const auto loaded = JsonSpeciesCatalog(path).loadSpecies();
+        QCOMPARE(loaded.size(), 1);
+        QVERIFY(loaded.first().image.isEmpty());
+        QVERIFY(!loaded.first().visualQuiz);
+    }
 }
 
 QTEST_MAIN(GameServiceTests)

@@ -6,7 +6,10 @@
 
 GameController::GameController(QObject *parent, const QString &databasePath)
     : QObject(parent),
-      catalog_(QStringLiteral(":/resources/data/species.json")),
+      catalog_(databasePath.isEmpty()
+          ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_catalog.sqlite")
+          : databasePath + QStringLiteral(".catalog.sqlite")),
+      taxonomy_(catalog_),
       historyRepository_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_history.sqlite")
           : databasePath),
@@ -109,21 +112,45 @@ void GameController::startGame()
 
 void GameController::startCategoryGame(const QString &family)
 {
+    startTaxonGame(family, QStringLiteral("species"));
+}
+
+void GameController::exploreTaxon(const QString &taxonId)
+{
+    if (taxonomy_.describe(taxonId).value("title").toString().isEmpty()) return;
+    explorationId_ = taxonId;
+    emit explorationChanged();
+}
+
+QVariantMap GameController::questionPhoto() const
+{
+    const Question question = service_.currentQuestion();
+    const Species &s = question.species;
+    return {{"image", question.visual ? s.image : QString()}, {"author", s.imageAuthor},
+        {"license", s.imageLicense}, {"licenseUrl", s.imageLicenseUrl}, {"source", s.imageSource},
+        {"kingdom", s.educationalKingdom}, {"visual", question.visual}};
+}
+
+void GameController::startTaxonGame(const QString &family, const QString &rank)
+{
     if (resultPending_) {
         feedbackText_ = QStringLiteral("Salve o resultado pendente antes de iniciar outra partida.");
         emit feedbackTextChanged();
         return;
     }
     sessionPlayerName_ = currentPlayerName_;
-    categoryName_ = family.isEmpty() ? QStringLiteral("Todas as espécies") : family;
+    identificationRank_ = rank;
+    sessionTaxonId_ = taxonomy_.describe(family).value("title").toString().isEmpty() ? QString() : family;
+    categoryName_ = family.isEmpty() ? QStringLiteral("Todas as espécies")
+        : (sessionTaxonId_.isEmpty() ? family : taxonomy_.describe(family).value("title").toString());
     answerPending_ = false;
     answerDetails_.clear();
     categoryStats_.clear();
     correctStreak_ = 0;
     bestStreak_ = 0;
-    service_.startNewGame(family);
+    service_.startNewGame(family, rank);
     feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
-        ? QStringLiteral("É preciso haver pelo menos quatro espécies válidas para iniciar.")
+        ? QStringLiteral("Este grupo não possui quatro alternativas distintas para o nível escolhido.")
         : QStringLiteral("Escolha a opção correta para continuar.");
     emit questionTextChanged();
     emit factTextChanged();
@@ -150,13 +177,26 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("correct"), correct},
         {QStringLiteral("selectedAnswer"), selectedOption},
         {QStringLiteral("name"), answeredQuestion.correctAnswer},
-        {QStringLiteral("fact"), answeredQuestion.fact},
+        {QStringLiteral("fact"), answeredQuestion.species.fact},
+        {QStringLiteral("speciesName"), answeredQuestion.species.name},
+        {QStringLiteral("commonName"), answeredQuestion.species.commonName},
+        {QStringLiteral("kingdom"), answeredQuestion.species.educationalKingdom},
+        {QStringLiteral("sourceUrl"), answeredQuestion.species.sourceUrl},
+        {QStringLiteral("author"), answeredQuestion.species.imageAuthor},
+        {QStringLiteral("license"), answeredQuestion.species.imageLicense},
+        {QStringLiteral("licenseUrl"), answeredQuestion.species.imageLicenseUrl},
+        {QStringLiteral("source"), answeredQuestion.species.imageSource},
         {QStringLiteral("hint"), answeredQuestion.extraHint},
         {QStringLiteral("family"), answeredQuestion.species.family},
         {QStringLiteral("region"), answeredQuestion.species.region},
         {QStringLiteral("image"), answeredQuestion.species.image}
     };
-    auto &statistics = categoryStats_[answeredQuestion.species.family];
+    QStringList lineage;
+    for (const Taxon &node : answeredQuestion.species.taxonomy)
+        if (node.rank != "educational_kingdom") lineage << taxonomicRankLabel(node.rank) + ": " + node.name;
+    answerDetails_.insert("classification", lineage.join(" · "));
+    auto &statistics = categoryStats_[answeredQuestion.species.family.isEmpty()
+        ? answeredQuestion.species.educationalKingdom : answeredQuestion.species.family];
     ++statistics.first;
     if (correct) ++statistics.second;
     correctStreak_ = correct ? correctStreak_ + 1 : 0;
@@ -225,25 +265,7 @@ void GameController::loadRanking()
 
 QVariantList GameController::categories() const
 {
-    QMap<QString, QSet<QString>> namesByFamily;
-    QSet<QString> allNames;
-    for (const Species &species : catalog_.loadSpecies()) {
-        const QString name = species.name.toCaseFolded();
-        allNames.insert(name);
-        namesByFamily[species.family].insert(name);
-    }
-    QVariantList list{QVariantMap{
-        {QStringLiteral("id"), QString()}, {QStringLiteral("title"), QStringLiteral("Todas as espécies")},
-        {QStringLiteral("count"), allNames.size()}, {QStringLiteral("description"), QStringLiteral("Explore borboletas e mariposas em um só lugar.")}
-    }};
-    for (auto it = namesByFamily.cbegin(); it != namesByFamily.cend(); ++it) {
-        if (it.key().isEmpty() || it.value().size() < 4) continue;
-        list.append(QVariantMap{
-            {QStringLiteral("id"), it.key()}, {QStringLiteral("title"), it.key()},
-            {QStringLiteral("count"), it.value().size()}, {QStringLiteral("description"), QStringLiteral("Conheça as espécies desta família.")}
-        });
-    }
-    return list;
+    return taxonomy_.kingdoms();
 }
 
 QVariantList GameController::categoryStats() const

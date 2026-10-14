@@ -1,7 +1,8 @@
 #pragma once
 
 #include "application/GameService.h"
-#include "infrastructure/content/JsonSpeciesCatalog.h"
+#include "infrastructure/content/SqliteSpeciesCatalog.h"
+#include "application/TaxonomyIndex.h"
 #include "infrastructure/persistence/SqliteGameHistoryRepository.h"
 
 #include <QObject>
@@ -34,6 +35,13 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
     Q_PROPERTY(QVariantList achievements READ achievements NOTIFY scoreChanged)
     Q_PROPERTY(QString categoryName READ categoryName NOTIFY gameFinishedChanged)
+    Q_PROPERTY(QVariantMap browseTaxon READ browseTaxon NOTIFY explorationChanged)
+    Q_PROPERTY(QVariantList browseChildren READ browseChildren NOTIFY explorationChanged)
+    Q_PROPERTY(QVariantList breadcrumbs READ breadcrumbs NOTIFY explorationChanged)
+    Q_PROPERTY(QVariantList identificationLevels READ identificationLevels NOTIFY explorationChanged)
+    Q_PROPERTY(QVariantMap questionPhoto READ questionPhoto NOTIFY questionTextChanged)
+    Q_PROPERTY(QString identificationRankLabel READ identificationRankLabel NOTIFY gameFinishedChanged)
+    Q_PROPERTY(QString sessionTaxonId READ sessionTaxonId NOTIFY gameFinishedChanged)
 
 public:
     explicit GameController(QObject *parent = nullptr, const QString &databasePath = QString());
@@ -61,10 +69,19 @@ public:
     QVariantList categoryStats() const;
     QVariantList achievements() const;
     QString categoryName() const { return categoryName_; }
+    QVariantMap browseTaxon() const { return taxonomy_.describe(explorationId_); }
+    QVariantList browseChildren() const { return taxonomy_.children(explorationId_); }
+    QVariantList breadcrumbs() const { return taxonomy_.breadcrumbs(explorationId_); }
+    QVariantList identificationLevels() const { return taxonomy_.identificationLevels(explorationId_); }
+    QVariantMap questionPhoto() const;
+    QString identificationRankLabel() const { return taxonomicRankLabel(identificationRank_); }
+    QString sessionTaxonId() const { return sessionTaxonId_; }
 
 public slots:
     void startGame();
     void startCategoryGame(const QString &family);
+    void startTaxonGame(const QString &taxonId, const QString &rank);
+    void exploreTaxon(const QString &taxonId);
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
     void revealHint();
@@ -89,9 +106,11 @@ signals:
     void rankingChanged();
     void resultPendingChanged();
     void answerDetailsChanged();
+    void explorationChanged();
 
 private:
-    JsonSpeciesCatalog catalog_;
+    SqliteSpeciesCatalog catalog_;
+    TaxonomyIndex taxonomy_;
     SqliteGameHistoryRepository historyRepository_;
     GameService service_;
     QString currentPlayerName_;
@@ -99,6 +118,9 @@ private:
     bool resultPending_ = false;
     QString feedbackText_;
     QString categoryName_;
+    QString explorationId_;
+    QString sessionTaxonId_;
+    QString identificationRank_ = "species";
     bool answerPending_ = false;
     QVariantMap answerDetails_;
     QMap<QString, QPair<int, int>> categoryStats_;

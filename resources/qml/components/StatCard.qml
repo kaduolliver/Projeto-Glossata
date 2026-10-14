@@ -26,7 +26,7 @@ Rectangle {
             Layout.fillWidth: true
             spacing: 6
             Label { text: card.title; color: "#91AAB2"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            Label { text: card.value; color: "#F4FAF7"; font.pixelSize: 28; font.weight: Font.DemiBold }
+            Label { text: card.value; color: "#F4FAF7"; font.pixelSize: 28; font.weight: Font.DemiBold; fontSizeMode: Text.Fit; minimumPixelSize: 14; Layout.fillWidth: true }
         }
     }
 }

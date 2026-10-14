@@ -29,6 +29,8 @@
 *.ilk
 *.user
 *.suo
+__pycache__/
+*.pyc
 /.vs/
 /.idea/
 /.vscode/*

@@ -12,7 +12,7 @@ public:
     enum class SaveStatus { NotNeeded, Saved, Failed };
     explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr);
 
-    void startNewGame(const QString &family = QString());
+    void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"));
     Question currentQuestion() const;
     QString currentFact() const;
     QString extraHint() const;
@@ -30,6 +30,7 @@ public:
 
 private:
     void buildQuestionForCurrentSpecies();
+    void shuffleCycle();
 
     SpeciesCatalog *catalog_ = nullptr;
     GameHistoryRepository *history_ = nullptr;
@@ -39,4 +40,5 @@ private:
     bool hintRevealed_ = false;
     GameSession session_;
     Question currentQuestion_;
+    QString identificationRank_ = QStringLiteral("species");
 };

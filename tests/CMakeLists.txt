@@ -5,6 +5,8 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -17,15 +19,18 @@ target_include_directories(glossata_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/src/presentation
 )
 
-target_link_libraries(glossata_tests PRIVATE Qt6::Core Qt6::Sql Qt6::Test)
+target_link_libraries(glossata_tests PRIVATE Qt6::Core Qt6::Gui Qt6::Sql Qt6::Test)
 
-add_test(NAME GlossataTests COMMAND glossata_tests)
+add_test(NAME GlossataTests COMMAND glossata_tests -o ${CMAKE_CURRENT_BINARY_DIR}/core-results.txt,txt)
+set_tests_properties(GlossataTests PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 
 add_executable(glossata_ui_tests
     QmlInterfaceTests.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/discord/DiscordRichPresence.cpp
     ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
@@ -44,3 +49,6 @@ add_executable(glossata_discord_tests
 target_include_directories(glossata_discord_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(glossata_discord_tests PRIVATE Qt6::Core Qt6::Network Qt6::Test)
 add_test(NAME GlossataDiscordTests COMMAND glossata_discord_tests)
+
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_test(NAME GlossataImportTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_import_inaturalist.py)

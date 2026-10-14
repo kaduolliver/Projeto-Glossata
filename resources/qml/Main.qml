@@ -29,9 +29,10 @@ ApplicationWindow {
     property var presence: discordPresence
     property string page: "home"
     property bool motionEnabled: true
+    property bool sessionStarted: false
     readonly property real accuracy: backend.answeredCount > 0 ? Math.round(100 * backend.score / backend.answeredCount) : 0
-    readonly property bool playing: !backend.gameFinished && backend.answeredCount > 0
-    readonly property var pageTitles: ({home: "Seu próximo voo começa aqui", categories: "Explorar", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Seu desempenho", achievements: "Suas descobertas", settings: "Seu espaço"})
+    readonly property bool playing: sessionStarted && !backend.gameFinished
+    readonly property var pageTitles: ({home: "Seu próximo voo começa aqui", categories: "Explorar", taxonomy: "Explorar um grupo", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Seu desempenho", achievements: "Suas descobertas", settings: "Seu espaço"})
 
     function navigate(destination) { page = destination }
     function openPlay() {
@@ -39,7 +40,18 @@ ApplicationWindow {
     }
     function beginGame(family) {
         backend.startCategoryGame(family)
+        sessionStarted = !backend.gameFinished
         page = backend.gameFinished ? "results" : "quiz"
+    }
+    function openTaxon(id) { backend.exploreTaxon(id); page = "taxonomy" }
+    function beginTaxonGame(id, rank) {
+        backend.startTaxonGame(id, rank)
+        sessionStarted = !backend.gameFinished
+        page = backend.gameFinished ? "taxonomy" : "quiz"
+    }
+    function returnToExploration() {
+        if (backend.sessionTaxonId) openTaxon(backend.sessionTaxonId)
+        else page = "categories"
     }
     function nextQuestion() { backend.nextQuestion(); page = "quiz" }
     function finishGame() { backend.stopGame(); page = "results" }
@@ -72,7 +84,7 @@ ApplicationWindow {
                 }
                 Label { text: "DESCOBRIR"; color: "#62838D"; font.pixelSize: 10; font.letterSpacing: 1.6; Layout.leftMargin: 14; Layout.bottomMargin: 8 }
                 NavItem { Layout.fillWidth: true; text: "Início"; iconName: "home"; selected: root.page === "home"; onClicked: root.navigate("home") }
-                NavItem { Layout.fillWidth: true; text: "Jogar"; iconName: "play"; selected: ["categories", "quiz", "feedback", "info", "results"].indexOf(root.page) >= 0; onClicked: root.openPlay() }
+                NavItem { Layout.fillWidth: true; text: "Jogar"; iconName: "play"; selected: ["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(root.page) >= 0; onClicked: root.openPlay() }
                 NavItem { Layout.fillWidth: true; text: "Estatísticas"; iconName: "chart"; selected: root.page === "statistics"; onClicked: root.navigate("statistics") }
                 NavItem { Layout.fillWidth: true; text: "Conquistas"; iconName: "trophy"; selected: root.page === "achievements"; onClicked: root.navigate("achievements") }
                 Item { Layout.preferredHeight: 18 }
@@ -127,6 +139,7 @@ ApplicationWindow {
             }
             Flickable {
                 id: scroll
+                objectName: "pageScroll"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 clip: true
@@ -144,6 +157,7 @@ ApplicationWindow {
                     sourceComponent: {
                         switch (root.page) {
                         case "categories": return categoriesPage
+                        case "taxonomy": return taxonomyPage
                         case "quiz": return quizPage
                         case "feedback": return feedbackPage
                         case "info": return infoPage
@@ -161,6 +175,7 @@ ApplicationWindow {
     NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: root.motionEnabled ? 180 : 0 }
     Component { id: homePage; HomeView { app: root; backend: root.backend } }
     Component { id: categoriesPage; CategoryView { app: root; backend: root.backend } }
+    Component { id: taxonomyPage; TaxonomyView { app: root; backend: root.backend } }
     Component { id: quizPage; QuizView { app: root; backend: root.backend } }
     Component { id: feedbackPage; FeedbackView { app: root; backend: root.backend } }
     Component { id: infoPage; InfoView { app: root; backend: root.backend } }

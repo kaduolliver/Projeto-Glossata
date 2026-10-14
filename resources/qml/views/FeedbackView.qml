@@ -19,7 +19,7 @@ Item {
             anchors.fill: parent
             anchors.margins: 26
             spacing: 34
-            SpeciesArtwork { Layout.preferredWidth: view.width * 0.37; Layout.fillHeight: true; accent: view.correct ? "#D5B777" : "#CB9D6A" }
+            SpeciesPortrait { Layout.preferredWidth: view.width * 0.37; Layout.fillHeight: true; info: view.backend.answerDetails }
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -33,7 +33,7 @@ Item {
                     UiIcon { anchors.centerIn: parent; name: view.correct ? "check" : "cross"; ink: "#EBFFE4"; implicitWidth: 32; implicitHeight: 32 }
                 }
                 Label { text: view.correct ? "Muito bem!" : "Mais uma descoberta!"; color: "#F4F8EE"; font.pixelSize: 31; font.weight: Font.DemiBold; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                Label { text: view.correct ? "Você identificou a espécie corretamente." : "Desta vez, sua resposta não foi a correta."; color: view.correct ? "#AFCAB4" : "#D7B5AB"; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap; font.pixelSize: 13; Layout.fillWidth: true }
+                Label { text: view.correct ? "Você identificou a resposta corretamente." : "Desta vez, sua resposta não foi a correta."; color: view.correct ? "#AFCAB4" : "#D7B5AB"; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap; font.pixelSize: 13; Layout.fillWidth: true }
                 Rectangle {
                     Layout.fillWidth: true
                     implicitHeight: 64

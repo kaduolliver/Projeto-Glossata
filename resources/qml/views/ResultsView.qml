@@ -11,7 +11,7 @@ Item {
     implicitHeight: 540
     Rectangle {
         anchors.fill: parent; radius: 24; color: "#102E28"; border.color: "#30563D"
-        SpeciesArtwork { anchors.fill: parent; showCaption: false; butterflyScale: 0.85; opacity: 0.18 }
+        LifeArtwork { anchors.fill: parent; opacity: 0.18 }
         ColumnLayout {
             anchors.fill: parent; anchors.margins: 42; spacing: 16
             Item { Layout.fillHeight: true }
@@ -27,7 +27,7 @@ Item {
             Label { text: view.backend.feedbackText; color: view.backend.resultPending ? "#F0BBA8" : "#A7C5B1"; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap; Layout.fillWidth: true; font.pixelSize: 12 }
             RowLayout {
                 Layout.alignment: Qt.AlignHCenter; Layout.topMargin: 16; spacing: 16
-                UiButton { text: "Jogar novamente"; iconName: "play"; secondary: true; enabled: !view.backend.resultPending; onClicked: view.app.navigate("categories") }
+                UiButton { objectName: "returnExplorationButton"; text: "Voltar ? explora??o"; iconName: "play"; secondary: true; enabled: !view.backend.resultPending; onClicked: view.app.returnToExploration() }
                 UiButton { text: "Ver estatísticas"; iconName: "chart"; onClicked: view.app.navigate("statistics") }
             }
             Item { Layout.fillHeight: true }

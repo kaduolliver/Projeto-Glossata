@@ -20,7 +20,7 @@ Item {
             color: "#122F2B"
             border.color: "#355943"
             clip: true
-            SpeciesArtwork { anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: parent.bottom; width: parent.width * 0.61; showCaption: false; butterflyScale: 1.15 }
+            LifeArtwork { anchors.right: parent.right; anchors.top: parent.top; anchors.bottom: parent.bottom; width: parent.width * 0.61 }
             Rectangle {
                 anchors.fill: parent; radius: 22
                 gradient: Gradient {
@@ -41,10 +41,10 @@ Item {
                 }
                 ColumnLayout {
                     spacing: 3; Layout.fillWidth: true
-                    Label { text: "Pequenas asas."; color: "#F5F8EF"; font.pixelSize: 40; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                    Label { text: "Grandes descobertas."; color: "#5DDE8D"; font.pixelSize: 40; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { text: "Um mundo de vida."; color: "#F5F8EF"; font.pixelSize: 38; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { text: "Infinitas descobertas."; color: "#5DDE8D"; font.pixelSize: 38; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 }
-                Label { text: "Conheça o fascinante universo das borboletas e mariposas. Uma curiosidade, uma dica e uma nova descoberta por vez."; color: "#B8CAC0"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.maximumWidth: 345 }
+                Label { text: "Explore a diversidade da vida, dos organismos microscópicos às espécies mais complexas. Descubra, identifique e aprenda uma espécie de cada vez."; color: "#B8CAC0"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.maximumWidth: 345 }
                 UiButton { objectName: "homePlayButton"; text: view.app.playing ? "Continuar partida" : "Começar a explorar"; iconName: "play"; Layout.topMargin: 8; implicitWidth: 230; onClicked: view.app.openPlay() }
                 Label { text: "No seu ritmo. Sem limite de perguntas."; color: "#71998A"; font.pixelSize: 11 }
             }
@@ -55,7 +55,7 @@ Item {
             spacing: 16
             StatCard { Layout.fillWidth: true; title: "Espécies para descobrir"; value: String(view.backend.categories[0].count); iconName: "butterfly"; accent: "#E6B366" }
             StatCard { Layout.fillWidth: true; title: "Seu ritmo"; value: "Sem pressa"; iconName: "leaf"; accent: "#52D18B" }
-            StatCard { Layout.fillWidth: true; title: "Conhecimento"; value: "A cada voo"; iconName: "book"; accent: "#74AEDD" }
+            StatCard { Layout.fillWidth: true; title: "Conhecimento"; value: "A cada descoberta"; iconName: "book"; accent: "#74AEDD" }
         }
     }
 }

@@ -1,0 +1,46 @@
+{
+  "imported_at": "2026-10-14T16:12:36.225937+00:00",
+  "target_new_per_kingdom": 20,
+  "accepted_licenses": [
+    "cc-by",
+    "cc0"
+  ],
+  "kingdoms": {
+    "Animalia": {
+      "added": 0,
+      "imported_total": 20,
+      "catalog_total": 42,
+      "shortfall": 0
+    },
+    "Plantae": {
+      "added": 0,
+      "imported_total": 20,
+      "catalog_total": 20,
+      "shortfall": 0
+    },
+    "Fungi": {
+      "added": 0,
+      "imported_total": 20,
+      "catalog_total": 20,
+      "shortfall": 0
+    },
+    "Protista": {
+      "added": 0,
+      "imported_total": 20,
+      "catalog_total": 20,
+      "shortfall": 0
+    },
+    "Monera": {
+      "added": 0,
+      "imported_total": 20,
+      "catalog_total": 20,
+      "shortfall": 0
+    }
+  },
+  "skipped": [],
+  "photos": {
+    "cc-by": 76,
+    "cc0": 24
+  },
+  "visual_quiz_records": 77
+}

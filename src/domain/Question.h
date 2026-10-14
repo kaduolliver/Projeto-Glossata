@@ -11,4 +11,6 @@ struct Question {
     QString correctAnswer;
     QStringList options;
     Species species;
+    QString identificationRank = QStringLiteral("species");
+    bool visual = false;
 };
