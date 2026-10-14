@@ -9,7 +9,8 @@ class SqliteGameHistoryRepository final : public GameHistoryRepository, public P
 public:
     explicit SqliteGameHistoryRepository(const QString &databasePath = QStringLiteral("glossata_history.sqlite"));
     ~SqliteGameHistoryRepository() override;
-    bool saveResult(const QString &playerName, int score, int correctAnswers) override;
+    bool saveResult(const QString &playerName, qint64 scoreUnits, int correctAnswers,
+                    const QVector<AnswerRecord> &answers={},const QString &gameId={}) override;
     QVector<HistoryEntry> loadTopResults(int limit = 10) const override;
     QStringList loadPlayerProfiles() const override;
     bool addPlayerProfile(const QString &name) override;

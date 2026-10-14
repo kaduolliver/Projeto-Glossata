@@ -9,17 +9,19 @@ Item {
     required property var app
     required property var backend
     readonly property bool correct: !!backend.answerDetails.correct
-    implicitHeight: 560
+    property bool showLearning: false
+    implicitHeight: Math.max(560,feedbackLayout.implicitHeight+52)
     Rectangle {
         anchors.fill: parent
         radius: 22
         border.color: view.correct ? "#2B6747" : "#77453C"
         gradient: Gradient { orientation: Gradient.Horizontal; GradientStop { position: 0; color: "#17362B" } GradientStop { position: 1; color: view.correct ? "#123D29" : "#402623" } }
         RowLayout {
+            id: feedbackLayout
             anchors.fill: parent
             anchors.margins: 26
             spacing: 34
-            SpeciesPortrait { Layout.preferredWidth: view.width * 0.37; Layout.fillHeight: true; info: view.backend.answerDetails }
+            SpeciesPortrait { Layout.preferredWidth: view.width * 0.37; Layout.preferredHeight: 480; Layout.minimumHeight: 350; Layout.maximumHeight: 520; Layout.alignment: Qt.AlignTop; info: view.backend.answerDetails }
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
@@ -49,6 +51,26 @@ Item {
                     }
                 }
                 Label { text: view.backend.answerDetails.fact || ""; color: "#C2D3C1"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { text: "Pontos nesta questão: " + (view.backend.answerDetails.awardedText || "0,00"); color: "#71DCA0"; font.pixelSize: 14; Layout.fillWidth: true }
+                TextAction { objectName: "answerLearningButton"; text: view.showLearning ? "Ocultar aprendizado" : "Aprender com esta resposta"; onClicked: view.showLearning = !view.showLearning }
+                ColumnLayout {
+                    visible: view.showLearning; Layout.fillWidth: true; spacing: 10
+                    Repeater {
+                        model: [
+                            {title: "Nome científico", body: view.backend.answerDetails.speciesName},
+                            {title: "Classificação", body: view.backend.answerDetails.classification},
+                            {title: "Origem do nome", body: (view.backend.answerDetails.nameOrigin || ({})).text},
+                            {title: "Características para observar", body: (((view.backend.answerDetails.profile || ({})).morphology) || ({})).text}
+                        ]
+                        delegate: ColumnLayout {
+                            required property var modelData
+                            visible: !!modelData.body; Layout.fillWidth: true
+                            Label { text: modelData.title; font.pixelSize: 13; font.weight: Font.DemiBold; color: "#E6F1E9" }
+                            Label { text: modelData.body || ""; font.pixelSize: 13; color: "#B1C8CC"; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                        }
+                    }
+                    TextAction { visible: !!(view.backend.answerDetails.nameOrigin || ({})).source_url; text: "Fonte da etimologia ↗"; onClicked: Qt.openUrlExternally(view.backend.answerDetails.nameOrigin.source_url) }
+                }
                 Item { Layout.fillHeight: true }
                 UiButton { text: "Ver mais informações"; iconName: "book"; secondary: true; Layout.fillWidth: true; onClicked: view.app.navigate("info") }
                 UiButton { objectName: "nextQuestionButton"; text: "Próxima pergunta"; iconName: "arrow"; danger: !view.correct; Layout.fillWidth: true; onClicked: view.app.nextQuestion() }

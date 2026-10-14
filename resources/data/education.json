@@ -8706,6 +8706,1678 @@
       "verified": true,
       "reviewed_on": "2026-10-14",
       "scope_name": ""
+    },
+    "species:63:etymology:species": {
+      "text": "O epíteto específico significa azul.",
+      "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:63:etymology:genus": {
+      "text": "O nome do gênero vem de uma palavra grega relacionada a um cinto, em referência ao anel no pé.",
+      "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:63:morphological_hint": {
+      "text": "Observe o tom azul-esverdeado do chapéu, especialmente nos exemplares jovens.",
+      "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "330405159"
+    },
+    "species:135:etymology:species": {
+      "text": "O epíteto específico significa vermelho.",
+      "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:135:etymology:genus": {
+      "text": "O nome do gênero significa gaiola.",
+      "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:135:morphological_hint": {
+      "text": "Procure uma estrutura vermelha e vazada, parecida com uma gaiola.",
+      "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "745707969"
+    },
+    "species:67:etymology:species": {
+      "text": "O epíteto específico significa de várias cores.",
+      "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:67:etymology:genus": {
+      "text": "O nome do gênero faz referência a estruturas finas.",
+      "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:67:morphological_hint": {
+      "text": "Procure pequenas prateleiras sobrepostas com faixas de várias cores.",
+      "source_url": "https://www.mushroomexpert.com/trametes_versicolor.html",
+      "source_title": "MushroomExpert · Michael Kuo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "27005174"
+    },
+    "species:136:etymology:species": {
+      "text": "O epíteto específico deriva de uma palavra latina que significa mosca.",
+      "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:136:morphological_hint": {
+      "text": "Observe o chapéu colorido com manchas claras e o pé claro.",
+      "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "432197409"
+    },
+    "species:73:etymology:species": {
+      "text": "O epíteto específico significa cabeludo, em referência às escamas do chapéu.",
+      "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:73:etymology:genus": {
+      "text": "O nome do gênero significa viver sobre esterco; é uma origem linguística e não define a dieta desta espécie.",
+      "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:73:morphological_hint": {
+      "text": "Procure um chapéu branco e alongado com escamas que lembram fios.",
+      "source_url": "https://www.mushroomexpert.com/coprinus_comatus.html",
+      "source_title": "MushroomExpert · Michael Kuo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "93399523"
+    },
+    "species:138:etymology:species": {
+      "text": "O epíteto específico significa sem pudor ou imodesto.",
+      "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:138:etymology:genus": {
+      "text": "O nome do gênero se refere à aparência fálica de suas estruturas reprodutivas.",
+      "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:138:morphological_hint": {
+      "text": "Observe o pé claro comprido e a cobertura escura na parte superior.",
+      "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "159628472"
+    },
+    "species:139:etymology:species": {
+      "text": "O epíteto específico significa de três camadas.",
+      "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:139:etymology:genus": {
+      "text": "O nome do gênero combina os sentidos de terra e estrela.",
+      "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:139:morphological_hint": {
+      "text": "Procure uma bolsa arredondada no centro de pontas que formam uma estrela.",
+      "source_url": "https://www.mushroomexpert.com/geastrum_triplex.html",
+      "source_title": "MushroomExpert · Michael Kuo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "139143137"
+    },
+    "species:140:etymology:species": {
+      "text": "O epíteto específico significa semelhante a um ouriço.",
+      "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:140:etymology:genus": {
+      "text": "O nome do gênero faz referência a um ouriço, por causa das estruturas semelhantes a espinhos.",
+      "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+      "source_title": "First Nature · etimologia documentada",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:140:morphological_hint": {
+      "text": "Procure uma massa clara com muitos espinhos pendentes.",
+      "source_url": "https://www.mushroomexpert.com/hericium_erinaceus.html",
+      "source_title": "MushroomExpert · Michael Kuo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5466254"
+    },
+    "species:103:etymology:species": {
+      "text": "O epíteto específico se refere à região da superfície das folhas.",
+      "source_url": "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:103:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; as colônias cultivadas podem ser amarelas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijs.0.63102-0",
+      "source_title": "Publicação científica · Microbiology Society",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "7906556"
+    },
+    "species:105:etymology:species": {
+      "text": "O epíteto específico tem o sentido de enfraquecer ou desaparecer gradualmente.",
+      "source_url": "https://lpsn.dsmz.de/species/serratia-marcescens",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:105:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete. Algumas colônias são rosadas ou vermelhas, mas muitas não têm essa cor. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://journals.asm.org/doi/10.1128/cmr.00017-11",
+      "source_title": "Publicação científica · ASM",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "58089762"
+    },
+    "species:106:etymology:species": {
+      "text": "O epíteto específico significa que gosta de sal.",
+      "source_url": "https://lpsn.dsmz.de/species/thiohalocapsa-halophila",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:106:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas; culturas e concentrações podem apresentar pigmentação avermelhada ou púrpura. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2017.01995/full",
+      "source_title": "www.frontiersin.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Bactérias púrpuras do enxofre",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "77725233"
+    },
+    "species:109:etymology:species": {
+      "text": "O epíteto específico significa branca.",
+      "source_url": "https://lpsn.dsmz.de/species/beggiatoa-alba",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:109:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas alinhadas em filamentos; podem apresentar grânulos claros no interior. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.microbiologyresearch.org/content/journal/micro/10.1099/00221287-128-1-73",
+      "source_title": "Publicação científica · Microbiology Society",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "629567196"
+    },
+    "species:114:etymology:species": {
+      "text": "O epíteto específico significa que carrega discos.",
+      "source_url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:114:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas alongadas; algumas linhagens formam envoltórios tubulares e outras não. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2648177/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "3221562"
+    },
+    "species:116:etymology:species": {
+      "text": "O epíteto específico se refere a rebanhos de ovelhas ou de gado.",
+      "source_url": "https://lpsn.dsmz.de/species/chlamydia-pecorum",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:116:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células muito pequenas; sua observação exige técnicas microscópicas e laboratoriais. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2820232/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "320741885"
+    },
+    "species:118:etymology:species": {
+      "text": "O epíteto específico se refere a um porquinho-da-índia.",
+      "source_url": "https://lpsn.dsmz.de/species/aeromonas-caviae",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:118:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; a espécie precisa de confirmação laboratorial. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3067608/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "64447665"
+    },
+    "species:119:etymology:species": {
+      "text": "O epíteto específico significa que apresenta fluorescência.",
+      "source_url": "https://lpsn.dsmz.de/species/pseudomonas-fluorescens",
+      "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:119:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; algumas linhagens produzem pigmentos fluorescentes. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4187640/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "64448584"
+    },
+    "species:131:etymology:species": {
+      "text": "O epíteto específico se refere a um único chifre.",
+      "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
+      "source_title": "International Rhino Foundation · manual científico",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:131:etymology:genus": {
+      "text": "O nome do gênero reúne os sentidos gregos de nariz e chifre.",
+      "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
+      "source_title": "International Rhino Foundation · manual científico",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:131:morphological_hint": {
+      "text": "Observe o único chifre e as dobras da pele, semelhantes a uma armadura.",
+      "source_url": "https://animaldiversity.org/accounts/Rhinoceros_unicornis/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "120750026"
+    },
+    "species:133:etymology:species": {
+      "text": "O epíteto específico significa dois lobos, em referência às folhas.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:133:morphological_hint": {
+      "text": "Observe as folhas em forma de leque, que ficam amarelas no outono.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "734005336"
+    },
+    "species:61:etymology:species": {
+      "text": "O epíteto específico homenageia uma antiga localidade da atual Tunísia.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:61:etymology:genus": {
+      "text": "O nome do gênero está ligado ao sentido de barbado, em referência a estruturas com pelos.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:61:morphological_hint": {
+      "text": "Procure folhas aveludadas e uma haste alta com flores amarelas.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "93034327"
+    },
+    "species:51:etymology:species": {
+      "text": "O epíteto específico combina os sentidos de dourado e flor.",
+      "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
+      "source_title": "SANBI · PlantZAfrica",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:51:morphological_hint": {
+      "text": "Procure grupos de flores amarelas brilhantes nas pontas dos ramos.",
+      "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
+      "source_title": "SANBI · PlantZAfrica",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "371617112"
+    },
+    "species:57:etymology:genus": {
+      "text": "O nome do gênero combina os sentidos de nervura e folha.",
+      "source_url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
+      "source_title": "NZPCN · etimologia botânica",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:57:morphological_hint": {
+      "text": "Observe as folhas largas e fortemente marcadas por nervuras.",
+      "source_url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
+      "source_title": "Rede de Conservação de Plantas · Nova Zelândia",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "251548988"
+    },
+    "species:149:etymology:species": {
+      "text": "O epíteto específico significa comestível; a origem linguística não é uma recomendação de consumo.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "species"
+      ]
+    },
+    "species:149:etymology:genus": {
+      "text": "O nome do gênero se refere a asas.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "ranks": [
+        "genus"
+      ]
+    },
+    "species:149:morphological_hint": {
+      "text": "Procure uma longa lâmina com uma nervura central muito evidente.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "141679612"
+    },
+    "species:1:morphological_hint": {
+      "text": "Procure asas amarelas com desenhos escuros e pontas alongadas nas asas de trás.",
+      "source_url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "280989671"
+    },
+    "species:2:morphological_hint": {
+      "text": "Observe as faixas avermelhadas e as manchas brancas nas asas escuras.",
+      "source_url": "https://www.inaturalist.org/observations/213128873",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "376647594"
+    },
+    "species:3:morphological_hint": {
+      "text": "Observe o desenho claro no tórax, que lembra uma pequena caveira.",
+      "source_url": "https://www.inaturalist.org/observations/324010008",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "586365614"
+    },
+    "species:4:morphological_hint": {
+      "text": "Observe os muitos desenhos curvos e simétricos nas asas largas.",
+      "source_url": "https://www.inaturalist.org/observations/104690605",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "175474265"
+    },
+    "species:5:morphological_hint": {
+      "text": "Observe as antenas plumosas e as linhas nas asas.",
+      "source_url": "https://www.inaturalist.org/observations/226487361",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "401685857"
+    },
+    "species:6:morphological_hint": {
+      "text": "Observe as asas alaranjadas, as linhas pretas e os pontos brancos nas bordas.",
+      "source_url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "322926715"
+    },
+    "species:7:morphological_hint": {
+      "text": "Procure grandes manchas em forma de olhos nas asas avermelhadas.",
+      "source_url": "https://www.inaturalist.org/observations/203242996",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "359063525"
+    },
+    "species:8:morphological_hint": {
+      "text": "Observe as áreas alaranjadas e as pontas escuras com manchas brancas.",
+      "source_url": "https://www.inaturalist.org/observations/407941868",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749769318"
+    },
+    "species:125:morphological_hint": {
+      "text": "Procure um grande felino de pelagem alaranjada com listras escuras.",
+      "source_url": "https://animaldiversity.org/accounts/Panthera_tigris/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "707161720"
+    },
+    "species:10:morphological_hint": {
+      "text": "Observe as asas muito amplas, com pequenas áreas que parecem janelas transparentes.",
+      "source_url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "60643931"
+    },
+    "species:11:morphological_hint": {
+      "text": "Procure asas verde-claras com longas caudas nas asas posteriores.",
+      "source_url": "https://animaldiversity.org/accounts/Actias_luna/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "34980868"
+    },
+    "species:12:morphological_hint": {
+      "text": "Observe as asas largas e castanhas com faixas claras e avermelhadas.",
+      "source_url": "https://animaldiversity.org/accounts/Hyalophora_cecropia/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "137265535"
+    },
+    "species:13:morphological_hint": {
+      "text": "Procure grandes manchas em forma de olhos nas asas de trás.",
+      "source_url": "https://entnemdept.ufl.edu/creatures/misc/io_moth.htm",
+      "source_title": "entnemdept.ufl.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "44218494"
+    },
+    "species:14:morphological_hint": {
+      "text": "Observe as grandes manchas arredondadas nas asas posteriores.",
+      "source_url": "https://ask.ifas.ufl.edu/publication/IN945",
+      "source_title": "ask.ifas.ufl.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "664105606"
+    },
+    "species:15:morphological_hint": {
+      "text": "Observe as faixas vivas sobre o fundo escuro das asas.",
+      "source_url": "https://www.inaturalist.org/observations/310362605",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "560140869"
+    },
+    "species:16:morphological_hint": {
+      "text": "Procure o contraste entre azul brilhante e bordas escuras.",
+      "source_url": "https://www.inaturalist.org/observations/28921401",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "45110154"
+    },
+    "species:126:morphological_hint": {
+      "text": "Observe a pelagem amarelada e a cauda com tufo; nos machos adultos, a juba é uma pista importante.",
+      "source_url": "https://animaldiversity.org/accounts/Panthera_leo/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "748172022"
+    },
+    "species:18:morphological_hint": {
+      "text": "Observe as asas claras com pontas escuras.",
+      "source_url": "https://www.inaturalist.org/observations/130413689",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "221780102"
+    },
+    "species:21:morphological_hint": {
+      "text": "Na lagarta, procure o prolongamento na parte traseira do corpo; o adulto tem asas cinzentas.",
+      "source_url": "https://ask.ifas.ufl.edu/publication/IN1187",
+      "source_title": "ask.ifas.ufl.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "43280362"
+    },
+    "species:127:morphological_hint": {
+      "text": "Procure manchas em forma de roseta, muitas com um ponto escuro no centro.",
+      "source_url": "https://animaldiversity.org/accounts/Panthera_onca/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "742746729"
+    },
+    "species:24:morphological_hint": {
+      "text": "Observe as asas claras e os desenhos simétricos que lembram pequenos insetos.",
+      "source_url": "https://www.biointeractive.org/sites/default/files/media/file/2023-05/ArtofHiding-StudentHO-PI.pdf",
+      "source_title": "www.biointeractive.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "53637930"
+    },
+    "species:25:morphological_hint": {
+      "text": "Procure um corpo oval protegido por oito placas alinhadas.",
+      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "source_title": "www.museum.qld.gov.au",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Quítons",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "155300806"
+    },
+    "species:27:morphological_hint": {
+      "text": "Procure várias aranhas pequenas reunidas em uma mesma teia.",
+      "source_url": "https://ditsong.org.za/en/social-spiders/",
+      "source_title": "ditsong.org.za",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "12637215"
+    },
+    "species:28:morphological_hint": {
+      "text": "Observe a cabeça larga e os olhos voltados para cima.",
+      "source_url": "https://www.fishbase.se/summary/Astroscopus-zephyreus.html",
+      "source_title": "www.fishbase.se",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "254703040"
+    },
+    "species:128:morphological_hint": {
+      "text": "A cauda comprida com anéis pretos e brancos é a pista mais evidente.",
+      "source_url": "https://animaldiversity.org/accounts/Lemur_catta/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "659755043"
+    },
+    "species:31:morphological_hint": {
+      "text": "Observe os desenhos coloridos sobre o corpo arredondado.",
+      "source_url": "https://www.inaturalist.org/observations/19068005",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "29250775"
+    },
+    "species:129:morphological_hint": {
+      "text": "Observe o penacho na cabeça; no macho, o pescoço azul e o leque com desenhos de olhos se destacam.",
+      "source_url": "https://animaldiversity.org/accounts/Pavo_cristatus/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "307026691"
+    },
+    "species:130:morphological_hint": {
+      "text": "Procure olhos vermelhos em um corpo verde, com dedos largos para se apoiar nas folhas.",
+      "source_url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+      "source_title": "Animal Diversity Web · Universidade de Michigan",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "289704683"
+    },
+    "species:34:morphological_hint": {
+      "text": "Observe a cabeça e os prolongamentos junto dos olhos.",
+      "source_url": "https://www.inaturalist.org/observations/75731994",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "123931576"
+    },
+    "species:35:morphological_hint": {
+      "text": "Observe a estrutura grande e angular sobre o corpo.",
+      "source_url": "https://www.inaturalist.org/observations/42850346",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "68055096"
+    },
+    "species:36:morphological_hint": {
+      "text": "Observe as pernas posteriores compridas e fortes, adaptadas a saltar.",
+      "source_url": "https://www.uwyo.edu/entomology/grasshoppers/field-guide/chvi.html",
+      "source_title": "www.uwyo.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "31118856"
+    },
+    "species:37:morphological_hint": {
+      "text": "É uma ave muito pequena que caminha pela vegetação e não consegue voar.",
+      "source_url": "https://www.birdlife.org/news/2021/11/08/how-are-humans-affecting-the-lives-of-remote-island-birds/",
+      "source_title": "www.birdlife.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "104246"
+    },
+    "species:38:morphological_hint": {
+      "text": "Observe o volume escuro sobre o corpo, que lembra uma pequena formiga.",
+      "source_url": "https://www.amnh.org/explore/ology/ology-cards/367-cyphonia-clavata",
+      "source_title": "Museu Americano de História Natural",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5726540"
+    },
+    "species:132:morphological_hint": {
+      "text": "Procure um corpo semelhante ao de um cavalo, com listras pretas e brancas.",
+      "source_url": "https://animals.sandiegozoo.org/animals/zebra",
+      "source_title": "animals.sandiegozoo.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "50371107"
+    },
+    "species:41:morphological_hint": {
+      "text": "Observe as pernas dianteiras dobradas e a aparência semelhante a uma folha seca.",
+      "source_url": "https://www.inaturalist.org/observations/192798616",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "338534567"
+    },
+    "species:42:morphological_hint": {
+      "text": "Os machos tinham uma coloração alaranjada muito viva.",
+      "source_url": "https://digimorph.geo.utexas.edu/specimens/Incilius_periglenes/",
+      "source_title": "digimorph.geo.utexas.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "98915545"
+    },
+    "species:43:morphological_hint": {
+      "text": "Observe os raminhos finos e o aspecto de tapete verde.",
+      "source_url": "https://bryophyteportal.org/portal/taxa/index.php?clid=75&taxauthid=1&tid=159612",
+      "source_title": "bryophyteportal.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "613353234"
+    },
+    "species:44:morphological_hint": {
+      "text": "Observe o hábito trepador e as flores com desenhos marcantes.",
+      "source_url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A96864-1/general-information",
+      "source_title": "Kew · Plants of the World Online",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "47249680"
+    },
+    "species:45:morphological_hint": {
+      "text": "Procure uma flor carnosa saindo do chão, sem folhas verdes ao redor.",
+      "source_url": "https://link.springer.com/article/10.1007/s12225-024-10193-5",
+      "source_title": "link.springer.com",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "251673570"
+    },
+    "species:46:morphological_hint": {
+      "text": "Procure um corpo verde achatado com pequenos recipientes em forma de meia-lua.",
+      "source_url": "https://www.britishbryologicalsociety.org.uk/learning/species-finder/lunularia-cruciata/",
+      "source_title": "British Bryological Society",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "61481606"
+    },
+    "species:47:morphological_hint": {
+      "text": "Procure folhas divididas e pequenos grupos de esporos na face inferior.",
+      "source_url": "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Polypodium+glycyrrhiza",
+      "source_title": "burkeherbarium.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "13657957"
+    },
+    "species:48:morphological_hint": {
+      "text": "Procure gavinhas e frutos verdes cobertos de espinhos.",
+      "source_url": "https://plants.sdsu.edu/sdpls/plants/Marah_macrocarpa/",
+      "source_title": "plants.sdsu.edu",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "489573459"
+    },
+    "species:49:morphological_hint": {
+      "text": "Observe as folhas estreitas e as flores alaranjadas.",
+      "source_url": "https://www.inaturalist.org/blog/115883",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "540416886"
+    },
+    "species:50:morphological_hint": {
+      "text": "Observe os sulcos fortes na folha, além da flor.",
+      "source_url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A543057-1",
+      "source_title": "Kew · Plants of the World Online",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "482684019"
+    },
+    "species:53:morphological_hint": {
+      "text": "Observe as folhas recortadas e os conjuntos de flores brancas ou frutos vermelhos.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/viburnum-opulus/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "167101616"
+    },
+    "species:54:morphological_hint": {
+      "text": "Observe as folhas grandes em forma de seta.",
+      "source_url": "https://powo.science.kew.org/taxon/89369-1",
+      "source_title": "Kew · Plants of the World Online",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "45341427"
+    },
+    "species:55:morphological_hint": {
+      "text": "Observe as pequenas flores, com partes estreitas e alongadas.",
+      "source_url": "https://www.cornare.gov.co/noticias-corporativas/pleurothallis-maitamae-la-nueva-orquidea-que-el-paramo-de-sonson-regalo-a-la-ciencia/",
+      "source_title": "Cornare · ficha da orquídea",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "20397049"
+    },
+    "species:58:morphological_hint": {
+      "text": "Procure uma copa muito densa, parecida com um guarda-chuva.",
+      "source_url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A534145-1",
+      "source_title": "Kew · Plants of the World Online",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "111803110"
+    },
+    "species:134:morphological_hint": {
+      "text": "Procure folhas que se fecham como uma armadilha, com bordas semelhantes a dentes.",
+      "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+      "source_title": "NCSU · Plant Toolbox",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "721575702"
+    },
+    "species:64:morphological_hint": {
+      "text": "Procure a cor alaranjada e os grandes poros na parte inferior.",
+      "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "345801259"
+    },
+    "species:65:morphological_hint": {
+      "text": "Procure tufos claros, com numerosas ramificações.",
+      "source_url": "https://www.inaturalist.org/observations/135963380",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "231974984"
+    },
+    "species:70:morphological_hint": {
+      "text": "Procure uma estrutura larga e rígida saindo da madeira como uma prateleira.",
+      "source_url": "https://www.inaturalist.org/observations/198464364",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "349810134"
+    },
+    "species:71:morphological_hint": {
+      "text": "Observe o pequeno chapéu pregueado e o pé fino.",
+      "source_url": "https://www.inaturalist.org/observations/261552464",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "606817545"
+    },
+    "species:137:morphological_hint": {
+      "text": "Procure um chapéu com muitas cavidades, semelhante a um favo.",
+      "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "169965177"
+    },
+    "species:75:morphological_hint": {
+      "text": "Observe os tons violetas no chapéu e no pé.",
+      "source_url": "https://myco-lb.jgi.doe.gov/Corarc1/Corarc1.home.html",
+      "source_title": "myco-lb.jgi.doe.gov",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "130004238"
+    },
+    "species:76:morphological_hint": {
+      "text": "Procure estruturas estreitas e alongadas que lembram pequenos tentáculos.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4838588/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "2279530"
+    },
+    "species:79:morphological_hint": {
+      "text": "Procure pequenos chapéus saindo lateralmente da madeira.",
+      "source_url": "https://www.inaturalist.org/observations/106224223",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "178409675"
+    },
+    "species:81:morphological_hint": {
+      "text": "Observe os tons azuis e o chapéu mais escuro.",
+      "source_url": "https://www.inaturalist.org/observations/143074966",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Fotografia do catálogo",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "245357302"
+    },
+    "species:82:morphological_hint": {
+      "text": "Procure um cogumelo pequeno crescendo diretamente junto de uma bola-da-terra.",
+      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+      "source_title": "First Nature · ficha do fungo",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "151574414"
+    },
+    "species:141:morphological_hint": {
+      "text": "Observe as longas estruturas com várias lâminas e pequenas bolsas de gás.",
+      "source_url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/giant-kelp",
+      "source_title": "Monterey Bay Aquarium",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "742656850"
+    },
+    "species:142:morphological_hint": {
+      "text": "Procure uma grande bolsa de gás com várias lâminas saindo do mesmo ponto.",
+      "source_url": "https://seanet.stanford.edu/Ochrophyta",
+      "source_title": "SeaNet · Universidade Stanford",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749313945"
+    },
+    "species:90:morphological_hint": {
+      "text": "Procure pequenos tufos rosados ou avermelhados sobre a madeira.",
+      "source_url": "https://www.inaturalist.org/observations/3907100",
+      "source_title": "iNaturalist · registro de ocorrência",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "4592237"
+    },
+    "species:143:morphological_hint": {
+      "text": "Procure lâminas achatadas, com nervura central e pequenas bolsas de gás.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1330",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749738938"
+    },
+    "species:144:morphological_hint": {
+      "text": "Procure tiras muito compridas saindo de uma pequena base arredondada.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1358",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "729466339"
+    },
+    "species:145:morphological_hint": {
+      "text": "Observe as pequenas lâminas alinhadas ao longo de uma tira comprida.",
+      "source_url": "https://seanet.stanford.edu/Ochrophyta",
+      "source_title": "SeaNet · Universidade Stanford",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "741404235"
+    },
+    "species:146:morphological_hint": {
+      "text": "Procure tiras achatadas que se dividem repetidamente em duas.",
+      "source_url": "https://www.habitas.org.uk/marinelife/species.asp?item=ZR4570",
+      "source_title": "www.habitas.org.uk",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "647286388"
+    },
+    "species:147:morphological_hint": {
+      "text": "Observe os ramos finos com muitas pequenas bolsas arredondadas.",
+      "source_url": "https://www.marlin.ac.uk/species/detail/1477",
+      "source_title": "MarLIN · Marine Biological Association",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "149679081"
+    },
+    "species:148:morphological_hint": {
+      "text": "Procure tiras grossas e flexíveis, de aparência semelhante a couro.",
+      "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+      "source_title": "Rede de Conservação de Plantas · Nova Zelândia",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "660405215"
+    },
+    "species:150:morphological_hint": {
+      "text": "Observe as partes espessas agrupadas ao longo dos ramos.",
+      "source_url": "https://www.algaebase.org/search/species/?name=Turbinaria%20ornata",
+      "source_title": "www.algaebase.org",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "134408"
+    },
+    "species:104:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas unidas em filamentos, que podem se curvar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://limnolfwbiol.com/index.php/LFWB/article/view/773",
+      "source_title": "limnolfwbiol.com",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    },
+    "species:107:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células pequenas dispostas em filas, formando colônias que podem se dobrar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "257195754"
+    },
+    "species:108:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos em espiral, formados por células ligadas em sequência. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6345927/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "241649713"
+    },
+    "species:110:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
+      "source_title": "OpenStax · Biology 2e",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "Cianobactérias coloniais",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "160680326"
+    },
+    "species:111:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas ligadas em filamentos, com algumas células de aspecto diferente das vizinhas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001",
+      "source_title": "Publicação científica · ASM",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    },
+    "species:112:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Muito pequena e sem parede celular rígida; fotografias da planta afetada não mostram sua forma real. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640453/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "48790280"
+    },
+    "species:113:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos reunidos em colônias, com partes mais largas próximas da base. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.ebr.or.kr/journal/article.php?Array=&code=95553",
+      "source_title": "www.ebr.or.kr",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "443586440"
+    },
+    "species:115:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com células em sequência e pequenas constrições entre elas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.preslia.cz/article/pdf?id=111",
+      "source_title": "www.preslia.cz",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "407087233"
+    },
+    "species:117:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com envoltório; detalhes das células são usados para comparar espécies. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://www.mapress.com/phytotaxa/content/2013/f/pt00137p047.pdf",
+      "source_title": "www.mapress.com",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    },
+    "species:120:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células grandes para uma bactéria, com grânulos internos de carbonato de cálcio e enxofre. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC91685/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "581394987"
+    },
+    "species:122:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células arredondadas ou parcialmente arredondadas, envolvidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://sagdb.uni-goettingen.de/detailedList.php?str_number=36.85",
+      "source_title": "Coleção SAG · Universidade de Göttingen",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "441792181"
+    },
+    "species:123:morphological_hint": {
+      "text": "Procure um pequeno cogumelo castanho crescendo sobre restos de madeira.",
+      "source_url": "https://www.mykoweb.com/CAF/species/Psilocybe_allenii.html",
+      "source_title": "MykoWeb · California Fungi",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5668201"
+    },
+    "species:124:morphological_hint": {
+      "text": "Informação complementar (a imagem é de apoio): Células microscópicas dispostas em filas regulares, formando placas pequenas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+      "source_title": "Publicação científica · PubMed Central",
+      "verified": true,
+      "reviewed_on": "2026-10-14",
+      "scope_name": "",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "43700642"
     }
   },
   "taxons": {
@@ -8807,7 +10479,8 @@
       "hints": [
         "species:1:hint"
       ],
-      "curiosity": "species:1:curiosity"
+      "curiosity": "species:1:curiosity",
+      "morphological_hint": "species:1:morphological_hint"
     },
     "6": {
       "scientific_name": "Danaus plexippus",
@@ -8822,7 +10495,8 @@
       "hints": [
         "species:6:hint"
       ],
-      "curiosity": "species:6:curiosity"
+      "curiosity": "species:6:curiosity",
+      "morphological_hint": "species:6:morphological_hint"
     },
     "125": {
       "scientific_name": "Panthera tigris",
@@ -8837,7 +10511,8 @@
       "hints": [
         "species:125:hint"
       ],
-      "curiosity": "species:125:curiosity"
+      "curiosity": "species:125:curiosity",
+      "morphological_hint": "species:125:morphological_hint"
     },
     "126": {
       "scientific_name": "Panthera leo",
@@ -8852,7 +10527,8 @@
       "hints": [
         "species:126:hint"
       ],
-      "curiosity": "species:126:curiosity"
+      "curiosity": "species:126:curiosity",
+      "morphological_hint": "species:126:morphological_hint"
     },
     "127": {
       "scientific_name": "Panthera onca",
@@ -8867,7 +10543,8 @@
       "hints": [
         "species:127:hint"
       ],
-      "curiosity": "species:127:curiosity"
+      "curiosity": "species:127:curiosity",
+      "morphological_hint": "species:127:morphological_hint"
     },
     "128": {
       "scientific_name": "Lemur catta",
@@ -8882,7 +10559,8 @@
       "hints": [
         "species:128:hint"
       ],
-      "curiosity": "species:128:curiosity"
+      "curiosity": "species:128:curiosity",
+      "morphological_hint": "species:128:morphological_hint"
     },
     "129": {
       "scientific_name": "Pavo cristatus",
@@ -8897,7 +10575,8 @@
       "hints": [
         "species:129:hint"
       ],
-      "curiosity": "species:129:curiosity"
+      "curiosity": "species:129:curiosity",
+      "morphological_hint": "species:129:morphological_hint"
     },
     "130": {
       "scientific_name": "Agalychnis callidryas",
@@ -8912,7 +10591,8 @@
       "hints": [
         "species:130:hint"
       ],
-      "curiosity": "species:130:curiosity"
+      "curiosity": "species:130:curiosity",
+      "morphological_hint": "species:130:morphological_hint"
     },
     "131": {
       "scientific_name": "Rhinoceros unicornis",
@@ -8927,7 +10607,18 @@
       "hints": [
         "species:131:hint"
       ],
-      "curiosity": "species:131:curiosity"
+      "curiosity": "species:131:curiosity",
+      "etymology_hints": {
+        "species": "species:131:etymology:species",
+        "genus": "species:131:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:131:etymology:genus",
+          "species:131:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:131:morphological_hint"
     },
     "132": {
       "scientific_name": "Equus quagga",
@@ -8942,7 +10633,8 @@
       "hints": [
         "species:132:hint"
       ],
-      "curiosity": "species:132:curiosity"
+      "curiosity": "species:132:curiosity",
+      "morphological_hint": "species:132:morphological_hint"
     },
     "10": {
       "scientific_name": "Attacus atlas",
@@ -8957,7 +10649,8 @@
       "hints": [
         "species:10:hint"
       ],
-      "curiosity": "species:10:curiosity"
+      "curiosity": "species:10:curiosity",
+      "morphological_hint": "species:10:morphological_hint"
     },
     "11": {
       "scientific_name": "Actias luna",
@@ -8972,7 +10665,8 @@
       "hints": [
         "species:11:hint"
       ],
-      "curiosity": "species:11:curiosity"
+      "curiosity": "species:11:curiosity",
+      "morphological_hint": "species:11:morphological_hint"
     },
     "12": {
       "scientific_name": "Hyalophora cecropia",
@@ -8987,7 +10681,8 @@
       "hints": [
         "species:12:hint"
       ],
-      "curiosity": "species:12:curiosity"
+      "curiosity": "species:12:curiosity",
+      "morphological_hint": "species:12:morphological_hint"
     },
     "13": {
       "scientific_name": "Automeris io",
@@ -9002,7 +10697,8 @@
       "hints": [
         "species:13:hint"
       ],
-      "curiosity": "species:13:curiosity"
+      "curiosity": "species:13:curiosity",
+      "morphological_hint": "species:13:morphological_hint"
     },
     "14": {
       "scientific_name": "Antheraea polyphemus",
@@ -9017,7 +10713,8 @@
       "hints": [
         "species:14:hint"
       ],
-      "curiosity": "species:14:curiosity"
+      "curiosity": "species:14:curiosity",
+      "morphological_hint": "species:14:morphological_hint"
     },
     "19": {
       "scientific_name": "Galleria mellonella",
@@ -9062,7 +10759,8 @@
       "hints": [
         "species:21:hint"
       ],
-      "curiosity": "species:21:curiosity"
+      "curiosity": "species:21:curiosity",
+      "morphological_hint": "species:21:morphological_hint"
     },
     "24": {
       "scientific_name": "Macrocilix maia",
@@ -9076,7 +10774,8 @@
       "hints": [
         "species:24:hint"
       ],
-      "curiosity": "species:24:curiosity"
+      "curiosity": "species:24:curiosity",
+      "morphological_hint": "species:24:morphological_hint"
     },
     "37": {
       "scientific_name": "Laterallus rogersi",
@@ -9090,7 +10789,8 @@
       "hints": [
         "species:37:hint"
       ],
-      "curiosity": "species:37:curiosity"
+      "curiosity": "species:37:curiosity",
+      "morphological_hint": "species:37:morphological_hint"
     },
     "42": {
       "scientific_name": "Incilius periglenes",
@@ -9104,7 +10804,8 @@
       "hints": [
         "species:42:hint"
       ],
-      "curiosity": "species:42:curiosity"
+      "curiosity": "species:42:curiosity",
+      "morphological_hint": "species:42:morphological_hint"
     },
     "133": {
       "scientific_name": "Ginkgo biloba",
@@ -9119,7 +10820,16 @@
       "hints": [
         "species:133:hint"
       ],
-      "curiosity": "species:133:curiosity"
+      "curiosity": "species:133:curiosity",
+      "etymology_hints": {
+        "species": "species:133:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:133:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:133:morphological_hint"
     },
     "134": {
       "scientific_name": "Dionaea muscipula",
@@ -9134,7 +10844,8 @@
       "hints": [
         "species:134:hint"
       ],
-      "curiosity": "species:134:curiosity"
+      "curiosity": "species:134:curiosity",
+      "morphological_hint": "species:134:morphological_hint"
     },
     "53": {
       "scientific_name": "Viburnum opulus",
@@ -9149,7 +10860,8 @@
       "hints": [
         "species:53:hint"
       ],
-      "curiosity": "species:53:curiosity"
+      "curiosity": "species:53:curiosity",
+      "morphological_hint": "species:53:morphological_hint"
     },
     "61": {
       "scientific_name": "Verbascum thapsus",
@@ -9164,7 +10876,18 @@
       "hints": [
         "species:61:hint"
       ],
-      "curiosity": "species:61:curiosity"
+      "curiosity": "species:61:curiosity",
+      "etymology_hints": {
+        "species": "species:61:etymology:species",
+        "genus": "species:61:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:61:etymology:genus",
+          "species:61:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:61:morphological_hint"
     },
     "45": {
       "scientific_name": "Hydnora esculenta",
@@ -9179,7 +10902,8 @@
       "hints": [
         "species:45:hint"
       ],
-      "curiosity": "species:45:curiosity"
+      "curiosity": "species:45:curiosity",
+      "morphological_hint": "species:45:morphological_hint"
     },
     "44": {
       "scientific_name": "Dictyanthus pavonii",
@@ -9194,7 +10918,8 @@
       "hints": [
         "species:44:hint"
       ],
-      "curiosity": "species:44:curiosity"
+      "curiosity": "species:44:curiosity",
+      "morphological_hint": "species:44:morphological_hint"
     },
     "47": {
       "scientific_name": "Polypodium glycyrrhiza",
@@ -9209,7 +10934,8 @@
       "hints": [
         "species:47:hint"
       ],
-      "curiosity": "species:47:curiosity"
+      "curiosity": "species:47:curiosity",
+      "morphological_hint": "species:47:morphological_hint"
     },
     "43": {
       "scientific_name": "Kindbergia oregana",
@@ -9224,7 +10950,8 @@
       "hints": [
         "species:43:hint"
       ],
-      "curiosity": "species:43:curiosity"
+      "curiosity": "species:43:curiosity",
+      "morphological_hint": "species:43:morphological_hint"
     },
     "48": {
       "scientific_name": "Marah macrocarpa",
@@ -9239,7 +10966,8 @@
       "hints": [
         "species:48:hint"
       ],
-      "curiosity": "species:48:curiosity"
+      "curiosity": "species:48:curiosity",
+      "morphological_hint": "species:48:morphological_hint"
     },
     "49": {
       "scientific_name": "Mastigostyla macbridei",
@@ -9254,7 +10982,8 @@
       "hints": [
         "species:49:hint"
       ],
-      "curiosity": "species:49:curiosity"
+      "curiosity": "species:49:curiosity",
+      "morphological_hint": "species:49:morphological_hint"
     },
     "51": {
       "scientific_name": "Mimetes chrysanthus",
@@ -9269,7 +10998,16 @@
       "hints": [
         "species:51:hint"
       ],
-      "curiosity": "species:51:curiosity"
+      "curiosity": "species:51:curiosity",
+      "etymology_hints": {
+        "species": "species:51:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:51:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:51:morphological_hint"
     },
     "54": {
       "scientific_name": "Xanthosoma robustum",
@@ -9284,7 +11022,8 @@
       "hints": [
         "species:54:hint"
       ],
-      "curiosity": "species:54:curiosity"
+      "curiosity": "species:54:curiosity",
+      "morphological_hint": "species:54:morphological_hint"
     },
     "57": {
       "scientific_name": "Pleurophyllum speciosum",
@@ -9299,7 +11038,16 @@
       "hints": [
         "species:57:hint"
       ],
-      "curiosity": "species:57:curiosity"
+      "curiosity": "species:57:curiosity",
+      "etymology_hints": {
+        "genus": "species:57:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:57:etymology:genus"
+        ]
+      },
+      "morphological_hint": "species:57:morphological_hint"
     },
     "58": {
       "scientific_name": "Dracaena cinnabari",
@@ -9314,7 +11062,8 @@
       "hints": [
         "species:58:hint"
       ],
-      "curiosity": "species:58:curiosity"
+      "curiosity": "species:58:curiosity",
+      "morphological_hint": "species:58:morphological_hint"
     },
     "73": {
       "scientific_name": "Coprinus comatus",
@@ -9329,7 +11078,18 @@
       "hints": [
         "species:73:hint"
       ],
-      "curiosity": "species:73:curiosity"
+      "curiosity": "species:73:curiosity",
+      "etymology_hints": {
+        "species": "species:73:etymology:species",
+        "genus": "species:73:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:73:etymology:genus",
+          "species:73:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:73:morphological_hint"
     },
     "139": {
       "scientific_name": "Geastrum triplex",
@@ -9344,7 +11104,18 @@
       "hints": [
         "species:139:hint"
       ],
-      "curiosity": "species:139:curiosity"
+      "curiosity": "species:139:curiosity",
+      "etymology_hints": {
+        "species": "species:139:etymology:species",
+        "genus": "species:139:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:139:etymology:genus",
+          "species:139:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:139:morphological_hint"
     },
     "140": {
       "scientific_name": "Hericium erinaceus",
@@ -9359,7 +11130,18 @@
       "hints": [
         "species:140:hint"
       ],
-      "curiosity": "species:140:curiosity"
+      "curiosity": "species:140:curiosity",
+      "etymology_hints": {
+        "species": "species:140:etymology:species",
+        "genus": "species:140:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:140:etymology:genus",
+          "species:140:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:140:morphological_hint"
     },
     "75": {
       "scientific_name": "Cortinarius archeri",
@@ -9374,7 +11156,8 @@
       "hints": [
         "species:75:hint"
       ],
-      "curiosity": "species:75:curiosity"
+      "curiosity": "species:75:curiosity",
+      "morphological_hint": "species:75:morphological_hint"
     },
     "76": {
       "scientific_name": "Xylaria tentaculata",
@@ -9389,7 +11172,8 @@
       "hints": [
         "species:76:hint"
       ],
-      "curiosity": "species:76:curiosity"
+      "curiosity": "species:76:curiosity",
+      "morphological_hint": "species:76:morphological_hint"
     },
     "80": {
       "scientific_name": "Wawelia microspora",
@@ -9419,7 +11203,8 @@
       "hints": [
         "species:123:hint"
       ],
-      "curiosity": "species:123:curiosity"
+      "curiosity": "species:123:curiosity",
+      "morphological_hint": "species:123:morphological_hint"
     },
     "141": {
       "scientific_name": "Macrocystis pyrifera",
@@ -9434,7 +11219,8 @@
       "hints": [
         "species:141:hint"
       ],
-      "curiosity": "species:141:curiosity"
+      "curiosity": "species:141:curiosity",
+      "morphological_hint": "species:141:morphological_hint"
     },
     "142": {
       "scientific_name": "Nereocystis luetkeana",
@@ -9449,7 +11235,8 @@
       "hints": [
         "species:142:hint"
       ],
-      "curiosity": "species:142:curiosity"
+      "curiosity": "species:142:curiosity",
+      "morphological_hint": "species:142:morphological_hint"
     },
     "143": {
       "scientific_name": "Fucus vesiculosus",
@@ -9464,7 +11251,8 @@
       "hints": [
         "species:143:hint"
       ],
-      "curiosity": "species:143:curiosity"
+      "curiosity": "species:143:curiosity",
+      "morphological_hint": "species:143:morphological_hint"
     },
     "144": {
       "scientific_name": "Himanthalia elongata",
@@ -9479,7 +11267,8 @@
       "hints": [
         "species:144:hint"
       ],
-      "curiosity": "species:144:curiosity"
+      "curiosity": "species:144:curiosity",
+      "morphological_hint": "species:144:morphological_hint"
     },
     "145": {
       "scientific_name": "Egregia menziesii",
@@ -9494,7 +11283,8 @@
       "hints": [
         "species:145:hint"
       ],
-      "curiosity": "species:145:curiosity"
+      "curiosity": "species:145:curiosity",
+      "morphological_hint": "species:145:morphological_hint"
     },
     "146": {
       "scientific_name": "Dictyota dichotoma",
@@ -9509,7 +11299,8 @@
       "hints": [
         "species:146:hint"
       ],
-      "curiosity": "species:146:curiosity"
+      "curiosity": "species:146:curiosity",
+      "morphological_hint": "species:146:morphological_hint"
     },
     "147": {
       "scientific_name": "Sargassum muticum",
@@ -9524,7 +11315,8 @@
       "hints": [
         "species:147:hint"
       ],
-      "curiosity": "species:147:curiosity"
+      "curiosity": "species:147:curiosity",
+      "morphological_hint": "species:147:morphological_hint"
     },
     "148": {
       "scientific_name": "Durvillaea antarctica",
@@ -9539,7 +11331,8 @@
       "hints": [
         "species:148:hint"
       ],
-      "curiosity": "species:148:curiosity"
+      "curiosity": "species:148:curiosity",
+      "morphological_hint": "species:148:morphological_hint"
     },
     "149": {
       "scientific_name": "Alaria esculenta",
@@ -9554,7 +11347,18 @@
       "hints": [
         "species:149:hint"
       ],
-      "curiosity": "species:149:curiosity"
+      "curiosity": "species:149:curiosity",
+      "etymology_hints": {
+        "species": "species:149:etymology:species",
+        "genus": "species:149:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:149:etymology:genus",
+          "species:149:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:149:morphological_hint"
     },
     "27": {
       "scientific_name": "Stegodyphus dumicola",
@@ -9569,7 +11373,8 @@
       "hints": [
         "species:27:hint"
       ],
-      "curiosity": "species:27:curiosity"
+      "curiosity": "species:27:curiosity",
+      "morphological_hint": "species:27:morphological_hint"
     },
     "28": {
       "scientific_name": "Astroscopus zephyreus",
@@ -9584,7 +11389,8 @@
       "hints": [
         "species:28:hint"
       ],
-      "curiosity": "species:28:curiosity"
+      "curiosity": "species:28:curiosity",
+      "morphological_hint": "species:28:morphological_hint"
     },
     "36": {
       "scientific_name": "Chortophaga viridifasciata",
@@ -9599,7 +11405,8 @@
       "hints": [
         "species:36:hint"
       ],
-      "curiosity": "species:36:curiosity"
+      "curiosity": "species:36:curiosity",
+      "morphological_hint": "species:36:morphological_hint"
     },
     "38": {
       "scientific_name": "Cyphonia clavata",
@@ -9614,7 +11421,8 @@
       "hints": [
         "species:38:hint"
       ],
-      "curiosity": "species:38:curiosity"
+      "curiosity": "species:38:curiosity",
+      "morphological_hint": "species:38:morphological_hint"
     },
     "46": {
       "scientific_name": "Lunularia cruciata",
@@ -9629,7 +11437,8 @@
       "hints": [
         "species:46:hint"
       ],
-      "curiosity": "species:46:curiosity"
+      "curiosity": "species:46:curiosity",
+      "morphological_hint": "species:46:morphological_hint"
     },
     "50": {
       "scientific_name": "Tulipa regelii",
@@ -9644,7 +11453,8 @@
       "hints": [
         "species:50:hint"
       ],
-      "curiosity": "species:50:curiosity"
+      "curiosity": "species:50:curiosity",
+      "morphological_hint": "species:50:morphological_hint"
     },
     "55": {
       "scientific_name": "Pleurothallis maitamae",
@@ -9659,7 +11469,8 @@
       "hints": [
         "species:55:hint"
       ],
-      "curiosity": "species:55:curiosity"
+      "curiosity": "species:55:curiosity",
+      "morphological_hint": "species:55:morphological_hint"
     },
     "23": {
       "scientific_name": "Titanomis sisyrota",
@@ -9715,7 +11526,8 @@
       "hints": [
         "species:31:hint"
       ],
-      "curiosity": "species:31:curiosity"
+      "curiosity": "species:31:curiosity",
+      "morphological_hint": "species:31:morphological_hint"
     },
     "34": {
       "scientific_name": "Dicarnosis erythrocephala",
@@ -9729,7 +11541,8 @@
       "hints": [
         "species:34:hint"
       ],
-      "curiosity": "species:34:curiosity"
+      "curiosity": "species:34:curiosity",
+      "morphological_hint": "species:34:morphological_hint"
     },
     "35": {
       "scientific_name": "Pachypodistes angulata",
@@ -9743,7 +11556,8 @@
       "hints": [
         "species:35:hint"
       ],
-      "curiosity": "species:35:curiosity"
+      "curiosity": "species:35:curiosity",
+      "morphological_hint": "species:35:morphological_hint"
     },
     "41": {
       "scientific_name": "Ovalimantis maculata",
@@ -9758,7 +11572,8 @@
       "hints": [
         "species:41:hint"
       ],
-      "curiosity": "species:41:curiosity"
+      "curiosity": "species:41:curiosity",
+      "morphological_hint": "species:41:morphological_hint"
     },
     "52": {
       "scientific_name": "Asterella drummondii",
@@ -9818,7 +11633,8 @@
       "hints": [
         "species:65:hint"
       ],
-      "curiosity": "species:65:curiosity"
+      "curiosity": "species:65:curiosity",
+      "morphological_hint": "species:65:morphological_hint"
     },
     "70": {
       "scientific_name": "Ganoderma brownii",
@@ -9832,7 +11648,8 @@
       "hints": [
         "species:70:hint"
       ],
-      "curiosity": "species:70:curiosity"
+      "curiosity": "species:70:curiosity",
+      "morphological_hint": "species:70:morphological_hint"
     },
     "71": {
       "scientific_name": "Marasmius haematocephalus",
@@ -9846,7 +11663,8 @@
       "hints": [
         "species:71:hint"
       ],
-      "curiosity": "species:71:curiosity"
+      "curiosity": "species:71:curiosity",
+      "morphological_hint": "species:71:morphological_hint"
     },
     "79": {
       "scientific_name": "Panellus stipticus",
@@ -9861,7 +11679,8 @@
       "hints": [
         "species:79:hint"
       ],
-      "curiosity": "species:79:curiosity"
+      "curiosity": "species:79:curiosity",
+      "morphological_hint": "species:79:morphological_hint"
     },
     "81": {
       "scientific_name": "Entoloma trachyosporum",
@@ -9875,7 +11694,8 @@
       "hints": [
         "species:81:hint"
       ],
-      "curiosity": "species:81:curiosity"
+      "curiosity": "species:81:curiosity",
+      "morphological_hint": "species:81:morphological_hint"
     },
     "83": {
       "scientific_name": "Comatricha nigra",
@@ -10025,7 +11845,8 @@
       "hints": [
         "species:2:hint"
       ],
-      "curiosity": "species:2:curiosity"
+      "curiosity": "species:2:curiosity",
+      "morphological_hint": "species:2:morphological_hint"
     },
     "3": {
       "scientific_name": "Acherontia atropos",
@@ -10040,7 +11861,8 @@
       "hints": [
         "species:3:hint"
       ],
-      "curiosity": "species:3:curiosity"
+      "curiosity": "species:3:curiosity",
+      "morphological_hint": "species:3:morphological_hint"
     },
     "4": {
       "scientific_name": "Brahmaea wallichii",
@@ -10054,7 +11876,8 @@
       "hints": [
         "species:4:hint"
       ],
-      "curiosity": "species:4:curiosity"
+      "curiosity": "species:4:curiosity",
+      "morphological_hint": "species:4:morphological_hint"
     },
     "5": {
       "scientific_name": "Lymantria dispar",
@@ -10069,7 +11892,8 @@
       "hints": [
         "species:5:hint"
       ],
-      "curiosity": "species:5:curiosity"
+      "curiosity": "species:5:curiosity",
+      "morphological_hint": "species:5:morphological_hint"
     },
     "7": {
       "scientific_name": "Aglais io",
@@ -10084,7 +11908,8 @@
       "hints": [
         "species:7:hint"
       ],
-      "curiosity": "species:7:curiosity"
+      "curiosity": "species:7:curiosity",
+      "morphological_hint": "species:7:morphological_hint"
     },
     "8": {
       "scientific_name": "Vanessa cardui",
@@ -10099,7 +11924,8 @@
       "hints": [
         "species:8:hint"
       ],
-      "curiosity": "species:8:curiosity"
+      "curiosity": "species:8:curiosity",
+      "morphological_hint": "species:8:morphological_hint"
     },
     "15": {
       "scientific_name": "Heliconius melpomene",
@@ -10113,7 +11939,8 @@
       "hints": [
         "species:15:hint"
       ],
-      "curiosity": "species:15:curiosity"
+      "curiosity": "species:15:curiosity",
+      "morphological_hint": "species:15:morphological_hint"
     },
     "16": {
       "scientific_name": "Papilio ulysses",
@@ -10127,7 +11954,8 @@
       "hints": [
         "species:16:hint"
       ],
-      "curiosity": "species:16:curiosity"
+      "curiosity": "species:16:curiosity",
+      "morphological_hint": "species:16:morphological_hint"
     },
     "18": {
       "scientific_name": "Pieris brassicae",
@@ -10142,7 +11970,8 @@
       "hints": [
         "species:18:hint"
       ],
-      "curiosity": "species:18:curiosity"
+      "curiosity": "species:18:curiosity",
+      "morphological_hint": "species:18:morphological_hint"
     },
     "25": {
       "scientific_name": "Chiton glaucus",
@@ -10157,7 +11986,8 @@
       "hints": [
         "species:25:hint"
       ],
-      "curiosity": "species:25:curiosity"
+      "curiosity": "species:25:curiosity",
+      "morphological_hint": "species:25:morphological_hint"
     },
     "63": {
       "scientific_name": "Stropharia caerulea",
@@ -10172,7 +12002,18 @@
       "hints": [
         "species:63:hint"
       ],
-      "curiosity": "species:63:curiosity"
+      "curiosity": "species:63:curiosity",
+      "etymology_hints": {
+        "species": "species:63:etymology:species",
+        "genus": "species:63:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:63:etymology:genus",
+          "species:63:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:63:morphological_hint"
     },
     "64": {
       "scientific_name": "Favolaschia claudopus",
@@ -10187,7 +12028,8 @@
       "hints": [
         "species:64:hint"
       ],
-      "curiosity": "species:64:curiosity"
+      "curiosity": "species:64:curiosity",
+      "morphological_hint": "species:64:morphological_hint"
     },
     "135": {
       "scientific_name": "Clathrus ruber",
@@ -10202,7 +12044,18 @@
       "hints": [
         "species:135:hint"
       ],
-      "curiosity": "species:135:curiosity"
+      "curiosity": "species:135:curiosity",
+      "etymology_hints": {
+        "species": "species:135:etymology:species",
+        "genus": "species:135:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:135:etymology:genus",
+          "species:135:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:135:morphological_hint"
     },
     "67": {
       "scientific_name": "Trametes versicolor",
@@ -10217,7 +12070,18 @@
       "hints": [
         "species:67:hint"
       ],
-      "curiosity": "species:67:curiosity"
+      "curiosity": "species:67:curiosity",
+      "etymology_hints": {
+        "species": "species:67:etymology:species",
+        "genus": "species:67:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:67:etymology:genus",
+          "species:67:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:67:morphological_hint"
     },
     "136": {
       "scientific_name": "Amanita muscaria",
@@ -10232,7 +12096,16 @@
       "hints": [
         "species:136:hint"
       ],
-      "curiosity": "species:136:curiosity"
+      "curiosity": "species:136:curiosity",
+      "etymology_hints": {
+        "species": "species:136:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:136:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:136:morphological_hint"
     },
     "137": {
       "scientific_name": "Morchella esculenta",
@@ -10247,7 +12120,8 @@
       "hints": [
         "species:137:hint"
       ],
-      "curiosity": "species:137:curiosity"
+      "curiosity": "species:137:curiosity",
+      "morphological_hint": "species:137:morphological_hint"
     },
     "138": {
       "scientific_name": "Phallus impudicus",
@@ -10262,7 +12136,18 @@
       "hints": [
         "species:138:hint"
       ],
-      "curiosity": "species:138:curiosity"
+      "curiosity": "species:138:curiosity",
+      "etymology_hints": {
+        "species": "species:138:etymology:species",
+        "genus": "species:138:etymology:genus"
+      },
+      "name_origin": {
+        "parts": [
+          "species:138:etymology:genus",
+          "species:138:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:138:morphological_hint"
     },
     "82": {
       "scientific_name": "Pseudoboletus parasiticus",
@@ -10277,7 +12162,8 @@
       "hints": [
         "species:82:hint"
       ],
-      "curiosity": "species:82:curiosity"
+      "curiosity": "species:82:curiosity",
+      "morphological_hint": "species:82:morphological_hint"
     },
     "90": {
       "scientific_name": "Arcyria denudata",
@@ -10292,7 +12178,8 @@
       "hints": [
         "species:90:hint"
       ],
-      "curiosity": "species:90:curiosity"
+      "curiosity": "species:90:curiosity",
+      "morphological_hint": "species:90:morphological_hint"
     },
     "150": {
       "scientific_name": "Turbinaria ornata",
@@ -10307,7 +12194,8 @@
       "hints": [
         "species:150:hint"
       ],
-      "curiosity": "species:150:curiosity"
+      "curiosity": "species:150:curiosity",
+      "morphological_hint": "species:150:morphological_hint"
     },
     "103": {
       "scientific_name": "Sphingomonas phyllosphaerae",
@@ -10322,7 +12210,16 @@
       "hints": [
         "species:103:hint"
       ],
-      "curiosity": "species:103:curiosity"
+      "curiosity": "species:103:curiosity",
+      "etymology_hints": {
+        "species": "species:103:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:103:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:103:morphological_hint"
     },
     "104": {
       "scientific_name": "Dolichospermum lemmermannii",
@@ -10337,7 +12234,8 @@
       "hints": [
         "species:104:hint"
       ],
-      "curiosity": "species:104:curiosity"
+      "curiosity": "species:104:curiosity",
+      "morphological_hint": "species:104:morphological_hint"
     },
     "105": {
       "scientific_name": "Serratia marcescens",
@@ -10352,7 +12250,16 @@
       "hints": [
         "species:105:hint"
       ],
-      "curiosity": "species:105:curiosity"
+      "curiosity": "species:105:curiosity",
+      "etymology_hints": {
+        "species": "species:105:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:105:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:105:morphological_hint"
     },
     "106": {
       "scientific_name": "Thiohalocapsa halophila",
@@ -10367,7 +12274,16 @@
       "hints": [
         "species:106:hint"
       ],
-      "curiosity": "species:106:curiosity"
+      "curiosity": "species:106:curiosity",
+      "etymology_hints": {
+        "species": "species:106:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:106:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:106:morphological_hint"
     },
     "107": {
       "scientific_name": "Merismopedia convoluta",
@@ -10382,7 +12298,8 @@
       "hints": [
         "species:107:hint"
       ],
-      "curiosity": "species:107:curiosity"
+      "curiosity": "species:107:curiosity",
+      "morphological_hint": "species:107:morphological_hint"
     },
     "108": {
       "scientific_name": "Arthrospira jenneri",
@@ -10397,7 +12314,8 @@
       "hints": [
         "species:108:hint"
       ],
-      "curiosity": "species:108:curiosity"
+      "curiosity": "species:108:curiosity",
+      "morphological_hint": "species:108:morphological_hint"
     },
     "109": {
       "scientific_name": "Beggiatoa alba",
@@ -10412,7 +12330,16 @@
       "hints": [
         "species:109:hint"
       ],
-      "curiosity": "species:109:curiosity"
+      "curiosity": "species:109:curiosity",
+      "etymology_hints": {
+        "species": "species:109:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:109:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:109:morphological_hint"
     },
     "110": {
       "scientific_name": "Gomphosphaeria aponina",
@@ -10427,7 +12354,8 @@
       "hints": [
         "species:110:hint"
       ],
-      "curiosity": "species:110:curiosity"
+      "curiosity": "species:110:curiosity",
+      "morphological_hint": "species:110:morphological_hint"
     },
     "111": {
       "scientific_name": "Anabaena torulosa",
@@ -10442,7 +12370,8 @@
       "hints": [
         "species:111:hint"
       ],
-      "curiosity": "species:111:curiosity"
+      "curiosity": "species:111:curiosity",
+      "morphological_hint": "species:111:morphological_hint"
     },
     "112": {
       "scientific_name": "Phytoplasma asteris",
@@ -10457,7 +12386,8 @@
       "hints": [
         "species:112:hint"
       ],
-      "curiosity": "species:112:curiosity"
+      "curiosity": "species:112:curiosity",
+      "morphological_hint": "species:112:morphological_hint"
     },
     "113": {
       "scientific_name": "Gloeotrichia intermedia",
@@ -10472,7 +12402,8 @@
       "hints": [
         "species:113:hint"
       ],
-      "curiosity": "species:113:curiosity"
+      "curiosity": "species:113:curiosity",
+      "morphological_hint": "species:113:morphological_hint"
     },
     "114": {
       "scientific_name": "Leptothrix discophora",
@@ -10487,7 +12418,16 @@
       "hints": [
         "species:114:hint"
       ],
-      "curiosity": "species:114:curiosity"
+      "curiosity": "species:114:curiosity",
+      "etymology_hints": {
+        "species": "species:114:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:114:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:114:morphological_hint"
     },
     "115": {
       "scientific_name": "Johanseninema constrictum",
@@ -10502,7 +12442,8 @@
       "hints": [
         "species:115:hint"
       ],
-      "curiosity": "species:115:curiosity"
+      "curiosity": "species:115:curiosity",
+      "morphological_hint": "species:115:morphological_hint"
     },
     "116": {
       "scientific_name": "Chlamydophila pecorum",
@@ -10517,7 +12458,16 @@
       "hints": [
         "species:116:hint"
       ],
-      "curiosity": "species:116:curiosity"
+      "curiosity": "species:116:curiosity",
+      "etymology_hints": {
+        "species": "species:116:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:116:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:116:morphological_hint"
     },
     "117": {
       "scientific_name": "Hassallia byssoidea",
@@ -10532,7 +12482,8 @@
       "hints": [
         "species:117:hint"
       ],
-      "curiosity": "species:117:curiosity"
+      "curiosity": "species:117:curiosity",
+      "morphological_hint": "species:117:morphological_hint"
     },
     "118": {
       "scientific_name": "Aeromonas caviae",
@@ -10547,7 +12498,16 @@
       "hints": [
         "species:118:hint"
       ],
-      "curiosity": "species:118:curiosity"
+      "curiosity": "species:118:curiosity",
+      "etymology_hints": {
+        "species": "species:118:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:118:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:118:morphological_hint"
     },
     "119": {
       "scientific_name": "Pseudomonas fluorescens",
@@ -10562,7 +12522,16 @@
       "hints": [
         "species:119:hint"
       ],
-      "curiosity": "species:119:curiosity"
+      "curiosity": "species:119:curiosity",
+      "etymology_hints": {
+        "species": "species:119:etymology:species"
+      },
+      "name_origin": {
+        "parts": [
+          "species:119:etymology:species"
+        ]
+      },
+      "morphological_hint": "species:119:morphological_hint"
     },
     "120": {
       "scientific_name": "Achromatium oxaliferum",
@@ -10577,7 +12546,8 @@
       "hints": [
         "species:120:hint"
       ],
-      "curiosity": "species:120:curiosity"
+      "curiosity": "species:120:curiosity",
+      "morphological_hint": "species:120:morphological_hint"
     },
     "122": {
       "scientific_name": "Chroococcus turgidus",
@@ -10592,7 +12562,8 @@
       "hints": [
         "species:122:hint"
       ],
-      "curiosity": "species:122:curiosity"
+      "curiosity": "species:122:curiosity",
+      "morphological_hint": "species:122:morphological_hint"
     },
     "124": {
       "scientific_name": "Merismopedia tranquilla",
@@ -10607,7 +12578,8 @@
       "hints": [
         "species:124:hint"
       ],
-      "curiosity": "species:124:curiosity"
+      "curiosity": "species:124:curiosity",
+      "morphological_hint": "species:124:morphological_hint"
     }
   }
 }

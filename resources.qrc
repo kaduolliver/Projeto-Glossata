@@ -7,6 +7,7 @@
         <file>resources/branding/glossata.ico</file>
         <file>resources/qml/Main.qml</file>
         <file>resources/qml/components/UiIcon.qml</file>
+        <file>resources/qml/components/HintPanel.qml</file>
         <file>resources/qml/components/UiButton.qml</file>
         <file>resources/qml/components/NavItem.qml</file>
         <file>resources/qml/components/StatCard.qml</file>

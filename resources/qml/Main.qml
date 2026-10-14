@@ -32,7 +32,7 @@ ApplicationWindow {
     property string page: "home"
     property bool motionEnabled: true
     property bool sessionStarted: false
-    readonly property real accuracy: backend.answeredCount > 0 ? Math.round(100 * backend.score / backend.answeredCount) : 0
+    readonly property real accuracy: backend.answeredCount > 0 ? Math.round(100 * backend.correctAnswers / backend.answeredCount) : 0
     readonly property bool playing: sessionStarted && !backend.gameFinished
     readonly property var pageTitles: ({home: "Seu próximo voo começa aqui", categories: "Explorar", taxonomy: "Explorar um grupo", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Seu desempenho", achievements: "Suas descobertas", settings: "Seu espaço"})
 

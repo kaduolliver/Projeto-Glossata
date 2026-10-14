@@ -3,6 +3,7 @@
 #include <QString>
 #include <QStringList>
 #include "domain/Species.h"
+#include "domain/Hint.h"
 
 struct Question {
     QString prompt;
@@ -16,4 +17,5 @@ struct Question {
     Photo photo;
     QString hintSourceUrl;
     QString hintSourceTitle;
+    QuestionHints hints;
 };

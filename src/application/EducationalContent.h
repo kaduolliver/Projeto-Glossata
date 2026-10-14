@@ -1,5 +1,6 @@
 #pragma once
 #include "domain/Species.h"
+#include "domain/Hint.h"
 #include <QJsonObject>
 #include <QVariantMap>
 class EducationalContent {
@@ -9,6 +10,9 @@ public:
     QVariantMap hint(const Species &species, const QString &rank, const QStringList &options) const;
     QVariantMap curiosity(const Species &species) const;
     QVariantMap profile(const Species &species) const;
+    QuestionHints questionHints(const Species &species,const QString &rank,const QStringList &options,
+                                const QVector<Species> &pool) const;
+    QVariantMap nameOrigin(const Species &species) const;
 private:
     QJsonObject data_;
     QJsonObject resolve(const QJsonValue &reference) const;

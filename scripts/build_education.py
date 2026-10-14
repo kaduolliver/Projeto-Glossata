@@ -136,6 +136,30 @@ def build():
             data["notes"][key]=profile[field]
             values["hints" if field=="hint" else field]=[key] if field=="hint" else key
         data["species"][sid]=values
+    hints=json.loads((ROOT/"resources/data/hint_education.json").read_text(encoding="utf8"))
+    profiles=load_profiles()
+    for sid,content in hints.items():
+        if sid not in profiles or content.get("scientific_name")!=profiles[sid]["scientific_name"]:
+            raise ValueError("Identidade incompatível no corpus de dicas: "+sid)
+        values=data["species"][sid]
+        for rank,item in content.get("etymology_hints",{}).items():
+            url=item.get("source_url","")
+            if rank not in RANKS or not item.get("verified") or not url.startswith("https://") or "inaturalist.org" in url or not item.get("text"):
+                raise ValueError("Etimologia sem fonte ou nível válido: "+sid)
+            key=f"species:{sid}:etymology:{rank}"
+            data["notes"][key]=dict(item,ranks=[rank])
+            values.setdefault("etymology_hints",{})[rank]=key
+        if "name_origin" in content:
+            refs=[values.get("etymology_hints",{}).get(rank) for rank in content["name_origin"]]
+            if not refs or not all(refs):raise ValueError("Origem sem etimologia referenciada: "+sid)
+            values["name_origin"]={"parts":refs}
+        if "morphological_hint" in content:
+            review=content["morphological_hint"];reference=review["reference"]
+            if reference not in profiles[sid]:raise ValueError("Morfologia sem conteúdo revisado: "+sid)
+            item=dict(profiles[sid][reference]);item.update(ranks=review["ranks"],photo_id=review["photo_id"])
+            item["text"]=review.get("prefix","")+item["text"]
+            key=f"species:{sid}:morphological_hint"
+            data["notes"][key]=item;values["morphological_hint"]=key
     save_json(ROOT/"resources/data/education.json",data)
     print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
     return data

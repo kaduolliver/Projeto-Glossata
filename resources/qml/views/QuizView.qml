@@ -13,7 +13,7 @@ Item {
     implicitHeight: Math.max(620,quizLayout.implicitHeight)
     focus: true
     Keys.onPressed: function(event) {
-        if (finishDialog.visible || !portrait.hasPhoto) return
+        if (finishDialog.visible || hintPanel.visible || !portrait.hasPhoto) return
         if (event.key >= Qt.Key_1 && event.key <= Qt.Key_4) {
             const index = event.key - Qt.Key_1
             if (index < backend.answerOptions.length) selectedOption = backend.answerOptions[index]
@@ -56,7 +56,7 @@ Item {
                         anchors.fill: parent; anchors.margins: 14
                         UiIcon { name: "user"; ink: "#73AD94"; implicitWidth: 18; implicitHeight: 18 }
                         Label { text: view.backend.sessionPlayerName; color: "#A5C4B5"; elide: Text.ElideRight; Layout.fillWidth: true; font.pixelSize: 12 }
-                        Label { text: view.backend.score + " pts"; color: "#6AE09D"; font.pixelSize: 13; font.weight: Font.DemiBold }
+                        Label { text: view.backend.scoreText + " pts"; color: "#6AE09D"; font.pixelSize: 13; font.weight: Font.DemiBold }
                     }
                 }
             }
@@ -97,17 +97,20 @@ Item {
                         onClicked: view.selectedOption = modelData
                     }
                 }
-                Rectangle {
-                    visible: view.backend.hintRevealed
-                    Layout.fillWidth: true
-                    implicitHeight: hintLabel.implicitHeight + 24
-                    radius: 12; color: "#2B3325"; border.color: "#4D5538"
-                    Label { id: hintLabel; anchors.fill: parent; anchors.margins: 12; text: view.backend.extraHint; color: "#DDD3A4"; font.pixelSize: 12; wrapMode: Text.WordWrap }
+                Label { objectName: "possibleScoreLabel"; text: "Pontuação possível: " + view.backend.possibleScoreText; color: "#71DCA0"; font.pixelSize: 13 }
+                Repeater {
+                    model: view.backend.hints
+                    delegate: Label {
+                        required property var modelData
+                        visible: !!modelData.revealed; text: modelData.text || ""
+                        Layout.fillWidth: true; wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                        color: "#DDD3A4"; font.pixelSize: 12
+                    }
                 }
                 Item { Layout.fillHeight: true }
                 RowLayout {
                     Layout.fillWidth: true
-                    UiButton { objectName: "hintButton"; text: !view.backend.hasHint ? "Sem dica disponível" : (view.backend.hintRevealed ? "Dica revelada" : "Dica"); iconName: "hint"; secondary: true; enabled: view.backend.hasHint && !view.backend.hintRevealed; onClicked: view.backend.revealHint() }
+                    UiButton { objectName: "hintButton"; text: "Dica"; iconName: "hint"; secondary: true; enabled: !view.backend.answerPending; onClicked: hintPanel.open() }
                     Item { Layout.fillWidth: true }
                     UiButton { objectName: "confirmAnswerButton"; text: "Confirmar"; iconName: "arrow"; enabled: view.selectedOption !== "" && portrait.hasPhoto; onClicked: view.confirmAnswer() }
                 }
@@ -126,4 +129,5 @@ Item {
         }
     }
     EndGameDialog { id: finishDialog; onAccepted: view.app.leaveGame() }
+    HintPanel { id: hintPanel; backend: view.backend }
 }

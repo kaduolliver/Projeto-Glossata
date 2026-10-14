@@ -38,6 +38,10 @@ qmllint @qmlPaths --unqualified disable
 The build exports `build/compile_commands.json` for VS Code C/C++ IntelliSense. Open this project directory as the workspace root.
 CTest runs four suites: rules/persistence, an offscreen UI test, Discord protocol tests against isolated local fake servers, and offline import/provenance tests. UI screenshots are written to `build/tests/previews/`. Automated tests do not publish activity to a real Discord account.
 
+## Strategic hints and exact points
+
+The existing Hint button offers taxonomic, etymological and morphological assistance. Correct answers award 6, 3 or 2 integer units (one point = 6); combined hints use the lowest cap. Opening the panel costs nothing. Correct-answer counts, accuracy and achievements remain separate from points. Existing history is migrated exactly once, and new per-answer records are saved atomically with the latest result per player. [Technical report, scientific coverage and limitations](docs/DICAS_E_PONTUACAO.md).
+
 ## Catalog and documentation
 
 | Educational kingdom | Species |

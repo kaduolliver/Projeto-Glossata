@@ -31,7 +31,7 @@ public:
     bool fail = true;
     int attempts = 0;
     int saved = 0;
-    bool saveResult(const QString &, int, int) override {
+    bool saveResult(const QString &, qint64, int, const QVector<AnswerRecord> &, const QString &) override {
         ++attempts;
         if (fail) return false;
         ++saved;
@@ -71,6 +71,9 @@ private slots:
     void visualEligibilityAndHintsAcrossRanks();
     void introductionsAndMissingContent();
     void speciesProfilesHaveSourcesAndMatchIdentity();
+    void exactHintScoringAndLongGames();
+    void fractionalHistoryMigrationAndAnswerLedger();
+    void hintContentMatchesQuestionAndAlternatives();
     void performanceUsesIdsAndHandlesMissingClassification();
     void exportVerifiedCatalogAudit();
     void replacementsRetireOldSpeciesWithoutDeletingHistory();
@@ -143,7 +146,7 @@ void GameServiceTests::allRoundsHaveFourDistinctChoices()
         }
 
         QVERIFY(service.submitAnswer(question.correctAnswer));
-        QCOMPARE(service.score(), round);
+        QCOMPARE(service.scoreUnits(), qint64(round*6));
         QVERIFY(!service.isFinished());
     }
 
@@ -155,9 +158,9 @@ void GameServiceTests::allRoundsHaveFourDistinctChoices()
     service.finishGame();
     QVERIFY(service.isFinished());
     QVERIFY(service.currentQuestion().options.isEmpty());
-    const int completedScore = service.score();
+    const int completedScore = service.scoreUnits();
     QVERIFY(!service.submitAnswer(service.currentQuestion().correctAnswer));
-    QCOMPARE(service.score(), completedScore);
+    QCOMPARE(service.scoreUnits(), completedScore);
 }
 
 void GameServiceTests::completedGameIsSavedOnce()
@@ -181,7 +184,7 @@ void GameServiceTests::completedGameIsSavedOnce()
     const QVector<HistoryEntry> entries = history.loadTopResults(10);
     QCOMPARE(entries.size(), 1);
     QCOMPARE(entries.front().playerName, QStringLiteral("Test Player"));
-    QCOMPARE(entries.front().score, 2);
+    QCOMPARE(entries.front().scoreUnits, qint64(12));
 }
 
 void GameServiceTests::playerProfilesPersistAndCanBeManaged()
@@ -267,7 +270,7 @@ void GameServiceTests::incorrectAndInvalidAnswers()
     }
     QVERIFY(!wrong.isEmpty());
     QVERIFY(!service.submitAnswer(wrong));
-    QCOMPARE(service.score(), 0);
+    QCOMPARE(service.scoreUnits(), 0);
     QCOMPARE(service.round(), 2);
     QVERIFY(!service.isFinished());
 }
@@ -339,13 +342,13 @@ void GameServiceTests::controllerCanRetrySqliteFailure()
         QSqlQuery query(database);
         QVERIFY(query.exec("CREATE TRIGGER reject_result BEFORE INSERT ON history BEGIN SELECT RAISE(FAIL, 'test failure'); END"));
         controller.answerSelected(controller.answerOptions().first());
-        const int score = controller.score();
+        const int score = controller.scoreUnits();
         controller.stopGame();
         QVERIFY(controller.resultPending());
         QVERIFY(controller.ranking().isEmpty());
         controller.startGame();
         QVERIFY(controller.gameFinished());
-        QCOMPARE(controller.score(), score);
+        QCOMPARE(controller.scoreUnits(), score);
         QVERIFY(query.exec("DROP TRIGGER reject_result"));
         controller.retrySaveResult();
         QVERIFY(!controller.resultPending());
@@ -372,14 +375,14 @@ void GameServiceTests::rankingUpdatesExistingPlayer()
         QCOMPARE(entries.size(), 2);
         QCOMPARE(entries.at(0).playerName, QString("Lia"));
         QCOMPARE(entries.at(1).playerName, QString("ada"));
-        QCOMPARE(entries.at(1).score, 2);
+        QCOMPARE(entries.at(1).scoreUnits, 2);
         QCOMPARE(entries.at(1).correctAnswers, 2);
         QVERIFY(entries.at(1).playedAt.isValid());
         QVERIFY(!history.saveResult("   ", 99, 99));
     }
     SqliteGameHistoryRepository reopened(path);
     QCOMPARE(reopened.loadTopResults(10).size(), 2);
-    QCOMPARE(reopened.loadTopResults(10).last().score, 2);
+    QCOMPARE(reopened.loadTopResults(10).last().scoreUnits, 2);
 }
 
 void GameServiceTests::legacyRankingKeepsLatestResultPerPlayer()
@@ -406,14 +409,14 @@ void GameServiceTests::legacyRankingKeepsLatestResultPerPlayer()
         const auto entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 2);
         QCOMPARE(entries.last().playerName, QString("ADA"));
-        QCOMPARE(entries.last().score, 2);
+        QCOMPARE(entries.last().scoreUnits, qint64(12));
         QCOMPARE(entries.last().playedAt.toString(Qt::ISODate), QString("2026-02-01T00:00:00Z"));
         QVERIFY(history.saveResult("Ada", 1, 1));
         QCOMPARE(history.loadTopResults(10).size(), 2);
     }
     SqliteGameHistoryRepository reopened(path);
     QCOMPARE(reopened.loadTopResults(10).size(), 2);
-    QCOMPARE(reopened.loadTopResults(10).last().score, 1);
+    QCOMPARE(reopened.loadTopResults(10).last().scoreUnits, 1);
 }
 
 void GameServiceTests::failedRankingUpdateKeepsPreviousResult()
@@ -433,13 +436,13 @@ void GameServiceTests::failedRankingUpdateKeepsPreviousResult()
         QVERIFY(!history.saveResult("Ada", 2, 2));
         auto entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 1);
-        QCOMPARE(entries.first().score, 10);
+        QCOMPARE(entries.first().scoreUnits, 10);
         QCOMPARE(entries.first().playedAt, previousDate);
         QVERIFY(query.exec("DROP TRIGGER reject_update"));
         QVERIFY(history.saveResult("Ada", 2, 2));
         entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 1);
-        QCOMPARE(entries.first().score, 2);
+        QCOMPARE(entries.first().scoreUnits, 2);
     }
     QSqlDatabase::removeDatabase("update_failure_test");
 }
@@ -492,7 +495,7 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     controller.answerSelected(correct.name);
     QVERIFY(controller.answerPending());
     QCOMPARE(controller.answeredCount(), 1);
-    QCOMPARE(controller.score(), 1);
+    QCOMPARE(controller.scoreUnits(), qint64(6));
     QCOMPARE(controller.answerDetails().value("name").toString(), correct.name);
     QCOMPARE(controller.answerDetails().value("family").toString(), correct.family);
     QVERIFY(controller.answerDetails().value("correct").toBool());
@@ -637,7 +640,7 @@ void GameServiceTests::catalogMigrationPreservesPlayerDataAndStoredRecords()
     const auto reopenedSpecies = reopened.loadSpecies();
     QVERIFY(std::any_of(reopenedSpecies.begin(), reopenedSpecies.end(), [](const Species &s) { return s.id == 99999; }));
     QCOMPARE(history.loadPlayerProfiles(), QStringList{"Ada"});
-    QCOMPARE(history.loadTopResults(5).first().score, 17);
+    QCOMPARE(history.loadTopResults(5).first().scoreUnits, 17);
 }
 
 void GameServiceTests::invalidPhotoLicenseDisablesVisualQuestion()
@@ -820,6 +823,133 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
     QVERIFY(content.profile(missing).isEmpty());
 }
 
+void GameServiceTests::exactHintScoringAndLongGames()
+{
+    JsonSpeciesCatalog source;
+    MemoryCatalog catalog;
+    for(const auto &s : source.loadSpecies())if(QSet<int>{63,67,73,135}.contains(s.id))catalog.items.append(s);
+    QCOMPARE(catalog.items.size(),4);
+    GameService service(&catalog);
+    for(int mask=0;mask<8;++mask)for(bool correct : {true,false}) {
+        service.startNewGame({},"genus");
+        QCOMPARE(service.possibleScoreUnits(),6);
+        int previous=6;
+        for(auto type : {HintType::Taxonomic,HintType::Etymological,HintType::Morphological})if(mask & hintBit(type)) {
+            QVERIFY2(service.currentQuestion().hints[static_cast<int>(type)-1].available(),qPrintable(service.currentQuestion().species.name));
+            QVERIFY(service.revealHint(type));
+            QVERIFY(service.possibleScoreUnits()<=previous);previous=service.possibleScoreUnits();
+            QVERIFY(!service.revealHint(type));
+        }
+        const auto question=service.currentQuestion();
+        QString answer=question.correctAnswer;
+        if(!correct)for(const auto &option : question.options)if(option!=answer){answer=option;break;}
+        QCOMPARE(service.submitAnswer(answer),correct);
+        QCOMPARE(service.scoreUnits(),qint64(correct ? maximumScoreUnits(mask) : 0));
+        QCOMPARE(service.correctAnswers(),correct ? 1 : 0);
+        QCOMPARE(service.answers().last().maximumUnits,maximumScoreUnits(mask));
+        QCOMPARE(service.answers().last().revealedHints,mask);
+        QCOMPARE(service.revealedHints(),0);QCOMPARE(service.possibleScoreUnits(),6);
+    }
+    service.startNewGame({},"genus");
+    for(int i=0;i<600;++i) {
+        QVERIFY(service.revealHint(HintType::Morphological));
+        // Revisiting a lower-assistance hint must never raise the maximum.
+        QVERIFY(service.revealHint(HintType::Taxonomic));QCOMPARE(service.possibleScoreUnits(),2);
+        QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
+        QCOMPARE(service.scoreUnits(),qint64((i+1)*2));
+    }
+    QCOMPARE(service.correctAnswers(),600);QCOMPARE(formatScore(service.scoreUnits()),QString("200,00"));
+    QCOMPARE(formatScore(2),QString("0,33"));QCOMPARE(formatScore(3),QString("0,50"));QCOMPARE(formatScore(6),QString("1,00"));
+}
+
+void GameServiceTests::fractionalHistoryMigrationAndAnswerLedger()
+{
+    QTemporaryDir dir;const QString path=dir.filePath("fractional.sqlite");
+    const QString connection="fractional-legacy";
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE",connection);db.setDatabaseName(path);QVERIFY(db.open());
+        QSqlQuery q(db);
+        QVERIFY(q.exec("CREATE TABLE history(id INTEGER PRIMARY KEY,player_name TEXT NOT NULL,score INTEGER NOT NULL,correct_answers INTEGER NOT NULL,played_at TEXT NOT NULL)"));
+        QVERIFY(q.exec("CREATE UNIQUE INDEX history_player_name_unique ON history(player_name COLLATE NOCASE)"));
+        QVERIFY(q.exec("INSERT INTO history VALUES(1,'Antigo',10,10,'2020-01-01T00:00:00Z')"));
+        QVERIFY(q.exec("CREATE TABLE player_profiles(name TEXT PRIMARY KEY COLLATE NOCASE)"));
+        QVERIFY(q.exec("INSERT INTO player_profiles VALUES('Antigo')"));
+    }
+    QSqlDatabase::removeDatabase(connection);
+    QVector<AnswerRecord> answers;
+    for(int i=1;i<=3;++i)answers.append({i,73,"Coprinus comatus","photo","genus","Coprinus","Coprinus",true,4,2,2});
+    {
+        SqliteGameHistoryRepository history(path);
+        QCOMPARE(history.loadTopResults().first().scoreUnits,qint64(60));
+        QVERIFY(history.saveResult("Novo",6,3,answers,"game-one"));
+        QVERIFY(history.saveResult("Novo",6,3,answers,"game-one"));
+        QCOMPARE(history.loadTopResults().size(),2);
+        auto inspect=QSqlDatabase::addDatabase("QSQLITE","fractional-inspect");inspect.setDatabaseName(path);QVERIFY(inspect.open());
+        QSqlQuery q(inspect);QVERIFY(q.exec("SELECT COUNT(*),SUM(awarded_units),SUM(is_correct) FROM answer_records"));QVERIFY(q.next());
+        QCOMPARE(q.value(0).toInt(),3);QCOMPARE(q.value(1).toInt(),6);QCOMPARE(q.value(2).toInt(),3);
+        QVERIFY(q.exec("CREATE TRIGGER reject_score BEFORE UPDATE ON history BEGIN SELECT RAISE(FAIL,'blocked'); END"));
+        QVERIFY(!history.saveResult("Novo",2,1,{answers.first()},"game-two"));
+        QVERIFY(q.exec("SELECT COUNT(*) FROM game_runs WHERE id='game-two'"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),0);
+        QVERIFY(q.exec("DROP TRIGGER reject_score"));
+        QVERIFY(history.saveResult("Frações",5,2));
+        QVERIFY(history.saveResult("Mais frações",4,2));
+        QVERIFY(history.saveResult("novo",2,1,{answers.first()},"game-two"));
+        auto rows=history.loadTopResults();QCOMPARE(rows.size(),4);QCOMPARE(rows.last().scoreUnits,qint64(2));
+        QCOMPARE(rows[1].scoreUnits,qint64(5));QCOMPARE(rows[2].scoreUnits,qint64(4));
+        QCOMPARE(history.loadPlayerProfiles(),QStringList{"Antigo"});
+    }
+    QSqlDatabase::removeDatabase("fractional-inspect");
+    SqliteGameHistoryRepository reopened(path);
+    QCOMPARE(reopened.loadTopResults().first().scoreUnits,qint64(60));
+    QCOMPARE(reopened.loadTopResults().last().scoreUnits,qint64(2));
+}
+
+void GameServiceTests::hintContentMatchesQuestionAndAlternatives()
+{
+    JsonSpeciesCatalog catalog;EducationalContent content;const auto all=catalog.loadSpecies();
+    QJsonObject coverage;
+    for(const QString &rank : {QString("species"),QString("genus"),QString("family"),QString("order"),QString("class"),QString("phylum"),QString("kingdom")}) {
+        const auto pool=eligibleQuizSpecies(all,rank);QSet<int> taxonomic,etymological,morphological;
+        for(const auto &s : pool) {
+            QStringList options{s.answerAtRank(rank)};
+            for(const auto &candidate : pool)if(!options.contains(candidate.answerAtRank(rank))) {
+                options.append(candidate.answerAtRank(rank));if(options.size()==4)break;
+            }
+            const auto hints=content.questionHints(s,rank,options,pool);
+            for(const auto &hint : hints) {
+                if(!hint.available()){QVERIFY(!hint.unavailableReason.isEmpty());continue;}
+                QVERIFY(hint.sourceUrl.startsWith("https://"));
+                for(const auto &option : options)QVERIFY2(!hint.text.contains(option,Qt::CaseInsensitive),qPrintable(hint.text));
+                if(hint.type==HintType::Taxonomic) {
+                    taxonomic.insert(s.id);
+                    const QStringList levels={"kingdom","phylum","class","order","family","genus","species"};
+                    bool scopeFound=false;
+                    for(const auto &node : s.taxonomy)if(!node.sourceTaxonId.isEmpty() && hint.sourceUrl.endsWith("/"+node.sourceTaxonId)) {
+                        scopeFound=true;QVERIFY(levels.indexOf(node.rank)<levels.indexOf(rank));
+                        int compatible=0;
+                        for(const auto &option : options) {
+                            bool known=false,allMatch=true;
+                            for(const auto &candidate : pool)if(candidate.answerAtRank(rank)==option) {
+                                known=true;allMatch=allMatch && candidate.belongsTo(node.id);
+                            }
+                            compatible+=known && allMatch;
+                        }
+                        QVERIFY(compatible>=2);
+                    }
+                    QVERIFY(scopeFound);
+                }
+                if(hint.type==HintType::Etymological)etymological.insert(s.id);
+                if(hint.type==HintType::Morphological)morphological.insert(s.id);
+            }
+            auto wrong=s;wrong.id=999999;
+            QVERIFY(!content.questionHints(wrong,rank,options,pool)[1].available());
+            wrong=s;wrong.photo.id="changed";QVERIFY(!content.questionHints(wrong,rank,options,pool)[2].available());
+        }
+        coverage[rank]=QJsonObject{{"taxonomic",taxonomic.size()},{"etymological",etymological.size()},{"morphological",morphological.size()},{"eligible",pool.size()}};
+    }
+    QFile report("hint-coverage.json");QVERIFY(report.open(QIODevice::WriteOnly));report.write(QJsonDocument(coverage).toJson());
+}
+
 void GameServiceTests::performanceUsesIdsAndHandlesMissingClassification()
 {
     TaxonomicPerformance performance;
@@ -906,7 +1036,7 @@ void GameServiceTests::replacementsRetireOldSpeciesWithoutDeletingHistory()
     }
     QSqlDatabase::removeDatabase("retirement_check");
     SqliteSpeciesCatalog reopened(path); QVERIFY(reopened.isReady()); QCOMPARE(reopened.loadSpecies().size(),122);
-    QCOMPARE(history.loadPlayerProfiles(),QStringList{"Ada"}); QCOMPARE(history.loadTopResults(5).first().score,17);
+    QCOMPARE(history.loadPlayerProfiles(),QStringList{"Ada"}); QCOMPARE(history.loadTopResults(5).first().scoreUnits,17);
     Species wrong=active.first(); wrong.photo.role="supporting";wrong.photo.supportingFor=wrong.name;
     PhotoResolver::attach(wrong,wrong.photo); QVERIFY(!wrong.photo.valid);
 }

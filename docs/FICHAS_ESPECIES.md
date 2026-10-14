@@ -30,7 +30,7 @@ O corpus editável fica em [species_profiles.json](../resources/data/species_pro
 
 Execute `python scripts/build_education.py` para incorporar as fichas a education.json. A geração ocorre offline e valida IDs, nomes científicos, campos obrigatórios, fontes e escopo da conservação antes de gravar. Campos de alimentação sem informação confirmada são omitidos.
 
-EducationalContent também confere **ID e nome científico** antes de aplicar a ficha, evitando transferir textos para uma futura substituição de organismo. O quiz utiliza as pistas revisadas e conserva o filtro que rejeita nomes de alternativas ou da linhagem. Há pistas e curiosidades para todos os registros elegíveis nos sete níveis disponíveis.
+EducationalContent também confere **ID e nome científico** antes de aplicar a ficha, evitando transferir textos para uma futura substituição de organismo. O quiz utiliza as pistas revisadas e conserva o filtro que rejeita nomes de alternativas ou da linhagem. O conteúdo introdutório permanece disponível. O quiz agora seleciona categorias de dicas por nível e alternativas, conforme [Dicas e pontuação](DICAS_E_PONTUACAO.md); nem todas as categorias estão disponíveis em todos os níveis.
 
 ## Validação
 

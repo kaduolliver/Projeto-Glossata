@@ -1,0 +1,1564 @@
+{
+  "63": {
+    "scientific_name": "Stropharia caerulea",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa azul.",
+        "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero vem de uma palavra grega relacionada a um cinto, em referência ao anel no pé.",
+        "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "330405159"
+    }
+  },
+  "135": {
+    "scientific_name": "Clathrus ruber",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa vermelho.",
+        "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero significa gaiola.",
+        "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "745707969"
+    }
+  },
+  "67": {
+    "scientific_name": "Trametes versicolor",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa de várias cores.",
+        "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero faz referência a estruturas finas.",
+        "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "27005174"
+    }
+  },
+  "136": {
+    "scientific_name": "Amanita muscaria",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico deriva de uma palavra latina que significa mosca.",
+        "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "432197409"
+    }
+  },
+  "73": {
+    "scientific_name": "Coprinus comatus",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa cabeludo, em referência às escamas do chapéu.",
+        "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero significa viver sobre esterco; é uma origem linguística e não define a dieta desta espécie.",
+        "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "93399523"
+    }
+  },
+  "138": {
+    "scientific_name": "Phallus impudicus",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa sem pudor ou imodesto.",
+        "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero se refere à aparência fálica de suas estruturas reprodutivas.",
+        "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "159628472"
+    }
+  },
+  "139": {
+    "scientific_name": "Geastrum triplex",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa de três camadas.",
+        "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero combina os sentidos de terra e estrela.",
+        "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "139143137"
+    }
+  },
+  "140": {
+    "scientific_name": "Hericium erinaceus",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa semelhante a um ouriço.",
+        "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero faz referência a um ouriço, por causa das estruturas semelhantes a espinhos.",
+        "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+        "source_title": "First Nature · etimologia documentada",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5466254"
+    }
+  },
+  "103": {
+    "scientific_name": "Sphingomonas phyllosphaerae",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico se refere à região da superfície das folhas.",
+        "source_url": "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "7906556"
+    }
+  },
+  "105": {
+    "scientific_name": "Serratia marcescens",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico tem o sentido de enfraquecer ou desaparecer gradualmente.",
+        "source_url": "https://lpsn.dsmz.de/species/serratia-marcescens",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "58089762"
+    }
+  },
+  "106": {
+    "scientific_name": "Thiohalocapsa halophila",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa que gosta de sal.",
+        "source_url": "https://lpsn.dsmz.de/species/thiohalocapsa-halophila",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "77725233"
+    }
+  },
+  "109": {
+    "scientific_name": "Beggiatoa alba",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa branca.",
+        "source_url": "https://lpsn.dsmz.de/species/beggiatoa-alba",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "629567196"
+    }
+  },
+  "114": {
+    "scientific_name": "Leptothrix discophora",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa que carrega discos.",
+        "source_url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "3221562"
+    }
+  },
+  "116": {
+    "scientific_name": "Chlamydophila pecorum",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico se refere a rebanhos de ovelhas ou de gado.",
+        "source_url": "https://lpsn.dsmz.de/species/chlamydia-pecorum",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "320741885"
+    }
+  },
+  "118": {
+    "scientific_name": "Aeromonas caviae",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico se refere a um porquinho-da-índia.",
+        "source_url": "https://lpsn.dsmz.de/species/aeromonas-caviae",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "64447665"
+    }
+  },
+  "119": {
+    "scientific_name": "Pseudomonas fluorescens",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa que apresenta fluorescência.",
+        "source_url": "https://lpsn.dsmz.de/species/pseudomonas-fluorescens",
+        "source_title": "LPSN · DSMZ · etimologia nomenclatural",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "64448584"
+    }
+  },
+  "131": {
+    "scientific_name": "Rhinoceros unicornis",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico se refere a um único chifre.",
+        "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
+        "source_title": "International Rhino Foundation · manual científico",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero reúne os sentidos gregos de nariz e chifre.",
+        "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
+        "source_title": "International Rhino Foundation · manual científico",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "120750026"
+    }
+  },
+  "133": {
+    "scientific_name": "Ginkgo biloba",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa dois lobos, em referência às folhas.",
+        "source_url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+        "source_title": "NCSU · Plant Toolbox",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "734005336"
+    }
+  },
+  "61": {
+    "scientific_name": "Verbascum thapsus",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico homenageia uma antiga localidade da atual Tunísia.",
+        "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+        "source_title": "NCSU · Plant Toolbox",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero está ligado ao sentido de barbado, em referência a estruturas com pelos.",
+        "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+        "source_title": "NCSU · Plant Toolbox",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "93034327"
+    }
+  },
+  "51": {
+    "scientific_name": "Mimetes chrysanthus",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico combina os sentidos de dourado e flor.",
+        "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
+        "source_title": "SANBI · PlantZAfrica",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "371617112"
+    }
+  },
+  "57": {
+    "scientific_name": "Pleurophyllum speciosum",
+    "etymology_hints": {
+      "genus": {
+        "text": "O nome do gênero combina os sentidos de nervura e folha.",
+        "source_url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
+        "source_title": "NZPCN · etimologia botânica",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "251548988"
+    }
+  },
+  "149": {
+    "scientific_name": "Alaria esculenta",
+    "etymology_hints": {
+      "species": {
+        "text": "O epíteto específico significa comestível; a origem linguística não é uma recomendação de consumo.",
+        "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+        "source_title": "MarLIN · Marine Biological Association",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      },
+      "genus": {
+        "text": "O nome do gênero se refere a asas.",
+        "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+        "source_title": "MarLIN · Marine Biological Association",
+        "verified": true,
+        "reviewed_on": "2026-10-14"
+      }
+    },
+    "name_origin": [
+      "genus",
+      "species"
+    ],
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "141679612"
+    }
+  },
+  "1": {
+    "scientific_name": "Papilio machaon",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "280989671"
+    }
+  },
+  "2": {
+    "scientific_name": "Vanessa atalanta",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "376647594"
+    }
+  },
+  "3": {
+    "scientific_name": "Acherontia atropos",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "586365614"
+    }
+  },
+  "4": {
+    "scientific_name": "Brahmaea wallichii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "175474265"
+    }
+  },
+  "5": {
+    "scientific_name": "Lymantria dispar",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "401685857"
+    }
+  },
+  "6": {
+    "scientific_name": "Danaus plexippus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "322926715"
+    }
+  },
+  "7": {
+    "scientific_name": "Aglais io",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "359063525"
+    }
+  },
+  "8": {
+    "scientific_name": "Vanessa cardui",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749769318"
+    }
+  },
+  "125": {
+    "scientific_name": "Panthera tigris",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "707161720"
+    }
+  },
+  "10": {
+    "scientific_name": "Attacus atlas",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "60643931"
+    }
+  },
+  "11": {
+    "scientific_name": "Actias luna",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "34980868"
+    }
+  },
+  "12": {
+    "scientific_name": "Hyalophora cecropia",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "137265535"
+    }
+  },
+  "13": {
+    "scientific_name": "Automeris io",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "44218494"
+    }
+  },
+  "14": {
+    "scientific_name": "Antheraea polyphemus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "664105606"
+    }
+  },
+  "15": {
+    "scientific_name": "Heliconius melpomene",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "560140869"
+    }
+  },
+  "16": {
+    "scientific_name": "Papilio ulysses",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "45110154"
+    }
+  },
+  "126": {
+    "scientific_name": "Panthera leo",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "748172022"
+    }
+  },
+  "18": {
+    "scientific_name": "Pieris brassicae",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "221780102"
+    }
+  },
+  "19": {
+    "scientific_name": "Galleria mellonella"
+  },
+  "20": {
+    "scientific_name": "Plodia interpunctella"
+  },
+  "21": {
+    "scientific_name": "Manduca sexta",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "43280362"
+    }
+  },
+  "127": {
+    "scientific_name": "Panthera onca",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "742746729"
+    }
+  },
+  "23": {
+    "scientific_name": "Titanomis sisyrota"
+  },
+  "24": {
+    "scientific_name": "Macrocilix maia",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "53637930"
+    }
+  },
+  "25": {
+    "scientific_name": "Chiton glaucus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "155300806"
+    }
+  },
+  "26": {
+    "scientific_name": "Geminaria canalis"
+  },
+  "27": {
+    "scientific_name": "Stegodyphus dumicola",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "12637215"
+    }
+  },
+  "28": {
+    "scientific_name": "Astroscopus zephyreus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "254703040"
+    }
+  },
+  "128": {
+    "scientific_name": "Lemur catta",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "659755043"
+    }
+  },
+  "30": {
+    "scientific_name": "Xenocnema spinipes"
+  },
+  "31": {
+    "scientific_name": "Sphaerocoris annulus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "29250775"
+    }
+  },
+  "129": {
+    "scientific_name": "Pavo cristatus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "307026691"
+    }
+  },
+  "130": {
+    "scientific_name": "Agalychnis callidryas",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "289704683"
+    }
+  },
+  "34": {
+    "scientific_name": "Dicarnosis erythrocephala",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "123931576"
+    }
+  },
+  "35": {
+    "scientific_name": "Pachypodistes angulata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "68055096"
+    }
+  },
+  "36": {
+    "scientific_name": "Chortophaga viridifasciata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "31118856"
+    }
+  },
+  "37": {
+    "scientific_name": "Laterallus rogersi",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "104246"
+    }
+  },
+  "38": {
+    "scientific_name": "Cyphonia clavata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5726540"
+    }
+  },
+  "132": {
+    "scientific_name": "Equus quagga",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "50371107"
+    }
+  },
+  "41": {
+    "scientific_name": "Ovalimantis maculata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "338534567"
+    }
+  },
+  "42": {
+    "scientific_name": "Incilius periglenes",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "98915545"
+    }
+  },
+  "43": {
+    "scientific_name": "Kindbergia oregana",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "613353234"
+    }
+  },
+  "44": {
+    "scientific_name": "Dictyanthus pavonii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "47249680"
+    }
+  },
+  "45": {
+    "scientific_name": "Hydnora esculenta",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "251673570"
+    }
+  },
+  "46": {
+    "scientific_name": "Lunularia cruciata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "61481606"
+    }
+  },
+  "47": {
+    "scientific_name": "Polypodium glycyrrhiza",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "13657957"
+    }
+  },
+  "48": {
+    "scientific_name": "Marah macrocarpa",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "489573459"
+    }
+  },
+  "49": {
+    "scientific_name": "Mastigostyla macbridei",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "540416886"
+    }
+  },
+  "50": {
+    "scientific_name": "Tulipa regelii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "482684019"
+    }
+  },
+  "52": {
+    "scientific_name": "Asterella drummondii"
+  },
+  "53": {
+    "scientific_name": "Viburnum opulus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "167101616"
+    }
+  },
+  "54": {
+    "scientific_name": "Xanthosoma robustum",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "45341427"
+    }
+  },
+  "55": {
+    "scientific_name": "Pleurothallis maitamae",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "20397049"
+    }
+  },
+  "58": {
+    "scientific_name": "Dracaena cinnabari",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "111803110"
+    }
+  },
+  "134": {
+    "scientific_name": "Dionaea muscipula",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "721575702"
+    }
+  },
+  "60": {
+    "scientific_name": "Huperzia lucidula"
+  },
+  "62": {
+    "scientific_name": "Euphorbia duckei"
+  },
+  "64": {
+    "scientific_name": "Favolaschia claudopus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "345801259"
+    }
+  },
+  "65": {
+    "scientific_name": "Cladonia imperialis",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "231974984"
+    }
+  },
+  "70": {
+    "scientific_name": "Ganoderma brownii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "349810134"
+    }
+  },
+  "71": {
+    "scientific_name": "Marasmius haematocephalus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "606817545"
+    }
+  },
+  "137": {
+    "scientific_name": "Morchella esculenta",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "169965177"
+    }
+  },
+  "75": {
+    "scientific_name": "Cortinarius archeri",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "130004238"
+    }
+  },
+  "76": {
+    "scientific_name": "Xylaria tentaculata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "2279530"
+    }
+  },
+  "79": {
+    "scientific_name": "Panellus stipticus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "178409675"
+    }
+  },
+  "80": {
+    "scientific_name": "Wawelia microspora"
+  },
+  "81": {
+    "scientific_name": "Entoloma trachyosporum",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "245357302"
+    }
+  },
+  "82": {
+    "scientific_name": "Pseudoboletus parasiticus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "151574414"
+    }
+  },
+  "83": {
+    "scientific_name": "Comatricha nigra"
+  },
+  "84": {
+    "scientific_name": "Hemitrichia serpula"
+  },
+  "85": {
+    "scientific_name": "Metatrichia vesparia"
+  },
+  "141": {
+    "scientific_name": "Macrocystis pyrifera",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "742656850"
+    }
+  },
+  "142": {
+    "scientific_name": "Nereocystis luetkeana",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749313945"
+    }
+  },
+  "88": {
+    "scientific_name": "Physarum psittacinum"
+  },
+  "89": {
+    "scientific_name": "Ceratiomyxa fruticulosa"
+  },
+  "90": {
+    "scientific_name": "Arcyria denudata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "4592237"
+    }
+  },
+  "143": {
+    "scientific_name": "Fucus vesiculosus",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "749738938"
+    }
+  },
+  "144": {
+    "scientific_name": "Himanthalia elongata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "729466339"
+    }
+  },
+  "145": {
+    "scientific_name": "Egregia menziesii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "741404235"
+    }
+  },
+  "146": {
+    "scientific_name": "Dictyota dichotoma",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "647286388"
+    }
+  },
+  "95": {
+    "scientific_name": "Heterotrichia versicolor"
+  },
+  "96": {
+    "scientific_name": "Leocarpus fragilis"
+  },
+  "97": {
+    "scientific_name": "Badhamia polycephala"
+  },
+  "147": {
+    "scientific_name": "Sargassum muticum",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "149679081"
+    }
+  },
+  "99": {
+    "scientific_name": "Diderma effusum"
+  },
+  "148": {
+    "scientific_name": "Durvillaea antarctica",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "660405215"
+    }
+  },
+  "150": {
+    "scientific_name": "Turbinaria ornata",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "134408"
+    }
+  },
+  "104": {
+    "scientific_name": "Dolichospermum lemmermannii",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    }
+  },
+  "107": {
+    "scientific_name": "Merismopedia convoluta",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "257195754"
+    }
+  },
+  "108": {
+    "scientific_name": "Arthrospira jenneri",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "241649713"
+    }
+  },
+  "110": {
+    "scientific_name": "Gomphosphaeria aponina",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "160680326"
+    }
+  },
+  "111": {
+    "scientific_name": "Anabaena torulosa",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    }
+  },
+  "112": {
+    "scientific_name": "Phytoplasma asteris",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "48790280"
+    }
+  },
+  "113": {
+    "scientific_name": "Gloeotrichia intermedia",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "443586440"
+    }
+  },
+  "115": {
+    "scientific_name": "Johanseninema constrictum",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "407087233"
+    }
+  },
+  "117": {
+    "scientific_name": "Hassallia byssoidea",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "459952778"
+    }
+  },
+  "120": {
+    "scientific_name": "Achromatium oxaliferum",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "581394987"
+    }
+  },
+  "122": {
+    "scientific_name": "Chroococcus turgidus",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "441792181"
+    }
+  },
+  "123": {
+    "scientific_name": "Psilocybe allenii",
+    "morphological_hint": {
+      "reference": "hint",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "5668201"
+    }
+  },
+  "124": {
+    "scientific_name": "Merismopedia tranquilla",
+    "morphological_hint": {
+      "reference": "morphology",
+      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "ranks": [
+        "species",
+        "genus"
+      ],
+      "photo_id": "43700642"
+    }
+  }
+}

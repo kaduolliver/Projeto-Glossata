@@ -25,7 +25,7 @@ Item {
         RowLayout {
             Layout.fillWidth: true; spacing: 16
             StatCard { Layout.fillWidth: true; title: "Perguntas respondidas"; value: String(view.backend.answeredCount); iconName: "book"; accent: "#6CABEE" }
-            StatCard { Layout.fillWidth: true; title: "Acertos"; value: String(view.backend.score); iconName: "check"; accent: "#45D080" }
+            StatCard { Layout.fillWidth: true; title: "Acertos"; value: String(view.backend.correctAnswers); iconName: "check"; accent: "#45D080" }
             StatCard { Layout.fillWidth: true; title: "Taxa de acerto"; value: view.app.accuracy + "%"; iconName: "target"; accent: "#E7B857" }
         }
         RowLayout {
@@ -108,7 +108,7 @@ Item {
                                     Label { text: rankRow.modelData.playerName; color: "#D5E6DB"; elide: Text.ElideRight; font.pixelSize: 12; Layout.fillWidth: true }
                                     Label { text: rankRow.modelData.playedAt; color: "#688B92"; font.pixelSize: 9 }
                                 }
-                                Label { text: rankRow.modelData.score + " pts"; color: "#71DCA0"; font.pixelSize: 13; font.weight: Font.DemiBold }
+                                Label { text: rankRow.modelData.scoreText + " pts"; color: "#71DCA0"; font.pixelSize: 13; font.weight: Font.DemiBold }
                             }
                         }
                     }

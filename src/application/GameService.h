@@ -21,8 +21,13 @@ public:
     bool hintRevealed() const;
     bool submitAnswer(const QString &selectedOption);
     bool revealHint();
+    bool revealHint(HintType type);
+    int revealedHints() const { return revealedHints_; }
+    int possibleScoreUnits() const { return maximumScoreUnits(revealedHints_); }
+    QVector<AnswerRecord> answers() const { return session_.answers; }
     void finishGame();
-    int score() const;
+    qint64 scoreUnits() const;
+    int correctAnswers() const { return session_.correctAnswers; }
     int round() const;
     int answeredCount() const { return session_.answeredCount; }
     int catalogSize() const { return static_cast<int>(species_.size()); }
@@ -40,7 +45,7 @@ private:
     QVector<Species> species_;
     int currentSpeciesIndex_ = 0;
     bool resultSaved_ = false;
-    bool hintRevealed_ = false;
+    int revealedHints_ = 0;
     GameSession session_;
     Question currentQuestion_;
     QString identificationRank_ = QStringLiteral("species");

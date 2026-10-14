@@ -22,7 +22,11 @@ class GameController : public QObject {
     Q_PROPERTY(QString currentPlayerName READ currentPlayerName WRITE setCurrentPlayerName NOTIFY currentPlayerNameChanged)
     Q_PROPERTY(QString sessionPlayerName READ sessionPlayerName NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool resultPending READ resultPending NOTIFY resultPendingChanged)
-    Q_PROPERTY(int score READ score NOTIFY scoreChanged)
+    Q_PROPERTY(qint64 scoreUnits READ scoreUnits NOTIFY scoreChanged)
+    Q_PROPERTY(QString scoreText READ scoreText NOTIFY scoreChanged)
+    Q_PROPERTY(int correctAnswers READ correctAnswers NOTIFY scoreChanged)
+    Q_PROPERTY(QVariantList hints READ hints NOTIFY extraHintChanged)
+    Q_PROPERTY(QString possibleScoreText READ possibleScoreText NOTIFY extraHintChanged)
     Q_PROPERTY(int round READ round NOTIFY roundChanged)
     Q_PROPERTY(bool gameFinished READ gameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(QString feedbackText READ feedbackText NOTIFY feedbackTextChanged)
@@ -59,7 +63,11 @@ public:
     QString sessionPlayerName() const { return sessionPlayerName_; }
     bool resultPending() const { return resultPending_; }
     void setCurrentPlayerName(const QString &name);
-    int score() const;
+    qint64 scoreUnits() const;
+    QString scoreText() const { return formatScore(scoreUnits()); }
+    int correctAnswers() const { return service_.correctAnswers(); }
+    QVariantList hints() const;
+    QString possibleScoreText() const { return formatScore(maximumScoreUnits(displayedRevealedHints_)); }
     int round() const;
     bool gameFinished() const;
     QString feedbackText() const;
@@ -90,6 +98,7 @@ public slots:
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
     void revealHint();
+    bool revealHintCategory(const QString &category);
     void stopGame();
     void retrySaveResult();
     bool addPlayerProfile(const QString &name);
@@ -129,7 +138,7 @@ private:
     bool answerPending_ = false;
     QVariantMap answerDetails_;
     Question displayedQuestion_;
-    bool displayedHintRevealed_=false;
+    int displayedRevealedHints_=0;
     EducationalContent content_;
     int correctStreak_ = 0;
     int bestStreak_ = 0;

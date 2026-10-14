@@ -6,6 +6,7 @@
 #include "domain/QuizSelection.h"
 #include <QMap>
 #include <QSet>
+#include <QUuid>
 
 namespace {
 QStringList buildOptionSet(const QVector<Species> &species, const Species &correct, const QString &rank)
@@ -44,8 +45,9 @@ void GameService::startNewGame(const QString &filter, const QString &rank)
     species_.clear();
     currentSpeciesIndex_ = 0;
     resultSaved_ = false;
-    hintRevealed_ = false;
+    revealedHints_ = 0;
     session_ = GameSession();
+    session_.id=QUuid::createUuid().toString(QUuid::WithoutBraces);
     performance_ = TaxonomicPerformance();
     currentQuestion_ = Question();
 
@@ -101,12 +103,12 @@ QString GameService::currentFact() const
 
 QString GameService::extraHint() const
 {
-    return hintRevealed_ ? currentQuestion_.extraHint : QString();
+    return hintRevealed() ? currentQuestion_.extraHint : QString();
 }
 
 bool GameService::hintRevealed() const
 {
-    return hintRevealed_;
+    return revealedHints_ & hintBit(HintType::Morphological);
 }
 
 bool GameService::submitAnswer(const QString &selectedOption)
@@ -116,15 +118,20 @@ bool GameService::submitAnswer(const QString &selectedOption)
     }
 
     const bool isCorrect = selectedOption == currentQuestion_.correctAnswer;
+    const int maximum=possibleScoreUnits();
+    session_.answers.append({session_.round,currentQuestion_.species.id,currentQuestion_.species.name,
+        currentQuestion_.photo.id,currentQuestion_.identificationRank,selectedOption,currentQuestion_.correctAnswer,
+        isCorrect,revealedHints_,maximum,isCorrect ? maximum : 0});
     performance_.record(currentQuestion_.species,isCorrect);
     ++session_.answeredCount;
     if (isCorrect) {
-        ++session_.score;
+        session_.scoreUnits+=maximum;
+        ++session_.correctAnswers;
     }
 
     ++session_.round;
     ++currentSpeciesIndex_;
-    hintRevealed_ = false;
+    revealedHints_ = 0;
     if (currentSpeciesIndex_ >= species_.size()) {
         const QString previousSpeciesName = species_.last().name;
         shuffleCycle();
@@ -139,11 +146,14 @@ bool GameService::submitAnswer(const QString &selectedOption)
 
 bool GameService::revealHint()
 {
-    if (session_.finished || hintRevealed_ || currentQuestion_.extraHint.isEmpty()) {
-        return false;
-    }
-
-    hintRevealed_ = true;
+    return revealHint(HintType::Morphological);
+}
+bool GameService::revealHint(HintType type)
+{
+    if(session_.finished || hintBit(type)==0 || (revealedHints_ & hintBit(type)))return false;
+    const auto &hint=currentQuestion_.hints.at(static_cast<int>(type)-1);
+    if(!hint.available())return false;
+    revealedHints_|=hintBit(type);
     return true;
 }
 
@@ -157,9 +167,9 @@ void GameService::finishGame()
     currentQuestion_.options.clear();
 }
 
-int GameService::score() const
+qint64 GameService::scoreUnits() const
 {
-    return session_.score;
+    return session_.scoreUnits;
 }
 
 int GameService::round() const
@@ -188,7 +198,7 @@ GameService::SaveStatus GameService::saveCurrentResult(const QString &playerName
     }
 
     if (history_ == nullptr || playerName.trimmed().isEmpty()
-        || !history_->saveResult(playerName.trimmed(), session_.score, session_.score)) {
+        || !history_->saveResult(playerName.trimmed(), session_.scoreUnits, session_.correctAnswers,session_.answers,session_.id)) {
         return SaveStatus::Failed;
     }
     resultSaved_ = true;
@@ -204,11 +214,19 @@ void GameService::buildQuestionForCurrentSpecies()
     }
 
     const Species correct = species_.at(currentSpeciesIndex_);
-    const QStringList options = buildOptionSet(species_, correct, identificationRank_);
+    QStringList options = buildOptionSet(species_, correct, identificationRank_);
     if (options.size() != 4) {
         currentQuestion_ = Question{};
         session_.finished = true;
         return;
+    }
+    auto hints=content_.questionHints(correct,identificationRank_,options,species_);
+    // Bounded resampling tries to retain educational context while keeping four
+    // distinct answers. Every candidate arrangement passes the same safety gate.
+    if(identificationRank_!="kingdom")for(int attempt=0;attempt<8 && !hints[0].available();++attempt) {
+        const auto candidateOptions=buildOptionSet(species_,correct,identificationRank_);
+        const auto candidateHints=content_.questionHints(correct,identificationRank_,candidateOptions,species_);
+        if(candidateHints[0].available()){options=candidateOptions;hints=candidateHints;}
     }
 
     const bool supporting=correct.photo.role=="supporting";
@@ -217,30 +235,22 @@ void GameService::buildQuestionForCurrentSpecies()
         ? QStringLiteral("Qual espécie está registrada nesta fotografia?")
         : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(identificationRank_));
     QString fact = QStringLiteral("Observe a fotografia. Compare a forma, as estruturas e os padrões visíveis.");
-    if (supporting) {
-        QStringList lineage;
-        const QStringList ranks={"kingdom","phylum","class","order","family","genus","species"};
-        for (const Taxon &t : correct.taxonomy)
-            if (ranks.indexOf(t.rank)>=0 && ranks.indexOf(t.rank)<=ranks.indexOf("class")
-                && ranks.indexOf(t.rank)<ranks.indexOf(identificationRank_))
-                lineage << taxonomicRankLabel(t.rank)+": "+t.name;
-        fact=lineage.isEmpty() ? QStringLiteral("A imagem é apenas apoio. Identifique pelas pistas e pela classificação registrada.")
-            : QStringLiteral("Classificação registrada: %1. A imagem é apenas apoio à questão.").arg(lineage.join(" · "));
-    }
-    const auto hint=content_.hint(correct,identificationRank_,options);
+    if (supporting) fact=QStringLiteral("A imagem é apenas apoio. Consulte as categorias de dicas para identificar o organismo pelas informações documentadas.");
     currentQuestion_ = Question{
         prompt,
         fact,
-        hint.value("text").toString(),
+        hints[2].text,
         correct.answerAtRank(identificationRank_),
         options,
         correct,
         identificationRank_,
         visual,
         correct.photo,
-        hint.value("source_url").toString(),
-        hint.value("source_title").toString()
+        hints[2].sourceUrl,
+        hints[2].sourceTitle,
+        hints
     };
+
 }
 
 void GameService::shuffleCycle()

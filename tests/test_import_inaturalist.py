@@ -150,7 +150,7 @@ class ImportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
@@ -168,6 +168,20 @@ class ImportTests(unittest.TestCase):
                 (root/'resources/data/species_profiles.json').write_text(json.dumps(profiles),encoding='utf8')
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
                     education.load_profiles()
+
+    def test_hint_generation_rejects_mismatched_species_and_taxonomy_as_etymology(self):
+        original=json.loads((PROJECT/'resources/data/hint_education.json').read_text(encoding='utf8'))
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
+            for name in ('species.json','taxonomy.json','species_profiles.json'):
+                shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
+            for invalid_identity in (True,False):
+                hints=json.loads(json.dumps(original))
+                if invalid_identity:hints['135']['scientific_name']='Unrelated species'
+                else:hints['135']['etymology_hints']['genus']['source_url']='https://www.inaturalist.org/taxa/1'
+                (root/'resources/data/hint_education.json').write_text(json.dumps(hints),encoding='utf8')
+                with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):education.build()
+                self.assertFalse((root/'resources/data/education.json').exists())
 
     def test_missing_offline_cache_and_failed_import_leave_catalog_untouched(self):
         with tempfile.TemporaryDirectory() as directory:

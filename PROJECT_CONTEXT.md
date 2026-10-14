@@ -37,7 +37,7 @@ Home → Jogar → Todas as espécies ou reino → grupos/subgrupos → nível d
 
 Grupos são gerados pelos dados e podem ter profundidades e ranks diferentes. O caminho clicável retorna aos ancestrais. Grupos pequenos e taxonomias parciais continuam navegáveis; quizzes sem quatro respostas distintas são desabilitados. Níveis possíveis: espécie, gênero, família, ordem, classe, filo/divisão e reino científico.
 
-Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O modo misto intercala reinos proporcionalmente ao tamanho dos grupos e embaralha internamente. Espécies não repetem dentro de um ciclo nem imediatamente entre ciclos. Resposta inválida não altera a rodada. A dica pode ser usada uma vez por pergunta.
+Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O modo misto intercala reinos proporcionalmente ao tamanho dos grupos e embaralha internamente. Espécies não repetem dentro de um ciclo nem imediatamente entre ciclos. Resposta inválida não altera a rodada. O botão Dica abre três categorias: taxonômica (6 unidades), etimológica (3) e morfológica (2). Uma categoria disponível é marcada uma vez e pode ser consultada novamente; combinações mantêm o menor teto. Abrir o painel não custa pontos. Acertos, erros e precisão são contados separadamente. Consulte docs/DICAS_E_PONTUACAO.md para cobertura, fontes e migração.
 
 Responder prepara a próxima pergunta no serviço; o controller mantém o snapshot da pergunta, foto, dica e alternativas até nextQuestion e bloqueia confirmações duplicadas. Voltar abre uma confirmação modal. Continuar preserva a seleção; confirmar registra uma vez e retorna ao grupo anterior ou aos reinos. Falha de gravação leva ao resultado pendente para nova tentativa.
 
@@ -49,7 +49,7 @@ Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte
 
 Dois bancos ficam em QStandardPaths::AppDataLocation, fora do pacote:
 
-- glossata_history.sqlite mantém history e player_profiles no caminho e schema anteriores.
+- glossata_history.sqlite mantém history/player_profiles no mesmo caminho; score foi migrado transacionalmente para score_units, multiplicando valores antigos por seis uma única vez. game_runs/answer_records guardam as novas partidas e suas respostas, categorias reveladas, máximos e pontos, com UUID e salvamento transacional.
 - glossata_catalog.sqlite mantém taxons, espécies, origem, créditos e hash do conteúdo embarcado.
 
 O catálogo usa chaves estrangeiras, índices e consultas recursivas. Carga/atualização de conteúdo são transacionais, com upsert e pais antes dos filhos. Colunas são acrescentadas sem apagar tabelas ou registros anteriores. A coluna active marca somente substituições explícitas como inativas, verificando ID/nome anterior e existência do substituto. Consultas e contagens usam registros ativos; dados locais não relacionados permanecem intactos. Reabertura carrega o SQLite uma vez para memória. Se a preparação falhar, o adaptador conserva o conteúdo embarcado como fallback.
@@ -84,7 +84,7 @@ Quatro suítes CTest:
 1. GlossataTests: regressões do jogo, perfis/ranking, filtros, níveis, grupos pequenos, mistura, fotos offline, licenças e migração/reabertura do catálogo.
 2. GlossataInterfaceTests: cliques e confirmação, cinco reinos, subgrupos, caminho de volta, retorno ao grupo e capturas em 1240×820 e 1000×700; rejeita avisos QML.
 3. GlossataDiscordTests: IPC isolado, handshake, frames fragmentados, PONG, confirmação/erro e ausência de Discord.
-4. GlossataImportTests: onze testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte, falha segura sem cache e geração educacional reproduzível com validação de identidade/fontes/escopo.
+4. GlossataImportTests: doze testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte, falha segura sem cache e geração educacional reproduzível com validação de identidade/fontes/escopo e rejeição de classificação como etimologia.
 
 Testes usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests/core-results.txt, ui-test-results.txt e catalog-audit.json. Consulte docs/REFINAMENTO_IDENTIFICACAO.md para resultados, limitações científicas e registros pendentes desta etapa.
 
@@ -93,3 +93,9 @@ Testes usam bancos temporários e não publicam presença real. Capturas ficam e
 Revisar cientificamente fatos/dicas anteriores e novos registros, acrescentar curiosidades com fontes, ampliar representatividade e avaliar progresso persistido por perfil se solicitado. A amostra inicial de Protista contém Protozoa; Monera contém Bacteria, embora o mapeamento também suporte Chromista e Archaea. Falta validar o pacote em um Windows sem Qt/MSYS2 instalado.
 
 Preservar C++17, Qt Quick, SQLite, portas/adaptadores, IDs originais, dados dos jogadores e testes. Trabalhar apenas em C:\glossata_game. Ao alterar regras/catálogo, testar comportamento; ao mudar QML, conferir lint/capturas; ao recompilar o executável, atualizar o pacote. A API é usada na importação, nunca para jogar ou navegar.
+
+## Dicas estratégicas e revisão após a resposta
+
+A pontuação usa unidades inteiras de 64 bits: 6 por ponto, 3 por meio ponto e 2 por um terço. A interface mostra duas casas decimais. O ranking continua guardando o resultado mais recente por nome e ordena por unidades. Cada resposta preserva organismo, foto, nível, alternativas escolhida/correta, acerto, categorias, teto e unidades obtidas. O domínio calcula a combinação; QML apresenta os valores. A revisão educativa é opcional e não altera pontos.
+
+As dicas taxonômicas citam ancestrais verificados mais amplos e deixam ao menos duas alternativas compatíveis. Etimologia tem referências para 22 organismos; 104 têm morfologia curada, vinculada à fotografia. Etimologia/morfologia estão revisadas para espécie/gênero, com disponibilidade dependente do conteúdo, elegibilidade e questão. Corpus em resources/data/hint_education.json, incorporado offline pelo gerador; nenhuma consulta de rede ocorre nas partidas. Detalhes, pendências e testes em docs/DICAS_E_PONTUACAO.md.

@@ -37,12 +37,12 @@ QString GameController::factText() const
 
 QString GameController::extraHint() const
 {
-    return displayedHintRevealed_ ? displayedQuestion_.extraHint : QString();
+    return hintRevealed() ? displayedQuestion_.extraHint : QString();
 }
 
 bool GameController::hintRevealed() const
 {
-    return displayedHintRevealed_;
+    return displayedRevealedHints_ & hintBit(HintType::Morphological);
 }
 
 QStringList GameController::answerOptions() const
@@ -70,9 +70,9 @@ void GameController::setCurrentPlayerName(const QString &name)
     emit currentPlayerNameChanged();
 }
 
-int GameController::score() const
+qint64 GameController::scoreUnits() const
 {
-    return service_.score();
+    return service_.scoreUnits();
 }
 
 int GameController::round() const
@@ -97,7 +97,8 @@ QVariantList GameController::ranking() const
     for (const HistoryEntry &entry : entries) {
         QVariantMap row;
         row.insert(QStringLiteral("playerName"), entry.playerName);
-        row.insert(QStringLiteral("score"), entry.score);
+        row.insert(QStringLiteral("scoreUnits"), entry.scoreUnits);
+        row.insert(QStringLiteral("scoreText"), formatScore(entry.scoreUnits));
         row.insert(QStringLiteral("correctAnswers"), entry.correctAnswers);
         row.insert(QStringLiteral("playedAt"), entry.playedAt.toString(QStringLiteral("dd/MM/yyyy")));
         list.append(row);
@@ -145,7 +146,7 @@ void GameController::startTaxonGame(const QString &family, const QString &rank)
         : (sessionTaxonId_.isEmpty() ? family : taxonomy_.describe(family).value("title").toString());
     answerPending_ = false;
     answerDetails_.clear();
-    displayedHintRevealed_=false;
+    displayedRevealedHints_=0;
     correctStreak_ = 0;
     bestStreak_ = 0;
     service_.startNewGame(family, rank);
@@ -176,6 +177,7 @@ void GameController::answerSelected(const QString &selectedOption)
     answerPending_ = true;
     const auto profile=content_.profile(answeredQuestion.species);
     const auto curiosity=content_.curiosity(answeredQuestion.species);
+    const auto record=service_.answers().last();
     answerDetails_ = {
         {QStringLiteral("correct"), correct},
         {QStringLiteral("selectedAnswer"), selectedOption},
@@ -202,6 +204,11 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("image"), answeredQuestion.photo.image},
         {QStringLiteral("photoId"),answeredQuestion.photo.id}
     };
+    answerDetails_.insert("awardedUnits",record.awardedUnits);
+    answerDetails_.insert("awardedText",formatScore(record.awardedUnits));
+    answerDetails_.insert("maximumUnits",record.maximumUnits);
+    answerDetails_.insert("revealedHints",record.revealedHints);
+    answerDetails_.insert("nameOrigin",content_.nameOrigin(answeredQuestion.species));
     answerDetails_.insert("supporting",answeredQuestion.photo.role=="supporting");
     answerDetails_.insert("photoSubject",answeredQuestion.photo.scientificName);
     QStringList lineage;
@@ -228,21 +235,34 @@ void GameController::nextQuestion()
     if (!answerPending_ || service_.isFinished()) return;
     answerPending_ = false;
     displayedQuestion_=service_.currentQuestion();
-    displayedHintRevealed_=false;
+    displayedRevealedHints_=0;
     emit questionTextChanged(); emit factTextChanged(); emit extraHintChanged(); emit answerOptionsChanged();
     emit answerDetailsChanged();
 }
 
+QVariantList GameController::hints() const
+{
+    QVariantList rows;
+    for(const auto &hint : displayedQuestion_.hints) {
+        const bool revealed=displayedRevealedHints_ & hintBit(hint.type);
+        rows.append(QVariantMap{{"id",hintKey(hint.type)},{"available",hint.available()},
+            {"revealed",revealed},{"text",revealed ? hint.text : QString()},
+            {"sourceUrl",revealed ? hint.sourceUrl : QString()},{"reason",hint.unavailableReason},{"pointsText",formatScore(maximumScoreUnits(hintBit(hint.type)))}});
+    }
+    return rows;
+}
 void GameController::revealHint()
 {
-    if (answerPending_ || !service_.revealHint()) {
-        return;
-    }
-
-    feedbackText_ = QStringLiteral("Dica adicional revelada.");
-    displayedHintRevealed_=true;
-    emit extraHintChanged();
-    emit feedbackTextChanged();
+    revealHintCategory("morphological");
+}
+bool GameController::revealHintCategory(const QString &category)
+{
+    const HintType type=hintType(category);
+    if(answerPending_ || type==HintType::None)return false;
+    if(displayedRevealedHints_ & hintBit(type))return true;
+    if(!service_.revealHint(type))return false;
+    displayedRevealedHints_=service_.revealedHints();
+    emit extraHintChanged();return true;
 }
 
 void GameController::stopGame()
@@ -265,7 +285,7 @@ void GameController::retrySaveResult()
     resultPending_ = service_.saveCurrentResult(sessionPlayerName_) == GameService::SaveStatus::Failed;
     feedbackText_ = resultPending_
         ? QStringLiteral("Não foi possível salvar a pontuação. Tente salvar novamente antes de fechar o jogo.")
-        : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(service_.score());
+        : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(scoreText());
     emit resultPendingChanged();
     emit feedbackTextChanged();
     loadRanking();
@@ -306,10 +326,10 @@ QVariantList GameController::achievements() const
         });
     };
     add(QStringLiteral("Primeiro voo"), QStringLiteral("Responda sua primeira pergunta."), "leaf", answeredCount(), 1);
-    add(QStringLiteral("Olhar atento"), QStringLiteral("Acerte cinco perguntas."), "target", score(), 5);
+    add(QStringLiteral("Olhar atento"), QStringLiteral("Acerte cinco perguntas."), "target", correctAnswers(), 5);
     add(QStringLiteral("Explorador"), QStringLiteral("Responda dez perguntas."), "butterfly", answeredCount(), 10);
     add(QStringLiteral("Em sequência"), QStringLiteral("Faça três acertos seguidos."), "spark", bestStreak_, 3);
-    add(QStringLiteral("Conhecedor"), QStringLiteral("Acerte vinte perguntas."), "book", score(), 20);
+    add(QStringLiteral("Conhecedor"), QStringLiteral("Acerte vinte perguntas."), "book", correctAnswers(), 20);
     add(QStringLiteral("Um ciclo completo"), QStringLiteral("Explore todo o grupo escolhido."), "trophy", answeredCount(), std::max(1, catalogSize()));
     return list;
 }
