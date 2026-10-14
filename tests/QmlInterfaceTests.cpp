@@ -198,6 +198,23 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(snapshot("04-correct"));
     showPage("info");
     QVERIFY(snapshot("06-information"));
+    const auto described=controller.answerDetails().value("profile").toMap();
+    QVERIFY(!described.value("summary").toMap().isEmpty());
+    auto displayName=findVisualItem(window->contentItem(),"speciesDisplayName");
+    QVERIFY(displayName);
+    QCOMPARE(displayName->property("text").toString(),described.value("displayName").toString());
+    for (const QString &section : {QString("distribution"),QString("morphology"),QString("conservation")}) {
+        auto item=findVisualItem(window->contentItem(),"speciesSection_"+section);
+        QVERIFY(item && item->isVisible());
+        QVERIFY(item->height()>=38);
+    }
+    QVERIFY(click("speciesSourcesButton"));
+    QVERIFY(snapshot("information-sources"));
+    QVERIFY(click("speciesSourcesButton"));
+    QVERIFY(click("speciesContinueButton"));
+    QCOMPARE(window->property("page").toString(),QString("quiz"));
+    QVERIFY(!controller.answerPending());
+    controller.answerSelected(correctAnswer());
     showPage("feedback");
     QVERIFY(click("nextQuestionButton"));
     QCOMPARE(window->property("page").toString(), QString("quiz"));
@@ -331,6 +348,28 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("endGameButton"));
     QCOMPARE(window->property("page").toString(),QString("taxonomy"));
     QCOMPARE(controller.browseTaxon().value("id").toString(),group);
+    // Exercise a long, sourced species account rather than relying only on the
+    // random question picked by the normal flow, including its lower controls.
+    controller.startTaxonGame("edu:Animalia","genus");
+    for (int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=126;++i) {
+        controller.answerSelected(correctAnswer()); controller.nextQuestion();
+    }
+    QCOMPARE(controller.questionPhoto().value("speciesId").toInt(),126);
+    controller.answerSelected(correctAnswer());
+    window->resize(1240,820); showPage("info");
+    QCOMPARE(findVisualItem(window->contentItem(),"speciesDisplayName")->property("text").toString(),QString("Leão"));
+    QVERIFY(findVisualItem(window->contentItem(),"speciesSection_nutrition")->isVisible());
+    QVERIFY(snapshot("species-lion-information"));
+    window->resize(1000,700);
+    QVERIFY(snapshot("compact-species-lion-information"));
+    QVERIFY(click("speciesSourcesButton"));
+    auto speciesScroll=findVisualItem(window->contentItem(),"pageScroll");
+    QVERIFY(speciesScroll);
+    speciesScroll->setProperty("contentY",qMax(0.0,speciesScroll->property("contentHeight").toReal()-speciesScroll->height()));
+    QVERIFY(snapshot("compact-species-lion-sources"));
+    QVERIFY(click("speciesContinueButton"));
+    QCOMPARE(window->property("page").toString(),QString("quiz"));
+    QVERIFY(!controller.answerPending());
     qInstallMessageHandler(runtimeHandler);
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }

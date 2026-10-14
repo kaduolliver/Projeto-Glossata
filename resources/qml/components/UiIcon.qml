@@ -52,6 +52,9 @@ Canvas {
         case "user": circle(12, 7, 4); c.beginPath(); c.arc(12, 22, 8, Math.PI, Math.PI * 2); c.stroke(); break
         case "grid": c.strokeRect(4, 4, 6, 6); c.strokeRect(14, 4, 6, 6); c.strokeRect(4, 14, 6, 6); c.strokeRect(14, 14, 6, 6); break
         case "spark": line([12, 2, 14, 9, 21, 12, 14, 15, 12, 22, 10, 15, 3, 12, 10, 9, 12, 2]); break
+        case "food": line([5, 3, 5, 9, 9, 9, 9, 3]); line([7, 3, 7, 21]); line([18, 21, 18, 3, 15, 6, 15, 12, 18, 12]); break
+        case "shape": circle(12, 12, 6); line([3, 7, 3, 3, 7, 3]); line([17, 3, 21, 3, 21, 7]); line([21, 17, 21, 21, 17, 21]); line([7, 21, 3, 21, 3, 17]); break
+        case "shield": line([12, 2, 20, 5, 20, 12, 18, 17, 12, 22, 6, 17, 4, 12, 4, 5, 12, 2]); line([8, 12, 11, 15, 16, 9]); break
         default:
             c.beginPath(); c.moveTo(11, 11); c.bezierCurveTo(1, -1, 0, 3, 3, 12); c.bezierCurveTo(0, 22, 8, 22, 11, 14); c.moveTo(13, 11); c.bezierCurveTo(23, -1, 24, 3, 21, 12); c.bezierCurveTo(24, 22, 16, 22, 13, 14); c.stroke(); line([12, 6, 12, 20]); line([12, 7, 9, 3]); line([12, 7, 15, 3]); break
         }

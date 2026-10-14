@@ -70,6 +70,7 @@ private slots:
     void photoResolverRejectsMissingCorruptAndUnverifiedResources();
     void visualEligibilityAndHintsAcrossRanks();
     void introductionsAndMissingContent();
+    void speciesProfilesHaveSourcesAndMatchIdentity();
     void performanceUsesIdsAndHandlesMissingClassification();
     void exportVerifiedCatalogAudit();
     void replacementsRetireOldSpeciesWithoutDeletingHistory();
@@ -771,6 +772,52 @@ void GameServiceTests::introductionsAndMissingContent()
     const auto fungi=content.introduction("edu:Fungi");
     const auto plants=content.introduction("edu:Plantae");
     QVERIFY(fungi.value("text")!=plants.value("text"));
+}
+
+void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
+{
+    JsonSpeciesCatalog catalog;
+    EducationalContent content;
+    int profiles=0,confirmed=0;
+    for (const Species &s : catalog.loadSpecies()) {
+        const auto profile=content.profile(s);
+        QVERIFY2(!profile.isEmpty(),qPrintable(s.name));
+        ++profiles;
+        QVERIFY(!profile.value("displayName").toString().isEmpty());
+        QVERIFY(!profile.value("reviewedOn").toString().isEmpty());
+        for (const QString &field : {QString("summary"),QString("distribution"),QString("morphology"),QString("conservation")}) {
+            const auto item=profile.value(field).toMap();
+            QVERIFY2(!item.value("text").toString().isEmpty(),qPrintable(s.name+":"+field));
+            QVERIFY(item.value("source_url").toString().startsWith("https://"));
+            QVERIFY(item.value("verified").toBool());
+            QVERIFY(!item.value("reviewed_on").toString().isEmpty());
+        }
+        QVERIFY(!profile.value("distribution").toMap().value("text").toString().contains("não revisada"));
+        const auto status=profile.value("conservation").toMap();
+        if (status.value("status").toString()!="unconfirmed") {
+            ++confirmed;
+            QCOMPARE(status.value("scope_name").toString(),QString("Espécie, global"));
+        }
+        if (s.educationalKingdom=="Plantae" || s.educationalKingdom=="Protista" || s.educationalKingdom=="Monera")
+            QVERIFY(!profile.value("nutrition").toMap().isEmpty());
+        if (s.educationalKingdom=="Monera")
+            QVERIFY(profile.value("morphology").toMap().value("text").toString().contains("apenas apoio"));
+        QVERIFY2(!content.hint(s,"genus",{s.answerAtRank("genus")}).isEmpty(),qPrintable(s.name));
+        QVERIFY(!content.curiosity(s).isEmpty());
+        if (s.name=="Panthera leo") {
+            QCOMPARE(profile.value("commonName").toString(),QString("Leão"));
+            QVERIFY(profile.value("distribution").toMap().value("text").toString().contains("Índia"));
+            QCOMPARE(status.value("status").toString(),QString("VU"));
+        }
+        if (s.name=="Incilius periglenes") QCOMPARE(status.value("status").toString(),QString("EX"));
+        if (s.name=="Danaus plexippus") QCOMPARE(status.value("status").toString(),QString("LC"));
+        Species reused=s; reused.name="Unrelated replacement";
+        QVERIFY(content.profile(reused).isEmpty());
+    }
+    QCOMPARE(profiles,122);
+    QCOMPARE(confirmed,22);
+    Species missing; missing.id=9999;
+    QVERIFY(content.profile(missing).isEmpty());
 }
 
 void GameServiceTests::performanceUsesIdsAndHandlesMissingClassification()

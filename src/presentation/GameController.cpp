@@ -174,14 +174,18 @@ void GameController::answerSelected(const QString &selectedOption)
     const Question answeredQuestion = displayedQuestion_;
     const bool correct = service_.submitAnswer(selectedOption);
     answerPending_ = true;
+    const auto profile=content_.profile(answeredQuestion.species);
+    const auto curiosity=content_.curiosity(answeredQuestion.species);
     answerDetails_ = {
         {QStringLiteral("correct"), correct},
         {QStringLiteral("selectedAnswer"), selectedOption},
         {QStringLiteral("name"), answeredQuestion.correctAnswer},
-        {QStringLiteral("fact"), content_.curiosity(answeredQuestion.species).value("text",QStringLiteral("Curiosidade validada ainda não disponível.")).toString()},
-        {QStringLiteral("curiositySource"),content_.curiosity(answeredQuestion.species).value("source_url")},
+        {QStringLiteral("fact"), curiosity.value("text").toString()},
+        {QStringLiteral("curiositySource"),curiosity.value("source_url")},
+        {QStringLiteral("curiositySourceTitle"),curiosity.value("source_title")},
         {QStringLiteral("speciesName"), answeredQuestion.species.name},
-        {QStringLiteral("commonName"), answeredQuestion.species.commonName},
+        {QStringLiteral("commonName"), profile.value("commonName").toString()},
+        {QStringLiteral("profile"), profile},
         {QStringLiteral("kingdom"), answeredQuestion.species.educationalKingdom},
         {QStringLiteral("sourceUrl"), answeredQuestion.species.sourceUrl},
         {QStringLiteral("author"), answeredQuestion.species.imageAuthor},
@@ -189,11 +193,12 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("licenseUrl"), answeredQuestion.species.imageLicenseUrl},
         {QStringLiteral("source"), answeredQuestion.species.imageSource},
         {QStringLiteral("hint"), answeredQuestion.extraHint},
-        {QStringLiteral("curiosityScope"),content_.curiosity(answeredQuestion.species).value("scope_name").toString()},
+        {QStringLiteral("curiosityScope"),curiosity.value("scope_name").toString()},
         {QStringLiteral("hintSource"), answeredQuestion.hintSourceUrl},
+        {QStringLiteral("hintSourceTitle"), answeredQuestion.hintSourceTitle},
         {QStringLiteral("modifications"),answeredQuestion.photo.modifications},
         {QStringLiteral("family"), answeredQuestion.species.family},
-        {QStringLiteral("region"), answeredQuestion.species.region},
+        {QStringLiteral("region"), profile.value("distribution").toMap().value("text").toString()},
         {QStringLiteral("image"), answeredQuestion.photo.image},
         {QStringLiteral("photoId"),answeredQuestion.photo.id}
     };

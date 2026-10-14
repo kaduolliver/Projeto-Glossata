@@ -19,6 +19,7 @@ Educational desktop quiz built with C++17, Qt 6 Quick/QML, and SQLite. Explore t
 - All 122 active organisms have a validated local image; there are 120 distinct image files. The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Every question and its review use the same photo snapshot.
 - The visual catalog has 102 organisms approved for at least one rank. Monera retains its 20 organisms and uses clearly labeled supporting photographs and classification clues; these images do not establish species identity. Mixed genus play currently includes 101 records across the five educational kingdoms.
 - The explorer loads 16 sourced taxon introductions, rounded selectors and styled breadcrumbs. Taxonomic performance groups real answers by educational kingdom and source phylum/division ID.
+- Species information provides 122 Portuguese profiles with an introduction, distribution or documented occurrence, morphology, conservation, plain-language curiosity and hint, plus feeding/nutrition where documented. Scientific classification and dated references expand within the same dark interface. See [species profiles](docs/FICHAS_ESPECIES.md).
 - The user-supplied temporary branding image is embedded in the Windows executable and window icon. `package/Glossata Quiz.lnk` starts the game with this icon.
 - Optional Discord Rich Presence connects locally to the desktop client using the configured Application ID and asset key. See [Discord setup](docs/DISCORD_SETUP.md) to upload the image and test it.
 

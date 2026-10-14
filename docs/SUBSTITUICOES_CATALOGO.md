@@ -51,7 +51,7 @@ Os substitutos recebem IDs novos. `catalog_replacements.json` arquiva os registr
 
 Os 20 nomes e IDs de Monera continuam iguais. Imagens com autoria ausente receberam outras fontes CC BY; nenhuma autoria foi inventada. Anabaena torulosa e Hassallia byssoidea usam uma imagem relacionada de Dolichospermum lemmermannii como apoio explícito. O táxon da foto permanece o da origem e `supporting_for` registra o organismo da questão.
 
-A propriedade `role=supporting` permite o uso contextual somente em Monera. Pergunta e ficha mostram “Imagem de apoio · não comprova a identificação da espécie”. Créditos também identificam esse uso. As pistas principais vêm dos níveis superiores da classificação registrada e não exibem gênero ou família; descrições biológicas específicas e sugestões mais detalhadas ficam para a próxima etapa solicitada.
+A propriedade `role=supporting` permite o uso contextual somente em Monera. Pergunta e ficha mostram “Imagem de apoio · não comprova a identificação da espécie”. Créditos também identificam esse uso. As pistas principais vêm dos níveis superiores da classificação registrada e não exibem gênero ou família. A etapa seguinte acrescentou descrições biológicas e dicas em linguagem simples aos 20 organismos; consulte [Fichas das espécies](FICHAS_ESPECIES.md).
 
 Nos demais reinos, a imagem precisa corresponder ao organismo e ter aprovação para o nível selecionado. Os fungos e algas adicionados mantêm restrições de espécie quando a foto não fornece caracteres diagnósticos suficientes.
 

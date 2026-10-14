@@ -6,6 +6,7 @@ import io
 import json
 import pathlib
 import shutil
+import sys
 import tempfile
 import unittest
 from unittest import mock
@@ -14,6 +15,10 @@ PROJECT = pathlib.Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("importer", PROJECT / "scripts/import_inaturalist.py")
 importer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(importer)
+education_spec = importlib.util.spec_from_file_location("education", PROJECT / "scripts/build_education.py")
+education = importlib.util.module_from_spec(education_spec)
+with mock.patch.dict(sys.modules, {"import_inaturalist": importer}):
+    education_spec.loader.exec_module(education)
 
 
 class ImportTests(unittest.TestCase):
@@ -139,6 +144,30 @@ class ImportTests(unittest.TestCase):
                 review=reviews[species.get('source_taxon_id') or 'legacy:'+str(species['id'])]
                 self.assertEqual(review['photo_id'],photo['id'])
                 self.assertEqual(review['approved_ranks'],photo['approved_ranks'])
+
+    def test_education_generation_is_offline_and_reproducible(self):
+        expected=json.loads((PROJECT/'resources/data/education.json').read_text(encoding='utf8'))
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            (root/'resources/data').mkdir(parents=True)
+            for name in ('species.json','taxonomy.json','species_profiles.json'):
+                shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
+            with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
+                actual=education.build()
+            self.assertEqual(actual,expected)
+
+    def test_education_rejects_wrong_identity_unreviewed_notes_and_regional_status(self):
+        original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            (root/'resources/data').mkdir(parents=True)
+            shutil.copyfile(PROJECT/'resources/data/species.json',root/'resources/data/species.json')
+            for field,value in [('scientific_name','Unrelated replacement'),('summary',dict(original['126']['summary'],verified=False)),('conservation',dict(original['126']['conservation'],scope_name='Índia'))]:
+                profiles=json.loads(json.dumps(original))
+                profiles['126'][field]=value
+                (root/'resources/data/species_profiles.json').write_text(json.dumps(profiles),encoding='utf8')
+                with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
+                    education.load_profiles()
 
     def test_missing_offline_cache_and_failed_import_leave_catalog_untouched(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -1,4 +1,4 @@
-"""Build the offline educational notes from a small, explicitly sourced corpus."""
+"""Build offline educational notes and species profiles from reviewed local data."""
 import json
 from import_inaturalist import ROOT, save_json
 
@@ -66,10 +66,51 @@ DEFINITIONS.extend([
  "O revestimento apresenta uma sequência de placas articuladas.", "As placas permitem proteção e flexibilidade sobre superfícies irregulares."),
 ])
 
+# Group fallback notes remain useful when a species clue would reveal an answer.
+# The introductions retain the scientific detail needed for group exploration.
+PLAIN_NOTES={
+    "Animalia":("Obtém alimento de outros seres vivos ou de matéria orgânica.","Os animais ocupam ambientes muito diferentes: água, solo, árvores e até o corpo de outros seres."),
+    "Plantae":("Muitas formas usam a luz para produzir seu próprio alimento.","Existem plantas que se reproduzem por esporos e não produzem flores."),
+    "Fungi":("Obtém nutrientes do ambiente por absorção.","O cogumelo visível é apenas uma parte do organismo; outra parte pode crescer na madeira ou no solo."),
+    "Protista":("", "Neste agrupamento didático há organismos muito diferentes, desde formas microscópicas até algas grandes."),
+    "Monera":("É microscópico e não tem um núcleo separado por membrana.","Alguns integrantes vivem na água, outros no solo ou associados a plantas e animais."),
+    "Arthropoda":("Observe o revestimento externo e as pernas articuladas.","O revestimento externo precisa ser trocado para que muitos integrantes cresçam."),
+    "Insecta":("No adulto, procure três pares de pernas e um par de antenas.","As asas aparecem na fase adulta de muitas espécies, mas há integrantes sem asas."),
+    "Chordata":("", "Peixes, aves e mamíferos compartilham parentesco, apesar das diferenças de aparência."),
+    "Tracheophyta":("Água e nutrientes são transportados dentro da planta.","Há estruturas internas que levam água das raízes para outras partes da planta."),
+    "Basidiomycota":("", "Muitos representantes produzem estruturas visíveis acima do solo ou da madeira."),
+    "Mycetozoa":("Algumas fases lembram uma pequena massa sobre superfícies úmidas.","Esses organismos podem parecer fungos, mas têm um modo de vida diferente."),
+    "Lepidoptera":("Antes de ter asas, passa pelas fases de lagarta e pupa.","As asas têm pequenas escamas que participam de seus desenhos e cores."),
+    "Papilionidae":("Muitas formas têm prolongamentos nas asas de trás.","Os prolongamentos das asas ajudam na observação, mas não aparecem em todas as espécies."),
+    "Saturniidae":("Em muitas espécies, o adulto vive das reservas acumuladas pela lagarta.","Algumas mariposas adultas não se alimentam durante sua curta vida."),
+    "Chiton":("Procure placas alinhadas sobre um corpo oval.","As placas protegem o corpo sem impedir que ele acompanhe as irregularidades das rochas.")}
+
+def load_profiles():
+    profiles=json.loads((ROOT/"resources/data/species_profiles.json").read_text(encoding="utf-8"))
+    catalog=json.loads((ROOT/"resources/data/species.json").read_text(encoding="utf-8"))
+    identities={str(s["id"]):s["name"] for s in catalog}
+    if set(profiles)!=set(identities):
+        raise ValueError("As fichas devem corresponder exatamente ao catálogo ativo.")
+    required={"summary","distribution","morphology","conservation","hint","curiosity"}
+    for sid,profile in profiles.items():
+        if profile.get("scientific_name")!=identities[sid] or not profile.get("display_name"):
+            raise ValueError("Identidade incompatível na ficha: "+sid)
+        for field in required | ({"nutrition"} if "nutrition" in profile else set()):
+            item=profile.get(field,{})
+            if not item.get("verified") or not item.get("text") or not item.get("source_url","").startswith("https://") or not item.get("reviewed_on"):
+                raise ValueError("Nota sem texto, revisão ou fonte: "+sid+":"+field)
+        conservation=profile["conservation"]
+        if conservation.get("status") not in {"LC","NT","VU","EN","CR","EX","EW","DD","unconfirmed"}:
+            raise ValueError("Categoria de conservação inválida: "+sid)
+        if conservation["status"]!="unconfirmed" and conservation.get("scope_name")!="Espécie, global":
+            raise ValueError("Não transferir avaliação regional ou de outro táxon: "+sid)
+    return profiles
+
 def build():
     taxons=json.loads((ROOT/"resources/data/taxonomy.json").read_text(encoding="utf-8"))
     data={"notes":{},"taxons":{},"group_hints":{},"group_curiosities":{},"species":{}}
     for number,(name,rank,url,title,description,hint,curiosity) in enumerate(DEFINITIONS):
+        hint,curiosity=PLAIN_NOTES.get(name,(hint,curiosity))
         nodes=[t for t in taxons if t["name"]==name and t["rank"]==rank]
         if not nodes: continue
         for kind,text in (("intro",description),("hint",hint),("curiosity",curiosity)):
@@ -87,15 +128,14 @@ def build():
                 if node["rank"]=="kingdom" and node["name"]==name:
                     if hint: data["group_hints"][node["id"]]=[f"note:{number}:hint"]
                     if curiosity: data["group_curiosities"][node["id"]]=f"note:{number}:curiosity"
-    for species_id,url,hint,curiosity in [
-        (1,"https://animaldiversity.org/accounts/Papilio_machaon/","Na fase adulta, o fundo amarelado contrasta com áreas escuras e detalhes azulados nas asas posteriores.","A espécie apresenta variação de coloração; sua distribuição inclui regiões da Europa e da Ásia."),
-        (6,"https://animaldiversity.org/accounts/Danaus_plexippus/","Na fase larval, compostos de plantas hospedeiras podem ser acumulados como defesa.","Populações norte-americanas realizam deslocamentos sazonais, com locais de reprodução e de invernada distintos.")]:
-        values={}
-        for kind,text in (("hint",hint),("curiosity",curiosity)):
-            key=f"species:{species_id}:{kind}"
-            data["notes"][key]={"text":text,"source_title":"Animal Diversity Web — University of Michigan","source_url":url,"verified":True,"ranks":RANKS,"reviewed_on":"2026-10-14"}
-            values["hints" if kind=="hint" else "curiosity"]=[key] if kind=="hint" else key
-        data["species"][str(species_id)]=values
+    for sid,profile in load_profiles().items():
+        values={key:profile[key] for key in ("scientific_name","common_name","display_name","reviewed_on")}
+        for field in ("summary","distribution","nutrition","morphology","conservation","hint","curiosity"):
+            if field not in profile: continue
+            key=f"species:{sid}:{field}"
+            data["notes"][key]=profile[field]
+            values["hints" if field=="hint" else field]=[key] if field=="hint" else key
+        data["species"][sid]=values
     save_json(ROOT/"resources/data/education.json",data)
     print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
     return data
