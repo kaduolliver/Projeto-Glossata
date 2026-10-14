@@ -1467,192 +1467,344 @@
   "534769": {
     "photo_id": "7906556",
     "scientific_name": "Sphingomonas phyllosphaerae",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/5210293",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/5210293"
   },
   "566238": {
     "photo_id": "459952778",
     "scientific_name": "Dolichospermum lemmermannii",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/256522774",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/256522774"
   },
   "356660": {
     "photo_id": "58089762",
     "scientific_name": "Serratia marcescens",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/36720806",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/36720806"
   },
   "1096796": {
     "photo_id": "77725233",
     "scientific_name": "Thiohalocapsa halophila",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/48970815",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/48970815"
   },
   "533816": {
     "photo_id": "257195754",
     "scientific_name": "Merismopedia convoluta",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/149274179",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/149274179"
   },
   "503775": {
-    "photo_id": "337864904",
+    "photo_id": "241649713",
     "scientific_name": "Arthrospira jenneri",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/192464305",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/141104251"
   },
   "1277012": {
-    "photo_id": "243782262",
+    "photo_id": "629567196",
     "scientific_name": "Beggiatoa alba",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/142212922",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/345454102"
   },
   "733075": {
-    "photo_id": "523634183",
+    "photo_id": "160680326",
     "scientific_name": "Gomphosphaeria aponina",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/291052878",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/96696432"
   },
   "968458": {
-    "photo_id": "654470799",
+    "photo_id": "459952778",
     "scientific_name": "Anabaena torulosa",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/358747771",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/256522774"
   },
   "773806": {
     "photo_id": "48790280",
     "scientific_name": "Phytoplasma asteris",
-    "approved_ranks": [],
-    "display": false,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/31189604",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/31189604"
   },
   "992168": {
     "photo_id": "443586440",
     "scientific_name": "Gloeotrichia intermedia",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/248283498",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/248283498"
   },
   "490808": {
     "photo_id": "3221562",
     "scientific_name": "Leptothrix discophora",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/2829419",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/2829419"
   },
   "1583266": {
     "photo_id": "407087233",
     "scientific_name": "Johanseninema constrictum",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/229347803",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/229347803"
   },
   "1161132": {
     "photo_id": "320741885",
     "scientific_name": "Chlamydophila pecorum",
-    "approved_ranks": [],
-    "display": false,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/183812776",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/183812776"
   },
   "1523336": {
-    "photo_id": "368743189",
+    "photo_id": "459952778",
     "scientific_name": "Hassallia byssoidea",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/208411876",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/256522774"
   },
   "1051359": {
     "photo_id": "64447665",
     "scientific_name": "Aeromonas caviae",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/40658345",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/40658345"
   },
   "1051363": {
     "photo_id": "64448584",
     "scientific_name": "Pseudomonas fluorescens",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/40658395",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/40658395"
   },
   "1282552": {
     "photo_id": "581394987",
     "scientific_name": "Achromatium oxaliferum",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/321473852",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/321473852"
   },
   "491434": {
-    "photo_id": "513524942",
+    "photo_id": "441792181",
     "scientific_name": "Chroococcus turgidus",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/285693377",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/247376652"
   },
   "348831": {
     "photo_id": "5668201",
@@ -1672,13 +1824,471 @@
     "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
   },
   "1558826": {
-    "photo_id": "469510982",
+    "photo_id": "43700642",
     "scientific_name": "Merismopedia tranquilla",
-    "approved_ranks": [],
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
     "display": true,
-    "note": "Identificação de microrganismo exige revisão diagnóstica; não usar fotografia genérica, colônia, hospedeiro ou sintomas.",
+    "note": "Imagem de apoio autorizada para Monera. Não comprova a espécie; identificação por pistas da classificação. Conteúdo biológico específico será ampliado na próxima etapa.",
+    "role": "supporting",
     "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/261354576",
-    "review_basis": "Inspeção visual da fotografia individual, associação taxonômica da observação e política conservadora por nível. Não equivale a laudo taxonômico."
+    "source": "https://www.inaturalist.org/observations/28050388"
+  },
+  "41967": {
+    "photo_id": "707161720",
+    "scientific_name": "Panthera tigris",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/386235634",
+    "identification_reference": "https://animaldiversity.org/accounts/Panthera_tigris/"
+  },
+  "41964": {
+    "photo_id": "748172022",
+    "scientific_name": "Panthera leo",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/407163105",
+    "identification_reference": "https://animaldiversity.org/accounts/Panthera_leo/"
+  },
+  "41970": {
+    "photo_id": "742746729",
+    "scientific_name": "Panthera onca",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/404452434",
+    "identification_reference": "https://animaldiversity.org/accounts/Panthera_onca/"
+  },
+  "43617": {
+    "photo_id": "659755043",
+    "scientific_name": "Lemur catta",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/361508293",
+    "identification_reference": "https://animaldiversity.org/accounts/Lemur_catta/"
+  },
+  "1204": {
+    "photo_id": "307026691",
+    "scientific_name": "Pavo cristatus",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/176588709",
+    "identification_reference": "https://animaldiversity.org/accounts/Pavo_cristatus/"
+  },
+  "23702": {
+    "photo_id": "289704683",
+    "scientific_name": "Agalychnis callidryas",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/167258822",
+    "identification_reference": "https://animaldiversity.org/accounts/Agalychnis_callidryas/"
+  },
+  "43345": {
+    "photo_id": "120750026",
+    "scientific_name": "Rhinoceros unicornis",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/73919956",
+    "identification_reference": "https://animaldiversity.org/accounts/Rhinoceros_unicornis/"
+  },
+  "43335": {
+    "photo_id": "50371107",
+    "scientific_name": "Equus quagga",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/32134756",
+    "identification_reference": "https://animaldiversity.org/accounts/Equus_quagga/"
+  },
+  "64350": {
+    "photo_id": "734005336",
+    "scientific_name": "Ginkgo biloba",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/400033260",
+    "identification_reference": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/"
+  },
+  "52666": {
+    "photo_id": "721575702",
+    "scientific_name": "Dionaea muscipula",
+    "approved_ranks": [
+      "species",
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/393657854",
+    "identification_reference": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/"
+  },
+  "56534": {
+    "photo_id": "745707969",
+    "scientific_name": "Clathrus ruber",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/405931631",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "48715": {
+    "photo_id": "432197409",
+    "scientific_name": "Amanita muscaria",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/242423358",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "58682": {
+    "photo_id": "169965177",
+    "scientific_name": "Morchella esculenta",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/101750576",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "54594": {
+    "photo_id": "159628472",
+    "scientific_name": "Phallus impudicus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/96110723",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "63076": {
+    "photo_id": "139143137",
+    "scientific_name": "Geastrum triplex",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/84645347",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "49158": {
+    "photo_id": "5466254",
+    "scientific_name": "Hericium erinaceus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/4516268",
+    "identification_reference": "https://research.fs.usda.gov/download/treesearch/7111.pdf"
+  },
+  "124748": {
+    "photo_id": "742656850",
+    "scientific_name": "Macrocystis pyrifera",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/404403547",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "120499": {
+    "photo_id": "749313945",
+    "scientific_name": "Nereocystis luetkeana",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/407719813",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "48216": {
+    "photo_id": "749738938",
+    "scientific_name": "Fucus vesiculosus",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/407927262",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "118821": {
+    "photo_id": "729466339",
+    "scientific_name": "Himanthalia elongata",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/397699700",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "67419": {
+    "photo_id": "741404235",
+    "scientific_name": "Egregia menziesii",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/403775093",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "51024": {
+    "photo_id": "647286388",
+    "scientific_name": "Dictyota dichotoma",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/354877754",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "130177": {
+    "photo_id": "149679081",
+    "scientific_name": "Sargassum muticum",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/90559835",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "197107": {
+    "photo_id": "660405215",
+    "scientific_name": "Durvillaea antarctica",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/361850974",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "430355": {
+    "photo_id": "141679612",
+    "scientific_name": "Alaria esculenta",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/86047028",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
+  },
+  "130567": {
+    "photo_id": "134408",
+    "scientific_name": "Turbinaria ornata",
+    "approved_ranks": [
+      "genus",
+      "family",
+      "order",
+      "class",
+      "phylum",
+      "kingdom"
+    ],
+    "display": true,
+    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
+    "reviewed_on": "2026-10-14",
+    "source": "https://www.inaturalist.org/observations/92293",
+    "identification_reference": "https://seanet.stanford.edu/Ochrophyta"
   }
 }

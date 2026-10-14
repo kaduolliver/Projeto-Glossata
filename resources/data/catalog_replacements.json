@@ -1,0 +1,2485 @@
+{
+  "date": "2026-10-14",
+  "baseline_commit": "0ba0eee2b29392863f60759efa4ee52342be5443",
+  "replacements": [
+    {
+      "old": {
+        "id": 9,
+        "name": "Bombyx mori",
+        "fact": "A seda comercial é obtida do casulo produzido pela lagarta desta espécie domesticada.",
+        "hint": "A domesticação reduziu sua capacidade de voo; é conhecida como bicho-da-seda.",
+        "family": "Bombycidae",
+        "region": "Domesticada a partir de populações asiáticas",
+        "image": "qrc:/resources/images/inaturalist/51317278.jpeg",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:5ad28aa5499d178f4f0d",
+          "taxon:e08dca9303abf14d44f7",
+          "taxon:e8799f7a826b70f11770",
+          "taxon:1ecdd7adb43cf1acf733",
+          "taxon:befdeedc26d96d8aeb9f",
+          "taxon:4334cda9f1c3e42e4a3f",
+          "taxon:4b90ebad6d4beafef9db",
+          "taxon:5e96ea9a7c7458d339f9",
+          "taxon:dead6b83b9ad936fd69b",
+          "taxon:ad77eaeef805a975b4f6"
+        ],
+        "source": "legacy",
+        "source_taxon_id": "",
+        "photo": {
+          "id": "51317278",
+          "scientific_name": "Bombyx mori",
+          "taxon_id": "143506",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) malanfcm, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/32707174",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/51317278/large.jpeg",
+          "path": "resources/images/inaturalist/51317278.jpeg",
+          "sha256": "a70a58f01b7e0c2183e9896bea78b8063d492f17ac5a57e0d201e1e0f7585e2e",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "research_grade": false,
+          "visual_quiz": false,
+          "approved_ranks": [],
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "source_verified": true
+        }
+      },
+      "new_id": 125,
+      "new_name": "Panthera tigris",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 17,
+        "name": "Morpho peleides",
+        "fact": "A coloração azul iridescente é produzida por estruturas microscópicas nas escamas das asas.",
+        "hint": "É uma borboleta neotropical da família Nymphalidae.",
+        "family": "Nymphalidae",
+        "region": "América Central e norte da América do Sul",
+        "image": "",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:5ad28aa5499d178f4f0d",
+          "taxon:e08dca9303abf14d44f7",
+          "taxon:e8799f7a826b70f11770",
+          "taxon:1ecdd7adb43cf1acf733",
+          "taxon:befdeedc26d96d8aeb9f",
+          "taxon:aa9bbc2d6be1008a4b6c",
+          "taxon:a5217b2ede7fdeb70d44",
+          "taxon:f35d95621fa4215dc7bf",
+          "taxon:788609a1497a0c639a40"
+        ],
+        "source": "legacy",
+        "source_taxon_id": ""
+      },
+      "new_id": 126,
+      "new_name": "Panthera leo",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 22,
+        "name": "Caligo memnon",
+        "fact": "Os grandes ocelos nas asas posteriores lembram olhos e inspiraram o nome popular de borboleta-coruja.",
+        "hint": "É uma borboleta de hábitos crepusculares da família Nymphalidae.",
+        "family": "Nymphalidae",
+        "region": "América Central e norte da América do Sul",
+        "image": "",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:5ad28aa5499d178f4f0d",
+          "taxon:e08dca9303abf14d44f7",
+          "taxon:e8799f7a826b70f11770",
+          "taxon:1ecdd7adb43cf1acf733",
+          "taxon:befdeedc26d96d8aeb9f",
+          "taxon:aa9bbc2d6be1008a4b6c",
+          "taxon:a5217b2ede7fdeb70d44",
+          "taxon:9c343b2d6de005e28310",
+          "taxon:e5fba6d04125b8cbe4b9"
+        ],
+        "source": "legacy",
+        "source_taxon_id": ""
+      },
+      "new_id": 127,
+      "new_name": "Panthera onca",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 29,
+        "name": "Latia neritoides",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Latia e à família Latiidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Latiidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/111492748.jpeg",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:68c5d83852f8fc60bdba",
+          "taxon:a222550002333feae1f1",
+          "taxon:0262ca54bdac497be806",
+          "taxon:d108e19052193a42c460",
+          "taxon:74035b71a0209b1ab6ab",
+          "taxon:f5f5266d6ac47db38511",
+          "taxon:d5f7502274927af26d13",
+          "taxon:84b95efbc2833cc28ff8",
+          "taxon:8ab2f3e794630af6285b",
+          "taxon:880c40965fedc6fb4550"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "143636",
+        "source_url": "https://www.inaturalist.org/taxa/143636",
+        "photo": {
+          "id": "111492748",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Stephen Thorpe, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/68799348",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111492748/medium.jpeg",
+          "path": "resources/images/inaturalist/111492748.jpeg",
+          "sha256": "9d6cfb8750c8a13f87b121ab25bcb3375830590450350f3180c10475caeaf4bd",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Latia neritoides",
+          "taxon_id": "143636",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 128,
+      "new_name": "Lemur catta",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 32,
+        "name": "Podilymbus podiceps",
+        "common_name": "Mergulhão-caçador",
+        "fact": "O registro desta espécie pertence ao gênero Podilymbus e à família Podicipedidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Podicipedidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/70152459.jpg",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:ec44ee69ac562708b6ed",
+          "taxon:2a343cc2d757be670b78",
+          "taxon:f1aa88eb71e1f30b7afe",
+          "taxon:99d414eabcc2f1de0638",
+          "taxon:4472ea243057111b944d",
+          "taxon:028debec4abc15551533",
+          "taxon:1bdb14feea51560d007a"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "4246",
+        "source_url": "https://www.inaturalist.org/taxa/4246",
+        "photo": {
+          "id": "70152459",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/44246965",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/70152459/medium.jpg",
+          "path": "resources/images/inaturalist/70152459.jpg",
+          "sha256": "5cb7e5df1930835378700255b982170352253c246f09db0b0bdc4935551ec080",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+          "scientific_name": "Podilymbus podiceps",
+          "taxon_id": "4246",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 129,
+      "new_name": "Pavo cristatus",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 33,
+        "name": "Polyergus longicornis",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Polyergus e à família Formicidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Formicidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/211654606.jpeg",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:5ad28aa5499d178f4f0d",
+          "taxon:e08dca9303abf14d44f7",
+          "taxon:e8799f7a826b70f11770",
+          "taxon:1ecdd7adb43cf1acf733",
+          "taxon:c4e94162716691a63688",
+          "taxon:dd2a464826101e561984",
+          "taxon:15eee6dc218f4a2083c7",
+          "taxon:883c1ec3ff161fc126bc",
+          "taxon:d1ed9c315b5437ad15a8",
+          "taxon:fc66e61cec38b084ef41",
+          "taxon:69180b1821d2aa6090d1",
+          "taxon:e8d2707a034de0b08789",
+          "taxon:efd125a0b6cee23d64ea",
+          "taxon:4a901a690a62202ebbd4"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1113785",
+        "source_url": "https://www.inaturalist.org/taxa/1113785",
+        "photo": {
+          "id": "211654606",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/124844189",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/211654606/medium.jpeg",
+          "path": "resources/images/inaturalist/211654606.jpeg",
+          "sha256": "ef446bd1b274e9c481fe5f7f48160851677bf1eaee99df67d23ebc26e7924df6",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+          "scientific_name": "Polyergus longicornis",
+          "taxon_id": "1113785",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 130,
+      "new_name": "Agalychnis callidryas",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 39,
+        "name": "Bassia bassensis",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Bassia e à família Abylidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Abylidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/234592351.jpeg",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:25d307737e4649b91289",
+          "taxon:0ba78faa118f724637d5",
+          "taxon:1bc8626755911e8bf901",
+          "taxon:3b02797050b34c1125e6",
+          "taxon:f1d4a15c6c414717b4da",
+          "taxon:6b6e7d419cb0c95dc137",
+          "taxon:c1e0dbe35d028a104973",
+          "taxon:5d324eb593b2fad22412",
+          "taxon:8502b32da7302aedbd1b"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1238899",
+        "source_url": "https://www.inaturalist.org/taxa/1238899",
+        "photo": {
+          "id": "234592351",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Luca Davenport-Thomas, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/137370445",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/234592351/medium.jpeg",
+          "path": "resources/images/inaturalist/234592351.jpeg",
+          "sha256": "8bf0e020df8fcfd308299fa961b012b70aca8850d241593ba0e0e6a952bf0c3a",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Bassia bassensis",
+          "taxon_id": "1238899",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 131,
+      "new_name": "Rhinoceros unicornis",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 40,
+        "name": "Teleogryllus commodus",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Teleogryllus e à família Gryllidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Gryllidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/471069278.png",
+        "educational_kingdom": "Animalia",
+        "taxonomy": [
+          "taxon:cac47417164883d60794",
+          "taxon:5ad28aa5499d178f4f0d",
+          "taxon:e08dca9303abf14d44f7",
+          "taxon:e8799f7a826b70f11770",
+          "taxon:1ecdd7adb43cf1acf733",
+          "taxon:f6c6e93d15a4f54f24f3",
+          "taxon:aaed76f139f7649cfee2",
+          "taxon:fb01f5d6f86bf29ece76",
+          "taxon:9dd016f585c3ea2f65d4",
+          "taxon:8a26c1836dd14153dba1",
+          "taxon:8017657ef3a169011f42",
+          "taxon:cf0d4229619653094742",
+          "taxon:a3a958e235c43f9d5785",
+          "taxon:f9160d9fbdcc6c8844ba",
+          "taxon:3512dcf81cf0cdd549a2"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "397920",
+        "source_url": "https://www.inaturalist.org/taxa/397920",
+        "photo": {
+          "id": "471069278",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/262185667",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/471069278/medium.png",
+          "path": "resources/images/inaturalist/471069278.png",
+          "sha256": "75065cf007adb31256cac32554380d23f691e79f40592c548894cfcd6f2cba46",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+          "scientific_name": "Teleogryllus commodus",
+          "taxon_id": "397920",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 132,
+      "new_name": "Equus quagga",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 56,
+        "name": "Betula neoalaskana",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Betula e à família Betulaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Betulaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/344593119.jpeg",
+        "educational_kingdom": "Plantae",
+        "taxonomy": [
+          "taxon:56956496cf600779dc1f",
+          "taxon:a00f38df238c41138073",
+          "taxon:1a3afbd3d925871fb648",
+          "taxon:61a843360c3d1e0d554b",
+          "taxon:5b4444e1f80d979089ae",
+          "taxon:5ca1ca381e36a5fa2eea",
+          "taxon:a822be65a63719fe2fa5",
+          "taxon:20a80dbfc0d1ec2f8def"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "159229",
+        "source_url": "https://www.inaturalist.org/taxa/159229",
+        "photo": {
+          "id": "344593119",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Jason Grant, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/195817555",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/344593119/medium.jpeg",
+          "path": "resources/images/inaturalist/344593119.jpeg",
+          "sha256": "fdd27606776ba824f4b4b02d4f7d74b5cc5ac80f84b1a9e112d57c555d63385f",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Betula neoalaskana",
+          "taxon_id": "159229",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 133,
+      "new_name": "Ginkgo biloba",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 59,
+        "name": "Coptis trifolia",
+        "common_name": "Trevo-fio-de-ouro",
+        "fact": "O registro desta espécie pertence ao gênero Coptis e à família Ranunculaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Ranunculaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/321855344.jpg",
+        "educational_kingdom": "Plantae",
+        "taxonomy": [
+          "taxon:56956496cf600779dc1f",
+          "taxon:a00f38df238c41138073",
+          "taxon:1a3afbd3d925871fb648",
+          "taxon:61a843360c3d1e0d554b",
+          "taxon:6eee008441b5891f59c9",
+          "taxon:8e315383799a71d61bbc",
+          "taxon:a9459b95191cea63b2c1",
+          "taxon:e6fa78519677c4b054bd",
+          "taxon:1e4d663dbc440ff22764"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "126251",
+        "source_url": "https://www.inaturalist.org/taxa/126251",
+        "photo": {
+          "id": "321855344",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/184388306",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/321855344/medium.jpg",
+          "path": "resources/images/inaturalist/321855344.jpg",
+          "sha256": "53043652fab15d79c9cb2ab5df1eeb527b3a7e9a8a2bbbfe7549b668512c7c5f",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Coptis trifolia",
+          "taxon_id": "126251",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 134,
+      "new_name": "Dionaea muscipula",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 66,
+        "name": "Dendrostilbella smaragdina",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Dendrostilbella.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/59270879.jpeg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:94fd234704e94181294b",
+          "taxon:3a0728a69345919c2b90",
+          "taxon:5ad1c3af6357a434e4cd",
+          "taxon:08239b24e7975c9696e4",
+          "taxon:5fe6a15046702d4ea9f3"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "518862",
+        "source_url": "https://www.inaturalist.org/taxa/518862",
+        "photo": {
+          "id": "59270879",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/37392583",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/59270879/medium.jpeg",
+          "path": "resources/images/inaturalist/59270879.jpeg",
+          "sha256": "168bee54c0adfd7561918efd3562e77e3349fa8c1b4b1315fabcbe75a9686fd9",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Dendrostilbella smaragdina",
+          "taxon_id": "518862",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 135,
+      "new_name": "Clathrus ruber",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 69,
+        "name": "Schizophyllum commune",
+        "common_name": "Esquizófilo comum",
+        "fact": "O registro desta espécie pertence ao gênero Schizophyllum e à família Schizophyllaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Schizophyllaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/356956710.jpg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:4308023432e31216af47",
+          "taxon:1d19a5463d8c47aa0eed",
+          "taxon:dea8cc1b875c7ff6434f",
+          "taxon:710c3901799fdc8bb9e7",
+          "taxon:efebef4370813dc1422f",
+          "taxon:5131c4466ce5ccb1595f",
+          "taxon:1b4ebd1b5299b0ad1ba9",
+          "taxon:2aa83209ae7f8dee94f5",
+          "taxon:6bc9317c043cd4ced71e"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "54573",
+        "source_url": "https://www.inaturalist.org/taxa/54573",
+        "photo": {
+          "id": "356956710",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/202142361",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/356956710/medium.jpg",
+          "path": "resources/images/inaturalist/356956710.jpg",
+          "sha256": "4861fe304f9839a7b5f41f8cd0076bbd9959a17a326618c8dcb5a70747ee3d21",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Schizophyllum commune",
+          "taxon_id": "54573",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 136,
+      "new_name": "Amanita muscaria",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 72,
+        "name": "Mycena globulispora",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Mycena e à família Mycenaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Mycenaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/5777965.jpeg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:4308023432e31216af47",
+          "taxon:1d19a5463d8c47aa0eed",
+          "taxon:dea8cc1b875c7ff6434f",
+          "taxon:710c3901799fdc8bb9e7",
+          "taxon:efebef4370813dc1422f",
+          "taxon:28fc99a098f904d4a41d",
+          "taxon:8102f54326844285678f",
+          "taxon:e64e3d450fd73c76a495",
+          "taxon:ffcae7ab971a66c8be12"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "798039",
+        "source_url": "https://www.inaturalist.org/taxa/798039",
+        "photo": {
+          "id": "5777965",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/4751190",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5777965/large.jpeg",
+          "path": "resources/images/inaturalist/5777965.jpeg",
+          "sha256": "7ec683e50cfb5ae0321c10aced492a53a2b883f032c94f4dfed8ddb62837c97a",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Fotografia com fase imatura, contexto, luminescência ou detalhes insuficientes para identificação confiável.",
+          "scientific_name": "Mycena globulispora",
+          "taxon_id": "798039",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 137,
+      "new_name": "Morchella esculenta",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 74,
+        "name": "Erysiphe abbreviata",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Erysiphe e à família Erysiphaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Erysiphaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/320712583.jpeg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:94fd234704e94181294b",
+          "taxon:3a0728a69345919c2b90",
+          "taxon:5ad1c3af6357a434e4cd",
+          "taxon:fa2bf37e1a1e67841d22",
+          "taxon:f480263791d7373abf57",
+          "taxon:fa58ba9da96de330dd42",
+          "taxon:006f81d6efebaedf204d",
+          "taxon:1b0ac84030a638f11d2f"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "534312",
+        "source_url": "https://www.inaturalist.org/taxa/534312",
+        "photo": {
+          "id": "320712583",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Zihao Wang, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/183798421",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/320712583/medium.jpeg",
+          "path": "resources/images/inaturalist/320712583.jpeg",
+          "sha256": "1e5663f7ffcf1fab79951d542be9faedb2387785764353cf5edbf76e5a8ca43a",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Erysiphe abbreviata",
+          "taxon_id": "534312",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 138,
+      "new_name": "Phallus impudicus",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 77,
+        "name": "Pandora batallata",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Pandora e à família Entomophthoraceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Entomophthoraceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/357886873.jpg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:6c3c70cc554d5fb4ca0f",
+          "taxon:4fbb50225e8510bfcbd7",
+          "taxon:dcfcb076b6ea9505241a",
+          "taxon:9a0d9f263aa4e63f8e75",
+          "taxon:fb4fb06f92e464724d3d",
+          "taxon:fc52812f6458be5c42e4"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1540909",
+        "source_url": "https://www.inaturalist.org/taxa/1540909",
+        "photo": {
+          "id": "357886873",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/202624970",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/357886873/medium.jpg",
+          "path": "resources/images/inaturalist/357886873.jpg",
+          "sha256": "00312bf6a531fac4275e99493d06691eaa72324935c2617cd464a5ee2b1b38a5",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Pandora batallata",
+          "taxon_id": "1540909",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 139,
+      "new_name": "Geastrum triplex",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 78,
+        "name": "Psathyrella aquatica",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Psathyrella e à família Psathyrellaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Psathyrellaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/291136956.jpg",
+        "educational_kingdom": "Fungi",
+        "taxonomy": [
+          "taxon:31fdb10b7300d45a9dcf",
+          "taxon:4308023432e31216af47",
+          "taxon:1d19a5463d8c47aa0eed",
+          "taxon:dea8cc1b875c7ff6434f",
+          "taxon:710c3901799fdc8bb9e7",
+          "taxon:efebef4370813dc1422f",
+          "taxon:5bd48764de5724769590",
+          "taxon:5917215664912701bcf0",
+          "taxon:2c60a65dde91d18d303d",
+          "taxon:9fd5f58e9eb6fa26164a"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "505333",
+        "source_url": "https://www.inaturalist.org/taxa/505333",
+        "photo": {
+          "id": "291136956",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/167950227",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/291136956/medium.jpg",
+          "path": "resources/images/inaturalist/291136956.jpg",
+          "sha256": "dea904ed8ff56051f9c297e84d28fec2629ef50ffc459f7cb7cf1a45f479a361",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+          "scientific_name": "Psathyrella aquatica",
+          "taxon_id": "505333",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 140,
+      "new_name": "Hericium erinaceus",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 86,
+        "name": "Tubifera ferruginosa",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Tubifera e à família Reticulariaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Reticulariaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/144194751.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:d46f885a1e90011db84f",
+          "taxon:ece4a1dbaaaf44fc70b4",
+          "taxon:d52d800872482fe53d43",
+          "taxon:8252c096d524faf82f87",
+          "taxon:3758b354219a17f4db0d",
+          "taxon:96468d4c98e3b8fa0ccd",
+          "taxon:dc2f9fa3ac91f09050c8",
+          "taxon:c4bb21ee504f5e8773e7",
+          "taxon:1433928af4f1127d5ef1"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "126522",
+        "source_url": "https://www.inaturalist.org/taxa/126522",
+        "photo": {
+          "id": "144194751",
+          "license": "cc0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "author": "no rights reserved",
+          "source": "https://www.inaturalist.org/observations/87457453",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/144194751/medium.jpg",
+          "path": "resources/images/inaturalist/144194751.jpg",
+          "sha256": "806d108e60d39c633dbfb4ffe1a7c10d3000eb775cbe0e9f5ce6bea85338d1e1",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Autor da fotografia não identificado pela API. Não confundir autor com observador.",
+          "scientific_name": "Tubifera ferruginosa",
+          "taxon_id": "126522",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 141,
+      "new_name": "Macrocystis pyrifera",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 87,
+        "name": "Arcella conica",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Arcella e à família Arcellidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Arcellidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/157125794.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:39a80d6da28fc4317598",
+          "taxon:48cf2eb4076d8090b307",
+          "taxon:a130c59e9c9158e3e6be",
+          "taxon:7cd46fdbae2b1c800c4c"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "951636",
+        "source_url": "https://www.inaturalist.org/taxa/951636",
+        "photo": {
+          "id": "157125794",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/94700479",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/157125794/medium.jpg",
+          "path": "resources/images/inaturalist/157125794.jpg",
+          "sha256": "3c4f2635d936bfab53602436d88cc4b373bcc1c1f421ac1cc8598a7cf5305db0",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Arcella conica",
+          "taxon_id": "951636",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 142,
+      "new_name": "Nereocystis luetkeana",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 91,
+        "name": "Planocarina marginata",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Planocarina e à família Hyalospheniidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Hyalospheniidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/588568892.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:e3f3732a21af73a967fc",
+          "taxon:6364f06624f627a8a0ce",
+          "taxon:3ef35c4b4ef9ad7c6a56",
+          "taxon:afcb30cf0d46fea0f4f5"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1071933",
+        "source_url": "https://www.inaturalist.org/taxa/1071933",
+        "photo": {
+          "id": "588568892",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/325109392",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/588568892/medium.jpg",
+          "path": "resources/images/inaturalist/588568892.jpg",
+          "sha256": "1202804b7de53237b8ffd71250d0b2468162ac83b9fc59e7a573dafc128be75a",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Planocarina marginata",
+          "taxon_id": "1071933",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 143,
+      "new_name": "Fucus vesiculosus",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 92,
+        "name": "Galeripora dentata",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Galeripora e à família Arcellidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Arcellidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/322085831.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:39a80d6da28fc4317598",
+          "taxon:48cf2eb4076d8090b307",
+          "taxon:1f176c8c04c710dba3fa",
+          "taxon:5ce4bd93469d29b55df5"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1390975",
+        "source_url": "https://www.inaturalist.org/taxa/1390975",
+        "photo": {
+          "id": "322085831",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/184510219",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/322085831/medium.jpg",
+          "path": "resources/images/inaturalist/322085831.jpg",
+          "sha256": "0b6bd4e27529028435c2f193f375c72dbbaaabb919fa1b6f68998e1792bfb072",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Galeripora dentata",
+          "taxon_id": "1390975",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 144,
+      "new_name": "Himanthalia elongata",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 93,
+        "name": "Lepocinclis fusca",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Lepocinclis e à família Phacaceae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Phacaceae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/156970348.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:abac985161bf7990cda6",
+          "taxon:6c64ace2dec48e0090c2",
+          "taxon:933699599899255a19a9",
+          "taxon:5dec2d1c89bb752efb57",
+          "taxon:5078e5fa1bd1efa59237",
+          "taxon:8a31127b79a37b36529d"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "865889",
+        "source_url": "https://www.inaturalist.org/taxa/865889",
+        "photo": {
+          "id": "156970348",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/94616465",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/156970348/medium.jpg",
+          "path": "resources/images/inaturalist/156970348.jpg",
+          "sha256": "b0b1bb60d34da054c462a06bc99b86821cd16b8879f543742d2f39f6ecd944bc",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Lepocinclis fusca",
+          "taxon_id": "865889",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 145,
+      "new_name": "Egregia menziesii",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 94,
+        "name": "Difflugia bacillifera",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Difflugia e à família Difflugiidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Difflugiidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/588721568.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:6be2899a49194ae780e9",
+          "taxon:064394bc418feaf2366c",
+          "taxon:3429f3803d0375a9ef3d",
+          "taxon:23e57aaa1288c2c64a25"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1491099",
+        "source_url": "https://www.inaturalist.org/taxa/1491099",
+        "photo": {
+          "id": "588721568",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/325184447",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/588721568/medium.jpg",
+          "path": "resources/images/inaturalist/588721568.jpg",
+          "sha256": "b7f7c55ba662251c4f407a785a506476ac3cf806c39d87c94bbc949109713262",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Difflugia bacillifera",
+          "taxon_id": "1491099",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 146,
+      "new_name": "Dictyota dichotoma",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 98,
+        "name": "Netzelia corona",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Netzelia e à família Netzeliidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Netzeliidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/513628641.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:39a80d6da28fc4317598",
+          "taxon:f0351bda3bfa93b88486",
+          "taxon:6297a7232414d1760ce5",
+          "taxon:16aae9b237d03b506c3d"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "950783",
+        "source_url": "https://www.inaturalist.org/taxa/950783",
+        "photo": {
+          "id": "513628641",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/285749329",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/513628641/medium.jpg",
+          "path": "resources/images/inaturalist/513628641.jpg",
+          "sha256": "e862ceb68814a787cf54a8b3934311202368337834e84dbb2ff01acb48e2b150",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Netzelia corona",
+          "taxon_id": "950783",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 147,
+      "new_name": "Sargassum muticum",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 100,
+        "name": "Nebela penardiana",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Nebela e à família Hyalospheniidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Hyalospheniidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/465907310.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:e3f3732a21af73a967fc",
+          "taxon:6364f06624f627a8a0ce",
+          "taxon:0a5de4228df994e82bad",
+          "taxon:d02cbdf7d932da57c45f"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1592311",
+        "source_url": "https://www.inaturalist.org/taxa/1592311",
+        "photo": {
+          "id": "465907310",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/259535658",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/465907310/medium.jpg",
+          "path": "resources/images/inaturalist/465907310.jpg",
+          "sha256": "ecd57304e6d8e60a8845bfde61850c0a070d1fbbf775c1d9b3e1319b43fb3934",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Nebela penardiana",
+          "taxon_id": "1592311",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 148,
+      "new_name": "Durvillaea antarctica",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 101,
+        "name": "Cyclopyxis pirini",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Cyclopyxis e à família Netzeliidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Netzeliidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/594387576.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:39a80d6da28fc4317598",
+          "taxon:f0351bda3bfa93b88486",
+          "taxon:db27c8245fe8dac72b52",
+          "taxon:c8049d74b82b27b2258a"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1585018",
+        "source_url": "https://www.inaturalist.org/taxa/1585018",
+        "photo": {
+          "id": "594387576",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/328056416",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/594387576/medium.jpg",
+          "path": "resources/images/inaturalist/594387576.jpg",
+          "sha256": "52096aef384b01ffb3298285bc7b77cf70be4cd4adddf600b4bb4a6f88d8bfc0",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Cyclopyxis pirini",
+          "taxon_id": "1585018",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 149,
+      "new_name": "Alaria esculenta",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    },
+    {
+      "old": {
+        "id": 102,
+        "name": "Awerintzewia cyclostoma",
+        "common_name": "",
+        "fact": "O registro desta espécie pertence ao gênero Awerintzewia e à família Centropyxidae.",
+        "hint": "A classificação e a fotografia foram registradas no iNaturalist.",
+        "family": "Centropyxidae",
+        "region": "Distribuição não revisada; consulte o registro de origem.",
+        "image": "qrc:/resources/images/inaturalist/583650058.jpg",
+        "educational_kingdom": "Protista",
+        "taxonomy": [
+          "taxon:60084ec45040753637d0",
+          "taxon:f2f92dd7e4835ba0033f",
+          "taxon:4914076f4f297bb3a12e",
+          "taxon:75032bbc41b01c684f5c",
+          "taxon:5a38f0d1e636a8bf560a",
+          "taxon:5a7141097f4947a0bc00",
+          "taxon:7d896e7bda45b4325fc6",
+          "taxon:d6d8830dd01d286ad252",
+          "taxon:cd88608606a61e8080ff",
+          "taxon:323a3cc60468a96f828d"
+        ],
+        "source": "inaturalist",
+        "source_taxon_id": "1646783",
+        "source_url": "https://www.inaturalist.org/taxa/1646783",
+        "photo": {
+          "id": "583650058",
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "author": "(c) Bruce Taylor, some rights reserved (CC BY)",
+          "source": "https://www.inaturalist.org/observations/322616541",
+          "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/583650058/medium.jpg",
+          "path": "resources/images/inaturalist/583650058.jpg",
+          "sha256": "3ad1de4f6cc066cbd74decc32ffb659e0e98ceaf818ad3380bb2b1a7f0d3baa6",
+          "research_grade": true,
+          "visual_quiz": false,
+          "review": "Estruturas microscópicas ou fungo no hospedeiro; identificação diagnóstica ainda não validada.",
+          "scientific_name": "Awerintzewia cyclostoma",
+          "taxon_id": "1646783",
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "approved_ranks": [],
+          "source_verified": true
+        }
+      },
+      "new_id": 150,
+      "new_name": "Turbinaria ornata",
+      "reason": "Sem fotografia adequada ou sem nível de identificação visual aprovado. Substituição solicitada pelo usuário."
+    }
+  ],
+  "archived_taxons": [
+    {
+      "id": "taxon:cac47417164883d60794",
+      "name": "Animalia",
+      "rank": "kingdom",
+      "parent_id": "edu:Animalia",
+      "source": "inaturalist",
+      "source_taxon_id": "1"
+    },
+    {
+      "id": "taxon:5ad28aa5499d178f4f0d",
+      "name": "Arthropoda",
+      "rank": "phylum",
+      "parent_id": "taxon:cac47417164883d60794",
+      "source": "inaturalist",
+      "source_taxon_id": "47120"
+    },
+    {
+      "id": "taxon:e8799f7a826b70f11770",
+      "name": "Insecta",
+      "rank": "class",
+      "parent_id": "taxon:e08dca9303abf14d44f7",
+      "source": "inaturalist",
+      "source_taxon_id": "47158"
+    },
+    {
+      "id": "taxon:befdeedc26d96d8aeb9f",
+      "name": "Lepidoptera",
+      "rank": "order",
+      "parent_id": "taxon:1ecdd7adb43cf1acf733",
+      "source": "inaturalist",
+      "source_taxon_id": "47157"
+    },
+    {
+      "id": "taxon:a5217b2ede7fdeb70d44",
+      "name": "Nymphalidae",
+      "rank": "family",
+      "parent_id": "taxon:aa9bbc2d6be1008a4b6c",
+      "source": "inaturalist",
+      "source_taxon_id": "47922"
+    },
+    {
+      "id": "taxon:4b90ebad6d4beafef9db",
+      "name": "Bombycidae",
+      "rank": "family",
+      "parent_id": "taxon:4334cda9f1c3e42e4a3f",
+      "source": "inaturalist",
+      "source_taxon_id": "83861"
+    },
+    {
+      "id": "taxon:dead6b83b9ad936fd69b",
+      "name": "Bombyx",
+      "rank": "genus",
+      "parent_id": "taxon:5e96ea9a7c7458d339f9",
+      "source": "inaturalist",
+      "source_taxon_id": "124713"
+    },
+    {
+      "id": "taxon:ad77eaeef805a975b4f6",
+      "name": "Bombyx mori",
+      "rank": "species",
+      "parent_id": "taxon:dead6b83b9ad936fd69b",
+      "source": "inaturalist",
+      "source_taxon_id": "143506"
+    },
+    {
+      "id": "taxon:f35d95621fa4215dc7bf",
+      "name": "Morpho",
+      "rank": "genus",
+      "parent_id": "taxon:a5217b2ede7fdeb70d44",
+      "source": "legacy",
+      "source_taxon_id": ""
+    },
+    {
+      "id": "taxon:788609a1497a0c639a40",
+      "name": "Morpho peleides",
+      "rank": "species",
+      "parent_id": "taxon:f35d95621fa4215dc7bf",
+      "source": "legacy",
+      "source_taxon_id": ""
+    },
+    {
+      "id": "taxon:9c343b2d6de005e28310",
+      "name": "Caligo",
+      "rank": "genus",
+      "parent_id": "taxon:a5217b2ede7fdeb70d44",
+      "source": "legacy",
+      "source_taxon_id": ""
+    },
+    {
+      "id": "taxon:e5fba6d04125b8cbe4b9",
+      "name": "Caligo memnon",
+      "rank": "species",
+      "parent_id": "taxon:9c343b2d6de005e28310",
+      "source": "legacy",
+      "source_taxon_id": ""
+    },
+    {
+      "id": "taxon:e08dca9303abf14d44f7",
+      "name": "Hexapoda",
+      "rank": "subphylum",
+      "parent_id": "taxon:5ad28aa5499d178f4f0d",
+      "source": "inaturalist",
+      "source_taxon_id": "372739"
+    },
+    {
+      "id": "taxon:1ecdd7adb43cf1acf733",
+      "name": "Pterygota",
+      "rank": "subclass",
+      "parent_id": "taxon:e8799f7a826b70f11770",
+      "source": "inaturalist",
+      "source_taxon_id": "184884"
+    },
+    {
+      "id": "taxon:68c5d83852f8fc60bdba",
+      "name": "Mollusca",
+      "rank": "phylum",
+      "parent_id": "taxon:cac47417164883d60794",
+      "source": "inaturalist",
+      "source_taxon_id": "47115"
+    },
+    {
+      "id": "taxon:ec44ee69ac562708b6ed",
+      "name": "Chordata",
+      "rank": "phylum",
+      "parent_id": "taxon:cac47417164883d60794",
+      "source": "inaturalist",
+      "source_taxon_id": "2"
+    },
+    {
+      "id": "taxon:2a343cc2d757be670b78",
+      "name": "Vertebrata",
+      "rank": "subphylum",
+      "parent_id": "taxon:ec44ee69ac562708b6ed",
+      "source": "inaturalist",
+      "source_taxon_id": "355675"
+    },
+    {
+      "id": "taxon:a222550002333feae1f1",
+      "name": "Gastropoda",
+      "rank": "class",
+      "parent_id": "taxon:68c5d83852f8fc60bdba",
+      "source": "inaturalist",
+      "source_taxon_id": "47114"
+    },
+    {
+      "id": "taxon:0262ca54bdac497be806",
+      "name": "Heterobranchia",
+      "rank": "subclass",
+      "parent_id": "taxon:a222550002333feae1f1",
+      "source": "inaturalist",
+      "source_taxon_id": "551391"
+    },
+    {
+      "id": "taxon:d108e19052193a42c460",
+      "name": "Euthyneura",
+      "rank": "infraclass",
+      "parent_id": "taxon:0262ca54bdac497be806",
+      "source": "inaturalist",
+      "source_taxon_id": "775797"
+    },
+    {
+      "id": "taxon:74035b71a0209b1ab6ab",
+      "name": "Tectipleura",
+      "rank": "subterclass",
+      "parent_id": "taxon:d108e19052193a42c460",
+      "source": "inaturalist",
+      "source_taxon_id": "775800"
+    },
+    {
+      "id": "taxon:f5f5266d6ac47db38511",
+      "name": "Hygrophila",
+      "rank": "superorder",
+      "parent_id": "taxon:74035b71a0209b1ab6ab",
+      "source": "inaturalist",
+      "source_taxon_id": "551438"
+    },
+    {
+      "id": "taxon:d5f7502274927af26d13",
+      "name": "Chilinoidea",
+      "rank": "superfamily",
+      "parent_id": "taxon:f5f5266d6ac47db38511",
+      "source": "inaturalist",
+      "source_taxon_id": "551450"
+    },
+    {
+      "id": "taxon:84b95efbc2833cc28ff8",
+      "name": "Latiidae",
+      "rank": "family",
+      "parent_id": "taxon:d5f7502274927af26d13",
+      "source": "inaturalist",
+      "source_taxon_id": "143638"
+    },
+    {
+      "id": "taxon:8ab2f3e794630af6285b",
+      "name": "Latia",
+      "rank": "genus",
+      "parent_id": "taxon:84b95efbc2833cc28ff8",
+      "source": "inaturalist",
+      "source_taxon_id": "143635"
+    },
+    {
+      "id": "taxon:880c40965fedc6fb4550",
+      "name": "Latia neritoides",
+      "rank": "species",
+      "parent_id": "taxon:8ab2f3e794630af6285b",
+      "source": "inaturalist",
+      "source_taxon_id": "143636"
+    },
+    {
+      "id": "taxon:f1aa88eb71e1f30b7afe",
+      "name": "Aves",
+      "rank": "class",
+      "parent_id": "taxon:2a343cc2d757be670b78",
+      "source": "inaturalist",
+      "source_taxon_id": "3"
+    },
+    {
+      "id": "taxon:99d414eabcc2f1de0638",
+      "name": "Podicipediformes",
+      "rank": "order",
+      "parent_id": "taxon:f1aa88eb71e1f30b7afe",
+      "source": "inaturalist",
+      "source_taxon_id": "67563"
+    },
+    {
+      "id": "taxon:4472ea243057111b944d",
+      "name": "Podicipedidae",
+      "rank": "family",
+      "parent_id": "taxon:99d414eabcc2f1de0638",
+      "source": "inaturalist",
+      "source_taxon_id": "4203"
+    },
+    {
+      "id": "taxon:028debec4abc15551533",
+      "name": "Podilymbus",
+      "rank": "genus",
+      "parent_id": "taxon:4472ea243057111b944d",
+      "source": "inaturalist",
+      "source_taxon_id": "4245"
+    },
+    {
+      "id": "taxon:1bdb14feea51560d007a",
+      "name": "Podilymbus podiceps",
+      "rank": "species",
+      "parent_id": "taxon:028debec4abc15551533",
+      "source": "inaturalist",
+      "source_taxon_id": "4246"
+    },
+    {
+      "id": "taxon:c4e94162716691a63688",
+      "name": "Hymenoptera",
+      "rank": "order",
+      "parent_id": "taxon:1ecdd7adb43cf1acf733",
+      "source": "inaturalist",
+      "source_taxon_id": "47201"
+    },
+    {
+      "id": "taxon:dd2a464826101e561984",
+      "name": "Apocrita",
+      "rank": "suborder",
+      "parent_id": "taxon:c4e94162716691a63688",
+      "source": "inaturalist",
+      "source_taxon_id": "124417"
+    },
+    {
+      "id": "taxon:15eee6dc218f4a2083c7",
+      "name": "Aculeata",
+      "rank": "infraorder",
+      "parent_id": "taxon:dd2a464826101e561984",
+      "source": "inaturalist",
+      "source_taxon_id": "326777"
+    },
+    {
+      "id": "taxon:883c1ec3ff161fc126bc",
+      "name": "Formicoidea",
+      "rank": "superfamily",
+      "parent_id": "taxon:15eee6dc218f4a2083c7",
+      "source": "inaturalist",
+      "source_taxon_id": "1269340"
+    },
+    {
+      "id": "taxon:d1ed9c315b5437ad15a8",
+      "name": "Formicidae",
+      "rank": "family",
+      "parent_id": "taxon:883c1ec3ff161fc126bc",
+      "source": "inaturalist",
+      "source_taxon_id": "47336"
+    },
+    {
+      "id": "taxon:fc66e61cec38b084ef41",
+      "name": "Formicinae",
+      "rank": "subfamily",
+      "parent_id": "taxon:d1ed9c315b5437ad15a8",
+      "source": "inaturalist",
+      "source_taxon_id": "244834"
+    },
+    {
+      "id": "taxon:69180b1821d2aa6090d1",
+      "name": "Formicini",
+      "rank": "tribe",
+      "parent_id": "taxon:fc66e61cec38b084ef41",
+      "source": "inaturalist",
+      "source_taxon_id": "637435"
+    },
+    {
+      "id": "taxon:e8d2707a034de0b08789",
+      "name": "Polyergus",
+      "rank": "genus",
+      "parent_id": "taxon:69180b1821d2aa6090d1",
+      "source": "inaturalist",
+      "source_taxon_id": "69528"
+    },
+    {
+      "id": "taxon:efd125a0b6cee23d64ea",
+      "name": "Polyergus lucidus",
+      "rank": "complex",
+      "parent_id": "taxon:e8d2707a034de0b08789",
+      "source": "inaturalist",
+      "source_taxon_id": "1408658"
+    },
+    {
+      "id": "taxon:4a901a690a62202ebbd4",
+      "name": "Polyergus longicornis",
+      "rank": "species",
+      "parent_id": "taxon:efd125a0b6cee23d64ea",
+      "source": "inaturalist",
+      "source_taxon_id": "1113785"
+    },
+    {
+      "id": "taxon:f6c6e93d15a4f54f24f3",
+      "name": "Orthoptera",
+      "rank": "order",
+      "parent_id": "taxon:1ecdd7adb43cf1acf733",
+      "source": "inaturalist",
+      "source_taxon_id": "47651"
+    },
+    {
+      "id": "taxon:25d307737e4649b91289",
+      "name": "Cnidaria",
+      "rank": "phylum",
+      "parent_id": "taxon:cac47417164883d60794",
+      "source": "inaturalist",
+      "source_taxon_id": "47534"
+    },
+    {
+      "id": "taxon:0ba78faa118f724637d5",
+      "name": "Hydrozoa",
+      "rank": "class",
+      "parent_id": "taxon:25d307737e4649b91289",
+      "source": "inaturalist",
+      "source_taxon_id": "48921"
+    },
+    {
+      "id": "taxon:1bc8626755911e8bf901",
+      "name": "Hydroidolina",
+      "rank": "subclass",
+      "parent_id": "taxon:0ba78faa118f724637d5",
+      "source": "inaturalist",
+      "source_taxon_id": "551473"
+    },
+    {
+      "id": "taxon:3b02797050b34c1125e6",
+      "name": "Siphonophorae",
+      "rank": "order",
+      "parent_id": "taxon:1bc8626755911e8bf901",
+      "source": "inaturalist",
+      "source_taxon_id": "152823"
+    },
+    {
+      "id": "taxon:f1d4a15c6c414717b4da",
+      "name": "Calycophorae",
+      "rank": "suborder",
+      "parent_id": "taxon:3b02797050b34c1125e6",
+      "source": "inaturalist",
+      "source_taxon_id": "777049"
+    },
+    {
+      "id": "taxon:6b6e7d419cb0c95dc137",
+      "name": "Abylidae",
+      "rank": "family",
+      "parent_id": "taxon:f1d4a15c6c414717b4da",
+      "source": "inaturalist",
+      "source_taxon_id": "195407"
+    },
+    {
+      "id": "taxon:c1e0dbe35d028a104973",
+      "name": "Abylopsinae",
+      "rank": "subfamily",
+      "parent_id": "taxon:6b6e7d419cb0c95dc137",
+      "source": "inaturalist",
+      "source_taxon_id": "814126"
+    },
+    {
+      "id": "taxon:5d324eb593b2fad22412",
+      "name": "Bassia",
+      "rank": "genus",
+      "parent_id": "taxon:c1e0dbe35d028a104973",
+      "source": "inaturalist",
+      "source_taxon_id": "1238898"
+    },
+    {
+      "id": "taxon:8502b32da7302aedbd1b",
+      "name": "Bassia bassensis",
+      "rank": "species",
+      "parent_id": "taxon:5d324eb593b2fad22412",
+      "source": "inaturalist",
+      "source_taxon_id": "1238899"
+    },
+    {
+      "id": "taxon:aaed76f139f7649cfee2",
+      "name": "Ensifera",
+      "rank": "suborder",
+      "parent_id": "taxon:f6c6e93d15a4f54f24f3",
+      "source": "inaturalist",
+      "source_taxon_id": "132694"
+    },
+    {
+      "id": "taxon:fb01f5d6f86bf29ece76",
+      "name": "Gryllidea",
+      "rank": "infraorder",
+      "parent_id": "taxon:aaed76f139f7649cfee2",
+      "source": "inaturalist",
+      "source_taxon_id": "358855"
+    },
+    {
+      "id": "taxon:9dd016f585c3ea2f65d4",
+      "name": "Grylloidea",
+      "rank": "superfamily",
+      "parent_id": "taxon:fb01f5d6f86bf29ece76",
+      "source": "inaturalist",
+      "source_taxon_id": "50158"
+    },
+    {
+      "id": "taxon:8a26c1836dd14153dba1",
+      "name": "Gryllidae",
+      "rank": "family",
+      "parent_id": "taxon:9dd016f585c3ea2f65d4",
+      "source": "inaturalist",
+      "source_taxon_id": "52884"
+    },
+    {
+      "id": "taxon:8017657ef3a169011f42",
+      "name": "Gryllinae",
+      "rank": "subfamily",
+      "parent_id": "taxon:8a26c1836dd14153dba1",
+      "source": "inaturalist",
+      "source_taxon_id": "122461"
+    },
+    {
+      "id": "taxon:cf0d4229619653094742",
+      "name": "Gryllini",
+      "rank": "tribe",
+      "parent_id": "taxon:8017657ef3a169011f42",
+      "source": "inaturalist",
+      "source_taxon_id": "523728"
+    },
+    {
+      "id": "taxon:a3a958e235c43f9d5785",
+      "name": "Teleogryllus",
+      "rank": "genus",
+      "parent_id": "taxon:cf0d4229619653094742",
+      "source": "inaturalist",
+      "source_taxon_id": "378341"
+    },
+    {
+      "id": "taxon:f9160d9fbdcc6c8844ba",
+      "name": "Brachyteleogryllus",
+      "rank": "subgenus",
+      "parent_id": "taxon:a3a958e235c43f9d5785",
+      "source": "inaturalist",
+      "source_taxon_id": "767333"
+    },
+    {
+      "id": "taxon:3512dcf81cf0cdd549a2",
+      "name": "Teleogryllus commodus",
+      "rank": "species",
+      "parent_id": "taxon:f9160d9fbdcc6c8844ba",
+      "source": "inaturalist",
+      "source_taxon_id": "397920"
+    },
+    {
+      "id": "taxon:56956496cf600779dc1f",
+      "name": "Plantae",
+      "rank": "kingdom",
+      "parent_id": "edu:Plantae",
+      "source": "inaturalist",
+      "source_taxon_id": "47126"
+    },
+    {
+      "id": "taxon:a00f38df238c41138073",
+      "name": "Tracheophyta",
+      "rank": "phylum",
+      "parent_id": "taxon:56956496cf600779dc1f",
+      "source": "inaturalist",
+      "source_taxon_id": "211194"
+    },
+    {
+      "id": "taxon:1a3afbd3d925871fb648",
+      "name": "Angiospermae",
+      "rank": "subphylum",
+      "parent_id": "taxon:a00f38df238c41138073",
+      "source": "inaturalist",
+      "source_taxon_id": "47125"
+    },
+    {
+      "id": "taxon:61a843360c3d1e0d554b",
+      "name": "Magnoliopsida",
+      "rank": "class",
+      "parent_id": "taxon:1a3afbd3d925871fb648",
+      "source": "inaturalist",
+      "source_taxon_id": "47124"
+    },
+    {
+      "id": "taxon:5b4444e1f80d979089ae",
+      "name": "Fagales",
+      "rank": "order",
+      "parent_id": "taxon:61a843360c3d1e0d554b",
+      "source": "inaturalist",
+      "source_taxon_id": "47853"
+    },
+    {
+      "id": "taxon:5ca1ca381e36a5fa2eea",
+      "name": "Betulaceae",
+      "rank": "family",
+      "parent_id": "taxon:5b4444e1f80d979089ae",
+      "source": "inaturalist",
+      "source_taxon_id": "49155"
+    },
+    {
+      "id": "taxon:a822be65a63719fe2fa5",
+      "name": "Betula",
+      "rank": "genus",
+      "parent_id": "taxon:5ca1ca381e36a5fa2eea",
+      "source": "inaturalist",
+      "source_taxon_id": "49156"
+    },
+    {
+      "id": "taxon:20a80dbfc0d1ec2f8def",
+      "name": "Betula neoalaskana",
+      "rank": "species",
+      "parent_id": "taxon:a822be65a63719fe2fa5",
+      "source": "inaturalist",
+      "source_taxon_id": "159229"
+    },
+    {
+      "id": "taxon:6eee008441b5891f59c9",
+      "name": "Ranunculales",
+      "rank": "order",
+      "parent_id": "taxon:61a843360c3d1e0d554b",
+      "source": "inaturalist",
+      "source_taxon_id": "48232"
+    },
+    {
+      "id": "taxon:8e315383799a71d61bbc",
+      "name": "Ranunculaceae",
+      "rank": "family",
+      "parent_id": "taxon:6eee008441b5891f59c9",
+      "source": "inaturalist",
+      "source_taxon_id": "48231"
+    },
+    {
+      "id": "taxon:a9459b95191cea63b2c1",
+      "name": "Coptidoideae",
+      "rank": "subfamily",
+      "parent_id": "taxon:8e315383799a71d61bbc",
+      "source": "inaturalist",
+      "source_taxon_id": "746705"
+    },
+    {
+      "id": "taxon:e6fa78519677c4b054bd",
+      "name": "Coptis",
+      "rank": "genus",
+      "parent_id": "taxon:a9459b95191cea63b2c1",
+      "source": "inaturalist",
+      "source_taxon_id": "72070"
+    },
+    {
+      "id": "taxon:1e4d663dbc440ff22764",
+      "name": "Coptis trifolia",
+      "rank": "species",
+      "parent_id": "taxon:e6fa78519677c4b054bd",
+      "source": "inaturalist",
+      "source_taxon_id": "126251"
+    },
+    {
+      "id": "taxon:31fdb10b7300d45a9dcf",
+      "name": "Fungi",
+      "rank": "kingdom",
+      "parent_id": "edu:Fungi",
+      "source": "inaturalist",
+      "source_taxon_id": "47170"
+    },
+    {
+      "id": "taxon:4308023432e31216af47",
+      "name": "Basidiomycota",
+      "rank": "phylum",
+      "parent_id": "taxon:31fdb10b7300d45a9dcf",
+      "source": "inaturalist",
+      "source_taxon_id": "47169"
+    },
+    {
+      "id": "taxon:1d19a5463d8c47aa0eed",
+      "name": "Agaricomycotina",
+      "rank": "subphylum",
+      "parent_id": "taxon:4308023432e31216af47",
+      "source": "inaturalist",
+      "source_taxon_id": "492000"
+    },
+    {
+      "id": "taxon:dea8cc1b875c7ff6434f",
+      "name": "Agaricomycetes",
+      "rank": "class",
+      "parent_id": "taxon:1d19a5463d8c47aa0eed",
+      "source": "inaturalist",
+      "source_taxon_id": "50814"
+    },
+    {
+      "id": "taxon:710c3901799fdc8bb9e7",
+      "name": "Agaricomycetidae",
+      "rank": "subclass",
+      "parent_id": "taxon:dea8cc1b875c7ff6434f",
+      "source": "inaturalist",
+      "source_taxon_id": "1094814"
+    },
+    {
+      "id": "taxon:efebef4370813dc1422f",
+      "name": "Agaricales",
+      "rank": "order",
+      "parent_id": "taxon:710c3901799fdc8bb9e7",
+      "source": "inaturalist",
+      "source_taxon_id": "47167"
+    },
+    {
+      "id": "taxon:5bd48764de5724769590",
+      "name": "Agaricineae",
+      "rank": "suborder",
+      "parent_id": "taxon:efebef4370813dc1422f",
+      "source": "inaturalist",
+      "source_taxon_id": "785517"
+    },
+    {
+      "id": "taxon:28fc99a098f904d4a41d",
+      "name": "Marasmiineae",
+      "rank": "suborder",
+      "parent_id": "taxon:efebef4370813dc1422f",
+      "source": "inaturalist",
+      "source_taxon_id": "785516"
+    },
+    {
+      "id": "taxon:8102f54326844285678f",
+      "name": "Mycenaceae",
+      "rank": "family",
+      "parent_id": "taxon:28fc99a098f904d4a41d",
+      "source": "inaturalist",
+      "source_taxon_id": "55920"
+    },
+    {
+      "id": "taxon:94fd234704e94181294b",
+      "name": "Ascomycota",
+      "rank": "phylum",
+      "parent_id": "taxon:31fdb10b7300d45a9dcf",
+      "source": "inaturalist",
+      "source_taxon_id": "48250"
+    },
+    {
+      "id": "taxon:3a0728a69345919c2b90",
+      "name": "Pezizomycotina",
+      "rank": "subphylum",
+      "parent_id": "taxon:94fd234704e94181294b",
+      "source": "inaturalist",
+      "source_taxon_id": "372740"
+    },
+    {
+      "id": "taxon:5ad1c3af6357a434e4cd",
+      "name": "Leotiomycetes",
+      "rank": "class",
+      "parent_id": "taxon:3a0728a69345919c2b90",
+      "source": "inaturalist",
+      "source_taxon_id": "55523"
+    },
+    {
+      "id": "taxon:08239b24e7975c9696e4",
+      "name": "Phacidiales",
+      "rank": "order",
+      "parent_id": "taxon:5ad1c3af6357a434e4cd",
+      "source": "inaturalist",
+      "source_taxon_id": "738901"
+    },
+    {
+      "id": "taxon:5fe6a15046702d4ea9f3",
+      "name": "Dendrostilbella smaragdina",
+      "rank": "species",
+      "parent_id": "taxon:08239b24e7975c9696e4",
+      "source": "inaturalist",
+      "source_taxon_id": "518862"
+    },
+    {
+      "id": "taxon:5131c4466ce5ccb1595f",
+      "name": "Schizophyllineae",
+      "rank": "suborder",
+      "parent_id": "taxon:efebef4370813dc1422f",
+      "source": "inaturalist",
+      "source_taxon_id": "905658"
+    },
+    {
+      "id": "taxon:1b4ebd1b5299b0ad1ba9",
+      "name": "Schizophyllaceae",
+      "rank": "family",
+      "parent_id": "taxon:5131c4466ce5ccb1595f",
+      "source": "inaturalist",
+      "source_taxon_id": "54574"
+    },
+    {
+      "id": "taxon:2aa83209ae7f8dee94f5",
+      "name": "Schizophyllum",
+      "rank": "genus",
+      "parent_id": "taxon:1b4ebd1b5299b0ad1ba9",
+      "source": "inaturalist",
+      "source_taxon_id": "54575"
+    },
+    {
+      "id": "taxon:6bc9317c043cd4ced71e",
+      "name": "Schizophyllum commune",
+      "rank": "species",
+      "parent_id": "taxon:2aa83209ae7f8dee94f5",
+      "source": "inaturalist",
+      "source_taxon_id": "54573"
+    },
+    {
+      "id": "taxon:e64e3d450fd73c76a495",
+      "name": "Mycena",
+      "rank": "genus",
+      "parent_id": "taxon:8102f54326844285678f",
+      "source": "inaturalist",
+      "source_taxon_id": "55922"
+    },
+    {
+      "id": "taxon:ffcae7ab971a66c8be12",
+      "name": "Mycena globulispora",
+      "rank": "species",
+      "parent_id": "taxon:e64e3d450fd73c76a495",
+      "source": "inaturalist",
+      "source_taxon_id": "798039"
+    },
+    {
+      "id": "taxon:fa2bf37e1a1e67841d22",
+      "name": "Helotiales",
+      "rank": "order",
+      "parent_id": "taxon:5ad1c3af6357a434e4cd",
+      "source": "inaturalist",
+      "source_taxon_id": "49073"
+    },
+    {
+      "id": "taxon:f480263791d7373abf57",
+      "name": "Erysiphaceae",
+      "rank": "family",
+      "parent_id": "taxon:fa2bf37e1a1e67841d22",
+      "source": "inaturalist",
+      "source_taxon_id": "55525"
+    },
+    {
+      "id": "taxon:fa58ba9da96de330dd42",
+      "name": "Erysipheae",
+      "rank": "tribe",
+      "parent_id": "taxon:f480263791d7373abf57",
+      "source": "inaturalist",
+      "source_taxon_id": "1394527"
+    },
+    {
+      "id": "taxon:006f81d6efebaedf204d",
+      "name": "Erysiphe",
+      "rank": "genus",
+      "parent_id": "taxon:fa58ba9da96de330dd42",
+      "source": "inaturalist",
+      "source_taxon_id": "328021"
+    },
+    {
+      "id": "taxon:1b0ac84030a638f11d2f",
+      "name": "Erysiphe abbreviata",
+      "rank": "species",
+      "parent_id": "taxon:006f81d6efebaedf204d",
+      "source": "inaturalist",
+      "source_taxon_id": "534312"
+    },
+    {
+      "id": "taxon:6c3c70cc554d5fb4ca0f",
+      "name": "Entomophthoromycota",
+      "rank": "phylum",
+      "parent_id": "taxon:31fdb10b7300d45a9dcf",
+      "source": "inaturalist",
+      "source_taxon_id": "1094440"
+    },
+    {
+      "id": "taxon:4fbb50225e8510bfcbd7",
+      "name": "Entomophthoromycetes",
+      "rank": "class",
+      "parent_id": "taxon:6c3c70cc554d5fb4ca0f",
+      "source": "inaturalist",
+      "source_taxon_id": "794017"
+    },
+    {
+      "id": "taxon:dcfcb076b6ea9505241a",
+      "name": "Entomophthorales",
+      "rank": "order",
+      "parent_id": "taxon:4fbb50225e8510bfcbd7",
+      "source": "inaturalist",
+      "source_taxon_id": "55115"
+    },
+    {
+      "id": "taxon:9a0d9f263aa4e63f8e75",
+      "name": "Entomophthoraceae",
+      "rank": "family",
+      "parent_id": "taxon:dcfcb076b6ea9505241a",
+      "source": "inaturalist",
+      "source_taxon_id": "55116"
+    },
+    {
+      "id": "taxon:fb4fb06f92e464724d3d",
+      "name": "Pandora",
+      "rank": "genus",
+      "parent_id": "taxon:9a0d9f263aa4e63f8e75",
+      "source": "inaturalist",
+      "source_taxon_id": "906385"
+    },
+    {
+      "id": "taxon:fc52812f6458be5c42e4",
+      "name": "Pandora batallata",
+      "rank": "species",
+      "parent_id": "taxon:fb4fb06f92e464724d3d",
+      "source": "inaturalist",
+      "source_taxon_id": "1540909"
+    },
+    {
+      "id": "taxon:5917215664912701bcf0",
+      "name": "Psathyrellaceae",
+      "rank": "family",
+      "parent_id": "taxon:5bd48764de5724769590",
+      "source": "inaturalist",
+      "source_taxon_id": "56310"
+    },
+    {
+      "id": "taxon:2c60a65dde91d18d303d",
+      "name": "Psathyrella",
+      "rank": "genus",
+      "parent_id": "taxon:5917215664912701bcf0",
+      "source": "inaturalist",
+      "source_taxon_id": "67745"
+    },
+    {
+      "id": "taxon:9fd5f58e9eb6fa26164a",
+      "name": "Psathyrella aquatica",
+      "rank": "species",
+      "parent_id": "taxon:2c60a65dde91d18d303d",
+      "source": "inaturalist",
+      "source_taxon_id": "505333"
+    },
+    {
+      "id": "taxon:60084ec45040753637d0",
+      "name": "Protozoa",
+      "rank": "kingdom",
+      "parent_id": "edu:Protista",
+      "source": "inaturalist",
+      "source_taxon_id": "47686"
+    },
+    {
+      "id": "taxon:d46f885a1e90011db84f",
+      "name": "Mycetozoa",
+      "rank": "phylum",
+      "parent_id": "taxon:60084ec45040753637d0",
+      "source": "inaturalist",
+      "source_taxon_id": "47685"
+    },
+    {
+      "id": "taxon:ece4a1dbaaaf44fc70b4",
+      "name": "Myxomycetes",
+      "rank": "class",
+      "parent_id": "taxon:d46f885a1e90011db84f",
+      "source": "inaturalist",
+      "source_taxon_id": "47684"
+    },
+    {
+      "id": "taxon:d52d800872482fe53d43",
+      "name": "Lucisporomycetidae",
+      "rank": "subclass",
+      "parent_id": "taxon:ece4a1dbaaaf44fc70b4",
+      "source": "inaturalist",
+      "source_taxon_id": "1443219"
+    },
+    {
+      "id": "taxon:8252c096d524faf82f87",
+      "name": "Trichiidia",
+      "rank": "superorder",
+      "parent_id": "taxon:d52d800872482fe53d43",
+      "source": "inaturalist",
+      "source_taxon_id": "1443221"
+    },
+    {
+      "id": "taxon:3758b354219a17f4db0d",
+      "name": "Reticulariales",
+      "rank": "order",
+      "parent_id": "taxon:8252c096d524faf82f87",
+      "source": "inaturalist",
+      "source_taxon_id": "1443225"
+    },
+    {
+      "id": "taxon:96468d4c98e3b8fa0ccd",
+      "name": "Reticulariaceae",
+      "rank": "family",
+      "parent_id": "taxon:3758b354219a17f4db0d",
+      "source": "inaturalist",
+      "source_taxon_id": "126527"
+    },
+    {
+      "id": "taxon:dc2f9fa3ac91f09050c8",
+      "name": "Tubifera",
+      "rank": "genus",
+      "parent_id": "taxon:96468d4c98e3b8fa0ccd",
+      "source": "inaturalist",
+      "source_taxon_id": "126528"
+    },
+    {
+      "id": "taxon:c4bb21ee504f5e8773e7",
+      "name": "Tubifera",
+      "rank": "section",
+      "parent_id": "taxon:dc2f9fa3ac91f09050c8",
+      "source": "inaturalist",
+      "source_taxon_id": "1689727"
+    },
+    {
+      "id": "taxon:1433928af4f1127d5ef1",
+      "name": "Tubifera ferruginosa",
+      "rank": "species",
+      "parent_id": "taxon:c4bb21ee504f5e8773e7",
+      "source": "inaturalist",
+      "source_taxon_id": "126522"
+    },
+    {
+      "id": "taxon:f2f92dd7e4835ba0033f",
+      "name": "Amoebozoa",
+      "rank": "phylum",
+      "parent_id": "taxon:60084ec45040753637d0",
+      "source": "inaturalist",
+      "source_taxon_id": "372735"
+    },
+    {
+      "id": "taxon:4914076f4f297bb3a12e",
+      "name": "Lobosa",
+      "rank": "subphylum",
+      "parent_id": "taxon:f2f92dd7e4835ba0033f",
+      "source": "inaturalist",
+      "source_taxon_id": "245928"
+    },
+    {
+      "id": "taxon:75032bbc41b01c684f5c",
+      "name": "Tubulinea",
+      "rank": "class",
+      "parent_id": "taxon:4914076f4f297bb3a12e",
+      "source": "inaturalist",
+      "source_taxon_id": "768624"
+    },
+    {
+      "id": "taxon:5a38f0d1e636a8bf560a",
+      "name": "Arcellinida",
+      "rank": "order",
+      "parent_id": "taxon:75032bbc41b01c684f5c",
+      "source": "inaturalist",
+      "source_taxon_id": "245929"
+    },
+    {
+      "id": "taxon:5a7141097f4947a0bc00",
+      "name": "Glutinoconcha",
+      "rank": "suborder",
+      "parent_id": "taxon:5a38f0d1e636a8bf560a",
+      "source": "inaturalist",
+      "source_taxon_id": "1498654"
+    },
+    {
+      "id": "taxon:39a80d6da28fc4317598",
+      "name": "Sphaerothecina",
+      "rank": "infraorder",
+      "parent_id": "taxon:5a7141097f4947a0bc00",
+      "source": "inaturalist",
+      "source_taxon_id": "1498656"
+    },
+    {
+      "id": "taxon:48cf2eb4076d8090b307",
+      "name": "Arcellidae",
+      "rank": "family",
+      "parent_id": "taxon:39a80d6da28fc4317598",
+      "source": "inaturalist",
+      "source_taxon_id": "245930"
+    },
+    {
+      "id": "taxon:a130c59e9c9158e3e6be",
+      "name": "Arcella",
+      "rank": "genus",
+      "parent_id": "taxon:48cf2eb4076d8090b307",
+      "source": "inaturalist",
+      "source_taxon_id": "245926"
+    },
+    {
+      "id": "taxon:7cd46fdbae2b1c800c4c",
+      "name": "Arcella conica",
+      "rank": "species",
+      "parent_id": "taxon:a130c59e9c9158e3e6be",
+      "source": "inaturalist",
+      "source_taxon_id": "951636"
+    },
+    {
+      "id": "taxon:e3f3732a21af73a967fc",
+      "name": "Hyalospheniformes",
+      "rank": "infraorder",
+      "parent_id": "taxon:5a7141097f4947a0bc00",
+      "source": "inaturalist",
+      "source_taxon_id": "1498663"
+    },
+    {
+      "id": "taxon:6364f06624f627a8a0ce",
+      "name": "Hyalospheniidae",
+      "rank": "family",
+      "parent_id": "taxon:e3f3732a21af73a967fc",
+      "source": "inaturalist",
+      "source_taxon_id": "636475"
+    },
+    {
+      "id": "taxon:3ef35c4b4ef9ad7c6a56",
+      "name": "Planocarina",
+      "rank": "genus",
+      "parent_id": "taxon:6364f06624f627a8a0ce",
+      "source": "inaturalist",
+      "source_taxon_id": "1071932"
+    },
+    {
+      "id": "taxon:afcb30cf0d46fea0f4f5",
+      "name": "Planocarina marginata",
+      "rank": "species",
+      "parent_id": "taxon:3ef35c4b4ef9ad7c6a56",
+      "source": "inaturalist",
+      "source_taxon_id": "1071933"
+    },
+    {
+      "id": "taxon:1f176c8c04c710dba3fa",
+      "name": "Galeripora",
+      "rank": "genus",
+      "parent_id": "taxon:48cf2eb4076d8090b307",
+      "source": "inaturalist",
+      "source_taxon_id": "1341123"
+    },
+    {
+      "id": "taxon:5ce4bd93469d29b55df5",
+      "name": "Galeripora dentata",
+      "rank": "species",
+      "parent_id": "taxon:1f176c8c04c710dba3fa",
+      "source": "inaturalist",
+      "source_taxon_id": "1390975"
+    },
+    {
+      "id": "taxon:abac985161bf7990cda6",
+      "name": "Euglenozoa",
+      "rank": "phylum",
+      "parent_id": "taxon:60084ec45040753637d0",
+      "source": "inaturalist",
+      "source_taxon_id": "142256"
+    },
+    {
+      "id": "taxon:6c64ace2dec48e0090c2",
+      "name": "Euglenida",
+      "rank": "class",
+      "parent_id": "taxon:abac985161bf7990cda6",
+      "source": "inaturalist",
+      "source_taxon_id": "142257"
+    },
+    {
+      "id": "taxon:933699599899255a19a9",
+      "name": "Euglenales",
+      "rank": "order",
+      "parent_id": "taxon:6c64ace2dec48e0090c2",
+      "source": "inaturalist",
+      "source_taxon_id": "142258"
+    },
+    {
+      "id": "taxon:5dec2d1c89bb752efb57",
+      "name": "Phacaceae",
+      "rank": "family",
+      "parent_id": "taxon:933699599899255a19a9",
+      "source": "inaturalist",
+      "source_taxon_id": "963946"
+    },
+    {
+      "id": "taxon:5078e5fa1bd1efa59237",
+      "name": "Lepocinclis",
+      "rank": "genus",
+      "parent_id": "taxon:5dec2d1c89bb752efb57",
+      "source": "inaturalist",
+      "source_taxon_id": "320653"
+    },
+    {
+      "id": "taxon:8a31127b79a37b36529d",
+      "name": "Lepocinclis fusca",
+      "rank": "species",
+      "parent_id": "taxon:5078e5fa1bd1efa59237",
+      "source": "inaturalist",
+      "source_taxon_id": "865889"
+    },
+    {
+      "id": "taxon:6be2899a49194ae780e9",
+      "name": "Longithecina",
+      "rank": "infraorder",
+      "parent_id": "taxon:5a7141097f4947a0bc00",
+      "source": "inaturalist",
+      "source_taxon_id": "1498658"
+    },
+    {
+      "id": "taxon:064394bc418feaf2366c",
+      "name": "Difflugiidae",
+      "rank": "family",
+      "parent_id": "taxon:6be2899a49194ae780e9",
+      "source": "inaturalist",
+      "source_taxon_id": "768625"
+    },
+    {
+      "id": "taxon:3429f3803d0375a9ef3d",
+      "name": "Difflugia",
+      "rank": "genus",
+      "parent_id": "taxon:064394bc418feaf2366c",
+      "source": "inaturalist",
+      "source_taxon_id": "370760"
+    },
+    {
+      "id": "taxon:23e57aaa1288c2c64a25",
+      "name": "Difflugia bacillifera",
+      "rank": "species",
+      "parent_id": "taxon:3429f3803d0375a9ef3d",
+      "source": "inaturalist",
+      "source_taxon_id": "1491099"
+    },
+    {
+      "id": "taxon:f0351bda3bfa93b88486",
+      "name": "Netzeliidae",
+      "rank": "family",
+      "parent_id": "taxon:39a80d6da28fc4317598",
+      "source": "inaturalist",
+      "source_taxon_id": "951896"
+    },
+    {
+      "id": "taxon:6297a7232414d1760ce5",
+      "name": "Netzelia",
+      "rank": "genus",
+      "parent_id": "taxon:f0351bda3bfa93b88486",
+      "source": "inaturalist",
+      "source_taxon_id": "950779"
+    },
+    {
+      "id": "taxon:16aae9b237d03b506c3d",
+      "name": "Netzelia corona",
+      "rank": "species",
+      "parent_id": "taxon:6297a7232414d1760ce5",
+      "source": "inaturalist",
+      "source_taxon_id": "950783"
+    },
+    {
+      "id": "taxon:0a5de4228df994e82bad",
+      "name": "Nebela",
+      "rank": "genus",
+      "parent_id": "taxon:6364f06624f627a8a0ce",
+      "source": "inaturalist",
+      "source_taxon_id": "362011"
+    },
+    {
+      "id": "taxon:d02cbdf7d932da57c45f",
+      "name": "Nebela penardiana",
+      "rank": "species",
+      "parent_id": "taxon:0a5de4228df994e82bad",
+      "source": "inaturalist",
+      "source_taxon_id": "1592311"
+    },
+    {
+      "id": "taxon:db27c8245fe8dac72b52",
+      "name": "Cyclopyxis",
+      "rank": "genus",
+      "parent_id": "taxon:f0351bda3bfa93b88486",
+      "source": "inaturalist",
+      "source_taxon_id": "888445"
+    },
+    {
+      "id": "taxon:c8049d74b82b27b2258a",
+      "name": "Cyclopyxis pirini",
+      "rank": "species",
+      "parent_id": "taxon:db27c8245fe8dac72b52",
+      "source": "inaturalist",
+      "source_taxon_id": "1585018"
+    },
+    {
+      "id": "taxon:7d896e7bda45b4325fc6",
+      "name": "Excentrostoma",
+      "rank": "infraorder",
+      "parent_id": "taxon:5a7141097f4947a0bc00",
+      "source": "inaturalist",
+      "source_taxon_id": "1498662"
+    },
+    {
+      "id": "taxon:d6d8830dd01d286ad252",
+      "name": "Centropyxidae",
+      "rank": "family",
+      "parent_id": "taxon:7d896e7bda45b4325fc6",
+      "source": "inaturalist",
+      "source_taxon_id": "360329"
+    },
+    {
+      "id": "taxon:cd88608606a61e8080ff",
+      "name": "Awerintzewia",
+      "rank": "genus",
+      "parent_id": "taxon:d6d8830dd01d286ad252",
+      "source": "inaturalist",
+      "source_taxon_id": "1635356"
+    },
+    {
+      "id": "taxon:323a3cc60468a96f828d",
+      "name": "Awerintzewia cyclostoma",
+      "rank": "species",
+      "parent_id": "taxon:cd88608606a61e8080ff",
+      "source": "inaturalist",
+      "source_taxon_id": "1646783"
+    },
+    {
+      "id": "taxon:aa9bbc2d6be1008a4b6c",
+      "name": "Papilionoidea",
+      "rank": "superfamily",
+      "parent_id": "taxon:befdeedc26d96d8aeb9f",
+      "source": "inaturalist",
+      "source_taxon_id": "47224"
+    },
+    {
+      "id": "taxon:4334cda9f1c3e42e4a3f",
+      "name": "Bombycoidea",
+      "rank": "superfamily",
+      "parent_id": "taxon:befdeedc26d96d8aeb9f",
+      "source": "inaturalist",
+      "source_taxon_id": "47214"
+    },
+    {
+      "id": "taxon:5e96ea9a7c7458d339f9",
+      "name": "Bombycinae",
+      "rank": "subfamily",
+      "parent_id": "taxon:4b90ebad6d4beafef9db",
+      "source": "inaturalist",
+      "source_taxon_id": "783230"
+    }
+  ],
+  "monera_policy": "Manter organismos; fotografias de apoio para identificação por pistas, conforme autorização do usuário."
+}

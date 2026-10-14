@@ -46,11 +46,13 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
 {
     const Taxon taxon = taxons_.value(id);
     const QString kingdom = kingdomFor(id);
-    int visualCount=0;
-    for (const Species &s : speciesFor(id)) if (s.photo.valid && !s.photo.approvedRanks.isEmpty()) ++visualCount;
+    int visualCount=0,supportingCount=0;
+    for (const Species &s : speciesFor(id)) if (s.photo.valid && !s.photo.approvedRanks.isEmpty()) {
+        if (s.photo.role=="supporting") ++supportingCount; else ++visualCount;
+    }
     return {{"id", id}, {"title", taxon.name}, {"rank", taxon.rank},
         {"rankLabel", taxonomicRankLabel(taxon.rank)}, {"kingdom", kingdom},
-        {"count", count(id)}, {"visualCount",visualCount},{"introduction",content_.introduction(id)},
+        {"count", count(id)}, {"visualCount",visualCount},{"supportingCount",supportingCount},{"introduction",content_.introduction(id)},
         {"source", taxon.source}, {"sourceTaxonId", taxon.sourceTaxonId},
         {"description", taxon.rank == "educational_kingdom"
             ? QStringLiteral("Explore a diversidade de %1.").arg(taxon.name)

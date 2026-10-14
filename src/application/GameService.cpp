@@ -211,11 +211,22 @@ void GameService::buildQuestionForCurrentSpecies()
         return;
     }
 
-    const bool visual = correct.photo.valid && correct.photo.approvedRanks.contains(identificationRank_);
-    const QString prompt = identificationRank_ == "species"
+    const bool supporting=correct.photo.role=="supporting";
+    const bool visual = !supporting && correct.photo.valid && correct.photo.approvedRanks.contains(identificationRank_);
+    const QString prompt = supporting ? QStringLiteral("Identifique pelas pistas: %1").arg(taxonomicRankLabel(identificationRank_)) : identificationRank_ == "species"
         ? QStringLiteral("Qual espécie está registrada nesta fotografia?")
         : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(identificationRank_));
-    const QString fact = QStringLiteral("Observe a fotografia. Compare a forma, as estruturas e os padrões visíveis.");
+    QString fact = QStringLiteral("Observe a fotografia. Compare a forma, as estruturas e os padrões visíveis.");
+    if (supporting) {
+        QStringList lineage;
+        const QStringList ranks={"kingdom","phylum","class","order","family","genus","species"};
+        for (const Taxon &t : correct.taxonomy)
+            if (ranks.indexOf(t.rank)>=0 && ranks.indexOf(t.rank)<=ranks.indexOf("class")
+                && ranks.indexOf(t.rank)<ranks.indexOf(identificationRank_))
+                lineage << taxonomicRankLabel(t.rank)+": "+t.name;
+        fact=lineage.isEmpty() ? QStringLiteral("A imagem é apenas apoio. Identifique pelas pistas e pela classificação registrada.")
+            : QStringLiteral("Classificação registrada: %1. A imagem é apenas apoio à questão.").arg(lineage.join(" · "));
+    }
     const auto hint=content_.hint(correct,identificationRank_,options);
     currentQuestion_ = Question{
         prompt,

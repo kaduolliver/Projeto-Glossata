@@ -4,7 +4,7 @@
 
 Aplicativo desktop educativo em português para explorar Animalia, Plantae, Fungi, Protista e Monera no modelo didático tradicional dos cinco reinos. Cada pergunta tem quatro alternativas do mesmo nível taxonômico, seleção e confirmação, uma dica opcional e ficha da espécie. A partida continua até o jogador encerrá-la.
 
-O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20 por reino, obtidas do iNaturalist. Fotos são locais, com licenças individuais CC BY ou CC0. Reino didático e classificação científica da fonte são separados. Consulte [docs/CINCO_REINOS.md](docs/CINCO_REINOS.md) para mapeamento, contagens, migrações, importação e limitações; [docs/PHOTO_CREDITS.md](docs/PHOTO_CREDITS.md) traz os créditos.
+O catálogo ativo possui 122 espécies, com 42 Animalia e 20 em cada um dos outros reinos. Após autorização do usuário, 26 organismos sem cobertura visual foram substituídos; os dados anteriores foram arquivados. Monera mantém os mesmos 20 organismos, com imagens de apoio para identificação por pistas. Consulte [docs/SUBSTITUICOES_CATALOGO.md](docs/SUBSTITUICOES_CATALOGO.md) para o estado atual e [docs/PHOTO_CREDITS.md](docs/PHOTO_CREDITS.md) para créditos.
 
 ## Workspace e ambiente
 
@@ -28,7 +28,7 @@ O catálogo possui 122 espécies: as 22 originais de Lepidoptera e 100 novas, 20
 - PhotoResolver centraliza associação, fonte verificada, licença, autoria, SHA-256, existência, decodificação e resolução mínima de 300 pixels em ambas as dimensões. Aprovação por nível fica em photo_reviews.json e é vinculada ao ID da foto; metadados e aprovação são persistidos em photo_json no catálogo SQLite.
 - EducationalContent lê education.json: introduções por ID e dicas/curiosidades validadas por espécie ou grupo. Rejeita pistas que contenham alternativas, gênero ou nomes da linhagem; não usa fatos legados não revisados.
 - ExploreCard distingue cadastro de cobertura visual; SpeciesPortrait exibe fotos e créditos sem substituição decorativa no quiz. TextAction e TaxonComboBox compartilham os estados arredondados, escuros e com foco acessível; EndGameDialog confirma o encerramento.
-- resources/data contém species.json, taxonomy.json, photo_reviews.json, photo_audit.json, education.json, import_report.json e discord.json. As 120 fotos selecionadas são embarcadas em resources.qrc; candidatos não selecionados não entram no executável.
+- resources/data contém species.json, taxonomy.json, catalog_replacements.json, photo_reviews.json, photo_audit.json, education.json, import_report.json e discord.json. Há 120 arquivos de imagem para os 122 registros ativos; candidatos não selecionados não entram no executável. role=supporting e supporting_for vinculam uma imagem de apoio a uma questão de Monera, preservando o táxon original do registro fotográfico.
 - scripts/import_inaturalist.py importa, verifica licenças individuais, deduplica e mantém cache local.
 
 ## Fluxos e regras
@@ -41,7 +41,7 @@ Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O mo
 
 Responder prepara a próxima pergunta no serviço; o controller mantém o snapshot da pergunta, foto, dica e alternativas até nextQuestion e bloqueia confirmações duplicadas. Voltar abre uma confirmação modal. Continuar preserva a seleção; confirmar registra uma vez e retorna ao grupo anterior ou aos reinos. Falha de gravação leva ao resultado pendente para nova tentativa.
 
-O catálogo mantém 122 espécies e 120 fotos. São 76 registros aprovados em pelo menos um nível, 13 em espécie e 55 em gênero. Todas as perguntas são visuais: foto inválida ou sem aprovação para o nível exclui o registro daquele sorteio. Monera permanece na exploração e não possui quiz visual elegível. Todas as espécies inicia um jogo de gêneros com quatro reinos representados. Os 22 textos originais e os textos genéricos importados permanecem arquivados, mas o quiz utiliza somente conteúdo educativo revisado ou indica sua ausência. Há 18 introduções e duas revisões específicas de espécie, além de dicas gerais com escopo validado.
+Todos os 122 registros ativos possuem imagem tecnicamente válida: 102 têm fotos para identificação visual e os 20 de Monera usam imagens de apoio com aviso explícito, conforme solicitação do usuário. O quiz de Monera utiliza classificação registrada como pista; descrições biológicas específicas serão ampliadas na próxima etapa. O modo misto inicia em gênero, com 101 registros dos cinco reinos. Há 16 introduções para táxons ainda ativos e duas revisões educativas específicas de espécie. Níveis sem quatro alternativas distintas continuam bloqueados. Registros substituídos recebem novos IDs e os antigos ficam arquivados em catalog_replacements.json.
 
 Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte, independentemente do nível perguntado. Um filo ausente ou ambíguo usa Classificação não disponível. Estatísticas e seis conquistas permanecem relativas à partida atual/última partida, sem progresso cumulativo persistido.
 
@@ -52,7 +52,7 @@ Dois bancos ficam em QStandardPaths::AppDataLocation, fora do pacote:
 - glossata_history.sqlite mantém history e player_profiles no caminho e schema anteriores.
 - glossata_catalog.sqlite mantém taxons, espécies, origem, créditos e hash do conteúdo embarcado.
 
-O catálogo usa chaves estrangeiras, índices e consultas recursivas. Carga/atualização de conteúdo são transacionais, com upsert e pais antes dos filhos. Colunas são acrescentadas sem apagar tabelas ou registros anteriores. Reabertura carrega o SQLite uma vez para memória. Se a preparação falhar, o adaptador conserva o conteúdo embarcado como fallback.
+O catálogo usa chaves estrangeiras, índices e consultas recursivas. Carga/atualização de conteúdo são transacionais, com upsert e pais antes dos filhos. Colunas são acrescentadas sem apagar tabelas ou registros anteriores. A coluna active marca somente substituições explícitas como inativas, verificando ID/nome anterior e existência do substituto. Consultas e contagens usam registros ativos; dados locais não relacionados permanecem intactos. Reabertura carrega o SQLite uma vez para memória. Se a preparação falhar, o adaptador conserva o conteúdo embarcado como fallback.
 
 Perfis têm nomes aparados, limite de 32 caracteres e unicidade COLLATE NOCASE. É possível criar, selecionar, renomear e excluir; o último perfil não pode ser excluído. Instalação vazia cria Jogador 1. A partida captura o nome ao iniciar; mudanças de perfil durante o jogo não transferem seu resultado.
 

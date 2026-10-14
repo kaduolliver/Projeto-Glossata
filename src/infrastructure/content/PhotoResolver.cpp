@@ -17,6 +17,8 @@ Photo PhotoResolver::fromJson(const QJsonObject &m, const QString &image)
     p.sourceUrl=m.value("source").toString(); p.downloadUrl=m.value("url").toString();
     p.sha256=m.value("sha256").toString(); p.modifications=m.value("modifications").toString();
     p.sourceVerified=m.value("source_verified").toBool();
+    p.role=m.value("role").toString("identification");
+    p.supportingFor=m.value("supporting_for").toString();
     for (const auto &rank : m.value("approved_ranks").toArray()) p.approvedRanks.append(rank.toString());
     return p;
 }
@@ -25,13 +27,16 @@ QJsonObject PhotoResolver::toJson(const Photo &p)
     return {{"id",p.id},{"image",p.image},{"scientific_name",p.scientificName},{"taxon_id",p.taxonId},
         {"author",p.author},{"license",p.license},{"license_url",p.licenseUrl},{"source",p.sourceUrl},
         {"url",p.downloadUrl},{"sha256",p.sha256},{"modifications",p.modifications},
-        {"approved_ranks",QJsonArray::fromStringList(p.approvedRanks)},{"source_verified",p.sourceVerified}};
+        {"approved_ranks",QJsonArray::fromStringList(p.approvedRanks)},{"source_verified",p.sourceVerified},
+        {"role",p.role},{"supporting_for",p.supportingFor}};
 }
 Photo PhotoResolver::validate(Photo p, const QString &expectedName)
 {
     p.valid=false;
     const auto reject=[&p](const QString &error) { p.error=error; return p; };
-    if (!p.sourceVerified || p.id.isEmpty() || p.taxonId.isEmpty() || p.scientificName != expectedName)
+    const bool association=p.role=="identification" ? p.scientificName==expectedName
+        : p.role=="supporting" && p.supportingFor==expectedName && !p.scientificName.isEmpty();
+    if (!p.sourceVerified || p.id.isEmpty() || p.taxonId.isEmpty() || !association)
         return reject(QStringLiteral("Associação taxonômica da fotografia não validada."));
     if (QFileInfo(p.image).completeBaseName()!=p.id
         || !QUrl(p.downloadUrl).path().contains("/photos/"+p.id+"/"))
@@ -67,9 +72,11 @@ Photo PhotoResolver::validate(Photo p, const QString &expectedName)
 }
 void PhotoResolver::attach(Species &s, Photo photo)
 {
-    if (!s.sourceTaxonId.isEmpty() && photo.taxonId!=s.sourceTaxonId) photo.sourceVerified=false;
+    if (photo.role=="supporting") {
+        if (s.educationalKingdom!="Monera") photo.sourceVerified=false;
+    } else if (!s.sourceTaxonId.isEmpty() && photo.taxonId!=s.sourceTaxonId) photo.sourceVerified=false;
     s.photo=validate(photo,s.name);
     s.image=s.photo.valid ? s.photo.image : QString();
     s.imageAuthor=s.photo.author; s.imageLicense=s.photo.license; s.imageLicenseUrl=s.photo.licenseUrl;
-    s.imageSource=s.photo.sourceUrl; s.visualQuiz=s.photo.valid && s.photo.approvedRanks.contains("species");
+    s.imageSource=s.photo.sourceUrl; s.visualQuiz=s.photo.valid && s.photo.role=="identification" && s.photo.approvedRanks.contains("species");
 }

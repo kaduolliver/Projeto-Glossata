@@ -127,7 +127,8 @@ QVariantMap GameController::questionPhoto() const
     const Photo &p=displayedQuestion_.photo;
     return {{"image",p.valid ? p.image : QString()}, {"photoId",p.id},{"author",p.author},
         {"license",p.license},{"licenseUrl",p.licenseUrl},{"source",p.sourceUrl},{"modifications",p.modifications},
-        {"kingdom",displayedQuestion_.species.educationalKingdom},{"visual",displayedQuestion_.visual}};
+        {"kingdom",displayedQuestion_.species.educationalKingdom},{"visual",displayedQuestion_.visual},
+        {"supporting",p.role=="supporting"},{"photoSubject",p.scientificName},{"speciesId",displayedQuestion_.species.id}};
 }
 
 void GameController::startTaxonGame(const QString &family, const QString &rank)
@@ -196,6 +197,8 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("image"), answeredQuestion.photo.image},
         {QStringLiteral("photoId"),answeredQuestion.photo.id}
     };
+    answerDetails_.insert("supporting",answeredQuestion.photo.role=="supporting");
+    answerDetails_.insert("photoSubject",answeredQuestion.photo.scientificName);
     QStringList lineage;
     for (const Taxon &node : answeredQuestion.species.taxonomy)
         if (node.rank != "educational_kingdom") lineage << taxonomicRankLabel(node.rank) + ": " + node.name;

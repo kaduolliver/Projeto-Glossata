@@ -408,40 +408,6 @@
       "reviewed_on": "2026-10-14",
       "scope_name": "Basidiomycota"
     },
-    "note:11:intro": {
-      "text": "Amoebozoa reúne eucariontes com formas de organização variadas, incluindo organismos ameboides e linhagens com fases multinucleadas. Pseudópodes lobosos ou tubulares participam do movimento e da alimentação em muitos representantes. Algumas linhagens possuem estruturas protetoras, enquanto outras apresentam fases e corpos produtores de esporos.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
-      "verified": true,
-      "ranks": [
-        "species",
-        "genus",
-        "family",
-        "order",
-        "class",
-        "phylum",
-        "kingdom"
-      ],
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Amoebozoa"
-    },
-    "note:11:hint": {
-      "text": "Projeções celulares podem participar de locomoção e alimentação.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
-      "verified": true,
-      "ranks": [
-        "species",
-        "genus",
-        "family",
-        "order",
-        "class",
-        "phylum",
-        "kingdom"
-      ],
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Amoebozoa"
-    },
     "note:13:intro": {
       "text": "Lepidoptera é a ordem de insetos que inclui borboletas e mariposas. As asas dos adultos apresentam pequenas escamas, e o ciclo de vida passa por ovo, lagarta, pupa e adulto. Características das asas, das antenas e de outras estruturas ajudam a reconhecer seus diferentes grupos.",
       "source_title": "Amateur Entomologists' Society",
@@ -612,23 +578,6 @@
       "reviewed_on": "2026-10-14",
       "scope_name": "Mycetozoa"
     },
-    "note:17:intro": {
-      "text": "Euglenida reúne eucariontes unicelulares flagelados com uma película rica em proteínas. O grupo inclui linhagens fotossintetizantes e heterotróficas, com diversidade de alimentação e de organização celular. A película pode permitir mudanças de forma em alguns representantes. Características microscópicas e dados moleculares são importantes na identificação.",
-      "source_title": "Publicação científica — Open Biology",
-      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/",
-      "verified": true,
-      "ranks": [
-        "species",
-        "genus",
-        "family",
-        "order",
-        "class",
-        "phylum",
-        "kingdom"
-      ],
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Euglenida"
-    },
     "note:18:intro": {
       "text": "Chiton é um gênero de moluscos pertencente à classe Polyplacophora. Os caracteres compartilhados nessa classe incluem oito placas de concha e uma faixa de tecidos ao redor delas. A organização do revestimento e do pé muscular ajuda esses animais a permanecerem associados a superfícies rochosas.",
       "source_title": "Queensland Museum",
@@ -757,12 +706,10 @@
     "taxon:a00f38df238c41138073": "note:8:intro",
     "taxon:94fd234704e94181294b": "note:9:intro",
     "taxon:4308023432e31216af47": "note:10:intro",
-    "taxon:f2f92dd7e4835ba0033f": "note:11:intro",
     "taxon:befdeedc26d96d8aeb9f": "note:13:intro",
     "taxon:43d28ce77c090ecb7e1f": "note:14:intro",
     "taxon:785c93ec1fd86284887d": "note:15:intro",
     "taxon:d46f885a1e90011db84f": "note:16:intro",
-    "taxon:6c64ace2dec48e0090c2": "note:17:intro",
     "taxon:a2d364c48b9ac7a2e66e": "note:18:intro"
   },
   "group_hints": {
@@ -795,9 +742,6 @@
     ],
     "taxon:4308023432e31216af47": [
       "note:10:hint"
-    ],
-    "taxon:f2f92dd7e4835ba0033f": [
-      "note:11:hint"
     ],
     "taxon:befdeedc26d96d8aeb9f": [
       "note:13:hint"

@@ -11,6 +11,8 @@
 #include <QSet>
 #include <QHash>
 #include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 #include "infrastructure/content/PhotoResolver.h"
 
 SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
@@ -34,15 +36,18 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     query.exec("PRAGMA table_info(species)");
     while (query.next()) columns.insert(query.value(1).toString());
     bool upgraded = false;
-    for (const QString &column : QStringList{"fact", "hint", "region", "source_url", "image_license_url", "visual_quiz", "photo_json"}) {
+    for (const QString &column : QStringList{"fact", "hint", "region", "source_url", "image_license_url", "visual_quiz", "photo_json", "active"}) {
         if (!columns.contains(column)) {
-            if (!query.exec("ALTER TABLE species ADD COLUMN " + column + (column == "visual_quiz" ? " INTEGER DEFAULT 0" : " TEXT"))) return;
+            const QString type=column=="active" ? " INTEGER NOT NULL DEFAULT 1" : column=="visual_quiz" ? " INTEGER DEFAULT 0" : " TEXT";
+            if (!query.exec("ALTER TABLE species ADD COLUMN " + column + type)) return;
             upgraded = true;
         }
     }
-    QFile speciesFile(":/resources/data/species.json"), taxonomyFile(":/resources/data/taxonomy.json");
-    if (!speciesFile.open(QIODevice::ReadOnly) || !taxonomyFile.open(QIODevice::ReadOnly)) return;
-    const QString fingerprint = QCryptographicHash::hash(speciesFile.readAll() + taxonomyFile.readAll(), QCryptographicHash::Sha256).toHex();
+    QFile speciesFile(":/resources/data/species.json"), taxonomyFile(":/resources/data/taxonomy.json"), replacementsFile(":/resources/data/catalog_replacements.json");
+    if (!speciesFile.open(QIODevice::ReadOnly) || !taxonomyFile.open(QIODevice::ReadOnly) || !replacementsFile.open(QIODevice::ReadOnly)) return;
+    const QByteArray replacementBytes=replacementsFile.readAll();
+    const auto replacements=QJsonDocument::fromJson(replacementBytes).object().value("replacements").toArray();
+    const QString fingerprint = QCryptographicHash::hash(speciesFile.readAll() + taxonomyFile.readAll()+replacementBytes, QCryptographicHash::Sha256).toHex();
     query.exec("SELECT value FROM catalog_meta WHERE key = 'bundle_hash'");
     if (query.next() && query.value(0).toString() == fingerprint && !upgraded) {
         query.finish(); ready_ = readCache(); return;
@@ -79,6 +84,20 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
             item.sourceTaxonId.isEmpty() ? QVariant() : QVariant(item.sourceTaxonId),
             item.fact,item.hint,item.region,item.sourceUrl,item.imageLicenseUrl,item.visualQuiz,QString::fromUtf8(QJsonDocument(PhotoResolver::toJson(item.photo)).toJson(QJsonDocument::Compact))}) query.addBindValue(value);
         if (!query.exec()) { fail(); return; }
+        query.prepare("UPDATE species SET active=1 WHERE id=?");
+        query.addBindValue(item.id);
+        if (!query.exec()) { fail(); return; }
+    }
+    // Retain former organisms in the database. Only explicit replacements are
+    // retired; unrelated local records, profiles and ranking are untouched.
+    for (const auto &value : replacements) {
+        const auto replacement=value.toObject();
+        const auto old=replacement.value("old").toObject();
+        query.prepare("UPDATE species SET active=0 WHERE id=? AND scientific_name=? AND EXISTS(SELECT 1 FROM species WHERE id=? AND active=1)");
+        query.addBindValue(old.value("id").toInt());
+        query.addBindValue(old.value("name").toString());
+        query.addBindValue(replacement.value("new_id").toInt());
+        if (!query.exec()) { fail(); return; }
     }
     query.prepare("INSERT INTO catalog_meta(key,value) VALUES('bundle_hash',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value");
     query.addBindValue(fingerprint);
@@ -97,7 +116,7 @@ bool SqliteSpeciesCatalog::readCache()
                    query.value(3).toString(),query.value(4).toString(),query.value(5).toString()};
         taxons.append(node); index.insert(node.id,node);
     }
-    if (!query.exec("SELECT id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz,photo_json FROM species ORDER BY id")) return false;
+    if (!query.exec("SELECT id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz,photo_json FROM species WHERE active=1 ORDER BY id")) return false;
     QVector<Species> species;
     while (query.next()) {
         Species item;
@@ -134,7 +153,7 @@ int SqliteSpeciesCatalog::descendantCount(const QString &taxonId) const
 {
     if (!ready_) return 0;
     QSqlQuery query(database_);
-    query.prepare("WITH RECURSIVE descendants(id) AS (SELECT id FROM taxons WHERE id=? UNION SELECT t.id FROM taxons t JOIN descendants d ON t.parent_id=d.id) SELECT COUNT(*) FROM species WHERE taxon_id IN (SELECT id FROM descendants)");
+    query.prepare("WITH RECURSIVE descendants(id) AS (SELECT id FROM taxons WHERE id=? UNION SELECT t.id FROM taxons t JOIN descendants d ON t.parent_id=d.id) SELECT COUNT(*) FROM species WHERE active=1 AND taxon_id IN (SELECT id FROM descendants)");
     query.addBindValue(taxonId);
     return query.exec() && query.next() ? query.value(0).toInt() : 0;
 }

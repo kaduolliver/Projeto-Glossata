@@ -9,6 +9,7 @@ ColumnLayout {
     signal loadFailed()
     readonly property bool hasPhoto: !!info.image && photo.status === Image.Ready
     spacing: 10
+    Label { visible: !!portrait.info.supporting; Layout.fillWidth: true; text: "Imagem de apoio · não comprova a identificação da espécie"; color: "#D9BA7D"; font.pixelSize: 11; wrapMode: Text.WordWrap }
     Rectangle {
         Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 240
         radius: 18; color: "#112F2D"; border.color: "#304D43"; clip: true

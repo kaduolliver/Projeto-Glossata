@@ -53,7 +53,7 @@ def apply_photo_reviews(species):
         review = reviews.get(item.get("source_taxon_id") or "legacy:" + str(item["id"]), {})
         matched = review.get("photo_id") == photo.get("id")
         photo["approved_ranks"] = review.get("approved_ranks", []) if matched and photo.get("source_verified") else []
-        photo["visual_quiz"] = "species" in photo["approved_ranks"]
+        photo["visual_quiz"] = photo.get("role","identification")=="identification" and "species" in photo["approved_ranks"]
         photo["review"] = review.get("note", "Triagem visual pendente.") if matched else "Triagem visual pendente."
         item["image"] = "qrc:/" + photo["path"] if photo.get("path") and (not matched or review.get("display", True)) else ""
 
@@ -344,7 +344,9 @@ def import_catalog(count=20, max_pages=5, offline=False):
         photo = item.get("photo")
         if photo:
             author = photo['author'] if photo['author'] != 'no rights reserved' else 'Autoria não identificada; excluída do quiz'
-            credits.append(f"- **{item['name']}** — {author} — [{photo['license'].upper()}]({photo['license_url']}) — [registro]({photo['source']}) — `{photo['path']}` — {photo.get('modifications', 'Modificações não verificadas.')} — níveis: {', '.join(photo.get('approved_ranks', [])) or 'não aprovado'}")
+            usage = 'imagem de apoio; identificação por pistas' if photo.get('role') == 'supporting' else 'identificação visual'
+            subject = f" — Táxon do registro de origem: {photo.get('scientific_name', item['name'])}" if photo.get('role') == 'supporting' else ''
+            credits.append(f"- **{item['name']}** — {author} — [{photo['license'].upper()}]({photo['license_url']}) — [registro]({photo['source']}) — `{photo['path']}` — {photo.get('modifications', 'Modificações não verificadas.')} — uso: {usage}{subject} — níveis: {', '.join(photo.get('approved_ranks', [])) or 'não aprovado'}")
     (ROOT / "docs/PHOTO_CREDITS.md").write_text("\n".join(credits) + "\n", encoding="utf-8")
     return report
 

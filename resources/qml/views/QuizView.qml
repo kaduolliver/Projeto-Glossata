@@ -10,7 +10,7 @@ Item {
     required property var app
     required property var backend
     property string selectedOption: ""
-    implicitHeight: 620
+    implicitHeight: Math.max(620,quizLayout.implicitHeight)
     focus: true
     Keys.onPressed: function(event) {
         if (finishDialog.visible || !portrait.hasPhoto) return
@@ -28,6 +28,7 @@ Item {
         if (backend.answerPending) app.navigate("feedback")
     }
     ColumnLayout {
+        id: quizLayout
         anchors.fill: parent
         spacing: 22
         RowLayout {
@@ -48,7 +49,7 @@ Item {
                 Layout.fillHeight: true
                 spacing: 12
                 SpeciesPortrait { id: portrait; objectName: "questionPortrait"; Layout.fillWidth: true; Layout.fillHeight: true; Layout.minimumHeight: 360; info: view.backend.questionPhoto }
-                Label { text: "Observe a fotografia. Identifique o grupo solicitado."; color: "#718F93"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
+                Label { text: view.backend.questionPhoto.supporting ? "Use as pistas. A fotografia é apenas apoio." : "Observe a fotografia. Identifique o grupo solicitado."; color: "#718F93"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter }
                 Rectangle {
                     Layout.fillWidth: true; implicitHeight: 54; radius: 12; color: "#102B2B"; border.color: "#28433C"
                     RowLayout {

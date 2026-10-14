@@ -58,10 +58,14 @@ def audit(offline=False):
                     p.update(url=url,sha256=hashlib.sha256((ROOT/path).read_bytes()).hexdigest())
                 reliable=(observation.get("quality_grade")=="research" or
                           observation.get("captive") and observation.get("identifications_count",0)>=2)
+                expected_name=p.get("scientific_name",s["name"]) if p.get("role")=="supporting" else s["name"]
+                expected_id=int(p.get("taxon_id") or 0)
+                taxon_match=(taxon.get("name")==expected_name or expected_id in taxon.get("ancestor_ids",[]))
                 match=(reliable
                        and observation.get("community_taxon_id")==taxon.get("id")
-                       and taxon.get("name")==s["name"] and taxon.get("is_active") and actual and permitted_photo(actual))
-                p.update(scientific_name=taxon.get("name",""),taxon_id=str(taxon.get("id","")),
+                       and taxon_match and taxon.get("is_active") and actual and permitted_photo(actual))
+                p.update(scientific_name=expected_name if match else taxon.get("name",""),
+                         taxon_id=str(expected_id if match else taxon.get("id","")),
                          source_verified=bool(match),
                          research_grade=observation.get("quality_grade")=="research",
                          modifications="Nenhuma. Arquivo original, sem recorte ou retoque.")
@@ -81,7 +85,7 @@ def audit(offline=False):
                 # community identification alone never approves a question.
                 ranks=review.get("approved_ranks",[]) if match and review.get("photo_id")==p["id"] else []
                 if p.get("author")=="no rights reserved": ranks=[]
-                p["approved_ranks"]=ranks; p["visual_quiz"]="species" in ranks
+                p["approved_ranks"]=ranks; p["visual_quiz"]=p.get("role","identification")=="identification" and "species" in ranks
                 report["source_audit"].append({"id":s["id"],"photo_id":p["id"],"source_match":bool(match),"approved_ranks":ranks,
                      "author_available":p.get("author")!="no rights reserved"})
             except Exception as error:

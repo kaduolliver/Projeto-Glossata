@@ -11,14 +11,14 @@ Educational desktop quiz built with C++17, Qt 6 Quick/QML, and SQLite. Explore t
 - Questions use a neutral observation prompt and an optional sourced biological hint. Unreviewed facts and generic import descriptions are kept as historical data and are not used as clues.
 - The final score is saved once to the local SQLite ranking when the player ends a game.
 - The ranking has one entry per player name (case insensitive using SQLite NOCASE). A new completed game replaces that name's previous score, even if lower. Existing duplicate entries are consolidated, retaining the latest game.
-- The offline catalog contains 122 species: the original 22 Lepidoptera plus 20 new species per educational kingdom. Scientific taxonomy and source identifiers remain separate from the educational grouping.
+- The offline catalog contains 122 active species: 42 Animalia and 20 each in Plantae, Fungi, Protista and Monera. Scientific taxonomy and source identifiers remain separate from the educational grouping. Former organisms explicitly replaced by the user are archived with their original IDs.
 - Player profiles are stored locally in SQLite and can be created, renamed, selected, or deleted. The last profile cannot be deleted.
 - Each game retains the player name captured at its start; profile changes apply to future games.
 - Failed score saves are shown in the UI and can be retried without duplicates. A pending score blocks a new game and remains in memory until saved or the app closes.
 - Statistics and six achievement challenges reflect the current game and reset for a new game; the local ranking persists.
-- The catalog has 120 local photographs (100 CC BY, 20 CC0). The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Eligibility also requires approval for the requested rank. Every playable question and its review use the same photo snapshot; decorative artwork is reserved for the surrounding interface.
-- There are 76 records approved for at least one visual rank: 13 for species and 55 for genus. Mixed play starts at genus to include four educational kingdoms. Monera remains browsable; its visual quiz is disabled pending diagnostic curation.
-- The explorer loads 18 sourced taxon introductions, rounded selectors and styled breadcrumbs. Taxonomic performance groups real answers by educational kingdom and source phylum/division ID.
+- All 122 active organisms have a validated local image; there are 120 distinct image files. The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Every question and its review use the same photo snapshot.
+- The visual catalog has 102 organisms approved for at least one rank. Monera retains its 20 organisms and uses clearly labeled supporting photographs and classification clues; these images do not establish species identity. Mixed genus play currently includes 101 records across the five educational kingdoms.
+- The explorer loads 16 sourced taxon introductions, rounded selectors and styled breadcrumbs. Taxonomic performance groups real answers by educational kingdom and source phylum/division ID.
 - The user-supplied temporary branding image is embedded in the Windows executable and window icon. `package/Glossata Quiz.lnk` starts the game with this icon.
 - Optional Discord Rich Presence connects locally to the desktop client using the configured Application ID and asset key. See [Discord setup](docs/DISCORD_SETUP.md) to upload the image and test it.
 
@@ -56,7 +56,7 @@ python scripts/import_inaturalist.py --offline --per-kingdom 20
 
 The target is the total number of imported species per kingdom. Increase it to request additional records. Playing and browsing the catalog do not require internet access; completing a new import offline requires previously cached responses and photos.
 
-See the [refinement audit and verified limitations](docs/REFINAMENTO_IDENTIFICACAO.md), [expansion history](docs/CINCO_REINOS.md), [photo credits](docs/PHOTO_CREDITS.md), and [project context](PROJECT_CONTEXT.md).
+See the [current replacements and Monera policy](docs/SUBSTITUICOES_CATALOGO.md), [refinement history](docs/REFINAMENTO_IDENTIFICACAO.md), [expansion history](docs/CINCO_REINOS.md), [photo credits](docs/PHOTO_CREDITS.md), and [project context](PROJECT_CONTEXT.md).
 
 ## Remaining work
 

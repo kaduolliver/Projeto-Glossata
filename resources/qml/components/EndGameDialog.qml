@@ -16,7 +16,7 @@ Dialog {
         spacing: 22
         Label { text: "Tem certeza que deseja encerrar a partida? Sua pontuação atual será registrada no ranking."; color: dialog.palette.text; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         UiButton { id: keepPlaying; objectName: "continueGameButton"; text: "Quero continuar jogando"; iconName: "play"; Layout.fillWidth: true; onClicked: dialog.reject(); Keys.onReturnPressed: dialog.reject(); Keys.onEnterPressed: dialog.reject() }
-        UiButton { objectName: "endGameButton"; text: "Encerrar partida"; secondary: true; Layout.fillWidth: true; onClicked: dialog.accept(); Keys.onReturnPressed: dialog.accept(); Keys.onEnterPressed: dialog.accept() }
+        UiButton { objectName: "endGameButton"; text: "Encerrar partida"; danger: true; Layout.fillWidth: true; onClicked: dialog.accept(); Keys.onReturnPressed: dialog.accept(); Keys.onEnterPressed: dialog.accept() }
     }
     onOpened: keepPlaying.forceActiveFocus()
 }

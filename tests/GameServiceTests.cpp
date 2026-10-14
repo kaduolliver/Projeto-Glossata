@@ -72,6 +72,7 @@ private slots:
     void introductionsAndMissingContent();
     void performanceUsesIdsAndHandlesMissingClassification();
     void exportVerifiedCatalogAudit();
+    void replacementsRetireOldSpeciesWithoutDeletingHistory();
 };
 
 void GameServiceTests::initialLoad_hasSpecies()
@@ -99,7 +100,7 @@ void GameServiceTests::extraHintCanBeRevealedOncePerRound()
 {
     JsonSpeciesCatalog catalog(QStringLiteral(":/resources/data/species.json"));
     GameService service(&catalog);
-    service.startNewGame();
+    service.startNewGame("edu:Animalia");
 
     QVERIFY(!service.hintRevealed());
     QVERIFY(service.extraHint().isEmpty());
@@ -126,7 +127,7 @@ void GameServiceTests::allRoundsHaveFourDistinctChoices()
         QCOMPARE(service.round(), round);
         QCOMPARE(question.options.size(), 4);
         QVERIFY(question.options.contains(question.correctAnswer));
-        QVERIFY(question.visual);
+        QCOMPARE(question.visual,question.photo.role=="identification");
         QVERIFY(question.photo.valid);
         QCOMPARE(question.photo.image,question.species.image);
         QVERIFY(!question.fact.trimmed().isEmpty());
@@ -480,7 +481,7 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     JsonSpeciesCatalog catalog;
     Species correct;
     for (const Species &species : catalog.loadSpecies()) {
-        if ((!controller.questionPhoto().value("image").toString().isEmpty() && species.image == controller.questionPhoto().value("image").toString()) || (species.fact == controller.factText() && controller.answerOptions().contains(species.name))) { correct = species; break; }
+        if (species.id == controller.questionPhoto().value("speciesId").toInt()) { correct = species; break; }
     }
     QVERIFY(!correct.name.isEmpty());
     const auto before=controller.questionPhoto();
@@ -566,9 +567,9 @@ void GameServiceTests::taxonomyFiltersAndIdentificationLevels()
         realms.insert(service.currentQuestion().species.educationalKingdom);
         service.submitAnswer(service.currentQuestion().correctAnswer);
     }
-    QCOMPARE(realms.size(), 4);
-    QVERIFY(!realms.contains("Monera"));
-    QVERIFY(index.identificationLevels("edu:Monera").isEmpty());
+    QCOMPARE(realms.size(), 5);
+    QVERIFY(realms.contains("Monera"));
+    QVERIFY(!index.identificationLevels("edu:Monera").isEmpty());
 }
 
 void GameServiceTests::offlinePhotosHaveAttributionAndDecode()
@@ -595,7 +596,7 @@ void GameServiceTests::offlinePhotosHaveAttributionAndDecode()
         }
         if (s.educationalKingdom == "Monera") QVERIFY(!s.visualQuiz);
     }
-    QCOMPARE(original, 22);
+    QCOMPARE(original, 19);
     QVERIFY(imported >= 100);
 }
 
@@ -702,15 +703,21 @@ void GameServiceTests::visualEligibilityAndHintsAcrossRanks()
         QVERIFY(!service.isFinished());
         for (int i=0;i<service.catalogSize();++i) {
             const auto q=service.currentQuestion();
-            QVERIFY(q.visual && q.photo.valid && q.photo.sourceVerified);
+            QVERIFY(q.photo.valid && q.photo.sourceVerified);
+            QCOMPARE(q.visual,q.photo.role=="identification");
             QVERIFY(q.photo.approvedRanks.contains(rank));
-            QCOMPARE(q.photo.scientificName,q.species.name);
+            if (q.photo.role=="supporting") {
+                QCOMPARE(q.species.educationalKingdom,QString("Monera"));
+                QCOMPARE(q.photo.supportingFor,q.species.name);
+                QVERIFY(!q.fact.contains("Gênero:"));
+                QVERIFY(!q.fact.contains("Família:"));
+            } else QCOMPARE(q.photo.scientificName,q.species.name);
             QCOMPARE(q.options.size(),4);
             QSet<QString> options;
             for (const QString &option : q.options) options.insert(option.toCaseFolded());
             QCOMPARE(options.size(),4);
             QCOMPARE(q.options.count(q.correctAnswer),1);
-            QVERIFY(!q.fact.contains(q.species.name.section(' ',0,0),Qt::CaseInsensitive));
+            if (q.visual) QVERIFY(!q.fact.contains(q.species.name.section(' ',0,0),Qt::CaseInsensitive));
             QVERIFY(!q.extraHint.contains("iNaturalist",Qt::CaseInsensitive));
             if (!q.extraHint.isEmpty()) {
                 QVERIFY(!q.hintSourceUrl.isEmpty());
@@ -733,7 +740,7 @@ void GameServiceTests::visualEligibilityAndHintsAcrossRanks()
     }
     const auto eligible=eligibleQuizSpecies(all,"species");
     for (const Species &s : all) {
-        if (s.id==110 || s.educationalKingdom=="Monera") QVERIFY(s.photo.approvedRanks.isEmpty());
+        if (s.educationalKingdom=="Monera") QCOMPARE(s.photo.role,QString("supporting"));
         if (!s.photo.valid || s.photo.approvedRanks.isEmpty())
             QVERIFY(std::none_of(eligible.cbegin(),eligible.cend(),[&s](const Species &candidate) { return candidate.id==s.id; }));
     }
@@ -757,7 +764,7 @@ void GameServiceTests::introductionsAndMissingContent()
         QVERIFY(intro.value("verified").toBool());
         QVERIFY(intro.value("source_url").toString().startsWith("https://"));
     }
-    QCOMPARE(described,18);
+    QCOMPARE(described,16);
     QVERIFY(ranks.contains("genus") && ranks.contains("family") && ranks.contains("order")
         && ranks.contains("class") && ranks.contains("phylum") && ranks.contains("educational_kingdom"));
     QVERIFY(content.introduction("unknown").isEmpty());
@@ -818,6 +825,43 @@ void GameServiceTests::exportVerifiedCatalogAudit()
     }
     QFile output("catalog-audit.json"); QVERIFY(output.open(QIODevice::WriteOnly));
     QVERIFY(output.write(QJsonDocument(QJsonObject{{"catalog_size",species.size()},{"species",rows},{"ranks",ranks}}).toJson())>0);
+}
+
+void GameServiceTests::replacementsRetireOldSpeciesWithoutDeletingHistory()
+{
+    QTemporaryDir dir;
+    const QString path=dir.filePath("catalog.sqlite");
+    SqliteGameHistoryRepository history(dir.filePath("history.sqlite"));
+    QVERIFY(history.addPlayerProfile("Ada")); QVERIFY(history.saveResult("Ada",17,17));
+    QFile file(":/resources/data/catalog_replacements.json"); QVERIFY(file.open(QIODevice::ReadOnly));
+    const auto replacement=QJsonDocument::fromJson(file.readAll()).object().value("replacements").toArray().first().toObject();
+    const auto old=replacement.value("old").toObject();
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE","retirement_seed"); db.setDatabaseName(path); QVERIFY(db.open());
+        QSqlQuery q(db);
+        QVERIFY(q.exec("CREATE TABLE taxons(id TEXT PRIMARY KEY, scientific_name TEXT NOT NULL, rank TEXT NOT NULL,parent_id TEXT REFERENCES taxons(id), source TEXT,source_taxon_id TEXT,UNIQUE(source,source_taxon_id))"));
+        QVERIFY(q.exec("CREATE TABLE species(id INTEGER PRIMARY KEY,scientific_name TEXT NOT NULL,common_name TEXT,taxon_id TEXT NOT NULL REFERENCES taxons(id),educational_kingdom TEXT,image_path TEXT,image_author TEXT,image_license TEXT,image_source TEXT,source TEXT,source_taxon_id TEXT)"));
+        QVERIFY(q.exec("INSERT INTO taxons VALUES('retired:leaf','Archived taxon','species',NULL,'local',NULL)"));
+        q.prepare("INSERT INTO species(id,scientific_name,taxon_id,source) VALUES(?,?,'retired:leaf','legacy')");
+        q.addBindValue(old.value("id").toInt()); q.addBindValue(old.value("name").toString()); QVERIFY(q.exec());
+    }
+    QSqlDatabase::removeDatabase("retirement_seed");
+    SqliteSpeciesCatalog catalog(path); QVERIFY(catalog.isReady());
+    const auto active=catalog.loadSpecies();
+    QCOMPARE(active.size(),122);
+    QVERIFY(std::none_of(active.cbegin(),active.cend(),[&old](const Species &s){ return s.id==old.value("id").toInt(); }));
+    QVERIFY(std::any_of(active.cbegin(),active.cend(),[&replacement](const Species &s){ return s.id==replacement.value("new_id").toInt(); }));
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE","retirement_check"); db.setDatabaseName(path); QVERIFY(db.open());
+        QSqlQuery q(db); q.prepare("SELECT active,scientific_name FROM species WHERE id=?");q.addBindValue(old.value("id").toInt());
+        QVERIFY(q.exec() && q.next()); QCOMPARE(q.value(0).toInt(),0); QCOMPARE(q.value(1).toString(),old.value("name").toString());
+        QVERIFY(q.exec("PRAGMA foreign_key_check")); QVERIFY(!q.next());
+    }
+    QSqlDatabase::removeDatabase("retirement_check");
+    SqliteSpeciesCatalog reopened(path); QVERIFY(reopened.isReady()); QCOMPARE(reopened.loadSpecies().size(),122);
+    QCOMPARE(history.loadPlayerProfiles(),QStringList{"Ada"}); QCOMPARE(history.loadTopResults(5).first().score,17);
+    Species wrong=active.first(); wrong.photo.role="supporting";wrong.photo.supportingFor=wrong.name;
+    PhotoResolver::attach(wrong,wrong.photo); QVERIFY(!wrong.photo.valid);
 }
 
 QTEST_MAIN(GameServiceTests)

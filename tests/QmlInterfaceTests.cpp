@@ -95,7 +95,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     auto correctAnswer = [&controller]() {
         JsonSpeciesCatalog catalog;
         for (const Species &species : catalog.loadSpecies()) {
-            if (species.image == controller.questionPhoto().value("image").toString()) {
+            if (species.id == controller.questionPhoto().value("speciesId").toInt()) {
                 for (const QString &rank : QStringList{"species","genus","family","order","class","phylum","kingdom"})
                     if (taxonomicRankLabel(rank)==controller.identificationRankLabel()) return species.answerAtRank(rank);
             }
@@ -114,7 +114,12 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QCOMPARE(window->property("page").toString(), QString("taxonomy"));
         QCOMPARE(controller.browseTaxon().value("id").toString(), controller.categories().at(kingdom + 1).toMap().value("id").toString());
         QVERIFY(snapshot("kingdom-" + QString::number(kingdom)));
-        QVERIFY(click("taxonButton0"));
+        int firstGroup=0;
+        if (kingdom==3) {
+            for (int i=0;i<controller.browseChildren().size();++i)
+                if (controller.browseChildren().at(i).toMap().value("title").toString()=="Protozoa") firstGroup=i;
+        }
+        QVERIFY(click("taxonButton"+QString::number(firstGroup)));
         QVERIFY(controller.breadcrumbs().size() >= 2);
         if (kingdom==3) {
             // Protista first opens its scientific kingdom (Protozoa), then its phylum.
@@ -142,6 +147,15 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         }
         QVERIFY(click("startTaxonButton"));
         QCOMPARE(window->property("page").toString(), QString("quiz"));
+        if (kingdom==4) {
+            QVERIFY(controller.questionPhoto().value("supporting").toBool());
+            QVERIFY(!controller.questionPhoto().value("visual").toBool());
+            QVERIFY(controller.questionText().contains("pistas"));
+            QVERIFY(snapshot("monera-support-quiz"));
+            controller.answerSelected(correctAnswer()); showPage("info");
+            QVERIFY(controller.answerDetails().value("supporting").toBool());
+            QVERIFY(snapshot("monera-support-information"));
+        }
         controller.stopGame();
         showPage("results");
         QVERIFY(click("returnExplorationButton"));

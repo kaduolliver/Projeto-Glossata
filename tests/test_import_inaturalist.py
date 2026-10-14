@@ -24,10 +24,12 @@ class ImportTests(unittest.TestCase):
         original = json.loads((PROJECT / "tests/fixtures/legacy_species.json").read_text(encoding="utf-8"))
         self.assertEqual(len(original), 22)
         current = {s["id"]: s for s in self.species}
+        retired={x['old']['id']:x['old'] for x in json.loads((PROJECT/'resources/data/catalog_replacements.json').read_text(encoding='utf8'))['replacements']}
         for item in original:
             for key in ("id", "name", "fact", "hint", "region"):
                 value=item[key]
-                self.assertEqual(current[item["id"]][key], value, (item["name"], key))
+                record=current.get(item['id'],retired.get(item['id']))
+                self.assertEqual(record[key], value, (item["name"], key))
 
     def test_individual_license_and_quality_gate(self):
         photo = {"license_code": "cc-by", "attribution": "Author", "url": "https://example.test/photo.jpg",
@@ -77,7 +79,7 @@ class ImportTests(unittest.TestCase):
                 if item["educational_kingdom"] == "Monera":
                     self.assertFalse(photo["visual_quiz"])
         self.assertEqual(counts, {"Animalia": 42, "Plantae": 20, "Fungi": 20, "Protista": 20, "Monera": 20})
-        self.assertEqual(len(seen_sources), 100)
+        self.assertEqual(len(seen_sources), 103)
 
     def test_reimport_is_idempotent_and_offline(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -127,7 +129,10 @@ class ImportTests(unittest.TestCase):
             self.assertIn(photo['path'],resources)
             self.assertEqual(hashlib.sha256((PROJECT/photo['path']).read_bytes()).hexdigest(),photo['sha256'])
             self.assertEqual(photo['license_url'],importer.LICENSE_URLS[photo['license']])
-            self.assertEqual(photo['scientific_name'],species['name'])
+            if photo.get('role')=='supporting':
+                self.assertEqual(species['educational_kingdom'],'Monera')
+                self.assertEqual(photo['supporting_for'],species['name'])
+            else:self.assertEqual(photo['scientific_name'],species['name'])
             self.assertTrue(photo['source_verified'])
             if photo['approved_ranks']:
                 self.assertNotEqual(photo['author'],'no rights reserved')
