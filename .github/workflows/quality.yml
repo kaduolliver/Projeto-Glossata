@@ -35,6 +35,8 @@ jobs:
           ctest --test-dir build --output-on-failure
           qmllint $(find resources/qml -name '*.qml') --unqualified disable
           python scripts/audit_catalog.py --strict
+          python scripts/audit_hint_assistance.py
+          git diff --exit-code -- docs/AUDITORIA_ASSISTENCIA.json
           python scripts/review_updates.py
           python scripts/release.py check
       - name: Verificar captura no mesmo commit visual

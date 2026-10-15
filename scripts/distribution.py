@@ -155,7 +155,8 @@ def record_dependency_review(root, package, decision):
 def export_local(root, package, prefix):
     destination = package / 'compliance'; destination.mkdir(parents=True, exist_ok=True)
     for name in ('PHOTO_CREDITS.md', 'CONFORMIDADE.md', 'REPORTAR_PROBLEMA.md', 'DIREITOS_E_LICENCAS.md',
-                 'RELATORIO_CONFORMIDADE.md', 'CATALOGO_CHANGELOG.md', 'VERSIONAMENTO.md'):
+                 'RELATORIO_CONFORMIDADE.md', 'CATALOGO_CHANGELOG.md', 'VERSIONAMENTO.md',
+                 'DICAS_E_PONTUACAO.md', 'AUDITORIA_ASSISTENCIA.json'):
         source = root / 'docs' / name
         if source.is_file(): shutil.copy2(source, destination / name)
     for name in ('credits.json', 'photo_provenance.json', 'content_policy.json'):
