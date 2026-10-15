@@ -16,6 +16,8 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
+from content_governance import (license_allowed, observation_eligible, archive_permission,
+                                generate_credits, load as load_governance, save as save_governance)
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 KINGDOM_ROOTS = {
@@ -25,7 +27,10 @@ KINGDOM_ROOTS = {
 }
 ALLOWED_LICENSES = {"cc0", "cc-by"}
 LICENSE_URLS = {"cc0": "https://creativecommons.org/publicdomain/zero/1.0/",
-                "cc-by": "https://creativecommons.org/licenses/by/4.0/"}
+                "cc-by": "https://creativecommons.org/licenses/by/4.0/",
+                "cc-by-nc": "https://creativecommons.org/licenses/by-nc/4.0/",
+                "cc-by-sa": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "cc-by-nd": "https://creativecommons.org/licenses/by-nd/4.0/"}
 
 
 def educational_kingdom(ancestors):
@@ -36,11 +41,11 @@ def educational_kingdom(ancestors):
 
 
 def permitted_photo(photo):
-    return (photo.get("license_code") in ALLOWED_LICENSES
+    dimensions = photo.get('original_dimensions') or {}
+    return (license_allowed(photo, ROOT)
             and not photo.get("hidden") and not photo.get("flags")
-            and bool(photo.get("attribution")) and bool(photo.get("url"))
-            and min(photo.get("original_dimensions", {}).get("width", 0),
-                    photo.get("original_dimensions", {}).get("height", 0)) >= 320)
+            and bool(photo.get("attribution")) and photo.get('attribution') != 'no rights reserved' and bool(photo.get("url"))
+            and min(dimensions.get("width", 0), dimensions.get("height", 0)) >= 320)
 
 
 def apply_photo_reviews(species):
@@ -64,11 +69,15 @@ class Api:
         self.cache.mkdir(parents=True, exist_ok=True)
         self.offline = offline
         self.last_request = 0
+        self.last_collected_at = None
+        self.last_origin = 'legacy_cache'
 
     def get(self, path, **params):
         url = "https://api.inaturalist.org/v1/" + path + "?" + urllib.parse.urlencode(params)
         cached = self.cache / (hashlib.sha256(url.encode()).hexdigest() + ".json")
         if cached.exists():
+            self.last_origin = 'cached_api'
+            self.last_collected_at = load_governance(cached.with_suffix('.meta.json'), {}).get('collected_at')
             return json.loads(cached.read_text(encoding="utf-8"))
         if self.offline:
             raise RuntimeError("Resposta não disponível no cache offline: " + url)
@@ -82,7 +91,15 @@ class Api:
                 if not isinstance(data.get("results"), list):
                     raise ValueError("Resposta sem results")
                 cached.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+                self.last_collected_at = datetime.now(timezone.utc).isoformat()
+                self.last_origin = 'live_api'
+                save_governance(cached.with_suffix('.meta.json'), {'collected_at': self.last_collected_at, 'url': url})
                 return data
+            except urllib.error.HTTPError as error:
+                if error.code == 429:
+                    raise RuntimeError('API limitou as consultas; interrompido sem retry. Retry-After: ' + str(error.headers.get('Retry-After'))) from error
+                if attempt == 3: raise RuntimeError(f'HTTP {error.code}: {url}') from error
+                time.sleep(2 ** attempt)
             except (urllib.error.URLError, OSError, http.client.HTTPException, ValueError) as error:
                 if attempt == 3:
                     raise RuntimeError(f"Falha em {url}: {error}") from error
@@ -172,9 +189,15 @@ class Taxonomy:
 
 
 def download_photo(photo, offline=False, size="large", refresh=False):
+    # Enforce per-photo permission even for direct callers and existing caches.
+    # The observation's license never authorizes its photographs.
+    if not permitted_photo(photo):
+        raise ValueError("Fotografia bloqueada antes do download: licença, autoria ou qualidade fora da política.")
     if size not in {"medium","large"}:
         raise ValueError("Tamanho de fotografia inválido")
     source_url = photo["url"].replace("/square.", "/" + size + ".")
+    if not str(photo.get('id', '')).isdigit() or f"/photos/{photo['id']}/" not in urllib.parse.urlparse(source_url).path:
+        raise ValueError("URL não corresponde ao identificador individual da fotografia.")
     host = urllib.parse.urlparse(source_url).hostname or ""
     if not (source_url.startswith("https://") and
             (host.endswith(".inaturalist.org") or host == "inaturalist-open-data.s3.amazonaws.com")):
@@ -201,7 +224,7 @@ def download_photo(photo, offline=False, size="large", refresh=False):
 
 def save_json(path, value):
     temporary = path.with_suffix(path.suffix + ".part")
-    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     temporary.replace(path)
 
 
@@ -249,8 +272,8 @@ def import_catalog(count=20, max_pages=5, offline=False):
                             or not re.fullmatch(r"[A-Z][a-z]+ [a-z][a-z-]+", taxon.get("name", ""))):
                             continue
                         photo = next((p for p in obs.get("photos", []) if permitted_photo(p)), None)
-                        if photo:
-                            observations.setdefault(source_id, (obs, photo))
+                        if photo and observation_eligible(obs, photo, source_id):
+                            observations.setdefault(source_id, (obs, photo, api.last_origin, api.last_collected_at))
                 ids = list(observations)
                 details = {}
                 for offset in range(0, len(ids), 30):
@@ -267,7 +290,7 @@ def import_catalog(count=20, max_pages=5, offline=False):
                     genus = (taxon or {}).get("name", "").split(" ")[0]
                     (repeats if genus in genus_seen else candidates).append((source_id, observation, taxon))
                     genus_seen.add(genus)
-                for source_id, (obs, photo), taxon in candidates + repeats:
+                for source_id, (obs, photo, origin, collected_at), taxon in candidates + repeats:
                     if already_imported + added >= count:
                         break
                     if source_id in known_source_ids or not taxon:
@@ -279,6 +302,9 @@ def import_catalog(count=20, max_pages=5, offline=False):
                         continue
                     if taxon.get("rank") != "species" or not taxon.get("is_active"):
                         continue
+                    if taxon.get('name') != (obs.get('taxon') or {}).get('name') or str(taxon.get('id')) != source_id:
+                        report['skipped'].append({'taxon': source_id, 'reason': 'Identidade divergente entre observação e detalhe taxonômico.'})
+                        continue
                     try:
                         image_path, image_url = download_photo(photo, offline)
                     except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException) as error:
@@ -288,6 +314,7 @@ def import_catalog(count=20, max_pages=5, offline=False):
                     family = next((t["name"] for t in ancestors if t.get("rank") == "family"), "")
                     genus = next((t["name"] for t in ancestors if t.get("rank") == "genus"), taxon["name"].split()[0])
                     source = f"https://www.inaturalist.org/observations/{obs['id']}"
+                    evidence_path = archive_permission(ROOT, obs, photo, origin, collected_at)
                     item = {"id": next_id, "name": taxon["name"],
                         "common_name": taxon.get("preferred_common_name", ""),
                         "fact": "",
@@ -301,9 +328,20 @@ def import_catalog(count=20, max_pages=5, offline=False):
                             "license_url": LICENSE_URLS[photo["license_code"]], "author": photo["attribution"],
                             "source": source, "url": image_url, "path": image_path,
                             "sha256": hashlib.sha256((ROOT / image_path).read_bytes()).hexdigest(),
-                            "research_grade": True, "visual_quiz": False, "approved_ranks": [],
-                            "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+                            "research_grade": True, "source_verified": True, "visual_quiz": False, "approved_ranks": [],
+                            "permission_evidence": evidence_path,
+                            "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
                             "review": "Identificação comunitária de grau científico; revisão editorial pendente."}}
+                    provenance_path = ROOT / 'resources/data/photo_provenance.json'
+                    provenance = load_governance(provenance_path, {})
+                    provenance[str(photo['id'])] = {'photo_id': str(photo['id']), 'observation_id': str(obs['id']),
+                        'photo_url': f"https://www.inaturalist.org/photos/{photo['id']}", 'observation_url': source,
+                        'download_url': image_url, 'credit_as_supplied': photo['attribution'], 'title': photo.get('title'),
+                        'license': photo['license_code'], 'declared_license_url': LICENSE_URLS.get(photo['license_code']),
+                        'license_version': None, 'original_collected_at': collected_at, 'evidence_paths': [evidence_path],
+                        'sha256': item['photo']['sha256'], 'modifications': item['photo']['modifications'],
+                        'permission_state': 'pending_version_confirmation'}
+                    save_governance(provenance_path, provenance)
                     species.append(item)
                     known_names.add(item["name"].casefold())
                     known_source_ids.add(source_id)
@@ -339,15 +377,7 @@ def import_catalog(count=20, max_pages=5, offline=False):
             ET.SubElement(group, "file").text = name
     ET.indent(tree, space="    ")
     tree.write(resource_path, encoding="unicode")
-    credits = ["# Créditos das fotografias", "", "Somente CC0 e CC BY; licença conferida por fotografia. Os arquivos são variantes originais do iNaturalist, sem recorte ou retoque. Uma licença aceita não constitui aprovação para o quiz. Autoria não identificada é uma pendência de curadoria.", ""]
-    for item in species:
-        photo = item.get("photo")
-        if photo:
-            author = photo['author'] if photo['author'] != 'no rights reserved' else 'Autoria não identificada; excluída do quiz'
-            usage = 'imagem de apoio; identificação por pistas' if photo.get('role') == 'supporting' else 'identificação visual'
-            subject = f" — Táxon do registro de origem: {photo.get('scientific_name', item['name'])}" if photo.get('role') == 'supporting' else ''
-            credits.append(f"- **{item['name']}** — {author} — [{photo['license'].upper()}]({photo['license_url']}) — [registro]({photo['source']}) — `{photo['path']}` — {photo.get('modifications', 'Modificações não verificadas.')} — uso: {usage}{subject} — níveis: {', '.join(photo.get('approved_ranks', [])) or 'não aprovado'}")
-    (ROOT / "docs/PHOTO_CREDITS.md").write_text("\n".join(credits) + "\n", encoding="utf-8")
+    generate_credits(ROOT)
     return report
 
 

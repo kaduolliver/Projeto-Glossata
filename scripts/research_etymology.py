@@ -4,11 +4,11 @@ Checks the species' existing scientific reference and group nomenclature bases.
 HTTP success and a keyword are search leads, not verification. Human review of
 an explicit etymological statement remains necessary before updating the corpus.
 """
-import concurrent.futures
 import datetime
 import json
 import pathlib
 import re
+import argparse
 import urllib.request
 from urllib.parse import urlparse
 
@@ -24,7 +24,7 @@ def inspect(url):
     except Exception as error:
         return {'url': url, 'retrieved': False, 'error': type(error).__name__}
 
-def research():
+def research(online=False):
     folder = ROOT / 'resources/data'
     catalog = json.loads((folder / 'species.json').read_text(encoding='utf8'))
     hints = json.loads((folder / 'hint_education.json').read_text(encoding='utf8'))
@@ -48,12 +48,24 @@ def research():
         entries[sid].update(scientific_name=species['name'], verified_ranks=list(hints[sid].get('etymology_hints', {})),
                             pending_parts=[r for r in ('genus', 'species') if r not in hints[sid].get('etymology_hints', {})], sources_checked=urls)
         sources.update(urls)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
-        checks = dict(zip(sorted(sources), executor.map(inspect, sorted(sources))))
+    if online:
+        from time import sleep
+        checks = {}
+        for url in sorted(sources):
+            checks[url] = inspect(url)
+            sleep(1.1)
+    else:
+        checks = {url: {'url': url, 'state': 'not_checked_offline'} for url in sorted(sources)}
     data = {'checked_on': datetime.date.today().isoformat(),
+            'verified_ranks_notice': 'Legacy availability field; not new scientific approval. See governance/review history.',
             'scope': 'Reference triage, not an exhaustive search or automatic scientific approval.',
             'species': entries, 'reference_checks': checks}
-    (folder / 'etymology_research.json').write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
-    print('Species:', len(entries), 'references:', len(checks), 'retrieved:', sum(c['retrieved'] for c in checks.values()))
+    output = ROOT / 'build/update-proposals' / ('etymology-' + datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S%fZ') + '.json')
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
+    print('Species:', len(entries), 'references:', len(checks), 'retrieved:', sum(c.get('retrieved', False) for c in checks.values()))
+    return data
 
-if __name__ == '__main__': research()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__); parser.add_argument('--online', action='store_true')
+    research(parser.parse_args().online)

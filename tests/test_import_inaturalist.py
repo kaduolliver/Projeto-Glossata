@@ -12,6 +12,7 @@ import unittest
 from unittest import mock
 
 PROJECT = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT / "scripts"))
 spec = importlib.util.spec_from_file_location("importer", PROJECT / "scripts/import_inaturalist.py")
 importer = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(importer)
@@ -150,19 +151,21 @@ class ImportTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json',
+                         'photo_provenance.json','content_policy.json','education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
+            shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
             self.assertEqual(actual,expected)
 
-    def test_education_rejects_wrong_identity_unreviewed_notes_and_regional_status(self):
+    def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
             shutil.copyfile(PROJECT/'resources/data/species.json',root/'resources/data/species.json')
-            for field,value in [('scientific_name','Unrelated replacement'),('summary',dict(original['126']['summary'],verified=False)),('conservation',dict(original['126']['conservation'],scope_name='Índia'))]:
+            for field,value in [('scientific_name','Unrelated replacement'),('summary',dict(original['126']['summary'],text='')),('conservation',dict(original['126']['conservation'],scope_name='Índia'))]:
                 profiles=json.loads(json.dumps(original))
                 profiles['126'][field]=value
                 (root/'resources/data/species_profiles.json').write_text(json.dumps(profiles),encoding='utf8')
@@ -222,8 +225,9 @@ class ImportTests(unittest.TestCase):
             for name,data in [('species.json',species),('hint_education.json',hints),('species_profiles.json',profiles),('etymology_research.json',prior)]:
                 (folder/name).write_text(json.dumps(data),encoding='utf8')
             with mock.patch.object(research,'ROOT',root),mock.patch.object(research,'inspect',return_value={'retrieved':True,'etymology_keyword':True}),contextlib.redirect_stdout(io.StringIO()):
-                research.research()
-            result=json.loads((folder/'etymology_research.json').read_text(encoding='utf8'))['species']['1']
+                report=research.research()
+            result=report['species']['1']
+            self.assertEqual(json.loads((folder/'etymology_research.json').read_text(encoding='utf8')),prior)
             self.assertEqual(result['search_queries'],prior['species']['1']['search_queries'])
             self.assertEqual(result['verified_ranks'],[])
             self.assertEqual(result['pending_parts'],['genus','species'])

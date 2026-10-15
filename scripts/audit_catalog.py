@@ -5,6 +5,7 @@ import hashlib
 import json
 import pathlib
 from refine_photos import image_dimensions
+from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RANKS = ('species', 'genus', 'family', 'order', 'class', 'phylum', 'kingdom')
@@ -18,6 +19,14 @@ def audit(root=ROOT):
     species, taxons = read('species.json'), read('taxonomy.json')
     nodes = {t['id']: t for t in taxons}
     hints, reviews, education = read('hint_education.json'), read('curation_reviews.json'), read('education.json')
+    baseline = load(root / 'resources/compliance/review_baseline.json', {})
+    current = records(root)
+    try: events = read_ledger(root)
+    except ValueError: events = []  # The separate governance report fails integrity.
+    settings = policy(root)
+    def usable(sid, topic):
+        key = f'topic:{sid}:{topic}'
+        return status(key, current[key], baseline, events, settings)['usable']
     eligible = {r: [] for r in RANKS}
     diversity, valid_photos, incompatible_licenses, errors, incomplete = {}, [], [], [], []
     etymology, morphology, competitive = [], [], []
@@ -48,28 +57,32 @@ def audit(root=ROOT):
             group[key][next((t['name'] for t in lineage if t['rank']==rank), 'unclassified')] += 1
         p = s.get('photo', {}); path = root / p.get('path', '')
         association = p.get('scientific_name') == s['name'] if p.get('role', 'identification') == 'identification' else p.get('supporting_for') == s['name'] and kingdom == 'Monera'
-        license_ok = p.get('license') in LICENSES and p.get('license_url') == LICENSES.get(p.get('license'))
+        license_ok = ((p.get('license') in LICENSES and p.get('license_url') == LICENSES.get(p.get('license')))
+                      or bool(documented_exception(p, 'distribution', root))) and license_allowed(p, root, 'distribution')
         if not license_ok: incompatible_licenses.append(sid)
-        valid = association and license_ok and p.get('source_verified') and p.get('author') and p.get('author') != 'no rights reserved' and path.is_file()
+        valid = association and p.get('source_verified') and path.is_file()
         if valid:
-            valid = hashlib.sha256(path.read_bytes()).hexdigest() == p.get('sha256') and min(image_dimensions(path)) >= 300
+            try:
+                valid = hashlib.sha256(path.read_bytes()).hexdigest() == p.get('sha256') and min(image_dimensions(path)) >= 300
+            except (OSError, ValueError): valid = False
         if valid: valid_photos.append(sid)
         else: errors.append({'id': sid, 'error': 'photo_integrity_or_metadata'})
-        approved = valid and review.get('photo') == 'approved' and review.get('photo_id') == p.get('id') and review.get('taxonomy') == 'approved'
+        approved = valid and license_ok and usable(sid, 'photo') and usable(sid, 'taxonomy')
         for rank in RANKS:
             answer = s['name'] if rank == 'species' else next((t['name'] for t in lineage if t['rank']==rank), '')
             if approved and rank in p.get('approved_ranks', []) and answer: eligible[rank].append((sid, answer))
-        if review.get('etymology') == 'approved' and any(n.get('verified') and n.get('source_url', '').startswith('https://') and 'inaturalist.org' not in n['source_url'] for n in content.get('etymology_hints', {}).values()): etymology.append(sid)
+        if usable(sid, 'etymology') and any(n.get('verified') and n.get('source_url', '').startswith('https://') and 'inaturalist.org' not in n['source_url'] for n in content.get('etymology_hints', {}).values()): etymology.append(sid)
         m = content.get('morphological_hint', {})
-        if review.get('morphology') == 'approved' and m.get('photo_id') == p.get('id') and m.get('reference'): morphology.append(sid)
+        if usable(sid, 'morphology') and m.get('photo_id') == p.get('id') and m.get('reference'): morphology.append(sid)
         pending = [f for f in ('taxonomy', 'photo', 'etymology', 'morphology', 'education') if review.get(f) != 'approved']
         if pending: incomplete.append({'id': sid, 'name': s['name'], 'fields': pending})
     for rank, values in eligible.items():
         if len({name.casefold() for _, name in values}) < 4: eligible[rank] = []
     by_id = {str(s['id']): s for s in species}
     competitive = [sid for sid, _ in eligible['genus'] if by_id[sid]['photo'].get('role', 'identification') == 'identification']
-    return {'total_species': len(species), 'valid_photo_records': len(valid_photos),
-            'photo_validation': 'SHA-256, metadata and dimensions; full decoder validation belongs to Qt tests',
+    return {'governance': audit_governance(root), 'total_species': len(species), 'valid_photo_records': len(valid_photos),
+            'photo_validation': 'Technical SHA-256, association and dimensions; decoder belongs to Qt tests. Not permission or scientific certification.',
+            'legacy_metrics_notice': 'verified_etymology/morphology are backward-compatible content availability metrics, including legacy notes; not counts of traceable scientific approvals.',
             'eligible_by_rank': {r: len(v) for r, v in eligible.items()}, 'eligible_ids_by_rank': {r: [sid for sid, _ in v] for r, v in eligible.items()},
             'competitive_pool': len(competitive), 'verified_etymology': len(etymology), 'verified_morphology': len(morphology),
             'taxon_introductions': len(education.get('taxons', {})), 'diversity': diversity,
@@ -79,8 +92,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=pathlib.Path, default=ROOT / 'build/catalog-quality.json')
     parser.add_argument('--strict', action='store_true')
+    parser.add_argument('--distribution', action='store_true', help='Fail closed on permission and traceability gaps; not a certification')
     args = parser.parse_args(); result = audit()
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
     print(json.dumps({k: result[k] for k in ('total_species', 'valid_photo_records', 'eligible_by_rank', 'competitive_pool', 'verified_etymology', 'verified_morphology', 'taxon_introductions')}, ensure_ascii=False))
     if args.strict and (result['errors'] or result['incompatible_photo_licenses']): raise SystemExit(1)
+    if result['governance']['technical_errors']: raise SystemExit(1)
+    if args.distribution and (result['governance']['repository_distribution_blocked']
+                             or any(f['severity'] == 'high' for f in result['governance']['scientific_findings'])):
+        print('DISTRIBUIÇÃO BLOQUEADA: consulte governança, permissões e decisões pendentes no relatório.')
+        raise SystemExit(2)
