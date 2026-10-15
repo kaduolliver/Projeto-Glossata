@@ -364,6 +364,8 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         controller.answerSelected(correctAnswer()); controller.nextQuestion();
     }
     QCOMPARE(controller.questionPhoto().value("speciesId").toInt(),126);
+    window->resize(1240,820); showPage("quiz");
+    QVERIFY(snapshot("quiz-lion"));
     controller.answerSelected(correctAnswer());
     window->resize(1240,820); showPage("info");
     QCOMPARE(findVisualItem(window->contentItem(),"speciesDisplayName")->property("text").toString(),QString("Leão"));

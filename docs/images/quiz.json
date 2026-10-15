@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-15T22:51:09.919390+00:00",
+  "method": "QQuickWindow::grabWindow / production QML and GameController in GlossataInterfaceTests",
+  "application_version": "1.1.0",
+  "application_binary_sha256": "469ccafd468b75011bcfd25736104caac838380f255c89a8bc6bec8469b6d293",
+  "capture_binary_sha256": "6c45c821c9fbe68297a190c4ca79d8acdf22bc6cc13bb5396a790674b1156dde",
+  "capture_source": "tests/QmlInterfaceTests.cpp: navigateAndConfirmAnswers, snapshot quiz-lion",
+  "capture_source_sha256": "18879bf440bba5b66b87fc22c91b67f912d4083d21622417a84cff69ffba2793",
+  "build_manifest_sha256": "edd69525ee17c66a9ad8460fa5410b7bdd276e8eff74db53452eeb4bd85af276",
+  "image_sha256": "57e2f14f8710da0b78a3cc462dff24dc6a6f0c436f4e7f0f93cfa1a101ec979f",
+  "width": 1240,
+  "height": 820,
+  "privacy": "Temporary SQLite database and default profile; Discord disabled; no player data accessed.",
+  "view": "Quiz de identificacao do genero, Animalia; fotografia de Panthera leo; quatro alternativas reais.",
+  "modifications": "Captura integral da area de conteudo da janela, sem edicao posterior. Foto redimensionada para exibicao na interface.",
+  "photo": {
+    "photo_id": "748172022",
+    "observation_id": "407163105",
+    "photo_url": "https://www.inaturalist.org/photos/748172022",
+    "observation_url": "https://www.inaturalist.org/observations/407163105",
+    "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/748172022/large.jpg",
+    "credit_as_supplied": "(c) Patrick Jackson, some rights reserved (CC BY)",
+    "title": null,
+    "license": "cc-by",
+    "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_version": null,
+    "original_collected_at": null,
+    "evidence_paths": [
+      "resources/compliance/permissions/1433815d70ed6eb14ef8f9cc024897456ec3a3de2859d0acc25dcb283bbe3aec.json"
+    ],
+    "sha256": "f21c3adae008e5b9b20798c058b19b2a8f007c034e268bb12e053518613bbb47",
+    "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+    "permission_state": "legacy_evidence_incomplete",
+    "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+  },
+  "license_notice": "CC BY declarada pela fonte. Versao da licenca e data original de coleta ainda nao comprovadas; esta captura nao concede nem comprova permissao adicional."
+}

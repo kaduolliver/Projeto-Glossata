@@ -8,6 +8,7 @@ Base anterior: CMake `1.0`, equivalente a `1.0.0`; não havia tags de lançament
 
 ### Adições
 
+- Captura real do quiz no README, com perfil temporário, atribuição da fotografia e registro da origem da captura.
 - Governança por tópico: evidências, responsável, revisão editorial ou por especialista, expiração configurável, histórico e invalidação após mudanças.
 - Créditos offline e informações de revisão nas fichas; caminho para comunicar erro ou problema de atribuição.
 - Importação com política de licença por fotografia e propostas de atualização separadas do conteúdo publicado.

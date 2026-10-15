@@ -24,6 +24,10 @@ A aplicação disponível atualmente é o **Projeto Glossata**, um programa desk
 
 *Captura do aplicativo em execução, com perfil temporário. [Origem da captura](docs/images/tela-inicial.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
 
+![Quiz real do Projeto Glossata, com fotografia de um leão, quatro alternativas de identificação do gênero, pontuação possível e botão de dica.](docs/images/quiz.png)
+
+*Quiz em execução com perfil temporário. Fotografia: Patrick Jackson, conforme o crédito da fonte; licença declarada [CC BY](https://creativecommons.org/licenses/by/4.0/), com versão ainda não comprovada. [Foto original](https://www.inaturalist.org/photos/748172022) · [Origem da captura e atribuição](docs/images/quiz.json). A proveniência legada da foto mantém as [pendências documentadas](docs/RELATORIO_CONFORMIDADE.md).*
+
 ### Missão
 
 Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferramentas gratuitas, conteúdo com referências verificáveis e experiências interativas de aprendizagem.
