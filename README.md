@@ -1,83 +1,251 @@
-# Glossata Quiz
+# Projeto Glossata
 
-Educational desktop quiz built with C++17, Qt 6 Quick/QML, and SQLite. Explore the traditional five educational kingdoms: Animalia, Plantae, Fungi, Protista, and Monera.
+**Explore a diversidade da vida.**
 
-## Current behavior
+> Uma iniciativa educacional independente, gratuita e sem fins lucrativos, dedicada à divulgação científica e ao aprendizado sobre a biodiversidade.
 
-- A dark botanical interface provides a home screen, kingdom selection, a taxonomic explorer with clickable breadcrumbs, quiz, answer review, species information, results, statistics, achievements, and profile settings.
-- The player selects one of four distinct choices at the same taxonomic rank and confirms it. Correct/incorrect feedback stays visible until they continue to the next question.
-- Games can use the mixed catalog or descendants of a selected group. Identification levels are offered only when at least four distinct valid answers exist.
-- A Free game starts at question 1 and continues until **Voltar → Encerrar partida**. Canceling the confirmation preserves the question, selection and hint. Confirming saves once and returns to the previous explorer.
-- Questions use a neutral observation prompt and three optional categories of sourced hints. Unreviewed facts and generic import descriptions are kept as historical data and are not used as clues.
-- The final score is saved once to the local SQLite ranking when the player ends a Free game or completes the Competitive format.
-- The ranking has one entry per player name (case insensitive using SQLite NOCASE). Best scores and latest games are kept separately. Competitive records are isolated by question count, group, rank, difficulty, rules and content version.
-- The offline catalog contains 122 active species: 42 Animalia and 20 each in Plantae, Fungi, Protista and Monera. Scientific taxonomy and source identifiers remain separate from the educational grouping. Former organisms explicitly replaced by the user are archived with their original IDs.
-- Player profiles are stored locally in SQLite and can be created, renamed, selected, or deleted. The last profile cannot be deleted.
-- Each game retains the player name captured at its start; profile changes apply to future games.
-- Failed score saves are shown in the UI and can be retried without duplicates. A pending score blocks a new game and remains in memory until saved or the app closes.
-- Statistics show the current game and available per-profile answer history. Six achievement challenges remain relative to the current game; the local ranking persists.
-- All 122 active organisms have an image file that passes technical validation; there are 120 distinct image files. The resolver checks source identity, credits, license, SHA-256, resource existence, decoding and minimum resolution. Every question and its review use the same photo snapshot.
-- The visual catalog has 102 organisms approved for at least one rank. Monera retains its 20 organisms and uses clearly labeled supporting photographs and classification clues; these images do not establish species identity. Mixed genus play currently includes 101 records across the five educational kingdoms.
-- The explorer loads 16 sourced taxon introductions, rounded selectors and styled breadcrumbs. Taxonomic performance groups real answers by educational kingdom and source phylum/division ID.
-- Species information provides 122 Portuguese profiles with an introduction, distribution or documented occurrence, morphology, conservation, plain-language curiosity and hint, plus feeding/nutrition where documented. Scientific classification and dated references expand within the same dark interface. See [species profiles](docs/FICHAS_ESPECIES.md).
-- The user-supplied temporary branding image is embedded in the Windows executable and window icon. `package/Glossata Quiz.lnk` starts the game with this icon.
-- Optional Discord Rich Presence connects locally to the desktop client using the configured Application ID and asset key. See [Discord setup](docs/DISCORD_SETUP.md) to upload the image and test it.
+![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
+![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
+![Qt](https://img.shields.io/badge/Qt-6-41CD52)
+![SQLite](https://img.shields.io/badge/SQLite-local-003B57)
+![Plataforma](https://img.shields.io/badge/plataforma-Windows-informational)
 
-## Build and test on Windows
+## Sobre o projeto
 
-Run from the project root with the MSYS2 UCRT64 CMake, Ninja, compiler, Qt 6 Core/Gui/Quick/Sql/Network/Test packages, and Python 3.11+ available:
+O **Projeto Glossata** nasceu como um jogo educativo de identificação de organismos e está evoluindo para uma **plataforma de educação e exploração da natureza**. Seu propósito é reunir informação científica acessível, recursos visuais e atividades interativas para estimular a curiosidade e tornar o estudo da biodiversidade mais envolvente.
 
-```powershell
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-ctest --test-dir build --output-on-failure
-$qmlPaths = @(Get-ChildItem resources/qml -Recurse -Filter '*.qml' | ForEach-Object { $_.FullName })
-qmllint @qmlPaths --unqualified disable
-```
+O nome *Glossata* faz referência a um clado de lepidópteros que inclui a maioria das borboletas e mariposas — uma homenagem à origem do projeto, **não uma restrição ao conteúdo**. A iniciativa pretende abordar a diversidade da vida em diferentes grupos biológicos, suas características, relações evolutivas e papéis nos ecossistemas.
 
-The build exports `build/compile_commands.json` for VS Code C/C++ IntelliSense. Open this project directory as the workspace root.
-CTest runs four suites: rules/persistence, an offscreen UI test, Discord protocol tests against isolated local fake servers, and offline import/provenance tests. UI screenshots are written to `build/tests/previews/`. Automated tests do not publish activity to a real Discord account.
+A aplicação disponível atualmente é o **Glossata Quiz**, um programa desktop em português, com catálogo local de organismos, exploração taxonômica, fichas educativas, desafios de identificação e acompanhamento do desempenho. A visão de longo prazo é integrar esses recursos a uma **enciclopédia interativa da natureza**.
 
-## Strategic hints and exact points
+### Missão
 
-The existing Hint button offers taxonomic, etymological and morphological assistance. Correct answers award 6, 3 or 2 integer units (one point = 6); combined hints use the lowest cap. Opening the panel costs nothing. Correct-answer counts, accuracy and achievements remain separate from points. Existing history is migrated exactly once, and new per-answer records are saved atomically with the latest result per player. [Technical report, scientific coverage and limitations](docs/DICAS_E_PONTUACAO.md).
+Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferramentas gratuitas, conteúdo com referências verificáveis e experiências interativas de aprendizagem.
 
-## Catalog and documentation
+### Princípios
 
-| Educational kingdom | Species |
-|---|---:|
+- **Acesso ao conhecimento:** proposta educacional gratuita e sem finalidade lucrativa.
+- **Rigor e transparência:** identificação das fontes, das limitações e dos estágios de curadoria.
+- **Aprendizagem ativa:** uso de exploração, observação, questões e feedback para consolidar conceitos.
+- **Respeito à biodiversidade:** incentivo à compreensão da diversidade biológica e de sua conservação.
+- **Evolução contínua:** aperfeiçoamento gradual de dados, recursos e acessibilidade.
+
+## Estado atual
+
+**Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
+
+| Recurso | Situação |
+| --- | --- |
+| Interface desktop com Qt Quick/QML | Implementado |
+| Exploração de grupos e níveis taxonômicos | Implementado |
+| Quiz com quatro alternativas e feedback | Implementado |
+| Modos Livre e Competitivo | Implementado |
+| Dicas estratégicas com pontuação proporcional | Implementado |
+| Fichas educativas e fontes para organismos do catálogo | Implementado; curadoria em evolução |
+| Perfis, histórico local, estatísticas e rankings | Implementado |
+| Catálogo e funcionamento offline | Implementado |
+| Enciclopédia ampla com pesquisa avançada | Visão futura |
+| Trilhas de aprendizagem e atlas interativo | Visão futura |
+| Plataforma web e colaboração pública | Possibilidades futuras, sem cronograma definido |
+
+## Biodiversidade e classificação
+
+O catálogo atual utiliza os **cinco reinos do modelo didático tradicional** como portas de entrada para o aprendizado:
+
+| Reino didático | Organismos ativos no catálogo |
+| --- | ---: |
 | Animalia | 42 |
 | Plantae | 20 |
 | Fungi | 20 |
 | Protista | 20 |
 | Monera | 20 |
+| **Total** | **122** |
 
-The importer uses Python's standard library and caches iNaturalist API responses. Reimporting with the same target is idempotent:
+> **Nota científica:** a classificação tradicional dos cinco reinos é usada como organização pedagógica, não como representação definitiva da filogenia moderna. Especialmente *Monera* e *Protista* não constituem grupos naturais equivalentes aos demais nas classificações contemporâneas. O projeto mantém separadas a organização didática e a taxonomia científica registrada nas fontes, e pretende ampliar gradualmente a apresentação de relações evolutivas e sistemas atuais de classificação.
+
+## Funcionalidades implementadas
+
+### Exploração taxonômica
+
+Navegação por reinos, grupos e subgrupos, com caminhos clicáveis, textos introdutórios e níveis de identificação disponíveis conforme a cobertura do catálogo. Os níveis de quiz são oferecidos apenas quando há alternativas suficientes para uma questão válida.
+
+### Glossata Quiz
+
+Cada questão apresenta quatro alternativas de identificação no mesmo nível taxonômico, seleção, confirmação e feedback. A fotografia e os dados utilizados na resposta são preservados para a etapa de revisão.
+
+- **Modo Livre:** exploração contínua, com filtros e diferentes políticas de alternativas; a partida termina quando o jogador decide encerrá-la.
+- **Modo Competitivo:** 20 questões em condições padronizadas, sem repetição de organismos na mesma partida, com regras de elegibilidade e ranking específicas.
+
+### Dicas estratégicas e pontuação
+
+O quiz oferece até três categorias de dicas, conforme a disponibilidade e a validação do conteúdo:
+
+| Categoria | Pontuação máxima de um acerto |
+| --- | ---: |
+| Sem dica | 1 ponto |
+| Taxonômica | 1 ponto |
+| Etimológica | 0,5 ponto |
+| Morfológica | 1/3 de ponto |
+
+Abrir o painel de dicas não reduz a pontuação. Quando mais de uma dica é utilizada, vale o **menor teto** entre as categorias reveladas. Internamente, a pontuação é representada por unidades inteiras (6, 3 ou 2), para evitar erros de arredondamento na persistência e na comparação dos resultados. A disponibilidade das dicas depende da curadoria e das condições da questão.
+
+### Fichas educativas
+
+Os 122 organismos ativos têm fichas em português com informações como apresentação, características morfológicas, distribuição ou ocorrência documentada, conservação e curiosidades; informações sobre alimentação ou nutrição aparecem quando documentadas. As fichas disponibilizam classificação e referências, com cobertura e revisão ainda em evolução.
+
+### Imagens e proveniência
+
+O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Existe validação técnica de arquivos, fonte, créditos, licença, identidade e integridade. **Nem toda imagem é evidência suficiente para identificar uma espécie:** as imagens de apoio de Monera são sinalizadas como tal, e a elegibilidade visual varia conforme o nível taxonômico e a revisão.
+
+### Progresso e perfis
+
+- Perfis locais de jogadores, com criação, renomeação, seleção e exclusão sob regras de integridade.
+- Histórico de respostas e partidas, métricas de precisão e uso de dicas.
+- Rankings locais com distinção entre recorde e última partida.
+- Conquistas e estatísticas associadas à experiência disponível.
+- Persistência em SQLite e possibilidade de usar o aplicativo sem internet após a preparação dos recursos.
+
+### Discord (opcional)
+
+Integração local com o Discord Rich Presence, configurável e desativável, sem exigir conexão para as funções principais do jogo.
+
+## Tecnologias
+
+| Camada | Tecnologias |
+| --- | --- |
+| Linguagem principal | C++17 |
+| Interface | Qt 6 Quick / QML |
+| Persistência | SQLite / Qt SQL |
+| Compilação | CMake, Ninja, GCC via MSYS2 UCRT64 |
+| Importação e auditoria de dados | Python 3.11+ |
+| Testes | CTest, Qt Test e testes auxiliares em Python |
+| Dados e recursos | JSON, imagens e recursos incorporados ao aplicativo |
+
+### Organização do repositório
+
+```text
+Projeto-Glossata/
+├── docs/                 # Documentação técnica, científica e de curadoria
+├── package/              # Recursos e scripts de distribuição para Windows
+├── resources/            # Dados, imagens, QML e elementos visuais
+├── scripts/              # Importação, auditoria e empacotamento
+├── src/                  # Código-fonte C++
+├── tests/                # Testes automatizados
+├── CMakeLists.txt        # Configuração da compilação
+├── resources.qrc         # Manifesto de recursos Qt
+├── PROJECT_CONTEXT.md    # Contexto e decisões técnicas do projeto
+└── README.md
+```
+
+A arquitetura separa regras de domínio, serviços de aplicação, interfaces de persistência, adaptadores de infraestrutura e apresentação QML. O catálogo e o histórico são mantidos localmente, e o acesso a fontes externas é concentrado nos processos de preparação e atualização dos dados.
+
+## Compilação e testes no Windows
+
+### Pré-requisitos
+
+- Windows;
+- **MSYS2 UCRT64** com compilador C++ compatível com C++17;
+- **CMake** e **Ninja**;
+- **Qt 6** com os componentes Core, Gui, Quick, Sql, Network e Test;
+- **Python 3.11+** para os scripts auxiliares.
+
+Garanta que o terminal utilizado tenha acesso aos executáveis e bibliotecas instalados no ambiente UCRT64.
+
+### Clonar e compilar
+
+```bash
+git clone https://github.com/kaduolliver/Projeto-Glossata.git
+cd Projeto-Glossata
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel 4
+```
+
+### Executar os testes
+
+```bash
+ctest --test-dir build --output-on-failure
+```
+
+Para verificar arquivos QML no PowerShell, com `qmllint` disponível no PATH:
 
 ```powershell
+$qmlFiles = @(Get-ChildItem resources/qml -Recurse -Filter '*.qml' | ForEach-Object { $_.FullName })
+qmllint @qmlFiles --unqualified disable
+```
+
+### Empacotar para Windows
+
+No PowerShell, após compilar:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/package.ps1
+```
+
+O processo prepara os componentes Qt e as dependências de execução para o pacote local. **O repositório não inclui executáveis e bibliotecas geradas:** um clone novo precisa ser compilado. A validação em uma instalação Windows completamente limpa ainda é um ponto a verificar.
+
+## Catálogo, atualização e curadoria
+
+A aplicação **não depende de consultas à internet durante o jogo**. Os scripts de importação utilizam fontes externas, incluindo o iNaturalist, para preparar dados e recursos locais. A proveniência e os direitos de uso das imagens devem ser respeitados.
+
+Exemplos de importação, na raiz do projeto:
+
+```bash
 python scripts/import_inaturalist.py --per-kingdom 20 --max-pages 5
 python scripts/import_inaturalist.py --offline --per-kingdom 20
 ```
 
-The target is the total number of imported species per kingdom. Increase it to request additional records. Playing and browsing the catalog do not require internet access; completing a new import offline requires previously cached responses and photos.
+A execução offline da importação exige respostas e imagens previamente armazenadas no cache. O parâmetro `--per-kingdom` define a meta total de registros importados por reino, não necessariamente a quantidade a acrescentar.
 
-See the [current replacements and Monera policy](docs/SUBSTITUICOES_CATALOGO.md), [refinement history](docs/REFINAMENTO_IDENTIFICACAO.md), [expansion history](docs/CINCO_REINOS.md), [photo credits](docs/PHOTO_CREDITS.md), and [project context](PROJECT_CONTEXT.md).
+Para executar a auditoria local de catálogo:
 
-## Remaining work
+```bash
+python scripts/audit_catalog.py --strict
+```
 
-- Continue reviewing and expanding species facts against reliable taxonomic/natural-history references.
-- Broaden representation beyond the initial Protozoa and Bacteria samples within Protista and Monera.
-- Expand persistent achievements and ranking history filters if desired.
+A curadoria distingue aprovação de identificação visual, fotografia, etimologia, morfologia e informação educativa. Conteúdos não revisados não devem ser apresentados como evidência conclusiva de identificação. Consulte os relatórios em [`docs/`](docs/) para conhecer cobertura, fontes, licenças, limitações e pendências.
 
-The Windows runtime package and launcher are generated in `package/`.
-After building, update it with `powershell -ExecutionPolicy Bypass -File scripts/package.ps1`. This deploys Qt/QML and the additional MSYS2 runtime dependencies while preserving the existing launcher and `qt.conf`.
+## Roadmap
 
-Compiled executables, Qt DLLs, import caches, generated screenshots, and personal SQLite databases are excluded from Git. A fresh clone must be built and packaged locally.
+A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidades já entregues nem compromissos de lançamento.
 
-## Livre e Competitivo
+**Curto prazo — qualidade e aprofundamento do aplicativo**
 
-O modo Livre permanece contínuo, com filtros e três políticas de alternativas. O Competitivo oferece 20 questões sem repetição de organismos, identificação de gênero e condições padronizadas. Recordes e última partida são separados; rankings competitivos não misturam configurações. Estatísticas incluem precisão, média, eficiência e uso de dicas na partida e no histórico disponível do perfil.
+- Ampliar a revisão científica das fichas, fotografias e dicas.
+- Melhorar a representatividade dos grupos biológicos e a documentação das fontes.
+- Fortalecer testes, acessibilidade, empacotamento e distribuição.
+- Evoluir filtros, estatísticas e experiência de aprendizagem.
 
-A curadoria possui estados independentes por identificação, fotografia, etimologia, morfologia e informações educativas. Execute `python scripts/audit_catalog.py --strict` para o diagnóstico offline e `powershell -ExecutionPolicy Bypass -File scripts/validate_package.ps1` após empacotar para a verificação isolada.
+**Médio prazo — enciclopédia interativa**
 
-Consulte [o relatório técnico](docs/EVOLUCAO_COMPETITIVA.md) e [a cobertura taxonômica e pendências](docs/COBERTURA_TAXONOMICA.md).
+- Introduzir busca e navegação dedicadas ao conteúdo enciclopédico.
+- Ampliar páginas de organismos e de grupos taxonômicos, com referências e contextualização evolutiva.
+- Conectar verbetes, relações taxonômicas e questionários em uma experiência integrada.
+- Planejar trilhas de estudo e recursos didáticos estruturados.
+
+**Longo prazo — ecossistema educacional**
+
+- Avaliar uma versão web e acesso multiplataforma.
+- Explorar mapas, habitats, distribuição geográfica e visualização da árvore da vida.
+- Desenvolver processos de contribuição e revisão científica comunitária.
+- Considerar conteúdos para educadores e diferentes níveis de aprendizagem.
+
+## Documentação complementar
+
+- [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) — contexto geral, arquitetura, regras e decisões técnicas.
+- [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
+- [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
+- [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.
+- [`docs/PHOTO_CREDITS.md`](docs/PHOTO_CREDITS.md) — atribuição das imagens.
+- [`docs/EVOLUCAO_COMPETITIVA.md`](docs/EVOLUCAO_COMPETITIVA.md) — regras da modalidade competitiva.
+
+## Participação e contato
+
+O projeto é atualmente mantido de forma independente. Ideias, correções e relatos de problemas podem ser apresentados pelas [Issues do repositório](https://github.com/kaduolliver/Projeto-Glossata/issues). Contribuições de código ou conteúdo devem ser alinhadas previamente com a manutenção, especialmente quando envolverem taxonomia, fontes e licenciamento de imagens.
+
+## Direitos e licenças
+
+**Gratuidade e ausência de finalidade lucrativa não significam, por si só, licença de código aberto.** Consulte o repositório para verificar se existe uma licença de software expressa antes de reutilizar ou redistribuir o código. Fotografias e dados de terceiros podem possuir licenças e exigências de atribuição próprias; veja os créditos e registros de proveniência.
+
+---
+
+**Projeto Glossata — Explore a diversidade da vida.**
