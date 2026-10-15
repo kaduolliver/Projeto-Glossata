@@ -65,6 +65,13 @@ class ReleaseTests(unittest.TestCase):
         release.refresh_catalog('1.0.1', self.root)
         with self.assertRaises(ValueError): release.refresh_catalog('0.9.0', self.root)
 
+    def test_local_historical_media_does_not_change_shipped_catalog_identity(self):
+        before = release.catalog_inputs(self.root)
+        self.put('resources/images/local-cache.jpg', 'historical fixture, not shipped')
+        self.assertEqual(release.catalog_inputs(self.root), before)
+        self.put('resources.qrc', '<RCC><qresource><file>resources/images/local-cache.jpg</file></qresource></RCC>\n')
+        self.assertIn('resources/images/local-cache.jpg', release.catalog_inputs(self.root))
+
     def test_visual_change_and_replaced_png_require_real_recapture(self):
         self.put('resources/qml/Main.qml', '// changed home\n')
         self.assertTrue(release.screenshot_errors(self.root))

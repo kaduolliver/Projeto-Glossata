@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = 'resources/data/catalog_manifest.json'
@@ -54,9 +55,22 @@ def catalog_inputs(root=ROOT):
     paths = set((root / 'resources/data').glob('*.json'))
     paths -= {root / CATALOG, root / 'resources/data/discord.json'}
     paths.update(p for p in (root / 'resources/compliance').rglob('*') if p.is_file())
-    # Include all media, including historical/unbundled media: rights still matter.
-    for folder in ('resources/images', 'resources/branding'):
-        paths.update(p for p in (root / folder).rglob('*') if p.is_file())
+    # Catalog identity covers shipped media, not local historical download caches.
+    # distribution.py still audits historical/unbundled media separately.
+    media = set()
+    qrc = root / 'resources.qrc'
+    if qrc.is_file():
+        media.update(e.text for e in ET.parse(qrc).getroot().iter('file')
+                     if e.text and e.text.startswith('resources/images/'))
+    species = root / 'resources/data/species.json'
+    if species.is_file():
+        media.update(s.get('photo', {}).get('path') for s in read(species) if s.get('photo', {}).get('path'))
+    for name in media:
+        path = (root / name).resolve()
+        if not path.is_relative_to(root.resolve()):
+            raise ValueError('Mídia do catálogo fora da raiz do projeto.')
+        if path.is_file(): paths.add(path)
+    paths.update(p for p in (root / 'resources/branding').rglob('*') if p.is_file())
     return {p.relative_to(root).as_posix(): sha(p) for p in sorted(paths)}
 
 

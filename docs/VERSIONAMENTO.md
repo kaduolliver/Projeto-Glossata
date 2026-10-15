@@ -3,7 +3,7 @@
 ## Fontes de verdade
 
 - `VERSION.txt`: versão semântica do aplicativo, lida pelo CMake, `QCoreApplication` e metadados do `.exe`. PATCH corrige comportamento compatível; MINOR adiciona funcionalidades compatíveis; MAJOR altera contratos de forma incompatível.
-- `resources/data/catalog_manifest.json`: versão independente e hashes do catálogo, revisões, evidências, políticas e mídias. `scripts/release.py catalog --version X.Y.Z` atualiza explicitamente o snapshot, sem alterar datas ou aprovar registros. Pode-se completar a mesma versão **ainda não lançada**; um snapshot já lançado deve receber uma nova versão.
+- `resources/data/catalog_manifest.json`: versão independente e hashes do catálogo, revisões, evidências, políticas, mídias ativas e branding. Arquivos históricos locais fora do catálogo embarcado não entram nessa identidade; continuam na auditoria separada de direitos/distribuição. `scripts/release.py catalog --version X.Y.Z` atualiza explicitamente o snapshot, sem alterar datas ou aprovar registros. Pode-se completar a mesma versão **ainda não lançada**; um snapshot já lançado deve receber uma nova versão.
 - `CHANGELOG.md` e `docs/CATALOGO_CHANGELOG.md`: mudanças do aplicativo e de dados/licenças, respectivamente, com pendências de curadoria explícitas. Um incremento de versão não é autorização de distribuição.
 - `build/build-manifest.json`: versões do aplicativo e catálogo, hash do catálogo, fontes e hash do executável. O pacote inclui cópia em `compliance/` junto aos créditos, evidências e avisos. A tag anotada também vincula commit e hash do catálogo.
 
