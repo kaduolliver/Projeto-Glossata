@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.555962+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/404403547",
+  "record": {
+    "observation_id": "404403547",
+    "community_taxon_id": "124748",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 124748,
+      "name": "Macrocystis pyrifera",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        68789,
+        67425,
+        124749,
+        124748
+      ]
+    },
+    "photo": {
+      "id": 742656850,
+      "license_code": "cc-by",
+      "attribution": "(c) Carmen, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/742656850/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

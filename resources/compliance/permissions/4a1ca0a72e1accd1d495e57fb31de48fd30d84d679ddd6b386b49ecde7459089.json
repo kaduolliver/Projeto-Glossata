@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.611058+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/31189604",
+  "record": {
+    "observation_id": "31189604",
+    "community_taxon_id": "773806",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 773806,
+      "name": "Phytoplasma asteris",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        151853,
+        151986,
+        152308,
+        356489,
+        479641,
+        773806
+      ]
+    },
+    "photo": {
+      "id": 48790280,
+      "license_code": "cc-by",
+      "attribution": "(c) Whitney Mattila, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/48790280/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.586321+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/37588396",
+  "record": {
+    "observation_id": "37588396",
+    "community_taxon_id": "327919",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 327919,
+      "name": "Diderma effusum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443220,
+        1443223,
+        55484,
+        56271,
+        126174,
+        327919
+      ]
+    },
+    "photo": {
+      "id": 59617028,
+      "license_code": "cc-by",
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/59617028/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

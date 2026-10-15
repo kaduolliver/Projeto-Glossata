@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.510294+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/405931631",
+  "record": {
+    "observation_id": "405931631",
+    "community_taxon_id": "56534",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 56534,
+      "name": "Clathrus ruber",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        891028,
+        48708,
+        1395929,
+        51137,
+        56534
+      ]
+    },
+    "photo": {
+      "id": 745707969,
+      "license_code": "cc-by",
+      "attribution": "(c) bogsuckers, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/745707969/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

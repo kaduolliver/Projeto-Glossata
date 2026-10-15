@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.464923+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/4053660",
+  "record": {
+    "observation_id": "4053660",
+    "community_taxon_id": "77959",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 77959,
+      "name": "Marah macrocarpa",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47124,
+        71281,
+        48620,
+        1335673,
+        53145,
+        77959
+      ]
+    },
+    "photo": {
+      "id": 489573459,
+      "license_code": "cc-by",
+      "attribution": "(c) Adam J. Searcy, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/489573459/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

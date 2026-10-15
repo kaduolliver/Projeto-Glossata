@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.528061+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/58497477",
+  "record": {
+    "observation_id": "58497477",
+    "community_taxon_id": "47392",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 47392,
+      "name": "Coprinus comatus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        785517,
+        516951,
+        47393,
+        47392
+      ]
+    },
+    "photo": {
+      "id": 93399523,
+      "license_code": "cc-by",
+      "attribution": "(c) Tom Norton, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/93399523/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

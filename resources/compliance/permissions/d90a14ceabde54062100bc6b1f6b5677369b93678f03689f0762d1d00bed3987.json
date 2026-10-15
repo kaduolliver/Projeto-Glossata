@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.472188+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/268524549",
+  "record": {
+    "observation_id": "268524549",
+    "community_taxon_id": "565848",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 565848,
+      "name": "Tulipa regelii",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47163,
+        47329,
+        47328,
+        859160,
+        859161,
+        55800,
+        1206007,
+        1206026,
+        565848
+      ]
+    },
+    "photo": {
+      "id": 482684019,
+      "license_code": "cc-by",
+      "attribution": "(c) Alexander Dubynin, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/482684019/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

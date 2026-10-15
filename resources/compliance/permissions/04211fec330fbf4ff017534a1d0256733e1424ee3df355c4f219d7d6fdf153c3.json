@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.473201+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/210059896",
+  "record": {
+    "observation_id": "210059896",
+    "community_taxon_id": "440714",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 440714,
+      "name": "Mimetes chrysanthus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47124,
+        64516,
+        64517,
+        624159,
+        624175,
+        624202,
+        119232,
+        440714
+      ]
+    },
+    "photo": {
+      "id": 371617112,
+      "license_code": "cc-by",
+      "attribution": "(c) Christiaan Viljoen, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/371617112/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

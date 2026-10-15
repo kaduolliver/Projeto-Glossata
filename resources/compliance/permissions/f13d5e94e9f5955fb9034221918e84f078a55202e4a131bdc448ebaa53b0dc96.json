@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.630771+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/4676262",
+  "record": {
+    "observation_id": "4676262",
+    "community_taxon_id": "348831",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 348831,
+      "name": "Psilocybe allenii",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        785517,
+        416512,
+        54026,
+        348831
+      ]
+    },
+    "photo": {
+      "id": 5668201,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5668201/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

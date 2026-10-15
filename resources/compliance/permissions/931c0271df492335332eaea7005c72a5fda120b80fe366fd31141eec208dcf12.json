@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.544568+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/143074966",
+  "record": {
+    "observation_id": "143074966",
+    "community_taxon_id": "1423743",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1423743,
+      "name": "Entoloma trachyosporum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        787526,
+        47166,
+        47165,
+        1416547,
+        1424664,
+        1423743
+      ]
+    },
+    "photo": {
+      "id": 245357302,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/245357302/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

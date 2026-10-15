@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.379236+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/407163105",
+  "record": {
+    "observation_id": "407163105",
+    "community_taxon_id": "557401",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 557401,
+      "name": "Panthera leo melanochaita",
+      "rank": "subspecies",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        40151,
+        848317,
+        848320,
+        848324,
+        41573,
+        41944,
+        846273,
+        41962,
+        41964,
+        557401
+      ]
+    },
+    "photo": {
+      "id": 748172022,
+      "license_code": "cc-by",
+      "attribution": "(c) Patrick Jackson, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/748172022/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

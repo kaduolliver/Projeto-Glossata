@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.589860+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/86047028",
+  "record": {
+    "observation_id": "86047028",
+    "community_taxon_id": "430355",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 430355,
+      "name": "Alaria esculenta",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        68789,
+        123804,
+        124813,
+        430355
+      ]
+    },
+    "photo": {
+      "id": 141679612,
+      "license_code": "cc-by",
+      "attribution": "(c) Jerry Lanfear, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/141679612/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.600397+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/48970815",
+  "record": {
+    "observation_id": "48970815",
+    "community_taxon_id": "1096796",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1096796,
+      "name": "Thiohalocapsa halophila",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        83702,
+        126705,
+        152364,
+        356595,
+        1096797,
+        1096796
+      ]
+    },
+    "photo": {
+      "id": 77725233,
+      "license_code": "cc-by",
+      "attribution": "(c) Syd Cannings, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/77725233/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

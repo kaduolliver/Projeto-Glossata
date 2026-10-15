@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.512290+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/17714364",
+  "record": {
+    "observation_id": "17714364",
+    "community_taxon_id": "54134",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 54134,
+      "name": "Trametes versicolor",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        47380,
+        47379,
+        47378,
+        1153556,
+        54134
+      ]
+    },
+    "photo": {
+      "id": 27005174,
+      "license_code": "cc0",
+      "attribution": "no rights reserved",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/27005174/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

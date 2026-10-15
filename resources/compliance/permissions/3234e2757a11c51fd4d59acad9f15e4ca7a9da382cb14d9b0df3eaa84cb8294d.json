@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.578680+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/146101517",
+  "record": {
+    "observation_id": "146101517",
+    "community_taxon_id": "56273",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 56273,
+      "name": "Leocarpus fragilis",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443220,
+        1443223,
+        55484,
+        55485,
+        56274,
+        56273
+      ]
+    },
+    "photo": {
+      "id": 251110486,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/251110486/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

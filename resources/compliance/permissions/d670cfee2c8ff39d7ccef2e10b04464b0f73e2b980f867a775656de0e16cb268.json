@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.384687+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/184361474",
+  "record": {
+    "observation_id": "184361474",
+    "community_taxon_id": "122940",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 122940,
+      "name": "Galleria mellonella",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        49682,
+        49683,
+        122933,
+        122931,
+        122941,
+        122940
+      ]
+    },
+    "photo": {
+      "id": 321803659,
+      "license_code": "cc-by",
+      "attribution": "(c) SteveM4560, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/321803659/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

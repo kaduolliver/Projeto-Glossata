@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.534175+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/1871910",
+  "record": {
+    "observation_id": "1871910",
+    "community_taxon_id": "352953",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 352953,
+      "name": "Xylaria tentaculata",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        48250,
+        372740,
+        53539,
+        792674,
+        48805,
+        48806,
+        55268,
+        352953
+      ]
+    },
+    "photo": {
+      "id": 2279530,
+      "license_code": "cc-by",
+      "attribution": "(c) Evan M. Raskin, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2279530/square.JPG",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

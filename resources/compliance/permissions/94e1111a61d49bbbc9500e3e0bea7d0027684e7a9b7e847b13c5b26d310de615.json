@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.572462+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/403775093",
+  "record": {
+    "observation_id": "403775093",
+    "community_taxon_id": "67419",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 67419,
+      "name": "Egregia menziesii",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        68789,
+        67418,
+        67421,
+        67419
+      ]
+    },
+    "photo": {
+      "id": 741404235,
+      "license_code": "cc-by",
+      "attribution": "(c) Emerson, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/741404235/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

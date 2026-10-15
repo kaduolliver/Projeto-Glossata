@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.542559+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/195694513",
+  "record": {
+    "observation_id": "195694513",
+    "community_taxon_id": "1651769",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1651769,
+      "name": "Wawelia microspora",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        48250,
+        372740,
+        53539,
+        792674,
+        48805,
+        48806,
+        1526372,
+        1651769
+      ]
+    },
+    "photo": {
+      "id": 351186569,
+      "license_code": "cc-by",
+      "attribution": "(c) Justin Paulin, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/351186569/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "default_photo_licenses": ["cc0", "cc-by"],
+  "noncommercial": {"enabled": false, "policy_document": null},
+  "distribution_mode": "unrestricted",
+  "exceptions": [],
+  "review_days": {"taxonomy": 365, "photo": 180, "licensing": 180, "education": 365, "conservation": 180, "etymology": 730, "morphology": 365, "links": 90},
+  "allow_unchanged_legacy_for_local_learning": true,
+  "taxonomy_system": "iNaturalist taxa API v1; source hierarchy preserved, not an assertion of a universal consensus classification",
+  "educational_system": "Traditional five kingdoms, pedagogical grouping only",
+  "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/new",
+  "privacy": "No coordinates, locality, observer profile, contact details or hidden data in published evidence. Photo attribution is retained as supplied by the source.",
+  "own_material_licenses": {"code": null, "texts": null, "collection": null},
+  "maintainer_decisions": []
+}

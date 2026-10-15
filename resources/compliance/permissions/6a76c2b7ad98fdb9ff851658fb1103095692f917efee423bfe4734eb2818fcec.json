@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.508291+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/135963380",
+  "record": {
+    "observation_id": "135963380",
+    "community_taxon_id": "1228995",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1228995,
+      "name": "Cladonia imperialis",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        48250,
+        372740,
+        54743,
+        952186,
+        48327,
+        49489,
+        49490,
+        1228995
+      ]
+    },
+    "photo": {
+      "id": 231974984,
+      "license_code": "cc0",
+      "attribution": "no rights reserved",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/231974984/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

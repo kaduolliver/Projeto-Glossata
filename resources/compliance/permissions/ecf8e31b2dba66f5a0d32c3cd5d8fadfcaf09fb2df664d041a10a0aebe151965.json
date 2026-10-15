@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.570458+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/397699700",
+  "record": {
+    "observation_id": "397699700",
+    "community_taxon_id": "118821",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 118821,
+      "name": "Himanthalia elongata",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        48219,
+        118823,
+        118824,
+        118821
+      ]
+    },
+    "photo": {
+      "id": 729466339,
+      "license_code": "cc-by",
+      "attribution": "(c) Cameron Findlay, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/729466339/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

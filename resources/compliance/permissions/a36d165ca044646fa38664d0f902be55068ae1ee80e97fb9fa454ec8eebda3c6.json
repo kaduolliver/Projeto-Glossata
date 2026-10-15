@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.563915+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/194721193",
+  "record": {
+    "observation_id": "194721193",
+    "community_taxon_id": "56252",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 56252,
+      "name": "Ceratiomyxa fruticulosa",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        1443445,
+        152426,
+        56256,
+        56257,
+        56252
+      ]
+    },
+    "photo": {
+      "id": 342355226,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/342355226/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.375421+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/310362605",
+  "record": {
+    "observation_id": "310362605",
+    "community_taxon_id": "147200",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 147200,
+      "name": "Heliconius melpomene",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        47224,
+        47922,
+        60854,
+        134173,
+        49767,
+        147200
+      ]
+    },
+    "photo": {
+      "id": 560140869,
+      "license_code": "cc-by",
+      "attribution": "(c) Dan Vickers, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/560140869/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

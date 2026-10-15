@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.516268+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/242423358",
+  "record": {
+    "observation_id": "242423358",
+    "community_taxon_id": "48715",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 48715,
+      "name": "Amanita muscaria",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        785522,
+        118249,
+        1149497,
+        48419,
+        1142599,
+        954920,
+        1155969,
+        48715
+      ]
+    },
+    "photo": {
+      "id": 432197409,
+      "license_code": "cc-by",
+      "attribution": "(c) Johan Adler, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/432197409/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,6 +1,8 @@
 """Build offline educational notes and species profiles from reviewed local data."""
 import json
 from import_inaturalist import ROOT, save_json
+from content_governance import annotate_education, load
+import hashlib
 
 OS="https://openstax.org/books/biology-2e/pages/"
 RANKS=["species","genus","family","order","class","phylum","kingdom"]
@@ -97,7 +99,7 @@ def load_profiles():
             raise ValueError("Identidade incompatível na ficha: "+sid)
         for field in required | ({"nutrition"} if "nutrition" in profile else set()):
             item=profile.get(field,{})
-            if not item.get("verified") or not item.get("text") or not item.get("source_url","").startswith("https://") or not item.get("reviewed_on"):
+            if not item.get("text") or not item.get("source_url","").startswith("https://"):
                 raise ValueError("Nota sem texto, revisão ou fonte: "+sid+":"+field)
         conservation=profile["conservation"]
         if conservation.get("status") not in {"LC","NT","VU","EN","CR","EX","EW","DD","unconfirmed"}:
@@ -109,6 +111,7 @@ def load_profiles():
 def build():
     taxons=json.loads((ROOT/"resources/data/taxonomy.json").read_text(encoding="utf-8"))
     data={"notes":{},"taxons":{},"group_hints":{},"group_curiosities":{},"species":{}}
+    previous = load(ROOT / 'resources/data/education.json', {})
     for number,(name,rank,url,title,description,hint,curiosity) in enumerate(DEFINITIONS):
         hint,curiosity=PLAIN_NOTES.get(name,(hint,curiosity))
         nodes=[t for t in taxons if t["name"]==name and t["rank"]==rank]
@@ -116,8 +119,8 @@ def build():
         for kind,text in (("intro",description),("hint",hint),("curiosity",curiosity)):
             if not text: continue
             key=f"note:{number}:{kind}"
-            data["notes"][key]={"text":text,"source_title":title,"source_url":url,"verified":True,"ranks":RANKS,
-                                "reviewed_on":"2026-10-14","scope_name":name}
+            data["notes"][key]={"text":text,"source_title":title,"source_url":url,"verified":previous.get('notes', {}).get(key, {}).get('verified', False),"ranks":RANKS,
+                                "reviewed_on":previous.get('notes', {}).get(key, {}).get('reviewed_on'),"scope_name":name}
             for node in nodes:
                 if kind=="intro": data["taxons"][node["id"]]=key
                 elif kind=="hint": data["group_hints"][node["id"]]=[key]
@@ -153,7 +156,7 @@ def build():
         values["morphology_traits"]=content.get("morphology_traits",[])
         for rank,item in content.get("etymology_hints",{}).items():
             url=item.get("source_url","")
-            if rank not in RANKS or not item.get("verified") or not url.startswith("https://") or "inaturalist.org" in url or not item.get("text"):
+            if rank not in RANKS or not url.startswith("https://") or "inaturalist.org" in url or not item.get("text"):
                 raise ValueError("Etimologia sem fonte ou nível válido: "+sid)
             key=f"species:{sid}:etymology:{rank}"
             data["notes"][key]=dict(item,ranks=[rank])
@@ -171,6 +174,11 @@ def build():
             item["text"]=review.get("prefix","")+item["text"]
             key=f"species:{sid}:morphological_hint"
             data["notes"][key]=item;values["morphological_hint"]=key
+    # A URL, a legacy verified flag, or successful generation is never a review.
+    # Newly generated/AI-assisted content is draft until a human records evidence.
+    annotate_education(ROOT, data)
+    data['generated_source_sha256'] = {name: hashlib.sha256((ROOT / 'resources/data' / name).read_bytes()).hexdigest()
+        for name in ('species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json')}
     save_json(ROOT/"resources/data/education.json",data)
     print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
     return data

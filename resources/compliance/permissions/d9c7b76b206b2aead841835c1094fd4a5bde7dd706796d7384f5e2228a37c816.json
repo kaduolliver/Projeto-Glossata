@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.536686+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/84645347",
+  "record": {
+    "observation_id": "84645347",
+    "community_taxon_id": "63076",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 63076,
+      "name": "Geastrum triplex",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        891028,
+        55013,
+        55014,
+        63077,
+        1085910,
+        63076
+      ]
+    },
+    "photo": {
+      "id": 139143137,
+      "license_code": "cc-by",
+      "attribution": "(c) Cobi Calyx, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/139143137/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

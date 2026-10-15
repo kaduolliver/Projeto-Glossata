@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.567435+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/407927262",
+  "record": {
+    "observation_id": "407927262",
+    "community_taxon_id": "48216",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 48216,
+      "name": "Fucus vesiculosus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        48219,
+        48218,
+        48217,
+        48216
+      ]
+    },
+    "photo": {
+      "id": 749738938,
+      "license_code": "cc-by",
+      "attribution": "(c) Jamie VanBuskirk, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/749738938/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

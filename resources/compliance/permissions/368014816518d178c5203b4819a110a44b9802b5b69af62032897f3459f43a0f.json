@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.549189+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/105275177",
+  "record": {
+    "observation_id": "105275177",
+    "community_taxon_id": "56565",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 56565,
+      "name": "Comatricha nigra",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443220,
+        1443223,
+        1443237,
+        1443236,
+        56566,
+        56565
+      ]
+    },
+    "photo": {
+      "id": 176600250,
+      "license_code": "cc-by",
+      "attribution": "(c) Alexis Tinker-Tsavalas, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/176600250/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

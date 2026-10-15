@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.478880+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/29063155",
+  "record": {
+    "observation_id": "29063155",
+    "community_taxon_id": "284200",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 284200,
+      "name": "Xanthosoma robustum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47163,
+        48073,
+        48536,
+        467650,
+        706190,
+        141449,
+        284200
+      ]
+    },
+    "photo": {
+      "id": 45341427,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45341427/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

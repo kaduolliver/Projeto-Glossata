@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.551201+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/329195316",
+  "record": {
+    "observation_id": "329195316",
+    "community_taxon_id": "179151",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 179151,
+      "name": "Hemitrichia serpula",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443219,
+        1443221,
+        56259,
+        1581554,
+        126121,
+        179151
+      ]
+    },
+    "photo": {
+      "id": 596675431,
+      "license_code": "cc-by",
+      "attribution": "(c) Ludivine Lamare, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/596675431/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

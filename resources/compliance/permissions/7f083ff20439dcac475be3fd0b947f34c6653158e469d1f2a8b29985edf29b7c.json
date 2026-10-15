@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.604991+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/141104251",
+  "record": {
+    "observation_id": "141104251",
+    "community_taxon_id": "503775",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 503775,
+      "name": "Arthrospira jenneri",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513633,
+        208557,
+        325303,
+        474641,
+        503775
+      ]
+    },
+    "photo": {
+      "id": 241649713,
+      "license_code": "cc-by",
+      "attribution": "(c) crseaquist, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/241649713/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

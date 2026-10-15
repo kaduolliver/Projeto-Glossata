@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.421546+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/167258822",
+  "record": {
+    "observation_id": "167258822",
+    "community_taxon_id": "23702",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 23702,
+      "name": "Agalychnis callidryas",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        20978,
+        20979,
+        554974,
+        23694,
+        23702
+      ]
+    },
+    "photo": {
+      "id": 289704683,
+      "license_code": "cc-by",
+      "attribution": "(c) Luke Padon, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/289704683/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

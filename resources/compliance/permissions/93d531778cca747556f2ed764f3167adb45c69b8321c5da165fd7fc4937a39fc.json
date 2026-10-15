@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.617153+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/229347803",
+  "record": {
+    "observation_id": "229347803",
+    "community_taxon_id": "1583266",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1583266,
+      "name": "Johanseninema constrictum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513633,
+        208350,
+        208358,
+        1583265,
+        1583266
+      ]
+    },
+    "photo": {
+      "id": 407087233,
+      "license_code": "cc0",
+      "attribution": "no rights reserved",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/407087233/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

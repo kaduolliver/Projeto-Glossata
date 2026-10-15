@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.495373+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/58282668",
+  "record": {
+    "observation_id": "58282668",
+    "community_taxon_id": "59029",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 59029,
+      "name": "Verbascum thapsus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47124,
+        48151,
+        47151,
+        941815,
+        56165,
+        59029
+      ]
+    },
+    "photo": {
+      "id": 93034327,
+      "license_code": "cc-by",
+      "attribution": "(c) Eric Watts, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/93034327/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

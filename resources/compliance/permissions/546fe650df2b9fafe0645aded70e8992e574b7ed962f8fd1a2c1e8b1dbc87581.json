@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.437209+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/4735295",
+  "record": {
+    "observation_id": "4735295",
+    "community_taxon_id": "518287",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 518287,
+      "name": "Cyphonia clavata",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47744,
+        125816,
+        372849,
+        49025,
+        49024,
+        340683,
+        518519,
+        446948,
+        518287
+      ]
+    },
+    "photo": {
+      "id": 5726540,
+      "license_code": "cc-by",
+      "attribution": "(c) Katja Schulz, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5726540/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

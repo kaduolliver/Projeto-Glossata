@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.612061+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/248283498",
+  "record": {
+    "observation_id": "248283498",
+    "community_taxon_id": "992168",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 992168,
+      "name": "Gloeotrichia intermedia",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513634,
+        67336,
+        200928,
+        470370,
+        992168
+      ]
+    },
+    "photo": {
+      "id": 443586440,
+      "license_code": "cc-by",
+      "attribution": "(c) Petr Knotek, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/443586440/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

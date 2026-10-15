@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.454252+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/146391901",
+  "record": {
+    "observation_id": "146391901",
+    "community_taxon_id": "429583",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 429583,
+      "name": "Hydnora esculenta",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47124,
+        60244,
+        52860,
+        958332,
+        311271,
+        429583
+      ]
+    },
+    "photo": {
+      "id": 251673570,
+      "license_code": "cc-by",
+      "attribution": "(c) Piotr Lukasik, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/251673570/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

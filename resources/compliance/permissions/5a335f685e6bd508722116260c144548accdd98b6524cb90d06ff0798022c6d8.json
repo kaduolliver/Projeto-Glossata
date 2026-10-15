@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.376922+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/28921401",
+  "record": {
+    "observation_id": "28921401",
+    "community_taxon_id": "67438",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 67438,
+      "name": "Papilio ulysses",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        47224,
+        47223,
+        49973,
+        207785,
+        47225,
+        565390,
+        67438
+      ]
+    },
+    "photo": {
+      "id": 45110154,
+      "license_code": "cc-by",
+      "attribution": "(c) Terra Occ, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45110154/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.444396+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/192798616",
+  "record": {
+    "observation_id": "192798616",
+    "community_taxon_id": "748796",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 748796,
+      "name": "Ovalimantis maculata",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        48112,
+        1097011,
+        1097013,
+        1097034,
+        84581,
+        1096997,
+        1097108,
+        1097153,
+        748268,
+        748796
+      ]
+    },
+    "photo": {
+      "id": 338534567,
+      "license_code": "cc0",
+      "attribution": "no rights reserved",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/338534567/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

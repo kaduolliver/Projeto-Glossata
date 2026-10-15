@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.424550+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/75731994",
+  "record": {
+    "observation_id": "75731994",
+    "community_taxon_id": "1238320",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1238320,
+      "name": "Dicarnosis erythrocephala",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47201,
+        124417,
+        981280,
+        69750,
+        69778,
+        1127034,
+        364008,
+        1238320
+      ]
+    },
+    "photo": {
+      "id": 123931576,
+      "license_code": "cc-by",
+      "attribution": "(c) Jake Nitta, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/123931576/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

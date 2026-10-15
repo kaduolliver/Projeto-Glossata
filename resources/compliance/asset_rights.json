@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "inventoried_at": "2026-10-15T20:00:31.015249+00:00",
+  "assets": [
+    {
+      "path": "resources/branding/glossata.png",
+      "kind": "branding",
+      "sha256": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+      "source": "Pacote fornecido pelo mantenedor; cadeia de direitos ainda n?o documentada.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_permission"
+    },
+    {
+      "path": "resources/branding/glossata_discord.png",
+      "kind": "branding",
+      "sha256": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+      "source": "Pacote fornecido pelo mantenedor; cadeia de direitos ainda n?o documentada.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_permission"
+    },
+    {
+      "path": "resources/branding/glossata.ico",
+      "kind": "branding",
+      "sha256": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+      "source": "Pacote fornecido pelo mantenedor; cadeia de direitos ainda n?o documentada.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_permission"
+    },
+    {
+      "path": "resources/data/species_profiles.json",
+      "kind": "text_authorship",
+      "sha256": "bec6e7c398506c0a49af3fbd4053dc88256f54a106b9b34157a9b37807d45368",
+      "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_originality_and_rights_review"
+    },
+    {
+      "path": "resources/data/hint_education.json",
+      "kind": "text_authorship",
+      "sha256": "af13949ede8c7a0e3f0299ce7249ae84ab77aa3e8d713845c2d9a9f33989c1fe",
+      "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_originality_and_rights_review"
+    },
+    {
+      "path": "scripts/build_education.py",
+      "kind": "text_authorship",
+      "sha256": "a5ad075602a9c748378e655ac1e8582bbb27f1c74b65904cdbde7d7f205a473b",
+      "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_originality_and_rights_review"
+    }
+  ],
+  "fonts": {
+    "bundled_fonts": [],
+    "system_font": "Segoe UI is requested from the operating system; no font file is currently redistributed."
+  },
+  "own_material_licenses": {
+    "code": null,
+    "texts": null,
+    "collection": null
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.408442+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/147961173",
+  "record": {
+    "observation_id": "147961173",
+    "community_taxon_id": "94762",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 94762,
+      "name": "Astroscopus zephyreus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        47178,
+        1632273,
+        1555654,
+        1519465,
+        86126,
+        86703,
+        94762
+      ]
+    },
+    "photo": {
+      "id": 254703040,
+      "license_code": "cc-by",
+      "attribution": "(c) Alberto Alcalá, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/254703040/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

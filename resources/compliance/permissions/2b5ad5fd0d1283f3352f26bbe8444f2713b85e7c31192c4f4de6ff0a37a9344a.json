@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.607521+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/96696432",
+  "record": {
+    "observation_id": "96696432",
+    "community_taxon_id": "733075",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 733075,
+      "name": "Gomphosphaeria aponina",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513633,
+        208350,
+        508545,
+        508546,
+        733075
+      ]
+    },
+    "photo": {
+      "id": 160680326,
+      "license_code": "cc-by",
+      "attribution": "(c) Golfopolikayak, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/160680326/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

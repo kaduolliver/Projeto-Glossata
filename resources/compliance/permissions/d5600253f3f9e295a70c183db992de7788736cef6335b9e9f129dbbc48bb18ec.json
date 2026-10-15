@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.593866+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/5210293",
+  "record": {
+    "observation_id": "5210293",
+    "community_taxon_id": "534769",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 534769,
+      "name": "Sphingomonas phyllosphaerae",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        83702,
+        83703,
+        152386,
+        356740,
+        356574,
+        534769
+      ]
+    },
+    "photo": {
+      "id": 7906556,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/7906556/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

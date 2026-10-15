@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.575657+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/354877754",
+  "record": {
+    "observation_id": "354877754",
+    "community_taxon_id": "51024",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 51024,
+      "name": "Dictyota dichotoma",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267989,
+        51022,
+        51023,
+        887311,
+        51021,
+        51024
+      ]
+    },
+    "photo": {
+      "id": 647286388,
+      "license_code": "cc-by",
+      "attribution": "(c) Esteban Tazzioli, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/647286388/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

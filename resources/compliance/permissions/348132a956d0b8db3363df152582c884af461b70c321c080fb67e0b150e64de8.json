@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.389213+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/359284633",
+  "record": {
+    "observation_id": "359284633",
+    "community_taxon_id": "124184",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 124184,
+      "name": "Plodia interpunctella",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        49682,
+        49683,
+        122925,
+        122926,
+        124186,
+        124184
+      ]
+    },
+    "photo": {
+      "id": 655494534,
+      "license_code": "cc-by",
+      "attribution": "(c) Rosario Douglas, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/655494534/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

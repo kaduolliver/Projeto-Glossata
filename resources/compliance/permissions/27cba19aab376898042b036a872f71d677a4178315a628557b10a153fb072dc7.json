@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.504978+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/196416305",
+  "record": {
+    "observation_id": "196416305",
+    "community_taxon_id": "1367786",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1367786,
+      "name": "Favolaschia claudopus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        785516,
+        55920,
+        83577,
+        1483834,
+        1367787,
+        1367786
+      ]
+    },
+    "photo": {
+      "id": 345801259,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/345801259/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

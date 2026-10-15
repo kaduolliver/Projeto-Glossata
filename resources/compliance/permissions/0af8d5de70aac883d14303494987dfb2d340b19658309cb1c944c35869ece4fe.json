@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.397746+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/34107659",
+  "record": {
+    "observation_id": "34107659",
+    "community_taxon_id": "321235",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 321235,
+      "name": "Macrocilix maia",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        84429,
+        84430,
+        123016,
+        123018,
+        124894,
+        321235
+      ]
+    },
+    "photo": {
+      "id": 53637930,
+      "license_code": "cc-by",
+      "attribution": "(c) dhfischer, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/53637930/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

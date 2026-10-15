@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.556477+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/407719813",
+  "record": {
+    "observation_id": "407719813",
+    "community_taxon_id": "120499",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 120499,
+      "name": "Nereocystis luetkeana",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        48222,
+        48221,
+        48220,
+        1267990,
+        68789,
+        67425,
+        120502,
+        120499
+      ]
+    },
+    "photo": {
+      "id": 749313945,
+      "license_code": "cc-by",
+      "attribution": "(c) Rachel Lee Harper, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/749313945/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

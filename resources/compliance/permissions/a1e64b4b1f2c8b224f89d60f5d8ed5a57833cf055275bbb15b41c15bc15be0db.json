@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.369911+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/28369492",
+  "record": {
+    "observation_id": "28369492",
+    "community_taxon_id": "82279",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 82279,
+      "name": "Automeris io",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        47214,
+        47918,
+        125084,
+        475374,
+        1702631,
+        82286,
+        82279
+      ]
+    },
+    "photo": {
+      "id": 44218494,
+      "license_code": "cc-by",
+      "attribution": "(c) Trevor Edmonson, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/44218494/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.453249+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/30249730",
+  "record": {
+    "observation_id": "30249730",
+    "community_taxon_id": "277452",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 277452,
+      "name": "Dictyanthus pavonii",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47126,
+        211194,
+        47125,
+        47124,
+        47363,
+        47362,
+        373579,
+        632307,
+        632315,
+        272968,
+        277452
+      ]
+    },
+    "photo": {
+      "id": 47249680,
+      "license_code": "cc-by",
+      "attribution": "(c) alejandrozab, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/47249680/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

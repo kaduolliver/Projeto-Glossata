@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.401753+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/6805086",
+  "record": {
+    "observation_id": "6805086",
+    "community_taxon_id": "259535",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 259535,
+      "name": "Geminaria canalis",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47822,
+        48091,
+        372865,
+        354603,
+        51558,
+        1425861,
+        248110,
+        259535
+      ]
+    },
+    "photo": {
+      "id": 8658322,
+      "license_code": "cc-by",
+      "attribution": "(c) Ken-ichi Ueda, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/8658322/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

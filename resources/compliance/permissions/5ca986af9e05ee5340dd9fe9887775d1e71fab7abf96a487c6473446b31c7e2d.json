@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.560868+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/20379678",
+  "record": {
+    "observation_id": "20379678",
+    "community_taxon_id": "503891",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 503891,
+      "name": "Physarum psittacinum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443220,
+        1443223,
+        55484,
+        55485,
+        68858,
+        503891
+      ]
+    },
+    "photo": {
+      "id": 31473154,
+      "license_code": "cc-by",
+      "attribution": "(c) Katja Schulz, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/31473154/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

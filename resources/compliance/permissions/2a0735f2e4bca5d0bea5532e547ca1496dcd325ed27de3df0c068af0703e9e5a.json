@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.619692+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/183812776",
+  "record": {
+    "observation_id": "183812776",
+    "community_taxon_id": "1161132",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1161132,
+      "name": "Chlamydophila pecorum",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        151845,
+        152319,
+        948987,
+        972027,
+        1161132
+      ]
+    },
+    "photo": {
+      "id": 320741885,
+      "license_code": "cc-by",
+      "attribution": "(c) Auradyme, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/320741885/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

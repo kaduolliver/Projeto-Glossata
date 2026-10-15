@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.538241+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/4516268",
+  "record": {
+    "observation_id": "4516268",
+    "community_taxon_id": "49158",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 49158,
+      "name": "Hericium erinaceus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        48341,
+        49159,
+        49160,
+        1520823,
+        49158
+      ]
+    },
+    "photo": {
+      "id": 5466254,
+      "license_code": "cc-by",
+      "attribution": "(c) Katya, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5466254/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

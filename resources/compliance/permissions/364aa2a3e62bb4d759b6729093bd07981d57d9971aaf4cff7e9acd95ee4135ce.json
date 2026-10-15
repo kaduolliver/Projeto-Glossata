@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.438210+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/73919956",
+  "record": {
+    "observation_id": "73919956",
+    "community_taxon_id": "43345",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 43345,
+      "name": "Rhinoceros unicornis",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        40151,
+        848317,
+        848320,
+        848324,
+        43327,
+        43341,
+        43344,
+        43345
+      ]
+    },
+    "photo": {
+      "id": 120750026,
+      "license_code": "cc-by",
+      "attribution": "(c) Rejoice Gassah, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/120750026/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

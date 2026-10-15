@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.580970+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/167950949",
+  "record": {
+    "observation_id": "167950949",
+    "community_taxon_id": "1598948",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1598948,
+      "name": "Badhamia polycephala",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47686,
+        47685,
+        47684,
+        1443220,
+        1443223,
+        55484,
+        55485,
+        56265,
+        1598948
+      ]
+    },
+    "photo": {
+      "id": 291002427,
+      "license_code": "cc-by",
+      "attribution": "(c) Jeff, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/291002427/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

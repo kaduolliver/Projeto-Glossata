@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.606014+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/345454102",
+  "record": {
+    "observation_id": "345454102",
+    "community_taxon_id": "1277012",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1277012,
+      "name": "Beggiatoa alba",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        83702,
+        126705,
+        152371,
+        928287,
+        208355,
+        1277012
+      ]
+    },
+    "photo": {
+      "id": 629567196,
+      "license_code": "cc-by",
+      "attribution": "(c) Thomas Gyselinck, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/629567196/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

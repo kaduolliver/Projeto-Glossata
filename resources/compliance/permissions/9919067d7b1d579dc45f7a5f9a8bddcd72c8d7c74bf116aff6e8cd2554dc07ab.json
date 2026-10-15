@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.364486+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/22577683",
+  "record": {
+    "observation_id": "22577683",
+    "community_taxon_id": "47916",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 47916,
+      "name": "Actias luna",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47157,
+        47214,
+        47918,
+        124126,
+        125080,
+        47917,
+        47916
+      ]
+    },
+    "photo": {
+      "id": 34980868,
+      "license_code": "cc-by",
+      "attribution": "(c) Michelle W. （鍾偉瑋）, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/34980868/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

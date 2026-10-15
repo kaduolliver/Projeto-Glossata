@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.595864+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/256522774",
+  "record": {
+    "observation_id": "256522774",
+    "community_taxon_id": "566238",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 566238,
+      "name": "Dolichospermum lemmermannii",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513634,
+        67336,
+        508539,
+        501402,
+        566238
+      ]
+    },
+    "photo": {
+      "id": 459952778,
+      "license_code": "cc-by",
+      "attribution": "(c) Quentin His, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/459952778/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

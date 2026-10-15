@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.598386+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/36720806",
+  "record": {
+    "observation_id": "36720806",
+    "community_taxon_id": "356660",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 356660,
+      "name": "Serratia marcescens",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        83702,
+        126705,
+        126706,
+        126707,
+        356663,
+        356660
+      ]
+    },
+    "photo": {
+      "id": 58089762,
+      "license_code": "cc0",
+      "attribution": "no rights reserved",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/58089762/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

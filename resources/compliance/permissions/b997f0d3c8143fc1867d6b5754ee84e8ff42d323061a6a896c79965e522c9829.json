@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.632997+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/28050388",
+  "record": {
+    "observation_id": "28050388",
+    "community_taxon_id": "1558826",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 1558826,
+      "name": "Merismopedia tranquilla",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        67333,
+        67334,
+        196963,
+        1513633,
+        208350,
+        208351,
+        505689,
+        311236,
+        1558826
+      ]
+    },
+    "photo": {
+      "id": 43700642,
+      "license_code": "cc-by",
+      "attribution": "(c) zookanthos, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/43700642/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

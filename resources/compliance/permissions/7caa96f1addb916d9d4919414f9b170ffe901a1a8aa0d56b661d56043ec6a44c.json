@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.521536+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/261552464",
+  "record": {
+    "observation_id": "261552464",
+    "community_taxon_id": "328225",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 328225,
+      "name": "Marasmius haematocephalus",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        47170,
+        47169,
+        492000,
+        50814,
+        1094814,
+        47167,
+        785516,
+        49545,
+        1565334,
+        54067,
+        1565338,
+        1425618,
+        1652511,
+        328225
+      ]
+    },
+    "photo": {
+      "id": 606817545,
+      "license_code": "cc-by",
+      "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/606817545/square.jpg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

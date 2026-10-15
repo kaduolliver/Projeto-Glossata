@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.447238+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/61788630",
+  "record": {
+    "observation_id": "61788630",
+    "community_taxon_id": "65851",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 65851,
+      "name": "Incilius periglenes",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        20978,
+        20979,
+        21359,
+        64787,
+        65851
+      ]
+    },
+    "photo": {
+      "id": 98915545,
+      "license_code": "cc-by",
+      "attribution": "(c) Zac Peterson, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/98915545/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}

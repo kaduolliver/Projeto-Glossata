@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "legacy_cache",
+  "collected_at": null,
+  "archived_at": "2026-10-15T20:00:30.413443+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/237414880",
+  "record": {
+    "observation_id": "237414880",
+    "community_taxon_id": "398792",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 398792,
+      "name": "Xenocnema spinipes",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        47120,
+        372739,
+        47158,
+        184884,
+        47208,
+        71130,
+        372852,
+        60473,
+        48736,
+        373402,
+        373642,
+        378587,
+        398792
+      ]
+    },
+    "photo": {
+      "id": 422526180,
+      "license_code": "cc-by",
+      "attribution": "(c) Stephen Thorpe, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/422526180/square.jpeg",
+      "hidden": false,
+      "flags": []
+    }
+  }
+}
