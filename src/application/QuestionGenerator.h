@@ -64,7 +64,7 @@ public:
             for (int index : {0, 1, int(candidates.size() - 1)}) options.append(candidates[index].answer);
         } else for (int i = 0; i < 3; ++i) options.append(candidates[i].answer);
         std::shuffle(options.begin(), options.end(), random);
-        const auto hints = content_.questionHints(correct, config.rank, options, pool);
+        const auto hints = content_.questionHints(correct, config.rank, options, pool,config.mode==GameMode::Competitive);
         const bool supporting = correct.photo.role == "supporting";
         return {supporting ? QStringLiteral("Identifique pelas pistas: %1").arg(taxonomicRankLabel(config.rank))
                           : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(config.rank)),

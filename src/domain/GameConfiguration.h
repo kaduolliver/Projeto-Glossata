@@ -15,7 +15,7 @@ struct GameConfiguration {
     QString rank = "species";
     QuestionDifficulty difficulty = QuestionDifficulty::Balanced;
     QString contentVersion;
-    QString rulesVersion = "identification-v2";
+    QString rulesVersion = CurrentScoringRules;
 
     QString modeKey() const { return mode == GameMode::Competitive ? "competitive" : "free"; }
     QString difficultyKey() const {

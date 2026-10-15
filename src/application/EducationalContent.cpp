@@ -3,6 +3,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QRegularExpression>
+#include <QSet>
 #include <algorithm>
 #include "infrastructure/content/ReviewStatus.h"
 namespace {
@@ -57,7 +58,7 @@ QVariantMap EducationalContent::nameOrigin(const Species &s) const
         {"source_title",title},{"source_urls",urls},{"verified",true}};
 }
 QuestionHints EducationalContent::questionHints(const Species &s,const QString &rank,const QStringList &options,
-                                               const QVector<Species> &pool) const
+                                               const QVector<Species> &pool,bool competitive) const
 {
     QuestionHints result;
     for(int i=0;i<3;++i) {
@@ -66,6 +67,8 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
     result[0].unavailableReason=QStringLiteral("Sem contexto seguro para estas alternativas.");
     result[1].unavailableReason=QStringLiteral("Origem do nome não verificada para este nível.");
     result[2].unavailableReason=QStringLiteral("Sem característica física adequada a esta questão.");
+    if (options.size()!=4 || QSet<QString>(options.begin(),options.end()).size()!=4 || !options.contains(s.answerAtRank(rank))) return result;
+    const auto item=speciesContent(s);
     auto mentionsOption=[&options](const QString &text) {
         for(const QString &option : options) {
             const QRegularExpression pattern("(?<![\\p{L}])"+QRegularExpression::escape(option)+"(?![\\p{L}])",QRegularExpression::CaseInsensitiveOption);
@@ -74,36 +77,76 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
         return false;
     };
     auto assign=[&](int index,const QVariantMap &item) {
-        if(item.isEmpty() || mentionsOption(item.value("text").toString()))return;
+        if(item.value("text").toString().isEmpty() || item.value("source_url").toString().isEmpty()
+            || mentionsOption(item.value("text").toString()))return;
+        auto &hint=result[index];
+        const QVariantMap assessment=item.value("assistance").toMap();
+        hint.assistance=assistanceLevel(assessment.value("grade").toString());
+        const QJsonObject review=QJsonObject::fromVariantMap(assessment.value("governance").toMap());
+        hint.assessmentState=review.value("state").toString();
+        hint.rationale=assessment.value("rationale").toString();
+        hint.assessmentId=review.value("content_sha256").toString();
+        hint.assessmentPayload=QJsonObject::fromVariantMap(assessment.value("binding").toMap());
+        const bool approved=usableReview(review) && review.value("claim_scope").toString()=="hint_assistance"
+            && (hint.assessmentState=="approved_editorial" || hint.assessmentState=="approved_expert");
+        hint.provisional=!approved;
+        if (hint.ceiling()==0 || hint.rationale.isEmpty() || hint.assessmentId.size()!=64
+            || !assessment.value("ranks").toList().contains(rank)) {
+            hint.unavailableReason=QStringLiteral("Assistência sem classificação válida para este nível."); return;
+        }
+        auto declared=QJsonObject::fromVariantMap(assessment);declared.remove("governance");declared.remove("binding");
+        const auto boundSource=hint.assessmentPayload.value("source").toObject();
+        if (declared!=hint.assessmentPayload.value("assessment").toObject()
+            || hint.assessmentPayload.value("photo").toObject().value("sha256").toString()!=s.photo.sha256
+            || (index!=0 && (boundSource.value("text").toString()!=item.value("text").toString()
+                            || boundSource.value("source_url").toString()!=item.value("source_url").toString()))) {
+            hint.unavailableReason=QStringLiteral("Texto ou avaliação de assistência alterados; regenere e revise o conteúdo.");return;
+        }
+        AnswerRecord proof{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,
+            hintBit(hint.type),hint.ceiling(),hint.ceiling()};
+        proof.rulesVersion=CurrentScoringRules;proof.ceilings[index]=hint.ceiling();
+        proof.options=options;
+        proof.assessmentIds[index]=hint.assessmentId;proof.assessmentPayloads[index]=hint.assessmentPayload;
+        if (!validAnswerScoring(proof,CurrentScoringRules)) {
+            hint.unavailableReason=QStringLiteral("Avaliação de assistência incompatível com o conteúdo, nível ou alternativas; requer contexto documentado.");return;
+        }
+        if (assessment.value("suitability").toString()=="inadequate") {
+            hint.unavailableReason=QStringLiteral("Conteúdo inadequado como dica prévia; disponível na aprendizagem após a resposta."); return;
+        }
+        if ((competitive && !approved) || ((!approved) && (hint.assessmentState=="approved_editorial" || hint.assessmentState=="approved_expert"))
+            || hint.assessmentState=="rejected" || hint.assessmentState=="expired" || hint.assessmentState=="needs_review") {
+            hint.unavailableReason=QStringLiteral("Classificação de assistência pendente ou vencida; exige revisão humana rastreável."); return;
+        }
         result[index].text=item.value("text").toString();
         result[index].sourceUrl=item.value("source_url").toString();
         result[index].sourceTitle=item.value("source_title").toString();
         result[index].unavailableReason.clear();
     };
-    // Only a broader, verified ancestor is permitted. At least two distinct
-    // choices must remain compatible; an option with missing ancestry is not
-    // counted as compatible. Never use a more specific taxon to encode a rank.
+    // Only a broader, verified ancestor is permitted. At least three distinct
+    // choices must remain positively compatible. All four require known ancestry;
+    // missing data is never evidence of exclusion. Counts gate safety, not grade.
     const QStringList ranks={"kingdom","phylum","class","order","family","genus","species"};
     const int asked=ranks.indexOf(rank);
     for(auto it=s.taxonomy.crbegin();it!=s.taxonomy.crend();++it) {
         if (!s.taxonomyApproved) break;
         const int level=ranks.indexOf(it->rank);
         if(level<0 || asked<0 || level>=asked || it->source!="inaturalist" || it->sourceTaxonId.isEmpty())continue;
-        int compatible=0;
+        int compatible=0,knownOptions=0;
         for(const QString &option : options) {
-            bool known=false,all=true;
+            bool known=false,complete=true,all=true;
             for(const Species &candidate : pool) if(candidate.answerAtRank(rank)==option) {
                 known=true; all=all && candidate.belongsTo(it->id);
+                complete=complete && std::any_of(candidate.taxonomy.begin(),candidate.taxonomy.end(),[&](const Taxon &node){return node.rank==it->rank && !node.sourceTaxonId.isEmpty();});
             }
-            compatible+=known && all;
+            compatible+=known && complete && all;
+            knownOptions+=known && complete;
         }
-        if(compatible<3 || (it->rank=="kingdom" && compatible==options.size()))continue;
-        assign(0,{{"text",QStringLiteral("Na classificação científica, pertence ao grupo %1: %2. Compare os integrantes pela fotografia e pelas outras informações.").arg(taxonomicRankLabel(it->rank),it->name)},
+        if(knownOptions!=4 || compatible<3 || (it->rank=="kingdom" && compatible==options.size()))continue;
+        assign(0,{{"text",item.value("taxonomic_assistance").toObject().value("template").toString().arg(taxonomicRankLabel(it->rank),it->name)},
                   {"source_url","https://www.inaturalist.org/taxa/"+it->sourceTaxonId},
-                  {"source_title","iNaturalist · classificação do grupo"}});
+                  {"source_title","iNaturalist · classificação do grupo"},{"assistance",item.value("taxonomic_assistance").toVariant()}});
         if(result[0].available())break;
     }
-    const auto item=speciesContent(s);
     if (usableReview(item.value("governance").toObject().value("etymology").toObject()))
         assign(1,note(resolve(item.value("etymology_hints").toObject().value(rank))));
     // Existing reviewed appearance notes are reused, but habitat/diet clues and

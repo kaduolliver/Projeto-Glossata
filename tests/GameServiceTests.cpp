@@ -40,6 +40,52 @@ public:
     }
     QVector<HistoryEntry> loadTopResults(int) const override { return {}; }
 };
+
+void bindFixtureAssessment(QJsonObject &assessment,const QString &sid,const QString &name,const QString &photo,const QString &category)
+{
+    auto body=assessment;body.remove("governance");body.remove("binding");
+    auto source=assessment["binding"].toObject()["source"].toObject();
+    if (source.isEmpty()) source=QJsonObject{{"test_only",true}};
+    auto photoEvidence=assessment["binding"].toObject()["photo"].toObject();photoEvidence["id"]=photo;
+    const QJsonObject proof{{"species_id",sid},{"scientific_name",name},{"category",category},
+        {"photo",photoEvidence},{"source",source},{"assessment",body}};
+    auto review=assessment["governance"].toObject();
+    review["content_sha256"]=QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(proof).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());
+    assessment["binding"]=proof;assessment["governance"]=review;
+}
+
+// Synthetic grading scenarios ONLY. No approval is written to shipped data.
+QJsonObject gradedHintFixture()
+{
+    QFile file(":/resources/data/education.json");
+    if (!file.open(QIODevice::ReadOnly)) return {};
+    auto data=QJsonDocument::fromJson(file.readAll()).object();
+    const QJsonObject reviewed{{"state","approved_editorial"},{"usable",true},{"reviewer","synthetic-test-fixture"},
+        {"claim_scope","hint_assistance"},
+        {"reviewed_at",QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
+        {"due_at",QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)},
+        {"content_sha256",QString(64,'a')}};
+    auto species=data["species"].toObject(),notes=data["notes"].toObject();
+    for (auto it=species.begin();it!=species.end();++it) {
+        auto s=it.value().toObject(),taxonomy=s["taxonomic_assistance"].toObject();
+        const auto photo=notes[s["morphological_hint"].toString()].toObject()["photo_id"].toString();
+        taxonomy["grade"]="moderate";taxonomy["governance"]=reviewed;
+        bindFixtureAssessment(taxonomy,it.key(),s["scientific_name"].toString(),photo,"taxonomic");s["taxonomic_assistance"]=taxonomy;
+        it.value()=s;
+        for (const auto &ref : s["etymology_hints"].toObject()) {
+            const auto key=ref.toString();auto n=notes[key].toObject(),a=n["assistance"].toObject();
+            a["grade"]="strong";a["governance"]=reviewed;
+            bindFixtureAssessment(a,it.key(),s["scientific_name"].toString(),photo,"etymological");n["assistance"]=a;notes[key]=n;
+        }
+        const auto key=s["morphological_hint"].toString();
+        if (!key.isEmpty()) {
+            auto n=notes[key].toObject(),a=n["assistance"].toObject();
+            a["grade"]="light";a["governance"]=reviewed;
+            bindFixtureAssessment(a,it.key(),s["scientific_name"].toString(),photo,"morphological");n["assistance"]=a;notes[key]=n;
+        }
+    }
+    data["species"]=species;data["notes"]=notes;return data;
+}
 }
 
 class GameServiceTests : public QObject {
@@ -84,6 +130,9 @@ private slots:
     void answerMetricsDoNotDoubleCount();
     void versionedMigrationReconstructsKnownRecords();
     void failedSchemaMigrationPreservesOriginalDatabase();
+    void contextualAssistanceAndUnknownDistractors();
+    void assistanceSnapshotsAndLegacyV2Migration();
+    void assistanceChangesCompetitiveContentVersion();
 };
 
 void GameServiceTests::initialLoad_hasSpecies()
@@ -109,9 +158,10 @@ void GameServiceTests::gameStartsAtFirstRound()
 
 void GameServiceTests::extraHintCanBeRevealedOncePerRound()
 {
-    JsonSpeciesCatalog catalog(QStringLiteral(":/resources/data/species.json"));
+    JsonSpeciesCatalog source;MemoryCatalog catalog;
+    for (const auto &s : source.loadSpecies()) if (QSet<int>{63,67,73,135}.contains(s.id)) catalog.items.append(s);
     GameService service(&catalog);
-    service.startNewGame("edu:Animalia");
+    service.startNewGame({},"genus");
 
     QVERIFY(!service.hintRevealed());
     QVERIFY(service.extraHint().isEmpty());
@@ -841,31 +891,35 @@ void GameServiceTests::exactHintScoringAndLongGames()
     MemoryCatalog catalog;
     for(const auto &s : source.loadSpecies())if(QSet<int>{63,67,73,135}.contains(s.id))catalog.items.append(s);
     QCOMPARE(catalog.items.size(),4);
-    GameService service(&catalog);
-    for(int mask=0;mask<8;++mask)for(bool correct : {true,false}) {
+    GameService service(&catalog,nullptr,EducationalContent(gradedHintFixture()));
+    std::array<int,3> order{0,1,2};
+    do { for(int mask=0;mask<8;++mask)for(bool correct : {true,false}) {
         service.startNewGame({},"genus");
         QCOMPARE(service.possibleScoreUnits(),6);
         int previous=6;
-        for(auto type : {HintType::Taxonomic,HintType::Etymological,HintType::Morphological})if(mask & hintBit(type)) {
+        for(int index : order) {const auto type=static_cast<HintType>(index+1);if(mask & hintBit(type)) {
             QVERIFY2(service.currentQuestion().hints[static_cast<int>(type)-1].available(),qPrintable(service.currentQuestion().species.name));
             QVERIFY(service.revealHint(type));
             QVERIFY(service.possibleScoreUnits()<=previous);previous=service.possibleScoreUnits();
             QVERIFY(!service.revealHint(type));
-        }
+        }}
         const auto question=service.currentQuestion();
         QString answer=question.correctAnswer;
         if(!correct)for(const auto &option : question.options)if(option!=answer){answer=option;break;}
         QCOMPARE(service.submitAnswer(answer),correct);
-        QCOMPARE(service.scoreUnits(),qint64(correct ? maximumScoreUnits(mask) : 0));
+        const int maximum=maximumScoreUnits(mask,hintCeilings(question.hints));
+        QCOMPARE(service.scoreUnits(),qint64(correct ? maximum : 0));
         QCOMPARE(service.correctAnswers(),correct ? 1 : 0);
-        QCOMPARE(service.answers().last().maximumUnits,maximumScoreUnits(mask));
+        QCOMPARE(service.answers().last().maximumUnits,maximum);
+        QVERIFY(validAnswerScoring(service.answers().last(),CurrentScoringRules));
         QCOMPARE(service.answers().last().revealedHints,mask);
         QCOMPARE(service.revealedHints(),0);QCOMPARE(service.possibleScoreUnits(),6);
-    }
+    }} while (std::next_permutation(order.begin(),order.end()));
     service.startNewGame({},"genus");
     for(int i=0;i<600;++i) {
         QVERIFY(service.revealHint(HintType::Morphological));
-        // Revisiting a lower-assistance hint must never raise the maximum.
+        QCOMPARE(service.possibleScoreUnits(),6); // light morphology
+        QVERIFY(service.revealHint(HintType::Etymological));QCOMPARE(service.possibleScoreUnits(),2);
         QVERIFY(service.revealHint(HintType::Taxonomic));QCOMPARE(service.possibleScoreUnits(),2);
         QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
         QCOMPARE(service.scoreUnits(),qint64((i+1)*2));
@@ -930,6 +984,13 @@ void GameServiceTests::hintContentMatchesQuestionAndAlternatives()
             const auto hints=content.questionHints(s,rank,options,pool);
             for(const auto &hint : hints) {
                 if(!hint.available()){QVERIFY(!hint.unavailableReason.isEmpty());continue;}
+                AnswerRecord check{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,
+                    hintBit(hint.type),hint.ceiling(),hint.ceiling()};
+                check.rulesVersion=CurrentScoringRules;
+                check.options=options;
+                const int index=static_cast<int>(hint.type)-1;check.ceilings[index]=hint.ceiling();
+                check.assessmentIds[index]=hint.assessmentId;check.assessmentPayloads[index]=hint.assessmentPayload;
+                QVERIFY2(validAnswerScoring(check,CurrentScoringRules),qPrintable(s.name+" "+hintKey(hint.type)));
                 QVERIFY(hint.sourceUrl.startsWith("https://"));
                 for(const auto &option : options)QVERIFY2(!hint.text.contains(option,Qt::CaseInsensitive),qPrintable(hint.text));
                 if(hint.type==HintType::Taxonomic) {
@@ -956,6 +1017,7 @@ void GameServiceTests::hintContentMatchesQuestionAndAlternatives()
             auto wrong=s;wrong.id=999999;
             QVERIFY(!content.questionHints(wrong,rank,options,pool)[1].available());
             wrong=s;wrong.photo.id="changed";QVERIFY(!content.questionHints(wrong,rank,options,pool)[2].available());
+            wrong=s;wrong.photo.sha256="changed";QVERIFY(!content.questionHints(wrong,rank,options,pool)[2].available());
         }
         coverage[rank]=QJsonObject{{"taxonomic",taxonomic.size()},{"etymological",etymological.size()},{"morphological",morphological.size()},{"eligible",pool.size()}};
     }
@@ -1186,7 +1248,7 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
     SqliteGameHistoryRepository reopened(path);QCOMPARE(reopened.loadTopResults().first().scoreUnits,qint64(6));
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
-        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),2);
+        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),3);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
     }
     db.close();db={};QSqlDatabase::removeDatabase("v2-inspect");
@@ -1240,6 +1302,135 @@ void GameServiceTests::offlineReviewExpiryAndDrafts()
     QVERIFY(!usableReview(review));
     review.insert("state", "approved_expert"); review.remove("reviewer");
     QVERIFY(!usableReview(review));
+}
+
+void GameServiceTests::contextualAssistanceAndUnknownDistractors()
+{
+    JsonSpeciesCatalog source;QVector<Species> pool;
+    for (const auto &s : source.loadSpecies()) if (QSet<int>{63,67,73,135}.contains(s.id)) pool.append(s);
+    QCOMPARE(pool.size(),4);
+    const auto correct=pool.first();QStringList options;
+    for (const auto &s : pool) options.append(s.answerAtRank("genus"));
+    auto data=gradedHintFixture();EducationalContent content(data);
+    auto hints=content.questionHints(correct,"genus",options,pool,true);
+    QVERIFY(hints[0].available());QCOMPARE(hints[0].assistance,AssistanceLevel::Moderate);
+    QVERIFY(hints[1].available());QCOMPARE(hints[1].assistance,AssistanceLevel::Strong);
+    QVERIFY(hints[2].available());QCOMPARE(hints[2].assistance,AssistanceLevel::Light);
+    auto notes=data["notes"].toObject();
+    const auto species=data["species"].toObject()[QString::number(correct.id)].toObject();
+    const QString etymologyKey=species["etymology_hints"].toObject()["genus"].toString();
+    auto etymology=notes[etymologyKey].toObject(),assessment=etymology["assistance"].toObject();
+    assessment["grade"]="light";
+    bindFixtureAssessment(assessment,QString::number(correct.id),correct.name,correct.photo.id,"etymological");
+    etymology["assistance"]=assessment;notes[etymologyKey]=etymology;data["notes"]=notes;
+    QCOMPARE(EducationalContent(data).questionHints(correct,"genus",options,pool,true)[1].assistance,AssistanceLevel::Light);
+    auto review=assessment["governance"].toObject();review["state"]="draft";review["usable"]=false;
+    assessment["governance"]=review;etymology["assistance"]=assessment;notes[etymologyKey]=etymology;data["notes"]=notes;
+    QVERIFY(EducationalContent(data).questionHints(correct,"genus",options,pool)[1].available());
+    auto pending=EducationalContent(data).questionHints(correct,"genus",options,pool,true)[1];
+    QVERIFY(!pending.available());QVERIFY(pending.unavailableReason.contains("pendente"));
+    QVERIFY(!EducationalContent(data).nameOrigin(correct).isEmpty()); // learning survives assistance draft
+    review["state"]="approved_editorial";review["usable"]=true;
+    review["due_at"]=QDateTime::currentDateTimeUtc().addDays(-1).toString(Qt::ISODateWithMs);
+    assessment["governance"]=review;etymology["assistance"]=assessment;notes[etymologyKey]=etymology;data["notes"]=notes;
+    QVERIFY(!EducationalContent(data).questionHints(correct,"genus",options,pool)[1].available());
+    etymology.remove("assistance");notes[etymologyKey]=etymology;data["notes"]=notes;
+    QVERIFY(!EducationalContent(data).questionHints(correct,"genus",options,pool)[1].available());
+
+    const QString morphologyKey=species["morphological_hint"].toString();
+    auto morphology=notes[morphologyKey].toObject(),diagnostic=morphology["assistance"].toObject();
+    diagnostic["grade"]="strong";diagnostic["context"]="diagnostic_contrast";
+    QJsonObject evidence;
+    for (const auto &option : options) evidence[option]=QJsonObject{{"rank","genus"},{"compatible",option==correct.answerAtRank("genus")},
+        {"source_url","https://example.org/synthetic-comparison"},{"locator","test-only documented comparison"}};
+    diagnostic["option_evidence"]=evidence;
+    bindFixtureAssessment(diagnostic,QString::number(correct.id),correct.name,correct.photo.id,"morphological");
+    morphology["assistance"]=diagnostic;notes[morphologyKey]=morphology;data["notes"]=notes;
+    auto strong=EducationalContent(data).questionHints(correct,"genus",options,pool,true)[2];
+    QVERIFY(strong.available());QCOMPARE(strong.ceiling(),2);
+    evidence.remove(options.last());diagnostic["option_evidence"]=evidence;
+    bindFixtureAssessment(diagnostic,QString::number(correct.id),correct.name,correct.photo.id,"morphological");
+    morphology["assistance"]=diagnostic;notes[morphologyKey]=morphology;data["notes"]=notes;
+    QVERIFY(!EducationalContent(data).questionHints(correct,"genus",options,pool,true)[2].available());
+    auto unknown=pool;unknown.last().taxonomy.clear();
+    QVERIFY(!content.questionHints(correct,"genus",options,unknown,true)[0].available());
+
+    EducationalContent actual;
+    for (const auto &s : source.loadSpecies()) if (QSet<int>{67,131,133}.contains(s.id)) {
+        auto choices=QStringList{s.name,"Example alpha","Example beta","Example gamma"};
+        const auto h=actual.questionHints(s,"species",choices,source.loadSpecies());
+        QVERIFY(h[1].available());QCOMPARE(h[1].assistance,AssistanceLevel::Strong);
+        QVERIFY(h[2].available());QCOMPARE(h[2].assistance,AssistanceLevel::Light);
+        QVERIFY(!actual.questionHints(s,"species",choices,source.loadSpecies(),true)[1].available());
+    }
+}
+
+void GameServiceTests::assistanceSnapshotsAndLegacyV2Migration()
+{
+    QTemporaryDir directory;const auto path=directory.filePath("v2-assistance.sqlite");
+    GameConfiguration old;old.mode=GameMode::Competitive;old.questionLimit=1;old.rank="genus";
+    old.contentVersion="old-content";old.rulesVersion=LegacyScoringRules;
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE","assistance-v2");db.setDatabaseName(path);QVERIFY(db.open());QSqlQuery q(db);
+        QVERIFY(q.exec("CREATE TABLE history(id INTEGER PRIMARY KEY,player_name TEXT,score_units INTEGER,correct_answers INTEGER,played_at TEXT)"));
+        QVERIFY(q.exec("CREATE TABLE game_runs(id TEXT PRIMARY KEY,player_name TEXT NOT NULL,finished_at TEXT NOT NULL,rules_version TEXT NOT NULL,ranking_key TEXT NOT NULL,score_units INTEGER,correct_answers INTEGER,answered_count INTEGER,is_complete INTEGER)"));
+        q.prepare("INSERT INTO game_runs VALUES('old','Ada','2026-01-01T00:00:00Z',?,?,3,1,1,1)");q.addBindValue(LegacyScoringRules);q.addBindValue(old.rankingKey());QVERIFY(q.exec());
+        QVERIFY(q.exec("CREATE TABLE answer_records(game_id TEXT,question_number INTEGER,species_id INTEGER,scientific_name TEXT,photo_id TEXT,rank TEXT,selected_answer TEXT,correct_answer TEXT,is_correct INTEGER,revealed_hints INTEGER,maximum_units INTEGER,awarded_units INTEGER,PRIMARY KEY(game_id,question_number))"));
+        QVERIFY(q.exec("INSERT INTO answer_records VALUES('old',1,67,'Trametes versicolor','photo','genus','Trametes','Trametes',1,2,3,3)"));
+        QVERIFY(q.exec("CREATE TABLE ranking_records(ranking_key TEXT,player_name TEXT COLLATE NOCASE,best_units INTEGER,best_correct INTEGER,best_played_at TEXT,last_units INTEGER,last_correct INTEGER,last_played_at TEXT,PRIMARY KEY(ranking_key,player_name))"));
+        q.prepare("INSERT INTO ranking_records VALUES(?,'Ada',3,1,'2026-01-01T00:00:00Z',3,1,'2026-01-01T00:00:00Z')");q.addBindValue(old.rankingKey());QVERIFY(q.exec());
+        QVERIFY(q.exec("PRAGMA user_version=2"));
+    }
+    QSqlDatabase::removeDatabase("assistance-v2");
+    auto current=old;current.rulesVersion=CurrentScoringRules;
+    AnswerRecord answer{1,67,"Trametes versicolor","photo","genus","Trametes","Trametes",true,6,2,2};
+    answer.rulesVersion=CurrentScoringRules;answer.ceilings={0,2,6};
+    answer.options={"Trametes","Stropharia","Coprinus","Clathrus"};
+    for (int i : {1,2}) {
+        QJsonObject a{{"grade",i==1 ? "strong" : "light"},{"ranks",QJsonArray{"genus"}},{"context","any_safe_options"}};
+        bindFixtureAssessment(a,"67",answer.scientificName,answer.photoId,hintKey(static_cast<HintType>(i+1)));
+        answer.assessmentIds[i]=a["governance"].toObject()["content_sha256"].toString();answer.assessmentPayloads[i]=a["binding"].toObject();
+    }
+    {
+        SqliteGameHistoryRepository history(path);
+        const auto migrated=history.loadAnswers("old");QCOMPARE(migrated.size(),1);
+        QCOMPARE(migrated.first().maximumUnits,3);QCOMPARE(migrated.first().ceilings[1],3);
+        QCOMPARE(history.loadRanking(old.rankingKey()).first().scoreUnits,qint64(3));
+        QVERIFY(history.loadRanking(current.rankingKey()).isEmpty());
+        QVERIFY(history.saveConfiguredResult("Ada",2,1,{answer},"new",current));
+        QVERIFY(history.saveConfiguredResult("Ada",2,1,{answer},"new",current));
+        auto bad=answer;bad.ceilings[1]=4;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"bad-ceiling",current));
+        bad=answer;bad.assessmentIds[1].clear();QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"missing-proof",current));
+        bad=answer;bad.maximumUnits=3;bad.awardedUnits=3;QVERIFY(!history.saveConfiguredResult("Ada",3,1,{bad},"wrong-cap",current));
+        bad=answer;bad.ceilings[1]=6;bad.maximumUnits=6;bad.awardedUnits=6;QVERIFY(!history.saveConfiguredResult("Ada",6,1,{bad},"forged-grade",current));
+        bad=answer;bad.revealedHints=2;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"unrevealed-charge",current));
+        bad=answer;bad.assessmentPayloads[1].insert("scientific_name","Unrelated species");QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"tampered-payload",current));
+        bad=answer;bad.rulesVersion=LegacyScoringRules;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"wrong-policy",current));
+        bad=answer;bad.ceilings[2]=3;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"new",current));
+        QCOMPARE(history.playerMetrics(current.rankingKey(),"Ada").correct,1);
+        QCOMPARE(history.playerMetrics(current.rankingKey(),"Ada").units,qint64(2));
+    }
+    SqliteGameHistoryRepository reopened(path);
+    QCOMPARE(reopened.loadAnswers("old").first().awardedUnits,3);
+    QCOMPARE(reopened.loadAnswers("new").first().ceilings[1],2);
+    QCOMPARE(reopened.loadAnswers("new").first().ceilings[2],6);
+    QCOMPARE(reopened.loadAnswers("new").first().assessmentIds[1],answer.assessmentIds[1]);
+    QCOMPARE(reopened.loadAnswers("new").first().options,answer.options);
+    QCOMPARE(reopened.loadRanking(old.rankingKey()).first().scoreUnits,qint64(3));
+    QCOMPARE(reopened.loadRanking(current.rankingKey()).first().scoreUnits,qint64(2));
+}
+
+void GameServiceTests::assistanceChangesCompetitiveContentVersion()
+{
+    QFile file(":/resources/data/education.json");QVERIFY(file.open(QIODevice::ReadOnly));
+    const auto original=file.readAll();auto data=QJsonDocument::fromJson(original).object();
+    QCOMPARE(GameService::contentFingerprint(original),GameService::competitiveConfiguration().contentVersion);
+    auto notes=data["notes"].toObject();auto note=notes["species:67:etymology:species"].toObject();
+    auto assessment=note["assistance"].toObject();assessment["grade"]="light";note["assistance"]=assessment;
+    notes["species:67:etymology:species"]=note;data["notes"]=notes;
+    QVERIFY(GameService::contentFingerprint(QJsonDocument(data).toJson())!=GameService::contentFingerprint(original));
+    auto old=GameService::competitiveConfiguration();old.rulesVersion=LegacyScoringRules;
+    QVERIFY(old.rankingKey()!=GameService::competitiveConfiguration().rankingKey());
 }
 
 QTEST_MAIN(GameServiceTests)

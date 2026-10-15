@@ -8,15 +8,15 @@ Dialog {
     objectName: "hintPanel"
     property int selectedCategory: -1
     readonly property var labels: [
-        {title: "Taxonômica", description: "Ajuda leve — contexto da classificação.", icon: "book"},
-        {title: "Etimológica", description: "Ajuda intermediária — origem do nome.", icon: "spark"},
-        {title: "Morfológica", description: "Ajuda elevada — características físicas.", icon: "shape"}
+        {title: "Taxonômica", description: "Contexto da classificação.", icon: "book"},
+        {title: "Etimológica", description: "Origem do nome.", icon: "spark"},
+        {title: "Morfológica", description: "Características físicas.", icon: "shape"}
     ]
     readonly property var selectedHint: selectedCategory >= 0 ? backend.hints[selectedCategory] : ({})
     parent: Overlay.overlay
     modal: true; focus: true; anchors.centerIn: parent
     width: Math.min(540,parent ? parent.width-32 : 540)
-    height: Math.min(630,Overlay.overlay ? Overlay.overlay.height-40 : 630)
+    height: Math.min(740,Overlay.overlay ? Overlay.overlay.height-40 : 740)
     padding: 20
     closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
     header: Label { text: "ESCOLHA SUA DICA"; font.pixelSize: 20; font.weight: Font.DemiBold; color: panel.palette.text; padding: 20 }
@@ -36,8 +36,8 @@ Dialog {
                     readonly property var hint: panel.backend.hints[index] || ({})
                     objectName: "hintCategory" + index
                     enabled: !!hint.available; hoverEnabled: true; padding: 14
-                    Layout.fillWidth: true; implicitHeight: 92; opacity: enabled ? 1 : 0.55
-                    Accessible.name: modelData.title + ". " + hint.pointsText + " ponto por acerto"
+                    Layout.fillWidth: true; implicitHeight: Math.max(112, contentItem.implicitHeight + topPadding + bottomPadding); opacity: enabled ? 1 : 0.55
+                    Accessible.name: modelData.title + ". Assistência " + hint.assistance + ". " + (hint.available ? "Revelar esta dica mantém o acerto em até " + hint.pointsText + " ponto." : hint.reason)
                     background: Rectangle {
                         radius: 12
                         color: panel.selectedCategory===choice.index ? "#134C36" : (choice.hovered ? "#1B3440" : "#132832")
@@ -51,7 +51,8 @@ Dialog {
                             Layout.fillWidth: true; spacing: 4
                             Label { text: choice.modelData.title + (choice.hint.revealed ? " · revelada" : ""); color: "#E6F1E9"; font.pixelSize: 15; font.weight: Font.DemiBold }
                             Label { text: choice.hint.available ? choice.modelData.description : choice.hint.reason; color: "#96AFB3"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                            Label { text: choice.hint.pointsText + " ponto por acerto"; color: "#71DCA0"; font.pixelSize: 12 }
+                            Label { text: "Assistência " + choice.hint.assistance + (choice.hint.provisional ? " · provisória, revisão pendente" : ""); color: "#DDD3A4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                            Label { objectName: "hintCeiling" + choice.index; visible: !!choice.hint.available; text: "Revelar esta dica mantém o acerto em até " + choice.hint.pointsText + " ponto."; color: "#71DCA0"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                         }
                     }
                     onClicked: { if (panel.backend.revealHintCategory(hint.id)) panel.selectedCategory=index }

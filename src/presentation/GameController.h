@@ -77,7 +77,7 @@ public:
     QString scoreText() const { return formatScore(scoreUnits()); }
     int correctAnswers() const { return service_.correctAnswers(); }
     QVariantList hints() const;
-    QString possibleScoreText() const { return formatScore(maximumScoreUnits(displayedRevealedHints_)); }
+    QString possibleScoreText() const { return formatScore(maximumScoreUnits(displayedRevealedHints_,hintCeilings(displayedQuestion_.hints))); }
     int round() const;
     bool gameFinished() const;
     QString feedbackText() const;

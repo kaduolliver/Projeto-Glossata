@@ -8,9 +8,49 @@
 #include <QStandardPaths>
 #include <QUuid>
 #include <QSet>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 namespace {
 int connectionCounter = 0;
+
+QString answerSnapshot(const AnswerRecord &answer)
+{
+    QJsonArray ceilings,ids,payloads;
+    const bool legacy=answer.rulesVersion==LegacyScoringRules || answer.rulesVersion=="legacy";
+    for (int i=0;i<3;++i) {
+        ceilings.append(legacy && (answer.revealedHints & (1<<i)) ? legacyMaximumScoreUnits(1<<i) : answer.ceilings[i]);
+        ids.append(answer.assessmentIds[i]);
+        payloads.append(answer.assessmentPayloads[i]);
+    }
+    return QString::fromUtf8(QJsonDocument(QJsonObject{{"schema",1},{"rules",answer.rulesVersion},
+        {"ceilings",ceilings},{"assessment_ids",ids},{"assessment_payloads",payloads},
+        {"options",QJsonArray::fromStringList(answer.options)}}).toJson(QJsonDocument::Compact));
+}
+
+bool readSnapshot(const QString &json,AnswerRecord &answer)
+{
+    QJsonParseError error;
+    const auto document=QJsonDocument::fromJson(json.toUtf8(),&error);
+    const auto value=document.object();
+    const auto ceilings=value.value("ceilings").toArray(),ids=value.value("assessment_ids").toArray();
+    const auto payloads=value.value("assessment_payloads").toArray();
+    if (error.error!=QJsonParseError::NoError || value.value("schema").toInt()!=1
+        || value.value("rules").toString()!=answer.rulesVersion || ceilings.size()!=3 || ids.size()!=3 || payloads.size()!=3) return false;
+    for (int i=0;i<3;++i) {
+        if (!ceilings[i].isDouble() || ceilings[i].toDouble()!=ceilings[i].toInt() || !ids[i].isString()) return false;
+        answer.ceilings[i]=ceilings[i].toInt();answer.assessmentIds[i]=ids[i].toString();
+        if (!payloads[i].isObject()) return false;
+        answer.assessmentPayloads[i]=payloads[i].toObject();
+    }
+    if (!value.value("options").isArray()) return false;
+    for (const auto &option : value.value("options").toArray()) {
+        if (!option.isString()) return false;
+        answer.options.append(option.toString());
+    }
+    return validAnswerScoring(answer,answer.rulesVersion);
+}
 
 bool upsertRanking(const QSqlDatabase &database, const QString &key, const QString &name,
                    qint64 units, int correct, const QString &date)
@@ -73,7 +113,7 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 2 || !database_.transaction()) { database_.close(); return; }
+    if (version > 3 || !database_.transaction()) { database_.close(); return; }
     auto exec = [&](const QString &sql) { return query.exec(sql); };
     auto columns = [&](const QString &table) {
         QSet<QString> result;
@@ -113,12 +153,29 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         query.finish();
         for (const auto &row : available) if (ok) ok = upsertRanking(database_, "free", row[0].toString(),row[1].toLongLong(),row[2].toInt(),row[3].toString());
     }
+    const auto answerColumns=columns("answer_records");
+    if (ok && !answerColumns.contains("rules_version")) ok=exec("ALTER TABLE answer_records ADD COLUMN rules_version TEXT NOT NULL DEFAULT 'identification-v2'");
+    if (ok && !answerColumns.contains("hint_snapshot")) ok=exec("ALTER TABLE answer_records ADD COLUMN hint_snapshot TEXT NOT NULL DEFAULT '{}'");
+    if (ok && version<3) {
+        QVector<QVariantList> legacy;
+        ok=query.exec("SELECT a.game_id,a.question_number,a.revealed_hints,g.rules_version FROM answer_records a JOIN game_runs g ON g.id=a.game_id");
+        while (query.next()) legacy.append({query.value(0),query.value(1),query.value(2),query.value(3)});
+        query.finish();
+        for (const auto &row : legacy) {
+            AnswerRecord answer;answer.revealedHints=row[2].toInt();answer.rulesVersion=row[3].toString();
+            // Freeze the historical category policy; never UPDATE points/rankings.
+            for (int i=0;i<3;++i) if (answer.revealedHints & (1<<i)) answer.ceilings[i]=legacyMaximumScoreUnits(1<<i);
+            query.prepare("UPDATE answer_records SET rules_version=?,hint_snapshot=? WHERE game_id=? AND question_number=?");
+            for (const auto &v : QVariantList{answer.rulesVersion,answerSnapshot(answer),row[0],row[1]}) query.addBindValue(v);
+            if (!query.exec()) {ok=false;break;}
+        }
+    }
     if (ok) {
         ok = exec("PRAGMA foreign_key_check");
         if (query.next()) ok = false;
         query.finish();
     }
-    ok = ok && exec("PRAGMA user_version=2");
+    ok = ok && exec("PRAGMA user_version=3");
     if (!ok || !database_.commit()) {
         qWarning() << "Não foi possível migrar o histórico:" << query.lastError().text() << database_.lastError().text();
         database_.rollback(); database_.close();
@@ -136,7 +193,9 @@ SqliteGameHistoryRepository::~SqliteGameHistoryRepository()
 bool SqliteGameHistoryRepository::saveResult(const QString &playerName, qint64 scoreUnits, int correctAnswers,
                                             const QVector<AnswerRecord> &answers,const QString &gameId)
 {
-    return saveConfiguredResult(playerName, scoreUnits, correctAnswers, answers, gameId, {});
+    GameConfiguration configuration;
+    configuration.rulesVersion=answers.isEmpty() ? QStringLiteral("legacy") : answers.first().rulesVersion;
+    return saveConfiguredResult(playerName, scoreUnits, correctAnswers, answers, gameId, configuration);
 }
 
 bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName, qint64 scoreUnits, int correctAnswers,
@@ -146,13 +205,12 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
     if (!database_.isOpen() || normalizedName.isEmpty() || scoreUnits<0 || correctAnswers<0) {
         return false;
     }
+    if (configuration.rulesVersion!=CurrentScoringRules && configuration.rulesVersion!=LegacyScoringRules && configuration.rulesVersion!="legacy") return false;
+    if (answers.isEmpty() && (configuration.rulesVersion==CurrentScoringRules || configuration.mode==GameMode::Competitive)) return false;
     if(!answers.isEmpty()) {
         qint64 total=0; int correct=0,number=0;
         for(const auto &answer : answers) {
-            if(answer.questionNumber!=++number || answer.maximumUnits!=maximumScoreUnits(answer.revealedHints)
-                || answer.awardedUnits!=(answer.correct ? answer.maximumUnits : 0)
-                || answer.revealedHints<0 || answer.revealedHints>7
-                || answer.correct != (answer.selectedAnswer == answer.correctAnswer))return false;
+            if(answer.questionNumber!=++number || !validAnswerScoring(answer,configuration.rulesVersion)) return false;
             total+=answer.awardedUnits;correct+=answer.correct;
         }
         if(total!=scoreUnits || correct!=correctAnswers)return false;
@@ -182,7 +240,7 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
             && query.value(11).toString()==configuration.contentVersion;
         query.finish();
         QSqlQuery stored(database_);
-        stored.prepare("SELECT question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units FROM answer_records WHERE game_id=? ORDER BY question_number");
+        stored.prepare("SELECT question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units,rules_version,hint_snapshot FROM answer_records WHERE game_id=? ORDER BY question_number");
         stored.addBindValue(id);
         samePlayer = samePlayer && stored.exec();
         int index = 0;
@@ -190,7 +248,7 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
             if (index >= answers.size()) { samePlayer = false; break; }
             const auto &answer = answers[index++];
             const QVariantList values{answer.questionNumber,answer.speciesId,answer.scientificName,answer.photoId,answer.rank,
-                answer.selectedAnswer,answer.correctAnswer,int(answer.correct),answer.revealedHints,answer.maximumUnits,answer.awardedUnits};
+                answer.selectedAnswer,answer.correctAnswer,int(answer.correct),answer.revealedHints,answer.maximumUnits,answer.awardedUnits,answer.rulesVersion,answerSnapshot(answer)};
             for (int column = 0; column < values.size(); ++column) if (stored.value(column).toString() != values[column].toString()) samePlayer = false;
         }
         samePlayer = samePlayer && index == answers.size();
@@ -205,10 +263,10 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
         configuration.rankingKey(),scoreUnits,correctAnswers,int(answers.size()),complete}) query.addBindValue(value);
     if(!query.exec()){database_.rollback();return false;}
     for(const auto &answer : answers) {
-        query.prepare("INSERT INTO answer_records VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        query.prepare("INSERT INTO answer_records(game_id,question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units,rules_version,hint_snapshot) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         for(const QVariant &value : QVariantList{id,answer.questionNumber,answer.speciesId,answer.scientificName,
             answer.photoId,answer.rank,answer.selectedAnswer,answer.correctAnswer,answer.correct,
-            answer.revealedHints,answer.maximumUnits,answer.awardedUnits})query.addBindValue(value);
+            answer.revealedHints,answer.maximumUnits,answer.awardedUnits,answer.rulesVersion,answerSnapshot(answer)})query.addBindValue(value);
         if(!query.exec()){database_.rollback();return false;}
     }
     if (complete && !upsertRanking(database_, configuration.rankingKey(), normalizedName, scoreUnits, correctAnswers, playedAt)) {
@@ -232,6 +290,25 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
         database_.rollback();return false;
     }
     return true;
+}
+
+QVector<AnswerRecord> SqliteGameHistoryRepository::loadAnswers(const QString &gameId) const
+{
+    QVector<AnswerRecord> result;
+    if (!database_.isOpen()) return result;
+    QSqlQuery query(database_);
+    query.prepare("SELECT question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units,rules_version,hint_snapshot FROM answer_records WHERE game_id=? ORDER BY question_number");
+    query.addBindValue(gameId);
+    if (!query.exec()) return {};
+    while (query.next()) {
+        AnswerRecord a{query.value(0).toInt(),query.value(1).toInt(),query.value(2).toString(),query.value(3).toString(),
+            query.value(4).toString(),query.value(5).toString(),query.value(6).toString(),query.value(7).toBool(),
+            query.value(8).toInt(),query.value(9).toInt(),query.value(10).toInt()};
+        a.rulesVersion=query.value(11).toString();
+        if (a.questionNumber!=result.size()+1 || !readSnapshot(query.value(12).toString(),a)) return {};
+        result.append(a);
+    }
+    return result;
 }
 
 QVector<HistoryEntry> SqliteGameHistoryRepository::loadTopResults(int limit) const

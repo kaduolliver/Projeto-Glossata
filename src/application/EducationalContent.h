@@ -6,12 +6,13 @@
 class EducationalContent {
 public:
     EducationalContent();
+    explicit EducationalContent(const QJsonObject &data) : data_(data) {}
     QVariantMap introduction(const QString &taxonId) const;
     QVariantMap hint(const Species &species, const QString &rank, const QStringList &options) const;
     QVariantMap curiosity(const Species &species) const;
     QVariantMap profile(const Species &species) const;
     QuestionHints questionHints(const Species &species,const QString &rank,const QStringList &options,
-                                const QVector<Species> &pool) const;
+                                const QVector<Species> &pool,bool competitive=false) const;
     QVariantMap nameOrigin(const Species &species) const;
 private:
     QJsonObject data_;

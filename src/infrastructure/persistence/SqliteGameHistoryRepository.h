@@ -16,6 +16,7 @@ public:
                               const QString &, const GameConfiguration &) override;
     QVector<HistoryEntry> loadRanking(const QString &key, int limit = 10) const override;
     QVector<HistoryEntry> loadPlayerResult(const QString &key, const QString &name) const;
+    QVector<AnswerRecord> loadAnswers(const QString &gameId) const;
     SessionMetrics playerMetrics(const QString &key, const QString &name) const override;
     QStringList loadPlayerProfiles() const override;
     bool addPlayerProfile(const QString &name) override;

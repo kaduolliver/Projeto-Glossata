@@ -13,11 +13,13 @@
 class GameService {
 public:
     enum class SaveStatus { NotNeeded, Saved, Failed };
-    explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr);
+    explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr,
+                         const EducationalContent &content = EducationalContent());
 
     void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"));
     void startConfiguredGame(GameConfiguration configuration);
     static GameConfiguration competitiveConfiguration();
+    static QString contentFingerprint(const QByteArray &education);
     GameConfiguration configuration() const { return session_.configuration; }
     SessionMetrics metrics() const { return SessionMetrics::fromAnswers(session_.answers); }
     Question currentQuestion() const;
@@ -28,7 +30,7 @@ public:
     bool revealHint();
     bool revealHint(HintType type);
     int revealedHints() const { return revealedHints_; }
-    int possibleScoreUnits() const { return maximumScoreUnits(revealedHints_); }
+    int possibleScoreUnits() const { return maximumScoreUnits(revealedHints_,hintCeilings(currentQuestion_.hints)); }
     QVector<AnswerRecord> answers() const { return session_.answers; }
     void finishGame();
     qint64 scoreUnits() const;

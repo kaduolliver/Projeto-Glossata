@@ -308,7 +308,11 @@ QVariantList GameController::hints() const
         const bool revealed=displayedRevealedHints_ & hintBit(hint.type);
         rows.append(QVariantMap{{"id",hintKey(hint.type)},{"available",hint.available()},
             {"revealed",revealed},{"text",revealed ? hint.text : QString()},
-            {"sourceUrl",revealed ? hint.sourceUrl : QString()},{"reason",hint.unavailableReason},{"pointsText",formatScore(maximumScoreUnits(hintBit(hint.type)))}});
+            {"sourceUrl",revealed ? hint.sourceUrl : QString()},{"reason",hint.unavailableReason},
+            {"assistance",assistanceLabel(hint.assistance)},{"provisional",hint.provisional},
+            {"assessmentState",hint.assessmentState},{"rationale",revealed ? hint.rationale : QString()},
+            {"ceilingUnits",hint.ceiling()},
+            {"pointsText",hint.available() ? formatScore(maximumScoreUnits(displayedRevealedHints_|hintBit(hint.type),hintCeilings(displayedQuestion_.hints))) : QString()}});
     }
     return rows;
 }

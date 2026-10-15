@@ -10,8 +10,8 @@
 #include <QFile>
 #include <QCryptographicHash>
 
-GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history)
-    : catalog_(catalog), history_(history)
+GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history,const EducationalContent &content)
+    : catalog_(catalog), history_(history), content_(content)
 {
 }
 
@@ -30,20 +30,29 @@ GameConfiguration GameService::competitiveConfiguration()
     configuration.questionLimit = GameConfiguration::CompetitiveQuestionCount;
     configuration.rank = "genus";
     static const QString fingerprint = [] {
-        QByteArray bytes;
-        for (const QString &path : {QString(":/resources/data/species.json"), QString(":/resources/data/taxonomy.json"), QString(":/resources/data/education.json")}) {
-            QFile file(path);
-            if (!file.open(QIODevice::ReadOnly)) return QString();
-            bytes += file.readAll();
-        }
-        return QString::fromLatin1(QCryptographicHash::hash(bytes, QCryptographicHash::Sha256).toHex());
+        QFile file(":/resources/data/education.json");
+        return file.open(QIODevice::ReadOnly) ? contentFingerprint(file.readAll()) : QString();
     }();
     configuration.contentVersion = fingerprint;
     return configuration;
 }
 
+QString GameService::contentFingerprint(const QByteArray &education)
+{
+    QByteArray bytes;
+    for (const QString &path : {QString(":/resources/data/species.json"), QString(":/resources/data/taxonomy.json")}) {
+        QFile file(path);
+        if (!file.open(QIODevice::ReadOnly)) return {};
+        bytes+=file.readAll();
+    }
+    bytes+=education; // Includes assistance grades, scopes, bindings and review states.
+    return QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex());
+}
+
 void GameService::startConfiguredGame(GameConfiguration configuration)
 {
+    // Legacy rules interpret stored games; new sessions always use current rules.
+    configuration.rulesVersion=CurrentScoringRules;
     const QString filter = configuration.group;
     const QString rank = configuration.rank;
     identificationRank_ = rank;
@@ -142,6 +151,14 @@ bool GameService::submitAnswer(const QString &selectedOption)
     session_.answers.append({session_.round,currentQuestion_.species.id,currentQuestion_.species.name,
         currentQuestion_.photo.id,currentQuestion_.identificationRank,selectedOption,currentQuestion_.correctAnswer,
         isCorrect,revealedHints_,maximum,isCorrect ? maximum : 0});
+    auto &record=session_.answers.last();
+    record.rulesVersion=session_.configuration.rulesVersion;
+    record.options=currentQuestion_.options;
+    for (int i=0;i<3;++i) if (revealedHints_ & (1<<i)) {
+        record.ceilings[i]=currentQuestion_.hints[i].ceiling();
+        record.assessmentIds[i]=currentQuestion_.hints[i].assessmentId;
+        record.assessmentPayloads[i]=currentQuestion_.hints[i].assessmentPayload;
+    }
     performance_.record(currentQuestion_.species,isCorrect);
     ++session_.answeredCount;
     if (isCorrect) {
