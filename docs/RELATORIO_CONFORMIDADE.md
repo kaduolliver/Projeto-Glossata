@@ -1,5 +1,7 @@
 # Relatório da implementação — 15/10/2026
 
+Atualização de dicas: `identification-v3-assistance` separa categoria de assistência e preserva pontos antigos com migração SQLite v3 e snapshots verificáveis. Foram auditadas 290 avaliações para os 122 organismos, com 132 mudanças de teto propostas e quatro inadequações como morfologia prévia. Todas são rascunhos de origem IA: não houve aprovação humana. Dicas provisórias são sinalizadas no Livre e ficam indisponíveis no Competitivo. Texto científico, fontes, organismos e fotografias permanecem preservados. Consulte [DICAS_E_PONTUACAO.md](DICAS_E_PONTUACAO.md) e [AUDITORIA_ASSISTENCIA.json](AUDITORIA_ASSISTENCIA.json). Não houve alteração de licença, push ou lançamento nesta etapa.
+
 Atualização de versionamento: aplicativo **1.1.0 em desenvolvimento**, catálogo independente **1.0.0 ainda não lançado**. Os dados, revisões, mídias ativas e evidências são identificados em `resources/data/catalog_manifest.json` e vinculados ao executável por `build/build-manifest.json`. O acervo histórico local fora do catálogo continua auditado separadamente; não é dependência do manifesto embarcado. `CHANGELOG.md`, `CATALOGO_CHANGELOG.md` e `VERSIONAMENTO.md` documentam o histórico e os bloqueios. A captura real de 1240×820 está em `docs/images/tela-inicial.png`, com origem documentada; não contém dados pessoais de jogadores. A validação desta atualização inclui seis suítes CTest, 13 testes específicos de lançamento, lint e auditoria técnica. Nenhuma tag, push ou release foi criada: os bloqueios de distribuição permanecem.
 
 Foram implementados controles e uma matriz de ações, **sem certificação jurídica ou científica**. A versão local mantém os 122 organismos, 120 fotografias distintas, navegação, fichas, dicas, modos Livre/Competitivo e dados dos jogadores. Nenhum banco pessoal foi alterado pelos scripts de governança; os testes usam bancos temporários.
@@ -24,12 +26,12 @@ Foram implementados controles e uma matriz de ações, **sem certificação jur�
 | Verificação | Resultado e limite |
 | --- | --- |
 | Compilação Release | Concluída; valida compilação, não o mérito científico |
-| CTest | Seis suítes, zero falhas; execução completa final em 37,94 s |
+| CTest | Seis suítes, zero falhas; execução completa da correção de dicas em 33,42 s |
 | GlossataTests | Regras, perfis/ranking, migrações e expiração de revisão offline |
 | GlossataInterfaceTests | Fluxos de jogo, revisão, 20 questões competitivas e nova tela de créditos |
 | GlossataDiscordTests | Protocolo em servidores locais fictícios; não publica atividade real |
 | GlossataImportTests | 14 testes offline, incluindo preservação de identidades/textos e geração reprodutível |
-| GlossataGovernanceTests | 20 testes offline: licença individual, bloqueio antes da rede, prova de permissão, privacidade JSON/EXIF/XMP, crédito, legado, revisão humana, expiração, alteração de hierarquia/nome, histórico e publicação/execução desatualizada |
+| GlossataGovernanceTests | 22 testes offline: licença individual, bloqueio antes da rede, prova de permissão, privacidade JSON/EXIF/XMP, crédito, legado, revisão humana, expiração, alteração de hierarquia/nome, histórico e publicação/execução desatualizada; revisão pedagógica independente e invalidada por mudanças |
 | GlossataReleaseTests | 13 testes offline: SemVer, versões independentes, dados/evidências alterados, cache local fora do catálogo, captura desatualizada, PNG no commit visual, árvore limpa, gates obrigatórios e ausência de tag em caso de falha |
 | qmllint | Sem avisos após os ajustes |
 | Auditoria técnica | Zero erros técnicos detectados; 122 fotos tecnicamente válidas |

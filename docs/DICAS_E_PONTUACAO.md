@@ -1,139 +1,79 @@
-# Dicas estratégicas e pontuação exata
+# Dicas, assistência e pontuação
 
-> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+A política `identification-v3-assistance` separa assunto e ajuda, mantendo o cálculo exato, o aprendizado após responder e os pontos históricos. Aplicativo 1.1.0 e catálogo 1.0.0 continuam em preparação; esta alteração não é um lançamento público.
 
-Registro da etapa inicial de dicas. Para a implementação atual — recordes, modo Competitivo, três alternativas compatíveis e etimologias ampliadas — consulte [EVOLUCAO_COMPETITIVA.md](EVOLUCAO_COMPETITIVA.md) e [COBERTURA_TAXONOMICA.md](COBERTURA_TAXONOMICA.md).
+## Diagnóstico
 
-Implementação validada em 14/10/2026, mantendo o catálogo de 122 organismos, a navegação, os perfis, a sidebar e o encerramento voluntário pelo botão Voltar.
+Antes, `Hint.h` deduzia o teto pela máscara de categorias. Serviço, controlador e validação SQLite reutilizavam essa associação. O painel anunciava o valor isolado da categoria, podendo prometer um ponto depois de outra dica reduzir o acerto a um terço.
 
-## Auditoria e funcionalidades
+| Exemplo do corpus | Avaliação proposta |
+| --- | --- |
+| *Trametes versicolor*: “de várias cores” | Etimologia forte: pode permitir reconhecer `versicolor` |
+| *Ginkgo biloba*: “dois lobos” | Etimologia forte: associação com `biloba` |
+| *Rhinoceros unicornis*: “um único chifre” | Etimologia forte: associação com `unicornis` |
+| Descrições de faixas, folhas e chifre desses organismos | Morfologia leve: não foi demonstrada informação diagnóstica adicional à foto |
+| *Verbascum thapsus*: homenagem a uma localidade | Etimologia leve: contexto histórico sem exclusão demonstrada |
+| *Favolaschia claudopus*: referência a favos e ao nome de Lasch | Etimologia forte: uma homenagem também pode fornecer associação escrita reconhecível |
 
-Antes desta etapa, cada acerto incrementava um único campo score. Esse campo também era usado como número de acertos nas estatísticas, conquistas e ranking. Havia uma dica por pergunta, revelada uma única vez e sem custo.
+São propostas pedagógicas, sem aprovação humana ou garantia experimental de dificuldade. Não foram inventadas etimologias, características, fontes ou revisores. Os limites fotográficos continuam válidos: *Trametes* e *Rhinoceros* não passam a ter perguntas de espécie apenas por haver etimologia desse nível.
 
-Agora o botão Dica abre um painel com categorias taxonômica, etimológica e morfológica. Abrir, fechar ou cancelar o painel não altera pontos. Somente revelar uma categoria disponível muda seu estado. O conteúdo permanece consultável; categorias podem ser combinadas e revisitar uma delas não aumenta a pontuação possível.
+## Política central
 
-| Assistência efetivamente revelada | Unidades máximas | Apresentação |
-|---|---:|---:|
-| Nenhuma | 6 | 1,00 |
-| Somente taxonômica | 6 | 1,00 |
-| Etimológica, sem morfológica | 3 | 0,50 |
-| Morfológica, com qualquer combinação | 2 | 0,33 |
-| Resposta incorreta | 0 | 0,00 |
+As categorias **taxonômica**, **etimológica** e **morfológica** descrevem o assunto. A assistência daquela nota, nível e contexto determina o teto:
 
-As unidades são inteiras de 64 bits no total. Cada questão inicia com seis unidades. O cálculo usa o conjunto de categorias reveladas e aplica o menor teto. Três acertos com assistência morfológica somam exatamente seis unidades, ou um ponto. A conversão com duas casas decimais e vírgula acontece somente para apresentação.
+| Assistência | Unidades | Apresentação |
+| --- | ---: | ---: |
+| Leve | 6 | 1,00 |
+| Moderada | 3 | 0,50 |
+| Forte | 2 | 0,33 |
 
-Acertos, erros, precisão, desempenho taxonômico e conquistas continuam contando respostas, independentemente do peso em pontos. O quiz mostra a pontuação acumulada e possível; a revisão mostra os pontos obtidos na questão; resultado e ranking usam a apresentação fracionária.
+Sem dica, o teto começa em seis unidades. Erro vale zero. Totais usam inteiros de 64 bits e arredondam somente na apresentação: três acertos de duas unidades somam exatamente um ponto. Acertos, precisão e eficiência são métricas distintas.
 
-Após responder, Aprender com esta resposta permite consultar nome científico, classificação, origem documentada do nome e aspectos físicos. A informação independe das dicas utilizadas e não afeta os pontos já registrados. A ficha ampliada anterior continua disponível.
+Abrir/fechar o painel não altera pontos. Somente revelar uma dica disponível aplica seu teto. Revisitar não cobra novamente. Combinações conservam o menor teto e nunca o aumentam. A pergunta seguinte reinicia com seis unidades. Consulta após responder não modifica pontos registrados. A interface anuncia o teto resultante antes de revelar, inclusive quando outra dica já reduziu a pontuação.
 
-## Seleção científica por questão
+Dicas combinadas podem fornecer ajuda adicional. O menor teto é uma regra explícita mantida nesta correção; não mede ajuda cumulativa e não foi substituído por fórmula experimental.
 
-A dica taxonômica é construída a partir da linhagem científica armazenada. Precisa citar um ancestral verificado mais abrangente que o nível solicitado, não conter uma alternativa literal e deixar **pelo menos duas alternativas distintas compatíveis**. Quando uma alternativa representa vários organismos, todos precisam concordar com aquele ancestral. Informações ausentes não são consideradas confirmação. Um reino compartilhado pelas quatro alternativas é descartado como contexto excessivamente genérico.
+## Conteúdo, contexto e curadoria
 
-A geração tenta até oito novos conjuntos de distratores para encontrar um contexto taxonômico seguro, preservando quatro respostas diferentes, o nível solicitado e o grupo escolhido. Não altera a ordem de organismos nem cria uma categoria artificial quando não há conteúdo adequado.
+`hint_education.json` contém `assistance`: grau, justificativa, níveis, origem da avaliação, relação com a foto, associação linguística, condições e limitações. Etimologias são notas diferentes por nível. Morfologia mantém referência à ficha e ID da foto. Cada avaliação é vinculada ao organismo, nome, foto/hash, texto e evidência científica correspondente.
 
-Etimologias são selecionadas pelo nível solicitado: informação do epíteto para espécie e do gênero para gênero, conforme a referência disponível. O texto não contém a alternativa literal. A revisão posterior reutiliza as mesmas notas referenciadas. Classificação do iNaturalist não é aceita como fonte etimológica pelo gerador.
+- Traduções, decomposição de nomes e homenagens reconhecíveis podem justificar assistência forte sem reproduzir o nome completo. Contexto histórico ou significado pouco transparente pode ajudar menos. A proteção literal é adicional; não classifica semanticamente a ajuda.
+- Morfologia genérica ou já visível pode ter assistência leve. Detalhes estruturais/celulares podem acrescentar informação. Uma classificação diagnóstica exige comparação documentada para as quatro alternativas, com nível, compatibilidade, fonte e localização da evidência. Faltar um distrator impede essa dica; ausência de dados não prova incompatibilidade.
+- Taxonomia exige ancestral científico anterior ao nível solicitado, todas as alternativas conhecidas no nível comparado e pelo menos três positivamente compatíveis. Reino compartilhado pelas quatro é descartado. O número de compatíveis restringe segurança, sem calcular automaticamente dificuldade ou grau.
+- Uma associação lexical registrada que corresponda a várias alternativas não identifica uma única resposta; a dica fica indisponível nesse contexto. Mudança de texto, grau, escopo, foto, identidade ou evidência exige nova revisão.
 
-Pistas morfológicas reutilizam conteúdo revisado, vinculando **ID da espécie, nome científico e ID da foto**. Nesta revisão, estão curadas para espécie/gênero; pistas de habitat, dieta ou aparência pouco distintiva não são convertidas automaticamente em ajuda morfológica. Em Monera, informações celulares são explicitamente complementares e a fotografia continua identificada como apoio.
+Registros `assistance:...` usam a governança existente e são independentes da revisão científica. Reclassificar a ajuda não apaga o histórico da afirmação. Alterar o texto científico continua invalidando sua própria revisão. O gerador inclui o payload avaliado e seu hash; o domínio confere esse vínculo antes de revelar e ao validar a persistência.
 
-As categorias representam assistência pretendida, não uma medição experimental de dificuldade. Não há uma garantia de facilidade equivalente entre todos os organismos. Níveis superiores a gênero ainda não possuem notas etimológicas ou morfológicas adequadas no corpus desta etapa; as categorias ficam desabilitadas. Em reino, não há ancestral científico mais amplo verificado no catálogo para uma dica taxonômica segura.
+**As 290 avaliações atuais são rascunhos de origem `ai_proposal`.** No Livre, propostas válidas são sinalizadas como provisórias. No Competitivo, somente classificação editorial ou por especialista rastreável, íntegra e não vencida pode habilitar a dica. O motivo da indisponibilidade não expõe o texto oculto. O material científico utilizável após responder continua disponível, independentemente da avaliação de assistência; a governança científica e a identificação do legado permanecem aplicáveis.
 
-## Cobertura do conteúdo
+O mantenedor pode revisar sozinho, sem simular revisão independente. Deve registrar responsável/data reais, justificativa, escopo `hint_assistance`, evidência localizada e hash atual pelo fluxo `scripts/content_governance.py record-review`; depois regenerar e auditar. A evidência deve sustentar a ajuda no contexto de nomes e alternativas. Bibliografia, URL ou teste não aprovam o peso pedagógico, e essa revisão não substitui a científica.
 
-| Reino | Linhagem com referências | Organismos com etimologia documentada | Organismos com pista morfológica curada |
-|---|---:|---:|---:|
-| Animalia | 42 | 1 | 37 |
-| Plantae | 20 | 4 | 17 |
-| Fungi | 20 | 8 | 19 |
-| Protista | 20 | 1 | 11 |
-| Monera | 20 | 8 | 20 |
-| Total | 122 | 22 | 104 |
+## Auditoria e pendências
 
-Essas contagens são de **conteúdo disponível**, não de categorias garantidas em qualquer questão. As restrições fotográficas e o nível solicitado continuam em vigor. No conjunto misto elegível de gênero, 11 organismos possuem dica etimológica e 89 possuem pista morfológica adequada. Em espécie, são nove e 40, respectivamente, entre 41 organismos elegíveis.
+[AUDITORIA_ASSISTENCIA.json](AUDITORIA_ASSISTENCIA.json) cobre os 122 organismos: 122 avaliações taxonômicas, 64 etimológicas e 104 morfológicas. Registra texto, escopo, justificativa, origem, estado, vínculo, teto anterior/proposto, mudanças, características genéricas/redundantes e conteúdo ausente.
 
-A cobertura taxonômica depende também dos distratores. A suíte produz build/tests/hint-coverage.json com uma amostra determinística de quatro alternativas por organismo e nível; esse relatório não representa todas as combinações possíveis nem o resultado da reamostragem. Categorias podem ficar indisponíveis numa questão mesmo existindo uma nota para o organismo.
+| Resultado | Quantidade |
+| --- | ---: |
+| Avaliações | 290 |
+| Leves / moderadas / fortes propostas | 212 / 57 / 21 |
+| Propostas de mudança de teto | 132 |
+| Aprovações humanas | 0 |
+| Inadequações como morfologia prévia | 4 |
 
-Na amostra de validação desta implementação, as categorias disponíveis foram:
+As inadequações são *Manduca sexta* (mistura de lagarta/adulto sem escopo do estágio da foto), *Stegodyphus dumicola* (reunião em teia), *Laterallus rogersi* (incapacidade de voar) e *Pseudoboletus parasiticus* (associação ecológica). Os textos não foram apagados das fontes ou fichas. Não há morfologia forte aprovada no corpus; o suporte a contraste diagnóstico forte é testado com fixtures sintéticas, sem aprovar conteúdo real.
 
-| Nível solicitado | Organismos elegíveis | Taxonômica | Etimológica | Morfológica |
-|---|---:|---:|---:|---:|
-| Espécie | 41 | 13 | 9 | 40 |
-| Gênero | 101 | 22 | 11 | 89 |
-| Família | 101 | 22 | 0 | 0 |
-| Ordem | 101 | 30 | 0 | 0 |
-| Classe | 121 | 35 | 0 | 0 |
-| Filo | 122 | 42 | 0 | 0 |
-| Reino | 122 | 0 | 0 | 0 |
+As 290 propostas requerem revisão humana e confirmação contextual. Por isso, **as dicas atuais do Competitivo ficam indisponíveis**, preservando as partidas e a aprendizagem posterior. Não se presume que os pesos provisórios estejam validados. Pendências científicas e de licenciamento anteriores continuam em [RELATORIO_CONFORMIDADE.md](RELATORIO_CONFORMIDADE.md).
 
-São contagens de perguntas dessa amostra, sem a busca adicional de até oito conjuntos de distratores aplicada durante o jogo. Não devem ser interpretadas como cobertura fixa de dicas taxonômicas por espécie.
+## Persistência e compatibilidade
 
-## Fontes etimológicas
+SQLite migra transacional e idempotentemente para `user_version=3`. Respostas novas guardam versão das regras, as quatro alternativas, máscara, tetos, payloads de avaliação e hashes. A política central verifica graus/tetos, identidade/foto/nível, associações e contrastes documentados nos snapshots, além de totais e acertos. Valores arbitrários, payloads alterados e tetos em dica não revelada são rejeitados. Os hashes demonstram integridade dos bytes, não autenticam um revisor nem tornam um banco editável à prova de fraude.
 
-O corpus editável está em [hint_education.json](../resources/data/hint_education.json). Fontes e datas estão registradas por nota; referências morfológicas reutilizam [species_profiles.json](../resources/data/species_profiles.json). A classificação vem da linhagem do catálogo, com referências por táxon.
+Registros `identification-v2` e `legacy` mantêm a antiga interpretação da máscara, exclusivamente para histórico. A migração acrescenta snapshots **sem atualizar pontos, acertos ou rankings**. Agregados antigos sem perguntas continuam identificados como legado; não se inventam detalhes. Novas partidas exigem respostas verificáveis, e a leitura de snapshots não depende dos pesos atuais do catálogo.
 
-- [First Nature — nomenclatura dos fungos](https://www.first-nature.com/fungi/~naming.php) e suas fichas específicas documentam nomes de Stropharia caerulea, Clathrus ruber, Trametes versicolor, Amanita muscaria, Coprinus comatus, Phallus impudicus, Geastrum triplex e Hericium erinaceus.
-- [LPSN — DSMZ](https://lpsn.dsmz.de/) fornece entradas etimológicas específicas de Sphingomonas phyllosphaerae, Serratia marcescens, Thiohalocapsa halophila, Beggiatoa alba, Leptothrix discophora, Chlamydia pecorum, Aeromonas caviae e Pseudomonas fluorescens. O epíteto de pecorum também corresponde ao sinônimo registrado no catálogo como Chlamydophila pecorum.
-- [Manual científico da International Rhino Foundation](https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf) documenta os elementos de Rhinoceros unicornis.
-- [NCSU — Ginkgo biloba](https://plants.ces.ncsu.edu/plants/ginkgo-biloba/) e [Verbascum thapsus](https://plants.ces.ncsu.edu/plants/verbascum-thapsus/) documentam sentidos linguísticos de seus nomes.
-- [SANBI — Mimetes chrysanthus](https://pza.sanbi.org/mimetes-chrysanthus), [NZPCN — Pleurophyllum speciosum](https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/) e [MarLIN — Alaria esculenta](https://www.marlin.ac.uk/species/detail/1291) fornecem as outras notas. Em Pleurophyllum, somente o gênero foi incluído, pois a ficha consultada não explica o epíteto.
+Rankings competitivos distinguem regras, conteúdo, nível, dificuldade, grupo e tamanho. O fingerprint inclui `education.json` completo: mudanças de assistência, escopo, evidência ou revisão alteram a versão competitiva. O ranking Livre conserva sua chave histórica e resultados; não é uma competição padronizada comparável entre políticas.
 
-Não foram criados significados por semelhança de palavras. As 100 outras espécies não possuem etimologia verificada neste corpus; isso não significa que a origem de seus nomes seja desconhecida na literatura. A lista completa das pendências está no fim deste relatório.
+## Manutenção e testes
 
-## Banco e migração
+Edite as fontes e execute `build_education.py`, `audit_hint_assistance.py`, `audit_catalog.py --strict`, atualize o manifesto pelo fluxo de versionamento, compile e rode CTest. A CI verifica a reprodução de `AUDITORIA_ASSISTENCIA.json`. Não aprove campos apenas para fazer checks passarem.
 
-O banco continua no mesmo caminho de glossata_history.sqlite. Na abertura, uma transação mantém a regra anterior de unicidade por nome e converte a coluna score para **score_units**, multiplicando os valores antigos por seis. A presença de score_units é o marcador da migração. Reabrir o banco não multiplica novamente, e uma falha reverte a transação.
-
-Um resultado antigo de 10 pontos passa a 60 unidades e aparece como **10,00**. correct_answers e player_profiles são preservados. Não foram inventados registros de perguntas para partidas antigas. A consolidação de duplicatas anteriores à regra de unicidade continua seguindo a política já existente: último played_at e, em empate, maior ID.
-
-history mantém o **resultado mais recente por nome**, com comparação COLLATE NOCASE e nomes aparados, inclusive quando a nova pontuação é menor. A ordenação usa score_units inteiro, nunca o texto arredondado da interface.
-
-game_runs guarda UUID da partida, jogador capturado ao iniciar e horário de encerramento. answer_records guarda, para cada resposta:
-
-- Número da questão, ID/nome científico do organismo, ID da fotografia e nível solicitado.
-- Alternativa escolhida, resposta correta e se houve acerto.
-- Máscara das categorias reveladas, máximo disponível e pontos obtidos em unidades.
-
-A chave composta é game_id/question_number. O salvamento de partida, respostas e atualização do ranking é transacional. O UUID impede duplicação numa nova tentativa. Falhas mantêm o resultado pendente no fluxo existente. A quantidade de dicas e os pontos por categoria podem ser derivados da máscara e das unidades registradas, sem novos acumuladores persistidos.
-
-## Arquivos relevantes
-
-| Arquivo | Responsabilidade |
-|---|---|
-| src/domain/Hint.h | Tipos, máscara, tetos exatos, formato e registro de resposta |
-| src/domain/GameSession.h e Question.h | Pontos/acertos separados, respostas e dicas da questão |
-| src/application/GameService.* | Revelação, combinação, geração contextual, reinício e salvamento |
-| src/application/EducationalContent.* | Identidade, fontes, nível, alternativas, fotografia e origem do nome |
-| src/application/ports/GameHistoryRepository.h | Contrato de pontos em unidades e registros |
-| src/infrastructure/persistence/SqliteGameHistoryRepository.* | Migração, ordenação e salvamento transacional |
-| src/presentation/GameController.* | Snapshot das dicas, valores formatados e conteúdo após resposta |
-| resources/qml/components/HintPanel.qml | Escolha, estados, conteúdo, consulta e indisponibilidade |
-| Main.qml e views/QuizView, FeedbackView, ResultsView, StatisticsView | Pontos, aprendizado e métricas corretas |
-| resources/data/hint_education.json e education.json | Corpus referenciado e conteúdo embarcado |
-| scripts/build_education.py | Geração offline e validação científica estrutural |
-| tests/GameServiceTests.cpp, QmlInterfaceTests.cpp e test_import_inaturalist.py | Regras, migração, registros, conteúdo e interface |
-
-## Testes e validação
-
-Quatro suítes CTest aprovadas. A suíte principal tem 34 resultados Qt aprovados, incluindo inicialização/finalização; a suíte Python tem 12 testes. O lint QML terminou sem avisos.
-
-Foram verificados todos os oito conjuntos de categorias, com acerto e erro; três acertos morfológicos equivalendo a um ponto; 600 questões acumulando exatamente 200 pontos; consulta repetida; ausência de aumento do teto; reinício da questão; referências/identidade; ancestral mais amplo e pelo menos duas alternativas compatíveis; vínculo com a fotografia; migração de 10 para 60 unidades sem reconversão; precisão do ranking; resultado mais recente por nome; integridade/rollback e ausência de duplicação.
-
-O teste de interface abre o painel sem penalização, seleciona as três categorias, revisita dicas, valida a atualização imediata e consulta o aprendizado sem alterar pontos. Exercita categorias indisponíveis e conserva os testes de encerramento, cinco reinos, navegação e snapshots. Capturas em build/tests/previews incluem hint-category-selection.png, compact-hint-categories.png e compact-answer-learning.png.
-
-## Limitações registradas
-
-Além das etimologias pendentes, 18 organismos ainda não têm uma pista morfológica suficientemente adequada nesta curadoria: Galleria mellonella, Plodia interpunctella, Titanomis sisyrota, Geminaria canalis, Xenocnema spinipes, Asterella drummondii, Huperzia lucidula, Euphorbia duckei, Wawelia microspora, Comatricha nigra, Hemitrichia serpula, Metatrichia vesparia, Physarum psittacinum, Ceratiomyxa fruticulosa, Heterotrichia versicolor, Leocarpus fragilis, Badhamia polycephala e Diderma effusum.
-
-O histórico antigo permite preservar pontos/acertos agregados, mas não reconstruir as perguntas ou dicas que não eram armazenadas. A interface de estatísticas detalhadas por assistência não foi criada; os novos registros permitem uma expansão posterior. Os dados científicos são embarcados e só mudam com uma nova revisão/build, nunca com pesquisas durante uma partida.
-
-## Organismos sem etimologia verificada no corpus
-
-**Animalia (41):** Papilio machaon, Vanessa atalanta, Acherontia atropos, Brahmaea wallichii, Lymantria dispar, Danaus plexippus, Aglais io, Vanessa cardui, Panthera tigris, Attacus atlas, Actias luna, Hyalophora cecropia, Automeris io, Antheraea polyphemus, Heliconius melpomene, Papilio ulysses, Panthera leo, Pieris brassicae, Galleria mellonella, Plodia interpunctella, Manduca sexta, Panthera onca, Titanomis sisyrota, Macrocilix maia, Chiton glaucus, Geminaria canalis, Stegodyphus dumicola, Astroscopus zephyreus, Lemur catta, Xenocnema spinipes, Sphaerocoris annulus, Pavo cristatus, Agalychnis callidryas, Dicarnosis erythrocephala, Pachypodistes angulata, Chortophaga viridifasciata, Laterallus rogersi, Cyphonia clavata, Equus quagga, Ovalimantis maculata, Incilius periglenes.
-
-**Plantae (16):** Kindbergia oregana, Dictyanthus pavonii, Hydnora esculenta, Lunularia cruciata, Polypodium glycyrrhiza, Marah macrocarpa, Mastigostyla macbridei, Tulipa regelii, Asterella drummondii, Viburnum opulus, Xanthosoma robustum, Pleurothallis maitamae, Dracaena cinnabari, Dionaea muscipula, Huperzia lucidula, Euphorbia duckei.
-
-**Fungi (12):** Favolaschia claudopus, Cladonia imperialis, Ganoderma brownii, Marasmius haematocephalus, Morchella esculenta, Cortinarius archeri, Xylaria tentaculata, Panellus stipticus, Wawelia microspora, Entoloma trachyosporum, Pseudoboletus parasiticus, Psilocybe allenii.
-
-**Protista (19):** Comatricha nigra, Hemitrichia serpula, Metatrichia vesparia, Macrocystis pyrifera, Nereocystis luetkeana, Physarum psittacinum, Ceratiomyxa fruticulosa, Arcyria denudata, Fucus vesiculosus, Himanthalia elongata, Egregia menziesii, Dictyota dichotoma, Heterotrichia versicolor, Leocarpus fragilis, Badhamia polycephala, Sargassum muticum, Diderma effusum, Durvillaea antarctica, Turbinaria ornata.
-
-**Monera (12):** Dolichospermum lemmermannii, Merismopedia convoluta, Arthrospira jenneri, Gomphosphaeria aponina, Anabaena torulosa, Phytoplasma asteris, Gloeotrichia intermedia, Johanseninema constrictum, Hassallia byssoidea, Achromatium oxaliferum, Chroococcus turgidus, Merismopedia tranquilla.
+Os testes cobrem graus distintos na mesma categoria; etimologia forte/morfologia leve; contraste diagnóstico forte; pendências; oito subconjuntos nas seis ordens com acerto/erro; invariância do teto; 600 perguntas; anúncio da UI; aprendizagem posterior; snapshots; migração, reabertura e isolamento por regras/conteúdo. As revisões das fixtures são somente sintéticas. Compilação, testes e inspeção das capturas reais são relatados na entrega, sem certificação científica ou jurídica.

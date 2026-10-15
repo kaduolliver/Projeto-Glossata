@@ -15,6 +15,9 @@ Base anterior: CMake `1.0`, equivalente a `1.0.0`; não havia tags de lançament
 
 ### Alterações
 
+- Dicas recebem assistência independente da categoria, com teto combinado anunciado antes da revelação. Regras `identification-v3-assistance`, snapshots verificáveis e migração SQLite v3 preservam pontos antigos e separam rankings competitivos.
+- Auditoria de 290 avaliações: 132 propostas de reclassificação, quatro inadequações como morfologia prévia e nenhuma nova aprovação humana. O Livre sinaliza propostas; o Competitivo bloqueia dicas sem classificação confiável.
+
 - Nome apresentado: **Projeto Glossata**, inclusive janela, executável, launcher e workspace. Identificador interno e localização dos bancos dos jogadores preservados.
 - Aprovações antigas sem prova foram registradas como legado. Novos textos assistidos por IA permanecem rascunhos até revisão humana.
 - Empacotamento público bloqueia recursos sem permissão demonstrável; pacote de desenvolvimento é exclusivo para testes locais.

@@ -88,14 +88,23 @@ Cada questão apresenta quatro alternativas de identificação no mesmo nível t
 
 O quiz oferece até três categorias de dicas, conforme a disponibilidade e a validação do conteúdo:
 
-| Categoria | Pontuação máxima de um acerto |
+| Categoria | Assunto |
 | --- | ---: |
-| Sem dica | 1 ponto |
-| Taxonômica | 1 ponto |
-| Etimológica | 0,5 ponto |
-| Morfológica | 1/3 de ponto |
+| Taxonômica | Contexto da classificação |
+| Etimológica | Origem do nome |
+| Morfológica | Aspectos físicos |
 
-Abrir o painel de dicas não reduz a pontuação. Quando mais de uma dica é utilizada, vale o **menor teto** entre as categorias reveladas. Internamente, a pontuação é representada por unidades inteiras (6, 3 ou 2), para evitar erros de arredondamento na persistência e na comparação dos resultados. A disponibilidade das dicas depende da curadoria e das condições da questão.
+A **assistência daquela dica e questão**, avaliada separadamente da categoria, define o teto:
+
+| Assistência | Unidades | Teto do acerto |
+| --- | ---: | ---: |
+| Leve | 6 | 1 ponto |
+| Moderada | 3 | 0,5 ponto |
+| Forte | 2 | 1/3 de ponto |
+
+Abrir o painel de dicas não reduz a pontuação. Quando mais de uma dica é revelada, vale o **menor teto**; a interface anuncia o teto resultante antes de revelar. Uma tradução reconhecível pode oferecer assistência forte, enquanto uma descrição já evidente na foto pode oferecer assistência leve. O cálculo permanece em unidades inteiras e acertos/precisão são independentes dos pontos.
+
+As 290 avaliações do corpus são **propostas em rascunho**, com justificativas e escopo; nenhuma revisão humana foi inventada. O modo Livre sinaliza avaliações provisórias. No Competitivo, dicas sem classificação confiável ficam indisponíveis, preservando o conteúdo científico utilizável na aprendizagem posterior. Consulte a [política e os limites](docs/DICAS_E_PONTUACAO.md) e a [auditoria completa](docs/AUDITORIA_ASSISTENCIA.json). Respostas antigas mantêm os pontos originais; os rankings competitivos distinguem a política `identification-v3-assistance` das anteriores.
 
 ### Fichas educativas
 

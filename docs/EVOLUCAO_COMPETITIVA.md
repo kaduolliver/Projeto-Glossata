@@ -48,7 +48,7 @@ Os rótulos descrevem políticas de seleção, não uma dificuldade pedagógica 
 
 ## Validação das dicas
 
-A escala permanece exata: nenhuma dica/taxonômica = 6 unidades, etimológica = 3, morfológica = 2; erro = zero. Abrir o painel não conta, revisitar não conta novamente, combinações mantêm o menor teto e a próxima pergunta restaura seis unidades.
+A política atual `identification-v3-assistance` separa categoria de assistência: leve = 6 unidades, moderada = 3, forte = 2; erro = zero. A categoria não determina o peso. Abrir o painel não conta, revisitar não cobra novamente, combinações mantêm o menor teto e a próxima pergunta restaura seis unidades. A interface anuncia o teto após combinar a nova dica com as já reveladas. Consulte [a política atual e a auditoria](DICAS_E_PONTUACAO.md); as associações antigas permanecem exclusivamente na interpretação de registros históricos.
 
 A dica taxonômica precisa citar um ancestral verificado mais amplo que o nível solicitado e deixar **pelo menos três das quatro alternativas compatíveis**. Nenhuma alternativa é tratada como compatível se sua linhagem é desconhecida ou contraditória. Um reino compartilhado por todas as opções continua sendo descartado como contexto excessivamente genérico.
 
