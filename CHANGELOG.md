@@ -15,6 +15,7 @@ Base anterior: CMake `1.0`, equivalente a `1.0.0`; não havia tags de lançament
 
 ### Alterações
 
+- Rótulos de assistência mais legíveis no painel de dicas: leve em verde, moderada em amarelo e forte em coral, com maior destaque no texto.
 - Dicas recebem assistência independente da categoria, com teto combinado anunciado antes da revelação. Regras `identification-v3-assistance`, snapshots verificáveis e migração SQLite v3 preservam pontos antigos e separam rankings competitivos.
 - Auditoria de 290 avaliações: 132 propostas de reclassificação, quatro inadequações como morfologia prévia e nenhuma nova aprovação humana. O Livre sinaliza propostas; o Competitivo bloqueia dicas sem classificação confiável.
 

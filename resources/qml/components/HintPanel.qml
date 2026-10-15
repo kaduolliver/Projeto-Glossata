@@ -51,7 +51,14 @@ Dialog {
                             Layout.fillWidth: true; spacing: 4
                             Label { text: choice.modelData.title + (choice.hint.revealed ? " · revelada" : ""); color: "#E6F1E9"; font.pixelSize: 15; font.weight: Font.DemiBold }
                             Label { text: choice.hint.available ? choice.modelData.description : choice.hint.reason; color: "#96AFB3"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                            Label { text: "Assistência " + choice.hint.assistance + (choice.hint.provisional ? " · provisória, revisão pendente" : ""); color: "#DDD3A4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                            Label {
+                                text: "Assistência " + choice.hint.assistance + (choice.hint.provisional ? " · provisória, revisão pendente" : "")
+                                color: choice.hint.assistance === "Leve" ? "#8CF0B1"
+                                    : choice.hint.assistance === "Moderada" ? "#FFD166"
+                                    : choice.hint.assistance === "Forte" ? "#FF9A91" : "#C6D8DC"
+                                font.pixelSize: 13; font.weight: Font.DemiBold
+                                wrapMode: Text.WordWrap; Layout.fillWidth: true
+                            }
                             Label { objectName: "hintCeiling" + choice.index; visible: !!choice.hint.available; text: "Revelar esta dica mantém o acerto em até " + choice.hint.pointsText + " ponto."; color: "#71DCA0"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                         }
                     }
