@@ -1,5 +1,7 @@
 # Dicas estratégicas e pontuação exata
 
+> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+
 Registro da etapa inicial de dicas. Para a implementação atual — recordes, modo Competitivo, três alternativas compatíveis e etimologias ampliadas — consulte [EVOLUCAO_COMPETITIVA.md](EVOLUCAO_COMPETITIVA.md) e [COBERTURA_TAXONOMICA.md](COBERTURA_TAXONOMICA.md).
 
 Implementação validada em 14/10/2026, mantendo o catálogo de 122 organismos, a navegação, os perfis, a sidebar e o encerramento voluntário pelo botão Voltar.

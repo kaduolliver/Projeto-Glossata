@@ -1,5 +1,7 @@
 # Refinamento técnico e científico da identificação
 
+> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+
 Este relatório registra a etapa anterior às substituições solicitadas pelo usuário. As contagens atuais e a exceção de Monera estão em [Substituições do catálogo](SUBSTITUICOES_CATALOGO.md).
 
 Validação em 14/10/2026, no workspace `C:\glossata_game`, branch `feat/refinamento-identificacao`. Comparação com o commit `c494a669b3d983042240230febca3c90f978579d`. Este relatório descreve o estado final deste catálogo, não uma certificação taxonômica independente.

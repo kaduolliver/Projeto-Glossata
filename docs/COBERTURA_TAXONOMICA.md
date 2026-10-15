@@ -1,5 +1,7 @@
 # Diagnóstico de cobertura taxonômica
 
+> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+
 Contagens extraídas do catálogo ativo por `python scripts/audit_catalog.py --strict`, em 14/10/2026. Os nomes e níveis científicos são os da fonte preservada; os cinco reinos são agrupamentos didáticos. Não são estimativas nem contagens de organismos novos importados.
 
 | Reino didático | Registros | Linhagens de reino científico | Etimologia: ao menos um elemento | Pistas morfológicas |

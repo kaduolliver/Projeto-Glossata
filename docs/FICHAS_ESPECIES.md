@@ -1,5 +1,7 @@
 # Fichas das espécies
 
+> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+
 Conteúdo atualizado em 14/10/2026 para os 122 organismos ativos. A ficha aberta por **Ver mais informações** mantém a paleta, fotografia, créditos, ícones e botões do jogo, com rolagem para textos maiores.
 
 O nome popular em português aparece primeiro quando disponível, seguido do nome científico e de uma apresentação curta. Quando não há nome popular estabelecido na revisão, o título descreve o grupo, como **Mariposa**, **Orquídea** ou **Cianobactéria**; isso não cria um nome popular para a espécie.

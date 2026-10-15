@@ -1,5 +1,7 @@
 # Evolução de engenharia, aprendizagem e competição
 
+> Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
+
 ## Auditoria e decisões
 
 Etapa implementada no workspace `C:\glossata_game`, com C++17, Qt Quick e SQLite. O catálogo continua com 122 organismos; nenhuma espécie, fotografia, perfil ou resposta histórica foi removida nesta etapa.
