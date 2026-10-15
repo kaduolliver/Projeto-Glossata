@@ -1,0 +1,67 @@
+name: Integridade e rastreabilidade
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: msys2/setup-msys2@ec48f7c5447b3140e2b088413ae3a55687bccb6e # v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: >-
+            mingw-w64-ucrt-x86_64-gcc
+            mingw-w64-ucrt-x86_64-cmake
+            mingw-w64-ucrt-x86_64-ninja
+            mingw-w64-ucrt-x86_64-qt6-base
+            mingw-w64-ucrt-x86_64-qt6-declarative
+            mingw-w64-ucrt-x86_64-python
+      - name: Gerar, testar e auditar sem rede de conteúdo
+        shell: msys2 {0}
+        run: |
+          set -euo pipefail
+          python scripts/build_education.py
+          python scripts/content_governance.py credits
+          git diff --exit-code -- resources/data/education.json resources/data/credits.json docs/PHOTO_CREDITS.md
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel 4
+          ctest --test-dir build --output-on-failure
+          qmllint $(find resources/qml -name '*.qml') --unqualified disable
+          python scripts/audit_catalog.py --strict
+          python scripts/review_updates.py
+          python scripts/release.py check
+      - name: Verificar captura no mesmo commit visual
+        shell: msys2 {0}
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/release.py check-history --base "$BASE_SHA"
+      - name: Guardar relatórios, sem publicar executáveis ou mídias
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: relatorios-de-integridade
+          path: |
+            build/catalog-quality.json
+            build/update-proposals/*.json
+            build/tests/*results.txt
+          if-no-files-found: warn
+  distribution-permissions:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Bloquear redistribuição sem evidência
+        shell: pwsh
+        run: python scripts/distribution.py check
+      - name: Guardar diagnóstico da distribuição
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: pendencias-de-distribuicao
+          path: build/distribution-audit.json

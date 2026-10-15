@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 if (!$PackageDirectory) { $PackageDirectory = Join-Path $projectRoot 'package' }
 $packagePath = (Resolve-Path -LiteralPath $PackageDirectory).Path
-$executable = Join-Path $packagePath 'glossata_quiz.exe'
+$executable = Join-Path $packagePath 'projeto_glossata.exe'
 if (!(Test-Path -LiteralPath $executable)) { throw 'Executável empacotado não encontrado.' }
 $reportPath = Join-Path $projectRoot 'build/package-smoke.json'
 $stdoutPath = Join-Path $projectRoot 'build/package-smoke.stdout.log'
