@@ -4,7 +4,7 @@
   "noncommercial": {"enabled": false, "policy_document": null},
   "distribution_mode": "unrestricted",
   "exceptions": [],
-  "review_days": {"taxonomy": 365, "photo": 180, "licensing": 180, "education": 365, "conservation": 180, "etymology": 730, "morphology": 365, "links": 90},
+  "review_days": {"taxonomy": 365, "photo": 180, "licensing": 180, "education": 365, "conservation": 180, "etymology": 730, "morphology": 365, "assistance": 365, "links": 90},
   "allow_unchanged_legacy_for_local_learning": true,
   "taxonomy_system": "iNaturalist taxa API v1; source hierarchy preserved, not an assertion of a universal consensus classification",
   "educational_system": "Traditional five kingdoms, pedagogical grouping only",

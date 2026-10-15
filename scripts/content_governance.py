@@ -189,7 +189,9 @@ def records(root=ROOT, education=None):
     education = education if education is not None else load(folder / 'education.json', {})
     result = {}
     for key, note in education.get('notes', {}).items():
-        value = {k: v for k, v in note.items() if k != 'governance'}
+        # Pedagogical assistance is reviewed independently. Adding/regrading it
+        # must not erase the scientific history of the original wording.
+        value = {k: v for k, v in note.items() if k not in {'governance', 'assistance'}}
         result[key] = {'kind': 'claim', 'topic': 'conservation' if key.endswith(':conservation') else 'education',
                        'payload': value, 'source_url': note.get('source_url', ''), 'prior_state': 'verified' if note.get('verified') else 'draft'}
     reviews = load(folder / 'curation_reviews.json', {})
@@ -218,6 +220,22 @@ def records(root=ROOT, education=None):
                 if topic == 'morphology': payload['photo_sha256'] = photo.get('sha256')
             result[f'topic:{sid}:{topic}'] = {'kind': 'topic', 'topic': topic, 'species_id': sid, 'payload': payload,
                                              'prior_state': reviews.get(sid, {}).get(topic, 'pending')}
+    for s in species:
+        sid = str(s['id']); entry = education.get('species', {}).get(sid, {})
+        assessments = [('taxonomic', entry.get('taxonomic_assistance'), None)]
+        assessments += [('etymological', education.get('notes', {}).get(ref, {}).get('assistance'), ref)
+                        for ref in entry.get('etymology_hints', {}).values() if isinstance(ref, str)]
+        ref = entry.get('morphological_hint')
+        if isinstance(ref, str): assessments.append(('morphological', education.get('notes', {}).get(ref, {}).get('assistance'), ref))
+        for category, assessment, note_key in assessments:
+            if not isinstance(assessment, dict): continue
+            key = 'assistance:' + (note_key if note_key else f'taxonomic:{sid}')
+            source = result[note_key]['payload'] if note_key else result[f'topic:{sid}:taxonomy']['payload']
+            result[key] = {'kind': 'assistance', 'topic': 'assistance', 'species_id': sid, 'note_key': note_key,
+                           'category': category, 'prior_state': 'draft', 'payload': {
+                               'scientific_name': s['name'], 'species_id': sid, 'category': category,
+                               'source': source, 'photo': {'id': s.get('photo', {}).get('id'), 'sha256': s.get('photo', {}).get('sha256')},
+                               'assessment': {k:v for k,v in assessment.items() if k not in {'governance','binding'}}}}
     for item in result.values(): item['content_sha256'] = digest(item['payload'])
     return result
 
@@ -251,7 +269,7 @@ def event_errors(event, at=None):
         sources = event.get('evidence', [])
         if not sources or any(not https_url(e.get('url')) or not e.get('locator') or not e.get('supports') for e in sources):
             errors.append('review_evidence_locator')
-        if event.get('claim_scope') not in {'photographic_observation', 'point_occurrence', 'known_distribution', 'species', 'group', 'nomenclature', 'taxonomy'}:
+        if event.get('claim_scope') not in {'photographic_observation', 'point_occurrence', 'known_distribution', 'species', 'group', 'nomenclature', 'taxonomy', 'hint_assistance'}:
             errors.append('claim_scope')
     return errors
 
@@ -262,7 +280,7 @@ def status(key, record, baseline, events, settings, at=None):
     prior = baseline.get('records', {}).get(key)
     state = 'draft'; reviewer = reviewed = kind = None; evidence = []; reason = 'Sem revisão humana documentada.'
     if selected:
-        if event_errors(selected, at):
+        if event_errors(selected, at) or (record['kind']=='assistance' and selected.get('claim_scope')!='hint_assistance'):
             state = 'needs_review'; reason = 'Registro de revisão incompleto ou inválido.'
         elif selected.get('content_sha256') != record['content_sha256']:
             state = 'needs_review'; reason = 'Conteúdo, identidade ou evidência diferem da revisão registrada.'
@@ -295,6 +313,11 @@ def annotate_education(root, data):
         review = status(key, record, baseline, events, settings)
         if record['kind'] == 'claim':
             data['notes'][key]['governance'] = review
+        elif record['kind'] == 'assistance':
+            target = (data['notes'][record['note_key']]['assistance'] if record['note_key']
+                      else data['species'][record['species_id']]['taxonomic_assistance'])
+            target['governance'] = review
+            target['binding'] = record['payload']
         else:
             data['species'][record['species_id']].setdefault('governance', {})[record['topic']] = review
     data['governance_policy'] = {'issue_url': settings['issue_url'], 'taxonomy_system': settings['taxonomy_system'],
@@ -444,18 +467,24 @@ def audit_governance(root=ROOT, at=None):
     except ValueError as e: errors.append({'error': 'permission_history_integrity', 'detail': str(e)})
     for event in events:
         for error in event_errors(event, at): errors.append({'key': event.get('key'), 'error': error})
-    current = records(root); scientific = []
+    current = records(root); scientific = []; assistance = []
     published = load(root / 'resources/data/education.json', {})
     for key, record in current.items():
         s = status(key, record, baseline, events, settings, at)
         emitted = (published.get('notes', {}).get(key, {}).get('governance', {}) if record['kind'] == 'claim'
                    else published.get('species', {}).get(record['species_id'], {}).get('governance', {}).get(record['topic'], {}))
+        if record['kind'] == 'assistance':
+            target = (published.get('notes', {}).get(record['note_key'], {}).get('assistance', {}) if record['note_key']
+                      else published.get('species', {}).get(record['species_id'], {}).get('taxonomic_assistance', {}))
+            emitted = target.get('governance', {})
+            if target.get('binding') != record['payload']:
+                errors.append({'error':'assistance_binding_stale','key':key})
         fields = ('content_sha256', 'reviewer', 'reviewed_at', 'evidence', 'due_at', 'claim_scope', 'review_kind')
         if any(emitted.get(field) != s.get(field) for field in fields) or (
                 s['state'] != 'expired' and (emitted.get('state') != s['state'] or emitted.get('usable') != s['usable'] or emitted.get('label') != s['label'])):
             errors.append({'error': 'generated_review_metadata_stale', 'key': key})
         if s['state'] not in APPROVALS:
-            scientific.append({'key': key, 'state': s['state'], 'severity': 'high' if s['state'] in {'needs_review', 'rejected'} else 'medium',
+            (assistance if record['kind']=='assistance' else scientific).append({'key': key, 'state': s['state'], 'severity': 'high' if s['state'] in {'needs_review', 'rejected'} else 'medium',
                                'reason': s['reason'], 'content_sha256': record['content_sha256']})
     attribution = credits(root)
     for photo in attribution['photos'].values():
@@ -517,7 +546,8 @@ def audit_governance(root=ROOT, at=None):
             findings = image_privacy_findings(path)
             if findings: errors.append({'error': 'embedded_sensitive_metadata_requires_review', 'file': path.relative_to(root).as_posix(), 'fields': findings})
     return {'technical_errors': errors, 'photo_licensing': licensing, 'asset_licensing': asset_errors, 'unbundled_media': unbundled,
-            'scientific_findings': scientific, 'review_states': dict(__import__('collections').Counter(s['state'] for s in scientific)),
+            'scientific_findings': scientific, 'assistance_findings': assistance,
+            'review_states': dict(__import__('collections').Counter(s['state'] for s in scientific)),
             'distribution_blocked': bool(errors or licensing or asset_errors),
             'repository_distribution_blocked': bool(errors or licensing or asset_errors or unbundled),
             'scope': 'Automated evidence/integrity checks, not legal or scientific certification.'}
@@ -526,6 +556,8 @@ def audit_governance(root=ROOT, at=None):
 def append_review(root, key, decision):
     current = records(root)
     if key not in current: raise ValueError('Tópico/afirmação não existe.')
+    if current[key]['kind']=='assistance' and decision.get('claim_scope')!='hint_assistance':
+        raise ValueError('A avaliação pedagógica exige escopo hint_assistance; revisão científica não aprova o peso da dica.')
     if event_errors(decision): raise ValueError('Revisão exige responsável humano, data real, escopo, justificativa e evidência localizada.')
     if decision.get('content_sha256') != current[key]['content_sha256']:
         raise ValueError('A decisão não corresponde ao hash atual; não aprovar conteúdo alterado.')

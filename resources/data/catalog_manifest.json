@@ -130,12 +130,12 @@
     "resources/compliance/permissions/ff3ecaa0afcfbdedded3524ffcf49ae8500c1d9b9c9ef52a7fdf65db6fd7b95b.json": "b89bda399d8b094da881a3f78e19b2f27885fd48103c8d7f43afd19cfeb5b86a",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6",
     "resources/data/catalog_replacements.json": "5ea27d3a15eae9a85bd705b5ebfa068c882f7351e8582b29bc5e4da14a5329ac",
-    "resources/data/content_policy.json": "80e2c17a1dbf9ae71a9a9de873ac6a93592f8ce4fa7ab73f612b3e033b14282a",
+    "resources/data/content_policy.json": "8d8a2891ff4a24a66c9a7691fe48870403be5c25f525b907278b78d439576996",
     "resources/data/credits.json": "b47cf19b761e96b6ce1d4ba3d4089c5c2f4601f5847ccfec23ae526bc39abbac",
     "resources/data/curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
-    "resources/data/education.json": "21ef63ab70666235ae82b477c19c51d9c209ab3444c996c75a24e7a0712ecd62",
+    "resources/data/education.json": "3271cb20a4b570b88c6ade177b7fb6fc418e27c5860e5fa0a0979dc1293871bd",
     "resources/data/etymology_research.json": "7d404eeac90583bf3e99451f69eae52a9e71e2047d4fe122c960d0e590812639",
-    "resources/data/hint_education.json": "94a2c6a3319fc7976484b7d0b7bfc0612e9a9d1629ad5aca45f39b81c55f770b",
+    "resources/data/hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "resources/data/import_report.json": "1b4d3ece907bd4076b0fac58b54100687a1a8483be33ed46aed1e6151befa5b6",
     "resources/data/photo_audit.json": "3320b87c8bd89a2c53a7f28598249404d7d756fe667edac9d1711ae2b7a5be13",
     "resources/data/photo_provenance.json": "ad343a2cdf931076fd882150030660e0e637d8041887cb6ab4e369aecb915c1f",
@@ -264,6 +264,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "c318559b9f1bbfadac21ddc75fd0fca28e8e196ac294f84a3e080799c17b1a73",
+  "content_sha256": "7b4cb94815164d3eaa5bc8c080a3553da68b9ce0fd0992e5950f5089157593c5",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }

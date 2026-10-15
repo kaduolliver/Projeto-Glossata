@@ -153,6 +153,8 @@ def build():
         if sid not in profiles or content.get("scientific_name")!=profiles[sid]["scientific_name"]:
             raise ValueError("Identidade incompatível no corpus de dicas: "+sid)
         values=data["species"][sid]
+        if 'taxonomic_assistance' in content:
+            values['taxonomic_assistance'] = content['taxonomic_assistance']
         values["morphology_traits"]=content.get("morphology_traits",[])
         for rank,item in content.get("etymology_hints",{}).items():
             url=item.get("source_url","")
@@ -171,6 +173,7 @@ def build():
             if not review.get("photo_id") or not review.get("ranks") or any(rank not in RANKS for rank in review["ranks"]):
                 raise ValueError("Morfologia sem fotografia ou nível válido: "+sid)
             item=dict(profiles[sid][reference]);item.update(ranks=review["ranks"],photo_id=review["photo_id"])
+            if 'assistance' in review: item['assistance']=review['assistance']
             item["text"]=review.get("prefix","")+item["text"]
             key=f"species:{sid}:morphological_hint"
             data["notes"][key]=item;values["morphological_hint"]=key

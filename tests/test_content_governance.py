@@ -58,6 +58,40 @@ class GovernanceTests(unittest.TestCase):
                 'content_sha256': governance.records(self.root)[key]['content_sha256'], 'claim_scope': 'species',
                 'evidence': [{'url': 'https://example.org/species', 'locator': 'Description, paragraph 2', 'supports': 'Description in the summary'}]}
 
+    def test_assistance_review_is_independent_and_invalidates_without_erasing_scientific_history(self):
+        self.baseline()
+        before=governance.records(self.root)['species:1:summary']['content_sha256']
+        data=governance.load(self.root/'resources/data/education.json')
+        data['species']['1']['etymology_hints']={'species':'species:1:summary'}
+        data['notes']['species:1:summary']['assistance']={'grade':'strong','ranks':['species'],
+            'origin':'synthetic_test','rationale':'Test-only classification, never a production approval.'}
+        self.write('education.json',data)
+        current=governance.records(self.root)
+        self.assertEqual(current['species:1:summary']['content_sha256'],before)
+        key='assistance:species:1:summary'
+        self.assertEqual(governance.status(key,current[key],{},[],governance.policy(self.root))['state'],'draft')
+        decision=self.decision(key);decision['claim_scope']='hint_assistance'
+        governance.append_review(self.root,key,decision)
+        governance.annotate_education(self.root,data);self.write('education.json',data)
+        self.assertEqual(data['notes']['species:1:summary']['assistance']['governance']['state'],'approved_editorial')
+        body=data['notes']['species:1:summary']['assistance']['binding']
+        self.assertEqual(governance.digest(body),data['notes']['species:1:summary']['assistance']['governance']['content_sha256'])
+        data['notes']['species:1:summary']['assistance']['grade']='light';self.write('education.json',data)
+        current=governance.records(self.root)
+        self.assertEqual(current['species:1:summary']['content_sha256'],before)
+        self.assertEqual(governance.status(key,current[key],{},governance.read_ledger(self.root),governance.policy(self.root))['state'],'needs_review')
+        data['notes']['species:1:summary']['text']='Changed scientific wording.';self.write('education.json',data)
+        self.assertNotEqual(governance.records(self.root)['species:1:summary']['content_sha256'],before)
+
+    def test_assistance_binding_includes_photo_and_topic_evidence(self):
+        self.baseline()
+        data=governance.load(self.root/'resources/data/education.json')
+        data['species']['1']['taxonomic_assistance']={'grade':'light','ranks':['genus'],'origin':'synthetic_test','rationale':'Test only.'}
+        self.write('education.json',data)
+        key='assistance:taxonomic:1';before=governance.records(self.root)[key]['content_sha256']
+        species=governance.load(self.root/'resources/data/species.json');species[0]['photo']['id']='8';self.write('species.json',species)
+        self.assertNotEqual(governance.records(self.root)[key]['content_sha256'],before)
+
     def test_photo_license_is_not_inherited_and_direct_download_is_guarded(self):
         for code in ('all-rights-reserved', None, '', 'cc-by-sa', 'cc-by-nd', 'cc-by-nc', 'unrecognized'):
             photo = dict(self.photo, license_code=code)

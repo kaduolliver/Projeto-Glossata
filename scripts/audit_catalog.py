@@ -80,7 +80,9 @@ def audit(root=ROOT):
         if len({name.casefold() for _, name in values}) < 4: eligible[rank] = []
     by_id = {str(s['id']): s for s in species}
     competitive = [sid for sid, _ in eligible['genus'] if by_id[sid]['photo'].get('role', 'identification') == 'identification']
-    return {'governance': audit_governance(root), 'total_species': len(species), 'valid_photo_records': len(valid_photos),
+    from audit_hint_assistance import audit as audit_assistance
+    assistance_summary={k:v for k,v in audit_assistance(root).items() if k not in {'rows','missing_content'}}
+    return {'governance': audit_governance(root), 'hint_assistance': assistance_summary, 'total_species': len(species), 'valid_photo_records': len(valid_photos),
             'photo_validation': 'Technical SHA-256, association and dimensions; decoder belongs to Qt tests. Not permission or scientific certification.',
             'legacy_metrics_notice': 'verified_etymology/morphology are backward-compatible content availability metrics, including legacy notes; not counts of traceable scientific approvals.',
             'eligible_by_rank': {r: len(v) for r, v in eligible.items()}, 'eligible_ids_by_rank': {r: [sid for sid, _ in v] for r, v in eligible.items()},
@@ -98,7 +100,7 @@ if __name__ == '__main__':
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
     print(json.dumps({k: result[k] for k in ('total_species', 'valid_photo_records', 'eligible_by_rank', 'competitive_pool', 'verified_etymology', 'verified_morphology', 'taxon_introductions')}, ensure_ascii=False))
     if args.strict and (result['errors'] or result['incompatible_photo_licenses']): raise SystemExit(1)
-    if result['governance']['technical_errors']: raise SystemExit(1)
+    if result['governance']['technical_errors'] or result['hint_assistance']['errors']: raise SystemExit(1)
     if args.distribution and (result['governance']['repository_distribution_blocked']
                              or any(f['severity'] == 'high' for f in result['governance']['scientific_findings'])):
         print('DISTRIBUIÇÃO BLOQUEADA: consulte governança, permissões e decisões pendentes no relatório.')
