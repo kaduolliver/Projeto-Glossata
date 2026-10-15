@@ -1,6 +1,6 @@
 # Identidade temporária
 
-Arte fornecida pelo usuário para testes de identidade do Glossata Quiz.
+Arte fornecida pelo usuário para testes de identidade do Projeto Glossata.
 
 - `glossata.png`: logo de 1254×1254 para o cabeçalho e o ícone da aplicação no Developer Portal.
 - `glossata_discord.png`: variante de 1254×1254 preparada para Rich Presence.

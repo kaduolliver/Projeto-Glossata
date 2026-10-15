@@ -11,6 +11,7 @@
 #include <QDateTime>
 #include <QTextStream>
 #include <QTemporaryDir>
+#include <QQuickWindow>
 #include <memory>
 
 namespace {
@@ -49,9 +50,16 @@ int main(int argc, char *argv[])
     }
     qputenv("QT_QUICK_CONTROLS_STYLE", "Basic");
     QGuiApplication app(argc, argv);
+    // Keep the original data directory when the executable/display name changes.
+    app.setApplicationName(QStringLiteral("glossata_quiz"));
+    app.setApplicationDisplayName(QStringLiteral("Projeto Glossata"));
+    app.setApplicationVersion(QStringLiteral(GLOSSATA_APP_VERSION));
     const bool smokeTest = app.arguments().contains(QStringLiteral("--smoke-test"));
+    const int captureIndex = app.arguments().indexOf(QStringLiteral("--capture-home"));
+    const bool captureHome = captureIndex >= 0;
+    if (captureHome && (captureIndex + 1 >= app.arguments().size() || smokeTest)) return 6;
     std::unique_ptr<QTemporaryDir> smokeDirectory;
-    if (smokeTest) {
+    if (smokeTest || captureHome) {
         smokeDirectory = std::make_unique<QTemporaryDir>();
         if (!smokeDirectory->isValid()) return 4;
     }
@@ -59,10 +67,10 @@ int main(int argc, char *argv[])
 
     const QJsonObject config = discordConfiguration();
     DiscordRichPresence presence(config.value("applicationId").toString(), config.value("largeImage").toString());
-    if (!smokeTest && config.value("enabled").toBool()) presence.start();
+    if (!smokeTest && !captureHome && config.value("enabled").toBool()) presence.start();
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &presence, &DiscordRichPresence::stop);
 
-    GameController controller(nullptr, smokeTest ? smokeDirectory->filePath("smoke.sqlite") : QString());
+    GameController controller(nullptr, smokeDirectory ? smokeDirectory->filePath("smoke.sqlite") : QString());
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
@@ -70,6 +78,19 @@ int main(int argc, char *argv[])
 
     if (engine.rootObjects().isEmpty()) {
         return -1;
+    }
+
+    if (captureHome) {
+        auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+        if (!window) return 7;
+        window->setProperty("motionEnabled", false);
+        const QString destination = app.arguments().at(captureIndex + 1);
+        QTimer::singleShot(1200, &app, [window, destination, &app] {
+            const QImage image = window->grabWindow();
+            const bool saved = window->property("page").toString() == QStringLiteral("home")
+                && !image.isNull() && image.save(destination, "PNG");
+            app.exit(saved ? 0 : 8);
+        });
     }
 
     if (smokeTest) {

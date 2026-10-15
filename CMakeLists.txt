@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(GlossataQuiz VERSION 1.0 LANGUAGES CXX)
+file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION.txt" GLOSSATA_VERSION LIMIT_COUNT 1)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/VERSION.txt")
+if(NOT GLOSSATA_VERSION MATCHES "^[0-9]+\\.[0-9]+\\.[0-9]+$")
+    message(FATAL_ERROR "VERSION.txt must contain X.Y.Z")
+endif()
+project(ProjetoGlossata VERSION ${GLOSSATA_VERSION} LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,6 +16,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Sql Network)
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
 add_executable(glossata_quiz
     src/app/main.cpp
@@ -35,6 +41,13 @@ target_include_directories(glossata_quiz PRIVATE
 )
 
 target_link_libraries(glossata_quiz PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Network)
+target_compile_definitions(glossata_quiz PRIVATE GLOSSATA_APP_VERSION="${PROJECT_VERSION}")
+set_target_properties(glossata_quiz PROPERTIES OUTPUT_NAME projeto_glossata)
+add_custom_command(TARGET glossata_quiz POST_BUILD
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_CURRENT_SOURCE_DIR}/scripts/distribution.py"
+        record-build --binary "$<TARGET_FILE:glossata_quiz>"
+    VERBATIM
+)
 
 if(WIN32)
     enable_language(RC)

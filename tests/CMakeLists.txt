@@ -57,3 +57,5 @@ add_test(NAME GlossataDiscordTests COMMAND glossata_discord_tests)
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 add_test(NAME GlossataImportTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_import_inaturalist.py)
+add_test(NAME GlossataGovernanceTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_content_governance.py)
+add_test(NAME GlossataReleaseTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_release.py)
