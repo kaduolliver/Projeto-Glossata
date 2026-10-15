@@ -1,7 +1,11 @@
 #include "presentation/GameController.h"
 
 #include <QStandardPaths>
+#include <QCoreApplication>
 #include <QSet>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <algorithm>
 
 GameController::GameController(QObject *parent, const QString &databasePath)
@@ -23,6 +27,23 @@ GameController::GameController(QObject *parent, const QString &databasePath)
         currentPlayerName_ = profiles.first();
     }
     startGame();
+}
+
+QVariantMap GameController::legalInformation() const
+{
+    QFile file(":/resources/data/credits.json");
+    if (!file.open(QIODevice::ReadOnly)) return {};
+    const auto data = QJsonDocument::fromJson(file.readAll()).object();
+    QFile catalogFile(":/resources/data/catalog_manifest.json");
+    QJsonObject catalog;
+    if (catalogFile.open(QIODevice::ReadOnly)) catalog = QJsonDocument::fromJson(catalogFile.readAll()).object();
+    QVariantList photos;
+    const auto records = data.value("photos").toObject();
+    for (auto it = records.begin(); it != records.end(); ++it) photos.append(it.value().toObject().toVariantMap());
+    return {{"notice", data.value("notice").toString()}, {"photos", photos},
+            {"applicationVersion", QCoreApplication::applicationVersion()},
+            {"catalogVersion", catalog.value("version").toString()}, {"catalogHash", catalog.value("content_sha256").toString()},
+            {"limitations", QStringLiteral("Catálogo legado com revisão humana e permissões ainda incompletas. Testes automáticos não são certificação jurídica ou científica.")}};
 }
 
 QString GameController::questionText() const
@@ -146,7 +167,8 @@ QVariantMap GameController::questionPhoto() const
     return {{"image",p.valid ? p.image : QString()}, {"photoId",p.id},{"author",p.author},
         {"license",p.license},{"licenseUrl",p.licenseUrl},{"source",p.sourceUrl},{"modifications",p.modifications},
         {"kingdom",displayedQuestion_.species.educationalKingdom},{"visual",displayedQuestion_.visual},
-        {"supporting",p.role=="supporting"},{"photoSubject",p.scientificName},{"speciesId",displayedQuestion_.species.id}};
+        {"supporting",p.role=="supporting"},{"photoSubject",p.scientificName},{"speciesId",displayedQuestion_.species.id},
+        {"attribution",p.attribution.toVariantMap()}};
 }
 
 void GameController::startTaxonGame(const QString &family, const QString &rank)
@@ -246,6 +268,8 @@ void GameController::answerSelected(const QString &selectedOption)
     answerDetails_.insert("nameOrigin",content_.nameOrigin(answeredQuestion.species));
     answerDetails_.insert("supporting",answeredQuestion.photo.role=="supporting");
     answerDetails_.insert("photoSubject",answeredQuestion.photo.scientificName);
+    answerDetails_.insert("attribution",answeredQuestion.photo.attribution.toVariantMap());
+    answerDetails_.insert("speciesId",answeredQuestion.species.id);
     QStringList lineage;
     for (const Taxon &node : answeredQuestion.species.taxonomy)
         if (node.rank != "educational_kingdom") lineage << taxonomicRankLabel(node.rank) + ": " + node.name;

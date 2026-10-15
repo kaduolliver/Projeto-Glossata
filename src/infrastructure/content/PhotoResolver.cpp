@@ -7,6 +7,7 @@
 #include <QSize>
 #include <QFileInfo>
 #include <QUrl>
+#include <QJsonDocument>
 
 Photo PhotoResolver::fromJson(const QJsonObject &m, const QString &image)
 {
@@ -17,6 +18,11 @@ Photo PhotoResolver::fromJson(const QJsonObject &m, const QString &image)
     p.sourceUrl=m.value("source").toString(); p.downloadUrl=m.value("url").toString();
     p.sha256=m.value("sha256").toString(); p.modifications=m.value("modifications").toString();
     p.sourceVerified=m.value("source_verified").toBool();
+    static const QJsonObject credits = [] {
+        QFile file(":/resources/data/credits.json");
+        return file.open(QIODevice::ReadOnly) ? QJsonDocument::fromJson(file.readAll()).object().value("photos").toObject() : QJsonObject{};
+    }();
+    p.attribution=credits.value(p.id).toObject();
     p.role=m.value("role").toString("identification");
     p.supportingFor=m.value("supporting_for").toString();
     for (const auto &rank : m.value("approved_ranks").toArray()) p.approvedRanks.append(rank.toString());
@@ -41,9 +47,16 @@ Photo PhotoResolver::validate(Photo p, const QString &expectedName)
     if (QFileInfo(p.image).completeBaseName()!=p.id
         || !QUrl(p.downloadUrl).path().contains("/photos/"+p.id+"/"))
         return reject(QStringLiteral("Identidade do arquivo da fotografia não confere."));
+    const QString version=p.attribution.value("license_version").toString("4.0");
     const QString requiredLicense = p.license == "cc0" ? "https://creativecommons.org/publicdomain/zero/1.0/"
-        : p.license == "cc-by" ? "https://creativecommons.org/licenses/by/4.0/" : QString();
-    if (requiredLicense.isEmpty() || p.licenseUrl != requiredLicense)
+        : p.license == "cc-by" && QStringList{"1.0","2.0","2.5","3.0","4.0"}.contains(version)
+            ? "https://creativecommons.org/licenses/by/"+version+"/" : QString();
+    const bool documentedException=p.attribution.value("distribution_exception").toBool()
+        && p.attribution.value("sha256").toString()==p.sha256
+        && p.attribution.value("license").toString()==p.license
+        && p.attribution.value("license_url").toString()==p.licenseUrl
+        && p.attribution.value("rights_issues").toArray().isEmpty();
+    if (!documentedException && (requiredLicense.isEmpty() || p.licenseUrl != requiredLicense))
         return reject(QStringLiteral("Licença da fotografia não aprovada."));
     if (p.author.trimmed().isEmpty() || p.author == "no rights reserved" || p.sourceUrl.isEmpty()
         || p.downloadUrl.isEmpty() || p.modifications.isEmpty() || p.sha256.size()!=64)

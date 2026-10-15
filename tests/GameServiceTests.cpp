@@ -18,6 +18,7 @@
 #include "domain/QuizSelection.h"
 #include "domain/TaxonomicPerformance.h"
 #include "infrastructure/content/PhotoResolver.h"
+#include "infrastructure/content/ReviewStatus.h"
 
 namespace {
 class MemoryCatalog final : public SpeciesCatalog {
@@ -45,6 +46,7 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void offlineReviewExpiryAndDrafts();
     void initialLoad_hasSpecies();
     void gameStartsAtFirstRound();
     void extraHintCanBeRevealedOncePerRound();
@@ -793,13 +795,17 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY2(!profile.isEmpty(),qPrintable(s.name));
         ++profiles;
         QVERIFY(!profile.value("displayName").toString().isEmpty());
-        QVERIFY(!profile.value("reviewedOn").toString().isEmpty());
+        QVERIFY(profile.value("reviewedOn").toString().isEmpty());
+        const auto review=profile.value("governance").toMap().value("education").toMap();
+        QCOMPARE(review.value("state").toString(),QString("legacy"));
+        QVERIFY(review.value("reviewer").toString().isEmpty());
         for (const QString &field : {QString("summary"),QString("distribution"),QString("morphology"),QString("conservation")}) {
             const auto item=profile.value(field).toMap();
             QVERIFY2(!item.value("text").toString().isEmpty(),qPrintable(s.name+":"+field));
             QVERIFY(item.value("source_url").toString().startsWith("https://"));
-            QVERIFY(item.value("verified").toBool());
-            QVERIFY(!item.value("reviewed_on").toString().isEmpty());
+            const auto claimReview=item.value("governance").toMap();
+            QCOMPARE(claimReview.value("state").toString(),QString("legacy"));
+            QVERIFY(claimReview.value("reviewed_at").toString().isEmpty());
         }
         QVERIFY(!profile.value("distribution").toMap().value("text").toString().contains("não revisada"));
         const auto status=profile.value("conservation").toMap();
@@ -1218,6 +1224,22 @@ void GameServiceTests::failedSchemaMigrationPreservesOriginalDatabase()
     }
     QSqlDatabase::removeDatabase("tie-inspect");
     QCOMPARE(recovered.loadTopResults().first().playerName,QString("Ada"));
+}
+
+void GameServiceTests::offlineReviewExpiryAndDrafts()
+{
+    const auto now = QDateTime::currentDateTimeUtc();
+    QJsonObject review{{"state", "approved_editorial"}, {"usable", true}, {"reviewer", "test-human"},
+                       {"reviewed_at", now.addDays(-1).toString(Qt::ISODateWithMs)},
+                       {"due_at", now.addDays(30).toString(Qt::ISODateWithMs)}};
+    QVERIFY(usableReview(review));
+    review.insert("due_at", now.addDays(-1).toString(Qt::ISODateWithMs));
+    QVERIFY(!usableReview(review));
+    review.insert("state", "draft");
+    review.insert("due_at", now.addDays(30).toString(Qt::ISODateWithMs));
+    QVERIFY(!usableReview(review));
+    review.insert("state", "approved_expert"); review.remove("reviewer");
+    QVERIFY(!usableReview(review));
 }
 
 QTEST_MAIN(GameServiceTests)

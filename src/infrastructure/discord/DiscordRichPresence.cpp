@@ -125,13 +125,13 @@ void DiscordRichPresence::sendFrame(quint32 opcode, const QByteArray &payload)
 void DiscordRichPresence::publishActivity()
 {
     QJsonObject activity{
-        {"type", 0}, {"name", "Glossata Quiz"},
+        {"type", 0}, {"name", "Projeto Glossata"},
         {"details", QStringLiteral("Explorando os cinco reinos biológicos")},
         {"state", QStringLiteral("Uma descoberta por vez")},
         {"timestamps", QJsonObject{{"start", startedAt_}}}
     };
     if (!largeImage_.isEmpty()) {
-        activity.insert("assets", QJsonObject{{"large_image", largeImage_}, {"large_text", "Glossata Quiz"}});
+        activity.insert("assets", QJsonObject{{"large_image", largeImage_}, {"large_text", "Projeto Glossata"}});
     }
     pendingNonce_ = QUuid::createUuid().toString(QUuid::WithoutBraces);
     const QJsonObject args{{"pid", QCoreApplication::applicationPid()}, {"activity", activity}};

@@ -52,6 +52,7 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantList breadcrumbs READ breadcrumbs NOTIFY explorationChanged)
     Q_PROPERTY(QVariantList identificationLevels READ identificationLevels NOTIFY explorationChanged)
     Q_PROPERTY(QVariantMap questionPhoto READ questionPhoto NOTIFY questionTextChanged)
+    Q_PROPERTY(QVariantMap legalInformation READ legalInformation CONSTANT)
     Q_PROPERTY(QString identificationRankLabel READ identificationRankLabel NOTIFY gameFinishedChanged)
     Q_PROPERTY(QString sessionTaxonId READ sessionTaxonId NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool hasHint READ hasHint NOTIFY extraHintChanged)
@@ -59,6 +60,7 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantList taxonomicStats READ categoryStats NOTIFY scoreChanged)
 
 public:
+    QVariantMap legalInformation() const;
     explicit GameController(QObject *parent = nullptr, const QString &databasePath = QString());
 
     QString questionText() const;

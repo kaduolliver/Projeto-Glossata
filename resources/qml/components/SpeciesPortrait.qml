@@ -18,10 +18,13 @@ ColumnLayout {
         Label { visible: !portrait.hasPhoto; anchors.centerIn: parent; width: parent.width-28; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap; text: portrait.allowDecoration ? "Ilustração decorativa" : (photo.status === Image.Loading ? "Carregando fotografia..." : "Fotografia indisponível. Esta questão não deve ser respondida."); color: "#86A59A"; font.pixelSize: 12 }
     }
     Label { visible: portrait.hasPhoto; Layout.fillWidth: true; text: portrait.info.author || ""; textFormat: Text.PlainText; color: "#8FA9AA"; font.pixelSize: 10; wrapMode: Text.WordWrap }
+    Label { visible: portrait.hasPhoto && !!text; Layout.fillWidth: true; text: (portrait.info.attribution || ({})).title || ""; textFormat: Text.PlainText; color: "#8FA9AA"; font.pixelSize: 10; wrapMode: Text.WordWrap }
+    Label { visible: portrait.hasPhoto; Layout.fillWidth: true; text: portrait.info.modifications || "Alterações não documentadas."; textFormat: Text.PlainText; color: "#8FA9AA"; font.pixelSize: 10; wrapMode: Text.WordWrap }
+    Label { visible: ((portrait.info.attribution || ({})).scientific_source_issues || []).length > 0; Layout.fillWidth: true; text: "Registro de origem com pendência de revisão da identificação."; color: "#D9BA7D"; font.pixelSize: 10; wrapMode: Text.WordWrap }
     RowLayout {
         visible: portrait.hasPhoto; Layout.fillWidth: true
-        TextAction { text: portrait.info.license === "cc0" ? "CC0" : "CC BY"; font.pixelSize: 10; onClicked: Qt.openUrlExternally(portrait.info.licenseUrl || "") }
+        TextAction { text: (portrait.info.license || "Licença não informada").toUpperCase() + ((portrait.info.attribution || ({})).license_version ? " " + portrait.info.attribution.license_version : " · versão não comprovada"); font.pixelSize: 10; onClicked: Qt.openUrlExternally(portrait.info.licenseUrl || "") }
         Item { Layout.fillWidth: true }
-        TextAction { text: "Créditos e origem ↗"; font.pixelSize: 10; onClicked: Qt.openUrlExternally(portrait.info.source || "") }
+        TextAction { text: "Foto e origem ↗"; font.pixelSize: 10; onClicked: Qt.openUrlExternally((portrait.info.attribution || ({})).photo_url || portrait.info.source || "") }
     }
 }

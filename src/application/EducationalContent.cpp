@@ -4,10 +4,11 @@
 #include <QJsonArray>
 #include <QRegularExpression>
 #include <algorithm>
+#include "infrastructure/content/ReviewStatus.h"
 namespace {
 QVariantMap note(const QJsonObject &item)
 {
-    if (!item.value("verified").toBool() || item.value("text").toString().isEmpty()
+    if (!usableReview(item.value("governance").toObject()) || item.value("text").toString().isEmpty()
         || item.value("source_url").toString().isEmpty()) return {};
     return item.toVariantMap();
 }
@@ -41,7 +42,7 @@ QJsonObject EducationalContent::speciesContent(const Species &s) const
 }
 QVariantMap EducationalContent::nameOrigin(const Species &s) const
 {
-    if (speciesContent(s).value("review").toObject().value("etymology").toString() != "approved") return {};
+    if (!usableReview(speciesContent(s).value("governance").toObject().value("etymology").toObject())) return {};
     const auto refs=speciesContent(s).value("name_origin").toObject().value("parts").toArray();
     QStringList texts,urls;
     QString title;
@@ -103,8 +104,7 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
         if(result[0].available())break;
     }
     const auto item=speciesContent(s);
-    const auto review=item.value("review").toObject();
-    if (review.value("etymology").toString()=="approved")
+    if (usableReview(item.value("governance").toObject().value("etymology").toObject()))
         assign(1,note(resolve(item.value("etymology_hints").toObject().value(rank))));
     // Existing reviewed appearance notes are reused, but habitat/diet clues and
     // vague group fallbacks must not silently become high-assistance morphology.
@@ -125,7 +125,7 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
         }
         distinguishes = documentedAlternatives < 3 || sharedAlternatives < 3;
     }
-    if(review.value("morphology").toString()=="approved" && distinguishes
+    if(distinguishes && usableReview(item.value("governance").toObject().value("morphology").toObject())
        && morphology.value("ranks").toList().contains(rank)
        && morphology.value("photo_id").toString()==s.photo.id
        && !leaks(morphology.value("text").toString(),s,options))assign(2,morphology);
@@ -135,13 +135,17 @@ QVariantMap EducationalContent::profile(const Species &s) const
 {
     const auto item=speciesContent(s);
     if (item.isEmpty()) return {};
-    if (item.value("review").toObject().value("education").toString() != "approved") return {};
     QVariantMap result{{"commonName",item.value("common_name").toString()},
                        {"displayName",item.value("display_name").toString()},
-                       {"reviewedOn",item.value("reviewed_on").toString()}};
+                       {"governance",item.value("governance").toVariant()},
+                       {"reviewedOn",item.value("governance").toObject().value("education").toObject().value("reviewed_at").toString()},
+                       {"issueUrl",data_.value("governance_policy").toObject().value("issue_url").toString()},
+                       {"taxonomySystem",data_.value("governance_policy").toObject().value("taxonomy_system").toString()}};
     for (const QString &field : {QString("summary"),QString("distribution"),QString("nutrition"),
-                                QString("morphology"),QString("conservation")})
+                                QString("morphology"),QString("conservation"),QString("curiosity"),QString("hint")})
         result.insert(field,note(resolve(item.value(field))));
+    const auto hints = item.value("hints").toArray();
+    if (!hints.isEmpty()) result.insert("hint",note(resolve(hints.first())));
     return result;
 }
 QVariantMap EducationalContent::introduction(const QString &id) const { return note(resolve(data_.value("taxons").toObject().value(id))); }

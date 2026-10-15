@@ -13,7 +13,7 @@ ApplicationWindow {
     height: 820
     minimumWidth: 1000
     minimumHeight: 700
-    title: "Glossata Quiz"
+    title: "Projeto Glossata"
     color: "#091A22"
     font.family: "Segoe UI"
     font.pixelSize: 14
@@ -90,7 +90,7 @@ ApplicationWindow {
                     }
                     ColumnLayout {
                         spacing: 0
-                        Label { text: "Glossata"; color: "#F5FAF7"; font.pixelSize: 20; font.weight: Font.DemiBold }
+                        Label { text: "Projeto Glossata"; color: "#F5FAF7"; font.pixelSize: 16; font.weight: Font.DemiBold }
                         Label { text: "APRENDA. EXPLORE."; color: "#739399"; font.pixelSize: 8; font.letterSpacing: 1.5 }
                     }
                 }
@@ -132,7 +132,7 @@ ApplicationWindow {
                 Layout.preferredHeight: 34
                 spacing: 10
                 UiIcon { name: "leaf"; ink: "#65C994"; implicitWidth: 17; implicitHeight: 17 }
-                Label { text: root.pageTitles[root.page] || "Glossata"; color: "#9AB2B8"; font.pixelSize: 12; Layout.fillWidth: true }
+                Label { text: root.pageTitles[root.page] || "Projeto Glossata"; color: "#9AB2B8"; font.pixelSize: 12; Layout.fillWidth: true }
                 Rectangle {
                     implicitWidth: 116; implicitHeight: 28; radius: 14; color: "#15372D"; border.color: "#285441"
                     Row { anchors.centerIn: parent; spacing: 6; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: "#56D596"; anchors.verticalCenter: parent.verticalCenter } Label { text: "Ranking local"; color: "#86CBA5"; font.pixelSize: 10 } }
@@ -177,6 +177,7 @@ ApplicationWindow {
                         case "statistics": return statisticsPage
                         case "achievements": return achievementsPage
                         case "settings": return settingsPage
+                        case "credits": return creditsPage
                         default: return homePage
                         }
                     }
@@ -195,4 +196,5 @@ ApplicationWindow {
     Component { id: statisticsPage; StatisticsView { app: root; backend: root.backend } }
     Component { id: achievementsPage; AchievementsView { app: root; backend: root.backend } }
     Component { id: settingsPage; SettingsView { app: root; backend: root.backend } }
+    Component { id: creditsPage; CreditsView { app: root; backend: root.backend } }
 }

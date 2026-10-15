@@ -107,6 +107,14 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     const auto runtimeHandler = qInstallMessageHandler(captureMessage);
     QTest::qWait(220);
     QVERIFY(snapshot("01-home"));
+    showPage("settings");
+    QVERIFY(click("creditsButton"));
+    QCOMPARE(window->property("page").toString(), QString("credits"));
+    QCOMPARE(controller.legalInformation().value("photos").toList().size(), 120);
+    QVERIFY(!controller.legalInformation().value("catalogVersion").toString().isEmpty());
+    QCOMPARE(controller.legalInformation().value("catalogHash").toString().size(), 64);
+    QVERIFY(snapshot("credits-transparency"));
+    showPage("home");
     QVERIFY(click("homePlayButton"));
     QCOMPARE(window->property("page").toString(), QString("categories"));
     QVERIFY(snapshot("02-categories"));

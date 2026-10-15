@@ -12,13 +12,24 @@ Item {
     readonly property var profile: details.profile || ({})
     property bool showClassification: false
     property bool showSources: false
+    function reviewText(note) {
+        const review = (note || ({})).governance || ({})
+        const evidence = review.evidence || []
+        const expired = !!review.due_at && Date.parse(review.due_at) <= Date.now()
+        return (expired ? "Revisão vencida" : (review.label || "Revisão humana não documentada"))
+            + " · Responsável: " + (review.reviewer || "não registrado")
+            + " · Data: " + (review.reviewed_at || "não comprovada")
+            + " · Escopo: " + (review.claim_scope || "a validar")
+            + (review.due_at ? " · Prazo: " + review.due_at : "")
+            + "\n" + (evidence.length ? evidence.map(item => item.locator + " — " + item.supports).join("; ") : "Localização da evidência e escopo da afirmação ainda precisam de revisão.")
+    }
     readonly property var sections: [
         {key: "distribution", title: "Distribuição e habitat", note: profile.distribution || ({}), icon: "pin", color: "#67ABEE"},
         {key: "nutrition", title: details.kingdom === "Animalia" ? "Alimentação" : "Nutrição", note: profile.nutrition || ({}), icon: "food", color: "#72D585"},
         {key: "morphology", title: "Morfologia · aspectos físicos", note: profile.morphology || ({}), icon: "shape", color: "#9EBBEF"},
         {key: "conservation", title: "Conservação", note: profile.conservation || ({}), icon: "shield", color: "#E0B75C"},
-        {key: "curiosity", title: "Você sabia?" + (details.curiosityScope ? " · " + details.curiosityScope : ""), note: {text: details.fact}, icon: "spark", color: "#E0B75C"},
-        {key: "hint", title: "Uma pista para reconhecer", note: {text: details.hint}, icon: "leaf", color: "#A4CE9E"}
+        {key: "curiosity", title: "Você sabia?" + (details.curiosityScope ? " · " + details.curiosityScope : ""), note: profile.curiosity || {text: details.fact}, icon: "spark", color: "#E0B75C"},
+        {key: "hint", title: "Uma pista para reconhecer", note: profile.hint || {text: details.hint}, icon: "leaf", color: "#A4CE9E"}
     ]
     readonly property var references: {
         const result = []
@@ -63,6 +74,8 @@ Item {
                     color: "#B6CBBF"; font.pixelSize: 14; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true
                 }
                 Label { text: "Reino didático: " + (view.details.kingdom || "Não informado"); color: "#86A5AA"; font.pixelSize: 13 }
+                Label { text: "Conteúdo legado em revisão. As fontes citadas e os testes automáticos não equivalem a validação por especialista. Uma ocorrência fotografada não demonstra toda a distribuição da espécie."; color: "#D9BA7D"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { visible: view.showSources; text: view.reviewText(view.profile.summary); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Repeater {
                     model: view.sections
                     delegate: RowLayout {
@@ -76,15 +89,26 @@ Item {
                             Layout.fillWidth: true; spacing: 5
                             Label { text: detail.modelData.title; color: "#EDF4EE"; font.pixelSize: 14; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                             Label { text: detail.modelData.note.text || ""; color: "#91ADB2"; font.pixelSize: 14; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                            Label { visible: view.showSources; text: view.reviewText(detail.modelData.note); color: "#D0B986"; font.pixelSize: 11; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                            TextAction { visible: view.showSources && !!detail.modelData.note.source_url; text: (detail.modelData.note.source_title || "Fonte deste tópico") + " ↗"; onClicked: Qt.openUrlExternally(detail.modelData.note.source_url) }
+                            Repeater {
+                                model: view.showSources ? ((detail.modelData.note.governance || ({})).evidence || []) : []
+                                delegate: TextAction {
+                                    required property var modelData
+                                    text: "Evidência: " + modelData.locator + " ↗"
+                                    onClicked: Qt.openUrlExternally(modelData.url)
+                                }
+                            }
                         }
                     }
                 }
                 TextAction { text: (view.showClassification ? "Ocultar" : "Ver") + " classificação científica"; onClicked: view.showClassification = !view.showClassification }
                 Label { visible: view.showClassification; text: view.details.classification || "Não informada"; color: "#91ADB2"; font.pixelSize: 13; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { visible: view.showClassification; text: "Sistema: hierarquia taxonômica da API v1 do iNaturalist, preservada na coleta. Os cinco reinos são uma organização didática tradicional, distinta da filogenia científica atual.\n" + view.reviewText({governance: (view.profile.governance || ({})).taxonomy || ({})}); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 TextAction { objectName: "speciesSourcesButton"; visible: view.references.length > 0; text: (view.showSources ? "Ocultar" : "Consultar") + " fontes das informações"; onClicked: view.showSources = !view.showSources }
                 ColumnLayout {
                     visible: view.showSources; Layout.fillWidth: true; spacing: 4
-                    Label { text: "Consulta das informações: " + (view.profile.reviewedOn ? view.profile.reviewedOn.split("-").reverse().join("/") : ""); color: "#86A5AA"; font.pixelSize: 12 }
+                    Label { text: "Datas legadas de consulta não comprovam revisão humana. Fontes externas precisam de internet; textos e créditos permanecem disponíveis offline."; color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                     Repeater {
                         model: view.references
                         delegate: TextAction {
@@ -97,6 +121,15 @@ Item {
                         }
                     }
                 }
+                TextAction {
+                    text: "Comunicar erro, atribuição ou pedido de remoção ↗"
+                    onClicked: Qt.openUrlExternally((view.profile.issueUrl || "https://github.com/kaduolliver/Projeto-Glossata/issues/new")
+                        + "?title=" + encodeURIComponent("Revisão de conteúdo: " + view.details.speciesName)
+                        + "&body=" + encodeURIComponent("Tipo: erro científico / atribuição / remoção\nOrganismo: " + view.details.speciesName
+                            + "\nID do catálogo: " + view.details.speciesId + "\nID da foto: " + view.details.photoId
+                            + "\nTópico e evidência: \nNão inclua dados pessoais nem localidades sensíveis neste relato público."))
+                }
+                Label { text: "Sem conexão? Anote o nome científico, o ID da foto e o tópico para enviar o relato depois. Pedidos com informações privadas devem seguir o procedimento em docs/REPORTAR_PROBLEMA.md."; color: "#86A5AA"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 UiButton { objectName: "speciesContinueButton"; text: "Continuar explorando"; iconName: "arrow"; Layout.fillWidth: true; onClicked: view.app.nextQuestion() }
             }
         }

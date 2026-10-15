@@ -76,7 +76,7 @@ void DiscordRichPresenceTests::publishesAssetHandlesPingAndClearsActivity()
     QCOMPARE(command.value("cmd").toString(), QString("SET_ACTIVITY"));
     const QJsonObject activity = command.value("args").toObject().value("activity").toObject();
     QCOMPARE(activity.value("assets").toObject().value("large_image").toString(), QString("glossata_icon"));
-    QCOMPARE(activity.value("name").toString(), QString("Glossata Quiz"));
+    QCOMPARE(activity.value("name").toString(), QString("Projeto Glossata"));
     QVERIFY(!activity.contains("playerName"));
     QVERIFY(!presence.activityPublished());
     peer->write(jsonFrame({{"cmd", "SET_ACTIVITY"}, {"nonce", command.value("nonce")}, {"data", activity}}));

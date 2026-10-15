@@ -4,10 +4,12 @@ O jogo usa a aplicação `1559712085250801685`. A conexão é local com o Discor
 
 ## Imagem no Developer Portal
 
+Em **General Information**, mantenha o campo **Name** como **Projeto Glossata**. O nome público da aplicação é administrado pelo Discord; a alteração local do programa não renomeia a aplicação no Portal. Preserve o Application ID e a chave do asset existentes. Veja [os metadados da aplicação na documentação oficial](https://github.com/discord/discord-api-docs/blob/main/developers/activities/development-guides/assets-and-metadata.mdx).
+
 1. Abra [sua aplicação](https://discord.com/developers/applications/1559712085250801685).
 2. Em **General Information**, use `resources/branding/glossata.png` como ícone da aplicação para testar também a identidade da aplicação no Discord.
 3. Em **Rich Presence → Art Assets**, cadastre `resources/branding/glossata_discord.png` como um novo asset com a chave **glossata_icon_v2** e salve. A configuração usa essa nova chave para separar a imagem atual da anterior. A chave deve corresponder a `largeImage` no JSON.
-4. Mantenha o Discord desktop aberto e conectado e inicie `package/Glossata Quiz.lnk`.
+4. Mantenha o Discord desktop aberto e conectado e inicie `package/Projeto Glossata.lnk`.
 5. Em **Perfis e ajustes**, confira o estado **Atividade publicada no Discord**. Veja a atividade no seu perfil do Discord; a configuração de compartilhamento de atividades do Discord precisa permitir a exibição.
 
 O ícone da aplicação no Portal, a imagem grande do Rich Presence e o ícone do executável Windows são configurações distintas. As variantes atuais têm 1254×1254 e vieram do pacote fornecido pelo usuário. O Discord [recomenda 1024×1024 para assets](https://docs.discord.com/developers/discord-social-sdk/development-guides/setting-rich-presence#uploading-assets). Reinicie o jogo após trocar o asset para conferir a nova imagem.
@@ -32,12 +34,12 @@ Se o Discord não estiver disponível, o jogo continua funcionando e tenta conec
 
 ## Launcher e diagnóstico
 
-Use **Glossata Quiz.lnk** para iniciar com o ícone próprio. O atalho usa um arquivo ICO em `package/branding/` cujo nome inclui o hash da imagem, e o empacotamento notifica o Explorer sobre a alteração do atalho. Isso evita depender do ícone do executável guardado no cache do Windows. O executável também contém o ícone. O `.cmd` continua disponível, mas sua aparência no Explorer segue a associação de arquivos `.cmd` do Windows. Cópias antigas ou atalhos fixados devem ser substituídos pelo atalho atualizado.
+Use **Projeto Glossata.lnk** para iniciar com o ícone próprio. O atalho usa um arquivo ICO em `package/branding/` cujo nome inclui o hash da imagem, e o empacotamento notifica o Explorer sobre a alteração do atalho. Isso evita depender do ícone do executável guardado no cache do Windows. O executável também contém o ícone. O `.cmd` continua disponível, mas sua aparência no Explorer segue a associação de arquivos `.cmd` do Windows. Cópias antigas ou atalhos fixados devem ser substituídos pelo atalho atualizado.
 
 Para testar somente a conexão, sem abrir uma janela do jogo:
 
 ```powershell
-$testProcess = Start-Process -FilePath '.\package\glossata_quiz.exe' -ArgumentList '--discord-test' -WindowStyle Hidden -Wait -PassThru
+$testProcess = Start-Process -FilePath '.\package\projeto_glossata.exe' -ArgumentList '--discord-test' -WindowStyle Hidden -Wait -PassThru
 $testProcess.ExitCode
 Get-Content '.\package\discord-test.log'
 ```

@@ -87,7 +87,8 @@ Item {
                 Switch { checked: view.app.presence.enabled; Accessible.name: "Compartilhar atividade no Discord"; onToggled: view.app.presence.enabled = checked }
             }
         }
-        Label { text: "Glossata Quiz · Aprender sobre a natureza, uma espécie por vez."; color: "#527782"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { text: "Projeto Glossata · Aprender sobre a natureza, uma espécie por vez."; color: "#527782"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        TextAction { objectName: "creditsButton"; text: "Créditos, fontes e transparência"; onClicked: view.app.navigate("credits") }
         Item { Layout.fillHeight: true }
     }
     Dialog {

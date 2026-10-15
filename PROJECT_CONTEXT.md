@@ -1,4 +1,4 @@
-# Contexto do Projeto: Glossata Quiz
+# Contexto do Projeto: Projeto Glossata
 
 ## Objetivo e estado atual
 
@@ -8,8 +8,10 @@ O catálogo ativo possui 122 espécies, com 42 Animalia e 20 em cada um dos outr
 
 ## Workspace e ambiente
 
+- Nome exibido: Projeto Glossata. Executável: projeto_glossata.exe. O identificador interno Qt continua glossata_quiz para preservar o diretório existente dos bancos de perfis e histórico.
+
 - Raiz canônica: C:\glossata_game. Não editar a cópia antiga do Desktop, cujo caminho com acentos e & já provocou problemas de moc/autogen.
-- Git: main integra a expansão dos cinco reinos; feat/refinamento-identificacao contém esta etapa de refinamento. origin aponta para https://github.com/kaduolliver/Das-Glossata-Projekt.
+- Git: main integra a expansão dos cinco reinos; feat/refinamento-identificacao contém esta etapa de refinamento. origin aponta para https://github.com/kaduolliver/Projeto-Glossata.
 - Código, recursos, testes, documentação e configurações compartilhadas são versionados. Build, pacote gerado, capturas, cache e bancos pessoais são ignorados.
 - C++17, Qt 6 Quick/QML, Qt Sql/QSQLITE, CMake/Ninja, MSYS2 UCRT64.
 - Ambiente validado: Qt 6.11.2 e GCC 16.2.0. Importação/testes auxiliares usam Python 3.11+ e sua biblioteca padrão.
@@ -64,7 +66,7 @@ DiscordRichPresence usa RPC/IPC local com Qt Network/QLocalSocket, sem token de 
 
 A mensagem permanece Explorando os cinco reinos biológicos e Uma descoberta por vez, sem nomes ou pontuações. Ausência de Discord não bloqueia o jogo; a presença pode ser desativada em ajustes.
 
-resources/branding contém PNG, ICO multirresolução e arte para Discord fornecidos pelo usuário. ICO é recurso nativo do executável e ícone global da janela. Launcher recomendado: package/Glossata Quiz.lnk; alternativa: package/run_glossata_game.cmd. O pacote usa ICO com nome derivado de hash e atualiza o cache do Windows. Assets do Discord são administrados separadamente no Developer Portal.
+resources/branding contém PNG, ICO multirresolução e arte para Discord fornecidos pelo usuário. ICO é recurso nativo do executável e ícone global da janela. Launcher recomendado: package/Projeto Glossata.lnk; alternativa: package/run_glossata_game.cmd. O pacote usa ICO com nome derivado de hash e atualiza o cache do Windows. Assets do Discord são administrados separadamente no Developer Portal.
 
 ## Build, testes e pacote
 
@@ -75,7 +77,7 @@ No PowerShell, a partir da raiz:
     ctest --test-dir build --output-on-failure
     $qmlFiles = @(Get-ChildItem resources/qml -Recurse -Filter '*.qml' | ForEach-Object { $_.FullName })
     qmllint @qmlFiles --unqualified disable
-    powershell -ExecutionPolicy Bypass -File scripts/package.ps1
+    powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -Development
 
 unqualified é desativado para context properties intencionalmente injetadas pelo C++. O pacote inclui Qt DLLs, QML, plugins, dependências MSYS2, qt.conf, configuração Discord e launcher. Mantém somente QSQLITE entre drivers SQL.
 
@@ -107,3 +109,11 @@ QuestionGenerator separa a geração contextual do ciclo de GameService. GameCon
 Livre oferece alternativas mais amplas, equilibradas ou próximas. Competitivo usa 20 questões de gênero, alternativas equilibradas e fotografias de identificação, com 80 organismos elegíveis; as 20 imagens de apoio de Monera ficam no Livre. A última resposta pode ser revisada antes do resultado final; partidas interrompidas são guardadas e ficam fora do ranking competitivo. Nenhuma espécie foi removida.
 
 Corpus, revisões e diagnóstico: resources/data/curation_reviews.json, resources/data/etymology_research.json e scripts/audit_catalog.py. Há 49 etimologias ao menos parciais, 104 registros morfológicos e 16 introduções. O teste scripts/validate_package.ps1 utiliza bancos temporários e PATH isolado; ainda falta um Windows limpo sem Qt/MSYS2. Relatórios em docs/EVOLUCAO_COMPETITIVA.md e docs/COBERTURA_TAXONOMICA.md.
+
+## Governança científica e direitos
+
+Consulte docs/CONFORMIDADE.md e docs/DIREITOS_E_LICENCAS.md. A baseline resources/compliance/review_baseline.json congela marcações históricas, sem demonstrar revisão humana. Não recriar a baseline para aprovar conteúdo. Datas antigas/flags verified/approved são legadas; a autoridade de revisão é o histórico humano encadeado e governance gerado em education.json. Novo conteúdo fica draft; mudanças de conteúdo/fonte/foto invalidam a revisão. Prazos são configuráveis em content_policy.json e conferidos também offline.
+
+photo_provenance.json e snapshots mínimos preservam evidência por foto, sem perfis do observador nem coordenadas. Crédito do fotógrafo não deve ser inferido do observador. credits.json, PHOTO_CREDITS.md e tela de créditos têm origem comum. Fotos continuam CC0/CC BY por padrão; NC exige política e grant expressos. Consultas de manutenção geram somente propostas em build/update-proposals, nunca renovam revisão nem substituem silenciosamente dados publicados.
+
+package.ps1 bloqueia distribuição por padrão; -Development é apenas para testes locais e exporta avisos/evidências. Há pendências de versão/data da licença de 120 fotos, sete créditos divergentes, direitos da arte/textos e obrigações de dependências. Duas fotos legadas de origem Casual exigem revisão científica prioritária. Preservar perfis/histórico e os modos locais, sem chamar o legado de validado por especialista. Nenhuma licença dos materiais próprios foi escolhida. A quinta suíte GlossataGovernanceTests cobre regressões de evidência, direitos, privacidade, revisão e invalidação. Testes não são certificação de regularidade.

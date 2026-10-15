@@ -2,6 +2,8 @@
 
 **Explore a diversidade da vida.**
 
+> **Transparência:** há conteúdo legado sem revisão humana rastreável e permissões de redistribuição ainda incompletas. Testes não certificam conformidade jurídica ou científica. Consulte o [plano e a matriz de ação](docs/CONFORMIDADE.md), os [direitos por camada](docs/DIREITOS_E_LICENCAS.md) e o [canal de correção/remoção](docs/REPORTAR_PROBLEMA.md).
+
 > Uma iniciativa educacional independente, gratuita e sem fins lucrativos, dedicada à divulgação científica e ao aprendizado sobre a biodiversidade.
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
@@ -16,7 +18,11 @@ O **Projeto Glossata** nasceu como um jogo educativo de identificação de organ
 
 O nome *Glossata* faz referência a um clado de lepidópteros que inclui a maioria das borboletas e mariposas — uma homenagem à origem do projeto, **não uma restrição ao conteúdo**. A iniciativa pretende abordar a diversidade da vida em diferentes grupos biológicos, suas características, relações evolutivas e papéis nos ecossistemas.
 
-A aplicação disponível atualmente é o **Glossata Quiz**, um programa desktop em português, com catálogo local de organismos, exploração taxonômica, fichas educativas, desafios de identificação e acompanhamento do desempenho. A visão de longo prazo é integrar esses recursos a uma **enciclopédia interativa da natureza**.
+A aplicação disponível atualmente é o **Projeto Glossata**, um programa desktop em português, com catálogo local de organismos, exploração taxonômica, fichas educativas, desafios de identificação e acompanhamento do desempenho. A visão de longo prazo é integrar esses recursos a uma **enciclopédia interativa da natureza**.
+
+![Tela inicial real do Projeto Glossata, com navegação lateral, convite para explorar a biodiversidade e cartões de descoberta.](docs/images/tela-inicial.png)
+
+*Captura do aplicativo em execução, com perfil temporário. [Origem da captura](docs/images/tela-inicial.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
 
 ### Missão
 
@@ -31,6 +37,8 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 - **Evolução contínua:** aperfeiçoamento gradual de dados, recursos e acessibilidade.
 
 ## Estado atual
+
+Aplicativo **1.1.0 em desenvolvimento** · Catálogo **1.0.0, baseline ainda não lançada**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
 
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
@@ -69,7 +77,7 @@ O catálogo atual utiliza os **cinco reinos do modelo didático tradicional** co
 
 Navegação por reinos, grupos e subgrupos, com caminhos clicáveis, textos introdutórios e níveis de identificação disponíveis conforme a cobertura do catálogo. Os níveis de quiz são oferecidos apenas quando há alternativas suficientes para uma questão válida.
 
-### Glossata Quiz
+### Projeto Glossata
 
 Cada questão apresenta quatro alternativas de identificação no mesmo nível taxonômico, seleção, confirmação e feedback. A fotografia e os dados utilizados na resposta são preservados para a etapa de revisão.
 
@@ -183,6 +191,10 @@ powershell -ExecutionPolicy Bypass -File scripts/package.ps1
 
 O processo prepara os componentes Qt e as dependências de execução para o pacote local. **O repositório não inclui executáveis e bibliotecas geradas:** um clone novo precisa ser compilado. A validação em uma instalação Windows completamente limpa ainda é um ponto a verificar.
 
+Esse comando é o fluxo de distribuição e falha enquanto houver permissões ou obrigações não demonstradas. Para testar localmente, use `powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -Development`; o pacote fica identificado como desenvolvimento local e inclui créditos, evidências e pendências offline. Isso não autoriza redistribuí-lo.
+
+Inicie pelo atalho `package/Projeto Glossata.lnk` ou por `package/run_glossata_game.cmd`. O executável é `package/projeto_glossata.exe`; os perfis e o histórico existentes mantêm o mesmo diretório de dados.
+
 ## Catálogo, atualização e curadoria
 
 A aplicação **não depende de consultas à internet durante o jogo**. Os scripts de importação utilizam fontes externas, incluindo o iNaturalist, para preparar dados e recursos locais. A proveniência e os direitos de uso das imagens devem ser respeitados.
@@ -203,6 +215,8 @@ python scripts/audit_catalog.py --strict
 ```
 
 A curadoria distingue aprovação de identificação visual, fotografia, etimologia, morfologia e informação educativa. Conteúdos não revisados não devem ser apresentados como evidência conclusiva de identificação. Consulte os relatórios em [`docs/`](docs/) para conhecer cobertura, fontes, licenças, limitações e pendências.
+
+Aprovações antigas sem responsável e evidência foram classificadas como legadas. Novo conteúdo, inclusive assistido por IA, entra em rascunho; alterações exigem nova revisão registrada. O relatório de atualização é offline por padrão (`python scripts/review_updates.py`); `--online` gera propostas para análise humana, sem substituir o conteúdo publicado.
 
 ## Roadmap
 

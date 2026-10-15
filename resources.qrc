@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>resources/data/species.json</file>
+        <file>resources/data/catalog_manifest.json</file>
         <file>resources/data/catalog_replacements.json</file>
         <file>resources/data/discord.json</file>
         <file>resources/branding/glossata.png</file>
@@ -153,5 +154,8 @@
         <file>resources/images/inaturalist/748172022.jpg</file>
         <file>resources/images/inaturalist/749313945.jpg</file>
         <file>resources/images/inaturalist/749738938.jpg</file>
+        <file>resources/data/credits.json</file>
+        <file>resources/data/content_policy.json</file>
+        <file>resources/qml/views/CreditsView.qml</file>
     </qresource>
 </RCC>
