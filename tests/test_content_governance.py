@@ -226,6 +226,17 @@ class GovernanceTests(unittest.TestCase):
         after = {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()}
         self.assertEqual(before, after)
 
+    def test_refused_maintenance_destinations_are_proposals_not_content_decisions(self):
+        self.baseline(); governance.generate_credits(self.root)
+        before = {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()}
+        class Client:
+            def get(inner, url, as_json=False):
+                raise review_updates.UnsafeDestination('Synthetic policy refusal')
+        report = review_updates.propose_updates(self.root, True, 1, Client())
+        self.assertTrue(report['checks'])
+        self.assertTrue(all(c['state'] == 'destination_refused' and c['requires_human_check'] for c in report['checks']))
+        self.assertEqual(before, {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()})
+
     def test_extra_uninventoried_runtime_file_blocks_distribution(self):
         package = self.root/'package'; package.mkdir(); (package/'unknown.dll').write_bytes(b'unknown'); (package/'unknown.ico').write_bytes(b'unknown-icon')
         errors = distribution.dependency_errors({'binaries': [], 'packages': []}, package)
