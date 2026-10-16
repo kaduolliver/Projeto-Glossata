@@ -41,38 +41,62 @@
     {
       "path": "resources/data/species_profiles.json",
       "kind": "text_authorship",
-      "sha256": "bec6e7c398506c0a49af3fbd4053dc88256f54a106b9b34157a9b37807d45368",
+      "sha256": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_originality_and_rights_review"
+      "state": "pending_originality_and_rights_review",
+      "inventory_history": [
+        {
+          "sha256": "bec6e7c398506c0a49af3fbd4053dc88256f54a106b9b34157a9b37807d45368",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-16T04:22:45.708774+00:00"
+        }
+      ],
+      "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
     },
     {
       "path": "resources/data/hint_education.json",
       "kind": "text_authorship",
-      "sha256": "af13949ede8c7a0e3f0299ce7249ae84ab77aa3e8d713845c2d9a9f33989c1fe",
+      "sha256": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_originality_and_rights_review"
+      "state": "pending_originality_and_rights_review",
+      "inventory_history": [
+        {
+          "sha256": "af13949ede8c7a0e3f0299ce7249ae84ab77aa3e8d713845c2d9a9f33989c1fe",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-16T04:22:45.708774+00:00"
+        }
+      ],
+      "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
     },
     {
       "path": "scripts/build_education.py",
       "kind": "text_authorship",
-      "sha256": "a5ad075602a9c748378e655ac1e8582bbb27f1c74b65904cdbde7d7f205a473b",
+      "sha256": "35e31d2d658c84c386d6d528ef814e5b0160199dd015c160001b864fafcfcb57",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_originality_and_rights_review"
+      "state": "pending_originality_and_rights_review",
+      "inventory_history": [
+        {
+          "sha256": "a5ad075602a9c748378e655ac1e8582bbb27f1c74b65904cdbde7d7f205a473b",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-16T04:22:45.708774+00:00"
+        }
+      ],
+      "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
     },
     {
       "path": "resources/images/exploration/lion.jpg",

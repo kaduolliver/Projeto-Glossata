@@ -48,3 +48,15 @@ __pycache__/
 !.env.example
 Thumbs.db
 Desktop.ini
+
+# Interrupted downloads, crash dumps and private key containers
+*.part
+*.tmp
+*.bak
+*.dmp
+*.stackdump
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json

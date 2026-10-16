@@ -19,3 +19,6 @@ CMakeLists.txt text eol=lf
 *.jpg binary
 *.jpeg binary
 *.ico binary
+
+.githooks/* text eol=lf
+.gitattributes text eol=lf

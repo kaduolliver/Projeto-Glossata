@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.5.0**; catálogo **2.2.0**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
+Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.5.0**; catálogo **2.2.1**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
 
 A exploração principal usa **Bacteria (20), Archaea (0) e Eukaryota (102)**. Eukaryota contém Opisthokonta (62: Animalia e Fungi), Archaeplastida (20: Plantae da fonte), SAR (10: Stramenopiles/Ochrophyta), Amoebozoa (10: mixomicetos) e Discoba (0). Os 122 IDs, nomes, fotografias, créditos e dados dos jogadores são preservados.
 

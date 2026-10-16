@@ -17,6 +17,7 @@ jobs:
           msystem: UCRT64
           update: true
           install: >-
+            git
             mingw-w64-ucrt-x86_64-gcc
             mingw-w64-ucrt-x86_64-cmake
             mingw-w64-ucrt-x86_64-ninja
@@ -27,6 +28,8 @@ jobs:
         shell: msys2 {0}
         run: |
           set -euo pipefail
+          git --version
+          python scripts/audit_repository.py
           python scripts/build_education.py
           python scripts/content_governance.py credits
           git diff --exit-code -- resources/data/education.json resources/data/credits.json docs/PHOTO_CREDITS.md
@@ -56,6 +59,7 @@ jobs:
           path: |
             build/catalog-quality.json
             build/exploration-media-audit.json
+            build/repository-audit.json
             build/update-proposals/*.json
             build/tests/*results.txt
           if-no-files-found: warn

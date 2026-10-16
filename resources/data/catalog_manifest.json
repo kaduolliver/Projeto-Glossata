@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "version": "2.2.0",
+  "version": "2.2.1",
   "status": "unreleased",
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
     "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
     "resources/branding/README.md": "d9ae346156fa1f32fdb73ba1aefbf2ef82c6ea4062f7067f6d459baa173e381f",
-    "resources/compliance/asset_rights.json": "249a9583e5ed9c761c868968b045c2f298ab0d0e0072062164480ce48070102f",
+    "resources/compliance/asset_rights.json": "d18a9ba6dd1fde418ce93ddfece8b36d3980773059ed3baeb86430bdf54e8329",
     "resources/compliance/exploration/amanita.json": "752a55a27b2a88632ffc8e752c896df794678f46886a6c140909d8cc180655de",
     "resources/compliance/exploration/archaea.json": "f903a73d6258f5fb5391e83c54417416ee54bc02ffe1d05c743a1c6a5323bf17",
     "resources/compliance/exploration/bacteria.json": "399a13a3f31a8122dd99b6e0610c603878122ba595f14791fdd2fdd34e21ec9a",
@@ -463,6 +463,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "d91be3f3688654c0a1cb8b973d38cb98f5f7646ce82c45d745ba06bb14e41ded",
+  "content_sha256": "879a14fe17e70d83fea22d66691ac7010db8f1e995940fd25b697de580956b1f",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }

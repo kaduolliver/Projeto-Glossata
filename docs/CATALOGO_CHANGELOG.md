@@ -2,6 +2,10 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.2.1] — Não lançado; integridade do inventário
+
+Aplicativo compatível: **1.5.0**. Correção PATCH dos hashes obsoletos no inventário de três materiais próprios (perfis, dicas e gerador), preservando hashes anteriores em histórico. Sem concessão de direitos ou alteração de autores, licenças e revisões. Organismos, fotos e conteúdo do quiz inalterados. Gate de distribuição continua bloqueado.
+
 ## [2.2.0] — Não lançado; cobertura fotográfica auditada
 
 Aplicativo previsto: **1.5.0**. Acréscimo MINOR compatível de imagens de apresentação e metadados, sem migração do histórico de jogadores.
