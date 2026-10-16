@@ -101,7 +101,9 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-06 — Redirecionamento pode sair das fontes públicas na manutenção online
 
-**Evidência:** [PublicClient.get](../scripts/review_updates.py#L21) valida a URL inicial e bloqueia IP privado literal, mas usa `urllib.request.urlopen` com redirecionamento padrão ([linha 35](../scripts/review_updates.py#L35)). Não valida cada destino nem resolve nomes para conferir os endereços resultantes.
+**Correção implementada localmente em 16/10/2026:** o cliente passou a validar cada salto, resolver somente hosts explícitos, filtrar IPs e conectar ao endpoint numérico aprovado, preservando TLS e limites. Consulte [TRANSPORTE_MANUTENCAO.md](TRANSPORTE_MANUTENCAO.md) para política, testes simulados e limitações. O relato original abaixo permanece como evidência histórica; não houve publicação remota desta correção nem alegação de invasão anterior.
+
+**Evidência histórica na baseline investigada:** [PublicClient.get](https://github.com/kaduolliver/Projeto-Glossata/blob/041ae413e4200e1f6e2da49ec7b3b03f9b734b71/scripts/review_updates.py#L21) validava a URL inicial e bloqueava IP privado literal, mas usava `urllib.request.urlopen` com redirecionamento padrão ([linha 35 original](https://github.com/kaduolliver/Projeto-Glossata/blob/041ae413e4200e1f6e2da49ec7b3b03f9b734b71/scripts/review_updates.py#L35)). Não validava cada destino nem resolvia nomes para conferir os endereços resultantes.
 
 **Reprodução:** handlers HTTP/HTTPS inteiramente em memória simularam uma fonte pública HTTPS que redireciona para HTTP de loopback. O cliente seguiu o destino e aceitou o resultado. Nenhum serviço local foi acessado e nenhum conteúdo real foi obtido.
 

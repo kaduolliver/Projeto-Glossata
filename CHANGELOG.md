@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; gerenciamento de curadoria
 
+- INV-06: transporte HTTPS de manutenção com hosts/porta explícitos, redirecionamentos validados, DNS público fixado na conexão, TLS verificado e limites de tempo/dados/saltos. Testes sem Internet e propostas de recusa sem alterar conteúdo, permissões ou curadoria; catálogo 2.4.0 preservado.
 - INV-04: proposta local de proteção da `main` para mantenedor único, com PR sem aprovação externa, bloqueio de force push/exclusão e somente `offline-validation` obrigatório. Inspetor somente GET, responsáveis por caminhos sensíveis, testes e checkout sem credenciais persistidas. Ativação remota pendente de autorização; regras de distribuição e catálogo inalterados.
 - Limpeza de 37 fotografias legadas fora do bundle (4,9 MB), com hashes, motivos e referências históricas preservados em [LIMPEZA_REPOSITORIO.md](docs/LIMPEZA_REPOSITORIO.md). Recursos ativos, dados dos jogadores e catálogo 2.4.0 inalterados; bloqueios de distribuição mantidos.
 - Publicação semanal protegida pela variável `GLOSSATA_CURATION_WEEKLY_SYNC`, desabilitada por padrão. Auditorias e simulação autenticada com permissões de leitura continuam semanais; primeira publicação manual e ativação exigem autorizações separadas.
