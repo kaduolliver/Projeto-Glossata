@@ -13,7 +13,7 @@ import urllib.error
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from scientific_sources.model import Assertion, Identity, DiscoveryScope, digest
-from scientific_sources.adapters import GbifProvider,WormsProvider,ColProvider,CommonsProvider
+from scientific_sources.adapters import GbifProvider,WormsProvider,ColProvider,CommonsProvider,dataset_rights
 from scientific_sources.registry import Registry,configured_registry
 from scientific_sources.transport import CachedClient,CacheMiss,ProviderError,RateLimited
 from scientific_sources.store import CandidateStore
@@ -115,6 +115,13 @@ class ScientificSourceTests(unittest.TestCase):
         self.assertEqual(len(rows),1);self.assertEqual(rows[0].rights['version'],'4.0')
         self.assertEqual(rows[0].identity,Identity('gbif','3',DATASET))
         with self.assertRaises(ProviderError):GbifProvider(client).normalize(dict(row,datasetKey='other'),{})
+
+    def test_dataset_cc0_is_preserved_and_cannot_grant_media_permission(self):
+        rights=dataset_rights({'license':'http://creativecommons.org/publicdomain/zero/1.0/'},{'snapshot_sha256':'a'*64})
+        self.assertEqual(rights['license'],'cc0');self.assertEqual(rights['version'],'1.0')
+        self.assertEqual(rights['review_state'],'pending');self.assertIn('photographs',rights['notice'])
+        unknown=dataset_rights({'license':'cc by'},{})
+        self.assertIsNone(unknown['version']);self.assertEqual(unknown['declared'],'cc by')
 
     def test_gbif_discovery_uses_verified_ancestor_not_a_text_hit(self):
         provider=GbifProvider(ClientFixture({}));provider.fetch=Mock(return_value=assertion('gbif','2','Archaea','kingdom','Archaea'))

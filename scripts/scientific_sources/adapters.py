@@ -24,8 +24,9 @@ def dataset_rights(metadata, evidence):
     declared=metadata.get('license','');url=urlparse(declared)
     match=re.fullmatch(r'/licenses/by/(1\.0|2\.0|2\.5|3\.0|4\.0)(?:/legalcode)?/?',url.path)
     valid=url.hostname=='creativecommons.org' and bool(match)
-    return {'declared':declared,'license':'cc-by' if valid else None,'version':match[1] if valid else None,
-            'license_url':f'https://creativecommons.org/licenses/by/{match[1]}/' if valid else None,
+    zero=url.hostname=='creativecommons.org' and url.path.rstrip('/') in {'/publicdomain/zero/1.0','/publicdomain/zero/1.0/legalcode','/publicdomain/zero/1.0/deed.en'}
+    return {'declared':declared,'license':'cc0' if zero else 'cc-by' if valid else None,'version':'1.0' if zero else match[1] if valid else None,
+            'license_url':'https://creativecommons.org/publicdomain/zero/1.0/' if zero else f'https://creativecommons.org/licenses/by/{match[1]}/' if valid else None,
             'dataset_title':metadata.get('title'),'dataset_doi':metadata.get('doi'),
             'citation':metadata.get('citation'),'evidence':evidence,'review_state':'pending',
             'notice':'Dataset terms do not authorize photographs, copied descriptions or other databases.'}
