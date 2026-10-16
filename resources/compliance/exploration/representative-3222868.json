@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:28.999062+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AGram+Negative+Rods+of+Aeromonas+hydrophila.jpg&maxlag=5",
+  "record": {
+    "page_id": 142517951,
+    "revision_id": 1276888396,
+    "file_title": "File:Gram Negative Rods of Aeromonas hydrophila.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Gram_Negative_Rods_of_Aeromonas_hydrophila.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "12b812045186a147ebe4b5a82c7a5d0e6bcf1861",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Gram_Negative_Rods_of_Aeromonas_hydrophila.jpg/960px-Gram_Negative_Rods_of_Aeromonas_hydrophila.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Gram Negative Rods of Aeromonas hydrophila",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "As a Gram-negative bacterium, Aeromonas hydrophila does not retain the primary stain (crystal violet) used in Gram staining. Instead, it takes up the counterstain, typically safranin or fuchsine, and appears pink or red under the microscope.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Ajay Kumar Chaurasiya",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

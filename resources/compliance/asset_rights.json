@@ -1861,6 +1861,204 @@
         "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-2422389.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "431f8b39cb614174c49d0987014cc5d1a2be57d68dc3fdb07950cd138ac006b1",
+      "source": "https://commons.wikimedia.org/wiki/File:Toad_Gulf_Coast_Toad_Amphibian_Free_Photo.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Brett_Hondow",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-2422389.json",
+        "evidence_sha256": "637d082c6b7a1bf09f6f10ea0b9a8ab16e5757166a34817c718f550afa7d68eb",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-3589283.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a71f8b8aa7508628a810bb19017c588feae9e69ff46935f0ec9dd7906de0206e",
+      "source": "https://commons.wikimedia.org/wiki/File:Aristolochia_gigantea_-_Andr%C3%A9_Ribeiro_Cardoso_-_350202063.jpeg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "André Ribeiro Cardoso",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-3589283.json",
+        "evidence_sha256": "4172c51b2be40d26d20d3dacaaeeab2754a717ae50d0839fbb8cdc950f28c0af",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-8349333.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fa701e6d0a2dcf1163c2ceeae6c777af96dcb5b505b9ccf260dcc8a2b9e63c65",
+      "source": "https://commons.wikimedia.org/wiki/File:Mimetes_cucullatus_0147.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Amada44",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-8349333.json",
+        "evidence_sha256": "4fa6864d50e5b56615ac152ff5d3ef00ccd3ba71d3c3d89ae88b068b1aa2f40d",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-2787742.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "898bce46ebdc079c451b47c4ca178a796513dc4cce47204bd5eb5c4afd71263b",
+      "source": "https://commons.wikimedia.org/wiki/File:Pleurothallis_truncata_%27Elm%27_Lindl.-_Companion_Bot._Mag._2-_355_(1837)._20230315_231703.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Motohiro Sunouchi",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-2787742.json",
+        "evidence_sha256": "2f8e3c7ff5b0a775584566d2b706453162466e4fc157cb1b542d5d76a84a0fa0",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-8597577.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "bfc5b5c364982cc580d4576a1655eeeae52c76d7f62d52f96f9c2e0641b63bc7",
+      "source": "https://commons.wikimedia.org/wiki/File:Cladonia_rangiferina_221261852.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Simone Barbaresco",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-8597577.json",
+        "evidence_sha256": "6b825fef87f5b9220b7677f9f0ae89afdd7ea41ca6861f2ee719eb327e386da1",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-8225325.png",
+      "kind": "exploration_photograph",
+      "sha256": "0312cda9ec75a68629ebb0aa8c7b98badd8d5b9ef67985633fe414c9f49e4d59",
+      "source": "https://commons.wikimedia.org/wiki/File:Patova_et_al_2023_5a_Nostoc_commune.png",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Elena Patova, Irina Novakovskaya, Evgeniy Gusev & Nikita Martynenko",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-8225325.json",
+        "evidence_sha256": "26d58b810d75994ba7526ccfa308bae6ac8777efea70c257aa75ac7450a4ccb0",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-11822169.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "b3973630cd595bb8d9f1f0962644bfe7329e4c9b32e1dc03d93782b785570ad0",
+      "source": "https://commons.wikimedia.org/wiki/File:Acholeplasma_laidlawii_PG8_Cells_and_EVs_(cropped).jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alexey Mouzykantov, Elena Medvedeva, Natalia Baranova, Olga Chernova and Vladislav Chernov",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-11822169.json",
+        "evidence_sha256": "2b8cdebe46881b649228f50a0297dbd3a7a5e029122b33dfa4197e90e3554d09",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-3222868.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "ce764780781432beda8b8a2cb3c8c8f478df36941e47272437f24a293df78193",
+      "source": "https://commons.wikimedia.org/wiki/File:Gram_Negative_Rods_of_Aeromonas_hydrophila.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Ajay Kumar Chaurasiya",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-3222868.json",
+        "evidence_sha256": "345221cc86b9dd9f1e587ffa4bc6c5ee1d496af91d885841d3f573d259e932d0",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-3214309.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6f7707fc3e7309fc4528ab8356514b100246d84684a75b97ebd27f374af9c5ab",
+      "source": "https://commons.wikimedia.org/wiki/File:Badhamia_utricularis_123125097.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Stephen Thorpe",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-3214309.json",
+        "evidence_sha256": "59f2609935035851671efb72278d92bfa736c986cb57ab37a34c3ed8a64101e6",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/representative-1404264.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f4414f2f8dfbb57814da8595f499ebeeacad26e756e1d068e2edb82711eedfeb",
+      "source": "https://commons.wikimedia.org/wiki/File:Figura-3-Habito-Acanthops-falcata-hembra-vista-dorsal_W640.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Arteaga-Blanco L.A, De La Parra-Guerra, A.C & Martínez-Hernández, N.J",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/representative-1404264.json",
+        "evidence_sha256": "5c9b25bc344edbc4949b04ebb08e3b3ed81371489c6c33c13a42a2e128c08ebe",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-27.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "d362922451a38438189310074c0eeeb525f538735bb59aa1a1961d382fd1b0d3",
+      "source": "https://commons.wikimedia.org/wiki/File:African_Social_Spider_imported_from_iNaturalist_photo_12637215_on_14_October_2022.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "(c) Wynand Uys, some rights reserved (CC BY)",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-27.json",
+        "evidence_sha256": "a44e6db90c296bf29c2b165970844f67f3eaf32c4ab6ce2a96a66649b095e646",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
     }
   ],
   "fonts": {

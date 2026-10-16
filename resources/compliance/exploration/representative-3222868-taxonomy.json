@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "3222868",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Aeromonas hydrophila (Chester, 1901) Stanier, 1943",
+    "canonical_name": "Aeromonas hydrophila",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "(Chester, 1901) Stanier, 1943",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "3222868",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Aeromonas hydrophila",
+    "lineage": [
+      {
+        "name": "Bacteria",
+        "rank": "kingdom",
+        "source_id": "3"
+      },
+      {
+        "name": "Proteobacteria",
+        "rank": "phylum",
+        "source_id": "111"
+      },
+      {
+        "name": "Gammaproteobacteria",
+        "rank": "class",
+        "source_id": "362"
+      },
+      {
+        "name": "Enterobacterales",
+        "rank": "order",
+        "source_id": "10801383"
+      },
+      {
+        "name": "Aeromonadaceae",
+        "rank": "family",
+        "source_id": "8950"
+      },
+      {
+        "name": "Aeromonas",
+        "rank": "genus",
+        "source_id": "3222380"
+      },
+      {
+        "name": "Aeromonas hydrophila",
+        "rank": "species",
+        "source_id": "3222868"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "3222868",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:3222868"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/3222868",
+        "locator": "taxon 3222868"
+      },
+      {
+        "citation": null,
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "a97f36e5-ded1-49cc-bdec-ac6170fc7b9c",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "8b15c058c90a8534d807698cec872bc1db28d902385637015d7caccda85fb106",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Aeromonas+hydrophila",
+        "retrieved_at": "2026-10-16T04:28:11.953870+00:00",
+        "response_sha256": "e86d121997d215d8a9f0fb0903d3a6dfa969ec0059ff90ebf778f0eeca181556"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

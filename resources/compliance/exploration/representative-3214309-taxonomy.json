@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "3214309",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Badhamia utricularis (Bull.) Berk., 1852",
+    "canonical_name": "Badhamia utricularis",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "(Bull.) Berk., 1852",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "3214309",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Badhamia utricularis",
+    "lineage": [
+      {
+        "name": "Protozoa",
+        "rank": "kingdom",
+        "source_id": "7"
+      },
+      {
+        "name": "Mycetozoa",
+        "rank": "phylum",
+        "source_id": "33"
+      },
+      {
+        "name": "Myxomycetes",
+        "rank": "class",
+        "source_id": "319"
+      },
+      {
+        "name": "Physarales",
+        "rank": "order",
+        "source_id": "1294"
+      },
+      {
+        "name": "Physaraceae",
+        "rank": "family",
+        "source_id": "8429"
+      },
+      {
+        "name": "Badhamia",
+        "rank": "genus",
+        "source_id": "9509719"
+      },
+      {
+        "name": "Badhamia utricularis",
+        "rank": "species",
+        "source_id": "3214309"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "3214309",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:3214309"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/3214309",
+        "locator": "taxon 3214309"
+      },
+      {
+        "citation": null,
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "7ddf754f-d193-4cc9-b351-99906754a03b",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "0a201fc55abcffcc837a40e0a190e3bc85ec764dc65c7b032c9a7afeccde315d",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Badhamia+utricularis",
+        "retrieved_at": "2026-10-16T04:28:16.729337+00:00",
+        "response_sha256": "d94007a1289a9b14f2f11c02a7e2a2f615c3f0df67a07c71ad7fa07505d459b5"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

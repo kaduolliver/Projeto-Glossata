@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "11822169",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Acholeplasma laidlawii A",
+    "canonical_name": "Acholeplasma laidlawii",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "A",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "11822169",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Acholeplasma laidlawii",
+    "lineage": [
+      {
+        "name": "Bacteria",
+        "rank": "kingdom",
+        "source_id": "3"
+      },
+      {
+        "name": "Firmicutes",
+        "rank": "phylum",
+        "source_id": "87"
+      },
+      {
+        "name": "Bacilli",
+        "rank": "class",
+        "source_id": "303"
+      },
+      {
+        "name": "Acholeplasmatales",
+        "rank": "order",
+        "source_id": "1213"
+      },
+      {
+        "name": "Acholeplasmataceae",
+        "rank": "family",
+        "source_id": "7804"
+      },
+      {
+        "name": "Acholeplasma",
+        "rank": "genus",
+        "source_id": "3236947"
+      },
+      {
+        "name": "Acholeplasma laidlawii",
+        "rank": "species",
+        "source_id": "11822169"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "11822169",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:11822169"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/11822169",
+        "locator": "taxon 11822169"
+      },
+      {
+        "citation": null,
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "a97f36e5-ded1-49cc-bdec-ac6170fc7b9c",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "2d607296b96f56ba38011caff7222cda7eaf74425edf714798ae536a39c379e7",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Acholeplasma+laidlawii",
+        "retrieved_at": "2026-10-16T04:28:09.500409+00:00",
+        "response_sha256": "6e34ce8d0180973cf3b06b0ef127e11d8881e97dc579d1a9ab7c4af0fa7bf744"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

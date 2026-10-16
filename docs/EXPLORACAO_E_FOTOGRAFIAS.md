@@ -6,16 +6,16 @@ Os controles **Alternativas no modo Livre**, seu seletor e **Competitivo · 20 q
 
 ## Cobertura e limitações
 
-O catálogo 2.2.0 contém **98 fotografias de apresentação**: **38 CC0 1.0** e **60 CC BY** (2.0, 3.0 ou 4.0, conforme o arquivo). A auditoria percorre **todos os 623 cartões**: 622 nós científicos, inclusive ranks intermediários e espécies, mais o misto.
+O catálogo 2.3.0 contém **109 fotografias de apresentação**: **39 CC0 1.0** e **70 CC BY** (2.0, 3.0 ou 4.0, conforme o arquivo). A auditoria percorre **todos os 623 cartões**: 622 nós científicos, inclusive ranks intermediários e espécies, mais o misto.
 
 | Estado | Quantidade |
 | --- | ---: |
-| Grupos com associação fotográfica explícita | 503 |
+| Grupos com associação fotográfica explícita | 533 |
 | Cartão misto com fotografia | 1 |
-| Grupos com ilustração temporária e pendência justificada | 119 |
+| Grupos com ilustração temporária e pendência justificada | 89 |
 | Cartões sem fotografia ou justificativa | 0 |
 
-Isso documenta toda a cobertura, **não significa que todos os cartões já tenham foto**. O [relatório por cartão](AUDITORIA_FOTOGRAFIAS.json) identifica cada nó, rank, imagem ou motivo da pendência. As lacunas correspondem a ramos de 29 organismos sem imagem preparada. Ausência de arquivo adequado nas páginas consultadas não demonstra inexistência de fotografias.
+Isso documenta toda a cobertura, **não significa que todos os cartões já tenham foto**. O [relatório por cartão](AUDITORIA_FOTOGRAFIAS.json) identifica cada nó, rank, imagem ou motivo da pendência. As lacunas correspondem a ramos de 28 organismos sem imagem preparada. Ausência de arquivo adequado nas páginas consultadas não demonstra inexistência de fotografias.
 
 O manifesto editável `resources/data/exploration_photos.json` v2 guarda `photos`, `bindings`, `mixed_photo`, `pending` e `selection_notes`. A preparação pode associar um representante aos seus ancestrais, gravando cada vínculo explicitamente. O aplicativo não propaga a imagem de um ancestral para todos os descendentes. Reutilização exige pertencimento ao caminho taxonômico do organismo ou escopo externo com justificativa e fonte. Havendo vários representantes, a ferramenta distribui as novas associações entre eles, preservando escolhas anteriores.
 
@@ -37,7 +37,7 @@ Os **122 organismos e suas 120 fotos do quiz permanecem intactos**, assim como I
 
 O Canvas usa escala máxima equivalente a `PreserveAspectCrop`, sem distorção ou barras vazias. `focus_x` e `focus_y` (0 a 1) definem o ponto focal; o padrão é central. A foto começa transparente e se torna opaca em direção à direita, sem desaparecer novamente na extremidade. O recorte acompanha os cantos arredondados externos e o contorno de foco fica por cima. Há somente uma máscara horizontal, sem animação contínua ou efeito exclusivo de GPU. Pintura ocorre ao carregar, redimensionar ou alterar o foco. [Canvas/Context2D](https://doc.qt.io/qt-6/qml-qtquick-context2d.html).
 
-As imagens reduzidas vêm do Commons, com solicitação de até 640 × 640 e validação do bitmap (mínimo 160, máximo 1024 pixels por lado; a fonte pode usar tamanhos padronizados maiores). Os arquivos somam **15.911.760 bytes**, sem dependência nova no executável. Tudo é embarcado no QRC. Falha de arquivo/evidência mantém a ilustração. Pendências aparecem na descrição acessível e na dica de foco/ponteiro.
+As imagens reduzidas vêm do Commons, com solicitação de até 640 × 640 e validação do bitmap (mínimo 160, máximo 1024 pixels por lado; a fonte pode usar tamanhos padronizados maiores). Os arquivos somam **18.373.503 bytes**, sem dependência nova no executável. Tudo é embarcado no QRC. Falha de arquivo/evidência mantém a ilustração. Pendências aparecem na descrição acessível e na dica de foco/ponteiro.
 
 ## Descoberta e preparação
 
@@ -87,3 +87,7 @@ Testes QML usam componentes reais no renderizador software: transparência, altu
 Execute testes Python, compilação, CTest, qmllint, auditoria estrita, créditos e metadados de versão. A CI guarda a auditoria fotográfica sem consultar conteúdo externo. Associações continuam **rascunhos de IA ligados à fonte e à inspeção das imagens**, sem especialista ou revisão humana independente simulados. A curadoria deve conferir identidade, representatividade, recorte e qualidade pedagógica. Licença evidenciada e teste técnico não certificam regularização integral. [Comunicar erro ou remoção](REPORTAR_PROBLEMA.md).
 
 Validação local desta etapa: **9/9 suítes CTest**, incluindo **16 testes Python de fotografias**, compilação, qmllint e auditoria estrita aprovados. A captura real de exploração está em `docs/images/exploracao.png`, com proveniência em `exploracao.json`, e a tela inicial foi recapturada pelo programa. O pacote local passou na inicialização com PATH isolado, usando banco temporário. Isso não representa teste em instalação limpa do Windows. O gate público continua bloqueado por pendências legadas, sem tag ou publicação.
+
+## Ampliação da etapa integrada
+
+Catálogo 2.3.0: **109 imagens**, **534/623 cartões (85,71%)**, **89 pendências**, ganho de 30 cartões com 11 novos arquivos e 2.461.743 bytes. Os 623 registros agora incluem `special:mixed`; os 533 bindings são apenas grupos científicos. A linha de base 2.2.0 tinha 98 fotos, 504 cartões com foto e 119 pendências. Novos representantes superiores usam classificação GBIF arquivada por hash, sem representar a espécie pendente. Cartões de espécies recusam representantes de outro organismo, mesmo com scope manual. CLI acrescenta `--by-search --by-version 2.0`/`4.0` e `--discovery-plan` para propostas adicionais; nenhum filtro de busca substitui permissão individual. Os recibos e descartes desta etapa estão na auditoria.

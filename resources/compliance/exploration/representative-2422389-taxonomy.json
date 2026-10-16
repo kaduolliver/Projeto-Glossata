@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "2422389",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Incilius valliceps (Wiegmann, 1833)",
+    "canonical_name": "Incilius valliceps",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "(Wiegmann, 1833) ",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "2422389",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Incilius valliceps",
+    "lineage": [
+      {
+        "name": "Animalia",
+        "rank": "kingdom",
+        "source_id": "1"
+      },
+      {
+        "name": "Chordata",
+        "rank": "phylum",
+        "source_id": "44"
+      },
+      {
+        "name": "Amphibia",
+        "rank": "class",
+        "source_id": "131"
+      },
+      {
+        "name": "Anura",
+        "rank": "order",
+        "source_id": "952"
+      },
+      {
+        "name": "Bufonidae",
+        "rank": "family",
+        "source_id": "6727"
+      },
+      {
+        "name": "Incilius",
+        "rank": "genus",
+        "source_id": "2422364"
+      },
+      {
+        "name": "Incilius valliceps",
+        "rank": "species",
+        "source_id": "2422389"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "2422389",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:2422389"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/2422389",
+        "locator": "taxon 2422389"
+      },
+      {
+        "citation": null,
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "7ddf754f-d193-4cc9-b351-99906754a03b",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "b8452e6344ab71508a981881e431517afc30256c941d9e66434bcf93f66bc1b1",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Incilius+valliceps",
+        "retrieved_at": "2026-10-16T04:28:02.172117+00:00",
+        "response_sha256": "f52fa19b095a001de679c78074be65b34bffc0ae8ea32e39ad7fd05c18651d92"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

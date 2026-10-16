@@ -76,6 +76,10 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
     }
     const auto bindings=data["bindings"].toObject();
     QHash<int,QJsonObject> organisms;
+    QHash<QString,QJsonObject> taxons;
+    for(const auto &entry:QJsonDocument::fromJson(read(root+"/resources/data/taxonomy.json")).array()) {
+        const auto taxon=entry.toObject();taxons.insert(taxon["id"].toString(),taxon);
+    }
     for(const auto &entry:QJsonDocument::fromJson(read(root+"/resources/data/species.json")).array()) {
         const auto organism=entry.toObject();organisms.insert(organism["id"].toInt(),organism);
     }
@@ -90,8 +94,18 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
             const auto scope=photo["scope"].toObject();
             compatible=scope["taxon_ids"].toArray().contains(it.key()) && !scope["rationale"].toString().isEmpty()
                 && scope["evidence_url"]==photo["photo_url"];
+            if(scope.contains("classification_evidence")) {
+                const QString proofPath=scope["classification_evidence"].toString();
+                const auto proof=local(proofPath,"resources/compliance/exploration/") ? read(root+"/"+proofPath) : QByteArray();
+                const auto assertion=QJsonDocument::fromJson(proof).object()["assertion"].toObject();
+                bool found=assertion["canonical_name"]==taxons[it.key()]["name"];
+                for(const auto &ancestor:assertion["lineage"].toArray())if(ancestor.toObject()["name"]==taxons[it.key()]["name"])found=true;
+                compatible=compatible && matches(proof,scope["classification_evidence_sha256"].toString())
+                    && assertion["canonical_name"]==photo["subject"] && assertion["status"]=="accepted" && found;
+            }
         }
         if((it.key()=="domain:Bacteria" || it.key()=="domain:Archaea") && photo["kind"]!="micrograph")compatible=false;
+        if(!taxons.contains(it.key()) || (taxons[it.key()]["rank"]=="species" && taxons[it.key()]["name"]!=photo["subject"]))compatible=false;
         if(compatible && verified.contains(key))photos_.insert(it.key(),verified.value(key));
     }
     const auto pending=data["pending"].toObject();

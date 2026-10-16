@@ -703,6 +703,7 @@ void GameServiceTests::explorationPhotographsFailClosed()
     QTemporaryDir directory;QVERIFY(directory.isValid());
     QDir().mkpath(directory.filePath("resources/data"));
     QVERIFY(QFile::copy(":/resources/data/species.json",directory.filePath("resources/data/species.json")));
+    QVERIFY(QFile::copy(":/resources/data/taxonomy.json",directory.filePath("resources/data/taxonomy.json")));
     for(const auto &key:{"path","evidence_path"}) {
         const QString path=lion[key].toString();
         QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());

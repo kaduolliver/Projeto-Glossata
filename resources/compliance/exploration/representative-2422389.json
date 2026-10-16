@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:32:13.121064+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo%7Ccategories&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AToad+Gulf+Coast+Toad+Amphibian+Free+Photo.jpg&maxlag=5&clcategories=Category%3AIncilius+valliceps",
+  "record": {
+    "page_id": 131414130,
+    "revision_id": 1143272950,
+    "file_title": "File:Toad Gulf Coast Toad Amphibian Free Photo.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Toad_Gulf_Coast_Toad_Amphibian_Free_Photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "7fc1b1a5330bdbe8c51a28b2ea25c04ff35220cb",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Toad_Gulf_Coast_Toad_Amphibian_Free_Photo.jpg/960px-Toad_Gulf_Coast_Toad_Amphibian_Free_Photo.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Toad Gulf Coast Toad Amphibian Free Photo",
+        "source": "mediawiki-metadata"
+      },
+      "Artist": {
+        "value": "Brett_Hondow",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://storage.needpix.com/rsynced_images/toad-1461896_1280.jpg\">https://storage.needpix.com/rsynced_images/toad-1461896_1280.jpg</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    },
+    "identification_category": "Category:Incilius valliceps"
+  }
+}

@@ -8,7 +8,7 @@ from scientific_sources.adapters import CommonsProvider
 from scientific_sources.transport import CachedClient, ProviderError
 
 
-def discover(root, online=False, offset=0, limit=40, search_page=0, cc0=False):
+def discover(root, online=False, offset=0, limit=40, search_page=0, cc0=False, by_search=False, extra_subjects=None):
     if offset<0 or not 1<=limit<=90 or search_page not in range(3):raise ValueError('Discovery requires a batch of 1..90, nonnegative offset and search page 0..2')
     client=CachedClient(root/'build/exploration-discovery/cache',online=online,max_requests=100)
     class EvidenceClient:
@@ -17,6 +17,7 @@ def discover(root, online=False, offset=0, limit=40, search_page=0, cc0=False):
             params=dict(params or {})
             if search_page:params['gsroffset']=8*search_page
             if cc0:params['gsrsearch']+=' haswbstatement:P275=Q6938433'
+            if by_search:params['gsrsearch']+=' incategory:CC-BY-'+(by_search if isinstance(by_search,str) else '4.0')
             payload,self.evidence=client.get(base,params,select)
             return payload,self.evidence
     recorder=EvidenceClient();provider=CommonsProvider(recorder)
@@ -24,11 +25,12 @@ def discover(root, online=False, offset=0, limit=40, search_page=0, cc0=False):
     subjects=[{'name':s['name'],'catalog_species_id':s['id']} for s in species]
     subjects.append({'name':'Euglena gracilis','scope':['clade:Discoba']})
     subjects.append({'name':'Trypanosoma brucei','scope':['clade:Discoba']})
+    subjects.extend(extra_subjects or [])
     destination=root/'build/exploration-discovery/results.json'
     report=load(destination,{'schema_version':1,'subjects':{}})
     for subject in subjects[offset:offset+limit]:
         name=subject['name'];start=len(provider.diagnostics)
-        if (search_page or cc0) and any(p['subject']==name for p in load(root/'resources/data/exploration_photos.json')['photos'].values()):continue
+        if (search_page or cc0 or by_search) and any(p['subject']==name for p in load(root/'resources/data/exploration_photos.json')['photos'].values()):continue
         recorder.evidence=None
         try:
             found=provider.search_media(name,limit=8)
@@ -37,7 +39,7 @@ def discover(root, online=False, offset=0, limit=40, search_page=0, cc0=False):
         except ProviderError as exception:candidates=[];error=str(exception)
         prior=report['subjects'].get(name,{})
         merged={c['identity']['record_id']:c for c in prior.get('candidates',[])+candidates}
-        queries=prior.get('queries',[])+[{'page':search_page,'cc0_search':cc0,'evidence':recorder.evidence,'error':error,'returned_eligible':len(candidates)}]
+        queries=prior.get('queries',[])+[{'page':search_page,'cc0_search':cc0,'by_search':by_search,'evidence':recorder.evidence,'error':error,'returned_eligible':len(candidates)}]
         unique={}
         for query in queries:
             ev=query.get('evidence') or {}
@@ -110,7 +112,7 @@ def sync_resources(root):
             'evidence_path':photo['evidence_path'],'evidence_sha256':photo['evidence_sha256'],
             'distribution_allowed':True,'basis':'Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida.'},
             'state':'source_license_evidenced'}
-        for path in (photo['path'],photo['evidence_path']):
+        for path in [photo['path'],photo['evidence_path']]+([photo['scope']['classification_evidence']] if photo.get('scope',{}).get('classification_evidence') else []):
             if path not in paths:additions.append('        <file>'+path+'</file>');paths.add(path)
     inventory['assets']=list(assets.values());save(root/'resources/compliance/asset_rights.json',inventory)
     if additions:qrc.write_text(text.replace('    </qresource>','\n'.join(additions)+'\n    </qresource>'),encoding='utf8',newline='\n')

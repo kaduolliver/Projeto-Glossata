@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:22.516607+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APleurothallis+truncata+%27Elm%27+Lindl.-+Companion+Bot.+Mag.+2-+355+%281837%29.+20230315+231703.jpg&maxlag=5",
+  "record": {
+    "page_id": 129726392,
+    "revision_id": 1138360857,
+    "file_title": "File:Pleurothallis truncata 'Elm' Lindl.- Companion Bot. Mag. 2- 355 (1837). 20230315 231703.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Pleurothallis_truncata_%27Elm%27_Lindl.-_Companion_Bot._Mag._2-_355_%281837%29._20230315_231703.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "d645223bd53acb7648667630ea2f91ca8e9f1dcc",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Pleurothallis_truncata_%27Elm%27_Lindl.-_Companion_Bot._Mag._2-_355_%281837%29._20230315_231703.jpg/500px-Pleurothallis_truncata_%27Elm%27_Lindl.-_Companion_Bot._Mag._2-_355_%281837%29._20230315_231703.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Pleurothallis truncata 'Elm' Lindl.- Companion Bot. Mag. 2- 355 (1837). 20230315 231703",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Plant derived from Ecuador<br>\n<dl><dt>Taxonomy</dt>\n<dd>\n<dl><dt>Family</dt>\n<dd><i>Orchidaceae</i></dd>\n<dt>Subfamily</dt>\n<dd><i>Epidendroideae</i></dd>\n<dt>Tribe</dt>\n<dd><i>Epidendreae</i></dd>\n<dt>Subtribe</dt>\n<dd><i>Pleurothallidinae</i></dd>\n<dt>Genus</dt>\n<dd><i>Pleurothallis</i> <style data-mw-deduplicate=\"TemplateStyles:r369756387\">.mw-parser-output .smallcaps{font-variant:small-caps}</style><span class=\"smallcaps\">R.Br.</span>, 1813</dd></dl></dd></dl>\n<dl><dt>Distribution</dt>\n<dd>Ecuador</dd>\n<dt>Lifeform</dt>\n<dd>Epiphyte</dd></dl>\n<div style=\"font-size:95%;margin:2px 0;border:1px solid #CCC;padding:1px\"><div style=\"background:var(--background-color-progressive-subtle,#F1F5FC); color:var(--color-base,#202122);padding:0 .25em\"><span class=\"__strong\" style=\"font-weight:bold;\"><a href=\"https://en.wikipedia.org/wiki/Synonym_(taxonomy)\" class=\"extiw\" title=\"en:Synonym (taxonomy)\">Synonyms</a></span></div><div style=\"background:var(--background-color-interactive-subtle,#FDFDFD); color:var(--color-base,#202122);padding:0 4px;-moz-column-count:1; -webkit-column-count:1; column-count:1;\"></div></div>\n<ul><li><b>Homotypic synonyms</b>\n<ul><li><i>Acronia truncata</i> (<link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Lindl.</span>) <link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Luer</span> in Monogr. Syst. Bot. Missouri Bot. Gard. 115: 257 (2009)</li>\n<li><i>Humboltia truncata</i> (<link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Lindl.</span>) <link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Kuntze</span> in Revis. Gen. Pl. 2: 668 (1891)</li>\n<li><i>Orbis truncata</i> (<link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Lindl.</span>) <link rel=\"mw-deduplicated-inline-style\" href=\"mw-data:TemplateStyles:r369756387\"><span class=\"smallcaps\">Luer</span> in Monogr. Syst. Bot. Missouri Bot. Gard. 103: 308 (2005)</li></ul></li></ul>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Motohiro Sunouchi",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

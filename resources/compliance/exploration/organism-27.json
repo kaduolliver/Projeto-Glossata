@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:32.836150+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo%7Ccategories&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAfrican+Social+Spider+imported+from+iNaturalist+photo+12637215+on+14+October+2022.jpg&maxlag=5&clcategories=Category%3AStegodyphus+dumicola",
+  "record": {
+    "page_id": 124196218,
+    "revision_id": 1034588474,
+    "file_title": "File:African Social Spider imported from iNaturalist photo 12637215 on 14 October 2022.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/African_Social_Spider_imported_from_iNaturalist_photo_12637215_on_14_October_2022.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "79f19755c223bd7729906b303903aee3db041d6e",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/African_Social_Spider_imported_from_iNaturalist_photo_12637215_on_14_October_2022.jpg/960px-African_Social_Spider_imported_from_iNaturalist_photo_12637215_on_14_October_2022.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "African Social Spider imported from iNaturalist photo 12637215 on 14 October 2022",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Photo of African Social Spider uploaded from <a rel=\"mw:ExtLink nofollow\" href=\"https://inaturalist.org\" class=\"external text\">iNaturalist</a>.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "(c) Wynand Uys, some rights reserved (CC BY)",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/12637215\" class=\"external free\">https://www.inaturalist.org/photos/12637215</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    },
+    "identification_category": "Category:Stegodyphus dumicola"
+  }
+}

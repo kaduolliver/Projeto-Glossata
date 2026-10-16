@@ -24,8 +24,10 @@ class ExplorationMediaTests(unittest.TestCase):
             target=self.root/path;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/path,target)
         self.data=governance.load(self.root/media.MANIFEST)
         for photo in self.data['photos'].values():
-            for key in ['path','evidence_path']:
-                target=self.root/photo[key];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/photo[key],target)
+            paths=[photo['path'],photo['evidence_path']]
+            if photo.get('scope',{}).get('classification_evidence'):paths.append(photo['scope']['classification_evidence'])
+            for relative in paths:
+                target=self.root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(ROOT/relative,target)
 
     def persist(self): governance.save(self.root/media.MANIFEST,self.data)
 
@@ -35,10 +37,13 @@ class ExplorationMediaTests(unittest.TestCase):
         nodes=governance.load(ROOT/'resources/data/taxonomy.json')
         self.assertEqual(report['total_cards'],len(nodes)+1)
         self.assertEqual(report['bindings']+report['documented_pending'],len(nodes))
+        self.assertEqual(len(report['coverage']),report['total_cards'])
+        self.assertEqual(sum(row['id']=='special:mixed' for row in report['coverage']),1)
         self.assertLess(report['total_bytes'],25_000_000)
         for photo in self.data['photos'].values():
             self.assertEqual(governance.image_privacy_findings(ROOT/photo['path']),[])
-            self.assertIn('ImageDescription',governance.load(ROOT/photo['evidence_path'])['record']['metadata'])
+            proof=governance.load(ROOT/photo['evidence_path'])['record']
+            self.assertTrue(proof['metadata'].get('ImageDescription') or proof.get('identification_category'),photo['photo_url'])
         self.assertEqual(len(governance.load(ROOT/'resources/data/species.json')),122)
 
     def test_documented_coverage_matches_the_current_published_manifest(self):
@@ -84,6 +89,19 @@ class ExplorationMediaTests(unittest.TestCase):
     def test_unknown_bindings_do_not_fabricate_photographs(self):
         self.data['bindings']['nonexistent:taxon']='lion';self.persist()
         self.assertIn('invalid_binding',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_an_external_representative_cannot_impersonate_a_different_species(self):
+        node=next(n for n in governance.load(self.root/'resources/data/taxonomy.json') if n['rank']=='species')
+        self.data['bindings'][node['id']]='physarum'
+        self.data['photos']['physarum']['scope']['taxon_ids'].append(node['id'])
+        self.data.get('pending',{}).pop(node['id'],None);self.persist()
+        self.assertIn('representative_species_mismatch',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_external_classification_must_match_its_proof_and_group(self):
+        key=next(k for k,p in self.data['photos'].items() if p.get('scope',{}).get('classification_evidence'))
+        photo=self.data['photos'][key]
+        photo['scope']['classification_evidence_sha256']='0'*64
+        self.assertIn('classification_evidence_hash',media.photo_errors(photo,self.root))
 
     def test_every_gap_requires_a_reason_and_attempted_representatives(self):
         node=next(iter(self.data['bindings']))

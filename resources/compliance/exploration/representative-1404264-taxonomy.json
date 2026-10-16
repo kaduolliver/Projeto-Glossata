@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "1404264",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Acanthops falcata Stal, 1877",
+    "canonical_name": "Acanthops falcata",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "Stal, 1877",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "1404264",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Acanthops falcata",
+    "lineage": [
+      {
+        "name": "Animalia",
+        "rank": "kingdom",
+        "source_id": "1"
+      },
+      {
+        "name": "Arthropoda",
+        "rank": "phylum",
+        "source_id": "54"
+      },
+      {
+        "name": "Insecta",
+        "rank": "class",
+        "source_id": "216"
+      },
+      {
+        "name": "Mantodea",
+        "rank": "order",
+        "source_id": "788"
+      },
+      {
+        "name": "Acanthopidae",
+        "rank": "family",
+        "source_id": "9165"
+      },
+      {
+        "name": "Acanthops",
+        "rank": "genus",
+        "source_id": "1404248"
+      },
+      {
+        "name": "Acanthops falcata",
+        "rank": "species",
+        "source_id": "1404264"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "1404264",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:1404264"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/1404264",
+        "locator": "taxon 1404264"
+      },
+      {
+        "citation": "Stal (1877) Bih. K. svenska VetenskAkad. Handl., 4(10).",
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "7ddf754f-d193-4cc9-b351-99906754a03b",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "5844236f98bcb773b1bd75d72dd189925f5ef98ea2b71d3579f97dd26cd57ce1",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Acanthops+falcata",
+        "retrieved_at": "2026-10-16T04:28:24.203977+00:00",
+        "response_sha256": "9bb56e464243f75b305c6d35caf74b40f853aa159a3471bb672871b57d26cd20"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

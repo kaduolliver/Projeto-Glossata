@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "8349333",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Mimetes cucullatus (L.) R.Br.",
+    "canonical_name": "Mimetes cucullatus",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "(L.) R.Br.",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "8349333",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Mimetes cucullatus",
+    "lineage": [
+      {
+        "name": "Plantae",
+        "rank": "kingdom",
+        "source_id": "6"
+      },
+      {
+        "name": "Tracheophyta",
+        "rank": "phylum",
+        "source_id": "7707728"
+      },
+      {
+        "name": "Magnoliopsida",
+        "rank": "class",
+        "source_id": "220"
+      },
+      {
+        "name": "Proteales",
+        "rank": "order",
+        "source_id": "400"
+      },
+      {
+        "name": "Proteaceae",
+        "rank": "family",
+        "source_id": "2414"
+      },
+      {
+        "name": "Mimetes",
+        "rank": "genus",
+        "source_id": "3232529"
+      },
+      {
+        "name": "Mimetes cucullatus",
+        "rank": "species",
+        "source_id": "8349333"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "8349333",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:8349333"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/8349333",
+        "locator": "taxon 8349333"
+      },
+      {
+        "citation": "R. Br. (1810). In: Trans. Linn. Soc. 10: 107.",
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "7ddf754f-d193-4cc9-b351-99906754a03b",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "08915fc0932df13c67e0fed075b88f0cd125ed9d5442b02e4c3772d63c3e67a1",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Mimetes+cucullatus",
+        "retrieved_at": "2026-10-16T04:28:05.359284+00:00",
+        "response_sha256": "1493cac5136ea28d889eb87412059ce162e72dda186150a3a364b3baa403911d"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

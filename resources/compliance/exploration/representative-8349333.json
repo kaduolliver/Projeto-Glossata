@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:19.657116+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AMimetes+cucullatus+0147.jpg&maxlag=5",
+  "record": {
+    "page_id": 45448564,
+    "revision_id": 1081589881,
+    "file_title": "File:Mimetes cucullatus 0147.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Mimetes_cucullatus_0147.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "29fca9dbcc95031ccc8370b79a07852e18fcda45",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Mimetes_cucullatus_0147.jpg/500px-Mimetes_cucullatus_0147.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Mimetes cucullatus 0147",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Mimetes cucullatus near Cape Town",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Amada44\" title=\"User:Amada44\">Amada44</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

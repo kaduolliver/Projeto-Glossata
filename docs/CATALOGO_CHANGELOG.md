@@ -2,6 +2,10 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.3.0] — Não lançado; representantes alternativos e cartões especiais
+
+Aplicativo compatível: **1.5.0**, preparado para a evolução seguinte. Acréscimo MINOR de 11 fotos de apresentação: 109 imagens, 533 associações de grupos e misto, 534/623 cartões com foto (85,71%), 89 pendências. Cobertura inclui explicitamente o cartão especial misto. Fontes taxonômicas externas arquivadas para representantes superiores; espécies exigem identidade exata. Fotografias e dados do quiz preservados. Pesquisa, recusas, licenças por arquivo e crescimento de 2.461.743 bytes documentados na auditoria. Revisão científica humana e gate público continuam pendentes.
+
 ## [2.2.1] — Não lançado; integridade do inventário
 
 Aplicativo compatível: **1.5.0**. Correção PATCH dos hashes obsoletos no inventário de três materiais próprios (perfis, dicas e gerador), preservando hashes anteriores em histórico. Sem concessão de direitos ou alteração de autores, licenças e revisões. Organismos, fotos e conteúdo do quiz inalterados. Gate de distribuição continua bloqueado.

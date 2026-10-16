@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:31.467006+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AFigura-3-Habito-Acanthops-falcata-hembra-vista-dorsal+W640.jpg&maxlag=5",
+  "record": {
+    "page_id": 110854657,
+    "revision_id": 1252544251,
+    "file_title": "File:Figura-3-Habito-Acanthops-falcata-hembra-vista-dorsal W640.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Figura-3-Habito-Acanthops-falcata-hembra-vista-dorsal_W640.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "93e30f81c4868a71ae48870cd1bb76b550ceadd0",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Figura-3-Habito-Acanthops-falcata-hembra-vista-dorsal_W640.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Figura-3-Habito-Acanthops-falcata-hembra-vista-dorsal W640",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Hábito Acanthops falcata: hembra vista dorsal.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Arteaga-Blanco L.A, De La Parra-Guerra, A.C &amp; Martínez-Hernández, N.J",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Arteaga-Blanco L.A, De La Parra-Guerra, A.C &amp; Martínez-Hernández, N.J, 2016. Descripciones taxonómicas de mántidos (Insecta: Mantodea) del departamento del Atlántico, Colombia, con apuntes sobre su distribución. Bol. Cient. Mus. Hist. Nat. U. de Caldas, 20 (1): 211—236. DOI: 10.17151/bccm.2016.20.1.16",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

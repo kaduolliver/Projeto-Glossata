@@ -136,6 +136,13 @@ def photo_errors(photo, root=ROOT):
         if photo['collected_at']!=proof['collected_at'] or not collected.tzinfo or collected>datetime.now(timezone.utc):errors.append('collection_date')
         if not photo.get('modifications') or not photo.get('subject'):errors.append('missing_scope_or_modifications')
         if any(not isinstance(photo.get(k,0.5),(float,int)) or not 0<=photo.get(k,0.5)<=1 for k in ('focus_x','focus_y')):errors.append('invalid_focus')
+        scope=photo.get('scope',{})
+        if scope.get('classification_evidence'):
+            classification=local_file(root,scope['classification_evidence'])
+            if not classification.is_file() or hashlib.sha256(classification.read_bytes()).hexdigest()!=scope.get('classification_evidence_sha256'):errors.append('classification_evidence_hash')
+            else:
+                assertion=load(classification)['assertion']
+                if assertion['canonical_name']!=photo['subject'] or assertion['status']!='accepted' or assertion['references'][0]['url']!=scope.get('classification_source'):errors.append('classification_identity')
         if not photo['photo_url'].startswith('https://commons.wikimedia.org/wiki/File:'):errors.append('source_url')
         if urllib.parse.unquote(urllib.parse.urlparse(photo['photo_url']).path).replace('_',' ')!='/wiki/'+record['file_title'].replace('_',' '):errors.append('source_record_identity')
         if photo.get('bytes')!=path.stat().st_size:errors.append('image_size')
@@ -155,6 +162,8 @@ def audit(root=ROOT):
         errors += [{'photo':key,'error':e} for e in photo_errors(photo,root)]
     for taxon,photo in data.get('bindings',{}).items():
         if taxon not in nodes or photo not in photos:errors.append({'taxon':taxon,'error':'invalid_binding'})
+        elif nodes[taxon]['rank']=='species' and photos[photo].get('subject')!=nodes[taxon]['name']:
+            errors.append({'taxon':taxon,'error':'representative_species_mismatch'})
         elif photos[photo].get('catalog_species_id') is not None:
             organism=species.get(photos[photo]['catalog_species_id'],{})
             if organism.get('name')!=photos[photo]['subject'] or taxon not in organism.get('taxonomy',[]):
@@ -163,6 +172,10 @@ def audit(root=ROOT):
             scope=photos[photo].get('scope',{})
             if taxon not in scope.get('taxon_ids',[]) or not scope.get('rationale') or scope.get('evidence_url')!=photos[photo]['photo_url']:
                 errors.append({'taxon':taxon,'error':'representative_scope_missing'})
+            elif scope.get('classification_evidence'):
+                assertion=load(local_file(root,scope['classification_evidence']),{}).get('assertion',{})
+                names={r['name'] for r in assertion.get('lineage',[])}|{assertion.get('canonical_name')}
+                if nodes[taxon]['name'] not in names:errors.append({'taxon':taxon,'error':'classification_scope_mismatch'})
         if taxon in {'domain:Bacteria','domain:Archaea'} and photos.get(photo,{}).get('kind')!='micrograph':
             errors.append({'taxon':taxon,'error':'micrograph_required'})
     if data.get('mixed_photo') not in photos and photos:errors.append({'error':'mixed_photo'})
@@ -178,8 +191,13 @@ def audit(root=ROOT):
                          'state':'photograph' if binding else 'pending','photo':binding,'pending':issue})
     for taxon in pending:
         if taxon not in nodes:errors.append({'taxon':taxon,'error':'unknown_pending_group'})
+    mixed_valid=data.get('mixed_photo') in photos
+    coverage.append({'id':'special:mixed','name':'Todas as espécies','rank':'special',
+        'state':'photograph' if mixed_valid else 'pending','photo':data.get('mixed_photo'),'pending':None})
     return {'total_photos':len(photos),'bindings':len(data.get('bindings',{})),
             'total_cards':len(nodes)+1,'documented_pending':len(pending),'coverage':coverage,
+            'taxon_cards':len(nodes),'photographed_cards':len(data.get('bindings',{}))+int(mixed_valid),
+            'coverage_percent':round(100*(len(data.get('bindings',{}))+int(mixed_valid))/(len(nodes)+1),2),
             'total_bytes':sum(p.get('bytes',0) for p in photos.values()),'errors':errors,
             'notice':'File-level source evidence and technical checks, not expert scientific review or legal certification.'}
 
@@ -198,12 +216,16 @@ if __name__=='__main__':
     parser.add_argument('--limit',type=int,default=40)
     parser.add_argument('--search-page',type=int,choices=range(3),default=0,help='0..2: next eight metadata results for unresolved subjects')
     parser.add_argument('--cc0-search',action='store_true',help='Prioritize structured CC0 results; still verify the individual file license')
+    parser.add_argument('--by-search',action='store_true',help='Search the CC BY 4.0 category; still verify the individual file license')
+    parser.add_argument('--by-version',choices=['2.0','3.0','4.0'],default='4.0')
+    parser.add_argument('--discovery-plan',type=Path,help='Additional representative subjects; metadata proposals only')
     parser.add_argument('--complete-coverage',action='store_true',help='Generate explicit bindings and justified pending entries for every node')
     parser.add_argument('--sync-resources',action='store_true',help='Inventory prepared presentation media and add it to the offline QRC')
     args=parser.parse_args()
     if args.discover:
         from exploration_discovery import discover
-        discover(ROOT,args.online,args.offset,args.limit,args.search_page,args.cc0_search)
+        extra=load(args.discovery_plan)['subjects'] if args.discovery_plan else None
+        discover(ROOT,args.online,args.offset,args.limit,args.search_page,args.cc0_search,args.by_version if args.by_search else False,extra)
         raise SystemExit(0)
     if args.collect_plan:
         if not args.online:parser.error('--collect-plan requires --online; auditing is offline by default')

@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.5.0**; catálogo **2.2.1**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
+Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.5.0**; catálogo **2.3.0**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
 
 A exploração principal usa **Bacteria (20), Archaea (0) e Eukaryota (102)**. Eukaryota contém Opisthokonta (62: Animalia e Fungi), Archaeplastida (20: Plantae da fonte), SAR (10: Stramenopiles/Ochrophyta), Amoebozoa (10: mixomicetos) e Discoba (0). Os 122 IDs, nomes, fotografias, créditos e dados dos jogadores são preservados.
 
@@ -30,7 +30,7 @@ Domínio, supergrupo, reino, filo/divisão, classe, ordem, família, gênero e e
 
 Dicas taxonômica, etimológica e morfológica são categorias educativas. A assistência é independente: leve 6 unidades, moderada 3, forte 2. Combinações usam o menor teto, sem cobrança ao abrir/fechar/revisitar. Erro vale zero e pergunta nova começa em 6. A interface anuncia o teto combinado antes da revelação. Propostas pendentes ficam sinalizadas no Livre e indisponíveis no Competitivo. Consulte docs/DICAS_E_PONTUACAO.md.
 
-Exploração: acesso rápido abre os nós científicos Animalia, Plantae e Fungi, com breadcrumbs completos. JsonExplorationMediaCatalog implementa o port ExplorationMediaCatalog, injetado em TaxonomyIndex. O manifesto exploration_photos.json associa explicitamente 503 grupos e o misto a 98 fotos verificáveis; 119 grupos conservam ilustração e motivo documentado. Nenhuma foto de quiz muda. FeatheredPhoto.qml preenche 42% da largura e toda a altura, com PreserveAspectCrop equivalente, ponto focal, gradiente horizontal e cantos arredondados. Controles de jogo precedem os grupos filhos; acesso rápido vem depois de PlayModeSelector, preservando a posição dos filtros. Evidências e créditos estão integrados à governança; consulte docs/EXPLORACAO_E_FOTOGRAFIAS.md.
+Exploração: acesso rápido abre os nós científicos Animalia, Plantae e Fungi, com breadcrumbs completos. JsonExplorationMediaCatalog implementa o port ExplorationMediaCatalog, injetado em TaxonomyIndex. O manifesto exploration_photos.json associa explicitamente 533 grupos e o misto a 109 fotos verificáveis; 89 grupos conservam ilustração e motivo documentado. Nenhuma foto de quiz muda. FeatheredPhoto.qml preenche 42% da largura e toda a altura, com PreserveAspectCrop equivalente, ponto focal, gradiente horizontal e cantos arredondados. Controles de jogo precedem os grupos filhos; acesso rápido vem depois de PlayModeSelector, preservando a posição dos filtros. Evidências e créditos estão integrados à governança; consulte docs/EXPLORACAO_E_FOTOGRAFIAS.md.
 
 ## Persistência e integridade
 
@@ -46,7 +46,7 @@ docs/CONFORMIDADE.md, docs/DIREITOS_E_LICENCAS.md e docs/RELATORIO_CONFORMIDADE.
 
 photo_provenance.json e snapshots mínimos preservam crédito literal e evidência sem coordenadas/perfis de observadores. Padrão de novas fotos: CC0/CC BY; NC exige política expressa e autorização de escopo compatível. Bloquear licenças ausentes/desconhecidas/fora da política antes do download. Fonte bibliográfica não concede direito de cópia.
 
-Há 120 fotos distintas do quiz, com pendências de versão/data de licença e confirmação humana, sete divergências de crédito, direitos da arte/textos e obrigações de dependências. Duas fotos de origem Casual exigem revisão prioritária. 98 imagens de apresentação têm licenças públicas por arquivo evidenciadas na coleta; isso não aprova cientificamente seu uso nem resolve os recursos legados. Nenhuma nova aprovação de especialista foi criada. O gate de distribuição permanece obrigatório.
+Há 120 fotos distintas do quiz, com pendências de versão/data de licença e confirmação humana, sete divergências de crédito, direitos da arte/textos e obrigações de dependências. Duas fotos de origem Casual exigem revisão prioritária. 109 imagens de apresentação têm licenças públicas por arquivo evidenciadas na coleta; isso não aprova cientificamente seu uso nem resolve os recursos legados. Nenhuma nova aprovação de especialista foi criada. O gate de distribuição permanece obrigatório.
 
 ## Provedores científicos e expansão
 

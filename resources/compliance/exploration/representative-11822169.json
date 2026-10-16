@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:27.928566+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAcholeplasma+laidlawii+PG8+Cells+and+EVs+%28cropped%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 124344898,
+    "revision_id": 781215308,
+    "file_title": "File:Acholeplasma laidlawii PG8 Cells and EVs (cropped).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Acholeplasma_laidlawii_PG8_Cells_and_EVs_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "399307f98a49ab7b62f4ee5ed4221048a1c75a92",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Acholeplasma_laidlawii_PG8_Cells_and_EVs_%28cropped%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Acholeplasma laidlawii PG8 Cells and EVs (cropped)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Micrographs of cells and EVs from A. laidlawii PG8 – the parent strain of PG8R10 and PG8RTet, showing increased resistance to ciprofloxacin and tetracycline, respectively. Bar = 100 nm.\nB – TEM of A.laidlawii PG8 cells and EVs",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Alexey Mouzykantov, Elena Medvedeva, Natalia Baranova, Olga Chernova and Vladislav Chernov",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://doi.org/10.1016/j.dib.2020.106049\">https://doi.org/10.1016/j.dib.2020.106049</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

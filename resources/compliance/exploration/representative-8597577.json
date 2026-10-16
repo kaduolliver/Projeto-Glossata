@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T04:30:24.144865+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ACladonia+rangiferina+221261852.jpg&maxlag=5",
+  "record": {
+    "page_id": 121602624,
+    "revision_id": 1031100361,
+    "file_title": "File:Cladonia rangiferina 221261852.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Cladonia_rangiferina_221261852.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "28dd5a756dfe989ab1e30fcc4514f402e5dcf637",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Cladonia_rangiferina_221261852.jpg/960px-Cladonia_rangiferina_221261852.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Cladonia rangiferina 221261852",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "gray reindeer lichen (<i>Cladonia rangiferina</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/4191375\">Simone Barbaresco</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/221261852\">https://www.inaturalist.org/photos/221261852</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "8225325",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Nostoc commune Vaucher ex Bornet & Flahault",
+    "canonical_name": "Nostoc commune",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "Vaucher ex Bornet & Flahault",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "8225325",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Nostoc commune",
+    "lineage": [
+      {
+        "name": "Bacteria",
+        "rank": "kingdom",
+        "source_id": "3"
+      },
+      {
+        "name": "Cyanobacteria",
+        "rank": "phylum",
+        "source_id": "68"
+      },
+      {
+        "name": "Cyanobacteriia",
+        "rank": "class",
+        "source_id": "10774316"
+      },
+      {
+        "name": "Cyanobacteriales",
+        "rank": "order",
+        "source_id": "10793096"
+      },
+      {
+        "name": "Nostocaceae",
+        "rank": "family",
+        "source_id": "2884"
+      },
+      {
+        "name": "Nostoc",
+        "rank": "genus",
+        "source_id": "3219414"
+      },
+      {
+        "name": "Nostoc commune",
+        "rank": "species",
+        "source_id": "8225325"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "8225325",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:8225325"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/8225325",
+        "locator": "taxon 8225325"
+      },
+      {
+        "citation": null,
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "a97f36e5-ded1-49cc-bdec-ac6170fc7b9c",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "ae1fd4b681ef3335615ddf78b7bdb26df149cf2b65dd8a2bb847ae6b3ed61ae7",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Nostoc+commune",
+        "retrieved_at": "2026-10-16T04:28:08.609185+00:00",
+        "response_sha256": "c2197f34ab5c3823be6fdc4ed18b24d0436a0317f2ac2a5d90bcd928fa7c7800"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}

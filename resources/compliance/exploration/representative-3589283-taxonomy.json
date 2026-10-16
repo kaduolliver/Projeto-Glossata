@@ -1,0 +1,119 @@
+{
+  "origin": "gbif_taxonomic_assertion",
+  "assertion": {
+    "identity": {
+      "provider": "gbif",
+      "record_id": "3589283",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "scientific_name": "Aristolochia gigantea Mart. & Zucc.",
+    "canonical_name": "Aristolochia gigantea",
+    "rank": "species",
+    "status": "accepted",
+    "authorship": "Mart. & Zucc.",
+    "accepted": {
+      "provider": "gbif",
+      "record_id": "3589283",
+      "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+    },
+    "accepted_name": "Aristolochia gigantea",
+    "lineage": [
+      {
+        "name": "Plantae",
+        "rank": "kingdom",
+        "source_id": "6"
+      },
+      {
+        "name": "Tracheophyta",
+        "rank": "phylum",
+        "source_id": "7707728"
+      },
+      {
+        "name": "Magnoliopsida",
+        "rank": "class",
+        "source_id": "220"
+      },
+      {
+        "name": "Piperales",
+        "rank": "order",
+        "source_id": "404"
+      },
+      {
+        "name": "Aristolochiaceae",
+        "rank": "family",
+        "source_id": "3066"
+      },
+      {
+        "name": "Aristolochia",
+        "rank": "genus",
+        "source_id": "2873978"
+      },
+      {
+        "name": "Aristolochia gigantea",
+        "rank": "species",
+        "source_id": "3589283"
+      }
+    ],
+    "external_ids": [
+      {
+        "provider": "gbif",
+        "id": "3589283",
+        "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+      },
+      {
+        "provider": "source_taxonID",
+        "id": "gbif:3589283"
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.gbif.org/species/3589283",
+        "locator": "taxon 3589283"
+      },
+      {
+        "citation": "Mart. & Zucc. (1816). In: Nov. Gen. & Sp. 1: 75. T. 48.",
+        "locator": "publishedIn"
+      },
+      {
+        "upstream_dataset_key": "7ddf754f-d193-4cc9-b351-99906754a03b",
+        "locator": "constituentKey"
+      },
+      {
+        "value": null,
+        "locator": "lastInterpreted (processing date, not scientific review)"
+      }
+    ],
+    "rights": {
+      "declared": "http://creativecommons.org/licenses/by/4.0/legalcode",
+      "license": "cc-by",
+      "version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset_title": "GBIF Backbone Taxonomy",
+      "dataset_doi": "10.15468/39omei",
+      "citation": {
+        "text": "GBIF Secretariat (2023). GBIF Backbone Taxonomy. Checklist dataset https://doi.org/10.15468/39omei accessed via GBIF.org on 2026-10-16.",
+        "citationProvidedBySource": false
+      },
+      "evidence": {
+        "snapshot_sha256": "787343b3b8c03e99f2bd236158c6f972e590601587109fb57a9efee496d00de4",
+        "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+        "retrieved_at": "2026-10-16T04:28:03.134605+00:00",
+        "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af"
+      },
+      "review_state": "pending",
+      "notice": "Dataset terms do not authorize photographs, copied descriptions or other databases."
+    },
+    "provenance": [
+      {
+        "snapshot_sha256": "2ad5fe0debdbd0c91bec557109c4344268e1735159417b70da954478ef48dfe5",
+        "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Aristolochia+gigantea",
+        "retrieved_at": "2026-10-16T04:28:04.041220+00:00",
+        "response_sha256": "564856f34d0b3a014dab67b346ecc90ea384d0a02ce94b36b97a1b66e495a7db"
+      }
+    ],
+    "source_updated_at": null,
+    "kind": "taxon",
+    "media": {}
+  },
+  "review_state": "draft_ai_source_mapping"
+}
