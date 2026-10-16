@@ -28,7 +28,8 @@ public:
     bool hintRevealed() const;
     bool submitAnswer(const QString &selectedOption);
     bool revealHint();
-    bool revealHint(HintType type);
+    bool revealHint(HintType type); // Compatibility: first unrevealed hint in this category.
+    bool revealHintSlot(int slot);
     int revealedHints() const { return revealedHints_; }
     int possibleScoreUnits() const { return maximumScoreUnits(revealedHints_,hintCeilings(currentQuestion_.hints)); }
     QVector<AnswerRecord> answers() const { return session_.answers; }

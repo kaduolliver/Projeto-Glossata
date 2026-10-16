@@ -154,6 +154,7 @@ bool GameService::submitAnswer(const QString &selectedOption)
     auto &record=session_.answers.last();
     record.rulesVersion=session_.configuration.rulesVersion;
     record.options=currentQuestion_.options;
+    record.contentVersion=content_.pedagogyVersion();
     for (int i=0;i<3;++i) if (revealedHints_ & (1<<i)) {
         record.ceilings[i]=currentQuestion_.hints[i].ceiling();
         record.assessmentIds[i]=currentQuestion_.hints[i].assessmentId;
@@ -190,14 +191,17 @@ bool GameService::submitAnswer(const QString &selectedOption)
 
 bool GameService::revealHint()
 {
-    return revealHint(HintType::Morphological);
+    return revealHintSlot(2);
 }
 bool GameService::revealHint(HintType type)
 {
-    if(session_.finished || hintBit(type)==0 || (revealedHints_ & hintBit(type)))return false;
-    const auto &hint=currentQuestion_.hints.at(static_cast<int>(type)-1);
-    if(!hint.available())return false;
-    revealedHints_|=hintBit(type);
+    for(int i=0;i<3;++i)if(currentQuestion_.hints[i].type==type && !(revealedHints_&(1<<i)))return revealHintSlot(i);
+    return false;
+}
+bool GameService::revealHintSlot(int slot)
+{
+    if(session_.finished || slot<0 || slot>2 || (revealedHints_&(1<<slot)) || !currentQuestion_.hints[slot].available())return false;
+    revealedHints_|=1<<slot;
     return true;
 }
 
@@ -268,8 +272,17 @@ void GameService::shuffleCycle()
     for (const Species &species : species_) groups[species.displayGroupId()].append(species);
     const int total = static_cast<int>(species_.size());
     QMap<QString, int> weight, balance;
+    QHash<int,int> completeness;
+    if(session_.configuration.mode==GameMode::Competitive) {
+        std::mt19937 assessmentRandom(42);
+        for(const auto &s:species_) {
+            const auto q=QuestionGenerator(content_).generate(s,optionPool_,session_.configuration,assessmentRandom);
+            completeness[s.id]=std::count_if(q.hints.begin(),q.hints.end(),[](const Hint &h){return h.available();});
+        }
+    }
     for (auto it = groups.begin(); it != groups.end(); ++it) {
         std::shuffle(it.value().begin(), it.value().end(), random);
+        if(!completeness.isEmpty())std::stable_sort(it.value().begin(),it.value().end(),[&](const Species &a,const Species &b){return completeness.value(a.id)>completeness.value(b.id);});
         weight[it.key()] = static_cast<int>(it.value().size());
         balance[it.key()] = std::uniform_int_distribution<int>(0, std::max(1, total / 3))(random);
     }

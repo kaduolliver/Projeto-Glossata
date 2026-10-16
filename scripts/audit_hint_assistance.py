@@ -53,7 +53,15 @@ def audit(root=ROOT):
                 'competitive_approved':review['state'] in {'approved_editorial','approved_expert'} and review['usable']})
         for category,available in [('etymological',bool(entry.get('etymology_hints'))),('morphological',bool(m))]:
             if not available:missing.append({'species_id':sid,'scientific_name':s['name'],'category':category,'reason':'No existing suitable source content; nothing invented.'})
-    return {'schema_version':1,'scope':'All active editable hint content; grades are proposals, not human certification or measured difficulty.',
+    from review_hints import valid as valid_pedagogy
+    automatic=load(root/'resources/data/progressive_hints.json',{})
+    automated={'policy':automatic.get('policy'),'state':automatic.get('evaluation',{}).get('state'),
+        'usable':bool(automatic and valid_pedagogy(automatic,root)),
+        'organisms':len(automatic.get('species',{})),
+        'recipes':sum(len(s.get('recipes',[])) for s in automatic.get('species',{}).values()),
+        'runtime_coverage':'docs/AUDITORIA_PROGRESSAO_DICAS.json; alternatives and independent scientific gates constrain availability.',
+        'scientific_approvals_granted':0}
+    return {'automated_pedagogy':automated,'schema_version':1,'scope':'All active editable hint content; grades are proposals, not human certification or measured difficulty.',
             'total_species':len(species),'assessments':len(rows),'changed':sum(r['classification_changed'] for r in rows),
             'by_grade':dict(Counter(r['grade'] for r in rows)), 'by_review_state':dict(Counter(r['review_state'] for r in rows)),
             'competitive_approved':sum(r['competitive_approved'] for r in rows),'inadequate':sum(r['suitability']=='inadequate' for r in rows),

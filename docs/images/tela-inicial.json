@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-16T04:00:58.677383+00:00",
+  "captured_at": "2026-10-16T05:00:58.687574+00:00",
   "method": "QQuickWindow::grabWindow / running application",
-  "application_version": "1.5.0",
-  "binary_sha256": "94f206d1bd0cf96c5c35b7a3007d94fd81110a5007777af689a8e049b0b1934f",
+  "application_version": "1.6.0",
+  "binary_sha256": "a319801c983ffc6021bdc7e7b19bfcd05ad071b4fdfed548b2a26f7064b8ac62",
   "image_sha256": "adde364a73e20ac659dbeffd0fce1cbb5f79993bc8bf197bda4a236cd74508b5",
   "width": 1240,
   "height": 820,
@@ -21,7 +21,7 @@
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
     "resources/qml/Main.qml": "aecfbfc557ca4dae0ed5da311ed4d894a66a77bbb13a880c3f3759178bd75b2f",
     "resources/qml/views/HomeView.qml": "90ecd3e1b35e5ebb7aef16015302397f3edc89df4843893e0064c852283bd3a0",
-    "src/presentation/GameController.cpp": "7c9440947a98f80d771f3ec7121c548e19a1519eaa8b8933c157889dab811f3f",
-    "src/presentation/GameController.h": "27e6671156279a8d9f31bca41a9bb69599daf7cf07c06c9363d3605334d786e4"
+    "src/presentation/GameController.cpp": "a8abb307178585d58aab37a20e07f363ff5baf2178778899e385acc233e74442",
+    "src/presentation/GameController.h": "85a07807431168ada1c53385081d704a2ffc273db16446a8301c8d616d0d5938"
   }
 }

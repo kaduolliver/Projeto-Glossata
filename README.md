@@ -102,7 +102,7 @@ Cada questão apresenta quatro alternativas de identificação no mesmo nível t
 
 ### Dicas estratégicas e pontuação
 
-O quiz oferece até três categorias de dicas, conforme a disponibilidade e a validação do conteúdo:
+O quiz busca três dicas progressivas — leve, moderada e forte — conforme as fontes, o nível e as alternativas. A categoria é independente da posição:
 
 | Categoria | Assunto |
 | --- | ---: |
@@ -120,7 +120,7 @@ A **assistência daquela dica e questão**, avaliada separadamente da categoria,
 
 Abrir o painel de dicas não reduz a pontuação. Quando mais de uma dica é revelada, vale o **menor teto**; a interface anuncia o teto resultante antes de revelar. Uma tradução reconhecível pode oferecer assistência forte, enquanto uma descrição já evidente na foto pode oferecer assistência leve. O cálculo permanece em unidades inteiras e acertos/precisão são independentes dos pontos.
 
-As 290 avaliações do corpus são **propostas em rascunho**, com justificativas e escopo; nenhuma revisão humana foi inventada. O modo Livre sinaliza avaliações provisórias. No Competitivo, dicas sem classificação confiável ficam indisponíveis, preservando o conteúdo científico utilizável na aprendizagem posterior. Consulte a [política e os limites](docs/DICAS_E_PONTUACAO.md) e a [auditoria completa](docs/AUDITORIA_ASSISTENCIA.json). Respostas antigas mantêm os pontos originais; os rankings competitivos distinguem a política `identification-v3-assistance` das anteriores.
+A versão de testes usa **avaliação pedagógica automatizada** (`approved_automated`, política `progressive-pedagogy-v1`), identificada na interface e independente da revisão científica. As 290 propostas anteriores são preservadas como rascunhos. Receitas locais para os 122 organismos reutilizam fontes existentes; o contexto determina quais dicas podem aparecer. Não se inventa uma terceira dica quando falta evidência. Categorias podem repetir com conteúdo distinto, mantendo escolha direta de qualquer dica e o menor teto. Consulte a [política e os limites](docs/DICAS_E_PONTUACAO.md), a [auditoria das avaliações](docs/AUDITORIA_ASSISTENCIA.json) e a [cobertura e lacunas](docs/AUDITORIA_PROGRESSAO_DICAS.json). **Relatar problema nesta dica** prepara um rascunho local; somente uma ação explícita abre o formulário externo. Respostas antigas conservam os pontos; novas partidas competitivas usam `identification-v4-progressive`, separada das políticas anteriores internamente no mesmo ranking.
 
 ### Fichas educativas
 

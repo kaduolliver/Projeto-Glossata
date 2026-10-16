@@ -81,7 +81,7 @@
     {
       "path": "scripts/build_education.py",
       "kind": "text_authorship",
-      "sha256": "35e31d2d658c84c386d6d528ef814e5b0160199dd015c160001b864fafcfcb57",
+      "sha256": "d54ccc74f358c370032de8532261d49cf79fe52b8613b4754b0e40721ed8c7fc",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -94,6 +94,11 @@
           "sha256": "a5ad075602a9c748378e655ac1e8582bbb27f1c74b65904cdbde7d7f205a473b",
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-16T04:22:45.708774+00:00"
+        },
+        {
+          "sha256": "35e31d2d658c84c386d6d528ef814e5b0160199dd015c160001b864fafcfcb57",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-16T04:58:49.365925+00:00"
         }
       ],
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
@@ -2059,6 +2064,18 @@
         "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/data/progressive_hints.json",
+      "kind": "text_authorship",
+      "sha256": "fc5e4d2bd18517479e06b24e2a7138e4c0313f7fc4f607e393c1f142dc18a975",
+      "source": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros.",
+      "permission": {
+        "holder": null,
+        "evidence_path": null,
+        "distribution_allowed": false
+      },
+      "state": "pending_originality_and_rights_review"
     }
   ],
   "fonts": {

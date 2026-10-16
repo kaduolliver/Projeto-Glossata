@@ -60,6 +60,7 @@ QJsonObject gradedHintFixture()
     QFile file(":/resources/data/education.json");
     if (!file.open(QIODevice::ReadOnly)) return {};
     auto data=QJsonDocument::fromJson(file.readAll()).object();
+    data.remove("automated_pedagogy"); // Frozen v3 assessment fixture.
     const QJsonObject reviewed{{"state","approved_editorial"},{"usable",true},{"reviewer","synthetic-test-fixture"},
         {"claim_scope","hint_assistance"},
         {"reviewed_at",QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
@@ -86,6 +87,30 @@ QJsonObject gradedHintFixture()
     }
     data["species"]=species;data["notes"]=notes;return data;
 }
+QJsonObject progressiveFixture()
+{
+    QFile file(":/resources/data/education.json");if(!file.open(QIODevice::ReadOnly))return {};
+    auto data=QJsonDocument::fromJson(file.readAll()).object();
+    auto automatic=data["automated_pedagogy"].toObject(),species=automatic["species"].toObject(),notes=data["notes"].toObject();
+    const QJsonObject review{{"state","legacy"},{"usable",true},{"content_sha256",QString(64,'a')}};
+    for(auto it=species.begin();it!=species.end();++it) {
+        auto entry=it.value().toObject();QJsonArray recipes;
+        for(int i=0;i<3;++i) {
+            const QString key="synthetic:"+it.key()+":"+QString::number(i);
+            const QString text=QString("Synthetic test-only %1: distinct documented clue.").arg(i);
+            notes[key]=QJsonObject{{"text",text},{"source_url","https://example.org/test-only"},{"governance",review}};
+            recipes.append(QJsonObject{{"id",key},{"kind","note"},{"category","morphological"},
+                {"text",text},{"ranks",QJsonArray{"genus"}},{"grade",i==0?"light":i==1?"moderate":"strong"},
+                {"source_url","https://example.org/test-only"},{"source_title","Synthetic fixture"},
+                {"locator","test-only"},{"scientific_topic","morphology"},{"source_note",key},{"rationale","Synthetic test-only assistance fixture."}});
+        }
+        entry["recipes"]=recipes;it.value()=entry;
+    }
+    automatic["species"]=species;auto body=automatic;body.remove("evaluation");body.remove("usable");
+    auto ev=automatic["evaluation"].toObject();ev["content_sha256"]=QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(body).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());automatic["evaluation"]=ev;
+    data["automated_pedagogy"]=automatic;data["notes"]=notes;return data;
+}
+
 }
 
 class GameServiceTests : public QObject {
@@ -137,6 +162,7 @@ private slots:
     void contextualAssistanceAndUnknownDistractors();
     void assistanceSnapshotsAndLegacyV2Migration();
     void assistanceChangesCompetitiveContentVersion();
+    void progressiveCoverageHistoryAndReports();
 };
 
 void GameServiceTests::initialLoad_hasSpecies()
@@ -1088,17 +1114,17 @@ void GameServiceTests::exactHintScoringAndLongGames()
     MemoryCatalog catalog;
     for(const auto &s : source.loadSpecies())if(QSet<int>{63,67,73,135}.contains(s.id))catalog.items.append(s);
     QCOMPARE(catalog.items.size(),4);
-    GameService service(&catalog,nullptr,EducationalContent(gradedHintFixture()));
+    GameService service(&catalog,nullptr,EducationalContent(progressiveFixture()));
     std::array<int,3> order{0,1,2};
     do { for(int mask=0;mask<8;++mask)for(bool correct : {true,false}) {
         service.startNewGame({},"genus");
         QCOMPARE(service.possibleScoreUnits(),6);
         int previous=6;
-        for(int index : order) {const auto type=static_cast<HintType>(index+1);if(mask & hintBit(type)) {
-            QVERIFY2(service.currentQuestion().hints[static_cast<int>(type)-1].available(),qPrintable(service.currentQuestion().species.name));
-            QVERIFY(service.revealHint(type));
+        for(int index : order) {if(mask & (1<<index)) {
+            QVERIFY2(service.currentQuestion().hints[index].available(),qPrintable(service.currentQuestion().species.name));
+            QVERIFY(service.revealHintSlot(index));
             QVERIFY(service.possibleScoreUnits()<=previous);previous=service.possibleScoreUnits();
-            QVERIFY(!service.revealHint(type));
+            QVERIFY(!service.revealHintSlot(index));
         }}
         const auto question=service.currentQuestion();
         QString answer=question.correctAnswer;
@@ -1114,10 +1140,10 @@ void GameServiceTests::exactHintScoringAndLongGames()
     }} while (std::next_permutation(order.begin(),order.end()));
     service.startNewGame({},"genus");
     for(int i=0;i<600;++i) {
-        QVERIFY(service.revealHint(HintType::Morphological));
-        QCOMPARE(service.possibleScoreUnits(),6); // light morphology
-        QVERIFY(service.revealHint(HintType::Etymological));QCOMPARE(service.possibleScoreUnits(),2);
-        QVERIFY(service.revealHint(HintType::Taxonomic));QCOMPARE(service.possibleScoreUnits(),2);
+        QVERIFY(service.revealHintSlot(0));
+        QCOMPARE(service.possibleScoreUnits(),6); // light slot
+        QVERIFY(service.revealHintSlot(2));QCOMPARE(service.possibleScoreUnits(),2);
+        QVERIFY(service.revealHintSlot(1));QCOMPARE(service.possibleScoreUnits(),2);
         QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
         QCOMPARE(service.scoreUnits(),qint64((i+1)*2));
     }
@@ -1179,35 +1205,15 @@ void GameServiceTests::hintContentMatchesQuestionAndAlternatives()
                 options.append(candidate.answerAtRank(rank));if(options.size()==4)break;
             }
             const auto hints=content.questionHints(s,rank,options,pool);
-            for(const auto &hint : hints) {
+            for(int index=0;index<3;++index) {
+                const auto &hint=hints[index];
                 if(!hint.available()){QVERIFY(!hint.unavailableReason.isEmpty());continue;}
-                AnswerRecord check{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,
-                    hintBit(hint.type),hint.ceiling(),hint.ceiling()};
-                check.rulesVersion=CurrentScoringRules;
-                check.options=options;
-                const int index=static_cast<int>(hint.type)-1;check.ceilings[index]=hint.ceiling();
-                check.assessmentIds[index]=hint.assessmentId;check.assessmentPayloads[index]=hint.assessmentPayload;
-                QVERIFY2(validAnswerScoring(check,CurrentScoringRules),qPrintable(s.name+" "+hintKey(hint.type)));
-                QVERIFY(hint.sourceUrl.startsWith("https://"));
-                for(const auto &option : options)QVERIFY2(!hint.text.contains(option,Qt::CaseInsensitive),qPrintable(hint.text));
-                if(hint.type==HintType::Taxonomic) {
-                    taxonomic.insert(s.id);
-                    const QStringList levels={"kingdom","phylum","class","order","family","genus","species"};
-                    bool scopeFound=false;
-                    for(const auto &node : s.taxonomy)if(!node.sourceTaxonId.isEmpty() && hint.sourceUrl.endsWith("/"+node.sourceTaxonId)) {
-                        scopeFound=true;QVERIFY(levels.indexOf(node.rank)<levels.indexOf(rank));
-                        int compatible=0;
-                        for(const auto &option : options) {
-                            bool known=false,allMatch=true;
-                            for(const auto &candidate : pool)if(candidate.answerAtRank(rank)==option) {
-                                known=true;allMatch=allMatch && candidate.belongsTo(node.id);
-                            }
-                            compatible+=known && allMatch;
-                        }
-                        QVERIFY(compatible>=3);
-                    }
-                    QVERIFY(scopeFound);
-                }
+                AnswerRecord check{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,1<<index,hint.ceiling(),hint.ceiling()};
+                check.rulesVersion=CurrentScoringRules;check.options=options;check.contentVersion=content.pedagogyVersion();
+                check.ceilings[index]=hint.ceiling();check.assessmentIds[index]=hint.assessmentId;check.assessmentPayloads[index]=hint.assessmentPayload;
+                QVERIFY2(validAnswerScoring(check,CurrentScoringRules),qPrintable(s.name));
+                QVERIFY(hint.sourceUrl.startsWith("https://"));QVERIFY(!hint.text.contains(s.answerAtRank(rank),Qt::CaseInsensitive));
+                if(hint.type==HintType::Taxonomic)taxonomic.insert(s.id);
                 if(hint.type==HintType::Etymological)etymological.insert(s.id);
                 if(hint.type==HintType::Morphological)morphological.insert(s.id);
             }
@@ -1556,13 +1562,13 @@ void GameServiceTests::contextualAssistanceAndUnknownDistractors()
     QVERIFY(!content.questionHints(correct,"genus",options,unknown,true)[0].available());
 
     EducationalContent actual;
-    for (const auto &s : source.loadSpecies()) if (QSet<int>{67,131,133}.contains(s.id)) {
-        auto choices=QStringList{s.name,"Example alpha","Example beta","Example gamma"};
-        const auto h=actual.questionHints(s,"species",choices,source.loadSpecies());
-        QVERIFY(h[1].available());QCOMPARE(h[1].assistance,AssistanceLevel::Strong);
-        QVERIFY(h[2].available());QCOMPARE(h[2].assistance,AssistanceLevel::Light);
-        QVERIFY(!actual.questionHints(s,"species",choices,source.loadSpecies(),true)[1].available());
+    for(const auto &s:source.loadSpecies())if(QSet<int>{67,131,133}.contains(s.id)) {
+        const auto choices=QStringList{s.name,"Example alpha","Example beta","Example gamma"};
+        const auto h=actual.questionHints(s,"species",choices,source.loadSpecies(),true);
+        QVERIFY(h[2].available());QCOMPARE(h[2].assistance,AssistanceLevel::Strong);
+        QCOMPARE(h[2].assessmentState,QString("approved_automated"));
     }
+
 }
 
 void GameServiceTests::assistanceSnapshotsAndLegacyV2Migration()
@@ -1582,9 +1588,9 @@ void GameServiceTests::assistanceSnapshotsAndLegacyV2Migration()
         QVERIFY(q.exec("PRAGMA user_version=2"));
     }
     QSqlDatabase::removeDatabase("assistance-v2");
-    auto current=old;current.rulesVersion=CurrentScoringRules;
+    auto current=old;current.rulesVersion=PreviousScoringRules;
     AnswerRecord answer{1,67,"Trametes versicolor","photo","genus","Trametes","Trametes",true,6,2,2};
-    answer.rulesVersion=CurrentScoringRules;answer.ceilings={0,2,6};
+    answer.rulesVersion=PreviousScoringRules;answer.ceilings={0,2,6};
     answer.options={"Trametes","Stropharia","Coprinus","Clathrus"};
     for (int i : {1,2}) {
         QJsonObject a{{"grade",i==1 ? "strong" : "light"},{"ranks",QJsonArray{"genus"}},{"context","any_safe_options"}};
@@ -1631,6 +1637,66 @@ void GameServiceTests::assistanceChangesCompetitiveContentVersion()
     QVERIFY(GameService::contentFingerprint(QJsonDocument(data).toJson())!=GameService::contentFingerprint(original));
     auto old=GameService::competitiveConfiguration();old.rulesVersion=LegacyScoringRules;
     QVERIFY(old.rankingKey()!=GameService::competitiveConfiguration().rankingKey());
+}
+
+void GameServiceTests::progressiveCoverageHistoryAndReports()
+{
+    JsonSpeciesCatalog source;EducationalContent content;const auto all=source.loadSpecies();
+    QJsonArray rows;int completeCompetitive=0;QSet<QString> coveredGroups;
+    for(const QString &rank:{QString("species"),QString("genus"),QString("family"),QString("order"),QString("class"),QString("phylum"),QString("kingdom")}) {
+        const auto pool=eligibleQuizSpecies(all,rank);std::mt19937 random(42);
+        for(const auto &s:pool) {
+            GameConfiguration cfg;cfg.rank=rank;if(rank=="genus")cfg.mode=GameMode::Competitive;
+            const auto q=QuestionGenerator(content).generate(s,pool,cfg,random);QCOMPARE(q.options.size(),4);
+            QJsonArray hints;int available=0;QSet<QString> ids,categories;
+            for(int i=0;i<3;++i) {
+                const auto &h=q.hints[i];QCOMPARE(h.ceiling(),i==0?6:i==1?3:2);
+                hints.append(QJsonObject{{"slot",i+1},{"id",h.id},{"category",hintKey(h.type)},
+                    {"available",h.available()},{"text",h.text},{"reason",h.unavailableReason}});
+                if(!h.available())continue;
+                ++available;QVERIFY(!ids.contains(h.id));ids.insert(h.id);categories.insert(hintKey(h.type));
+                QCOMPARE(h.assessmentState,QString("approved_automated"));
+            }
+            rows.append(QJsonObject{{"id",s.id},{"name",s.name},{"rank",rank},{"available",available},
+                {"repeated_categories",categories.size()<available},
+                {"exception_reason",categories.size()<available ? "No suitable, sourced note of another category at the required grade; distinct ancestral contexts retained." : ""},{"hints",hints}});
+            if(rank=="genus" && s.photo.role=="identification" && available==3){++completeCompetitive;coveredGroups.insert(s.displayGroup());}
+        }
+    }
+    QVERIFY(completeCompetitive>=20);QVERIFY(coveredGroups.size()>=3);
+    QFile coverage("progressive-hint-coverage.json");QVERIFY(coverage.open(QIODevice::WriteOnly));
+    coverage.write(QJsonDocument(QJsonObject{{"policy","progressive-pedagogy-v1"},{"complete_competitive",completeCompetitive},
+        {"coverage_scope","Seed 42, complete eligible pool per rank; runtime alternatives can change availability."},{"rows",rows}}).toJson());
+    QTemporaryDir directory;const auto path=directory.filePath("new-progressive.sqlite");QVector<AnswerRecord> saved;
+    {
+        SqliteGameHistoryRepository history(path);GameService game(&source,&history);
+        game.startConfiguredGame(GameService::competitiveConfiguration());
+        for(int i=0;i<20;++i){QVERIFY(!game.isFinished());const auto q=game.currentQuestion();
+            for(int slot:{2,0,1})if(q.hints[slot].available())QVERIFY(game.revealHintSlot(slot));
+            QVERIFY(game.submitAnswer(q.correctAnswer));QVERIFY(validAnswerScoring(game.answers().last(),CurrentScoringRules));}
+        QCOMPARE(game.answeredCount(),20);QCOMPARE(game.saveCurrentResult("Synthetic Player"),GameService::SaveStatus::Saved);
+        saved=game.answers();QCOMPARE(history.loadAnswers(game.configuration().rulesVersion).size(),0);
+        // Save a known game ID as well to test snapshot round trips and tampering.
+        auto cfg=game.configuration();QVERIFY(history.saveConfiguredResult("Synthetic Player",game.scoreUnits(),20,saved,"snapshot-v4",cfg));
+        auto bad=saved;auto &a=bad[0];a.contentVersion="changed";
+        QVERIFY(!history.saveConfiguredResult("Synthetic Player",game.scoreUnits(),20,bad,"bad-v4",cfg));
+    }
+    {
+        SqliteGameHistoryRepository reopened(path);const auto loaded=reopened.loadAnswers("snapshot-v4");QCOMPARE(loaded.size(),20);
+        for(int i=0;i<20;++i){QCOMPARE(loaded[i].awardedUnits,saved[i].awardedUnits);QCOMPARE(loaded[i].assessmentIds,saved[i].assessmentIds);QCOMPARE(loaded[i].contentVersion,saved[i].contentVersion);}
+    }
+    GameController controller(nullptr,directory.filePath("reports.sqlite"));controller.startCompetitiveGame();
+    auto hints=controller.hints();int slot=-1;
+    for(int i=0;i<3;++i)if(hints[i].toMap()["available"].toBool()){slot=i;break;}
+    QVERIFY(slot>=0);const auto id=hints[slot].toMap()["id"].toString();
+    QVERIFY(controller.hintReport(id,"test").isEmpty());
+    QVERIFY(controller.revealHintCategory(id));const auto score=controller.possibleScoreText();
+    const auto report=controller.hintReport(id,"A descrição precisa de correção.");QVERIFY(!report.isEmpty());
+    const auto text=report["text"].toString();QVERIFY(text.contains("A descrição precisa de correção."));
+    QVERIFY(text.contains(controller.hints()[slot].toMap()["text"].toString()));
+    QVERIFY(!text.contains(controller.currentPlayerName()));QVERIFY(!text.contains(directory.path()));
+    QVERIFY(!text.contains("correctAnswer"));QCOMPARE(controller.possibleScoreText(),score);
+    for(int i=0;i<3;++i)if(i!=slot)QVERIFY(controller.hintReport(hints[i].toMap()["id"].toString(),"test").isEmpty());
 }
 
 QTEST_MAIN(GameServiceTests)

@@ -64,7 +64,20 @@ public:
             for (int index : {0, 1, int(candidates.size() - 1)}) options.append(candidates[index].answer);
         } else for (int i = 0; i < 3; ++i) options.append(candidates[i].answer);
         std::shuffle(options.begin(), options.end(), random);
-        const auto hints = content_.questionHints(correct, config.rank, options, pool,config.mode==GameMode::Competitive);
+        auto hints = content_.questionHints(correct, config.rank, options, pool,config.mode==GameMode::Competitive);
+        if(config.mode==GameMode::Competitive && config.difficulty==QuestionDifficulty::Balanced) {
+            auto count=[](const QuestionHints &h){return std::count_if(h.begin(),h.end(),[](const Hint &x){return x.available();});};
+            // Bounded search within the existing pool: two nearby candidates
+            // and a broad one remain the Balanced policy. Never shrink a game.
+            for(int attempt=1;attempt<8 && count(hints)<3 && candidates.size()>3;++attempt) {
+                const int second=std::min(int(candidates.size())-2,attempt+1);
+                QStringList proposal{correct.answerAtRank(config.rank),candidates[0].answer,candidates[second].answer,candidates.last().answer};
+                if(QSet<QString>(proposal.begin(),proposal.end()).size()!=4)continue;
+                std::shuffle(proposal.begin(),proposal.end(),random);
+                auto proposed=content_.questionHints(correct,config.rank,proposal,pool,true);
+                if(count(proposed)>count(hints)){options=proposal;hints=proposed;}
+            }
+        }
         const bool supporting = correct.photo.role == "supporting";
         return {supporting ? QStringLiteral("Identifique pelas pistas: %1").arg(taxonomicRankLabel(config.rank))
                           : QStringLiteral("Identifique: %1").arg(taxonomicRankLabel(config.rank)),

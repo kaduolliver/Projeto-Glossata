@@ -110,7 +110,7 @@ public:
     QVariantMap questionPhoto() const;
     QString identificationRankLabel() const { return taxonomicRankLabel(identificationRank_); }
     QString sessionTaxonId() const { return sessionTaxonId_; }
-    bool hasHint() const { return !displayedQuestion_.extraHint.isEmpty(); }
+    bool hasHint() const { return std::any_of(displayedQuestion_.hints.begin(),displayedQuestion_.hints.end(),[](const Hint &h){return h.available();}); }
     QString hintSourceUrl() const { return displayedQuestion_.hintSourceUrl; }
 
 public slots:
@@ -122,7 +122,8 @@ public slots:
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
     void revealHint();
-    bool revealHintCategory(const QString &category);
+    bool revealHintCategory(const QString &category); // Accepts hint ID; category names are legacy shortcuts.
+    QVariantMap hintReport(const QString &id,const QString &problem) const;
     void stopGame();
     void retrySaveResult();
     bool addPlayerProfile(const QString &name);

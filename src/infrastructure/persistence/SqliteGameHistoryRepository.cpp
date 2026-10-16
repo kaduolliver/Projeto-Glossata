@@ -24,9 +24,11 @@ QString answerSnapshot(const AnswerRecord &answer)
         ids.append(answer.assessmentIds[i]);
         payloads.append(answer.assessmentPayloads[i]);
     }
-    return QString::fromUtf8(QJsonDocument(QJsonObject{{"schema",1},{"rules",answer.rulesVersion},
+    QJsonObject snapshot{{"schema",1},{"rules",answer.rulesVersion},
         {"ceilings",ceilings},{"assessment_ids",ids},{"assessment_payloads",payloads},
-        {"options",QJsonArray::fromStringList(answer.options)}}).toJson(QJsonDocument::Compact));
+        {"options",QJsonArray::fromStringList(answer.options)}};
+    if(answer.rulesVersion==CurrentScoringRules)snapshot["content_version"]=answer.contentVersion;
+    return QString::fromUtf8(QJsonDocument(snapshot).toJson(QJsonDocument::Compact));
 }
 
 bool readSnapshot(const QString &json,AnswerRecord &answer)
@@ -49,6 +51,7 @@ bool readSnapshot(const QString &json,AnswerRecord &answer)
         if (!option.isString()) return false;
         answer.options.append(option.toString());
     }
+    answer.contentVersion=value.value("content_version").toString();
     return validAnswerScoring(answer,answer.rulesVersion);
 }
 
@@ -205,8 +208,8 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const QString &playerName
     if (!database_.isOpen() || normalizedName.isEmpty() || scoreUnits<0 || correctAnswers<0) {
         return false;
     }
-    if (configuration.rulesVersion!=CurrentScoringRules && configuration.rulesVersion!=LegacyScoringRules && configuration.rulesVersion!="legacy") return false;
-    if (answers.isEmpty() && (configuration.rulesVersion==CurrentScoringRules || configuration.mode==GameMode::Competitive)) return false;
+    if (configuration.rulesVersion!=CurrentScoringRules && configuration.rulesVersion!=LegacyScoringRules && configuration.rulesVersion!=PreviousScoringRules && configuration.rulesVersion!="legacy") return false;
+    if (answers.isEmpty() && (configuration.rulesVersion==CurrentScoringRules || configuration.rulesVersion==PreviousScoringRules || configuration.mode==GameMode::Competitive)) return false;
     if(!answers.isEmpty()) {
         qint64 total=0; int correct=0,number=0;
         for(const auto &answer : answers) {
@@ -360,14 +363,11 @@ SessionMetrics SqliteGameHistoryRepository::playerMetrics(const QString &key, co
     SessionMetrics metrics;
     if (!database_.isOpen() || name.trimmed().isEmpty()) return metrics;
     QSqlQuery query(database_);
-    query.prepare("SELECT a.is_correct,a.revealed_hints,a.awarded_units FROM answer_records a JOIN game_runs g ON g.id=a.game_id WHERE g.player_name=:name COLLATE NOCASE AND g.ranking_key=:key AND g.is_complete=1");
+    query.prepare("SELECT id FROM game_runs WHERE player_name=:name COLLATE NOCASE AND ranking_key=:key AND is_complete=1");
     query.bindValue(":name",name.trimmed()); query.bindValue(":key",key);
     if (!query.exec()) return metrics;
-    while (query.next()) {
-        AnswerRecord answer; answer.correct=query.value(0).toBool();
-        answer.revealedHints=query.value(1).toInt(); answer.awardedUnits=query.value(2).toInt();
-        metrics.record(answer);
-    }
+    QStringList games;while(query.next())games.append(query.value(0).toString());query.finish();
+    for(const auto &id:games)for(const auto &answer:loadAnswers(id))metrics.record(answer);
     return metrics;
 }
 

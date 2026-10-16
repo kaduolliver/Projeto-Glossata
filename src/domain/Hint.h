@@ -10,12 +10,14 @@
 #include <QSet>
 #include <QRegularExpression>
 #include <QStringList>
+#include <QDateTime>
 
 enum class HintType { None=0, Taxonomic=1, Etymological=2, Morphological=3 };
 constexpr int FullScoreUnits=6;
 constexpr int hintBit(HintType type) { return type<HintType::Taxonomic || type>HintType::Morphological ? 0 : 1 << (static_cast<int>(type)-1); }
 enum class AssistanceLevel { Unclassified=0, Light=6, Moderate=3, Strong=2 };
-inline const QString CurrentScoringRules = QStringLiteral("identification-v3-assistance");
+inline const QString CurrentScoringRules = QStringLiteral("identification-v4-progressive");
+inline const QString PreviousScoringRules = QStringLiteral("identification-v3-assistance");
 inline const QString LegacyScoringRules = QStringLiteral("identification-v2");
 constexpr int assistanceCeiling(AssistanceLevel level) {
     return level==AssistanceLevel::Light ? 6 : level==AssistanceLevel::Moderate ? 3 : level==AssistanceLevel::Strong ? 2 : 0;
@@ -57,6 +59,7 @@ inline QString formatScore(qint64 units) {
 }
 struct Hint {
     HintType type=HintType::None;
+    QString id; // Stable content identity, independent of category and display slot.
     QString text,sourceUrl,sourceTitle,unavailableReason;
     AssistanceLevel assistance=AssistanceLevel::Unclassified;
     QString assessmentId,assessmentState,rationale;
@@ -79,6 +82,7 @@ struct AnswerRecord {
     std::array<QString,3> assessmentIds{};
     std::array<QJsonObject,3> assessmentPayloads{};
     QStringList options; // Empty only for legacy records that never stored them.
+    QString contentVersion;
 };
 // Shared validation for the service, history writer and history reader. These
 // snapshots preserve the policy at answer time, independently of future content.
@@ -92,7 +96,8 @@ inline bool validAnswerScoring(const AnswerRecord &answer,const QString &rules) 
             if (answer.ceilings[i]!=0 && answer.ceilings[i]!=expected) return false;
             if (!answer.assessmentIds[i].isEmpty() || !answer.assessmentPayloads[i].isEmpty()) return false;
         }
-    } else if (rules==CurrentScoringRules) {
+    } else if (rules==PreviousScoringRules || rules==CurrentScoringRules) {
+        if(rules==CurrentScoringRules && answer.contentVersion.size()!=64)return false;
         QSet<QString> choices;
         for (const auto &option : answer.options) choices.insert(option.toCaseFolded());
         if (answer.options.size()!=4 || choices.size()!=4 || answer.options.count(answer.correctAnswer)!=1
@@ -105,6 +110,62 @@ inline bool validAnswerScoring(const AnswerRecord &answer,const QString &rules) 
                 const auto proof=answer.assessmentPayloads[i];
                 const QString hash=QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(proof).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());
                 const auto assessment=proof.value("assessment").toObject();
+                if (rules==CurrentScoringRules) {
+                    const auto evaluation=proof.value("evaluation").toObject();
+                    const auto reviewed=QDateTime::fromString(evaluation.value("reviewed_at").toString(),Qt::ISODateWithMs);
+                    const auto due=QDateTime::fromString(evaluation.value("due_at").toString(),Qt::ISODateWithMs);
+                    if (hash!=id || proof.value("schema").toInt()!=2 || proof.value("slot").toInt(-1)!=i
+                        || answer.contentVersion.isEmpty() || proof.value("content_version").toString()!=answer.contentVersion
+                        || proof.value("scientific_name").toString()!=answer.scientificName
+                        || proof.value("species_id").toString()!=QString::number(answer.speciesId)
+                        || proof.value("rank").toString()!=answer.rank || proof.value("photo").toObject().value("id").toString()!=answer.photoId
+                        || proof.value("options").toArray()!=QJsonArray::fromStringList(answer.options)
+                        || proof.value("hint_id").toString().isEmpty() || hintType(proof.value("category").toString())==HintType::None
+                        || proof.value("text").toString().isEmpty() || !proof.value("source_url").toString().startsWith("https://")
+                        || proof.value("locator").toString().isEmpty() || proof.value("rationale").toString().isEmpty()
+                        || evaluation.value("state").toString()!="approved_automated" || evaluation.value("actor_type").toString()!="automated"
+                        || evaluation.value("policy_version").toString()!="progressive-pedagogy-v1"
+                        || evaluation.value("content_sha256").toString().size()!=64 || !reviewed.isValid() || !due.isValid() || due<=reviewed
+                        || answer.ceilings[i]!=(i==0 ? 6 : i==1 ? 3 : 2)) return false;
+                    const QRegularExpression literal("(?<![\\p{L}])"+QRegularExpression::escape(answer.correctAnswer)+"(?![\\p{L}])",QRegularExpression::CaseInsensitiveOption);
+                    if(literal.match(proof.value("text").toString()).hasMatch())return false;
+                    const auto recipe=proof.value("source_recipe").toObject();
+                    if(recipe.value("category")!=proof.value("category") || recipe.value("source_url")!=proof.value("source_url")
+                        || recipe.value("locator")!=proof.value("locator") || recipe.value("rationale")!=proof.value("rationale"))return false;
+                    if(proof.value("kind").toString()=="ancestor") {
+                        const QStringList ranks{"kingdom","phylum","class","order","family","genus","species"};
+                        const int asked=ranks.indexOf(answer.rank),ancestorLevel=ranks.indexOf(recipe.value("node").toObject().value("rank").toString());
+                        if(asked<0 || ancestorLevel<0 || ancestorLevel>=asked || (i==0 && ancestorLevel>asked-2)
+                            || (i==1 && ancestorLevel<asked-3) || (i==2 && ancestorLevel<asked-2))return false;
+                        const auto evidence=proof.value("option_evidence").toObject();int compatible=0;
+                        for(const auto &option:answer.options) {
+                            const auto e=evidence.value(option).toObject();
+                            if(!e.value("known").toBool() || !e.value("compatible").isBool() || e.value("records").toArray().isEmpty())return false;
+                            const auto ancestor=recipe.value("node").toObject().value("id").toString();
+                            if(ancestor.isEmpty())return false;
+                            for(const auto &v:e.value("records").toArray()) {
+                                const auto record=v.toObject();
+                                if(record.value("species_id").toString().isEmpty() || record.value("ancestor_id").toString().isEmpty()
+                                    || !record.value("source_url").toString().startsWith("https://www.inaturalist.org/taxa/")
+                                    || record.value("locator").toString().isEmpty()
+                                    || (record.value("ancestor_id").toString()==ancestor)!=e.value("compatible").toBool())return false;
+                            }
+                            compatible+=e.value("compatible").toBool();
+                            if(option==answer.correctAnswer && !e.value("compatible").toBool())return false;
+                        }
+                        if((i==0 && compatible<3) || (i==1 && (compatible<2 || compatible>3)) || (i==2 && compatible>2))return false;
+                    } else if(proof.value("kind").toString()!="note" || (recipe.value("organism_scope").toBool() && !recipe.value("original_ranks").toArray().contains(answer.rank)
+                            ? QStringLiteral("Sobre este organismo, sem generalizar para todo o grupo: ")+recipe.value("text").toString() : recipe.value("text").toString())!=proof.value("text").toString()
+                        || !recipe.value("ranks").toArray().contains(answer.rank)
+                        || assistanceCeiling(assistanceLevel(recipe.value("grade").toString()))!=answer.ceilings[i])return false;
+                    const auto token=recipe.value("association_token").toString();
+                    if(!token.isEmpty()) {
+                        const QRegularExpression pattern("(?<![\\p{L}])"+QRegularExpression::escape(token)+"(?![\\p{L}])",QRegularExpression::CaseInsensitiveOption);
+                        int matches=0;for(const auto &option:answer.options)matches+=pattern.match(option).hasMatch();
+                        if(matches!=1 || !pattern.match(answer.correctAnswer).hasMatch())return false;
+                    }
+                    continue;
+                }
                 if (hash!=id || proof.value("scientific_name").toString()!=answer.scientificName
                     || proof.value("species_id").toString()!=QString::number(answer.speciesId)
                     || proof.value("category").toString()!=hintKey(static_cast<HintType>(i+1))

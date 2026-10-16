@@ -48,9 +48,9 @@ Os rótulos descrevem políticas de seleção, não uma dificuldade pedagógica 
 
 ## Validação das dicas
 
-A política atual `identification-v3-assistance` separa categoria de assistência: leve = 6 unidades, moderada = 3, forte = 2; erro = zero. A categoria não determina o peso. Abrir o painel não conta, revisitar não cobra novamente, combinações mantêm o menor teto e a próxima pergunta restaura seis unidades. A interface anuncia o teto após combinar a nova dica com as já reveladas. Consulte [a política atual e a auditoria](DICAS_E_PONTUACAO.md); as associações antigas permanecem exclusivamente na interpretação de registros históricos.
+A política atual `identification-v4-progressive` separa categoria de assistência: leve = 6 unidades, moderada = 3, forte = 2; erro = zero. A categoria não determina o peso. Abrir o painel não conta, revisitar não cobra novamente, combinações mantêm o menor teto e a próxima pergunta restaura seis unidades. A interface anuncia o teto após combinar a nova dica com as já reveladas. Consulte [a política atual e a auditoria](DICAS_E_PONTUACAO.md); as associações antigas permanecem exclusivamente na interpretação de registros históricos.
 
-A dica taxonômica precisa citar um ancestral verificado mais amplo que o nível solicitado e deixar **pelo menos três das quatro alternativas compatíveis**. Nenhuma alternativa é tratada como compatível se sua linhagem é desconhecida ou contraditória. Um reino compartilhado por todas as opções continua sendo descartado como contexto excessivamente genérico.
+A política v4 usa contexto amplo na posição leve e permite contrastes taxonômicos mais próximos nas posições moderada e forte, com evidência positiva para todas as alternativas. Não usa ausência de linhagem como prova de diferença. IDs e slots independem da categoria; categorias repetidas precisam de conteúdo distinto e justificativa. A especificidade informa a avaliação, e contagens são somente restrições auxiliares de segurança. Consulte DICAS_E_PONTUACAO.md para condições e limitações.
 
 Etimologias precisam de identidade, nível, referência e aprovação específicos. O iNaturalist não é aceito como fonte etimológica pelo gerador. A origem exibida após responder usa as mesmas notas, sem recomputar pontuação. Interpretações incertas ficam registradas como pendentes e não entram nas dicas.
 
@@ -92,7 +92,7 @@ Na partida e no histórico disponível do perfil:
 - Média de pontos = unidades / (6 × respostas), arredondada somente na apresentação.
 - Acertos sem dicas = respostas corretas com máscara zero, inclusive distinguindo-as da dica taxonômica sem custo.
 - Questões com dicas = respostas com qualquer categoria; cada questão conta uma vez.
-- Categorias reveladas = soma das categorias distintas por resposta; reconsultas não contam.
+- Dicas reveladas = soma dos slots revelados por resposta; reconsultas não contam. A utilização por categoria é lida do snapshot v4, permitindo várias dicas da mesma categoria. Registros anteriores conservam a máscara histórica.
 - Uso de cada categoria = quantidade de questões cuja máscara contém aquela categoria.
 - Eficiência = unidades / (6 × respostas), apresentada como percentual.
 
@@ -164,3 +164,7 @@ O smoke test utiliza bancos temporários, desativa publicação Discord e verifi
 Isso **não equivale a teste numa instalação limpa do Windows**: a máquina hospedeira ainda possui Qt/MSYS2 instalados e não foi disponibilizada uma VM limpa. Gráficos nativos, hardware e instalação em outro computador continuam pendentes. O deploy também mantém os avisos conhecidos de traduções Qt ausentes e componentes opcionais de Direct3D 12. Os textos do próprio jogo estão em português.
 
 Resultados finais e diagnóstico quantitativo estão registrados ao fim desta etapa nos arquivos de build e no documento COBERTURA_TAXONOMICA.md. Limitações científicas e registros pendentes não são apresentados como conteúdo concluído.
+
+## Política automática de testes em 1.6.0
+
+A avaliação pedagógica approved_automated não altera gates científicos ou de direitos. Datas e evidências ficam no corpus e em cada snapshot contextual; alterações invalidam sem regenerar aprovação silenciosamente. Partidas mantêm 20 questões e a variedade entre grupos. Dentro de cada grupo, priorizam-se organismos com três dicas, sem excluir o pool original; a seleção Equilibrada pode testar até oito conjuntos próximos/amplos e conservar o mais completo. Lacunas e conteúdo ficam disponíveis offline. Relatos são rascunhos locais iniciados pelo jogador, sem dicas ocultas ou dados pessoais. Histórico SQLite preserva esquema 3 e pontos v2/v3; a nova interpretação por slots é identificada por regras v4.

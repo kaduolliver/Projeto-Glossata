@@ -121,6 +121,7 @@
         <file>resources/images/inaturalist/664105606.jpg</file>
         <file>resources/images/inaturalist/749769318.jpg</file>
         <file>resources/data/education.json</file>
+        <file>resources/data/progressive_hints.json</file>
         <file>resources/qml/components/TextAction.qml</file>
         <file>resources/qml/components/EndGameDialog.qml</file>
         <file>resources/qml/components/TaxonComboBox.qml</file>

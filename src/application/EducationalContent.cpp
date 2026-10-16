@@ -60,6 +60,7 @@ QVariantMap EducationalContent::nameOrigin(const Species &s) const
 QuestionHints EducationalContent::questionHints(const Species &s,const QString &rank,const QStringList &options,
                                                const QVector<Species> &pool,bool competitive) const
 {
+    if (data_.contains("automated_pedagogy")) return progressiveHints(s,rank,options,pool);
     QuestionHints result;
     for(int i=0;i<3;++i) {
         result[i].type=static_cast<HintType>(i+1);
@@ -104,10 +105,10 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
         }
         AnswerRecord proof{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,
             hintBit(hint.type),hint.ceiling(),hint.ceiling()};
-        proof.rulesVersion=CurrentScoringRules;proof.ceilings[index]=hint.ceiling();
+        proof.rulesVersion=PreviousScoringRules;proof.ceilings[index]=hint.ceiling();
         proof.options=options;
         proof.assessmentIds[index]=hint.assessmentId;proof.assessmentPayloads[index]=hint.assessmentPayload;
-        if (!validAnswerScoring(proof,CurrentScoringRules)) {
+        if (!validAnswerScoring(proof,PreviousScoringRules)) {
             hint.unavailableReason=QStringLiteral("Avaliação de assistência incompatível com o conteúdo, nível ou alternativas; requer contexto documentado.");return;
         }
         if (assessment.value("suitability").toString()=="inadequate") {
@@ -172,6 +173,120 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
        && morphology.value("ranks").toList().contains(rank)
        && morphology.value("photo_id").toString()==s.photo.id
        && !leaks(morphology.value("text").toString(),s,options))assign(2,morphology);
+    return result;
+}
+QuestionHints EducationalContent::progressiveHints(const Species &s,const QString &rank,const QStringList &options,
+                                                    const QVector<Species> &pool) const
+{
+    QuestionHints result;
+    for(int i=0;i<3;++i) {
+        result[i].id=QString("slot-%1").arg(i);
+        result[i].assistance=i==0 ? AssistanceLevel::Light : i==1 ? AssistanceLevel::Moderate : AssistanceLevel::Strong;
+        result[i].unavailableReason=QStringLiteral("Não há conteúdo distinto com evidência suficiente para este grau e estas alternativas.");
+    }
+    const auto automatic=data_.value("automated_pedagogy").toObject();
+    const auto evaluation=automatic.value("evaluation").toObject();
+    auto body=automatic;body.remove("evaluation");body.remove("usable");
+    const auto contentVersion=evaluation.value("content_sha256").toString();
+    if(verifiedAutomaticHash_.isEmpty())verifiedAutomaticHash_=QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(body).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());
+    const auto hash=verifiedAutomaticHash_;
+    const auto due=QDateTime::fromString(evaluation.value("due_at").toString(),Qt::ISODateWithMs);
+    const auto reviewed=QDateTime::fromString(evaluation.value("reviewed_at").toString(),Qt::ISODateWithMs);
+    const auto entry=automatic.value("species").toObject().value(QString::number(s.id)).toObject();
+    if(!automatic.value("usable").toBool() || hash!=contentVersion || !due.isValid() || !reviewed.isValid()
+        || reviewed>QDateTime::currentDateTimeUtc() || due<=QDateTime::currentDateTimeUtc()
+        || entry.value("scientific_name").toString()!=s.name
+        || entry.value("photo").toObject().value("id").toString()!=s.photo.id
+        || entry.value("photo").toObject().value("sha256").toString()!=s.photo.sha256
+        || !s.taxonomyApproved || options.size()!=4 || QSet<QString>(options.begin(),options.end()).size()!=4
+        || !options.contains(s.answerAtRank(rank))) {
+        for(auto &h:result)h.unavailableReason=QStringLiteral("Avaliação pedagógica vencida/alterada ou vínculo de identidade e foto incompatível; é necessária nova avaliação documentada.");
+        return result;
+    }
+    const QStringList ranks{"kingdom","phylum","class","order","family","genus","species"};
+    const int asked=ranks.indexOf(rank);
+    QSet<QString> used;
+    int previousAncestor=-1;
+    for(int slot=0;slot<3;++slot) {
+        // Prefer educational diversity at a compatible grade; never relabel a
+        // weak description as strong to fill a slot. Then try sourced ancestry.
+        QJsonArray candidates;
+        for(const auto &v:entry.value("recipes").toArray())if(v.toObject().value("kind")=="note")candidates.append(v);
+        const auto recipes=entry.value("recipes").toArray();
+        if(slot==1) {
+            for(const auto &v:recipes)if(v.toObject().value("kind")=="ancestor")candidates.append(v);
+        } else for(int r=int(recipes.size())-1;r>=0;--r)if(recipes[r].toObject().value("kind")=="ancestor")candidates.append(recipes[r]);
+        for(const auto &value:candidates) {
+            const auto recipe=value.toObject();const auto id=recipe.value("id").toString();
+            if(used.contains(id))continue;
+            const auto type=hintType(recipe.value("category").toString());
+            QString text=recipe.value("text").toString(), url=recipe.value("source_url").toString();
+            QJsonObject evidence;int ancestorLevel=-1;
+            if(recipe.value("kind")=="note") {
+                if(!recipe.value("ranks").toArray().contains(rank)
+                    || assistanceCeiling(assistanceLevel(recipe.value("grade").toString()))!=result[slot].ceiling())continue;
+                const auto item=speciesContent(s);const auto topic=recipe.value("scientific_topic").toString();
+                const auto source=resolve(recipe.value("source_note"));
+                if(!usableReview(item.value("governance").toObject().value(topic).toObject()) || note(source).isEmpty()
+                    || source.value("text").toString()!=recipe.value("source_text").toString(text) || source.value("source_url").toString()!=url)continue;
+                if(recipe.value("organism_scope").toBool() && !recipe.value("original_ranks").toArray().contains(rank))
+                    text=QStringLiteral("Sobre este organismo, sem generalizar para todo o grupo: ")+text;
+                const auto token=recipe.value("association_token").toString();
+                if(!token.isEmpty()) {
+                    const QRegularExpression match("(?<![\\p{L}])"+QRegularExpression::escape(token)+"(?![\\p{L}])",QRegularExpression::CaseInsensitiveOption);
+                    int count=0;for(const auto &option:options)count+=match.match(option).hasMatch();
+                    if(count!=1 || !match.match(s.answerAtRank(rank)).hasMatch())continue;
+                }
+            } else {
+                const auto n=recipe.value("node").toObject();ancestorLevel=ranks.indexOf(n.value("rank").toString());
+                if(asked<0 || ancestorLevel<0 || ancestorLevel>=asked || ancestorLevel<=previousAncestor
+                    || !s.belongsTo(n.value("id").toString()))continue;
+                // Specificity and additional sourced information are primary;
+                // compatibility counts only constrain safe contextual selection.
+                if((slot==0 && ancestorLevel>asked-2) || (slot==1 && ancestorLevel<asked-3)
+                    || (slot==2 && ancestorLevel<asked-2))continue;
+                int compatible=0;bool complete=true;
+                for(const auto &option:options) {
+                    bool known=false,all=true,none=true;QJsonArray records;
+                    for(const auto &candidate:pool)if(candidate.answerAtRank(rank)==option) {
+                        if(!candidate.taxonomyApproved) {complete=false;break;}
+                        auto found=std::find_if(candidate.taxonomy.cbegin(),candidate.taxonomy.cend(),[&](const Taxon &t){return t.rank==n.value("rank").toString() && t.source=="inaturalist" && !t.sourceTaxonId.isEmpty();});
+                        if(found==candidate.taxonomy.cend()){complete=false;break;}
+                        known=true;const bool match=found->id==n.value("id").toString();all=all&&match;none=none&&!match;
+                        records.append(QJsonObject{{"species_id",QString::number(candidate.id)},{"ancestor_id",found->id},
+                            {"source_url","https://www.inaturalist.org/taxa/"+found->sourceTaxonId},{"locator","taxon / ancestors"}});
+                    }
+                    complete=complete&&known&&(all||none);compatible+=known&&all;
+                    evidence[option]=QJsonObject{{"known",known},{"compatible",known&&all},{"records",records}};
+                }
+                if(!complete || (slot==0 && compatible<3) || (slot==1 && (compatible<2 || compatible>3)) || (slot==2 && compatible>2))continue;
+                text=QStringLiteral("O organismo fotografado pertence a %1: %2. %3")
+                    .arg(taxonomicRankLabel(n.value("rank").toString()),n.value("name").toString(),
+                         slot==0 ? QStringLiteral("É um contexto amplo, compartilhado por várias opções.")
+                                 : QStringLiteral("Compare a classificação das alternativas; esta informação se refere ao organismo, não a todas as espécies das opções."));
+            }
+            // Scientific names inside translations are not the only disclosure
+            // risk. Existing curated etymological grades remain independent.
+            const QRegularExpression leak("(?<![\\p{L}])"+QRegularExpression::escape(s.answerAtRank(rank))+"(?![\\p{L}])",QRegularExpression::CaseInsensitiveOption);
+            bool mentions=false;for(const auto &option:options)mentions=mentions||text.contains(option,Qt::CaseInsensitive);
+            if(text.isEmpty() || leak.match(text).hasMatch() || mentions)continue;
+            QJsonObject proof{{"schema",2},{"slot",slot},{"hint_id",QString::number(s.id)+":"+rank+":"+id},
+                {"species_id",QString::number(s.id)},{"scientific_name",s.name},{"photo",entry.value("photo")},
+                {"rank",rank},{"category",hintKey(type)},{"kind",recipe.value("kind")},{"text",text},
+                {"source_url",url},{"locator",recipe.value("locator")},{"rationale",recipe.value("rationale")},
+                {"evaluation",evaluation},{"content_version",contentVersion},{"options",QJsonArray::fromStringList(options)},
+                {"option_evidence",evidence},{"source_recipe",recipe}};
+            auto &h=result[slot];h.type=type;h.id=proof.value("hint_id").toString();h.text=text;h.sourceUrl=url;
+            h.sourceTitle=recipe.value("source_title").toString();h.rationale=recipe.value("rationale").toString();
+            h.assessmentState="approved_automated";h.assessmentPayload=proof;
+            h.assessmentId=QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(proof).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex());
+            AnswerRecord check{1,s.id,s.name,s.photo.id,rank,s.answerAtRank(rank),s.answerAtRank(rank),true,1<<slot,h.ceiling(),h.ceiling()};
+            check.rulesVersion=CurrentScoringRules;check.options=options;check.contentVersion=contentVersion;
+            check.ceilings[slot]=h.ceiling();check.assessmentIds[slot]=h.assessmentId;check.assessmentPayloads[slot]=proof;
+            if(!validAnswerScoring(check,CurrentScoringRules)){h.text.clear();continue;}
+            h.unavailableReason.clear();used.insert(id);if(ancestorLevel>=0)previousAncestor=ancestorLevel;break;
+        }
+    }
     return result;
 }
 QVariantMap EducationalContent::profile(const Species &s) const

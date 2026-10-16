@@ -1,4 +1,13 @@
 {
+  "automated_pedagogy": {
+    "policy": "progressive-pedagogy-v1",
+    "state": "approved_automated",
+    "usable": true,
+    "organisms": 122,
+    "recipes": 855,
+    "runtime_coverage": "docs/AUDITORIA_PROGRESSAO_DICAS.json; alternatives and independent scientific gates constrain availability.",
+    "scientific_approvals_granted": 0
+  },
   "schema_version": 1,
   "scope": "All active editable hint content; grades are proposals, not human certification or measured difficulty.",
   "total_species": 122,

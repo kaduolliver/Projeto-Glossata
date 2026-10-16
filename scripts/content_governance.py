@@ -502,6 +502,10 @@ def audit_governance(root=ROOT, at=None):
         if s['state'] not in APPROVALS:
             (assistance if record['kind']=='assistance' else scientific).append({'key': key, 'state': s['state'], 'severity': 'high' if s['state'] in {'needs_review', 'rejected'} else 'medium',
                                'reason': s['reason'], 'content_sha256': record['content_sha256']})
+    from review_hints import valid as valid_pedagogy
+    automated = load(root/'resources/data/progressive_hints.json', {})
+    if automated and (not valid_pedagogy(automated, root) or published.get('automated_pedagogy') != dict(automated, usable=True)):
+        errors.append({'error':'automated_pedagogy_stale_or_expired'})
     attribution = credits(root)
     for photo in attribution['photos'].values():
         for issue in photo['scientific_source_issues']:
@@ -563,6 +567,7 @@ def audit_governance(root=ROOT, at=None):
             if findings: errors.append({'error': 'embedded_sensitive_metadata_requires_review', 'file': path.relative_to(root).as_posix(), 'fields': findings})
     return {'technical_errors': errors, 'photo_licensing': licensing, 'asset_licensing': asset_errors, 'unbundled_media': unbundled,
             'scientific_findings': scientific, 'assistance_findings': assistance,
+            'automated_pedagogy': {'state': automated.get('evaluation',{}).get('state'), 'usable': bool(automated and valid_pedagogy(automated, root)), 'scope':'Pedagogy only; human scientific reviews unchanged.'},
             'review_states': dict(__import__('collections').Counter(s['state'] for s in scientific)),
             'distribution_blocked': bool(errors or licensing or asset_errors),
             'repository_distribution_blocked': bool(errors or licensing or asset_errors or unbundled),

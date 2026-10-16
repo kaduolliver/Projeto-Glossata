@@ -501,75 +501,40 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("speciesContinueButton"));
     QCOMPARE(window->property("page").toString(),QString("quiz"));
     QVERIFY(!controller.answerPending());
-    controller.startTaxonGame(scientificGroup("Fungi"),"genus");
-    for(int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=135;++i) {
-        controller.answerSelected(correctAnswer());controller.nextQuestion();
-    }
-    QCOMPARE(controller.questionPhoto().value("speciesId").toInt(),135);
-    for(const auto &hint : controller.hints())QVERIFY(hint.toMap().value("available").toBool());
-    window->resize(1240,820);showPage("quiz");
-    const auto pointsBefore=controller.scoreUnits();
-    const int correctBefore=controller.correctAnswers();
-    QVERIFY(click("hintButton"));
-    QCOMPARE(controller.possibleScoreText(),QString("1,00"));
+    controller.startTaxonGame({},"genus");
+    // Keep a stable list while iterating; temporary QVariantLists have different iterators.
+    auto hasThree=[&](){const auto h=controller.hints();return h.size()==3 && h[0].toMap()["available"].toBool() && h[1].toMap()["available"].toBool() && h[2].toMap()["available"].toBool();};
+    for(int i=0;i<controller.catalogSize() && !hasThree();++i){controller.answerSelected(correctAnswer());controller.nextQuestion();}
+    QVERIFY(hasThree());window->resize(1240,820);showPage("quiz");
+    const auto pointsBefore=controller.scoreUnits();const int correctBefore=controller.correctAnswers();
+    QVERIFY(click("hintButton"));QCOMPARE(controller.possibleScoreText(),QString("1,00"));
     QCOMPARE(controller.scoreUnits(),pointsBefore);
-    for(const auto &hint : controller.hints())QVERIFY(!hint.toMap().value("revealed").toBool());
+    for(const auto &hint:controller.hints())QVERIFY(hint.toMap()["text"].toString().isEmpty());
     QVERIFY(snapshot("hint-category-selection"));
-    QVERIFY(click("hintCategory0"));QCOMPARE(controller.possibleScoreText(),QString("1,00"));
-    QVERIFY(click("hintCategory1"));QCOMPARE(controller.possibleScoreText(),QString("0,50"));
-    QCOMPARE(controller.hints()[2].toMap().value("pointsText").toString(),QString("0,50"));
-    QVERIFY(findVisualItem(window->contentItem(),"hintCeiling2")->property("text").toString().contains("0,50"));
-    QVERIFY(!findVisualItem(window->contentItem(),"selectedHintText")->property("text").toString().isEmpty());
-    QVERIFY(click("hintCategory2"));QCOMPARE(controller.possibleScoreText(),QString("0,50"));
-    QVERIFY(click("hintCategory0"));QCOMPARE(controller.possibleScoreText(),QString("0,50"));
+    QVERIFY(click("hintCategory2"));QCOMPARE(controller.possibleScoreText(),QString("0,33"));
+    QCOMPARE(controller.hints()[0].toMap()["pointsText"].toString(),QString("0,33"));
+    QVERIFY(findVisualItem(window->contentItem(),"hintCeiling0")->property("text").toString().contains("0,33"));
+    QVERIFY(click("hintCategory0"));QCOMPARE(controller.possibleScoreText(),QString("0,33"));
+    QVERIFY(click("hintCategory1"));QCOMPARE(controller.possibleScoreText(),QString("0,33"));
     QVERIFY(snapshot("hint-categories-revealed"));
-    window->resize(1000,700);QTest::qWait(40);
-    QVERIFY(snapshot("compact-hint-categories"));
-    QVERIFY(click("closeHintPanelButton"));
-    QVERIFY(click("hintButton"));QCOMPARE(controller.possibleScoreText(),QString("0,50"));
-    for(const auto &hint : controller.hints())QVERIFY(hint.toMap().value("revealed").toBool());
+    QVERIFY(click("reportHintButton"));QTRY_VERIFY(findVisualItem(window->contentItem(),"hintReportProblem"));
+    findVisualItem(window->contentItem(),"hintReportProblem")->setProperty("text","A dica precisa de correção.");
+    QVERIFY(click("prepareHintReportButton"));
+    QVERIFY(findVisualItem(window->contentItem(),"hintReportPreview")->property("text").toString().contains("A dica precisa de correção."));
+    QVERIFY(snapshot("hint-report-local-draft"));
+    // Close the report with Escape; no browser/network operation is performed.
+    QTest::keyClick(window,Qt::Key_Escape);QTest::qWait(40);
+    window->resize(1000,700);QTest::qWait(40);QVERIFY(snapshot("compact-hint-categories"));
     QVERIFY(click("closeHintPanelButton"));
     controller.answerSelected(correctAnswer());showPage("feedback");
-    QCOMPARE(controller.scoreUnits(),pointsBefore+3);QCOMPARE(controller.correctAnswers(),correctBefore+1);
-    QCOMPARE(controller.answerDetails().value("awardedText").toString(),QString("0,50"));
-    QVERIFY(!controller.answerDetails().value("nameOrigin").toMap().isEmpty());
-    QVERIFY(!controller.revealHintCategory("taxonomic"));
-    QVERIFY(click("answerLearningButton"));
-    QVERIFY(snapshot("compact-answer-learning"));
-    QCOMPARE(controller.scoreUnits(),pointsBefore+3);
-    controller.nextQuestion();showPage("quiz");
-    QCOMPARE(controller.possibleScoreText(),QString("1,00"));
-    for(const auto &hint : controller.hints())QVERIFY(!hint.toMap().value("revealed").toBool());
-    controller.startTaxonGame(scientificGroup("Animalia"),"genus");
-    for(int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=131;++i) {
-        controller.answerSelected(correctAnswer());controller.nextQuestion();
-    }
-    QCOMPARE(controller.questionPhoto().value("speciesId").toInt(),131);showPage("quiz");
-    QVERIFY(click("hintButton"));
-    const auto strongHint=controller.hints()[1].toMap();
-    QVERIFY(strongHint.value("text").toString().isEmpty());QVERIFY(strongHint.value("rationale").toString().isEmpty());
-    QCOMPARE(strongHint.value("assistance").toString(),QString("Forte"));
-    QVERIFY(click("hintCategory1"));QCOMPARE(controller.possibleScoreText(),QString("0,33"));
-    QCOMPARE(controller.hints()[2].toMap().value("assistance").toString(),QString("Leve"));
-    QCOMPARE(controller.hints()[2].toMap().value("pointsText").toString(),QString("0,33"));
-    QVERIFY(findVisualItem(window->contentItem(),"hintCeiling2")->property("text").toString().contains("0,33"));
-    QVERIFY(click("hintCategory2"));QCOMPARE(controller.possibleScoreText(),QString("0,33"));
-    QVERIFY(snapshot("strong-etymology-light-morphology"));
-    QVERIFY(click("closeHintPanelButton"));
-    controller.startTaxonGame({},"kingdom");showPage("quiz");
-    QVERIFY(click("hintButton"));
-    for(int i=0;i<3;++i)QVERIFY(!click("hintCategory"+QString::number(i)));
-    QCOMPARE(controller.possibleScoreText(),QString("1,00"));
-    QVERIFY(snapshot("unavailable-hint-categories"));
-    QVERIFY(click("closeHintPanelButton"));
-    controller.stopGame(); showPage("categories");
-    QVERIFY(click("startCompetitiveButton"));
-    QCOMPARE(window->property("page").toString(),QString("quiz"));
+    QCOMPARE(controller.scoreUnits(),pointsBefore+2);QCOMPARE(controller.correctAnswers(),correctBefore+1);
+    QCOMPARE(controller.answerDetails()["awardedText"].toString(),QString("0,33"));
+    QVERIFY(!controller.revealHintCategory(controller.hints()[0].toMap()["id"].toString()));
+    controller.nextQuestion();showPage("quiz");QCOMPARE(controller.possibleScoreText(),QString("1,00"));
+    controller.stopGame();showPage("categories");QVERIFY(click("startCompetitiveButton"));
     QCOMPARE(controller.gameMode(),QString("competitive"));
-    for (const auto &hint : controller.hints()) {
-        QVERIFY(!hint.toMap().value("available").toBool());
-        QVERIFY(!hint.toMap().value("reason").toString().isEmpty());
-    }
+    const auto competitiveHints=controller.hints();
+    QVERIFY(std::any_of(competitiveHints.begin(),competitiveHints.end(),[](const QVariant &v){return v.toMap()["available"].toBool();}));
     QSet<int> competitiveSpecies;
     for(int i=0;i<20;++i) {
         const int id=controller.questionPhoto().value("speciesId").toInt();

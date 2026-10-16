@@ -188,7 +188,11 @@ def build():
     # A URL, a legacy verified flag, or successful generation is never a review.
     # Newly generated/AI-assisted content is draft until a human records evidence.
     annotate_education(ROOT, data)
-    source_names = ['species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json']
+    from review_hints import valid
+    automatic = load(ROOT / 'resources/data/progressive_hints.json', {})
+    data['automated_pedagogy'] = dict(automatic, usable=bool(automatic and valid(automatic, ROOT)))
+    source_names = [ 'species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json']
+    if automatic: source_names.append('progressive_hints.json')
     if (ROOT / 'resources/data/phylogeny.json').is_file(): source_names.append('phylogeny.json')
     data['generated_source_sha256'] = {name: hashlib.sha256((ROOT / 'resources/data' / name).read_bytes()).hexdigest()
         for name in source_names}

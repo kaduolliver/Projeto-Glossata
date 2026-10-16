@@ -2,6 +2,15 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.6.0] — Não lançado; evolução integrada
+
+- Avaliação pedagógica automatizada explícita para a versão de testes, separada das revisões científicas e permissões. Receitas offline, datas reais, prazo configurável, fontes e hashes; alterações invalidam a avaliação sem renovação silenciosa.
+- Dicas com IDs independentes da categoria, três posições progressivas de 6/3/2 unidades, seleção direta, categorias repetidas justificadas e lacunas explícitas. O Competitivo prioriza perguntas completas por grupo, conserva 20 questões e a variedade; o Livre mantém os organismos e níveis válidos.
+- Snapshots `identification-v4-progressive` incluem texto, categoria, assistência, fonte, evidência automatizada, alternativas e conteúdo. Política v3 congelada para histórico; nenhum recálculo de pontos. Ranking interno separa versões no mesmo programa.
+- Relato de dica com rascunho local e abertura externa somente por iniciativa do jogador; sem respostas/dicas ocultas, perfis ou bancos no relato.
+- Auditoria Git/CI e ampliação fotográfica em commits anteriores desta evolução: Git no MSYS2, auditor de índice e 109 imagens de apresentação, 534/623 cartões (85,71%), 89 pendências. Fotografias e identidades do quiz preservadas.
+- Catálogo **2.4.0**, sucessor de 2.3.0; funcionalidade compatível (MINOR). Sem tag, push ou release; gate de distribuição conserva pendências legítimas.
+
 ## [1.5.0] — Não lançado; refinamento fotográfico
 
 - Fotografias de fundo com 42% da largura e altura integral, recorte proporcional, ponto focal editável, gradiente horizontal e cantos arredondados; sem novos efeitos de GPU ou consultas durante o jogo.

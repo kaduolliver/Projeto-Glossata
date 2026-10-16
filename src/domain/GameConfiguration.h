@@ -39,7 +39,8 @@ struct SessionMetrics {
         unassistedCorrect += answer.correct && answer.revealedHints == 0;
         hintedQuestions += answer.revealedHints != 0;
         for (int i = 0; i < 3; ++i) if (answer.revealedHints & (1 << i)) {
-            ++categoryUse[i];
+            const int category=answer.rulesVersion==CurrentScoringRules ? static_cast<int>(hintType(answer.assessmentPayloads[i].value("category").toString()))-1 : i;
+            if(category>=0 && category<3)++categoryUse[category];
             ++revealedCategories;
         }
     }

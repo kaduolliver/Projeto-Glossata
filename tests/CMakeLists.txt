@@ -65,3 +65,5 @@ add_test(NAME GlossataPhylogenyTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRE
 add_test(NAME GlossataExplorationMediaTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_exploration_media.py)
 add_test(NAME GlossataScientificSourceTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_scientific_sources.py)
 add_test(NAME GlossataRepositoryAuditTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_repository_audit.py)
+
+add_test(NAME GlossataProgressiveHintTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_progressive_hints.py)

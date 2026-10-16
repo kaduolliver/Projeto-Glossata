@@ -34,7 +34,7 @@ Item {
             StatCard { Layout.fillWidth: true; title: "Acertos sem dicas"; value: String(view.backend.sessionMetrics.unassistedCorrect); iconName: "check"; accent: "#45D080" }
             StatCard { Layout.fillWidth: true; title: "Eficiência em pontos"; value: view.backend.sessionMetrics.efficiency + "%"; iconName: "target"; accent: "#E7B857" }
         }
-        Label { objectName: "hintMetricsLabel"; text: view.backend.sessionMetrics.hintedQuestions + " questões com dicas · " + view.backend.sessionMetrics.revealedCategories + " categorias reveladas\nTaxonômica: " + view.backend.sessionMetrics.taxonomic + " · Etimológica: " + view.backend.sessionMetrics.etymological + " · Morfológica: " + view.backend.sessionMetrics.morphological; color: "#91ACB4"; font.pixelSize: 12; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { objectName: "hintMetricsLabel"; text: view.backend.sessionMetrics.hintedQuestions + " questões com dicas · " + view.backend.sessionMetrics.revealedCategories + " dicas reveladas\nTaxonômica: " + view.backend.sessionMetrics.taxonomic + " · Etimológica: " + view.backend.sessionMetrics.etymological + " · Morfológica: " + view.backend.sessionMetrics.morphological; color: "#91ACB4"; font.pixelSize: 12; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { text: "Histórico do perfil · " + (view.backend.rankingMode === "competitive" ? "Competitivo atual" : "Livre"); color: "#E0EDE6"; font.pixelSize: 17; font.weight: Font.DemiBold }
         RowLayout {
             Layout.fillWidth: true; spacing: 16
@@ -42,7 +42,7 @@ Item {
             StatCard { Layout.fillWidth: true; title: "Média por resposta"; value: view.backend.playerMetrics.average; iconName: "chart"; accent: "#45D080" }
             StatCard { Layout.fillWidth: true; title: "Eficiência em pontos"; value: view.backend.playerMetrics.efficiency + "%"; iconName: "spark"; accent: "#E7B857" }
         }
-        Label { text: (view.backend.playerMetrics.answered || 0) + " respostas · " + (view.backend.playerMetrics.unassistedCorrect || 0) + " acertos sem dicas · " + (view.backend.playerMetrics.hintedQuestions || 0) + " questões com dicas\nCategorias: taxonômica " + (view.backend.playerMetrics.taxonomic || 0) + ", etimológica " + (view.backend.playerMetrics.etymological || 0) + ", morfológica " + (view.backend.playerMetrics.morphological || 0) + ". Inclui partidas concluídas com histórico detalhado disponível."; color: "#91ACB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { text: (view.backend.playerMetrics.answered || 0) + " respostas · " + (view.backend.playerMetrics.unassistedCorrect || 0) + " acertos sem dicas · " + (view.backend.playerMetrics.hintedQuestions || 0) + " questões com dicas\nDicas por categoria: taxonômica " + (view.backend.playerMetrics.taxonomic || 0) + ", etimológica " + (view.backend.playerMetrics.etymological || 0) + ", morfológica " + (view.backend.playerMetrics.morphological || 0) + ". Inclui partidas concluídas com histórico detalhado disponível."; color: "#91ACB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         RowLayout {
             Layout.fillWidth: true; Layout.fillHeight: true; spacing: 20
             Rectangle {

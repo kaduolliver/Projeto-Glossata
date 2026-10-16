@@ -7,11 +7,9 @@ Dialog {
     required property var backend
     objectName: "hintPanel"
     property int selectedCategory: -1
-    readonly property var labels: [
-        {title: "Taxonômica", description: "Contexto da classificação.", icon: "book"},
-        {title: "Etimológica", description: "Origem do nome.", icon: "spark"},
-        {title: "Morfológica", description: "Características físicas.", icon: "shape"}
-    ]
+    readonly property var labels: [0,1,2]
+    function categoryTitle(key) { return key === "taxonomic" ? "Taxonômica" : key === "etymological" ? "Etimológica" : key === "morphological" ? "Morfológica" : "Dica" }
+    function categoryIcon(key) { return key === "taxonomic" ? "book" : key === "etymological" ? "spark" : "shape" }
     readonly property var selectedHint: selectedCategory >= 0 ? backend.hints[selectedCategory] : ({})
     parent: Overlay.overlay
     modal: true; focus: true; anchors.centerIn: parent
@@ -37,7 +35,7 @@ Dialog {
                     objectName: "hintCategory" + index
                     enabled: !!hint.available; hoverEnabled: true; padding: 14
                     Layout.fillWidth: true; implicitHeight: Math.max(112, contentItem.implicitHeight + topPadding + bottomPadding); opacity: enabled ? 1 : 0.55
-                    Accessible.name: modelData.title + ". Assistência " + hint.assistance + ". " + (hint.available ? "Revelar esta dica mantém o acerto em até " + hint.pointsText + " ponto." : hint.reason)
+                    Accessible.name: panel.categoryTitle(hint.category) + ". Assistência " + hint.assistance + ". " + (hint.available ? "Revelar esta dica mantém o acerto em até " + hint.pointsText + " ponto." : hint.reason)
                     background: Rectangle {
                         radius: 12
                         color: panel.selectedCategory===choice.index ? "#134C36" : (choice.hovered ? "#1B3440" : "#132832")
@@ -46,11 +44,11 @@ Dialog {
                     }
                     contentItem: RowLayout {
                         spacing: 12
-                        UiIcon { name: choice.modelData.icon; ink: "#79CE9E" }
+                        UiIcon { name: panel.categoryIcon(choice.hint.category); ink: "#79CE9E" }
                         ColumnLayout {
                             Layout.fillWidth: true; spacing: 4
-                            Label { text: choice.modelData.title + (choice.hint.revealed ? " · revelada" : ""); color: "#E6F1E9"; font.pixelSize: 15; font.weight: Font.DemiBold }
-                            Label { text: choice.hint.available ? choice.modelData.description : choice.hint.reason; color: "#96AFB3"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                            Label { text: (choice.index+1) + ". " + panel.categoryTitle(choice.hint.category) + (choice.hint.revealed ? " · revelada" : ""); color: "#E6F1E9"; font.pixelSize: 15; font.weight: Font.DemiBold }
+                            Label { text: choice.hint.available ? "Avaliação pedagógica automatizada" : choice.hint.reason; color: "#96AFB3"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                             Label {
                                 text: "Assistência " + choice.hint.assistance + (choice.hint.provisional ? " · provisória, revisão pendente" : "")
                                 color: choice.hint.assistance === "Leve" ? "#8CF0B1"
@@ -66,11 +64,42 @@ Dialog {
                 }
             }
             Label { objectName: "selectedHintText"; visible: !!panel.selectedHint.revealed; text: panel.selectedHint.text || ""; color: "#DDD3A4"; font.pixelSize: 14; wrapMode: Text.WordWrap; textFormat: Text.PlainText; Layout.fillWidth: true }
+            Label {
+                visible: !!panel.selectedHint.revealed
+                text: "Avaliação automática · " + (panel.selectedHint.evaluationPolicy || "") + " · " + (panel.selectedHint.evaluationDate || "").substring(0,10)
+                color: "#96AFB3"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true
+            }
             TextAction { visible: !!panel.selectedHint.sourceUrl; text: "Consultar fonte ↗"; onClicked: Qt.openUrlExternally(panel.selectedHint.sourceUrl) }
+        }
+    }
+    Dialog {
+        id: report; objectName: "hintReportDialog"; parent: Overlay.overlay; modal: true; anchors.centerIn: parent
+        title: "Relatar problema nesta dica"; width: Math.min(540,parent ? parent.width-32 : 540)
+        height: Math.min(600,parent ? parent.height-40 : 600)
+        contentItem: ColumnLayout {
+            Label { text: "Rascunho local. Nada é enviado automaticamente. Não inclua dados pessoais. Sem internet, copie e guarde para depois."; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            TextArea { id: reportProblem; objectName: "hintReportProblem"; placeholderText: "Descreva o problema"; color: "#E1EDE7"; placeholderTextColor: "#91ACB4"; background: Rectangle { color: "#132832"; radius: 8; border.color: "#2B424D" } wrapMode: TextEdit.Wrap; Layout.fillWidth: true; Layout.preferredHeight: 80 }
+            UiButton { objectName: "prepareHintReportButton"; text: "Preparar relato"; onClicked: reportPreview.text=panel.backend.hintReport(panel.selectedHint.id,reportProblem.text).text || "" }
+            ScrollView {
+                Layout.fillWidth: true; Layout.fillHeight: true
+                TextArea { id: reportPreview; objectName: "hintReportPreview"; readOnly: true; color: "#E1EDE7"; wrapMode: TextEdit.Wrap; textFormat: TextEdit.PlainText }
+            }
+            RowLayout {
+                UiButton { text: "Copiar"; secondary: true; enabled: !!reportPreview.text; onClicked: { reportPreview.selectAll(); reportPreview.copy() } }
+                UiButton { text: "Abrir formulário no GitHub ↗"; enabled: !!reportPreview.text; onClicked: Qt.openUrlExternally(panel.backend.hintReport(panel.selectedHint.id,reportProblem.text).url) }
+            }
+            UiButton { text: "Voltar"; secondary: true; onClicked: report.close() }
         }
     }
     footer: ColumnLayout {
         spacing: 8
+        TextAction {
+            Layout.leftMargin: 20
+            objectName: "reportHintButton"; visible: !!panel.selectedHint.revealed
+            text: "Relatar problema nesta dica"
+            onClicked: { reportProblem.text=""; reportPreview.text=""; report.open() }
+        }
+
         Label { text: "Pontuação possível: " + panel.backend.possibleScoreText; color: "#71DCA0"; font.pixelSize: 13; Layout.leftMargin: 20 }
         UiButton { objectName: "closeHintPanelButton"; text: "Voltar à pergunta"; secondary: true; Layout.fillWidth: true; Layout.margins: 20; onClicked: panel.close() }
     }

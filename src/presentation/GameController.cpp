@@ -1,4 +1,5 @@
 #include "presentation/GameController.h"
+#include <QUrlQuery>
 
 #include <QStandardPaths>
 #include <QCoreApplication>
@@ -309,30 +310,54 @@ void GameController::nextQuestion()
 QVariantList GameController::hints() const
 {
     QVariantList rows;
-    for(const auto &hint : displayedQuestion_.hints) {
-        const bool revealed=displayedRevealedHints_ & hintBit(hint.type);
-        rows.append(QVariantMap{{"id",hintKey(hint.type)},{"available",hint.available()},
+    for(int slot=0;slot<3;++slot) {
+        const auto &hint=displayedQuestion_.hints[slot];
+        const bool revealed=displayedRevealedHints_ & (1<<slot);
+        rows.append(QVariantMap{{"id",hint.id.isEmpty() ? hintKey(hint.type) : hint.id},{"category",hintKey(hint.type)},{"available",hint.available()},
             {"revealed",revealed},{"text",revealed ? hint.text : QString()},
             {"sourceUrl",revealed ? hint.sourceUrl : QString()},{"reason",hint.unavailableReason},
             {"assistance",assistanceLabel(hint.assistance)},{"provisional",hint.provisional},
+            {"evaluationPolicy",hint.assessmentPayload.value("evaluation").toObject().value("policy_version").toString()},
+            {"evaluationDate",hint.assessmentPayload.value("evaluation").toObject().value("reviewed_at").toString()},
             {"assessmentState",hint.assessmentState},{"rationale",revealed ? hint.rationale : QString()},
             {"ceilingUnits",hint.ceiling()},
-            {"pointsText",hint.available() ? formatScore(maximumScoreUnits(displayedRevealedHints_|hintBit(hint.type),hintCeilings(displayedQuestion_.hints))) : QString()}});
+            {"pointsText",hint.available() ? formatScore(maximumScoreUnits(displayedRevealedHints_|(1<<slot),hintCeilings(displayedQuestion_.hints))) : QString()}});
     }
     return rows;
 }
 void GameController::revealHint()
 {
-    revealHintCategory("morphological");
+    revealHintCategory(displayedQuestion_.hints[2].id);
 }
 bool GameController::revealHintCategory(const QString &category)
 {
-    const HintType type=hintType(category);
-    if(answerPending_ || type==HintType::None)return false;
-    if(displayedRevealedHints_ & hintBit(type))return true;
-    if(!service_.revealHint(type))return false;
-    displayedRevealedHints_=service_.revealedHints();
-    emit extraHintChanged();return true;
+    if(answerPending_)return false;
+    for(int i=0;i<3;++i) {
+        const auto &hint=displayedQuestion_.hints[i];
+        if(hint.id!=category && hintKey(hint.type)!=category)continue;
+        if(displayedRevealedHints_&(1<<i))return true;
+        if(!service_.revealHintSlot(i))return false;
+        displayedRevealedHints_=service_.revealedHints();emit extraHintChanged();return true;
+    }
+    return false;
+}
+QVariantMap GameController::hintReport(const QString &id,const QString &problem) const
+{
+    for(int i=0;i<3;++i) {
+        const auto &hint=displayedQuestion_.hints[i];
+        if(hint.id!=id || !(displayedRevealedHints_&(1<<i)) || !hint.available())continue;
+        // Before answering, organism ID is sufficient. Scientific name, correct
+        // answer, other hints, profile and local files never enter this draft.
+        const QString text=QStringLiteral("Problema em dica do Projeto Glossata\nOrganismo (ID público): %1\nNível: %2\nDica: %3\nTexto apresentado: %4\nCategoria: %5\nAssistência: %6\nAlternativas apresentadas: %7\nPolítica: %8\nAvaliação: %9\nProblema relatado: %10")
+            .arg(QString::number(displayedQuestion_.species.id),displayedQuestion_.identificationRank,hint.id,hint.text,
+                 hintKey(hint.type),assistanceLabel(hint.assistance),displayedQuestion_.options.join(" | "),
+                 hint.assessmentPayload.value("evaluation").toObject().value("policy_version").toString(),hint.assessmentId,problem.left(3000));
+        QUrl url("https://github.com/kaduolliver/Projeto-Glossata/issues/new");QUrlQuery query;
+        query.addQueryItem("title","Problema em dica / organismo "+QString::number(displayedQuestion_.species.id));
+        query.addQueryItem("body",text);url.setQuery(query);
+        return {{"text",text},{"url",url.toString(QUrl::FullyEncoded)}};
+    }
+    return {};
 }
 
 void GameController::stopGame()

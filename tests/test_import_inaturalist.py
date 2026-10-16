@@ -152,9 +152,11 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
             for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json',
-                         'photo_provenance.json','content_policy.json','education.json','phylogeny.json'):
+                         'photo_provenance.json','content_policy.json','education.json','phylogeny.json','progressive_hints.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
             self.assertEqual(actual,expected)

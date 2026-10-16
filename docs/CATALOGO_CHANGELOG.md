@@ -2,6 +2,12 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.4.0] — Não lançado; receitas e avaliação pedagógica automática
+
+Aplicativo **1.6.0**. Novo corpus derivado `progressive_hints.json`, com receitas, identidade/foto, fontes e localizadores, avaliação `approved_automated` explicitamente pedagógica. Política e implementação entram no hash; o gerador não renova datas. Notas de organismo podem apoiar níveis superiores com escopo individual explícito, sem redefinir o grupo. Quatro conteúdos inadequados como morfologia prévia continuam excluídos. As 290 avaliações antigas, revisões científicas, baseline e permissões permanecem preservadas; nenhuma aprovação humana ou cessão de direitos é criada.
+
+Os 122 organismos, identificadores, 120 fotos de quiz e 109 imagens de apresentação permanecem inalterados desde 2.3.0. Mudam dados pedagógicos derivados e inventário dos textos/gerador, com histórico de hashes; direitos continuam pendentes quando não demonstrados. MINOR compatível pelos campos e recursos adicionais. Cobertura contextual e lacunas em AUDITORIA_PROGRESSAO_DICAS.json. Nenhuma publicação ou certificação presumida.
+
 ## [2.3.0] — Não lançado; representantes alternativos e cartões especiais
 
 Aplicativo compatível: **1.5.0**, preparado para a evolução seguinte. Acréscimo MINOR de 11 fotos de apresentação: 109 imagens, 533 associações de grupos e misto, 534/623 cartões com foto (85,71%), 89 pendências. Cobertura inclui explicitamente o cartão especial misto. Fontes taxonômicas externas arquivadas para representantes superiores; espécies exigem identidade exata. Fotografias e dados do quiz preservados. Pesquisa, recusas, licenças por arquivo e crescimento de 2.461.743 bytes documentados na auditoria. Revisão científica humana e gate público continuam pendentes.

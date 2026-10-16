@@ -30,6 +30,7 @@ jobs:
           set -euo pipefail
           git --version
           python scripts/audit_repository.py
+          python scripts/review_hints.py
           python scripts/build_education.py
           python scripts/content_governance.py credits
           git diff --exit-code -- resources/data/education.json resources/data/credits.json docs/PHOTO_CREDITS.md
