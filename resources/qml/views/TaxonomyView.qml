@@ -34,6 +34,21 @@ Item {
             TextAction { visible: !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
             TextAction { visible: !!view.backend.browseTaxon.introduction.source_url; text: "Fonte: " + (view.backend.browseTaxon.introduction.source_title || "Referência científica"); onClicked: Qt.openUrlExternally(view.backend.browseTaxon.introduction.source_url) }
         }
+        Label { text: view.backend.browseChildren.length ? "Explore os próximos grupos" : "Você chegou ao último nível disponível."; color: "#BCD1C7"; font.pixelSize: 18; Layout.topMargin: 8 }
+        GridLayout {
+            Layout.fillWidth: true; columns: view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
+            Repeater {
+                model: view.backend.browseChildren
+                delegate: ExploreCard {
+                    required property var modelData
+                    required property int index
+                    objectName: "taxonButton" + index
+                    entry: modelData
+                    Layout.fillWidth: true; Layout.preferredWidth: 1
+                    onClicked: view.backend.exploreTaxon(modelData.id)
+                }
+            }
+        }
         PlayModeSelector { app: view.app; backend: view.backend }
         Label { visible: view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
@@ -53,20 +68,5 @@ Item {
             }
         }
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        Label { text: view.backend.browseChildren.length ? "Explore os próximos grupos" : "Você chegou ao último nível disponível."; color: "#BCD1C7"; font.pixelSize: 18; Layout.topMargin: 8 }
-        GridLayout {
-            Layout.fillWidth: true; columns: view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
-            Repeater {
-                model: view.backend.browseChildren
-                delegate: ExploreCard {
-                    required property var modelData
-                    required property int index
-                    objectName: "taxonButton" + index
-                    entry: modelData
-                    Layout.fillWidth: true; Layout.preferredWidth: 1
-                    onClicked: view.backend.exploreTaxon(modelData.id)
-                }
-            }
-        }
     }
 }

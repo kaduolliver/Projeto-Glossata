@@ -10,6 +10,7 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
     ${CMAKE_SOURCE_DIR}/src/application/EducationalContent.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -36,6 +37,7 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
     ${CMAKE_SOURCE_DIR}/src/application/EducationalContent.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
@@ -60,3 +62,4 @@ add_test(NAME GlossataImportTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_
 add_test(NAME GlossataGovernanceTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_content_governance.py)
 add_test(NAME GlossataReleaseTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_release.py)
 add_test(NAME GlossataPhylogenyTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_phylogeny.py)
+add_test(NAME GlossataExplorationMediaTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_exploration_media.py)

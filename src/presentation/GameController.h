@@ -3,6 +3,7 @@
 #include "application/GameService.h"
 #include "infrastructure/content/SqliteSpeciesCatalog.h"
 #include "application/TaxonomyIndex.h"
+#include "infrastructure/content/JsonExplorationMediaCatalog.h"
 #include "infrastructure/persistence/SqliteGameHistoryRepository.h"
 
 #include <QObject>
@@ -44,6 +45,7 @@ class GameController : public QObject {
     Q_PROPERTY(bool answerPending READ answerPending NOTIFY answerDetailsChanged)
     Q_PROPERTY(QVariantMap answerDetails READ answerDetails NOTIFY answerDetailsChanged)
     Q_PROPERTY(QVariantList categories READ categories CONSTANT)
+    Q_PROPERTY(QVariantList quickAccessGroups READ quickAccessGroups CONSTANT)
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
     Q_PROPERTY(QVariantList achievements READ achievements NOTIFY scoreChanged)
     Q_PROPERTY(QString categoryName READ categoryName NOTIFY gameFinishedChanged)
@@ -97,6 +99,7 @@ public:
     bool answerPending() const { return answerPending_; }
     QVariantMap answerDetails() const { return answerDetails_; }
     QVariantList categories() const;
+    QVariantList quickAccessGroups() const { return taxonomy_.quickAccess(); }
     QVariantList categoryStats() const;
     QVariantList achievements() const;
     QString categoryName() const { return categoryName_; }
@@ -147,6 +150,7 @@ signals:
 private:
     void startWithConfiguration(const GameConfiguration &configuration);
     SqliteSpeciesCatalog catalog_;
+    JsonExplorationMediaCatalog explorationMedia_;
     TaxonomyIndex taxonomy_;
     SqliteGameHistoryRepository historyRepository_;
     GameService service_;

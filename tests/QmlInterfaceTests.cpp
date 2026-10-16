@@ -7,6 +7,7 @@
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QQuickItem>
+#include <QQuickItemGrabResult>
 #include <QTemporaryDir>
 #include <QDir>
 #include <functional>
@@ -36,8 +37,43 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void photographEdgesFadeWithoutHidingTheOrganism();
     void navigateAndConfirmAnswers();
 };
+
+void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
+{
+    QQmlEngine engine;
+    QQmlComponent component(&engine,QUrl("qrc:/resources/qml/components/FeatheredPhoto.qml"));
+    QScopedPointer<QObject> object(component.create());
+    QVERIFY2(object,qPrintable(component.errorString()));
+    auto photo=qobject_cast<QQuickItem *>(object.data());QVERIFY(photo);
+    QQuickWindow window;window.resize(200,160);photo->setParentItem(window.contentItem());
+    photo->setSize(QSizeF(160,120));window.show();
+    QVERIFY(photo->setProperty("source",QUrl("qrc:/resources/images/exploration/amanita.jpg")));
+    QTRY_VERIFY_WITH_TIMEOUT(photo->property("ready").toBool(),3000);
+    QTest::qWait(100);
+    auto grab=photo->grabToImage();QVERIFY(grab);
+    QTRY_VERIFY(!grab->image().isNull());
+    const auto image=grab->image();
+    QVERIFY(image.hasAlphaChannel());
+    QVERIFY(image.pixelColor(80,60).alpha()>240);
+    QVERIFY(image.pixelColor(1,60).alpha()<30);
+    QVERIFY(image.pixelColor(80,4).alpha()<30);
+    QVERIFY(image.pixelColor(80,3).alpha()<20); // No unmasked antialiased outline.
+    QVERIFY(image.pixelColor(10,60).alpha()>image.pixelColor(1,60).alpha());
+    QVERIFY(image.pixelColor(10,60).alpha()<image.pixelColor(80,60).alpha());
+    QVERIFY(photo->setProperty("source",QUrl("qrc:/resources/images/exploration/bacteria.jpg")));
+    photo->setSize(QSizeF(180,96));
+    QTRY_VERIFY_WITH_TIMEOUT(photo->property("ready").toBool(),3000);
+    QTest::qWait(100);
+    auto portrait=photo->grabToImage();QVERIFY(portrait);QTRY_VERIFY(!portrait->image().isNull());
+    QVERIFY(portrait->image().pixelColor(90,48).alpha()>240);
+    // The fade follows fitted photo bounds, including portrait letterboxing.
+    QVERIFY(portrait->image().pixelColor(55,48).alpha()<40);
+    QVERIFY(photo->setProperty("source",QUrl()));
+    QVERIFY(!photo->property("ready").toBool());
+}
 
 void QmlInterfaceTests::navigateAndConfirmAnswers()
 {
@@ -116,6 +152,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("creditsButton"));
     QCOMPARE(window->property("page").toString(), QString("credits"));
     QCOMPARE(controller.legalInformation().value("photos").toList().size(), 120);
+    QCOMPARE(controller.legalInformation().value("explorationPhotos").toList().size(),8);
     QVERIFY(!controller.legalInformation().value("catalogVersion").toString().isEmpty());
     QCOMPARE(controller.legalInformation().value("catalogHash").toString().size(), 64);
     QVERIFY(snapshot("credits-transparency"));
@@ -124,6 +161,39 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QCOMPARE(window->property("page").toString(), QString("categories"));
     QVERIFY(snapshot("02-categories"));
     QCOMPARE(controller.categories().size(),4);
+    for(int group=0;group<3;++group) {
+        auto shortcut=findVisualItem(window->contentItem(),"quickAccessButton"+QString::number(group));
+        QVERIFY(shortcut);shortcut->forceActiveFocus();QVERIFY(shortcut->hasActiveFocus());
+        const QString id=controller.quickAccessGroups()[group].toMap()["id"].toString();
+        QVERIFY(click("quickAccessButton"+QString::number(group)));
+        QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+        QCOMPARE(controller.browseTaxon()["id"].toString(),id);
+        QCOMPARE(controller.breadcrumbs().first().toMap()["title"].toString(),QString("Eukaryota"));
+        QVERIFY(snapshot("quick-access-"+QString::number(group)));
+        QVERIFY(click("returnDomainsButton"));
+    }
+    for(int domain=0;domain<3;++domain) {
+        auto card=findVisualItem(window->contentItem(),"domainButton"+QString::number(domain));QVERIFY(card);
+        auto photo=findVisualItem(card,"explorationPhoto");QVERIFY(photo);
+        QTRY_VERIFY(photo->property("ready").toBool());
+    }
+    auto categoriesScroll=findVisualItem(window->contentItem(),"pageScroll");QVERIFY(categoriesScroll);
+    categoriesScroll->setProperty("contentY",qMax(0.0,categoriesScroll->property("contentHeight").toReal()-categoriesScroll->height()));
+    QVERIFY(snapshot("categories-quick-access"));
+    categoriesScroll->setProperty("contentY",0);
+    window->resize(1000,700);QTest::qWait(40);
+    for(int group=0;group<3;++group) {
+        auto shortcut=findVisualItem(window->contentItem(),"quickAccessButton"+QString::number(group));QVERIFY(shortcut);
+        shortcut->forceActiveFocus();QVERIFY(shortcut->hasActiveFocus());
+        const auto position=shortcut->mapToScene(QPointF(shortcut->width()/2,shortcut->height()/2));
+        QVERIFY(position.y()>80 && position.y()<window->height()-30);
+        QTest::keyClick(window,Qt::Key_Space);QTest::qWait(40);
+        QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+        QCOMPARE(controller.browseTaxon()["id"],controller.quickAccessGroups()[group].toMap()["id"]);
+        QVERIFY(click("returnDomainsButton"));
+    }
+    QVERIFY(snapshot("compact-quick-access"));
+    window->resize(1240,820);QTest::qWait(40);
     for (int domain = 0; domain < 3; ++domain) {
         QVERIFY(click("domainButton" + QString::number(domain)));
         QCOMPARE(window->property("page").toString(), QString("taxonomy"));

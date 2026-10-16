@@ -13,7 +13,7 @@ GameController::GameController(QObject *parent, const QString &databasePath)
       catalog_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_catalog.sqlite")
           : databasePath + QStringLiteral(".catalog.sqlite")),
-      taxonomy_(catalog_),
+      taxonomy_(catalog_, &explorationMedia_),
       historyRepository_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_history.sqlite")
           : databasePath),
@@ -40,7 +40,11 @@ QVariantMap GameController::legalInformation() const
     QVariantList photos;
     const auto records = data.value("photos").toObject();
     for (auto it = records.begin(); it != records.end(); ++it) photos.append(it.value().toObject().toVariantMap());
+    QVariantList explorationPhotos;
+    const auto presentation=data.value("exploration_photos").toObject();
+    for(auto it=presentation.begin();it!=presentation.end();++it) explorationPhotos.append(it.value().toObject().toVariantMap());
     return {{"notice", data.value("notice").toString()}, {"photos", photos},
+            {"explorationPhotos",explorationPhotos},
             {"applicationVersion", QCoreApplication::applicationVersion()},
             {"catalogVersion", catalog.value("version").toString()}, {"catalogHash", catalog.value("content_sha256").toString()},
             {"limitations", QStringLiteral("Catálogo legado com revisão humana e permissões ainda incompletas. Testes automáticos não são certificação jurídica ou científica.")}};

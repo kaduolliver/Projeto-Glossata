@@ -112,6 +112,8 @@ private slots:
     void categoryQuizUsesOnlySelectedFamily();
     void controllerKeepsAnswerUntilNextQuestion();
     void taxonomyFiltersAndIdentificationLevels();
+    void explorationShortcutsPreserveHierarchyAndQuizFilters();
+    void explorationPhotographsFailClosed();
     void newTaxonomicRanksRequireIndependentReview();
     void offlinePhotosHaveAttributionAndDecode();
     void catalogMigrationPreservesPlayerDataAndStoredRecords();
@@ -635,6 +637,86 @@ void GameServiceTests::taxonomyFiltersAndIdentificationLevels()
     QCOMPARE(realms.size(), 5); // Frozen legacy membership remains readable.
     QVERIFY(realms.contains("Monera"));
     QVERIFY(!index.identificationLevels("edu:Monera").isEmpty());
+}
+
+void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
+{
+    JsonSpeciesCatalog catalog;
+    JsonExplorationMediaCatalog media;
+    TaxonomyIndex index(catalog,&media);
+    const auto shortcuts=index.quickAccess();
+    QCOMPARE(shortcuts.size(),3);
+    const QStringList names{"Animalia","Plantae","Fungi"};
+    const QStringList lineages{"Opisthokonta","Archaeplastida","Opisthokonta"};
+    for(int i=0;i<shortcuts.size();++i) {
+        const auto entry=shortcuts[i].toMap();
+        QCOMPARE(entry["title"].toString(),names[i]);
+        QCOMPARE(entry["rank"].toString(),QString("kingdom"));
+        const auto path=index.breadcrumbs(entry["id"].toString());
+        QCOMPARE(path[0].toMap()["title"].toString(),QString("Eukaryota"));
+        QCOMPARE(path[1].toMap()["title"].toString(),lineages[i]);
+        QCOMPARE(path.last().toMap()["id"],entry["id"]);
+        QVERIFY(!entry["photo"].toMap().isEmpty());
+        GameService service(&catalog);
+        service.startNewGame(entry["id"].toString(),"genus");
+        QVERIFY(!service.isFinished());
+        const int size=service.catalogSize();
+        for(int j=0;j<size;++j) {
+            QVERIFY(service.currentQuestion().species.belongsTo(entry["id"].toString()));
+            QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
+        }
+    }
+    // Every catalog organism is reachable by following actual children, including
+    // paths with intermediate ranks. Shortcuts neither reparent nor hide nodes.
+    QStringList pending{"domain:Bacteria","domain:Archaea","domain:Eukaryota"};
+    QSet<QString> visited;
+    while(!pending.isEmpty()) {
+        const auto id=pending.takeFirst();
+        QVERIFY(!visited.contains(id));visited.insert(id);
+        for(const auto &child:index.children(id))pending.append(child.toMap()["id"].toString());
+    }
+    const auto organisms=catalog.loadSpecies();
+    QCOMPARE(organisms.size(),122);
+    for(const auto &organism:organisms) {
+        for(const auto &node:organism.taxonomy)QVERIFY(visited.contains(node.id));
+        QCOMPARE(index.count(organism.taxonomy.last().id),1);
+    }
+    QVERIFY(index.describe("clade:Discoba")["photo"].toMap().isEmpty());
+    QVERIFY(!index.describe("domain:Archaea")["photo"].toMap().isEmpty());
+    QCOMPARE(index.count("domain:Archaea"),0);
+}
+
+void GameServiceTests::explorationPhotographsFailClosed()
+{
+    JsonExplorationMediaCatalog embedded;
+    QVERIFY(!embedded.photoFor("domain:Bacteria").isEmpty());
+    QCOMPARE(embedded.photoFor("domain:Bacteria")["kind"].toString(),QString("micrograph"));
+    QVERIFY(embedded.photoFor("unknown:id").isEmpty());
+    QFile source(":/resources/data/exploration_photos.json");QVERIFY(source.open(QIODevice::ReadOnly));
+    auto data=QJsonDocument::fromJson(source.readAll()).object();
+    const auto lion=data["photos"].toObject()["lion"].toObject();
+    QTemporaryDir directory;QVERIFY(directory.isValid());
+    QDir().mkpath(directory.filePath("resources/data"));
+    for(const auto &key:{"path","evidence_path"}) {
+        const QString path=lion[key].toString();
+        QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
+        QVERIFY(QFile::copy(":/"+path,directory.filePath(path)));
+    }
+    auto write=[&](const QJsonObject &photo) {
+        auto photos=data["photos"].toObject();photos["lion"]=photo;data["photos"]=photos;
+        QFile target(directory.filePath("resources/data/exploration_photos.json"));
+        if(!target.open(QIODevice::WriteOnly))return false;
+        return target.write(QJsonDocument(data).toJson())>0;
+    };
+    QVERIFY(write(lion));
+    JsonExplorationMediaCatalog valid(directory.path());
+    QVERIFY(!valid.photoFor("clade:Opisthokonta").isEmpty());
+    QVERIFY(valid.photoFor("domain:Bacteria").isEmpty());
+    for(const auto &key:{"license_version","sha256","evidence_sha256","author","path"}) {
+        auto invalid=lion;invalid[key]="invalid";QVERIFY(write(invalid));
+        JsonExplorationMediaCatalog rejected(directory.path());
+        QVERIFY2(rejected.photoFor("clade:Opisthokonta").isEmpty(),key);
+    }
 }
 
 void GameServiceTests::newTaxonomicRanksRequireIndependentReview()

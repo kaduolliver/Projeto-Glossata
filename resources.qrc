@@ -158,5 +158,23 @@
         <file>resources/data/credits.json</file>
         <file>resources/data/content_policy.json</file>
         <file>resources/qml/views/CreditsView.qml</file>
+        <file>resources/qml/components/FeatheredPhoto.qml</file>
+        <file>resources/data/exploration_photos.json</file>
+        <file>resources/images/exploration/amanita.jpg</file>
+        <file>resources/images/exploration/archaea.jpg</file>
+        <file>resources/images/exploration/bacteria.jpg</file>
+        <file>resources/images/exploration/kelp.jpg</file>
+        <file>resources/images/exploration/lion.jpg</file>
+        <file>resources/images/exploration/monarch.jpg</file>
+        <file>resources/images/exploration/physarum.jpg</file>
+        <file>resources/images/exploration/sunflower.jpg</file>
+        <file>resources/compliance/exploration/amanita.json</file>
+        <file>resources/compliance/exploration/archaea.json</file>
+        <file>resources/compliance/exploration/bacteria.json</file>
+        <file>resources/compliance/exploration/kelp.json</file>
+        <file>resources/compliance/exploration/lion.json</file>
+        <file>resources/compliance/exploration/monarch.json</file>
+        <file>resources/compliance/exploration/physarum.json</file>
+        <file>resources/compliance/exploration/sunflower.json</file>
     </qresource>
 </RCC>

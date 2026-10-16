@@ -14,6 +14,25 @@ Item {
         width: parent.width; spacing: 20
         Label { text: "Escolha sua próxima descoberta"; color: "#EDF6EF"; font.pixelSize: 29; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { text: "Explore os domínios da vida e suas linhagens evolutivas no seu ritmo."; color: "#91ACB4"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        RowLayout {
+            Layout.fillWidth: true; spacing: 10
+            Label { text: "ACESSO RÁPIDO"; color: "#74979D"; font.pixelSize: 10; font.letterSpacing: 1.2 }
+            Repeater {
+                model: view.backend.quickAccessGroups
+                delegate: TextAction {
+                    required property var modelData
+                    required property int index
+                    objectName: "quickAccessButton" + index
+                    text: modelData.title
+                    Accessible.description: modelData.pathText + ". " + modelData.count + " organismos; explorar este grupo."
+                    ToolTip.visible: hovered || visualFocus
+                    ToolTip.delay: 600
+                    ToolTip.text: modelData.pathText
+                    onClicked: view.app.openTaxon(modelData.id)
+                }
+            }
+            Item { Layout.fillWidth: true }
+        }
         PlayModeSelector { app: view.app; backend: view.backend }
         ExploreCard { objectName: "categoryButton0"; Layout.fillWidth: true; entry: view.backend.categories[0]; wide: true; onClicked: view.app.beginTaxonGame("", entry.defaultRank) }
         Label { text: "OS TRÊS DOMÍNIOS · PORTAS DE EXPLORAÇÃO"; color: "#74979D"; font.pixelSize: 10; font.letterSpacing: 1.6; Layout.topMargin: 6; wrapMode: Text.WordWrap; Layout.fillWidth: true }

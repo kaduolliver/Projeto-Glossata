@@ -2,6 +2,14 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.3.0] — Não lançado; em desenvolvimento
+
+- Acesso rápido a Animalia, Plantae e Fungi sem duplicar nós ou alterar suas posições filogenéticas. Os grupos filhos passam a preceder os controles de quiz na exploração; breadcrumbs e filtros conservam os identificadores científicos.
+- Fotografias reais nos cartões, incluindo micrografias identificadas para Bacteria e Archaea. Componente reutilizável com transparência progressiva nas bordas e centro opaco, compatível com o renderizador software do Qt. Ilustrações preservadas onde faltam fotos adequadas.
+- Catálogo **2.1.0**: oito imagens de apresentação, 276.666 bytes, CC0/CC BY com evidências por arquivo, créditos automáticos e inventário offline. Nenhuma das 120 fotografias de quiz ou dos 122 organismos foi substituída.
+- Auditoria e testes cobrem licenças, identidade, recusa antes do download, transparência real, atalhos, filtros e acesso ao catálogo inteiro. Capturas reais atualizadas; bancos temporários nos testes. Dados dos jogadores e regras de pontuação preservados.
+- Incrementos MINOR compatíveis do aplicativo e do catálogo. Sem tag, publicação ou push; bloqueios legados de redistribuição e pendências científicas permanecem documentados.
+
 ## [1.2.0] — Não lançado; em desenvolvimento
 
 - Navegação pelos domínios Bacteria, Archaea e Eukaryota e por linhagens evolutivas, com fontes, divergências e limitações. Novos enquadramentos permanecem rascunhos até revisão humana.

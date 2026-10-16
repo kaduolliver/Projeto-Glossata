@@ -3,8 +3,8 @@
 #include <algorithm>
 #include "domain/QuizSelection.h"
 
-TaxonomyIndex::TaxonomyIndex(const SpeciesCatalog &catalog)
-    : species_(catalog.loadSpecies())
+TaxonomyIndex::TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMediaCatalog *media)
+    : media_(media), species_(catalog.loadSpecies())
 {
     for (const Taxon &taxon : catalog.loadTaxons()) {
         taxons_.insert(taxon.id, taxon);
@@ -54,6 +54,7 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
         if (s.photo.role=="supporting") ++supportingCount; else ++visualCount;
     }
     return {{"id", id}, {"title", taxon.name}, {"rank", taxon.rank},
+        {"photo",media_ ? media_->photoFor(id) : QVariantMap()},
         {"rankLabel", taxonomicRankLabel(taxon.rank)}, {"kingdom", kingdom},
         {"count", count(id)}, {"visualCount",visualCount},{"supportingCount",supportingCount},{"introduction",content_.introduction(id)},
         {"source", taxon.source}, {"sourceTaxonId", taxon.sourceTaxonId},
@@ -68,12 +69,28 @@ QVariantList TaxonomyIndex::domains() const
     QVariantList list;
     list.append(QVariantMap{{"id", QString()}, {"title", QStringLiteral("Todas as espécies")},
         {"kingdom", QString()}, {"count", count()}, {"visualCount",describe(QString()).value("visualCount")},
-        {"defaultRank",QStringLiteral("genus")},
+        {"defaultRank",QStringLiteral("genus")}, {"photo",media_ ? media_->photoFor(QString()) : QVariantMap()},
         {"playableCount", eligibleQuizSpecies(species_,QStringLiteral("genus")).size()},
         {"description", QStringLiteral("Identifique gêneros de diferentes linhagens evolutivas.")}});
     QVector<QString> roots=children_.value(QString());
     std::sort(roots.begin(),roots.end(),[this](const QString &a,const QString &b){return taxons_.value(a).name<taxons_.value(b).name;});
     for (const auto &id : roots) if(taxons_.value(id).rank=="domain") list.append(describe(id));
+    return list;
+}
+
+QVariantList TaxonomyIndex::quickAccess() const
+{
+    QVariantList list;
+    for(const QString &name : {QString("Animalia"),QString("Plantae"),QString("Fungi")}) {
+        for(const auto &node : taxons_) if(node.rank=="kingdom" && node.name==name && count(node.id)>0) {
+            auto entry=describe(node.id);
+            QStringList path;
+            for(const auto &ancestor : breadcrumbs(node.id)) path.append(ancestor.toMap().value("title").toString());
+            entry.insert("pathText",path.join(" › "));
+            list.append(entry);
+            break;
+        }
+    }
     return list;
 }
 

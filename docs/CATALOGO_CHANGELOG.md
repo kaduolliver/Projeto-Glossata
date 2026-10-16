@@ -2,6 +2,16 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.1.0] — Não lançado; fotografias de exploração
+
+Aplicativo previsto: **1.3.0**. Acréscimo MINOR compatível de recursos de apresentação e proveniência; sem publicação.
+
+- Oito miniaturas reais CC0/CC BY por arquivo, com identificador/revisão do Commons, autor indicado pela fonte, licença/versão/URL demonstradas, coleta real, hash, dimensões e modificações. Manifesto separado `exploration_photos.json`; evidências em `resources/compliance/exploration/`; inventário e créditos automáticos atualizados.
+- Representantes: leão, monarca, girassol, Amanita, Macrocystis, Physarum e micrografias de E. coli e Sulfolobus sp. A20 (identificação histórica da fonte, com nota sobre Saccharolobus). A micrografia bacteriana é colorizada pela fonte. São imagens de apresentação; não adicionam registros nem aprovam identificação no quiz.
+- Os 122 organismos, 120 fotos do quiz, nomes/identificadores, classificação, referências, revisões e evidências anteriores ficam preservados. Nenhuma nova aprovação humana ou de especialista. Escopos de associação assistidos por IA continuam explicitados como rascunhos.
+- Discoba e ramos sem imagem apropriada mantêm ilustrações. O novo inventário não resolve nem reduz os bloqueios de licenciamento/curadoria dos recursos legados. Consultas de links geram propostas, sem alterar evidências publicadas.
+- O manifesto passa a identificar também essas imagens, metadados e evidências. As imagens de apresentação não integram o fingerprint competitivo: espécies, taxonomia, conteúdo educativo e regras não mudaram neste lote. Rankings e resultados antigos são preservados, sem recálculo.
+
 ## [2.0.0] — Não lançado; projeção filogenética
 
 Aplicativo previsto: **1.2.0**. Mudança MAJOR do esquema de organização; sem publicação de release.
