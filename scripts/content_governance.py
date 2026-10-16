@@ -181,7 +181,7 @@ def archive_permission(root, observation, photo, origin='live_api', collected_at
     return relative
 
 
-def records(root=ROOT, education=None):
+def records(root=ROOT, education=None, include_presentation=False):
     """Fingerprint source content, identities and evidence independently by topic."""
     folder = root / 'resources/data'
     species = load(folder / 'species.json', [])
@@ -242,6 +242,15 @@ def records(root=ROOT, education=None):
                                'scientific_name': s['name'], 'species_id': sid, 'category': category,
                                'source': source, 'photo': {'id': s.get('photo', {}).get('id'), 'sha256': s.get('photo', {}).get('sha256')},
                                'assessment': {k:v for k,v in assessment.items() if k not in {'governance','binding'}}}}
+    if include_presentation:
+        # Same review ledger/status rules; these presentation-only records do not
+        # enter education generation or confer quiz eligibility.
+        presentation = load(folder / 'exploration_photos.json', {})
+        for pid, photo in presentation.get('photos', {}).items():
+            result['presentation:'+pid] = {'kind':'presentation', 'topic':'photo', 'prior_state':'draft',
+                'source_url':photo.get('photo_url',''), 'payload':{
+                    'photo_id':pid, 'photo':{k:v for k,v in photo.items() if k!='scientific_review'},
+                    'bindings':sorted(k for k,v in presentation.get('bindings',{}).items() if v==pid)}}
     for item in result.values(): item['content_sha256'] = digest(item['payload'])
     return result
 
@@ -575,7 +584,7 @@ def audit_governance(root=ROOT, at=None):
 
 
 def append_review(root, key, decision):
-    current = records(root)
+    current = records(root, include_presentation=True)
     if key not in current: raise ValueError('Tópico/afirmação não existe.')
     if current[key]['kind']=='assistance' and decision.get('claim_scope')!='hint_assistance':
         raise ValueError('A avaliação pedagógica exige escopo hint_assistance; revisão científica não aprova o peso da dica.')

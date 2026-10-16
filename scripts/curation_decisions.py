@@ -23,10 +23,10 @@ def template(root,config,kind,key,rid,issue,draft=None):
     for field in ('reviewer','reviewed_at','rationale'):decision.setdefault(field,None)
     decision['actor_type']='human'  # Required declaration, not a fabricated reviewer.
     if kind=='review':
-        current=governance.records(root)
+        current=governance.records(root,include_presentation=True)
         if key not in current:raise ValueError('Unknown scientific record')
         decision.setdefault('state','pending');decision.setdefault('review_kind','editorial')
-        decision.setdefault('claim_scope','hint_assistance' if current[key]['kind']=='assistance' else None)
+        decision.setdefault('claim_scope','hint_assistance' if current[key]['kind']=='assistance' else 'group' if current[key]['kind']=='presentation' else None)
         decision.setdefault('evidence',[]);decision['content_sha256']=current[key]['content_sha256']
         ledger='resources/compliance/review_history.jsonl'
         prior=[e for e in governance.read_chain(root/ledger) if e.get('key')==key]
@@ -58,6 +58,13 @@ def template(root,config,kind,key,rid,issue,draft=None):
 
 
 def record_decision(root,config,envelope):
+    lock=root/'build/curation/decision.lock';lock.parent.mkdir(parents=True,exist_ok=True)
+    with lock.open('x',encoding='utf8') as handle:handle.write('Explicit local human-decision import')
+    try:return _record_decision(root,config,envelope)
+    finally:lock.unlink()
+
+
+def _record_decision(root,config,envelope):
     if not isinstance(envelope,dict) or not isinstance(envelope.get('decision'),dict) or envelope.get('schema_version')!=1 or private_data(envelope):raise ValueError('Private or invalid decision')
     kind=envelope.get('kind');key=envelope.get('key');link=envelope.get('curation',{})
     match=re.fullmatch(r'https://github\.com/'+re.escape(config['repository'])+r'/issues/([1-9][0-9]*)',link.get('issue_url',''))

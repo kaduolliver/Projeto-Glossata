@@ -91,6 +91,28 @@ class DecisionTests(unittest.TestCase):
         draft=decisions.authorization_draft(self.root,self.config,'7')
         self.assertEqual(draft['contact_status'],'not_sent');self.assertIsNone(draft['consent'])
         self.assertEqual(draft['credit_as_provided'],self.fixture.species['photo']['author'])
+    def test_presentation_review_uses_same_ledger_without_changing_quiz_records(self):
+        original=governance.records(self.root)
+        manifest={'photos':{'synthetic':{'subject':'Example species','sha256':'a'*64,
+                    'photo_url':'https://commons.wikimedia.org/wiki/File:synthetic.jpg',
+                    'scientific_review':'source only; no human declared'}},'bindings':{'domain:Eukaryota':'synthetic'}}
+        self.fixture.write('exploration_photos.json',manifest)
+        self.assertEqual(original,governance.records(self.root))
+        key='presentation:synthetic';rid=requests.request_id('photography','presentation-identification')
+        draft=decisions.template(self.root,self.config,'review',key,rid,2)
+        draft['decision'].update(self.fixture.decision());draft['decision']['claim_scope']='group'
+        draft['decision']['content_sha256']=governance.records(self.root,include_presentation=True)[key]['content_sha256']
+        decisions.record_decision(self.root,self.config,draft)
+        records=governance.records(self.root,include_presentation=True)
+        status=governance.status(key,records[key],{},governance.read_ledger(self.root),governance.policy(self.root))
+        self.assertTrue(status['usable']);self.assertEqual(status['state'],'approved_editorial')
+        manifest['bindings']['domain:Bacteria']='synthetic';self.fixture.write('exploration_photos.json',manifest)
+        record=governance.records(self.root,include_presentation=True)[key]
+        self.assertEqual(governance.status(key,record,{},governance.read_ledger(self.root),governance.policy(self.root))['state'],'needs_review')
+    def test_another_decision_import_holding_the_lock_preserves_history(self):
+        lock=self.root/'build/curation/decision.lock';lock.parent.mkdir(parents=True);lock.write_text('active')
+        with self.assertRaises(FileExistsError):decisions.record_decision(self.root,self.config,self.envelope())
+        self.assertEqual(governance.read_ledger(self.root),[]);self.assertEqual(lock.read_text(),'active')
 
 
 if __name__=='__main__':unittest.main()

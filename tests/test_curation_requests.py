@@ -5,6 +5,9 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest import mock
+import contextlib
+import io
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 import content_governance as governance
 import curation_requests as requests
@@ -66,6 +69,19 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(next(r for r in self.queue(a)['requests'] if r['bucket']=='quiz-photos')['priority'],1)
         a['photo_licensing'][0]['errors']=['license_outside_policy']
         self.assertEqual(next(r for r in self.queue(a)['requests'] if r['bucket']=='quiz-photos')['priority'],0)
+    def test_correction_proposal_is_a_draft_and_cannot_overwrite_resources(self):
+        queue=self.queue();rid=queue['requests'][0]['id']
+        output=self.root/'build/curation/private/proposal.json'
+        before=(self.root/'resources/data/species.json').read_bytes()
+        args=['curation','correction-proposal','--request-id',rid,'--output',str(output)]
+        with mock.patch.object(requests,'ROOT',self.root),mock.patch.object(requests,'collect',return_value=queue),mock.patch.object(sys,'argv',args),contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(requests.main(),0)
+        draft=json.loads(output.read_text());self.assertEqual(draft['state'],'draft');self.assertIsNone(draft['reviewer'])
+        self.assertEqual(before,(self.root/'resources/data/species.json').read_bytes())
+        args[-1]=str(self.root/'resources/data/species.json')
+        with mock.patch.object(requests,'ROOT',self.root),mock.patch.object(sys,'argv',args),contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(requests.main(),1)
+        self.assertEqual(before,(self.root/'resources/data/species.json').read_bytes())
 
 
 if __name__=='__main__':unittest.main()

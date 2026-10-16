@@ -180,14 +180,21 @@ class ProjectBoard:
         self.client=client;self.id=project_id;self.config=config
 
     def query(self,query,variables):
-        return self.client.request('POST','/graphql',{'query':query,'variables':variables})['data']
+        result=self.client.request('POST','/graphql',{'query':query,'variables':variables})
+        if not isinstance(result,dict) or not isinstance(result.get('data'),dict):
+            raise GitHubError('project_invalid_response')
+        return result['data']
 
     def fields(self):
         # No automatic rewrite of an existing field or its option IDs.
         after=None;all_fields=[]
         for _ in range(self.config['max_pages']):
             data=self.query('''query($id:ID!,$after:String){ node(id:$id){ ... on ProjectV2 {
-                fields(first:100,after:$after){nodes{ ... on ProjectV2SingleSelectField {id name options{id name}} }
+                fields(first:100,after:$after){nodes{
+                  ... on ProjectV2Field {id name}
+                  ... on ProjectV2IterationField {id name}
+                  ... on ProjectV2MultiSelectField {id name}
+                  ... on ProjectV2SingleSelectField {id name options{id name}} }
                 pageInfo{hasNextPage endCursor}} } } }''',{'id':self.id,'after':after})
             if not data.get('node'):raise GitHubError('project_not_accessible')
             page=data['node']['fields'];all_fields+=page['nodes']
@@ -198,16 +205,21 @@ class ProjectBoard:
     def synchronize(self,issues,apply):
         matches=[f for f in self.fields() if f.get('name')==self.config['project_field']]
         if len(matches)!=1:raise GitHubError('project_curation_field_missing_or_ambiguous')
-        field=matches[0];options={o['name']:o['id'] for o in field['options']}
+        field=matches[0]
+        if not isinstance(field.get('options'),list):raise GitHubError('project_curation_field_incompatible')
+        options={o['name']:o['id'] for o in field['options']}
         if not set(self.config['statuses'].values()).issubset(options):raise GitHubError('project_status_options_missing')
         items={};after=None
         for _ in range(self.config['max_pages']):
             data=self.query('''query($id:ID!,$after:String){ node(id:$id){ ... on ProjectV2 {
               items(first:100,after:$after){nodes{id content{ ... on Issue {id} }
-              fieldValues(first:100){nodes{ ... on ProjectV2ItemFieldSingleSelectValue {optionId field{ ... on ProjectV2SingleSelectField {id} } } }}}
+              fieldValues(first:100){nodes{ ... on ProjectV2ItemFieldSingleSelectValue {optionId field{ ... on ProjectV2SingleSelectField {id} } } }
+                pageInfo{hasNextPage}}}
               pageInfo{hasNextPage endCursor}} } } }''',{'id':self.id,'after':after})
             page=data['node']['items']
             for item in page['nodes']:
+                if item.get('fieldValues',{}).get('pageInfo',{}).get('hasNextPage'):
+                    raise GitHubError('project_item_fields_pagination_incomplete')
                 if item.get('content'):items[item['content']['id']]=item
             if not page['pageInfo']['hasNextPage']:break
             after=page['pageInfo']['endCursor']
@@ -236,7 +248,12 @@ def project_setup(config,apply=False):
     client=GitHub(os.environ.get('GLOSSATA_PROJECT_TOKEN'),config['max_api_calls'])
     board=ProjectBoard(client,os.environ.get('GLOSSATA_PROJECT_ID',''),config)
     existing=[f for f in board.fields() if f.get('name')==config['project_field']]
-    if existing:return {'state':'exists','modified':False}
+    if existing:
+        if len(existing)!=1 or not isinstance(existing[0].get('options'),list):
+            raise GitHubError('project_curation_field_incompatible')
+        if not set(config['statuses'].values()).issubset(o['name'] for o in existing[0]['options']):
+            raise GitHubError('project_status_options_missing')
+        return {'state':'exists','modified':False}
     if not apply:return {'state':'would_create_field','modified':False}
     colors=['GRAY','BLUE','YELLOW','GREEN','RED']
     values=[{'name':name,'color':color,'description':'Estado administrativo; não aprova conteúdo.'}

@@ -137,6 +137,19 @@ class ProjectTests(unittest.TestCase):
         with self.assertRaisesRegex(github.GitHubError,'options_missing'):self.board.synchronize([],True)
         self.setUp();self.issue['labels'].append({'name':'curadoria:rejeitada'})
         self.assertEqual(self.board.synchronize([self.issue],True)['ambiguous_statuses'],1)
+    def test_existing_non_select_field_is_not_recreated_or_used(self):
+        self.fields=[{'id':'F','name':'Curadoria'}]
+        with self.assertRaisesRegex(github.GitHubError,'field_incompatible'):
+            self.board.synchronize([],True)
+        with mock.patch.object(github,'ProjectBoard',return_value=self.board),mock.patch.object(github,'GitHub'):
+            with self.assertRaisesRegex(github.GitHubError,'field_incompatible'):
+                github.project_setup(self.config,True)
+        self.assertEqual(self.queries,[])
+    def test_incomplete_item_fields_prevent_project_writes(self):
+        self.items=[{'id':'ITEM','content':{'id':'ISSUE'},'fieldValues':{'nodes':[],'pageInfo':{'hasNextPage':True}}}]
+        with self.assertRaisesRegex(github.GitHubError,'pagination_incomplete'):
+            self.board.synchronize([self.issue],True)
+        self.assertEqual(len(self.queries),1)
 
 
 if __name__=='__main__':unittest.main()

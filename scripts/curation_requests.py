@@ -62,6 +62,7 @@ def public_reference(root, name):
             r'resources/compliance/(permissions/[0-9a-f]{64}|exploration/[a-z0-9-]+)\.json', name)):
         return None
     try:
+        if (root/name).is_symlink():return None
         path = governance.local_file(root, name)
         if not path.is_file(): return None
         raw = path.read_bytes()
@@ -83,7 +84,7 @@ def collect(root=ROOT, config=None):
 
 
 def build_queue(root, audit, media, assistance, config):
-    current = governance.records(root)
+    current = governance.records(root, include_presentation=True)
     groups = {}
     reference_cache = {}
 
@@ -92,7 +93,7 @@ def build_queue(root, audit, media, assistance, config):
         if area not in AREAS: raise ValueError('Unknown curation area')
         code = code if re.fullmatch(r'[a-z][a-z0-9_]{0,90}', str(code)) else 'audit_finding'
         identity = str(key)
-        public_key = identity if re.fullmatch(r'(?:topic:\d+:[a-z_]+|species:\d+:[a-z_:]+|assistance:[a-z_:0-9]+|photo:\d+|organism:\d+(?::[a-z]+)?|note:\d+:(?:intro|hint|curiosity)|taxon-id:(?:taxon:[a-f0-9]+|domain:(?:Bacteria|Archaea|Eukaryota)|clade:[A-Za-z]+)|node:[a-f0-9]{24}|asset:[a-f0-9]{24})', identity) else 'resource:'+governance.digest(identity)[:24]
+        public_key = identity if re.fullmatch(r'(?:topic:\d+:[a-z_]+|species:\d+:[a-z_:]+|assistance:[a-z_:0-9]+|presentation:[a-z0-9-]{1,80}|photo:\d+|organism:\d+(?::[a-z]+)?|note:\d+:(?:intro|hint|curiosity)|taxon-id:(?:taxon:[a-f0-9]+|domain:(?:Bacteria|Archaea|Eukaryota)|clade:[A-Za-z]+)|node:[a-f0-9]{24}|asset:[a-f0-9]{24})', identity) else 'resource:'+governance.digest(identity)[:24]
         rid = request_id(area, bucket)
         item = groups.setdefault(rid, {'id': rid, 'area': area, 'bucket': bucket, 'priority': priority, 'findings': {}})
         item['priority'] = min(priority, item['priority'])
@@ -146,11 +147,16 @@ def build_queue(root, audit, media, assistance, config):
             add('photography', 'presentation-coverage', 'suitable_photo_pending', 'taxon-id:'+str(f.get('id')),3,
                 paths=('docs/AUDITORIA_FOTOGRAFIAS.json',))
     presentation = governance.load(root/'resources/data/exploration_photos.json',{}).get('photos',{})
+    baseline=governance.load(root/'resources/compliance/review_baseline.json',{})
+    try: history=governance.read_ledger(root)
+    except ValueError: history=[]  # Integrity request above; never infer an approval.
     for pid, photo in presentation.items():
-        review = photo.get('scientific_review')
-        if isinstance(review,str) or not isinstance(review,dict) or review.get('state') not in governance.APPROVALS:
-            add('photography','presentation-identification','representative_review_required','node:'+governance.digest(pid)[:24],2,
-                paths=(photo.get('evidence_path',''),'docs/AUDITORIA_FOTOGRAFIAS.json'))
+        key='presentation:'+pid;record=current[key]
+        review=governance.status(key,record,baseline,history,governance.policy(root))
+        if review['state'] not in governance.APPROVALS or not review['usable']:
+            add('photography','presentation-identification','representative_review_required',key,
+                1 if review['state'] in {'needs_review','rejected','expired'} else 2,review['state'],record['content_sha256'],
+                paths=(photo.get('evidence_path',''),'docs/AUDITORIA_FOTOGRAFIAS.json','resources/compliance/review_history.jsonl'))
     # Weekly CI cannot infer the actual Windows bundle from a Linux checkout.
     # A source-level request keeps the existing dependency gate visible without
     # publishing machine-specific package inventories or asserting their contents.
@@ -201,12 +207,20 @@ def render(request, repository, revision, maximum=20):
 
 def write_queue(queue, output):
     governance.save(output,queue)
+    lines=['# Fila automatizada de curadoria',
+        'Gerada em '+queue['generated_at']+'. Catálogo: '+str(queue['catalog'])+'.',
+        'Solicitações e propostas; não são aprovações, consentimentos ou certificação.',
+        '| ID | Área / assunto | Prioridade | Achados | Fingerprint |',
+        '| --- | --- | --- | ---: | --- |']
+    for r in queue['requests']:
+        lines.append(f"| `{r['id']}` | {r['area']} / {r['bucket']} | P{r['priority']} | {len(r['findings'])} | `{r['fingerprint']}` |")
+    output.with_suffix('.md').write_text('\n\n'.join(lines)+'\n',encoding='utf8',newline='\n')
     return queue
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['plan','sync','decision-template','record-decision','authorization-draft','project-setup'])
+    parser.add_argument('action',choices=['plan','sync','decision-template','record-decision','authorization-draft','correction-proposal','project-setup'])
     parser.add_argument('--output',type=Path)
     parser.add_argument('--apply',action='store_true');parser.add_argument('--decision',type=Path)
     parser.add_argument('--kind',choices=['review','permission','dependency'],default='review')
@@ -215,7 +229,23 @@ def main():
     if args.output is None:
         args.output=ROOT/('build/curation/requests.json' if args.action in {'plan','sync'} else 'build/curation/private/decision-draft.json')
     try:
-        if args.action in {'decision-template','record-decision','authorization-draft'}:
+        resolved_output=args.output.resolve()
+        resolved_output.relative_to((ROOT/'build').resolve())
+        resolved_output.relative_to(ROOT.resolve())
+        if args.action=='correction-proposal':
+            queue=collect(ROOT,config)
+            item=next((r for r in queue['requests'] if r['id']==args.request_id),None)
+            if item is None:raise ValueError('Unknown request ID')
+            hints={'license_version_not_evidenced':'Conferir licença e versão do arquivo específico; registrar evidência e hash, sem presumir versão.',
+                   'credit_differs_from_source':'Conferir crédito fornecido pela fonte; não presumir que o observador é fotógrafo.',
+                   'scientific_review_required':'Comparar a afirmação com fonte localizada; redigir a correção e registrar revisão humana.',
+                   'progression_incomplete':'Pesquisar conteúdo fundamentado e distinto para os graus faltantes, preservando as lacunas até avaliação.'}
+            governance.save(args.output,{'state':'draft','origin':'automation','request_id':item['id'],
+                'request_fingerprint':item['fingerprint'],'findings':item['findings'],
+                'proposed_actions':sorted({hints.get(f['code'],'Conferir o achado e preparar alteração documentada para revisão humana.') for f in item['findings']}),
+                'proposed_changes':[],'reviewer':None,'reviewed_at':None,
+                'notice':'Proposal only; does not edit content, waive restrictions or record approval.'})
+        elif args.action in {'decision-template','record-decision','authorization-draft'}:
             from curation_decisions import template, record_decision, authorization_draft
             if args.action=='decision-template':
                 draft=governance.load(args.decision,{}) if args.decision else None
