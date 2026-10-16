@@ -1115,6 +1115,10 @@ void GameServiceTests::exactHintScoringAndLongGames()
     for(const auto &s : source.loadSpecies())if(QSet<int>{63,67,73,135}.contains(s.id))catalog.items.append(s);
     QCOMPARE(catalog.items.size(),4);
     GameService service(&catalog,nullptr,EducationalContent(progressiveFixture()));
+    service.startNewGame({},"genus");
+    QVERIFY(service.revealHint(HintType::Morphological));QCOMPARE(service.possibleScoreUnits(),6);
+    QVERIFY(!service.revealHint(HintType::Morphological));QCOMPARE(service.possibleScoreUnits(),6);
+    QCOMPARE(service.revealedHints(),1); // A legacy category shortcut never reveals another same-category ID.
     std::array<int,3> order{0,1,2};
     do { for(int mask=0;mask<8;++mask)for(bool correct : {true,false}) {
         service.startNewGame({},"genus");

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-16T05:00:58.687574+00:00",
+  "captured_at": "2026-10-16T05:08:12.696878+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "application_version": "1.6.0",
-  "binary_sha256": "a319801c983ffc6021bdc7e7b19bfcd05ad071b4fdfed548b2a26f7064b8ac62",
+  "binary_sha256": "b9a57666093d6e881d0d3025d43edc8038b232f2b14f269f208114b8b2f4a65c",
   "image_sha256": "adde364a73e20ac659dbeffd0fce1cbb5f79993bc8bf197bda4a236cd74508b5",
   "width": 1240,
   "height": 820,

@@ -195,7 +195,7 @@ bool GameService::revealHint()
 }
 bool GameService::revealHint(HintType type)
 {
-    for(int i=0;i<3;++i)if(currentQuestion_.hints[i].type==type && !(revealedHints_&(1<<i)))return revealHintSlot(i);
+    for(int i=0;i<3;++i)if(currentQuestion_.hints[i].type==type)return revealHintSlot(i);
     return false;
 }
 bool GameService::revealHintSlot(int slot)

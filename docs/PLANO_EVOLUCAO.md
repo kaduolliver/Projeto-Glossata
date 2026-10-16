@@ -20,11 +20,11 @@ Instrução operacional recebida em 16/10/2026. Execução sequencial: concluir,
 
 - **Etapa 1 concluída em 6cf7dc6.** Logs remotos confirmaram Git ausente; correção MSYS2, auditor do índice/hook e quatro testes adversariais. 10/10 suítes (51,76 s); catálogo 2.2.1 corrige três hashes de inventário sem conceder permissões.
 - **Etapa 2 concluída em b3e99e4.** Investigação das 119 pendências, 11 novas fotos e contabilização explícita do misto. 10/10 suítes (64,43 s); catálogo 2.3.0.
-- **Etapa 3 concluída localmente e validada, pronta para commit.** 11/11 suítes (58,90 s); detalhes e pendências abaixo. Validação integrada será executada depois desse commit.
+- **Etapa 3 concluída em d7c523e.** 11/11 suítes (58,90 s); detalhes e pendências abaixo. Integração posterior aprovada após a correção descrita ao final.
 
 ## Retomada
 
-Conferir git status e os commits antes de continuar; não repetir etapas concluídas. O próximo passo é o commit da etapa 3, seguido da validação integrada e do pacote canônico local de desenvolvimento. Testes/capturas usam bancos temporários. Nenhuma ação remota, tag ou release está autorizada. Não declarar GitHub Actions aprovado sem execução remota autorizada.
+Conferir git status e os commits antes de continuar; não repetir etapas concluídas. As três etapas estão registradas. O próximo passo é concluir o teste do pacote canônico local e o relatório integrado; não repetir as etapas. Testes/capturas usam bancos temporários. Nenhuma ação remota, tag ou release está autorizada. Não declarar GitHub Actions aprovado sem execução remota autorizada.
 
 ## Etapa 2 — implementação e pesquisa
 
@@ -32,7 +32,7 @@ Base: etapa 1 em `6cf7dc6`. Adicionadas 11 fotos; cobertura 98 → 109 arquivos,
 
 Etapa 2 registrada em **b3e99e4**, após 10/10 suítes.
 
-## Etapa 3 — concluída e validada, pronta para commit
+## Etapa 3 — concluída em d7c523e
 
 Aplicativo 1.6.0, catálogo 2.4.0 (não lançados). 855 receitas para os 122 organismos, avaliação pedagógica approved_automated com prazo configurável, identidade/foto/fontes/política por hash; 290 propostas históricas e revisões científicas preservadas. Três slots independentes da categoria, seleção direta, contexto científico e progressão; exceções e lacunas explícitas. Notas de organismo em níveis superiores recebem escopo individual claro. Quatro conteúdos inadequados não foram relabelados como morfologia. Snapshots v4 preservam texto, categorias, tetos, opções e avaliação; v3/v2 permanecem congelados e não há ALTER TABLE ou regravação de pontos em esquema 3.
 
@@ -40,4 +40,6 @@ Cobertura de referência (seed 42): 64/80 organismos competitivos completos; gê
 
 Compilação e **11/11 suítes CTest (58,90 s)** aprovadas, inclusive UI real em software, pontuação/ordens, persistência/reabertura/migrações, modo competitivo e relatos. Auditoria estrita, qmllint, licenças/fotos e metadados aprovados. Captura real da tela inicial renovada (1240×820, banco temporário). Comparação byte a byte confirmou organismos, taxonomia, revisões científicas/baseline, fontes educativas e 120 fotos do quiz preservados. Gate de distribuição: zero erros técnicos, 120 permissões fotográficas incompletas, sete questões de direitos de materiais próprios/legados (incluindo o novo corpus), mídias históricas fora do bundle e bloqueios científicos documentados; nada foi liberado artificialmente.
 
-Próximo passo: registrar commit independente da etapa 3; executar validação integrada e atualizar somente o pacote canônico local de desenvolvimento, usando o script existente e bancos temporários. Sem push, tag ou release.
+Integração: a repetição encontrou um teste antigo que sempre clicava na terceira dica; corrigido para escolher uma dica efetivamente disponível, sem tornar o produto menos restritivo. A interface passou três vezes consecutivas (63,13 s). O caminho legado por categoria passou a retornar a primeira dica, sem avançar silenciosamente para outra ao repetir; teste de regressão incluído. Build e 11/11 suítes finais aprovados (58,03 s), geração de educação/créditos/auditoria reproduzível, qmllint, catálogo, mídias, propostas offline, versões e captura real aprovados.
+
+Próximo passo: registrar esta correção verificada, atualizar/testar o pacote canônico local de desenvolvimento e concluir o relatório integrado. Sem push, tag ou release.

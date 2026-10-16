@@ -291,7 +291,13 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(correctIndex >= 0);
     QVERIFY(click("answerOption" + QString::number(correctIndex)));
     QCOMPARE(controller.answeredCount(), 0);
-    if (controller.hasHint()) { QVERIFY(click("hintButton")); QVERIFY(click("hintCategory2")); QVERIFY(click("closeHintPanelButton")); }
+    if (controller.hasHint()) {
+        QVERIFY(click("hintButton"));
+        const auto offered=controller.hints();int available=-1;
+        for(int i=0;i<3;++i)if(offered[i].toMap()["available"].toBool()){available=i;break;}
+        QVERIFY(available>=0);QVERIFY(click("hintCategory"+QString::number(available)));
+        QVERIFY(click("closeHintPanelButton"));
+    }
     const auto hint=controller.extraHint();
     const auto choices=controller.answerOptions();
     const auto round=controller.round();
