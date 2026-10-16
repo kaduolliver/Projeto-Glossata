@@ -440,7 +440,8 @@ def credits(root=ROOT):
         record['distribution_exception'] = bool(documented_exception(p, 'distribution', root))
         record['scientific_source_issues'] = source_findings(p, metadata, root)
         record['organisms'].append({'id': s['id'], 'name': s['name'], 'role': p.get('role', 'identification'), 'subject': p.get('scientific_name')})
-    return {'schema_version': 1, 'notice': 'Créditos mantidos também para CC0. Os créditos não implicam endosso dos autores ou do iNaturalist. Uma referência não concede permissão de reprodução.', 'photos': photos}
+    from exploration_media import credit_records
+    return {'schema_version': 1, 'notice': 'Créditos mantidos também para CC0. Os créditos não implicam endosso dos autores, do iNaturalist ou do Wikimedia Commons. Uma referência não concede permissão de reprodução.', 'photos': photos, 'exploration_photos': credit_records(root)}
 
 
 def render_credits(data):
@@ -452,6 +453,12 @@ def render_credits(data):
         names = ', '.join(safe(s['name']) for s in p['organisms'])
         lines += [f"- **{names}** — {safe(p['author']) or 'Autoria não identificada'}{title} — [foto {pid}]({p['photo_url']}) — [observação]({p['source']}) — [{safe(p['license']).upper()}]({p['license_url']}) — {safe(p['modifications'])}",
                   f"  SHA-256: `{p['sha256']}`. Pendências: {', '.join(p['rights_issues']) or 'nenhuma detectada automaticamente'}. Mais metadados: resources/data/photo_provenance.json."]
+    lines += ['', '## Fotografias dos cartões de exploração', '',
+              'Representantes visuais dos grupos; não substituem fotos de identificação do quiz nem revisão por especialista. Micrografias e alterações estão identificadas.', '']
+    for key,p in sorted(data.get('exploration_photos',{}).items()):
+        title=f" — título: {safe(p['title'])}" if p.get('title') else ''
+        lines += [f"- **{safe(p['subject'])}** — {safe(p['author'])}{title} — [arquivo específico]({p['photo_url']}) — [{safe(p['license']).upper()} {safe(p['license_version'])}]({p['license_url']}) — {safe(p['modifications'])}",
+                  f"  {safe(p.get('identification_note'))} SHA-256: `{p['sha256']}`. Coleta: {p['collected_at']}. Evidência: `{p['evidence_path']}` (revisão da fonte {p['source_revision_id']}). Pendências: {', '.join(p['rights_issues']) or 'nenhuma detectada automaticamente'}. Escopo: `resources/data/exploration_photos.json`."]
     return '\n'.join(lines) + '\n'
 
 
@@ -466,7 +473,8 @@ def generate_credits(root=ROOT):
 def audit_governance(root=ROOT, at=None):
     at = at or datetime.now(timezone.utc); settings = policy(root)
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
-    errors = []
+    from exploration_media import audit as audit_exploration
+    errors = [{'error':'exploration_media', 'detail':finding} for finding in audit_exploration(root)['errors']]
     try: events = read_ledger(root)
     except ValueError as e: events = []; errors.append({'error': 'review_history_integrity', 'detail': str(e)})
     try: read_chain(root / 'resources/compliance/permission_history.jsonl')

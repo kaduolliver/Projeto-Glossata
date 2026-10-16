@@ -78,6 +78,12 @@ def propose_updates(root=ROOT, online=False, maximum=25, client=None):
               'overdue_and_pending': audit_governance(root)['scientific_findings'], 'checks': []}
     urls = sorted({r.get('source_url') for r in records(root).values() if r.get('source_url')})
     urls = sorted(set(urls) | {r['url'] for r in load(root / 'resources/data/phylogeny.json', {}).get('sources', {}).values()})
+    presentation=load(root / 'resources/data/exploration_photos.json',{}).get('photos',{})
+    urls=sorted(set(urls) | {p['photo_url'] for p in presentation.values()} | {p['license_url'] for p in presentation.values()})
+    report['exploration_photos']=[{'photo_id':p['photo_id'],'source':p['photo_url'],
+        'permission_collected_at':p['collected_at'],'scientific_review':p['scientific_review'],
+        'notice':'Permission evidence is preserved. Link checks never renew scientific review or revoke a prior CC grant.'}
+        for p in presentation.values()]
     interval = load(root / 'resources/data/content_policy.json', {}).get('review_days', {}).get('links', 90)
     last = {}
     for path in (root / 'build/update-proposals').glob('*.json'):

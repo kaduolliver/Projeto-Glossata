@@ -73,6 +73,150 @@
         "distribution_allowed": false
       },
       "state": "pending_originality_and_rights_review"
+    },
+    {
+      "path": "resources/images/exploration/lion.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "b417619d6e2dac0410ae040e8669932d6f5f6b365438619d40ecfa63d788edd4",
+      "source": "https://commons.wikimedia.org/wiki/File:Lion_waiting_in_Namibia.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Kevin Pluck",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/lion.json",
+        "evidence_sha256": "500b8242e99b6ae68426ba0cfb6ffa833fe977ac477b254d9b3db2a6a1c2382c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/monarch.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "e49142da4f8f06b28de9213dfdedf8743a713b090b2a9e7e27f0361a2c1e0557",
+      "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_100029190.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "kcthetc1",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/monarch.json",
+        "evidence_sha256": "4f8701272ed397c329f1af394ade8b62ec7c0d5e28b38a41a344775e057788b1",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/sunflower.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "63fa6361eabbefcec02402a56a6bf349c607b32b4292eaa0f83e716f785590cd",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "S.G.S.",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/sunflower.json",
+        "evidence_sha256": "a6a5b46532babf741fe61ce2fbf5d3c32339b56086a8c6297708dc9eb6f10828",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/amanita.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fb21cf01197ecba735bdc49eb07360259328b1e905cb89a806700ef0142faec7",
+      "source": "https://commons.wikimedia.org/wiki/File:Amanita_muscaria_(1)_(8692325426).jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Bernard Spragg. NZ from Christchurch, New Zealand",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/amanita.json",
+        "evidence_sha256": "db178ac1fd3dcc16300f9c6f0a160553a7a206c36cec2e28b72af1448533be4e",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/kelp.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "d4866b1d9797925291f3e30ca10641b629b5f074fd9d010adfafc35ada0d1323",
+      "source": "https://commons.wikimedia.org/wiki/File:Macrocystis_pyrifera_671118520.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Gonzalo Bravo",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/kelp.json",
+        "evidence_sha256": "9f891187fb7e8867a001f89259ae7712fb70c4e14b7d9077032584f04ee6847a",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/physarum.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "d4054948cc20e629070cbe0df9a3f87ff266b6a6ce822168023d3655a4a88296",
+      "source": "https://commons.wikimedia.org/wiki/File:Physarum_polycephalum_10744588.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Katja Schulz",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/physarum.json",
+        "evidence_sha256": "a92d1883b6a6c9f1422a8170e71c227f0c7297c52fb4022001bb3bd19669b462",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/bacteria.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "cf562e988f2f0b7a4f2da581bdc07a471adc902ae15f0605584cd70fa9df237e",
+      "source": "https://commons.wikimedia.org/wiki/File:E._coli_bacteria_(cropped).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "NIAID",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/bacteria.json",
+        "evidence_sha256": "33c75f7502720bc2738a209a0571868b239c30a11451e98ff12905a436cb78dc",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/archaea.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fe7b3f72e3363dd94febb1a6a83cecb8e20321635f00e3b3bad2d85063d98036",
+      "source": "https://commons.wikimedia.org/wiki/File:Fmicb-07-01902-g001-v1.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Xin Dai, Haina Wang, Zhenfeng Zhang, Kuan Li, Xiaoling Zhang, Marielos Mora-López, Chengying Jiang, Chang Liu, Li Wang, Yaxin Zhu, Walter Hernández-Ascencio, Zhiyang Dong, Li Huang",
+        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "evidence_path": "resources/compliance/exploration/archaea.json",
+        "evidence_sha256": "eeb55aa4042631c82306f6c46adec9d63e8938649dee5b8121d9abb0d6ea407c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+      },
+      "state": "source_license_evidenced"
     }
   ],
   "fonts": {
