@@ -1,0 +1,34 @@
+name: Fotografia ou crédito incorreto
+description: Relate identidade, estágio, representatividade, imagem ou atribuição.
+title: "[Fotografia] "
+labels: ["curadoria:photography", "curadoria:pendente"]
+body:
+  - type: markdown
+    attributes:
+      value: Use links públicos. Não anexe cópias de imagens sem autorização nem informações de localização ocultadas pela fonte.
+  - type: input
+    id: recurso
+    attributes:
+      label: Organismo, foto ou cartão
+      description: ID público, URL original e tela afetada.
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema e evidência
+      description: Explique identidade, estágio, qualidade visual ou divergência de crédito, com fonte localizada.
+    validations:
+      required: true
+  - type: textarea
+    id: alternativa
+    attributes:
+      label: Alternativa sugerida, se houver
+      description: URL do arquivo específico, crédito e licença verificáveis. A licença da observação não licencia automaticamente a fotografia.
+  - type: checkboxes
+    id: privacidade
+    attributes:
+      label: Privacidade
+      options:
+        - label: O relato usa somente informações públicas e não contém dados sensíveis.
+          required: true

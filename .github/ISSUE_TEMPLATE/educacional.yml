@@ -1,0 +1,34 @@
+name: Dica ou sugestão educacional
+description: Relate assistência, clareza, acessibilidade textual ou conteúdo educativo.
+title: "[Educação] "
+labels: ["curadoria:pedagogy", "curadoria:pendente"]
+body:
+  - type: markdown
+    attributes:
+      value: Avaliações automáticas podem ser corrigidas. Não envie perfis, bancos de jogadores ou dicas que não foram reveladas durante a pergunta.
+  - type: input
+    id: referencia
+    attributes:
+      label: Organismo, nível e ID da dica
+      description: Copie os identificadores públicos do relato preparado no jogo, se disponível.
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: Texto apresentado e problema
+      description: Informe categoria, assistência, alternativas exibidas e versão da avaliação, quando conhecidos.
+    validations:
+      required: true
+  - type: textarea
+    id: sugestao
+    attributes:
+      label: Sugestão e fontes
+      description: Evite inventar etimologias ou características; cite evidência apropriada.
+  - type: checkboxes
+    id: privacidade
+    attributes:
+      label: Privacidade
+      options:
+        - label: Não incluí dados pessoais, bancos locais, respostas marcadas ou dicas ocultas.
+          required: true

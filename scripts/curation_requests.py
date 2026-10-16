@@ -206,11 +206,50 @@ def write_queue(queue, output):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['plan'])
-    parser.add_argument('--output',type=Path,default=ROOT/'build/curation/requests.json')
-    args=parser.parse_args()
-    queue=write_queue(collect(ROOT,settings()),args.output)
-    print(json.dumps(queue['summary'],ensure_ascii=False))
+    parser.add_argument('action',choices=['plan','sync','decision-template','record-decision','authorization-draft','project-setup'])
+    parser.add_argument('--output',type=Path)
+    parser.add_argument('--apply',action='store_true');parser.add_argument('--decision',type=Path)
+    parser.add_argument('--kind',choices=['review','permission','dependency'],default='review')
+    parser.add_argument('--key');parser.add_argument('--request-id');parser.add_argument('--issue',type=int)
+    args=parser.parse_args();config=settings()
+    if args.output is None:
+        args.output=ROOT/('build/curation/requests.json' if args.action in {'plan','sync'} else 'build/curation/private/decision-draft.json')
+    try:
+        if args.action in {'decision-template','record-decision','authorization-draft'}:
+            from curation_decisions import template, record_decision, authorization_draft
+            if args.action=='decision-template':
+                draft=governance.load(args.decision,{}) if args.decision else None
+                governance.save(args.output,template(ROOT,config,args.kind,args.key,args.request_id,args.issue,draft))
+            elif args.action=='authorization-draft':
+                governance.save(args.output,authorization_draft(ROOT,config,args.key))
+            else:
+                if not args.apply or not args.decision:raise ValueError('Explicit --apply and --decision are required')
+                print(record_decision(ROOT,config,governance.load(args.decision)))
+        elif args.action=='project-setup':
+            from curation_github import project_setup
+            print(project_setup(config,args.apply))
+        else:
+            queue=write_queue(collect(ROOT,config),args.output)
+            if args.action=='sync':
+                from curation_github import sync
+                if args.apply and subprocess.check_output(['git','status','--porcelain'],cwd=ROOT):
+                    raise ValueError('Commit local changes before synchronization')
+                revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+                # Atomic local lock; workflow concurrency provides the remote-run lock.
+                lock=args.output.parent/'sync.lock';lock.parent.mkdir(parents=True,exist_ok=True)
+                with lock.open('x',encoding='utf8') as handle:handle.write(str(__import__('os').getpid()))
+                try:
+                    result=sync(queue,config,revision,args.apply)
+                    governance.save(args.output.with_name('sync.json'),result)
+                    print(json.dumps(result,ensure_ascii=False))
+                    return bool(result['errors'])
+                finally:lock.unlink()
+            print(json.dumps(queue['summary'],ensure_ascii=False))
+    except (ValueError,OSError) as e:
+        from curation_github import GitHubError
+        suffix=' '+str(e) if isinstance(e,GitHubError) else ''
+        print('Curadoria recusada: '+type(e).__name__+suffix+'. Confira configuração, permissões e evidências localmente.')
+        return 1
     return 0
 
 

@@ -1,0 +1,36 @@
+name: Erro científico ou classificação
+description: Relate identificação, taxonomia, distribuição ou conservação com fontes públicas.
+title: "[Ciência] "
+labels: ["curadoria:science", "curadoria:pendente"]
+body:
+  - type: markdown
+    attributes:
+      value: Não publique coordenadas sensíveis, contatos ou documentos privados. Uma Issue não aprova alterações no catálogo.
+  - type: input
+    id: organismo
+    attributes:
+      label: Organismo e identificadores públicos
+      description: Nome científico, ID do catálogo e tópico afetado, quando conhecidos.
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: Afirmação e correção proposta
+      description: Diferencie uma observação pontual de uma afirmação sobre toda a espécie.
+    validations:
+      required: true
+  - type: textarea
+    id: fontes
+    attributes:
+      label: Fontes e localização da evidência
+      description: URL pública, DOI/registro, seção ou página; informe divergências conhecidas.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacidade
+    attributes:
+      label: Privacidade
+      options:
+        - label: Revisei o relato e não incluí evidências confidenciais ou coordenadas sensíveis.
+          required: true

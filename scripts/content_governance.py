@@ -618,6 +618,7 @@ def confirm_permission(root, decision):
     history = read_chain(history_path)
     event = {'photo_id': pid, 'recorded_at': now(), 'before': current, 'after': updated,
              'previous_sha256': history[-1]['event_sha256'] if history else ''}
+    if decision.get('curation'): event['curation'] = decision['curation']
     event['event_sha256'] = digest(event)
     history_path.parent.mkdir(parents=True, exist_ok=True)
     with history_path.open('a', encoding='utf8', newline='\n') as output: output.write(json.dumps(event, ensure_ascii=False) + '\n')

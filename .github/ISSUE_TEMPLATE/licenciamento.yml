@@ -1,0 +1,41 @@
+name: Licenciamento, autorização ou remoção
+description: Relate direitos ou peça contato reservado sem expor comprovantes privados.
+title: "[Direitos] "
+labels: ["curadoria:licensing", "curadoria:aguardando-evidencias"]
+body:
+  - type: markdown
+    attributes:
+      value: Não publique identidade civil, e-mail, contratos, assinaturas ou comprovantes confidenciais. Para prova privada, solicite contato reservado em texto mínimo; o mantenedor precisa indicar um canal legítimo. Nenhum consentimento é presumido.
+  - type: input
+    id: recurso
+    attributes:
+      label: Recurso e origem pública
+      description: ID da foto/organismo ou caminho público do recurso e URL original.
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de solicitação
+      options:
+        - Documentação ou licença ausente
+        - Crédito ou autoria divergente
+        - Restrição ou uso incompatível
+        - Autorização específica
+        - Pedido de remoção ou contato reservado
+    validations:
+      required: true
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição pública mínima
+      description: Informe o problema e, se possível, a fonte pública; não anexe prova confidencial.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacidade
+    attributes:
+      label: Privacidade
+      options:
+        - label: Mantive documentos e dados confidenciais fora desta Issue pública.
+          required: true
