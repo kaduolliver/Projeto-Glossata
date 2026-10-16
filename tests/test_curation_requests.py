@@ -63,6 +63,10 @@ class QueueTests(unittest.TestCase):
         body=requests.render(r,self.config['repository'],'a'*40,3)
         self.assertEqual(body.count('| `photo:'),3)
         self.assertIn('120 achados',body);self.assertIn('Lista resumida a 3',body)
+        self.assertNotIn('|\n\n|',body)
+        path=self.root/'build/curation/requests.json'
+        requests.write_queue(self.queue(a),path)
+        self.assertNotIn('|\n\n|',path.with_suffix('.md').read_text(encoding='utf8'))
 
     def test_priority_does_not_confuse_missing_documentation_with_forbidden_license(self):
         a=copy.deepcopy(self.audit);a['photo_licensing']=[{'photo_id':'1','errors':['license_version_missing']}]

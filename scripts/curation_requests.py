@@ -175,6 +175,11 @@ def build_queue(root, audit, media, assistance, config):
         'notice':'Public, minimized requests only. No decision, consent, review date or permission is created.'}
 
 
+def markdown_blocks(lines):
+    # Separate paragraphs, but keep GFM table headers and rows contiguous.
+    return re.sub(r'(?<=\|)\n\n(?=\|)', '\n', '\n\n'.join(lines))
+
+
 def render(request, repository, revision, maximum=20):
     if not re.fullmatch(r'[0-9a-f]{40}', revision): raise ValueError('Expected source commit SHA')
     rid=request['id']; start='<!-- glossata-curation:start -->'; end='<!-- glossata-curation:end -->'
@@ -202,7 +207,7 @@ def render(request, repository, revision, maximum=20):
         '- Para autorização: preparar o pedido individual e registrar o acompanhamento; nenhum contato foi enviado.',
         '- Manter documentos privados fora do GitHub/artefatos públicos. Não incluir coordenadas sensíveis ou dados pessoais.',end,
         '', '## Acompanhamento do mantenedor', '', 'Espaço preservado pela automação.']
-    return '\n\n'.join(lines)
+    return markdown_blocks(lines)
 
 
 def write_queue(queue, output):
@@ -214,7 +219,7 @@ def write_queue(queue, output):
         '| --- | --- | --- | ---: | --- |']
     for r in queue['requests']:
         lines.append(f"| `{r['id']}` | {r['area']} / {r['bucket']} | P{r['priority']} | {len(r['findings'])} | `{r['fingerprint']}` |")
-    output.with_suffix('.md').write_text('\n\n'.join(lines)+'\n',encoding='utf8',newline='\n')
+    output.with_suffix('.md').write_text(markdown_blocks(lines)+'\n',encoding='utf8',newline='\n')
     return queue
 
 

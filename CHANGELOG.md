@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; gerenciamento de curadoria
 
+- Publicação semanal protegida pela variável `GLOSSATA_CURATION_WEEKLY_SYNC`, desabilitada por padrão. Auditorias e simulação autenticada com permissões de leitura continuam semanais; primeira publicação manual e ativação exigem autorizações separadas.
+- Tabelas dos relatórios e corpos de Issues mantêm linhas contíguas para renderização correta no GitHub.
 - Fila pública mínima derivada dos auditores existentes, com IDs/hashes estáveis, agrupamento, prioridade, referências verificadas e limitação de publicação.
 - Integração GitHub Issues idempotente, preservação de notas/etiquetas humanas, paginação completa e limites de chamadas/criação/atualização. Issue encerrada ou etiqueta de aprovação não altera a governança.
 - Formulários científicos, fotográficos, educacionais e de direitos; execução semanal/manual e integração opcional com GitHub Projects v2, em campo administrativo independente.

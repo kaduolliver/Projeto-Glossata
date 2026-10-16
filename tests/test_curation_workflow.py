@@ -37,6 +37,17 @@ class AutomationTests(unittest.TestCase):
             self.assertTrue(line);self.assertTrue(set(json.loads(line[1])).issubset(allowed))
             self.assertIn('required: true',text);self.assertIn('privacidade',text)
             self.assertNotIn('upload',text.casefold())
+    def test_weekly_switch_guards_only_remote_writes_and_preview_has_read_only_token(self):
+        text=(ROOT/'.github/workflows/curation.yml').read_text(encoding='utf8')
+        audit,synchronize=text.split('  synchronize:',1)
+        self.assertNotIn('GLOSSATA_CURATION_WEEKLY_SYNC',audit)
+        self.assertIn('issues: read',audit);self.assertNotIn('issues: write',audit)
+        self.assertIn('GH_TOKEN: ${{ github.token }}',audit)
+        self.assertIn('run: python3 scripts/curation_requests.py sync\n',audit)
+        self.assertNotIn('--apply',audit)
+        self.assertIn('build/curation/sync.json',audit)
+        self.assertIn("(github.event_name == 'schedule' && vars.GLOSSATA_CURATION_WEEKLY_SYNC == 'true')",synchronize)
+        self.assertIn("(github.event_name == 'workflow_dispatch' && inputs.publish == true)",synchronize)
 
 
 if __name__=='__main__':unittest.main()
