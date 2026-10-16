@@ -72,3 +72,4 @@ add_test(NAME GlossataCurationQueueTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_C
 add_test(NAME GlossataCurationGitHubTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_github.py)
 add_test(NAME GlossataCurationDecisionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_decisions.py)
 add_test(NAME GlossataCurationAutomationTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_workflow.py)
+add_test(NAME GlossataRepositoryProtectionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_repository_protection.py)

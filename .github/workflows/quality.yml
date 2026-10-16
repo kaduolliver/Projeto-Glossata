@@ -7,11 +7,15 @@ permissions:
   contents: read
 jobs:
   offline-validation:
+    # Keep this check name stable: the proposed main ruleset requires it.
+    name: offline-validation
     runs-on: windows-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - uses: msys2/setup-msys2@ec48f7c5447b3140e2b088413ae3a55687bccb6e # v2
         with:
           msystem: UCRT64
@@ -29,6 +33,7 @@ jobs:
         run: |
           set -euo pipefail
           git --version
+          python scripts/repository_protection.py check
           python scripts/audit_repository.py
           python scripts/review_hints.py
           python scripts/build_education.py
@@ -65,9 +70,13 @@ jobs:
             build/tests/*results.txt
           if-no-files-found: warn
   distribution-permissions:
+    # Release gate; deliberately NOT required for development integration.
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Bloquear redistribuição sem evidência
         shell: pwsh
         run: python scripts/distribution.py check
