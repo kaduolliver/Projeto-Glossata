@@ -105,9 +105,11 @@ class GitHubTests(unittest.TestCase):
         self.assertNotIn(secret,str(error.exception));self.assertEqual(transport.call_count,1)
     def test_redirects_and_budget_are_guarded(self):
         with self.assertRaises(github.GitHubError):github.NoRedirect().redirect_request(None,None,None,None,None,None)
-        client=github.GitHub('synthetic',limit=0)
-        with self.assertRaisesRegex(github.GitHubError,'budget'):client.request('GET','/test')
-        with self.assertRaises(github.GitHubError):client.request('GET','//other.example')
+        with mock.patch('urllib.request.build_opener',side_effect=AssertionError('Offline budget check initialized TLS')) as opener:
+            client=github.GitHub('synthetic',limit=0)
+            with self.assertRaisesRegex(github.GitHubError,'budget'):client.request('GET','/test')
+            with self.assertRaises(github.GitHubError):client.request('GET','//other.example')
+            opener.assert_not_called()
 
 
 class ProjectTests(unittest.TestCase):

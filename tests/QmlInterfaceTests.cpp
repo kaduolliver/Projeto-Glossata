@@ -78,6 +78,7 @@ void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
 
 void QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
 {
+    QVERIFY(QDir().mkpath("previews"));
     QQmlEngine engine;
     QQmlComponent component(&engine,QUrl("qrc:/resources/qml/components/ExploreCard.qml"));
     const QVariantMap entry{{"title","A biodiversidade de Eukaryota"},{"rankLabel","Supergrupo"},

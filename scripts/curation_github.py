@@ -27,7 +27,7 @@ class GitHub:
     def __init__(self, token, limit=200, transport=None, pace=1.0):
         if not token: raise GitHubError('github_token_missing')
         self.token=token;self.limit=limit;self.calls=0;self.pace=pace;self.last=0
-        self.transport=transport or urllib.request.build_opener(NoRedirect()).open
+        self.transport=transport
 
     def request(self, method, path, data=None):
         if not path.startswith('/') or path.startswith('//') or '..' in path:
@@ -41,6 +41,9 @@ class GitHub:
         if body is not None:headers['Content-Type']='application/json'
         request=urllib.request.Request('https://api.github.com'+path,data=body,headers=headers,method=method)
         try:
+            # Offline construction and rejected budgets must not initialize TLS.
+            # Transport setup failures use the same controlled no-retry path.
+            if self.transport is None:self.transport=urllib.request.build_opener(NoRedirect()).open
             with self.transport(request,timeout=30) as response:
                 raw=response.read(8*1024*1024+1)
                 if len(raw)>8*1024*1024:raise GitHubError('github_response_too_large')
@@ -51,6 +54,7 @@ class GitHub:
             raise GitHubError('github_invalid_json_no_retry') from None
         except urllib.error.HTTPError as e:
             # No write is retried: an interrupted POST may already have succeeded.
+            e.close()
             raise GitHubError('github_http_'+str(e.code)) from None
         except (urllib.error.URLError,TimeoutError,OSError):
             raise GitHubError('github_transport_error_no_retry') from None
