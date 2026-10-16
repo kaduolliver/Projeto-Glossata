@@ -9,7 +9,8 @@ class TaxonomyIndex {
 public:
     explicit TaxonomyIndex(const SpeciesCatalog &catalog);
     QVector<Species> speciesFor(const QString &id) const;
-    QVariantList kingdoms() const;
+    QVariantList domains() const;
+    QVariantList kingdoms() const { return domains(); } // Compatibility for older adapters.
     QVariantList children(const QString &id) const;
     QVariantList breadcrumbs(const QString &id) const;
     QVariantList identificationLevels(const QString &id) const;

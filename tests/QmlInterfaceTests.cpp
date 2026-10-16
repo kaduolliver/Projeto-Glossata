@@ -15,6 +15,11 @@
 
 namespace {
 QStringList interfaceWarnings;
+QString scientificGroup(const QString &name) {
+    JsonSpeciesCatalog catalog;
+    for(const auto &node : catalog.loadTaxons()) if(node.name==name)return node.id;
+    return {};
+}
 QQuickItem *findVisualItem(QQuickItem *root, const QString &name)
 {
     if (root->objectName() == name) return root;
@@ -118,58 +123,50 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("homePlayButton"));
     QCOMPARE(window->property("page").toString(), QString("categories"));
     QVERIFY(snapshot("02-categories"));
-    for (int kingdom = 0; kingdom < 5; ++kingdom) {
-        QVERIFY(click("kingdomButton" + QString::number(kingdom)));
+    QCOMPARE(controller.categories().size(),4);
+    for (int domain = 0; domain < 3; ++domain) {
+        QVERIFY(click("domainButton" + QString::number(domain)));
         QCOMPARE(window->property("page").toString(), QString("taxonomy"));
-        QCOMPARE(controller.browseTaxon().value("id").toString(), controller.categories().at(kingdom + 1).toMap().value("id").toString());
-        QVERIFY(snapshot("kingdom-" + QString::number(kingdom)));
-        int firstGroup=0;
-        if (kingdom==3) {
-            for (int i=0;i<controller.browseChildren().size();++i)
-                if (controller.browseChildren().at(i).toMap().value("title").toString()=="Protozoa") firstGroup=i;
+        QCOMPARE(controller.browseTaxon().value("id").toString(), controller.categories().at(domain + 1).toMap().value("id").toString());
+        QCOMPARE(controller.browseTaxon().value("rank").toString(),QString("domain"));
+        QVERIFY(snapshot("domain-" + QString::number(domain)));
+        if(controller.browseTaxon().value("count").toInt()>0) {
+            QVERIFY(click("taxonButton0"));
+            QVERIFY(controller.breadcrumbs().size() >= 2);
+            QVERIFY(click("breadcrumbButton0"));
+            QCOMPARE(controller.breadcrumbs().size(), 1);
         }
-        QVERIFY(click("taxonButton"+QString::number(firstGroup)));
-        QVERIFY(controller.breadcrumbs().size() >= 2);
-        if (kingdom==3) {
-            // Protista first opens its scientific kingdom (Protozoa), then its phylum.
-            if (controller.browseTaxon().value("introduction").toMap().isEmpty()) {
-                int groupIndex=-1;
-                for (int i=0;i<controller.browseChildren().size();++i)
-                    if (controller.browseChildren().at(i).toMap().value("title").toString()=="Mycetozoa") groupIndex=i;
-                QVERIFY(groupIndex>=0); QVERIFY(click("taxonButton"+QString::number(groupIndex)));
-            }
-            QVERIFY(!controller.browseTaxon().value("introduction").toMap().isEmpty());
-            QVERIFY(!controller.identificationLevels().isEmpty());
-            QVERIFY(snapshot("protista-group-introduction"));
-            QVERIFY(click("startTaxonButton"));
-            QCOMPARE(window->property("page").toString(),QString("quiz"));
-            QVERIFY(controller.questionPhoto().value("visual").toBool());
-            controller.stopGame(); showPage("results");
-            QVERIFY(click("returnExplorationButton"));
-        }
-        QVERIFY(click("breadcrumbButton0"));
-        QCOMPARE(controller.breadcrumbs().size(), 1);
         if (controller.identificationLevels().isEmpty()) {
             QVERIFY(!click("startTaxonButton"));
-            QVERIFY(click("returnKingdomsButton"));
+            QCOMPARE(controller.browseTaxon().value("count").toInt(),0);
+            QVERIFY(click("returnDomainsButton"));
             continue;
         }
         QVERIFY(click("startTaxonButton"));
         QCOMPARE(window->property("page").toString(), QString("quiz"));
-        if (kingdom==4) {
+        if (controller.browseTaxon().value("title").toString()=="Bacteria") {
             QVERIFY(controller.questionPhoto().value("supporting").toBool());
             QVERIFY(!controller.questionPhoto().value("visual").toBool());
             QVERIFY(controller.questionText().contains("pistas"));
-            QVERIFY(snapshot("monera-support-quiz"));
+            QVERIFY(snapshot("bacteria-support-quiz"));
             controller.answerSelected(correctAnswer()); showPage("info");
             QVERIFY(controller.answerDetails().value("supporting").toBool());
-            QVERIFY(snapshot("monera-support-information"));
+            QVERIFY(snapshot("bacteria-support-information"));
         }
         controller.stopGame();
         showPage("results");
         QVERIFY(click("returnExplorationButton"));
         QCOMPARE(window->property("page").toString(), QString("taxonomy"));
-        QVERIFY(click("returnKingdomsButton"));
+        QVERIFY(click("returnDomainsButton"));
+    }
+    for(const QString &clade : QStringList{"Opisthokonta","Archaeplastida","SAR","Amoebozoa","Discoba"}) {
+        controller.exploreTaxon("clade:"+clade);showPage("taxonomy");
+        QCOMPARE(controller.breadcrumbs().size(),2);
+        QCOMPARE(controller.browseTaxon().value("rank").toString(),QString("supergroup"));
+        QVERIFY(!controller.browseTaxon().value("sourceUrl").toString().isEmpty());
+        QVERIFY(snapshot("lineage-"+clade));
+        if(clade=="Discoba") {QVERIFY(controller.identificationLevels().isEmpty());QVERIFY(!click("startTaxonButton"));}
+        QVERIFY(click("returnDomainsButton"));
     }
     QVERIFY(click("categoryButton0"));
     QCOMPARE(window->property("page").toString(), QString("quiz"));
@@ -284,7 +281,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(statsScroll);
     statsScroll->setProperty("contentY",qMax(0.0,statsScroll->property("contentHeight").toReal()-statsScroll->height()));
     QVERIFY(snapshot("compact-statistics-lower-groups"));
-    controller.startTaxonGame("edu:Plantae", "genus");
+    controller.startTaxonGame(scientificGroup("Plantae"), "genus");
     for (int i = 0; i < controller.catalogSize() && controller.questionPhoto().value("image").toString().isEmpty(); ++i) {
         controller.answerSelected(controller.answerOptions().first());
         controller.nextQuestion();
@@ -359,7 +356,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QCOMPARE(controller.browseTaxon().value("id").toString(),group);
     // Exercise a long, sourced species account rather than relying only on the
     // random question picked by the normal flow, including its lower controls.
-    controller.startTaxonGame("edu:Animalia","genus");
+    controller.startTaxonGame(scientificGroup("Animalia"),"genus");
     for (int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=126;++i) {
         controller.answerSelected(correctAnswer()); controller.nextQuestion();
     }
@@ -373,6 +370,14 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(snapshot("species-lion-information"));
     window->resize(1000,700);
     QVERIFY(snapshot("compact-species-lion-information"));
+    QVERIFY(click("speciesClassificationButton"));
+    QVERIFY(controller.answerDetails().value("classification").toString().contains("Eukaryota"));
+    QVERIFY(controller.answerDetails().value("classification").toString().contains("Opisthokonta"));
+    const auto phylogenyReview=controller.answerDetails().value("profile").toMap().value("governance").toMap().value("phylogeny").toMap();
+    QCOMPARE(phylogenyReview.value("state").toString(),QString("draft"));
+    QVERIFY(phylogenyReview.value("reviewer").toString().isEmpty());
+    QVERIFY(snapshot("compact-phylogeny-classification"));
+    QVERIFY(click("speciesClassificationButton"));
     QVERIFY(click("speciesSourcesButton"));
     auto speciesScroll=findVisualItem(window->contentItem(),"pageScroll");
     QVERIFY(speciesScroll);
@@ -381,7 +386,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("speciesContinueButton"));
     QCOMPARE(window->property("page").toString(),QString("quiz"));
     QVERIFY(!controller.answerPending());
-    controller.startTaxonGame("edu:Fungi","genus");
+    controller.startTaxonGame(scientificGroup("Fungi"),"genus");
     for(int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=135;++i) {
         controller.answerSelected(correctAnswer());controller.nextQuestion();
     }
@@ -420,7 +425,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     controller.nextQuestion();showPage("quiz");
     QCOMPARE(controller.possibleScoreText(),QString("1,00"));
     for(const auto &hint : controller.hints())QVERIFY(!hint.toMap().value("revealed").toBool());
-    controller.startTaxonGame("edu:Animalia","genus");
+    controller.startTaxonGame(scientificGroup("Animalia"),"genus");
     for(int i=0;i<controller.catalogSize() && controller.questionPhoto().value("speciesId").toInt()!=131;++i) {
         controller.answerSelected(correctAnswer());controller.nextQuestion();
     }

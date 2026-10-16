@@ -1,15 +1,36 @@
 {
   "schema_version": 1,
-  "default_photo_licenses": ["cc0", "cc-by"],
-  "noncommercial": {"enabled": false, "policy_document": null},
+  "default_photo_licenses": [
+    "cc0",
+    "cc-by"
+  ],
+  "noncommercial": {
+    "enabled": false,
+    "policy_document": null
+  },
   "distribution_mode": "unrestricted",
   "exceptions": [],
-  "review_days": {"taxonomy": 365, "photo": 180, "licensing": 180, "education": 365, "conservation": 180, "etymology": 730, "morphology": 365, "assistance": 365, "links": 90},
+  "review_days": {
+    "taxonomy": 365,
+    "photo": 180,
+    "licensing": 180,
+    "education": 365,
+    "conservation": 180,
+    "etymology": 730,
+    "morphology": 365,
+    "assistance": 365,
+    "links": 90,
+    "phylogeny": 365
+  },
   "allow_unchanged_legacy_for_local_learning": true,
-  "taxonomy_system": "iNaturalist taxa API v1; source hierarchy preserved, not an assertion of a universal consensus classification",
-  "educational_system": "Traditional five kingdoms, pedagogical grouping only",
+  "taxonomy_system": "Backbone original iNaturalist API v1 preservado em source_taxonomy; projeção filogenética phylogeny-v1 com fontes e revisão independente.",
+  "educational_system": "Três domínios como portas didáticas; linhagens eucarióticas de Adl et al. 2019 e Burki et al. 2020. Hipóteses alternativas e divergências em phylogeny.json.",
   "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/new",
   "privacy": "No coordinates, locality, observer profile, contact details or hidden data in published evidence. Photo attribution is retained as supplied by the source.",
-  "own_material_licenses": {"code": null, "texts": null, "collection": null},
+  "own_material_licenses": {
+    "code": null,
+    "texts": null,
+    "collection": null
+  },
   "maintainer_decisions": []
 }

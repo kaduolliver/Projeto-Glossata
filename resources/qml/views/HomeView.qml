@@ -44,7 +44,7 @@ Item {
                     Label { text: "Um mundo de vida."; color: "#F5F8EF"; font.pixelSize: 38; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                     Label { text: "Infinitas descobertas."; color: "#5DDE8D"; font.pixelSize: 38; font.weight: Font.DemiBold; font.letterSpacing: -1.3; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 }
-                Label { text: "Explore a diversidade da vida, dos organismos microscópicos às espécies mais complexas. Descubra, identifique e aprenda uma espécie de cada vez."; color: "#B8CAC0"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.maximumWidth: 345 }
+                Label { text: "Explore Bacteria, Archaea e Eukaryota e descubra suas linhagens evolutivas. Observe, identifique e aprenda sobre a diversidade da vida, uma espécie de cada vez."; color: "#B8CAC0"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.maximumWidth: 345 }
                 UiButton { objectName: "homePlayButton"; text: view.app.playing ? "Continuar partida" : "Começar a explorar"; iconName: "play"; Layout.topMargin: 8; implicitWidth: 230; onClicked: view.app.openPlay() }
                 Label { text: "No seu ritmo. Sem limite de perguntas."; color: "#71998A"; font.pixelSize: 11 }
             }

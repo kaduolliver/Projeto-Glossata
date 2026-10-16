@@ -8,7 +8,7 @@ from refine_photos import image_dimensions
 from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-RANKS = ('species', 'genus', 'family', 'order', 'class', 'phylum', 'kingdom')
+RANKS = ('species', 'genus', 'family', 'order', 'class', 'phylum', 'kingdom', 'supergroup', 'domain')
 STATES = {'pending', 'in_review', 'approved', 'rejected'}
 LICENSES = {'cc0': 'https://creativecommons.org/publicdomain/zero/1.0/',
             'cc-by': 'https://creativecommons.org/licenses/by/4.0/'}
@@ -39,24 +39,20 @@ def audit(root=ROOT):
         lineage = [nodes[n] for n in s.get('taxonomy', []) if n in nodes]
         if len(lineage) != len(s.get('taxonomy', [])):
             errors.append({'id': sid, 'error': 'missing_taxon'})
-        # Scientific roots are attached to educational roots in the navigation
-        # tree; the species' scientific lineage can omit that synthetic parent.
-        seen = {'edu:' + s.get('educational_kingdom', '')} if lineage and lineage[0]['rank'] != 'educational_kingdom' else set()
+        seen = set()
         for node in lineage:
             if node['id'] in seen or (node.get('parent_id') and node['parent_id'] not in seen):
                 errors.append({'id': sid, 'error': 'lineage_order_or_cycle'})
             seen.add(node['id'])
         scientific_kingdom = next((t['name'] for t in lineage if t['rank']=='kingdom'), 'unclassified')
-        kingdom = s.get('educational_kingdom', 'unclassified')
-        expected = {'Animalia': {'Animalia'}, 'Plantae': {'Plantae'}, 'Fungi': {'Fungi'},
-                    'Protista': {'Protozoa', 'Chromista'}, 'Monera': {'Bacteria', 'Archaea'}}
-        if scientific_kingdom not in expected.get(kingdom, set()): errors.append({'id': sid, 'error': 'educational_mapping'})
+        kingdom = s.get('domain', 'unclassified')
+        if kingdom not in {'Bacteria','Archaea','Eukaryota'}: errors.append({'id': sid, 'error': 'domain_mapping'})
         group = diversity.setdefault(kingdom, {'count': 0, 'scientific_kingdoms': collections.Counter(), 'phyla': collections.Counter(), 'classes': collections.Counter()})
         group['count'] += 1; group['scientific_kingdoms'][scientific_kingdom] += 1
         for rank, key in (('phylum', 'phyla'), ('class', 'classes')):
             group[key][next((t['name'] for t in lineage if t['rank']==rank), 'unclassified')] += 1
         p = s.get('photo', {}); path = root / p.get('path', '')
-        association = p.get('scientific_name') == s['name'] if p.get('role', 'identification') == 'identification' else p.get('supporting_for') == s['name'] and kingdom == 'Monera'
+        association = p.get('scientific_name') == s['name'] if p.get('role', 'identification') == 'identification' else p.get('supporting_for') == s['name'] and kingdom in {'Bacteria','Archaea'}
         license_ok = ((p.get('license') in LICENSES and p.get('license_url') == LICENSES.get(p.get('license')))
                       or bool(documented_exception(p, 'distribution', root))) and license_allowed(p, root, 'distribution')
         if not license_ok: incompatible_licenses.append(sid)
@@ -69,6 +65,7 @@ def audit(root=ROOT):
         else: errors.append({'id': sid, 'error': 'photo_integrity_or_metadata'})
         approved = valid and license_ok and usable(sid, 'photo') and usable(sid, 'taxonomy')
         for rank in RANKS:
+            if rank in {'domain','supergroup'} and not usable(sid,'phylogeny'): continue
             answer = s['name'] if rank == 'species' else next((t['name'] for t in lineage if t['rank']==rank), '')
             if approved and rank in p.get('approved_ranks', []) and answer: eligible[rank].append((sid, answer))
         if usable(sid, 'etymology') and any(n.get('verified') and n.get('source_url', '').startswith('https://') and 'inaturalist.org' not in n['source_url'] for n in content.get('etymology_hints', {}).values()): etymology.append(sid)
@@ -81,6 +78,9 @@ def audit(root=ROOT):
     by_id = {str(s['id']): s for s in species}
     competitive = [sid for sid, _ in eligible['genus'] if by_id[sid]['photo'].get('role', 'identification') == 'identification']
     from audit_hint_assistance import audit as audit_assistance
+    from phylogeny import audit as audit_phylogeny
+    phylogeny = audit_phylogeny(species, list(nodes.values()), read('phylogeny.json'))
+    errors.extend({'error': 'phylogeny', 'detail': error} for error in phylogeny['errors'])
     assistance_summary={k:v for k,v in audit_assistance(root).items() if k not in {'rows','missing_content'}}
     return {'governance': audit_governance(root), 'hint_assistance': assistance_summary, 'total_species': len(species), 'valid_photo_records': len(valid_photos),
             'photo_validation': 'Technical SHA-256, association and dimensions; decoder belongs to Qt tests. Not permission or scientific certification.',

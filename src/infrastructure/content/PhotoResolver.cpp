@@ -86,7 +86,7 @@ Photo PhotoResolver::validate(Photo p, const QString &expectedName)
 void PhotoResolver::attach(Species &s, Photo photo)
 {
     if (photo.role=="supporting") {
-        if (s.educationalKingdom!="Monera") photo.sourceVerified=false;
+        if (s.domain()!="Bacteria" && s.domain()!="Archaea") photo.sourceVerified=false;
     } else if (!s.sourceTaxonId.isEmpty() && photo.taxonId!=s.sourceTaxonId) photo.sourceVerified=false;
     s.photo=validate(photo,s.name);
     s.image=s.photo.valid ? s.photo.image : QString();

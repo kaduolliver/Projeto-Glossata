@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-15T22:18:44.813192+00:00",
+  "captured_at": "2026-10-16T01:15:33.607846+00:00",
   "method": "QQuickWindow::grabWindow / running application",
-  "application_version": "1.1.0",
-  "binary_sha256": "c1c09698562f938aef7de133049701431edb616fdc5c513a63c94cac73c1e083",
-  "image_sha256": "bf7e1d519c92e70c6c192615e48a6302793e2627a993e13a54b4d39e3ec9d602",
+  "application_version": "1.2.0",
+  "binary_sha256": "7a9a0b946a6e04196f6243b1c10c4a64f557cad1e9fdb981810b8dde303a8dd2",
+  "image_sha256": "adde364a73e20ac659dbeffd0fce1cbb5f79993bc8bf197bda4a236cd74508b5",
   "width": 1240,
   "height": 820,
   "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
@@ -12,16 +12,16 @@
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
-    "resources/data/species.json": "4ef4ad27cd3b4664cfffc43c0d28ee137d9fa5b69bf1700f00b1114527e0761c",
-    "resources/qml/components/KingdomArtwork.qml": "82a1d06531399f27f4ccb70d4eaadafce071b46fbeb7620fb53beb9c232faa8e",
-    "resources/qml/components/LifeArtwork.qml": "6c58d38488132a064de8836b4c62ea18cffa28c8a18b101d973730b0994dbe66",
+    "resources/data/species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
+    "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
+    "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
     "resources/qml/components/NavItem.qml": "f1a4ac7fc2ea1dac01e880dda83942eca8ebd9687d04098e7c6875fc86fdbaff",
     "resources/qml/components/StatCard.qml": "57ad52f684b9e7bffffb6a9e65b213f30837c7268e42e190e85293c4e68bfd8b",
     "resources/qml/components/UiButton.qml": "92c12fa82e07ffe45dd90c35aea8bad9aa25696ce20e8a232b8621ccb6109a22",
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
     "resources/qml/Main.qml": "aecfbfc557ca4dae0ed5da311ed4d894a66a77bbb13a880c3f3759178bd75b2f",
-    "resources/qml/views/HomeView.qml": "75f80152e22814bfa22f0662a16f413d4299af6fd3ef84fd5269b0fb8b9bb191",
-    "src/presentation/GameController.cpp": "d707766ec789d03ccd8e9aa6fbb89c8c67d02f68ab8c688dac853a2a6da8f5c5",
+    "resources/qml/views/HomeView.qml": "90ecd3e1b35e5ebb7aef16015302397f3edc89df4843893e0064c852283bd3a0",
+    "src/presentation/GameController.cpp": "917fcbb9dc249dfd8314584a599ab3f44e07c5d71d87f6f90e13ea6aa7db19c6",
     "src/presentation/GameController.h": "7decf27f86e24043b19225ee59ecbd7f63013564b6314fbde9b48857d1ce897e"
   }
 }

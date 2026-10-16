@@ -14,7 +14,7 @@ struct Species {
     QString region;
     QString image;
     QString commonName;
-    QString educationalKingdom;
+    QString educationalKingdom; // Historical compatibility only; never a scientific rank.
     QVector<Taxon> taxonomy;
     QString source;
     QString sourceTaxonId;
@@ -26,6 +26,7 @@ struct Species {
     bool visualQuiz = false;
     Photo photo;
     bool taxonomyApproved = true;
+    bool phylogenyApproved = false;
     bool photoApproved = true;
     QStringList morphologyTraits;
 
@@ -39,5 +40,17 @@ struct Species {
         if (taxonId == "edu:" + educationalKingdom) return true;
         for (const Taxon &taxon : taxonomy) if (taxon.id == taxonId) return true;
         return false;
+    }
+    QString domain() const { return answerAtRank("domain"); }
+    QString displayGroup() const {
+        for (const QString &rank : {QString("kingdom"),QString("supergroup"),QString("domain")}) {
+            const auto name=answerAtRank(rank); if (!name.isEmpty()) return name;
+        }
+        return {};
+    }
+    QString displayGroupId() const {
+        const auto name=displayGroup();
+        for (const auto &node : taxonomy) if (node.name==name) return node.id;
+        return "unclassified";
     }
 };

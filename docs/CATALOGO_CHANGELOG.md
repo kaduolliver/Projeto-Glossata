@@ -2,6 +2,16 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.0.0] — Não lançado; projeção filogenética
+
+Aplicativo previsto: **1.2.0**. Mudança MAJOR do esquema de organização; sem publicação de release.
+
+- Os 122 IDs e nomes de organismos, as 120 fotografias e todos os metadados de crédito/licença são preservados. O registro de integridade em `resources/compliance/taxonomy_migration_v1.json` permite comparar a migração.
+- Raízes Bacteria (20), Archaea (0) e Eukaryota (102); Opisthokonta (62), Archaeplastida (20), SAR (10), Amoebozoa (10) e Discoba (0). Não há novos organismos nem ranks inventados para preencher lacunas.
+- `source_taxonomy` preserva integralmente a classificação original por organismo. `legacy_educational_kingdom` preserva apenas a associação histórica. A árvore ativa retira Monera, Protista, Protozoa e Chromista; Bacteria passa a domínio. Animalia e Fungi ficam em Opisthokonta; Plantae, no sentido do backbone original, em Archaeplastida.
+- Política/fonte em `phylogeny.json`; divergências por registro e 122 revisões independentes de filogenia em rascunho. Revisões antigas, evidências de foto e datas não foram renovadas. Fontes consultadas não são aprovação por especialista.
+- Nenhuma licença modificada ou concedida. Permanecem os bloqueios de redistribuição e curadoria anteriores. O hash de conteúdo competitivo muda; partidas e pontos históricos não são recalculados.
+
 ## [1.0.0] — Não lançado; baseline inicial versionada
 
 Aplicativo previsto: **1.1.0**. Os números identificam uma baseline técnica, sem afirmar que o conteúdo foi cientificamente aprovado ou liberado para redistribuição.

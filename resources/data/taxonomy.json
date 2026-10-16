@@ -1,49 +1,117 @@
 [
   {
-    "id": "edu:Animalia",
-    "name": "Animalia",
-    "rank": "educational_kingdom",
+    "id": "domain:Bacteria",
+    "name": "Bacteria",
+    "rank": "domain",
     "parent_id": "",
-    "source": "educational",
-    "source_taxon_id": ""
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Bacteria",
+    "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+    "evidence_location": "Abstract",
+    "description": "Organismos celulares sem núcleo delimitado por membrana. O catálogo reúne aqui suas bactérias.",
+    "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
   },
   {
-    "id": "edu:Plantae",
-    "name": "Plantae",
-    "rank": "educational_kingdom",
+    "id": "domain:Archaea",
+    "name": "Archaea",
+    "rank": "domain",
     "parent_id": "",
-    "source": "educational",
-    "source_taxon_id": ""
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Archaea",
+    "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+    "evidence_location": "Abstract",
+    "description": "Linhagens distintas de Bacteria. Ainda não há organismos deste domínio no catálogo.",
+    "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
   },
   {
-    "id": "edu:Fungi",
-    "name": "Fungi",
-    "rank": "educational_kingdom",
+    "id": "domain:Eukaryota",
+    "name": "Eukaryota",
+    "rank": "domain",
     "parent_id": "",
-    "source": "educational",
-    "source_taxon_id": ""
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Eukaryota",
+    "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+    "evidence_location": "Abstract; Eucarya, grafia original da proposta",
+    "description": "Organismos com células eucarióticas. As linhagens abaixo são uma seleção para navegação, não uma árvore completa.",
+    "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
   },
   {
-    "id": "edu:Protista",
-    "name": "Protista",
-    "rank": "educational_kingdom",
-    "parent_id": "",
-    "source": "educational",
-    "source_taxon_id": ""
+    "id": "clade:Opisthokonta",
+    "name": "Opisthokonta",
+    "rank": "supergroup",
+    "parent_id": "domain:Eukaryota",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Opisthokonta",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Figure 1; Amorphea / Obazoa / Opisthokonta",
+    "description": "Linhagem que inclui os animais, os fungos e parentes unicelulares.",
+    "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
   },
   {
-    "id": "edu:Monera",
-    "name": "Monera",
-    "rank": "educational_kingdom",
-    "parent_id": "",
-    "source": "educational",
-    "source_taxon_id": ""
+    "id": "clade:Archaeplastida",
+    "name": "Archaeplastida",
+    "rank": "supergroup",
+    "parent_id": "domain:Eukaryota",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Archaeplastida",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Figure 1; Archaeplastida",
+    "description": "Linhagem que inclui plantas verdes, algas vermelhas e glaucófitas.",
+    "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+  },
+  {
+    "id": "clade:SAR",
+    "name": "SAR",
+    "rank": "supergroup",
+    "parent_id": "domain:Eukaryota",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "SAR",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Figure 1; Sar",
+    "description": "Clado formado por Stramenopiles, Alveolata e Rhizaria.",
+    "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+  },
+  {
+    "id": "clade:Amoebozoa",
+    "name": "Amoebozoa",
+    "rank": "supergroup",
+    "parent_id": "domain:Eukaryota",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Amoebozoa",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Amoebozoa / Evosea / Eumycetozoa, pp. 12–17",
+    "description": "Linhagem que inclui os mixomicetos presentes neste catálogo.",
+    "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+  },
+  {
+    "id": "clade:Discoba",
+    "name": "Discoba",
+    "rank": "supergroup",
+    "parent_id": "domain:Eukaryota",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Discoba",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Table 2; Incertae sedis EUKARYA; Discoba",
+    "description": "Linhagem que inclui euglenozoários. Ainda sem representantes neste catálogo.",
+    "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+  },
+  {
+    "id": "clade:Stramenopiles",
+    "name": "Stramenopiles",
+    "rank": "clade",
+    "parent_id": "clade:SAR",
+    "source": "glossata_phylogeny",
+    "source_taxon_id": "Stramenopiles",
+    "source_url": "https://doi.org/10.1111/jeu.12691",
+    "evidence_location": "Sar / Stramenopiles / Ochrophyta; Phaeophyceae",
+    "description": "Linhagem de SAR que inclui as algas pardas do catálogo.",
+    "rank_note": "Clado sem rank formal na fonte."
   },
   {
     "id": "taxon:cac47417164883d60794",
     "name": "Animalia",
     "rank": "kingdom",
-    "parent_id": "edu:Animalia",
+    "parent_id": "clade:Opisthokonta",
     "source": "inaturalist",
     "source_taxon_id": "1"
   },
@@ -56,12 +124,28 @@
     "source_taxon_id": "47120"
   },
   {
+    "id": "taxon:e08dca9303abf14d44f7",
+    "name": "Hexapoda",
+    "rank": "subphylum",
+    "parent_id": "taxon:5ad28aa5499d178f4f0d",
+    "source": "inaturalist",
+    "source_taxon_id": "372739"
+  },
+  {
     "id": "taxon:e8799f7a826b70f11770",
     "name": "Insecta",
     "rank": "class",
     "parent_id": "taxon:e08dca9303abf14d44f7",
     "source": "inaturalist",
     "source_taxon_id": "47158"
+  },
+  {
+    "id": "taxon:1ecdd7adb43cf1acf733",
+    "name": "Pterygota",
+    "rank": "subclass",
+    "parent_id": "taxon:e8799f7a826b70f11770",
+    "source": "inaturalist",
+    "source_taxon_id": "184884"
   },
   {
     "id": "taxon:befdeedc26d96d8aeb9f",
@@ -72,6 +156,14 @@
     "source_taxon_id": "47157"
   },
   {
+    "id": "taxon:aa9bbc2d6be1008a4b6c",
+    "name": "Papilionoidea",
+    "rank": "superfamily",
+    "parent_id": "taxon:befdeedc26d96d8aeb9f",
+    "source": "inaturalist",
+    "source_taxon_id": "47224"
+  },
+  {
     "id": "taxon:43d28ce77c090ecb7e1f",
     "name": "Papilionidae",
     "rank": "family",
@@ -80,12 +172,36 @@
     "source_taxon_id": "47223"
   },
   {
+    "id": "taxon:e6ceb602dc0cf1698eb1",
+    "name": "Papilioninae",
+    "rank": "subfamily",
+    "parent_id": "taxon:43d28ce77c090ecb7e1f",
+    "source": "inaturalist",
+    "source_taxon_id": "49973"
+  },
+  {
+    "id": "taxon:e2cb7a13013a0ee4f953",
+    "name": "Papilionini",
+    "rank": "tribe",
+    "parent_id": "taxon:e6ceb602dc0cf1698eb1",
+    "source": "inaturalist",
+    "source_taxon_id": "207785"
+  },
+  {
     "id": "taxon:06638735b2da14e3910c",
     "name": "Papilio",
     "rank": "genus",
     "parent_id": "taxon:e2cb7a13013a0ee4f953",
     "source": "inaturalist",
     "source_taxon_id": "47225"
+  },
+  {
+    "id": "taxon:1fadaa7f38a91f5a7601",
+    "name": "Papilio",
+    "rank": "subgenus",
+    "parent_id": "taxon:06638735b2da14e3910c",
+    "source": "inaturalist",
+    "source_taxon_id": "545183"
   },
   {
     "id": "taxon:fa8da3610a622ad8f1d5",
@@ -104,6 +220,22 @@
     "source_taxon_id": "47922"
   },
   {
+    "id": "taxon:1514ca722590a3defa96",
+    "name": "Nymphalinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:a5217b2ede7fdeb70d44",
+    "source": "inaturalist",
+    "source_taxon_id": "202067"
+  },
+  {
+    "id": "taxon:ce8d36f300a10e0a312f",
+    "name": "Nymphalini",
+    "rank": "tribe",
+    "parent_id": "taxon:1514ca722590a3defa96",
+    "source": "inaturalist",
+    "source_taxon_id": "202066"
+  },
+  {
     "id": "taxon:f7ed5ce58071941fa6d7",
     "name": "Vanessa",
     "rank": "genus",
@@ -120,12 +252,44 @@
     "source_taxon_id": "49133"
   },
   {
+    "id": "taxon:4334cda9f1c3e42e4a3f",
+    "name": "Bombycoidea",
+    "rank": "superfamily",
+    "parent_id": "taxon:befdeedc26d96d8aeb9f",
+    "source": "inaturalist",
+    "source_taxon_id": "47214"
+  },
+  {
     "id": "taxon:4b9123c80ff896020ceb",
     "name": "Sphingidae",
     "rank": "family",
     "parent_id": "taxon:4334cda9f1c3e42e4a3f",
     "source": "inaturalist",
     "source_taxon_id": "47213"
+  },
+  {
+    "id": "taxon:e217d1b283c8e3628d12",
+    "name": "Sphinginae",
+    "rank": "subfamily",
+    "parent_id": "taxon:4b9123c80ff896020ceb",
+    "source": "inaturalist",
+    "source_taxon_id": "124081"
+  },
+  {
+    "id": "taxon:152b878377ba3f6be054",
+    "name": "Sphingini",
+    "rank": "tribe",
+    "parent_id": "taxon:e217d1b283c8e3628d12",
+    "source": "inaturalist",
+    "source_taxon_id": "124110"
+  },
+  {
+    "id": "taxon:457eb336c0e5339345f5",
+    "name": "Acherontiina",
+    "rank": "subtribe",
+    "parent_id": "taxon:152b878377ba3f6be054",
+    "source": "inaturalist",
+    "source_taxon_id": "1228738"
   },
   {
     "id": "taxon:08a45d52136c58397a8a",
@@ -168,12 +332,36 @@
     "source_taxon_id": "700944"
   },
   {
+    "id": "taxon:8b82443701a440f456e2",
+    "name": "Noctuoidea",
+    "rank": "superfamily",
+    "parent_id": "taxon:befdeedc26d96d8aeb9f",
+    "source": "inaturalist",
+    "source_taxon_id": "47607"
+  },
+  {
     "id": "taxon:35a33e7f95471bb27c7f",
     "name": "Erebidae",
     "rank": "family",
     "parent_id": "taxon:8b82443701a440f456e2",
     "source": "inaturalist",
     "source_taxon_id": "121850"
+  },
+  {
+    "id": "taxon:2a26c193d0b1cd86a924",
+    "name": "Lymantriinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:35a33e7f95471bb27c7f",
+    "source": "inaturalist",
+    "source_taxon_id": "48847"
+  },
+  {
+    "id": "taxon:7953cf4e6b1fdf103e54",
+    "name": "Lymantriini",
+    "rank": "tribe",
+    "parent_id": "taxon:2a26c193d0b1cd86a924",
+    "source": "inaturalist",
+    "source_taxon_id": "82039"
   },
   {
     "id": "taxon:ab95857b44aa6530a7d4",
@@ -184,12 +372,44 @@
     "source_taxon_id": "48848"
   },
   {
+    "id": "taxon:516478a3b8737e219396",
+    "name": "Porthetria",
+    "rank": "subgenus",
+    "parent_id": "taxon:ab95857b44aa6530a7d4",
+    "source": "inaturalist",
+    "source_taxon_id": "1552378"
+  },
+  {
     "id": "taxon:65b7a9614a5fe52da4bb",
     "name": "Lymantria dispar",
     "rank": "species",
     "parent_id": "taxon:516478a3b8737e219396",
     "source": "inaturalist",
     "source_taxon_id": "47802"
+  },
+  {
+    "id": "taxon:37de64728257435b773e",
+    "name": "Danainae",
+    "rank": "subfamily",
+    "parent_id": "taxon:a5217b2ede7fdeb70d44",
+    "source": "inaturalist",
+    "source_taxon_id": "61244"
+  },
+  {
+    "id": "taxon:98c4f45766edc6e9095b",
+    "name": "Danaini",
+    "rank": "tribe",
+    "parent_id": "taxon:37de64728257435b773e",
+    "source": "inaturalist",
+    "source_taxon_id": "134169"
+  },
+  {
+    "id": "taxon:5175d7ac205bf87796b4",
+    "name": "Danaina",
+    "rank": "subtribe",
+    "parent_id": "taxon:98c4f45766edc6e9095b",
+    "source": "inaturalist",
+    "source_taxon_id": "522900"
   },
   {
     "id": "taxon:c21e6ec44d81d9da86c6",
@@ -232,12 +452,116 @@
     "source_taxon_id": "48548"
   },
   {
+    "id": "taxon:ec44ee69ac562708b6ed",
+    "name": "Chordata",
+    "rank": "phylum",
+    "parent_id": "taxon:cac47417164883d60794",
+    "source": "inaturalist",
+    "source_taxon_id": "2"
+  },
+  {
+    "id": "taxon:2a343cc2d757be670b78",
+    "name": "Vertebrata",
+    "rank": "subphylum",
+    "parent_id": "taxon:ec44ee69ac562708b6ed",
+    "source": "inaturalist",
+    "source_taxon_id": "355675"
+  },
+  {
+    "id": "taxon:8e67bb6918b37003528c",
+    "name": "Mammalia",
+    "rank": "class",
+    "parent_id": "taxon:2a343cc2d757be670b78",
+    "source": "inaturalist",
+    "source_taxon_id": "40151"
+  },
+  {
+    "id": "taxon:fa341fc92aaea0bae63b",
+    "name": "Theria",
+    "rank": "subclass",
+    "parent_id": "taxon:8e67bb6918b37003528c",
+    "source": "inaturalist",
+    "source_taxon_id": "848317"
+  },
+  {
+    "id": "taxon:d4c5ffe5cc6d217b86d7",
+    "name": "Placentalia",
+    "rank": "infraclass",
+    "parent_id": "taxon:fa341fc92aaea0bae63b",
+    "source": "inaturalist",
+    "source_taxon_id": "848320"
+  },
+  {
+    "id": "taxon:c75df7394d29d11ac2e9",
+    "name": "Laurasiatheria",
+    "rank": "superorder",
+    "parent_id": "taxon:d4c5ffe5cc6d217b86d7",
+    "source": "inaturalist",
+    "source_taxon_id": "848324"
+  },
+  {
+    "id": "taxon:ec769714706f048f9881",
+    "name": "Carnivora",
+    "rank": "order",
+    "parent_id": "taxon:c75df7394d29d11ac2e9",
+    "source": "inaturalist",
+    "source_taxon_id": "41573"
+  },
+  {
+    "id": "taxon:abc8378e1225a00d32fc",
+    "name": "Felidae",
+    "rank": "family",
+    "parent_id": "taxon:ec769714706f048f9881",
+    "source": "inaturalist",
+    "source_taxon_id": "41944"
+  },
+  {
+    "id": "taxon:f5ec96cd88361e082232",
+    "name": "Pantherinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:abc8378e1225a00d32fc",
+    "source": "inaturalist",
+    "source_taxon_id": "846273"
+  },
+  {
+    "id": "taxon:1e433a010d42ae51ec79",
+    "name": "Panthera",
+    "rank": "genus",
+    "parent_id": "taxon:f5ec96cd88361e082232",
+    "source": "inaturalist",
+    "source_taxon_id": "41962"
+  },
+  {
+    "id": "taxon:b925e58a09349b8d0755",
+    "name": "Panthera tigris",
+    "rank": "species",
+    "parent_id": "taxon:1e433a010d42ae51ec79",
+    "source": "inaturalist",
+    "source_taxon_id": "41967"
+  },
+  {
     "id": "taxon:785c93ec1fd86284887d",
     "name": "Saturniidae",
     "rank": "family",
     "parent_id": "taxon:4334cda9f1c3e42e4a3f",
     "source": "inaturalist",
     "source_taxon_id": "47918"
+  },
+  {
+    "id": "taxon:6a5b63141c3c74f3ec37",
+    "name": "Saturniinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:785c93ec1fd86284887d",
+    "source": "inaturalist",
+    "source_taxon_id": "124126"
+  },
+  {
+    "id": "taxon:acebd59f76f58c4c3d62",
+    "name": "Attacini",
+    "rank": "tribe",
+    "parent_id": "taxon:6a5b63141c3c74f3ec37",
+    "source": "inaturalist",
+    "source_taxon_id": "125063"
   },
   {
     "id": "taxon:c4eddf10552a99cad35b",
@@ -254,6 +578,14 @@
     "parent_id": "taxon:c4eddf10552a99cad35b",
     "source": "inaturalist",
     "source_taxon_id": "125071"
+  },
+  {
+    "id": "taxon:92f700fe42533ae4b68e",
+    "name": "Saturniini",
+    "rank": "tribe",
+    "parent_id": "taxon:6a5b63141c3c74f3ec37",
+    "source": "inaturalist",
+    "source_taxon_id": "125080"
   },
   {
     "id": "taxon:56306fdcc6db26b2a888",
@@ -288,6 +620,30 @@
     "source_taxon_id": "81582"
   },
   {
+    "id": "taxon:9fcc265129219c46c6b5",
+    "name": "Hemileucinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:785c93ec1fd86284887d",
+    "source": "inaturalist",
+    "source_taxon_id": "125084"
+  },
+  {
+    "id": "taxon:75cfff10ae2f1c975ad7",
+    "name": "Hemileucini",
+    "rank": "tribe",
+    "parent_id": "taxon:9fcc265129219c46c6b5",
+    "source": "inaturalist",
+    "source_taxon_id": "475374"
+  },
+  {
+    "id": "taxon:3c0a65da23b478576a10",
+    "name": "Automeriina",
+    "rank": "subtribe",
+    "parent_id": "taxon:75cfff10ae2f1c975ad7",
+    "source": "inaturalist",
+    "source_taxon_id": "1702631"
+  },
+  {
     "id": "taxon:0183a3d50469449f14f3",
     "name": "Automeris",
     "rank": "genus",
@@ -320,6 +676,22 @@
     "source_taxon_id": "47919"
   },
   {
+    "id": "taxon:ae53802129fdce11efb6",
+    "name": "Heliconiinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:a5217b2ede7fdeb70d44",
+    "source": "inaturalist",
+    "source_taxon_id": "60854"
+  },
+  {
+    "id": "taxon:c9f3699ce18c2c91f274",
+    "name": "Heliconiini",
+    "rank": "tribe",
+    "parent_id": "taxon:ae53802129fdce11efb6",
+    "source": "inaturalist",
+    "source_taxon_id": "134173"
+  },
+  {
     "id": "taxon:b8692166c9c3f4e20c71",
     "name": "Heliconius",
     "rank": "genus",
@@ -336,6 +708,14 @@
     "source_taxon_id": "147200"
   },
   {
+    "id": "taxon:3d284e31496b31039d7f",
+    "name": "Achillides",
+    "rank": "subgenus",
+    "parent_id": "taxon:06638735b2da14e3910c",
+    "source": "inaturalist",
+    "source_taxon_id": "565390"
+  },
+  {
     "id": "taxon:9669e6e417607ba35e1c",
     "name": "Papilio ulysses",
     "rank": "species",
@@ -344,12 +724,44 @@
     "source_taxon_id": "67438"
   },
   {
+    "id": "taxon:c0e19d2abcc9e277f97c",
+    "name": "Panthera leo",
+    "rank": "species",
+    "parent_id": "taxon:1e433a010d42ae51ec79",
+    "source": "inaturalist",
+    "source_taxon_id": "41964"
+  },
+  {
     "id": "taxon:cc294a10be3b31359ded",
     "name": "Pieridae",
     "rank": "family",
     "parent_id": "taxon:aa9bbc2d6be1008a4b6c",
     "source": "inaturalist",
     "source_taxon_id": "48508"
+  },
+  {
+    "id": "taxon:1907c40a5e9af358792b",
+    "name": "Pierinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:cc294a10be3b31359ded",
+    "source": "inaturalist",
+    "source_taxon_id": "209720"
+  },
+  {
+    "id": "taxon:c1989d45f5643bc43264",
+    "name": "Pierini",
+    "rank": "tribe",
+    "parent_id": "taxon:1907c40a5e9af358792b",
+    "source": "inaturalist",
+    "source_taxon_id": "321384"
+  },
+  {
+    "id": "taxon:1e636daebc91072f97c8",
+    "name": "Pierina",
+    "rank": "subtribe",
+    "parent_id": "taxon:c1989d45f5643bc43264",
+    "source": "inaturalist",
+    "source_taxon_id": "475032"
   },
   {
     "id": "taxon:fb143b2d7e67f3383722",
@@ -368,12 +780,36 @@
     "source_taxon_id": "55401"
   },
   {
+    "id": "taxon:3f43441bac2a647c57f1",
+    "name": "Pyraloidea",
+    "rank": "superfamily",
+    "parent_id": "taxon:befdeedc26d96d8aeb9f",
+    "source": "inaturalist",
+    "source_taxon_id": "49682"
+  },
+  {
     "id": "taxon:4f228f8f8b0a10a9ccca",
     "name": "Pyralidae",
     "rank": "family",
     "parent_id": "taxon:3f43441bac2a647c57f1",
     "source": "inaturalist",
     "source_taxon_id": "49683"
+  },
+  {
+    "id": "taxon:1470e05010553f018536",
+    "name": "Galleriinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:4f228f8f8b0a10a9ccca",
+    "source": "inaturalist",
+    "source_taxon_id": "122933"
+  },
+  {
+    "id": "taxon:bf81b62b2b6313b44dd0",
+    "name": "Galleriini",
+    "rank": "tribe",
+    "parent_id": "taxon:1470e05010553f018536",
+    "source": "inaturalist",
+    "source_taxon_id": "122931"
   },
   {
     "id": "taxon:c9733bd058f9ff69cf0f",
@@ -392,6 +828,22 @@
     "source_taxon_id": "122940"
   },
   {
+    "id": "taxon:8e8ae9ae27e174657312",
+    "name": "Phycitinae",
+    "rank": "subfamily",
+    "parent_id": "taxon:4f228f8f8b0a10a9ccca",
+    "source": "inaturalist",
+    "source_taxon_id": "122925"
+  },
+  {
+    "id": "taxon:70b42d244e73cfd8515b",
+    "name": "Phycitini",
+    "rank": "tribe",
+    "parent_id": "taxon:8e8ae9ae27e174657312",
+    "source": "inaturalist",
+    "source_taxon_id": "122926"
+  },
+  {
     "id": "taxon:f1559915f3b8ea3bb2c2",
     "name": "Plodia",
     "rank": "genus",
@@ -406,6 +858,14 @@
     "parent_id": "taxon:f1559915f3b8ea3bb2c2",
     "source": "inaturalist",
     "source_taxon_id": "124184"
+  },
+  {
+    "id": "taxon:77e1612cb55105f5d2a9",
+    "name": "Sphingina",
+    "rank": "subtribe",
+    "parent_id": "taxon:152b878377ba3f6be054",
+    "source": "inaturalist",
+    "source_taxon_id": "1228736"
   },
   {
     "id": "taxon:01d3fa3239a88506681b",
@@ -424,20 +884,12 @@
     "source_taxon_id": "61505"
   },
   {
-    "id": "taxon:e08dca9303abf14d44f7",
-    "name": "Hexapoda",
-    "rank": "subphylum",
-    "parent_id": "taxon:5ad28aa5499d178f4f0d",
+    "id": "taxon:9a4be0d04bb6e5676812",
+    "name": "Panthera onca",
+    "rank": "species",
+    "parent_id": "taxon:1e433a010d42ae51ec79",
     "source": "inaturalist",
-    "source_taxon_id": "372739"
-  },
-  {
-    "id": "taxon:1ecdd7adb43cf1acf733",
-    "name": "Pterygota",
-    "rank": "subclass",
-    "parent_id": "taxon:e8799f7a826b70f11770",
-    "source": "inaturalist",
-    "source_taxon_id": "184884"
+    "source_taxon_id": "41970"
   },
   {
     "id": "taxon:c25081bdf8acc739ebcd",
@@ -728,22 +1180,6 @@
     "source_taxon_id": "415113"
   },
   {
-    "id": "taxon:ec44ee69ac562708b6ed",
-    "name": "Chordata",
-    "rank": "phylum",
-    "parent_id": "taxon:cac47417164883d60794",
-    "source": "inaturalist",
-    "source_taxon_id": "2"
-  },
-  {
-    "id": "taxon:2a343cc2d757be670b78",
-    "name": "Vertebrata",
-    "rank": "subphylum",
-    "parent_id": "taxon:ec44ee69ac562708b6ed",
-    "source": "inaturalist",
-    "source_taxon_id": "355675"
-  },
-  {
     "id": "taxon:e9697a24c1d5a3ac5752",
     "name": "Actinopterygii",
     "rank": "class",
@@ -798,6 +1234,70 @@
     "parent_id": "taxon:bd9d961c8e7571be6444",
     "source": "inaturalist",
     "source_taxon_id": "94762"
+  },
+  {
+    "id": "taxon:2bec468f54ba4d8fe463",
+    "name": "Euarchontoglires",
+    "rank": "superorder",
+    "parent_id": "taxon:d4c5ffe5cc6d217b86d7",
+    "source": "inaturalist",
+    "source_taxon_id": "848323"
+  },
+  {
+    "id": "taxon:2fb0f8108567cd3c3e96",
+    "name": "Primates",
+    "rank": "order",
+    "parent_id": "taxon:2bec468f54ba4d8fe463",
+    "source": "inaturalist",
+    "source_taxon_id": "43367"
+  },
+  {
+    "id": "taxon:9b8b644f5e3bdd75ad11",
+    "name": "Strepsirrhini",
+    "rank": "suborder",
+    "parent_id": "taxon:2fb0f8108567cd3c3e96",
+    "source": "inaturalist",
+    "source_taxon_id": "936382"
+  },
+  {
+    "id": "taxon:bb3bfb6501a237edcd0f",
+    "name": "Lemuriformes",
+    "rank": "infraorder",
+    "parent_id": "taxon:9b8b644f5e3bdd75ad11",
+    "source": "inaturalist",
+    "source_taxon_id": "1369268"
+  },
+  {
+    "id": "taxon:505ebcc4303461adf503",
+    "name": "Lemuroidea",
+    "rank": "superfamily",
+    "parent_id": "taxon:bb3bfb6501a237edcd0f",
+    "source": "inaturalist",
+    "source_taxon_id": "467897"
+  },
+  {
+    "id": "taxon:ef6caf7b64d3d7bac46b",
+    "name": "Lemuridae",
+    "rank": "family",
+    "parent_id": "taxon:505ebcc4303461adf503",
+    "source": "inaturalist",
+    "source_taxon_id": "43607"
+  },
+  {
+    "id": "taxon:c3423300049ff42cebdd",
+    "name": "Lemur",
+    "rank": "genus",
+    "parent_id": "taxon:ef6caf7b64d3d7bac46b",
+    "source": "inaturalist",
+    "source_taxon_id": "43616"
+  },
+  {
+    "id": "taxon:3c3e035d2b52d33bc92c",
+    "name": "Lemur catta",
+    "rank": "species",
+    "parent_id": "taxon:c3423300049ff42cebdd",
+    "source": "inaturalist",
+    "source_taxon_id": "43617"
   },
   {
     "id": "taxon:f6f72e0f71644f794114",
@@ -952,6 +1452,78 @@
     "source_taxon_id": "3"
   },
   {
+    "id": "taxon:9ff3ed1be91e69a3a2cf",
+    "name": "Galliformes",
+    "rank": "order",
+    "parent_id": "taxon:f1aa88eb71e1f30b7afe",
+    "source": "inaturalist",
+    "source_taxon_id": "573"
+  },
+  {
+    "id": "taxon:471ab68f7e1d7711ab20",
+    "name": "Phasianidae",
+    "rank": "family",
+    "parent_id": "taxon:9ff3ed1be91e69a3a2cf",
+    "source": "inaturalist",
+    "source_taxon_id": "574"
+  },
+  {
+    "id": "taxon:6a5e0c1939446cd13f55",
+    "name": "Pavo",
+    "rank": "genus",
+    "parent_id": "taxon:471ab68f7e1d7711ab20",
+    "source": "inaturalist",
+    "source_taxon_id": "1199"
+  },
+  {
+    "id": "taxon:8dee9e4c1ee9d27e51c9",
+    "name": "Pavo cristatus",
+    "rank": "species",
+    "parent_id": "taxon:6a5e0c1939446cd13f55",
+    "source": "inaturalist",
+    "source_taxon_id": "1204"
+  },
+  {
+    "id": "taxon:aadda281a0076fc389d9",
+    "name": "Amphibia",
+    "rank": "class",
+    "parent_id": "taxon:2a343cc2d757be670b78",
+    "source": "inaturalist",
+    "source_taxon_id": "20978"
+  },
+  {
+    "id": "taxon:4b0546fb8463210fcd37",
+    "name": "Anura",
+    "rank": "order",
+    "parent_id": "taxon:aadda281a0076fc389d9",
+    "source": "inaturalist",
+    "source_taxon_id": "20979"
+  },
+  {
+    "id": "taxon:6d68fdbc76f6b03ed7de",
+    "name": "Phyllomedusidae",
+    "rank": "family",
+    "parent_id": "taxon:4b0546fb8463210fcd37",
+    "source": "inaturalist",
+    "source_taxon_id": "554974"
+  },
+  {
+    "id": "taxon:dafd3d52699108243e0f",
+    "name": "Agalychnis",
+    "rank": "genus",
+    "parent_id": "taxon:6d68fdbc76f6b03ed7de",
+    "source": "inaturalist",
+    "source_taxon_id": "23694"
+  },
+  {
+    "id": "taxon:ba2e7a6a3e6a44239113",
+    "name": "Agalychnis callidryas",
+    "rank": "species",
+    "parent_id": "taxon:dafd3d52699108243e0f",
+    "source": "inaturalist",
+    "source_taxon_id": "23702"
+  },
+  {
     "id": "taxon:c4e94162716691a63688",
     "name": "Hymenoptera",
     "rank": "order",
@@ -1014,14 +1586,6 @@
     "parent_id": "taxon:d447be60f4e7a5954956",
     "source": "inaturalist",
     "source_taxon_id": "1238320"
-  },
-  {
-    "id": "taxon:3f43441bac2a647c57f1",
-    "name": "Pyraloidea",
-    "rank": "superfamily",
-    "parent_id": "taxon:befdeedc26d96d8aeb9f",
-    "source": "inaturalist",
-    "source_taxon_id": "49682"
   },
   {
     "id": "taxon:ad8c72231e22edc3f983",
@@ -1216,6 +1780,62 @@
     "source_taxon_id": "518287"
   },
   {
+    "id": "taxon:a3e32188965c5ca8b7fc",
+    "name": "Perissodactyla",
+    "rank": "order",
+    "parent_id": "taxon:c75df7394d29d11ac2e9",
+    "source": "inaturalist",
+    "source_taxon_id": "43327"
+  },
+  {
+    "id": "taxon:fa83efded41318f99886",
+    "name": "Rhinocerotidae",
+    "rank": "family",
+    "parent_id": "taxon:a3e32188965c5ca8b7fc",
+    "source": "inaturalist",
+    "source_taxon_id": "43341"
+  },
+  {
+    "id": "taxon:ae96228406401a8e6e5c",
+    "name": "Rhinoceros",
+    "rank": "genus",
+    "parent_id": "taxon:fa83efded41318f99886",
+    "source": "inaturalist",
+    "source_taxon_id": "43344"
+  },
+  {
+    "id": "taxon:811629c76616f25f37cb",
+    "name": "Rhinoceros unicornis",
+    "rank": "species",
+    "parent_id": "taxon:ae96228406401a8e6e5c",
+    "source": "inaturalist",
+    "source_taxon_id": "43345"
+  },
+  {
+    "id": "taxon:91aef7333acbf4413f95",
+    "name": "Equidae",
+    "rank": "family",
+    "parent_id": "taxon:a3e32188965c5ca8b7fc",
+    "source": "inaturalist",
+    "source_taxon_id": "43328"
+  },
+  {
+    "id": "taxon:28849fd31e756b08e894",
+    "name": "Equus",
+    "rank": "genus",
+    "parent_id": "taxon:91aef7333acbf4413f95",
+    "source": "inaturalist",
+    "source_taxon_id": "43329"
+  },
+  {
+    "id": "taxon:cbb4b255a4373c7ef3e3",
+    "name": "Equus quagga",
+    "rank": "species",
+    "parent_id": "taxon:28849fd31e756b08e894",
+    "source": "inaturalist",
+    "source_taxon_id": "43335"
+  },
+  {
     "id": "taxon:e06e0c0bc25d21fd5177",
     "name": "Mantodea",
     "rank": "order",
@@ -1296,22 +1916,6 @@
     "source_taxon_id": "748796"
   },
   {
-    "id": "taxon:aadda281a0076fc389d9",
-    "name": "Amphibia",
-    "rank": "class",
-    "parent_id": "taxon:2a343cc2d757be670b78",
-    "source": "inaturalist",
-    "source_taxon_id": "20978"
-  },
-  {
-    "id": "taxon:4b0546fb8463210fcd37",
-    "name": "Anura",
-    "rank": "order",
-    "parent_id": "taxon:aadda281a0076fc389d9",
-    "source": "inaturalist",
-    "source_taxon_id": "20979"
-  },
-  {
     "id": "taxon:52f08f485a848868107b",
     "name": "Bufonidae",
     "rank": "family",
@@ -1339,7 +1943,7 @@
     "id": "taxon:56956496cf600779dc1f",
     "name": "Plantae",
     "rank": "kingdom",
-    "parent_id": "edu:Plantae",
+    "parent_id": "clade:Archaeplastida",
     "source": "inaturalist",
     "source_taxon_id": "47126"
   },
@@ -2032,6 +2636,46 @@
     "source_taxon_id": "1658711"
   },
   {
+    "id": "taxon:56adf99fce95de311051",
+    "name": "Ginkgoopsida",
+    "rank": "class",
+    "parent_id": "taxon:a00f38df238c41138073",
+    "source": "inaturalist",
+    "source_taxon_id": "151882"
+  },
+  {
+    "id": "taxon:323ca5dda987456ce50a",
+    "name": "Ginkgoales",
+    "rank": "order",
+    "parent_id": "taxon:56adf99fce95de311051",
+    "source": "inaturalist",
+    "source_taxon_id": "64353"
+  },
+  {
+    "id": "taxon:605d924e768cb6604acd",
+    "name": "Ginkgoaceae",
+    "rank": "family",
+    "parent_id": "taxon:323ca5dda987456ce50a",
+    "source": "inaturalist",
+    "source_taxon_id": "64354"
+  },
+  {
+    "id": "taxon:e8261b13ec5959e6bf30",
+    "name": "Ginkgo",
+    "rank": "genus",
+    "parent_id": "taxon:605d924e768cb6604acd",
+    "source": "inaturalist",
+    "source_taxon_id": "64355"
+  },
+  {
+    "id": "taxon:93fe1078b5abc2cedf04",
+    "name": "Ginkgo biloba",
+    "rank": "species",
+    "parent_id": "taxon:e8261b13ec5959e6bf30",
+    "source": "inaturalist",
+    "source_taxon_id": "64350"
+  },
+  {
     "id": "taxon:0f3a2ae0ec2202e60261",
     "name": "Asterales",
     "rank": "order",
@@ -2126,6 +2770,38 @@
     "parent_id": "taxon:cc1462783cd639a001ee",
     "source": "inaturalist",
     "source_taxon_id": "124825"
+  },
+  {
+    "id": "taxon:012a8e9bbf3bf5b5fd4b",
+    "name": "Caryophyllales",
+    "rank": "order",
+    "parent_id": "taxon:61a843360c3d1e0d554b",
+    "source": "inaturalist",
+    "source_taxon_id": "47366"
+  },
+  {
+    "id": "taxon:cdcfb4ec07dc3d99d5e5",
+    "name": "Droseraceae",
+    "rank": "family",
+    "parent_id": "taxon:012a8e9bbf3bf5b5fd4b",
+    "source": "inaturalist",
+    "source_taxon_id": "51937"
+  },
+  {
+    "id": "taxon:1e63b7b4822b1f2b105e",
+    "name": "Dionaea",
+    "rank": "genus",
+    "parent_id": "taxon:cdcfb4ec07dc3d99d5e5",
+    "source": "inaturalist",
+    "source_taxon_id": "52661"
+  },
+  {
+    "id": "taxon:c84832fb2a33090b091d",
+    "name": "Dionaea muscipula",
+    "rank": "species",
+    "parent_id": "taxon:1e63b7b4822b1f2b105e",
+    "source": "inaturalist",
+    "source_taxon_id": "52666"
   },
   {
     "id": "taxon:d2e5eefc5bbc4a0a92d8",
@@ -2291,7 +2967,7 @@
     "id": "taxon:31fdb10b7300d45a9dcf",
     "name": "Fungi",
     "rank": "kingdom",
-    "parent_id": "edu:Fungi",
+    "parent_id": "clade:Opisthokonta",
     "source": "inaturalist",
     "source_taxon_id": "47170"
   },
@@ -2488,6 +3164,46 @@
     "source_taxon_id": "1228995"
   },
   {
+    "id": "taxon:79f0188140ff38742d91",
+    "name": "Phallomycetidae",
+    "rank": "subclass",
+    "parent_id": "taxon:dea8cc1b875c7ff6434f",
+    "source": "inaturalist",
+    "source_taxon_id": "891028"
+  },
+  {
+    "id": "taxon:2c9c7b7043a91e870c8f",
+    "name": "Phallales",
+    "rank": "order",
+    "parent_id": "taxon:79f0188140ff38742d91",
+    "source": "inaturalist",
+    "source_taxon_id": "48708"
+  },
+  {
+    "id": "taxon:10f906a75072f93a5f59",
+    "name": "Clathraceae",
+    "rank": "family",
+    "parent_id": "taxon:2c9c7b7043a91e870c8f",
+    "source": "inaturalist",
+    "source_taxon_id": "1395929"
+  },
+  {
+    "id": "taxon:2211d8c70fd4783c83d7",
+    "name": "Clathrus",
+    "rank": "genus",
+    "parent_id": "taxon:10f906a75072f93a5f59",
+    "source": "inaturalist",
+    "source_taxon_id": "51137"
+  },
+  {
+    "id": "taxon:d8830f3f072ae7664504",
+    "name": "Clathrus ruber",
+    "rank": "species",
+    "parent_id": "taxon:2211d8c70fd4783c83d7",
+    "source": "inaturalist",
+    "source_taxon_id": "56534"
+  },
+  {
     "id": "taxon:349501381ddc3ce5cdfd",
     "name": "Polyporales",
     "rank": "order",
@@ -2528,20 +3244,68 @@
     "source_taxon_id": "54134"
   },
   {
-    "id": "taxon:41c5feaec0c26f5d28e1",
-    "name": "Hymenogastraceae",
-    "rank": "family",
-    "parent_id": "taxon:5bd48764de5724769590",
+    "id": "taxon:c8a8f2cd816fcd14aa69",
+    "name": "Pluteineae",
+    "rank": "suborder",
+    "parent_id": "taxon:efebef4370813dc1422f",
     "source": "inaturalist",
-    "source_taxon_id": "416512"
+    "source_taxon_id": "785522"
   },
   {
-    "id": "taxon:622fbf831e1819434207",
-    "name": "Psilocybe",
-    "rank": "genus",
-    "parent_id": "taxon:41c5feaec0c26f5d28e1",
+    "id": "taxon:e971cf2876479013ce18",
+    "name": "Amanitaceae",
+    "rank": "family",
+    "parent_id": "taxon:c8a8f2cd816fcd14aa69",
     "source": "inaturalist",
-    "source_taxon_id": "54026"
+    "source_taxon_id": "118249"
+  },
+  {
+    "id": "taxon:33cf072ac2c4f0c9bc3d",
+    "name": "Amaniteae",
+    "rank": "tribe",
+    "parent_id": "taxon:e971cf2876479013ce18",
+    "source": "inaturalist",
+    "source_taxon_id": "1149497"
+  },
+  {
+    "id": "taxon:b874e3b44bd6714e22c8",
+    "name": "Amanita",
+    "rank": "genus",
+    "parent_id": "taxon:33cf072ac2c4f0c9bc3d",
+    "source": "inaturalist",
+    "source_taxon_id": "48419"
+  },
+  {
+    "id": "taxon:808da6be8c5443162037",
+    "name": "Amanita",
+    "rank": "subgenus",
+    "parent_id": "taxon:b874e3b44bd6714e22c8",
+    "source": "inaturalist",
+    "source_taxon_id": "1142599"
+  },
+  {
+    "id": "taxon:555383632c05505beac5",
+    "name": "Amanita",
+    "rank": "section",
+    "parent_id": "taxon:808da6be8c5443162037",
+    "source": "inaturalist",
+    "source_taxon_id": "954920"
+  },
+  {
+    "id": "taxon:ecc4929c8dc05b2e6823",
+    "name": "Amanita",
+    "rank": "subsection",
+    "parent_id": "taxon:555383632c05505beac5",
+    "source": "inaturalist",
+    "source_taxon_id": "1155969"
+  },
+  {
+    "id": "taxon:174c3ecbc12453b3e435",
+    "name": "Amanita muscaria",
+    "rank": "species",
+    "parent_id": "taxon:ecc4929c8dc05b2e6823",
+    "source": "inaturalist",
+    "source_taxon_id": "48715"
   },
   {
     "id": "taxon:e941d2b8d1f5065106e3",
@@ -2624,6 +3388,54 @@
     "source_taxon_id": "328225"
   },
   {
+    "id": "taxon:35eb6509165826c638a5",
+    "name": "Pezizomycetes",
+    "rank": "class",
+    "parent_id": "taxon:3a0728a69345919c2b90",
+    "source": "inaturalist",
+    "source_taxon_id": "152032"
+  },
+  {
+    "id": "taxon:54d0fde48537f565a972",
+    "name": "Pezizales",
+    "rank": "order",
+    "parent_id": "taxon:35eb6509165826c638a5",
+    "source": "inaturalist",
+    "source_taxon_id": "48717"
+  },
+  {
+    "id": "taxon:8617bb4581729f5ead0c",
+    "name": "Morchellaceae",
+    "rank": "family",
+    "parent_id": "taxon:54d0fde48537f565a972",
+    "source": "inaturalist",
+    "source_taxon_id": "56831"
+  },
+  {
+    "id": "taxon:bfab1b4da575a9e4ce81",
+    "name": "Morchella",
+    "rank": "genus",
+    "parent_id": "taxon:8617bb4581729f5ead0c",
+    "source": "inaturalist",
+    "source_taxon_id": "56830"
+  },
+  {
+    "id": "taxon:6c29fc7d8587336c5208",
+    "name": "Morchella",
+    "rank": "section",
+    "parent_id": "taxon:bfab1b4da575a9e4ce81",
+    "source": "inaturalist",
+    "source_taxon_id": "1062674"
+  },
+  {
+    "id": "taxon:8b3e09f05ab9bb52abbd",
+    "name": "Morchella esculenta",
+    "rank": "species",
+    "parent_id": "taxon:6c29fc7d8587336c5208",
+    "source": "inaturalist",
+    "source_taxon_id": "58682"
+  },
+  {
     "id": "taxon:ba7527f41987524d4134",
     "name": "Coprinaceae",
     "rank": "family",
@@ -2646,6 +3458,30 @@
     "parent_id": "taxon:1920e46e06100fc3d447",
     "source": "inaturalist",
     "source_taxon_id": "47392"
+  },
+  {
+    "id": "taxon:006cad36d280f2a462c1",
+    "name": "Phallaceae",
+    "rank": "family",
+    "parent_id": "taxon:2c9c7b7043a91e870c8f",
+    "source": "inaturalist",
+    "source_taxon_id": "51136"
+  },
+  {
+    "id": "taxon:1b5db660919a5d3e3d5a",
+    "name": "Phallus",
+    "rank": "genus",
+    "parent_id": "taxon:006cad36d280f2a462c1",
+    "source": "inaturalist",
+    "source_taxon_id": "54593"
+  },
+  {
+    "id": "taxon:c567d4a3a84f215c758f",
+    "name": "Phallus impudicus",
+    "rank": "species",
+    "parent_id": "taxon:1b5db660919a5d3e3d5a",
+    "source": "inaturalist",
+    "source_taxon_id": "54594"
   },
   {
     "id": "taxon:3e07da8b38827c288c48",
@@ -2726,6 +3562,86 @@
     "parent_id": "taxon:aebd7a57c1fdc2dc5ffa",
     "source": "inaturalist",
     "source_taxon_id": "352953"
+  },
+  {
+    "id": "taxon:df7ae81e14a96217b193",
+    "name": "Geastrales",
+    "rank": "order",
+    "parent_id": "taxon:79f0188140ff38742d91",
+    "source": "inaturalist",
+    "source_taxon_id": "55013"
+  },
+  {
+    "id": "taxon:ee8ed0627d5cffeb4c94",
+    "name": "Geastraceae",
+    "rank": "family",
+    "parent_id": "taxon:df7ae81e14a96217b193",
+    "source": "inaturalist",
+    "source_taxon_id": "55014"
+  },
+  {
+    "id": "taxon:c15ce6c5cd5633bd6df9",
+    "name": "Geastrum",
+    "rank": "genus",
+    "parent_id": "taxon:ee8ed0627d5cffeb4c94",
+    "source": "inaturalist",
+    "source_taxon_id": "63077"
+  },
+  {
+    "id": "taxon:0c562e1801a30ab9bc5b",
+    "name": "Trichaster",
+    "rank": "section",
+    "parent_id": "taxon:c15ce6c5cd5633bd6df9",
+    "source": "inaturalist",
+    "source_taxon_id": "1085910"
+  },
+  {
+    "id": "taxon:153764b226ef831ff5a2",
+    "name": "Geastrum triplex",
+    "rank": "species",
+    "parent_id": "taxon:0c562e1801a30ab9bc5b",
+    "source": "inaturalist",
+    "source_taxon_id": "63076"
+  },
+  {
+    "id": "taxon:7648db460651e9f35e62",
+    "name": "Russulales",
+    "rank": "order",
+    "parent_id": "taxon:dea8cc1b875c7ff6434f",
+    "source": "inaturalist",
+    "source_taxon_id": "48341"
+  },
+  {
+    "id": "taxon:59c72ef89792f536dd49",
+    "name": "Hericiaceae",
+    "rank": "family",
+    "parent_id": "taxon:7648db460651e9f35e62",
+    "source": "inaturalist",
+    "source_taxon_id": "49159"
+  },
+  {
+    "id": "taxon:f1beae982d11874dc271",
+    "name": "Hericium",
+    "rank": "genus",
+    "parent_id": "taxon:59c72ef89792f536dd49",
+    "source": "inaturalist",
+    "source_taxon_id": "49160"
+  },
+  {
+    "id": "taxon:2305bf35a2320b441468",
+    "name": "Hericium erinaceus",
+    "rank": "complex",
+    "parent_id": "taxon:f1beae982d11874dc271",
+    "source": "inaturalist",
+    "source_taxon_id": "1520823"
+  },
+  {
+    "id": "taxon:d66a0c274df24ac6c33e",
+    "name": "Hericium erinaceus",
+    "rank": "species",
+    "parent_id": "taxon:2305bf35a2320b441468",
+    "source": "inaturalist",
+    "source_taxon_id": "49158"
   },
   {
     "id": "taxon:8d73c1be2da0cb1f75bb",
@@ -2840,18 +3756,10 @@
     "source_taxon_id": "125724"
   },
   {
-    "id": "taxon:60084ec45040753637d0",
-    "name": "Protozoa",
-    "rank": "kingdom",
-    "parent_id": "edu:Protista",
-    "source": "inaturalist",
-    "source_taxon_id": "47686"
-  },
-  {
     "id": "taxon:d46f885a1e90011db84f",
     "name": "Mycetozoa",
     "rank": "phylum",
-    "parent_id": "taxon:60084ec45040753637d0",
+    "parent_id": "clade:Amoebozoa",
     "source": "inaturalist",
     "source_taxon_id": "47685"
   },
@@ -2984,6 +3892,78 @@
     "source_taxon_id": "552574"
   },
   {
+    "id": "taxon:1c8526d1fdc912332487",
+    "name": "Ochrophyta",
+    "rank": "phylum",
+    "parent_id": "clade:Stramenopiles",
+    "source": "inaturalist",
+    "source_taxon_id": "48221"
+  },
+  {
+    "id": "taxon:651584af26bd1c527e01",
+    "name": "Phaeophyceae",
+    "rank": "class",
+    "parent_id": "taxon:1c8526d1fdc912332487",
+    "source": "inaturalist",
+    "source_taxon_id": "48220"
+  },
+  {
+    "id": "taxon:dcb2240c1dffc1a36c86",
+    "name": "Fucophycidae",
+    "rank": "subclass",
+    "parent_id": "taxon:651584af26bd1c527e01",
+    "source": "inaturalist",
+    "source_taxon_id": "1267990"
+  },
+  {
+    "id": "taxon:5a473289413025701b31",
+    "name": "Laminariales",
+    "rank": "order",
+    "parent_id": "taxon:dcb2240c1dffc1a36c86",
+    "source": "inaturalist",
+    "source_taxon_id": "68789"
+  },
+  {
+    "id": "taxon:6cb5f56a56890d898935",
+    "name": "Laminariaceae",
+    "rank": "family",
+    "parent_id": "taxon:5a473289413025701b31",
+    "source": "inaturalist",
+    "source_taxon_id": "67425"
+  },
+  {
+    "id": "taxon:32dc485392195b200bc4",
+    "name": "Macrocystis",
+    "rank": "genus",
+    "parent_id": "taxon:6cb5f56a56890d898935",
+    "source": "inaturalist",
+    "source_taxon_id": "124749"
+  },
+  {
+    "id": "taxon:7b3abc68dbc4593340c5",
+    "name": "Macrocystis pyrifera",
+    "rank": "species",
+    "parent_id": "taxon:32dc485392195b200bc4",
+    "source": "inaturalist",
+    "source_taxon_id": "124748"
+  },
+  {
+    "id": "taxon:8b3929b7d53633bb29e9",
+    "name": "Nereocystis",
+    "rank": "genus",
+    "parent_id": "taxon:6cb5f56a56890d898935",
+    "source": "inaturalist",
+    "source_taxon_id": "120502"
+  },
+  {
+    "id": "taxon:2b485a2fed1fb94ca232",
+    "name": "Nereocystis luetkeana",
+    "rank": "species",
+    "parent_id": "taxon:8b3929b7d53633bb29e9",
+    "source": "inaturalist",
+    "source_taxon_id": "120499"
+  },
+  {
     "id": "taxon:b9ebda99ea92b31649e0",
     "name": "Physarales",
     "rank": "order",
@@ -3080,6 +4060,134 @@
     "source_taxon_id": "56262"
   },
   {
+    "id": "taxon:fc2d502b90994878fda2",
+    "name": "Fucales",
+    "rank": "order",
+    "parent_id": "taxon:dcb2240c1dffc1a36c86",
+    "source": "inaturalist",
+    "source_taxon_id": "48219"
+  },
+  {
+    "id": "taxon:b013a2c4a56497e18947",
+    "name": "Fucaceae",
+    "rank": "family",
+    "parent_id": "taxon:fc2d502b90994878fda2",
+    "source": "inaturalist",
+    "source_taxon_id": "48218"
+  },
+  {
+    "id": "taxon:45795c514203f77f3065",
+    "name": "Fucus",
+    "rank": "genus",
+    "parent_id": "taxon:b013a2c4a56497e18947",
+    "source": "inaturalist",
+    "source_taxon_id": "48217"
+  },
+  {
+    "id": "taxon:8cfd918ab57daf7cd4ed",
+    "name": "Fucus vesiculosus",
+    "rank": "species",
+    "parent_id": "taxon:45795c514203f77f3065",
+    "source": "inaturalist",
+    "source_taxon_id": "48216"
+  },
+  {
+    "id": "taxon:0d447e3368008e810c85",
+    "name": "Himanthaliaceae",
+    "rank": "family",
+    "parent_id": "taxon:fc2d502b90994878fda2",
+    "source": "inaturalist",
+    "source_taxon_id": "118823"
+  },
+  {
+    "id": "taxon:efdf7dc51eb224885f41",
+    "name": "Himanthalia",
+    "rank": "genus",
+    "parent_id": "taxon:0d447e3368008e810c85",
+    "source": "inaturalist",
+    "source_taxon_id": "118824"
+  },
+  {
+    "id": "taxon:947430b993b4daa2fcef",
+    "name": "Himanthalia elongata",
+    "rank": "species",
+    "parent_id": "taxon:efdf7dc51eb224885f41",
+    "source": "inaturalist",
+    "source_taxon_id": "118821"
+  },
+  {
+    "id": "taxon:8856a2f4c9c73ecfa659",
+    "name": "Lessoniaceae",
+    "rank": "family",
+    "parent_id": "taxon:5a473289413025701b31",
+    "source": "inaturalist",
+    "source_taxon_id": "67418"
+  },
+  {
+    "id": "taxon:52192e44d8cb6b220e4c",
+    "name": "Egregia",
+    "rank": "genus",
+    "parent_id": "taxon:8856a2f4c9c73ecfa659",
+    "source": "inaturalist",
+    "source_taxon_id": "67421"
+  },
+  {
+    "id": "taxon:19ea1db3db55e0146cac",
+    "name": "Egregia menziesii",
+    "rank": "species",
+    "parent_id": "taxon:52192e44d8cb6b220e4c",
+    "source": "inaturalist",
+    "source_taxon_id": "67419"
+  },
+  {
+    "id": "taxon:782f29a29993490c5947",
+    "name": "Dictyotophycidae",
+    "rank": "subclass",
+    "parent_id": "taxon:651584af26bd1c527e01",
+    "source": "inaturalist",
+    "source_taxon_id": "1267989"
+  },
+  {
+    "id": "taxon:b954d2d5a15055cf387a",
+    "name": "Dictyotales",
+    "rank": "order",
+    "parent_id": "taxon:782f29a29993490c5947",
+    "source": "inaturalist",
+    "source_taxon_id": "51022"
+  },
+  {
+    "id": "taxon:e5f5842d109f39b5b6bf",
+    "name": "Dictyotaceae",
+    "rank": "family",
+    "parent_id": "taxon:b954d2d5a15055cf387a",
+    "source": "inaturalist",
+    "source_taxon_id": "51023"
+  },
+  {
+    "id": "taxon:0fef3668020435b9db56",
+    "name": "Dictyoteae",
+    "rank": "tribe",
+    "parent_id": "taxon:e5f5842d109f39b5b6bf",
+    "source": "inaturalist",
+    "source_taxon_id": "887311"
+  },
+  {
+    "id": "taxon:d6e445cd5093228d0c68",
+    "name": "Dictyota",
+    "rank": "genus",
+    "parent_id": "taxon:0fef3668020435b9db56",
+    "source": "inaturalist",
+    "source_taxon_id": "51021"
+  },
+  {
+    "id": "taxon:d9b6d5d3ced0ec41ce33",
+    "name": "Dictyota dichotoma",
+    "rank": "species",
+    "parent_id": "taxon:d6e445cd5093228d0c68",
+    "source": "inaturalist",
+    "source_taxon_id": "51024"
+  },
+  {
     "id": "taxon:aa192ef9196079c42a44",
     "name": "Heterotrichia",
     "rank": "genus",
@@ -3128,6 +4236,30 @@
     "source_taxon_id": "1598948"
   },
   {
+    "id": "taxon:a8c60f7f24b5f2062425",
+    "name": "Sargassaceae",
+    "rank": "family",
+    "parent_id": "taxon:fc2d502b90994878fda2",
+    "source": "inaturalist",
+    "source_taxon_id": "126125"
+  },
+  {
+    "id": "taxon:66753c0e9b332d991731",
+    "name": "Sargassum",
+    "rank": "genus",
+    "parent_id": "taxon:a8c60f7f24b5f2062425",
+    "source": "inaturalist",
+    "source_taxon_id": "130178"
+  },
+  {
+    "id": "taxon:213005620995c0e8d662",
+    "name": "Sargassum muticum",
+    "rank": "species",
+    "parent_id": "taxon:66753c0e9b332d991731",
+    "source": "inaturalist",
+    "source_taxon_id": "130177"
+  },
+  {
     "id": "taxon:861f1cde174f3e7f34ba",
     "name": "Didymiaceae",
     "rank": "family",
@@ -3152,18 +4284,74 @@
     "source_taxon_id": "327919"
   },
   {
-    "id": "taxon:af931cd885c94cba5749",
-    "name": "Bacteria",
-    "rank": "kingdom",
-    "parent_id": "edu:Monera",
+    "id": "taxon:f2d37d2c14fcec53940e",
+    "name": "Durvillaeaceae",
+    "rank": "family",
+    "parent_id": "taxon:fc2d502b90994878fda2",
     "source": "inaturalist",
-    "source_taxon_id": "67333"
+    "source_taxon_id": "197106"
+  },
+  {
+    "id": "taxon:8961d1eeb4152280e5e7",
+    "name": "Durvillaea",
+    "rank": "genus",
+    "parent_id": "taxon:f2d37d2c14fcec53940e",
+    "source": "inaturalist",
+    "source_taxon_id": "197105"
+  },
+  {
+    "id": "taxon:28f75467f250b6feb96b",
+    "name": "Durvillaea antarctica",
+    "rank": "species",
+    "parent_id": "taxon:8961d1eeb4152280e5e7",
+    "source": "inaturalist",
+    "source_taxon_id": "197107"
+  },
+  {
+    "id": "taxon:ff9d1948bd2f23ca6ebf",
+    "name": "Alariaceae",
+    "rank": "family",
+    "parent_id": "taxon:5a473289413025701b31",
+    "source": "inaturalist",
+    "source_taxon_id": "123804"
+  },
+  {
+    "id": "taxon:b786542464f475b88eb9",
+    "name": "Alaria",
+    "rank": "genus",
+    "parent_id": "taxon:ff9d1948bd2f23ca6ebf",
+    "source": "inaturalist",
+    "source_taxon_id": "124813"
+  },
+  {
+    "id": "taxon:145d6ff719c18356b1fd",
+    "name": "Alaria esculenta",
+    "rank": "species",
+    "parent_id": "taxon:b786542464f475b88eb9",
+    "source": "inaturalist",
+    "source_taxon_id": "430355"
+  },
+  {
+    "id": "taxon:2cd6f9775656611feb19",
+    "name": "Turbinaria",
+    "rank": "genus",
+    "parent_id": "taxon:a8c60f7f24b5f2062425",
+    "source": "inaturalist",
+    "source_taxon_id": "324332"
+  },
+  {
+    "id": "taxon:0731ebd5d759933f69f7",
+    "name": "Turbinaria ornata",
+    "rank": "species",
+    "parent_id": "taxon:2cd6f9775656611feb19",
+    "source": "inaturalist",
+    "source_taxon_id": "130567"
   },
   {
     "id": "taxon:11f640d94d0de4741ce1",
     "name": "Proteobacteria",
     "rank": "phylum",
-    "parent_id": "taxon:af931cd885c94cba5749",
+    "parent_id": "domain:Bacteria",
     "source": "inaturalist",
     "source_taxon_id": "83702"
   },
@@ -3211,7 +4399,7 @@
     "id": "taxon:ce1664174f0a6202ab1a",
     "name": "Cyanobacteria",
     "rank": "phylum",
-    "parent_id": "taxon:af931cd885c94cba5749",
+    "parent_id": "domain:Bacteria",
     "source": "inaturalist",
     "source_taxon_id": "67334"
   },
@@ -3499,7 +4687,7 @@
     "id": "taxon:a2e64b956c7607af8f01",
     "name": "Firmicutes",
     "rank": "phylum",
-    "parent_id": "taxon:af931cd885c94cba5749",
+    "parent_id": "domain:Bacteria",
     "source": "inaturalist",
     "source_taxon_id": "151853"
   },
@@ -3635,7 +4823,7 @@
     "id": "taxon:77073e33da1f8ef50c28",
     "name": "Chlamydiae",
     "rank": "phylum",
-    "parent_id": "taxon:af931cd885c94cba5749",
+    "parent_id": "domain:Bacteria",
     "source": "inaturalist",
     "source_taxon_id": "151845"
   },
@@ -3792,6 +4980,22 @@
     "source_taxon_id": "491434"
   },
   {
+    "id": "taxon:41c5feaec0c26f5d28e1",
+    "name": "Hymenogastraceae",
+    "rank": "family",
+    "parent_id": "taxon:5bd48764de5724769590",
+    "source": "inaturalist",
+    "source_taxon_id": "416512"
+  },
+  {
+    "id": "taxon:622fbf831e1819434207",
+    "name": "Psilocybe",
+    "rank": "genus",
+    "parent_id": "taxon:41c5feaec0c26f5d28e1",
+    "source": "inaturalist",
+    "source_taxon_id": "54026"
+  },
+  {
     "id": "taxon:87926c258564c575aa70",
     "name": "Psilocybe allenii",
     "rank": "species",
@@ -3806,1165 +5010,5 @@
     "parent_id": "taxon:959417d261c87e67c7ec",
     "source": "inaturalist",
     "source_taxon_id": "1558826"
-  },
-  {
-    "id": "taxon:aa9bbc2d6be1008a4b6c",
-    "name": "Papilionoidea",
-    "rank": "superfamily",
-    "parent_id": "taxon:befdeedc26d96d8aeb9f",
-    "source": "inaturalist",
-    "source_taxon_id": "47224"
-  },
-  {
-    "id": "taxon:e6ceb602dc0cf1698eb1",
-    "name": "Papilioninae",
-    "rank": "subfamily",
-    "parent_id": "taxon:43d28ce77c090ecb7e1f",
-    "source": "inaturalist",
-    "source_taxon_id": "49973"
-  },
-  {
-    "id": "taxon:e2cb7a13013a0ee4f953",
-    "name": "Papilionini",
-    "rank": "tribe",
-    "parent_id": "taxon:e6ceb602dc0cf1698eb1",
-    "source": "inaturalist",
-    "source_taxon_id": "207785"
-  },
-  {
-    "id": "taxon:1fadaa7f38a91f5a7601",
-    "name": "Papilio",
-    "rank": "subgenus",
-    "parent_id": "taxon:06638735b2da14e3910c",
-    "source": "inaturalist",
-    "source_taxon_id": "545183"
-  },
-  {
-    "id": "taxon:1514ca722590a3defa96",
-    "name": "Nymphalinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:a5217b2ede7fdeb70d44",
-    "source": "inaturalist",
-    "source_taxon_id": "202067"
-  },
-  {
-    "id": "taxon:ce8d36f300a10e0a312f",
-    "name": "Nymphalini",
-    "rank": "tribe",
-    "parent_id": "taxon:1514ca722590a3defa96",
-    "source": "inaturalist",
-    "source_taxon_id": "202066"
-  },
-  {
-    "id": "taxon:4334cda9f1c3e42e4a3f",
-    "name": "Bombycoidea",
-    "rank": "superfamily",
-    "parent_id": "taxon:befdeedc26d96d8aeb9f",
-    "source": "inaturalist",
-    "source_taxon_id": "47214"
-  },
-  {
-    "id": "taxon:e217d1b283c8e3628d12",
-    "name": "Sphinginae",
-    "rank": "subfamily",
-    "parent_id": "taxon:4b9123c80ff896020ceb",
-    "source": "inaturalist",
-    "source_taxon_id": "124081"
-  },
-  {
-    "id": "taxon:152b878377ba3f6be054",
-    "name": "Sphingini",
-    "rank": "tribe",
-    "parent_id": "taxon:e217d1b283c8e3628d12",
-    "source": "inaturalist",
-    "source_taxon_id": "124110"
-  },
-  {
-    "id": "taxon:457eb336c0e5339345f5",
-    "name": "Acherontiina",
-    "rank": "subtribe",
-    "parent_id": "taxon:152b878377ba3f6be054",
-    "source": "inaturalist",
-    "source_taxon_id": "1228738"
-  },
-  {
-    "id": "taxon:8b82443701a440f456e2",
-    "name": "Noctuoidea",
-    "rank": "superfamily",
-    "parent_id": "taxon:befdeedc26d96d8aeb9f",
-    "source": "inaturalist",
-    "source_taxon_id": "47607"
-  },
-  {
-    "id": "taxon:2a26c193d0b1cd86a924",
-    "name": "Lymantriinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:35a33e7f95471bb27c7f",
-    "source": "inaturalist",
-    "source_taxon_id": "48847"
-  },
-  {
-    "id": "taxon:7953cf4e6b1fdf103e54",
-    "name": "Lymantriini",
-    "rank": "tribe",
-    "parent_id": "taxon:2a26c193d0b1cd86a924",
-    "source": "inaturalist",
-    "source_taxon_id": "82039"
-  },
-  {
-    "id": "taxon:516478a3b8737e219396",
-    "name": "Porthetria",
-    "rank": "subgenus",
-    "parent_id": "taxon:ab95857b44aa6530a7d4",
-    "source": "inaturalist",
-    "source_taxon_id": "1552378"
-  },
-  {
-    "id": "taxon:37de64728257435b773e",
-    "name": "Danainae",
-    "rank": "subfamily",
-    "parent_id": "taxon:a5217b2ede7fdeb70d44",
-    "source": "inaturalist",
-    "source_taxon_id": "61244"
-  },
-  {
-    "id": "taxon:98c4f45766edc6e9095b",
-    "name": "Danaini",
-    "rank": "tribe",
-    "parent_id": "taxon:37de64728257435b773e",
-    "source": "inaturalist",
-    "source_taxon_id": "134169"
-  },
-  {
-    "id": "taxon:5175d7ac205bf87796b4",
-    "name": "Danaina",
-    "rank": "subtribe",
-    "parent_id": "taxon:98c4f45766edc6e9095b",
-    "source": "inaturalist",
-    "source_taxon_id": "522900"
-  },
-  {
-    "id": "taxon:6a5b63141c3c74f3ec37",
-    "name": "Saturniinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:785c93ec1fd86284887d",
-    "source": "inaturalist",
-    "source_taxon_id": "124126"
-  },
-  {
-    "id": "taxon:acebd59f76f58c4c3d62",
-    "name": "Attacini",
-    "rank": "tribe",
-    "parent_id": "taxon:6a5b63141c3c74f3ec37",
-    "source": "inaturalist",
-    "source_taxon_id": "125063"
-  },
-  {
-    "id": "taxon:92f700fe42533ae4b68e",
-    "name": "Saturniini",
-    "rank": "tribe",
-    "parent_id": "taxon:6a5b63141c3c74f3ec37",
-    "source": "inaturalist",
-    "source_taxon_id": "125080"
-  },
-  {
-    "id": "taxon:9fcc265129219c46c6b5",
-    "name": "Hemileucinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:785c93ec1fd86284887d",
-    "source": "inaturalist",
-    "source_taxon_id": "125084"
-  },
-  {
-    "id": "taxon:75cfff10ae2f1c975ad7",
-    "name": "Hemileucini",
-    "rank": "tribe",
-    "parent_id": "taxon:9fcc265129219c46c6b5",
-    "source": "inaturalist",
-    "source_taxon_id": "475374"
-  },
-  {
-    "id": "taxon:3c0a65da23b478576a10",
-    "name": "Automeriina",
-    "rank": "subtribe",
-    "parent_id": "taxon:75cfff10ae2f1c975ad7",
-    "source": "inaturalist",
-    "source_taxon_id": "1702631"
-  },
-  {
-    "id": "taxon:ae53802129fdce11efb6",
-    "name": "Heliconiinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:a5217b2ede7fdeb70d44",
-    "source": "inaturalist",
-    "source_taxon_id": "60854"
-  },
-  {
-    "id": "taxon:c9f3699ce18c2c91f274",
-    "name": "Heliconiini",
-    "rank": "tribe",
-    "parent_id": "taxon:ae53802129fdce11efb6",
-    "source": "inaturalist",
-    "source_taxon_id": "134173"
-  },
-  {
-    "id": "taxon:3d284e31496b31039d7f",
-    "name": "Achillides",
-    "rank": "subgenus",
-    "parent_id": "taxon:06638735b2da14e3910c",
-    "source": "inaturalist",
-    "source_taxon_id": "565390"
-  },
-  {
-    "id": "taxon:1907c40a5e9af358792b",
-    "name": "Pierinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:cc294a10be3b31359ded",
-    "source": "inaturalist",
-    "source_taxon_id": "209720"
-  },
-  {
-    "id": "taxon:c1989d45f5643bc43264",
-    "name": "Pierini",
-    "rank": "tribe",
-    "parent_id": "taxon:1907c40a5e9af358792b",
-    "source": "inaturalist",
-    "source_taxon_id": "321384"
-  },
-  {
-    "id": "taxon:1e636daebc91072f97c8",
-    "name": "Pierina",
-    "rank": "subtribe",
-    "parent_id": "taxon:c1989d45f5643bc43264",
-    "source": "inaturalist",
-    "source_taxon_id": "475032"
-  },
-  {
-    "id": "taxon:1470e05010553f018536",
-    "name": "Galleriinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:4f228f8f8b0a10a9ccca",
-    "source": "inaturalist",
-    "source_taxon_id": "122933"
-  },
-  {
-    "id": "taxon:bf81b62b2b6313b44dd0",
-    "name": "Galleriini",
-    "rank": "tribe",
-    "parent_id": "taxon:1470e05010553f018536",
-    "source": "inaturalist",
-    "source_taxon_id": "122931"
-  },
-  {
-    "id": "taxon:8e8ae9ae27e174657312",
-    "name": "Phycitinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:4f228f8f8b0a10a9ccca",
-    "source": "inaturalist",
-    "source_taxon_id": "122925"
-  },
-  {
-    "id": "taxon:70b42d244e73cfd8515b",
-    "name": "Phycitini",
-    "rank": "tribe",
-    "parent_id": "taxon:8e8ae9ae27e174657312",
-    "source": "inaturalist",
-    "source_taxon_id": "122926"
-  },
-  {
-    "id": "taxon:77e1612cb55105f5d2a9",
-    "name": "Sphingina",
-    "rank": "subtribe",
-    "parent_id": "taxon:152b878377ba3f6be054",
-    "source": "inaturalist",
-    "source_taxon_id": "1228736"
-  },
-  {
-    "id": "taxon:8e67bb6918b37003528c",
-    "name": "Mammalia",
-    "rank": "class",
-    "parent_id": "taxon:2a343cc2d757be670b78",
-    "source": "inaturalist",
-    "source_taxon_id": "40151"
-  },
-  {
-    "id": "taxon:fa341fc92aaea0bae63b",
-    "name": "Theria",
-    "rank": "subclass",
-    "parent_id": "taxon:8e67bb6918b37003528c",
-    "source": "inaturalist",
-    "source_taxon_id": "848317"
-  },
-  {
-    "id": "taxon:d4c5ffe5cc6d217b86d7",
-    "name": "Placentalia",
-    "rank": "infraclass",
-    "parent_id": "taxon:fa341fc92aaea0bae63b",
-    "source": "inaturalist",
-    "source_taxon_id": "848320"
-  },
-  {
-    "id": "taxon:c75df7394d29d11ac2e9",
-    "name": "Laurasiatheria",
-    "rank": "superorder",
-    "parent_id": "taxon:d4c5ffe5cc6d217b86d7",
-    "source": "inaturalist",
-    "source_taxon_id": "848324"
-  },
-  {
-    "id": "taxon:ec769714706f048f9881",
-    "name": "Carnivora",
-    "rank": "order",
-    "parent_id": "taxon:c75df7394d29d11ac2e9",
-    "source": "inaturalist",
-    "source_taxon_id": "41573"
-  },
-  {
-    "id": "taxon:abc8378e1225a00d32fc",
-    "name": "Felidae",
-    "rank": "family",
-    "parent_id": "taxon:ec769714706f048f9881",
-    "source": "inaturalist",
-    "source_taxon_id": "41944"
-  },
-  {
-    "id": "taxon:f5ec96cd88361e082232",
-    "name": "Pantherinae",
-    "rank": "subfamily",
-    "parent_id": "taxon:abc8378e1225a00d32fc",
-    "source": "inaturalist",
-    "source_taxon_id": "846273"
-  },
-  {
-    "id": "taxon:1e433a010d42ae51ec79",
-    "name": "Panthera",
-    "rank": "genus",
-    "parent_id": "taxon:f5ec96cd88361e082232",
-    "source": "inaturalist",
-    "source_taxon_id": "41962"
-  },
-  {
-    "id": "taxon:b925e58a09349b8d0755",
-    "name": "Panthera tigris",
-    "rank": "species",
-    "parent_id": "taxon:1e433a010d42ae51ec79",
-    "source": "inaturalist",
-    "source_taxon_id": "41967"
-  },
-  {
-    "id": "taxon:c0e19d2abcc9e277f97c",
-    "name": "Panthera leo",
-    "rank": "species",
-    "parent_id": "taxon:1e433a010d42ae51ec79",
-    "source": "inaturalist",
-    "source_taxon_id": "41964"
-  },
-  {
-    "id": "taxon:9a4be0d04bb6e5676812",
-    "name": "Panthera onca",
-    "rank": "species",
-    "parent_id": "taxon:1e433a010d42ae51ec79",
-    "source": "inaturalist",
-    "source_taxon_id": "41970"
-  },
-  {
-    "id": "taxon:2bec468f54ba4d8fe463",
-    "name": "Euarchontoglires",
-    "rank": "superorder",
-    "parent_id": "taxon:d4c5ffe5cc6d217b86d7",
-    "source": "inaturalist",
-    "source_taxon_id": "848323"
-  },
-  {
-    "id": "taxon:2fb0f8108567cd3c3e96",
-    "name": "Primates",
-    "rank": "order",
-    "parent_id": "taxon:2bec468f54ba4d8fe463",
-    "source": "inaturalist",
-    "source_taxon_id": "43367"
-  },
-  {
-    "id": "taxon:9b8b644f5e3bdd75ad11",
-    "name": "Strepsirrhini",
-    "rank": "suborder",
-    "parent_id": "taxon:2fb0f8108567cd3c3e96",
-    "source": "inaturalist",
-    "source_taxon_id": "936382"
-  },
-  {
-    "id": "taxon:bb3bfb6501a237edcd0f",
-    "name": "Lemuriformes",
-    "rank": "infraorder",
-    "parent_id": "taxon:9b8b644f5e3bdd75ad11",
-    "source": "inaturalist",
-    "source_taxon_id": "1369268"
-  },
-  {
-    "id": "taxon:505ebcc4303461adf503",
-    "name": "Lemuroidea",
-    "rank": "superfamily",
-    "parent_id": "taxon:bb3bfb6501a237edcd0f",
-    "source": "inaturalist",
-    "source_taxon_id": "467897"
-  },
-  {
-    "id": "taxon:ef6caf7b64d3d7bac46b",
-    "name": "Lemuridae",
-    "rank": "family",
-    "parent_id": "taxon:505ebcc4303461adf503",
-    "source": "inaturalist",
-    "source_taxon_id": "43607"
-  },
-  {
-    "id": "taxon:c3423300049ff42cebdd",
-    "name": "Lemur",
-    "rank": "genus",
-    "parent_id": "taxon:ef6caf7b64d3d7bac46b",
-    "source": "inaturalist",
-    "source_taxon_id": "43616"
-  },
-  {
-    "id": "taxon:3c3e035d2b52d33bc92c",
-    "name": "Lemur catta",
-    "rank": "species",
-    "parent_id": "taxon:c3423300049ff42cebdd",
-    "source": "inaturalist",
-    "source_taxon_id": "43617"
-  },
-  {
-    "id": "taxon:9ff3ed1be91e69a3a2cf",
-    "name": "Galliformes",
-    "rank": "order",
-    "parent_id": "taxon:f1aa88eb71e1f30b7afe",
-    "source": "inaturalist",
-    "source_taxon_id": "573"
-  },
-  {
-    "id": "taxon:471ab68f7e1d7711ab20",
-    "name": "Phasianidae",
-    "rank": "family",
-    "parent_id": "taxon:9ff3ed1be91e69a3a2cf",
-    "source": "inaturalist",
-    "source_taxon_id": "574"
-  },
-  {
-    "id": "taxon:6a5e0c1939446cd13f55",
-    "name": "Pavo",
-    "rank": "genus",
-    "parent_id": "taxon:471ab68f7e1d7711ab20",
-    "source": "inaturalist",
-    "source_taxon_id": "1199"
-  },
-  {
-    "id": "taxon:8dee9e4c1ee9d27e51c9",
-    "name": "Pavo cristatus",
-    "rank": "species",
-    "parent_id": "taxon:6a5e0c1939446cd13f55",
-    "source": "inaturalist",
-    "source_taxon_id": "1204"
-  },
-  {
-    "id": "taxon:6d68fdbc76f6b03ed7de",
-    "name": "Phyllomedusidae",
-    "rank": "family",
-    "parent_id": "taxon:4b0546fb8463210fcd37",
-    "source": "inaturalist",
-    "source_taxon_id": "554974"
-  },
-  {
-    "id": "taxon:dafd3d52699108243e0f",
-    "name": "Agalychnis",
-    "rank": "genus",
-    "parent_id": "taxon:6d68fdbc76f6b03ed7de",
-    "source": "inaturalist",
-    "source_taxon_id": "23694"
-  },
-  {
-    "id": "taxon:ba2e7a6a3e6a44239113",
-    "name": "Agalychnis callidryas",
-    "rank": "species",
-    "parent_id": "taxon:dafd3d52699108243e0f",
-    "source": "inaturalist",
-    "source_taxon_id": "23702"
-  },
-  {
-    "id": "taxon:a3e32188965c5ca8b7fc",
-    "name": "Perissodactyla",
-    "rank": "order",
-    "parent_id": "taxon:c75df7394d29d11ac2e9",
-    "source": "inaturalist",
-    "source_taxon_id": "43327"
-  },
-  {
-    "id": "taxon:fa83efded41318f99886",
-    "name": "Rhinocerotidae",
-    "rank": "family",
-    "parent_id": "taxon:a3e32188965c5ca8b7fc",
-    "source": "inaturalist",
-    "source_taxon_id": "43341"
-  },
-  {
-    "id": "taxon:ae96228406401a8e6e5c",
-    "name": "Rhinoceros",
-    "rank": "genus",
-    "parent_id": "taxon:fa83efded41318f99886",
-    "source": "inaturalist",
-    "source_taxon_id": "43344"
-  },
-  {
-    "id": "taxon:811629c76616f25f37cb",
-    "name": "Rhinoceros unicornis",
-    "rank": "species",
-    "parent_id": "taxon:ae96228406401a8e6e5c",
-    "source": "inaturalist",
-    "source_taxon_id": "43345"
-  },
-  {
-    "id": "taxon:91aef7333acbf4413f95",
-    "name": "Equidae",
-    "rank": "family",
-    "parent_id": "taxon:a3e32188965c5ca8b7fc",
-    "source": "inaturalist",
-    "source_taxon_id": "43328"
-  },
-  {
-    "id": "taxon:28849fd31e756b08e894",
-    "name": "Equus",
-    "rank": "genus",
-    "parent_id": "taxon:91aef7333acbf4413f95",
-    "source": "inaturalist",
-    "source_taxon_id": "43329"
-  },
-  {
-    "id": "taxon:cbb4b255a4373c7ef3e3",
-    "name": "Equus quagga",
-    "rank": "species",
-    "parent_id": "taxon:28849fd31e756b08e894",
-    "source": "inaturalist",
-    "source_taxon_id": "43335"
-  },
-  {
-    "id": "taxon:56adf99fce95de311051",
-    "name": "Ginkgoopsida",
-    "rank": "class",
-    "parent_id": "taxon:a00f38df238c41138073",
-    "source": "inaturalist",
-    "source_taxon_id": "151882"
-  },
-  {
-    "id": "taxon:323ca5dda987456ce50a",
-    "name": "Ginkgoales",
-    "rank": "order",
-    "parent_id": "taxon:56adf99fce95de311051",
-    "source": "inaturalist",
-    "source_taxon_id": "64353"
-  },
-  {
-    "id": "taxon:605d924e768cb6604acd",
-    "name": "Ginkgoaceae",
-    "rank": "family",
-    "parent_id": "taxon:323ca5dda987456ce50a",
-    "source": "inaturalist",
-    "source_taxon_id": "64354"
-  },
-  {
-    "id": "taxon:e8261b13ec5959e6bf30",
-    "name": "Ginkgo",
-    "rank": "genus",
-    "parent_id": "taxon:605d924e768cb6604acd",
-    "source": "inaturalist",
-    "source_taxon_id": "64355"
-  },
-  {
-    "id": "taxon:93fe1078b5abc2cedf04",
-    "name": "Ginkgo biloba",
-    "rank": "species",
-    "parent_id": "taxon:e8261b13ec5959e6bf30",
-    "source": "inaturalist",
-    "source_taxon_id": "64350"
-  },
-  {
-    "id": "taxon:012a8e9bbf3bf5b5fd4b",
-    "name": "Caryophyllales",
-    "rank": "order",
-    "parent_id": "taxon:61a843360c3d1e0d554b",
-    "source": "inaturalist",
-    "source_taxon_id": "47366"
-  },
-  {
-    "id": "taxon:cdcfb4ec07dc3d99d5e5",
-    "name": "Droseraceae",
-    "rank": "family",
-    "parent_id": "taxon:012a8e9bbf3bf5b5fd4b",
-    "source": "inaturalist",
-    "source_taxon_id": "51937"
-  },
-  {
-    "id": "taxon:1e63b7b4822b1f2b105e",
-    "name": "Dionaea",
-    "rank": "genus",
-    "parent_id": "taxon:cdcfb4ec07dc3d99d5e5",
-    "source": "inaturalist",
-    "source_taxon_id": "52661"
-  },
-  {
-    "id": "taxon:c84832fb2a33090b091d",
-    "name": "Dionaea muscipula",
-    "rank": "species",
-    "parent_id": "taxon:1e63b7b4822b1f2b105e",
-    "source": "inaturalist",
-    "source_taxon_id": "52666"
-  },
-  {
-    "id": "taxon:79f0188140ff38742d91",
-    "name": "Phallomycetidae",
-    "rank": "subclass",
-    "parent_id": "taxon:dea8cc1b875c7ff6434f",
-    "source": "inaturalist",
-    "source_taxon_id": "891028"
-  },
-  {
-    "id": "taxon:2c9c7b7043a91e870c8f",
-    "name": "Phallales",
-    "rank": "order",
-    "parent_id": "taxon:79f0188140ff38742d91",
-    "source": "inaturalist",
-    "source_taxon_id": "48708"
-  },
-  {
-    "id": "taxon:10f906a75072f93a5f59",
-    "name": "Clathraceae",
-    "rank": "family",
-    "parent_id": "taxon:2c9c7b7043a91e870c8f",
-    "source": "inaturalist",
-    "source_taxon_id": "1395929"
-  },
-  {
-    "id": "taxon:2211d8c70fd4783c83d7",
-    "name": "Clathrus",
-    "rank": "genus",
-    "parent_id": "taxon:10f906a75072f93a5f59",
-    "source": "inaturalist",
-    "source_taxon_id": "51137"
-  },
-  {
-    "id": "taxon:d8830f3f072ae7664504",
-    "name": "Clathrus ruber",
-    "rank": "species",
-    "parent_id": "taxon:2211d8c70fd4783c83d7",
-    "source": "inaturalist",
-    "source_taxon_id": "56534"
-  },
-  {
-    "id": "taxon:c8a8f2cd816fcd14aa69",
-    "name": "Pluteineae",
-    "rank": "suborder",
-    "parent_id": "taxon:efebef4370813dc1422f",
-    "source": "inaturalist",
-    "source_taxon_id": "785522"
-  },
-  {
-    "id": "taxon:e971cf2876479013ce18",
-    "name": "Amanitaceae",
-    "rank": "family",
-    "parent_id": "taxon:c8a8f2cd816fcd14aa69",
-    "source": "inaturalist",
-    "source_taxon_id": "118249"
-  },
-  {
-    "id": "taxon:33cf072ac2c4f0c9bc3d",
-    "name": "Amaniteae",
-    "rank": "tribe",
-    "parent_id": "taxon:e971cf2876479013ce18",
-    "source": "inaturalist",
-    "source_taxon_id": "1149497"
-  },
-  {
-    "id": "taxon:b874e3b44bd6714e22c8",
-    "name": "Amanita",
-    "rank": "genus",
-    "parent_id": "taxon:33cf072ac2c4f0c9bc3d",
-    "source": "inaturalist",
-    "source_taxon_id": "48419"
-  },
-  {
-    "id": "taxon:808da6be8c5443162037",
-    "name": "Amanita",
-    "rank": "subgenus",
-    "parent_id": "taxon:b874e3b44bd6714e22c8",
-    "source": "inaturalist",
-    "source_taxon_id": "1142599"
-  },
-  {
-    "id": "taxon:555383632c05505beac5",
-    "name": "Amanita",
-    "rank": "section",
-    "parent_id": "taxon:808da6be8c5443162037",
-    "source": "inaturalist",
-    "source_taxon_id": "954920"
-  },
-  {
-    "id": "taxon:ecc4929c8dc05b2e6823",
-    "name": "Amanita",
-    "rank": "subsection",
-    "parent_id": "taxon:555383632c05505beac5",
-    "source": "inaturalist",
-    "source_taxon_id": "1155969"
-  },
-  {
-    "id": "taxon:174c3ecbc12453b3e435",
-    "name": "Amanita muscaria",
-    "rank": "species",
-    "parent_id": "taxon:ecc4929c8dc05b2e6823",
-    "source": "inaturalist",
-    "source_taxon_id": "48715"
-  },
-  {
-    "id": "taxon:35eb6509165826c638a5",
-    "name": "Pezizomycetes",
-    "rank": "class",
-    "parent_id": "taxon:3a0728a69345919c2b90",
-    "source": "inaturalist",
-    "source_taxon_id": "152032"
-  },
-  {
-    "id": "taxon:54d0fde48537f565a972",
-    "name": "Pezizales",
-    "rank": "order",
-    "parent_id": "taxon:35eb6509165826c638a5",
-    "source": "inaturalist",
-    "source_taxon_id": "48717"
-  },
-  {
-    "id": "taxon:8617bb4581729f5ead0c",
-    "name": "Morchellaceae",
-    "rank": "family",
-    "parent_id": "taxon:54d0fde48537f565a972",
-    "source": "inaturalist",
-    "source_taxon_id": "56831"
-  },
-  {
-    "id": "taxon:bfab1b4da575a9e4ce81",
-    "name": "Morchella",
-    "rank": "genus",
-    "parent_id": "taxon:8617bb4581729f5ead0c",
-    "source": "inaturalist",
-    "source_taxon_id": "56830"
-  },
-  {
-    "id": "taxon:6c29fc7d8587336c5208",
-    "name": "Morchella",
-    "rank": "section",
-    "parent_id": "taxon:bfab1b4da575a9e4ce81",
-    "source": "inaturalist",
-    "source_taxon_id": "1062674"
-  },
-  {
-    "id": "taxon:8b3e09f05ab9bb52abbd",
-    "name": "Morchella esculenta",
-    "rank": "species",
-    "parent_id": "taxon:6c29fc7d8587336c5208",
-    "source": "inaturalist",
-    "source_taxon_id": "58682"
-  },
-  {
-    "id": "taxon:006cad36d280f2a462c1",
-    "name": "Phallaceae",
-    "rank": "family",
-    "parent_id": "taxon:2c9c7b7043a91e870c8f",
-    "source": "inaturalist",
-    "source_taxon_id": "51136"
-  },
-  {
-    "id": "taxon:1b5db660919a5d3e3d5a",
-    "name": "Phallus",
-    "rank": "genus",
-    "parent_id": "taxon:006cad36d280f2a462c1",
-    "source": "inaturalist",
-    "source_taxon_id": "54593"
-  },
-  {
-    "id": "taxon:c567d4a3a84f215c758f",
-    "name": "Phallus impudicus",
-    "rank": "species",
-    "parent_id": "taxon:1b5db660919a5d3e3d5a",
-    "source": "inaturalist",
-    "source_taxon_id": "54594"
-  },
-  {
-    "id": "taxon:df7ae81e14a96217b193",
-    "name": "Geastrales",
-    "rank": "order",
-    "parent_id": "taxon:79f0188140ff38742d91",
-    "source": "inaturalist",
-    "source_taxon_id": "55013"
-  },
-  {
-    "id": "taxon:ee8ed0627d5cffeb4c94",
-    "name": "Geastraceae",
-    "rank": "family",
-    "parent_id": "taxon:df7ae81e14a96217b193",
-    "source": "inaturalist",
-    "source_taxon_id": "55014"
-  },
-  {
-    "id": "taxon:c15ce6c5cd5633bd6df9",
-    "name": "Geastrum",
-    "rank": "genus",
-    "parent_id": "taxon:ee8ed0627d5cffeb4c94",
-    "source": "inaturalist",
-    "source_taxon_id": "63077"
-  },
-  {
-    "id": "taxon:0c562e1801a30ab9bc5b",
-    "name": "Trichaster",
-    "rank": "section",
-    "parent_id": "taxon:c15ce6c5cd5633bd6df9",
-    "source": "inaturalist",
-    "source_taxon_id": "1085910"
-  },
-  {
-    "id": "taxon:153764b226ef831ff5a2",
-    "name": "Geastrum triplex",
-    "rank": "species",
-    "parent_id": "taxon:0c562e1801a30ab9bc5b",
-    "source": "inaturalist",
-    "source_taxon_id": "63076"
-  },
-  {
-    "id": "taxon:7648db460651e9f35e62",
-    "name": "Russulales",
-    "rank": "order",
-    "parent_id": "taxon:dea8cc1b875c7ff6434f",
-    "source": "inaturalist",
-    "source_taxon_id": "48341"
-  },
-  {
-    "id": "taxon:59c72ef89792f536dd49",
-    "name": "Hericiaceae",
-    "rank": "family",
-    "parent_id": "taxon:7648db460651e9f35e62",
-    "source": "inaturalist",
-    "source_taxon_id": "49159"
-  },
-  {
-    "id": "taxon:f1beae982d11874dc271",
-    "name": "Hericium",
-    "rank": "genus",
-    "parent_id": "taxon:59c72ef89792f536dd49",
-    "source": "inaturalist",
-    "source_taxon_id": "49160"
-  },
-  {
-    "id": "taxon:2305bf35a2320b441468",
-    "name": "Hericium erinaceus",
-    "rank": "complex",
-    "parent_id": "taxon:f1beae982d11874dc271",
-    "source": "inaturalist",
-    "source_taxon_id": "1520823"
-  },
-  {
-    "id": "taxon:d66a0c274df24ac6c33e",
-    "name": "Hericium erinaceus",
-    "rank": "species",
-    "parent_id": "taxon:2305bf35a2320b441468",
-    "source": "inaturalist",
-    "source_taxon_id": "49158"
-  },
-  {
-    "id": "taxon:ced09e6b372b55811ea7",
-    "name": "Chromista",
-    "rank": "kingdom",
-    "parent_id": "edu:Protista",
-    "source": "inaturalist",
-    "source_taxon_id": "48222"
-  },
-  {
-    "id": "taxon:1c8526d1fdc912332487",
-    "name": "Ochrophyta",
-    "rank": "phylum",
-    "parent_id": "taxon:ced09e6b372b55811ea7",
-    "source": "inaturalist",
-    "source_taxon_id": "48221"
-  },
-  {
-    "id": "taxon:651584af26bd1c527e01",
-    "name": "Phaeophyceae",
-    "rank": "class",
-    "parent_id": "taxon:1c8526d1fdc912332487",
-    "source": "inaturalist",
-    "source_taxon_id": "48220"
-  },
-  {
-    "id": "taxon:dcb2240c1dffc1a36c86",
-    "name": "Fucophycidae",
-    "rank": "subclass",
-    "parent_id": "taxon:651584af26bd1c527e01",
-    "source": "inaturalist",
-    "source_taxon_id": "1267990"
-  },
-  {
-    "id": "taxon:5a473289413025701b31",
-    "name": "Laminariales",
-    "rank": "order",
-    "parent_id": "taxon:dcb2240c1dffc1a36c86",
-    "source": "inaturalist",
-    "source_taxon_id": "68789"
-  },
-  {
-    "id": "taxon:6cb5f56a56890d898935",
-    "name": "Laminariaceae",
-    "rank": "family",
-    "parent_id": "taxon:5a473289413025701b31",
-    "source": "inaturalist",
-    "source_taxon_id": "67425"
-  },
-  {
-    "id": "taxon:32dc485392195b200bc4",
-    "name": "Macrocystis",
-    "rank": "genus",
-    "parent_id": "taxon:6cb5f56a56890d898935",
-    "source": "inaturalist",
-    "source_taxon_id": "124749"
-  },
-  {
-    "id": "taxon:7b3abc68dbc4593340c5",
-    "name": "Macrocystis pyrifera",
-    "rank": "species",
-    "parent_id": "taxon:32dc485392195b200bc4",
-    "source": "inaturalist",
-    "source_taxon_id": "124748"
-  },
-  {
-    "id": "taxon:8b3929b7d53633bb29e9",
-    "name": "Nereocystis",
-    "rank": "genus",
-    "parent_id": "taxon:6cb5f56a56890d898935",
-    "source": "inaturalist",
-    "source_taxon_id": "120502"
-  },
-  {
-    "id": "taxon:2b485a2fed1fb94ca232",
-    "name": "Nereocystis luetkeana",
-    "rank": "species",
-    "parent_id": "taxon:8b3929b7d53633bb29e9",
-    "source": "inaturalist",
-    "source_taxon_id": "120499"
-  },
-  {
-    "id": "taxon:fc2d502b90994878fda2",
-    "name": "Fucales",
-    "rank": "order",
-    "parent_id": "taxon:dcb2240c1dffc1a36c86",
-    "source": "inaturalist",
-    "source_taxon_id": "48219"
-  },
-  {
-    "id": "taxon:b013a2c4a56497e18947",
-    "name": "Fucaceae",
-    "rank": "family",
-    "parent_id": "taxon:fc2d502b90994878fda2",
-    "source": "inaturalist",
-    "source_taxon_id": "48218"
-  },
-  {
-    "id": "taxon:45795c514203f77f3065",
-    "name": "Fucus",
-    "rank": "genus",
-    "parent_id": "taxon:b013a2c4a56497e18947",
-    "source": "inaturalist",
-    "source_taxon_id": "48217"
-  },
-  {
-    "id": "taxon:8cfd918ab57daf7cd4ed",
-    "name": "Fucus vesiculosus",
-    "rank": "species",
-    "parent_id": "taxon:45795c514203f77f3065",
-    "source": "inaturalist",
-    "source_taxon_id": "48216"
-  },
-  {
-    "id": "taxon:0d447e3368008e810c85",
-    "name": "Himanthaliaceae",
-    "rank": "family",
-    "parent_id": "taxon:fc2d502b90994878fda2",
-    "source": "inaturalist",
-    "source_taxon_id": "118823"
-  },
-  {
-    "id": "taxon:efdf7dc51eb224885f41",
-    "name": "Himanthalia",
-    "rank": "genus",
-    "parent_id": "taxon:0d447e3368008e810c85",
-    "source": "inaturalist",
-    "source_taxon_id": "118824"
-  },
-  {
-    "id": "taxon:947430b993b4daa2fcef",
-    "name": "Himanthalia elongata",
-    "rank": "species",
-    "parent_id": "taxon:efdf7dc51eb224885f41",
-    "source": "inaturalist",
-    "source_taxon_id": "118821"
-  },
-  {
-    "id": "taxon:8856a2f4c9c73ecfa659",
-    "name": "Lessoniaceae",
-    "rank": "family",
-    "parent_id": "taxon:5a473289413025701b31",
-    "source": "inaturalist",
-    "source_taxon_id": "67418"
-  },
-  {
-    "id": "taxon:52192e44d8cb6b220e4c",
-    "name": "Egregia",
-    "rank": "genus",
-    "parent_id": "taxon:8856a2f4c9c73ecfa659",
-    "source": "inaturalist",
-    "source_taxon_id": "67421"
-  },
-  {
-    "id": "taxon:19ea1db3db55e0146cac",
-    "name": "Egregia menziesii",
-    "rank": "species",
-    "parent_id": "taxon:52192e44d8cb6b220e4c",
-    "source": "inaturalist",
-    "source_taxon_id": "67419"
-  },
-  {
-    "id": "taxon:782f29a29993490c5947",
-    "name": "Dictyotophycidae",
-    "rank": "subclass",
-    "parent_id": "taxon:651584af26bd1c527e01",
-    "source": "inaturalist",
-    "source_taxon_id": "1267989"
-  },
-  {
-    "id": "taxon:b954d2d5a15055cf387a",
-    "name": "Dictyotales",
-    "rank": "order",
-    "parent_id": "taxon:782f29a29993490c5947",
-    "source": "inaturalist",
-    "source_taxon_id": "51022"
-  },
-  {
-    "id": "taxon:e5f5842d109f39b5b6bf",
-    "name": "Dictyotaceae",
-    "rank": "family",
-    "parent_id": "taxon:b954d2d5a15055cf387a",
-    "source": "inaturalist",
-    "source_taxon_id": "51023"
-  },
-  {
-    "id": "taxon:0fef3668020435b9db56",
-    "name": "Dictyoteae",
-    "rank": "tribe",
-    "parent_id": "taxon:e5f5842d109f39b5b6bf",
-    "source": "inaturalist",
-    "source_taxon_id": "887311"
-  },
-  {
-    "id": "taxon:d6e445cd5093228d0c68",
-    "name": "Dictyota",
-    "rank": "genus",
-    "parent_id": "taxon:0fef3668020435b9db56",
-    "source": "inaturalist",
-    "source_taxon_id": "51021"
-  },
-  {
-    "id": "taxon:d9b6d5d3ced0ec41ce33",
-    "name": "Dictyota dichotoma",
-    "rank": "species",
-    "parent_id": "taxon:d6e445cd5093228d0c68",
-    "source": "inaturalist",
-    "source_taxon_id": "51024"
-  },
-  {
-    "id": "taxon:a8c60f7f24b5f2062425",
-    "name": "Sargassaceae",
-    "rank": "family",
-    "parent_id": "taxon:fc2d502b90994878fda2",
-    "source": "inaturalist",
-    "source_taxon_id": "126125"
-  },
-  {
-    "id": "taxon:66753c0e9b332d991731",
-    "name": "Sargassum",
-    "rank": "genus",
-    "parent_id": "taxon:a8c60f7f24b5f2062425",
-    "source": "inaturalist",
-    "source_taxon_id": "130178"
-  },
-  {
-    "id": "taxon:213005620995c0e8d662",
-    "name": "Sargassum muticum",
-    "rank": "species",
-    "parent_id": "taxon:66753c0e9b332d991731",
-    "source": "inaturalist",
-    "source_taxon_id": "130177"
-  },
-  {
-    "id": "taxon:f2d37d2c14fcec53940e",
-    "name": "Durvillaeaceae",
-    "rank": "family",
-    "parent_id": "taxon:fc2d502b90994878fda2",
-    "source": "inaturalist",
-    "source_taxon_id": "197106"
-  },
-  {
-    "id": "taxon:8961d1eeb4152280e5e7",
-    "name": "Durvillaea",
-    "rank": "genus",
-    "parent_id": "taxon:f2d37d2c14fcec53940e",
-    "source": "inaturalist",
-    "source_taxon_id": "197105"
-  },
-  {
-    "id": "taxon:28f75467f250b6feb96b",
-    "name": "Durvillaea antarctica",
-    "rank": "species",
-    "parent_id": "taxon:8961d1eeb4152280e5e7",
-    "source": "inaturalist",
-    "source_taxon_id": "197107"
-  },
-  {
-    "id": "taxon:ff9d1948bd2f23ca6ebf",
-    "name": "Alariaceae",
-    "rank": "family",
-    "parent_id": "taxon:5a473289413025701b31",
-    "source": "inaturalist",
-    "source_taxon_id": "123804"
-  },
-  {
-    "id": "taxon:b786542464f475b88eb9",
-    "name": "Alaria",
-    "rank": "genus",
-    "parent_id": "taxon:ff9d1948bd2f23ca6ebf",
-    "source": "inaturalist",
-    "source_taxon_id": "124813"
-  },
-  {
-    "id": "taxon:145d6ff719c18356b1fd",
-    "name": "Alaria esculenta",
-    "rank": "species",
-    "parent_id": "taxon:b786542464f475b88eb9",
-    "source": "inaturalist",
-    "source_taxon_id": "430355"
-  },
-  {
-    "id": "taxon:2cd6f9775656611feb19",
-    "name": "Turbinaria",
-    "rank": "genus",
-    "parent_id": "taxon:a8c60f7f24b5f2062425",
-    "source": "inaturalist",
-    "source_taxon_id": "324332"
-  },
-  {
-    "id": "taxon:0731ebd5d759933f69f7",
-    "name": "Turbinaria ornata",
-    "rank": "species",
-    "parent_id": "taxon:2cd6f9775656611feb19",
-    "source": "inaturalist",
-    "source_taxon_id": "130567"
   }
 ]

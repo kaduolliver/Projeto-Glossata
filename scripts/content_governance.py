@@ -201,8 +201,10 @@ def records(root=ROOT, education=None):
         photo = s.get('photo', {})
         for topic in TOPICS:
             if topic == 'taxonomy':
-                payload = {'name': s['name'], 'source_taxon_id': s.get('source_taxon_id'), 'educational_kingdom': s.get('educational_kingdom'),
-                           'lineage': [taxons.get(n) for n in s.get('taxonomy', [])]}
+                # Original source assertions and the new synthesis have separate reviews.
+                payload = {'name': s['name'], 'source_taxon_id': s.get('source_taxon_id'),
+                           'educational_kingdom': s.get('legacy_educational_kingdom', s.get('educational_kingdom')),
+                           'lineage': s.get('source_taxonomy', [taxons.get(n) for n in s.get('taxonomy', [])])}
             elif topic == 'photo':
                 payload = {'name': s['name'], 'photo': photo, 'provenance': provenance.get(photo.get('id'), {})}
             else:
@@ -220,6 +222,10 @@ def records(root=ROOT, education=None):
                 if topic == 'morphology': payload['photo_sha256'] = photo.get('sha256')
             result[f'topic:{sid}:{topic}'] = {'kind': 'topic', 'topic': topic, 'species_id': sid, 'payload': payload,
                                              'prior_state': reviews.get(sid, {}).get(topic, 'pending')}
+        if 'classification' in s:
+            result[f'topic:{sid}:phylogeny'] = {'kind': 'topic', 'topic': 'phylogeny', 'species_id': sid,
+                'prior_state': 'draft', 'payload': {'name': s['name'], 'classification': s['classification'],
+                    'lineage': [taxons.get(n) for n in s['taxonomy']], 'policy': load(folder / 'phylogeny.json', {})}}
     for s in species:
         sid = str(s['id']); entry = education.get('species', {}).get(sid, {})
         assessments = [('taxonomic', entry.get('taxonomic_assistance'), None)]

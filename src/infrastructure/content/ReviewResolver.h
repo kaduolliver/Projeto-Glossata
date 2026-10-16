@@ -20,6 +20,7 @@ public:
         const auto governance = entry.value("governance").toObject();
         const bool matches = entry.value("scientific_name").toString() == species.name;
         species.taxonomyApproved = matches && usableReview(governance.value("taxonomy").toObject());
+        species.phylogenyApproved = matches && usableReview(governance.value("phylogeny").toObject());
         species.photoApproved = matches
             && (governance.value("photo").toObject().value("state").toString() != "legacy"
                 || review.value("photo_id").toString() == species.photo.id)

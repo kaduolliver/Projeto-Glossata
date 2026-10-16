@@ -1,119 +1,71 @@
 # Contexto do Projeto: Projeto Glossata
 
-## Objetivo e estado atual
+## Estado atual
 
-Aplicativo desktop educativo em português para explorar Animalia, Plantae, Fungi, Protista e Monera no modelo didático tradicional dos cinco reinos. Cada pergunta tem quatro alternativas do mesmo nível taxonômico, seleção e confirmação, painel de três dicas e ficha da espécie. O modo Livre continua até o jogador encerrá-lo; o Competitivo padronizado tem 20 questões.
+Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.2.0**; catálogo **2.0.0**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
 
-O catálogo ativo possui 122 espécies, com 42 Animalia e 20 em cada um dos outros reinos. Após autorização do usuário, 26 organismos sem cobertura visual foram substituídos; os dados anteriores foram arquivados. Monera mantém os mesmos 20 organismos, com imagens de apoio para identificação por pistas. Consulte [docs/SUBSTITUICOES_CATALOGO.md](docs/SUBSTITUICOES_CATALOGO.md) para o estado atual e [docs/PHOTO_CREDITS.md](docs/PHOTO_CREDITS.md) para créditos.
+A exploração principal usa **Bacteria (20), Archaea (0) e Eukaryota (102)**. Eukaryota contém Opisthokonta (62: Animalia e Fungi), Archaeplastida (20: Plantae da fonte), SAR (10: Stramenopiles/Ochrophyta), Amoebozoa (10: mixomicetos) e Discoba (0). Os 122 IDs, nomes, fotografias, créditos e dados dos jogadores são preservados.
 
-## Workspace e ambiente
+Três domínios são portas didáticas, com as hipóteses alternativas de dois domínios documentadas. Supergrupos são clados de navegação sem rank formal universal. A árvore omite ramos intermediários; não afirma uma filogenia completa nem parentesco imediato entre todos os nós visíveis. Monera/Protista são referências históricas, não grupos naturais ativos. Consulte docs/CLASSIFICACAO_FILOGENETICA.md e docs/AUDITORIA_FILOGENETICA.json.
 
-- Nome exibido: Projeto Glossata. Executável: projeto_glossata.exe. O identificador interno Qt continua glossata_quiz para preservar o diretório existente dos bancos de perfis e histórico.
+## Arquitetura e conteúdo
 
-- Raiz canônica: C:\glossata_game. Não editar a cópia antiga do Desktop, cujo caminho com acentos e & já provocou problemas de moc/autogen.
-- Git: main integra a expansão dos cinco reinos; feat/refinamento-identificacao contém esta etapa de refinamento. origin aponta para https://github.com/kaduolliver/Projeto-Glossata.
-- Código, recursos, testes, documentação e configurações compartilhadas são versionados. Build, pacote gerado, capturas, cache e bancos pessoais são ignorados.
-- C++17, Qt 6 Quick/QML, Qt Sql/QSQLITE, CMake/Ninja, MSYS2 UCRT64.
-- Ambiente validado: Qt 6.11.2 e GCC 16.2.0. Importação/testes auxiliares usam Python 3.11+ e sua biblioteca padrão.
-- IntelliSense usa build/compile_commands.json.
-
-## Arquitetura
-
-- Domínio: Species preserva os campos originais e acrescenta linhagem, reino didático, origem e Photo. Question vincula a fotografia e a referência da dica; GameSession guarda pontuação e estado. TaxonomicPerformance agrega respostas por IDs de reino e filo/divisão.
-- QuizSelection centraliza elegibilidade e distratores. GameService filtra descendentes/família, embaralha, intercala reinos, controla dicas e salva resultados.
-- TaxonomyIndex mantém árvore, contagens, caminhos e níveis disponíveis em memória. Navegar não relê arquivos nem acessa a API.
-- As portas SpeciesCatalog, GameHistoryRepository e PlayerProfileRepository mantêm a separação entre aplicação e infraestrutura.
-- JsonSpeciesCatalog lê e valida recursos Qt. SqliteSpeciesCatalog prepara o catálogo normalizado, aplica migrações aditivas e carrega o cache.
-- SqliteGameHistoryRepository mantém ranking/perfis, com conexões exclusivas e fechamento correto.
-- GameController expõe o estado ao QML como gameController e preserva a pergunta respondida durante a revisão.
-- Main.qml mantém sidebar, Loader, rolagem e transições. views contém Home, categorias, TaxonomyView, quiz, feedback, informações, resultado, estatísticas, conquistas e ajustes.
-- PhotoResolver centraliza associação, fonte verificada, licença, autoria, SHA-256, existência, decodificação e resolução mínima de 300 pixels em ambas as dimensões. Aprovação por nível fica em photo_reviews.json e é vinculada ao ID da foto; metadados e aprovação são persistidos em photo_json no catálogo SQLite.
-- EducationalContent lê education.json: introduções por ID, 122 fichas e dicas/curiosidades por espécie ou grupo. Confere ID e nome científico para aplicar a ficha. Rejeita pistas que contenham alternativas, gênero ou nomes da linhagem; não usa fatos legados não revisados. species_profiles.json é o corpus editável, incorporado offline por scripts/build_education.py; consulte docs/FICHAS_ESPECIES.md.
-- ExploreCard distingue cadastro de cobertura visual; SpeciesPortrait exibe fotos e créditos sem substituição decorativa no quiz. TextAction e TaxonComboBox compartilham os estados arredondados, escuros e com foco acessível; EndGameDialog confirma o encerramento.
-- resources/data contém species.json, taxonomy.json, catalog_replacements.json, photo_reviews.json, photo_audit.json, education.json, import_report.json e discord.json. Há 120 arquivos de imagem para os 122 registros ativos; candidatos não selecionados não entram no executável. role=supporting e supporting_for vinculam uma imagem de apoio a uma questão de Monera, preservando o táxon original do registro fotográfico.
-- scripts/import_inaturalist.py importa, verifica licenças individuais, deduplica e mantém cache local.
+- Domínio: Species distingue domínio, supergrupo, reino e ranks inferiores em sua linhagem. educationalKingdom existe somente para compatibilidade histórica; a aplicação usa domain()/displayGroup(). QuizSelection centraliza elegibilidade; TaxonomicPerformance agrega por IDs das linhagens atuais e filo/divisão. Acertos, precisão e pontuação permanecem independentes.
+- TaxonomyIndex mantém árvore, contagens, caminhos e níveis em memória. Suas raízes vêm dos nós de domínio; a navegação inclui grupos vazios, com quiz desabilitado. SpeciesCatalog e GameHistoryRepository preservam a separação entre aplicação e infraestrutura.
+- GameService filtra descendentes, intercala linhagens, controla o ciclo e salva resultados. QuestionGenerator separa contexto, proximidade e distratores; nenhuma consulta de rede ocorre durante partidas.
+- JsonSpeciesCatalog lê os recursos embarcados. SqliteSpeciesCatalog migra o catálogo de forma aditiva/transacional, com pais antes de filhos e upsert; em falha usa o conteúdo embarcado como fallback. Mantém registros locais e nós históricos.
+- GameController expõe estado ao QML e preserva o snapshot da pergunta respondida até nextQuestion. Main.qml mantém sidebar, Loader, rolagem e transições. Não duplica regras de pontuação no QML.
+- resources/data/phylogeny.json contém a política explícita, fontes, localizadores, divergências e hipóteses alternativas. scripts/phylogeny.py faz projeção e auditoria idempotentes. Não cria ranks, táxons ou aprovações para preencher lacunas.
+- species.json mantém taxonomy atual e source_taxonomy original integral por organismo; legacy_educational_kingdom é histórico. classification identifica o sistema, fontes, divergências e limitações. taxonomy.json contém os nós atuais.
+- EducationalContent lê education.json gerado por scripts/build_education.py a partir de species_profiles.json, hint_education.json, revisões e fontes. O tópico taxonomy conserva a revisão da classificação original; phylogeny tem revisão independente. Os 122 enquadramentos novos são rascunhos assistidos por IA, sem revisão humana declarada.
+- PhotoResolver confere identidade, licença, fonte, crédito, hash, decodificação e resolução mínima de 300 pixels. photo_reviews.json vincula revisão ao ID da foto; photo_json conserva metadados no SQLite. Imagens de apoio bacterianas mantêm avisos e restrições. Não ampliar ranks fotográficos automaticamente.
 
 ## Fluxos e regras
 
-Home → Jogar → Todas as espécies ou reino → grupos/subgrupos → nível de identificação → quiz → feedback → ficha → próxima pergunta ou resultado → retorno à exploração.
+Início → Jogar → Todos os organismos ou domínio → linhagens/grupos → nível elegível → quiz → feedback → ficha → próxima pergunta ou resultado. Breadcrumbs voltam aos ancestrais; encerrar requer confirmação. Falha de gravação conserva resultado pendente para nova tentativa.
 
-Grupos são gerados pelos dados e podem ter profundidades e ranks diferentes. O caminho clicável retorna aos ancestrais. Grupos pequenos e taxonomias parciais continuam navegáveis; quizzes sem quatro respostas distintas são desabilitados. Níveis possíveis: espécie, gênero, família, ordem, classe, filo/divisão e reino científico.
+Livre é contínuo, com alternativas amplas/equilibradas/próximas. Competitivo tem 20 questões de gênero, fotografias de identificação e ranking separado por regras e hash de conteúdo. O pool atual tem 80 organismos competitivos. O misto Livre de gênero tem 100 registros; Plodia interpunctella permanece suspensa por revisão fotográfica.
 
-Todas as alternativas pertencem ao grupo escolhido e ao nível da pergunta. O modo misto intercala reinos proporcionalmente ao tamanho dos grupos e embaralha internamente. Espécies não repetem dentro de um ciclo nem imediatamente entre ciclos. Resposta inválida não altera a rodada. O botão Dica abre categorias taxonômica, etimológica e morfológica; cada dica tem avaliação independente de assistência leve (6 unidades), moderada (3) ou forte (2), vinculada ao conteúdo, foto, nível e contexto. Classificações provisórias são sinalizadas no Livre e ficam indisponíveis no Competitivo até revisão rastreável. Combinações mantêm o menor teto, sem cobrança ao abrir ou revisitar. Acertos e precisão são independentes dos pontos. Consulte docs/DICAS_E_PONTUACAO.md.
+Domínio, supergrupo, reino, filo/divisão, classe, ordem, família, gênero e espécie são distintos; ausência de rank nunca é preenchida por inferência. Quatro alternativas distintas e revisões adequadas continuam necessárias. Domínio/supergrupo não foram liberados automaticamente; reino também está indisponível porque só há três reinos científicos elegíveis.
 
-Responder prepara a próxima pergunta no serviço; o controller mantém o snapshot da pergunta, foto, dica e alternativas até nextQuestion e bloqueia confirmações duplicadas. Voltar abre uma confirmação modal. Continuar preserva a seleção; confirmar registra uma vez e retorna ao grupo anterior ou aos reinos. Falha de gravação leva ao resultado pendente para nova tentativa.
+Dicas taxonômica, etimológica e morfológica são categorias educativas. A assistência é independente: leve 6 unidades, moderada 3, forte 2. Combinações usam o menor teto, sem cobrança ao abrir/fechar/revisitar. Erro vale zero e pergunta nova começa em 6. A interface anuncia o teto combinado antes da revelação. Propostas pendentes ficam sinalizadas no Livre e indisponíveis no Competitivo. Consulte docs/DICAS_E_PONTUACAO.md.
 
-Todos os 122 registros ativos possuem imagem tecnicamente válida: 102 têm fotos para identificação visual e os 20 de Monera usam imagens de apoio com aviso explícito, conforme solicitação do usuário. Monera possui descrições biológicas e pistas em linguagem simples. O modo misto inicia em gênero, com 100 registros dos cinco reinos; Plodia interpunctella está suspensa das perguntas por revisão fotográfica. Há 16 introduções de grupos e 122 fichas com apresentação, distribuição/ocorrências documentadas, morfologia, conservação, curiosidade e dica; 107 incluem alimentação/nutrição. Há 22 categorias globais da IUCN registradas no iNaturalist e 100 fichas sem categoria global confirmada. Fontes e classificação completa podem ser expandidas na ficha. Níveis sem quatro alternativas distintas continuam bloqueados. Registros substituídos recebem novos IDs e os antigos ficam arquivados em catalog_replacements.json.
+## Persistência e integridade
 
-Desempenho taxonômico agrega por reino didático e ID de filo/divisão da fonte, independentemente do nível perguntado. Um filo ausente ou ambíguo usa Classificação não disponível. O desempenho taxonômico e as seis conquistas permanecem relativos à partida atual/última partida. Estatísticas adicionais do histórico são derivadas das respostas persistidas por perfil e modalidade.
+QStandardPaths::AppDataLocation mantém glossata_history.sqlite e glossata_catalog.sqlite. Nunca alterar bancos pessoais em testes/capturas. O esquema do histórico continua v3: game_runs/answer_records preservam regras, pontos inteiros, alternativas e snapshots verificáveis de assistência. Regras atuais: identification-v3-assistance; v2/legacy são interpretadas conforme o contrato original, sem recálculo retroativo.
 
-## Dados locais e migrações
+O catálogo passa à migração v2: DDL e carga transacionais, hash do bundle, índices, chaves estrangeiras e cache. educational_kingdom no SQLite conserva associação histórica. Nós antigos não são apagados; as raízes atuais são domínios. IDs edu: são aceitos somente por compatibilidade, sem aparecer como grupos naturais no menu.
 
-Dois bancos ficam em QStandardPaths::AppDataLocation, fora do pacote:
+Perfis têm nomes aparados, limite de 32 caracteres e unicidade COLLATE NOCASE. Um perfil mínimo é preservado. A partida captura o jogador ao iniciar; trocar o perfil não transfere resultados. Ranking mostra melhor resultado e última partida separadamente. As seis conquistas mantêm as regras existentes.
 
-- glossata_history.sqlite mantém history/player_profiles no mesmo caminho; score foi migrado transacionalmente para score_units, multiplicando valores antigos por seis uma única vez. game_runs/answer_records guardam as novas partidas e suas respostas, categorias reveladas, máximos e pontos, com UUID e salvamento transacional.
-- glossata_catalog.sqlite mantém taxons, espécies, origem, créditos e hash do conteúdo embarcado.
+## Fontes e direitos
 
-O catálogo usa chaves estrangeiras, índices e consultas recursivas. Carga/atualização de conteúdo são transacionais, com upsert e pais antes dos filhos. Colunas são acrescentadas sem apagar tabelas ou registros anteriores. A coluna active marca somente substituições explícitas como inativas, verificando ID/nome anterior e existência do substituto. Consultas e contagens usam registros ativos; dados locais não relacionados permanecem intactos. Reabertura carrega o SQLite uma vez para memória. Se a preparação falhar, o adaptador conserva o conteúdo embarcado como fallback.
+docs/CONFORMIDADE.md, docs/DIREITOS_E_LICENCAS.md e docs/RELATORIO_CONFORMIDADE.md documentam pendências. review_baseline.json é imutável e não comprova revisão humana. Histórico humano encadeado e governance são a autoridade de revisão. Não inventar revisores, evidências, autores, datas ou licenças; uma URL não aprova conteúdo.
 
-Perfis têm nomes aparados, limite de 32 caracteres e unicidade COLLATE NOCASE. É possível criar, selecionar, renomear e excluir; o último perfil não pode ser excluído. Instalação vazia cria Jogador 1. A partida captura o nome ao iniciar; mudanças de perfil durante o jogo não transferem seu resultado.
+photo_provenance.json e snapshots mínimos preservam crédito literal e evidência sem coordenadas/perfis de observadores. Padrão de novas fotos: CC0/CC BY; NC exige política expressa e autorização de escopo compatível. Bloquear licenças ausentes/desconhecidas/fora da política antes do download. Fonte bibliográfica não concede direito de cópia.
 
-O ranking mostra a melhor pontuação por nome e modalidade; a última partida fica separada. O Competitivo usa uma chave com limite, grupo, nível, dificuldade, regras e SHA-256 do conteúdo. PRAGMA user_version=2 migra o histórico transacionalmente, preservando linhas legadas e reconstruindo somente partidas com respostas disponíveis. Falha ao salvar mantém resultado pendente e permite repetir sem duplicação. Consulte docs/EVOLUCAO_COMPETITIVA.md.
+Há 120 fotos distintas, com pendências de versão/data de licença e confirmação humana, sete divergências de crédito, direitos da arte/textos e obrigações de dependências. Duas fotos de origem Casual exigem revisão prioritária. Nenhuma nova permissão ou aprovação de especialista foi criada. O gate de distribuição permanece obrigatório.
 
-## Discord e ícones
+## Discord e empacotamento
 
-DiscordRichPresence usa RPC/IPC local com Qt Network/QLocalSocket, sem token de bot ou Client Secret. Configuração em resources/data/discord.json; package/discord.json pode substituir a embarcada. Application ID: 1559712085250801685; asset: glossata_icon_v2.
+DiscordRichPresence usa IPC local, sem bot token/Client Secret; ausência do Discord não bloqueia o jogo. Configuração embarcada em resources/data/discord.json e override em package/discord.json. Application ID 1559712085250801685; asset glossata_icon_v2. Mensagem: Explorando os domínios da vida; Uma descoberta por vez.
 
-A mensagem permanece Explorando os cinco reinos biológicos e Uma descoberta por vez, sem nomes ou pontuações. Ausência de Discord não bloqueia o jogo; a presença pode ser desativada em ajustes.
+Ícones PNG/ICO e arte foram fornecidos pelo usuário. Launcher: package/Projeto Glossata.lnk ou package/run_glossata_game.cmd. O pacote local inclui DLLs, QML, plugins, qt.conf e apenas o driver SQL QSQLITE. -Development é exclusivo para testes locais; nunca publicar como release liberada.
 
-resources/branding contém PNG, ICO multirresolução e arte para Discord fornecidos pelo usuário. ICO é recurso nativo do executável e ícone global da janela. Launcher recomendado: package/Projeto Glossata.lnk; alternativa: package/run_glossata_game.cmd. O pacote usa ICO com nome derivado de hash e atualiza o cache do Windows. Assets do Discord são administrados separadamente no Developer Portal.
+## Build, testes e retomada
 
-## Build, testes e pacote
+Ambiente: MSYS2 UCRT64, Qt 6, CMake/Ninja, Python 3.11+. No PowerShell, adicionar C:\msys64\ucrt64\bin ao PATH e executar:
 
-No PowerShell, a partir da raiz:
-
+    python scripts/phylogeny.py
+    python scripts/build_education.py
     cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
     cmake --build build --parallel 4
     ctest --test-dir build --output-on-failure
-    $qmlFiles = @(Get-ChildItem resources/qml -Recurse -Filter '*.qml' | ForEach-Object { $_.FullName })
-    qmllint @qmlFiles --unqualified disable
-    powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -Development
+    python scripts/audit_catalog.py --strict
+    python scripts/release.py check
 
-unqualified é desativado para context properties intencionalmente injetadas pelo C++. O pacote inclui Qt DLLs, QML, plugins, dependências MSYS2, qt.conf, configuração Discord e launcher. Mantém somente QSQLITE entre drivers SQL.
+São sete suítes: domínio/persistência, interface real, Discord isolado, importação, governança, versionamento e projeção filogenética. Usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests. Validar também qmllint e scripts/validate_package.ps1; não declarar teste em Windows limpo sem realizá-lo.
 
-Quatro suítes CTest:
+Atualizar o pacote local após recompilar. Em alterações relevantes da tela inicial, gerar captura real com scripts/capture_home.py e incluir docs/images/tela-inicial.png e seu registro no mesmo commit. O README também inclui docs/images/quiz.png, produzido pela interface de teste real, com proveniência em quiz.json. Nunca gerar mockup para representar funcionalidades.
 
-1. GlossataTests: regressões do jogo, perfis/ranking, filtros, níveis, grupos pequenos, mistura, fotos offline, licenças e migração/reabertura do catálogo.
-2. GlossataInterfaceTests: cliques e confirmação, cinco reinos, subgrupos, caminho de volta, retorno ao grupo e capturas em 1240×820 e 1000×700; rejeita avisos QML.
-3. GlossataDiscordTests: IPC isolado, handshake, frames fragmentados, PONG, confirmação/erro e ausência de Discord.
-4. GlossataImportTests: quatorze testes Python sem rede para preservação de identidades e textos históricos, licenças, mapeamento, árvore, hashes, reimportação idempotente, revisão vinculada à foto/fonte, falha segura sem cache e geração educacional reproduzível com validação de identidade/fontes/escopo e rejeição de classificação como etimologia.
-
-Testes usam bancos temporários e não publicam presença real. Capturas ficam em build/tests/previews; relatórios em build/tests/core-results.txt, ui-test-results.txt e catalog-audit.json. Consulte docs/REFINAMENTO_IDENTIFICACAO.md para resultados, limitações científicas e registros pendentes desta etapa.
-
-## Próximas prioridades e retomada
-
-Revisar cientificamente fatos/dicas anteriores e novos registros, acrescentar curiosidades com fontes, ampliar representatividade e avaliar progresso persistido por perfil se solicitado. Protista contém dez Protozoa e dez Chromista; Monera contém vinte Bacteria e nenhuma Archaea. Falta validar o pacote em um Windows sem Qt/MSYS2 instalado.
-
-Preservar C++17, Qt Quick, SQLite, portas/adaptadores, IDs originais, dados dos jogadores e testes. Trabalhar apenas em C:\glossata_game. Ao alterar regras/catálogo, testar comportamento; ao mudar QML, conferir lint/capturas; ao recompilar o executável, atualizar o pacote. A API é usada na importação, nunca para jogar ou navegar.
-
-## Dicas estratégicas e revisão após a resposta
-
-A pontuação usa unidades inteiras de 64 bits: 6 por ponto, 3 por meio ponto e 2 por um terço. A interface mostra duas casas decimais. O ranking mantém recorde e última partida separadamente e ordena por unidades. Cada resposta preserva organismo, foto, nível, alternativas escolhida/correta, acerto, categorias, teto e unidades obtidas. O domínio calcula a combinação; QML apresenta os valores. A revisão educativa é opcional e não altera pontos.
-
-As dicas taxonômicas citam ancestrais verificados mais amplos e deixam ao menos três alternativas compatíveis. Etimologia tem referências para 49 organismos; 104 têm morfologia curada, vinculada à fotografia. Etimologia/morfologia estão revisadas para espécie/gênero, com disponibilidade dependente do conteúdo, elegibilidade e questão. Corpus em resources/data/hint_education.json, incorporado offline pelo gerador; nenhuma consulta de rede ocorre nas partidas. Detalhes, pendências e testes em docs/DICAS_E_PONTUACAO.md.
-
-## Evolução de engenharia e competição
-
-QuestionGenerator separa a geração contextual do ciclo de GameService. GameConfiguration define modo, limite, filtros, dificuldade e versões; SessionMetrics compartilha a acumulação entre respostas atuais e persistidas. QuizSelection usa uma passagem linear e TaxonomyIndex guarda níveis em cache. ReviewResolver aplica a mesma revisão na carga JSON e SQLite; reviews opcionais pendentes não bloqueiam fotografias aprovadas.
-
-Livre oferece alternativas mais amplas, equilibradas ou próximas. Competitivo usa 20 questões de gênero, alternativas equilibradas e fotografias de identificação, com 80 organismos elegíveis; as 20 imagens de apoio de Monera ficam no Livre. A última resposta pode ser revisada antes do resultado final; partidas interrompidas são guardadas e ficam fora do ranking competitivo. Nenhuma espécie foi removida.
-
-Corpus, revisões e diagnóstico: resources/data/curation_reviews.json, resources/data/etymology_research.json e scripts/audit_catalog.py. Há 49 etimologias ao menos parciais, 104 registros morfológicos e 16 introduções. O teste scripts/validate_package.ps1 utiliza bancos temporários e PATH isolado; ainda falta um Windows limpo sem Qt/MSYS2. Relatórios em docs/EVOLUCAO_COMPETITIVA.md e docs/COBERTURA_TAXONOMICA.md.
-
-## Governança científica e direitos
-
-Consulte docs/CONFORMIDADE.md e docs/DIREITOS_E_LICENCAS.md. A baseline resources/compliance/review_baseline.json congela marcações históricas, sem demonstrar revisão humana. Não recriar a baseline para aprovar conteúdo. Datas antigas/flags verified/approved são legadas; a autoridade de revisão é o histórico humano encadeado e governance gerado em education.json. Novo conteúdo fica draft; mudanças de conteúdo/fonte/foto invalidam a revisão. Prazos são configuráveis em content_policy.json e conferidos também offline.
-
-photo_provenance.json e snapshots mínimos preservam evidência por foto, sem perfis do observador nem coordenadas. Crédito do fotógrafo não deve ser inferido do observador. credits.json, PHOTO_CREDITS.md e tela de créditos têm origem comum. Fotos continuam CC0/CC BY por padrão; NC exige política e grant expressos. Consultas de manutenção geram somente propostas em build/update-proposals, nunca renovam revisão nem substituem silenciosamente dados publicados.
-
-package.ps1 bloqueia distribuição por padrão; -Development é apenas para testes locais e exporta avisos/evidências. Há pendências de versão/data da licença de 120 fotos, sete créditos divergentes, direitos da arte/textos e obrigações de dependências. Duas fotos legadas de origem Casual exigem revisão científica prioritária. Preservar perfis/histórico e os modos locais, sem chamar o legado de validado por especialista. Nenhuma licença dos materiais próprios foi escolhida. A quinta suíte GlossataGovernanceTests cobre regressões de evidência, direitos, privacidade, revisão e invalidação. Testes não são certificação de regularidade.
+Commits pequenos após verificações, sem push/release sem autorização específica. SemVer do aplicativo é independente do catálogo. Aplicativo 1.2.0 é MINOR compatível; catálogo 2.0.0 é MAJOR pela mudança de organização/esquema. Tag vX.Y.Z somente pelo gate scripts/release.py tag; não contornar bloqueios nem confundir testes com certificação.

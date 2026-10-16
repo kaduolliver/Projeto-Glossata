@@ -36,6 +36,8 @@ jobs:
           qmllint $(find resources/qml -name '*.qml') --unqualified disable
           python scripts/audit_catalog.py --strict
           python scripts/audit_hint_assistance.py
+          python scripts/phylogeny.py --apply
+          git diff --exit-code -- resources/data/species.json resources/data/taxonomy.json docs/AUDITORIA_FILOGENETICA.json
           git diff --exit-code -- docs/AUDITORIA_ASSISTENCIA.json
           python scripts/review_updates.py
           python scripts/release.py check

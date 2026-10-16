@@ -28,7 +28,7 @@ O ícone da aplicação no Portal, a imagem grande do Rich Presence e o ícone d
 
 Reinicie o jogo depois de editar esse arquivo. Para manter alterações nos próximos empacotamentos, edite também `resources/data/discord.json`.
 
-A atividade exibe o nome do jogo, **Explorando os cinco reinos biológicos**, **Uma descoberta por vez** e o tempo desde a abertura do aplicativo. Não publica o nome do perfil local ou o ranking. O controle **Atividade no Discord** desliga a presença para a sessão atual; `enabled: false` no JSON a desliga por padrão. Fechar o jogo remove a atividade.
+A atividade exibe o nome do jogo, **Explorando os domínios da vida**, **Uma descoberta por vez** e o tempo desde a abertura do aplicativo. Não publica o nome do perfil local ou o ranking. O controle **Atividade no Discord** desliga a presença para a sessão atual; `enabled: false` no JSON a desliga por padrão. Fechar o jogo remove a atividade.
 
 Se o Discord não estiver disponível, o jogo continua funcionando e tenta conectar novamente a cada 15 segundos. O status de conexão não confirma que o asset foi cadastrado: a imagem deve ser conferida visualmente depois do upload no Portal.
 

@@ -125,7 +125,7 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
     // Only a broader, verified ancestor is permitted. At least three distinct
     // choices must remain positively compatible. All four require known ancestry;
     // missing data is never evidence of exclusion. Counts gate safety, not grade.
-    const QStringList ranks={"kingdom","phylum","class","order","family","genus","species"};
+    const QStringList ranks={"domain","supergroup","kingdom","phylum","class","order","family","genus","species"};
     const int asked=ranks.indexOf(rank);
     for(auto it=s.taxonomy.crbegin();it!=s.taxonomy.crend();++it) {
         if (!s.taxonomyApproved) break;
@@ -183,7 +183,8 @@ QVariantMap EducationalContent::profile(const Species &s) const
                        {"governance",item.value("governance").toVariant()},
                        {"reviewedOn",item.value("governance").toObject().value("education").toObject().value("reviewed_at").toString()},
                        {"issueUrl",data_.value("governance_policy").toObject().value("issue_url").toString()},
-                       {"taxonomySystem",data_.value("governance_policy").toObject().value("taxonomy_system").toString()}};
+                       {"taxonomySystem",data_.value("governance_policy").toObject().value("taxonomy_system").toString()},
+                       {"phylogeny",item.value("phylogeny").toObject().toVariantMap()}};
     for (const QString &field : {QString("summary"),QString("distribution"),QString("nutrition"),
                                 QString("morphology"),QString("conservation"),QString("curiosity"),QString("hint")})
         result.insert(field,note(resolve(item.value(field))));
@@ -198,7 +199,6 @@ QVariantMap EducationalContent::hint(const Species &s, const QString &rank, cons
     const QJsonObject scopes=data_.value("group_hints").toObject();
     for (auto it=s.taxonomy.crbegin(); it!=s.taxonomy.crend(); ++it)
         for (const auto &candidate : scopes.value(it->id).toArray()) candidates.append(candidate);
-    for (const auto &candidate : scopes.value("edu:"+s.educationalKingdom).toArray()) candidates.append(candidate);
     for (const auto &candidate : candidates) {
         const QJsonObject item=resolve(candidate);
         if (!item.value("ranks").toArray().contains(rank) || note(item).isEmpty() || leaks(item.value("text").toString(),s,options)) continue;
@@ -215,5 +215,5 @@ QVariantMap EducationalContent::curiosity(const Species &s) const
         result=note(resolve(scopes.value(it->id)));
         if (!result.isEmpty()) return result;
     }
-    return note(resolve(scopes.value("edu:"+s.educationalKingdom)));
+    return {};
 }

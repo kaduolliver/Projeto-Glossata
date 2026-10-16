@@ -11,7 +11,7 @@ Item {
     ColumnLayout {
         id: content
         width: parent.width; spacing: 18
-        UiButton { objectName: "returnKingdomsButton"; text: "Voltar aos reinos"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate("categories") }
+        UiButton { objectName: "returnDomainsButton"; text: "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate("categories") }
         Flow {
             Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height; spacing: 4
             Repeater {
@@ -29,7 +29,9 @@ Item {
         Label { text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + " espécies neste grupo"; color: "#91B0B5"; font.pixelSize: 14 }
         ColumnLayout {
             Layout.fillWidth: true; spacing: 4
-            Label { text: view.backend.browseTaxon.introduction.text || "Introdução científica ainda não disponível para este grupo."; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
+            Label { text: view.backend.browseTaxon.introduction.text || view.backend.browseTaxon.description || "Introdução científica ainda não disponível para este grupo."; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
+            Label { text: (view.backend.browseTaxon.rankNote || "") + " " + (view.backend.browseTaxon.placementNotice || ""); color: "#D9BA7D"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            TextAction { visible: !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
             TextAction { visible: !!view.backend.browseTaxon.introduction.source_url; text: "Fonte: " + (view.backend.browseTaxon.introduction.source_title || "Referência científica"); onClicked: Qt.openUrlExternally(view.backend.browseTaxon.introduction.source_url) }
         }
         PlayModeSelector { app: view.app; backend: view.backend }
@@ -47,10 +49,10 @@ Item {
                     TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; enabled: count > 0; onModelChanged: currentIndex = 0 }
                     UiButton { objectName: "startTaxonButton"; text: "Começar"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
                 }
-                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.browseTaxon.kingdom === "Monera" ? " registros para identificação por pistas, com imagem de apoio." : " espécies com fotografia aprovada para este nível.") : "Explore este grupo. Fotografias aprovadas insuficientes para gerar quatro alternativas distintas."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + " registros elegíveis neste nível; consulte os avisos das fotografias." : "Sem quiz neste nível: são necessárias quatro alternativas distintas e revisões adequadas. Grupos vazios continuam disponíveis para exploração."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
         }
-        Label { visible: view.backend.browseTaxon.kingdom === "Protista" || view.backend.browseTaxon.kingdom === "Monera"; text: view.backend.browseTaxon.kingdom === "Protista" ? "Protista reúne Protozoa e Chromista neste modelo didático. Os táxons e nomes da fonte permanecem na árvore." : "Monera reúne Bacteria e Archaea neste modelo didático. A identificação usa pistas; as imagens de apoio podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { text: view.backend.browseChildren.length ? "Explore os próximos grupos" : "Você chegou ao último nível disponível."; color: "#BCD1C7"; font.pixelSize: 18; Layout.topMargin: 8 }
         GridLayout {
             Layout.fillWidth: true; columns: view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14

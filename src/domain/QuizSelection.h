@@ -4,6 +4,7 @@
 
 inline bool approvedForQuiz(const Species &s, const QString &rank)
 {
+    if ((rank=="domain" || rank=="supergroup") && !s.phylogenyApproved) return false;
     return !s.name.trimmed().isEmpty() && s.taxonomyApproved && s.photoApproved && s.photo.valid
         && s.photo.approvedRanks.contains(rank) && !s.answerAtRank(rank).trimmed().isEmpty();
 }

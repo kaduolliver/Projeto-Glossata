@@ -112,8 +112,10 @@ private slots:
     void categoryQuizUsesOnlySelectedFamily();
     void controllerKeepsAnswerUntilNextQuestion();
     void taxonomyFiltersAndIdentificationLevels();
+    void newTaxonomicRanksRequireIndependentReview();
     void offlinePhotosHaveAttributionAndDecode();
     void catalogMigrationPreservesPlayerDataAndStoredRecords();
+    void phylogeneticCatalogMigrationRollsBackAndReopens();
     void invalidPhotoLicenseDisablesVisualQuestion();
     void photoResolverRejectsMissingCorruptAndUnverifiedResources();
     void visualEligibilityAndHintsAcrossRanks();
@@ -581,11 +583,12 @@ void GameServiceTests::taxonomyFiltersAndIdentificationLevels()
 {
     JsonSpeciesCatalog catalog;
     TaxonomyIndex index(catalog);
-    QCOMPARE(index.kingdoms().size(), 6);
+    QCOMPARE(index.domains().size(), 4);
     int total = 0;
     for (const QVariant &entry : index.kingdoms().mid(1)) {
         const QString id = entry.toMap().value("id").toString();
         const auto selected = index.speciesFor(id);
+        if(id=="domain:Archaea") {QVERIFY(selected.isEmpty());QVERIFY(index.identificationLevels(id).isEmpty());continue;}
         QVERIFY(selected.size() >= 20);
         QCOMPARE(index.count(id), selected.size());
         total += selected.size();
@@ -629,9 +632,35 @@ void GameServiceTests::taxonomyFiltersAndIdentificationLevels()
         realms.insert(service.currentQuestion().species.educationalKingdom);
         service.submitAnswer(service.currentQuestion().correctAnswer);
     }
-    QCOMPARE(realms.size(), 5);
+    QCOMPARE(realms.size(), 5); // Frozen legacy membership remains readable.
     QVERIFY(realms.contains("Monera"));
     QVERIFY(!index.identificationLevels("edu:Monera").isEmpty());
+}
+
+void GameServiceTests::newTaxonomicRanksRequireIndependentReview()
+{
+    QVector<Species> pool;
+    for(int i=0;i<4;++i) {
+        Species s;s.id=i+1;s.name="Synthetic organism "+QString::number(i);
+        s.taxonomy={{"test:clade:"+QString::number(i),"Test clade "+QString::number(i),"supergroup"}};
+        s.photo.valid=true;s.photo.approvedRanks={"supergroup"};
+        pool.append(s);
+    }
+    QVERIFY(eligibleQuizSpecies(pool,"supergroup").isEmpty());
+    for(auto &s:pool)s.phylogenyApproved=true;
+    QCOMPARE(eligibleQuizSpecies(pool,"supergroup").size(),4);
+    pool[0].photo.approvedRanks.clear();
+    QVERIFY(eligibleQuizSpecies(pool,"supergroup").isEmpty());
+    JsonSpeciesCatalog catalog;TaxonomyIndex index(catalog);
+    for(const auto &s:catalog.loadSpecies()) {
+        QVERIFY(!s.domain().isEmpty());
+        QVERIFY(!s.phylogenyApproved); // New source synthesis never auto-approves itself.
+        QVERIFY(!approvedForQuiz(s,"domain"));QVERIFY(!approvedForQuiz(s,"supergroup"));
+    }
+    for(const auto &level:index.identificationLevels({})) {
+        const auto rank=level.toMap().value("id").toString();
+        QVERIFY(rank!="kingdom" && rank!="domain" && rank!="supergroup");
+    }
 }
 
 void GameServiceTests::offlinePhotosHaveAttributionAndDecode()
@@ -660,6 +689,75 @@ void GameServiceTests::offlinePhotosHaveAttributionAndDecode()
     }
     QCOMPARE(original, 19);
     QVERIFY(imported >= 100);
+}
+
+void GameServiceTests::phylogeneticCatalogMigrationRollsBackAndReopens()
+{
+    QTemporaryDir directory;
+    const QString path=directory.filePath("legacy-catalog.sqlite");
+    const QString connection="phylogeny-rollback-fixture";
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE",connection);db.setDatabaseName(path);QVERIFY(db.open());
+        QSqlQuery q(db);
+        QVERIFY(q.exec("CREATE TABLE taxons(id TEXT PRIMARY KEY,scientific_name TEXT NOT NULL,rank TEXT NOT NULL,parent_id TEXT,source TEXT,source_taxon_id TEXT,UNIQUE(source,source_taxon_id))"));
+        QVERIFY(q.exec("CREATE TABLE species(id INTEGER PRIMARY KEY,scientific_name TEXT NOT NULL,common_name TEXT,taxon_id TEXT NOT NULL,educational_kingdom TEXT,image_path TEXT,image_author TEXT,image_license TEXT,image_source TEXT,source TEXT,source_taxon_id TEXT)"));
+        QVERIFY(q.exec("INSERT INTO taxons VALUES('edu:Monera','Monera','educational_kingdom',NULL,'educational',NULL)"));
+        QVERIFY(q.exec("CREATE TRIGGER reject_projection BEFORE INSERT ON taxons WHEN NEW.id LIKE 'domain:%' BEGIN SELECT RAISE(ABORT,'synthetic migration failure'); END"));
+    }
+    QSqlDatabase::removeDatabase(connection);
+    {
+        SqliteSpeciesCatalog failed(path);
+        QVERIFY(!failed.isReady());
+        QCOMPARE(failed.loadSpecies().size(),122); // Read-only bundled fallback still works.
+    }
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE",connection);db.setDatabaseName(path);QVERIFY(db.open());QSqlQuery q(db);
+        QVERIFY(q.exec("PRAGMA table_info(taxons)"));QStringList columns;while(q.next())columns<<q.value(1).toString();
+        QVERIFY(!columns.contains("rank_note")); // DDL was rolled back with the data.
+        QVERIFY(q.exec("SELECT COUNT(*) FROM taxons"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
+        QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),0);q.finish();
+        QVERIFY(q.exec("DROP TRIGGER reject_projection"));
+    }
+    QSqlDatabase::removeDatabase(connection);
+    JsonSpeciesCatalog bundled;
+    {
+        SqliteSpeciesCatalog migrated(path);QVERIFY(migrated.isReady());
+        QMap<int,Species> byId;for(const auto &s:migrated.loadSpecies())byId.insert(s.id,s);
+        QCOMPARE(byId.size(),122);
+        for(const auto &expected:bundled.loadSpecies()) {
+            const auto actual=byId.value(expected.id);
+            QCOMPARE(actual.name,expected.name);QCOMPARE(actual.domain(),expected.domain());
+            QCOMPARE(actual.photo.id,expected.photo.id);QCOMPARE(actual.photo.sha256,expected.photo.sha256);
+            QCOMPARE(actual.photo.author,expected.photo.author);QCOMPARE(actual.photo.license,expected.photo.license);
+            QCOMPARE(actual.taxonomy.size(),expected.taxonomy.size());
+            for(int i=0;i<actual.taxonomy.size();++i) {
+                QCOMPARE(actual.taxonomy[i].id,expected.taxonomy[i].id);
+                QCOMPARE(actual.taxonomy[i].rank,expected.taxonomy[i].rank);
+                QCOMPARE(actual.taxonomy[i].sourceUrl,expected.taxonomy[i].sourceUrl);
+            }
+        }
+        TaxonomyIndex index(migrated);QCOMPARE(index.domains().size(),4);
+        QCOMPARE(index.count("domain:Eukaryota"),102);QCOMPARE(index.count("domain:Bacteria"),20);
+    }
+    {SqliteSpeciesCatalog reopened(path);QVERIFY(reopened.isReady());QCOMPARE(reopened.loadSpecies().size(),122);}
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE",connection);db.setDatabaseName(path);QVERIFY(db.open());QSqlQuery q(db);
+        QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),2);
+        QVERIFY(q.exec("SELECT scientific_name FROM taxons WHERE id='edu:Monera'"));QVERIFY(q.next());QCOMPARE(q.value(0).toString(),QString("Monera"));
+        QVERIFY(q.exec("SELECT payload_json FROM catalog_migration_snapshots WHERE version=2"));QVERIFY(q.next());
+        const auto snapshot=QJsonDocument::fromJson(q.value(0).toByteArray()).object();
+        QCOMPARE(snapshot.value("taxons").toArray().size(),1);
+        QCOMPARE(snapshot.value("taxons").toArray().first().toObject().value("id").toString(),QString("edu:Monera"));
+        QVERIFY(!q.next());
+        QVERIFY(q.exec("PRAGMA user_version=99"));
+    }
+    QSqlDatabase::removeDatabase(connection);
+    {SqliteSpeciesCatalog future(path);QVERIFY(!future.isReady());QCOMPARE(future.loadSpecies().size(),122);}
+    {
+        auto db=QSqlDatabase::addDatabase("QSQLITE",connection);db.setDatabaseName(path);QVERIFY(db.open());QSqlQuery q(db);
+        QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),99);
+    }
+    QSqlDatabase::removeDatabase(connection);
 }
 
 void GameServiceTests::catalogMigrationPreservesPlayerDataAndStoredRecords()
@@ -762,6 +860,7 @@ void GameServiceTests::visualEligibilityAndHintsAcrossRanks()
     EducationalContent content;
     for (const QString &rank : QStringList{"species","genus","family","order","class","phylum","kingdom"}) {
         service.startNewGame({},rank);
+        if(rank=="kingdom") {QVERIFY(service.isFinished());continue;} // Only three scientific kingdoms are populated.
         QVERIFY(!service.isFinished());
         for (int i=0;i<service.catalogSize();++i) {
             const auto q=service.currentQuestion();
@@ -826,12 +925,14 @@ void GameServiceTests::introductionsAndMissingContent()
         QVERIFY(intro.value("verified").toBool());
         QVERIFY(intro.value("source_url").toString().startsWith("https://"));
     }
-    QCOMPARE(described,16);
+    QCOMPARE(described,14);
     QVERIFY(ranks.contains("genus") && ranks.contains("family") && ranks.contains("order")
-        && ranks.contains("class") && ranks.contains("phylum") && ranks.contains("educational_kingdom"));
+        && ranks.contains("class") && ranks.contains("phylum") && ranks.contains("kingdom"));
     QVERIFY(content.introduction("unknown").isEmpty());
-    const auto fungi=content.introduction("edu:Fungi");
-    const auto plants=content.introduction("edu:Plantae");
+    QString fungiId,plantsId;
+    for(const auto &n : catalog.loadTaxons()) {if(n.name=="Fungi")fungiId=n.id;if(n.name=="Plantae")plantsId=n.id;}
+    const auto fungi=content.introduction(fungiId);
+    const auto plants=content.introduction(plantsId);
     QVERIFY(fungi.value("text")!=plants.value("text"));
 }
 
@@ -1027,27 +1128,30 @@ void GameServiceTests::hintContentMatchesQuestionAndAlternatives()
 void GameServiceTests::performanceUsesIdsAndHandlesMissingClassification()
 {
     TaxonomicPerformance performance;
-    for (const QString &kingdom : QStringList{"Animalia","Plantae","Fungi","Protista","Monera"}) {
-        Species s; s.educationalKingdom=kingdom;
-        s.taxonomy={{"id:"+kingdom,"Same label","phylum"}};
+    for (const QString &kingdom : QStringList{"Animalia","Plantae","Fungi","Amoebozoa","Bacteria"}) {
+        Species s;
+        s.taxonomy={{"group:"+kingdom,kingdom,kingdom=="Bacteria" ? "domain" : kingdom=="Amoebozoa" ? "supergroup" : "kingdom"},
+                    {"id:"+kingdom,"Same label","phylum"}};
         performance.record(s,true);
     }
     QCOMPARE(performance.groups.size(),5);
-    Species s; s.educationalKingdom="Animalia";
-    s.taxonomy={{"different:id","Same label","phylum"}};
+    Species s;
+    const Taxon animal{"group:Animalia","Animalia","kingdom"};
+    s.taxonomy={animal,{"different:id","Same label","phylum"}};
     performance.record(s,false);
-    QCOMPARE(performance.groups["edu:Animalia"].phyla.size(),2);
-    s.taxonomy.clear(); performance.record(s,true);
-    s.taxonomy={{"p:a","A","phylum"},{"p:b","B","phylum"}};
+    QCOMPARE(performance.groups["group:Animalia"].phyla.size(),2);
+    s.taxonomy={animal}; performance.record(s,true);
+    s.taxonomy={animal,{"p:a","A","phylum"},{"p:b","B","phylum"}};
     performance.record(s,false);
-    const auto unknown=performance.groups["edu:Animalia"].phyla["unclassified:edu:Animalia"];
+    const auto unknown=performance.groups["group:Animalia"].phyla["unclassified:group:Animalia"];
     QCOMPARE(unknown.name,QStringLiteral("Classificação não disponível"));
     QCOMPARE(unknown.answered,2); QCOMPARE(unknown.correct,1);
-    QCOMPARE(performance.groups["edu:Animalia"].answered,4);
-    s.educationalKingdom="Plantae";
-    s.taxonomy={{"division:test","Validated division","division"}};
+    QCOMPARE(performance.groups["group:Animalia"].answered,4);
+    s.taxonomy={{"group:Plantae","Plantae","kingdom"},{"division:test","Validated division","division"}};
     performance.record(s,true);
-    QCOMPARE(performance.groups["edu:Plantae"].phyla["division:test"].answered,1);
+    QCOMPARE(performance.groups["group:Plantae"].phyla["division:test"].answered,1);
+    s.taxonomy.clear(); performance.record(s,true);
+    QCOMPARE(performance.groups["unclassified"].answered,1);
 }
 
 void GameServiceTests::exportVerifiedCatalogAudit()

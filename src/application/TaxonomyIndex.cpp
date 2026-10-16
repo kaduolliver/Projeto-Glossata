@@ -35,7 +35,8 @@ QString TaxonomyIndex::kingdomFor(const QString &id) const
     QString current = id;
     QSet<QString> visited;
     while (!current.isEmpty() && !visited.contains(current)) {
-        if (current.startsWith("edu:")) return current.mid(4);
+        const auto node=taxons_.value(current);
+        if (node.rank=="kingdom" || node.rank=="supergroup" || node.rank=="domain") return node.name;
         visited.insert(current);
         current = taxons_.value(current).parentId;
     }
@@ -46,6 +47,8 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
 {
     const Taxon taxon = taxons_.value(id);
     const QString kingdom = kingdomFor(id);
+    const QString sourceUrl=!taxon.sourceUrl.isEmpty() ? taxon.sourceUrl
+        : taxon.source=="inaturalist" && !taxon.sourceTaxonId.isEmpty() ? "https://www.inaturalist.org/taxa/"+taxon.sourceTaxonId : QString();
     int visualCount=0,supportingCount=0;
     for (const Species &s : speciesFor(id)) if (s.taxonomyApproved && s.photoApproved && s.photo.valid && !s.photo.approvedRanks.isEmpty()) {
         if (s.photo.role=="supporting") ++supportingCount; else ++visualCount;
@@ -54,36 +57,34 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
         {"rankLabel", taxonomicRankLabel(taxon.rank)}, {"kingdom", kingdom},
         {"count", count(id)}, {"visualCount",visualCount},{"supportingCount",supportingCount},{"introduction",content_.introduction(id)},
         {"source", taxon.source}, {"sourceTaxonId", taxon.sourceTaxonId},
-        {"description", taxon.rank == "educational_kingdom"
-            ? QStringLiteral("Explore a diversidade de %1.").arg(taxon.name)
+        {"sourceUrl",sourceUrl}, {"rankNote",taxon.rankNote},
+        {"placementNotice",QStringLiteral("Enquadramento filogenético com fontes; revisão humana pendente. Ramos intermediários podem estar omitidos.")},
+        {"description", !taxon.description.isEmpty() ? taxon.description
             : QStringLiteral("%1 · Conheça os grupos e suas espécies.").arg(taxonomicRankLabel(taxon.rank))}};
 }
 
-QVariantList TaxonomyIndex::kingdoms() const
+QVariantList TaxonomyIndex::domains() const
 {
     QVariantList list;
     list.append(QVariantMap{{"id", QString()}, {"title", QStringLiteral("Todas as espécies")},
         {"kingdom", QString()}, {"count", count()}, {"visualCount",describe(QString()).value("visualCount")},
         {"defaultRank",QStringLiteral("genus")},
         {"playableCount", eligibleQuizSpecies(species_,QStringLiteral("genus")).size()},
-        {"description", QStringLiteral("Identifique gêneros com fotografias aprovadas de diferentes reinos.")}});
-    for (const QString &name : {QString("Animalia"), QString("Plantae"), QString("Fungi"), QString("Protista"), QString("Monera")}) {
-        list.append(describe("edu:" + name));
-    }
+        {"description", QStringLiteral("Identifique gêneros de diferentes linhagens evolutivas.")}});
+    QVector<QString> roots=children_.value(QString());
+    std::sort(roots.begin(),roots.end(),[this](const QString &a,const QString &b){return taxons_.value(a).name<taxons_.value(b).name;});
+    for (const auto &id : roots) if(taxons_.value(id).rank=="domain") list.append(describe(id));
     return list;
 }
 
 QVariantList TaxonomyIndex::children(const QString &id) const
 {
     QVector<QString> ids = children_.value(id);
-    // Hide only a redundant scientific kingdom with the same name as its educational root.
-    if (id.startsWith("edu:") && ids.size() == 1 && taxons_.value(ids.first()).rank == "kingdom"
-        && taxons_.value(ids.first()).name == id.mid(4)) ids = children_.value(ids.first());
     std::sort(ids.begin(), ids.end(), [this](const QString &a, const QString &b) {
         return taxons_.value(a).name < taxons_.value(b).name;
     });
     QVariantList list;
-    for (const QString &child : ids) if (count(child) > 0) list.append(describe(child));
+    for (const QString &child : ids) if (count(child)>0 || taxons_.value(child).source=="glossata_phylogeny") list.append(describe(child));
     return list;
 }
 
@@ -95,8 +96,7 @@ QVariantList TaxonomyIndex::breadcrumbs(const QString &id) const
     while (!current.isEmpty() && taxons_.contains(current) && !visited.contains(current)) {
         visited.insert(current);
         const Taxon node = taxons_.value(current);
-        const bool redundant = node.rank == "kingdom" && node.parentId == "edu:" + node.name;
-        if (!redundant) list.prepend(describe(current));
+        list.prepend(describe(current));
         current = node.parentId;
     }
     return list;
@@ -107,7 +107,7 @@ QVariantList TaxonomyIndex::identificationLevels(const QString &id) const
     if (levelCache_.contains(id)) return levelCache_.value(id);
     const QVector<Species> selected = speciesFor(id);
     QVariantList levels;
-    for (const QString &rank : {QString("species"), QString("genus"), QString("family"), QString("order"), QString("class"), QString("phylum"), QString("kingdom")}) {
+    for (const QString &rank : {QString("species"), QString("genus"), QString("family"), QString("order"), QString("class"), QString("phylum"), QString("kingdom"),QString("supergroup"),QString("domain")}) {
         QSet<QString> answers;
         int eligible = 0;
         for (const Species &species : eligibleQuizSpecies(selected, rank)) {

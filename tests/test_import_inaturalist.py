@@ -66,8 +66,8 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(len(index), len(nodes))
         seen_sources, counts = set(), dict.fromkeys(importer.KINGDOM_ROOTS, 0)
         for item in self.species:
-            counts[item["educational_kingdom"]] += 1
-            parent = "edu:" + item["educational_kingdom"]
+            counts[item["legacy_educational_kingdom"]] += 1
+            parent = ""
             visited = set()
             for node_id in item["taxonomy"]:
                 self.assertNotIn(node_id, visited)
@@ -82,7 +82,7 @@ class ImportTests(unittest.TestCase):
                 photo = item["photo"]
                 self.assertIn(photo["license"], importer.ALLOWED_LICENSES)
                 self.assertEqual(hashlib.sha256((PROJECT / photo["path"]).read_bytes()).hexdigest(), photo["sha256"])
-                if item["educational_kingdom"] == "Monera":
+                if item["domain"] == "Bacteria":
                     self.assertFalse(photo["visual_quiz"])
         self.assertEqual(counts, {"Animalia": 42, "Plantae": 20, "Fungi": 20, "Protista": 20, "Monera": 20})
         self.assertEqual(len(seen_sources), 103)
@@ -136,7 +136,7 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(hashlib.sha256((PROJECT/photo['path']).read_bytes()).hexdigest(),photo['sha256'])
             self.assertEqual(photo['license_url'],importer.LICENSE_URLS[photo['license']])
             if photo.get('role')=='supporting':
-                self.assertEqual(species['educational_kingdom'],'Monera')
+                self.assertEqual(species['domain'],'Bacteria')
                 self.assertEqual(photo['supporting_for'],species['name'])
             else:self.assertEqual(photo['scientific_name'],species['name'])
             self.assertTrue(photo['source_verified'])
@@ -152,7 +152,7 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
             for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json',
-                         'photo_provenance.json','content_policy.json','education.json'):
+                         'photo_provenance.json','content_policy.json','education.json','phylogeny.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
@@ -176,7 +176,7 @@ class ImportTests(unittest.TestCase):
         original=json.loads((PROJECT/'resources/data/hint_education.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','curation_reviews.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','curation_reviews.json','phylogeny.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             for invalid_identity in (True,False):
                 hints=json.loads(json.dumps(original))
@@ -199,7 +199,7 @@ class ImportTests(unittest.TestCase):
         self.assertNotIn('20',result['eligible_ids_by_rank']['species'])
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json','phylogeny.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             path=root/'resources/data/curation_reviews.json'
             reviews=json.loads(path.read_text(encoding='utf8'))

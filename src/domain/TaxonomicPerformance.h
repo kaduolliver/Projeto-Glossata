@@ -14,9 +14,9 @@ class TaxonomicPerformance {
 public:
     QMap<QString,KingdomPerformance> groups;
     void record(const Species &s, bool correct) {
-        const QString id=s.educationalKingdom.isEmpty() ? "edu:unknown" : "edu:"+s.educationalKingdom;
+        const QString id=s.displayGroupId();
         auto &kingdom=groups[id];
-        kingdom.id=id; kingdom.name=s.educationalKingdom.isEmpty() ? QStringLiteral("Classificação não disponível") : s.educationalKingdom;
+        kingdom.id=id; kingdom.name=s.displayGroup().isEmpty() ? QStringLiteral("Classificação não disponível") : s.displayGroup();
         ++kingdom.answered; if (correct) ++kingdom.correct;
         QMap<QString,QString> known;
         for (const Taxon &t : s.taxonomy)

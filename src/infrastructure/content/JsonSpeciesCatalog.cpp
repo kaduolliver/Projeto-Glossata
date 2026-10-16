@@ -18,7 +18,8 @@ QVector<Taxon> JsonSpeciesCatalog::loadTaxons() const
     for (const auto &value : QJsonDocument::fromJson(file.readAll()).array()) {
         const QJsonObject object = value.toObject();
         Taxon taxon{object.value("id").toString(), object.value("name").toString(), object.value("rank").toString(),
-            object.value("parent_id").toString(), object.value("source").toString(), object.value("source_taxon_id").toString()};
+            object.value("parent_id").toString(), object.value("source").toString(), object.value("source_taxon_id").toString(),
+            object.value("source_url").toString(), object.value("rank_note").toString(), object.value("description").toString()};
         if (!taxon.id.isEmpty() && !taxon.name.isEmpty() && !taxon.rank.isEmpty()) taxons.append(taxon);
     }
     return taxons;
@@ -68,7 +69,7 @@ QVector<Species> JsonSpeciesCatalog::loadSpecies() const
         item.region = object.value(QStringLiteral("region")).toString();
         item.image = object.value(QStringLiteral("image")).toString();
         item.commonName = object.value("common_name").toString();
-        item.educationalKingdom = object.value("educational_kingdom").toString();
+        item.educationalKingdom = object.value("legacy_educational_kingdom").toString(object.value("educational_kingdom").toString());
         item.source = object.value("source").toString();
         item.sourceTaxonId = object.value("source_taxon_id").toString();
         item.sourceUrl = object.value("source_url").toString();

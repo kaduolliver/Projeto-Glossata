@@ -38,8 +38,8 @@ def research(online=False):
             urls = [n['source_url'] for n in hints[sid]['etymology_hints'].values()]
         else:
             urls = [profiles[sid]['morphology']['source_url']]
-            if species['educational_kingdom'] == 'Monera': urls += ['https://lpsn.dsmz.de/genus/' + genus]
-            if species['educational_kingdom'] == 'Fungi': urls += ['https://www.first-nature.com/fungi/' + species['name'].lower().replace(' ', '-') + '.php']
+            if species.get('domain') in {'Bacteria','Archaea'}: urls += ['https://lpsn.dsmz.de/genus/' + genus]
+            if any(n['name']=='Fungi' for n in species.get('source_taxonomy',[])): urls += ['https://www.first-nature.com/fungi/' + species['name'].lower().replace(' ', '-') + '.php']
         # Classification alone is never searched as an etymology reference.
         urls = sorted({u for u in urls if urlparse(u).hostname not in {'www.inaturalist.org', 'inaturalist.org'}})
         existing = previous.get('species', {}).get(sid, {})

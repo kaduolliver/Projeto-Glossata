@@ -2,7 +2,15 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
-## [1.1.0] — Não lançado; em desenvolvimento
+## [1.2.0] — Não lançado; em desenvolvimento
+
+- Navegação pelos domínios Bacteria, Archaea e Eukaryota e por linhagens evolutivas, com fontes, divergências e limitações. Novos enquadramentos permanecem rascunhos até revisão humana.
+- Modelo distingue domínio, supergrupo sem rank formal, clado e os ranks do backbone original. Monera e Protista ficam restritos à compatibilidade e às referências históricas.
+- Catálogo **2.0.0**, com projeção rastreável de 122 organismos e preservação das fotografias, créditos, identidades, dados dos jogadores e pontuação. Migração aditiva/transacional do catálogo SQLite v2; histórico de partidas permanece em seu esquema e regras anteriores.
+- Nenhum rank novo liberado automaticamente para quiz; revisões e quatro alternativas distintas continuam obrigatórias. Novos hashes de conteúdo separam os rankings competitivos antigos.
+- Versão MINOR do aplicativo por funcionalidade compatível; o esquema do catálogo recebe MAJOR pela nova organização. Sem tag ou release enquanto persistirem os bloqueios documentados.
+
+## [1.1.0] — Não lançado; histórico da preparação anterior
 
 Base anterior: CMake `1.0`, equivalente a `1.0.0`; não havia tags de lançamento nem histórico formal. Esta entrada prepara uma versão MINOR, pois acrescenta funcionalidades compatíveis. Não representa uma release publicada.
 

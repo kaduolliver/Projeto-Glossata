@@ -3,7 +3,7 @@ import QtQuick
 Item {
     id: art
     property string kingdom: "Animalia"
-    property color accent: kingdom === "Plantae" ? "#6BAA7A" : kingdom === "Fungi" ? "#BB8068" : kingdom === "Protista" ? "#729BC0" : kingdom === "Monera" ? "#66A8AC" : "#C5A366"
+    property color accent: kingdom === "Plantae" || kingdom === "Archaeplastida" ? "#6BAA7A" : kingdom === "Fungi" ? "#BB8068" : kingdom === "Eukaryota" || kingdom === "SAR" ? "#729BC0" : kingdom === "Bacteria" || kingdom === "Archaea" ? "#66A8AC" : "#C5A366"
     onKingdomChanged: drawing.requestPaint()
     onAccentChanged: drawing.requestPaint()
     Canvas {
@@ -38,7 +38,7 @@ Item {
                 c.fillStyle = "#C89B76"; c.beginPath(); c.moveTo(-85, 0); c.bezierCurveTo(-80, -100, 80, -100, 85, 0); c.quadraticCurveTo(0, 30, -85, 0); c.fill()
                 c.strokeStyle = "#EDD8B2"; c.globalAlpha = 0.4
                 for (let x = -60; x <= 60; x += 20) { c.beginPath(); c.moveTo(0, 16); c.lineTo(x, -2); c.stroke() }
-            } else if (art.kingdom === "Protista") {
+            } else if (["Eukaryota", "SAR", "Amoebozoa", "Discoba"].indexOf(art.kingdom) >= 0) {
                 c.beginPath(); c.ellipse(-68, -90, 136, 180); c.fill()
                 c.globalAlpha = 0.5; c.strokeStyle = "#CAE0E7"
                 for (let i = 0; i < 24; i++) {

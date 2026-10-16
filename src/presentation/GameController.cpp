@@ -166,7 +166,7 @@ QVariantMap GameController::questionPhoto() const
     const Photo &p=displayedQuestion_.photo;
     return {{"image",p.valid ? p.image : QString()}, {"photoId",p.id},{"author",p.author},
         {"license",p.license},{"licenseUrl",p.licenseUrl},{"source",p.sourceUrl},{"modifications",p.modifications},
-        {"kingdom",displayedQuestion_.species.educationalKingdom},{"visual",displayedQuestion_.visual},
+        {"kingdom",displayedQuestion_.species.displayGroup()},{"domain",displayedQuestion_.species.domain()},{"visual",displayedQuestion_.visual},
         {"supporting",p.role=="supporting"},{"photoSubject",p.scientificName},{"speciesId",displayedQuestion_.species.id},
         {"attribution",p.attribution.toVariantMap()}};
 }
@@ -245,7 +245,8 @@ void GameController::answerSelected(const QString &selectedOption)
         {QStringLiteral("speciesName"), answeredQuestion.species.name},
         {QStringLiteral("commonName"), profile.value("commonName").toString()},
         {QStringLiteral("profile"), profile},
-        {QStringLiteral("kingdom"), answeredQuestion.species.educationalKingdom},
+        {QStringLiteral("kingdom"), answeredQuestion.species.displayGroup()},
+        {QStringLiteral("domain"), answeredQuestion.species.domain()},
         {QStringLiteral("sourceUrl"), answeredQuestion.species.sourceUrl},
         {QStringLiteral("author"), answeredQuestion.species.imageAuthor},
         {QStringLiteral("license"), answeredQuestion.species.imageLicense},
@@ -376,16 +377,14 @@ void GameController::loadRanking()
 
 QVariantList GameController::categories() const
 {
-    return taxonomy_.kingdoms();
+    return taxonomy_.domains();
 }
 
 QVariantList GameController::categoryStats() const
 {
     QVariantList list;
     const auto performance=service_.performance();
-    for (const QString &id : QStringList{"edu:Animalia","edu:Plantae","edu:Fungi","edu:Protista","edu:Monera","edu:unknown"}) {
-        if (!performance.groups.contains(id)) continue;
-        const auto &group=performance.groups[id];
+    for (const auto &group : performance.groups) {
         QVariantList phyla;
         for (const auto &p : group.phyla) phyla.append(QVariantMap{{"id",p.id},{"title",p.name},{"answered",p.answered},{"correct",p.correct},{"accuracy",p.answered ? 100*p.correct/p.answered : 0}});
         list.append(QVariantMap{{"id",group.id},{"title",group.name},{"kingdom",group.name},{"answered",group.answered},{"correct",group.correct},{"phyla",phyla}});

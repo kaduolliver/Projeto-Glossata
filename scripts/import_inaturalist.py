@@ -4,6 +4,7 @@ Only the import command uses the network. Existing IDs/facts are retained.
 Python 3.11+ standard library; no application or imaging dependencies.
 """
 import argparse
+from content_governance import load
 import collections
 import hashlib
 import http.client
@@ -34,6 +35,7 @@ LICENSE_URLS = {"cc0": "https://creativecommons.org/publicdomain/zero/1.0/",
 
 
 def educational_kingdom(ancestors):
+    """Historical source-query bucket, never the active phylogenetic placement."""
     matches = {kingdom for kingdom, roots in KINGDOM_ROOTS.items()
                if any(t.get("id") in roots and t.get("name") == roots[t["id"]]
                       and t.get("rank") == "kingdom" for t in ancestors)}
@@ -232,7 +234,17 @@ def import_catalog(count=20, max_pages=5, offline=False):
     species_path = ROOT / "resources/data/species.json"
     taxonomy_path = ROOT / "resources/data/taxonomy.json"
     species = json.loads(species_path.read_text(encoding="utf-8"))
-    taxonomy = Taxonomy(json.loads(taxonomy_path.read_text(encoding="utf-8")) if taxonomy_path.exists() else [])
+    nodes = json.loads(taxonomy_path.read_text(encoding="utf-8")) if taxonomy_path.exists() else []
+    phylogeny_policy = load(ROOT / 'resources/data/phylogeny.json', {})
+    if phylogeny_policy:
+        # Work against source lineages; never feed a projected clade back to the API backbone.
+        source_nodes = {n['id']: n for s in species for n in s.get('source_taxonomy', [])}
+        if source_nodes:
+            nodes = list(source_nodes.values())
+            for s in species:
+                s['educational_kingdom'] = s.get('legacy_educational_kingdom', s.get('educational_kingdom'))
+                if s.get('source_taxonomy'): s['taxonomy'] = [n['id'] for n in s['source_taxonomy']]
+    taxonomy = Taxonomy(nodes)
     for item in species:
         if "taxonomy" not in item:
             item.update(educational_kingdom="Animalia", taxonomy=taxonomy.legacy_lineage(item),
@@ -305,6 +317,12 @@ def import_catalog(count=20, max_pages=5, offline=False):
                     if taxon.get('name') != (obs.get('taxon') or {}).get('name') or str(taxon.get('id')) != source_id:
                         report['skipped'].append({'taxon': source_id, 'reason': 'Identidade divergente entre observação e detalhe taxonômico.'})
                         continue
+                    if phylogeny_policy:
+                        from phylogeny import placement
+                        try: placement(ancestors, phylogeny_policy)
+                        except ValueError as error:
+                            report['skipped'].append({'taxon': source_id, 'reason': str(error)})
+                            continue
                     try:
                         image_path, image_url = download_photo(photo, offline)
                     except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException) as error:
@@ -361,7 +379,13 @@ def import_catalog(count=20, max_pages=5, offline=False):
     apply_photo_reviews(species)
     report["photos"] = dict(collections.Counter(s["photo"]["license"] for s in species if s.get("photo")))
     report["visual_quiz_records"] = sum(bool(s.get("photo", {}).get("visual_quiz")) for s in species)
-    save_json(taxonomy_path, list(taxonomy.nodes.values()))
+    output_nodes = list(taxonomy.nodes.values())
+    if phylogeny_policy:
+        from phylogeny import project
+        species, output_nodes = project(species, output_nodes, phylogeny_policy)
+        report['classification_system'] = phylogeny_policy['version']
+        report['legacy_query_groups_notice'] = 'kingdoms records historical API query quotas, not natural groups in the application.'
+    save_json(taxonomy_path, output_nodes)
     save_json(species_path, species)
     save_json(ROOT / "resources/data/import_report.json", report)
     resource_path = ROOT / "resources.qrc"
@@ -383,7 +407,8 @@ def import_catalog(count=20, max_pages=5, offline=False):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--per-kingdom", type=int, default=20)
+    parser.add_argument("--per-source-group", "--per-kingdom", dest="per_kingdom", type=int, default=20,
+                        help="Cota por grupo histórico de consulta da API; não define a classificação atual.")
     parser.add_argument("--max-pages", type=int, default=5)
     parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()

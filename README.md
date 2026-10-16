@@ -42,7 +42,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 
 ## Estado atual
 
-Aplicativo **1.1.0 em desenvolvimento** · Catálogo **1.0.0, baseline ainda não lançada**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
+Aplicativo **1.2.0 em desenvolvimento** · Catálogo **2.0.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
 
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
@@ -62,24 +62,26 @@ Aplicativo **1.1.0 em desenvolvimento** · Catálogo **1.0.0, baseline ainda nã
 
 ## Biodiversidade e classificação
 
-O catálogo atual utiliza os **cinco reinos do modelo didático tradicional** como portas de entrada para o aprendizado:
+O catálogo atual utiliza **Bacteria, Archaea e Eukaryota** como portas didáticas para explorar linhagens evolutivas:
 
-| Reino didático | Organismos ativos no catálogo |
+| Domínio | Organismos ativos no catálogo |
 | --- | ---: |
-| Animalia | 42 |
-| Plantae | 20 |
-| Fungi | 20 |
-| Protista | 20 |
-| Monera | 20 |
+| Bacteria | 20 |
+| Archaea | 0 |
+| Eukaryota | 102 |
 | **Total** | **122** |
 
-> **Nota científica:** a classificação tradicional dos cinco reinos é usada como organização pedagógica, não como representação definitiva da filogenia moderna. Especialmente *Monera* e *Protista* não constituem grupos naturais equivalentes aos demais nas classificações contemporâneas. O projeto mantém separadas a organização didática e a taxonomia científica registrada nas fontes, e pretende ampliar gradualmente a apresentação de relações evolutivas e sistemas atuais de classificação.
+Eukaryota oferece **Opisthokonta** (62 organismos, incluindo Animalia e Fungi), **Archaeplastida** (20, Plantae no sentido da fonte), **SAR** (10, em Stramenopiles), **Amoebozoa** (10) e **Discoba** (ainda sem representantes). Supergrupo designa um clado de navegação sem rank formal universal; domínio, reino e os demais níveis permanecem distintos. Grupos vazios continuam exploráveis e não geram quizzes.
+
+> **Nota científica:** três domínios são uma organização didática; hipóteses de dois domínios situam os eucariotos dentro de Archaea. A navegação omite ramos intermediários e não representa uma filogenia completa ou definitivamente resolvida. Monera e Protista ficam apenas nas referências históricas e na compatibilidade dos dados. O enquadramento consulta Adl et al. (2019), Burki et al. (2020) e estudos de Asgard de 2025–2026, com divergências e fontes registradas na [documentação científica e de migração](docs/CLASSIFICACAO_FILOGENETICA.md).
+
+Os **122 enquadramentos novos permanecem rascunhos assistidos por IA**, sem simular revisão por especialista. A classificação original do iNaturalist está preservada por organismo e tem revisão separada da síntese filogenética. [Auditoria dos 122 registros](docs/AUDITORIA_FILOGENETICA.json).
 
 ## Funcionalidades implementadas
 
 ### Exploração taxonômica
 
-Navegação por reinos, grupos e subgrupos, com caminhos clicáveis, textos introdutórios e níveis de identificação disponíveis conforme a cobertura do catálogo. Os níveis de quiz são oferecidos apenas quando há alternativas suficientes para uma questão válida.
+Navegação por domínios, linhagens, grupos e subgrupos, com caminhos clicáveis, fontes, limitações e níveis de identificação disponíveis conforme a cobertura do catálogo. Ranks ausentes não são inferidos. Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas. Domínio, supergrupo e reino estão sem quiz elegível nesta etapa; os demais níveis disponíveis continuam funcionando.
 
 ### Projeto Glossata
 
@@ -116,7 +118,7 @@ Os 122 organismos ativos têm fichas em português com informações como aprese
 
 ### Imagens e proveniência
 
-O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Existe validação técnica de arquivos, fonte, créditos, licença, identidade e integridade. **Nem toda imagem é evidência suficiente para identificar uma espécie:** as imagens de apoio de Monera são sinalizadas como tal, e a elegibilidade visual varia conforme o nível taxonômico e a revisão.
+O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Existe validação técnica de arquivos, fonte, créditos, licença, identidade e integridade. **Nem toda imagem é evidência suficiente para identificar uma espécie:** as imagens de apoio dos 20 registros bacterianos são sinalizadas como tal, e a elegibilidade visual varia conforme o nível taxonômico e a revisão.
 
 ### Progresso e perfis
 
@@ -215,11 +217,11 @@ A aplicação **não depende de consultas à internet durante o jogo**. Os scrip
 Exemplos de importação, na raiz do projeto:
 
 ```bash
-python scripts/import_inaturalist.py --per-kingdom 20 --max-pages 5
-python scripts/import_inaturalist.py --offline --per-kingdom 20
+python scripts/import_inaturalist.py --per-source-group 20 --max-pages 5
+python scripts/import_inaturalist.py --offline --per-source-group 20
 ```
 
-A execução offline da importação exige respostas e imagens previamente armazenadas no cache. O parâmetro `--per-kingdom` define a meta total de registros importados por reino, não necessariamente a quantidade a acrescentar.
+A execução offline da importação exige respostas e imagens previamente armazenadas no cache. `--per-source-group` define a meta total por agrupamento histórico de consulta da API, não necessariamente a quantidade a acrescentar. `--per-kingdom` permanece como alias de compatibilidade; essas cotas não definem os grupos naturais do aplicativo. Antes do download, a linhagem precisa corresponder à política explícita em `phylogeny.json`; a projeção final gera domínios e linhagens, sem reativar Monera ou Protista na navegação.
 
 Para executar a auditoria local de catálogo:
 
@@ -259,6 +261,8 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 ## Documentação complementar
 
 - [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) — contexto geral, arquitetura, regras e decisões técnicas.
+- [`docs/CLASSIFICACAO_FILOGENETICA.md`](docs/CLASSIFICACAO_FILOGENETICA.md) — domínios, linhagens, fontes, divergências e migração.
+- [`docs/AUDITORIA_FILOGENETICA.json`](docs/AUDITORIA_FILOGENETICA.json) — enquadramento rastreável dos 122 organismos.
 - [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
 - [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
 - [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.

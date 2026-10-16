@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QSqlRecord>
 #include <QCryptographicHash>
 #include <QUuid>
 #include <QDebug>
@@ -16,6 +17,25 @@
 #include "infrastructure/content/PhotoResolver.h"
 #include "infrastructure/content/ReviewResolver.h"
 
+namespace {
+struct CatalogTransaction {
+    QSqlDatabase &db;
+    bool committed=false;
+    ~CatalogTransaction() { if(!committed) db.rollback(); }
+    bool commit() { committed=db.commit(); return committed; }
+};
+bool snapshotRows(QSqlDatabase &db,const QString &table,QJsonArray &rows) {
+    QSqlQuery query(db);
+    if(!query.exec("SELECT * FROM "+table)) return false;
+    const auto fields=query.record();
+    while(query.next()) {
+        QJsonObject row;
+        for(int i=0;i<fields.count();++i)row.insert(fields.fieldName(i),QJsonValue::fromVariant(query.value(i)));
+        rows.append(row);
+    }
+    return true;
+}
+}
 SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     : database_(QSqlDatabase::addDatabase("QSQLITE", "catalog-" + QUuid::createUuid().toString()))
 {
@@ -27,6 +47,21 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     if (!database_.open()) return;
     QSqlQuery query(database_);
     query.exec("PRAGMA foreign_keys = ON");
+    if(!query.exec("PRAGMA user_version") || !query.next())return;
+    const int previousVersion=query.value(0).toInt();query.finish();
+    if(previousVersion>2)return; // Never downgrade a catalog from a future application.
+    if (!database_.transaction()) return;
+    CatalogTransaction transaction{database_};
+    if(previousVersion<2 && database_.tables().contains("taxons")) {
+        QJsonArray taxons,species;
+        if(!snapshotRows(database_,"taxons",taxons)
+            || (database_.tables().contains("species") && !snapshotRows(database_,"species",species))) return;
+        if(!query.exec("CREATE TABLE IF NOT EXISTS catalog_migration_snapshots(version INTEGER PRIMARY KEY, captured_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),source_version INTEGER NOT NULL,payload_json TEXT NOT NULL)"))return;
+        query.prepare("INSERT INTO catalog_migration_snapshots(version,source_version,payload_json) VALUES(2,?,?) ON CONFLICT(version) DO NOTHING");
+        query.addBindValue(previousVersion);
+        query.addBindValue(QString::fromUtf8(QJsonDocument(QJsonObject{{"taxons",taxons},{"species",species}}).toJson(QJsonDocument::Compact)));
+        if(!query.exec())return;
+    }
     if (!query.exec("CREATE TABLE IF NOT EXISTS catalog_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
         || !query.exec("CREATE TABLE IF NOT EXISTS taxons (id TEXT PRIMARY KEY, scientific_name TEXT NOT NULL, rank TEXT NOT NULL, parent_id TEXT REFERENCES taxons(id), source TEXT, source_taxon_id TEXT, UNIQUE(source, source_taxon_id))")
         || !query.exec("CREATE TABLE IF NOT EXISTS species (id INTEGER PRIMARY KEY, scientific_name TEXT NOT NULL, common_name TEXT, taxon_id TEXT NOT NULL REFERENCES taxons(id), educational_kingdom TEXT, image_path TEXT, image_author TEXT, image_license TEXT, image_source TEXT, source TEXT, source_taxon_id TEXT)")
@@ -37,6 +72,15 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     query.exec("PRAGMA table_info(species)");
     while (query.next()) columns.insert(query.value(1).toString());
     bool upgraded = false;
+    QSet<QString> taxonColumns;
+    query.exec("PRAGMA table_info(taxons)");
+    while(query.next()) taxonColumns.insert(query.value(1).toString());
+    for(const QString &column : QStringList{"source_url","rank_note","description"}) {
+        if(!taxonColumns.contains(column)) {
+            if(!query.exec("ALTER TABLE taxons ADD COLUMN "+column+" TEXT")) return;
+            upgraded=true;
+        }
+    }
     for (const QString &column : QStringList{"fact", "hint", "region", "source_url", "image_license_url", "visual_quiz", "photo_json", "active"}) {
         if (!columns.contains(column)) {
             const QString type=column=="active" ? " INTEGER NOT NULL DEFAULT 1" : column=="visual_quiz" ? " INTEGER DEFAULT 0" : " TEXT";
@@ -51,10 +95,9 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     const QString fingerprint = QCryptographicHash::hash(speciesFile.readAll() + taxonomyFile.readAll()+replacementBytes, QCryptographicHash::Sha256).toHex();
     query.exec("SELECT value FROM catalog_meta WHERE key = 'bundle_hash'");
     if (query.next() && query.value(0).toString() == fingerprint && !upgraded) {
-        query.finish(); ready_ = readCache(); return;
+        query.finish(); if(transaction.commit()) ready_ = readCache(); return;
     }
     query.finish();
-    if (!database_.transaction()) return;
     const auto fail = [&] {
         qWarning() << "Falha na migração do catálogo:" << query.lastError().text();
         database_.rollback();
@@ -67,11 +110,12 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
         for (int i = static_cast<int>(pending.size()) - 1; i >= 0; --i) {
             const Taxon taxon = pending.at(i);
             if (!taxon.parentId.isEmpty() && !stored.contains(taxon.parentId)) continue;
-            query.prepare("INSERT INTO taxons (id, scientific_name, rank, parent_id, source, source_taxon_id) VALUES (?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET scientific_name=excluded.scientific_name, rank=excluded.rank, parent_id=excluded.parent_id, source=excluded.source, source_taxon_id=excluded.source_taxon_id");
+            query.prepare("INSERT INTO taxons (id, scientific_name, rank, parent_id, source, source_taxon_id,source_url,rank_note,description) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET scientific_name=excluded.scientific_name, rank=excluded.rank, parent_id=excluded.parent_id, source=excluded.source, source_taxon_id=excluded.source_taxon_id,source_url=excluded.source_url,rank_note=excluded.rank_note,description=excluded.description");
             query.addBindValue(taxon.id); query.addBindValue(taxon.name); query.addBindValue(taxon.rank);
             query.addBindValue(taxon.parentId.isEmpty() ? QVariant() : QVariant(taxon.parentId));
             query.addBindValue(taxon.source);
             query.addBindValue(taxon.sourceTaxonId.isEmpty() ? QVariant() : QVariant(taxon.sourceTaxonId));
+            query.addBindValue(taxon.sourceUrl); query.addBindValue(taxon.rankNote); query.addBindValue(taxon.description);
             if (!query.exec()) { fail(); return; }
             stored.insert(taxon.id); pending.removeAt(i); progress = true;
         }
@@ -102,19 +146,21 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     }
     query.prepare("INSERT INTO catalog_meta(key,value) VALUES('bundle_hash',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value");
     query.addBindValue(fingerprint);
-    if (!query.exec() || !database_.commit()) { fail(); return; }
+    if (!query.exec()) { fail(); return; }
+    if(!query.exec("PRAGMA user_version=2") || !transaction.commit()) { fail(); return; }
     ready_ = readCache();
 }
 
 bool SqliteSpeciesCatalog::readCache()
 {
     QSqlQuery query(database_);
-    if (!query.exec("SELECT id,scientific_name,rank,parent_id,source,source_taxon_id FROM taxons")) return false;
+    if (!query.exec("SELECT id,scientific_name,rank,parent_id,source,source_taxon_id,source_url,rank_note,description FROM taxons")) return false;
     QVector<Taxon> taxons;
     QHash<QString, Taxon> index;
     while (query.next()) {
         Taxon node{query.value(0).toString(),query.value(1).toString(),query.value(2).toString(),
-                   query.value(3).toString(),query.value(4).toString(),query.value(5).toString()};
+                   query.value(3).toString(),query.value(4).toString(),query.value(5).toString(),
+                   query.value(6).toString(),query.value(7).toString(),query.value(8).toString()};
         taxons.append(node); index.insert(node.id,node);
     }
     if (!query.exec("SELECT id,scientific_name,common_name,taxon_id,educational_kingdom,image_path,image_author,image_license,image_source,source,source_taxon_id,fact,hint,region,source_url,image_license_url,visual_quiz,photo_json FROM species WHERE active=1 ORDER BY id")) return false;

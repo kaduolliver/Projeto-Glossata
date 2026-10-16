@@ -59,8 +59,9 @@ def changes_for_photo(species, observation):
 
 
 def hierarchy_changed(species, incoming, nodes):
-    stored = [nodes[n] for n in species.get('taxonomy', []) if n in nodes and nodes[n].get('source_taxon_id')
-              and str(nodes[n]['source_taxon_id']) != str(incoming.get('id'))]
+    lineage = species.get('source_taxonomy', [nodes[n] for n in species.get('taxonomy', []) if n in nodes])
+    stored = [n for n in lineage if n.get('source_taxon_id') and n.get('source')!='glossata_phylogeny'
+              and str(n['source_taxon_id']) != str(incoming.get('id'))]
     previous = [str(n['source_taxon_id']) for n in stored]
     current = [str(i) for i in incoming.get('ancestor_ids', [])]
     if previous and current:
@@ -76,6 +77,7 @@ def propose_updates(root=ROOT, online=False, maximum=25, client=None):
               'notice': 'Propostas para revisão humana; nenhum conteúdo, licença ou data de revisão publicados foi substituído.',
               'overdue_and_pending': audit_governance(root)['scientific_findings'], 'checks': []}
     urls = sorted({r.get('source_url') for r in records(root).values() if r.get('source_url')})
+    urls = sorted(set(urls) | {r['url'] for r in load(root / 'resources/data/phylogeny.json', {}).get('sources', {}).values()})
     interval = load(root / 'resources/data/content_policy.json', {}).get('review_days', {}).get('links', 90)
     last = {}
     for path in (root / 'build/update-proposals').glob('*.json'):

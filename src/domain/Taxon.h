@@ -8,6 +8,9 @@ struct Taxon {
     QString parentId;
     QString source;
     QString sourceTaxonId;
+    QString sourceUrl;
+    QString rankNote;
+    QString description;
 };
 
 inline QString taxonomicRankLabel(const QString &rank)
@@ -19,7 +22,10 @@ inline QString taxonomicRankLabel(const QString &rank)
     if (rank == "class") return QStringLiteral("Classe");
     if (rank == "phylum") return QStringLiteral("Filo / Divisão");
     if (rank == "kingdom") return QStringLiteral("Reino científico");
-    if (rank == "educational_kingdom") return QStringLiteral("Reino didático");
+    if (rank == "domain") return QStringLiteral("Domínio");
+    if (rank == "supergroup") return QStringLiteral("Supergrupo · clado sem rank formal");
+    if (rank == "clade") return QStringLiteral("Clado sem rank formal");
+    if (rank == "educational_kingdom") return QStringLiteral("Agrupamento histórico");
     if (rank == "subphylum") return QStringLiteral("Subfilo");
     if (rank == "subclass") return QStringLiteral("Subclasse");
     if (rank == "suborder") return QStringLiteral("Subordem");

@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "version": "phylogeny-v1",
+  "sources_consulted_at": "2026-10-16T00:45:31.834043+00:00",
+  "origin": "ai_assisted_source_synthesis",
+  "review_state": "draft",
+  "sources": {
+    "woese1990": {
+      "title": "Woese, Kandler e Wheelis (1990). Towards a natural system of organisms",
+      "url": "https://doi.org/10.1073/pnas.87.12.4576",
+      "locator": "Abstract; proposta dos domínios Archaea, Bacteria e Eucarya"
+    },
+    "adl2019": {
+      "title": "Adl et al. (2019). Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes",
+      "url": "https://doi.org/10.1111/jeu.12691",
+      "locator": "Systematics; Figure 1; classificação hierárquica sem ranks formais"
+    },
+    "burki2020": {
+      "title": "Burki et al. (2020). The New Tree of Eukaryotes",
+      "url": "https://doi.org/10.1016/j.tree.2019.08.008",
+      "locator": "pp. 43–55; supergrupos e relações entre linhagens eucarióticas"
+    },
+    "asgard2025": {
+      "title": "Deep origin of eukaryotes outside Heimdallarchaeia within Asgardarchaeota (2025)",
+      "url": "https://doi.org/10.1038/s41586-025-08955-7",
+      "locator": "Abstract; Discussion; correção publicada em 2026 indicada na página",
+      "correction_url": "https://doi.org/10.1038/s41586-026-10115-4"
+    },
+    "asgard2026": {
+      "title": "Oxygen metabolism in descendants of the archaeal-eukaryotic ancestor (2026)",
+      "url": "https://doi.org/10.1038/s41586-026-10128-z",
+      "locator": "Abstract; posição inferida dos parentes arqueanos dos eucariotos"
+    }
+  },
+  "nodes": [
+    {
+      "id": "domain:Bacteria",
+      "name": "Bacteria",
+      "rank": "domain",
+      "parent_id": "",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Bacteria",
+      "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+      "evidence_location": "Abstract",
+      "description": "Organismos celulares sem núcleo delimitado por membrana. O catálogo reúne aqui suas bactérias.",
+      "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
+    },
+    {
+      "id": "domain:Archaea",
+      "name": "Archaea",
+      "rank": "domain",
+      "parent_id": "",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Archaea",
+      "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+      "evidence_location": "Abstract",
+      "description": "Linhagens distintas de Bacteria. Ainda não há organismos deste domínio no catálogo.",
+      "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
+    },
+    {
+      "id": "domain:Eukaryota",
+      "name": "Eukaryota",
+      "rank": "domain",
+      "parent_id": "",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Eukaryota",
+      "source_url": "https://doi.org/10.1073/pnas.87.12.4576",
+      "evidence_location": "Abstract; Eucarya, grafia original da proposta",
+      "description": "Organismos com células eucarióticas. As linhagens abaixo são uma seleção para navegação, não uma árvore completa.",
+      "rank_note": "Domínio didático; não representa uma bifurcação resolvida da árvore da vida."
+    },
+    {
+      "id": "clade:Opisthokonta",
+      "name": "Opisthokonta",
+      "rank": "supergroup",
+      "parent_id": "domain:Eukaryota",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Opisthokonta",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Figure 1; Amorphea / Obazoa / Opisthokonta",
+      "description": "Linhagem que inclui os animais, os fungos e parentes unicelulares.",
+      "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+    },
+    {
+      "id": "clade:Archaeplastida",
+      "name": "Archaeplastida",
+      "rank": "supergroup",
+      "parent_id": "domain:Eukaryota",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Archaeplastida",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Figure 1; Archaeplastida",
+      "description": "Linhagem que inclui plantas verdes, algas vermelhas e glaucófitas.",
+      "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+    },
+    {
+      "id": "clade:SAR",
+      "name": "SAR",
+      "rank": "supergroup",
+      "parent_id": "domain:Eukaryota",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "SAR",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Figure 1; Sar",
+      "description": "Clado formado por Stramenopiles, Alveolata e Rhizaria.",
+      "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+    },
+    {
+      "id": "clade:Amoebozoa",
+      "name": "Amoebozoa",
+      "rank": "supergroup",
+      "parent_id": "domain:Eukaryota",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Amoebozoa",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Amoebozoa / Evosea / Eumycetozoa, pp. 12–17",
+      "description": "Linhagem que inclui os mixomicetos presentes neste catálogo.",
+      "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+    },
+    {
+      "id": "clade:Discoba",
+      "name": "Discoba",
+      "rank": "supergroup",
+      "parent_id": "domain:Eukaryota",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Discoba",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Table 2; Incertae sedis EUKARYA; Discoba",
+      "description": "Linhagem que inclui euglenozoários. Ainda sem representantes neste catálogo.",
+      "rank_note": "Supergrupo é um rótulo de navegação para um clado sem rank formal na fonte."
+    },
+    {
+      "id": "clade:Stramenopiles",
+      "name": "Stramenopiles",
+      "rank": "clade",
+      "parent_id": "clade:SAR",
+      "source": "glossata_phylogeny",
+      "source_taxon_id": "Stramenopiles",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "evidence_location": "Sar / Stramenopiles / Ochrophyta; Phaeophyceae",
+      "description": "Linhagem de SAR que inclui as algas pardas do catálogo.",
+      "rank_note": "Clado sem rank formal na fonte."
+    }
+  ],
+  "placements": [
+    {
+      "id": "Animalia",
+      "requires": [
+        "Animalia"
+      ],
+      "path": [
+        "domain:Eukaryota",
+        "clade:Opisthokonta"
+      ],
+      "omit": [],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Figure 1; Opisthokonta",
+      "limitations": "Ranks inferiores preservados do iNaturalist; a navegação omite clados intermediários, sem afirmar parentesco imediato."
+    },
+    {
+      "id": "Fungi",
+      "requires": [
+        "Fungi"
+      ],
+      "path": [
+        "domain:Eukaryota",
+        "clade:Opisthokonta"
+      ],
+      "omit": [],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Figure 1; Opisthokonta",
+      "limitations": "Ranks inferiores preservados do iNaturalist; a navegação omite clados intermediários, sem afirmar parentesco imediato."
+    },
+    {
+      "id": "Plantae",
+      "requires": [
+        "Plantae"
+      ],
+      "path": [
+        "domain:Eukaryota",
+        "clade:Archaeplastida"
+      ],
+      "omit": [],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Figure 1; Archaeplastida",
+      "limitations": "Ranks inferiores preservados do iNaturalist; Plantae segue o sentido da fonte e não é sinônimo universal de Archaeplastida."
+    },
+    {
+      "id": "mycetozoa",
+      "requires": [
+        "Protozoa",
+        "Mycetozoa"
+      ],
+      "path": [
+        "domain:Eukaryota",
+        "clade:Amoebozoa"
+      ],
+      "omit": [
+        "Protozoa"
+      ],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Amoebozoa / Evosea / Eumycetozoa, pp. 12–17",
+      "limitations": "Protozoa é uma referência da fonte original, não um clado ativo; Mycetozoa e seus ranks permanecem conforme o backbone da fonte, com divergência em relação ao esquema sem ranks de Adl."
+    },
+    {
+      "id": "ochrophyta",
+      "requires": [
+        "Chromista",
+        "Ochrophyta"
+      ],
+      "path": [
+        "domain:Eukaryota",
+        "clade:SAR",
+        "clade:Stramenopiles"
+      ],
+      "omit": [
+        "Chromista"
+      ],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Sar / Stramenopiles / Ochrophyta; Phaeophyceae",
+      "limitations": "Chromista não é usado como clado abrangente; as algas pardas do catálogo pertencem a Stramenopiles. Ranks inferiores seguem a fonte original."
+    },
+    {
+      "id": "bacteria",
+      "requires": [
+        "Bacteria"
+      ],
+      "path": [
+        "domain:Bacteria"
+      ],
+      "omit": [
+        "Bacteria"
+      ],
+      "source_refs": [
+        "woese1990"
+      ],
+      "evidence_location": "Woese et al. 1990, Abstract",
+      "limitations": "Bacteria passa de reino do backbone original a domínio didático. Nomes e ranks inferiores da fonte não foram renomeados automaticamente para GTDB/LPSN."
+    },
+    {
+      "id": "archaea",
+      "requires": [
+        "Archaea"
+      ],
+      "path": [
+        "domain:Archaea"
+      ],
+      "omit": [
+        "Archaea"
+      ],
+      "source_refs": [
+        "woese1990"
+      ],
+      "evidence_location": "Woese et al. 1990, Abstract",
+      "limitations": "Agrupamento didático; relações com eucariotos discutidas no aviso de limitações."
+    },
+    {
+      "id": "discoba",
+      "requires": [],
+      "path": [
+        "domain:Eukaryota",
+        "clade:Discoba"
+      ],
+      "omit": [
+        "Discoba",
+        "Protozoa"
+      ],
+      "source_refs": [
+        "woese1990",
+        "adl2019",
+        "burki2020"
+      ],
+      "evidence_location": "Adl et al. 2019, Table 2; Discoba / Euglenozoa",
+      "limitations": "Não se reutiliza Excavata como supergrupo monofilético; relações profundas permanecem abertas.",
+      "requires_any": [
+        "Discoba",
+        "Euglenozoa"
+      ]
+    }
+  ],
+  "limitations": "Três domínios são portas didáticas. Hipóteses de dois domínios situam Eukaryota dentro de Archaea; a posição e a linhagem arqueana mais próxima dependem dos dados e modelos. Supergrupos não têm rank formal universal. Ramos omitidos e irmãos na navegação não equivalem a uma filogenia bifurcante resolvida. Catálogo sem Archaea ou Discoba nesta etapa.",
+  "alternative_source_refs": [
+    "asgard2025",
+    "asgard2026"
+  ],
+  "historical_terms": {
+    "Monera": "Agrupamento histórico de procariontes; não é um táxon natural usado na navegação.",
+    "Protista": "Categoria histórica que reunia linhagens eucarióticas diversas; não é um clado."
+  }
+}

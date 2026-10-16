@@ -73,7 +73,7 @@ Item {
                     visible: !!text; text: (view.profile.summary || ({})).text || ""
                     color: "#B6CBBF"; font.pixelSize: 14; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true
                 }
-                Label { text: "Reino didático: " + (view.details.kingdom || "Não informado"); color: "#86A5AA"; font.pixelSize: 13 }
+                Label { text: "Domínio: " + (view.details.domain || "Não informado") + " · Linhagem: " + (view.details.kingdom || "Não informada"); color: "#86A5AA"; font.pixelSize: 13; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Label { text: "Conteúdo legado em revisão. As fontes citadas e os testes automáticos não equivalem a validação por especialista. Uma ocorrência fotografada não demonstra toda a distribuição da espécie."; color: "#D9BA7D"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Label { visible: view.showSources; text: view.reviewText(view.profile.summary); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Repeater {
@@ -102,9 +102,20 @@ Item {
                         }
                     }
                 }
-                TextAction { text: (view.showClassification ? "Ocultar" : "Ver") + " classificação científica"; onClicked: view.showClassification = !view.showClassification }
+                TextAction { objectName: "speciesClassificationButton"; text: (view.showClassification ? "Ocultar" : "Ver") + " classificação científica"; onClicked: view.showClassification = !view.showClassification }
                 Label { visible: view.showClassification; text: view.details.classification || "Não informada"; color: "#91ADB2"; font.pixelSize: 13; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                Label { visible: view.showClassification; text: "Sistema: hierarquia taxonômica da API v1 do iNaturalist, preservada na coleta. Os cinco reinos são uma organização didática tradicional, distinta da filogenia científica atual.\n" + view.reviewText({governance: (view.profile.governance || ({})).taxonomy || ({})}); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { visible: view.showClassification; text: "Classificação de origem: " + (view.profile.taxonomySystem || "iNaturalist") + "\n" + view.reviewText({governance: (view.profile.governance || ({})).taxonomy || ({})}) + "\nEnquadramento filogenético: " + view.reviewText({governance: (view.profile.governance || ({})).phylogeny || ({})}) + "\n" + ((view.profile.phylogeny || ({})).limitations || "") + "\n" + ((view.profile.phylogeny || ({})).system_limitations || ""); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Repeater {
+                    model: view.showClassification ? ((view.profile.phylogeny || ({})).sources || []) : []
+                    delegate: TextAction {
+                        required property var modelData
+                        Layout.fillWidth: true
+                        text: modelData.title + " · " + modelData.locator + " ↗"
+                        ToolTip.visible: hovered
+                        ToolTip.text: modelData.title + " · " + modelData.locator
+                        onClicked: Qt.openUrlExternally(modelData.url)
+                    }
+                }
                 TextAction { objectName: "speciesSourcesButton"; visible: view.references.length > 0; text: (view.showSources ? "Ocultar" : "Consultar") + " fontes das informações"; onClicked: view.showSources = !view.showSources }
                 ColumnLayout {
                     visible: view.showSources; Layout.fillWidth: true; spacing: 4

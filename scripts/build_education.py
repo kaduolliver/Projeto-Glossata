@@ -1,4 +1,4 @@
-"""Build offline educational notes and species profiles from reviewed local data."""
+"""Build offline sourced content with independent, explicit review metadata."""
 import json
 from import_inaturalist import ROOT, save_json
 from content_governance import annotate_education, load
@@ -17,10 +17,10 @@ DEFINITIONS=[
  "Fungi reúne organismos eucariontes heterotróficos que absorvem nutrientes do ambiente. Muitos crescem como filamentos chamados hifas, formando um micélio, enquanto outros são unicelulares. Suas paredes celulares contêm quitina. Decomposição, associações com plantas e relações parasitárias estão entre os papéis ecológicos presentes neste grupo.",
  "A nutrição ocorre por absorção após digestão externa.", "Enzimas liberadas no ambiente decompõem moléculas; os produtos menores podem então ser absorvidos."),
 ("Protista","educational_kingdom",OS+"23-2-characteristics-of-protists","OpenStax — Biology 2e",
- "Protista é utilizado aqui como uma organização didática de linhagens eucariontes diversas. Há formas unicelulares, coloniais e com fases multicelulares, além de diferentes modos de alimentação e locomoção. Essas características variam entre os grupos. A classificação científica original permanece registrada e não é substituída por este agrupamento.",
+ "Protista é uma referência histórica que reuniu linhagens eucarióticas diversas, sem constituir um clado. O termo não é usado como grupo natural na navegação atual.",
  "", "A diversidade inclui formas com nutrição, organização celular e estruturas de locomoção diferentes."),
 ("Monera","educational_kingdom",OS+"22-1-prokaryotic-diversity","OpenStax — Biology 2e",
- "Monera é o agrupamento didático tradicional adotado neste jogo para Bacteria e Archaea. Seus integrantes possuem organização procariótica, sem núcleo delimitado por membrana. As duas linhagens diferem em aspectos moleculares e celulares. Apresentam ampla diversidade metabólica e participam de muitos processos ecológicos em ambientes distintos.",
+ "Monera é uma referência histórica para organismos procarióticos, não um grupo natural. A navegação atual distingue Bacteria e Archaea como domínios didáticos.",
  "", ""),
 ("Arthropoda","phylum",OS+"28-6-superphylum-ecdysozoa-arthropods","OpenStax — Biology 2e",
  "Arthropoda reúne animais com corpo segmentado, apêndices articulados e exoesqueleto. O revestimento externo fornece proteção e pontos de inserção muscular, mas exige mudas durante o crescimento. Seus representantes ocupam ambientes terrestres e aquáticos, com apêndices especializados para locomoção, alimentação e percepção do ambiente.",
@@ -114,7 +114,8 @@ def build():
     previous = load(ROOT / 'resources/data/education.json', {})
     for number,(name,rank,url,title,description,hint,curiosity) in enumerate(DEFINITIONS):
         hint,curiosity=PLAIN_NOTES.get(name,(hint,curiosity))
-        nodes=[t for t in taxons if t["name"]==name and t["rank"]==rank]
+        active_rank = "kingdom" if rank == "educational_kingdom" else rank
+        nodes=[t for t in taxons if t["name"]==name and t["rank"]==active_rank]
         if not nodes: continue
         for kind,text in (("intro",description),("hint",hint),("curiosity",curiosity)):
             if not text: continue
@@ -139,6 +140,13 @@ def build():
             data["notes"][key]=profile[field]
             values["hints" if field=="hint" else field]=[key] if field=="hint" else key
         data["species"][sid]=values
+    policy = load(ROOT / 'resources/data/phylogeny.json', {})
+    for species in load(ROOT / 'resources/data/species.json', []):
+        if 'classification' not in species: continue
+        if not policy.get('sources'): raise ValueError('Enquadramento filogenético sem fontes ou política.')
+        data['species'][str(species['id'])]['phylogeny'] = dict(species['classification'],
+            sources=[policy['sources'][key] for key in dict.fromkeys(species['classification']['source_refs'] + policy.get('alternative_source_refs', []))],
+            system_limitations=policy['limitations'])
     hints=json.loads((ROOT/"resources/data/hint_education.json").read_text(encoding="utf8"))
     profiles=load_profiles()
     reviews=json.loads((ROOT/"resources/data/curation_reviews.json").read_text(encoding="utf8"))
@@ -180,8 +188,10 @@ def build():
     # A URL, a legacy verified flag, or successful generation is never a review.
     # Newly generated/AI-assisted content is draft until a human records evidence.
     annotate_education(ROOT, data)
+    source_names = ['species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json']
+    if (ROOT / 'resources/data/phylogeny.json').is_file(): source_names.append('phylogeny.json')
     data['generated_source_sha256'] = {name: hashlib.sha256((ROOT / 'resources/data' / name).read_bytes()).hexdigest()
-        for name in ('species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json')}
+        for name in source_names}
     save_json(ROOT/"resources/data/education.json",data)
     print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
     return data

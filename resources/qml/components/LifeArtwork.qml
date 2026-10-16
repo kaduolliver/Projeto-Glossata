@@ -3,7 +3,7 @@ import QtQuick
 Item {
     id: composition
     Repeater {
-        model: ["Animalia", "Plantae", "Fungi", "Protista", "Monera"]
+        model: ["Animalia", "Plantae", "Fungi", "Eukaryota", "Bacteria"]
         delegate: KingdomArtwork {
             required property string modelData
             required property int index

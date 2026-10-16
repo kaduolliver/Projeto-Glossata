@@ -15,7 +15,7 @@ public:
     explicit QuestionGenerator(const EducationalContent &content) : content_(content) {}
 
     static int taxonomicProximity(const Species &a, const Species &b, const QString &rank) {
-        const QStringList ranks{"kingdom", "phylum", "class", "order", "family", "genus", "species"};
+        const QStringList ranks{"domain", "supergroup", "kingdom", "phylum", "class", "order", "family", "genus", "species"};
         const int asked = ranks.indexOf(rank);
         int shared = -1;
         for (const auto &node : a.taxonomy) {
@@ -40,8 +40,8 @@ public:
             for (const auto &trait : correct.morphologyTraits) similarity += s.morphologyTraits.contains(trait);
             const int proximity = taxonomicProximity(correct, s, config.rank);
             // Close questions need documented proximity or reviewed shared traits.
-            const int threshold = config.rank == "species" || config.rank == "genus" ? 4
-                : config.rank == "family" ? 3 : config.rank == "order" ? 2 : 1;
+            const int threshold = config.rank == "species" || config.rank == "genus" ? 6
+                : config.rank == "family" ? 5 : config.rank == "order" ? 4 : 3;
             if (config.difficulty == QuestionDifficulty::Close && proximity < threshold && similarity == 0) continue;
             const QString answer = s.answerAtRank(config.rank).trimmed();
             const QString key = answer.toCaseFolded();

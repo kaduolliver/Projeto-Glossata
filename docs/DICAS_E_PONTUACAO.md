@@ -1,6 +1,6 @@
 # Dicas, assistência e pontuação
 
-A política `identification-v3-assistance` separa assunto e ajuda, mantendo o cálculo exato, o aprendizado após responder e os pontos históricos. Aplicativo 1.1.0 e catálogo 1.0.0 continuam em preparação; esta alteração não é um lançamento público.
+A política `identification-v3-assistance` separa assunto e ajuda, mantendo o cálculo exato, o aprendizado após responder e os pontos históricos. Aplicativo 1.2.0 e catálogo 2.0.0 continuam em preparação; esta alteração não é um lançamento público. A [organização filogenética](CLASSIFICACAO_FILOGENETICA.md) distingue domínios, supergrupos e reinos; a pontuação e os snapshots históricos mantêm suas regras. Novos enquadramentos em rascunho não são usados como ancestrais científicos aprovados para dicas.
 
 ## Diagnóstico
 

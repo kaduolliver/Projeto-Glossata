@@ -24,6 +24,7 @@
         <file>resources/qml/views/AchievementsView.qml</file>
         <file>resources/qml/views/SettingsView.qml</file>
         <file>resources/data/taxonomy.json</file>
+        <file>resources/data/phylogeny.json</file>
         <file>resources/data/import_report.json</file>
         <file>resources/images/inaturalist/104246.jpg</file>
         <file>resources/images/inaturalist/108445674.jpeg</file>

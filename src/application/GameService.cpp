@@ -265,7 +265,7 @@ void GameService::shuffleCycle()
 {
     std::mt19937 random(std::random_device{}());
     QMap<QString, QVector<Species>> groups;
-    for (const Species &species : species_) groups[species.educationalKingdom].append(species);
+    for (const Species &species : species_) groups[species.displayGroupId()].append(species);
     const int total = static_cast<int>(species_.size());
     QMap<QString, int> weight, balance;
     for (auto it = groups.begin(); it != groups.end(); ++it) {

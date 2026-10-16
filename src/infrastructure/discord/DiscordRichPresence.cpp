@@ -126,7 +126,7 @@ void DiscordRichPresence::publishActivity()
 {
     QJsonObject activity{
         {"type", 0}, {"name", "Projeto Glossata"},
-        {"details", QStringLiteral("Explorando os cinco reinos biológicos")},
+        {"details", QStringLiteral("Explorando os domínios da vida")},
         {"state", QStringLiteral("Uma descoberta por vez")},
         {"timestamps", QJsonObject{{"start", startedAt_}}}
     };

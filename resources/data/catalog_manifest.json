@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "status": "unreleased",
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
@@ -129,20 +129,22 @@
     "resources/compliance/permissions/f86e286e9796b2faa41c99b33a28aba7bc6b0726a0ea7f6cec572549d47fab4e.json": "d820c3d16badfe4ec91906efcdd8768f880c78f2428b186fedf3c84f3568c544",
     "resources/compliance/permissions/ff3ecaa0afcfbdedded3524ffcf49ae8500c1d9b9c9ef52a7fdf65db6fd7b95b.json": "b89bda399d8b094da881a3f78e19b2f27885fd48103c8d7f43afd19cfeb5b86a",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6",
+    "resources/compliance/taxonomy_migration_v1.json": "0e33f268b38d51ba03a4e9d99884aaacfc2feb7f441a6d419ccca6e65c3334be",
     "resources/data/catalog_replacements.json": "5ea27d3a15eae9a85bd705b5ebfa068c882f7351e8582b29bc5e4da14a5329ac",
-    "resources/data/content_policy.json": "8d8a2891ff4a24a66c9a7691fe48870403be5c25f525b907278b78d439576996",
+    "resources/data/content_policy.json": "4bb5f7cc08f2c488c62e4945d1824f97e9a92fad9eaf8d69a8878ec43a664bdb",
     "resources/data/credits.json": "b47cf19b761e96b6ce1d4ba3d4089c5c2f4601f5847ccfec23ae526bc39abbac",
     "resources/data/curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
-    "resources/data/education.json": "3271cb20a4b570b88c6ade177b7fb6fc418e27c5860e5fa0a0979dc1293871bd",
+    "resources/data/education.json": "472c8923ad2fffebf974edfc87b785fb6bbc73050fa338827da768c2db597095",
     "resources/data/etymology_research.json": "7d404eeac90583bf3e99451f69eae52a9e71e2047d4fe122c960d0e590812639",
     "resources/data/hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "resources/data/import_report.json": "1b4d3ece907bd4076b0fac58b54100687a1a8483be33ed46aed1e6151befa5b6",
     "resources/data/photo_audit.json": "3320b87c8bd89a2c53a7f28598249404d7d756fe667edac9d1711ae2b7a5be13",
     "resources/data/photo_provenance.json": "ad343a2cdf931076fd882150030660e0e637d8041887cb6ab4e369aecb915c1f",
     "resources/data/photo_reviews.json": "4fa0af9168aa96e79ba6546365f7c509d6fb845874ceb1cd87fbd213bf437a20",
-    "resources/data/species.json": "4ef4ad27cd3b4664cfffc43c0d28ee137d9fa5b69bf1700f00b1114527e0761c",
+    "resources/data/phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6",
+    "resources/data/species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
     "resources/data/species_profiles.json": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
-    "resources/data/taxonomy.json": "6edb1008eced829da9ac50f40f9156dbd6a12a77c86b273021e2e2778e36de48",
+    "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
     "resources/images/inaturalist/104246.jpg": "a83f0d832ee50f530132bae4f3c323c68bb388c4ffd6a96841ef3ca6d472ab44",
     "resources/images/inaturalist/108445674.jpeg": "79afa1078799f6b2c46a34b0b52324583aeb561d338da15ae71138e3936528ac",
     "resources/images/inaturalist/111803110.jpeg": "cb49802be933949c9379e838920b3623ac3b0031813828d4d64bbddc713fffbc",
@@ -264,6 +266,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "7b4cb94815164d3eaa5bc8c080a3553da68b9ce0fd0992e5950f5089157593c5",
+  "content_sha256": "fcb4ccb6726d7218d4ecb39b8943bda76058ee9b8cb3c0d5731daa15dae7916d",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }
