@@ -73,6 +73,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-04 — Proteções remotas da branch principal ausentes
 
+**Tratamento preparado em 16/10/2026:** nova inspeção confirmou a ausência de proteção. Foram implementados localmente proposta de ruleset para mantenedor único, ajuste de credenciais da CI, validação e documentação em [PROTECAO_REPOSITORIO.md](PROTECAO_REPOSITORIO.md). **A ativação remota continua pendente de autorização; o achado não foi declarado encerrado.** A evidência atual está em [VERIFICACAO_INV04.json](VERIFICACAO_INV04.json); a coleta original abaixo permanece histórica.
+
 **Evidência de consulta:** a API de `branches/main` retornou `protected: false`; a listagem de rulesets retornou vazia. Os metadados e a hora real estão no arquivo de evidências. Nenhuma proteção foi ativada nesta investigação.
 
 **Limite de interpretação:** isso não permite escrita pública irrestrita. As permissões normais do GitHub continuam válidas. O risco exige uma conta/integração com escrita, ou uma operação indevida dessa conta.

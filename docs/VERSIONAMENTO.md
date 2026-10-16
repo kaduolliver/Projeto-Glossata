@@ -28,6 +28,8 @@ CI confere a correspondência dos hashes e, em pushes/PRs, os commits do interva
 
 ## Sequência de trabalho
 
+Integração de desenvolvimento e lançamento têm requisitos distintos: a proposta de proteção exige `offline-validation`, com PR e zero aprovações externas para manutenção individual. `distribution-permissions` permanece obrigatório para liberar distribuição, sem ser exigido para integrar correções das próprias pendências. A proteção remota depende de ativação autorizada; consulte [PROTECAO_REPOSITORIO.md](PROTECAO_REPOSITORIO.md).
+
 1. Faça mudanças em lotes coerentes e verifique cada área afetada antes de fazer commit. Separe conteúdo, importação, interface, distribuição e documentação quando possível. Não inclua bancos pessoais, saídas de build ou credenciais.
 2. Escolha o incremento SemVer adequado; ajuste `VERSION.txt`, históricos e a versão independente do catálogo quando aplicável. Atualize os hashes com `python scripts/release.py catalog --version X.Y.Z`. Não modifique aprovações históricas para fazer checks passarem.
 3. Gere educação/créditos pelos mecanismos existentes, compile e rode CTest, lint QML, auditoria técnica e `python scripts/release.py check`. Após mudanças na tela inicial, gere a captura real antes do commit.
