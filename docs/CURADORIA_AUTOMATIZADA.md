@@ -72,9 +72,9 @@ Há uma trava local `build/curation/sync.lock`, uma trava `decision.lock` para i
 
 ## Agenda, permissões e ativação no GitHub
 
-Workflow: `.github/workflows/curation.yml`. Agenda às **09h17 de segunda-feira em São Paulo (12h17 UTC)**. A execução manual usa **simulação por padrão**; marcar `publish` permite a sincronização. A agenda faz a sincronização limitada após os testes e a detecção. O campo independente do Project só é preparado quando a opção manual correspondente é marcada.
+Workflow: `.github/workflows/curation.yml`. Agenda às **09h17 de segunda-feira em São Paulo (12h17 UTC)**. A execução manual usa **simulação por padrão**; marcar `publish` permite a sincronização. Auditorias e simulação de leitura continuam semanais. A sincronização agendada só escreve se a variável de repositório **`GLOSSATA_CURATION_WEEKLY_SYNC`** for `true`; ausente, vazia ou `false`, não executa o job de escrita. A execução manual com `publish=true` é independente dessa chave e exige autorização explícita. O campo independente do Project só é preparado quando a opção manual correspondente é marcada.
 
-O workflow só executa na branch padrão do repositório configurado. Eventos públicos de comentários/Issues/PRs não executam esse código com privilégios. O job de auditoria tem `contents: read`; somente o job de sincronização tem `issues: write`. Não há `contents: write`, commits, push ou publicação de releases. Checkout não persiste credenciais; actions estão fixadas por SHA.
+O workflow só executa na branch padrão do repositório configurado. Eventos públicos de comentários/Issues/PRs não executam esse código com privilégios. O job de auditoria tem `contents: read` e `issues: read`: executa `sync` sem `--apply`, consulta commit e Issues reais e inclui o recibo `sync.json` no artefato. Somente o job de sincronização tem `issues: write`. Não há `contents: write`, commits, push ou publicação de releases. Checkout não persiste credenciais; actions estão fixadas por SHA.
 
 O token automático do workflow é suficiente para Issues/etiquetas no próprio repositório quando `issues: write` é permitido. Fora do Actions, forneça `GH_TOKEN` por variável de ambiente segura, com acesso restrito ao repositório e Issues de leitura/escrita. Não o cole no chat, em arquivos, argumentos ou logs. Falta de permissão é erro explícito; não se troca de conta/token automaticamente. A API usa host fixo, recusa redirecionamento autenticado e não registra respostas brutas/credenciais.
 
@@ -172,4 +172,50 @@ Validação local em **2026-10-16**, com bancos temporários:
 | Sincronização local | Simulação offline sem token: nenhuma chamada de rede, Issue, etiqueta, Project ou contato externo alterado |
 | Gate de distribuição | **Bloqueado**, como previsto: documentação pendente em 120 fotos, 7 outros recursos e 146 mídias não embarcadas; 2 bloqueios científicos de origem preservados |
 
-Aplicativo 1.7.0 e catálogo 2.4.0 permanecem não lançados. O pacote local anterior não foi publicado como 1.7.0. A integração remota precisa de envio autorizado à branch padrão; o Project precisa ainda ser escolhido e configurado. Testes com transporte simulado verificam os contratos e falhas previstas, sem demonstrar permissões efetivas de um token ainda não configurado ou substituir revisão científica/jurídica humana.
+Aplicativo 1.7.0 e catálogo 2.4.0 permanecem não lançados. O pacote local anterior não foi publicado como 1.7.0. A integração remota precisa de envio autorizado à branch padrão. O mantenedor informou que não existe Project e determinou que nenhum seja criado neste plano; essa integração permanece opcional. Testes com transporte simulado verificam os contratos e falhas previstas, sem demonstrar permissões efetivas de um token ainda não configurado ou substituir revisão científica/jurídica humana.
+
+## Preparação e autorizações para ativação
+
+Preparação verificada em **2026-10-16**, sobre a implementação `56d8da4149f62b2eca029d357536b40de4b5fb84`, com a proteção semanal e simulação autenticada do commit **`71554769135a812bb3be91dfec0383c9f77cea5b`**. Este registro não é uma data de ativação remota.
+
+| Item | Evidência efetivamente observada |
+| --- | --- |
+| Checkout inicial | Limpo; branch `feat/classificacao-filogenetica`; nenhum trabalho preexistente descartado |
+| Referência remota | `git fetch origin main` concluído; `origin/main` em `dd69feb3e4af01ce06726c80cf5828e8b8750d15`; nenhuma divergência atrás e 19 commits locais à frente antes desta preparação |
+| Implementação 1.7.0 | Commits locais `bff485d`, `7bb8c06`, `302368c`, `56d8da4` presentes; workflow ainda ausente da árvore de `origin/main` consultada |
+| CLI e conta | GitHub CLI 2.100.0; inicialmente sem login. Após autenticação pelo mantenedor: `kaduolliver` ativo via keyring/HTTPS, escopos OAuth `repo`, `workflow`, `read:org`, `gist`; API confirmou `admin`, `maintain`, `pull`, `push`, `triage` |
+| Testes locais | Quatro suítes específicas: 37 casos (6/16/11/4); CTest 15/15 em 79,92 s; após corrigir tabelas Markdown, suítes afetadas repetidas com sucesso |
+| Auditorias | `actionlint`, `qmllint`, catálogo estrito, exploração, metadados e histórico visual aprovados; educação/créditos reproduzíveis sem diferenças |
+| Histórico proposto inicial | 702 objetos, incluindo 524 blobs novos em `origin/main..56d8da4`, sem artefatos proibidos ou padrões conhecidos de segredo; verificação limitada, não certificação universal |
+| Simulação local | 15 solicitações, 3.391 achados; `apply=false`, `remote_checked=false`, nenhuma alteração remota; CLI sem autenticação |
+| Permissões efetivas consultadas | Actions habilitado; token padrão dos workflows em leitura, sem aprovação de PRs; `main` sem proteção e sem ruleset listado. Nenhuma dessas permissões foi ampliada |
+| Direitos e ciência | Gate continua **bloqueado**: 120 fotos, 7 outros materiais, 146 mídias não embarcadas e 2 bloqueios científicos de origem; nenhuma autorização de distribuição presumida |
+| Ativação e execuções reais | **Não realizadas**: sem push autorizado, run ID remoto, Issue criada/atualizada ou data de ativação |
+| Chave semanal | Variável remota `GLOSSATA_CURATION_WEEKLY_SYNC=false`, conferida pela API; `updated_at=2026-10-16T18:52:57Z`. Código recusa escrita sem `true`; auditorias não dependem dessa chave |
+| Baseline de Issues | API autenticada consultada após configurar a proteção: nenhuma Issue existente; nenhum relato criado, editado ou encerrado |
+
+O envio desta branch inclui evoluções anteriores ainda locais: classificação filogenética, provedores, fotografias de exploração, dicas e curadoria. Não consiste apenas nos quatro commits de manutenção. O resumo do intervalo, arquivos, fotografias e pendências deve ser apresentado ao mantenedor antes do primeiro push. Nenhum executável, banco de jogador ou artefato de compilação pode entrar nesse envio.
+
+A sequência possui três autorizações distintas, conforme o plano do mantenedor:
+
+1. **Publicação do código/histórico:** depois de revisar o resumo, autorizar o primeiro push e a integração apropriada à branch padrão. Respeitar proteções e verificações existentes; não forçar referências, criar tags/releases nem desativar gates. Reconsultar a base remota antes do envio.
+2. **Primeira escrita em Issues:** somente após o workflow remoto com `publish=false` terminar e ter logs, artefatos, recibo e ausência de escrita verificados. Revisar os três primeiros candidatos e autorizar `publish=true` separadamente.
+3. **Escrita semanal:** somente após execuções reais verificadas por IDs, limites, deduplicação e preservação humana. Autorizar a alteração da variável para `true` separadamente.
+
+Se o CLI estiver sem login, o mantenedor deve usar `gh auth login --hostname github.com --git-protocol https --web` no próprio terminal e concluir pelo navegador. Não enviar tokens/senhas em Issues, chat ou arquivos. Consulte o [manual oficial do login](https://cli.github.com/manual/gh_auth_login). Depois, verificar a conta ativa e as permissões efetivas de Actions/Issues; permissão administrativa da conta não prova o escopo do token usado pelo CLI.
+
+Antes do envio autorizado, manter a chave explicitamente em `false` quando houver autenticação administrativa. Isso não desliga auditorias. A configuração pode ser conferida na interface de variáveis de Actions; os comandos abaixo só devem ser usados no ponto autorizado correspondente:
+
+```powershell
+# Proteção inicial: impede somente escritas semanais.
+gh variable set GLOSSATA_CURATION_WEEKLY_SYNC --repo kaduolliver/Projeto-Glossata --body false
+
+# Depois do envio/integração autorizados: simulação remota, sem publicar Issues.
+gh workflow run curation.yml --repo kaduolliver/Projeto-Glossata --ref main -f publish=false -f prepare_project_field=false
+```
+
+Identificar o run pelo commit, evento e horário, acompanhar sua conclusão e baixar os artefatos pelo ID exato. Conferir que `remote_checked=true`, `apply=false`, `created=[]`, `updated=[]`, que o job de escrita foi ignorado e que as Issues não foram modificadas. Falha ou ausência de autenticação não pode ser descrita como integração real validada.
+
+Na primeira publicação autorizada, comparar snapshots públicos mínimos por ID estável, número da Issue, hash do corpo, etiquetas, estado e data de atualização; conferir também comentários e trechos humanos. A contagem total pode crescer legitimamente enquanto houver backlog. Não criar ou encerrar Issues de teste sem escopo autorizado, nem encerrar solicitações porque sumiram de um relatório. Reexecução e atualização devem preservar evidências e o histórico científico.
+
+Após cada etapa real, acrescentar aqui commit/run IDs, URLs de Issues, limites observados, permissões, conflitos, resultado da deduplicação e estado verificado da variável. **Data real de ativação: pendente.** Até essas etapas, o sistema está preparado localmente; não há declaração de operação semanal remota nem de liberação pública do executável.
