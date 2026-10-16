@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:56.143102+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APanellus+stipticus+89166126.jpg&maxlag=5",
+  "record": {
+    "page_id": 98532478,
+    "revision_id": 1041421796,
+    "file_title": "File:Panellus stipticus 89166126.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Panellus_stipticus_89166126.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "a3793b1e2655b7d1f5d3f7483c8a2e735edf34d6",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Panellus_stipticus_89166126.jpg/960px-Panellus_stipticus_89166126.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Panellus stipticus 89166126",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Luminescent Panellus (<i>Panellus stipticus</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/1580150\">Eileen Laidlaw</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/89166126\">https://www.inaturalist.org/photos/89166126</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

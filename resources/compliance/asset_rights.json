@@ -77,144 +77,1764 @@
     {
       "path": "resources/images/exploration/lion.jpg",
       "kind": "exploration_photograph",
-      "sha256": "b417619d6e2dac0410ae040e8669932d6f5f6b365438619d40ecfa63d788edd4",
+      "sha256": "c0ef6a292c4e86490292268d34ff0cbae5df25773a75af60b1e7d8fc81eeb170",
       "source": "https://commons.wikimedia.org/wiki/File:Lion_waiting_in_Namibia.jpg",
       "license": "cc-by",
       "license_version": "2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0/",
       "permission": {
         "holder": "Kevin Pluck",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/lion.json",
-        "evidence_sha256": "500b8242e99b6ae68426ba0cfb6ffa833fe977ac477b254d9b3db2a6a1c2382c",
+        "evidence_sha256": "eb3ee2fecabd69f910ece534990f1547936db3643190b58a84137b4bfd7a8b9d",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/monarch.jpg",
       "kind": "exploration_photograph",
-      "sha256": "e49142da4f8f06b28de9213dfdedf8743a713b090b2a9e7e27f0361a2c1e0557",
+      "sha256": "7613ba84886c71331f342b6bb97de3ebd9da2e96bfd29c7d2b16aedcc764d31e",
       "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_100029190.jpg",
       "license": "cc0",
       "license_version": "1.0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
       "permission": {
         "holder": "kcthetc1",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/monarch.json",
-        "evidence_sha256": "4f8701272ed397c329f1af394ade8b62ec7c0d5e28b38a41a344775e057788b1",
+        "evidence_sha256": "29165f6a8815cdea27fe8be0a37e5d2573f7b187288770b8f8a4e980e6432c72",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/sunflower.jpg",
       "kind": "exploration_photograph",
-      "sha256": "63fa6361eabbefcec02402a56a6bf349c607b32b4292eaa0f83e716f785590cd",
+      "sha256": "3afba4d69d3a2c86d2e34c00cb982b8094f265dd3a35c8bf5d6ea6e76b500df6",
       "source": "https://commons.wikimedia.org/wiki/File:Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg",
       "license": "cc0",
       "license_version": "1.0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
       "permission": {
         "holder": "S.G.S.",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/sunflower.json",
-        "evidence_sha256": "a6a5b46532babf741fe61ce2fbf5d3c32339b56086a8c6297708dc9eb6f10828",
+        "evidence_sha256": "92208207a9e22604de903d36f4668f52307555f87a24e3e6e2d955a914a46bc3",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/amanita.jpg",
       "kind": "exploration_photograph",
-      "sha256": "fb21cf01197ecba735bdc49eb07360259328b1e905cb89a806700ef0142faec7",
+      "sha256": "ae8b5de1ea5ba313de3bd8c3d7d23341728f2595b99bd5d037aad08ed13bc44a",
       "source": "https://commons.wikimedia.org/wiki/File:Amanita_muscaria_(1)_(8692325426).jpg",
       "license": "cc0",
       "license_version": "1.0",
       "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
       "permission": {
         "holder": "Bernard Spragg. NZ from Christchurch, New Zealand",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/amanita.json",
-        "evidence_sha256": "db178ac1fd3dcc16300f9c6f0a160553a7a206c36cec2e28b72af1448533be4e",
+        "evidence_sha256": "752a55a27b2a88632ffc8e752c896df794678f46886a6c140909d8cc180655de",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/kelp.jpg",
       "kind": "exploration_photograph",
-      "sha256": "d4866b1d9797925291f3e30ca10641b629b5f074fd9d010adfafc35ada0d1323",
+      "sha256": "494552b79ee382786cf0f3aa7993f6193b9481f4331ecbaf4f68dd489f5ba7a0",
       "source": "https://commons.wikimedia.org/wiki/File:Macrocystis_pyrifera_671118520.jpg",
       "license": "cc-by",
       "license_version": "4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "permission": {
         "holder": "Gonzalo Bravo",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/kelp.json",
-        "evidence_sha256": "9f891187fb7e8867a001f89259ae7712fb70c4e14b7d9077032584f04ee6847a",
+        "evidence_sha256": "e0faefcfb6a3f14b1880aba376a69744e05f510b09ace9b9f57e7bfc4784f242",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/physarum.jpg",
       "kind": "exploration_photograph",
-      "sha256": "d4054948cc20e629070cbe0df9a3f87ff266b6a6ce822168023d3655a4a88296",
+      "sha256": "e866abdda0610bf3f2878229544736ca93d753c0869191cbbbc8eeb67bb10379",
       "source": "https://commons.wikimedia.org/wiki/File:Physarum_polycephalum_10744588.jpg",
       "license": "cc-by",
       "license_version": "4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "permission": {
         "holder": "Katja Schulz",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/physarum.json",
-        "evidence_sha256": "a92d1883b6a6c9f1422a8170e71c227f0c7297c52fb4022001bb3bd19669b462",
+        "evidence_sha256": "959d296f9eb0b513d64ef7b07e052175936ccc59b7774572d313fa2687dd85fb",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/bacteria.jpg",
       "kind": "exploration_photograph",
-      "sha256": "cf562e988f2f0b7a4f2da581bdc07a471adc902ae15f0605584cd70fa9df237e",
+      "sha256": "bab2d3590fb5fc7fd10912fd5ec7887c26e234e34a3b08e95f8e59c1881512fb",
       "source": "https://commons.wikimedia.org/wiki/File:E._coli_bacteria_(cropped).jpg",
       "license": "cc-by",
       "license_version": "2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0/",
       "permission": {
         "holder": "NIAID",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/bacteria.json",
-        "evidence_sha256": "33c75f7502720bc2738a209a0571868b239c30a11451e98ff12905a436cb78dc",
+        "evidence_sha256": "399a13a3f31a8122dd99b6e0610c603878122ba595f14791fdd2fdd34e21ec9a",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     },
     {
       "path": "resources/images/exploration/archaea.jpg",
       "kind": "exploration_photograph",
-      "sha256": "fe7b3f72e3363dd94febb1a6a83cecb8e20321635f00e3b3bad2d85063d98036",
+      "sha256": "614c0b27881899e440fa5cdc5d444682437b84482a2f8c64407a4bc5fa42a71c",
       "source": "https://commons.wikimedia.org/wiki/File:Fmicb-07-01902-g001-v1.jpg",
       "license": "cc-by",
       "license_version": "4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "permission": {
         "holder": "Xin Dai, Haina Wang, Zhenfeng Zhang, Kuan Li, Xiaoling Zhang, Marielos Mora-López, Chengying Jiang, Chang Liu, Li Wang, Yaxin Zhu, Walter Hernández-Ascencio, Zhiyang Dong, Li Huang",
-        "holder_basis": "Crédito do autor indicado pela fonte; não inferido a partir do observador ou do carregador.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
         "evidence_path": "resources/compliance/exploration/archaea.json",
-        "evidence_sha256": "eeb55aa4042631c82306f6c46adec9d63e8938649dee5b8121d9abb0d6ea407c",
+        "evidence_sha256": "f903a73d6258f5fb5391e83c54417416ee54bc02ffe1d05c743a1c6a5323bf17",
         "distribution_allowed": true,
-        "basis": "Licença pública CC0/CC BY por arquivo, evidenciada na coleta; sem declaração de aprovação humana."
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-1.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f1b07c8e8a6bc545501d154a23d72bc9ae915901f57eb32a4fb9effd13cfbaed",
+      "source": "https://commons.wikimedia.org/wiki/File:Papilio_Machaon_JPG1a.jpg",
+      "license": "cc-by",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "permission": {
+        "holder": "Jean-Pol GRANDMONT",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-1.json",
+        "evidence_sha256": "a2865b1a6a38b5f21806f145eeafb27b3b473694cf4e05bb8dd680b534a1ab6b",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-4.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "b285839a6e8f0345936ad2312235ce8ac27d8ee6d1a42ac54fc789cebc90ccdd",
+      "source": "https://commons.wikimedia.org/wiki/File:V03-20130606-063_(9250543631).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Hsu Hong Lin from 南投縣集集鎮, 中華民國",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-4.json",
+        "evidence_sha256": "8dce742acc5bdbfe56e1f918c170f4fb85f13be01ed9733b6fdda1b10f5188fe",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-5.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "e62bac7c0c186d5fb523aa028dbc17a3202fbc1fbfac69c447ea64ae19617e5f",
+      "source": "https://commons.wikimedia.org/wiki/File:Life_Hanging_by_a_Thread_(48039559871).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Bernd Thaller from Graz, Austria",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-5.json",
+        "evidence_sha256": "2347cbbd4a1c6b6b635af329e625c5bd9dc37a3ccbd9ae28c93410f3be954298",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-8.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "d1297fa291421e1033a0340519446fa2a4927ec22b7a3ed5d0b852e16e877927",
+      "source": "https://commons.wikimedia.org/wiki/File:20220709_Vanessa_cardui_05.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Flocci Nivis",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-8.json",
+        "evidence_sha256": "549c54dad1e678a93b6abb74862d05c7066cdcb990dd38ba34dc15413428d268",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-10.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f36292d0d4de5f829331969483ad54e2f4209d3355075039c8bebe6afc49ad22",
+      "source": "https://commons.wikimedia.org/wiki/File:Attacus_atlas,_the_Atlas_moth,_is_a_large_saturniid_moth_endemic_to_the_forests_of_Asia.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Raghith",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-10.json",
+        "evidence_sha256": "509a5a7fc39a09c1f975e328ea1ff06f696ddce76eba59ebcc63f54560679225",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-11.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6b10ae0f8aa16224ce34488483bb9976106e80107453947656c0a8e53b92e8ff",
+      "source": "https://commons.wikimedia.org/wiki/File:Actias_luna_120711776.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "simoneburton",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-11.json",
+        "evidence_sha256": "0684b1f291ea3742d6910ec7e96782f6dfcfd38ce017a7d0adb21af50a9fe586",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-12.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "50d2f7b6d6492a7a000b9d3bfde489afda2fd77a3f9e351e543f62b1ecfd2bce",
+      "source": "https://commons.wikimedia.org/wiki/File:Cecropia_Moth_Austin_TX.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "NCBioTeacher",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-12.json",
+        "evidence_sha256": "d4972cd5483ed7e4196bb27657c65ea7b3c4dec5c45932dc4be258d0ea9882ae",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-13.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "1d459f2f2c9c08cbcc88c29267ce4450e8947c795e424e638690207931578eb3",
+      "source": "https://commons.wikimedia.org/wiki/File:Automeris_Io_Caterpillar.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Myersjj",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-13.json",
+        "evidence_sha256": "47a35ce362426172a7064feeee11a11173292d775372a5aebd40f9d3ba1fd3d3",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-14.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9a08f7689024c54d55c32826c2fadb80ce04ecee702c82fcce46a78996f33385",
+      "source": "https://commons.wikimedia.org/wiki/File:Polyphemus_Moth_Durham_NC.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "NCBioTeacher",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-14.json",
+        "evidence_sha256": "a88d0bbc47e6b38cbda74b209795afcb9bc58f789c05d47828bd3813dd2c1d16",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-16.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f7831b01800e961eb4211b434fe929c0d1f244f678ec2dddd53817ac3721c9bc",
+      "source": "https://commons.wikimedia.org/wiki/File:Papilio_ulysses_302355414.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Daniel Montesinos",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-16.json",
+        "evidence_sha256": "0dfc9a1d33f27b2871ffc1f8d1692d8900aa48e9e7e140cdfd2f9b0f5cd6b5dc",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-19.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "74a410013860d2be702ba373244ddc3d8571d988149dbcb15abb28b1fb213ae5",
+      "source": "https://commons.wikimedia.org/wiki/File:Galleria_mellonella_1.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "dhobern",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-19.json",
+        "evidence_sha256": "87901229d5615cd5220a7e40bfd743e81d4f5e0750214ea46277fee070c368a9",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-23.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "ad9d701af14a99003d5c9ad29e2b40b1c019830ac872476e7a8be6440857d15b",
+      "source": "https://commons.wikimedia.org/wiki/File:Titanomis_sisyrota_483993774.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Carey_Knox_Southern_Scales",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-23.json",
+        "evidence_sha256": "d3a3967592416644a7ffcdbf1109ba3834c9b95b46792946e37ffc9b4e799a2c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-24.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a41d2f6785a2417146bbc8d48586b4b207fd2cd009f99aae1700ec8be7d7a3de",
+      "source": "https://commons.wikimedia.org/wiki/File:Macrocilix_maia_(Leech,_1888)_2_-_iNaturalist.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "dhfischer",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-24.json",
+        "evidence_sha256": "35a374c64e71f46601bf59bea76192172c977b5b0b918b2e6ff8c97a0df5c4fa",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-25.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "62d0d04e62d6e15805b5899a01c943d561cb3b6a02dfd64c40201d97784964eb",
+      "source": "https://commons.wikimedia.org/wiki/File:Chiton_glaucus_by_Ken-ichi_Ueda.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Ken-ichi Ueda",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-25.json",
+        "evidence_sha256": "6aeb0c0ca0e8192d5017e3bea18d88f0407e8106777e9df98a7124ca1d0337e5",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-26.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "5465cfb1aa98ec16b53658a8276525d6fb2616c6a9acf42a900b0613ac5b7c91",
+      "source": "https://commons.wikimedia.org/wiki/File:Geminaria_canalis_1987302.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Ken-ichi Ueda",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-26.json",
+        "evidence_sha256": "9426799d588de1c6b52b65444849572dbb4c730d33a6b989de843156f58a0024",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-128.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "13e23057f282a52e99bc8580926bb2f3dc67b960622049f0f57322c941c50f62",
+      "source": "https://commons.wikimedia.org/wiki/File:Lemur_catta_001.jpg",
+      "license": "cc-by",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "permission": {
+        "holder": "Alex Dunkel (Maky)",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-128.json",
+        "evidence_sha256": "12ae7e74ab93fa09da52ea5ff8f02ac7c598364aaa8a087b5fd84ea0ee7385c3",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-30.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a3cef6217fe1e98a8a5d90bdde572e2383043c98b976d6b022ff1e7d314319da",
+      "source": "https://commons.wikimedia.org/wiki/File:Xenocnema_spinipes_dorsal.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Manaaki Whenua – Landcare Research",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-30.json",
+        "evidence_sha256": "fc4a23fe7755bcca8d982e9d45e5766490a95f3b4e319d35ffd94c08c7015cdc",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-31.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9e95328f4db2abf171019d56f466220d08a69dcda68072f39c993e7f8eef6450",
+      "source": "https://commons.wikimedia.org/wiki/File:Sphaerocoris_annulus_2018_12_16_11_33_23_9073.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alandmanson",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-31.json",
+        "evidence_sha256": "8361f043254303b4efd0a6591a92c32f6b483f66ebed966890d240d77bf14c58",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-129.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "193aedc397d03d504e0a8a87daf3ef0e7f46ba4df9195c5928e5dbca30a56cc8",
+      "source": "https://commons.wikimedia.org/wiki/File:Pavo_Real_Venezolano.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Wilfredor",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-129.json",
+        "evidence_sha256": "986101528dd265644c713f7f2e48b8f8d75148d32b070da854707eca4f5143bf",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-130.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "3abfb6be4a2bd016808f00610764f7e05b2e8f1b5a927a7ec0ec05598a3c85e4",
+      "source": "https://commons.wikimedia.org/wiki/File:Red-eyed_Leaf_Frog_(49661076226).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Charlie Jackson",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-130.json",
+        "evidence_sha256": "298a72603299b3ee619ba499b3d69433b536f7de45a068a693d8e7cb04211801",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-34.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "350d8a786e80badd0ae60eaae9892d5b30d034b30f957123e3fbb8616fde29ec",
+      "source": "https://commons.wikimedia.org/wiki/File:Dicarnosis_erythrocephala,_Glendale,_AZ,_USA_imported_from_iNaturalist_photo_123931576.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "(c) Jake Nitta, some rights reserved (CC BY)",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-34.json",
+        "evidence_sha256": "1e72307a87838353d22b195558235bfe36a60cca3f16cbb30589a88309a41189",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-35.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9a624a5cc0940306a9d6b92557744a2af338cbcd5286285aeda319f833a665ee",
+      "source": "https://commons.wikimedia.org/wiki/File:Pachypodistes_angulata.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "heimatlos",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-35.json",
+        "evidence_sha256": "593af5880a8355c3049cf31ce263fd41c6b4935896a8bcda6da73499320a0b64",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-36.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "7f8d228a840c7e7662deaaf492f5679ceef1f0dd886e8b44853dbc886a315c2e",
+      "source": "https://commons.wikimedia.org/wiki/File:Chortophaga_viridifasciata_425021183.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Dan Johnson",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-36.json",
+        "evidence_sha256": "982a045b163c05bcf984621557cc64c1ea9b260fea3f0fd059a5f3e9c0ff3288",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-38.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "01b78b254895c47dba481a13c999e9fa014023a11f161f0e51f9e5137e788c56",
+      "source": "https://commons.wikimedia.org/wiki/File:Ant-mimicking_Treehopper.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Katja Schulz",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-38.json",
+        "evidence_sha256": "ad36148887150eeb0750007bd33adf2a7af2b2486caf59c08b79ebab9a6f7334",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-43.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "5cafab11009ab91a5c83fb0126f7f758b7876558b2bbea394850b72f8048a284",
+      "source": "https://commons.wikimedia.org/wiki/File:Kindbergia_oregana.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Des Callaghan",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-43.json",
+        "evidence_sha256": "006a8085aead27e02cbebaa0fe05bb36e43afe543ec2dbf631362a4f2b4cff10",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-44.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "8cdce54007db5e71e558cbfcdd0a15c6410375dc7feecb9edb4d8b928ad6918f",
+      "source": "https://commons.wikimedia.org/wiki/File:Dictyanthus_pavonii_-_Ana_Nu%C3%B1o_-_578665461.jpeg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Ana Nuño",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-44.json",
+        "evidence_sha256": "0b42cf59c22eb4c61199761f50c7ae8d75f0a8917156220c085dbdee520812a8",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-46.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9fd9cea87a741d012ef048cba3735bb4e4bead4b2bd9f98a864f327b77e2d985",
+      "source": "https://commons.wikimedia.org/wiki/File:Lunularia_cruciata_177592980.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "crothfels",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-46.json",
+        "evidence_sha256": "72a68d5c737b08b48352f209e8e75f404df62b7c1bce4d86cb2565341861a8b4",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-47.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "351ef5a8c168751289e7d927ec572a95ddb4c95289e056543b9e2c6404dac2b9",
+      "source": "https://commons.wikimedia.org/wiki/File:E20161117-0001%E2%80%94Polypodium_glycyrrhiza%E2%80%94RPBG_(31112849815).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "John Rusk from Berkeley, CA, United States of America",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-47.json",
+        "evidence_sha256": "d8eb8abf6674cd94845e71225af958ecbac34e90962ae7afc8dc440df1948dbf",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-48.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "b22f985078fe8169a7e5372ce099ae3a068b11287ab393f630ea9632213214e0",
+      "source": "https://commons.wikimedia.org/wiki/File:Chilicothe_At_Top_of_Hill.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Z3lvs",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-48.json",
+        "evidence_sha256": "f2fe5958e93fe20e158062f0e9c0f4da3d3732fdf723c88cf6c3ab07bec0445f",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-49.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "1b0e91ec1925154d5ce580c851c5897f32278b576e377fb0f425af3766bff6b6",
+      "source": "https://commons.wikimedia.org/wiki/File:Mastigostyla_macbridei_-_Pa%C3%BAl_Gonz%C3%A1les_-_540416834.jpeg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Paúl Gonzáles",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-49.json",
+        "evidence_sha256": "2f31aae80ad3bbd57ee1ebd0fb954f58f62fe5d551c43606d84e84045314a2f9",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-50.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "5a26db242e0cb62d300a98ffc741d315a706875f05e42cc22cfb1a8424c650ba",
+      "source": "https://commons.wikimedia.org/wiki/File:Regel%27s_tulip.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "chernoburko",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-50.json",
+        "evidence_sha256": "bbfcfc537edca8f164271c4714f7fde172c9532123be5e3536f2d5e7575f0bf4",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-2.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "1894f3a46df37a7d31d94e7a4671a5a6a260ef4c3711aa5137ee8d52271953a7",
+      "source": "https://commons.wikimedia.org/wiki/File:Vanessa_atalanta_189242408.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "William Petrie",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-2.json",
+        "evidence_sha256": "76f5cf646609ca2a6c46d7dd06a01ce6e888c429cfc81f557ad0026d017083a4",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-7.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a69c0db853fdbb66abf6d3f3384b83ea15b49904a884c15c98402a3615d2d745",
+      "source": "https://commons.wikimedia.org/wiki/File:Aglais_io_ssp._io.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Oleg Kosterin",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-7.json",
+        "evidence_sha256": "becb03fcc0d3756725527e6a39e6c500bfe01b94b69600d58986b58182c95f2a",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-15.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "00d309b63b519522bf48a327c1a5cfcbdedb8fecebd017c2b57ed9795f3327b1",
+      "source": "https://commons.wikimedia.org/wiki/File:Heliconius_melpomene.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Wildcat Dunny",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-15.json",
+        "evidence_sha256": "22c446eee2bb4fd08f2aa546ac8fca4771615782f8bd5199e3f99434f8aedbf7",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-18.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6074b2e96f65c13709e7d7cf12f849cc48ebc5cb6505ab6bc1b4302f7c82c506",
+      "source": "https://commons.wikimedia.org/wiki/File:Close_Wing_nectaring_position_of_Pieris_brassicae_(Linnaeus,_1758)_-_Large_Cabbage_White_WLB_DSC_5316.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Lorensonowal",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-18.json",
+        "evidence_sha256": "9a4868014273986916367f4c337f17021cd0173043db5eb3c93c21178d736c8d",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-20.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "34ef9728f9896e133446723674e84c022c4cbc692d2bf7d1e3b0948bae83a787",
+      "source": "https://commons.wikimedia.org/wiki/File:Plodia_interpunctella_FV4.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Fvukajlovic",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-20.json",
+        "evidence_sha256": "bbe4e76bbbfa5b8801f8d85fd6471b804b8c599f7e9aca6bf17e434db1cc20bc",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-21.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "1e51c863e69a402c5912908e1d12a33e543a5155c63e85464ea76f983af40819",
+      "source": "https://commons.wikimedia.org/wiki/File:Manduca_sexta_2.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "pondhawk",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-21.json",
+        "evidence_sha256": "296eec22290f61b314b910955f77d9836c04dd67a31a322350871c4b5f9c2e92",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-28.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "7c8d29915c6934d5e904d1569482a6f78003720dae4d4fa97c3a6638616c6345",
+      "source": "https://commons.wikimedia.org/wiki/File:Astroscopus_zephyreus_254704610.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alberto Alcalá",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-28.json",
+        "evidence_sha256": "66ad6a9930bc50f5156305daed8987739b480df0bf307cb1fd669bc29ab32cf2",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-52.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f1a33fb58dae9b1970a576ed076ab636a9020ca5968c7f92dc69c6b2a4d50111",
+      "source": "https://commons.wikimedia.org/wiki/File:Asterella_drummondii_-_Flickr_-_Kevin_Thiele.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Kevin Thiele from Perth, Australia",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-52.json",
+        "evidence_sha256": "08783865e15f47c30b50ca4bf3be3c04fa94e14b3207cd79a52699adef6f071d",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-53.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "630aaa4ac98f94e57f1c0b2d4dd213124f269be582daf9d080bd8e5183f30bd3",
+      "source": "https://commons.wikimedia.org/wiki/File:Viburnum_opulus_212658372.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Татьяна Горбушина",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-53.json",
+        "evidence_sha256": "7b51c8cf0afbe13729c9806125fcc92a3572655893d11888522d8f6e708fbf88",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-54.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9c239635d31ed025e2f5af63e3288b5d2a24d4d77986fb660dd662545c8e2ea4",
+      "source": "https://commons.wikimedia.org/wiki/File:Starr_021122-0074_Xanthosoma_robustum.jpg",
+      "license": "cc-by",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "permission": {
+        "holder": "Forest & Kim Starr",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-54.json",
+        "evidence_sha256": "2dbac1636b03838c1370ed1eb614a422a5533ed8d96f78d278e44b3ad6d8d13a",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-57.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "85b2befef19fc0057c7e9f6846f9135cca51600866e0288bc617835ec06ec838",
+      "source": "https://commons.wikimedia.org/wiki/File:Pleurophyllum_speciosum_251548988.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Genevieve Early",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-57.json",
+        "evidence_sha256": "460e1eb715ebe93e572176fbe4b0a1911f7e285e05d715adae847aac7125fb90",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-58.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fcd48184b137bd95f3f05655dcab8bfd212dd30eb59624a3682133a86d4d295e",
+      "source": "https://commons.wikimedia.org/wiki/File:Dragonblood_tree_in_Socotra_2.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alex38",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-58.json",
+        "evidence_sha256": "12953de7462ecc90363f4a4224f8dbfaabb5727bbba8ba55de44c27545858a63",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-134.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "87c2f45608c92ae15c17ef2073ef1ce9adaf3b8a34412ca2da6fd3d8af44393d",
+      "source": "https://commons.wikimedia.org/wiki/File:Venus_flytrap_(Dionaea_muscipula)_Zagreb_Botanical_Garden_1060.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "ImagePerson",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-134.json",
+        "evidence_sha256": "1a0583cfa2296dc240942817699622e58132caaa9227d4f55495df306a5abe41",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-60.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a055cfffb339204d9e85b34ab65b4e45f0765c42fd27efc63d81f51b4de382d3",
+      "source": "https://commons.wikimedia.org/wiki/File:Huperzia_lucidula_589947366.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alex Abair",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-60.json",
+        "evidence_sha256": "2d97959fad4f95f57258f60991d622f9ee78f95f4490901873da72a9c078b659",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-61.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "99f7c170e9b94eb7dccd9744d7ec1d66615c0c312d77324eee40d71e7ae2d32c",
+      "source": "https://commons.wikimedia.org/wiki/File:20120731Verbascum_thapsus.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "AnRo0002",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-61.json",
+        "evidence_sha256": "32828c9e9a2643cc86b149ab79df7a5b5e8a2f345a4e8c95b7ff0f9829dd71dc",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-62.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6382e831c0d2f0b2ce98fe7cb7b8cd4da698ea71b757032d60562403155965be",
+      "source": "https://commons.wikimedia.org/wiki/File:Euphorbia_duckei_13397353.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Nelson Wisnik",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-62.json",
+        "evidence_sha256": "1af1bc92ea6954c96c47d947d0690ab3603a4b57f6964150f876775ae5b42311",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-63.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "cdb445fc0db074936727f5f2104f35f38fa4e2c998a732387b410a4308a80116",
+      "source": "https://commons.wikimedia.org/wiki/File:Stropharia_caerulea_56752269.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "mangoblatt",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-63.json",
+        "evidence_sha256": "c396f2676657693f16202bc126e26f0f271da5444218769d11280187bf71abf7",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-64.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "cf7e2d52879b3ae376b32d0b6039284f97d102355f6b57f1f9185d2ba6683837",
+      "source": "https://commons.wikimedia.org/wiki/File:Favolaschia_claudopus_296634761.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Awhesian",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-64.json",
+        "evidence_sha256": "b8e5c183a3b78d7358b872a5140dce6d15f6727d1a289791bcbeaac5ae69acc3",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-135.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "77fd72de44fd1dfaa707873fe02d7f3d23007eac61b58fb035c3c11f671d3254",
+      "source": "https://commons.wikimedia.org/wiki/File:Clathrus_ruber_275538268.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Fe Su",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-135.json",
+        "evidence_sha256": "ead02e2d8e2b35149b56fdc9699504b4d2c2a60eac0d1fcfef9365e3e5168114",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-67.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "da7f7d70e9789cc4a9fe6e01d0c631bf90020d9a0b2be7a5eaa9099dfb5b724c",
+      "source": "https://commons.wikimedia.org/wiki/File:Trametes_versicolor_105537234.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "georgiasteel",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-67.json",
+        "evidence_sha256": "13513371639cd32d6e983ca84388ccb56af1e6f8f6a3ad8830503cfea149bb97",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-70.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6860267e8232aecc022f218af284c204673b1983cbb6ad630967b7970cad9cea",
+      "source": "https://commons.wikimedia.org/wiki/File:Ganoderma_brownii_122658782.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "alan_rockefeller",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-70.json",
+        "evidence_sha256": "fa648c4f6025768a25934778f5fb1eea83eb6400b01294b51f90bbfdf42c564a",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-71.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "cd658118ade14728d050593cc2fcbf1331e62af08ee0ae6be80e1d2ede72b54f",
+      "source": "https://commons.wikimedia.org/wiki/File:Marasmius_haematocephalus_109095575.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Wynand Uys",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-71.json",
+        "evidence_sha256": "b399ecbade33276cb31df16e578b43e426b4ad15ea26baef5ddfc3e8281068bb",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-137.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fab83fd91178910131cbe559a1de68a186f6a9ff7644f9add3ef74bd85d5effa",
+      "source": "https://commons.wikimedia.org/wiki/File:Morchella_esculenta_130011130.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "mangoblatt",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-137.json",
+        "evidence_sha256": "f059fb630492fcb45c14ee083d3f99fcd2446026091ae18220134054f149d538",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-73.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "17f2c1913ab0b893eb7b0eff65df2a9ada4ceddb5244cbe56f26e8c07c5a57f0",
+      "source": "https://commons.wikimedia.org/wiki/File:Coprinus_comatus_102589576.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "cpepin",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-73.json",
+        "evidence_sha256": "76bfd50cd67c5d911b9553f4317bc6b152886e15d2d149a5e8553e84d2b33c31",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-138.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "8fa8f302cd79d5b5c6f189670b12645b9ac2af86a7b942f769ce55a94b039634",
+      "source": "https://commons.wikimedia.org/wiki/File:Phallus_impudicus_80021674.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Peter Gabler",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-138.json",
+        "evidence_sha256": "1b4d846c58e4ffd969f5f49b77f0533ca42590d620ad21cd37357ef7b65909c9",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-75.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "58b4bf152029e66ae0f3f2c9622a260376c9d10771944d4dd086454f68730f9b",
+      "source": "https://commons.wikimedia.org/wiki/File:Cortinarius_archeri_329630714.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Ashleigh Robbins",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-75.json",
+        "evidence_sha256": "4b7b7cbbc9941b5dc20a5f2c6ba8fb8039f91da6cb03a8d18bcb881f201b25e5",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-76.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "303ff83de0f105edd9c583ffadffc064dfee52f520e790db98d85c462e89cc06",
+      "source": "https://commons.wikimedia.org/wiki/File:Xylaria_tentaculata_113291916.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Matt Berger",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-76.json",
+        "evidence_sha256": "5a12e93d8f40ddfe899224d1ac6aedf1f3f8f57eced8a7598caa958b0d7bc743",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-139.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "39830f90363d96935c22426a2ddff28709124e9dbd1e95fe747fe56f6dfa5866",
+      "source": "https://commons.wikimedia.org/wiki/File:Geastrum_triplex_56376181.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Tobias Schönberg",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-139.json",
+        "evidence_sha256": "5f39267bda9ef9a3abe9a52865785f4bfd49272e13a99488b88e21d4e8531fa3",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-140.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6589c59598cfdfdb8ba58fafbd1afc460c1eb62c20416c7d221c1a231e20aaf5",
+      "source": "https://commons.wikimedia.org/wiki/File:Bearded_Hedgehog_-_Hericium_erinaceus,_Occoquan_Bay_National_Wildlife_Refuge,_Woodbridge,_Virginia.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Judy Gallagher",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-140.json",
+        "evidence_sha256": "c446124170ce5e80bccc4075360262f4bca432b3e7c36fe3463334910559bd74",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-79.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "95afb4187ae2a9bb774f27e81fbde2b7a9f5ff2df785b59922859ee3dd20bde5",
+      "source": "https://commons.wikimedia.org/wiki/File:Panellus_stipticus_89166126.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Eileen Laidlaw",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-79.json",
+        "evidence_sha256": "87b25eb050c840295bea3ae87491a537b24df931768e8487e4ce06761fb04c2d",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-81.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "16f9f110d2caba22e7d8dc09d5840074fb9554a23eabb27358ef3d1b01d15566",
+      "source": "https://commons.wikimedia.org/wiki/File:Entoloma_trachyosporum_239273109.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alan Rockefeller",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-81.json",
+        "evidence_sha256": "9d50e46303e8ceae54007d5ca05faf6f8d4b76208214357b627f19d48be6983f",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-82.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "95fcc3a9ef924c16b000747971b869cae29b6e54d184fa5dae8286800087d1ee",
+      "source": "https://commons.wikimedia.org/wiki/File:Pseudoboletus_parasiticus_429712015.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Matej Frančeškin",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-82.json",
+        "evidence_sha256": "71c3aa36c315c7043eb6ed27d6837bd548e2304120eee99d630f142e15f9bf2c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-83.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "784e6362e7d343715b8ae7c53e85b4cfe5f37e50687498c8018b65f96fda43ec",
+      "source": "https://commons.wikimedia.org/wiki/File:Comatricha_nigra_176600092.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alexis Tinker-Tsavalas",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-83.json",
+        "evidence_sha256": "2e71c7b016eaf5af85d7134976ab29df9a75e6cbc6d510fd89fd14b63ae4ebba",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-84.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "713ea01b53a07084d3f3d7c15353a1361a5c76fc72e0a52478fa49c4c4e2a192",
+      "source": "https://commons.wikimedia.org/wiki/File:Hemitrichia_serpula_58376045.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Christian Grenier",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-84.json",
+        "evidence_sha256": "5a158e5c421d5cec0d57cbae8274e505227deee7087a15b95cf6b1e7855a6882",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-85.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "fd69add03bf5f932ffbf9df1a988007e47fa4fa6a4faa6b8eba1f38b82d161bc",
+      "source": "https://commons.wikimedia.org/wiki/File:Metatrichia_vesparia_308313387.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Julia Ariadna",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-85.json",
+        "evidence_sha256": "a8652381b0e33fa3435dc9eec5bfd8c78ce8328757cdf74933a18882e9512e60",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-142.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "09cab6da0b2c4d7e607741071342bdf196944daf779af5ffa6c9b8af1f421905",
+      "source": "https://commons.wikimedia.org/wiki/File:Nereocystis_luetkeana1.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Chris Teague",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-142.json",
+        "evidence_sha256": "0eb32b16defa461f746fa8038f5679c3e9b83129605a1f356a9b608f29263553",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-88.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "9a526f329d2da6b53eabc494bbe871bac45985739dbca6259a94cb12aecf5a71",
+      "source": "https://commons.wikimedia.org/wiki/File:Physarum_psittacinum_20882660.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Garrett Taylor",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-88.json",
+        "evidence_sha256": "1346c18f26e94c1b21e0be47545f27efdbf0a613eeacd2ce8102c32292512253",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-89.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "633056405199e6f70e0543ab1c360b308cdf2edffa2e36a35975e08fa662a2c9",
+      "source": "https://commons.wikimedia.org/wiki/File:Ceratiomyxa_fruticulosa_80157865.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "lotteryd",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-89.json",
+        "evidence_sha256": "8ee937f927aa9960cd7120b66fa5015d9eb9f4969acac2206ff0cbff8b48e0cf",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-90.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "37872be7b22adee7cf37a9d271a0404f0006d9be46641ece046b547c0f6ceee1",
+      "source": "https://commons.wikimedia.org/wiki/File:Arcyria_denudata_88769911.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Yann Kemper",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-90.json",
+        "evidence_sha256": "11cf17ab8118e88513c4a28a889c928371ddce01b9ba3276606f1a6edaedc335",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-144.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "6c13eddffcf64a2c213f57fde32dc471cfdbd812da3fd05672c2b6cf8507b8f2",
+      "source": "https://commons.wikimedia.org/wiki/File:For%C3%AAt_d%27algues_brunes_(Himanthalia_elongata)_(Ifremer_00377-48853_-_8).jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Olivier Dugornay",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-144.json",
+        "evidence_sha256": "9de2511a352b11b24254d966128070fb4412c144692e2d0691c4d8288e8b966e",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-145.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "1b146a06c6abc573f3353ad446f578adf349b571909a48da7a2e958ee69845f8",
+      "source": "https://commons.wikimedia.org/wiki/File:Feather_Boa_(6118563035).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Leslie Seaton from Seattle, WA, USA",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-145.json",
+        "evidence_sha256": "bdff74c35b18fda55a6c5626c37e279e3043b3043bc807796e04814f718c0124",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-146.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "15b1619dfeb967ef76ffcd3858fe04ce749c061fc840a04a17298d3941df5194",
+      "source": "https://commons.wikimedia.org/wiki/File:Colonie_de_dictyote_(Dictyota_dichotoma)_dans_un_r%C3%A9cif_artificiel_(Ifremer_00700-81255_-_33536).jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Olivier Dugornay",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-146.json",
+        "evidence_sha256": "7464f403574ef9df83d7f110a020b159aadd5509bdea742c10473e94a3cbb750",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-96.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "8557ca57b2869aea9896e1da65a0227226fb95b19f5e45160e1a5216cfe98d6a",
+      "source": "https://commons.wikimedia.org/wiki/File:Leocarpus_fragilis_32748599.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "garmonb0zia",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-96.json",
+        "evidence_sha256": "8d383eaa928d183847b65e6d7451bb39f6f20dd5e5052d7767c3880292e9db0f",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-147.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "e55b488b35bfe5f6ee7deaf0834e823e4010e2bf978f928b0fe29bf0d7db11a2",
+      "source": "https://commons.wikimedia.org/wiki/File:Sargassum_muticum_107395783.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Al Kordesch",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-147.json",
+        "evidence_sha256": "9a7aea5a47b3fe54e65e7cd193528c9e11a1d1e6bd59793cb28cdbaab622a94a",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-148.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "a15c9ea6f3e93a628af9ef8a3515b5f776829d6122a27972376b00c02cddcca2",
+      "source": "https://commons.wikimedia.org/wiki/File:Durvillaea_antarctica_60014489.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "John Barkla",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-148.json",
+        "evidence_sha256": "05a616fbafb736b4601ee87a58c9c56b06c85b1d08c7a8a0a90acc0980ece931",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-122.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "ca9eef3521c17581c2da3cfcbe87934103632453ab509d62513d15720f1e1874",
+      "source": "https://commons.wikimedia.org/wiki/File:Bancs%C3%B3_2021_Fig_7-1_Chroococcus_turgidus.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Sándor Bancsó",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-122.json",
+        "evidence_sha256": "797b055874aca9a88debdd598468ee9f2be65fe347e66ee91039ae882c0b2f2c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-123.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "dce18d35472a38bcf5220cafe2d2e5681a10c8e950b82d622d7d8132fa77e883",
+      "source": "https://commons.wikimedia.org/wiki/File:Psilocybe_allenii_340184308.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Alexander Wentworth",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-123.json",
+        "evidence_sha256": "46ca671cc03267c2dce8bbef89e329fa6b994d927447c9a3f60d571f5989822c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-108.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "0fb27397c38bb07dd66822e32373a550f5d8c7a4cce55ebb0a3228de30fb2aac",
+      "source": "https://commons.wikimedia.org/wiki/File:Arthrospira_jenneri_237902238.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "crseaquist",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-108.json",
+        "evidence_sha256": "af4dfaacb471a99619463ccaf1eeb06b855e83e9248608e8276bf2990eb638c4",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-113.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "8319a29e19841afaa0b4b696702095146b7ea52f30c1a1bc02413c2ce7e654d0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gloeotrichia_intermedia.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Petr Knotek",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-113.json",
+        "evidence_sha256": "3e37d4b9423afa4203bb9ffa22896782ca2f8cd3856ecd5b6bfbc49ae14a62e6",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-120.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "d50f3f302f1ad9ec84a972c0e82a28de8b0e85f933fd4190243d52be1704ef96",
+      "source": "https://commons.wikimedia.org/wiki/File:Achromatium_oxaliferum_-_Bact%C3%A9ries.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Philippe Garcelon",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-120.json",
+        "evidence_sha256": "edbe6c676109622eafe4274ecec1445caea51438c8a467a3c408a0ebd9cbb438",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/discoba.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f910fdd70df3b058a6934ea5e341def786c2aba2604cb33234d58eeafa084903",
+      "source": "https://commons.wikimedia.org/wiki/File:Trypanosoma_brucei_brucei_SEM.jpg",
+      "license": "cc-by",
+      "license_version": "4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "permission": {
+        "holder": "Sue Vaughan",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/discoba.json",
+        "evidence_sha256": "9e226230695ded1c9486b3c1c34b04f8b5ec445d13af131cdb23d5b5eca38188",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-3.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "3aef8517dff04821ea5133a270514754ee1fb0861d417bd4932179265d3efe18",
+      "source": "https://commons.wikimedia.org/wiki/File:Acherontia_atropos_caterpillar_Tuscany_2.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Pegasovagante",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-3.json",
+        "evidence_sha256": "4cc3995477119207db57fffa211ca86c1ce8b5760e1970dadcb27661411a68ad",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-127.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "480d6d73df67205aef005f886c7f374aab3423af52fd44b13ca318eab538fb7e",
+      "source": "https://commons.wikimedia.org/wiki/File:Two_Jaguar_Sisters.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Frida Bredesen",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-127.json",
+        "evidence_sha256": "2d1c61a1e776f0432b2458e58d9d35ebd83673e3b16cf38ca25ed4eb67119fa3",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-133.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "488228beed8a9653e5a5c838cb2e4782a86507617439a33cb03abca532b1d745",
+      "source": "https://commons.wikimedia.org/wiki/File:Chch_Wikicon_2025_Sunday_field_trip_PA11.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Paora",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-133.json",
+        "evidence_sha256": "f55707a1da733c75f7b432fef192ca5feae0e28e865c7ea80f30b9e24e032ecf",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-143.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "eac8c03445abec097c6a7c65b6bb9e9b10b1f2ee1e75556248ccd989cc2e5c32",
+      "source": "https://commons.wikimedia.org/wiki/File:Bladder_wrack_in_Norrkila.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "W.carter",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-143.json",
+        "evidence_sha256": "fa2e5e5dc28d7499b03e2f13216b0d7ed1594bac3878e11e530121446bf1e377",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-125.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "52c44db09c5fcddf771b557ca8d0b1f057a0621e444c8e26fa40e72b0fb6c4a2",
+      "source": "https://commons.wikimedia.org/wiki/File:Bengal_tiger_looking_at_the_camera.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Joselodos",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-125.json",
+        "evidence_sha256": "170565cedbcf7b04de1220248ff5b58bd6759227066fe7a3dae1e7050b989f11",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-131.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "ee6795697302450f79f79b3626e51af0f5cefada1c9b6ae768e4d340cc48e140",
+      "source": "https://commons.wikimedia.org/wiki/File:Berlin_zoologisk_hage_2026-04-07_img15.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "LarsMueller",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-131.json",
+        "evidence_sha256": "4b089571d3920bb6faa9afa85928a221e55b0b1b88443418098ba7e57ecaaf5f",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-132.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "69b18319514a6a404330bc5c79b840bc11570d00e94d1e4d387ba4759dc4e6bf",
+      "source": "https://commons.wikimedia.org/wiki/File:Three_Zebras.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "safaritravelplus",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-132.json",
+        "evidence_sha256": "07bc51670ef528a7dcdcb331971dec604138f8e7d3567a91e77624070e169984",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/organism-37.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "cc80236baf826e352aadf5496abf2d4959c2bb3daf53d1b493fe64c4682d23a7",
+      "source": "https://commons.wikimedia.org/wiki/File:Inaccessible_Island_Rail.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Brian Gratwicke from DC, USA",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/organism-37.json",
+        "evidence_sha256": "544db95147ed8b8f6ef439e3f6f5ccda04f61a061dffc6ce78a79b812479f285",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
     }

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:45:46.877307+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo%7Ccategories&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AInaccessible+Island+Rail.jpg&maxlag=5&clcategories=Category%3AAtlantisia+rogersi",
+  "record": {
+    "page_id": 57133896,
+    "revision_id": 873989179,
+    "file_title": "File:Inaccessible Island Rail.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Inaccessible_Island_Rail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "10d8f5fa10e4323c3cf30d4ba3011146aae46114",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Inaccessible_Island_Rail.jpg/960px-Inaccessible_Island_Rail.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Inaccessible Island Rail",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Inaccessible Island Rail",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/people/19731486@N07\" class=\"external text\">Brian Gratwicke</a> from DC, USA",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/photos/briangratwicke/6954264628/\" class=\"external text\">Inaccessible Island Rail</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    },
+    "identification_category": "Category:Atlantisia rogersi"
+  }
+}

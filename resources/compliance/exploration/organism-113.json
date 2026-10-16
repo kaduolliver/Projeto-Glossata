@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:38:27.758972+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AGloeotrichia+intermedia.jpg&maxlag=5",
+  "record": {
+    "page_id": 179033102,
+    "revision_id": 1274677573,
+    "file_title": "File:Gloeotrichia intermedia.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/36/Gloeotrichia_intermedia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "8798e03d340c846fe369edd6d569db2deee2b2dc",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Gloeotrichia_intermedia.jpg/960px-Gloeotrichia_intermedia.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Gloeotrichia intermedia",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Gloeotrichia intermedia. Species of cyanobacteria.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Petr Knotek",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/443586511\">https://www.inaturalist.org/photos/443586511</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

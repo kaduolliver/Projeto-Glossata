@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:02.263846+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AMetatrichia+vesparia+308313387.jpg&maxlag=5",
+  "record": {
+    "page_id": 139169090,
+    "revision_id": 1037122887,
+    "file_title": "File:Metatrichia vesparia 308313387.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Metatrichia_vesparia_308313387.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "5b190f7a166f026313377fb38598c5678c9f7e56",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Metatrichia_vesparia_308313387.jpg/960px-Metatrichia_vesparia_308313387.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Metatrichia vesparia 308313387",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Wasp's Nest Slime Mold (<i>Metatrichia vesparia</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/5825420\">Julia Ariadna</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/308313387\">https://www.inaturalist.org/photos/308313387</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

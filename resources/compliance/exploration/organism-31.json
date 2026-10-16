@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:45.275165+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ASphaerocoris+annulus+2018+12+16+11+33+23+9073.jpg&maxlag=5",
+  "record": {
+    "page_id": 75139202,
+    "revision_id": 1234677120,
+    "file_title": "File:Sphaerocoris annulus 2018 12 16 11 33 23 9073.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Sphaerocoris_annulus_2018_12_16_11_33_23_9073.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "9ae7d748aca900750a7ce9e95097a515921c15cc",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Sphaerocoris_annulus_2018_12_16_11_33_23_9073.jpg/960px-Sphaerocoris_annulus_2018_12_16_11_33_23_9073.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Sphaerocoris annulus 2018 12 16 11 33 23 9073",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Picasso Bug <i>Sphaerocoris annulus</i> in Cumberland Nature Reserve, KwaZulu-Natal.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Alandmanson\" title=\"User:Alandmanson\">Alandmanson</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:33.599067+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AGalleria+mellonella+1.jpg&maxlag=5",
+  "record": {
+    "page_id": 6018738,
+    "revision_id": 957418761,
+    "file_title": "File:Galleria mellonella 1.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Galleria_mellonella_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "4d34ff23f87fb7f7365a9311eea6b8e93b187571",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Galleria_mellonella_1.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Galleria mellonella 1",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Galleria mellonella</i>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "dhobern",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/photos/dhobern/3298155787/in/set-72157609886749924/\" class=\"external free\">https://www.flickr.com/photos/dhobern/3298155787/in/set-72157609886749924/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

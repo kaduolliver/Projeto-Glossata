@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:29.162508+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AStarr+021122-0074+Xanthosoma+robustum.jpg&maxlag=5",
+  "record": {
+    "page_id": 6122352,
+    "revision_id": 1265821339,
+    "file_title": "File:Starr 021122-0074 Xanthosoma robustum.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Starr_021122-0074_Xanthosoma_robustum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "60ae3b974bceb92a38c0f2318b2d345a5e7d7b3a",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Starr_021122-0074_Xanthosoma_robustum.jpg/500px-Starr_021122-0074_Xanthosoma_robustum.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Starr 021122-0074 Xanthosoma robustum",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Xanthosoma robustum</i> (large). Location: Maui, Nahiku",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"http://www.hear.org/starr/\">Forest &amp; Kim Starr</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Plants of Hawaii, <a rel=\"nofollow\" class=\"external text\" href=\"http://www.starrenvironmental.com/images/full/starr-021122-0074.jpg\">Image 021122-0074</a> from <a rel=\"nofollow\" class=\"external free\" href=\"http://www.starrenvironmental.com/plants/images/image/?q=021122-0074\">http://www.starrenvironmental.com/plants/images/image/?q=021122-0074</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/3.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

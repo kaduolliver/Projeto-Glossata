@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:38.952832+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AEuphorbia+duckei+13397353.jpg&maxlag=5",
+  "record": {
+    "page_id": 160871514,
+    "revision_id": 1234600811,
+    "file_title": "File:Euphorbia duckei 13397353.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Euphorbia_duckei_13397353.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "64b20120b6e9636533377d55e92d2aaca05427e5",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Euphorbia_duckei_13397353.jpg/500px-Euphorbia_duckei_13397353.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Euphorbia duckei 13397353",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Euphorbia duckei</i> in Brazil",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/users/102919\" class=\"external text\">Nelson Wisnik</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/13397353\" class=\"external free\">https://www.inaturalist.org/photos/13397353</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:09.976226+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AFor%C3%AAt+d%27algues+brunes+%28Himanthalia+elongata%29+%28Ifremer+00377-48853+-+8%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 157098932,
+    "revision_id": 1137313099,
+    "file_title": "File:Forêt d'algues brunes (Himanthalia elongata) (Ifremer 00377-48853 - 8).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/For%C3%AAt_d%27algues_brunes_%28Himanthalia_elongata%29_%28Ifremer_00377-48853_-_8%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "78e35a0498ef775fb5183d271ec3a10f419c47b2",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/For%C3%AAt_d%27algues_brunes_%28Himanthalia_elongata%29_%28Ifremer_00377-48853_-_8%29.jpg/960px-For%C3%AAt_d%27algues_brunes_%28Himanthalia_elongata%29_%28Ifremer_00377-48853_-_8%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Forêt d'algues brunes (Himanthalia elongata) (Ifremer 00377-48853 - 8)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Sea bean is a brown algae of shallow waters in the infra-littoral zone of the English Channel, the North Sea, and the North Atlantic.</p><p> Olive to brown in colour, it measures up to 3 m. Its body is composed of a vegetative part: a very short stipe, located above its fixing clamp, bears a mushroom-shaped cupule. This cupule gives rise in spring to two straps, which are its reproductive part. This matrix is repeated several times.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Olivier Dugornay",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://image.ifremer.fr/data/00377/48853\">Forêt d'algues brunes (Himanthalia elongata)</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

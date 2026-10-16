@@ -12,6 +12,7 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 import exploration_media as media
+import exploration_discovery as discovery
 import content_governance as governance
 
 
@@ -31,12 +32,20 @@ class ExplorationMediaTests(unittest.TestCase):
     def test_real_corpus_rights_identity_size_and_no_private_metadata(self):
         report=media.audit(ROOT)
         self.assertEqual(report['errors'],[])
-        self.assertEqual(report['total_photos'],8)
-        self.assertLess(report['total_bytes'],300000)
+        nodes=governance.load(ROOT/'resources/data/taxonomy.json')
+        self.assertEqual(report['total_cards'],len(nodes)+1)
+        self.assertEqual(report['bindings']+report['documented_pending'],len(nodes))
+        self.assertLess(report['total_bytes'],25_000_000)
         for photo in self.data['photos'].values():
             self.assertEqual(governance.image_privacy_findings(ROOT/photo['path']),[])
             self.assertIn('ImageDescription',governance.load(ROOT/photo['evidence_path'])['record']['metadata'])
         self.assertEqual(len(governance.load(ROOT/'resources/data/species.json')),122)
+
+    def test_documented_coverage_matches_the_current_published_manifest(self):
+        recorded=governance.load(ROOT/'docs/AUDITORIA_FOTOGRAFIAS.json')
+        actual=media.audit(ROOT)
+        for field in ['total_photos','bindings','total_cards','documented_pending','total_bytes','coverage','errors']:
+            self.assertEqual(recorded[field],actual[field],field)
 
     def test_only_per_file_cc0_and_by_with_matching_versions_are_accepted(self):
         for name,url in [('CC0','https://creativecommons.org/publicdomain/zero/1.0/'),('CC BY 4.0','https://creativecommons.org/licenses/by/4.0/')]:
@@ -44,6 +53,11 @@ class ExplorationMediaTests(unittest.TestCase):
         for name in ['', 'CC BY-SA 4.0','CC BY-ND 4.0','CC BY-NC 4.0','Copyrighted','CC BY 3.0']:
             with self.subTest(name=name),self.assertRaises(ValueError):
                 media.license_from({'LicenseShortName':{'value':name},'LicenseUrl':{'value':'https://creativecommons.org/licenses/by/4.0/'}})
+
+    def test_html_credit_blocks_and_entities_keep_the_sources_meaning(self):
+        self.assertEqual(media.plain('Author<br>Institution<p>Credit &amp; source</p>'),'Author Institution Credit & source')
+        self.assertEqual(media.plain('Literal &amp;amp; entity'),'Literal &amp; entity')
+        self.assertEqual(media.plain('Institution <span><img alt="Edit this record"></span>'),'Institution')
 
     def test_denial_occurs_before_any_image_download(self):
         response={'query':{'pages':{'1':{'imageinfo':[{'extmetadata':{'LicenseShortName':{'value':'CC BY-SA 4.0'}}}]}}}}
@@ -68,9 +82,66 @@ class ExplorationMediaTests(unittest.TestCase):
         self.assertIn('representative_scope_missing',{e['error'] for e in media.audit(self.root)['errors']})
 
     def test_unknown_bindings_do_not_fabricate_photographs(self):
-        self.assertNotIn('clade:Discoba',self.data['bindings'])
         self.data['bindings']['nonexistent:taxon']='lion';self.persist()
         self.assertIn('invalid_binding',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_every_gap_requires_a_reason_and_attempted_representatives(self):
+        node=next(iter(self.data['bindings']))
+        self.data['bindings'].pop(node);self.data.get('pending',{}).pop(node,None);self.persist()
+        self.assertIn('undocumented_photograph_gap',{e['error'] for e in media.audit(self.root)['errors']})
+        self.data.setdefault('pending',{})[node]={'reason':'No suitable file in inspected results','attempted_subjects':['Source organism']};self.persist()
+        self.assertNotIn('undocumented_photograph_gap',{e['error'] for e in media.audit(self.root)['errors']})
+        self.data['bindings'][node]='lion';self.persist()
+        self.assertIn('conflicting_coverage_state',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_coverage_preparation_uses_descendants_without_changing_species(self):
+        species=(self.root/'resources/data/species.json').read_bytes()
+        self.data['bindings']={};self.persist()
+        data=discovery.complete_coverage(self.root)
+        self.assertEqual((self.root/'resources/data/species.json').read_bytes(),species)
+        self.assertEqual(set(data['bindings'])|set(data['pending']),{n['id'] for n in governance.load(self.root/'resources/data/taxonomy.json')})
+        self.assertEqual(media.audit(self.root)['errors'],[])
+        first=(self.root/media.MANIFEST).read_bytes()
+        discovery.complete_coverage(self.root)
+        self.assertEqual((self.root/media.MANIFEST).read_bytes(),first)
+
+    def test_focal_points_must_stay_within_the_photograph(self):
+        for value in [-0.01,1.01,'left']:
+            self.assertIn('invalid_focus',media.photo_errors(dict(self.data['photos']['lion'],focus_x=value),self.root))
+
+    def test_discovery_missing_cache_stays_offline_and_never_changes_published_manifest(self):
+        before=(self.root/media.MANIFEST).read_bytes()
+        with patch('urllib.request.OpenerDirector.open',side_effect=AssertionError('Unexpected network')):
+            result=discovery.discover(self.root,offset=0,limit=1)
+        row=next(iter(result['subjects'].values()))
+        self.assertIn('No offline evidence',row['error'])
+        self.assertEqual(row['candidates'],[])
+        self.assertEqual((self.root/media.MANIFEST).read_bytes(),before)
+
+    def test_invalid_identifiers_are_rejected_before_network_or_writes(self):
+        with patch.object(media,'fetch',side_effect=AssertionError('Unexpected network')):
+            for value in ['../outside','path/file','UPPERCASE','']:
+                with self.assertRaises(ValueError):media.collect_commons('File:Test.jpg',value,'Test',self.root)
+
+    def test_unsupported_source_category_is_rejected_before_image_download(self):
+        info={'extmetadata':{'LicenseShortName':{'value':'CC0'},'LicenseUrl':{'value':'https://creativecommons.org/publicdomain/zero/1.0/'},'Artist':{'value':'Fixture author'}}}
+        response={'query':{'pages':{'1':{'imageinfo':[info],'categories':[{'title':'Category:Different organism'}]}}}}
+        with patch.object(media,'fetch',return_value=json.dumps(response).encode()) as fetch:
+            with self.assertRaisesRegex(ValueError,'identification category'):
+                media.collect_commons('File:Test.jpg','test','Fixture organism',self.root,identification_category='Category:Expected organism')
+            self.assertEqual(fetch.call_count,1)
+
+    def test_resource_sync_preserves_unrelated_rights_and_is_idempotent(self):
+        source=self.root/'resources/compliance/asset_rights.json';source.parent.mkdir(parents=True,exist_ok=True)
+        governance.save(source,{'assets':[{'path':'legacy/icon.png','state':'permission_pending'}]})
+        (self.root/'resources.qrc').write_text('<RCC>\n    <qresource>\n    </qresource>\n</RCC>',encoding='utf8')
+        discovery.sync_resources(self.root)
+        once=(self.root/'resources.qrc').read_bytes()
+        discovery.sync_resources(self.root)
+        self.assertEqual(once,(self.root/'resources.qrc').read_bytes())
+        assets=governance.load(source)['assets']
+        self.assertEqual(assets[0],{'path':'legacy/icon.png','state':'permission_pending'})
+        self.assertEqual(len(assets),len(self.data['photos'])+1)
 
     def test_generated_credit_fields_keep_actual_source_and_modifications(self):
         records=media.credit_records(self.root)

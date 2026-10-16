@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:05.248788+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APhysarum+psittacinum+20882660.jpg&maxlag=5",
+  "record": {
+    "page_id": 98117642,
+    "revision_id": 1236094402,
+    "file_title": "File:Physarum psittacinum 20882660.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/99/Physarum_psittacinum_20882660.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "3b747d7fba04281fc761522b0f3b2ffbd73a5b0b",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Physarum_psittacinum_20882660.jpg/960px-Physarum_psittacinum_20882660.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Physarum psittacinum 20882660",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Physarum psittacinum</i>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/166236\">Garrett Taylor</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/20882660\">https://www.inaturalist.org/photos/20882660</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

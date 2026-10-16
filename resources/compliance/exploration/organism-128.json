@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:42.663475+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ALemur+catta+001.jpg&maxlag=5",
+  "record": {
+    "page_id": 8621909,
+    "revision_id": 1258956944,
+    "file_title": "File:Lemur catta 001.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Lemur_catta_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "7613e78b7ca66bede9e6d88cc9a2f46b7b7921a5",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Lemur_catta_001.jpg/960px-Lemur_catta_001.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Lemur catta 001",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Ring-tailed Lemur (<i>Lemur catta</i>) at Berenty Private Reserve in Madagascar",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Alex Dunkel (<a href=\"//commons.wikimedia.org/wiki/User:Maky\" title=\"User:Maky\">Maky</a>)",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 3.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/3.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

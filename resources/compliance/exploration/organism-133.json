@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:43:06.457841+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AChch+Wikicon+2025+Sunday+field+trip+PA11.jpg&maxlag=5",
+  "record": {
+    "page_id": 165575926,
+    "revision_id": 1134529293,
+    "file_title": "File:Chch Wikicon 2025 Sunday field trip PA11.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Chch_Wikicon_2025_Sunday_field_trip_PA11.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "941c500d303909116b76f914eab9535f0b4f65a5",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Chch_Wikicon_2025_Sunday_field_trip_PA11.jpg/500px-Chch_Wikicon_2025_Sunday_field_trip_PA11.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Chch Wikicon 2025 Sunday field trip PA11",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Christchurch Wikicon 2025 Sunday field trip – Ginkgo biloba on Armagh Street near Rolleston Avenue, with Armagh Street Park Bridge in right foreground",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Paora\" title=\"User:Paora\">Paora</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

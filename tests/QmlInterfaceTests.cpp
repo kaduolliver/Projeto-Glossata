@@ -152,7 +152,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("creditsButton"));
     QCOMPARE(window->property("page").toString(), QString("credits"));
     QCOMPARE(controller.legalInformation().value("photos").toList().size(), 120);
-    QCOMPARE(controller.legalInformation().value("explorationPhotos").toList().size(),8);
+    QVERIFY(controller.legalInformation().value("explorationPhotos").toList().size()>8);
     QVERIFY(!controller.legalInformation().value("catalogVersion").toString().isEmpty());
     QCOMPARE(controller.legalInformation().value("catalogHash").toString().size(), 64);
     QVERIFY(snapshot("credits-transparency"));

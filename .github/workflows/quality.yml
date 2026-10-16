@@ -55,6 +55,7 @@ jobs:
           name: relatorios-de-integridade
           path: |
             build/catalog-quality.json
+            build/exploration-media-audit.json
             build/update-proposals/*.json
             build/tests/*results.txt
           if-no-files-found: warn

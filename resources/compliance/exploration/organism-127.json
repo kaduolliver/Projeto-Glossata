@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:43:05.367237+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ATwo+Jaguar+Sisters.jpg&maxlag=5",
+  "record": {
+    "page_id": 78202929,
+    "revision_id": 997242182,
+    "file_title": "File:Two Jaguar Sisters.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Two_Jaguar_Sisters.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "2bd1eaae9eba01c6fb0f854e39829f4e3a1c2970",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Two_Jaguar_Sisters.jpg/960px-Two_Jaguar_Sisters.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Two Jaguar Sisters",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Two Jaguars (Panthera onca)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Frida Bredesen",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/150792268@N02/37618661856/\">https://www.flickr.com/photos/150792268@N02/37618661856/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

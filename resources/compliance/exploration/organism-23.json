@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:37.161542+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ATitanomis+sisyrota+483993774.jpg&maxlag=5",
+  "record": {
+    "page_id": 197081368,
+    "revision_id": 1265787242,
+    "file_title": "File:Titanomis sisyrota 483993774.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Titanomis_sisyrota_483993774.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "ff8a96dc27bc9bc05ca96b181bedafbe84f771ff",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Titanomis_sisyrota_483993774.jpg/960px-Titanomis_sisyrota_483993774.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Titanomis sisyrota 483993774",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Frosted Phoenix (<i>Titanomis sisyrota</i>), Pureora Forest Park, New Zealand",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/560198\">Carey_Knox_Southern_Scales</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/483993774\">https://www.inaturalist.org/photos/483993774</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

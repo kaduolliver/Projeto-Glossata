@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:31:03.875173+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AV03-20130606-063+%289250543631%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 64565162,
+    "revision_id": 952462185,
+    "file_title": "File:V03-20130606-063 (9250543631).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/V03-20130606-063_%289250543631%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "21e1e96726027c297b1850b550b206c411d8f3bf",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/V03-20130606-063_%289250543631%29.jpg/960px-V03-20130606-063_%289250543631%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "V03-20130606-063 (9250543631)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "[ 科名 : Brahmaeidae 籮紋蛾科 ] ; [ 屬名 : Brahmaea ] ; [ 學名: Brahmaea wallichii insulata ] ; [ 中名: 枯球籮紋蛾/枯球籮紋蛾;水蠟蛾 ] [參考資料 : 認識台灣的昆蟲 10 蘿紋娥科 帶蛾科 大鈎蛾科 鈎蛾科 舟蛾科 ; Page : 5 ]",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/44837798@N00\">Hsu Hong Lin</a> from 南投縣集集鎮, 中華民國",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/hsuhong/9250543631/\">V03-20130606-063</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

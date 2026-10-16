@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:33:02.812118+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AChilicothe+At+Top+of+Hill.jpg&maxlag=5",
+  "record": {
+    "page_id": 146365441,
+    "revision_id": 1123332546,
+    "file_title": "File:Chilicothe At Top of Hill.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/Chilicothe_At_Top_of_Hill.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "92be7ee2fb0963ec8c5a09250852f50918bd4ffc",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Chilicothe_At_Top_of_Hill.jpg/960px-Chilicothe_At_Top_of_Hill.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Chilicothe At Top of Hill",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Chilicothe (Marah macrocarpa) seen at the top of a hill in Iodine Springs Reserve, Wildomar, California",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:WikiLink\" href=\"https://commons.wikimedia.org/wiki/User:Z3lvs\" title=\"User:Z3lvs\">Z3lvs</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:03.144531+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ANereocystis+luetkeana1.jpg&maxlag=5",
+  "record": {
+    "page_id": 84217895,
+    "revision_id": 1040725722,
+    "file_title": "File:Nereocystis luetkeana1.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/59/Nereocystis_luetkeana1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "79f071797af95ed57903d984ade4cdc1e30825c3",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Nereocystis_luetkeana1.jpg/960px-Nereocystis_luetkeana1.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Nereocystis luetkeana1",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Nereocystis luetkeana at Caspar Point, California",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Chris Teague",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/observations/8039021\" class=\"external free\">https://www.inaturalist.org/observations/8039021</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

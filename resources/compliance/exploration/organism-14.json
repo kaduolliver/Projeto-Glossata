@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:31:11.432518+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APolyphemus+Moth+Durham+NC.jpg&maxlag=5",
+  "record": {
+    "page_id": 98161279,
+    "revision_id": 1072358426,
+    "file_title": "File:Polyphemus Moth Durham NC.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Polyphemus_Moth_Durham_NC.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "6c4393c34eb43f29ea58a0c4edc387ff604d73a5",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Polyphemus_Moth_Durham_NC.jpg/500px-Polyphemus_Moth_Durham_NC.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Polyphemus Moth Durham NC",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Polyphemus Moth (Antheraea polyphemus) in Durham, North Carolina",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:NCBioTeacher\" title=\"User:NCBioTeacher\">NCBioTeacher</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:39:59.503621+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ATrypanosoma+brucei+brucei+SEM.jpg&maxlag=5",
+  "record": {
+    "page_id": 201229506,
+    "revision_id": 1284150886,
+    "file_title": "File:Trypanosoma brucei brucei SEM.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Trypanosoma_brucei_brucei_SEM.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "9f72d9764350c965c979762c805dcd47568bbbd5",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Trypanosoma_brucei_brucei_SEM.jpg/960px-Trypanosoma_brucei_brucei_SEM.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Trypanosoma brucei brucei SEM",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Original caption:\nLife cycle of sleeping sickness causing parasite This is a high power scanning electron micrograph (SEM) of a Trypanosoma brucei brucei parasite. This appears to be a long-slender or intermediate bloodstream trypomastigote. Note the undulating membrane and the short, free flagellum that is emerging from the flagellar pocket. The morphology of intermediate forms represents a partial change from long-slender to short-stumpy forms.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Sue Vaughan",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://wellcomecollection.org/works/t5y24wrt\">https://wellcomecollection.org/works/t5y24wrt</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

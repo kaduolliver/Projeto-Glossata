@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:22.515468+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APlodia+interpunctella+FV4.jpg&maxlag=5",
+  "record": {
+    "page_id": 180692832,
+    "revision_id": 1142362284,
+    "file_title": "File:Plodia interpunctella FV4.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Plodia_interpunctella_FV4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "a60d94edd400aba05f12970293037136c415de35",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Plodia_interpunctella_FV4.jpg/960px-Plodia_interpunctella_FV4.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Plodia interpunctella FV4",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Plodia interpunctella adult",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Fvukajlovic&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Fvukajlovic (page does not exist)\">Fvukajlovic</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

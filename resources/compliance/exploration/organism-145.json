@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:40:00.723776+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AFeather+Boa+%286118563035%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 33880806,
+    "revision_id": 1250221464,
+    "file_title": "File:Feather Boa (6118563035).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Feather_Boa_%286118563035%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "c8c5bac2f774d39726540214122c2db8640b1c5c",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Feather_Boa_%286118563035%29.jpg/960px-Feather_Boa_%286118563035%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Feather Boa (6118563035)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Feather boa seaweed. The fringe and balls are edible. (The balls are \"sea olives\" for their shape and salty-savoriness.)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/38559542@N02\">Leslie Seaton</a> from Seattle, WA, USA",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/lacatholique/6118563035/\">Feather Boa</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

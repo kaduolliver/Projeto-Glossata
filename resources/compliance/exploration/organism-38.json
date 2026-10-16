@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:53.474364+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAnt-mimicking+Treehopper.jpg&maxlag=5",
+  "record": {
+    "page_id": 76152543,
+    "revision_id": 1035642572,
+    "file_title": "File:Ant-mimicking Treehopper.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Ant-mimicking_Treehopper.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "1f2c504b2615f403d0ab2d7a20b03c3f98974f82",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Ant-mimicking_Treehopper.jpg/960px-Ant-mimicking_Treehopper.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Ant-mimicking Treehopper",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Cyphonia clavata</i>. La Fortuna de San Carlos, Provincia de Alajuela, Costa Rica.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Katja Schulz",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/treegrow/31354720632/\">https://www.flickr.com/photos/treegrow/31354720632/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

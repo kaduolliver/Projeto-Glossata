@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:45.850543+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3APavo+Real+Venezolano.jpg&maxlag=5",
+  "record": {
+    "page_id": 22660590,
+    "revision_id": 1284342662,
+    "file_title": "File:Pavo Real Venezolano.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Pavo_Real_Venezolano.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "a9fa92d44b0784ee2fa1e41fbe1814e7489a31eb",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Pavo_Real_Venezolano.jpg/960px-Pavo_Real_Venezolano.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Pavo Real Venezolano",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i><a href=\"https://en.wikipedia.org/wiki/Indian_peafowl\" class=\"extiw\" title=\"en:Indian peafowl\">Pavo cristatus</a></i> from <a href=\"https://en.wikipedia.org/wiki/Venezuela\" class=\"extiw\" title=\"en:Venezuela\">Venezuela</a>.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Wilfredor\" class=\"mw-redirect\" title=\"User:Wilfredor\">Wilfredor</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span><div><figure class=\"mw-halign-left\" typeof=\"mw:File\"><span><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Commons_Archive_icon.svg/40px-Commons_Archive_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"40\" height=\"49\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Commons_Archive_icon.svg/120px-Commons_Archive_icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"44\" data-file-height=\"54\"></span><figcaption></figcaption></figure>\n<p>Source materials for this file are available from Commons Archive:<br>\n<a rel=\"nofollow\" class=\"external free\" href=\"https://archive.org/details/wiki-commonsarchive\">https://archive.org/details/wiki-commonsarchive</a>\n</p>\n</div>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

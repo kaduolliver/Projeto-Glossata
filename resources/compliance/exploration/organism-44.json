@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:56.396360+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ADictyanthus+pavonii+-+Ana+Nu%C3%B1o+-+578665461.jpeg&maxlag=5",
+  "record": {
+    "page_id": 176542149,
+    "revision_id": 1099230661,
+    "file_title": "File:Dictyanthus pavonii - Ana Nuño - 578665461.jpeg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Dictyanthus_pavonii_-_Ana_Nu%C3%B1o_-_578665461.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "ff39b373e93d905c25f1ba36ffdc59d72de47776",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Dictyanthus_pavonii_-_Ana_Nu%C3%B1o_-_578665461.jpeg/500px-Dictyanthus_pavonii_-_Ana_Nu%C3%B1o_-_578665461.jpeg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Dictyanthus pavonii - Ana Nuño - 578665461",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Dictyanthus pavonii, 48700 El Limón, Jal., México, 2025-10-10 (iNaturalist).",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/4167560\">Ana Nuño</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/578665461\">https://www.inaturalist.org/photos/578665461</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

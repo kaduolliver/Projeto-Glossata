@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:37.002871+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3A20120731Verbascum+thapsus.jpg&maxlag=5",
+  "record": {
+    "page_id": 20485374,
+    "revision_id": 1147519189,
+    "file_title": "File:20120731Verbascum thapsus.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/79/20120731Verbascum_thapsus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "d8e282348de4f0a79b08ddf0beb7bb463a0efea9",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/20120731Verbascum_thapsus.jpg/500px-20120731Verbascum_thapsus.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "20120731Verbascum thapsus",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Königskerze (<i>Verbascum thapsus</i>) bei Oftersheim",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:WikiLink\" href=\"https://commons.wikimedia.org/wiki/User:AnRo0002\" title=\"User:AnRo0002\">AnRo0002</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:28.418830+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AViburnum+opulus+212658372.jpg&maxlag=5",
+  "record": {
+    "page_id": 120266408,
+    "revision_id": 1035822216,
+    "file_title": "File:Viburnum opulus 212658372.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Viburnum_opulus_212658372.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "e9fca860ab17dd78d90868b9180799ff39e9f5f8",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Viburnum_opulus_212658372.jpg/500px-Viburnum_opulus_212658372.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Viburnum opulus 212658372",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "guelder-rose (<i>Viburnum opulus</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/users/3031398\" class=\"external text\">Татьяна Горбушина</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/212658372\" class=\"external free\">https://www.inaturalist.org/photos/212658372</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

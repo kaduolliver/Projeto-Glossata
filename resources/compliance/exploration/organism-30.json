@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:44.003311+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AXenocnema+spinipes+dorsal.jpg&maxlag=5",
+  "record": {
+    "page_id": 52591368,
+    "revision_id": 1269725370,
+    "file_title": "File:Xenocnema spinipes dorsal.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Xenocnema_spinipes_dorsal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "979f10851c31bd506a9c39eda38af03ca13e7680",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Xenocnema_spinipes_dorsal.jpg/330px-Xenocnema_spinipes_dorsal.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Xenocnema spinipes dorsal",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Dorsal view of a specimen of <i>Xenocnema spinipes</i> photographed by <a href=\"//commons.wikimedia.org/w/index.php?title=Landcare_Research&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"Landcare Research (page does not exist)\">Landcare Research New Zealand Ltd</a>. <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"//commons.wikimedia.org/wiki/File:Xenocnema_spinipes_dorsal.jpg#ooui-php-4\" title=\"Edit this at Structured Data on Commons\"><img alt=\"Edit this at Structured Data on Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"https://en.wikipedia.org/wiki/en:Manaaki_Whenua_%E2%80%93_Landcare_Research\" class=\"extiw\" title=\"w:en:Manaaki Whenua – Landcare Research\"><span title=\"New Zealand research institute (1992–2025)\">Manaaki Whenua – Landcare Research</span></a> <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"//commons.wikimedia.org/wiki/File:Xenocnema_spinipes_dorsal.jpg#P170\" title=\"Edit this at Structured Data on Commons\"><img alt=\"Edit this at Structured Data on Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"http://www.landcareresearch.co.nz/science/plants-animals-fungi/animals/invertebrates/systematics/weevils/weevil-list\">Manaaki Whenua – Landcare Research</a> <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"//commons.wikimedia.org/wiki/File:Xenocnema_spinipes_dorsal.jpg#P7482\" title=\"Edit this at Structured Data on Commons\"><img alt=\"Edit this at Structured Data on Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

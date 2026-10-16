@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:08.241854+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AArcyria+denudata+88769911.jpg&maxlag=5",
+  "record": {
+    "page_id": 96464160,
+    "revision_id": 1030980091,
+    "file_title": "File:Arcyria denudata 88769911.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/43/Arcyria_denudata_88769911.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "a30e77c18c1ed661f0dd10544d6af481176a5ef4",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Arcyria_denudata_88769911.jpg/960px-Arcyria_denudata_88769911.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Arcyria denudata 88769911",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "carnival candy slime mold (<i>Arcyria denudata</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/517807\">Yann Kemper</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/88769911\">https://www.inaturalist.org/photos/88769911</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

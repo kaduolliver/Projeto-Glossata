@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:20.282574+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AClose+Wing+nectaring+position+of+Pieris+brassicae+%28Linnaeus%2C+1758%29+-+Large+Cabbage+White+WLB+DSC+5316.jpg&maxlag=5",
+  "record": {
+    "page_id": 150275939,
+    "revision_id": 1192349659,
+    "file_title": "File:Close Wing nectaring position of Pieris brassicae (Linnaeus, 1758) - Large Cabbage White WLB DSC 5316.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Close_Wing_nectaring_position_of_Pieris_brassicae_%28Linnaeus%2C_1758%29_-_Large_Cabbage_White_WLB_DSC_5316.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "1e3f47269cc52051c25b06c1aeadffcfe8528a6b",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Close_Wing_nectaring_position_of_Pieris_brassicae_%28Linnaeus%2C_1758%29_-_Large_Cabbage_White_WLB_DSC_5316.jpg/960px-Close_Wing_nectaring_position_of_Pieris_brassicae_%28Linnaeus%2C_1758%29_-_Large_Cabbage_White_WLB_DSC_5316.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Close Wing nectaring position of Pieris brassicae (Linnaeus, 1758) - Large Cabbage White WLB DSC 5316",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Close Wing of Pieris brassicae (Linnaeus, 1758) - Large Cabbage White",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Lorensonowal\" title=\"User:Lorensonowal\">Lorensonowal</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

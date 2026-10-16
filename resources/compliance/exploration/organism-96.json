@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:14.030233+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ALeocarpus+fragilis+32748599.jpg&maxlag=5",
+  "record": {
+    "page_id": 97224968,
+    "revision_id": 1029671510,
+    "file_title": "File:Leocarpus fragilis 32748599.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Leocarpus_fragilis_32748599.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "e62f7712fca8a41295c9e15cca605235511dd211",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Leocarpus_fragilis_32748599.jpg/960px-Leocarpus_fragilis_32748599.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Leocarpus fragilis 32748599",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "insect-egg slime (<i>Leocarpus fragilis</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/851163\">garmonb0zia</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/32748599\">https://www.inaturalist.org/photos/32748599</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:31:04.752694+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ALife+Hanging+by+a+Thread+%2848039559871%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 83121735,
+    "revision_id": 1091602731,
+    "file_title": "File:Life Hanging by a Thread (48039559871).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Life_Hanging_by_a_Thread_%2848039559871%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "32d0125c2c206595e61103f4f7099acf2ae4a113",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/61/Life_Hanging_by_a_Thread_%2848039559871%29.jpg/500px-Life_Hanging_by_a_Thread_%2848039559871%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Life Hanging by a Thread (48039559871)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "This caterpillar of a gypsy moth (Lymantria dispar) is hanging from an oak tree at Valun on the Island of Cres, Croatia.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/people/44296132@N06\" class=\"external text\">Bernd Thaller</a> from Graz, Austria",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/photos/bernd_thaller/48039559871/\" class=\"external text\">Life Hanging by a Thread</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

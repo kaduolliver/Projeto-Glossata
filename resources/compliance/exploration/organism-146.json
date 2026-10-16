@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:56:22.674088+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AColonie+de+dictyote+%28Dictyota+dichotoma%29+dans+un+r%C3%A9cif+artificiel+%28Ifremer+00700-81255+-+33536%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 160405556,
+    "revision_id": 1139204455,
+    "file_title": "File:Colonie de dictyote (Dictyota dichotoma) dans un récif artificiel (Ifremer 00700-81255 - 33536).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Colonie_de_dictyote_%28Dictyota_dichotoma%29_dans_un_r%C3%A9cif_artificiel_%28Ifremer_00700-81255_-_33536%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "5a42c5a3c3fc527a3b64b419d5932ac3961540cc",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Colonie_de_dictyote_%28Dictyota_dichotoma%29_dans_un_r%C3%A9cif_artificiel_%28Ifremer_00700-81255_-_33536%29.jpg/960px-Colonie_de_dictyote_%28Dictyota_dichotoma%29_dans_un_r%C3%A9cif_artificiel_%28Ifremer_00700-81255_-_33536%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Colonie de dictyote (Dictyota dichotoma) dans un récif artificiel (Ifremer 00700-81255 - 33536)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "This brown algae <em>Dictyota dichotoma</em> , which can reach 10 to 25 cm in length (max. 50 cm), grows like all algae, by absorbing the mineral salts contained in the water through the process of photosynthesis.</p><p> The thallus is flattened into strips and the branching is dichotome: the branches are of the same length. Its color varies from brown to green and is characterized by a blue iridescence during its vegetative growth phase, visible only underwater.</p><p class=\"mw-empty-elt\"></p><p> The colony was photographed in the artificial reefs of the port of La Seyne-sur-Mer.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Olivier Dugornay",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://image.ifremer.fr/data/00700/81255\">Colonie de dictyote (Dictyota dichotoma) dans un récif artificiel</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

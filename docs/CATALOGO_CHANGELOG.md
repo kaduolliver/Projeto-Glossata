@@ -2,6 +2,15 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
+## [2.2.0] — Não lançado; cobertura fotográfica auditada
+
+Aplicativo previsto: **1.5.0**. Acréscimo MINOR compatível de imagens de apresentação e metadados, sem migração do histórico de jogadores.
+
+- 98 imagens de apresentação CC0/CC BY por arquivo, incluindo as oito anteriores em resolução maior. Coleta, autor indicado, licença/versão/URL, origem/revisão, SHA-256 e evidência mínima preservados; créditos e inventário regenerados. Nenhuma licença presumida ou aprovação humana nova.
+- 622 grupos e cartão misto auditados: 503 grupos e misto com foto; 119 grupos com motivo, representantes consultados e recibos de consulta. Micrografia de Trypanosoma representa Discoba vazio sem criar espécie jogável; ramos específicos só recebem descendentes compatíveis ou escopo externo explícito.
+- Manifesto fotográfico v2 acrescenta pendências, pontos focais e triagem de IA; registros antigos continuam legíveis. Notas registram resultados inadequados, incluindo o homônimo coral/alga Turbinaria ornata e descrição incompatível para Hassallia byssoidea.
+- `species.json`, `taxonomy.json`, revisões científicas, educação/dicas, regras e todas as 120 fotos de quiz não mudam. Hash do catálogo se altera pelas mídias e evidências de apresentação. A expansão não resolve pendências legadas de direitos e revisão científica.
+
 ## [2.1.0] — Não lançado; fotografias de exploração
 
 Aplicativo previsto: **1.3.0**; reutilizado pelo **1.4.0** sem mudança dos dados/revisões/mídias publicados. O fluxo de múltiplos provedores do 1.4.0 produz somente candidatos fora do bundle, sem incrementar a versão ou alterar o hash deste catálogo. Acréscimo MINOR compatível de recursos de apresentação e proveniência no 2.1.0; sem publicação.

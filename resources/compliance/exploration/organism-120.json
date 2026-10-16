@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:38:30.345212+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAchromatium+oxaliferum+-+Bact%C3%A9ries.jpg&maxlag=5",
+  "record": {
+    "page_id": 139183904,
+    "revision_id": 1005043273,
+    "file_title": "File:Achromatium oxaliferum - Bactéries.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Achromatium_oxaliferum_-_Bact%C3%A9ries.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "7db8180ac9394ca3ab77b222caffd692c06e642e",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Achromatium_oxaliferum_-_Bact%C3%A9ries.jpg/960px-Achromatium_oxaliferum_-_Bact%C3%A9ries.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Achromatium oxaliferum - Bactéries",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Achromatium oxaliferum.  The largest known aquatic bacteria.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Philippe Garcelon",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/photos/78178083@N05/49813514263/\" class=\"external free\">https://www.flickr.com/photos/78178083@N05/49813514263/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

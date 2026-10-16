@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:18.312225+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAglais+io+ssp.+io.jpg&maxlag=5",
+  "record": {
+    "page_id": 115232627,
+    "revision_id": 1040000528,
+    "file_title": "File:Aglais io ssp. io.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Aglais_io_ssp._io.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "4d73536846db0a35c2b70e8b7f2854c97dfd8529",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Aglais_io_ssp._io.jpg/960px-Aglais_io_ssp._io.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Aglais io ssp. io",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Aglais io ssp. io. Subspecies of insect.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "Oleg Kosterin",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/135018481\" class=\"external free\">https://www.inaturalist.org/photos/135018481</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

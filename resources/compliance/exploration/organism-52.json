@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:27.219941+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAsterella+drummondii+-+Flickr+-+Kevin+Thiele.jpg&maxlag=5",
+  "record": {
+    "page_id": 63460516,
+    "revision_id": 1067177457,
+    "file_title": "File:Asterella drummondii - Flickr - Kevin Thiele.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Asterella_drummondii_-_Flickr_-_Kevin_Thiele.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "96224ff48f2bbe0229a9461dc1319cdcf958c34e",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Asterella_drummondii_-_Flickr_-_Kevin_Thiele.jpg/500px-Asterella_drummondii_-_Flickr_-_Kevin_Thiele.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Asterella drummondii - Flickr - Kevin Thiele",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "KRT3677",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/66951228@N07\">Kevin Thiele</a> from Perth, Australia",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/66951228@N07/6279644969/\">Asterella drummondii</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

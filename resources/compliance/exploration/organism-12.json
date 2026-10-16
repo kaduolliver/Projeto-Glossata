@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:31:09.261171+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ACecropia+Moth+Austin+TX.jpg&maxlag=5",
+  "record": {
+    "page_id": 98161957,
+    "revision_id": 852102396,
+    "file_title": "File:Cecropia Moth Austin TX.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Cecropia_Moth_Austin_TX.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "520b626e0039990ce8ab9683c98215fec3f75d38",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Cecropia_Moth_Austin_TX.jpg/500px-Cecropia_Moth_Austin_TX.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Cecropia Moth Austin TX",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Cecropia Moth (Hyalophora cecropia) at the Lady Bird Johnson Wildflower Center in Austin, Texas",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:NCBioTeacher\" title=\"User:NCBioTeacher\">NCBioTeacher</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

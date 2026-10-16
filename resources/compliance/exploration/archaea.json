@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "origin": "live_commons_file_metadata",
-  "collected_at": "2026-10-16T02:00:38.586560+00:00",
-  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=320&titles=File%3AFmicb-07-01902-g001-v1.jpg",
+  "collected_at": "2026-10-16T03:38:21.540127+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AFmicb-07-01902-g001-v1.jpg&maxlag=5",
   "record": {
     "page_id": 170145845,
     "revision_id": 1141249742,
     "file_title": "File:Fmicb-07-01902-g001-v1.jpg",
     "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Fmicb-07-01902-g001-v1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "original_sha1": "3e058a1bcc2f302873e18d0a006458b47e8e41f7",
-    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Fmicb-07-01902-g001-v1.jpg/330px-Fmicb-07-01902-g001-v1.jpg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Fmicb-07-01902-g001-v1.jpg",
     "metadata": {
       "ObjectName": {
         "value": "Fmicb-07-01902-g001-v1",

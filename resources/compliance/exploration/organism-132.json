@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:45:45.789981+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo%7Ccategories&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AThree+Zebras.jpg&maxlag=5&clcategories=Category%3AUnidentified+Equus+quagga+subspecies",
+  "record": {
+    "page_id": 73765654,
+    "revision_id": 1047726355,
+    "file_title": "File:Three Zebras.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Three_Zebras.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "e0611bb24cd6e9074623e7669cd360e3b869895d",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Three_Zebras.jpg/960px-Three_Zebras.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Three Zebras",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Three zebras seen on safari.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "safaritravelplus",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.safaritravelplus.com/images/wildlife/three-zebras/\">https://www.safaritravelplus.com/images/wildlife/three-zebras/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    },
+    "identification_category": "Category:Unidentified Equus quagga subspecies"
+  }
+}

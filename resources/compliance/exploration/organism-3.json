@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:43:03.134720+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AAcherontia+atropos+caterpillar+Tuscany+2.jpg&maxlag=5",
+  "record": {
+    "page_id": 82456774,
+    "revision_id": 781193922,
+    "file_title": "File:Acherontia atropos caterpillar Tuscany 2.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/78/Acherontia_atropos_caterpillar_Tuscany_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "48bed6cc467271f61a749e1d459578a6855c73c9",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Acherontia_atropos_caterpillar_Tuscany_2.jpg/960px-Acherontia_atropos_caterpillar_Tuscany_2.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Acherontia atropos caterpillar Tuscany 2",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "<i>Acherontia atropos</i> caterpillar near Florence, Italy",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/User:Pegasovagante\" title=\"User:Pegasovagante\">Pegasovagante</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

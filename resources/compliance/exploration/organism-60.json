@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:35.986642+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AHuperzia+lucidula+589947366.jpg&maxlag=5",
+  "record": {
+    "page_id": 179962186,
+    "revision_id": 1175095593,
+    "file_title": "File:Huperzia lucidula 589947366.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Huperzia_lucidula_589947366.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "1aba46c065c390827be1aca5962ead2778d0c0d8",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Huperzia_lucidula_589947366.jpg/960px-Huperzia_lucidula_589947366.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Huperzia lucidula 589947366",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Shining firmoss (<i>Huperzia lucidula</i>) in the United States",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/users/434305\" class=\"external text\">Alex Abair</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/589947366\" class=\"external free\">https://www.inaturalist.org/photos/589947366</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

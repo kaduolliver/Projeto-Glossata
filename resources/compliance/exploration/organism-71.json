@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:46.770071+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AMarasmius+haematocephalus+109095575.jpg&maxlag=5",
+  "record": {
+    "page_id": 110413601,
+    "revision_id": 1134534539,
+    "file_title": "File:Marasmius haematocephalus 109095575.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Marasmius_haematocephalus_109095575.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "9b05ad728cd6d4173196510a9f90da3357493b7d",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Marasmius_haematocephalus_109095575.jpg/960px-Marasmius_haematocephalus_109095575.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Marasmius haematocephalus 109095575",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "purple pinwheel (<i>Marasmius haematocephalus</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/67590\">Wynand Uys</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/109095575\">https://www.inaturalist.org/photos/109095575</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

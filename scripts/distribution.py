@@ -157,7 +157,7 @@ def export_local(root, package, prefix):
     for name in ('PHOTO_CREDITS.md', 'CONFORMIDADE.md', 'REPORTAR_PROBLEMA.md', 'DIREITOS_E_LICENCAS.md',
                  'RELATORIO_CONFORMIDADE.md', 'CATALOGO_CHANGELOG.md', 'VERSIONAMENTO.md',
                  'DICAS_E_PONTUACAO.md', 'AUDITORIA_ASSISTENCIA.json', 'CLASSIFICACAO_FILOGENETICA.md', 'AUDITORIA_FILOGENETICA.json', 'EXPLORACAO_E_FOTOGRAFIAS.md',
-                 'PROVEDORES_CIENTIFICOS.md', 'VALIDACAO_PROVEDORES.json'):
+                 'PROVEDORES_CIENTIFICOS.md', 'VALIDACAO_PROVEDORES.json', 'AUDITORIA_FOTOGRAFIAS.json'):
         source = root / 'docs' / name
         if source.is_file(): shutil.copy2(source, destination / name)
     for name in ('credits.json', 'photo_provenance.json', 'content_policy.json', 'exploration_photos.json'):

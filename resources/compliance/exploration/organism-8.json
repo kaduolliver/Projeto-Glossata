@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:31:05.828632+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3A20220709+Vanessa+cardui+05.jpg&maxlag=5",
+  "record": {
+    "page_id": 159829163,
+    "revision_id": 1180416134,
+    "file_title": "File:20220709 Vanessa cardui 05.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2b/20220709_Vanessa_cardui_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "7b600ac76a85cfa1c66ea0a92175d56706d7d3b2",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/20220709_Vanessa_cardui_05.jpg/960px-20220709_Vanessa_cardui_05.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "20220709 Vanessa cardui 05",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "A Painted Lady (<i>Vanessa cardui</i>) in the protected landscape area Freisinger Moos und Echinger Gfild.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:WikiLink\" href=\"https://commons.wikimedia.org/wiki/User:FlocciNivis\" title=\"User:FlocciNivis\">Flocci Nivis</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

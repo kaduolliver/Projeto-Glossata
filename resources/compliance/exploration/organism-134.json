@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:32.800202+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AVenus+flytrap+%28Dionaea+muscipula%29+Zagreb+Botanical+Garden+1060.jpg&maxlag=5",
+  "record": {
+    "page_id": 158279706,
+    "revision_id": 1215931020,
+    "file_title": "File:Venus flytrap (Dionaea muscipula) Zagreb Botanical Garden 1060.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Venus_flytrap_%28Dionaea_muscipula%29_Zagreb_Botanical_Garden_1060.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "508dc8b25498489c74571e182266f1a2ee10e669",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Venus_flytrap_%28Dionaea_muscipula%29_Zagreb_Botanical_Garden_1060.jpg/960px-Venus_flytrap_%28Dionaea_muscipula%29_Zagreb_Botanical_Garden_1060.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Venus flytrap (Dionaea muscipula) Zagreb Botanical Garden 1060",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Venus flytrap (Dionaea muscipula) Zagreb Botanical Garden",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:ImagePerson&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:ImagePerson (page does not exist)\">ImagePerson</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:43:07.688176+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ABladder+wrack+in+Norrkila.jpg&maxlag=5",
+  "record": {
+    "page_id": 75492700,
+    "revision_id": 1087943868,
+    "file_title": "File:Bladder wrack in Norrkila.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Bladder_wrack_in_Norrkila.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "9d341590e554dabbe5d1036feb83d52c9c535f52",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Bladder_wrack_in_Norrkila.jpg/960px-Bladder_wrack_in_Norrkila.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Bladder wrack in Norrkila",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Algae, mostly bladder wrack (<i>Fucus vesiculosus</i>) at the shore of Brofjorden In Norrkila, Lysekil Municipality, Sweden.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:WikiLink\" href=\"https://commons.wikimedia.org/wiki/User:W.carter\" title=\"User:W.carter\">W.carter</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

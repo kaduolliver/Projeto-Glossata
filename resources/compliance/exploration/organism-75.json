@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:51.043923+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ACortinarius+archeri+329630714.jpg&maxlag=5",
+  "record": {
+    "page_id": 139334453,
+    "revision_id": 1038827432,
+    "file_title": "File:Cortinarius archeri 329630714.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Cortinarius_archeri_329630714.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "108b6679147ad44d0b63d44962a346b0934e5461",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Cortinarius_archeri_329630714.jpg/500px-Cortinarius_archeri_329630714.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Cortinarius archeri 329630714",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Emperor Cortinar (<i>Cortinarius archeri</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/2402493\">Ashleigh Robbins</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/329630714\">https://www.inaturalist.org/photos/329630714</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

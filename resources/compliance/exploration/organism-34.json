@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:32:48.593446+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ADicarnosis+erythrocephala%2C+Glendale%2C+AZ%2C+USA+imported+from+iNaturalist+photo+123931576.jpg&maxlag=5",
+  "record": {
+    "page_id": 165518936,
+    "revision_id": 1275313835,
+    "file_title": "File:Dicarnosis erythrocephala, Glendale, AZ, USA imported from iNaturalist photo 123931576.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Dicarnosis_erythrocephala%2C_Glendale%2C_AZ%2C_USA_imported_from_iNaturalist_photo_123931576.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "443a5f97deb8900188c0c07f9f4e08825c6add2b",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Dicarnosis_erythrocephala%2C_Glendale%2C_AZ%2C_USA_imported_from_iNaturalist_photo_123931576.jpg/960px-Dicarnosis_erythrocephala%2C_Glendale%2C_AZ%2C_USA_imported_from_iNaturalist_photo_123931576.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Dicarnosis erythrocephala, Glendale, AZ, USA imported from iNaturalist photo 123931576",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Photo of Dicarnosis erythrocephala (undefined) uploaded from <a rel=\"nofollow\" class=\"external text\" href=\"https://inaturalist.org\">iNaturalist</a>.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "(c) Jake Nitta, some rights reserved (CC BY)",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/123931576\">https://www.inaturalist.org/photos/123931576</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

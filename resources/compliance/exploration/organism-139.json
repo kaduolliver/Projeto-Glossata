@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:35:53.249841+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AGeastrum+triplex+56376181.jpg&maxlag=5",
+  "record": {
+    "page_id": 96381084,
+    "revision_id": 1268883634,
+    "file_title": "File:Geastrum triplex 56376181.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Geastrum_triplex_56376181.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "69bc38579cb91878639b745a907234efff620722",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Geastrum_triplex_56376181.jpg/500px-Geastrum_triplex_56376181.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Geastrum triplex 56376181",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Collared Earthstar (<i>Geastrum triplex</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/users/1760114\" class=\"external text\">Tobias Schönberg</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.inaturalist.org/photos/56376181\" class=\"external free\">https://www.inaturalist.org/photos/56376181</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

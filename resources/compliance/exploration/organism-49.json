@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:33:04.273982+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AMastigostyla+macbridei+-+Pa%C3%BAl+Gonz%C3%A1les+-+540416834.jpeg&maxlag=5",
+  "record": {
+    "page_id": 171191558,
+    "revision_id": 1287614961,
+    "file_title": "File:Mastigostyla macbridei - Paúl Gonzáles - 540416834.jpeg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Mastigostyla_macbridei_-_Pa%C3%BAl_Gonz%C3%A1les_-_540416834.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "57436af11e1477f072bbab988f4085f2772bcaaa",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Mastigostyla_macbridei_-_Pa%C3%BAl_Gonz%C3%A1les_-_540416834.jpeg/960px-Mastigostyla_macbridei_-_Pa%C3%BAl_Gonz%C3%A1les_-_540416834.jpeg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Mastigostyla macbridei - Paúl Gonzáles - 540416834",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Mastigostyla macbridei, Canta, Perú, 2018-04-07 (iNaturalist).",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/5070447\">Paúl Gonzáles</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/540416834\">https://www.inaturalist.org/photos/540416834</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

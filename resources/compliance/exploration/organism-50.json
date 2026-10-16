@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:33:05.120673+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ARegel%27s+tulip.jpg&maxlag=5",
+  "record": {
+    "page_id": 133131604,
+    "revision_id": 1168838601,
+    "file_title": "File:Regel's tulip.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Regel%27s_tulip.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "1a5f0635b0a5c4ee040c6453628e195857cf37b3",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Regel%27s_tulip.jpg/960px-Regel%27s_tulip.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Regel's tulip",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Tulipa regelii. Chu-Ili mountains, Kazakhstan, early april.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "chernoburko",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/153081734@N07/52278899679/\">https://www.flickr.com/photos/153081734@N07/52278899679/</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

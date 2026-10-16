@@ -670,18 +670,23 @@ void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
     // paths with intermediate ranks. Shortcuts neither reparent nor hide nodes.
     QStringList pending{"domain:Bacteria","domain:Archaea","domain:Eukaryota"};
     QSet<QString> visited;
+    QStringList withoutPresentation;
     while(!pending.isEmpty()) {
         const auto id=pending.takeFirst();
         QVERIFY(!visited.contains(id));visited.insert(id);
+        const auto photo=index.describe(id)["photo"].toMap();
+        if(photo.value("image").toString().isEmpty() && photo.value("pendingReason").toString().isEmpty())withoutPresentation.append(id);
         for(const auto &child:index.children(id))pending.append(child.toMap()["id"].toString());
     }
+    QVERIFY2(withoutPresentation.isEmpty(),qPrintable(withoutPresentation.join(", ")));
     const auto organisms=catalog.loadSpecies();
     QCOMPARE(organisms.size(),122);
     for(const auto &organism:organisms) {
         for(const auto &node:organism.taxonomy)QVERIFY(visited.contains(node.id));
         QCOMPARE(index.count(organism.taxonomy.last().id),1);
     }
-    QVERIFY(index.describe("clade:Discoba")["photo"].toMap().isEmpty());
+    const auto discoba=index.describe("clade:Discoba")["photo"].toMap();
+    QVERIFY(discoba.contains("image") || discoba.contains("pendingReason"));
     QVERIFY(!index.describe("domain:Archaea")["photo"].toMap().isEmpty());
     QCOMPARE(index.count("domain:Archaea"),0);
 }
@@ -697,6 +702,7 @@ void GameServiceTests::explorationPhotographsFailClosed()
     const auto lion=data["photos"].toObject()["lion"].toObject();
     QTemporaryDir directory;QVERIFY(directory.isValid());
     QDir().mkpath(directory.filePath("resources/data"));
+    QVERIFY(QFile::copy(":/resources/data/species.json",directory.filePath("resources/data/species.json")));
     for(const auto &key:{"path","evidence_path"}) {
         const QString path=lion[key].toString();
         QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
@@ -712,11 +718,18 @@ void GameServiceTests::explorationPhotographsFailClosed()
     JsonExplorationMediaCatalog valid(directory.path());
     QVERIFY(!valid.photoFor("clade:Opisthokonta").isEmpty());
     QVERIFY(valid.photoFor("domain:Bacteria").isEmpty());
+    auto invalidFocus=lion;invalidFocus["focus_x"]=1.1;QVERIFY(write(invalidFocus));
+    JsonExplorationMediaCatalog outside(directory.path());QVERIFY(outside.photoFor("clade:Opisthokonta").isEmpty());
+    auto invalidType=lion;invalidType["focus_x"]="left";QVERIFY(write(invalidType));
+    JsonExplorationMediaCatalog wrongType(directory.path());QVERIFY(wrongType.photoFor("clade:Opisthokonta").isEmpty());
     for(const auto &key:{"license_version","sha256","evidence_sha256","author","path"}) {
         auto invalid=lion;invalid[key]="invalid";QVERIFY(write(invalid));
         JsonExplorationMediaCatalog rejected(directory.path());
         QVERIFY2(rejected.photoFor("clade:Opisthokonta").isEmpty(),key);
     }
+    auto bindings=data["bindings"].toObject();bindings["domain:Bacteria"]="lion";data["bindings"]=bindings;
+    QVERIFY(write(lion));JsonExplorationMediaCatalog mismatched(directory.path());
+    QVERIFY(mismatched.photoFor("domain:Bacteria").isEmpty());
 }
 
 void GameServiceTests::newTaxonomicRanksRequireIndependentReview()

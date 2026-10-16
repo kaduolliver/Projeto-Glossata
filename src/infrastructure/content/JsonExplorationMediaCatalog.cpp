@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QImageReader>
 #include <QJsonDocument>
+#include <QJsonArray>
 #include <QJsonObject>
 #include <QRegularExpression>
 #include <QTextDocumentFragment>
@@ -46,16 +47,21 @@ QVariantMap verifiedPhoto(const QJsonObject &photo, const QString &root) {
         || photo["source_revision_id"]!=record["revision_id"] || photo["download_url"]!=record["download_url"]
         || photo["collected_at"]!=proof["collected_at"] || photo["author"].toString().isEmpty()
         || photo["subject"].toString().isEmpty() || photo["modifications"].toString().isEmpty()
-        || photo["author"].toString()!=QTextDocumentFragment::fromHtml(metadata["Artist"].toObject()["value"].toString()).toPlainText().simplified()) return {};
+        // Qt inserts U+FFFC for Commons' decorative edit icons; it is not author credit.
+        || photo["author"].toString()!=QTextDocumentFragment::fromHtml(metadata["Artist"].toObject()["value"].toString()).toPlainText().remove(QChar(0xfffc)).simplified()) return {};
     QImageReader reader(root+"/"+path);
     const QSize size=reader.size();
     if (!reader.canRead() || size!=QSize(photo["width"].toInt(),photo["height"].toInt())
         || qMin(size.width(),size.height())<160 || qMax(size.width(),size.height())>1024) return {};
+    for(const auto &key:{"focus_x","focus_y"})if(photo.contains(key) && !photo[key].isDouble())return {};
+    const double focusX=photo["focus_x"].toDouble(0.5),focusY=photo["focus_y"].toDouble(0.5);
+    if(focusX<0 || focusX>1 || focusY<0 || focusY>1)return {};
     return {{"image",root==":" ? "qrc:/"+path : QUrl::fromLocalFile(root+"/"+path).toString()},
         {"subject",photo["subject"].toString()}, {"author",photo["author"].toString()},
         {"license",license.toUpper()+" "+version}, {"licenseUrl",licenseUrl},
         {"photoUrl",photo["photo_url"].toString()}, {"kind",photo["kind"].toString()},
         {"identificationNote",photo["identification_note"].toString()},
+        {"focusX",focusX},{"focusY",focusY},
         {"modifications",photo["modifications"].toString()}};
 }
 }
@@ -69,8 +75,28 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
         if(!photo.isEmpty()) verified.insert(it.key(),photo);
     }
     const auto bindings=data["bindings"].toObject();
-    for(auto it=bindings.begin();it!=bindings.end();++it)
-        if(verified.contains(it.value().toString())) photos_.insert(it.key(),verified.value(it.value().toString()));
+    QHash<int,QJsonObject> organisms;
+    for(const auto &entry:QJsonDocument::fromJson(read(root+"/resources/data/species.json")).array()) {
+        const auto organism=entry.toObject();organisms.insert(organism["id"].toInt(),organism);
+    }
+    for(auto it=bindings.begin();it!=bindings.end();++it) {
+        const QString key=it.value().toString();
+        const auto photo=photos[key].toObject();
+        bool compatible=false;
+        if(photo.contains("catalog_species_id")) {
+            const auto organism=organisms.value(photo["catalog_species_id"].toInt());
+            compatible=organism["name"]==photo["subject"] && organism["taxonomy"].toArray().contains(it.key());
+        } else {
+            const auto scope=photo["scope"].toObject();
+            compatible=scope["taxon_ids"].toArray().contains(it.key()) && !scope["rationale"].toString().isEmpty()
+                && scope["evidence_url"]==photo["photo_url"];
+        }
+        if((it.key()=="domain:Bacteria" || it.key()=="domain:Archaea") && photo["kind"]!="micrograph")compatible=false;
+        if(compatible && verified.contains(key))photos_.insert(it.key(),verified.value(key));
+    }
+    const auto pending=data["pending"].toObject();
+    for(auto it=pending.begin();it!=pending.end();++it)
+        if(!photos_.contains(it.key()))photos_.insert(it.key(),{{"pendingReason",it.value().toObject()["reason"].toString()}});
     if(verified.contains(data["mixed_photo"].toString())) photos_.insert(QString(),verified.value(data["mixed_photo"].toString()));
 }
 

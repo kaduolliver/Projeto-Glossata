@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:38:23.512818+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AMacrocilix+maia+%28Leech%2C+1888%29+2+-+iNaturalist.jpg&maxlag=5",
+  "record": {
+    "page_id": 159713988,
+    "revision_id": 1185052347,
+    "file_title": "File:Macrocilix maia (Leech, 1888) 2 - iNaturalist.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Macrocilix_maia_%28Leech%2C_1888%29_2_-_iNaturalist.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "a62c3d0b6ee243b91d61a408ad2ea87b897ed6f6",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Macrocilix_maia_%28Leech%2C_1888%29_2_-_iNaturalist.jpg/960px-Macrocilix_maia_%28Leech%2C_1888%29_2_-_iNaturalist.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Macrocilix maia (Leech, 1888) 2 - iNaturalist",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "The oriental moth <i>Macrocilix maia</i> <small>(Leech, 1888)<a rel=\"nofollow\" class=\"external autonumber\" href=\"https://www.gbif.org/pt/species/1952175\">[1]</a></small> (Lepidoptera: Drepanidae). Photograph taken in Stephens Place, Frasers Hill, Malaysia (July 17, 2023).",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "dhfischer",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "Original <a rel=\"nofollow\" class=\"external text\" href=\"https://uk.inaturalist.org/photos/315875062\">image</a> filed on iNaturalist.org. The upper part of the photograph has been cropped to keep the predominantly uniform background.",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

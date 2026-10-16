@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:36:16.141009+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3ADurvillaea+antarctica+60014489.jpg&maxlag=5",
+  "record": {
+    "page_id": 86478608,
+    "revision_id": 1043505310,
+    "file_title": "File:Durvillaea antarctica 60014489.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Durvillaea_antarctica_60014489.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "e7a6c4ad8d492a5a3cd9da19fdd56bac0e0b474e",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Durvillaea_antarctica_60014489.jpg/960px-Durvillaea_antarctica_60014489.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "Durvillaea antarctica 60014489",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "New Zealand Bull Kelp (<i>Durvillaea antarctica</i>)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.inaturalist.org/users/57756\">John Barkla</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.inaturalist.org/photos/60014489\">https://www.inaturalist.org/photos/60014489</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 4.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/4.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

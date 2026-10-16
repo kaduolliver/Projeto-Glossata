@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-16T03:33:01.462287+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=640&iiurlheight=640&titles=File%3AE20161117-0001%E2%80%94Polypodium+glycyrrhiza%E2%80%94RPBG+%2831112849815%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 59287802,
+    "revision_id": 1031063136,
+    "file_title": "File:E20161117-0001—Polypodium glycyrrhiza—RPBG (31112849815).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/E20161117-0001%E2%80%94Polypodium_glycyrrhiza%E2%80%94RPBG_%2831112849815%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "fde95b6f3d761a30a6d1964889e794276ac40130",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/E20161117-0001%E2%80%94Polypodium_glycyrrhiza%E2%80%94RPBG_%2831112849815%29.jpg/500px-E20161117-0001%E2%80%94Polypodium_glycyrrhiza%E2%80%94RPBG_%2831112849815%29.jpg",
+    "metadata": {
+      "ObjectName": {
+        "value": "E20161117-0001—Polypodium glycyrrhiza—RPBG (31112849815)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Polypodium glycyrrhiza—licorice fern.  The roots have a strong licorice taste, which has led to this fern's use as a flavoring by all cultures that have come into contact with it.  Photographed at Regional Parks Botanic Garden located in Tilden Regional Park near Berkeley, CA",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/people/12303842@N00\" class=\"external text\">John Rusk</a> from Berkeley, CA, United States of America",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"mw:ExtLink nofollow\" href=\"https://www.flickr.com/photos/john_d_rusk/31112849815/\" class=\"external text\">E20161117-0001—Polypodium glycyrrhiza—RPBG</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}
