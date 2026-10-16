@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "notice": "Maintenance configuration; documented source terms are not human approval or permission to publish candidates.",
+  "providers": {
+    "gbif": {
+      "adapter": "scientific_sources.adapters:GbifProvider",
+      "capabilities": ["taxonomy", "discovery"],
+      "specialty": "Global checklist aggregation, scoped external IDs and descendant discovery; not independent confirmation of upstream sources.",
+      "options": {"dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"},
+      "documentation": "https://techdocs.gbif.org/en/openapi/v1/species",
+      "terms": "https://www.gbif.org/terms/data-user",
+      "licensing": "Read dataset license and citation from the registry API. Never transfer a dataset license to a photograph.",
+      "access": "Public read-only API, serial requests spaced by at least 1.1 seconds; bounded queries, cache, no occurrence or location endpoints.",
+      "priority": 1
+    },
+    "worms": {
+      "adapter": "scientific_sources.adapters:WormsProvider",
+      "capabilities": ["taxonomy"],
+      "specialty": "Marine nomenclature, accepted AphiaIDs, synonyms and source citations.",
+      "documentation": "https://www.marinespecies.org/rest/",
+      "terms": "https://www.marinespecies.org/about.php",
+      "licensing": "CC BY text with individual exceptions; version is not inferred. Images default to NC-SA and are not imported. Whole-database redistribution requires prior agreement.",
+      "access": "Small exact-name lookups and accepted-ID resolution only; no full-database replica or gallery downloads.",
+      "priority": 1
+    },
+    "col": {
+      "adapter": "scientific_sources.adapters:ColProvider",
+      "capabilities": ["taxonomy"],
+      "options": {"dataset": "316165"},
+      "specialty": "Versioned global checklist, original-source links, identifiers and differing classifications.",
+      "documentation": "https://www.catalogueoflife.org/tools/api",
+      "terms": "https://www.catalogueoflife.org/data/metadata",
+      "licensing": "Read release metadata. The value 'cc by' without a version remains incomplete. XR combines automated additions and upstream sources; it is not an independent expert review of each result.",
+      "access": "Public ChecklistBank lookup; pin release key, DOI and version. Dataset 316165 is the tested August 2026 XR snapshot, not a rolling latest release. Custom downloads can require an account.",
+      "priority": 1
+    },
+    "commons": {
+      "adapter": "scientific_sources.adapters:CommonsProvider",
+      "capabilities": ["media", "media_lookup"],
+      "specialty": "Candidate media with file-specific author and license evidence; search does not establish organism identity or photographic authenticity.",
+      "documentation": "https://www.mediawiki.org/wiki/API:Imageinfo",
+      "terms": "https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia",
+      "access_terms": "https://www.mediawiki.org/wiki/API:Etiquette",
+      "licensing": "Reuse exploration_media.license_from: CC0 or CC BY with a verifiable version/URL, author credit and no restrictions. No image bytes are downloaded by candidate discovery.",
+      "access": "Serial API requests, maxlag=5, descriptive User-Agent, no retry on 429.",
+      "priority": 1
+    },
+    "ncbi": {
+      "adapter": null,
+      "capabilities": [],
+      "specialty": "TaxIDs, names and sequence-associated taxonomy, particularly microbes and Archaea; not a universal nomenclatural authority.",
+      "documentation": "https://www.ncbi.nlm.nih.gov/books/NBK25497/",
+      "terms": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+      "plan": "Next adapter: ESearch/EFetch or Datasets API, preserve TaxID, synonyms versus in-part/equivalent names and unranked lineage. Require maintainer contact/tool configuration and display NCBI disclaimer. Retain old IDs/merged/deleted states; no sequences or personal data.",
+      "licensing": "No blanket CC0 assumption. Government and third-party material have different conditions. Record record-specific rights and consult copyright disclaimer before offline incorporation.",
+      "access": "E-utilities <=3 requests/second without a key; this project defaults to <=1/1.1 seconds. No contact address invented; large jobs subject to NCBI scheduling guidance.",
+      "priority": 2
+    },
+    "lpsn": {
+      "adapter": null,
+      "capabilities": [],
+      "specialty": "Prokaryotic nomenclature and standing under the relevant nomenclatural code; separate from genome phylogeny.",
+      "documentation": "https://api.lpsn.dsmz.de/",
+      "terms": "https://lpsn.dsmz.de/text/copyright",
+      "plan": "Official API or permitted downloads after access configuration; preserve name status, type strain references and citation. Never scrape taxon HTML pages automatically.",
+      "licensing": "CC BY-SA 4.0; attribution, specific-page links and access date required. Decide/document share-alike treatment or obtain compatible permission before offline redistribution.",
+      "priority": 2
+    },
+    "powo": {
+      "adapter": null,
+      "capabilities": [],
+      "specialty": "Plant names, IPNI identifiers, accepted names and botanical distribution evidence.",
+      "documentation": "https://powo.science.kew.org/",
+      "terms": "https://www.kew.org/science/collections-and-resources/data-and-digital/terms-of-use",
+      "plan": "Confirm a supported API or official versioned WCVP dataset and automated-access terms. Preserve IPNI LSIDs and original links. Distribution, text and media require separate rights and evidence.",
+      "licensing": "Use the individual dataset metadata; Kew site terms and image credits are not a universal license for descriptions or photographs.",
+      "priority": 2
+    },
+    "mycobank": {
+      "adapter": null,
+      "capabilities": [],
+      "specialty": "Fungal nomenclatural identifiers, original publications and name registration; registration does not by itself establish a phylogenetic position.",
+      "documentation": "https://www.mycobank.org/",
+      "terms": "https://www.mycobank.org/",
+      "plan": "Official site exposed no readable API/redistribution terms during this investigation. Confirm documented webservice/export and permissions with the source before enabling an adapter; no undocumented scraping.",
+      "licensing": "Unverified. No license or authorization presumed; offline incorporation blocked pending evidence.",
+      "priority": 3
+    }
+  },
+  "discovery_scopes": [
+    {"id":"archaea","label":"Archaea","membership":["Archaea"],"target":10,"roots":{"gbif":{"id":"2","name":"Archaea"}}},
+    {"id":"discoba","label":"Discoba","membership":["Discoba"],"target":10,"roots":{}},
+    {"id":"mollusca","label":"Mollusca","membership":["Mollusca"],"target":10,"roots":{"gbif":{"id":"52","name":"Mollusca"}}}
+  ]
+}

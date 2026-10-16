@@ -20,6 +20,9 @@ class PublicClient:
 
     def get(self, url, as_json=False):
         import json
+        from scientific_sources.access import access_issue
+        restriction=access_issue(url)
+        if restriction:raise PermissionError(restriction)
         host = urlparse(url).hostname or ''
         if urlparse(url).scheme != 'https' or not host or host == 'localhost' or urlparse(url).username:
             raise ValueError('Somente fontes HTTPS públicas.')
@@ -158,6 +161,8 @@ def propose_updates(root=ROOT, online=False, maximum=25, client=None):
                 report['checks'].append({'type': 'taxonomy_conservation', 'species_id': s['id'], 'error': type(error).__name__})
         for url in urls[:maximum]:
             try: report['checks'].append({'type': 'link', 'url': url, 'checked_at': now(), **client.get(url)})
+            except PermissionError as error:
+                report['checks'].append({'type':'link','url':url,'state':'manual_or_official_api_required','reason':str(error)})
             except urllib.error.HTTPError as error:
                 report['checks'].append({'type': 'link', 'url': url, 'http_status': error.code,
                                          'retry_after': error.headers.get('Retry-After'), 'requires_human_check': True})

@@ -234,6 +234,12 @@ def import_catalog(count=20, max_pages=5, offline=False):
     species_path = ROOT / "resources/data/species.json"
     taxonomy_path = ROOT / "resources/data/taxonomy.json"
     species = json.loads(species_path.read_text(encoding="utf-8"))
+    # The legacy path can reconstruct the existing bundle but cannot expand it
+    # without the new scientific/legal candidate workflow. No network or writes
+    # occur before this check; original public IDs and compatibility are retained.
+    groups=[s.get('legacy_educational_kingdom',s.get('educational_kingdom')) for s in species if s.get('source')=='inaturalist']
+    if any(groups.count(kingdom)<count for kingdom in KINGDOM_ROOTS):
+        raise RuntimeError('Expansão direta do importador legado suspensa. Use scripts/scientific_catalog.py discover para gerar candidatos pendentes de revisão científica e jurídica.')
     nodes = json.loads(taxonomy_path.read_text(encoding="utf-8")) if taxonomy_path.exists() else []
     phylogeny_policy = load(ROOT / 'resources/data/phylogeny.json', {})
     if phylogeny_policy:

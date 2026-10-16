@@ -15,6 +15,9 @@ from urllib.parse import urlparse
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 def inspect(url):
+    from scientific_sources.access import access_issue
+    restriction=access_issue(url)
+    if restriction:return {'url':url,'retrieved':False,'state':'manual_or_official_api_required','reason':restriction}
     try:
         request = urllib.request.Request(url, headers={'User-Agent': 'GlossataScientificReview/1.0'})
         with urllib.request.urlopen(request, timeout=12) as response:

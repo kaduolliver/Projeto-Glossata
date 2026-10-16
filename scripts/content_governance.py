@@ -474,7 +474,9 @@ def audit_governance(root=ROOT, at=None):
     at = at or datetime.now(timezone.utc); settings = policy(root)
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
     from exploration_media import audit as audit_exploration
+    from scientific_sources.audit import staging_errors
     errors = [{'error':'exploration_media', 'detail':finding} for finding in audit_exploration(root)['errors']]
+    errors.extend(staging_errors(root))
     try: events = read_ledger(root)
     except ValueError as e: events = []; errors.append({'error': 'review_history_integrity', 'detail': str(e)})
     try: read_chain(root / 'resources/compliance/permission_history.jsonl')
