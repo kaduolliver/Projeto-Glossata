@@ -1,0 +1,671 @@
+{
+  "schema_version": 1,
+  "notice": "Technical API verification and offline replay only. No scientific/legal certification or human approval.",
+  "reproduce_online": "python scripts/verify_scientific_providers.py --online --refresh",
+  "reproduce_offline": "python scripts/verify_scientific_providers.py",
+  "online": {
+    "catalog_writes": 0,
+    "checked_at": "2026-10-16T03:15:10.547480+00:00",
+    "checks": [
+      {
+        "assertion_sha256": [
+          "3fc11a726c148441f79a9658804d27e581043b0e858d6655a25490e41ec952c9"
+        ],
+        "check": "gbif_exact_name",
+        "evidence": [
+          {
+            "response_sha256": "1b31aa838c157f0ae7a6f26f80cd1993d688f6c52a95dcbd185d75096dc1f383",
+            "retrieved_at": "2026-10-16T03:15:11.766320+00:00",
+            "snapshot_sha256": "cb9efd26264988603d85cab96e2fc6a9c2e778fcd8b26396585c10e7414dde3f",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Panthera+leo"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "5219404"
+          }
+        ],
+        "passed": true,
+        "query": "Panthera leo",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "ce1a6a5ad3158e2f9ab404554c245fb5b2a211bb2cad9839894087b8ba53dd15",
+          "cddce99030bec01cd1cb5922b29220a77f257b4d8e656d5fdbf40ff2d8e5fcef",
+          "32dce72d1c270fa7e1b2aacc72907ea67cb2d62b925413ac84c6355d3932969b"
+        ],
+        "check": "gbif_descendants_archaea",
+        "evidence": [
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000003"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000005"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000006"
+          }
+        ],
+        "passed": true,
+        "query": "Archaea",
+        "record_count": 3,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "28a7b66883e9b6149c1a12be12d2e07993c538a1db63712e7b085aeba1307def",
+          "eea873b83e6815a1366f1c7240521e76b4c65cdd426626b26ff7c8462cbdc5bd",
+          "f71c8e5f90d0054c70e9fe85d575e86c736058a326fbe517724e4d7b33a57d05"
+        ],
+        "check": "gbif_descendants_mollusca",
+        "evidence": [
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284732"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284735"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284738"
+          }
+        ],
+        "passed": true,
+        "query": "Mollusca",
+        "record_count": 3,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "106e091a9ee5917e05413980222e5d0c447fcbecfd79c7a5803ff344d5a9f785"
+        ],
+        "check": "worms_synonym",
+        "evidence": [
+          {
+            "response_sha256": "b4f530548782222f1e64c6b9cd619e574cdf1875def743a861c0403231fc3441",
+            "retrieved_at": "2026-10-16T03:15:17.911458+00:00",
+            "snapshot_sha256": "588b4dcbdfe7cd975f791719f8b07a09ebd6c535775dc8e13a3d3c4c9d603513",
+            "url": "https://www.marinespecies.org/rest/AphiaRecordByAphiaID/214347"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "worms",
+            "record_id": "214347"
+          }
+        ],
+        "passed": true,
+        "query": "Macrocystis angustifolia; AphiaID 214347",
+        "record_count": 1,
+        "rights_evidence": []
+      },
+      {
+        "assertion_sha256": [
+          "788047625a638f2ddfc9a17da0988e0f4c27da8502478d6acb514fa01d7eae11"
+        ],
+        "check": "worms_accepted_target",
+        "evidence": [
+          {
+            "response_sha256": "e4eae908eb357189370436bafa2391b0fe0b35408e153d5c55da419175fae015",
+            "retrieved_at": "2026-10-16T03:15:18.829544+00:00",
+            "snapshot_sha256": "14156f66d964ef846376d80c40b29a76ce6fff28156fcb26b0ac80935aaf5535",
+            "url": "https://www.marinespecies.org/rest/AphiaRecordByAphiaID/232231"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "worms",
+            "record_id": "232231"
+          }
+        ],
+        "passed": true,
+        "query": "AphiaID 232231",
+        "record_count": 1,
+        "rights_evidence": []
+      },
+      {
+        "assertion_sha256": [
+          "cbc67d0427d84a3ab1dca57e60d356fbc566a268822b3ee0d94fcb31637a75b0"
+        ],
+        "check": "col_exact_name",
+        "evidence": [
+          {
+            "response_sha256": "ad1b5d09b9fdcbbce765def6d4676a19cb803c2a559c856c1982cc730a9680aa",
+            "retrieved_at": "2026-10-16T03:15:20.033650+00:00",
+            "snapshot_sha256": "f2fc265625dd280d0517b670a7d0d8e632abac769e517409b04a25da268452ae",
+            "url": "https://api.checklistbank.org/dataset/316165/nameusage/search?limit=10&q=Panthera+leo"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "316165",
+            "provider": "col",
+            "record_id": "4CGXP"
+          }
+        ],
+        "passed": true,
+        "query": "Panthera leo; release 316165",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "6125d26e676b5109c76aed402f47fc5f7c84950ec24534bf855a6b6d061eee84",
+            "retrieved_at": "2026-10-16T03:15:21.458233+00:00",
+            "snapshot_sha256": "4ba3bddfb5048e2f1737953310ea52b087b17e6b804d661492633d8f97e60192",
+            "url": "https://api.checklistbank.org/dataset/316165"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "7cda310db9b093cda755978c405d9ef4e555438e39723ae387e9c58ba04e1e8b"
+        ],
+        "check": "col_direct_record",
+        "evidence": [
+          {
+            "response_sha256": "84f519aafcc7decb58e8b19257dc4a7a483828e0dbd2b119b4c5e225758bb609",
+            "retrieved_at": "2026-10-16T03:15:22.170755+00:00",
+            "snapshot_sha256": "fd3f8e9735bf2a9f0717d5e34b9ac641efb727597329dcb49d5b8b55302c1bde",
+            "url": "https://api.checklistbank.org/dataset/316165/nameusage/Q7GY3"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "316165",
+            "provider": "col",
+            "record_id": "Q7GY3"
+          }
+        ],
+        "passed": true,
+        "query": "Q7GY3; release 316165",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "6125d26e676b5109c76aed402f47fc5f7c84950ec24534bf855a6b6d061eee84",
+            "retrieved_at": "2026-10-16T03:15:21.458233+00:00",
+            "snapshot_sha256": "4ba3bddfb5048e2f1737953310ea52b087b17e6b804d661492633d8f97e60192",
+            "url": "https://api.checklistbank.org/dataset/316165"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "87af321f53e03da23385b04549b4586a74854e2fd7338d6b88ba1b7d6e940bde"
+        ],
+        "check": "commons_individual_permission",
+        "evidence": [
+          {
+            "response_sha256": "5bda5550e758d5be84bb14e82f8bc6aedb1aee7cc18d0410ff963e4cc0c34b5f",
+            "retrieved_at": "2026-10-16T03:15:22.296616+00:00",
+            "snapshot_sha256": "e6a826e79a5758ad14370a56beb46b2f39c625dc51780a8954d03de48cd8ee8d",
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiprop=url%7Csize%7Csha1%7Cextmetadata&maxlag=5&prop=imageinfo%7Cinfo&titles=File%3ADanaus+plexippus+100029190.jpg"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "commons",
+            "record_id": "126550368"
+          }
+        ],
+        "passed": true,
+        "query": "File:Danaus plexippus 100029190.jpg",
+        "record_count": 1,
+        "rights_evidence": []
+      }
+    ],
+    "image_downloads": 0,
+    "mode": "online_allowed",
+    "network_requests": 12,
+    "passed": true,
+    "schema_version": 1,
+    "scope": "API contract/evidence checks only. No human scientific/legal review or publication."
+  },
+  "offline": {
+    "catalog_writes": 0,
+    "checked_at": "2026-10-16T03:15:22.501258+00:00",
+    "checks": [
+      {
+        "assertion_sha256": [
+          "3fc11a726c148441f79a9658804d27e581043b0e858d6655a25490e41ec952c9"
+        ],
+        "check": "gbif_exact_name",
+        "evidence": [
+          {
+            "response_sha256": "1b31aa838c157f0ae7a6f26f80cd1993d688f6c52a95dcbd185d75096dc1f383",
+            "retrieved_at": "2026-10-16T03:15:11.766320+00:00",
+            "snapshot_sha256": "cb9efd26264988603d85cab96e2fc6a9c2e778fcd8b26396585c10e7414dde3f",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&limit=10&q=Panthera+leo"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "5219404"
+          }
+        ],
+        "passed": true,
+        "query": "Panthera leo",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "ce1a6a5ad3158e2f9ab404554c245fb5b2a211bb2cad9839894087b8ba53dd15",
+          "cddce99030bec01cd1cb5922b29220a77f257b4d8e656d5fdbf40ff2d8e5fcef",
+          "32dce72d1c270fa7e1b2aacc72907ea67cb2d62b925413ac84c6355d3932969b"
+        ],
+        "check": "gbif_descendants_archaea",
+        "evidence": [
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "856c1c42d7a1698d74745a66b9cc38942d9814467221cd569ad53e3968272f2f",
+            "retrieved_at": "2026-10-16T03:15:14.706641+00:00",
+            "snapshot_sha256": "adeb6cf1c3151567318f02fdf036f1a8c6267fbade7f8a93d01601cb5400d960",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=2&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000003"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000005"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "1000006"
+          }
+        ],
+        "passed": true,
+        "query": "Archaea",
+        "record_count": 3,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "28a7b66883e9b6149c1a12be12d2e07993c538a1db63712e7b085aeba1307def",
+          "eea873b83e6815a1366f1c7240521e76b4c65cdd426626b26ff7c8462cbdc5bd",
+          "f71c8e5f90d0054c70e9fe85d575e86c736058a326fbe517724e4d7b33a57d05"
+        ],
+        "check": "gbif_descendants_mollusca",
+        "evidence": [
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          },
+          {
+            "response_sha256": "4742d0c56006688a0a70abce261abb4f09b6c30285f39052baf521b55ce12853",
+            "retrieved_at": "2026-10-16T03:15:16.957920+00:00",
+            "snapshot_sha256": "9858987135a75bde052186bfe2966b1b89e3432dd402f47b9ff93bead7da7e19",
+            "url": "https://api.gbif.org/v1/species/search?datasetKey=d7dddbf4-2cf0-4f39-9b2a-bb099caae36c&highertaxon_key=52&limit=3&offset=0&rank=SPECIES&status=ACCEPTED"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284732"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284735"
+          },
+          {
+            "dataset": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+            "provider": "gbif",
+            "record_id": "2284738"
+          }
+        ],
+        "passed": true,
+        "query": "Mollusca",
+        "record_count": 3,
+        "rights_evidence": [
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          },
+          {
+            "response_sha256": "5cbf606ac6207cbfa5d78ed92c46ed4fc918dcaabe2b24a186fdc20cc63e85af",
+            "retrieved_at": "2026-10-16T03:15:12.722042+00:00",
+            "snapshot_sha256": "61556f658ac4fe6315a13e5d1fba1bef53ebabc84ab0cf904c61dd381122ab2b",
+            "url": "https://api.gbif.org/v1/dataset/d7dddbf4-2cf0-4f39-9b2a-bb099caae36c"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "106e091a9ee5917e05413980222e5d0c447fcbecfd79c7a5803ff344d5a9f785"
+        ],
+        "check": "worms_synonym",
+        "evidence": [
+          {
+            "response_sha256": "b4f530548782222f1e64c6b9cd619e574cdf1875def743a861c0403231fc3441",
+            "retrieved_at": "2026-10-16T03:15:17.911458+00:00",
+            "snapshot_sha256": "588b4dcbdfe7cd975f791719f8b07a09ebd6c535775dc8e13a3d3c4c9d603513",
+            "url": "https://www.marinespecies.org/rest/AphiaRecordByAphiaID/214347"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "worms",
+            "record_id": "214347"
+          }
+        ],
+        "passed": true,
+        "query": "Macrocystis angustifolia; AphiaID 214347",
+        "record_count": 1,
+        "rights_evidence": []
+      },
+      {
+        "assertion_sha256": [
+          "788047625a638f2ddfc9a17da0988e0f4c27da8502478d6acb514fa01d7eae11"
+        ],
+        "check": "worms_accepted_target",
+        "evidence": [
+          {
+            "response_sha256": "e4eae908eb357189370436bafa2391b0fe0b35408e153d5c55da419175fae015",
+            "retrieved_at": "2026-10-16T03:15:18.829544+00:00",
+            "snapshot_sha256": "14156f66d964ef846376d80c40b29a76ce6fff28156fcb26b0ac80935aaf5535",
+            "url": "https://www.marinespecies.org/rest/AphiaRecordByAphiaID/232231"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "worms",
+            "record_id": "232231"
+          }
+        ],
+        "passed": true,
+        "query": "AphiaID 232231",
+        "record_count": 1,
+        "rights_evidence": []
+      },
+      {
+        "assertion_sha256": [
+          "cbc67d0427d84a3ab1dca57e60d356fbc566a268822b3ee0d94fcb31637a75b0"
+        ],
+        "check": "col_exact_name",
+        "evidence": [
+          {
+            "response_sha256": "ad1b5d09b9fdcbbce765def6d4676a19cb803c2a559c856c1982cc730a9680aa",
+            "retrieved_at": "2026-10-16T03:15:20.033650+00:00",
+            "snapshot_sha256": "f2fc265625dd280d0517b670a7d0d8e632abac769e517409b04a25da268452ae",
+            "url": "https://api.checklistbank.org/dataset/316165/nameusage/search?limit=10&q=Panthera+leo"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "316165",
+            "provider": "col",
+            "record_id": "4CGXP"
+          }
+        ],
+        "passed": true,
+        "query": "Panthera leo; release 316165",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "6125d26e676b5109c76aed402f47fc5f7c84950ec24534bf855a6b6d061eee84",
+            "retrieved_at": "2026-10-16T03:15:21.458233+00:00",
+            "snapshot_sha256": "4ba3bddfb5048e2f1737953310ea52b087b17e6b804d661492633d8f97e60192",
+            "url": "https://api.checklistbank.org/dataset/316165"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "7cda310db9b093cda755978c405d9ef4e555438e39723ae387e9c58ba04e1e8b"
+        ],
+        "check": "col_direct_record",
+        "evidence": [
+          {
+            "response_sha256": "84f519aafcc7decb58e8b19257dc4a7a483828e0dbd2b119b4c5e225758bb609",
+            "retrieved_at": "2026-10-16T03:15:22.170755+00:00",
+            "snapshot_sha256": "fd3f8e9735bf2a9f0717d5e34b9ac641efb727597329dcb49d5b8b55302c1bde",
+            "url": "https://api.checklistbank.org/dataset/316165/nameusage/Q7GY3"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "316165",
+            "provider": "col",
+            "record_id": "Q7GY3"
+          }
+        ],
+        "passed": true,
+        "query": "Q7GY3; release 316165",
+        "record_count": 1,
+        "rights_evidence": [
+          {
+            "response_sha256": "6125d26e676b5109c76aed402f47fc5f7c84950ec24534bf855a6b6d061eee84",
+            "retrieved_at": "2026-10-16T03:15:21.458233+00:00",
+            "snapshot_sha256": "4ba3bddfb5048e2f1737953310ea52b087b17e6b804d661492633d8f97e60192",
+            "url": "https://api.checklistbank.org/dataset/316165"
+          }
+        ]
+      },
+      {
+        "assertion_sha256": [
+          "87af321f53e03da23385b04549b4586a74854e2fd7338d6b88ba1b7d6e940bde"
+        ],
+        "check": "commons_individual_permission",
+        "evidence": [
+          {
+            "response_sha256": "5bda5550e758d5be84bb14e82f8bc6aedb1aee7cc18d0410ff963e4cc0c34b5f",
+            "retrieved_at": "2026-10-16T03:15:22.296616+00:00",
+            "snapshot_sha256": "e6a826e79a5758ad14370a56beb46b2f39c625dc51780a8954d03de48cd8ee8d",
+            "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiprop=url%7Csize%7Csha1%7Cextmetadata&maxlag=5&prop=imageinfo%7Cinfo&titles=File%3ADanaus+plexippus+100029190.jpg"
+          }
+        ],
+        "identities": [
+          {
+            "dataset": "",
+            "provider": "commons",
+            "record_id": "126550368"
+          }
+        ],
+        "passed": true,
+        "query": "File:Danaus plexippus 100029190.jpg",
+        "record_count": 1,
+        "rights_evidence": []
+      }
+    ],
+    "image_downloads": 0,
+    "mode": "offline_cache",
+    "network_requests": 0,
+    "passed": true,
+    "schema_version": 1,
+    "scope": "API contract/evidence checks only. No human scientific/legal review or publication."
+  },
+  "verification_code_sha256": {
+    "scripts/verify_scientific_providers.py": "10ff6799a092e94b1c275ea856decf6a75b1176b7991f28277c62ea2a5d7b677",
+    "scripts/scientific_sources/__init__.py": "761d086b5f7e6d4b0c2b9e2ccb316dd0cba0550c0593440902961160bfa88efa",
+    "scripts/scientific_sources/access.py": "bb7cecdb705d3a0884b9efc9a3e76080b63f1ead4b37e204c0fbcc668fcbe86a",
+    "scripts/scientific_sources/adapters.py": "7a88e7134ea623da9a19dfad635f0c86202a5eacb0e5b3b4d6b3dd8b4a3588a8",
+    "scripts/scientific_sources/audit.py": "4b1bdcaa47972d5c92e7fc4f2ac8791fc69c348a7895fb67f0154d16de49d69a",
+    "scripts/scientific_sources/model.py": "225ac7cb8975a8ed4aa05517c0081e29e43120edcef9472d1cc0666cba313048",
+    "scripts/scientific_sources/ports.py": "5e6c75f8c16e0972ffd3dd8169b76ee553bea7599389c2e56dc62b3d36a55896",
+    "scripts/scientific_sources/reconcile.py": "626250fb5a957e6785a09d1a85436e6f7c3259df47ee3493121f50196fbaeeb4",
+    "scripts/scientific_sources/registry.py": "7ba90d3b3a7000b77d7796ecd6b474dd5fdd81a7d230a563385a12ee7be847b2",
+    "scripts/scientific_sources/store.py": "9f52609773f7d8c1aa55a0c31f8fb1834a97b82a2a7ad7be44dbd8d337548643",
+    "scripts/scientific_sources/transport.py": "a775ba821ba71b6669d915e103f3500af66d1733e33b6e250f22b049ca9bd741",
+    "scripts/scientific_sources/workflow.py": "6fd418aa054f2f9b8e9c42bb27bb4d7735bbd85151ebcdf15856b3f3931c7b95"
+  },
+  "unit_tests": {
+    "source": "tests/test_scientific_sources.py",
+    "sha256": "c172e9b373a592e85d387f8cd612ab9bf86347e337526dd7550eef0b665a0e94",
+    "passed": 26,
+    "fixtures": "Synthetic API-shaped payloads; temporary databases; no network and no reviews written to game resources."
+  },
+  "preservation_check": {
+    "baseline_commit": "2a9426dd831d7491fc3b513ed24b2892cc962ac0",
+    "checked_files": 314,
+    "changed_files": [],
+    "active_organisms": 122,
+    "player_databases_accessed": false
+  }
+}

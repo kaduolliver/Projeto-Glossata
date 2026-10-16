@@ -42,7 +42,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 
 ## Estado atual
 
-Aplicativo **1.3.0 em desenvolvimento** · Catálogo **2.1.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
+Aplicativo **1.4.0 em desenvolvimento** · Catálogo **2.1.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
 
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
@@ -78,6 +78,12 @@ Eukaryota oferece **Opisthokonta** (62 organismos, incluindo Animalia e Fungi), 
 Os **122 enquadramentos novos permanecem rascunhos assistidos por IA**, sem simular revisão por especialista. A classificação original do iNaturalist está preservada por organismo e tem revisão separada da síntese filogenética. [Auditoria dos 122 registros](docs/AUDITORIA_FILOGENETICA.json).
 
 ## Funcionalidades implementadas
+
+### Rede de provedores científicos
+
+Ferramentas de manutenção integram **GBIF, Catalogue of Life, WoRMS e Wikimedia Commons**, com contratos independentes, cache offline, reconciliação de nomes/sinônimos, prevenção de duplicatas por identidade externa e registro de divergências. A descoberta prioriza linhagens pouco representadas. As consultas produzem candidatos em banco separado, com revisão científica e jurídica pendente; não alteram automaticamente os 122 organismos ou o jogo.
+
+NCBI Taxonomy, LPSN, POWO e MycoBank têm etapas e restrições documentadas para integração futura. A [arquitetura, condições de acesso e procedimentos](docs/PROVEDORES_CIENTIFICOS.md) distinguem provedores implementados de planejados; os [recibos de consultas reais e replay offline](docs/VALIDACAO_PROVEDORES.json) não são aprovação científica ou jurídica.
 
 ### Exploração taxonômica
 

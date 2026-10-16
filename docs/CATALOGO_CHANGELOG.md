@@ -4,7 +4,7 @@ A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snaps
 
 ## [2.1.0] — Não lançado; fotografias de exploração
 
-Aplicativo previsto: **1.3.0**. Acréscimo MINOR compatível de recursos de apresentação e proveniência; sem publicação.
+Aplicativo previsto: **1.3.0**; reutilizado pelo **1.4.0** sem mudança dos dados/revisões/mídias publicados. O fluxo de múltiplos provedores do 1.4.0 produz somente candidatos fora do bundle, sem incrementar a versão ou alterar o hash deste catálogo. Acréscimo MINOR compatível de recursos de apresentação e proveniência no 2.1.0; sem publicação.
 
 - Oito miniaturas reais CC0/CC BY por arquivo, com identificador/revisão do Commons, autor indicado pela fonte, licença/versão/URL demonstradas, coleta real, hash, dimensões e modificações. Manifesto separado `exploration_photos.json`; evidências em `resources/compliance/exploration/`; inventário e créditos automáticos atualizados.
 - Representantes: leão, monarca, girassol, Amanita, Macrocystis, Physarum e micrografias de E. coli e Sulfolobus sp. A20 (identificação histórica da fonte, com nota sobre Saccharolobus). A micrografia bacteriana é colorizada pela fonte. São imagens de apresentação; não adicionam registros nem aprovam identificação no quiz.

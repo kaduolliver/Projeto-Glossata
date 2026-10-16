@@ -2,6 +2,15 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.4.0] — Não lançado; em desenvolvimento
+
+- Infraestrutura modular de manutenção com adaptadores reais GBIF, Catalogue of Life/ChecklistBank, WoRMS e Wikimedia Commons; plano explícito para NCBI Taxonomy, LPSN, POWO e MycoBank. Sem novas dependências do executável ou consultas durante o jogo.
+- Candidatos em SQLite separado, IDs externos qualificados por provedor/release, snapshots por hash, replay offline e consultas limitadas. Reconciliação conservadora de sinônimos, homônimos e divergências; nenhuma fusão por votação ou publicação automática.
+- Descoberta por ancestral verificado prioriza Archaea e Mollusca; ausência de rota para Discoba é registrada. Mídias são apenas propostas de metadados com licença por arquivo, sem downloads ou aprovações automáticas.
+- Expansão direta pelo importador legado bloqueada antes da rede/escrita; reimportação dos registros existentes continua compatível. Auxiliares de pesquisa/links respeitam a restrição da LPSN contra HTML automatizado. Gate detecta candidatos indevidamente embarcados.
+- Nona suíte CTest com 26 testes offline; verificações reais limitadas dos quatro provedores e replay documentados. Aplicativo recebe MINOR por ferramentas compatíveis. Catálogo **2.1.0** reutilizado sem alteração de organismos, fotos, revisões, pontuação, perfis ou conquistas.
+- Sem tag, push ou publicação; bloqueios legados de distribuição e decisões humanas documentadas permanecem.
+
 ## [1.3.0] — Não lançado; em desenvolvimento
 
 - Acesso rápido a Animalia, Plantae e Fungi sem duplicar nós ou alterar suas posições filogenéticas. Os grupos filhos passam a preceder os controles de quiz na exploração; breadcrumbs e filtros conservam os identificadores científicos.
