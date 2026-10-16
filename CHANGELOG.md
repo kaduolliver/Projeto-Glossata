@@ -2,6 +2,15 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.5.0] — Não lançado; refinamento fotográfico
+
+- Fotografias de fundo com 42% da largura e altura integral, recorte proporcional, ponto focal editável, gradiente horizontal e cantos arredondados; sem novos efeitos de GPU ou consultas durante o jogo.
+- Controles de alternativas e modo competitivo restaurados à posição anterior à expansão fotográfica, mantendo atalhos e navegação.
+- Descoberta paginada, busca CC0, preparação com licença por arquivo antes do download e auditoria de cobertura completa. Fotografias incompatíveis, ilustrações, crédito não demonstrável e metadados sensíveis são recusados.
+- Catálogo **2.2.0**: 98 fotos de apresentação, 503 associações explícitas a grupos mais o cartão misto; 119 pendências justificadas. Todos os 623 cartões têm foto ou motivo documentado. Os 122 organismos e 120 fotos de quiz preservam seus bytes e identificadores; nenhuma revisão humana, elegibilidade, pontuação ou conquista é alterada.
+- Testes de cobertura, identidade, direitos, recursos offline, pontos focais, renderização e posição dos controles ampliados. Classificações visuais permanecem rascunhos de IA ligados à identificação da fonte; pendências legadas de distribuição continuam.
+- MINOR compatível pelas ferramentas de preparação e ampliação da apresentação; sem tag, push ou release pública.
+
 ## [1.4.0] — Não lançado; em desenvolvimento
 
 - Infraestrutura modular de manutenção com adaptadores reais GBIF, Catalogue of Life/ChecklistBank, WoRMS e Wikimedia Commons; plano explícito para NCBI Taxonomy, LPSN, POWO e MycoBank. Sem novas dependências do executável ou consultas durante o jogo.

@@ -38,6 +38,7 @@ class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
     void photographEdgesFadeWithoutHidingTheOrganism();
+    void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
 };
 
@@ -57,10 +58,10 @@ void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
     QTRY_VERIFY(!grab->image().isNull());
     const auto image=grab->image();
     QVERIFY(image.hasAlphaChannel());
-    QVERIFY(image.pixelColor(80,60).alpha()>240);
+    QVERIFY(image.pixelColor(120,60).alpha()>240);
     QVERIFY(image.pixelColor(1,60).alpha()<30);
-    QVERIFY(image.pixelColor(80,4).alpha()<30);
-    QVERIFY(image.pixelColor(80,3).alpha()<20); // No unmasked antialiased outline.
+    QVERIFY(image.pixelColor(120,4).alpha()>240); // Full height, without top/bottom fade or letterboxing.
+    QVERIFY(image.pixelColor(159,0).alpha()<30); // Rounded outer corner.
     QVERIFY(image.pixelColor(10,60).alpha()>image.pixelColor(1,60).alpha());
     QVERIFY(image.pixelColor(10,60).alpha()<image.pixelColor(80,60).alpha());
     QVERIFY(photo->setProperty("source",QUrl("qrc:/resources/images/exploration/bacteria.jpg")));
@@ -68,11 +69,38 @@ void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
     QTRY_VERIFY_WITH_TIMEOUT(photo->property("ready").toBool(),3000);
     QTest::qWait(100);
     auto portrait=photo->grabToImage();QVERIFY(portrait);QTRY_VERIFY(!portrait->image().isNull());
-    QVERIFY(portrait->image().pixelColor(90,48).alpha()>240);
-    // The fade follows fitted photo bounds, including portrait letterboxing.
-    QVERIFY(portrait->image().pixelColor(55,48).alpha()<40);
+    QVERIFY(portrait->image().pixelColor(150,48).alpha()>240);
+    QVERIFY(portrait->image().pixelColor(150,3).alpha()>240);
+    QVERIFY(portrait->image().pixelColor(55,48).alpha()>50);
     QVERIFY(photo->setProperty("source",QUrl()));
     QVERIFY(!photo->property("ready").toBool());
+}
+
+void QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
+{
+    QQmlEngine engine;
+    QQmlComponent component(&engine,QUrl("qrc:/resources/qml/components/ExploreCard.qml"));
+    const QVariantMap entry{{"title","A biodiversidade de Eukaryota"},{"rankLabel","Supergrupo"},
+        {"count",122},{"kingdom","Eukaryota"},{"visualCount",100},{"playableCount",100},
+        {"photo",QVariantMap{{"image","qrc:/resources/images/exploration/amanita.jpg"},
+            {"subject","Amanita muscaria"},{"author","Bernard Spragg. NZ"},{"license","CC0 1.0"}}}};
+    QScopedPointer<QObject> object(component.createWithInitialProperties({{"entry",entry}}));
+    QVERIFY2(object,qPrintable(component.errorString()));
+    auto card=qobject_cast<QQuickItem *>(object.data());QVERIFY(card);
+    QQuickWindow window;window.resize(1100,420);card->setParentItem(window.contentItem());window.show();
+    for(const QSize size:{QSize(300,185),QSize(420,185),QSize(600,132),QSize(980,132)}) {
+        card->setProperty("wide",size.height()==132);card->setSize(size);
+        auto photo=findVisualItem(card,"explorationPhoto");QVERIFY(photo);
+        QTRY_VERIFY(photo->property("ready").toBool());QTest::qWait(60);
+        QCOMPARE(photo->height(),double(size.height()));
+        QVERIFY(qAbs(photo->width()/size.width()-0.42)<0.001);
+        QCOMPARE(photo->mapToItem(card,QPointF(photo->width(),0)).x(),double(size.width()));
+        auto grab=card->grabToImage();QVERIFY(grab);QTRY_VERIFY(!grab->image().isNull());
+        QVERIFY(grab->image().save(QString("previews/card-%1.png").arg(size.width())));
+        const auto pixels=grab->image();
+        QVERIFY(pixels.pixelColor(size.width()-1,0).alpha()<40);
+        QVERIFY(pixels.pixelColor(size.width()-5,size.height()/2).alpha()>240);
+    }
 }
 
 void QmlInterfaceTests::navigateAndConfirmAnswers()
@@ -152,7 +180,8 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("creditsButton"));
     QCOMPARE(window->property("page").toString(), QString("credits"));
     QCOMPARE(controller.legalInformation().value("photos").toList().size(), 120);
-    QVERIFY(controller.legalInformation().value("explorationPhotos").toList().size()>8);
+    const auto presentationPhotos=controller.legalInformation().value("explorationPhotos").toList();
+    QVERIFY(presentationPhotos.size()>8);
     QVERIFY(!controller.legalInformation().value("catalogVersion").toString().isEmpty());
     QCOMPARE(controller.legalInformation().value("catalogHash").toString().size(), 64);
     QVERIFY(snapshot("credits-transparency"));
@@ -161,6 +190,16 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QCOMPARE(window->property("page").toString(), QString("categories"));
     QVERIFY(snapshot("02-categories"));
     QCOMPARE(controller.categories().size(),4);
+    const auto verifyControls=[window](bool taxonomy) {
+        const auto selector=findVisualItem(window->contentItem(),"playModeSelector");
+        const auto difficulty=findVisualItem(window->contentItem(),"difficultySelector");
+        const auto competitive=findVisualItem(window->contentItem(),"startCompetitiveButton");
+        const auto later=findVisualItem(window->contentItem(),taxonomy ? "taxonChildrenGrid" : "quickAccessButton0");
+        if(!selector || !difficulty || !competitive || !later)return false;
+        return selector->mapToScene(QPointF(0,selector->height())).y() <= later->mapToScene(QPointF()).y()
+            && competitive->mapToScene(QPointF()).y()<difficulty->mapToScene(QPointF()).y();
+    };
+    QVERIFY(verifyControls(false));
     for(int group=0;group<3;++group) {
         auto shortcut=findVisualItem(window->contentItem(),"quickAccessButton"+QString::number(group));
         QVERIFY(shortcut);shortcut->forceActiveFocus();QVERIFY(shortcut->hasActiveFocus());
@@ -168,6 +207,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QVERIFY(click("quickAccessButton"+QString::number(group)));
         QCOMPARE(window->property("page").toString(),QString("taxonomy"));
         QCOMPARE(controller.browseTaxon()["id"].toString(),id);
+        QVERIFY(verifyControls(true));
         QCOMPARE(controller.breadcrumbs().first().toMap()["title"].toString(),QString("Eukaryota"));
         QVERIFY(snapshot("quick-access-"+QString::number(group)));
         QVERIFY(click("returnDomainsButton"));
@@ -176,6 +216,8 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         auto card=findVisualItem(window->contentItem(),"domainButton"+QString::number(domain));QVERIFY(card);
         auto photo=findVisualItem(card,"explorationPhoto");QVERIFY(photo);
         QTRY_VERIFY(photo->property("ready").toBool());
+        QCOMPARE(photo->height(),card->height());
+        QVERIFY(qAbs(photo->width()/card->width()-0.42)<0.001);
     }
     auto categoriesScroll=findVisualItem(window->contentItem(),"pageScroll");QVERIFY(categoriesScroll);
     categoriesScroll->setProperty("contentY",qMax(0.0,categoriesScroll->property("contentHeight").toReal()-categoriesScroll->height()));
@@ -193,6 +235,9 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QVERIFY(click("returnDomainsButton"));
     }
     QVERIFY(snapshot("compact-quick-access"));
+    QVERIFY(verifyControls(false));
+    window->resize(1920,1080);QTest::qWait(80);
+    QVERIFY(snapshot("categories-wide"));QVERIFY(verifyControls(false));
     window->resize(1240,820);QTest::qWait(40);
     for (int domain = 0; domain < 3; ++domain) {
         QVERIFY(click("domainButton" + QString::number(domain)));

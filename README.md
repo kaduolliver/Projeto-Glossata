@@ -42,7 +42,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 
 ## Estado atual
 
-Aplicativo **1.4.0 em desenvolvimento** · Catálogo **2.1.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
+Aplicativo **1.5.0 em desenvolvimento** · Catálogo **2.2.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
 
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
@@ -87,7 +87,11 @@ NCBI Taxonomy, LPSN, POWO e MycoBank têm etapas e restrições documentadas par
 
 ### Exploração taxonômica
 
-Navegação por domínios, linhagens, grupos e subgrupos, com caminhos clicáveis, fontes, limitações e níveis de identificação disponíveis conforme a cobertura do catálogo. Ranks ausentes não são inferidos. Animalia, Plantae e Fungi têm acesso rápido, preservando seus caminhos em Opisthokonta ou Archaeplastida. Os grupos filhos aparecem antes dos controles de quiz. Os cartões usam fotografias reais e micrografias identificadas, com bordas suavizadas e arquivos offline; grupos sem foto adequada conservam a ilustração. Autoria, origem, licenças por arquivo e limites estão nos [créditos](docs/PHOTO_CREDITS.md) e na [documentação da exploração](docs/EXPLORACAO_E_FOTOGRAFIAS.md). Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas. Domínio, supergrupo e reino estão sem quiz elegível nesta etapa; os demais níveis disponíveis continuam funcionando.
+Navegação por domínios, linhagens, grupos e subgrupos, com caminhos clicáveis, fontes, limitações e níveis de identificação disponíveis conforme a cobertura do catálogo. Ranks ausentes não são inferidos. Animalia, Plantae e Fungi têm acesso rápido, preservando seus caminhos em Opisthokonta ou Archaeplastida. Os controles de quiz mantêm a posição anterior à expansão fotográfica; os grupos filhos aparecem depois dos controles. Os cartões integram fotografias reais e micrografias identificadas ao fundo, em 42% da largura e toda a altura, com recorte proporcional e gradiente horizontal. A auditoria cobre os 623 cartões: 504 com associação fotográfica e 119 com pendência justificada, usando 98 imagens offline; grupos sem foto adequada conservam a ilustração. Autoria, origem, licenças por arquivo e limites estão nos [créditos](docs/PHOTO_CREDITS.md) e na [documentação da exploração](docs/EXPLORACAO_E_FOTOGRAFIAS.md). Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas. Domínio, supergrupo e reino estão sem quiz elegível nesta etapa; os demais níveis disponíveis continuam funcionando.
+
+![Tela real da exploração do Projeto Glossata com filtros restaurados e fotografias integradas aos cartões dos três domínios](docs/images/exploracao.png)
+
+[Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registro da captura real](docs/images/exploracao.json).
 
 ### Projeto Glossata
 

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-16T04:00:13.909362+00:00",
+  "method": "QQuickWindow::grabWindow / production QML and GameController in GlossataInterfaceTests",
+  "application_version": "1.5.0",
+  "catalog_version": "2.2.0",
+  "capture_source": "tests/QmlInterfaceTests.cpp: navigateAndConfirmAnswers, snapshot 02-categories",
+  "capture_source_sha256": "7d1129acdb65e0918894517fc3452f2fc3ce342d2b1e55a9d8b741b049de5f9b",
+  "application_binary_sha256": "94f206d1bd0cf96c5c35b7a3007d94fd81110a5007777af689a8e049b0b1934f",
+  "capture_binary_sha256": "1a38230bf1282b0d46f99ccb9496dece4309a9461d920d81578bd6c3dc23b3b0",
+  "image_sha256": "536ef81289d6bd2d8beee1128102010edaa157074fce404cf1f027edf7c6c1bf",
+  "width": 1240,
+  "height": 820,
+  "modifications": "None; full real window content, not a conceptual image.",
+  "privacy": "Temporary SQLite profile; Discord disabled; no player data accessed.",
+  "photo_credits": "../PHOTO_CREDITS.md; exact file credits and permission evidence in resources/data/exploration_photos.json."
+}
