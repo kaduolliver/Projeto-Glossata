@@ -2,6 +2,14 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.7.0] — Não lançado; gerenciamento de curadoria
+
+- Fila pública mínima derivada dos auditores existentes, com IDs/hashes estáveis, agrupamento, prioridade, referências verificadas e limitação de publicação.
+- Integração GitHub Issues idempotente, preservação de notas/etiquetas humanas, paginação completa e limites de chamadas/criação/atualização. Issue encerrada ou etiqueta de aprovação não altera a governança.
+- Formulários científicos, fotográficos, educacionais e de direitos; execução semanal/manual e integração opcional com GitHub Projects v2, em campo administrativo independente.
+- Modelos locais para pedidos individuais de autorização e decisões humanas; aprovações explícitas encaminhadas aos históricos existentes com hash, responsável, justificativa e controle da decisão anterior. Nenhum contato ou consentimento é automatizado.
+- Catálogo **2.4.0** preservado byte a byte, inclusive revisões e permissões. Sem mudança em quizzes, QML, layout ou bancos dos jogadores. MINOR por ferramentas de manutenção compatíveis; sem tag, push ou release.
+
 ## [1.6.0] — Não lançado; evolução integrada
 
 - Avaliação pedagógica automatizada explícita para a versão de testes, separada das revisões científicas e permissões. Receitas offline, datas reais, prazo configurável, fontes e hashes; alterações invalidam a avaliação sem renovação silenciosa.

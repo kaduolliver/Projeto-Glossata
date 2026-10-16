@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.6.0**; catálogo **2.4.0**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
+Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Versão do aplicativo **1.7.0**; catálogo **2.4.0**, ambos ainda não lançados. Workspace canônico: C:\glossata_game. Não editar a cópia antiga do Desktop. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar os bancos dos jogadores.
 
 A exploração principal usa **Bacteria (20), Archaea (0) e Eukaryota (102)**. Eukaryota contém Opisthokonta (62: Animalia e Fungi), Archaeplastida (20: Plantae da fonte), SAR (10: Stramenopiles/Ochrophyta), Amoebozoa (10: mixomicetos) e Discoba (0). Os 122 IDs, nomes, fotografias, créditos e dados dos jogadores são preservados.
 
@@ -80,4 +80,6 @@ Atualizar o pacote local após recompilar. Em alterações relevantes da tela in
 
 Commits pequenos após verificações, sem push/release sem autorização específica. SemVer do aplicativo é independente do catálogo. Aplicativo 1.5.0 e catálogo 2.2.0 ampliam ferramentas e cobertura fotográfica de apresentação (MINOR compatível), sem modificar os 122 organismos ou 120 fotos do quiz. Aplicativo 1.4.0 acrescenta ferramentas de provedores científicos (MINOR), sem alterar o catálogo 2.1.0; aplicativo 1.3.0 e catálogo 2.1.0 acrescentaram navegação e mídias de apresentação compatíveis (MINOR); o catálogo 2.0.0 anterior marcou a mudança MAJOR de organização/esquema. Tag vX.Y.Z somente pelo gate scripts/release.py tag; não contornar bloqueios nem confundir testes com certificação.
 
-Evolução integrada atual: commits 6cf7dc6 (Git/CI), b3e99e4 (109 fotos de apresentação, 534/623 cartões, 89 pendências). Etapa 3 em preparação em 1.6.0/catálogo 2.4.0; progresso em docs/PLANO_EVOLUCAO.md. Sem push/tag/release autorizados.
+Evolução integrada 1.6.0 concluída localmente: commits 6cf7dc6 (Git/CI), b3e99e4 (109 fotos de apresentação, 534/623 cartões, 89 pendências), d7c523e (dicas progressivas), a16530e (compatibilidade dos atalhos) e ef70d7c (relatório). Catálogo 2.4.0; validação em docs/RELATORIO_EVOLUCAO_INTEGRADA.md. Sem push/tag/release autorizados.
+
+Curadoria automatizada (1.7.0): scripts/curation_requests.py reutiliza os auditores; fila mínima em build/curation, Issues limitadas/idempotentes e Project administrativo opcional. Agenda semanal/manual em .github/workflows/curation.yml. Somente decisões humanas explícitas usam os ledgers existentes; Issue fechada/etiqueta não aprova recursos. Catálogo 2.4.0 preservado. Documentação/ativação em docs/CURADORIA_AUTOMATIZADA.md; sem push/release nesta implementação.

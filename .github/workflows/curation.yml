@@ -1,0 +1,83 @@
+name: Curadoria científica e direitos
+on:
+  schedule:
+    - cron: '17 12 * * 1'
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Criar/atualizar Issues dentro dos limites (simulação por padrão)
+        type: boolean
+        default: false
+      prepare_project_field:
+        description: Preparar campo Curadoria em Project já configurado (exige publish)
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: glossata-curation-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  audit:
+    if: github.repository == 'kaduolliver/Projeto-Glossata' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Validar ferramentas sem rede de conteúdo
+        run: |
+          python3 --version
+          python3 tests/test_curation_requests.py
+          python3 tests/test_curation_github.py
+          python3 tests/test_curation_decisions.py
+          python3 tests/test_curation_workflow.py
+      - name: Auditar e preparar fila pública mínima
+        run: |
+          python3 scripts/curation_requests.py plan
+          cat build/curation/requests.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Guardar somente fila pública
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: curadoria-fila-publica
+          path: |
+            build/curation/requests.json
+            build/curation/requests.md
+          retention-days: 30
+          if-no-files-found: error
+  synchronize:
+    needs: audit
+    if: github.event_name == 'schedule' || inputs.publish == true
+    permissions:
+      contents: read
+      issues: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Preparar campo independente, sem alterar opções existentes
+        if: inputs.prepare_project_field == true
+        env:
+          GLOSSATA_PROJECT_ID: ${{ vars.GLOSSATA_CURATION_PROJECT_ID }}
+          GLOSSATA_PROJECT_TOKEN: ${{ secrets.GLOSSATA_CURATION_PROJECT_TOKEN }}
+        run: python3 scripts/curation_requests.py project-setup --apply
+      - name: Sincronizar Issues e Project configurado
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GLOSSATA_PROJECT_ID: ${{ vars.GLOSSATA_CURATION_PROJECT_ID }}
+          GLOSSATA_PROJECT_TOKEN: ${{ secrets.GLOSSATA_CURATION_PROJECT_TOKEN }}
+        run: python3 scripts/curation_requests.py sync --apply
+      - name: Guardar recibo público, inclusive falhas parciais
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: curadoria-sincronizacao
+          path: |
+            build/curation/requests.json
+            build/curation/requests.md
+            build/curation/sync.json
+          retention-days: 30
+          if-no-files-found: warn

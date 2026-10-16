@@ -243,6 +243,8 @@ A curadoria distingue aprovação de identificação visual, fotografia, etimolo
 
 Aprovações antigas sem responsável e evidência foram classificadas como legadas. Novo conteúdo, inclusive assistido por IA, entra em rascunho; alterações exigem nova revisão registrada. O relatório de atualização é offline por padrão (`python scripts/review_updates.py`); `--online` gera propostas para análise humana, sem substituir o conteúdo publicado.
 
+O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. Há sincronização limitada com Issues, quatro formulários públicos, agenda semanal e integração opcional com Projects. A ativação remota aguarda push autorizado e configuração; fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para manutenção, permissões e registro explícito das decisões humanas.
+
 ## Roadmap
 
 A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidades já entregues nem compromissos de lançamento.
@@ -274,6 +276,7 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 - [`docs/CLASSIFICACAO_FILOGENETICA.md`](docs/CLASSIFICACAO_FILOGENETICA.md) — domínios, linhagens, fontes, divergências e migração.
 - [`docs/AUDITORIA_FILOGENETICA.json`](docs/AUDITORIA_FILOGENETICA.json) — enquadramento rastreável dos 122 organismos.
 - [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
+- [`docs/CURADORIA_AUTOMATIZADA.md`](docs/CURADORIA_AUTOMATIZADA.md) — fila de curadoria, Issues, formulários, rotina semanal, Projects e decisões humanas rastreáveis.
 - [`docs/RELATORIO_EVOLUCAO_INTEGRADA.md`](docs/RELATORIO_EVOLUCAO_INTEGRADA.md) — auditoria Git/CI, cobertura fotográfica, avaliação automática das dicas e validação local em 1.6.0.
 - [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
 - [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.

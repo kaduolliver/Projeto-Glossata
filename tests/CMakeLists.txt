@@ -67,3 +67,8 @@ add_test(NAME GlossataScientificSourceTests COMMAND ${Python3_EXECUTABLE} ${CMAK
 add_test(NAME GlossataRepositoryAuditTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_repository_audit.py)
 
 add_test(NAME GlossataProgressiveHintTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_progressive_hints.py)
+
+add_test(NAME GlossataCurationQueueTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_requests.py)
+add_test(NAME GlossataCurationGitHubTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_github.py)
+add_test(NAME GlossataCurationDecisionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_decisions.py)
+add_test(NAME GlossataCurationAutomationTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_curation_workflow.py)
