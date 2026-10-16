@@ -1,6 +1,8 @@
 # Curadoria automatizada: solicitações, evidências e decisões
 
-Implementação de manutenção do aplicativo **1.7.0**, ainda não lançado, com o catálogo **2.4.0 preservado**. Não altera C++/QML, quizzes, layout, perfis, pontuação ou conquistas. A execução normal do jogo continua offline. As ferramentas usam a biblioteca padrão do Python e a infraestrutura de governança existente.
+Implementação de manutenção do aplicativo **1.7.0**, ainda não lançado, com o catálogo **2.4.0 preservado**. Não altera o C++/QML do aplicativo, quizzes, layout, perfis, pontuação ou conquistas. A execução normal do jogo continua offline. As ferramentas usam a biblioteca padrão do Python e a infraestrutura de governança existente.
+
+**Estado remoto conferido em 2026-10-16:** workflow ativo na `main`, duas rodadas reais validadas, seis Issues únicas e uma atualização controlada. Sincronização semanal habilitada com autorização do mantenedor às **19:20:20 UTC (16:20:20 de Brasília)**, mantendo os limites. O primeiro disparo efetivamente agendado ainda não foi observado. Project não criado; distribuição do executável continua bloqueada. Evidências e limitações no histórico ao final deste documento.
 
 ## Arquitetura e limites
 
@@ -78,7 +80,7 @@ O workflow só executa na branch padrão do repositório configurado. Eventos p�
 
 O token automático do workflow é suficiente para Issues/etiquetas no próprio repositório quando `issues: write` é permitido. Fora do Actions, forneça `GH_TOKEN` por variável de ambiente segura, com acesso restrito ao repositório e Issues de leitura/escrita. Não o cole no chat, em arquivos, argumentos ou logs. Falta de permissão é erro explícito; não se troca de conta/token automaticamente. A API usa host fixo, recusa redirecionamento autenticado e não registra respostas brutas/credenciais.
 
-Antes de escrever, o sincronizador verifica o repositório, a existência do commit de origem no GitHub e a árvore local limpa. Isso evita publicar referências a evidências de commits ainda não enviados. Como **não houve autorização de push**, esta implementação foi registrada localmente; workflow, formulários, etiquetas e Issues serão ativáveis após um push autorizado e integração na branch padrão. Não foi alegada uma execução remota do workflow nem a criação de Issues nesta entrega.
+Antes de escrever, o sincronizador verifica o repositório, a existência do commit de origem no GitHub e a árvore local limpa. Isso evita publicar referências a evidências de commits ainda não enviados. Publicação do código, primeira escrita em Issues e habilitação semanal receberam autorizações separadas nesta entrega; o histórico ao final distingue preparação local, execuções remotas verificadas e configuração do agendamento.
 
 A agenda do GitHub pode sofrer atraso e pode ser desativada por inatividade em repositórios públicos; monitore Actions e use a execução manual quando necessário. Veja a [documentação oficial de eventos/agendamento](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows) e [permissões de GITHUB_TOKEN](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token).
 
@@ -218,4 +220,56 @@ Identificar o run pelo commit, evento e horário, acompanhar sua conclusão e ba
 
 Na primeira publicação autorizada, comparar snapshots públicos mínimos por ID estável, número da Issue, hash do corpo, etiquetas, estado e data de atualização; conferir também comentários e trechos humanos. A contagem total pode crescer legitimamente enquanto houver backlog. Não criar ou encerrar Issues de teste sem escopo autorizado, nem encerrar solicitações porque sumiram de um relatório. Reexecução e atualização devem preservar evidências e o histórico científico.
 
-Após cada etapa real, acrescentar aqui commit/run IDs, URLs de Issues, limites observados, permissões, conflitos, resultado da deduplicação e estado verificado da variável. **Data real de ativação: pendente.** Até essas etapas, o sistema está preparado localmente; não há declaração de operação semanal remota nem de liberação pública do executável.
+Após cada etapa real, acrescentar aqui commit/run IDs, URLs de Issues, limites observados, permissões, conflitos, resultado da deduplicação e estado verificado da variável. Os registros seguintes documentam as etapas efetivamente concluídas; a data e o estado atuais constam do registro final. A ativação de solicitações não libera a distribuição pública do executável.
+
+## Histórico da validação remota em 2026-10-16
+
+Os registros abaixo atualizam o estado da preparação anterior. O mantenedor autorizou o primeiro push dos 21 commits/365 arquivos revisados, incluindo 109 fotografias de exploração e suas evidências. A `main` avançou de `dd69feb` para **`661e5df0021cd28596c160bb80683149acf06a1a`**, sem reescrita de histórico, tags, releases ou Project. A proteção de publicação semanal permaneceu em `false`.
+
+| Execução | Commit | Resultado verificado |
+| --- | --- | --- |
+| [Simulação 38951231918](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38951231918) | `661e5df` | Sucesso; `audit` com `contents: read`/`issues: read`; `synchronize` ignorado; recibo `remote_checked=true`, `apply=false`, nenhuma Issue criada/atualizada |
+| [CI geral inicial 38951122668](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38951122668) | `661e5df` | Gate de distribuição bloqueado e duas falhas técnicas: diretório de captura ausente em checkout limpo; inicialização TLS desnecessária no teste offline de orçamento |
+| [Nova simulação 38952669866](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38952669866) | `4c1442c45245095d16b400146cc0f4b059038911` | Sucesso após correção; mesmas 15 solicitações/3.282 achados, leitura real da API e nenhuma escrita em Issues |
+| [CI corrigido 38952589782](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38952589782) | `4c1442c` | `offline-validation` aprovado: compilação, CTest 15/15, 48 casos de domínio e 5 de interface, auditorias e histórico visual; `distribution-permissions` continua bloqueado |
+| [Primeira publicação 38953314116](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38953314116) | `4c1442c` | Sucesso; três novas Issues, nenhuma atualização; Project não configurado; nenhuma aprovação de recurso |
+| [Reexecução 38953556113](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38953556113) | `4c1442c` | Sucesso; três novas Issues, uma atualização controlada na #1; #2/#3 preservadas sem reescrita; seis IDs únicos, nove solicitações restantes na fila |
+
+Foram baixados e examinados `requests.json`, `requests.md`, `sync.json`, metadados e logs das duas simulações. O artefato inicial `curadoria-fila-publica` tem ID `12068342609` e digest `sha256:e476408cd79151c1934843d483f97878d182b42e7b4d1754e2512c65b52878f5`. A API de Issues permaneceu vazia antes e depois dessas execuções; nenhuma permissão adicional de repositório foi necessária. O workflow registrado tem ID `387024878`, estado `active`, na branch padrão `main`.
+
+A diferença para os **3.391 achados locais** foi conferida por IDs e hashes: o diretório local contém **109 mídias antigas ignoradas por `.git/info/exclude`**, ausentes do checkout limpo do GitHub. O grupo `historical-media` tem 146 achados locais e 37 versionados. Os 15 IDs de solicitação coincidem, 14 solicitações são integralmente iguais e a diferença da última corresponde exatamente às mídias não versionadas. Não houve exclusão local de arquivos, mudança do catálogo, concessão de licença ou supressão de pendência para igualar contagens.
+
+O commit `4c1442c` cria o diretório de capturas no próprio teste QML e só inicializa transporte/TLS do cliente após validar caminho e orçamento. Não desativa HTTPS, certificados ou proteção contra redirecionamentos. Respostas HTTP de erro são fechadas e não repetidas. A regressão local passou em **15/15 suítes, 78,94 s**; o caso visual também passou isoladamente em um diretório inicialmente vazio, gerando quatro capturas reais. O catálogo 2.4.0, fotos, revisões, perfis e lógica/layout do programa permanecem preservados.
+
+O mantenedor autorizou a primeira rodada real e uma reexecução de validação, com até três novas Issues por rodada/seis no total, incluindo um teste controlado do bloco gerado e preservação de anotação técnica. Essa autorização não habilita a publicação semanal, não aprova recursos e não permite encerrar solicitações. Os resultados dessas etapas e eventual autorização semanal devem ser registrados a seguir.
+
+### Issues e deduplicação verificadas
+
+| Issue | ID estável | Assunto |
+| --- | --- | --- |
+| [#1](https://github.com/kaduolliver/Projeto-Glossata/issues/1) | `curation-v1-0e1e342d79c4a471e90b77b7` | Licenciamento das fotografias de quiz |
+| [#2](https://github.com/kaduolliver/Projeto-Glossata/issues/2) | `curation-v1-4f2ce3678bf9c200687be506` | Direitos de outros materiais |
+| [#3](https://github.com/kaduolliver/Projeto-Glossata/issues/3) | `curation-v1-4f8760306e86c24daed2b65f` | Mídias históricas versionadas |
+| [#4](https://github.com/kaduolliver/Projeto-Glossata/issues/4) | `curation-v1-e35310e769d13cb759ca395b` | Revisão científica da fotografia |
+| [#5](https://github.com/kaduolliver/Projeto-Glossata/issues/5) | `curation-v1-1cc1b436a21de1d9d0be66b9` | Morfologia |
+| [#6](https://github.com/kaduolliver/Projeto-Glossata/issues/6) | `curation-v1-2e39aba9876536b5996bb856` | Conservação |
+
+Foram comparados IDs do marcador, números, títulos, etiquetas, estados, corpos e datas de atualização diretamente pela API. As seis Issues têm identificadores únicos e estado pendente/aberto. A primeira rodada criou exatamente três; a segunda criou três assuntos distintos, mantendo os números anteriores. Não se usou apenas o crescimento da contagem como teste de deduplicação.
+
+No teste controlado autorizado, somente o fingerprint interno do bloco da #1 foi temporariamente marcado como desatualizado, com anotação técnica fora do bloco. A reexecução restaurou o conteúdo gerado correto e preservou integralmente a anotação. #2/#3 conservaram corpo e data de atualização; nenhum título, etiqueta administrativa ou evidência foi perdido. A anotação foi preparada pela automação e não é revisão humana, parecer científico ou autorização de direitos.
+
+Os logs confirmam `contents: read` e `issues: write` apenas no job de sincronização, sem escrita em código; o job anterior permanece em leitura. A preparação de Project foi ignorada e os recibos indicam `not_configured`. Nenhuma Issue foi encerrada, nenhum comentário foi criado e nenhuma decisão científica/jurídica foi importada. O catálogo 2.4.0 e todos os arquivos de `resources/`/`src/` permanecem iguais à implementação anterior `56d8da4`.
+
+Limites observados: **3/3 novas Issues** em cada rodada, **0 e 1/8 atualizações**, sem duplicações, 403, 429 ou erros nos recibos. O código impõe 200 chamadas por cliente, paginação limitada e espaçamento de escrita; o total de chamadas não é serializado nos recibos. Não se atribui um número exato de chamadas às execuções sem essa medição.
+
+Limitações: não havia comentários humanos nem Issues encerradas; a preservação desses casos permanece coberta por testes automatizados, sem alegação de exercício real com revisão independente. Não foram criados relatos fictícios ou encerradas pendências reais para simular esses cenários. O CI técnico está aprovado, mas o workflow geral mantém resultado de falha pelo gate de distribuição legítimo: 120 fotografias, 7 outros materiais, 37 mídias versionadas não embarcadas e 2 bloqueios científicos. Os logs também registram avisos do GitHub sobre migrações de Node/runner; futuras atualizações de actions fixadas por SHA exigem revisão de compatibilidade.
+
+### Ativação semanal autorizada
+
+O mantenedor autorizou expressamente a terceira etapa. A API confirmou **`GLOSSATA_CURATION_WEEKLY_SYNC=true`**, com `updated_at=2026-10-16T19:20:20Z`. Essa é a data real de habilitação da configuração: **2026-10-16, 16h20min20s de Brasília**. O código publicado e validado é `4c1442c45245095d16b400146cc0f4b059038911`, com catálogo 2.4.0. A agenda permanece `17 12 * * 1`, segundas às 9h17 de Brasília.
+
+Depois de habilitar a variável, a [simulação final 38954178774](https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38954178774), com `publish=false`, terminou com sucesso: acesso remoto conferido, seis solicitações existentes reconhecidas como `unchanged`, nenhuma criação/atualização e job de escrita ignorado. Os seis corpos, títulos, estados, comentários e datas de atualização foram comparados com o snapshot anterior e permaneceram iguais. Isso confirma que habilitar a agenda não transforma uma simulação manual em publicação.
+
+O workflow está ativo; execução semanal com escrita depende da chave e das auditorias anteriores, e mantém **3 criações/8 atualizações/200 chamadas por cliente** como tetos. Nove solicitações continuam na fila para rodadas futuras. Nenhum evento `schedule` foi aguardado nesta sexta-feira: foi validada a configuração e a integração manual real, sem alegar que o primeiro disparo semanal já ocorreu. Atrasos, desativação por inatividade, falhas futuras e alterações de runner exigem acompanhamento em Actions.
+
+Não houve criação de Project, concessão de revisão científica ou de direitos, renovação de revisão, mudança nos 122 organismos/120 fotos de quiz, alteração dos arquivos científicos, banco pessoal, pontuação, conquista, lógica dos quizzes ou layout. Nenhuma tag ou release foi criada. Esta ativação gerencia solicitações; mantém integralmente os bloqueios de redistribuição e as responsabilidades humanas documentadas.

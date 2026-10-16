@@ -7,6 +7,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 - Publicação semanal protegida pela variável `GLOSSATA_CURATION_WEEKLY_SYNC`, desabilitada por padrão. Auditorias e simulação autenticada com permissões de leitura continuam semanais; primeira publicação manual e ativação exigem autorizações separadas.
 - Tabelas dos relatórios e corpos de Issues mantêm linhas contíguas para renderização correta no GitHub.
 - Validação em checkout limpo: teste visual cria seu diretório de capturas; cliente GitHub só inicializa transporte/TLS após validar a requisição e o orçamento, sem abrir rede nos testes offline. Falhas HTTP fecham a resposta e não são repetidas.
+- Ativação remota autorizada em 2026-10-16: simulações reais sem escrita, seis Issues únicas em duas rodadas limitadas e atualização controlada com preservação de anotação técnica. Chave semanal habilitada após autorização separada; resultados, execuções e limitações documentados. Sem Project, tag, release ou liberação de distribuição.
 - Fila pública mínima derivada dos auditores existentes, com IDs/hashes estáveis, agrupamento, prioridade, referências verificadas e limitação de publicação.
 - Integração GitHub Issues idempotente, preservação de notas/etiquetas humanas, paginação completa e limites de chamadas/criação/atualização. Issue encerrada ou etiqueta de aprovação não altera a governança.
 - Formulários científicos, fotográficos, educacionais e de direitos; execução semanal/manual e integração opcional com GitHub Projects v2, em campo administrativo independente.

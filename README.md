@@ -243,7 +243,7 @@ A curadoria distingue aprovação de identificação visual, fotografia, etimolo
 
 Aprovações antigas sem responsável e evidência foram classificadas como legadas. Novo conteúdo, inclusive assistido por IA, entra em rascunho; alterações exigem nova revisão registrada. O relatório de atualização é offline por padrão (`python scripts/review_updates.py`); `--online` gera propostas para análise humana, sem substituir o conteúdo publicado.
 
-O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. Há sincronização limitada com Issues, quatro formulários públicos, agenda semanal e integração opcional com Projects. A ativação remota aguarda push autorizado e configuração; fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para manutenção, permissões e registro explícito das decisões humanas.
+O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. A integração com Issues foi validada e a sincronização semanal habilitada com autorização em 2026-10-16, às segundas às 9h17 de Brasília, limitada a três criações e oito atualizações por rodada. Há quatro formulários públicos; Projects permanece opcional. Fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para evidências, limitações, permissões e decisões humanas.
 
 ## Roadmap
 

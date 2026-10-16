@@ -4,6 +4,8 @@ A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snaps
 
 Manutenção 1.7.0: o aplicativo acrescenta gerenciamento de solicitações de curadoria, reutilizando **2.4.0 sem alterar bytes, evidências, revisões ou hashes do catálogo**. Modelos, relatórios e filas ficam fora dos recursos de jogo. Registrar uma decisão humana futura continua exigindo atualização/versionamento dos dados pelo fluxo original; criar uma Issue não é atualização do catálogo.
 
+Ativação autorizada em 2026-10-16: seis solicitações reais únicas no GitHub, uma atualização controlada e habilitação semanal documentadas em [CURADORIA_AUTOMATIZADA.md](CURADORIA_AUTOMATIZADA.md). Sem novas revisões científicas, permissões de uso ou versão de catálogo; os gates de distribuição e pendências anteriores permanecem ativos.
+
 ## [2.4.0] — Não lançado; receitas e avaliação pedagógica automática
 
 Aplicativo **1.6.0**. Novo corpus derivado `progressive_hints.json`, com receitas, identidade/foto, fontes e localizadores, avaliação `approved_automated` explicitamente pedagógica. Política e implementação entram no hash; o gerador não renova datas. Notas de organismo podem apoiar níveis superiores com escopo individual explícito, sem redefinir o grupo. Quatro conteúdos inadequados como morfologia prévia continuam excluídos. As 290 avaliações antigas, revisões científicas, baseline e permissões permanecem preservadas; nenhuma aprovação humana ou cessão de direitos é criada.
