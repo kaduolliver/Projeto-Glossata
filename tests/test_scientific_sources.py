@@ -80,6 +80,15 @@ class ScientificSourceTests(unittest.TestCase):
         data=json.loads(path.read_bytes());data['payload']['id']=2;path.write_text(json.dumps(data))
         with self.assertRaises(ProviderError):CachedClient(self.root).get('https://api.gbif.org/v1/species/1')
 
+    def test_missing_snapshot_remains_a_provider_failure_without_implicit_fetch(self):
+        client=CachedClient(self.root,online=True,opener=Mock(return_value=Response({'id':1})))
+        client.get('https://api.gbif.org/v1/species/1')
+        path=next(p for p in self.root.rglob('*.json') if p.name!='latest.json');path.unlink()
+        opener=Mock(side_effect=AssertionError('refresh must be explicit'))
+        with self.assertRaisesRegex(ProviderError,'explicit refresh'):
+            CachedClient(self.root,online=True,opener=opener).get('https://api.gbif.org/v1/species/1')
+        opener.assert_not_called()
+
     def test_429_stops_host_without_retry_and_keeps_retry_after(self):
         error=urllib.error.HTTPError('https://api.gbif.org',429,'limited',{'Retry-After':'60'},None)
         opener=Mock(side_effect=error);client=CachedClient(self.root,online=True,opener=opener)

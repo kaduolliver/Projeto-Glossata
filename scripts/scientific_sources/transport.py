@@ -1,6 +1,7 @@
 """Bounded, paced API access with immutable evidence and offline replay by default."""
 from datetime import datetime, timezone
 import hashlib
+import http.client
 import json
 from pathlib import Path
 import time
@@ -48,9 +49,12 @@ class CachedClient:
         url=base+('?' + urllib.parse.urlencode(sorted((params or {}).items())) if params else '')
         folder=self.cache/hashlib.sha256(url.encode()).hexdigest();pointer=folder/'latest.json'
         if pointer.is_file() and (not self.online or not self.refresh):
-            reference=json.loads(pointer.read_bytes());sha=reference['snapshot_sha256']
-            if len(sha)!=64 or any(c not in '0123456789abcdef' for c in sha):raise ProviderError('Invalid evidence pointer')
-            evidence_path=folder/(sha+'.json');snapshot=json.loads(evidence_path.read_bytes())
+            try:
+                reference=json.loads(pointer.read_bytes());sha=reference['snapshot_sha256']
+                if not isinstance(sha,str) or len(sha)!=64 or any(c not in '0123456789abcdef' for c in sha):raise ValueError('Invalid evidence pointer')
+                evidence_path=folder/(sha+'.json');snapshot=json.loads(evidence_path.read_bytes())
+            except (OSError,ValueError,KeyError,TypeError) as error:
+                raise ProviderError('Cached evidence missing/corrupt; explicit refresh required: '+url) from error
             if digest(snapshot)!=sha or snapshot.get('url')!=url or snapshot.get('schema_version')!=1:
                 raise ProviderError('Cached evidence identity/hash/schema mismatch')
             return snapshot['payload'],dict(snapshot_sha256=sha,**{k:snapshot[k] for k in ['url','retrieved_at','response_sha256']})
@@ -72,7 +76,7 @@ class CachedClient:
                 self.blocked.add(host)
                 raise RateLimited('HTTP 429; stop host; Retry-After: '+str(error.headers.get('Retry-After'))) from error
             raise ProviderError('HTTP '+str(error.code)+' at '+url) from error
-        except (OSError,ValueError) as error:raise ProviderError('API unavailable or invalid JSON: '+url) from error
+        except (OSError,ValueError,http.client.HTTPException) as error:raise ProviderError('API unavailable or invalid JSON: '+url) from error
         if isinstance(payload,dict) and ('error' in payload or 'errors' in payload):raise ProviderError('API returned an error payload')
         # Select before persistence: no contacts, coordinates, observation users,
         # sequences, full descriptions or images in the maintenance cache.
