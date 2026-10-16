@@ -24,7 +24,7 @@ Instrução operacional recebida em 16/10/2026. Execução sequencial: concluir,
 
 ## Retomada
 
-Conferir git status e os commits antes de continuar; não repetir etapas concluídas. As três etapas estão registradas. O próximo passo é concluir o teste do pacote canônico local e o relatório integrado; não repetir as etapas. Testes/capturas usam bancos temporários. Nenhuma ação remota, tag ou release está autorizada. Não declarar GitHub Actions aprovado sem execução remota autorizada.
+Conferir git status e os commits antes de continuar; não repetir etapas concluídas. As três etapas estão registradas. Trabalho local concluído e pacote validado; não repetir as etapas. As pendências humanas e a falta de autorização remota permanecem explícitas no relatório final. Testes/capturas usam bancos temporários. Nenhuma ação remota, tag ou release está autorizada. Não declarar GitHub Actions aprovado sem execução remota autorizada.
 
 ## Etapa 2 — implementação e pesquisa
 
@@ -42,4 +42,6 @@ Compilação e **11/11 suítes CTest (58,90 s)** aprovadas, inclusive UI real em
 
 Integração: a repetição encontrou um teste antigo que sempre clicava na terceira dica; corrigido para escolher uma dica efetivamente disponível, sem tornar o produto menos restritivo. A interface passou três vezes consecutivas (63,13 s). O caminho legado por categoria passou a retornar a primeira dica, sem avançar silenciosamente para outra ao repetir; teste de regressão incluído. Build e 11/11 suítes finais aprovados (58,03 s), geração de educação/créditos/auditoria reproduzível, qmllint, catálogo, mídias, propostas offline, versões e captura real aprovados.
 
-Próximo passo: registrar esta correção verificada, atualizar/testar o pacote canônico local de desenvolvimento e concluir o relatório integrado. Sem push, tag ou release.
+Correção registrada em **a16530e**. Pacote canônico atualizado por `package.ps1 -Development`, marcado para uso local; smoke com PATH isolado aprovado (saída 0, stderr vazio, sem DLLs externas do MSYS2). O empacotador avisou sobre traduções Qt e componentes D3D ausentes; GPU/Windows limpo não foram testados. Gate de distribuição continua recusando com saída 2 e zero erros técnicos: direitos, revisões e obrigações de dependências permanecem pendentes. Metadados, histórico de capturas desde 3bcbd4f e auditor do índice aprovados.
+
+**Execução concluída.** [Relatório consolidado](RELATORIO_EVOLUCAO_INTEGRADA.md), commits, testes e limitações registrados. Não houve push, tag ou release. Próximos passos dependem de revisão humana das pendências de direitos/ciência e de autorização específica para ações remotas.

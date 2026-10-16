@@ -274,6 +274,7 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 - [`docs/CLASSIFICACAO_FILOGENETICA.md`](docs/CLASSIFICACAO_FILOGENETICA.md) — domínios, linhagens, fontes, divergências e migração.
 - [`docs/AUDITORIA_FILOGENETICA.json`](docs/AUDITORIA_FILOGENETICA.json) — enquadramento rastreável dos 122 organismos.
 - [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
+- [`docs/RELATORIO_EVOLUCAO_INTEGRADA.md`](docs/RELATORIO_EVOLUCAO_INTEGRADA.md) — auditoria Git/CI, cobertura fotográfica, avaliação automática das dicas e validação local em 1.6.0.
 - [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
 - [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.
 - [`docs/PHOTO_CREDITS.md`](docs/PHOTO_CREDITS.md) — atribuição das imagens.
