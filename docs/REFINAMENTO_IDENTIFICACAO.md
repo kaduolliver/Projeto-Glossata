@@ -1,5 +1,7 @@
 # Refinamento técnico e científico da identificação
 
+> Documento histórico. A organização atual por domínios e linhagens, com cobertura e limites atualizados, está em [CLASSIFICACAO_FILOGENETICA.md](CLASSIFICACAO_FILOGENETICA.md). Os agrupamentos antigos deste registro não são táxons naturais ativos.
+
 > Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
 
 Este relatório registra a etapa anterior às substituições solicitadas pelo usuário. As contagens atuais e a exceção de Monera estão em [Substituições do catálogo](SUBSTITUICOES_CATALOGO.md).

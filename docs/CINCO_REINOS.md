@@ -1,5 +1,7 @@
 # Expansão para os cinco reinos
 
+> Documento histórico. A organização atual por domínios e linhagens, com cobertura e limites atualizados, está em [CLASSIFICACAO_FILOGENETICA.md](CLASSIFICACAO_FILOGENETICA.md). Os agrupamentos antigos deste registro não são táxons naturais ativos.
+
 Este documento registra a expansão inicial. A política atual de fotografias, dicas, navegação e estatísticas está descrita em [Refinamento da identificação](REFINAMENTO_IDENTIFICACAO.md). O refinamento mantém o catálogo e os dados dos jogadores, mas substitui perguntas textuais/decorativas por elegibilidade visual por nível.
 
 Implementação em C:\glossata_game, branch feat/cinco-reinos. A interface existente, a partida contínua, os perfis e o ranking foram preservados.

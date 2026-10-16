@@ -1,5 +1,7 @@
 # Substituições do catálogo e imagens de apoio
 
+> Documento histórico. A organização atual por domínios e linhagens, com cobertura e limites atualizados, está em [CLASSIFICACAO_FILOGENETICA.md](CLASSIFICACAO_FILOGENETICA.md). Os agrupamentos antigos deste registro não são táxons naturais ativos.
+
 > Registro hist?rico: marca??es antigas de verifica??o/aprova??o n?o demonstram revis?o humana rastre?vel. Consulte a [governan?a atual, matriz e pend?ncias](CONFORMIDADE.md). Cobertura t?cnica n?o ? certifica??o cient?fica ou jur?dica.
 
 O usuário autorizou substituir organismos sem foto adequada e, depois, pediu para manter Monera com fotografias de apoio, inclusive quando não permitam reconhecer a espécie. Essa exceção se aplica somente a Monera.

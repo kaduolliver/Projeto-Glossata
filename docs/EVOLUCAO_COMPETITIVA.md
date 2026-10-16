@@ -74,7 +74,7 @@ Em Gomphosphaeria, a interpretação provável do gênero foi registrada separad
 
 ## Modos e rankings
 
-**Livre:** perguntas contínuas, filtros e níveis existentes, dificuldade selecionável, dicas e pontuação fracionária, encerramento voluntário. O ranking do Livre mostra recordes de treinamento; grupos e durações variáveis não são apresentados como competição padronizada. Monera conserva a experiência por informações documentadas e imagens explicitamente marcadas como apoio, conforme a autorização anterior; essas fotos não comprovam a espécie nem entram no Competitivo.
+**Livre:** perguntas contínuas, filtros e níveis existentes, dificuldade selecionável, dicas e pontuação fracionária, encerramento voluntário. O ranking do Livre mostra recordes de treinamento; grupos e durações variáveis não são apresentados como competição padronizada. Bacteria conserva a experiência por informações documentadas e imagens explicitamente marcadas como apoio, conforme a autorização anterior; essas fotos não comprovam a espécie nem entram no Competitivo.
 
 **Competitivo:** inicialmente 20 questões, configuradas por GameConfiguration::CompetitiveQuestionCount; todas as espécies elegíveis com fotos de identificação, nível gênero, política Equilibradas. Não repete organismos. Após a vigésima resposta, finaliza e salva uma vez, mantém a revisão dessa resposta e oferece Ver resultado final. Respostas duplicadas são bloqueadas. Partidas interrompidas ficam persistidas com is_complete=0 e não entram no ranking competitivo.
 

@@ -20,7 +20,7 @@ A ficha reúne distribuição/habitat, alimentação ou nutrição quando docume
 
 Distribuição natural, local de isolamento e observação pontual são informações diferentes. As fichas de organismos pouco documentados indicam a localidade confirmada e esclarecem que ela não delimita toda a distribuição. Exemplares em zoológicos não estabelecem a distribuição silvestre. O sapo-dourado tem distribuição **histórica**, pois está extinto.
 
-Descrições de aparência baseadas na fotografia têm esse escopo registrado. São pistas de observação, não uma garantia de identificação no nível de espécie. Curiosidades gerais conservam o grupo ao qual se referem. Os 20 organismos de Monera recebem descrições biológicas, sem usar fotos de hospedeiros ou de espécies relacionadas como prova de forma celular ou distribuição.
+Descrições de aparência baseadas na fotografia têm esse escopo registrado. São pistas de observação, não uma garantia de identificação no nível de espécie. Curiosidades gerais conservam o grupo ao qual se referem. Os 20 organismos bacterianos recebem descrições biológicas, sem usar fotos de hospedeiros ou de espécies relacionadas como prova de forma celular ou distribuição.
 
 Na conservação, foram consultados os registros públicos dos 122 táxons na API do iNaturalist. Uma categoria só foi usada quando o registro pertence exatamente à espécie, tem autoridade **IUCN Red List** e não possui região associada. Avaliações regionais, de subespécies e de ancestrais não foram transferidas. A ficha informa a procedência e a data da consulta, além de oferecer o link da avaliação citada. Essa data não é a data da avaliação original.
 
@@ -36,7 +36,7 @@ EducationalContent também confere **ID e nome científico** antes de aplicar a 
 
 ## Validação
 
-- Testes do conteúdo: cobertura dos 122 organismos, fontes por tópico, identidade, conservação global, distinção entre extinção e ausência de categoria, nutrição dos grupos não animais e aviso de apoio em Monera.
+- Testes do conteúdo: cobertura dos 122 organismos, fontes por tópico, identidade, conservação global, distinção entre extinção e ausência de categoria, nutrição dos grupos não animais e aviso de apoio em Bacteria.
 - Testes de interface: nome/apresentação, tópicos, expansão das fontes, retorno ao quiz, ficha longa do leão e controles inferiores em 1240 × 820 e 1000 × 700.
 - Quatro suítes CTest e lint QML. Capturas em build/tests/previews, incluindo species-lion-information.png e compact-species-lion-sources.png.
 
