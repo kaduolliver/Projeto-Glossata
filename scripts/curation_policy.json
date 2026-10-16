@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "repository": "kaduolliver/Projeto-Glossata",
+  "max_creates": 3,
+  "max_updates": 8,
+  "max_api_calls": 200,
+  "max_pages": 40,
+  "max_body_rows": 20,
+  "max_project_updates": 10,
+  "managed_label": "curadoria:automatica",
+  "project_field": "Curadoria",
+  "statuses": {
+    "curadoria:pendente": "Pendente",
+    "curadoria:em-analise": "Em análise",
+    "curadoria:aguardando-evidencias": "Aguardando evidências",
+    "curadoria:aprovada": "Aprovada",
+    "curadoria:rejeitada": "Rejeitada"
+  },
+  "notice": "Organizational states only. Issue status never approves catalog content or proves rights."
+}
