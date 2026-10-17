@@ -1,5 +1,7 @@
 # Preparação de licenciamento do Projeto Glossata
 
+> **Saneamento posterior — 2026-10-17, Issue #2:** a lógica Python do gerador passou ao escopo Apache após extração exata da redação para `group_education.json`. A pendência de direitos segue com a redação; sete casos continuam ativos. A origem dos ícones foi parcialmente esclarecida por declaração de criação via ChatGPT, sem autorização gráfica presumida. Este plano e seu inventário continuam históricos; veja [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
+
 > **Atualização administrativa — 2026-10-17, posterior à preparação abaixo:** o mantenedor decidiu expressamente Apache-2.0 para o código próprio, fornecendo Carlos Eduardo Lima de Oliveira como criador original. LICENSE/NOTICE e o [escopo enumerado](ESCOPO_LICENCIAMENTO.md) implementam a concessão delimitada. Textos/coletânea e o gerador misto continuam pendentes; fotos, marca e dependências não foram relicenciadas. O texto e o inventário abaixo preservam o estado anterior à decisão, inclusive a então correta ausência de LICENSE. Consulte o [relatório da implementação](RELATORIO_IMPLEMENTACAO_APACHE_2_0.md).
 
 Preparação técnica e documental em **2026-10-17**, a partir de `09aa3bdf342982d7425bd6200da87fbabca91495` (PR #9 integrado). Branch: `docs/preparacao-licenciamento`. **Nenhuma licença do código foi escolhida ou ativada. Não foi criado `LICENSE`.** Esta análise organiza evidências e opções; não constitui parecer jurídico definitivo nem comprovação de titularidade.

@@ -1,5 +1,7 @@
 # Decisão de licenciamento do código — Apache-2.0
 
+> **Atualização de escopo — 2026-10-17, Issue #2:** após extração sem alteração da redação para `group_education.json`, a lógica Python de `build_education.py` passou a integrar explicitamente a concessão de código. A enumeração atual tem 156 arquivos. A pendência de direitos acompanha os textos extraídos; os sete achados permanecem. Os parágrafos abaixo registram a implementação inicial de 155 arquivos, anterior à separação. Consulte [SANEAMENTO_ISSUE_2.md](../SANEAMENTO_ISSUE_2.md).
+
 **Decisão expressa do mantenedor em 2026-10-17**, posterior à preparação do PR #10: Apache-2.0 para o código próprio, com uso comercial permitido conforme a licença. Criador original informado pelo mantenedor: **Carlos Eduardo Lima de Oliveira**. Não se deduziu nome civil/titularidade exclusiva de uma conta GitHub.
 
 O [escopo enumerado](../ESCOPO_LICENCIAMENTO.md) e seu JSON delimitam 155 arquivos e as exclusões. [LICENSE](../../LICENSE) contém o texto oficial integral; [NOTICE](../../NOTICE) reconhece a criação original e os contribuidores, sem inventar copyright exclusivo, assinatura ou revisão jurídica. A autorização é a solicitação expressa desta implementação. `content_policy.json` registra somente a decisão de código, reproduzida no inventário de recursos; textos e coletânea continuam sem licença escolhida.

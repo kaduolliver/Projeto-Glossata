@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-17T20:35:59.742693+00:00",
+  "base_commit": "e2df447cbae2b332de51391e3f34b190b0d74e91",
+  "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2",
+  "method": "Read-only Git/source/archived governance inspection, source-page sampling and synthetic offline regression. Baseline gate re-executed in a temporary git-archive tree. No whole-corpus external similarity certification.",
+  "materials": [
+    {
+      "original_path": "resources/branding/glossata.png",
+      "base_sha256": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+      "current_sha256": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "a9dc4edd35ec6a22abfd8722bcb599a138c50765 2026-10-14T12:14:49-03:00 chore: versiona estado inicial do Glossata Quiz"
+      ],
+      "current_rights_record_path": "resources/branding/glossata.png",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "resources/branding/glossata_discord.png",
+      "base_sha256": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+      "current_sha256": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "a9dc4edd35ec6a22abfd8722bcb599a138c50765 2026-10-14T12:14:49-03:00 chore: versiona estado inicial do Glossata Quiz"
+      ],
+      "current_rights_record_path": "resources/branding/glossata_discord.png",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "resources/branding/glossata.ico",
+      "base_sha256": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+      "current_sha256": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "a9dc4edd35ec6a22abfd8722bcb599a138c50765 2026-10-14T12:14:49-03:00 chore: versiona estado inicial do Glossata Quiz"
+      ],
+      "current_rights_record_path": "resources/branding/glossata.ico",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "resources/data/species_profiles.json",
+      "base_sha256": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
+      "current_sha256": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "011b1da2f6fca4695931a6024190c0f5b19276e6 2026-10-14T18:18:19-03:00 Add sourced Portuguese species profiles and expand information cards"
+      ],
+      "current_rights_record_path": "resources/data/species_profiles.json",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "resources/data/hint_education.json",
+      "base_sha256": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
+      "current_sha256": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "5a119b3b6549d6eaf8e103fe0edeb01441a47f70 2026-10-15T19:22:47-03:00 feat(content): add auditable assistance proposals independent of scientific review",
+        "035d4d0a25adbaafc831b2531a6d558c114fd03d 2026-10-14T20:45:56-03:00 Add competitive sessions, personal records and scientific review workflow",
+        "f4b870505e224eb48997cbe96f88225290cdaae3 2026-10-14T19:24:21-03:00 Add strategic hints and exact fractional scoring"
+      ],
+      "current_rights_record_path": "resources/data/hint_education.json",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "resources/data/progressive_hints.json",
+      "base_sha256": "d5664a5fe9edc130159a1992a0447d5caca11dcdc1fda83f1b1a6024b7d0ae00",
+      "current_sha256": "d5664a5fe9edc130159a1992a0447d5caca11dcdc1fda83f1b1a6024b7d0ae00",
+      "bytes_unchanged": true,
+      "tracked_history": [
+        "4d047561840b33e785c82aab029691d9644c2ddb 2026-10-17T15:23:55-03:00 feat(licenciamento): adotar Apache-2.0 no codigo proprio com escopo explicito",
+        "d7c523eb3cceb2ae832f366f543ec16c0f0e48fc 2026-10-16T02:03:16-03:00 feat(hints): add traceable automated pedagogy and progressive hint snapshots"
+      ],
+      "current_rights_record_path": "resources/data/progressive_hints.json",
+      "rights_resolved": false
+    },
+    {
+      "original_path": "scripts/build_education.py",
+      "base_sha256": "78bf8163f9ec1723dff5457ee54f398d053e2064095dc85946fccb9d85a90dec",
+      "current_sha256": "9a0f8995ca0d02cbb201b47f2c727bcb42e44ffe124c89edb6593aa314d99069",
+      "bytes_unchanged": false,
+      "tracked_history": [
+        "b150dcce62679cf7d70650ee2f2e649698ae2a40 2026-10-17T12:57:01-03:00 feat(catalogo): preparar admissao controlada com revisoes rastreaveis",
+        "d7c523eb3cceb2ae832f366f543ec16c0f0e48fc 2026-10-16T02:03:16-03:00 feat(hints): add traceable automated pedagogy and progressive hint snapshots",
+        "8e68b6ea35190ced88ac5266086a9cf0db9fdaa6 2026-10-15T22:17:31-03:00 feat(taxonomy): adopt sourced phylogenetic navigation with lossless migration",
+        "5a119b3b6549d6eaf8e103fe0edeb01441a47f70 2026-10-15T19:22:47-03:00 feat(content): add auditable assistance proposals independent of scientific review",
+        "4bd2cad87721820026cd376524d3d7f9985dabab 2026-10-15T18:15:10-03:00 feat(content): preserve permission evidence and traceable review history",
+        "035d4d0a25adbaafc831b2531a6d558c114fd03d 2026-10-14T20:45:56-03:00 Add competitive sessions, personal records and scientific review workflow",
+        "f4b870505e224eb48997cbe96f88225290cdaae3 2026-10-14T19:24:21-03:00 Add strategic hints and exact fractional scoring",
+        "011b1da2f6fca4695931a6024190c0f5b19276e6 2026-10-14T18:18:19-03:00 Add sourced Portuguese species profiles and expand information cards",
+        "0ba0eee2b29392863f60759efa4ee52342be5443 2026-10-14T16:27:21-03:00 Refine visual identification, educational content and taxonomic performance"
+      ],
+      "current_rights_record_path": "resources/data/group_education.json",
+      "rights_resolved": false
+    }
+  ],
+  "educational_documentation": {
+    "species_profiles.json": {
+      "organisms": 122,
+      "text_objects": 839,
+      "without_source_url": 0,
+      "without_separate_locator_field": 839,
+      "distinct_exact_texts": 636,
+      "source_hosts": {
+        "animaldiversity.org": 72,
+        "www.inaturalist.org": 251,
+        "animals.sandiegozoo.org": 6,
+        "entnemdept.ufl.edu": 6,
+        "ask.ifas.ufl.edu": 18,
+        "blogs.ifas.ufl.edu": 6,
+        "www.biointeractive.org": 5,
+        "www.birdlife.org": 4,
+        "digimorph.geo.utexas.edu": 4,
+        "plants.ces.ncsu.edu": 21,
+        "openstax.org": 34,
+        "link.springer.com": 6,
+        "powo.science.kew.org": 18,
+        "burkeherbarium.org": 5,
+        "bryophyteportal.org": 5,
+        "plants.sdsu.edu": 5,
+        "pza.sanbi.org": 5,
+        "www.nzpcn.org.nz": 11,
+        "www.mushroomexpert.com": 27,
+        "myco-lb.jgi.doe.gov": 6,
+        "pmc.ncbi.nlm.nih.gov": 57,
+        "www.atcc.org": 11,
+        "www.mykoweb.com": 6,
+        "www.montereybayaquarium.org": 6,
+        "seanet.stanford.edu": 12,
+        "www.marlin.ac.uk": 24,
+        "www.habitas.org.uk": 6,
+        "ditsong.org.za": 6,
+        "www.fishbase.se": 6,
+        "www.uwyo.edu": 6,
+        "www.amnh.org": 6,
+        "www.britishbryologicalsociety.org.uk": 6,
+        "www.cornare.gov.co": 5,
+        "ucmp.berkeley.edu": 21,
+        "www.amentsoc.org": 18,
+        "butterfly-conservation.org": 8,
+        "www.ukmoths.org.uk": 2,
+        "www.fs.usda.gov": 2,
+        "wetlandinfo.detsi.qld.gov.au": 1,
+        "www.doc.govt.nz": 3,
+        "www.museum.qld.gov.au": 3,
+        "www.first-nature.com": 42,
+        "www.algaebase.org": 4,
+        "www.si.edu": 1,
+        "www.microbiologyresearch.org": 9,
+        "limnolfwbiol.com": 6,
+        "journals.asm.org": 12,
+        "www.frontiersin.org": 2,
+        "pubmed.ncbi.nlm.nih.gov": 2,
+        "www.dsmz.de": 2,
+        "sib.gob.ar": 4,
+        "www.ebr.or.kr": 6,
+        "www.preslia.cz": 6,
+        "www.mapress.com": 5,
+        "journals.indianapolis.iu.edu": 1,
+        "sagdb.uni-goettingen.de": 6,
+        "onlinelibrary.wiley.com": 1
+      },
+      "limitation": "A source URL may itself identify a section or record; no originality, scientific approval or reproduction rights inferred from these structural counts."
+    },
+    "hint_education.json": {
+      "organisms": 122,
+      "text_objects": 64,
+      "without_source_url": 0,
+      "without_separate_locator_field": 64,
+      "distinct_exact_texts": 63,
+      "source_hosts": {
+        "www.first-nature.com": 25,
+        "lpsn.dsmz.de": 23,
+        "rhinos.org": 2,
+        "plants.ces.ncsu.edu": 5,
+        "pza.sanbi.org": 1,
+        "www.nzpcn.org.nz": 2,
+        "www.marlin.ac.uk": 2,
+        "www.heliconius.org": 1,
+        "ielc.libguides.com": 2,
+        "link.springer.com": 1
+      },
+      "limitation": "A source URL may itself identify a section or record; no originality, scientific approval or reproduction rights inferred from these structural counts."
+    }
+  },
+  "extraction": {
+    "source": "scripts/build_education.py",
+    "destination": "resources/data/group_education.json",
+    "definitions": 19,
+    "plain_notes": 15,
+    "canonical_prose_sha256": "6a41c03329d295cf1f7966fe110cf3cef0844bbf71cab41f7ba8dffc2e3a5e5e",
+    "semantic_education_sha256_before_and_after": "388472e49b4bfc3717a678671e01f18017c91139c1d17430814562e30a416929",
+    "all_output_fields_except_generated_source_sha256_equal": true,
+    "legitimate_output_change": "One new source-file hash in generated_source_sha256; scientific, pedagogical, review and scoring fields identical."
+  },
+  "preserved_files": [
+    "resources/data/species.json",
+    "resources/data/species_profiles.json",
+    "resources/data/hint_education.json",
+    "resources/data/progressive_hints.json",
+    "resources/data/photo_provenance.json",
+    "resources/data/credits.json",
+    "resources/data/curation_reviews.json",
+    "resources/data/content_policy.json",
+    "resources/compliance/review_baseline.json",
+    "docs/PHOTO_CREDITS.md",
+    "LICENSE",
+    "NOTICE",
+    "VERSION.txt"
+  ],
+  "existing_resource_media_files_verified_unchanged": 341,
+  "gate": {
+    "before": {
+      "technical_errors": 0,
+      "photo_licensing": 120,
+      "asset_licensing": 7,
+      "scientific_release_blocks": 2
+    },
+    "after": {
+      "technical_errors": 0,
+      "photo_licensing": 120,
+      "asset_licensing": 7,
+      "scientific_release_blocks": 2
+    },
+    "distribution_blocked": true
+  },
+  "rights_findings_resolved": 0,
+  "human_approval_events_created": 0,
+  "limitation": "Code/prose separation resolves the mixed-file scope obstacle. The prose rights finding follows the extracted file; none of the seven rights cases was approved."
+}

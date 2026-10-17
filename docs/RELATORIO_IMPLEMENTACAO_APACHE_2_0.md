@@ -1,5 +1,7 @@
 # Implementação Apache 2.0 — Projeto Glossata
 
+> **Atualização posterior — 2026-10-17:** a implementação inicial abaixo foi integrada pelo PR #11. O saneamento da Issue #2 separou a redação do gerador e incluiu sua lógica no escopo, agora com 156 arquivos. A redação extraída e os outros seis casos de direitos continuam pendentes. Este relatório preserva o estado da intervenção inicial; veja [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
+
 Intervenção em **2026-10-17**, branch `feat/licenciamento-apache-2`, sobre `b48ab87` (PR #10 integrado). Escopo: concessão do código próprio e documentação/verificação administrativa. Não constitui certificação jurídica/científica nem liberação do pacote. A integração depende de revisão do Pull Request pelo mantenedor; não há merge automático.
 
 ## Decisão e auditoria de origem
