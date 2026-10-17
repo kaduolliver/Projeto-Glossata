@@ -1,12 +1,12 @@
 # Direitos, materiais próprios e terceiros
 
-Nenhuma licença global foi aplicada nesta etapa. Repositório público, gratuidade, finalidade educativa e referência bibliográfica não bastam para presumir permissão de cópia de um material. A decisão sobre direitos dos materiais próprios pertence ao mantenedor, após confirmar sua autoria/titularidade.
+Em **2026-10-17**, o mantenedor autorizou **Apache-2.0 para o código próprio expressamente enumerado**, com Carlos Eduardo Lima de Oliveira identificado por ele como criador original. Consulte [LICENSE](../LICENSE), [NOTICE](../NOTICE) e [escopo e exclusões](ESCOPO_LICENCIAMENTO.md). A licença permite uso comercial conforme seus termos; o caráter sem fins lucrativos descreve a iniciativa oficial. Não há licença global sobre todos os materiais do repositório.
 
-O código público tem intenção de evolução open source, sem uma licença própria escolhida. A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) compara opções, delimita as camadas e documenta as versões exatas do pacote inspecionado; a [proposta de decisão](propostas/LICENCIAMENTO_CODIGO.md) não está ativada. [CONTRIBUTING.md](../CONTRIBUTING.md) orienta origem, direitos e revisão das contribuições sem cessão ou anuência a licença futura. Nenhum desses documentos substitui os registros individuais de permissão.
+A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) preserva o diagnóstico anterior à escolha e a análise das versões exatas do pacote. O [registro de decisão](propostas/LICENCIAMENTO_CODIGO.md) identifica a mudança administrativa, sem converter aprovações antigas ou criar assinatura/revisão jurídica. [CONTRIBUTING.md](../CONTRIBUTING.md) orienta submissões compatíveis com Apache-2.0 sem cessão/CLA. Publicidade, gratuidade e referência bibliográfica continuam insuficientes para presumir direitos externos.
 
-| Camada | Registro | Decisão pendente |
+| Camada | Registro | Situação e providência |
 | --- | --- | --- |
-| Código próprio | `src/`, scripts e QML de autoria confirmada | Escolher licença e confirmar contribuições/titulares |
+| Código próprio enumerado | `ESCOPO_LICENCIAMENTO.json`, LICENSE/NOTICE e política | Apache-2.0 adotada; gerador misto excluído e limites da investigação de origem documentados |
 | Textos próprios | Corpus e introduções, incluindo assistência de IA | Revisar originalidade e evidências; escolher licença apenas do texto próprio |
 | Organização da coletânea | Seleção/estrutura do catálogo | Definir direitos sobre a organização, respeitando fatos e contribuições individuais |
 | Dados de terceiros | Identificadores, classificações e registros das fontes | Conferir termos/direitos aplicáveis sem inferir licença das fotos |
@@ -18,11 +18,11 @@ Opções para o mantenedor avaliar, sem escolha automática:
 
 | Material próprio | Opções a considerar | Registro necessário |
 | --- | --- | --- |
-| Código | MIT, Apache-2.0, GPL-3.0 ou termos próprios adequados | Escolha expressa, titulares, abrangência e compatibilidade com dependências |
+| Código | Apache-2.0 escolhida para o escopo próprio delimitado | Concessão expressa; compatibilidade/obrigações do pacote e contribuições externas permanecem análises separadas |
 | Texto educativo original | CC BY 4.0, CC BY-SA 4.0 ou termos próprios | Autoria, escopo, condições desejadas e exclusões de terceiros |
 | Organização/dados próprios | CC0, CC BY ou termos próprios quando cabíveis | Delimitar quais direitos pertencem ao mantenedor e quais dados vêm de terceiros |
 
-Os nomes acima são opções de discussão, não recomendação jurídica nem autorização já concedida. `content_policy.json` mantém as escolhas próprias como `null`. Uma eventual licença do código não deve englobar fotos ou avisos incompatíveis. Termos próprios não podem retirar direitos concedidos por licenças de terceiros.
+Somente a escolha do código foi ativada: `content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. `texts` e `collection` permanecem `null`; as opções de Creative Commons acima não são concessões. O gerador `scripts/build_education.py` inteiro continua pendente por misturar código e redação educativa. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos.
 
 ## Política das fotografias
 

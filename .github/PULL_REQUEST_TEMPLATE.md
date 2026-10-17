@@ -2,6 +2,8 @@
 
 Descreva o problema e o resultado esperado.
 
+Informe a origem/autoria do código e os termos de trechos externos. Submissões de código para incorporação devem ser compatíveis com Apache-2.0 conforme CONTRIBUTING.md; não há cessão/CLA. Dados, textos e mídias mantêm condições separadas. Atualize o escopo enumerado quando incluir arquivos de código.
+
 ## Verificações
 
 - Registre os comandos executados e seus resultados.

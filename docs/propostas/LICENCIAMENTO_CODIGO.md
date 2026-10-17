@@ -1,4 +1,16 @@
-# Proposta não ativada — decisão de licença e escopo do código
+# Decisão de licenciamento do código — Apache-2.0
+
+**Decisão expressa do mantenedor em 2026-10-17**, posterior à preparação do PR #10: Apache-2.0 para o código próprio, com uso comercial permitido conforme a licença. Criador original informado pelo mantenedor: **Carlos Eduardo Lima de Oliveira**. Não se deduziu nome civil/titularidade exclusiva de uma conta GitHub.
+
+O [escopo enumerado](../ESCOPO_LICENCIAMENTO.md) e seu JSON delimitam 155 arquivos e as exclusões. [LICENSE](../../LICENSE) contém o texto oficial integral; [NOTICE](../../NOTICE) reconhece a criação original e os contribuidores, sem inventar copyright exclusivo, assinatura ou revisão jurídica. A autorização é a solicitação expressa desta implementação. `content_policy.json` registra somente a decisão de código, reproduzida no inventário de recursos; textos e coletânea continuam sem licença escolhida.
+
+O gerador misto `build_education.py` permanece integralmente pendente, assim como direitos de redação educativa, fotos, marca e obrigações de dependências. Ausência de avisos externos na inspeção não comprova titularidade exclusiva de todo arquivo histórico. Nenhum ledger, dado científico ou crédito fotográfico foi reescrito. A distribuição permanece bloqueada. [Relatório de implementação](../RELATORIO_IMPLEMENTACAO_APACHE_2_0.md).
+
+## Preparação preservada como registro histórico
+
+O texto abaixo não descreve o estado atual da decisão: registra a proposta anterior, ainda sem autorização naquela ocasião.
+
+### Proposta não ativada — decisão de licença e escopo do código
 
 **Este documento não concede licença, não declara titularidade e não substitui `LICENSE`.** Não foi selecionada uma opção. Campos abaixo permanecem pendentes até manifestação expressa do mantenedor e conferência dos direitos necessários. Consulte a [comparação e a análise de dependências](../PLANO_LICENCIAMENTO.md).
 
