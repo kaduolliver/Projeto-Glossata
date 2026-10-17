@@ -157,7 +157,7 @@ void PlayerIdentityTests::migrateV3PreservesUnresolvedRecordsAndSnapshots()
     QCOMPARE(repo.loadAnswers("old-run").first().awardedUnits,6);
     QVERIFY(!repo.saveResult(repo.player(result.playerId).identity(),6,1));
     Inspection inspection(path); QSqlQuery q(inspection.db);
-    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),5);
+    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),6);
     QVERIFY(q.exec("SELECT player_name,score_units,correct_answers,played_at FROM legacy_history_v3")); QVERIFY(q.next());
     QCOMPARE(q.value(0).toString(),QString("Ada")); QCOMPARE(q.value(1).toInt(),6);
     QVERIFY(q.exec("SELECT best_units,last_units FROM legacy_ranking_records_v3")); QVERIFY(q.next());

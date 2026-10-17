@@ -3,6 +3,8 @@
 #include "domain/Hint.h"
 #include <QJsonObject>
 #include <QVariantMap>
+#include <QJsonDocument>
+#include <QCryptographicHash>
 class EducationalContent {
 public:
     EducationalContent();
@@ -14,6 +16,7 @@ public:
     QuestionHints questionHints(const Species &species,const QString &rank,const QStringList &options,
                                 const QVector<Species> &pool,bool competitive=false) const;
     QString pedagogyVersion() const { return data_.value("automated_pedagogy").toObject().value("evaluation").toObject().value("content_sha256").toString(); }
+    QString identity() const { return QString::fromLatin1(QCryptographicHash::hash(QJsonDocument(data_).toJson(QJsonDocument::Compact),QCryptographicHash::Sha256).toHex()); }
     QVariantMap nameOrigin(const Species &species) const;
 private:
     QuestionHints progressiveHints(const Species &,const QString &,const QStringList &,const QVector<Species> &) const;

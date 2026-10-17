@@ -9,6 +9,7 @@
 #include "application/EducationalContent.h"
 #include "domain/TaxonomicPerformance.h"
 #include "application/QuestionGenerator.h"
+#include "application/ports/SessionCheckpointRepository.h"
 
 class GameService {
 public:
@@ -44,10 +45,19 @@ public:
     TaxonomicPerformance performance() const { return performance_; }
     QVector<HistoryEntry> history() const;
     SaveStatus saveCurrentResult();
+    void setCheckpointRepository(SessionCheckpointRepository *repository) { checkpoints_=repository; }
+    bool recoverSession(const QString &id);
+    bool checkpointProgress();
+    bool hasCheckpoint() const { return checkpointRevision_>0 && !resultSaved_; }
+    QString sessionId() const { return session_.id; }
+    QString checkpointError() const { return checkpointError_; }
+    QJsonObject sessionSnapshot() const;
 
 private:
     void buildQuestionForCurrentSpecies();
     void shuffleCycle();
+    QString contentIdentity() const;
+    bool ensureCheckpoint();
 
     SpeciesCatalog *catalog_ = nullptr;
     GameHistoryRepository *history_ = nullptr;
@@ -62,4 +72,8 @@ private:
     EducationalContent content_;
     std::mt19937 random_{std::random_device{}()};
     TaxonomicPerformance performance_;
+    SessionCheckpointRepository *checkpoints_ = nullptr;
+    qint64 checkpointRevision_ = 0;
+    QString checkpointError_, contentIdentity_;
+    QJsonArray presentedQuestions_;
 };

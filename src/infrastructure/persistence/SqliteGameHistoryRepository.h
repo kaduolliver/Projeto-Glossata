@@ -2,10 +2,11 @@
 
 #include "application/ports/GameHistoryRepository.h"
 #include "application/ports/PlayerProfileRepository.h"
+#include "application/ports/SessionCheckpointRepository.h"
 
 #include <QSqlDatabase>
 
-class SqliteGameHistoryRepository final : public GameHistoryRepository, public PlayerProfileRepository {
+class SqliteGameHistoryRepository final : public GameHistoryRepository, public PlayerProfileRepository, public SessionCheckpointRepository {
 public:
     explicit SqliteGameHistoryRepository(const QString &databasePath = QStringLiteral("glossata_history.sqlite"));
     ~SqliteGameHistoryRepository() override;
@@ -24,6 +25,10 @@ public:
     bool renamePlayer(const QString &id, const QString &name) override;
     bool deletePlayer(const QString &id) override;
     int unresolvedLegacyPlayers() const;
+    bool writeCheckpoint(const QJsonObject &, qint64 expectedRevision, qint64 &revision) override;
+    QVector<SessionCheckpoint> recoverableSessions() const override;
+    SessionCheckpoint checkpoint(const QString &id) const override;
+    bool abandonCheckpoint(const QString &id, qint64 expectedRevision) override;
     // Display-name compatibility at profile-selection boundaries only.
     // Saving and querying results always require the permanent identity.
     PlayerProfile profileNamed(const QString &name) const;

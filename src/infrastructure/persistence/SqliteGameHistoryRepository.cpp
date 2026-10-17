@@ -1,6 +1,7 @@
 #include "infrastructure/persistence/SqliteGameHistoryRepository.h"
 #include "PlayerIdentityMigration.h"
 #include "PlayerNameMigration.h"
+#include "SessionCheckpointStorage.h"
 #include "domain/PlayerNamePolicy.h"
 
 #include <QDir>
@@ -130,13 +131,14 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
 
     QSqlQuery query(database_);
-    if (!query.exec("PRAGMA foreign_keys=ON") || !query.exec("PRAGMA user_version") || !query.next()) {
+    if (!query.exec("PRAGMA foreign_keys=ON") || !query.exec("PRAGMA synchronous=FULL")
+        || !query.exec("PRAGMA busy_timeout=2000") || !query.exec("PRAGMA user_version") || !query.next()) {
         database_.close(); return;
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 5) { database_.close(); return; }
-    if (version == 5) {
+    if (version > 6) { database_.close(); return; }
+    if (version == 6) {
         if (!validatePlayerNames(database_) || !query.exec("PRAGMA foreign_key_check") || query.next()) database_.close();
         return;
     }
@@ -199,13 +201,14 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         }
         if (ok) ok = migratePlayerIdentity(database_);
     }
-    if (ok) ok = migratePlayerNames(database_);
+    if (ok && version<5) ok = migratePlayerNames(database_);
+    if (ok) ok = validatePlayerNames(database_) && migrateSessionCheckpoints(database_);
     if (ok) {
         ok = exec("PRAGMA foreign_key_check");
         if (query.next()) ok = false;
         query.finish();
     }
-    ok = ok && exec("PRAGMA user_version=5");
+    ok = ok && exec("PRAGMA user_version=6");
     if (!ok || !database_.commit()) {
         qWarning() << "Não foi possível migrar o histórico:" << query.lastError().text() << database_.lastError().text();
         database_.rollback(); database_.close();
@@ -283,7 +286,10 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const PlayerIdentity &pla
             for (int column = 0; column < values.size(); ++column) if (stored.value(column).toString() != values[column].toString()) samePlayer = false;
         }
         samePlayer = samePlayer && index == answers.size();
-        query.finish();database_.rollback();return samePlayer;
+        stored.finish(); query.finish();
+        if (!samePlayer || !finalizeSessionCheckpoint(database_,id,player,scoreUnits,correctAnswers,answers,configuration,true)
+            || !database_.commit()) { database_.rollback(); return false; }
+        return true;
     }
     const bool complete = configuration.mode == GameMode::Free || answers.size() == configuration.questionLimit;
     query.prepare("INSERT INTO game_runs(id,player_name,finished_at,mode,question_limit,group_id,rank,difficulty,rules_version,content_version,ranking_key,score_units,correct_answers,answered_count,is_complete,player_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -317,7 +323,7 @@ bool SqliteGameHistoryRepository::saveConfiguredResult(const PlayerIdentity &pla
     query.bindValue(QStringLiteral(":played_at"), playedAt);
     if (!query.exec()) { database_.rollback(); return false; }
     }
-    if (!database_.commit()) {
+    if (!finalizeSessionCheckpoint(database_,id,player,scoreUnits,correctAnswers,answers,configuration,false) || !database_.commit()) {
         qWarning() << "Não foi possível salvar o resultado:" << query.lastError().text();
         database_.rollback();return false;
     }

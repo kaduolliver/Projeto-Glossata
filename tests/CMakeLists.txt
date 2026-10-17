@@ -5,6 +5,7 @@ add_executable(glossata_tests
     photo_fixtures.qrc
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
+    ${CMAKE_SOURCE_DIR}/src/domain/SessionCheckpoint.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
@@ -14,6 +15,7 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 
@@ -34,6 +36,7 @@ add_executable(glossata_ui_tests
     QmlInterfaceTests.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/discord/DiscordRichPresence.cpp
     ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
+    ${CMAKE_SOURCE_DIR}/src/domain/SessionCheckpoint.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/SqliteSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/application/TaxonomyIndex.cpp
@@ -43,6 +46,7 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -86,7 +90,27 @@ add_executable(glossata_identity_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
+    ${CMAKE_SOURCE_DIR}/src/domain/SessionCheckpoint.cpp
 )
 target_include_directories(glossata_identity_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(glossata_identity_tests PRIVATE Qt6::Core Qt6::Sql Qt6::Test)
 add_test(NAME GlossataPlayerIdentityTests COMMAND glossata_identity_tests -o ${CMAKE_CURRENT_BINARY_DIR}/identity-results.txt,txt)
+
+add_executable(glossata_recovery_tests
+    SessionRecoveryTests.cpp photo_fixtures.qrc ${CMAKE_SOURCE_DIR}/resources.qrc
+    ${CMAKE_SOURCE_DIR}/src/application/GameService.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/EducationalContent.cpp
+    ${CMAKE_SOURCE_DIR}/src/domain/SessionCheckpoint.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp)
+target_include_directories(glossata_recovery_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(glossata_recovery_tests PRIVATE Qt6::Core Qt6::Gui Qt6::Sql Qt6::Test)
+target_compile_definitions(glossata_recovery_tests PRIVATE
+    GLOSSATA_PYTHON="${Python3_EXECUTABLE}" GLOSSATA_BACKUP_SCRIPT="${CMAKE_SOURCE_DIR}/scripts/player_backup.py")
+add_test(NAME GlossataSessionRecoveryTests COMMAND glossata_recovery_tests -o ${CMAKE_CURRENT_BINARY_DIR}/recovery-results.txt,txt)
+add_test(NAME GlossataPlayerBackupTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_player_backup.py)
