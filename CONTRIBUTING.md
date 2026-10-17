@@ -1,6 +1,6 @@
 # Como contribuir com o Projeto Glossata
 
-O projeto tem um mantenedor e está em desenvolvimento experimental. O código é público, mas sua licença própria **ainda não foi escolhida**. Fotos, dados, textos e dependências têm condições separadas. Este procedimento não concede licença geral, não exige cessão de direitos e não presume aceitação de uma licença futura. Consulte o [plano de licenciamento](docs/PLANO_LICENCIAMENTO.md) e os [direitos por camada](docs/DIREITOS_E_LICENCAS.md).
+O projeto tem um mantenedor e está em desenvolvimento experimental. O código próprio enumerado está sob [Apache License 2.0](LICENSE), com [escopo e exclusões por arquivo](docs/ESCOPO_LICENCIAMENTO.md). Fotos, dados, textos, branding e dependências têm condições separadas. Preservam-se o reconhecimento do criador original, Carlos Eduardo Lima de Oliveira, em [NOTICE](NOTICE), e a autoria das contribuições posteriores. Não há cessão de copyright, CLA ou revisão independente presumida.
 
 ## Propostas e Pull Requests
 
@@ -8,7 +8,9 @@ Use os [formulários de Issues](https://github.com/kaduolliver/Projeto-Glossata/
 
 Trabalhe em branch própria e envie PR para `main`, com commits pequenos e mensagens claras. Descreva problema, comportamento resultante, arquivos sensíveis, verificações executadas e limitações. Preserve o funcionamento offline e os IDs, perfis, histórico, pontos e conquistas. Não inclua bancos pessoais, credenciais, saídas de build ou evidências confidenciais.
 
-Enquanto não houver licença própria definida, enviar código não significa autorizar seu uso sob qualquer licença futura. Informe autoria/origem e condições expressamente aplicáveis à contribuição. A incorporação de material protegível precisa de condições documentadas compatíveis com o uso pretendido; se faltarem, a proposta permanece em discussão/rascunho. Não copie código público de terceiros supondo que publicidade autorize reutilização.
+Contribuições de código intencionalmente submetidas para incorporação seguem os termos aplicáveis do §5 da Apache-2.0, salvo indicação expressa em contrário. Elas devem ser compatíveis com a licença e com as condições de submissão. Se propuser termos diferentes ou não tiver direitos suficientes, indique isso antes da integração: a proposta permanece em discussão/rascunho até esclarecer a compatibilidade. Não se presume assentimento retrospectivo de contribuições antigas, nem transferência de copyright. Informe autoria/origem, coautores, direitos de empregador e avisos externos; não copie código público supondo que publicidade autorize reutilização.
+
+Novos arquivos de código precisam de inclusão explícita em `docs/ESCOPO_LICENCIAMENTO.json` ou justificativa de pendência, após conferir sua origem. Use `SPDX-License-Identifier: Apache-2.0` somente onde essa licença efetivamente abranja o código; não remova avisos anteriores nem aplique cabeçalho integral a conteúdo misto/terceiro. Preserve os avisos aplicáveis de LICENSE/NOTICE e indique modificações conforme o §4, sem impor exibição permanente na interface. Textos educativos e materiais externos não entram nessa concessão por estarem em um PR de código.
 
 ## Código e testes
 
@@ -20,6 +22,7 @@ Registre os resultados efetivos, sem declarar compilação, execução visual ou
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel 4
 ctest --test-dir build --output-on-failure
+python scripts/licensing_inventory.py --check-code
 python scripts/project_status.py check --build build
 python scripts/audit_catalog.py --strict
 python scripts/release.py check

@@ -321,13 +321,15 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 
 ## Participação e contato
 
-O projeto é atualmente mantido de forma independente. Ideias, correções e relatos de problemas podem ser apresentados pelas [Issues do repositório](https://github.com/kaduolliver/Projeto-Glossata/issues). Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para Pull Requests, testes, fontes científicas e declaração de origem/direitos. A incorporação de código ou conteúdo depende de condições de uso documentadas; enviar uma proposta não implica cessão nem aceitação de uma licença futura.
+O projeto é atualmente mantido de forma independente. Ideias, correções e relatos de problemas podem ser apresentados pelas [Issues do repositório](https://github.com/kaduolliver/Projeto-Glossata/issues). Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para Pull Requests, testes, fontes científicas e declaração de origem/direitos. Contribuições de código para incorporação devem ser compatíveis com Apache-2.0; não se exige cessão de copyright nem CLA.
 
 ## Direitos e licenças
 
-**O código é público; a licença própria ainda não foi escolhida.** A iniciativa pretende evoluir como open source, mas gratuidade e ausência de finalidade lucrativa não concedem uma licença geral. O [plano de licenciamento](docs/PLANO_LICENCIAMENTO.md) compara MIT, Apache-2.0 e GPLv3 e reserva a decisão ao mantenedor, após conferir titularidade e dependências. Não há `LICENSE` definitivo nesta etapa.
+**O código próprio expressamente enumerado está sob [Apache License 2.0](LICENSE)**, permitindo utilização, modificação e redistribuição, inclusive comercial, conforme seus termos. Criador original: **Carlos Eduardo Lima de Oliveira**. Repositório oficial: [kaduolliver/Projeto-Glossata](https://github.com/kaduolliver/Projeto-Glossata). Consulte [NOTICE](NOTICE) e o [escopo por arquivo e suas exclusões](docs/ESCOPO_LICENCIAMENTO.md).
 
-Fotografias mantêm licenças individuais; dados externos, textos educativos, documentação, identidade visual e bibliotecas exigem tratamento por camada. Consulte os [direitos e limites](docs/DIREITOS_E_LICENCAS.md), o [inventário documental](docs/INVENTARIO_LICENCIAMENTO.json) e os [créditos](docs/PHOTO_CREDITS.md). As propostas administrativas não concedem direitos sobre materiais de terceiros nem liberam os gates de distribuição.
+O Projeto Glossata permanece experimental: a iniciativa oficial é educacional, científica, acessível, gratuita e sem fins lucrativos. Isso não acrescenta restrição não comercial à Apache. Fotografias mantêm licenças individuais; dados externos, textos educativos, documentação, identidade visual e bibliotecas têm tratamento separado. Textos e organização da coletânea ainda não receberam licença própria; o gerador misto `build_education.py` permanece pendente e fora da concessão integral.
+
+A licença do código **não autoriza automaticamente redistribuir mídias ou pacotes pendentes**, nem concede direitos de marca. Consulte os [direitos por camada](docs/DIREITOS_E_LICENCAS.md), o [inventário histórico de preparação](docs/INVENTARIO_LICENCIAMENTO.json), os [créditos](docs/PHOTO_CREDITS.md) e o [relatório de implementação](docs/RELATORIO_IMPLEMENTACAO_APACHE_2_0.md). Os gates de distribuição continuam ativos.
 
 ---
 

@@ -21,7 +21,7 @@ Valores derivados das fontes locais. Este bloco não comprova publicação, exec
 
 Aplicativo desktop educativo em português, C++17/Qt Quick/QML, SQLite, offline. Use a raiz do clone aberto no editor; cópias em outras pastas não se sincronizam automaticamente. Executável: projeto_glossata.exe; identificador interno Qt glossata_quiz preservado para não mudar bancos dos jogadores. [Fontes e verificação do estado](docs/ESTADO_DO_PROJETO.md).
 
-O código está publicamente acessível, com intenção de evolução open source; a licença própria continua não escolhida. [PLANO_LICENCIAMENTO.md](docs/PLANO_LICENCIAMENTO.md) documenta opções e dependências, sem ativar `LICENSE` nem alterar direitos do catálogo. Contribuições seguem [CONTRIBUTING.md](CONTRIBUTING.md), com origem e condições explícitas por material.
+O código próprio expressamente enumerado está sob Apache-2.0, por decisão do mantenedor de 2026-10-17. Criador original informado: Carlos Eduardo Lima de Oliveira. [LICENSE](LICENSE), [NOTICE](NOTICE) e [ESCOPO_LICENCIAMENTO.md](docs/ESCOPO_LICENCIAMENTO.md) delimitam a concessão; não abrangem automaticamente conteúdo científico, fotos, marca ou dependências. Textos/coletânea e o gerador misto continuam pendentes. Contribuições seguem [CONTRIBUTING.md](CONTRIBUTING.md), com origem e condições explícitas por material. O plano anterior permanece registro histórico.
 
 A exploração principal usa os três domínios do bloco gerado. Eukaryota contém Opisthokonta (Animalia e Fungi), Archaeplastida (Plantae da fonte), SAR (Stramenopiles/Ochrophyta), Amoebozoa (mixomicetos) e Discoba. IDs, nomes, fotografias, créditos e dados dos jogadores são preservados.
 
