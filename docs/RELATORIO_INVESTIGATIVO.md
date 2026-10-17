@@ -121,7 +121,7 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-07 — Perfis com diferenças de caixa em caracteres acentuados coexistem
 
-**Mitigação junto ao INV-01 em 2026-10-16:** novos conflitos usam chave NFC/case folding e são recusados. Colisões antigas recebem IDs separados e notas de migração, sem fusão ou renomeação presumida; a seleção atual usa IDs. O cenário original abaixo permanece como histórico. Consulte [política e testes de identidade](IDENTIDADE_JOGADORES.md).
+**Correção local dedicada em 2026-10-16, após a mitigação do INV-01:** política central `nfc-simple-casefold-v1`, preservação de grafia e IDs, migração transacional/idempotente v4→v5 com auditoria das chaves e colisões, sem fusão. Reabertura verifica política/Unicode; novas criações e renomeações conflitantes são recusadas. O cenário original abaixo permanece como histórico. Consulte [política, limitações e testes Unicode](NOMES_UNICODE.md). Nenhum banco pessoal foi inspecionado; não se presume ausência de conflitos na instalação real. Alteração ainda local, sem push ou release.
 
 **Evidência:** [chave de nomes](../src/infrastructure/persistence/SqliteGameHistoryRepository.cpp#L128) usa `COLLATE NOCASE`. A implementação real aceitou “João” e “JOÃO” como dois perfis.
 

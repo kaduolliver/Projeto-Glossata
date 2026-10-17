@@ -1,6 +1,6 @@
 # Identidade permanente de jogadores — INV-01
 
-Correção do desenvolvimento **1.7.0**, ainda não lançado. O banco de histórico passa de `PRAGMA user_version=3` para **4**; isso é independente da versão **2.4.0 do catálogo científico**, preservada. A implementação não altera regras, pontuações, fotografias, créditos, permissões ou conquistas. Testes e capturas usam exclusivamente bancos temporários.
+Correção do desenvolvimento **1.7.0**, ainda não lançado. A etapa de identidade passa de `PRAGMA user_version=3` para **4**, seguida pela [política Unicode do INV-07, esquema 5](NOMES_UNICODE.md); isso é independente da versão **2.4.0 do catálogo científico**, preservada. A implementação não altera regras, pontuações, fotografias, créditos, permissões ou conquistas. Testes e capturas usam exclusivamente bancos temporários.
 
 ## Diagnóstico e política
 
@@ -21,7 +21,7 @@ Agora o domínio distingue `PlayerIdentity { id, displayName }` e `PlayerProfile
 | Falha de gravação e retentativa | Reutiliza ID do jogador, ID da partida e snapshot originais. O mesmo ID de partida com proprietário diferente é recusado. |
 | Reiniciar aplicativo | Os IDs vêm do banco; não são recriados. A seleção inicial continua seguindo a ordenação de perfis existente, sem mudar a propriedade dos dados. |
 
-Os novos conflitos de nomes usam chave NFC + `QString::toCaseFolded()` + NFC, aparando espaços externos. Colisões Unicode já existentes não são unidas nem renomeadas automaticamente: recebem IDs distintos, ficam registradas nas notas da migração e podem ser selecionadas por ID. Novas criações/renomeações conflitantes são recusadas por triggers. A interface mantém o limite de 32 unidades UTF-16 já aplicado aos nomes.
+Os novos conflitos de nomes usam chave NFC + `QString::toCaseFolded()` + NFC, aparando espaços externos. O INV-07 centraliza e versiona essa política de folding simples, audita as chaves e documenta suas [equivalências e limitações](NOMES_UNICODE.md). Colisões Unicode já existentes não são unidas nem renomeadas automaticamente: recebem IDs distintos, ficam registradas nas notas da migração e podem ser selecionadas por ID. Novas criações/renomeações conflitantes são recusadas por triggers. A interface mantém o limite de 32 unidades UTF-16 já aplicado aos nomes.
 
 ## Esquema SQLite 4
 
