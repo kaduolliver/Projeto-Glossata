@@ -246,6 +246,26 @@ def records(root=ROOT, education=None, include_presentation=False):
                 'source_url':photo.get('photo_url',''), 'payload':{
                     'photo_id':pid, 'photo':{k:v for k,v in photo.items() if k!='scientific_review'},
                     'bindings':sorted(k for k,v in presentation.get('bindings',{}).items() if v==pid)}}
+    # Admission dossiers use the same review ledger as published topics. They
+    # are not approvals or a second registry. Bind both declarations and bytes
+    # so replacing a source snapshot invalidates a prior editorial review.
+    for s in species:
+        sid = str(s['id']); dossier_path = root / f'resources/compliance/admissions/{sid}.json'
+        if not dossier_path.is_file(): continue
+        dossier = load(dossier_path); evidence_hashes = {}
+        def bind_files(value):
+            if isinstance(value, dict):
+                if isinstance(value.get('path'), str):
+                    path = local_file(root, value['path'])
+                    evidence_hashes[value['path']] = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
+                for child in value.values(): bind_files(child)
+            elif isinstance(value, list):
+                for child in value: bind_files(child)
+        bind_files(dossier)
+        result['admission:' + sid] = {'kind': 'admission', 'topic': 'licensing', 'species_id': sid,
+            'prior_state': 'draft', 'payload': {'dossier': dossier, 'evidence_hashes': evidence_hashes,
+                'content': {key: digest(value['payload']) for key, value in result.items()
+                            if value.get('species_id') == sid or key.startswith('species:' + sid + ':')}}}
     for item in result.values(): item['content_sha256'] = digest(item['payload'])
     return result
 
@@ -752,27 +772,35 @@ if __name__ == '__main__':
     parser.add_argument('action', choices=['migrate', 'credits', 'audit', 'audit-history', 'record-review', 'confirm-permission', 'recover-permissions'])
     parser.add_argument('--base', help='For audit-history only: full, independently selected Git commit ID')
     parser.add_argument('--key'); parser.add_argument('--decision', type=Path)
+    parser.add_argument('--workspace', type=Path, help='Isolated admission draft under build/scientific-sources/drafts; default is the project')
     parser.add_argument('--apply', action='store_true', help='Replay existing permission events; never create a decision')
     args = parser.parse_args()
+    work_root = ROOT
+    if args.workspace:
+        from scientific_sources.admission import workspace
+        try: work_root = workspace(ROOT, args.workspace)
+        except ValueError as error: parser.error(str(error))
+        if args.action in {'migrate', 'audit-history'}:
+            parser.error('Legacy baselines and Git-history audits are not created in admission drafts')
     if args.base is not None and args.action != 'audit-history': parser.error('--base requires audit-history')
     if args.action == 'audit-history':
-        report = audit_history(ROOT, args.base)
-        save(ROOT / 'build/governance-history.json', report)
+        report = audit_history(work_root, args.base)
+        save(work_root / 'build/governance-history.json', report)
         print(json.dumps(report, ensure_ascii=False))
         raise SystemExit(0 if report['consistent'] else 2)
     elif args.action == 'migrate':
-        print('Legacy baseline records:', len(migrate()['records']))
-    elif args.action == 'credits': print('Unique photo credits:', len(generate_credits()['photos']))
+        print('Legacy baseline records:', len(migrate(work_root)['records']))
+    elif args.action == 'credits': print('Unique photo credits:', len(generate_credits(work_root)['photos']))
     elif args.action == 'record-review':
         if not args.key or not args.decision: parser.error('--key e --decision são necessários')
-        print(append_review(ROOT, args.key, load(args.decision))['event_sha256'])
+        print(append_review(work_root, args.key, load(args.decision))['event_sha256'])
     elif args.action == 'confirm-permission':
         if not args.decision: parser.error('--decision é necessário')
-        print(confirm_permission(ROOT, load(args.decision))['permission_state'])
+        print(confirm_permission(work_root, load(args.decision))['permission_state'])
     elif args.action == 'recover-permissions':
-        report = permission_recovery(ROOT, apply=args.apply)
+        report = permission_recovery(work_root, apply=args.apply)
         print(json.dumps(report, ensure_ascii=False))
         raise SystemExit(0 if report['state'] == 'consistent' else 2)
     else:
-        report = audit_governance(); save(ROOT / 'build/governance-audit.json', report)
+        report = audit_governance(work_root); save(work_root / 'build/governance-audit.json', report)
         print(json.dumps({k: v for k, v in report.items() if k not in {'scientific_findings', 'photo_licensing'}}, ensure_ascii=False))

@@ -117,3 +117,4 @@ add_test(NAME GlossataPlayerBackupTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CU
 add_test(NAME GlossataProjectStatusTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_project_status.py)
 add_test(NAME GlossataGovernanceHistoryTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_governance_history.py)
 add_test(NAME GlossataRightsInvestigationTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_rights_investigation.py)
+add_test(NAME GlossataCatalogAdmissionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_catalog_admission.py)

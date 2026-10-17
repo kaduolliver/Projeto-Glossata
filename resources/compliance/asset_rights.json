@@ -81,7 +81,7 @@
     {
       "path": "scripts/build_education.py",
       "kind": "text_authorship",
-      "sha256": "d54ccc74f358c370032de8532261d49cf79fe52b8613b4754b0e40721ed8c7fc",
+      "sha256": "78bf8163f9ec1723dff5457ee54f398d053e2064095dc85946fccb9d85a90dec",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -99,6 +99,11 @@
           "sha256": "35e31d2d658c84c386d6d528ef814e5b0160199dd015c160001b864fafcfcb57",
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-16T04:58:49.365925+00:00"
+        },
+        {
+          "sha256": "d54ccc74f358c370032de8532261d49cf79fe52b8613b4754b0e40721ed8c7fc",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-17T15:44:59.454898+00:00"
         }
       ],
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."

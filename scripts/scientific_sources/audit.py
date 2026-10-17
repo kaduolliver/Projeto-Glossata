@@ -22,4 +22,6 @@ def staging_errors(root):
         for row in json.loads(species.read_bytes()):
             if row.get('candidate_id') or str(row.get('id','')).startswith('candidate:'):
                 errors.append({'error':'candidate_in_active_catalog','id':row.get('id')})
+        from .admission import new_entry_errors
+        errors.extend(new_entry_errors(root))
     return errors

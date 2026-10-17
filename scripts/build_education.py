@@ -87,9 +87,10 @@ PLAIN_NOTES={
     "Saturniidae":("Em muitas espécies, o adulto vive das reservas acumuladas pela lagarta.","Algumas mariposas adultas não se alimentam durante sua curta vida."),
     "Chiton":("Procure placas alinhadas sobre um corpo oval.","As placas protegem o corpo sem impedir que ele acompanhe as irregularidades das rochas.")}
 
-def load_profiles():
-    profiles=json.loads((ROOT/"resources/data/species_profiles.json").read_text(encoding="utf-8"))
-    catalog=json.loads((ROOT/"resources/data/species.json").read_text(encoding="utf-8"))
+def load_profiles(root=None):
+    root = root or ROOT
+    profiles=json.loads((root/"resources/data/species_profiles.json").read_text(encoding="utf-8"))
+    catalog=json.loads((root/"resources/data/species.json").read_text(encoding="utf-8"))
     identities={str(s["id"]):s["name"] for s in catalog}
     if set(profiles)!=set(identities):
         raise ValueError("As fichas devem corresponder exatamente ao catálogo ativo.")
@@ -108,10 +109,11 @@ def load_profiles():
             raise ValueError("Não transferir avaliação regional ou de outro táxon: "+sid)
     return profiles
 
-def build():
-    taxons=json.loads((ROOT/"resources/data/taxonomy.json").read_text(encoding="utf-8"))
+def build(root=None, *, persist=True):
+    root = root or ROOT
+    taxons=json.loads((root/"resources/data/taxonomy.json").read_text(encoding="utf-8"))
     data={"notes":{},"taxons":{},"group_hints":{},"group_curiosities":{},"species":{}}
-    previous = load(ROOT / 'resources/data/education.json', {})
+    previous = load(root / 'resources/data/education.json', {})
     for number,(name,rank,url,title,description,hint,curiosity) in enumerate(DEFINITIONS):
         hint,curiosity=PLAIN_NOTES.get(name,(hint,curiosity))
         active_rank = "kingdom" if rank == "educational_kingdom" else rank
@@ -132,7 +134,7 @@ def build():
                 if node["rank"]=="kingdom" and node["name"]==name:
                     if hint: data["group_hints"][node["id"]]=[f"note:{number}:hint"]
                     if curiosity: data["group_curiosities"][node["id"]]=f"note:{number}:curiosity"
-    for sid,profile in load_profiles().items():
+    for sid,profile in load_profiles(root).items():
         values={key:profile[key] for key in ("scientific_name","common_name","display_name","reviewed_on")}
         for field in ("summary","distribution","nutrition","morphology","conservation","hint","curiosity"):
             if field not in profile: continue
@@ -140,16 +142,16 @@ def build():
             data["notes"][key]=profile[field]
             values["hints" if field=="hint" else field]=[key] if field=="hint" else key
         data["species"][sid]=values
-    policy = load(ROOT / 'resources/data/phylogeny.json', {})
-    for species in load(ROOT / 'resources/data/species.json', []):
+    policy = load(root / 'resources/data/phylogeny.json', {})
+    for species in load(root / 'resources/data/species.json', []):
         if 'classification' not in species: continue
         if not policy.get('sources'): raise ValueError('Enquadramento filogenético sem fontes ou política.')
         data['species'][str(species['id'])]['phylogeny'] = dict(species['classification'],
             sources=[policy['sources'][key] for key in dict.fromkeys(species['classification']['source_refs'] + policy.get('alternative_source_refs', []))],
             system_limitations=policy['limitations'])
-    hints=json.loads((ROOT/"resources/data/hint_education.json").read_text(encoding="utf8"))
-    profiles=load_profiles()
-    reviews=json.loads((ROOT/"resources/data/curation_reviews.json").read_text(encoding="utf8"))
+    hints=json.loads((root/"resources/data/hint_education.json").read_text(encoding="utf8"))
+    profiles=load_profiles(root)
+    reviews=json.loads((root/"resources/data/curation_reviews.json").read_text(encoding="utf8"))
     if set(reviews)!=set(profiles): raise ValueError("Revisões não correspondem ao catálogo.")
     states={"pending","in_review","approved","rejected"}
     for sid,review in reviews.items():
@@ -187,17 +189,18 @@ def build():
             data["notes"][key]=item;values["morphological_hint"]=key
     # A URL, a legacy verified flag, or successful generation is never a review.
     # Newly generated/AI-assisted content is draft until a human records evidence.
-    annotate_education(ROOT, data)
+    annotate_education(root, data)
     from review_hints import valid
-    automatic = load(ROOT / 'resources/data/progressive_hints.json', {})
-    data['automated_pedagogy'] = dict(automatic, usable=bool(automatic and valid(automatic, ROOT)))
+    automatic = load(root / 'resources/data/progressive_hints.json', {})
+    data['automated_pedagogy'] = dict(automatic, usable=bool(automatic and valid(automatic, root)))
     source_names = [ 'species.json', 'taxonomy.json', 'species_profiles.json', 'hint_education.json', 'curation_reviews.json']
     if automatic: source_names.append('progressive_hints.json')
-    if (ROOT / 'resources/data/phylogeny.json').is_file(): source_names.append('phylogeny.json')
-    data['generated_source_sha256'] = {name: hashlib.sha256((ROOT / 'resources/data' / name).read_bytes()).hexdigest()
+    if (root / 'resources/data/phylogeny.json').is_file(): source_names.append('phylogeny.json')
+    data['generated_source_sha256'] = {name: hashlib.sha256((root / 'resources/data' / name).read_bytes()).hexdigest()
         for name in source_names}
-    save_json(ROOT/"resources/data/education.json",data)
-    print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
+    if persist:
+        save_json(root/"resources/data/education.json",data)
+        print("Introductions:",len(data["taxons"]),"species-specific reviews:",len(data["species"]))
     return data
 
 if __name__=="__main__": build()

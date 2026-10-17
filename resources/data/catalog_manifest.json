@@ -7,7 +7,7 @@
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
     "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
     "resources/branding/README.md": "d9ae346156fa1f32fdb73ba1aefbf2ef82c6ea4062f7067f6d459baa173e381f",
-    "resources/compliance/asset_rights.json": "62073cff1fce1ed927622b42c5a73d55bfa11d32f8ac64e46ccfc4ab73d36372",
+    "resources/compliance/asset_rights.json": "5771e0c1f04187fc98bfebf223975307074ce09ba606b42dc4cf95ef9959eee5",
     "resources/compliance/exploration/amanita.json": "752a55a27b2a88632ffc8e752c896df794678f46886a6c140909d8cc180655de",
     "resources/compliance/exploration/archaea.json": "f903a73d6258f5fb5391e83c54417416ee54bc02ffe1d05c743a1c6a5323bf17",
     "resources/compliance/exploration/bacteria.json": "399a13a3f31a8122dd99b6e0610c603878122ba595f14791fdd2fdd34e21ec9a",
@@ -496,6 +496,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "2022cfe961ca48b8f156b99601adc0e4c61b0eb8b4809900f75530b34f7b6ad7",
+  "content_sha256": "c6421e84e7da8c9e5d32350135c61e859ecedab0075409a9423b4c15aaa8dcc2",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }

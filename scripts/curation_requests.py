@@ -59,7 +59,7 @@ def private_data(value):
 def public_reference(root, name):
     """Strict public paths; a confidential filename is not even returned."""
     if not isinstance(name, str) or (name not in PUBLIC_FILES and not re.fullmatch(
-            r'resources/compliance/(permissions/[0-9a-f]{64}|exploration/[a-z0-9-]+)\.json', name)):
+            r'resources/compliance/(permissions/[0-9a-f]{64}|exploration/[a-z0-9-]+|admissions/[1-9][0-9]*|sources/[0-9a-f]{64})\.json', name)):
         return None
     try:
         if (root/name).is_symlink():return None
@@ -93,7 +93,7 @@ def build_queue(root, audit, media, assistance, config):
         if area not in AREAS: raise ValueError('Unknown curation area')
         code = code if re.fullmatch(r'[a-z][a-z0-9_]{0,90}', str(code)) else 'audit_finding'
         identity = str(key)
-        public_key = identity if re.fullmatch(r'(?:topic:\d+:[a-z_]+|species:\d+:[a-z_:]+|assistance:[a-z_:0-9]+|presentation:[a-z0-9-]{1,80}|photo:\d+|organism:\d+(?::[a-z]+)?|note:\d+:(?:intro|hint|curiosity)|taxon-id:(?:taxon:[a-f0-9]+|domain:(?:Bacteria|Archaea|Eukaryota)|clade:[A-Za-z]+)|node:[a-f0-9]{24}|asset:[a-f0-9]{24})', identity) else 'resource:'+governance.digest(identity)[:24]
+        public_key = identity if re.fullmatch(r'(?:admission:\d+|topic:\d+:[a-z_]+|species:\d+:[a-z_:]+|assistance:[a-z_:0-9]+|presentation:[a-z0-9-]{1,80}|photo:\d+|organism:\d+(?::[a-z]+)?|note:\d+:(?:intro|hint|curiosity)|taxon-id:(?:taxon:[a-f0-9]+|domain:(?:Bacteria|Archaea|Eukaryota)|clade:[A-Za-z]+)|node:[a-f0-9]{24}|asset:[a-f0-9]{24})', identity) else 'resource:'+governance.digest(identity)[:24]
         rid = request_id(area, bucket)
         item = groups.setdefault(rid, {'id': rid, 'area': area, 'bucket': bucket, 'priority': priority, 'findings': {}})
         item['priority'] = min(priority, item['priority'])
@@ -113,10 +113,12 @@ def build_queue(root, audit, media, assistance, config):
     for f in audit.get('scientific_findings', []):
         key = f.get('key',''); record = current.get(key, {})
         topic = record.get('topic','photo')
-        area = 'taxonomy' if topic in {'taxonomy','phylogeny'} else 'photography' if topic=='photo' else 'science'
+        area = 'licensing' if topic == 'licensing' else 'taxonomy' if topic in {'taxonomy','phylogeny'} else 'photography' if topic=='photo' else 'science'
+        paths = ('resources/data/education.json', 'resources/data/species.json', 'resources/compliance/review_history.jsonl')
+        if record.get('kind') == 'admission': paths += (f"resources/compliance/admissions/{record['species_id']}.json",)
         add(area, topic, 'scientific_review_required', key, 1 if f.get('severity')=='high' else 2,
             f.get('state','pending'), f.get('content_sha256',''),
-            ('resources/data/education.json', 'resources/data/species.json', 'resources/compliance/review_history.jsonl'))
+            paths)
     for f in audit.get('photo_licensing', []):
         for code in f.get('errors', []):
             add('licensing', 'quiz-photos', code, 'photo:'+str(f.get('photo_id')), 0 if code=='license_outside_policy' else 1,

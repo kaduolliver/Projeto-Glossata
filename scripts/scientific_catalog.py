@@ -17,6 +17,25 @@ PLAN=Path(__file__).with_name('scientific_sources')/'provider_plan.json'
 
 
 def run(args):
+    if args.command.startswith('admission-'):
+        from scientific_sources import admission
+        if not args.draft: raise ValueError('--draft is required')
+        draft = admission.workspace(ROOT, args.draft)
+        if args.command == 'admission-template':
+            if not args.candidate_id: raise ValueError('--candidate-id is required')
+            path = ROOT / 'build/scientific-sources/candidates.sqlite'
+            if not path.is_file(): raise ValueError('Discover/reconcile candidates first')
+            store = CandidateStore(path)
+            try: rows = [r for r in store.latest() if r['candidate_id'] == args.candidate_id]
+            finally: store.close()
+            if len(rows) != 1: raise ValueError('Candidate not found')
+            print(admission.template(ROOT, draft, rows[0])); return 0
+        if not args.species_id: raise ValueError('--species-id is required')
+        if args.command == 'admission-prepare': result = admission.prepare(ROOT, draft, args.species_id)
+        else:
+            result = admission.assess(draft, args.species_id, json.loads((ROOT/'resources/data/species.json').read_bytes()),
+                                     {n['id']: n for n in json.loads((ROOT/'resources/data/taxonomy.json').read_bytes())})
+        print(json.dumps(result, ensure_ascii=False, indent=2)); return 0 if result['ready_for_proposal'] else 2
     plan=json.loads(PLAN.read_bytes())
     active=json.loads((ROOT/'resources/data/species.json').read_bytes())
     nodes={n['id']:n for n in json.loads((ROOT/'resources/data/taxonomy.json').read_bytes())}
@@ -58,7 +77,10 @@ def run(args):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=['providers','coverage','reconcile','discover'])
+    parser.add_argument('command',choices=['providers','coverage','reconcile','discover',
+                                         'admission-template','admission-check','admission-prepare'])
+    parser.add_argument('--draft',type=Path,help='Dedicated workspace under build/scientific-sources/drafts')
+    parser.add_argument('--candidate-id');parser.add_argument('--species-id')
     parser.add_argument('--name',action='append');parser.add_argument('--scope',action='append')
     parser.add_argument('--providers',help='Comma-separated integrated provider IDs')
     parser.add_argument('--online',action='store_true',help='Explicitly allow bounded API requests')
