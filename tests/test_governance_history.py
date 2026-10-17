@@ -102,7 +102,11 @@ class HistoryTrustTests(unittest.TestCase):
         self.assertFalse(report['files'][history.BASELINE]['reference_preserved'])
 
     def test_invalid_missing_mutable_and_noncommit_references_fail_closed(self):
-        for base in ('HEAD', 'main', '0', 'f' * 40, self.git('rev-parse', 'HEAD^{tree}')):
+        # HEAD: identifies the root tree without a caret, which Windows command
+        # launchers can consume before Git receives the revision expression.
+        tree = self.git('rev-parse', 'HEAD:')
+        self.assertEqual(self.git('cat-file', '-t', tree), 'tree')
+        for base in ('HEAD', 'main', '0', 'f' * 40, tree):
             with self.subTest(base=base):
                 self.assertFalse(history.audit_history(self.root, base)['consistent'])
 
