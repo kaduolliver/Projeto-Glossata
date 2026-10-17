@@ -59,7 +59,7 @@ bool validCurrentSchema(const QSqlDatabase &database)
     if (!object("player_name_conflicts","view","player_name_conflicts")) return false;
     const QMap<QString, QString> references{
         {"history","player_id:player_profiles:id"}, {"ranking_records","player_id:player_profiles:id"},
-        {"game_runs","player_id:player_profiles:id"}, {"answer_records","game_id:game_runs:id"},
+        {"game_runs","player_id:player_profiles:id"},
         {"session_checkpoints","player_id:player_profiles:id"},
         {"identity_migration_notes","player_id:player_profiles:id"},
         {"player_name_migration","player_id:player_profiles:id"},
@@ -71,7 +71,11 @@ bool validCurrentSchema(const QSqlDatabase &database)
         while (q.next()) if (q.value(3).toString()+":"+q.value(2).toString()+":"+q.value(4).toString()==it.value()) found=true;
         q.finish(); if (!found) return false;
     }
-    return true;
+    // Some supported pre-v2 answer tables never declared this FK. Check the
+    // actual relation without rebuilding the table or rewriting legacy rows.
+    if (!q.exec("SELECT 1 FROM answer_records a LEFT JOIN game_runs g ON g.id=a.game_id WHERE g.id IS NULL LIMIT 1")) return false;
+    const bool orphan=q.next(); q.finish();
+    return !orphan;
 }
 
 QString answerSnapshot(const AnswerRecord &answer)
@@ -192,7 +196,8 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version < 0 || version > 6) { database_.close(); return; }
+    if (version > 6) { database_.close(); return; }
+    if (version < 0) { database_.close(); return; }
     if (version == 6) {
         if (!validCurrentSchema(database_) || !validatePlayerNames(database_)
             || !query.exec("PRAGMA foreign_key_check") || query.next()) {

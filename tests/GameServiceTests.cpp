@@ -1494,15 +1494,22 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
     QSqlDatabase::removeDatabase("v1-seed");
     {
         SqliteGameHistoryRepository history(path);
-        const auto row=history.loadTopResults().first();
+        const auto rows=history.loadTopResults(); QVERIFY(!rows.isEmpty()); const auto row=rows.first();
         QCOMPARE(row.scoreUnits,qint64(6));QCOMPARE(row.lastScoreUnits,qint64(2));
         QCOMPARE(history.loadPlayerProfiles(),QStringList{"Ada"});
     }
-    SqliteGameHistoryRepository reopened(path);QCOMPARE(reopened.loadTopResults().first().scoreUnits,qint64(6));
+    { SqliteGameHistoryRepository reopened(path); const auto rows=reopened.loadTopResults();
+      QVERIFY(!rows.isEmpty()); QCOMPARE(rows.first().scoreUnits,qint64(6)); }
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
         QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),6);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
+        q.finish();
+        // The supported legacy table has no declared FK. Orphans must still be
+        // refused on reopen, with every record retained for investigation.
+        QVERIFY(q.exec("INSERT INTO answer_records SELECT 'missing-game',question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units,rules_version,hint_snapshot FROM answer_records WHERE game_id='known'"));
+        { SqliteGameHistoryRepository refused(path); QVERIFY(refused.profiles().isEmpty()); }
+        QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),2);
     }
     db.close();db={};QSqlDatabase::removeDatabase("v2-inspect");
 }
