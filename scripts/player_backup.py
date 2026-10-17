@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import sqlite3
 import shutil
 import tempfile
@@ -38,13 +39,20 @@ def file_hash(path):
 
 def verify(path):
     path = Path(path).resolve()
-    wal = Path(str(path) + '-wal')
-    if wal.exists() and wal.stat().st_size:
-        raise ValueError('Archive has an active WAL; create a new consistent backup')
+    for suffix in ('-wal', '-journal'):
+        sidecar = Path(str(path) + suffix)
+        if sidecar.exists() and sidecar.stat().st_size:
+            raise ValueError('Archive has transaction sidecars; create a new consistent backup')
     if manifest_path(path).stat().st_size > 65536:
         raise ValueError('Oversized backup manifest')
     manifest = json.loads(manifest_path(path).read_text(encoding='utf8'))
-    if manifest.get('schema') != 1 or file_hash(path) != manifest.get('sha256'):
+    if (not isinstance(manifest, dict) or type(manifest.get('schema')) is not int
+            or manifest['schema'] != 1 or type(manifest.get('sqlite_schema')) is not int
+            or not 0 <= manifest['sqlite_schema'] <= 6
+            or not isinstance(manifest.get('sha256'), str)
+            or not re.fullmatch(r'[0-9a-f]{64}', manifest['sha256'])):
+        raise ValueError('Invalid backup manifest structure')
+    if file_hash(path) != manifest['sha256']:
         raise ValueError('Backup hash/manifest mismatch')
     if inspect(path) != manifest.get('sqlite_schema'):
         raise ValueError('Backup schema mismatch')
@@ -52,14 +60,18 @@ def verify(path):
 
 
 def new_destination(destination):
-    destination = Path(destination).resolve()
-    if destination.exists() or manifest_path(destination).exists():
+    destination = Path(destination).absolute()
+    protected = [destination, manifest_path(destination)] + [Path(str(destination) + suffix)
+                                                          for suffix in ('-wal', '-shm', '-journal')]
+    if any(path.exists() or path.is_symlink() for path in protected):
         raise ValueError('Use a NEW destination; existing files are never overwritten')
+    destination = destination.resolve()
     destination.parent.mkdir(parents=True, exist_ok=True)
     return destination
 
 
 def publish(temporary, destination, report):
+    new_destination(destination)  # Recheck sidecars/manifest after preparing bytes.
     os.link(temporary, destination)  # Exclusive publication, including races.
     with manifest_path(destination).open('x', encoding='utf8') as stream:
         json.dump(report, stream, ensure_ascii=False, indent=2)
