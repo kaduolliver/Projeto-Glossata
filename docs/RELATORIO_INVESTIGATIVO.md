@@ -1,5 +1,7 @@
 # Relatório investigativo de pontos fracos
 
+> Registro histórico da investigação original, com notas posteriores de correção datadas. Versões, contagens de testes e observações remotas da coleta não representam automaticamente o estado atual; consulte o [estado verificável](ESTADO_DO_PROJETO.md) e os blocos gerados no README/PROJECT_CONTEXT.
+
 Investigação em **16/10/2026**, sobre o commit `041ae413e4200e1f6e2da49ec7b3b03f9b734b71`. Aplicativo **1.7.0**, catálogo **2.4.0**, ambos não lançados. Resultados estruturados: [INVESTIGACAO_EVIDENCIAS.json](INVESTIGACAO_EVIDENCIAS.json).
 
 ## Parecer
@@ -8,7 +10,7 @@ Os pontos mais urgentes envolvem a identidade dos jogadores, a recuperação de 
 
 O projeto já possui controles úteis: transações SQLite, validação central de pontuação, separação dos rankings por regras/conteúdo, filtros de licença por arquivo, histórico de revisões, limites de API e CI. Os cenários abaixo demonstram lacunas específicas nesses controles. A aprovação da suíte existente não cobre automaticamente essas lacunas.
 
-Este relatório não registra correções: seus achados precisam de implementação e validação próprias. Nenhuma decisão humana, licença ou revisão científica foi criada. Não houve alteração de código do aplicativo, de bancos reais, de evidências publicadas ou de configurações do GitHub.
+A investigação original não implementou correções; as notas acrescentadas posteriormente documentam intervenções separadas e suas validações, sem substituir as evidências de origem. Na coleta original, nenhuma decisão humana, licença ou revisão científica foi criada e não houve alteração do código, bancos reais, evidências publicadas ou configurações do GitHub.
 
 ## Método e limites de confiança
 
@@ -154,6 +156,8 @@ O gate de pacote não remove arquivos do GitHub. A publicação de mídias no re
 **Critério de conclusão:** documentação e interface distinguem declaração, integridade e autenticação; eventuais assinaturas têm identidade e política de verificação definidas. Não exigir ou simular um segundo curador inexistente.
 
 ## INV-10 — Documentação atual contradiz as fontes de verdade
+
+**Correção local em 2026-10-17:** blocos atuais gerados das fontes oficiais, inventário conferido contra CTest configurado, detecção de divergências em metadados/documentação e verificações na CI/preparação de tag. Instruções de build/execução e expansão científica corrigidas; registros anteriores preservados e identificados. Consulte [fontes, geração, limites e validação](ESTADO_DO_PROJETO.md). Nenhuma versão alterada, publicação ou aprovação de distribuição presumida. Os números abaixo pertencem ao commit investigado, não ao estado atual.
 
 **Evidência:** [README](../README.md#L45) informa 1.5.0/2.3.0; `VERSION.txt` e o manifesto indicam 1.7.0/2.4.0. [PROJECT_CONTEXT](../PROJECT_CONTEXT.md#L37) ainda descreve v3 como regra atual e [lista nove suítes](../PROJECT_CONTEXT.md#L77), embora o código use v4 e o CTest registre 15.
 

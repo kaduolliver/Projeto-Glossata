@@ -1,5 +1,7 @@
 # Proteção do repositório para manutenção individual
 
+> As observações remotas e execuções abaixo são registros datados; não foram reconsultadas na correção documental INV-10. A proposta continua distinta de configurações efetivamente ativadas. Consulte o [estado local atual](ESTADO_DO_PROJETO.md) para versões e testes.
+
 ## Situação verificada e escopo
 
 O INV-04 foi reavaliado em **16/10/2026**, sem assumir que o diagnóstico anterior permanecia válido. A [consulta registrada](VERIFICACAO_INV04.json) foi somente de leitura, usando o GitHub CLI autenticado. O repositório é público e sua branch padrão é `main`.

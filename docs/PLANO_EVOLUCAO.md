@@ -1,5 +1,7 @@
 # Plano de evolução e auditoria integrada
 
+> Registro histórico das etapas datadas abaixo. Preserve as versões, contagens e resultados de suas respectivas execuções; o [estado atual verificável](ESTADO_DO_PROJETO.md) é gerado separadamente.
+
 Instrução operacional recebida em 16/10/2026. Execução sequencial: concluir, validar e registrar em commit cada etapa antes da seguinte. O plano não substitui o README. Não há autorização para push, release ou reescrita do histórico.
 
 ## Linha de base
