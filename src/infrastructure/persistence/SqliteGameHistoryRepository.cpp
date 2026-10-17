@@ -15,9 +15,64 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <QMap>
 
 namespace {
 int connectionCounter = 0;
+
+bool validCurrentSchema(const QSqlDatabase &database)
+{
+    // user_version identifies a migration, not proof that its tables/guards
+    // survived. Refuse incomplete stores; never rebuild them over player data.
+    const QMap<QString, QString> tables{
+        {"player_profiles", "id,name,name_key,origin,deleted_at,legacy_name_key"},
+        {"history", "id,player_id,player_name,score_units,correct_answers,played_at"},
+        {"ranking_records", "ranking_key,player_id,player_name,best_units,best_correct,best_played_at,last_units,last_correct,last_played_at"},
+        {"game_runs", "id,player_id,player_name,finished_at,mode,question_limit,group_id,rank,difficulty,rules_version,content_version,ranking_key,score_units,correct_answers,answered_count,is_complete"},
+        {"answer_records", "game_id,question_number,species_id,scientific_name,photo_id,rank,selected_answer,correct_answer,is_correct,revealed_hints,maximum_units,awarded_units,rules_version,hint_snapshot"},
+        {"identity_migration_notes", "id,player_id,source_table,source_key,reason"},
+        {"legacy_history_results", "original_id,player_name,score_units,correct_answers,played_at,player_id"},
+        {"player_name_policy", "id,policy_version,unicode_version,qt_version"},
+        {"player_name_migration", "player_id,name_snapshot,old_key,new_key,policy_version,unicode_version,migrated_at,active_collision"},
+        {"session_checkpoints", "id,player_id,state,revision,payload,sha256,created_at,updated_at"}
+    };
+    QSqlQuery q(database);
+    auto object = [&](const QString &name, const QString &type, const QString &table) {
+        q.prepare("SELECT 1 FROM sqlite_master WHERE name=? AND type=? AND tbl_name=?");
+        q.addBindValue(name); q.addBindValue(type); q.addBindValue(table);
+        const bool found=q.exec() && q.next(); q.finish(); return found;
+    };
+    for (auto it=tables.cbegin(); it!=tables.cend(); ++it) {
+        if (!object(it.key(),"table",it.key())
+            || !q.exec("SELECT "+it.value()+" FROM \""+it.key()+"\" LIMIT 0")) return false;
+        q.finish();
+    }
+    const QMap<QString, QString> guards{
+        {"player_identity_immutable","player_profiles"}, {"player_identity_retained","player_profiles"},
+        {"player_name_insert","player_profiles"}, {"player_name_update","player_profiles"},
+        {"game_owner_required","game_runs"}, {"game_owner_immutable","game_runs"},
+        {"game_name_snapshot_immutable","game_runs"},
+        {"checkpoint_identity_immutable","session_checkpoints"}, {"checkpoint_retained","session_checkpoints"}
+    };
+    for (auto it=guards.cbegin(); it!=guards.cend(); ++it)
+        if (!object(it.key(),"trigger",it.value())) return false;
+    if (!object("player_name_conflicts","view","player_name_conflicts")) return false;
+    const QMap<QString, QString> references{
+        {"history","player_id:player_profiles:id"}, {"ranking_records","player_id:player_profiles:id"},
+        {"game_runs","player_id:player_profiles:id"}, {"answer_records","game_id:game_runs:id"},
+        {"session_checkpoints","player_id:player_profiles:id"},
+        {"identity_migration_notes","player_id:player_profiles:id"},
+        {"player_name_migration","player_id:player_profiles:id"},
+        {"legacy_history_results","player_id:player_profiles:id"}
+    };
+    for (auto it=references.cbegin(); it!=references.cend(); ++it) {
+        if (!q.exec("PRAGMA foreign_key_list(\""+it.key()+"\")")) return false;
+        bool found=false;
+        while (q.next()) if (q.value(3).toString()+":"+q.value(2).toString()+":"+q.value(4).toString()==it.value()) found=true;
+        q.finish(); if (!found) return false;
+    }
+    return true;
+}
 
 QString answerSnapshot(const AnswerRecord &answer)
 {
@@ -137,9 +192,13 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 6) { database_.close(); return; }
+    if (version < 0 || version > 6) { database_.close(); return; }
     if (version == 6) {
-        if (!validatePlayerNames(database_) || !query.exec("PRAGMA foreign_key_check") || query.next()) database_.close();
+        if (!validCurrentSchema(database_) || !validatePlayerNames(database_)
+            || !query.exec("PRAGMA foreign_key_check") || query.next()) {
+            qWarning() << "Incompatible or incomplete player database; original retained";
+            database_.close();
+        }
         return;
     }
     if (!database_.transaction()) { database_.close(); return; }
@@ -202,7 +261,7 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         if (ok) ok = migratePlayerIdentity(database_);
     }
     if (ok && version<5) ok = migratePlayerNames(database_);
-    if (ok) ok = validatePlayerNames(database_) && migrateSessionCheckpoints(database_);
+    if (ok) ok = validatePlayerNames(database_) && migrateSessionCheckpoints(database_) && validCurrentSchema(database_);
     if (ok) {
         ok = exec("PRAGMA foreign_key_check");
         if (query.next()) ok = false;
