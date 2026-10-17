@@ -26,11 +26,13 @@ Os registros disponíveis não permitem reconstruir integralmente o processo de 
 
 O código próprio enumerado permanece sob Apache-2.0; essa concessão não licencia os ícones, a marca, os textos educativos ou os materiais externos. Consulte [escopo do código](ESCOPO_LICENCIAMENTO.md) e [direitos por camada](DIREITOS_E_LICENCAS.md).
 
-Os três ícones continuam como `pending_permission`, com `distribution_allowed: false` no inventário existente. Sua manutenção no repositório e adoção oficial não resolvem a pendência de direitos. A distribuição continua submetida ao gate existente, sem exceção criada nesta etapa. A [proposta de condições de uso](propostas/USO_IDENTIDADE_VISUAL.md) é um rascunho para decisão futura, sem licença gráfica ativada.
+Em 2026-10-17, por nova decisão expressa, o mantenedor adotou a [política de identidade visual reservada](propostas/USO_IDENTIDADE_VISUAL.md), sem concessão gráfica geral para reutilização, redistribuição ou sublicenciamento por projetos independentes. O caminho da antiga proposta foi preservado, mas a opção administrativa já foi escolhida. A reserva limita-se aos direitos efetivamente disponíveis, sem comprovar titularidade exclusiva. O registro JSON preserva a decisão inicial de adoção e acrescenta a decisão de política em campo separado.
 
-Para regularizar: conferir os registros de criação e os termos efetivamente aplicáveis; identificar componentes e direitos de terceiros quando existentes; delimitar quais direitos podem ser concedidos; decidir expressamente condições de uso; arquivar a evidência necessária e utilizar o fluxo de governança documentado. Dúvidas permanecem pendentes, sem inventar titulares ou aprovações. Relatos podem ser encaminhados pelo [canal de correção e remoção](REPORTAR_PROBLEMA.md).
+O mantenedor pretende utilizar os ícones nas versões oficiais. Os três ícones continuam como `pending_permission`, com `distribution_allowed: false`: a intenção de uso oficial e a política reservada não demonstram direitos de terceiros nem resolvem as pendências. O gate permanece ativo. Forks podem reutilizar o código conforme Apache-2.0; recomenda-se identidade própria para projetos independentes, sem exigir reconhecimento permanente na interface. São respeitados visualização, fork no GitHub e usos legalmente permitidos.
 
-## Verificações desta intervenção
+Para regularizar: conferir os registros de criação e os termos efetivamente aplicáveis; identificar componentes e direitos de terceiros quando existentes; delimitar quais direitos estão disponíveis e os requisitos do uso oficial pretendido; arquivar a evidência necessária e utilizar o fluxo de governança documentado. A escolha da política já ocorreu; a verificação documental de direitos permanece pendente. Relatos podem ser encaminhados pelo [canal de correção e remoção](REPORTAR_PROBLEMA.md). Consulte a [implementação da política e os testes atuais](POLITICA_BRANDING_IMPLEMENTACAO.md).
+
+## Registro histórico: verificações da adoção inicial, PR #14
 
 Verificações locais em 2026-10-17, comparadas à base `d2280de6a6825125d04a8fd4579357838c684096`:
 

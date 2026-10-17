@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Política administrativa em 2026-10-17, sem lançamento: identidade visual reservada escolhida expressamente, com intenção de uso oficial e sem licença gráfica geral para projetos independentes. O inventário vincula a decisão aos três ícones, mantendo `pending_permission` e `distribution_allowed: false`. Manifesto 2.4.0 não lançado atualizado pelo fluxo existente para inventário/README, sem alterar mídias, ciência, permissões ou evidências anteriores. Consulte [POLITICA_BRANDING_IMPLEMENTACAO.md](POLITICA_BRANDING_IMPLEMENTACAO.md).
+
 Atualização documental em 2026-10-17, sem lançamento: a adoção administrativa dos três ícones atuais está em [IDENTIDADE_VISUAL.md](IDENTIDADE_VISUAL.md). O manifesto 2.4.0 não lançado acompanha a atualização do README de branding, sem alteração das imagens, dados científicos, evidências anteriores, políticas ou permissões. Os três direitos gráficos continuam pendentes.
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.

@@ -1,18 +1,23 @@
-# Proposta de condições de uso da identidade visual
+# Política de identidade visual reservada
 
-**Estado: rascunho, não aprovado. Nenhuma licença gráfica é concedida por este documento.**
+**Decisão administrativa expressa do mantenedor em 2026-10-17: identidade visual reservada ao Projeto Glossata.** O caminho deste documento foi preservado para continuidade das referências; a opção deixou de ser uma proposta não escolhida. Isso não constitui comprovação de titularidade ou autorização de terceiros.
 
-A decisão atual preserva os três ícones descritos em [IDENTIDADE_VISUAL.md](../IDENTIDADE_VISUAL.md). A proposta abaixo depende da demonstração dos direitos necessários e de escolha expressa do mantenedor; não modifica Apache-2.0, licenças de fotografias ou estados de permissão.
+## Escopo e direitos disponíveis
 
-| Questão para decisão | Proposta para avaliação | Condição anterior à ativação |
-| --- | --- | --- |
-| Escopo | Enumerar arquivos, hashes, direitos efetivamente disponíveis e exclusões | Conferir origem e componentes externos |
-| Redistribuição | Definir se e em quais contextos os ícones podem acompanhar cópias do programa | Evidência de direitos compatíveis com o uso pretendido |
-| Atribuição | Identificar o Projeto Glossata e registrar a direção criativa e ferramenta declaradas, sem alegar autoria exclusiva | Aprovar redação e distinguir criação do projeto de titularidade gráfica |
-| Modificações e usos comerciais | Deliberar expressamente sobre permissões e condições; nenhuma escolha é presumida aqui | Avaliar alcance jurídico e terceiros envolvidos |
-| Identificação de derivados | Evitar sugerir que versões independentes são oficiais ou endossadas | Definir política de identificação sem restringir a licença do código |
-| Marcas | Documentar somente direitos efetivamente demonstrados | Não presumir registro ou exclusividade |
+A política abrange somente `resources/branding/glossata.png`, `glossata_discord.png` e `glossata.ico`, com os hashes enumerados em [IDENTIDADE_VISUAL.json](../IDENTIDADE_VISUAL.json). Não é concedida licença gráfica geral para reutilização, redistribuição ou sublicenciamento desses ícones por projetos independentes. A reserva limita-se aos direitos efetivamente disponíveis: não cria direitos sobre elementos sem proteção, não comprova titularidade exclusiva de resultados de IA e não elimina direitos de terceiros.
 
-O caráter educacional e sem fins lucrativos da iniciativa oficial não estabelece uma licença gráfica nem acrescenta restrições à Apache-2.0. Não se exige reconhecimento permanente na interface de versões derivadas do código.
+Carlos Eduardo Lima de Oliveira é identificado como criador original do Projeto Glossata, conforme declaração existente. Essa identificação, a direção criativa declarada e o uso declarado do ChatGPT não são afirmações de autoria exclusiva dos elementos gráficos. Não se presume registro de marca, exclusividade comercial ou endosso de terceiros.
 
-O caminho recomendado é complementar a documentação de origem e direitos antes de escolher condições gráficas. Evidências privadas devem ser examinadas sem publicação indiscriminada. Uma eventual autorização deve ser registrada pelo mecanismo existente de governança, com responsável declarado, fundamento e escopo, sem transformar esta proposta ou a adoção estética em permissão. Até lá, os três recursos continuam pendentes e bloqueados para distribuição pelo inventário.
+## Código e projetos derivados
+
+O código próprio expressamente enumerado continua sob [Apache License 2.0](../../LICENSE). Esta política não acrescenta restrições ao seu uso, modificação ou redistribuição, inclusive comercial, conforme a licença. Não se exige que projetos derivados exibam permanentemente o nome ou logotipo do Glossata na interface; permanecem os avisos aplicáveis previstos pela própria Apache, inclusive NOTICE. A licença do código não concede automaticamente licença gráfica geral sobre os três ícones. Recomenda-se identidade visual própria para projetos derivados independentes.
+
+São respeitadas as funcionalidades de visualização e fork de repositórios públicos disponibilizadas pelo GitHub, nos termos aplicáveis, e os usos legalmente permitidos. A reserva não pretende proibir essas operações nem usos assegurados pela legislação. Isso não significa autorização geral para redistribuir os ícones em produtos independentes fora desses limites. Referências consultadas em 2026-10-17: [Apache-2.0, §§2, 4 e 6](https://www.apache.org/licenses/LICENSE-2.0) e [GitHub Terms of Service, D.5 e D.8](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#d-user-generated-content).
+
+## Uso oficial e distribuição pendente
+
+O mantenedor declara a intenção de utilizar os três ícones nas versões oficiais do Projeto Glossata. Essa intenção administrativa não constitui autorização de terceiros nem demonstra, por si só, os direitos necessários para distribuir os arquivos. O caráter educacional e sem fins lucrativos da iniciativa oficial não elimina obrigações de direitos nem restringe a licença do código.
+
+Os três recursos continuam como `pending_permission`, com `distribution_allowed: false`, até a demonstração dos requisitos aplicáveis. A decisão de política e a declaração de geração via ChatGPT são evidências administrativas distintas; nenhuma delas é confirmação jurídica automática. A eficácia de eventual reserva ou autorização depende dos direitos efetivamente existentes e demonstráveis.
+
+Regularização exige conferir origem e condições históricas de geração, componentes externos e respectivos direitos, delimitar o escopo de utilização legítima e arquivar as evidências necessárias. Uma futura autorização específica, se cabível, deve passar pelo fluxo existente de governança, com fundamento e responsável declarado. Não se publicam documentos privados de criação indiscriminadamente. O [relatório de implementação](../POLITICA_BRANDING_IMPLEMENTACAO.md) registra a situação individual dos recursos; nenhum achado da Issue #2 é encerrado por esta escolha.

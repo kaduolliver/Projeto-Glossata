@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Política visual reservada escolhida expressamente pelo mantenedor: sem concessão gráfica geral para projetos independentes, limitada aos direitos disponíveis e respeitando Apache-2.0, visualização/fork e usos legalmente permitidos. Registro administrativo vinculado aos três recursos, sem alterar imagens, permissões ou liberar distribuição. Fluxo de substituição em forks e pendências individuais documentados em [POLITICA_BRANDING_IMPLEMENTACAO.md](docs/POLITICA_BRANDING_IMPLEMENTACAO.md).
+
 - Identidade visual: decisão administrativa de preservar os três ícones atuais, com documentação independente de finalidades, origem declarada e proposta gráfica não ativada. Bytes dos ícones, licenças, permissões e histórico preservados; nenhuma aprovação de distribuição. Consulte [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md).
 
 - Correções finais do PR #12: referência de Euglenida confirmada na editora como BMC Biology (2020), DOI 10.1186/s12915-020-0754-1; rótulos e hashes derivados atualizados, sem alterar descrições ou regras. Documentada a licença CC BY-NC-SA 4.0 do Biology 2e web atual e a falta de identificação da revisão histórica utilizada; direitos educativos continuam pendentes, sem presumir infração ou originalidade integral.

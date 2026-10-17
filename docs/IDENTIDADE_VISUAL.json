@@ -13,6 +13,17 @@
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
   },
   "graphic_license_activated": false,
+  "policy_decision": {
+    "id": "reserved-to-project",
+    "state": "adopted_administrative_policy",
+    "recorded_on": "2026-10-17",
+    "basis": "Escolha expressa do mantenedor nesta solicitação: identidade visual reservada ao Projeto Glossata, sem concessão geral para reutilização por projetos independentes.",
+    "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
+    "official_use_intended": true,
+    "general_graphic_reuse_granted": false,
+    "third_party_rights_verified": false,
+    "scope_limitation": "Somente direitos efetivamente disponíveis; não comprova exclusividade, registro de marca ou autorização para distribuição. Visualização, fork no GitHub e usos legalmente permitidos são respeitados."
+  },
   "permission_granted_by_this_record": false,
   "scientific_or_legal_approval": false,
   "governance_effect": "Nenhuma alteração de permissões, ledgers ou bloqueios de distribuição. Registro administrativo, não evento de aprovação de direitos."
