@@ -34,6 +34,7 @@ jobs:
           set -euo pipefail
           git --version
           python scripts/repository_protection.py check
+          python scripts/content_governance.py recover-permissions
           python scripts/audit_repository.py
           python scripts/review_hints.py
           python scripts/build_education.py

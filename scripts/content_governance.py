@@ -12,6 +12,7 @@ from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
+from governance_storage import atomic_write, governance_lock
 
 ROOT = Path(__file__).resolve().parents[1]
 TOPICS = ('taxonomy', 'photo', 'etymology', 'morphology', 'education')
@@ -342,8 +343,15 @@ def annotate_education(root, data):
 
 def migrate(root=ROOT):
     """One-time honest legacy migration; re-running never renews review dates."""
+    with governance_lock(root):
+        return _migrate(root)
+
+
+def _migrate(root):
     folder = root / 'resources/data'; baseline_path = root / 'resources/compliance/review_baseline.json'
     if baseline_path.exists(): return load(baseline_path)
+    if read_chain(root / 'resources/compliance/permission_history.jsonl'):
+        raise ValueError('Permission events already exist; do not recreate a missing legacy baseline automatically')
     species = load(folder / 'species.json', []); needed = {s['photo']['id'] for s in species}; candidates = {}
     for path in sorted((root / 'build/import-cache').glob('*.json')):
         cached = load(path, {})
@@ -352,7 +360,7 @@ def migrate(root=ROOT):
             for photo in obs.get('photos', []):
                 if str(photo.get('id')) in needed:
                     candidates[(str(obs['id']), str(photo['id']))] = (obs, photo)
-    provenance = {}
+    provenance = permission_provenance(root)
     for s in species:
         p = s['photo']; pid = p['id']
         if pid in provenance: continue
@@ -368,11 +376,12 @@ def migrate(root=ROOT):
                            'original_collected_at': None, 'evidence_paths': evidence, 'sha256': p.get('sha256'),
                            'modifications': p.get('modifications'), 'permission_state': 'legacy_evidence_incomplete',
                            'note': 'Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana.'}
-    save(folder / 'photo_provenance.json', provenance)
+    atomic_write(folder / 'photo_provenance.json',
+                 (json.dumps(provenance, ensure_ascii=False, indent=2) + '\n').encode('utf8'))
     values = records(root)
     data = {'schema_version': 1, 'migrated_at': now(), 'purpose': 'Legacy snapshots, not approvals or scientific certification',
             'records': {key: {k: v for k, v in rec.items() if k != 'payload'} for key, rec in values.items()}}
-    save(baseline_path, data)
+    atomic_write(baseline_path, (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf8'))
     return data
 
 
@@ -438,6 +447,7 @@ def source_findings(photo, metadata, root=ROOT):
 
 def credits(root=ROOT):
     species = load(root / 'resources/data/species.json', []); provenance = load(root / 'resources/data/photo_provenance.json', {})
+    recovery = permission_recovery(root)
     photos = {}
     for s in species:
         p = s['photo']; metadata = provenance.get(p['id'], {})
@@ -447,6 +457,8 @@ def credits(root=ROOT):
              'modifications': p.get('modifications'), 'sha256': p.get('sha256'), 'organisms': [],
              'rights_issues': permission_issues(p, metadata, root), 'evidence_paths': metadata.get('evidence_paths', [])})
         record['distribution_exception'] = bool(documented_exception(p, 'distribution', root))
+        if recovery['errors'] or p['id'] in recovery['pending_photo_ids']:
+            record['rights_issues'].append('permission_projection_inconsistent')
         record['scientific_source_issues'] = source_findings(p, metadata, root)
         record['organisms'].append({'id': s['id'], 'name': s['name'], 'role': p.get('role', 'identification'), 'subject': p.get('scientific_name')})
     from exploration_media import credit_records
@@ -488,8 +500,9 @@ def audit_governance(root=ROOT, at=None):
     errors.extend(staging_errors(root))
     try: events = read_ledger(root)
     except ValueError as e: events = []; errors.append({'error': 'review_history_integrity', 'detail': str(e)})
-    try: read_chain(root / 'resources/compliance/permission_history.jsonl')
-    except ValueError as e: errors.append({'error': 'permission_history_integrity', 'detail': str(e)})
+    recovery = permission_recovery(root)
+    if recovery['state'] != 'consistent':
+        errors.append({'error': 'permission_projection_inconsistent', 'detail': recovery})
     for event in events:
         for error in event_errors(event, at): errors.append({'key': event.get('key'), 'error': error})
     current = records(root); scientific = []; assistance = []
@@ -599,12 +612,114 @@ def append_review(root, key, decision):
     return event
 
 
+def _permission_plan(root):
+    """Read only. A projection may advance from a known state, never an unknown one."""
+    path = root / 'resources/data/photo_provenance.json'
+    history_path = root / 'resources/compliance/permission_history.jsonl'
+    errors = []; pending = []; history = []; provenance = {}
+    try:
+        history = read_chain(history_path)
+        provenance = load(path, {})
+        if not isinstance(provenance, dict):
+            raise ValueError('Projection is not an object')
+        if history and not path.is_file():
+            raise ValueError('Missing projection: unrelated provenance cannot be reconstructed')
+        states = {}; latest = {}; operations = set()
+        for event in history:
+            pid = event.get('photo_id')
+            before, after = event.get('before'), event.get('after')
+            if not isinstance(pid, str) or not isinstance(before, dict) or not isinstance(after, dict):
+                raise ValueError('Incomplete permission event')
+            if after.get('photo_id') != pid or after.get('permission_state') != 'documented_human_confirmation':
+                raise ValueError('Incompatible permission event identity/state')
+            if pid in latest and before != latest[pid]:
+                raise ValueError('Divergent transitions for photo ' + pid)
+            operation = event.get('operation_sha256')
+            if operation and (operation != _permission_operation(pid, after, event.get('curation')) or operation in operations):
+                raise ValueError('Invalid or duplicate permission operation')
+            if operation: operations.add(operation)
+            states.setdefault(pid, [before]).append(after)
+            latest[pid] = after
+        for pid, current in provenance.items():
+            if (current.get('permission_confirmation') or current.get('permission_state') == 'documented_human_confirmation') and pid not in latest:
+                raise ValueError('Confirmation without a permission event for photo ' + pid)
+        photos = {str(s['photo']['id']): s['photo'] for s in load(root / 'resources/data/species.json', [])}
+        projected = copy.deepcopy(provenance)
+        for pid, after in latest.items():
+            current = provenance.get(pid, {})
+            if current not in states[pid]:
+                raise ValueError('Unknown projection state for photo ' + pid + '; human reconciliation required')
+            if current != after:
+                issues = permission_issues(photos[pid], after, root) if pid in photos else ['photo_not_in_catalog']
+                if issues:
+                    raise ValueError('Recovery evidence invalid for photo ' + pid + ': ' + ', '.join(issues))
+                projected[pid] = copy.deepcopy(after)
+                pending.append(pid)
+        return provenance, projected, history, pending, errors
+    except (ValueError, TypeError, KeyError, AttributeError, OSError) as error:
+        errors.append(str(error))
+        return provenance, provenance, history, [], errors
+
+
+def _permission_operation(pid, after, curation=None):
+    identity = {'photo_id': pid, 'confirmation': after.get('permission_confirmation')}
+    if curation: identity['curation'] = curation
+    return digest(identity)
+
+
+def _recover_permissions(root, apply=False):
+    provenance, projected, history, pending, errors = _permission_plan(root)
+    report = {'state': 'blocked' if errors else 'recovery_required' if pending else 'consistent',
+              'event_count': len(history), 'pending_photo_ids': pending, 'errors': errors, 'applied': False}
+    if apply and not errors and pending:
+        atomic_write(root / 'resources/data/photo_provenance.json',
+                     (json.dumps(projected, ensure_ascii=False, indent=2) + '\n').encode('utf8'))
+        report.update(state='consistent', applied=True, pending_photo_ids=[])
+    return report
+
+
+def permission_recovery(root=ROOT, apply=False):
+    """Audit by default; applying replays existing evidence-bound events only."""
+    if not apply: return _recover_permissions(root)
+    with governance_lock(root):
+        return _recover_permissions(root, apply=True)
+
+
+def permission_provenance(root=ROOT):
+    provenance, _, _, pending, errors = _permission_plan(root)
+    if errors or pending:
+        raise ValueError('Permission state requires recovery or human reconciliation: ' + '; '.join(errors or pending))
+    return provenance
+
+
+def register_photo_provenance(root, pid, metadata):
+    """Importer may add provenance, never overwrite an existing human decision."""
+    with governance_lock(root):
+        report = _recover_permissions(root, apply=True)
+        if report['errors']: raise ValueError(str(report))
+        provenance = permission_provenance(root)
+        if pid in provenance and provenance[pid] != metadata:
+            raise ValueError('Existing photo provenance differs; explicit human reconciliation required')
+        if pid not in provenance:
+            provenance[pid] = metadata
+            atomic_write(root / 'resources/data/photo_provenance.json',
+                         (json.dumps(provenance, ensure_ascii=False, indent=2) + '\n').encode('utf8'))
+
+
 def confirm_permission(root, decision):
-    """Explicit maintainer input; never called by imports, HTTP checks or tests of URLs."""
+    """Explicit human input. Commit the event first; materialization is replayable."""
+    with governance_lock(root):
+        return _confirm_permission(root, decision)
+
+
+def _confirm_permission(root, decision):
+    """Caller must hold governance_lock, including the Issue decision bridge."""
+    report = _recover_permissions(root, apply=True)
+    if report['errors']: raise ValueError(str(report))
     species = load(root / 'resources/data/species.json', [])
     pid = str(decision.get('photo_id')); photo = next((s['photo'] for s in species if s['photo']['id'] == pid), None)
     if not photo: raise ValueError('Fotografia ausente do catálogo.')
-    path = root / 'resources/data/photo_provenance.json'; provenance = load(path, {})
+    path = root / 'resources/data/photo_provenance.json'; provenance = permission_provenance(root)
     current = provenance.get(pid, {}); updated = copy.deepcopy(current)
     updated['license_version'] = decision.get('license_version')
     updated['evidence_paths'] = sorted(set(current.get('evidence_paths', []) + decision.get('evidence_paths', [])))
@@ -625,20 +740,34 @@ def confirm_permission(root, decision):
     updated['permission_state'] = 'documented_human_confirmation'
     history_path = root / 'resources/compliance/permission_history.jsonl'
     history = read_chain(history_path)
+    operation = _permission_operation(pid, updated, decision.get('curation'))
+    existing = next((e for e in history if _permission_operation(e['photo_id'], e['after'], e.get('curation')) == operation), None)
+    if existing:
+        latest = next(e for e in reversed(history) if e['photo_id'] == pid)
+        if latest['event_sha256'] != existing['event_sha256']:
+            raise ValueError('Decision superseded by a later human decision; no rollback permitted')
+        if current != existing['after']:
+            raise ValueError('Decision effects differ from the materialized projection')
+        return current
     event = {'photo_id': pid, 'recorded_at': now(), 'before': current, 'after': updated,
+             'operation_sha256': operation,
              'previous_sha256': history[-1]['event_sha256'] if history else ''}
     if decision.get('curation'): event['curation'] = decision['curation']
     event['event_sha256'] = digest(event)
-    history_path.parent.mkdir(parents=True, exist_ok=True)
-    with history_path.open('a', encoding='utf8', newline='\n') as output: output.write(json.dumps(event, ensure_ascii=False) + '\n')
-    provenance[pid] = updated; save(path, provenance)
+    # Preserve every historical byte/hash. Atomic replacement avoids a torn tail.
+    prefix = history_path.read_bytes() if history_path.exists() else b''
+    if prefix and not prefix.endswith(b'\n'): prefix += b'\n'
+    atomic_write(history_path, prefix + (json.dumps(event, ensure_ascii=False) + '\n').encode('utf8'))
+    recovery = _recover_permissions(root, apply=True)
+    if recovery['state'] != 'consistent': raise ValueError(str(recovery))
     return updated
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['migrate', 'credits', 'audit', 'record-review', 'confirm-permission'])
+    parser.add_argument('action', choices=['migrate', 'credits', 'audit', 'record-review', 'confirm-permission', 'recover-permissions'])
     parser.add_argument('--key'); parser.add_argument('--decision', type=Path)
+    parser.add_argument('--apply', action='store_true', help='Replay existing permission events; never create a decision')
     args = parser.parse_args()
     if args.action == 'migrate':
         print('Legacy baseline records:', len(migrate()['records']))
@@ -649,6 +778,10 @@ if __name__ == '__main__':
     elif args.action == 'confirm-permission':
         if not args.decision: parser.error('--decision é necessário')
         print(confirm_permission(ROOT, load(args.decision))['permission_state'])
+    elif args.action == 'recover-permissions':
+        report = permission_recovery(ROOT, apply=args.apply)
+        print(json.dumps(report, ensure_ascii=False))
+        raise SystemExit(0 if report['state'] == 'consistent' else 2)
     else:
         report = audit_governance(); save(ROOT / 'build/governance-audit.json', report)
         print(json.dumps({k: v for k, v in report.items() if k not in {'scientific_findings', 'photo_licensing'}}, ensure_ascii=False))
