@@ -13,6 +13,7 @@
 !/package/qt.conf
 
 # Local game data and diagnostic logs
+/resources/compliance/.governance.lock
 *.sqlite
 *.sqlite-*
 *.sqlite3

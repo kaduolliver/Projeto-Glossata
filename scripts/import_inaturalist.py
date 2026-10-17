@@ -18,7 +18,8 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from content_governance import (license_allowed, observation_eligible, archive_permission,
-                                generate_credits, load as load_governance, save as save_governance)
+                                generate_credits, load as load_governance, save as save_governance,
+                                register_photo_provenance)
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 KINGDOM_ROOTS = {
@@ -356,16 +357,14 @@ def import_catalog(count=20, max_pages=5, offline=False):
                             "permission_evidence": evidence_path,
                             "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
                             "review": "Identificação comunitária de grau científico; revisão editorial pendente."}}
-                    provenance_path = ROOT / 'resources/data/photo_provenance.json'
-                    provenance = load_governance(provenance_path, {})
-                    provenance[str(photo['id'])] = {'photo_id': str(photo['id']), 'observation_id': str(obs['id']),
+                    provenance = {'photo_id': str(photo['id']), 'observation_id': str(obs['id']),
                         'photo_url': f"https://www.inaturalist.org/photos/{photo['id']}", 'observation_url': source,
                         'download_url': image_url, 'credit_as_supplied': photo['attribution'], 'title': photo.get('title'),
                         'license': photo['license_code'], 'declared_license_url': LICENSE_URLS.get(photo['license_code']),
                         'license_version': None, 'original_collected_at': collected_at, 'evidence_paths': [evidence_path],
                         'sha256': item['photo']['sha256'], 'modifications': item['photo']['modifications'],
                         'permission_state': 'pending_version_confirmation'}
-                    save_governance(provenance_path, provenance)
+                    register_photo_provenance(ROOT, str(photo['id']), provenance)
                     species.append(item)
                     known_names.add(item["name"].casefold())
                     known_source_ids.add(source_id)

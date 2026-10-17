@@ -9,6 +9,7 @@
 #include "application/EducationalContent.h"
 #include "domain/TaxonomicPerformance.h"
 #include "application/QuestionGenerator.h"
+#include "application/ports/SessionCheckpointRepository.h"
 
 class GameService {
 public:
@@ -16,8 +17,9 @@ public:
     explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr,
                          const EducationalContent &content = EducationalContent());
 
-    void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"));
-    void startConfiguredGame(GameConfiguration configuration);
+    void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"), const PlayerIdentity &player = {});
+    void startConfiguredGame(GameConfiguration configuration, const PlayerIdentity &player = {});
+    PlayerIdentity sessionPlayer() const { return session_.player; }
     static GameConfiguration competitiveConfiguration();
     static QString contentFingerprint(const QByteArray &education);
     GameConfiguration configuration() const { return session_.configuration; }
@@ -42,11 +44,20 @@ public:
     bool isFinished() const;
     TaxonomicPerformance performance() const { return performance_; }
     QVector<HistoryEntry> history() const;
-    SaveStatus saveCurrentResult(const QString &playerName);
+    SaveStatus saveCurrentResult();
+    void setCheckpointRepository(SessionCheckpointRepository *repository) { checkpoints_=repository; }
+    bool recoverSession(const QString &id);
+    bool checkpointProgress();
+    bool hasCheckpoint() const { return checkpointRevision_>0 && !resultSaved_; }
+    QString sessionId() const { return session_.id; }
+    QString checkpointError() const { return checkpointError_; }
+    QJsonObject sessionSnapshot() const;
 
 private:
     void buildQuestionForCurrentSpecies();
     void shuffleCycle();
+    QString contentIdentity() const;
+    bool ensureCheckpoint();
 
     SpeciesCatalog *catalog_ = nullptr;
     GameHistoryRepository *history_ = nullptr;
@@ -61,4 +72,8 @@ private:
     EducationalContent content_;
     std::mt19937 random_{std::random_device{}()};
     TaxonomicPerformance performance_;
+    SessionCheckpointRepository *checkpoints_ = nullptr;
+    qint64 checkpointRevision_ = 0;
+    QString checkpointError_, contentIdentity_;
+    QJsonArray presentedQuestions_;
 };

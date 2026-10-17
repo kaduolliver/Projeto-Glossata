@@ -9,18 +9,21 @@
 #include <QUuid>
 #include <QFile>
 #include <QCryptographicHash>
+#include <QJsonArray>
+#include <sstream>
+#include <locale>
 
 GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history,const EducationalContent &content)
     : catalog_(catalog), history_(history), content_(content)
 {
 }
 
-void GameService::startNewGame(const QString &filter, const QString &rank)
+void GameService::startNewGame(const QString &filter, const QString &rank, const PlayerIdentity &player)
 {
     GameConfiguration configuration;
     configuration.group = filter;
     configuration.rank = rank;
-    startConfiguredGame(configuration);
+    startConfiguredGame(configuration, player);
 }
 
 GameConfiguration GameService::competitiveConfiguration()
@@ -49,7 +52,7 @@ QString GameService::contentFingerprint(const QByteArray &education)
     return QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex());
 }
 
-void GameService::startConfiguredGame(GameConfiguration configuration)
+void GameService::startConfiguredGame(GameConfiguration configuration, const PlayerIdentity &player)
 {
     // Legacy rules interpret stored games; new sessions always use current rules.
     configuration.rulesVersion=CurrentScoringRules;
@@ -61,10 +64,15 @@ void GameService::startConfiguredGame(GameConfiguration configuration)
     resultSaved_ = false;
     revealedHints_ = 0;
     session_ = GameSession();
+    session_.player = player;
     session_.configuration = configuration;
     session_.id=QUuid::createUuid().toString(QUuid::WithoutBraces);
     performance_ = TaxonomicPerformance();
     currentQuestion_ = Question();
+    checkpointRevision_=0;
+    checkpointError_.clear();
+    presentedQuestions_=QJsonArray();
+    contentIdentity_=contentIdentity();
 
     if (catalog_ == nullptr) {
         session_.round = 0;
@@ -118,6 +126,10 @@ void GameService::startConfiguredGame(GameConfiguration configuration)
 
     shuffleCycle();
     buildQuestionForCurrentSpecies();
+    if (!session_.finished && !checkpointProgress()) {
+        session_.finished=true;
+        currentQuestion_.options.clear();
+    }
 }
 
 Question GameService::currentQuestion() const
@@ -145,6 +157,8 @@ bool GameService::submitAnswer(const QString &selectedOption)
     if (session_.finished || !currentQuestion_.options.contains(selectedOption)) {
         return false;
     }
+    if (!ensureCheckpoint()) return false;
+    const GameService before=*this;
 
     const bool isCorrect = selectedOption == currentQuestion_.correctAnswer;
     const int maximum=possibleScoreUnits();
@@ -172,6 +186,7 @@ bool GameService::submitAnswer(const QString &selectedOption)
         session_.finished = true;
         revealedHints_ = 0;
         currentQuestion_.options.clear();
+        if (!checkpointProgress()) { const auto error=checkpointError_; *this=before; checkpointError_=error; return false; }
         return isCorrect;
     }
     ++session_.round;
@@ -186,6 +201,7 @@ bool GameService::submitAnswer(const QString &selectedOption)
         currentSpeciesIndex_ = 0;
     }
     buildQuestionForCurrentSpecies();
+    if (!checkpointProgress()) { const auto error=checkpointError_; *this=before; checkpointError_=error; return false; }
     return isCorrect;
 }
 
@@ -201,7 +217,10 @@ bool GameService::revealHint(HintType type)
 bool GameService::revealHintSlot(int slot)
 {
     if(session_.finished || slot<0 || slot>2 || (revealedHints_&(1<<slot)) || !currentQuestion_.hints[slot].available())return false;
+    if (!ensureCheckpoint()) return false;
+    const int before=revealedHints_;
     revealedHints_|=1<<slot;
+    if (!checkpointProgress()) { revealedHints_=before; return false; }
     return true;
 }
 
@@ -211,8 +230,11 @@ void GameService::finishGame()
         return;
     }
 
+    if (!ensureCheckpoint()) return;
+    const auto before=currentQuestion_;
     session_.finished = true;
     currentQuestion_.options.clear();
+    if (!checkpointProgress()) { session_.finished=false; currentQuestion_=before; }
 }
 
 qint64 GameService::scoreUnits() const
@@ -239,14 +261,19 @@ QVector<HistoryEntry> GameService::history() const
     return history_->loadRanking(session_.configuration.rankingKey(), 5);
 }
 
-GameService::SaveStatus GameService::saveCurrentResult(const QString &playerName)
+GameService::SaveStatus GameService::saveCurrentResult()
 {
-    if (!session_.finished || session_.answeredCount == 0 || resultSaved_) {
+    if (!session_.finished || resultSaved_) {
+        return SaveStatus::NotNeeded;
+    }
+    if (session_.answeredCount==0) {
+        if (hasCheckpoint() && !checkpoints_->abandonCheckpoint(session_.id,checkpointRevision_)) return SaveStatus::Failed;
+        resultSaved_=true;
         return SaveStatus::NotNeeded;
     }
 
-    if (history_ == nullptr || playerName.trimmed().isEmpty()
-        || !history_->saveConfiguredResult(playerName.trimmed(), session_.scoreUnits, session_.correctAnswers, session_.answers, session_.id, session_.configuration)) {
+    if (history_ == nullptr || !session_.player.isValid()
+        || !history_->saveConfiguredResult(session_.player, session_.scoreUnits, session_.correctAnswers, session_.answers, session_.id, session_.configuration)) {
         return SaveStatus::Failed;
     }
     resultSaved_ = true;
@@ -263,11 +290,12 @@ void GameService::buildQuestionForCurrentSpecies()
 
     currentQuestion_ = QuestionGenerator(content_).generate(species_.at(currentSpeciesIndex_), optionPool_, session_.configuration, random_);
     if (currentQuestion_.options.size() != 4) session_.finished = true;
+    else presentedQuestions_.append(SessionSnapshot::question(currentQuestion_));
 }
 
 void GameService::shuffleCycle()
 {
-    std::mt19937 random(std::random_device{}());
+    auto &random=random_;
     QMap<QString, QVector<Species>> groups;
     for (const Species &species : species_) groups[species.displayGroupId()].append(species);
     const int total = static_cast<int>(species_.size());
@@ -298,4 +326,89 @@ void GameService::shuffleCycle()
         balance[chosen] -= total;
         species_.append(groups[chosen].takeLast());
     }
+}
+
+QString GameService::contentIdentity() const
+{
+    QByteArray bytes=contentFingerprint(content_.identity().toUtf8()).toUtf8();
+    if (catalog_) for (const auto &s:catalog_->loadSpecies()) {
+        QJsonArray taxa,traits; for (const auto &t:s.taxonomy) taxa.append(QJsonObject{{"id",t.id},{"name",t.name},{"rank",t.rank}});
+        for (const auto &t:s.morphologyTraits) traits.append(t);
+        bytes+=QJsonDocument(QJsonObject{{"id",s.id},{"name",s.name},{"photo",s.photo.id},{"sha256",s.photo.sha256},
+            {"photo_valid",s.photo.valid},{"photo_approved",s.photoApproved},{"taxonomy_approved",s.taxonomyApproved},
+            {"phylogeny_approved",s.phylogenyApproved},{"taxonomy",taxa},{"traits",traits},{"attribution",s.photo.attribution}}).toJson(QJsonDocument::Compact);
+    }
+    return QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex());
+}
+
+QJsonObject GameService::sessionSnapshot() const
+{
+    QJsonArray answers,order,pool;
+    for (const auto &a:session_.answers) answers.append(SessionSnapshot::answer(a));
+    for (const auto &s:species_) order.append(s.id);
+    for (const auto &s:optionPool_) pool.append(s.id);
+    std::ostringstream generator; generator.imbue(std::locale::classic()); generator<<random_;
+    return {{"schema",SessionSnapshot::Schema},{"id",session_.id},{"player_id",session_.player.id},{"player_name",session_.player.displayName},
+        {"configuration",SessionSnapshot::configuration(session_.configuration)},{"content_identity",contentIdentity_},
+        {"pedagogy_version",content_.pedagogyVersion()},{"units",double(session_.scoreUnits)},{"correct",session_.correctAnswers},
+        {"round",session_.round},{"finished",session_.finished},{"revealed",revealedHints_},{"answers",answers},{"questions",presentedQuestions_},
+        {"species_order",order},{"option_pool",pool},{"species_index",currentSpeciesIndex_},{"generator",QString::fromStdString(generator.str())}};
+}
+
+bool GameService::checkpointProgress()
+{
+    if (!checkpoints_) return true;
+    if (resultSaved_) return true;
+    if (!session_.player.isValid() || !checkpoints_->writeCheckpoint(sessionSnapshot(),checkpointRevision_,checkpointRevision_)) {
+        checkpointError_=QStringLiteral("Não foi possível salvar o progresso. A ação não foi confirmada. Verifique espaço, acesso ao banco e se outra janela retomou esta partida.");
+        return false;
+    }
+    checkpointError_.clear(); return true;
+}
+
+bool GameService::ensureCheckpoint()
+{
+    return !checkpoints_ || checkpointRevision_>0 || checkpointProgress();
+}
+
+bool GameService::recoverSession(const QString &id)
+{
+    checkpointError_=QStringLiteral("A sessão não pode ser retomada: integridade, regras ou conteúdo incompatíveis. O registro foi preservado; você pode abandoná-lo sem alterar o ranking.");
+    if (!checkpoints_ || !catalog_) return false;
+    const auto saved=checkpoints_->checkpoint(id); const auto p=saved.payload;
+    if (!saved.error.isEmpty() || saved.revision<=0 || (saved.state!="active" && saved.state!="finished")
+        || !SessionSnapshot::valid(p) || p["content_identity"].toString()!=contentIdentity()) {
+        return false;
+    }
+    const auto loaded=catalog_->loadSpecies();
+    QVector<Species> order,pool;
+    auto load=[&](const QJsonArray &ids,QVector<Species> &result) {
+        for (const auto &v:ids) {
+            auto it=std::find_if(loaded.begin(),loaded.end(),[&](const Species &s){return s.id==v.toInt();});
+            if (it==loaded.end()) return false;
+            auto s=*it; s.name=s.name.trimmed(); s.fact=s.fact.trimmed(); s.hint=s.hint.trimmed(); result.append(s);
+        }
+        return true;
+    };
+    if (!load(p["species_order"].toArray(),order) || !load(p["option_pool"].toArray(),pool)) return false;
+    Question question;
+    for (const auto &v:p["questions"].toArray()) if (!SessionSnapshot::readQuestion(v.toObject(),pool,question)) return false;
+    std::istringstream generator(p["generator"].toString().toStdString()); generator.imbue(std::locale::classic()); std::mt19937 random;
+    if (!(generator>>random)) return false;
+    generator>>std::ws; if (!generator.eof()) return false;
+    GameSession session; session.id=id; session.player={p["player_id"].toString(),p["player_name"].toString()};
+    if (!SessionSnapshot::readConfiguration(p["configuration"].toObject(),session.configuration)) return false;
+    TaxonomicPerformance performance;
+    for (const auto &v:p["answers"].toArray()) {
+        AnswerRecord a; if (!SessionSnapshot::readAnswer(v.toObject(),a)) return false; session.answers.append(a);
+        auto it=std::find_if(pool.begin(),pool.end(),[&](const Species &s){return s.id==a.speciesId;}); if (it==pool.end()) return false;
+        performance.record(*it,a.correct);
+    }
+    session.scoreUnits=qint64(p["units"].toDouble()); session.correctAnswers=p["correct"].toInt(); session.answeredCount=session.answers.size();
+    session.round=p["round"].toInt(); session.finished=p["finished"].toBool();
+    session_=session; species_=order; optionPool_=pool; currentSpeciesIndex_=p["species_index"].toInt(); random_=random;
+    currentQuestion_=question; if (session.finished) currentQuestion_.options.clear();
+    identificationRank_=session.configuration.rank; revealedHints_=p["revealed"].toInt(); performance_=performance;
+    checkpointRevision_=saved.revision; resultSaved_=false; presentedQuestions_=p["questions"].toArray();
+    contentIdentity_=p["content_identity"].toString(); checkpointError_.clear(); return true;
 }

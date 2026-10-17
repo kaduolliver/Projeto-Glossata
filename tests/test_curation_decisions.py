@@ -110,7 +110,7 @@ class DecisionTests(unittest.TestCase):
         record=governance.records(self.root,include_presentation=True)[key]
         self.assertEqual(governance.status(key,record,{},governance.read_ledger(self.root),governance.policy(self.root))['state'],'needs_review')
     def test_another_decision_import_holding_the_lock_preserves_history(self):
-        lock=self.root/'build/curation/decision.lock';lock.parent.mkdir(parents=True);lock.write_text('active')
+        lock=self.root/'build/curation/decision.lock';lock.parent.mkdir(parents=True,exist_ok=True);lock.write_text('active')
         with self.assertRaises(FileExistsError):decisions.record_decision(self.root,self.config,self.envelope())
         self.assertEqual(governance.read_ledger(self.root),[]);self.assertEqual(lock.read_text(),'active')
 

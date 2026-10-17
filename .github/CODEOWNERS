@@ -1,0 +1,12 @@
+# Administrative responsibility and visibility, not independent approval.
+# Do not require code-owner approval while there is only one maintainer.
+/.github/ @kaduolliver
+/AGENTS.md @kaduolliver
+/scripts/ @kaduolliver
+/tests/ @kaduolliver
+/resources/compliance/ @kaduolliver
+/resources/data/ @kaduolliver
+/CMakeLists.txt @kaduolliver
+/VERSION.txt @kaduolliver
+/CHANGELOG.md @kaduolliver
+/docs/ @kaduolliver

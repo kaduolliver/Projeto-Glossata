@@ -46,7 +46,7 @@ Item {
                 }
                 Label { text: "Explore Bacteria, Archaea e Eukaryota e descubra suas linhagens evolutivas. Observe, identifique e aprenda sobre a diversidade da vida, uma espécie de cada vez."; color: "#B8CAC0"; font.pixelSize: 15; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.maximumWidth: 345 }
                 UiButton { objectName: "homePlayButton"; text: view.app.playing ? "Continuar partida" : "Começar a explorar"; iconName: "play"; Layout.topMargin: 8; implicitWidth: 230; onClicked: view.app.openPlay() }
-                Label { text: "No seu ritmo. Sem limite de perguntas."; color: "#71998A"; font.pixelSize: 11 }
+                Label { text: "Respostas e dicas salvas automaticamente."; color: "#71998A"; font.pixelSize: 11 }
             }
             Label { anchors.right: parent.right; anchors.bottom: parent.bottom; anchors.margins: 18; text: "Ilustração decorativa"; color: "#9AAF97"; font.pixelSize: 9 }
         }

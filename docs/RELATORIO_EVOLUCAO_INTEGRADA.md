@@ -1,5 +1,7 @@
 # Evolução e auditoria integrada — Projeto Glossata
 
+> Relatório histórico desta etapa, sem atualização retroativa de versões/resultados. Para fontes e contagem de testes atuais, consulte [ESTADO_DO_PROJETO.md](ESTADO_DO_PROJETO.md).
+
 Execução sequencial em 16/10/2026. Aplicativo **1.6.0**, catálogo **2.4.0**, ambos **não lançados**. Código em C++17/Qt 6/QML, SQLite e execução offline preservados. Não houve push, release, tag, reescrita de histórico ou acesso a bancos reais de jogadores.
 
 ## Entregas por etapa

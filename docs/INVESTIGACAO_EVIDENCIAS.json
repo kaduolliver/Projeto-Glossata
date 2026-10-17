@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-16T20:04:56.097984+00:00",
+  "source_commit": "041ae413e4200e1f6e2da49ec7b3b03f9b734b71",
+  "application_version": "1.7.0",
+  "catalog_version": "2.4.0",
+  "scope": "Repository investigation; synthetic temporary fixtures, mocked HTTP and read-only GitHub metadata. Not a legal/scientific certification or comprehensive penetration test.",
+  "profiles": {
+    "accent_lower_accepted": true,
+    "accent_upper_accepted": true,
+    "profile_created": true,
+    "records_for_new_name": 0,
+    "records_for_old_name": 1,
+    "renamed": true,
+    "result_saved": true
+  },
+  "controlled_probes": {
+    "generated_at": "2026-10-16T20:03:01.156897+00:00",
+    "scope": "Synthetic existing fixtures only; no production evidence, player database or external HTTP requests.",
+    "permission_interruption": {
+      "ledger_events_after_failure": 1,
+      "provenance_unchanged": true,
+      "retry_state": "already_recorded",
+      "permission_findings_after_retry": [
+        "license_version_evidence_missing",
+        "license_version_not_evidenced",
+        "original_collection_date_unknown",
+        "permission_confirmation_missing_or_changed",
+        "permission_evidence_missing"
+      ],
+      "recovered_automatically": false
+    },
+    "direct_review_writer_concurrency": {
+      "writers_completed": 2,
+      "shared_previous_tip": true,
+      "chain_rejected_after_writes": true,
+      "bridge_lock_bypassed": true
+    },
+    "chain_trust_boundary": {
+      "rewritten_fixture_chain_accepted": true,
+      "requires_write_access": true,
+      "authorship_authenticated_by_hash": false
+    },
+    "maintenance_redirect": {
+      "synthetic_transport_only": true,
+      "initial_https_public_url": true,
+      "http_loopback_redirect_followed": true,
+      "result_accepted": true,
+      "network_requests": 0,
+      "requires_explicit_online_maintenance": true
+    }
+  },
+  "github": {
+    "queried_at": "2026-10-16T20:02:31.068420+00:00",
+    "head": "041ae413e4200e1f6e2da49ec7b3b03f9b734b71",
+    "main_protected": false,
+    "rulesets": [],
+    "ci_run": "https://github.com/kaduolliver/Projeto-Glossata/actions/runs/38958447401",
+    "jobs": [
+      {
+        "name": "distribution-permissions",
+        "conclusion": "failure",
+        "failed_steps": [
+          "Bloquear redistribuição sem evidência"
+        ]
+      },
+      {
+        "name": "offline-validation",
+        "conclusion": "success",
+        "failed_steps": []
+      }
+    ]
+  },
+  "baseline_governance": {
+    "technical_errors": 0,
+    "photo_permission_findings": 120,
+    "other_asset_findings": 7,
+    "priority_scientific_blocks": [
+      {
+        "key": "photo:707161720",
+        "state": "source_review_required",
+        "severity": "high",
+        "reason": "legacy_observation_not_research_grade"
+      },
+      {
+        "key": "photo:659755043",
+        "state": "source_review_required",
+        "severity": "high",
+        "reason": "legacy_observation_not_research_grade"
+      }
+    ],
+    "note": "Existing local distribution report; no new permissions or scientific approvals inferred."
+  },
+  "checks_this_investigation": {
+    "related_ctest_suites": 4,
+    "related_ctest_passed": 4,
+    "related_ctest_seconds": 2.54,
+    "full_local_ctest_rerun": false,
+    "application_recompiled": false,
+    "new_visual_validation": false,
+    "profile_probe": "Existing C++ Qt/SQLite probe reexecuted against a temporary database; application sources unchanged.",
+    "production_data_modified": false,
+    "remote_mutations": false
+  },
+  "evidence_limits": [
+    "Failures injected between specific writes; not a physical power-loss/fsync experiment.",
+    "Concurrent direct writers synchronized after ledger read; bridge lock remains present.",
+    "Redirect handled by default urllib with in-memory HTTP/HTTPS handlers; no local or external HTTP request sent by the probe.",
+    "Rehash experiment requires local write access and concerns authorship, not a break of SHA-256.",
+    "GitHub state is a snapshot of the query time."
+  ]
+}

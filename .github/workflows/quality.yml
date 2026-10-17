@@ -7,11 +7,15 @@ permissions:
   contents: read
 jobs:
   offline-validation:
+    # Keep this check name stable: the proposed main ruleset requires it.
+    name: offline-validation
     runs-on: windows-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       - uses: msys2/setup-msys2@ec48f7c5447b3140e2b088413ae3a55687bccb6e # v2
         with:
           msystem: UCRT64
@@ -29,12 +33,15 @@ jobs:
         run: |
           set -euo pipefail
           git --version
+          python scripts/repository_protection.py check
+          python scripts/content_governance.py recover-permissions
           python scripts/audit_repository.py
           python scripts/review_hints.py
           python scripts/build_education.py
           python scripts/content_governance.py credits
           git diff --exit-code -- resources/data/education.json resources/data/credits.json docs/PHOTO_CREDITS.md
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          python scripts/project_status.py check --build build --report build/project-status-check.json
           cmake --build build --parallel 4
           ctest --test-dir build --output-on-failure
           qmllint $(find resources/qml -name '*.qml') --unqualified disable
@@ -46,7 +53,13 @@ jobs:
           git diff --exit-code -- resources/data/species.json resources/data/taxonomy.json docs/AUDITORIA_FILOGENETICA.json
           git diff --exit-code -- docs/AUDITORIA_ASSISTENCIA.json
           python scripts/review_updates.py
+          python scripts/review_updates.py --rights-report
           python scripts/release.py check
+      - name: Comparar histórico de governança com a base do evento
+        shell: msys2 {0}
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: python scripts/content_governance.py audit-history --base "$BASE_SHA"
       - name: Verificar captura no mesmo commit visual
         shell: msys2 {0}
         env:
@@ -61,13 +74,20 @@ jobs:
             build/catalog-quality.json
             build/exploration-media-audit.json
             build/repository-audit.json
+            build/project-status-check.json
+            build/governance-history.json
+            build/rights-investigation.json
             build/update-proposals/*.json
             build/tests/*results.txt
           if-no-files-found: warn
   distribution-permissions:
+    # Release gate; deliberately NOT required for development integration.
     runs-on: windows-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Bloquear redistribuição sem evidência
         shell: pwsh
         run: python scripts/distribution.py check

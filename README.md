@@ -42,7 +42,24 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 
 ## Estado atual
 
-Aplicativo **1.5.0 em desenvolvimento** · Catálogo **2.3.0, ainda não lançado**. Consulte o [CHANGELOG](CHANGELOG.md), o [histórico científico e de licenças](docs/CATALOGO_CHANGELOG.md) e o [procedimento de versionamento](docs/VERSIONAMENTO.md). Os bloqueios de distribuição impedem uma tag/release nesta etapa; nenhuma versão publicada é declarada por estes números.
+<!-- glossata:status:start -->
+<!-- Gerado por scripts/project_status.py; não editar manualmente. -->
+| Informação atual | Valor derivado | Fonte |
+| --- | --- | --- |
+| Aplicativo | **1.7.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
+| Catálogo | **2.4.0** — não lançado | [Manifesto](resources/data/catalog_manifest.json), [histórico](docs/CATALOGO_CHANGELOG.md) |
+| Regra padrão de pontuação | `identification-v4-progressive` | [Hint.h](src/domain/Hint.h) |
+| Leitura histórica de pontuação | `identification-v3-assistance`, `identification-v2` e `legacy` | [Hint.h](src/domain/Hint.h) |
+| Competitivo | 20 questões | [GameConfiguration.h](src/domain/GameConfiguration.h) |
+| SQLite e snapshots | histórico 6; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
+| Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
+| Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
+| Testes registrados | **25 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
+
+Valores derivados das fontes locais. Este bloco não comprova publicação, execução da CI ou aprovação do gate de distribuição.
+<!-- glossata:status:end -->
+
+O [estado verificável e suas fontes](docs/ESTADO_DO_PROJETO.md) explicam a geração deste bloco. Consulte também o [procedimento de versionamento](docs/VERSIONAMENTO.md). Registro de testes, versão em arquivo e entrada de changelog não comprovam publicação ou aprovação da distribuição.
 
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
@@ -64,14 +81,9 @@ Aplicativo **1.5.0 em desenvolvimento** · Catálogo **2.3.0, ainda não lançad
 
 O catálogo atual utiliza **Bacteria, Archaea e Eukaryota** como portas didáticas para explorar linhagens evolutivas:
 
-| Domínio | Organismos ativos no catálogo |
-| --- | ---: |
-| Bacteria | 20 |
-| Archaea | 0 |
-| Eukaryota | 102 |
-| **Total** | **122** |
+As contagens por domínio e o total são derivados do catálogo no bloco [Estado atual](#estado-atual).
 
-Eukaryota oferece **Opisthokonta** (62 organismos, incluindo Animalia e Fungi), **Archaeplastida** (20, Plantae no sentido da fonte), **SAR** (10, em Stramenopiles), **Amoebozoa** (10) e **Discoba** (ainda sem representantes). Supergrupo designa um clado de navegação sem rank formal universal; domínio, reino e os demais níveis permanecem distintos. Grupos vazios continuam exploráveis e não geram quizzes.
+Eukaryota oferece **Opisthokonta** (incluindo Animalia e Fungi), **Archaeplastida** (Plantae no sentido da fonte), **SAR** (em Stramenopiles), **Amoebozoa** e **Discoba** (ainda sem representantes). Supergrupo designa um clado de navegação sem rank formal universal; domínio, reino e os demais níveis permanecem distintos. Grupos vazios continuam exploráveis e não geram quizzes.
 
 > **Nota científica:** três domínios são uma organização didática; hipóteses de dois domínios situam os eucariotos dentro de Archaea. A navegação omite ramos intermediários e não representa uma filogenia completa ou definitivamente resolvida. Monera e Protista ficam apenas nas referências históricas e na compatibilidade dos dados. O enquadramento consulta Adl et al. (2019), Burki et al. (2020) e estudos de Asgard de 2025–2026, com divergências e fontes registradas na [documentação científica e de migração](docs/CLASSIFICACAO_FILOGENETICA.md).
 
@@ -98,7 +110,7 @@ Navegação por domínios, linhagens, grupos e subgrupos, com caminhos clicávei
 Cada questão apresenta quatro alternativas de identificação no mesmo nível taxonômico, seleção, confirmação e feedback. A fotografia e os dados utilizados na resposta são preservados para a etapa de revisão.
 
 - **Modo Livre:** exploração contínua, com filtros e diferentes políticas de alternativas; a partida termina quando o jogador decide encerrá-la.
-- **Modo Competitivo:** 20 questões em condições padronizadas, sem repetição de organismos na mesma partida, com regras de elegibilidade e ranking específicas.
+- **Modo Competitivo:** quantidade fixa de questões indicada no bloco Estado atual, sem repetição de organismos na mesma partida, com condições padronizadas, regras de elegibilidade e ranking específicas.
 
 ### Dicas estratégicas e pontuação
 
@@ -120,7 +132,7 @@ A **assistência daquela dica e questão**, avaliada separadamente da categoria,
 
 Abrir o painel de dicas não reduz a pontuação. Quando mais de uma dica é revelada, vale o **menor teto**; a interface anuncia o teto resultante antes de revelar. Uma tradução reconhecível pode oferecer assistência forte, enquanto uma descrição já evidente na foto pode oferecer assistência leve. O cálculo permanece em unidades inteiras e acertos/precisão são independentes dos pontos.
 
-A versão de testes usa **avaliação pedagógica automatizada** (`approved_automated`, política `progressive-pedagogy-v1`), identificada na interface e independente da revisão científica. As 290 propostas anteriores são preservadas como rascunhos. Receitas locais para os 122 organismos reutilizam fontes existentes; o contexto determina quais dicas podem aparecer. Não se inventa uma terceira dica quando falta evidência. Categorias podem repetir com conteúdo distinto, mantendo escolha direta de qualquer dica e o menor teto. Consulte a [política e os limites](docs/DICAS_E_PONTUACAO.md), a [auditoria das avaliações](docs/AUDITORIA_ASSISTENCIA.json) e a [cobertura e lacunas](docs/AUDITORIA_PROGRESSAO_DICAS.json). **Relatar problema nesta dica** prepara um rascunho local; somente uma ação explícita abre o formulário externo. Respostas antigas conservam os pontos; novas partidas competitivas usam `identification-v4-progressive`, separada das políticas anteriores internamente no mesmo ranking.
+A versão de testes usa **avaliação pedagógica automatizada** (`approved_automated`, política `progressive-pedagogy-v1`), identificada na interface e independente da revisão científica. As 290 propostas anteriores são preservadas como rascunhos. Receitas locais para os 122 organismos reutilizam fontes existentes; o contexto determina quais dicas podem aparecer. Não se inventa uma terceira dica quando falta evidência. Categorias podem repetir com conteúdo distinto, mantendo escolha direta de qualquer dica e o menor teto. Consulte a [política e os limites](docs/DICAS_E_PONTUACAO.md), a [auditoria das avaliações](docs/AUDITORIA_ASSISTENCIA.json) e a [cobertura e lacunas](docs/AUDITORIA_PROGRESSAO_DICAS.json). **Relatar problema nesta dica** prepara um rascunho local; somente uma ação explícita abre o formulário externo. Respostas antigas conservam os pontos; novas partidas competitivas usam a regra indicada no bloco Estado atual, separada das políticas anteriores internamente no mesmo ranking.
 
 ### Fichas educativas
 
@@ -132,8 +144,10 @@ O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Exis
 
 ### Progresso e perfis
 
-- Perfis locais de jogadores, com criação, renomeação, seleção e exclusão sob regras de integridade.
+- Perfis locais com identidade permanente: renomear mantém a propriedade dos resultados, excluir preserva o histórico e reutilizar um nome cria outro jogador. A [migração para IDs](docs/IDENTIDADE_JOGADORES.md) mantém resultados pré-ID como legado de vínculo pendente, sem atribuí-los automaticamente por coincidência de nome.
+- [Nomes com política Unicode versionada](docs/NOMES_UNICODE.md): `João`/`JOÃO` e formas compostas/decompostas não geram novos perfis duplicados. Acentos e grafia de exibição são preservados; colisões antigas continuam separadas por ID, sem fusão automática.
 - Histórico de respostas e partidas, métricas de precisão e uso de dicas.
+- [Salvamento e recuperação](docs/RECUPERACAO_PARTIDAS.md): checkpoints após respostas/dicas, continuação ou abandono ao reabrir e finalização idempotente. Fechar a janela suspende a partida; sessões competitivas incompletas não atualizam o ranking. Inclui ferramenta de backup e restauração verificados.
 - Rankings locais com distinção entre recorde e última partida.
 - Conquistas e estatísticas associadas à experiência disponível.
 - Persistência em SQLite e possibilidade de usar o aplicativo sem internet após a preparação dos recursos.
@@ -184,12 +198,19 @@ A arquitetura separa regras de domínio, serviços de aplicação, interfaces de
 
 Garanta que o terminal utilizado tenha acesso aos executáveis e bibliotecas instalados no ambiente UCRT64.
 
+No PowerShell, ajuste o caminho à sua instalação antes dos comandos seguintes:
+
+```powershell
+$env:PATH = 'C:\msys64\ucrt64\bin;' + $env:PATH
+```
+
 ### Clonar e compilar
 
 ```bash
 git clone https://github.com/kaduolliver/Projeto-Glossata.git
 cd Projeto-Glossata
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+python scripts/project_status.py check --build build
 cmake --build build --parallel 4
 ```
 
@@ -197,6 +218,8 @@ cmake --build build --parallel 4
 
 ```bash
 ctest --test-dir build --output-on-failure
+python scripts/audit_catalog.py --strict
+python scripts/release.py check
 ```
 
 Para verificar arquivos QML no PowerShell, com `qmllint` disponível no PATH:
@@ -205,6 +228,8 @@ Para verificar arquivos QML no PowerShell, com `qmllint` disponível no PATH:
 $qmlFiles = @(Get-ChildItem resources/qml -Recurse -Filter '*.qml' | ForEach-Object { $_.FullName })
 qmllint @qmlFiles --unqualified disable
 ```
+
+Os testes usam bancos temporários e não publicam presença real no Discord. A contagem acima é de suítes registradas; consulte a saída do CTest e os relatórios em `build/tests/` para resultados de uma execução. Para executar o binário compilado no mesmo terminal UCRT64, use `./build/projeto_glossata.exe`; perfis reais só devem ser abertos para uso normal, nunca como fixtures de teste.
 
 ### Empacotar para Windows
 
@@ -224,14 +249,14 @@ Inicie pelo atalho `package/Projeto Glossata.lnk` ou por `package/run_glossata_g
 
 A aplicação **não depende de consultas à internet durante o jogo**. Os scripts de importação utilizam fontes externas, incluindo o iNaturalist, para preparar dados e recursos locais. A proveniência e os direitos de uso das imagens devem ser respeitados.
 
-Exemplos de importação, na raiz do projeto:
+Para inspecionar provedores e cobertura sem rede e sem modificar o catálogo:
 
 ```bash
-python scripts/import_inaturalist.py --per-source-group 20 --max-pages 5
-python scripts/import_inaturalist.py --offline --per-source-group 20
+python scripts/scientific_catalog.py providers
+python scripts/scientific_catalog.py coverage
 ```
 
-A execução offline da importação exige respostas e imagens previamente armazenadas no cache. `--per-source-group` define a meta total por agrupamento histórico de consulta da API, não necessariamente a quantidade a acrescentar. `--per-kingdom` permanece como alias de compatibilidade; essas cotas não definem os grupos naturais do aplicativo. Antes do download, a linhagem precisa corresponder à política explícita em `phylogeny.json`; a projeção final gera domínios e linhagens, sem reativar Monera ou Protista na navegação.
+Novas descobertas usam `scientific_catalog.py discover`, offline por padrão e com rede somente mediante `--online`, produzindo candidatos pendentes em `build/scientific-sources/`. Consulte os parâmetros e restrições em [PROVEDORES_CIENTIFICOS.md](docs/PROVEDORES_CIENTIFICOS.md). O importador legado não é o caminho para expandir o catálogo: a expansão direta é recusada antes de rede/escrita. Reimportações compatíveis requerem cache e curadoria; seus agrupamentos históricos e alias `--per-kingdom` não definem grupos naturais na aplicação. Regenerar dados/educação/créditos é manutenção de conteúdo, não pré-requisito de uma compilação normal do clone.
 
 Para executar a auditoria local de catálogo:
 
@@ -243,7 +268,11 @@ A curadoria distingue aprovação de identificação visual, fotografia, etimolo
 
 Aprovações antigas sem responsável e evidência foram classificadas como legadas. Novo conteúdo, inclusive assistido por IA, entra em rascunho; alterações exigem nova revisão registrada. O relatório de atualização é offline por padrão (`python scripts/review_updates.py`); `--online` gera propostas para análise humana, sem substituir o conteúdo publicado.
 
-O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. A integração com Issues foi validada e a sincronização semanal habilitada com autorização em 2026-10-16, às segundas às 9h17 de Brasília, limitada a três criações e oito atualizações por rodada. Há quatro formulários públicos; Projects permanece opcional. Fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para evidências, limitações, permissões e decisões humanas.
+O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. Há registro de validação da integração com Issues e ativação semanal autorizada em 2026-10-16, com programação às segundas às 9h17 de Brasília, limitada a três criações e oito atualizações por rodada. Esse registro não é uma consulta do estado remoto atual. Há quatro formulários públicos; Projects permanece opcional. Fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para evidências, limitações, permissões e decisões humanas.
+
+As cadeias SHA-256 verificam integridade interna, sem autenticar o responsável declarado. A comparação com uma base Git preservada acrescenta rastreabilidade histórica, sem certificar revisão científica. Consulte [garantias, âncoras e proposta de autenticação](docs/AUDITORIA_E_CONFIANCA.md).
+
+`python scripts/review_updates.py --rights-report` prepara triagem por foto/material a partir dos mesmos validadores, offline por padrão. `--online` coleta metadados públicos como propostas; `--package package` avalia separadamente o pacote existente. Não cria permissões ou aprovações e mantém o gate de distribuição. Consulte [saneamento, evidências e decisões humanas](docs/SANEAMENTO_DIREITOS.md).
 
 ## Roadmap
 
@@ -272,11 +301,14 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 
 ## Documentação complementar
 
+- [`docs/ESTADO_DO_PROJETO.md`](docs/ESTADO_DO_PROJETO.md) — fontes de verdade, geração, validação e limites do estado atual.
 - [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) — contexto geral, arquitetura, regras e decisões técnicas.
 - [`docs/CLASSIFICACAO_FILOGENETICA.md`](docs/CLASSIFICACAO_FILOGENETICA.md) — domínios, linhagens, fontes, divergências e migração.
 - [`docs/AUDITORIA_FILOGENETICA.json`](docs/AUDITORIA_FILOGENETICA.json) — enquadramento rastreável dos 122 organismos.
 - [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
 - [`docs/CURADORIA_AUTOMATIZADA.md`](docs/CURADORIA_AUTOMATIZADA.md) — fila de curadoria, Issues, formulários, rotina semanal, Projects e decisões humanas rastreáveis.
+- [`docs/RECUPERACAO_PERMISSOES.md`](docs/RECUPERACAO_PERMISSOES.md) — persistência idempotente, recuperação de projeções e bloqueio de inconsistências de permissões.
+- [`docs/CONCORRENCIA_GOVERNANCA.md`](docs/CONCORRENCIA_GOVERNANCA.md) — escrita serializada por APIs, CLIs e bridge, comparação do topo e testes de concorrência entre processos.
 - [`docs/RELATORIO_EVOLUCAO_INTEGRADA.md`](docs/RELATORIO_EVOLUCAO_INTEGRADA.md) — auditoria Git/CI, cobertura fotográfica, avaliação automática das dicas e validação local em 1.6.0.
 - [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
 - [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.

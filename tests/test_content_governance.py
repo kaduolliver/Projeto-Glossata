@@ -150,6 +150,9 @@ class GovernanceTests(unittest.TestCase):
         result = governance.status('species:1:summary', governance.records(self.root)['species:1:summary'], {}, events, governance.policy(self.root))
         self.assertEqual(result['state'], 'approved_editorial'); self.assertEqual(result['reviewer'], 'curator-one')
         self.assertEqual(event['event_sha256'], events[0]['event_sha256'])
+        assurance = governance.audit_governance(self.root)['assurances']
+        self.assertFalse(assurance['authorship_authenticated'])
+        self.assertFalse(assurance['independent_review_verified'])
 
     def test_changed_text_source_identity_and_photo_invalidate_relevant_review(self):
         baseline = self.baseline()
@@ -225,6 +228,17 @@ class GovernanceTests(unittest.TestCase):
         self.assertIn('possible_identification_or_taxonomy_change', changes)
         after = {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()}
         self.assertEqual(before, after)
+
+    def test_refused_maintenance_destinations_are_proposals_not_content_decisions(self):
+        self.baseline(); governance.generate_credits(self.root)
+        before = {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()}
+        class Client:
+            def get(inner, url, as_json=False):
+                raise review_updates.UnsafeDestination('Synthetic policy refusal')
+        report = review_updates.propose_updates(self.root, True, 1, Client())
+        self.assertTrue(report['checks'])
+        self.assertTrue(all(c['state'] == 'destination_refused' and c['requires_human_check'] for c in report['checks']))
+        self.assertEqual(before, {p.relative_to(self.root): p.read_bytes() for p in (self.root/'resources').rglob('*') if p.is_file()})
 
     def test_extra_uninventoried_runtime_file_blocks_distribution(self):
         package = self.root/'package'; package.mkdir(); (package/'unknown.dll').write_bytes(b'unknown'); (package/'unknown.ico').write_bytes(b'unknown-icon')

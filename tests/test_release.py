@@ -99,6 +99,7 @@ class ReleaseTests(unittest.TestCase):
         with mock.patch.object(release, 'git', return_value=''), mock.patch.object(release, 'run') as run:
             self.assertEqual(release.prepare_tag(self.root, 'package', 'build'), 'v1.1.0')
             commands = [list(map(str, call.args[0])) for call in run.call_args_list]
+            self.assertTrue(any(command[1:4] == ['scripts/project_status.py', 'check', '--build'] for command in commands))
             self.assertIn(['ctest', '--test-dir', 'build', '--output-on-failure'], commands)
             self.assertTrue(any(c[1:] == ['scripts/distribution.py', 'check'] for c in commands))
             self.assertTrue(any(c[1:] == ['scripts/distribution.py', 'check', '--package', 'package'] for c in commands))

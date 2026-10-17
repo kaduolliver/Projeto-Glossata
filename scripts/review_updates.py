@@ -6,41 +6,11 @@ valid prior grant; preserve the archived evidence and request human analysis.
 """
 import argparse
 from datetime import datetime, timezone, timedelta
-import ipaddress
 from pathlib import Path
-import time
 import urllib.error
-import urllib.request
 from urllib.parse import urlparse
 from content_governance import ROOT, audit_governance, digest, load, now, parse_time, records, sanitized_observation, save
-
-
-class PublicClient:
-    def __init__(self): self.last = 0
-
-    def get(self, url, as_json=False):
-        import json
-        from scientific_sources.access import access_issue
-        restriction=access_issue(url)
-        if restriction:raise PermissionError(restriction)
-        host = urlparse(url).hostname or ''
-        if urlparse(url).scheme != 'https' or not host or host == 'localhost' or urlparse(url).username:
-            raise ValueError('Somente fontes HTTPS públicas.')
-        try:
-            if not ipaddress.ip_address(host).is_global: raise ValueError('Endereço privado bloqueado.')
-        except ValueError:
-            if re_is_ip(host): raise
-        time.sleep(max(0, 1.1 - (time.monotonic() - self.last))); self.last = time.monotonic()
-        request = urllib.request.Request(url, headers={'User-Agent': 'ProjetoGlossata/1.0 evidence-maintenance'})
-        with urllib.request.urlopen(request, timeout=15) as response:
-            body = response.read(4_000_001 if as_json else 1024)
-            if as_json and len(body) > 4_000_000: raise ValueError('Resposta excede o limite de manutenção.')
-            return json.loads(body) if as_json else {'http_status': response.status, 'final_url': response.url}
-
-
-def re_is_ip(host):
-    try: ipaddress.ip_address(host); return True
-    except ValueError: return False
+from maintenance_http import PublicClient, UnsafeDestination  # Compatibility for existing callers.
 
 
 def changes_for_photo(species, observation):
@@ -122,6 +92,9 @@ def propose_updates(root=ROOT, online=False, maximum=25, client=None):
                 report['checks'].append({'type': 'observation', 'species_id': s['id'], 'http_status': error.code,
                                          'retry_after': error.headers.get('Retry-After')})
                 if error.code == 429: return report
+            except UnsafeDestination as error:
+                report['checks'].append({'type': 'observation', 'species_id': s['id'],
+                                         'state': 'destination_refused', 'reason': str(error), 'requires_human_check': True})
             except Exception as error:
                 report['checks'].append({'type': 'observation', 'species_id': s['id'], 'error': type(error).__name__})
         # A separate limit for taxonomy/conservation and reference availability.
@@ -157,10 +130,16 @@ def propose_updates(root=ROOT, online=False, maximum=25, client=None):
                 report['checks'].append({'type': 'taxonomy_conservation', 'species_id': s['id'], 'http_status': error.code,
                                          'retry_after': error.headers.get('Retry-After')})
                 if error.code == 429: return report
+            except UnsafeDestination as error:
+                report['checks'].append({'type': 'taxonomy_conservation', 'species_id': s['id'],
+                                         'state': 'destination_refused', 'reason': str(error), 'requires_human_check': True})
             except Exception as error:
                 report['checks'].append({'type': 'taxonomy_conservation', 'species_id': s['id'], 'error': type(error).__name__})
         for url in urls[:maximum]:
             try: report['checks'].append({'type': 'link', 'url': url, 'checked_at': now(), **client.get(url)})
+            except UnsafeDestination as error:
+                report['checks'].append({'type': 'link', 'url': url, 'state': 'destination_refused',
+                                         'reason': str(error), 'requires_human_check': True})
             except PermissionError as error:
                 report['checks'].append({'type':'link','url':url,'state':'manual_or_official_api_required','reason':str(error)})
             except urllib.error.HTTPError as error:
@@ -179,5 +158,16 @@ def write_proposals(report, root=ROOT):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--online', action='store_true'); parser.add_argument('--max-checks', type=int, default=25)
+    parser.add_argument('--rights-report', action='store_true', help='Investigate rights using existing audits; never record a decision')
+    parser.add_argument('--package', type=Path, help='Read-only rights assessment of an existing package')
+    parser.add_argument('--photo', action='append', default=[], help='Restrict optional online metadata collection to a catalog photo ID')
+    parser.add_argument('--refresh', action='store_true', help='Explicitly recollect staged public metadata; never renew review dates')
     args = parser.parse_args()
-    print(write_proposals(propose_updates(online=args.online, maximum=args.max_checks)))
+    if args.rights_report:
+        from rights_investigation import report
+        result = report(package=args.package, online=args.online, maximum=args.max_checks, selected=args.photo, refresh=args.refresh)
+        save(ROOT / 'build/rights-investigation.json', result)
+        print(write_proposals(result))
+    else:
+        if args.package or args.photo or args.refresh: parser.error('--package/--photo/--refresh require --rights-report')
+        print(write_proposals(propose_updates(online=args.online, maximum=args.max_checks)))

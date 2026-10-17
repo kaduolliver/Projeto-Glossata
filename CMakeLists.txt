@@ -22,6 +22,7 @@ add_executable(glossata_quiz
     src/app/main.cpp
     src/infrastructure/discord/DiscordRichPresence.cpp
     src/application/GameService.cpp
+    src/domain/SessionCheckpoint.cpp
     src/infrastructure/content/JsonSpeciesCatalog.cpp
     src/infrastructure/content/SqliteSpeciesCatalog.cpp
     src/application/TaxonomyIndex.cpp
@@ -29,6 +30,9 @@ add_executable(glossata_quiz
     src/infrastructure/content/PhotoResolver.cpp
     src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    src/infrastructure/persistence/PlayerIdentityMigration.cpp
+    src/infrastructure/persistence/PlayerNameMigration.cpp
+    src/infrastructure/persistence/SessionCheckpointStorage.cpp
     src/presentation/GameController.cpp
     resources.qrc
 )

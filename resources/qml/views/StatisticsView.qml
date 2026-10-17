@@ -36,6 +36,7 @@ Item {
         }
         Label { objectName: "hintMetricsLabel"; text: view.backend.sessionMetrics.hintedQuestions + " questões com dicas · " + view.backend.sessionMetrics.revealedCategories + " dicas reveladas\nTaxonômica: " + view.backend.sessionMetrics.taxonomic + " · Etimológica: " + view.backend.sessionMetrics.etymological + " · Morfológica: " + view.backend.sessionMetrics.morphological; color: "#91ACB4"; font.pixelSize: 12; lineHeight: 1.4; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { text: "Histórico do perfil · " + (view.backend.rankingMode === "competitive" ? "Competitivo atual" : "Livre"); color: "#E0EDE6"; font.pixelSize: 17; font.weight: Font.DemiBold }
+        Label { visible: !!view.backend.identityNotice; text: view.backend.identityNotice; color: "#E7B857"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         RowLayout {
             Layout.fillWidth: true; spacing: 16
             StatCard { Layout.fillWidth: true; title: "Precisão no histórico"; value: view.backend.playerMetrics.accuracy + "%"; iconName: "target"; accent: "#6CABEE" }
@@ -127,7 +128,7 @@ Item {
                                 Label { text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index === 0 ? "#E8C878" : "#648B94"; font.pixelSize: 15; font.weight: Font.DemiBold }
                                 ColumnLayout {
                                     Layout.fillWidth: true; spacing: 3
-                                    Label { text: rankRow.modelData.playerName; color: "#D5E6DB"; elide: Text.ElideRight; font.pixelSize: 12; Layout.fillWidth: true }
+                                    Label { text: rankRow.modelData.playerName + (rankRow.modelData.legacyIdentity ? " · legado, vínculo pendente" : rankRow.modelData.deletedProfile ? " · perfil excluído" : ""); color: "#D5E6DB"; elide: Text.ElideRight; font.pixelSize: 12; Layout.fillWidth: true; Accessible.description: "Nome na partida mais recente: " + rankRow.modelData.snapshotName }
                                     Label { text: "Última: " + rankRow.modelData.lastScoreText + " · " + rankRow.modelData.lastPlayedAt; color: "#688B92"; font.pixelSize: 9 }
                                 }
                                 Label { text: rankRow.modelData.scoreText + " pts"; color: "#71DCA0"; font.pixelSize: 13; font.weight: Font.DemiBold }

@@ -1,6 +1,6 @@
 # Rede de provedores científicos
 
-Esta etapa acrescenta ferramentas de manutenção, separadas do executável Qt. O catálogo publicado continua com **122 organismos**, suas fotos, IDs, revisões, fontes e histórico. Não há consulta remota durante o jogo. Os resultados externos são **afirmações de uma fonte e candidatos para revisão**, não novos organismos aprovados.
+Esta etapa acrescenta ferramentas de manutenção, separadas do executável Qt. O catálogo embarcado continua com **122 organismos**, suas fotos, IDs, revisões, fontes e histórico; isso não afirma lançamento ou liberação de distribuição. Não há consulta remota durante o jogo. Os resultados externos são **afirmações de uma fonte e candidatos para revisão**, não novos organismos aprovados. Versões e inventário de testes atuais vêm do [estado verificável](ESTADO_DO_PROJETO.md).
 
 ## Diagnóstico e prioridades
 

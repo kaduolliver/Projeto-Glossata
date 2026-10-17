@@ -9,6 +9,7 @@ import re
 from urllib.parse import urlparse
 
 import content_governance as governance
+from governance_storage import governance_lock, require_governance_lock
 from curation_requests import private_data, public_reference
 
 
@@ -33,7 +34,7 @@ def template(root,config,kind,key,rid,issue,draft=None):
     elif kind=='permission':
         photo=next((s['photo'] for s in governance.load(root/'resources/data/species.json',[]) if str(s['photo']['id'])==str(key)),None)
         if photo is None:raise ValueError('Unknown photo ID')
-        provenance=governance.load(root/'resources/data/photo_provenance.json',{}).get(str(key),{})
+        provenance=governance.permission_provenance(root).get(str(key),{})
         decision['photo_id']=str(key);decision.setdefault('license_version',provenance.get('license_version'))
         decision.setdefault('license_version_evidence',None)
         decision.setdefault('evidence_paths',provenance.get('evidence_paths',[]))
@@ -58,18 +59,20 @@ def template(root,config,kind,key,rid,issue,draft=None):
 
 
 def record_decision(root,config,envelope):
-    lock=root/'build/curation/decision.lock';lock.parent.mkdir(parents=True,exist_ok=True)
-    with lock.open('x',encoding='utf8') as handle:handle.write('Explicit local human-decision import')
-    try:return _record_decision(root,config,envelope)
-    finally:lock.unlink()
+    with governance_lock(root):
+        return _record_decision(root,config,envelope)
 
 
 def _record_decision(root,config,envelope):
+    require_governance_lock(root)
     if not isinstance(envelope,dict) or not isinstance(envelope.get('decision'),dict) or envelope.get('schema_version')!=1 or private_data(envelope):raise ValueError('Private or invalid decision')
     kind=envelope.get('kind');key=envelope.get('key');link=envelope.get('curation',{})
     match=re.fullmatch(r'https://github\.com/'+re.escape(config['repository'])+r'/issues/([1-9][0-9]*)',link.get('issue_url',''))
     if not match:raise ValueError('Issue reference must belong to this repository')
     trace(config,link.get('request_id'),int(match[1]))
+    if kind=='permission':
+        recovery=governance._recover_permissions(root,apply=True)
+        if recovery['errors']:raise ValueError(str(recovery))
     # Recompute the actual source/permission/component binding before idempotency
     # checks; a past approval is not a fresh approval of changed content.
     expected=template(root,config,kind,key,link['request_id'],int(match[1]),envelope)
@@ -100,7 +103,11 @@ def _record_decision(root,config,envelope):
     ledger={'review':'review_history.jsonl','permission':'permission_history.jsonl','dependency':'dependency_reviews.jsonl'}[kind]
     events=governance.read_chain(root/'resources/compliance'/ledger)
     existing=next((e for e in events if e.get('curation',{}).get('decision_sha256')==decision_hash),None)
-    if existing:return {'state':'already_recorded','event_sha256':existing['event_sha256']}
+    if existing:
+        if kind=='permission':
+            decision['curation']=dict(link,decision_sha256=decision_hash)
+            governance.confirm_permission(root,decision)
+        return {'state':'already_recorded','event_sha256':existing['event_sha256']}
     if expected['expected_previous_event_sha256']!=envelope.get('expected_previous_event_sha256'):
         raise ValueError('Another human decision was recorded; compare it before proceeding')
     decision['curation']=dict(link,decision_sha256=decision_hash)
