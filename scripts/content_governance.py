@@ -12,7 +12,8 @@ from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
-from governance_storage import atomic_write, governance_lock
+from governance_storage import (append_event, atomic_write, canonical, digest, governance_lock,
+                                read_chain, require_governance_lock)
 
 ROOT = Path(__file__).resolve().parents[1]
 TOPICS = ('taxonomy', 'photo', 'etymology', 'morphology', 'education')
@@ -26,14 +27,6 @@ LABELS = {'legacy': 'Legado sem revisão humana rastreável', 'draft': 'Rascunho
 
 def now():
     return datetime.now(timezone.utc).isoformat()
-
-
-def canonical(value):
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf8')
-
-
-def digest(value):
-    return hashlib.sha256(canonical(value)).hexdigest()
 
 
 def load(path, default=None):
@@ -256,17 +249,6 @@ def records(root=ROOT, education=None, include_presentation=False):
     return result
 
 
-def read_chain(path):
-    events = [json.loads(line) for line in path.read_text(encoding='utf8').splitlines() if line.strip()] if path.exists() else []
-    previous = ''
-    for event in events:
-        body = {k: v for k, v in event.items() if k != 'event_sha256'}
-        if event.get('previous_sha256') != previous or event.get('event_sha256') != digest(body):
-            raise ValueError('Histórico de revisão alterado ou cadeia incompleta.')
-        previous = event['event_sha256']
-    return events
-
-
 def read_ledger(root=ROOT):
     return read_chain(root / 'resources/compliance/review_history.jsonl')
 
@@ -348,6 +330,7 @@ def migrate(root=ROOT):
 
 
 def _migrate(root):
+    require_governance_lock(root)
     folder = root / 'resources/data'; baseline_path = root / 'resources/compliance/review_baseline.json'
     if baseline_path.exists(): return load(baseline_path)
     if read_chain(root / 'resources/compliance/permission_history.jsonl'):
@@ -597,6 +580,12 @@ def audit_governance(root=ROOT, at=None):
 
 
 def append_review(root, key, decision):
+    with governance_lock(root):
+        return _append_review(root, key, decision)
+
+
+def _append_review(root, key, decision):
+    require_governance_lock(root)
     current = records(root, include_presentation=True)
     if key not in current: raise ValueError('Tópico/afirmação não existe.')
     if current[key]['kind']=='assistance' and decision.get('claim_scope')!='hint_assistance':
@@ -605,11 +594,8 @@ def append_review(root, key, decision):
     if decision.get('content_sha256') != current[key]['content_sha256']:
         raise ValueError('A decisão não corresponde ao hash atual; não aprovar conteúdo alterado.')
     events = read_ledger(root)
-    event = dict(decision, key=key, recorded_at=now(), previous_sha256=events[-1]['event_sha256'] if events else '')
-    event['event_sha256'] = digest(event)
-    path = root / 'resources/compliance/review_history.jsonl'; path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open('a', encoding='utf8', newline='\n') as output: output.write(json.dumps(event, ensure_ascii=False, sort_keys=True) + '\n')
-    return event
+    return append_event(root, 'review_history.jsonl', dict(decision, key=key, recorded_at=now()),
+                        events[-1]['event_sha256'] if events else '')
 
 
 def _permission_plan(root):
@@ -668,6 +654,7 @@ def _permission_operation(pid, after, curation=None):
 
 
 def _recover_permissions(root, apply=False):
+    if apply: require_governance_lock(root)
     provenance, projected, history, pending, errors = _permission_plan(root)
     report = {'state': 'blocked' if errors else 'recovery_required' if pending else 'consistent',
               'event_count': len(history), 'pending_photo_ids': pending, 'errors': errors, 'applied': False}
@@ -714,6 +701,7 @@ def confirm_permission(root, decision):
 
 def _confirm_permission(root, decision):
     """Caller must hold governance_lock, including the Issue decision bridge."""
+    require_governance_lock(root)
     report = _recover_permissions(root, apply=True)
     if report['errors']: raise ValueError(str(report))
     species = load(root / 'resources/data/species.json', [])
@@ -750,14 +738,9 @@ def _confirm_permission(root, decision):
             raise ValueError('Decision effects differ from the materialized projection')
         return current
     event = {'photo_id': pid, 'recorded_at': now(), 'before': current, 'after': updated,
-             'operation_sha256': operation,
-             'previous_sha256': history[-1]['event_sha256'] if history else ''}
+             'operation_sha256': operation}
     if decision.get('curation'): event['curation'] = decision['curation']
-    event['event_sha256'] = digest(event)
-    # Preserve every historical byte/hash. Atomic replacement avoids a torn tail.
-    prefix = history_path.read_bytes() if history_path.exists() else b''
-    if prefix and not prefix.endswith(b'\n'): prefix += b'\n'
-    atomic_write(history_path, prefix + (json.dumps(event, ensure_ascii=False) + '\n').encode('utf8'))
+    append_event(root, 'permission_history.jsonl', event, history[-1]['event_sha256'] if history else '')
     recovery = _recover_permissions(root, apply=True)
     if recovery['state'] != 'consistent': raise ValueError(str(recovery))
     return updated

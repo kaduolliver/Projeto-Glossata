@@ -8,6 +8,7 @@ import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+from governance_storage import LOCK_RELATIVE
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = 'resources/data/catalog_manifest.json'
@@ -54,7 +55,8 @@ def write(path, value):
 def catalog_inputs(root=ROOT):
     paths = set((root / 'resources/data').glob('*.json'))
     paths -= {root / CATALOG, root / 'resources/data/discord.json'}
-    paths.update(p for p in (root / 'resources/compliance').rglob('*') if p.is_file())
+    paths.update(p for p in (root / 'resources/compliance').rglob('*')
+                 if p.is_file() and p != root / LOCK_RELATIVE)
     # Catalog identity covers shipped media, not local historical download caches.
     # distribution.py still audits historical/unbundled media separately.
     media = set()

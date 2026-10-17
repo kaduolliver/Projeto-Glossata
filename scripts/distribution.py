@@ -6,6 +6,7 @@ import shutil
 import xml.etree.ElementTree as ET
 from content_governance import ROOT, audit_governance, digest, load, local_file, now, parse_time, read_chain, save
 from datetime import datetime, timezone
+from governance_storage import LOCK_RELATIVE, append_event, governance_lock, require_governance_lock
 AUDITED_EXTENSIONS = {'.exe', '.dll', '.qml', '.ttf', '.otf', '.png', '.jpg', '.jpeg', '.ico', '.svg', '.webp', '.js'}
 
 
@@ -137,6 +138,12 @@ def dependency_decision_errors(decision, root):
 
 
 def record_dependency_review(root, package, decision):
+    with governance_lock(root):
+        return _record_dependency_review(root, package, decision)
+
+
+def _record_dependency_review(root, package, decision):
+    require_governance_lock(root)
     inventory = load(package / 'compliance/dependencies.json', {})
     current = next((c for c in inventory.get('packages', []) if c['name'] == decision.get('package')), None)
     if not current or current.get('content_sha256') != decision.get('content_sha256') or dependency_decision_errors(decision, root):
@@ -144,12 +151,8 @@ def record_dependency_review(root, package, decision):
     if any('GPL' in value for value in current.get('declared_licenses', [])) and decision.get('source_provision', {}).get('method') == 'not_required':
         raise ValueError('Componentes com declaração GPL/LGPL exigem análise e meio documentado de fornecimento; não presumir dispensa.')
     path = root / 'resources/compliance/dependency_reviews.jsonl'; events = read_chain(path)
-    event = dict(decision, recorded_at=now(), previous_sha256=events[-1]['event_sha256'] if events else '')
-    event['event_sha256'] = digest(event); path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open('a', encoding='utf8', newline='\n') as output:
-        import json
-        output.write(json.dumps(event, ensure_ascii=False) + '\n')
-    return event
+    return append_event(root, 'dependency_reviews.jsonl', dict(decision, recorded_at=now()),
+                        events[-1]['event_sha256'] if events else '')
 
 
 def export_local(root, package, prefix):
@@ -165,7 +168,9 @@ def export_local(root, package, prefix):
     for name in ('VERSION.txt', 'CHANGELOG.md', 'resources/data/catalog_manifest.json'):
         source = root / name
         if source.is_file(): shutil.copy2(source, destination / source.name)
-    shutil.copytree(root / 'resources/compliance', destination / 'evidence', dirs_exist_ok=True)
+    evidence = root / 'resources/compliance'
+    shutil.copytree(evidence, destination / 'evidence', dirs_exist_ok=True,
+                    ignore=lambda folder, names: [Path(LOCK_RELATIVE).name] if Path(folder) == evidence else [])
     inventory = dependencies(package, prefix)
     save(destination / 'dependencies.json', inventory)
     manifest = root / 'build/build-manifest.json'

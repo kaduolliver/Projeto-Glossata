@@ -21,7 +21,7 @@ def path_issues(name):
     if path.suffix.lower() in ARTIFACTS or any(p.lower() in {'build','cmakefiles','__pycache__','.aws','.codex','.agents','.vs'} or p.lower().startswith(('build-','cmake-build-')) for p in parts):issues.append('generated_or_local_artifact')
     if path.name.lower() in PRIVATE_NAMES or (path.name.lower().startswith('.env') and path.name.lower()!='.env.example'):issues.append('credential_container')
     if lower.startswith('package/') and name not in {'package/run_glossata_game.cmd','package/qt.conf'}:issues.append('deployed_runtime_not_source')
-    if path.name in {'CMakeCache.txt','build.ninja','compile_commands.json'}:issues.append('generated_or_local_artifact')
+    if path.name in {'CMakeCache.txt','build.ninja','compile_commands.json','.governance.lock'}:issues.append('generated_or_local_artifact')
     return sorted(set(issues))
 
 

@@ -1,5 +1,6 @@
 """Crash/restart tests. All permissions, humans and evidence are synthetic fixtures."""
 import copy
+from concurrent.futures import ThreadPoolExecutor
 import json
 from pathlib import Path
 import subprocess
@@ -229,9 +230,11 @@ d.record_decision(root,r.settings(),json.loads((root/'envelope.json').read_text(
     def test_shared_lock_blocks_other_writers_and_importer_preserves_decisions(self):
         fixture, envelope = self.fixture(); root = fixture.root
         with storage.governance_lock(root):
-            with self.assertRaises(FileExistsError): governance.confirm_permission(root, envelope['decision'])
-            with self.assertRaises(FileExistsError): decisions.record_decision(root, fixture.config, envelope)
-            with self.assertRaises(FileExistsError): governance.register_photo_provenance(root, '8', {})
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                for operation in (lambda: governance.confirm_permission(root, envelope['decision']),
+                                  lambda: decisions.record_decision(root, fixture.config, envelope),
+                                  lambda: governance.register_photo_provenance(root, '8', {})):
+                    with self.assertRaises(FileExistsError): pool.submit(operation).result(timeout=5)
         governance.confirm_permission(root, envelope['decision'])
         before = (root/PROJECTION).read_bytes()
         with self.assertRaises(ValueError): governance.register_photo_provenance(root, '7', {'photo_id': '7'})

@@ -9,7 +9,7 @@ import re
 from urllib.parse import urlparse
 
 import content_governance as governance
-from governance_storage import governance_lock
+from governance_storage import governance_lock, require_governance_lock
 from curation_requests import private_data, public_reference
 
 
@@ -64,6 +64,7 @@ def record_decision(root,config,envelope):
 
 
 def _record_decision(root,config,envelope):
+    require_governance_lock(root)
     if not isinstance(envelope,dict) or not isinstance(envelope.get('decision'),dict) or envelope.get('schema_version')!=1 or private_data(envelope):raise ValueError('Private or invalid decision')
     kind=envelope.get('kind');key=envelope.get('key');link=envelope.get('curation',{})
     match=re.fullmatch(r'https://github\.com/'+re.escape(config['repository'])+r'/issues/([1-9][0-9]*)',link.get('issue_url',''))
@@ -105,14 +106,14 @@ def _record_decision(root,config,envelope):
     if existing:
         if kind=='permission':
             decision['curation']=dict(link,decision_sha256=decision_hash)
-            governance._confirm_permission(root,decision)
+            governance.confirm_permission(root,decision)
         return {'state':'already_recorded','event_sha256':existing['event_sha256']}
     if expected['expected_previous_event_sha256']!=envelope.get('expected_previous_event_sha256'):
         raise ValueError('Another human decision was recorded; compare it before proceeding')
     decision['curation']=dict(link,decision_sha256=decision_hash)
     if kind=='review':event=governance.append_review(root,key,decision)
     elif kind=='permission':
-        governance._confirm_permission(root,decision)
+        governance.confirm_permission(root,decision)
         event=governance.read_chain(root/'resources/compliance'/ledger)[-1]
     else:
         from distribution import record_dependency_review

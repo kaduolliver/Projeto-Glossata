@@ -75,3 +75,4 @@ add_test(NAME GlossataCurationAutomationTests COMMAND ${Python3_EXECUTABLE} ${CM
 add_test(NAME GlossataRepositoryProtectionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_repository_protection.py)
 add_test(NAME GlossataMaintenanceHttpTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_maintenance_http.py)
 add_test(NAME GlossataPermissionRecoveryTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_permission_recovery.py)
+add_test(NAME GlossataGovernanceConcurrencyTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_governance_concurrency.py)

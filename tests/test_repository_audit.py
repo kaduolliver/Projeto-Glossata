@@ -29,6 +29,11 @@ class RepositoryAuditTests(unittest.TestCase):
             self.stage(name)
         self.assertEqual(audit(self.root)['findings'],[])
 
+    def test_forced_runtime_governance_lock_is_rejected(self):
+        self.stage('resources/compliance/.governance.lock',b'0')
+        self.assertEqual(audit(self.root)['findings'],[
+            {'path':'resources/compliance/.governance.lock','issue':'generated_or_local_artifact'}])
+
     def test_staged_secret_cannot_be_hidden_by_clean_worktree_replacement(self):
         token=('gh'+'p_'+'A'*36).encode();self.stage('config.txt',token)
         (self.root/'config.txt').write_text('safe unstaged replacement')
