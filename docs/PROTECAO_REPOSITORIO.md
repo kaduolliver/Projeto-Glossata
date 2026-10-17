@@ -83,6 +83,8 @@ A regra preparada mantém `require_code_owner_review: false`: exigir aprovação
 
 ## Validação local e inspeção somente de leitura
 
+O INV-09 acrescenta comparação dos ledgers/baseline com commit-base completo da CI e recibo mínimo nos artefatos, sem novas permissões, assinaturas obrigatórias ou segundo revisor. Git/proteções complementam rastreabilidade, sem autenticar o `reviewer` de cada evento ou demonstrar ativação remota. Consulte [AUDITORIA_E_CONFIANCA.md](AUDITORIA_E_CONFIANCA.md).
+
 Na raiz do projeto:
 
 ```powershell

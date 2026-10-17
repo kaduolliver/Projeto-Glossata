@@ -150,6 +150,9 @@ class GovernanceTests(unittest.TestCase):
         result = governance.status('species:1:summary', governance.records(self.root)['species:1:summary'], {}, events, governance.policy(self.root))
         self.assertEqual(result['state'], 'approved_editorial'); self.assertEqual(result['reviewer'], 'curator-one')
         self.assertEqual(event['event_sha256'], events[0]['event_sha256'])
+        assurance = governance.audit_governance(self.root)['assurances']
+        self.assertFalse(assurance['authorship_authenticated'])
+        self.assertFalse(assurance['independent_review_verified'])
 
     def test_changed_text_source_identity_and_photo_invalidate_relevant_review(self):
         baseline = self.baseline()

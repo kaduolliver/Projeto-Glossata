@@ -14,6 +14,7 @@ Se houver mudanças em workflows, políticas, revisões, permissões, catálogo 
 
 - Identifique os arquivos e a justificativa; confira o diff completo, incluindo exclusões.
 - Preserve evidências, hashes anteriores e responsáveis reais; use o fluxo de governança para decisões de conteúdo.
+- Compare o histórico com o SHA completo da base: `python scripts/content_governance.py audit-history --base SHA_COMPLETO`. Confira o recibo, sem tratar hashes, campos de autor ou CI como autenticação do revisor.
 - Diferencie alteração administrativa de revisão científica e autorização de direitos.
 - Registre limitações, decisões pendentes e recuperação quando pertinente.
 

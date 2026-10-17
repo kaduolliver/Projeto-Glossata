@@ -36,8 +36,20 @@ def _chain(data):
 
 
 def read_chain(path):
+    """Validate internal linkage/digests only, never reviewer identity or authorship.
+
+    A complete rewrite with recomputed hashes can pass. Compare with a separately
+    retained historical reference to detect replacement of an earlier prefix.
+    """
     path = Path(path)
     return _chain(path.read_bytes()) if path.exists() else []
+
+
+def chain_summary(data):
+    """Minimal integrity receipt; contains no event text or personal evidence."""
+    events = _chain(data)
+    return {'events': len(events), 'tip_sha256': events[-1]['event_sha256'] if events else '',
+            'bytes_sha256': hashlib.sha256(data).hexdigest()}
 
 
 def _checkpoint(stage, path):

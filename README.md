@@ -54,7 +54,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 | SQLite e snapshots | histórico 6; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
 | Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
 | Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
-| Testes registrados | **23 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
+| Testes registrados | **24 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
 
 Valores derivados das fontes locais. Este bloco não comprova publicação, execução da CI ou aprovação do gate de distribuição.
 <!-- glossata:status:end -->
@@ -269,6 +269,8 @@ A curadoria distingue aprovação de identificação visual, fotografia, etimolo
 Aprovações antigas sem responsável e evidência foram classificadas como legadas. Novo conteúdo, inclusive assistido por IA, entra em rascunho; alterações exigem nova revisão registrada. O relatório de atualização é offline por padrão (`python scripts/review_updates.py`); `--online` gera propostas para análise humana, sem substituir o conteúdo publicado.
 
 O gerenciamento de solicitações reutiliza essas auditorias: `python scripts/curation_requests.py plan` gera uma fila local com IDs, evidências e prioridades. Há registro de validação da integração com Issues e ativação semanal autorizada em 2026-10-16, com programação às segundas às 9h17 de Brasília, limitada a três criações e oito atualizações por rodada. Esse registro não é uma consulta do estado remoto atual. Há quatro formulários públicos; Projects permanece opcional. Fechar uma Issue nunca aprova um recurso. Veja [Curadoria automatizada](docs/CURADORIA_AUTOMATIZADA.md) para evidências, limitações, permissões e decisões humanas.
+
+As cadeias SHA-256 verificam integridade interna, sem autenticar o responsável declarado. A comparação com uma base Git preservada acrescenta rastreabilidade histórica, sem certificar revisão científica. Consulte [garantias, âncoras e proposta de autenticação](docs/AUDITORIA_E_CONFIANCA.md).
 
 ## Roadmap
 

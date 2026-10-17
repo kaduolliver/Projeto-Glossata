@@ -30,7 +30,7 @@
     }
   },
   "tests": {
-    "registered_count": 23,
+    "registered_count": 24,
     "registered_names": [
       "GlossataCurationAutomationTests",
       "GlossataCurationDecisionTests",
@@ -39,6 +39,7 @@
       "GlossataDiscordTests",
       "GlossataExplorationMediaTests",
       "GlossataGovernanceConcurrencyTests",
+      "GlossataGovernanceHistoryTests",
       "GlossataGovernanceTests",
       "GlossataImportTests",
       "GlossataInterfaceTests",
@@ -58,7 +59,7 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "76478b39d431a43b8235482105d5baf301b3599131156a6284f29f97c070317e",
+    "CHANGELOG.md": "cd02bf68ee94c0aa6a649d8b4f2e33ed9724a100b893243e91f59e6b5207eb99",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "bb7320d831e7a151aa901c35e7326c752fa2ef5024f30768c42319b8bed171ed",
     "docs/CATALOGO_CHANGELOG.md": "875eae9b483ad0a9ca6473a552f9a9ce32e77b58e45f7c5b7f0ee3e60bfaa258",
@@ -72,7 +73,7 @@
     "src/domain/SessionCheckpoint.h": "001a8aa8101f857b4b2698ce581c40ebcb72ae49de37fa7440cf4dfce9c0cc38",
     "src/infrastructure/content/SqliteSpeciesCatalog.cpp": "8a745121a4a9b769d6663b4359c921d714241ff4e20dbf8bbc93ecfce0b60424",
     "src/infrastructure/persistence/SqliteGameHistoryRepository.cpp": "6daf368bde5925c5c35f5ef75348218276f9175033081251e04828a18431e34a",
-    "tests/CMakeLists.txt": "98cfae3f9482d0dc5b3c973e360ccf30ba7d18cae7d34ab9284554963fe0b6ed"
+    "tests/CMakeLists.txt": "9c336ef912c3a428c3abe470a07ec170b450a531183017c6d85f22fb2f3e5d55"
   },
   "limitations": "Source metadata and registered tests, not execution results, publication evidence or distribution/scientific approval."
 }

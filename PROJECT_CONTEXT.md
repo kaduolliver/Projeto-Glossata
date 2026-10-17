@@ -14,7 +14,7 @@
 | SQLite e snapshots | histórico 6; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
 | Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
 | Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
-| Testes registrados | **23 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
+| Testes registrados | **24 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
 
 Valores derivados das fontes locais. Este bloco não comprova publicação, execução da CI ou aprovação do gate de distribuição.
 <!-- glossata:status:end -->
@@ -59,7 +59,7 @@ Perfis têm UUID permanente, nome editável aparado, limite de 32 unidades UTF-1
 
 ## Fontes e direitos
 
-docs/CONFORMIDADE.md, docs/DIREITOS_E_LICENCAS.md e docs/RELATORIO_CONFORMIDADE.md documentam pendências. review_baseline.json é imutável e não comprova revisão humana. Histórico humano encadeado e governance são a autoridade de revisão. Não inventar revisores, evidências, autores, datas ou licenças; uma URL não aprova conteúdo.
+docs/CONFORMIDADE.md, docs/DIREITOS_E_LICENCAS.md e docs/RELATORIO_CONFORMIDADE.md documentam pendências. review_baseline.json é registro legado que deve ser preservado, sem inviolabilidade física ou comprovação de revisão humana. Eventos são declarações de responsáveis; hashes e actor_type: human não autenticam autoria. A autoridade local de revisão continua nos ledgers/governance. audit-history --base SHA_COMPLETO compara os três ledgers/baseline com commit Git ancestral explicitamente selecionado; recibos mínimos não substituem uma âncora retida fora do checkout. Consulte docs/AUDITORIA_E_CONFIANCA.md. Não inventar revisores, evidências, autores, datas ou licenças; uma URL não aprova conteúdo.
 
 photo_provenance.json e snapshots mínimos preservam crédito literal e evidência sem coordenadas/perfis de observadores. Padrão de novas fotos: CC0/CC BY; NC exige política expressa e autorização de escopo compatível. Bloquear licenças ausentes/desconhecidas/fora da política antes do download. Fonte bibliográfica não concede direito de cópia.
 

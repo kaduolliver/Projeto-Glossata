@@ -91,6 +91,9 @@ class ProtectionTests(unittest.TestCase):
         self.assertRegex(quality, r'(?m)^  offline-validation:\n')
         self.assertRegex(quality, r'(?m)^    name: offline-validation$')
         self.assertIn('python scripts/repository_protection.py check', quality)
+        self.assertIn('python scripts/content_governance.py audit-history --base "$BASE_SHA"', quality)
+        self.assertIn('github.event.pull_request.base.sha || github.event.before', quality)
+        self.assertIn('build/governance-history.json', quality)
         for text in (quality, curation):
             self.assertNotIn('write-all', text)
             for permission in ('contents', 'pull-requests', 'actions', 'id-token', 'checks', 'statuses'):

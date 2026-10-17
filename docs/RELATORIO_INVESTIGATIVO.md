@@ -147,6 +147,8 @@ O gate de pacote não remove arquivos do GitHub. A publicação de mídias no re
 
 ## INV-09 — Consistência por hash não equivale a autoria autenticada
 
+**Melhoria local em 2026-10-17:** garantias explícitas nos relatórios/fichas, comparação dos três ledgers e baseline com commit-base completo, integração ao check técnico e recibo histórico mínimo. Testes distinguem rehash coerente de preservação da base, sem autenticar nomes declarados. Não foram alterados eventos, revisores, aprovações, configurações remotas ou credenciais; assinaturas permanecem proposta futura. Consulte [implementação, confiança e validação](AUDITORIA_E_CONFIANCA.md). O diagnóstico abaixo pertence à investigação original.
+
 **Evidência:** [read_chain](../scripts/content_governance.py#L258) verifica encadeamento e SHA-256; responsável e tipo de ator são campos declarados. Em uma fixture, alterar os eventos e recomputar a cadeia resultou novamente em leitura aceita.
 
 **Interpretação:** isso não quebra SHA-256 nem demonstra ataque por usuário sem escrita. Mostra que quem controla todos os bytes e pode substituir o histórico também pode produzir hashes coerentes. O mecanismo identifica alterações sem recomputação e suporta rastreabilidade dentro de uma raiz confiável; sozinho, não prova quem revisou.

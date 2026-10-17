@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 from urllib.parse import urlparse
 from governance_storage import (append_event, atomic_write, canonical, digest, governance_lock,
                                 read_chain, require_governance_lock)
+from governance_history import assurances, audit_history
 
 ROOT = Path(__file__).resolve().parents[1]
 TOPICS = ('taxonomy', 'photo', 'etymology', 'morphology', 'education')
@@ -570,7 +571,7 @@ def audit_governance(root=ROOT, at=None):
         if path.is_file() and path.suffix.lower() in {'.jpg', '.jpeg', '.png'}:
             findings = image_privacy_findings(path)
             if findings: errors.append({'error': 'embedded_sensitive_metadata_requires_review', 'file': path.relative_to(root).as_posix(), 'fields': findings})
-    return {'technical_errors': errors, 'photo_licensing': licensing, 'asset_licensing': asset_errors, 'unbundled_media': unbundled,
+    return {'assurances': assurances(), 'technical_errors': errors, 'photo_licensing': licensing, 'asset_licensing': asset_errors, 'unbundled_media': unbundled,
             'scientific_findings': scientific, 'assistance_findings': assistance,
             'automated_pedagogy': {'state': automated.get('evaluation',{}).get('state'), 'usable': bool(automated and valid_pedagogy(automated, root)), 'scope':'Pedagogy only; human scientific reviews unchanged.'},
             'review_states': dict(__import__('collections').Counter(s['state'] for s in scientific)),
@@ -748,11 +749,18 @@ def _confirm_permission(root, decision):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['migrate', 'credits', 'audit', 'record-review', 'confirm-permission', 'recover-permissions'])
+    parser.add_argument('action', choices=['migrate', 'credits', 'audit', 'audit-history', 'record-review', 'confirm-permission', 'recover-permissions'])
+    parser.add_argument('--base', help='For audit-history only: full, independently selected Git commit ID')
     parser.add_argument('--key'); parser.add_argument('--decision', type=Path)
     parser.add_argument('--apply', action='store_true', help='Replay existing permission events; never create a decision')
     args = parser.parse_args()
-    if args.action == 'migrate':
+    if args.base is not None and args.action != 'audit-history': parser.error('--base requires audit-history')
+    if args.action == 'audit-history':
+        report = audit_history(ROOT, args.base)
+        save(ROOT / 'build/governance-history.json', report)
+        print(json.dumps(report, ensure_ascii=False))
+        raise SystemExit(0 if report['consistent'] else 2)
+    elif args.action == 'migrate':
         print('Legacy baseline records:', len(migrate()['records']))
     elif args.action == 'credits': print('Unique photo credits:', len(generate_credits()['photos']))
     elif args.action == 'record-review':
