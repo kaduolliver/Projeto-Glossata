@@ -96,7 +96,7 @@
     {
       "path": "resources/data/group_education.json",
       "kind": "text_authorship",
-      "sha256": "1069adbf96396da000370f1333b67ada8b2aa13592dfe680503c54c175e346d7",
+      "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -126,6 +126,13 @@
           "state": "pending_originality_and_rights_review",
           "recorded_on": "2026-10-17",
           "reason": "Issue #2: exact extraction of educational prose; pending rights follow the extracted resource, not the now separate Python logic. No grant or human review recorded."
+        },
+        {
+          "path": "resources/data/group_education.json",
+          "sha256": "1069adbf96396da000370f1333b67ada8b2aa13592dfe680503c54c175e346d7",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-17T21:03:17.641512+00:00",
+          "reason": "PR #12: verified Euglenida journal/year/DOI label correction only. Educational prose, license, permission and review state unchanged."
         }
       ],
       "integrity_note": "Educational prose extracted unchanged from the previous mixed generator; original path/hash/history retained. Permission fields and pending state unchanged.",

@@ -179,6 +179,13 @@ class ImportTests(unittest.TestCase):
         definitions, notes = education.load_group_content(PROJECT)
         self.assertEqual(len(definitions), 19)
         self.assertEqual(len(notes), 15)
+        # Preserve the extraction baseline, allowing only the verified bibliographic correction.
+        # load_group_content returns fresh data: restoring the historical label here never edits a resource.
+        euglenida = next(item for item in definitions if item[0] == 'Euglenida')
+        self.assertEqual(euglenida[2], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/')
+        self.assertEqual(euglenida[3],
+                         'Publicação científica — BMC Biology (2020), DOI: 10.1186/s12915-020-0754-1')
+        euglenida[3] = 'Publicação científica — Open Biology'
         # Canonical digest measured before extraction from e2df447; no duplicated prose fixture.
         self.assertEqual(governance.digest({'definitions': definitions, 'plain_notes': notes}),
                          '6a41c03329d295cf1f7966fe110cf3cef0844bbf71cab41f7ba8dffc2e3a5e5e')

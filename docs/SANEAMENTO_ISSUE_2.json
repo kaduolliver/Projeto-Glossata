@@ -226,5 +226,69 @@
   },
   "rights_findings_resolved": 0,
   "human_approval_events_created": 0,
-  "limitation": "Code/prose separation resolves the mixed-file scope obstacle. The prose rights finding follows the extracted file; none of the seven rights cases was approved."
+  "limitation": "Code/prose separation resolves the mixed-file scope obstacle. The prose rights finding follows the extracted file; none of the seven rights cases was approved.",
+  "final_pr12_correction": {
+    "checked_at": "2026-10-17T21:04:42.115027+00:00",
+    "base_commit": "3da8ad72825eb6027ee3c38938cce6100fbe6157",
+    "kind": "bibliographic_metadata_correction_only",
+    "record": "Euglenida",
+    "journal": "BMC Biology",
+    "title": "Evolution of metabolic capabilities and molecular features of diplonemids, kinetoplastids, and euglenids",
+    "year": 2020,
+    "volume": 18,
+    "article_number": 23,
+    "published_on": "2020-03-02",
+    "doi": "10.1186/s12915-020-0754-1",
+    "official_confirmation": {
+      "url": "https://link.springer.com/article/10.1186/s12915-020-0754-1",
+      "locator": "Header and About this article / Cite this article",
+      "pubmed_url": "https://pubmed.ncbi.nlm.nih.gov/32122335/",
+      "pubmed_access": "Browser protection; not claimed as read"
+    },
+    "corrected_locations": [
+      "resources/data/group_education.json",
+      "docs/REFINAMENTO_IDENTIFICACAO.md"
+    ],
+    "source_url_preserved": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/",
+    "group_source_before_sha256": "1069adbf96396da000370f1333b67ada8b2aa13592dfe680503c54c175e346d7",
+    "group_source_after_sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
+    "only_group_source_title_changed": true,
+    "only_generated_source_hash_changed": true,
+    "active_education_semantic_sha256": "388472e49b4bfc3717a678671e01f18017c91139c1d17430814562e30a416929",
+    "scientific_and_pedagogical_fields_unchanged": true,
+    "permission_fields_states_and_prior_history_preserved": true,
+    "openstax": {
+      "edition": "Biology 2e",
+      "current_web_license": "CC BY-NC-SA 4.0",
+      "official_url": "https://openstax.org/books/biology-2e/pages/preface",
+      "locator": "About OpenStax resources / Customization",
+      "consulted_on": "2026-10-17",
+      "historical_source_revision": "Not identified: mutable section URLs without retained revision/snapshot of the material consulted when drafting the notes.",
+      "scope": "Current web content only; no retroactive revocation or prior-license inference. Bibliographic reference/fact is distinct from reproduction or protected adaptation.",
+      "conclusion": "Rights/originality review remains pending; no incompatible reproduction established by this check and no complete originality/regularization asserted."
+    },
+    "tests": {
+      "status": "passed_local_checks",
+      "release_build": "passed",
+      "ctest_suites_passed": 26,
+      "ctest_suites_total": 26,
+      "ctest_seconds": 183.14,
+      "import_generator_tests_passed": 16,
+      "strict_catalog": "passed; 122 organisms, 120 distinct quiz photographs, competitive pool 80",
+      "apache_license": "passed; unchanged license and code scope",
+      "catalog_manifest_and_project_status": "passed",
+      "governance_technical_errors": 0,
+      "permission_recovery_audit": "consistent; no replay or event created",
+      "ledger_comparison": "prefix_preserved against 3da8ad72825eb6027ee3c38938cce6100fbe6157",
+      "automated_pedagogy": "existing evaluation valid; date and recipes unchanged",
+      "exploration_and_phylogeny": "passed",
+      "distribution_exit_code": 2,
+      "distribution_blocked": true,
+      "remaining_photo_permission_findings": 120,
+      "remaining_other_material_findings": 7,
+      "remaining_priority_scientific_blocks": 2,
+      "remote_ci": "New commit checks tracked in existing PR #12; no remote result asserted by this pre-push record."
+    },
+    "human_approval_events_created": 0
+  }
 }
