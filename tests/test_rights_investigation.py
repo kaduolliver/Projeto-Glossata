@@ -40,6 +40,67 @@ class InvestigationTests(unittest.TestCase):
     def files(self):
         return {p.relative_to(self.root).as_posix(): p.read_bytes() for p in (self.root / 'resources').rglob('*') if p.is_file()}
 
+    def origin_fixture(self):
+        # Synthetic bytes/claims only; never creates an approval for a real icon.
+        name = 'resources/branding/synthetic.bin'
+        asset_file = self.root / name; asset_file.parent.mkdir(parents=True)
+        asset_file.write_bytes(b'synthetic brand fixture')
+        asset = {'path': name, 'sha256': hashlib.sha256(asset_file.read_bytes()).hexdigest(),
+                 'state': 'pending_permission',
+                 'permission': {'holder': None, 'evidence_path': None, 'distribution_allowed': False}}
+        evidence_path = 'resources/compliance/branding/synthetic.json'
+        evidence = {'kind': 'synthetic_origin_statement', 'files': {name: asset['sha256']},
+                    'permission_granted_by_this_record': False}
+        g.save(self.root / evidence_path, evidence)
+        asset['origin_statement'] = {'path': evidence_path,
+            'sha256': hashlib.sha256((self.root / evidence_path).read_bytes()).hexdigest()}
+        return asset, evidence
+
+    def test_origin_and_reference_disclosure_do_not_grant_distribution_permission(self):
+        asset, evidence = self.origin_fixture()
+        additional = dict(evidence, scope=evidence['files']); additional.pop('files')
+        path = 'resources/compliance/branding/synthetic-additional.json'
+        g.save(self.root / path, additional)
+        asset['additional_origin_evidence'] = [{'path': path,
+            'sha256': hashlib.sha256((self.root / path).read_bytes()).hexdigest()}]
+        g.save(self.root / 'resources/compliance/asset_rights.json', {'assets': [asset]})
+        before = self.files()
+        self.assertEqual(g.origin_evidence_errors(self.root, asset), [])
+        gate = distribution.release_gate(self.root)
+        self.assertTrue(gate['distribution_blocked'])
+        self.assertIn({'path': asset['path'], 'error': 'asset_permission_missing'}, gate['asset_licensing'])
+        self.assertEqual(before, self.files())
+        # Even misleading approval claims inside an origin record are not grants.
+        evidence.update(permission_granted_by_this_record=True, state='approved')
+        original_path = self.root / asset['origin_statement']['path']
+        g.save(original_path, evidence)
+        asset['origin_statement']['sha256'] = hashlib.sha256(original_path.read_bytes()).hexdigest()
+        g.save(self.root / 'resources/compliance/asset_rights.json', {'assets': [asset]})
+        self.assertEqual(g.origin_evidence_errors(self.root, asset), [])
+        self.assertIn({'path': asset['path'], 'error': 'asset_permission_missing'},
+                      distribution.release_gate(self.root)['asset_licensing'])
+
+    def test_origin_evidence_rejects_tampering_wrong_binding_and_unsafe_path(self):
+        asset, evidence = self.origin_fixture()
+        path = self.root / asset['origin_statement']['path']
+        path.write_bytes(path.read_bytes() + b' ')
+        self.assertTrue(g.origin_evidence_errors(self.root, asset))
+        g.save(self.root / 'resources/compliance/asset_rights.json', {'assets': [asset]})
+        self.assertIn({'path': asset['path'], 'error': 'asset_origin_evidence_invalid'},
+                      distribution.release_gate(self.root)['asset_licensing'])
+        evidence['files'][asset['path']] = '0' * 64
+        g.save(path, evidence)
+        asset['origin_statement']['sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+        self.assertTrue(g.origin_evidence_errors(self.root, asset))
+        asset['origin_statement']['path'] = '../outside.json'
+        self.assertTrue(g.origin_evidence_errors(self.root, asset))
+        asset.pop('origin_statement'); asset['additional_origin_evidence'] = {'unexpected': 'mapping'}
+        self.assertTrue(g.origin_evidence_errors(self.root, asset))
+
+    def test_asset_without_optional_origin_reference_keeps_legacy_behavior(self):
+        asset, _ = self.origin_fixture(); asset.pop('origin_statement')
+        self.assertEqual(g.origin_evidence_errors(self.root, asset), [])
+
     def test_absent_license_and_credit_are_reported_per_photo(self):
         species = g.load(self.root / 'resources/data/species.json'); species[0]['photo']['license'] = None; species[0]['photo']['author'] = ''
         self.fixture.write('species.json', species)

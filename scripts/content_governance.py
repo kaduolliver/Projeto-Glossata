@@ -495,6 +495,31 @@ def generate_credits(root=ROOT):
     return data
 
 
+def origin_evidence_errors(root, asset):
+    """Origin statements bind bytes; they are never distribution grants."""
+    refs = []
+    if 'origin_statement' in asset:
+        refs.append(asset['origin_statement'])
+    additional = asset.get('additional_origin_evidence', [])
+    if not isinstance(additional, list):
+        return ['asset_origin_evidence_invalid']
+    refs.extend(additional)
+    for ref in refs:
+        try:
+            if not isinstance(ref, dict):
+                raise ValueError('Invalid origin reference')
+            path = local_file(root, ref['path'])
+            if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != ref.get('sha256'):
+                raise ValueError('Origin evidence bytes differ')
+            evidence = load(path, {})
+            bindings = evidence.get('files', evidence.get('scope', {}))
+            if not isinstance(bindings, dict) or bindings.get(asset['path']) != asset.get('sha256'):
+                raise ValueError('Origin statement does not bind this asset')
+        except (KeyError, OSError, ValueError, TypeError, AttributeError):
+            return ['asset_origin_evidence_invalid']
+    return []
+
+
 def audit_governance(root=ROOT, at=None):
     at = at or datetime.now(timezone.utc); settings = policy(root)
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
@@ -548,6 +573,7 @@ def audit_governance(root=ROOT, at=None):
         path = local_file(root, asset['path'])
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != asset.get('sha256'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_changed_or_missing'})
+        asset_errors.extend({'path': asset['path'], 'error': error} for error in origin_evidence_errors(root, asset))
         grant = asset.get('permission', {})
         if not grant.get('holder') or not grant.get('evidence_path') or not grant.get('distribution_allowed'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_permission_missing'})

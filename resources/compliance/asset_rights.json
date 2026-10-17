@@ -17,7 +17,14 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
-      }
+      },
+      "additional_origin_evidence": [
+        {
+          "path": "resources/compliance/branding/reference-disclosure.json",
+          "sha256": "e003c046b2d3d1d433a3d90427aa40bb2f62eb638c2fbc9cfa4839a7cfd62dbb",
+          "scope": "Reference disclosure only; no copyright, trademark or distribution permission granted."
+        }
+      ]
     },
     {
       "path": "resources/branding/glossata_discord.png",
@@ -34,7 +41,14 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
-      }
+      },
+      "additional_origin_evidence": [
+        {
+          "path": "resources/compliance/branding/reference-disclosure.json",
+          "sha256": "e003c046b2d3d1d433a3d90427aa40bb2f62eb638c2fbc9cfa4839a7cfd62dbb",
+          "scope": "Reference disclosure only; no copyright, trademark or distribution permission granted."
+        }
+      ]
     },
     {
       "path": "resources/branding/glossata.ico",
@@ -51,7 +65,14 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
-      }
+      },
+      "additional_origin_evidence": [
+        {
+          "path": "resources/compliance/branding/reference-disclosure.json",
+          "sha256": "e003c046b2d3d1d433a3d90427aa40bb2f62eb638c2fbc9cfa4839a7cfd62dbb",
+          "scope": "Reference disclosure only; no copyright, trademark or distribution permission granted."
+        }
+      ]
     },
     {
       "path": "resources/data/species_profiles.json",

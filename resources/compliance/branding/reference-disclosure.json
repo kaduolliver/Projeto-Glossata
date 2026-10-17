@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "kind": "maintainer_reference_disclosure",
+  "recorded_on": "2026-10-17",
+  "declared_by": "Carlos Eduardo Lima de Oliveira",
+  "identity_basis": "Nome expressamente informado pelo mantenedor; este registro não autentica identidade ou titularidade.",
+  "statement": "Durante o desenvolvimento visual, foi utilizado como referência inicial o símbolo dos Vagalumes de The Last of Us, posteriormente adaptado para uma composição inspirada em uma mariposa e nos grupos biológicos do Glossata.",
+  "statement_context": "Solicitação do mantenedor para a Etapa 2 de proveniência e direitos da identidade visual, posterior à integração do PR #12.",
+  "scope": {
+    "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+    "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
+  },
+  "unknowns": {
+    "creation_date": null,
+    "model_or_plan": null,
+    "exact_reference_file_or_game_version": null,
+    "reference_uploaded_as_input_or_described_in_prompt": null,
+    "generation_and_editing_sequence": null,
+    "additional_input_materials": null,
+    "third_party_permission": null,
+    "terms_accepted_at_creation": null,
+    "intended_graphic_license_or_brand_permission": null
+  },
+  "relationship_to_prior_statement": "Complementa a declaração anterior de criação via ChatGPT; não a substitui nem confirma direitos de terceiros.",
+  "permission_granted_by_this_record": false,
+  "scientific_or_legal_approval": null,
+  "state": "reference_disclosed_rights_and_distribution_pending"
+}
