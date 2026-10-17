@@ -135,6 +135,7 @@ O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Exis
 - Perfis locais com identidade permanente: renomear mantém a propriedade dos resultados, excluir preserva o histórico e reutilizar um nome cria outro jogador. A [migração para IDs](docs/IDENTIDADE_JOGADORES.md) mantém resultados pré-ID como legado de vínculo pendente, sem atribuí-los automaticamente por coincidência de nome.
 - [Nomes com política Unicode versionada](docs/NOMES_UNICODE.md): `João`/`JOÃO` e formas compostas/decompostas não geram novos perfis duplicados. Acentos e grafia de exibição são preservados; colisões antigas continuam separadas por ID, sem fusão automática.
 - Histórico de respostas e partidas, métricas de precisão e uso de dicas.
+- [Salvamento e recuperação](docs/RECUPERACAO_PARTIDAS.md): checkpoints após respostas/dicas, continuação ou abandono ao reabrir e finalização idempotente. Fechar a janela suspende a partida; sessões competitivas incompletas não atualizam o ranking. Inclui ferramenta de backup e restauração verificados.
 - Rankings locais com distinção entre recorde e última partida.
 - Conquistas e estatísticas associadas à experiência disponível.
 - Persistência em SQLite e possibilidade de usar o aplicativo sem internet após a preparação dos recursos.

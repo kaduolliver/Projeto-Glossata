@@ -1,5 +1,7 @@
 # Identidade permanente de jogadores — INV-01
 
+O [INV-03 acrescenta checkpoints no esquema atual 6](RECUPERACAO_PARTIDAS.md), preservando a identidade e as etapas de migração descritas aqui.
+
 Correção do desenvolvimento **1.7.0**, ainda não lançado. A etapa de identidade passa de `PRAGMA user_version=3` para **4**, seguida pela [política Unicode do INV-07, esquema 5](NOMES_UNICODE.md); isso é independente da versão **2.4.0 do catálogo científico**, preservada. A implementação não altera regras, pontuações, fotografias, créditos, permissões ou conquistas. Testes e capturas usam exclusivamente bancos temporários.
 
 ## Diagnóstico e política

@@ -29,7 +29,7 @@ Criação e renomeação usam o mesmo módulo. Uma mudança apenas de caixa ou r
 
 ## Migração e auditoria de conflitos
 
-O SQLite passa de **`user_version=4` para 5**. Bancos anteriores chegam ao esquema de identidade do INV-01 e à nova etapa dentro da mesma transação. A migração:
+A etapa Unicode passa de **`user_version=4` para 5**, seguida pelos [checkpoints do INV-03, esquema atual 6](RECUPERACAO_PARTIDAS.md). Bancos anteriores chegam ao esquema de identidade do INV-01 e à nova etapa dentro da mesma transação. A migração:
 
 - Mantém UUIDs, grafias, exclusões, arquivos lógicos, vínculos, resultados, snapshots e datas históricas.
 - Registra em `player_name_policy` o identificador do algoritmo, `QChar::currentUnicodeVersion()` e a versão Qt da coleta. O inteiro Unicode é o enum do Qt, não uma versão semântica escrita em decimal.
@@ -40,7 +40,7 @@ O SQLite passa de **`user_version=4` para 5**. Bancos anteriores chegam ao esque
 
 Não há índice único que obrigue apagar ou unir perfis antigos. Todos permanecem selecionáveis por ID. Triggers impedem novas criações, renomeações e reativações conflitantes. Para resolver uma colisão, o usuário escolhe o perfil por ID e o renomeia explicitamente; não se escolhe um “vencedor” automático. A API de compatibilidade por nome prefere uma correspondência exata única e recusa correspondências ambíguas. A interface atual seleciona por ID.
 
-Em toda reabertura do esquema 5, o repositório confere a política/versão Unicode e todas as chaves. Chave inconsistente ou mudança da versão Unicode do Qt **bloqueia a abertura para escrita**, com diagnóstico, preservando o banco. Não renova silenciosamente a política nem aceita mistura de algoritmos: uma futura mudança de Unicode/folding exige migração explícita com nova auditoria de colisões. Atualização de Qt com a mesma versão Unicode não exige migração.
+Em toda reabertura dos esquemas atuais, o repositório confere a política/versão Unicode e todas as chaves. Chave inconsistente ou mudança da versão Unicode do Qt **bloqueia a abertura para escrita**, com diagnóstico, preservando o banco. Não renova silenciosamente a política nem aceita mistura de algoritmos: uma futura mudança de Unicode/folding exige migração explícita com nova auditoria de colisões. Atualização de Qt com a mesma versão Unicode não exige migração.
 
 Inspeção em uma cópia local, com ferramenta SQLite somente leitura:
 

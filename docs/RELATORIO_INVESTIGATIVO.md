@@ -67,6 +67,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-03 — Partida em andamento depende da memória do processo
 
+**Correção local dedicada em 2026-10-16:** checkpoints transacionais no SQLite v6 antes da confirmação de respostas/dicas, revisões contra escritores desatualizados e snapshots de motor/conteúdo/pontuação. A interface oferece continuar/abandonar; o fechamento normal suspende a sessão. Finalização e ranking compartilham transação/UUID, com retentativa idempotente. Inclui backup/restauração verificados e testes com encerramento abrupto; consulte [arquitetura, procedimentos e limites](RECUPERACAO_PARTIDAS.md). Bancos pessoais e catálogo preservados; sem push ou release. A evidência abaixo descreve a implementação anterior.
+
 **Evidência:** [submitAnswer](../src/application/GameService.cpp#L151) acrescenta respostas à sessão em memória; [saveCurrentResult](../src/application/GameService.cpp#L242) só persiste depois do encerramento. Não foi localizado tratamento `onClosing` em `Main.qml` nem fluxo de recuperação de rascunho ou backup/restauração.
 
 **Exposição:** uso normal do programa. Uma interrupção antes do salvamento pode perder respostas e dicas já usadas na partida corrente. A retentativa existente protege falhas de gravação do resultado final, mas não registra continuamente a sessão.
