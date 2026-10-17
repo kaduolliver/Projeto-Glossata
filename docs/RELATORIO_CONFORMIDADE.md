@@ -1,5 +1,7 @@
 # Relatório da implementação — 15/10/2026
 
+> Registro histórico desta etapa. A investigação INV-08 de 17/10/2026 está em [SANEAMENTO_DIREITOS.md](SANEAMENTO_DIREITOS.md). Corrigida abaixo uma inversão documental de IDs: o catálogo e as evidências sempre associaram `707161720` a *Panthera tigris* e `659755043` a *Lemur catta*. A correção não altera associações ou revisões científicas.
+
 Atualização filogenética: aplicativo **1.2.0**, catálogo **2.0.0**, ainda não lançados. Os 122 registros foram projetados para Bacteria (20) e Eukaryota (102); Archaea permanece vazio. Há 62 Opisthokonta, 20 Archaeplastida, 10 Amoebozoa e 10 SAR; Discoba não tem representantes. IDs, fotos e metadados de direitos foram comparados integralmente com o registro anterior. Os 122 hashes de revisão da classificação de origem permanecem iguais; os 122 enquadramentos novos são rascunhos com revisão independente. Não houve concessão de licença nem revisão humana simulada.
 
 A migração do catálogo é transacional, mantém snapshot das linhas anteriores e rejeita versões futuras desconhecidas sem rebaixamento. O histórico de jogadores conserva seu esquema e pontuações; o hash de conteúdo distingue o novo ranking competitivo. A [documentação da classificação](CLASSIFICACAO_FILOGENETICA.md) e a [auditoria por organismo](AUDITORIA_FILOGENETICA.json) registram fontes, divergências e limites. Os testes incluem rollback, reabertura, preservação das 122 identidades e fotos, rastreabilidade de revisão, ranks ausentes e navegação real. Permanecem os bloqueios de direitos/curadoria registrados abaixo; nenhuma tag, push ou release integra esta etapa.
@@ -54,7 +56,7 @@ Artefatos reproduzíveis: `build/catalog-quality.json`, `build/distribution-audi
 | --- | --- |
 | 120 fotos sem versão e data original de licença demonstradas; confirmação humana ausente | Completar prova localizada da versão e captura real; preservar a lacuna original e evidência anterior |
 | Sete créditos divergem do snapshot da observação | Conferir outra fonte específica da mesma foto; não presumir que o observador é autor |
-| Panthera tigris, foto 659755043, e Lemur catta, foto 707161720, com origem Casual | Revisão científica prioritária; achados graves bloqueiam lançamento. Uso local é legado sinalizado |
+| Panthera tigris, foto 707161720, e Lemur catta, foto 659755043, com origem Casual (IDs corrigidos documentalmente em 17/10/2026) | Revisão científica prioritária; achados graves bloqueiam lançamento. Uso local é legado sinalizado |
 | 1.568 registros legados, 91 pendentes e um em análise | Nenhuma revisão científica humana rastreável criada nesta etapa; completar revisão por tópico e afirmação |
 | Arte temporária sem cadeia de direitos comprovada | Mantenedor deve documentar autorização ou escolher substituição apropriada |
 | Corpus textual sem revisão de originalidade/direitos concluída | Bibliografia não autoriza copiar; conferir paráfrases, eventuais trechos e autoria |

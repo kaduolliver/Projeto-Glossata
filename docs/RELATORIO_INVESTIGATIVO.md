@@ -137,6 +137,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-08 — Documentação de direitos e revisão científica ainda impede lançamento
 
+**Melhoria local em 2026-10-17:** diagnósticos reexecutados; relatório por foto/material, coleta pública em propostas e avaliação separada do pacote/dependências. Mantidos bloqueios, autoria, taxonomia, permissões e estados humanos. Corrigida a inversão documental dos IDs no relatório antigo: `707161720` corresponde a *Panthera tigris*; `659755043`, a *Lemur catta*. Ambas as observações consultadas são Casual/cativeiro, sem inferir erro taxonômico. Consulte [resultados, evidências e procedimento](SANEAMENTO_DIREITOS.md). Os números e a ausência de consulta mencionados abaixo descrevem a investigação original.
+
 **Evidência:** diagnóstico existente conserva **120** fotos com comprovação incompleta, **sete** achados de outros materiais e **dois** bloqueios de origem científica para as fotos `707161720` e `659755043`. Esses números não significam 120 licenças comprovadamente incompatíveis. Não houve nova consulta de licença por fotografia nesta investigação.
 
 O gate de pacote não remove arquivos do GitHub. A publicação de mídias no repositório e a publicação de executáveis são superfícies distintas a revisar. Os 37 arquivos antigos removidos continuam no histórico anterior; as 109 mídias locais fora do bundle estão ignoradas e não devem ser confundidas com arquivos atuais publicados.
