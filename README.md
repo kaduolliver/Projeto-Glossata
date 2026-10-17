@@ -61,6 +61,8 @@ Valores derivados das fontes locais. Este bloco não comprova publicação, exec
 
 O [estado verificável e suas fontes](docs/ESTADO_DO_PROJETO.md) explicam a geração deste bloco. Consulte também o [procedimento de versionamento](docs/VERSIONAMENTO.md). Registro de testes, versão em arquivo e entrada de changelog não comprovam publicação ou aprovação da distribuição.
 
+A [auditoria de estabilização](docs/AUDITORIA_ESTABILIZACAO.md) registra as verificações integradas de migração, recuperação, backup e governança, as correções reproduzidas e os testes manuais pendentes. A [proteção da `main`](docs/PROTECAO_REPOSITORIO.md) foi confirmada ativa por consulta datada; isso não libera a distribuição dos recursos com pendências.
+
 **Em desenvolvimento.** O produto funcional atual é um aplicativo desktop, **não** uma enciclopédia web completa. Os recursos descritos abaixo correspondem ao estado documentado do repositório em outubro de 2026; a visão futura está separada na seção [Roadmap](#roadmap).
 
 | Recurso | Situação |

@@ -100,6 +100,8 @@ Commits pequenos após verificações, sem push/release sem autorização espec�
 
 ## Registros de etapas anteriores
 
+A auditoria integrada de estabilização está em docs/AUDITORIA_ESTABILIZACAO.md: compatibilidade dos esquemas antigos, recusa de SQLite incompleto, validação de backup/sidecars e snapshots semanticamente inconsistentes. A consulta datada em docs/VERIFICACAO_ESTABILIZACAO_GITHUB.json confirmou ruleset 25303072 ativo, sem alteração remota pela auditoria. Dados pessoais e decisões reais de curadoria não foram usados ou modificados.
+
 <!-- glossata:historical:start -->
 Os registros abaixo descrevem etapas e consultas datadas; não afirmam versões lançadas, contagem atual de testes ou configuração remota atual. A configuração do GitHub não foi reconsultada nesta revisão documental.
 

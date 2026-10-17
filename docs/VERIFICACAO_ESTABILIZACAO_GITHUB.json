@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "queried_at": "2026-10-17T13:36:55.835663+00:00",
+  "repository": "kaduolliver/Projeto-Glossata",
+  "activation_performed": false,
+  "repository_state": {
+    "visibility": "public",
+    "default_branch": "main",
+    "archived": false
+  },
+  "branch": {
+    "name": "main",
+    "protected": true,
+    "head": "5d739e7817754a9b7da8e982088a3ff224cf559f"
+  },
+  "rulesets": [
+    {
+      "id": 25303072,
+      "name": "Glossata main - desenvolvimento individual",
+      "target": "branch",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "refs/heads/main"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "pull_request",
+          "parameters": {
+            "required_approving_review_count": 0,
+            "dismiss_stale_reviews_on_push": false,
+            "required_reviewers": [],
+            "require_code_owner_review": false,
+            "require_last_push_approval": false,
+            "required_review_thread_resolution": true,
+            "require_extra_approval_for_unattributed_changes": true,
+            "allowed_merge_methods": [
+              "merge",
+              "squash",
+              "rebase"
+            ]
+          }
+        },
+        {
+          "type": "required_status_checks",
+          "parameters": {
+            "strict_required_status_checks_policy": true,
+            "do_not_enforce_on_create": false,
+            "required_status_checks": [
+              {
+                "context": "offline-validation",
+                "integration_id": 15368
+              }
+            ]
+          }
+        }
+      ],
+      "bypass_actors": []
+    }
+  ],
+  "effective_rules": [
+    {
+      "type": "deletion",
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "kaduolliver/Projeto-Glossata",
+      "ruleset_id": 25303072
+    },
+    {
+      "type": "non_fast_forward",
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "kaduolliver/Projeto-Glossata",
+      "ruleset_id": 25303072
+    },
+    {
+      "type": "pull_request",
+      "parameters": {
+        "required_approving_review_count": 0,
+        "dismiss_stale_reviews_on_push": false,
+        "required_reviewers": [],
+        "require_code_owner_review": false,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": true,
+        "require_extra_approval_for_unattributed_changes": true,
+        "allowed_merge_methods": [
+          "merge",
+          "squash",
+          "rebase"
+        ]
+      },
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "kaduolliver/Projeto-Glossata",
+      "ruleset_id": 25303072
+    },
+    {
+      "type": "required_status_checks",
+      "parameters": {
+        "strict_required_status_checks_policy": true,
+        "do_not_enforce_on_create": false,
+        "required_status_checks": [
+          {
+            "context": "offline-validation",
+            "integration_id": 15368
+          }
+        ]
+      },
+      "ruleset_source_type": "Repository",
+      "ruleset_source": "kaduolliver/Projeto-Glossata",
+      "ruleset_id": 25303072
+    }
+  ],
+  "classic_protection_note": "Check classic settings in Settings > Branches; not inferred from rulesets.",
+  "actions_permissions": {
+    "enabled": true,
+    "allowed_actions": "all",
+    "sha_pinning_required": false
+  },
+  "workflow_permissions": {
+    "default_workflow_permissions": "read",
+    "can_approve_pull_request_reviews": false
+  },
+  "checks": [
+    {
+      "name": "offline-validation",
+      "conclusion": "success",
+      "app_id": 15368,
+      "app_slug": "github-actions"
+    },
+    {
+      "name": "distribution-permissions",
+      "conclusion": "failure",
+      "app_id": 15368,
+      "app_slug": "github-actions"
+    }
+  ],
+  "notice": "Read-only snapshot; missing privileges/API failures are not absence of protection. Inspect bypasses and all matching rules before claiming enforcement.",
+  "proposal_sha256": "ea9868bc6688632fd4763474c1daa8743c2572298db24a3bc4cc600ab14722c5"
+}
