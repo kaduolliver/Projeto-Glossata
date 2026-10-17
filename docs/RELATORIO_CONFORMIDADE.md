@@ -1,5 +1,7 @@
 # Relatório da implementação — 15/10/2026
 
+> **Atualização administrativa — 2026-10-17:** Apache-2.0 foi autorizada somente para o [código próprio enumerado](ESCOPO_LICENCIAMENTO.md), com LICENSE/NOTICE. A ausência de licença descrita nesta etapa histórica era correta à época. Textos/coletânea, mídias, marca, dependências e pendências científicas permanecem separados; nenhum resultado histórico de auditoria foi reescrito.
+
 > Registro histórico desta etapa. A investigação INV-08 de 17/10/2026 está em [SANEAMENTO_DIREITOS.md](SANEAMENTO_DIREITOS.md). Corrigida abaixo uma inversão documental de IDs: o catálogo e as evidências sempre associaram `707161720` a *Panthera tigris* e `659755043` a *Lemur catta*. A correção não altera associações ou revisões científicas.
 
 Atualização filogenética: aplicativo **1.2.0**, catálogo **2.0.0**, ainda não lançados. Os 122 registros foram projetados para Bacteria (20) e Eukaryota (102); Archaea permanece vazio. Há 62 Opisthokonta, 20 Archaeplastida, 10 Amoebozoa e 10 SAR; Discoba não tem representantes. IDs, fotos e metadados de direitos foram comparados integralmente com o registro anterior. Os 122 hashes de revisão da classificação de origem permanecem iguais; os 122 enquadramentos novos são rascunhos com revisão independente. Não houve concessão de licença nem revisão humana simulada.

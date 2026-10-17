@@ -1,4 +1,5 @@
-"""Read-only documentary inventory; never selects a license or grants rights.
+# SPDX-License-Identifier: Apache-2.0
+"""Read-only documentary inventory and checks of the explicitly authorized code scope.
 
 Reuses media authorities and distribution validators. Classification by location
 is not evidence of ownership. Package metadata is kept separate from source Git.
@@ -13,6 +14,11 @@ import distribution
 from rights_investigation import file_hash
 
 ARCHIVE = 'docs/INVENTARIO_LICENCIAMENTO.json'
+CODE_SCOPE = 'docs/ESCOPO_LICENCIAMENTO.json'
+APACHE_SOURCE = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+# Official ASF text downloaded without editing, including its standard appendix.
+APACHE_SHA256 = 'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30'
+CREATOR = 'Carlos Eduardo Lima de Oliveira'
 CATEGORIES = {
     'application_code': 'Código do aplicativo, testes e configuração; titularidade a conferir',
     'maintenance_scripts': 'Scripts de manutenção; titularidade a conferir',
@@ -55,6 +61,83 @@ def tracked(root):
     result = subprocess.run(['git', '--no-replace-objects', '-C', str(root), 'ls-files', '-z'],
                             capture_output=True, check=True, timeout=30)
     return sorted(set(result.stdout.decode('utf8').split('\0')) - {''})
+
+
+def code_candidate(name):
+    """Inventory candidates only. This predicate NEVER grants a license."""
+    p = Path(name)
+    if name in {'CMakeLists.txt', 'resources.qrc', '.gitignore', '.gitattributes',
+                '.githooks/pre-commit', 'package/run_glossata_game.cmd'}:
+        return True
+    if name.startswith('src/'):
+        return p.suffix in {'.cpp', '.h'} or name.endswith('.rc.in')
+    if name.startswith('resources/qml/'):
+        return p.suffix == '.qml'
+    if name.startswith('scripts/'):
+        return p.suffix in {'.py', '.ps1'}
+    if name.startswith('tests/') and not name.startswith('tests/fixtures/'):
+        return p.suffix in {'.cpp', '.py', '.qrc'} or p.name == 'CMakeLists.txt'
+    return name.startswith('.github/workflows/') and p.suffix in {'.yml', '.yaml'}
+
+
+def check_code_license(root=g.ROOT, paths=None):
+    """Verify declared scope/official bytes, not copyright title or human identity.
+
+    No permission writers, network, policy mutation or scientific approvals.
+    New candidate paths require an explicit scope decision, never folder inheritance.
+    """
+    root = Path(root)
+    scope = g.load(root / CODE_SCOPE, {})
+    errors = []
+    if file_hash(root / 'LICENSE') != APACHE_SHA256:
+        errors.append('apache_text_missing_or_modified')
+    if scope.get('license') != 'Apache-2.0' or scope.get('schema_version') != 1:
+        errors.append('code_scope_missing_or_invalid')
+    notice_path = root / 'NOTICE'
+    notice = notice_path.read_text(encoding='utf8') if notice_path.is_file() else ''
+    for required in ('Projeto Glossata', CREATOR, 'https://github.com/kaduolliver/Projeto-Glossata',
+                     'Apache License, Version 2.0', CODE_SCOPE):
+        if required not in notice:
+            errors.append('notice_missing_attribution_or_scope')
+            break
+    covered = scope.get('files', [])
+    pending = scope.get('pending_files', {})
+    if not isinstance(covered, list) or not isinstance(pending, dict):
+        return errors + ['invalid_scope_structure']
+    if len(covered) != len(set(covered)) or set(covered).intersection(pending):
+        errors.append('duplicate_or_conflicting_scope')
+    for name in covered + list(pending):
+        try:
+            path = g.local_file(root, name)
+            if (not code_candidate(name) or '\\' in name or name != Path(name).as_posix()
+                    or not path.is_file()):
+                errors.append('noncode_or_missing_scope_path:' + name)
+        except (ValueError, TypeError):
+            errors.append('unsafe_scope_path')
+    if any(not isinstance(reason, str) or not reason.strip() for reason in pending.values()):
+        errors.append('pending_scope_reason_missing')
+    candidates = {name for name in (tracked(root) if paths is None else paths) if code_candidate(name)}
+    if candidates != set(covered) | set(pending):
+        errors.append('code_scope_inventory_differs')
+    decision = scope.get('maintainer_decision', {})
+    policy = g.policy(root)
+    declarations = policy.get('own_material_licenses', {})
+    assets = g.load(root / 'resources/compliance/asset_rights.json', {})
+    if any(a.get('path') in covered and a.get('state', '').startswith('pending')
+           for a in assets.get('assets', [])):
+        errors.append('pending_material_in_code_scope')
+    if declarations != {'code': 'Apache-2.0', 'texts': None, 'collection': None}:
+        errors.append('own_license_declarations_differ')
+    if assets.get('own_material_licenses') != declarations:
+        errors.append('asset_and_policy_declarations_differ')
+    if (not decision.get('id') or decision.get('scope') != CODE_SCOPE
+            or decision.get('license') != 'Apache-2.0'
+            or decision.get('original_creator') != CREATOR
+            or decision not in policy.get('maintainer_decisions', [])):
+        errors.append('administrative_decision_not_linked')
+    if scope.get('license_text') != {'source_url': APACHE_SOURCE, 'sha256': APACHE_SHA256}:
+        errors.append('official_license_reference_differs')
+    return errors
 
 
 def collect(root=g.ROOT, package=None, prefix=None, at=None):
@@ -135,12 +218,20 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--package', type=Path); parser.add_argument('--prefix', type=Path)
     parser.add_argument('--archive', action='store_true', help='Write the documentary snapshot in docs; never a license or approval')
+    parser.add_argument('--check-code', action='store_true', help='Validate explicit code scope and official license offline; never confirms ownership')
     args = parser.parse_args()
+    if args.check_code:
+        if args.archive or args.package or args.prefix:
+            parser.error('--check-code is read-only and does not collect/archive a package')
+        errors = check_code_license()
+        print({'code_license_errors': errors, 'ownership_or_scientific_approval': False})
+        raise SystemExit(1 if errors else 0)
     result = collect(package=args.package, prefix=args.prefix)
     path = g.ROOT / (ARCHIVE if args.archive else 'build/licensing-inventory.json')
     g.save(path, result)
     print({'report': path.relative_to(g.ROOT).as_posix(), 'files': len(result['files']),
-           'dependency_components': len(result['package']['components']), 'license_selected': False,
+           'dependency_components': len(result['package']['components']), 'license_selected_by_this_report': False,
+           'own_material_license_declarations': result['own_material_license_declarations'],
            'distribution_blocked': result['gate']['distribution_blocked']})
 
 

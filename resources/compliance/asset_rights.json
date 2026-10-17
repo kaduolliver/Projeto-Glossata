@@ -2073,14 +2073,21 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "fc5e4d2bd18517479e06b24e2a7138e4c0313f7fc4f607e393c1f142dc18a975",
+      "sha256": "d5664a5fe9edc130159a1992a0447d5caca11dcdc1fda83f1b1a6024b7d0ae00",
       "source": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros.",
       "permission": {
         "holder": null,
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_originality_and_rights_review"
+      "state": "pending_originality_and_rights_review",
+      "inventory_history": [
+        {
+          "sha256": "fc5e4d2bd18517479e06b24e2a7138e4c0313f7fc4f607e393c1f142dc18a975",
+          "superseded_on": "2026-10-17",
+          "reason": "Administrative code-license policy changed; existing automated pedagogy re-evaluated with identical recipes, text, grades and source assertions. Human/scientific review and rights state unchanged."
+        }
+      ]
     }
   ],
   "fonts": {
@@ -2088,7 +2095,7 @@
     "system_font": "Segoe UI is requested from the operating system; no font file is currently redistributed."
   },
   "own_material_licenses": {
-    "code": null,
+    "code": "Apache-2.0",
     "texts": null,
     "collection": null
   }

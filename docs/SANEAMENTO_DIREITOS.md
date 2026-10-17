@@ -1,5 +1,7 @@
 # Investigação de direitos e associações científicas — INV-08
 
+> **Atualização administrativa posterior à preparação — 2026-10-17:** o mantenedor autorizou Apache-2.0 somente para o [código próprio enumerado](ESCOPO_LICENCIAMENTO.md), com LICENSE/NOTICE e a identificação autoral fornecida. A nota anterior abaixo preserva o estado antes dessa decisão. As evidências, pendências de fotos/textos/marca/dependências e bloqueios científicos desta investigação não foram aprovados nem removidos. Consulte o [relatório da implementação](RELATORIO_IMPLEMENTACAO_APACHE_2_0.md).
+
 > Nota administrativa de 2026-10-17: a expressão “open source” no contexto histórico abaixo descreve a intenção do projeto, sem demonstrar licença própria já concedida. O código é público e a escolha permanece pendente. Consulte o [plano de licenciamento](PLANO_LICENCIAMENTO.md); as evidências, contagens e pendências desta investigação foram preservadas.
 
 Investigação local e consultas públicas em **17/10/2026**, partindo de `9c43bb10bcfcc32e57d9e6019703734fa5f11325`. O projeto é educacional, open source, sem fins lucrativos e experimental; isso não é tratado como licença automática de conteúdo de terceiros. Há um mantenedor, sem equipe externa de curadoria. Não se criou autorização, especialista, consentimento ou revisão humana.

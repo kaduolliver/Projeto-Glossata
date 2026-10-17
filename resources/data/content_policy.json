@@ -28,9 +28,18 @@
   "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/new",
   "privacy": "No coordinates, locality, observer profile, contact details or hidden data in published evidence. Photo attribution is retained as supplied by the source.",
   "own_material_licenses": {
-    "code": null,
+    "code": "Apache-2.0",
     "texts": null,
     "collection": null
   },
-  "maintainer_decisions": []
+  "maintainer_decisions": [
+    {
+      "id": "own-code-apache-2.0-2026-10-17",
+      "recorded_on": "2026-10-17",
+      "license": "Apache-2.0",
+      "scope": "docs/ESCOPO_LICENCIAMENTO.json",
+      "original_creator": "Carlos Eduardo Lima de Oliveira",
+      "authority_basis": "Express maintainer instruction in this implementation request; author identification supplied explicitly by the maintainer. No signature, exclusive ownership or specialist review inferred."
+    }
+  ]
 }

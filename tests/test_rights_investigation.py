@@ -332,6 +332,99 @@ class InvestigationTests(unittest.TestCase):
         self.assertEqual(len(report['files']), 1); self.assertIsNone(report['files'][0]['sha256'])
         self.assertNotIn('declared_license', report['files'][0])
 
+    def code_license_fixture(self):
+        """Synthetic source tree; no grant/reviewer event for any real material."""
+        source = Path(__file__).resolve().parents[1]
+        for name in ('LICENSE', 'NOTICE'):
+            (self.root / name).write_bytes((source / name).read_bytes())
+        path = self.root / 'src/Example.cpp'; path.parent.mkdir(parents=True)
+        path.write_text('// Synthetic test code only\n', encoding='utf8')
+        path = self.root / 'scripts/build_education.py'; path.parent.mkdir(parents=True)
+        path.write_text('# Synthetic mixed material, rights pending\n', encoding='utf8')
+        scope = copy.deepcopy(g.load(source / licensing_inventory.CODE_SCOPE))
+        scope['files'] = ['src/Example.cpp']
+        g.save(self.root / licensing_inventory.CODE_SCOPE, scope)
+        policy = g.policy(self.root)
+        policy['own_material_licenses'] = {'code': 'Apache-2.0', 'texts': None, 'collection': None}
+        policy['maintainer_decisions'] = [scope['maintainer_decision']]
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        assets = g.load(self.root / 'resources/compliance/asset_rights.json', {'assets': []})
+        assets['own_material_licenses'] = policy['own_material_licenses']
+        g.save(self.root / 'resources/compliance/asset_rights.json', assets)
+        return scope
+
+    def code_errors(self):
+        return licensing_inventory.check_code_license(self.root,
+            paths=['src/Example.cpp', 'scripts/build_education.py'])
+
+    def test_actual_apache_scope_and_canonical_license_are_consistent(self):
+        self.assertEqual(licensing_inventory.check_code_license(), [])
+
+    def test_canonical_license_is_complete_and_cannot_accept_extra_restrictions(self):
+        self.code_license_fixture(); self.assertEqual(self.code_errors(), [])
+        license_path = self.root / 'LICENSE'
+        official = license_path.read_bytes()
+        for changed in (official[:1000], official + b'Noncommercial use only\n', official.replace(b'January 2004', b'January 2026')):
+            with self.subTest(sha=hashlib.sha256(changed).hexdigest()):
+                license_path.write_bytes(changed)
+                self.assertIn('apache_text_missing_or_modified', self.code_errors())
+
+    def test_notice_missing_original_attribution_is_rejected(self):
+        self.code_license_fixture(); (self.root / 'NOTICE').write_text('Apache License, Version 2.0\n', encoding='utf8')
+        self.assertIn('notice_missing_attribution_or_scope', self.code_errors())
+
+    def test_code_grant_does_not_grant_photo_rights_or_change_reviews(self):
+        before = self.files(); gate_before = distribution.release_gate(self.root)
+        self.code_license_fixture(); after_policy = self.files()
+        with mock.patch.object(g, 'confirm_permission', side_effect=AssertionError('No photo grants')), \
+             mock.patch.object(g, 'append_review', side_effect=AssertionError('No reviews')):
+            self.assertEqual(self.code_errors(), [])
+            self.assertEqual(self.files(), after_policy)
+        for name, data in before.items():
+            if name not in {'resources/data/content_policy.json', 'resources/compliance/asset_rights.json'}:
+                self.assertEqual(self.files()[name], data, name)
+        after = distribution.release_gate(self.root)
+        self.assertTrue(after['distribution_blocked'])
+        for key in ('photo_licensing', 'asset_licensing', 'scientific_release_blocks'):
+            self.assertEqual(after[key], gate_before[key])
+
+    def test_media_and_third_party_code_cannot_be_added_to_own_scope(self):
+        scope = self.code_license_fixture()
+        for name in ('resources/images/7.jpg', 'vendor/example.cpp', 'resources/data/species.json'):
+            with self.subTest(name=name):
+                scope['files'] = ['src/Example.cpp', name]
+                g.save(self.root / licensing_inventory.CODE_SCOPE, scope)
+                self.assertTrue(any(e.startswith('noncode_or_missing_scope_path:') for e in self.code_errors()))
+
+    def test_future_code_is_not_licensed_by_folder_inheritance(self):
+        self.code_license_fixture()
+        self.assertIn('code_scope_inventory_differs', licensing_inventory.check_code_license(
+            self.root, paths=['src/Example.cpp', 'src/New.cpp', 'scripts/build_education.py']))
+
+    def test_pending_mixed_code_cannot_silently_be_relicensed(self):
+        scope = self.code_license_fixture()
+        assets = g.load(self.root / 'resources/compliance/asset_rights.json')
+        assets['assets'].append({'path': 'scripts/build_education.py', 'state': 'pending_originality_and_rights_review'})
+        g.save(self.root / 'resources/compliance/asset_rights.json', assets)
+        scope['files'].append('scripts/build_education.py'); scope['pending_files'] = {}
+        g.save(self.root / licensing_inventory.CODE_SCOPE, scope)
+        self.assertIn('pending_material_in_code_scope', self.code_errors())
+
+    def test_texts_and_collection_need_their_own_decision(self):
+        self.code_license_fixture()
+        policy = g.policy(self.root); policy['own_material_licenses']['texts'] = 'CC-BY-4.0'
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        self.assertIn('own_license_declarations_differ', self.code_errors())
+        self.assertIn('asset_and_policy_declarations_differ', self.code_errors())
+
+    def test_decision_must_link_to_administrative_authorization_not_a_review(self):
+        self.code_license_fixture()
+        policy = g.policy(self.root); policy['maintainer_decisions'] = []
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        self.assertIn('administrative_decision_not_linked', self.code_errors())
+        self.assertFalse((self.root / 'resources/compliance/review_history.jsonl').exists())
+        self.assertFalse((self.root / 'resources/compliance/permission_history.jsonl').exists())
+
 
 if __name__ == '__main__':
     unittest.main()

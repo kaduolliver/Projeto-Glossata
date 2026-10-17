@@ -1,5 +1,7 @@
 # Prontidão para expansão do catálogo
 
+> **Atualização administrativa — 2026-10-17, posterior ao PR #10:** Apache-2.0 adotada somente para o [código próprio enumerado](ESCOPO_LICENCIAMENTO.md). As referências abaixo à licença ainda não escolhida registram a situação anterior; textos/coletânea e os demais direitos continuam pendentes. O fluxo de admissão, as 120 pendências fotográficas, sete divergências de crédito e dois bloqueios científicos não foram aprovados ou alterados por essa decisão.
+
 Investigação e implementação em **2026-10-17**, na branch `feat/admissao-catalogo-auditavel`, sobre a `main` incorporada pelo PR #8. Escopo: governança e manutenção/importação offline. Nenhum organismo, foto real, texto científico, pontuação, banco de jogador, layout ou evento real de curadoria foi alterado. Não houve consulta de API de conteúdo, contato com autores, remoção de mídia ou aprovação humana nesta intervenção.
 
 O processo técnico prepara **propostas de admissão**. A integração de um organismo continua exigindo alteração explícita por Pull Request e execução dos controles completos. O relatório não certifica direitos ou identificação científica. O projeto tem um mantenedor; revisão editorial não é revisão independente nem especializada.
