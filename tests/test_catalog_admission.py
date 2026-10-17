@@ -25,6 +25,9 @@ class AdmissionTests(unittest.TestCase):
         f = fixtures.GovernanceTests(); f.setUp(); self.addCleanup(f.doCleanups)
         f.baseline(); self.base = f.root; self.root = self.base / admission.DRAFTS / 'synthetic'
         shutil.copytree(self.base / 'resources', self.root / 'resources'); f.root = self.root; self.f = f
+        # Synthetic draft has no group prose; never borrow text from the active catalog.
+        g.save(self.root / 'resources/data/group_education.json',
+               {'schema_version': 1, 'definitions': [], 'plain_notes': {}})
         self.s = copy.deepcopy(f.species)
         self.s.update(id=2, name='Example novum', source='inaturalist', source_taxon_id='23',
                       source_taxonomy=[{'id': 'inat:1', 'rank': 'kingdom', 'name': 'Animalia', 'parent_id': ''},

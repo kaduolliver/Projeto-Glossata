@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "maintainer_origin_statement",
+  "recorded_on": "2026-10-17",
+  "declared_by": "Carlos Eduardo Lima de Oliveira",
+  "identity_basis": "Nome do mantenedor expressamente fornecido na solicitação de licenciamento; identidade não autenticada por este registro.",
+  "statement": "Criei através do ChatGPT",
+  "statement_context": "Resposta do mantenedor à pergunta sobre a criação dos três ícones atuais, durante o saneamento da Issue #2.",
+  "files": {
+    "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+    "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
+  },
+  "creation_date": null,
+  "model_or_product_version": null,
+  "input_images_and_their_rights": null,
+  "generation_record": null,
+  "terms_applicable_at_creation": null,
+  "intended_branding_grant": null,
+  "terms_consulted": {
+    "url": "https://openai.com/policies/row-terms-of-use/",
+    "consulted_on": "2026-10-17",
+    "displayed_effective_date": "2026-01-01",
+    "sections": ["Content / Your content", "Content / Ownership of content", "Content / Similarity of content", "Using our Services / Third party Services"],
+    "limitation": "Consulta atual, não comprovação dos termos aceitos na criação. A atribuição de eventuais direitos da OpenAI sobre a saída não cobre direitos de terceiros nem comprova exclusividade ou proteção autoral. Conferir a modalidade efetivamente utilizada."
+  },
+  "state": "origin_partially_documented_permission_pending",
+  "permission_granted_by_this_record": false,
+  "scientific_or_legal_review": null
+}

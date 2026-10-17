@@ -343,6 +343,7 @@ class InvestigationTests(unittest.TestCase):
         path.write_text('# Synthetic mixed material, rights pending\n', encoding='utf8')
         scope = copy.deepcopy(g.load(source / licensing_inventory.CODE_SCOPE))
         scope['files'] = ['src/Example.cpp']
+        scope['pending_files'] = {'scripts/build_education.py': 'Synthetic mixed prose/code awaiting rights review.'}
         g.save(self.root / licensing_inventory.CODE_SCOPE, scope)
         policy = g.policy(self.root)
         policy['own_material_licenses'] = {'code': 'Apache-2.0', 'texts': None, 'collection': None}
