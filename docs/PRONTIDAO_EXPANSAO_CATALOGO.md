@@ -146,7 +146,7 @@ Decisões humanas restantes: comprovar versões/licenças e atribuições das 12
 | --- | --- |
 | Configuração CMake e build incremental Release/Qt | Concluídos sem erros |
 | CTest completo | **26/26 suítes aprovadas**, 171,44 s |
-| Novas regressões de admissão, após o refinamento da exportação | **17 testes aprovados** |
+| Novas regressões de admissão, após o refinamento da exportação e dos caminhos | **18 testes aprovados** |
 | Investigação/proveniência e inventário, após os últimos ajustes | **20 testes aprovados** |
 | Fila de curadoria, incluindo admissão e privacidade | **7 testes aprovados** |
 | `audit_catalog.py --strict` | 122 registros preservados e zero erros técnicos |

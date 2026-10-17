@@ -205,6 +205,15 @@ class AdmissionTests(unittest.TestCase):
             with self.assertRaises(ValueError): admission.workspace(self.base, value)
         self.assertEqual(admission.workspace(self.base, self.root), self.root)
 
+    def test_redirected_base_is_refused_even_if_candidate_resolves_under_its_target(self):
+        # Simulate filesystem resolution without depending on Windows symlink
+        # privileges. The normal resolve remains in use for all other paths.
+        original = Path.resolve; base = self.base / admission.DRAFTS
+        def resolve(path, *args, **kwargs):
+            return self.base / 'outside' if path == base else original(path, *args, **kwargs)
+        with mock.patch.object(Path, 'resolve', resolve):
+            with self.assertRaisesRegex(ValueError, 'redirected'): admission.workspace(self.base, self.root)
+
     def test_template_is_idempotent_and_never_overwrites_prepared_work(self):
         path = admission.template(self.base, self.root, self.dossier['candidate'])
         before = path.read_bytes()

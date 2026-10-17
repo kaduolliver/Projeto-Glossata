@@ -32,9 +32,13 @@ def base_inputs(root):
 
 
 def workspace(root, value):
+    root = Path(root).resolve()
+    expected_base = root / DRAFTS
+    if expected_base.resolve() != expected_base:
+        raise ValueError('Draft base cannot be redirected through a filesystem link')
     target = (Path(root) / value).resolve()
-    target.relative_to((root / DRAFTS).resolve())
-    if target == (root / DRAFTS).resolve(): raise ValueError('Select a dedicated draft directory')
+    target.relative_to(expected_base)
+    if target == expected_base: raise ValueError('Select a dedicated draft directory')
     return target
 
 
