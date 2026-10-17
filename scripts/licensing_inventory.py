@@ -169,7 +169,6 @@ def collect(root=g.ROOT, package=None, prefix=None, at=None):
             a = assets[name]
             row.update(rights_reference='resources/compliance/asset_rights.json',
                        declared_license=a.get('license'), declared_state=a.get('state'))
-        if name == 'scripts/build_education.py': row['also_contains'] = ['educational_text']
         rows.append(row)
     inventory = g.load(package / 'compliance/dependencies.json', {}) if package else {}
     components = []

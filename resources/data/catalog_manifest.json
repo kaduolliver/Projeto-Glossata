@@ -7,7 +7,8 @@
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
     "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
     "resources/branding/README.md": "d9ae346156fa1f32fdb73ba1aefbf2ef82c6ea4062f7067f6d459baa173e381f",
-    "resources/compliance/asset_rights.json": "c9bd9722d78982e7c0f4b2141953f977c60b648dfa5eff8417e465030ee699d8",
+    "resources/compliance/asset_rights.json": "ba41f13d0f01de48ded03b661c4120a63df1fe00d67f0849ae7e40847aa35c14",
+    "resources/compliance/branding/origin-declaration.json": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
     "resources/compliance/exploration/amanita.json": "752a55a27b2a88632ffc8e752c896df794678f46886a6c140909d8cc180655de",
     "resources/compliance/exploration/archaea.json": "f903a73d6258f5fb5391e83c54417416ee54bc02ffe1d05c743a1c6a5323bf17",
     "resources/compliance/exploration/bacteria.json": "399a13a3f31a8122dd99b6e0610c603878122ba595f14791fdd2fdd34e21ec9a",
@@ -253,9 +254,10 @@
     "resources/data/content_policy.json": "f0ed8d4cef53db7ecac05bc26732ae5577bacadb9d1e14bbb58775cbaa31918b",
     "resources/data/credits.json": "9d59f71f9e71bde605319e36973330d8506ce0c1912fd12f18bd778b488dc013",
     "resources/data/curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
-    "resources/data/education.json": "cd0577b3b51225140a0b31136a6994b737e43ba0edfdf96d4f3b76ccd36e4bae",
+    "resources/data/education.json": "b0ac3c98cbfef61b7689a054a4e28ff67f463e577a34ef3188b9e9d17a179ed5",
     "resources/data/etymology_research.json": "7d404eeac90583bf3e99451f69eae52a9e71e2047d4fe122c960d0e590812639",
     "resources/data/exploration_photos.json": "7557fc276899b250e11947420703bf5f84de69d434c8143f00058e66265043ce",
+    "resources/data/group_education.json": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
     "resources/data/hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "resources/data/import_report.json": "1b4d3ece907bd4076b0fac58b54100687a1a8483be33ed46aed1e6151befa5b6",
     "resources/data/photo_audit.json": "3320b87c8bd89a2c53a7f28598249404d7d756fe667edac9d1711ae2b7a5be13",
@@ -496,6 +498,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "0344ccf0d6950886569623e6a874321a72484dd3f65b2bfc74eed15e8548020f",
+  "content_sha256": "a47880d908faf64cfda40ede77162ddb2bfe7ba1a9e40cd0d03d8d333cb1125f",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }

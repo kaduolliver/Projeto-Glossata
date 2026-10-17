@@ -93,7 +93,7 @@ Fontes dos textos:
 - [OpenStax — Biology 2e](https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods).
 - [OpenStax — Biology 2e](https://openstax.org/books/biology-2e/pages/29-1-chordates).
 - [Publicação científica — Ecology and Evolution](https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/).
-- [Publicação científica — Open Biology](https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/).
+- [Publicação científica — BMC Biology (2020), DOI: 10.1186/s12915-020-0754-1](https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/). Identificação bibliográfica corrigida em 2026-10-17 durante o PR #12; o registro histórico e a descrição científica foram preservados.
 - [University of California, Berkeley — Museum of Paleontology](https://ucmp.berkeley.edu/protista/slimemolds.html).
 - [Amateur Entomologists' Society](https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html).
 - [Queensland Museum](https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons).

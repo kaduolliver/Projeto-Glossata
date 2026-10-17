@@ -6,7 +6,7 @@ A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) preserva o diagnóstic
 
 | Camada | Registro | Situação e providência |
 | --- | --- | --- |
-| Código próprio enumerado | `ESCOPO_LICENCIAMENTO.json`, LICENSE/NOTICE e política | Apache-2.0 adotada; gerador misto excluído e limites da investigação de origem documentados |
+| Código próprio enumerado | `ESCOPO_LICENCIAMENTO.json`, LICENSE/NOTICE e política | Apache-2.0 adotada; lógica do gerador incluída após extração da redação; limites da investigação de origem documentados |
 | Textos próprios | Corpus e introduções, incluindo assistência de IA | Revisar originalidade e evidências; escolher licença apenas do texto próprio |
 | Organização da coletânea | Seleção/estrutura do catálogo | Definir direitos sobre a organização, respeitando fatos e contribuições individuais |
 | Dados de terceiros | Identificadores, classificações e registros das fontes | Conferir termos/direitos aplicáveis sem inferir licença das fotos |
@@ -22,7 +22,7 @@ Opções para o mantenedor avaliar, sem escolha automática:
 | Texto educativo original | CC BY 4.0, CC BY-SA 4.0 ou termos próprios | Autoria, escopo, condições desejadas e exclusões de terceiros |
 | Organização/dados próprios | CC0, CC BY ou termos próprios quando cabíveis | Delimitar quais direitos pertencem ao mantenedor e quais dados vêm de terceiros |
 
-Somente a escolha do código foi ativada: `content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. `texts` e `collection` permanecem `null`; as opções de Creative Commons acima não são concessões. O gerador `scripts/build_education.py` inteiro continua pendente por misturar código e redação educativa. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos.
+Somente a escolha do código foi ativada: `content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. `texts` e `collection` permanecem `null`; as opções de Creative Commons acima não são concessões. A redação antes incorporada em `scripts/build_education.py` está em `resources/data/group_education.json`, com a mesma pendência de direitos; a lógica Python separada está enumerada sob Apache-2.0. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos. A declaração do mantenedor de que criou os ícones com ChatGPT foi registrada como evidência parcial de origem, sem concessão gráfica ou aprovação presumida. Consulte [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
 
 ## Política das fotografias
 

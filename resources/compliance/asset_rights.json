@@ -12,7 +12,12 @@
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_permission"
+      "state": "pending_permission",
+      "origin_statement": {
+        "path": "resources/compliance/branding/origin-declaration.json",
+        "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
+        "scope": "Tool/source declaration only; no permission or ownership approval."
+      }
     },
     {
       "path": "resources/branding/glossata_discord.png",
@@ -24,7 +29,12 @@
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_permission"
+      "state": "pending_permission",
+      "origin_statement": {
+        "path": "resources/compliance/branding/origin-declaration.json",
+        "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
+        "scope": "Tool/source declaration only; no permission or ownership approval."
+      }
     },
     {
       "path": "resources/branding/glossata.ico",
@@ -36,7 +46,12 @@
         "evidence_path": null,
         "distribution_allowed": false
       },
-      "state": "pending_permission"
+      "state": "pending_permission",
+      "origin_statement": {
+        "path": "resources/compliance/branding/origin-declaration.json",
+        "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
+        "scope": "Tool/source declaration only; no permission or ownership approval."
+      }
     },
     {
       "path": "resources/data/species_profiles.json",
@@ -79,9 +94,9 @@
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
     },
     {
-      "path": "scripts/build_education.py",
+      "path": "resources/data/group_education.json",
       "kind": "text_authorship",
-      "sha256": "78bf8163f9ec1723dff5457ee54f398d053e2064095dc85946fccb9d85a90dec",
+      "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -104,9 +119,24 @@
           "sha256": "d54ccc74f358c370032de8532261d49cf79fe52b8613b4754b0e40721ed8c7fc",
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-17T15:44:59.454898+00:00"
+        },
+        {
+          "path": "scripts/build_education.py",
+          "sha256": "78bf8163f9ec1723dff5457ee54f398d053e2064095dc85946fccb9d85a90dec",
+          "state": "pending_originality_and_rights_review",
+          "recorded_on": "2026-10-17",
+          "reason": "Issue #2: exact extraction of educational prose; pending rights follow the extracted resource, not the now separate Python logic. No grant or human review recorded."
+        },
+        {
+          "path": "resources/data/group_education.json",
+          "sha256": "1069adbf96396da000370f1333b67ada8b2aa13592dfe680503c54c175e346d7",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-17T21:03:17.641512+00:00",
+          "reason": "PR #12: verified Euglenida journal/year/DOI label correction only. Educational prose, license, permission and review state unchanged."
         }
       ],
-      "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
+      "integrity_note": "Educational prose extracted unchanged from the previous mixed generator; original path/hash/history retained. Permission fields and pending state unchanged.",
+      "related_code": "scripts/build_education.py"
     },
     {
       "path": "resources/images/exploration/lion.jpg",

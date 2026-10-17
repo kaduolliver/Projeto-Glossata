@@ -152,7 +152,7 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             (root/'resources/data').mkdir(parents=True)
             for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json',
-                         'photo_provenance.json','content_policy.json','education.json','phylogeny.json','progressive_hints.json'):
+                         'photo_provenance.json','content_policy.json','education.json','phylogeny.json','progressive_hints.json','group_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
             for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
@@ -174,11 +174,47 @@ class ImportTests(unittest.TestCase):
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
                     education.load_profiles()
 
+    def test_extracted_group_prose_matches_the_audited_pre_refactor_values(self):
+        import content_governance as governance
+        definitions, notes = education.load_group_content(PROJECT)
+        self.assertEqual(len(definitions), 19)
+        self.assertEqual(len(notes), 15)
+        # Preserve the extraction baseline, allowing only the verified bibliographic correction.
+        # load_group_content returns fresh data: restoring the historical label here never edits a resource.
+        euglenida = next(item for item in definitions if item[0] == 'Euglenida')
+        self.assertEqual(euglenida[2], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/')
+        self.assertEqual(euglenida[3],
+                         'Publicação científica — BMC Biology (2020), DOI: 10.1186/s12915-020-0754-1')
+        euglenida[3] = 'Publicação científica — Open Biology'
+        # Canonical digest measured before extraction from e2df447; no duplicated prose fixture.
+        self.assertEqual(governance.digest({'definitions': definitions, 'plain_notes': notes}),
+                         '6a41c03329d295cf1f7966fe110cf3cef0844bbf71cab41f7ba8dffc2e3a5e5e')
+
+    def test_group_loader_uses_only_the_selected_workspace_and_rejects_invalid_data(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            with self.assertRaises(FileNotFoundError):
+                education.load_group_content(root)
+            folder = root / 'resources/data'; folder.mkdir(parents=True)
+            source = folder / education.GROUP_SOURCE
+            valid = {'schema_version': 1, 'definitions': [
+                ['Synthetic', 'genus', 'https://example.org/evidence', 'Synthetic source',
+                 'Synthetic prose only', '', '']], 'plain_notes': {'Synthetic': ['', '']}}
+            source.write_text(json.dumps(valid), encoding='utf8')
+            self.assertEqual(education.load_group_content(root), (valid['definitions'], valid['plain_notes']))
+            invalids = [[], dict(valid, schema_version=2), dict(valid, definitions=valid['definitions'] * 2),
+                        dict(valid, plain_notes={'Missing': ['', '']}), dict(valid, plain_notes={'Synthetic': ['one']}),
+                        dict(valid, definitions=[['incomplete']])]
+            for value in invalids:
+                source.write_text(json.dumps(value), encoding='utf8')
+                with self.assertRaises(ValueError):
+                    education.load_group_content(root)
+
     def test_hint_generation_rejects_mismatched_species_and_taxonomy_as_etymology(self):
         original=json.loads((PROJECT/'resources/data/hint_education.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','curation_reviews.json','phylogeny.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','curation_reviews.json','phylogeny.json','group_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             for invalid_identity in (True,False):
                 hints=json.loads(json.dumps(original))
@@ -201,7 +237,7 @@ class ImportTests(unittest.TestCase):
         self.assertNotIn('20',result['eligible_ids_by_rank']['species'])
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory);(root/'resources/data').mkdir(parents=True)
-            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json','phylogeny.json'):
+            for name in ('species.json','taxonomy.json','species_profiles.json','hint_education.json','curation_reviews.json','phylogeny.json','group_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             path=root/'resources/data/curation_reviews.json'
             reviews=json.loads(path.read_text(encoding='utf8'))

@@ -63,6 +63,7 @@
     "scripts/audit_catalog.py",
     "scripts/audit_hint_assistance.py",
     "scripts/audit_repository.py",
+    "scripts/build_education.py",
     "scripts/capture_home.py",
     "scripts/content_governance.py",
     "scripts/curation_decisions.py",
@@ -181,14 +182,24 @@
     "tests/test_rights_investigation.py",
     "tests/test_scientific_sources.py"
   ],
-  "pending_files": {
-    "scripts/build_education.py": "Entire file excluded from this code grant pending separation/rights review of embedded educational prose (DEFINITIONS and PLAIN_NOTES and their uses). No blanket SPDX header."
-  },
+  "pending_files": {},
   "exclusions": [
     "All files not expressly listed in files; no automatic grant by directory or extension.",
     "Educational/scientific prose, externally supplied data and excerpts embedded in or loaded by listed programs; technical UI/error labels are part of the own code, not a license of the corpus.",
     "Photographs, evidence, attribution documents, generated datasets and reports, screenshots and test data/fixtures.",
     "Documentation, educational texts and original collection organization: no license chosen in this decision.",
     "Branding, logos, trademarks and separately licensed dependencies, including Qt/MSYS2 QML and graphics in packages."
+  ],
+  "scope_history": [
+    {
+      "recorded_on": "2026-10-17",
+      "base_commit": "e2df447",
+      "issue": 2,
+      "file": "scripts/build_education.py",
+      "action": "Explicit inclusion of separate own Python generation logic under the existing Apache-2.0 code grant, as requested for Issue #2 after prose extraction and source/history inspection.",
+      "excluded_prose": "resources/data/group_education.json",
+      "origin_limits": "No external code notice or vendored fragment identified in the inspected generator/history. No exclusive title, assignment or specialist legal review inferred.",
+      "previous_pending_reason": "Entire mixed file excluded until separation/rights review of educational prose; the prose rights finding remains pending in asset_rights.json."
+    }
   ]
 }
