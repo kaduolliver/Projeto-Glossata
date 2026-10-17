@@ -114,3 +114,4 @@ target_compile_definitions(glossata_recovery_tests PRIVATE
     GLOSSATA_PYTHON="${Python3_EXECUTABLE}" GLOSSATA_BACKUP_SCRIPT="${CMAKE_SOURCE_DIR}/scripts/player_backup.py")
 add_test(NAME GlossataSessionRecoveryTests COMMAND glossata_recovery_tests -o ${CMAKE_CURRENT_BINARY_DIR}/recovery-results.txt,txt)
 add_test(NAME GlossataPlayerBackupTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_player_backup.py)
+add_test(NAME GlossataProjectStatusTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_project_status.py)

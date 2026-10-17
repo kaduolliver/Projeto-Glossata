@@ -2,8 +2,9 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
-## [1.7.0] — Não lançado; gerenciamento de curadoria
+## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- INV-10: estado atual gerado de versões/manifestos/regras/esquemas e inventário CTest, com blocos consistentes no README/PROJECT_CONTEXT, validação contra o build configurado, testes adversariais e gate técnico na CI/preparação de tag. Relatórios históricos identificados; instruções de build/execução e candidatos corrigidas. Nenhuma versão, regra, dado científico ou publicação alterada por esta correção documental.
 - INV-03: checkpoints SQLite v6 transacionais após respostas/dicas, com questões/alternativas/tetos e identidade permanente; recuperação com continuação/abandono e fechamento seguro. Revisões impedem sobrescrita por janela antiga; ranking e finalização são atômicos e idempotentes. Backup SQLite com WAL, manifesto e restauração em arquivo novo; testes com interrupção abrupta. Captura real inicial atualizada; catálogo 2.4.0 preservado, sem lançamento.
 - INV-07: política central versionada de nomes NFC/case folding simples/NFC, com grafia preservada e mesma regra em criação e renomeação. Migração SQLite v5 audita/recalcula chaves, preserva IDs/resultados e registra colisões antigas sem fusão; reabertura verifica política, versão Unicode e integridade das chaves. Testes multialfabeto, acentos, formas canônicas, conflitos, rollback e reinicialização. Sem lançamento ou alteração do catálogo.
 - INV-01: identidade permanente de jogadores, propriedade de partidas/métricas por ID, snapshot do nome inicial e exclusão lógica. Migração SQLite v4 transacional/idempotente arquiva tabelas anteriores, conserva rankings/pontos e mantém vínculos antigos não demonstráveis como legado pendente. Seleção QML por ID, novos conflitos Unicode recusados sem unir perfis antigos; catálogo 2.4.0 e curadoria preservados. Sem lançamento.
@@ -20,7 +21,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 - Integração GitHub Issues idempotente, preservação de notas/etiquetas humanas, paginação completa e limites de chamadas/criação/atualização. Issue encerrada ou etiqueta de aprovação não altera a governança.
 - Formulários científicos, fotográficos, educacionais e de direitos; execução semanal/manual e integração opcional com GitHub Projects v2, em campo administrativo independente.
 - Modelos locais para pedidos individuais de autorização e decisões humanas; aprovações explícitas encaminhadas aos históricos existentes com hash, responsável, justificativa e controle da decisão anterior. Nenhum contato ou consentimento é automatizado.
-- Catálogo **2.4.0** preservado byte a byte, inclusive revisões e permissões. Sem mudança em quizzes, QML, layout ou bancos dos jogadores. MINOR por ferramentas de manutenção compatíveis; sem tag, push ou release.
+- Na etapa inicial de curadoria, anterior às correções INV acima: catálogo **2.4.0** preservado byte a byte, inclusive revisões e permissões, sem mudança em quizzes, QML, layout ou bancos dos jogadores naquela etapa. MINOR por ferramentas de manutenção compatíveis; sem tag, push ou release.
 
 ## [1.6.0] — Não lançado; evolução integrada
 

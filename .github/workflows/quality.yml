@@ -41,6 +41,7 @@ jobs:
           python scripts/content_governance.py credits
           git diff --exit-code -- resources/data/education.json resources/data/credits.json docs/PHOTO_CREDITS.md
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          python scripts/project_status.py check --build build --report build/project-status-check.json
           cmake --build build --parallel 4
           ctest --test-dir build --output-on-failure
           qmllint $(find resources/qml -name '*.qml') --unqualified disable
@@ -67,6 +68,7 @@ jobs:
             build/catalog-quality.json
             build/exploration-media-audit.json
             build/repository-audit.json
+            build/project-status-check.json
             build/update-proposals/*.json
             build/tests/*results.txt
           if-no-files-found: warn

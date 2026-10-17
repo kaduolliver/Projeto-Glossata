@@ -202,6 +202,7 @@ def prepare_tag(root, package, build):
     run([sys.executable, 'scripts/build_education.py'], root)
     run([sys.executable, 'scripts/content_governance.py', 'credits'], root)
     run(['cmake', '-S', '.', '-B', build, '-G', 'Ninja', '-DCMAKE_BUILD_TYPE=Release'], root)
+    run([sys.executable, 'scripts/project_status.py', 'check', '--build', build], root)
     run(['cmake', '--build', build, '--parallel', '4'], root)
     run(['ctest', '--test-dir', build, '--output-on-failure'], root)
     run(['qmllint', *sorted((root / 'resources/qml').rglob('*.qml')), '--unqualified', 'disable'], root)
