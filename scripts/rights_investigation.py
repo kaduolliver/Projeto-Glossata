@@ -117,7 +117,9 @@ def collect_public(root, species, maximum=25, selected=(), refresh=False, client
             call['state'] = 'public_metadata_collected'
         except urllib.error.HTTPError as error:
             call.update(state='http_error', http_status=error.code)
-            error.close()
+            # Python 3.11 leaves the wrapper uninitialized for fp=None;
+            # newer versions allocate an empty response that must be closed.
+            if error.fp is not None: error.close()
             # Stop rather than evade a rate limit, restriction or unavailable service.
             if error.code in {401, 403, 429} or error.code >= 500:
                 calls.append(call); g.save(root / QUERIES / (g.digest(call) + '.json'), call); break
@@ -272,7 +274,8 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'source': component.get('upstream_url'), 'license_files': component.get('license_files'),
             'content_sha256': component.get('content_sha256'), 'registered_review': component.get('obligations_review'),
             'issues': [e['error'] for e in package_gate['dependency_errors'] if e.get('package') == name],
-            'investigation_state': 'pending_human_review',
+            'investigation_state': 'pending_human_review', 'priority': 1,
+            'curation_request_id': request_id('licensing', 'dependencies'),
             'actions': ['Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review.']})
     historical = g.load(root / 'docs/INVESTIGACAO_EVIDENCIAS.json', {}).get('baseline_governance', {})
     quiz = [r for r in rows if r['kind'] == 'quiz_photo']
@@ -299,7 +302,9 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'scientific_release_blocks': len(source['scientific_release_blocks']), 'other_tracked_media': len(repository_media),
             'local_unbundled_media': len(source['unbundled_media']), 'dependency_components': len(dependencies)},
         'photos': sorted(rows, key=lambda r: (r['priority'], r['id'])), 'materials': materials,
-        'other_tracked_media': repository_media, 'local_unbundled_media': [dict(f, scope=locate(f['path'])) for f in source['unbundled_media']],
+        'other_tracked_media': repository_media,
+        'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1,
+            curation_request_id=request_id('licensing', 'historical-media')) for f in source['unbundled_media']],
         'dependencies': {'assessed': bool(package), 'inventory_date': inventory.get('inventoried_at'), 'components': dependencies,
             'binary_records': len(inventory.get('binaries', [])), 'errors': package_gate['dependency_errors'] if package else [],
             'technical_errors': package_gate['technical_errors'] if package else [],

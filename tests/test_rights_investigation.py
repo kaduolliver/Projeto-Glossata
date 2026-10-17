@@ -167,6 +167,8 @@ class InvestigationTests(unittest.TestCase):
         report = self.run_report(package=package)
         self.assertTrue(report['distribution_gate']['source_blocked']); self.assertTrue(report['distribution_gate']['package_blocked'])
         component = report['dependencies']['components'][0]
+        self.assertEqual(component['priority'], 1)
+        self.assertEqual(component['curation_request_id'], rights.request_id('licensing', 'dependencies'))
         self.assertIn('source_provision_not_documented', component['issues'])
         self.assertIn('dependency_obligations_unresolved', component['issues'])
         self.assertIn('dependency_not_inventoried', {e['error'] for e in report['dependencies']['errors']})

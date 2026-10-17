@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "report_kind": "rights_investigation",
-  "checked_at": "2026-10-17T11:49:08.264431+00:00",
+  "checked_at": "2026-10-17T11:54:52.773067+00:00",
   "mode": "offline",
   "versions": {
     "application": "1.7.0",
@@ -20578,7 +20578,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/125995806.jpeg",
@@ -20591,7 +20593,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/129054981.jpeg",
@@ -20604,7 +20608,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/129269397.jpeg",
@@ -20617,7 +20623,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/129269401.jpeg",
@@ -20630,7 +20638,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/139143239.jpeg",
@@ -20643,7 +20653,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/149679091.jpeg",
@@ -20656,7 +20668,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/152807109.jpeg",
@@ -20669,7 +20683,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/152807111.jpeg",
@@ -20682,7 +20698,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/159363965.jpeg",
@@ -20695,7 +20713,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/159363971.jpeg",
@@ -20708,7 +20728,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/159628495.jpg",
@@ -20721,7 +20743,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/174969740.jpg",
@@ -20734,7 +20758,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/178042917.jpeg",
@@ -20747,7 +20773,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/178409667.jpeg",
@@ -20760,7 +20788,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/178409673.jpeg",
@@ -20773,7 +20803,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/184758012.jpeg",
@@ -20786,7 +20818,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/204291734.jpg",
@@ -20799,7 +20833,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/204291771.jpg",
@@ -20812,7 +20848,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/20535817.jpeg",
@@ -20825,7 +20863,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/214168497.jpeg",
@@ -20838,7 +20878,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/228337221.jpg",
@@ -20851,7 +20893,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/228337252.jpg",
@@ -20864,7 +20908,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/228337266.jpg",
@@ -20877,7 +20923,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/236227271.jpeg",
@@ -20890,7 +20938,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/244657304.jpg",
@@ -20903,7 +20953,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/250082860.jpeg",
@@ -20916,7 +20968,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/27163508.jpg",
@@ -20929,7 +20983,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/277162446.jpg",
@@ -20942,7 +20998,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/280989662.jpeg",
@@ -20955,7 +21013,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/280989683.jpeg",
@@ -20968,7 +21028,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/280989691.jpeg",
@@ -20981,7 +21043,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/289704612.jpg",
@@ -20994,7 +21058,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/291002452.jpg",
@@ -21007,7 +21073,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/306780962.jpeg",
@@ -21020,7 +21088,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/317280189.jpeg",
@@ -21033,7 +21103,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/3308874.jpg",
@@ -21046,7 +21118,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/33379917.jpeg",
@@ -21059,7 +21133,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/33380022.jpeg",
@@ -21072,7 +21148,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/339531077.jpg",
@@ -21085,7 +21163,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/348517506.jpeg",
@@ -21098,7 +21178,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/357886879.jpg",
@@ -21111,7 +21193,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/364023168.jpeg",
@@ -21124,7 +21208,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/372791114.jpeg",
@@ -21137,7 +21223,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/372791350.jpeg",
@@ -21150,7 +21238,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/4016371.jpg",
@@ -21163,7 +21253,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/4016372.jpg",
@@ -21176,7 +21268,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/40181266.jpg",
@@ -21189,7 +21283,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/411822477.jpeg",
@@ -21202,7 +21298,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/432197416.jpeg",
@@ -21215,7 +21313,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/452263020.jpg",
@@ -21228,7 +21328,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/45542511.jpg",
@@ -21241,7 +21343,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/45542517.jpg",
@@ -21254,7 +21358,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/47597086.jpeg",
@@ -21267,7 +21373,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/47597087.jpeg",
@@ -21280,7 +21388,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/50370334.jpg",
@@ -21293,7 +21403,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/51110194.jpeg",
@@ -21306,7 +21418,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/51441426.jpg",
@@ -21319,7 +21433,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/51441443.jpg",
@@ -21332,7 +21448,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/515666319.jpg",
@@ -21345,7 +21463,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/53458442.jpg",
@@ -21358,7 +21478,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/53459193.jpg",
@@ -21371,7 +21493,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/54031036.jpeg",
@@ -21384,7 +21508,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/541476284.jpg",
@@ -21397,7 +21523,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/563160728.jpg",
@@ -21410,7 +21538,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/5885301.jpg",
@@ -21423,7 +21553,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/594274340.jpg",
@@ -21436,7 +21568,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/596704840.jpg",
@@ -21449,7 +21583,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/604708624.jpg",
@@ -21462,7 +21598,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/613353208.jpg",
@@ -21475,7 +21613,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/613353251.jpg",
@@ -21488,7 +21628,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/6241987.jpg",
@@ -21501,7 +21643,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/6241994.jpg",
@@ -21514,7 +21658,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/647347043.jpg",
@@ -21527,7 +21673,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/673778965.jpg",
@@ -21540,7 +21688,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/6794920.jpg",
@@ -21553,7 +21703,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/687334719.jpg",
@@ -21566,7 +21718,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/712579907.jpg",
@@ -21579,7 +21733,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/712581354.jpg",
@@ -21592,7 +21748,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/719449912.jpg",
@@ -21605,7 +21763,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/723150371.jpg",
@@ -21618,7 +21778,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/723440500.jpg",
@@ -21631,7 +21793,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/726805834.jpg",
@@ -21644,7 +21808,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/731654842.jpg",
@@ -21657,7 +21823,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/732699170.jpg",
@@ -21670,7 +21838,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/734004787.jpg",
@@ -21683,7 +21853,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/737370068.jpg",
@@ -21696,7 +21868,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/737700638.jpg",
@@ -21709,7 +21883,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/741751756.jpg",
@@ -21722,7 +21898,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/742595891.jpg",
@@ -21735,7 +21913,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/742890217.jpg",
@@ -21748,7 +21928,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/742944398.jpg",
@@ -21761,7 +21943,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/743687489.jpg",
@@ -21774,7 +21958,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/743711025.jpg",
@@ -21787,7 +21973,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/746681254.jpg",
@@ -21800,7 +21988,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/746704676.jpg",
@@ -21813,7 +22003,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/747791727.jpg",
@@ -21826,7 +22018,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/748173775.jpg",
@@ -21839,7 +22033,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/748374465.jpg",
@@ -21852,7 +22048,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/748586650.jpg",
@@ -21865,7 +22063,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/748747195.jpg",
@@ -21878,7 +22078,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/749214068.jpg",
@@ -21891,7 +22093,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/749502612.jpg",
@@ -21904,7 +22108,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/749607984.jpg",
@@ -21917,7 +22123,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/750070234.jpg",
@@ -21930,7 +22138,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/750200905.jpg",
@@ -21943,7 +22153,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/750460635.jpg",
@@ -21956,7 +22168,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/750521560.jpg",
@@ -21969,7 +22183,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     },
     {
       "path": "resources/images/inaturalist/89844963.jpg",
@@ -21982,7 +22198,9 @@
         "package_loose_same_bytes_paths": [],
         "package_embedded_presence": "not_assessed",
         "notice": "Source QRC membership is not proof of bytes embedded in an existing executable."
-      }
+      },
+      "priority": 1,
+      "curation_request_id": "curation-v1-4f8760306e86c24daed2b65f"
     }
   ],
   "dependencies": {
@@ -22014,6 +22232,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22043,6 +22263,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22072,6 +22294,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22106,6 +22330,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22148,6 +22374,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22190,6 +22418,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22220,6 +22450,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22254,6 +22486,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22283,6 +22517,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22307,6 +22543,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22336,6 +22574,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22365,6 +22605,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22408,6 +22650,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22449,6 +22693,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22478,6 +22724,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22507,6 +22755,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22536,6 +22786,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22569,6 +22821,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22747,6 +23001,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22829,6 +23085,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22858,6 +23116,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22887,6 +23147,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
@@ -22917,6 +23179,8 @@
           "dependency_review_not_bound_to_inventory"
         ],
         "investigation_state": "pending_human_review",
+        "priority": 1,
+        "curation_request_id": "curation-v1-2e39aba9876536b5996bb856",
         "actions": [
           "Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review."
         ]
