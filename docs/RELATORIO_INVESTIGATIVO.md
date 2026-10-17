@@ -49,6 +49,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-02 — Interrupção da confirmação de permissão não se recupera na repetição
 
+**Correção local implementada em 2026-10-16:** eventos de permissão como fonte de verdade, escrita atômica durável por arquivo, projeção recuperável, trava cooperativa liberada pelo SO e repetição verificada. Histórico anterior preservado; ambiguidades continuam bloqueadas. Consulte [arquitetura, recuperação, testes e limites](RECUPERACAO_PERMISSOES.md). A evidência abaixo descreve a implementação anterior à correção; não significa que houve confirmação de direitos ou recuperação de registros reais nesta intervenção.
+
 **Evidência:** [confirm_permission](../scripts/content_governance.py#L602) acrescenta o evento em `permission_history.jsonl` e depois salva `photo_provenance.json` ([linhas finais da operação](../scripts/content_governance.py#L633)). O [bridge de decisões](../scripts/curation_decisions.py#L103) retorna `already_recorded` quando encontra o evento, antes de reconciliar a proveniência.
 
 **Reprodução:** usando a fixture de permissão já existente nos testes, foi injetado `OSError` somente na gravação da proveniência. O histórico recebeu um evento; a proveniência permaneceu igual. Repetir a decisão retornou `already_recorded`, mas os cinco achados de permissão da fixture continuaram presentes.
