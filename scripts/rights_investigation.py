@@ -3,8 +3,10 @@
 All writes are confined to the existing build/update-proposals staging area.
 Remote metadata is photo-specific, minimized and kept separate from published data.
 """
+import copy
 import hashlib
 import http.client
+import json
 from pathlib import Path
 import re
 import subprocess
@@ -41,19 +43,118 @@ def observation_id(photo):
 def staged(root):
     """Only intact, dated, public live snapshots; never interpret approval fields."""
     found = {}; errors = []
-    for path in sorted((root / EVIDENCE).glob('*.json')):
+    # The committed investigation is an archive, not a new consultation. Replay
+    # its minimized snapshots when the ignored build cache is absent.
+    archive = root / 'docs/SANEAMENTO_DIREITOS.json'
+    archived = g.load(archive, {}).get('photos', [])
+    entries = [(path, None) for path in sorted((root / EVIDENCE).glob('*.json'))]
+    entries += [(Path(row['public_proposal']['path']), row['public_proposal'])
+                for row in archived if row.get('kind') == 'quiz_photo' and row.get('public_proposal')]
+    for path, previous in entries:
         try:
-            data = g.load(path); date = g.parse_time(data.get('collected_at'))
+            data = previous['snapshot'] if previous else g.load(path)
+            date = g.parse_time(data.get('collected_at'))
             if (path.is_symlink() or g.digest(data) != path.stem or data.get('origin') != 'live_api'
                     or not date or date > g.parse_time(g.now()) or private_data(data)):
                 raise ValueError('Invalid staged evidence')
+            if previous:
+                if path.parent.as_posix() != EVIDENCE.as_posix():
+                    raise ValueError('Unexpected archived evidence path')
+                raw = (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf8')
+                if hashlib.sha256(raw).hexdigest() != previous['sha256']:
+                    raise ValueError('Invalid archived snapshot bytes')
             pid = data['expected_photo_id']; oid = data['record']['observation_id']
             if not re.fullmatch(r'[0-9]+', pid) or not re.fullmatch(r'[0-9]+', oid): raise ValueError('Invalid identity')
-            entry = {'snapshot': data, 'path': path.relative_to(root).as_posix(), 'sha256': file_hash(path)}
-            if pid not in found or data['collected_at'] > found[pid]['snapshot']['collected_at']: found[pid] = entry
+            entry = dict(previous, archive_source='docs/SANEAMENTO_DIREITOS.json',
+                         archive_locator='photos[photo_id=' + pid + '].public_proposal') if previous else {
+                             'snapshot': data, 'path': path.relative_to(root).as_posix(), 'sha256': file_hash(path)}
+            if pid not in found or date > g.parse_time(found[pid]['snapshot']['collected_at']): found[pid] = entry
+            elif date == g.parse_time(found[pid]['snapshot']['collected_at']):
+                if data != found[pid]['snapshot']: raise ValueError('Conflicting snapshots at the same consultation time')
+                if previous: found[pid] = entry
         except (ValueError, KeyError, TypeError, OSError):
-            errors.append({'path': path.relative_to(root).as_posix(), 'error': 'staged_evidence_invalid'})
+            errors.append({'path': str(path) if previous else path.relative_to(root).as_posix(), 'error': 'staged_evidence_invalid'})
     return found, errors
+
+
+def public_history_media(root, tracked):
+    """Path/object inventory reachable from fetched origin refs, not local branches.
+
+    This is a Git reachability inventory, not proof of publication date, removal
+    from caches or a forensic inventory of every version of currently used paths.
+    """
+    try:
+        result = subprocess.run(['git', '-C', str(root), 'rev-list', '--objects', '--remotes=origin'],
+                                capture_output=True, timeout=30, check=True)
+        refs = subprocess.run(['git', '-C', str(root), 'for-each-ref', '--format=%(refname)', 'refs/remotes/origin'],
+                              capture_output=True, timeout=15, check=True)
+        if not refs.stdout.strip() or tracked is None: raise ValueError('No fetched public refs')
+        rows = []
+        for line in result.stdout.decode('utf8').splitlines():
+            oid, _, name = line.partition(' ')
+            if name and Path(name).suffix.lower() in MEDIA and name not in tracked:
+                rows.append({'path': name, 'git_object_id': oid, 'scope': 'history_only_in_fetched_origin',
+                             'priority': 1, 'state': 'pending',
+                             'actions': ['Assess provenance and public exposure; no deletion or history rewrite authorized.']})
+        return {'assessed': True, 'refs': refs.stdout.decode('utf8').splitlines(), 'resources': rows}
+    except (OSError, ValueError, UnicodeError, subprocess.SubprocessError):
+        return {'assessed': False, 'refs': [], 'resources': [], 'reason': 'Git/origin inventory unavailable; not a zero finding.'}
+
+
+def scientific_context(species, proposal):
+    if not proposal: return {'state': 'insufficient_evidence', 'approval_created': False}
+    snapshot = proposal['snapshot']; record = snapshot['record']; taxon = record.get('taxon', {})
+    photo = species['photo']; context = snapshot.get('observation_context', {})
+    association = snapshot.get('photo_present') and str(record.get('photo', {}).get('id')) == str(photo['id'])
+    taxon_matches = str(taxon.get('id')) == str(photo.get('observation_taxon_id', photo.get('taxon_id')))
+    community_matches = str(record.get('community_taxon_id')) == str(taxon.get('id'))
+    return {'quality_grade': record.get('quality_grade'), 'captive': context.get('captive'),
+            'wild_disagreement_count': sum(m.get('metric') == 'wild' and m.get('agree') is False
+                                          for m in context.get('quality_metrics', [])),
+            'photo_association_matches': bool(association), 'taxon_id_matches': taxon_matches,
+            'community_taxon_matches': community_matches, 'source_name': taxon.get('name'),
+            'research_grade_policy_met': record.get('quality_grade') == 'research',
+            'incorrect_identification_established': False,
+            'limitation': 'Casual/captivity is not proof of incorrect identification. Matching source IDs is not independent visual validation.',
+            'approval_created': False}
+
+
+def screenshot_inventory(root, locate, quiz):
+    rows = []
+    for name in ('tela-inicial', 'quiz'):
+        relative = 'docs/images/' + name + '.png'; metadata = g.load(root / ('docs/images/' + name + '.json'), {})
+        if not (root / relative).is_file(): continue
+        pid = str(metadata.get('photo', {}).get('photo_id', ''))
+        linked = next((p for p in quiz if p['photo_id'] == pid), None)
+        rows.append({'path': relative, 'scope': locate(relative), 'priority': 0 if linked and linked['rights_issues'] else 1,
+                     'capture_record': 'docs/images/' + name + '.json', 'captured_at': metadata.get('captured_at'),
+                     'sha256': file_hash(root / relative),
+                     'capture_hash_matches': file_hash(root / relative) == metadata.get('image_sha256'),
+                     'explicit_photo_id': pid or None, 'linked_rights_issues': linked['rights_issues'] if linked else [],
+                     'state': 'pending', 'limitation': 'Capture provenance does not grant rights in depicted media. Inputs alone do not establish which photographs are visible.',
+                     'actions': ['Prioritize publicly displayed derived media; document depicted photo/branding rights or propose replacement/suspension for maintainer decision.']})
+    return rows
+
+
+def documentary_summary(report):
+    """Resource register without duplicating the already archived API snapshots."""
+    value = copy.deepcopy(report)
+    value['report_kind'] = 'catalog_documentary_readiness'
+    for row in value['photos']:
+        proposal = row.get('public_proposal')
+        if not proposal: continue
+        snapshot = proposal.pop('snapshot')
+        proposal['collected_at'] = snapshot['collected_at']
+        proposal['snapshot_content_sha256'] = g.digest(snapshot)
+        proposal['notice'] = 'Read the exact snapshot in archive_source/archive_locator or the original staging path; no new consultation.'
+    return value
+
+
+def public_review(review):
+    value = {key: review.get(key) for key in ('state', 'review_kind', 'reviewed_at', 'content_sha256')}
+    value['reviewer'] = review.get('reviewer') if not private_data(review.get('reviewer')) else None
+    value['private_details_withheld'] = private_data(review)
+    return value
 
 
 def collect_public(root, species, maximum=25, selected=(), refresh=False, client=None):
@@ -221,13 +322,25 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'credit_comparison_limit': 'API attribution can be a licensing notice rather than a person, notably CC0. Do not replace a recorded author with that notice or with the observer.',
             'declared_license': photo.get('license'), 'declared_license_url': photo.get('license_url'),
             'evidenced_license_version': meta.get('license_version'), 'modifications': photo.get('modifications'),
+            'original_collected_at': meta.get('original_collected_at'), 'first_evidenced_at': meta.get('first_evidenced_at'),
             'last_public_collection': proposal['snapshot']['collected_at'] if proposal else None,
-            'local_sha256': photo.get('sha256'), 'scope': locate(photo['path']), 'evidence': evidence, 'public_proposal': proposal,
+            'recorded_sha256': photo.get('sha256'), 'local_sha256': file_hash(g.local_file(root, photo['path'])),
+            'integrity_matches': bool(photo.get('sha256')) and file_hash(g.local_file(root, photo['path'])) == photo.get('sha256'),
+            'scope': locate(photo['path']), 'evidence': evidence, 'public_proposal': proposal,
             'public_source_changes': source_changes,
             'attribution_conditions': ['Preserve source credit, title when supplied, specific origin, evidenced license link and modifications.',
                                        'CC0 retains credit by editorial policy; no author/source endorsement implied.'],
             'registered_permission_state': meta.get('permission_state'), 'investigation_state': 'pending_human_review',
+            'scientific_reviews': [{'organism_id': organism['id'], **public_review(g.status(
+                f"topic:{organism['id']}:photo", current[f"topic:{organism['id']}:photo"], baseline, reviews, g.policy(root)))}
+                for organism in credit['organisms']],
             'rights_issues': rights, 'scientific_issues': science,
+            'scientific_context': scientific_context(s, proposal),
+            'review_preparation': {
+                'state': 'public_metadata_ready_for_conference' if proposal else 'public_metadata_missing',
+                'license_version_publicly_explicit': bool(proposal and proposal['snapshot']['record'].get('photo', {}).get('license_url')),
+                'permission_is_confirmed_by_collection': False,
+                'remaining': rights},
             'priority': 0 if science or set(rights) & {'license_outside_policy', 'current_license_requires_policy_review', 'current_photo_hidden_or_flagged'} else 1,
             'curation_request_id': request_id('licensing', 'quiz-photos'),
             'scientific_request_id': request_id('photography', 'photo') if science else None,
@@ -241,6 +354,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'local_path': p['path'], 'download_url': p.get('download_url'),
             'declared_license': p['license'], 'evidenced_license_version': p['license_version'], 'declared_license_url': p['license_url'],
             'last_public_collection': p['collected_at'], 'local_sha256': p['sha256'], 'scope': locate(p['path']),
+            'integrity_matches': file_hash(g.local_file(root, p['path'])) == p['sha256'],
             'evidence': [{'path': p['evidence_path'], 'sha256': p['evidence_sha256'], 'source_revision_id': p.get('source_revision_id')}],
             'modifications': p.get('modifications'), 'rights_issues': p['rights_issues'],
             'attribution_conditions': ['Credit the supplied author/title, specific source, license/version link and declared image/UI modifications; CC0 credit is editorial policy.'],
@@ -279,12 +393,15 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'actions': ['Review exact component/version, notices, embedded third parties and source/replacement provision through distribution.py record-review.']})
     historical = g.load(root / 'docs/INVESTIGACAO_EVIDENCIAS.json', {}).get('baseline_governance', {})
     quiz = [r for r in rows if r['kind'] == 'quiz_photo']
+    history = public_history_media(root, tracked)
+    screenshots = screenshot_inventory(root, locate, quiz)
     return {'schema_version': 1, 'report_kind': 'rights_investigation', 'checked_at': at or g.now(),
         'mode': 'public_metadata_proposals' if online else 'offline',
         'versions': {'application': (root / 'VERSION.txt').read_text(encoding='utf8').strip() if (root / 'VERSION.txt').is_file() else None,
             'catalog': g.load(root / 'resources/data/catalog_manifest.json', {}).get('version'),
             'catalog_declared_status': g.load(root / 'resources/data/catalog_manifest.json', {}).get('status')},
         'notice': 'Documentary/scientific pending items are not proven copyright violations. Nonprofit status is not inferred permission.',
+        'remote_freshness': 'Source comparisons use the explicitly dated last archived consultation, not a new verification of the remote service. checked_at is the local audit date only.',
         'decisions_created': 0, 'scientific_approvals_created': 0,
         'assurances': g.assurances(),
         'source_inputs': {p: file_hash(root / p) for p in INPUTS},
@@ -300,10 +417,13 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'presentation_permission_findings': sum(bool(r['rights_issues']) for r in rows if r['kind'] == 'presentation_photo'),
             'presentation_scientific_review_pending': sum(r['registered_scientific_state'] not in g.APPROVALS for r in rows if r['kind'] == 'presentation_photo'),
             'scientific_release_blocks': len(source['scientific_release_blocks']), 'other_tracked_media': len(repository_media),
+            'readme_screenshots_assessed': len(screenshots),
+            'history_only_media_paths': len({r['path'] for r in history['resources']}) if history['assessed'] else None,
             'local_unbundled_media': len(source['unbundled_media']), 'dependency_components': len(dependencies)},
         'photos': sorted(rows, key=lambda r: (r['priority'], r['id'])), 'materials': materials,
         'other_tracked_media': repository_media,
-        'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1,
+        'readme_screenshots': screenshots, 'public_git_history': history,
+        'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1 if locate(f['path'])['tracked_in_current_git'] else 3,
             curation_request_id=request_id('licensing', 'historical-media')) for f in source['unbundled_media']],
         'dependencies': {'assessed': bool(package), 'inventory_date': inventory.get('inventoried_at'), 'components': dependencies,
             'binary_records': len(inventory.get('binaries', [])), 'errors': package_gate['dependency_errors'] if package else [],

@@ -159,15 +159,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--online', action='store_true'); parser.add_argument('--max-checks', type=int, default=25)
     parser.add_argument('--rights-report', action='store_true', help='Investigate rights using existing audits; never record a decision')
+    parser.add_argument('--readiness-report', action='store_true', help='Also produce a compact resource register without duplicating archived snapshots')
     parser.add_argument('--package', type=Path, help='Read-only rights assessment of an existing package')
     parser.add_argument('--photo', action='append', default=[], help='Restrict optional online metadata collection to a catalog photo ID')
     parser.add_argument('--refresh', action='store_true', help='Explicitly recollect staged public metadata; never renew review dates')
     args = parser.parse_args()
     if args.rights_report:
-        from rights_investigation import report
+        from rights_investigation import report, documentary_summary
         result = report(package=args.package, online=args.online, maximum=args.max_checks, selected=args.photo, refresh=args.refresh)
         save(ROOT / 'build/rights-investigation.json', result)
+        if args.readiness_report: save(ROOT / 'build/catalog-readiness.json', documentary_summary(result))
         print(write_proposals(result))
     else:
-        if args.package or args.photo or args.refresh: parser.error('--package/--photo/--refresh require --rights-report')
+        if args.package or args.photo or args.refresh or args.readiness_report: parser.error('--package/--photo/--refresh/--readiness-report require --rights-report')
         print(write_proposals(propose_updates(online=args.online, maximum=args.max_checks)))
