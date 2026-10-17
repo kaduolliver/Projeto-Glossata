@@ -17,6 +17,13 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
+      },
+      "administrative_policy": {
+        "id": "reserved-to-project",
+        "decision_record": "docs/IDENTIDADE_VISUAL.json",
+        "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
+        "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
+        "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
       }
     },
     {
@@ -34,6 +41,13 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
+      },
+      "administrative_policy": {
+        "id": "reserved-to-project",
+        "decision_record": "docs/IDENTIDADE_VISUAL.json",
+        "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
+        "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
+        "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
       }
     },
     {
@@ -51,6 +65,13 @@
         "path": "resources/compliance/branding/origin-declaration.json",
         "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
         "scope": "Tool/source declaration only; no permission or ownership approval."
+      },
+      "administrative_policy": {
+        "id": "reserved-to-project",
+        "decision_record": "docs/IDENTIDADE_VISUAL.json",
+        "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
+        "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
+        "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
       }
     },
     {

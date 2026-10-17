@@ -6,8 +6,8 @@
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
     "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
-    "resources/branding/README.md": "e6c836a42de00e6f58201b0702064f86e78adcbe9872536a92a9983e6b3b4d0a",
-    "resources/compliance/asset_rights.json": "ba41f13d0f01de48ded03b661c4120a63df1fe00d67f0849ae7e40847aa35c14",
+    "resources/branding/README.md": "20648d2410fe3adb5f314e0ff0b3587dc685227b92a56a160df48e56f7351c4f",
+    "resources/compliance/asset_rights.json": "cc83abdace7734f7e440f0aee1d715a2017577560c4e49b57e53c91be4f6001f",
     "resources/compliance/branding/origin-declaration.json": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
     "resources/compliance/exploration/amanita.json": "752a55a27b2a88632ffc8e752c896df794678f46886a6c140909d8cc180655de",
     "resources/compliance/exploration/archaea.json": "f903a73d6258f5fb5391e83c54417416ee54bc02ffe1d05c743a1c6a5323bf17",
@@ -498,6 +498,6 @@
     "resources/images/inaturalist/93399523.jpeg": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
     "resources/images/inaturalist/98915545.jpeg": "9eaea35a06a24f33d68d8653d71f66e59397acae102d3c99fdcf2bb897032ec3"
   },
-  "content_sha256": "5ab81315148de2a2240bdbb240ef701536da7ea2548281d7374f882ea57d1857",
+  "content_sha256": "aa2ff593dad39c61fab3e70af8e5cee3a4b7152b98815a9a092650f07e1a990c",
   "limitations": "Identifies bytes and review history; not scientific or legal certification."
 }

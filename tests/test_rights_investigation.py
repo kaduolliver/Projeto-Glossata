@@ -89,6 +89,27 @@ class InvestigationTests(unittest.TestCase):
         self.assertFalse((self.root / 'resources/compliance/permission_history.jsonl').exists())
         self.assertFalse((self.root / 'resources/compliance/review_history.jsonl').exists())
 
+    def test_reserved_branding_policy_and_official_use_intent_do_not_authorize_distribution(self):
+        path = 'resources/branding/synthetic.png'
+        image = self.root / path
+        image.parent.mkdir(parents=True, exist_ok=True)
+        image.write_bytes(b'synthetic branding fixture, not a real icon')
+        asset = {'path': path, 'kind': 'branding',
+                 'sha256': hashlib.sha256(image.read_bytes()).hexdigest(),
+                 'state': 'pending_permission',
+                 'permission': {'holder': None, 'evidence_path': None, 'distribution_allowed': False},
+                 'administrative_policy': {'id': 'reserved-to-project',
+                     'official_use_intended': True, 'general_graphic_reuse_granted': False}}
+        g.save(self.root / 'resources/compliance/asset_rights.json', {'assets': [asset]})
+        before = self.files()
+        for _ in range(2):
+            result = distribution.release_gate(self.root)
+            self.assertIn({'path': path, 'error': 'asset_permission_missing'}, result['asset_licensing'])
+            self.assertNotIn({'path': path, 'error': 'asset_changed_or_missing'}, result['asset_licensing'])
+            self.assertTrue(result['distribution_blocked'])
+            self.assertEqual(self.files(), before)
+        self.assertFalse((self.root / 'resources/compliance/permission_history.jsonl').exists())
+
     def test_casual_captive_context_is_observation_evidence_not_taxon_reclassification(self):
         observation = self.observation(); observation['quality_grade'] = 'casual'
         before = self.files(); row = self.run_report(online=True, client=self.client(observation))['photos'][0]
