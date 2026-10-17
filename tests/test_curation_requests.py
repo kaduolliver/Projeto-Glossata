@@ -73,6 +73,21 @@ class QueueTests(unittest.TestCase):
         self.assertEqual(next(r for r in self.queue(a)['requests'] if r['bucket']=='quiz-photos')['priority'],1)
         a['photo_licensing'][0]['errors']=['license_outside_policy']
         self.assertEqual(next(r for r in self.queue(a)['requests'] if r['bucket']=='quiz-photos')['priority'],0)
+
+    def test_admission_uses_existing_licensing_queue_and_withholds_private_evidence(self):
+        path = 'resources/compliance/admissions/123.json'
+        governance.save(self.root/path, {'schema_version': 1, 'species_id': 123})
+        audit = copy.deepcopy(self.audit)
+        audit['scientific_findings'] = [{'key': 'admission:123', 'state': 'draft', 'severity': 'medium'}]
+        with mock.patch.object(governance, 'records', return_value={'admission:123': {
+                'kind': 'admission', 'species_id': '123', 'topic': 'licensing'}}):
+            queue = self.queue(audit)
+        row = next(r for r in queue['requests'] if r['bucket']=='licensing')
+        self.assertEqual(row['area'], 'licensing')
+        self.assertEqual(row['findings'][0]['key'], 'admission:123')
+        self.assertIn(path, {p['path'] for p in row['findings'][0]['evidence']})
+        governance.save(self.root/path, {'private_location': 'withheld'})
+        self.assertIsNone(requests.public_reference(self.root, path))
     def test_correction_proposal_is_a_draft_and_cannot_overwrite_resources(self):
         queue=self.queue();rid=queue['requests'][0]['id']
         output=self.root/'build/curation/private/proposal.json'

@@ -2,13 +2,15 @@
 
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
-Manutenção 1.7.0: o aplicativo acrescenta gerenciamento de solicitações de curadoria, reutilizando **2.4.0 sem alterar bytes, evidências, revisões ou hashes do catálogo**. Modelos, relatórios e filas ficam fora dos recursos de jogo. Registrar uma decisão humana futura continua exigindo atualização/versionamento dos dados pelo fluxo original; criar uma Issue não é atualização do catálogo.
+Manutenção 1.7.0, etapa anterior à prontidão de expansão: o aplicativo acrescentou gerenciamento de solicitações de curadoria, reutilizando **2.4.0 sem alterar bytes, evidências, revisões ou hashes do catálogo naquela etapa**. Modelos, relatórios e filas ficam fora dos recursos de jogo. Registrar uma decisão humana futura continua exigindo atualização/versionamento dos dados pelo fluxo original; criar uma Issue não é atualização do catálogo.
 
 Ativação autorizada em 2026-10-16: seis solicitações reais únicas no GitHub, uma atualização controlada e habilitação semanal documentadas em [CURADORIA_AUTOMATIZADA.md](CURADORIA_AUTOMATIZADA.md). Sem novas revisões científicas, permissões de uso ou versão de catálogo; os gates de distribuição e pendências anteriores permanecem ativos.
 
 Limpeza de repositório em 2026-10-16: 37 imagens legadas sem uso no bundle foram retiradas da árvore atual, preservando os registros de substituição e os hashes do catálogo 2.4.0. Nenhuma permissão concedida ou pendência ativa encerrada; [inventário e limites](LIMPEZA_REPOSITORIO.md).
 
 ## [2.4.0] — Não lançado; receitas e avaliação pedagógica automática
+
+Prontidão de expansão, 2026-10-17: completado o mesmo snapshot ainda não lançado, conforme `VERSIONAMENTO.md`, somente para atualizar o hash de inventário de `scripts/build_education.py` após sua parametrização para validação isolada sem escrita. O hash anterior permanece em `inventory_history`; autorização, titular e estado pendente foram preservados. O manifesto tem nova identidade de bytes por essa alteração documental. Os 122 organismos, 120 fotos de quiz, 109 fotos de apresentação, textos científicos e eventos reais continuam idênticos. Nenhuma licença foi concedida, nenhuma revisão foi realizada e nenhum lançamento foi publicado. Consulte [PRONTIDAO_EXPANSAO_CATALOGO.md](PRONTIDAO_EXPANSAO_CATALOGO.md).
 
 Aplicativo **1.6.0**. Novo corpus derivado `progressive_hints.json`, com receitas, identidade/foto, fontes e localizadores, avaliação `approved_automated` explicitamente pedagógica. Política e implementação entram no hash; o gerador não renova datas. Notas de organismo podem apoiar níveis superiores com escopo individual explícito, sem redefinir o grupo. Quatro conteúdos inadequados como morfologia prévia continuam excluídos. As 290 avaliações antigas, revisões científicas, baseline e permissões permanecem preservadas; nenhuma aprovação humana ou cessão de direitos é criada.
 

@@ -54,7 +54,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 | SQLite e snapshots | histórico 6; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
 | Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
 | Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
-| Testes registrados | **25 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
+| Testes registrados | **26 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
 
 Valores derivados das fontes locais. Este bloco não comprova publicação, execução da CI ou aprovação do gate de distribuição.
 <!-- glossata:status:end -->
@@ -248,6 +248,8 @@ Esse comando é o fluxo de distribuição e falha enquanto houver permissões ou
 Inicie pelo atalho `package/Projeto Glossata.lnk` ou por `package/run_glossata_game.cmd`. O executável é `package/projeto_glossata.exe`; os perfis e o histórico existentes mantêm o mesmo diretório de dados.
 
 ## Catálogo, atualização e curadoria
+
+O [processo de admissão e prontidão para expansão](docs/PRONTIDAO_EXPANSAO_CATALOGO.md) reúne requisitos por organismo, direitos por recurso, revisões editoriais e propostas offline. A preparação é testada com fixtures sintéticas; os bloqueios documentais existentes continuam ativos e nenhuma nova espécie foi admitida nesta etapa.
 
 A aplicação **não depende de consultas à internet durante o jogo**. Os scripts de importação utilizam fontes externas, incluindo o iNaturalist, para preparar dados e recursos locais. A proveniência e os direitos de uso das imagens devem ser respeitados.
 

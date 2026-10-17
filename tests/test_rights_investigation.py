@@ -2,8 +2,10 @@
 import copy
 import hashlib
 import json
+import os
 from pathlib import Path
 import sys
+import subprocess
 import unittest
 from unittest import mock
 import urllib.error
@@ -174,6 +176,91 @@ class InvestigationTests(unittest.TestCase):
         self.assertIn('dependency_not_inventoried', {e['error'] for e in report['dependencies']['errors']})
         self.assertTrue(report['photos'][0]['scope']['qrc_build_input'])
         self.assertEqual(report['photos'][0]['scope']['package_embedded_presence'], 'not_verified')
+
+    def test_committed_snapshots_are_replayed_without_cache_or_new_consultation(self):
+        original = self.run_report(online=True, client=self.client())
+        g.save(self.root / 'docs/SANEAMENTO_DIREITOS.json', original)
+        for path in (self.root / rights.EVIDENCE).glob('*.json'): path.unlink()
+        client = self.client()
+        report = self.run_report(online=True, client=client)
+        client.get.assert_not_called()
+        proposal = report['photos'][0]['public_proposal']
+        self.assertEqual(proposal['snapshot'], original['photos'][0]['public_proposal']['snapshot'])
+        self.assertEqual(proposal['archive_source'], 'docs/SANEAMENTO_DIREITOS.json')
+        self.assertEqual(report['summary']['queries_this_run'], 0)
+        self.assertTrue(report['distribution_gate']['source_blocked'])
+        self.assertEqual(report['decisions_created'], 0)
+        archive = g.load(self.root / 'docs/SANEAMENTO_DIREITOS.json')
+        archive['photos'][0]['public_proposal']['snapshot']['record']['photo']['license_code'] = 'cc0'
+        g.save(self.root / 'docs/SANEAMENTO_DIREITOS.json', archive)
+        result = self.run_report()
+        self.assertTrue(result['staged_evidence_errors'])
+        self.assertEqual(result['summary']['photos_with_staged_public_metadata'], 0)
+
+    def test_documentary_register_keeps_traceability_without_repeating_snapshots(self):
+        original = self.run_report(online=True, client=self.client())
+        g.save(self.root / 'docs/SANEAMENTO_DIREITOS.json', original)
+        replay = self.run_report(); register = rights.documentary_summary(replay)
+        reference = register['photos'][0]['public_proposal']
+        self.assertNotIn('snapshot', reference)
+        self.assertEqual(reference['snapshot_content_sha256'], g.digest(replay['photos'][0]['public_proposal']['snapshot']))
+        self.assertEqual(reference['archive_source'], 'docs/SANEAMENTO_DIREITOS.json')
+        self.assertIn('snapshot', replay['photos'][0]['public_proposal'])
+        self.assertEqual(register['decisions_created'], 0)
+
+    def test_actual_bytes_and_review_privacy_are_not_inferred_from_declared_metadata(self):
+        row = self.run_report()['photos'][0]
+        self.assertEqual(row['recorded_sha256'], 'a'*64)
+        self.assertIsNone(row['local_sha256']); self.assertFalse(row['integrity_matches'])
+        image = self.root / self.fixture.species['photo']['path']; image.parent.mkdir(parents=True, exist_ok=True)
+        image.write_bytes(b'SYNTHETIC changed bytes')
+        row = self.run_report()['photos'][0]
+        self.assertEqual(row['local_sha256'], rights.file_hash(image)); self.assertFalse(row['integrity_matches'])
+        public = rights.public_review({'state': 'pending', 'reviewer': 'private@example.invalid',
+                                      'rationale': 'Confidential fixture <private@example.invalid>'})
+        self.assertIsNone(public['reviewer']); self.assertTrue(public['private_details_withheld'])
+        self.assertNotIn('example.invalid', json.dumps(public))
+
+    def test_captive_casual_grade_is_reported_separately_from_matching_identity(self):
+        obs = self.observation(); obs['quality_grade'] = 'casual'
+        row = self.run_report(online=True, client=self.client(obs))['photos'][0]
+        context = row['scientific_context']
+        self.assertTrue(context['photo_association_matches']); self.assertTrue(context['taxon_id_matches'])
+        self.assertTrue(context['community_taxon_matches']); self.assertTrue(context['captive'])
+        self.assertEqual(context['wild_disagreement_count'], 1)
+        self.assertFalse(context['research_grade_policy_met'])
+        self.assertFalse(context['incorrect_identification_established'])
+
+    def test_readme_capture_carries_its_photo_pending_items_not_a_new_grant(self):
+        image = self.root / 'docs/images/quiz.png'; image.parent.mkdir(parents=True); image.write_bytes(b'SYNTHETIC CAPTURE')
+        g.save(image.with_suffix('.json'), {'captured_at': '2026-01-01T00:00:00+00:00',
+            'image_sha256': rights.file_hash(image), 'photo': {'photo_id': '7'}})
+        rows = self.run_report()['readme_screenshots']
+        self.assertEqual(len(rows), 1); self.assertTrue(rows[0]['capture_hash_matches'])
+        self.assertEqual(rows[0]['priority'], 0); self.assertTrue(rows[0]['linked_rights_issues'])
+        self.assertEqual(rows[0]['state'], 'pending')
+
+    def git(self, *args):
+        env = dict(os.environ, GIT_CONFIG_NOSYSTEM='1', GIT_CONFIG_GLOBAL=os.devnull)
+        return subprocess.check_output(['git', '-C', str(self.root), '-c', 'core.hooksPath=', '-c', 'commit.gpgsign=false',
+            '-c', 'user.name=Synthetic fixture', '-c', 'user.email=fixture@example.invalid', *args], env=env,
+            stderr=subprocess.DEVNULL).decode('utf8').strip()
+
+    def test_public_history_inventory_excludes_unpublished_local_branch(self):
+        self.git('init', '-q')
+        image = self.root / 'old.jpg'; image.write_bytes(b'Synthetic public media')
+        self.git('add', 'old.jpg'); self.git('commit', '-qm', 'Synthetic historical media')
+        image.unlink(); self.git('add', '-u'); self.git('commit', '-qm', 'Synthetic deletion')
+        public = self.git('rev-parse', 'HEAD'); self.git('update-ref', 'refs/remotes/origin/main', public)
+        self.git('checkout', '-qb', 'private-fixture')
+        private = self.root / 'local-only.png'; private.write_bytes(b'Synthetic private media')
+        self.git('add', 'local-only.png'); self.git('commit', '-qm', 'Synthetic private branch')
+        private.unlink(); self.git('add', '-u'); self.git('commit', '-qm', 'Synthetic local deletion')
+        report = self.run_report(); history = report['public_git_history']
+        self.assertTrue(history['assessed'])
+        self.assertEqual({r['path'] for r in history['resources']}, {'old.jpg'})
+        self.assertEqual(report['summary']['history_only_media_paths'], 1)
+        self.assertFalse(any('local-only' in r['path'] for r in history['resources']))
 
 
 if __name__ == '__main__':
