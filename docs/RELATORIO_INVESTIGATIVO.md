@@ -37,6 +37,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-01 — Resultados deixam de acompanhar o perfil renomeado
 
+**Correção local em 2026-10-16:** perfis e resultados usam ID permanente; a sessão captura ID/nome no início, nomes ficam como snapshots e exclusão é lógica. Migração SQLite v4 transacional/idempotente preserva tabelas anteriores e rankings. Resultados pré-ID permanecem sinalizados como vínculo pendente, sem atribuição por nome. Consulte [esquema, política de ambiguidades e testes](IDENTIDADE_JOGADORES.md). O relato abaixo documenta a implementação anterior; bancos pessoais não foram usados nos testes.
+
 **Evidência:** [renamePlayerProfile](../src/infrastructure/persistence/SqliteGameHistoryRepository.cpp#L405) altera somente `player_profiles.name`; [consulta de resultados](../src/infrastructure/persistence/SqliteGameHistoryRepository.cpp#L338) e [métricas históricas](../src/infrastructure/persistence/SqliteGameHistoryRepository.cpp#L366) usam o nome armazenado nas outras tabelas.
 
 **Reprodução:** a sonda C++ vinculada à implementação de produção criou “Ada”, salvou um resultado de seis unidades e um acerto e renomeou o perfil para “Lia”. A operação retornou sucesso. A consulta por “Lia” retornou zero resultados; por “Ada”, um. Os pontos continuam no banco, associados ao nome antigo.
@@ -118,6 +120,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 **Critério de conclusão:** testes bloqueiam downgrade para HTTP, loopback, redes privadas, redirecionamentos encadeados e destinos fora da política, sem abrir conexões durante os testes. Consultas continuam gerando somente propostas.
 
 ## INV-07 — Perfis com diferenças de caixa em caracteres acentuados coexistem
+
+**Mitigação junto ao INV-01 em 2026-10-16:** novos conflitos usam chave NFC/case folding e são recusados. Colisões antigas recebem IDs separados e notas de migração, sem fusão ou renomeação presumida; a seleção atual usa IDs. O cenário original abaixo permanece como histórico. Consulte [política e testes de identidade](IDENTIDADE_JOGADORES.md).
 
 **Evidência:** [chave de nomes](../src/infrastructure/persistence/SqliteGameHistoryRepository.cpp#L128) usa `COLLATE NOCASE`. A implementação real aceitou “João” e “JOÃO” como dois perfis.
 

@@ -34,11 +34,11 @@ Exploração: acesso rápido abre os nós científicos Animalia, Plantae e Fungi
 
 ## Persistência e integridade
 
-QStandardPaths::AppDataLocation mantém glossata_history.sqlite e glossata_catalog.sqlite. Nunca alterar bancos pessoais em testes/capturas. O esquema do histórico continua v3: game_runs/answer_records preservam regras, pontos inteiros, alternativas e snapshots verificáveis de assistência. Regras atuais: identification-v3-assistance; v2/legacy são interpretadas conforme o contrato original, sem recálculo retroativo.
+QStandardPaths::AppDataLocation mantém glossata_history.sqlite e glossata_catalog.sqlite. Nunca alterar bancos pessoais em testes/capturas. Histórico SQLite v4: game_runs referencia o ID permanente do perfil e preserva o nome do início como snapshot; answer_records conserva pontos inteiros e snapshots de assistência. Migração transacional/idempotente mantém arquivos lógicos das tabelas antigas; resultados pré-ID ficam como legacy_unresolved, sem associação automática a perfis ativos pelo nome. Regras atuais: identification-v4-progressive; v3/v2/legacy mantêm o contrato histórico, sem recálculo de pontos. Consulte docs/IDENTIDADE_JOGADORES.md.
 
 O catálogo passa à migração v2: DDL e carga transacionais, hash do bundle, índices, chaves estrangeiras e cache. educational_kingdom no SQLite conserva associação histórica. Nós antigos não são apagados; as raízes atuais são domínios. IDs edu: são aceitos somente por compatibilidade, sem aparecer como grupos naturais no menu.
 
-Perfis têm nomes aparados, limite de 32 caracteres e unicidade COLLATE NOCASE. Um perfil mínimo é preservado. A partida captura o jogador ao iniciar; trocar o perfil não transfere resultados. Ranking mostra melhor resultado e última partida separadamente. As seis conquistas mantêm as regras existentes.
+Perfis têm UUID permanente, nome editável aparado, limite de 32 unidades UTF-16 e prevenção de novos conflitos por NFC/case folding. Colisões Unicode antigas recebem IDs separados, sem fusão. Um perfil ativo mínimo é preservado na interface. A sessão captura ID e nome ao iniciar; seleção, renomeação ou exclusão posterior não transferem resultados. Exclusão é lógica e nomes reutilizados geram IDs novos. Ranking conserva melhor/última partida e sinaliza registros legados ou de perfis excluídos. As seis conquistas mantêm as regras existentes.
 
 ## Fontes e direitos
 

@@ -132,7 +132,7 @@ O catálogo possui 122 registros ativos e 120 arquivos distintos de imagem. Exis
 
 ### Progresso e perfis
 
-- Perfis locais de jogadores, com criação, renomeação, seleção e exclusão sob regras de integridade.
+- Perfis locais com identidade permanente: renomear mantém a propriedade dos resultados, excluir preserva o histórico e reutilizar um nome cria outro jogador. A [migração para IDs](docs/IDENTIDADE_JOGADORES.md) mantém resultados pré-ID como legado de vínculo pendente, sem atribuí-los automaticamente por coincidência de nome.
 - Histórico de respostas e partidas, métricas de precisão e uso de dicas.
 - Rankings locais com distinção entre recorde e última partida.
 - Conquistas e estatísticas associadas à experiência disponível.
