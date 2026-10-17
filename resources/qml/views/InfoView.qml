@@ -17,7 +17,8 @@ Item {
         const evidence = review.evidence || []
         const expired = !!review.due_at && Date.parse(review.due_at) <= Date.now()
         return (expired ? "Revisão vencida" : (review.label || "Revisão humana não documentada"))
-            + " · Responsável: " + (review.reviewer || "não registrado")
+            + " · Responsável declarado: " + (review.reviewer || "não registrado")
+            + " · Autoria não autenticada por estes registros e hashes"
             + " · Data: " + (review.reviewed_at || "não comprovada")
             + " · Escopo: " + (review.claim_scope || "a validar")
             + (review.due_at ? " · Prazo: " + review.due_at : "")
@@ -75,7 +76,7 @@ Item {
                 }
                 Label { text: "Domínio: " + (view.details.domain || "Não informado") + " · Linhagem: " + (view.details.kingdom || "Não informada"); color: "#86A5AA"; font.pixelSize: 13; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Label { text: "Conteúdo legado em revisão. As fontes citadas e os testes automáticos não equivalem a validação por especialista. Uma ocorrência fotografada não demonstra toda a distribuição da espécie."; color: "#D9BA7D"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                Label { visible: view.showSources; text: view.reviewText(view.profile.summary); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "speciesReviewStatus"; visible: view.showSources; text: view.reviewText(view.profile.summary); color: "#86A5AA"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Repeater {
                     model: view.sections
                     delegate: RowLayout {

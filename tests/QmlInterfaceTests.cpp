@@ -338,6 +338,10 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         QVERIFY(item->height()>=38);
     }
     QVERIFY(click("speciesSourcesButton"));
+    auto reviewStatus=findVisualItem(window->contentItem(),"speciesReviewStatus");
+    QVERIFY(reviewStatus && reviewStatus->isVisible());
+    QVERIFY(reviewStatus->property("text").toString().contains(QStringLiteral("Responsável declarado")));
+    QVERIFY(reviewStatus->property("text").toString().contains(QStringLiteral("Autoria não autenticada")));
     QVERIFY(snapshot("information-sources"));
     QVERIFY(click("speciesSourcesButton"));
     QVERIFY(click("speciesContinueButton"));
