@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Atualização documental em 2026-10-17, sem lançamento: a adoção administrativa dos três ícones atuais está em [IDENTIDADE_VISUAL.md](IDENTIDADE_VISUAL.md). O manifesto 2.4.0 não lançado acompanha a atualização do README de branding, sem alteração das imagens, dados científicos, evidências anteriores, políticas ou permissões. Os três direitos gráficos continuam pendentes.
+
 A versão do catálogo é independente de `VERSION.txt` (aplicativo). Cada snapshot registra os hashes dos dados, revisões, políticas, evidências e mídias em `resources/data/catalog_manifest.json`. O manifesto é embarcado no executável, copiado para o pacote e referenciado pelo manifesto de compilação. Git preserva os snapshots anteriores; nenhuma revisão humana recebe uma nova data pela atualização da versão.
 
 Manutenção 1.7.0, etapa anterior à prontidão de expansão: o aplicativo acrescentou gerenciamento de solicitações de curadoria, reutilizando **2.4.0 sem alterar bytes, evidências, revisões ou hashes do catálogo naquela etapa**. Modelos, relatórios e filas ficam fora dos recursos de jogo. Registrar uma decisão humana futura continua exigindo atualização/versionamento dos dados pelo fluxo original; criar uma Issue não é atualização do catálogo.

@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "administrative_identity_adoption",
+  "recorded_on": "2026-10-17",
+  "declared_by": "Carlos Eduardo Lima de Oliveira",
+  "identity_basis": "Nome fornecido pelo mantenedor; este registro não autentica sua identidade.",
+  "decision_basis": "Solicitação expressa do mantenedor para preservar os três ícones atuais como identidade visual oficial e documentar sua direção criativa e o uso declarado do ChatGPT.",
+  "visual_description": "Mariposa estilizada e biodiversidade.",
+  "origin_statement_path": "resources/compliance/branding/origin-declaration.json",
+  "files": {
+    "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+    "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
+  },
+  "graphic_license_activated": false,
+  "permission_granted_by_this_record": false,
+  "scientific_or_legal_approval": false,
+  "governance_effect": "Nenhuma alteração de permissões, ledgers ou bloqueios de distribuição. Registro administrativo, não evento de aprovação de direitos."
+}
