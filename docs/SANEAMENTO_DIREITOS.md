@@ -1,5 +1,7 @@
 # Investigação de direitos e associações científicas — INV-08
 
+> Nota administrativa de 2026-10-17: a expressão “open source” no contexto histórico abaixo descreve a intenção do projeto, sem demonstrar licença própria já concedida. O código é público e a escolha permanece pendente. Consulte o [plano de licenciamento](PLANO_LICENCIAMENTO.md); as evidências, contagens e pendências desta investigação foram preservadas.
+
 Investigação local e consultas públicas em **17/10/2026**, partindo de `9c43bb10bcfcc32e57d9e6019703734fa5f11325`. O projeto é educacional, open source, sem fins lucrativos e experimental; isso não é tratado como licença automática de conteúdo de terceiros. Há um mantenedor, sem equipe externa de curadoria. Não se criou autorização, especialista, consentimento ou revisão humana.
 
 O [relatório estruturado por fotografia/material](SANEAMENTO_DIREITOS.json) é um **snapshot histórico desta intervenção**, com campos de fonte, táxon, crédito registrado, licença declarada, comprovação, data real, hashes, divergências, prioridade, superfícies e ações. Não é uma nova fonte de permissões. O estado atual deve ser regenerado pelo comando abaixo, usando os mesmos validadores e ledgers do projeto.

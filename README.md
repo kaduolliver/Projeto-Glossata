@@ -321,11 +321,13 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 
 ## Participação e contato
 
-O projeto é atualmente mantido de forma independente. Ideias, correções e relatos de problemas podem ser apresentados pelas [Issues do repositório](https://github.com/kaduolliver/Projeto-Glossata/issues). Contribuições de código ou conteúdo devem ser alinhadas previamente com a manutenção, especialmente quando envolverem taxonomia, fontes e licenciamento de imagens.
+O projeto é atualmente mantido de forma independente. Ideias, correções e relatos de problemas podem ser apresentados pelas [Issues do repositório](https://github.com/kaduolliver/Projeto-Glossata/issues). Consulte [CONTRIBUTING.md](CONTRIBUTING.md) para Pull Requests, testes, fontes científicas e declaração de origem/direitos. A incorporação de código ou conteúdo depende de condições de uso documentadas; enviar uma proposta não implica cessão nem aceitação de uma licença futura.
 
 ## Direitos e licenças
 
-**Gratuidade e ausência de finalidade lucrativa não significam, por si só, licença de código aberto.** Consulte o repositório para verificar se existe uma licença de software expressa antes de reutilizar ou redistribuir o código. Fotografias e dados de terceiros podem possuir licenças e exigências de atribuição próprias; veja os créditos e registros de proveniência.
+**O código é público; a licença própria ainda não foi escolhida.** A iniciativa pretende evoluir como open source, mas gratuidade e ausência de finalidade lucrativa não concedem uma licença geral. O [plano de licenciamento](docs/PLANO_LICENCIAMENTO.md) compara MIT, Apache-2.0 e GPLv3 e reserva a decisão ao mantenedor, após conferir titularidade e dependências. Não há `LICENSE` definitivo nesta etapa.
+
+Fotografias mantêm licenças individuais; dados externos, textos educativos, documentação, identidade visual e bibliotecas exigem tratamento por camada. Consulte os [direitos e limites](docs/DIREITOS_E_LICENCAS.md), o [inventário documental](docs/INVENTARIO_LICENCIAMENTO.json) e os [créditos](docs/PHOTO_CREDITS.md). As propostas administrativas não concedem direitos sobre materiais de terceiros nem liberam os gates de distribuição.
 
 ---
 

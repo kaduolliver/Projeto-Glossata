@@ -2,6 +2,8 @@
 
 Nenhuma licença global foi aplicada nesta etapa. Repositório público, gratuidade, finalidade educativa e referência bibliográfica não bastam para presumir permissão de cópia de um material. A decisão sobre direitos dos materiais próprios pertence ao mantenedor, após confirmar sua autoria/titularidade.
 
+O código público tem intenção de evolução open source, sem uma licença própria escolhida. A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) compara opções, delimita as camadas e documenta as versões exatas do pacote inspecionado; a [proposta de decisão](propostas/LICENCIAMENTO_CODIGO.md) não está ativada. [CONTRIBUTING.md](../CONTRIBUTING.md) orienta origem, direitos e revisão das contribuições sem cessão ou anuência a licença futura. Nenhum desses documentos substitui os registros individuais de permissão.
+
 | Camada | Registro | Decisão pendente |
 | --- | --- | --- |
 | Código próprio | `src/`, scripts e QML de autoria confirmada | Escolher licença e confirmar contribuições/titulares |
