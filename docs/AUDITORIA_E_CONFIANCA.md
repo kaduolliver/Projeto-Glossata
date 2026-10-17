@@ -2,6 +2,8 @@
 
 Revisão local em **2026-10-17**, sobre a base `51e1b7a15d665d2ca4b732f7d911e7ffdd7a66a8`. Há um mantenedor; não foi criado revisor independente, autenticação de especialista ou decisão de curadoria. Nenhum evento anterior foi substituído, reserializado ou recalculado.
 
+**Observação posterior, na estabilização de 17/10/2026:** a proteção remota foi novamente consultada em leitura e o ruleset 25303072 foi encontrado ativo. Consulte [PROTECAO_REPOSITORIO.md](PROTECAO_REPOSITORIO.md) e o [snapshot da consulta](VERIFICACAO_ESTABILIZACAO_GITHUB.json). As declarações abaixo sobre ausência de consulta/ativação descrevem somente a implementação INV-09; as limitações de autenticação permanecem.
+
 ## Garantias e raízes de confiança
 
 | Propriedade | Garantia oferecida | Limite |

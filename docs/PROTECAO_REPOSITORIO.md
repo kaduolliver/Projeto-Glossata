@@ -1,6 +1,22 @@
 # Proteção do repositório para manutenção individual
 
-> As observações remotas e execuções abaixo são registros datados; não foram reconsultadas na correção documental INV-10. A proposta continua distinta de configurações efetivamente ativadas. Consulte o [estado local atual](ESTADO_DO_PROJETO.md) para versões e testes.
+## Estado observado na estabilização — 17/10/2026
+
+A [nova consulta somente de leitura](VERIFICACAO_ESTABILIZACAO_GITHUB.json), realizada em **2026-10-17 às 13:36:55 UTC**, confirmou `main.protected: true` e o [ruleset **25303072**](https://github.com/kaduolliver/Projeto-Glossata/rules/25303072) com `enforcement: active`. O alvo é somente `refs/heads/main`, sem exclusões ou atores de bypass. As regras efetivas consultadas pertencem a esse ruleset:
+
+- Bloqueios de exclusão e alterações sem avanço direto (`deletion`, `non_fast_forward`).
+- Pull request obrigatório, zero aprovações externas, sem aprovação de CODEOWNERS/último push e com resolução das conversas.
+- Somente **`offline-validation`**, emitido pelo GitHub Actions (`integration_id: 15368`), obrigatório e com base atualizada.
+
+O check técnico do commit `5d739e7817754a9b7da8e982088a3ff224cf559f` estava aprovado; `distribution-permissions` estava reprovado e **não** integra os checks obrigatórios de desenvolvimento. O workflow global pode aparecer vermelho por esse motivo. Permissão padrão dos workflows: `read`; aprovação de PRs por Actions: `false`. As permissões locais continuam mínimas, com escrita em Issues restrita ao job autorizado de sincronização.
+
+**Esta auditoria não ativou nem alterou o ruleset.** A API consultada não identifica aqui quem efetuou a ativação; não atribuímos autoria administrativa por suposição. A configuração observada é compatível com manutenção individual. Não tentamos force push ou exclusão da branch real. A leitura da configuração não equivale a um ensaio destrutivo ou à garantia de que um administrador nunca alterará as regras. O inspetor também não infere proteção clássica adicional a partir de rulesets. Uma consulta GET adicional ao endpoint clássico `/branches/main/protection` retornou 404 (`Branch not protected`); isso não contradiz a proteção do ruleset, demonstrada pelos endpoints de branch e regras efetivas.
+
+As alterações de estabilização seguem por branch própria e PR, sem bypass ou push direto para `main`. Resultados e limitações estão em [AUDITORIA_ESTABILIZACAO.md](AUDITORIA_ESTABILIZACAO.md). Reexecute `repository_protection.py inspect` para observar mudanças futuras; o JSON preservado é evidência datada, não monitoramento contínuo.
+
+## Registro histórico da preparação INV-04 — 16/10/2026
+
+> As seções seguintes preservam a observação anterior, quando a proteção ainda estava pendente. A correção INV-10 não a reconsultou. A ativação agora observada está registrada acima; as expressões “pendente” abaixo descrevem aquela etapa. Consulte o [estado local atual](ESTADO_DO_PROJETO.md) para versões e testes.
 
 ## Situação verificada e escopo
 
@@ -106,7 +122,7 @@ Falhas de autenticação, privilégios, API ou paginação não são tratadas co
 - Os testes de workflows conferem invariantes do formato usado; não são um parser YAML geral nem uma execução do GitHub Actions. `actionlint` não estava disponível neste ambiente. A CI desta implementação ainda não foi executada remotamente porque não houve publicação da branch.
 - Não houve mudança visual, de pontuação, banco pessoal ou curadoria. Aplicativo 1.7.0 e catálogo 2.4.0 continuam não lançados; não há nova versão ou tag por uma alteração administrativa ainda em preparação.
 
-## Procedimento de integração e ativação — pendente
+## Procedimento original de integração e ativação — histórico
 
 1. Revisar os commits locais e os resultados dos testes. Publicar a branch de trabalho e abrir PR **somente quando essas ações forem autorizadas**; não fazer push diretamente para `main`. O relatório investigativo anterior também está em um commit local ainda não enviado.
 2. Integrar por PR após o check técnico passar. Conferir que `offline-validation` é emitido pelo GitHub Actions no commit atual; a integração `15368` foi observada nesta coleta e deve ser revista se a origem do check mudar.

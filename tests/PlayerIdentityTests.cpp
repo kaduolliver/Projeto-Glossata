@@ -64,6 +64,9 @@ private slots:
     void migrateV4FailureRollsBackKeysAndGuards();
     void migrateV4RetiredProfilesKeepNamesAndResults();
     void unsupportedPolicyAndInconsistentKeysFailClosed();
+    void incompleteCurrentSchemaFailsClosed_data();
+    void incompleteCurrentSchemaFailsClosed();
+    void incompleteV5MigrationRollsBackAndKeepsResults();
 };
 
 void PlayerIdentityTests::createRenameReopenAndKeepOwnership()
@@ -404,6 +407,67 @@ void PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed()
         Inspection i(path); QSqlQuery q(i.db); QVERIFY(q.exec("SELECT player_id,best_units FROM ranking_records")); QVERIFY(q.next());
         QCOMPARE(q.value(0).toString(),id); QCOMPARE(q.value(1).toInt(),6);
     }
+}
+
+void PlayerIdentityTests::incompleteCurrentSchemaFailsClosed_data()
+{
+    QTest::addColumn<QString>("damage");
+    QTest::newRow("missing-name-guard") << QString("DROP TRIGGER player_name_insert");
+    QTest::newRow("missing-checkpoint-guard") << QString("DROP TRIGGER checkpoint_identity_immutable");
+    QTest::newRow("missing-checkpoint-table") << QString("DROP TABLE session_checkpoints");
+    QTest::newRow("missing-answer-column") << QString("ALTER TABLE answer_records RENAME COLUMN hint_snapshot TO unsupported_snapshot");
+    QTest::newRow("foreign-key-violation") << QString("UPDATE ranking_records SET player_id='unknown-fixture-id'");
+    QTest::newRow("future-schema") << QString("PRAGMA user_version=99");
+}
+
+void PlayerIdentityTests::incompleteCurrentSchemaFailsClosed()
+{
+    QFETCH(QString, damage);
+    QTemporaryDir dir; const auto path=dir.filePath("incompatible.sqlite"); QString owner;
+    {
+        SqliteGameHistoryRepository repo(path); const auto p=repo.createPlayer("João"); owner=p.id;
+        QVERIFY(p.selectable()); QVERIFY(repo.saveResult(p.identity(),12,2,{},"retained-game"));
+    }
+    QStringList before;
+    {
+        Inspection i(path); QSqlQuery q(i.db); QVERIFY(q.exec(damage)); before=schema(i.db);
+    }
+    for (int attempt=0; attempt<2; ++attempt) {
+        SqliteGameHistoryRepository refused(path);
+        QVERIFY(refused.profiles().isEmpty());
+        QVERIFY(!refused.createPlayer("JOÃO").selectable());
+        QVERIFY(!refused.saveResult({owner,"João"},6,1,{},"must-not-be-recorded"));
+    }
+    Inspection i(path); QCOMPARE(schema(i.db),before); QSqlQuery q(i.db);
+    QVERIFY(q.exec("SELECT player_id,score_units FROM game_runs")); QVERIFY(q.next());
+    QCOMPARE(q.value(0).toString(),owner); QCOMPARE(q.value(1).toInt(),12); QVERIFY(!q.next());
+    QVERIFY(q.exec("SELECT COUNT(*) FROM player_profiles")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),1);
+}
+
+void PlayerIdentityTests::incompleteV5MigrationRollsBackAndKeepsResults()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("incomplete-v5.sqlite"); QString owner; QStringList before;
+    {
+        SqliteGameHistoryRepository repo(path); auto p=repo.createPlayer("João"); owner=p.id;
+        QVERIFY(repo.saveResult(p.identity(),18,3,{},"retained-v5"));
+    }
+    {
+        Inspection i(path); QSqlQuery q(i.db);
+        QVERIFY(q.exec("DROP TABLE session_checkpoints"));
+        QVERIFY(q.exec("ALTER TABLE answer_records RENAME COLUMN hint_snapshot TO unsupported_snapshot"));
+        QVERIFY(q.exec("PRAGMA user_version=5")); before=schema(i.db);
+    }
+    for (int attempt=0; attempt<2; ++attempt) {
+        SqliteGameHistoryRepository refused(path); QVERIFY(refused.profiles().isEmpty());
+        Inspection i(path); QCOMPARE(schema(i.db),before); QSqlQuery q(i.db);
+        QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),5); q.finish();
+        QVERIFY(q.exec("SELECT player_id,score_units FROM game_runs")); QVERIFY(q.next());
+        QCOMPARE(q.value(0).toString(),owner); QCOMPARE(q.value(1).toInt(),18);
+    }
+    // Repair only the synthetic fixture; production never guesses a schema repair.
+    { Inspection i(path); QSqlQuery q(i.db); QVERIFY(q.exec("ALTER TABLE answer_records RENAME COLUMN unsupported_snapshot TO hint_snapshot")); }
+    SqliteGameHistoryRepository recovered(path); QCOMPARE(recovered.profiles().first().id,owner);
+    QCOMPARE(recovered.loadPlayerResult("free",owner).first().scoreUnits,qint64(18));
 }
 
 QTEST_GUILESS_MAIN(PlayerIdentityTests)

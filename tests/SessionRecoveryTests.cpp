@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QProcess>
 #include <QUuid>
+#include <QCryptographicHash>
 #include <cstdlib>
 
 namespace {
@@ -62,6 +63,8 @@ private slots:
     void consistentBackupRestoresAValidSession();
     void failedInitialWriteAndMigrationPreserveExistingResults();
     void retiredOwnerAndReusedNameRemainSeparateAfterRecovery();
+    void inconsistentSnapshotWithMatchingDigestIsPreserved_data();
+    void inconsistentSnapshotWithMatchingDigestIsPreserved();
 };
 
 void SessionRecoveryTests::recoverHintsAnswersAndExactQuestionOrder()
@@ -284,6 +287,44 @@ void SessionRecoveryTests::retiredOwnerAndReusedNameRemainSeparateAfterRecovery(
     const auto result=repo.loadPlayerResult(recovered.configuration().rankingKey(),owner).first();
     QVERIFY(result.deletedProfile); QCOMPARE(result.scoreUnits,qint64(18));
     QVERIFY(repo.loadPlayerResult(recovered.configuration().rankingKey(),replacement).isEmpty());
+}
+
+void SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved_data()
+{
+    QTest::addColumn<QString>("damage");
+    for (const auto &name:{"total","generator","photo","rules"}) QTest::newRow(name)<<QString(name);
+}
+
+void SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved()
+{
+    QFETCH(QString,damage); QTemporaryDir dir; const auto path=dir.filePath("semantic-error.sqlite"); QString id;
+    QByteArray corrupted;
+    {
+        SqliteGameHistoryRepository repo(path); JsonSpeciesCatalog catalog; GameService game(&catalog,&repo); start(game,repo);
+        QVERIFY(game.submitAnswer(game.currentQuestion().correctAnswer)); id=game.sessionId(); auto payload=game.sessionSnapshot();
+        if (damage=="total") payload["units"]=payload["units"].toInt()+1;
+        else if (damage=="generator") payload["generator"]="invalid saved generator";
+        else if (damage=="rules") {
+            auto configuration=payload["configuration"].toObject(); configuration["rules"]="unsupported-future-rules"; payload["configuration"]=configuration;
+        } else {
+            auto questions=payload["questions"].toArray(); auto question=questions.last().toObject();
+            question["photo_sha256"]="incompatible-photo"; questions[questions.size()-1]=question; payload["questions"]=questions;
+        }
+        corrupted=QJsonDocument(payload).toJson(QJsonDocument::Compact);
+        Inspection inspection(path); QSqlQuery q(inspection.db);
+        q.prepare("UPDATE session_checkpoints SET payload=?,sha256=? WHERE id=?");
+        q.addBindValue(QString::fromUtf8(corrupted));
+        q.addBindValue(QString::fromLatin1(QCryptographicHash::hash(corrupted,QCryptographicHash::Sha256).toHex()));
+        q.addBindValue(id); QVERIFY(q.exec());
+    }
+    SqliteGameHistoryRepository repo(path); JsonSpeciesCatalog catalog; GameService refused(&catalog,&repo); refused.setCheckpointRepository(&repo);
+    QVERIFY(!refused.recoverSession(id)); QVERIFY(!refused.checkpointError().isEmpty());
+    QCOMPARE(repo.recoverableSessions().size(),1); QVERIFY(repo.loadTopResults().isEmpty());
+    Inspection inspection(path); QCOMPARE(inspection.count("game_runs"),0); QSqlQuery q(inspection.db);
+    q.prepare("SELECT payload,state FROM session_checkpoints WHERE id=?"); q.addBindValue(id); QVERIFY(q.exec()); QVERIFY(q.next());
+    QCOMPARE(q.value(0).toString().toUtf8(),corrupted); QCOMPARE(q.value(1).toString(),QString("active")); q.finish();
+    const auto checkpoint=repo.checkpoint(id); QVERIFY(repo.abandonCheckpoint(id,checkpoint.revision));
+    QVERIFY(repo.recoverableSessions().isEmpty()); QCOMPARE(inspection.count("session_checkpoints"),1);
 }
 
 int main(int argc,char **argv)

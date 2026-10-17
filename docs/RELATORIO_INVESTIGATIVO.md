@@ -81,6 +81,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-04 — Proteções remotas da branch principal ausentes
 
+**Observação posterior na estabilização, 17/10/2026:** o ruleset 25303072 foi encontrado **ativo**, com regras efetivas para `main`, PR sem segundo revisor obrigatório e `offline-validation` exigido. Esta consulta não alterou o servidor nem ensaiou exclusão/force push na branch real. [Evidência datada](VERIFICACAO_ESTABILIZACAO_GITHUB.json) e [estado de proteção](PROTECAO_REPOSITORIO.md). O parágrafo seguinte preserva a situação da preparação anterior.
+
 **Tratamento preparado em 16/10/2026:** nova inspeção confirmou a ausência de proteção. Foram implementados localmente proposta de ruleset para mantenedor único, ajuste de credenciais da CI, validação e documentação em [PROTECAO_REPOSITORIO.md](PROTECAO_REPOSITORIO.md). **A ativação remota continua pendente de autorização; o achado não foi declarado encerrado.** A evidência atual está em [VERIFICACAO_INV04.json](VERIFICACAO_INV04.json); a coleta original abaixo permanece histórica.
 
 **Evidência de consulta:** a API de `branches/main` retornou `protected: false`; a listagem de rulesets retornou vazia. Os metadados e a hora real estão no arquivo de evidências. Nenhuma proteção foi ativada nesta investigação.
