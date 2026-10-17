@@ -89,6 +89,8 @@ A prioridade considera impacto, exposição e pré-condições. Não é uma clas
 
 ## INV-05 — Escritores diretos concorrentes podem quebrar a cadeia de revisão
 
+**Correção local em 2026-10-16:** as APIs/CLIs de revisão científica, permissão e dependências e o bridge compartilham o escritor atômico e a trava persistente junto aos ledgers, com revalidação do topo imediatamente antes do commit. A recuperação do INV-02 permanece compatível; registros divergentes não são apagados. Consulte [mecanismo, cenários concorrentes e limites](CONCORRENCIA_GOVERNANCA.md). O relato abaixo descreve a implementação investigada antes das correções INV-02/INV-05.
+
 **Evidência:** [append_review](../scripts/content_governance.py#L586) lê o último evento e depois faz append sem bloqueio próprio. O [bridge](../scripts/curation_decisions.py#L60) possui `decision.lock`, mas a CLI `content_governance.py record-review` chama o escritor diretamente.
 
 **Reprodução:** duas chamadas diretas, sincronizadas após ler o mesmo topo, concluíram a gravação com o mesmo `previous_sha256`. A leitura posterior rejeitou a cadeia.

@@ -278,6 +278,7 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 - [`docs/FICHAS_ESPECIES.md`](docs/FICHAS_ESPECIES.md) — corpus das fichas educativas.
 - [`docs/CURADORIA_AUTOMATIZADA.md`](docs/CURADORIA_AUTOMATIZADA.md) — fila de curadoria, Issues, formulários, rotina semanal, Projects e decisões humanas rastreáveis.
 - [`docs/RECUPERACAO_PERMISSOES.md`](docs/RECUPERACAO_PERMISSOES.md) — persistência idempotente, recuperação de projeções e bloqueio de inconsistências de permissões.
+- [`docs/CONCORRENCIA_GOVERNANCA.md`](docs/CONCORRENCIA_GOVERNANCA.md) — escrita serializada por APIs, CLIs e bridge, comparação do topo e testes de concorrência entre processos.
 - [`docs/RELATORIO_EVOLUCAO_INTEGRADA.md`](docs/RELATORIO_EVOLUCAO_INTEGRADA.md) — auditoria Git/CI, cobertura fotográfica, avaliação automática das dicas e validação local em 1.6.0.
 - [`docs/DICAS_E_PONTUACAO.md`](docs/DICAS_E_PONTUACAO.md) — critérios das dicas e sistema de pontos.
 - [`docs/COBERTURA_TAXONOMICA.md`](docs/COBERTURA_TAXONOMICA.md) — cobertura e lacunas do catálogo.
