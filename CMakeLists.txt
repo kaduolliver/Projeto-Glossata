@@ -29,6 +29,7 @@ add_executable(glossata_quiz
     src/infrastructure/content/PhotoResolver.cpp
     src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    src/infrastructure/persistence/PlayerIdentityMigration.cpp
     src/presentation/GameController.cpp
     resources.qrc
 )

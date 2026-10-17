@@ -32,7 +32,7 @@ public:
     bool fail = true;
     int attempts = 0;
     int saved = 0;
-    bool saveResult(const QString &, qint64, int, const QVector<AnswerRecord> &, const QString &) override {
+    bool saveResult(const PlayerIdentity &, qint64, int, const QVector<AnswerRecord> &, const QString &) override {
         ++attempts;
         if (fail) return false;
         ++saved;
@@ -40,6 +40,14 @@ public:
     }
     QVector<HistoryEntry> loadTopResults(int) const override { return {}; }
 };
+
+// Fixture setup only: create/select an active ID before explicitly saving test games.
+PlayerIdentity testPlayer(SqliteGameHistoryRepository &repo, const QString &name)
+{
+    auto profile=repo.profileNamed(name);
+    if (!profile.selectable()) profile=repo.createPlayer(name);
+    return {profile.id,name.trimmed()};
+}
 
 void bindFixtureAssessment(QJsonObject &assessment,const QString &sid,const QString &name,const QString &photo,const QString &category)
 {
@@ -130,6 +138,8 @@ private slots:
     void emptyGameIsNotSaved();
     void failedSaveCanBeRetried();
     void gameKeepsStartingPlayer();
+    void permanentIdentitySurvivesRenameDeleteAndSelectionDuringGame();
+    void sessionWithoutIdentityCannotChooseAnOwnerAtSaveTime();
     void controllerCanRetrySqliteFailure();
     void rankingUpdatesExistingPlayer();
     void legacyRankingKeepsLatestResultPerPlayer();
@@ -258,15 +268,15 @@ void GameServiceTests::completedGameIsSavedOnce()
     JsonSpeciesCatalog catalog(QStringLiteral(":/resources/data/species.json"));
     SqliteGameHistoryRepository history(temporaryDirectory.filePath(QStringLiteral("nested/history.sqlite")));
     GameService service(&catalog, &history);
-    service.startNewGame();
+    service.startNewGame({},"species",history.createPlayer("Test Player").identity());
 
     for (int answer = 0; answer < 2; ++answer) {
         QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
     }
     service.finishGame();
 
-    service.saveCurrentResult(QStringLiteral("Test Player"));
-    service.saveCurrentResult(QStringLiteral("Test Player"));
+    service.saveCurrentResult();
+    service.saveCurrentResult();
 
     const QVector<HistoryEntry> entries = history.loadTopResults(10);
     QCOMPARE(entries.size(), 1);
@@ -368,9 +378,9 @@ void GameServiceTests::emptyGameIsNotSaved()
     FailingHistory history;
     GameService service(&catalog, &history);
     service.startNewGame();
-    QCOMPARE(service.saveCurrentResult("Player"), GameService::SaveStatus::NotNeeded);
+    QCOMPARE(service.saveCurrentResult(), GameService::SaveStatus::NotNeeded);
     service.finishGame();
-    QCOMPARE(service.saveCurrentResult("Player"), GameService::SaveStatus::NotNeeded);
+    QCOMPARE(service.saveCurrentResult(), GameService::SaveStatus::NotNeeded);
     QCOMPARE(history.attempts, 0);
 }
 
@@ -379,13 +389,13 @@ void GameServiceTests::failedSaveCanBeRetried()
     JsonSpeciesCatalog catalog;
     FailingHistory history;
     GameService service(&catalog, &history);
-    service.startNewGame();
+    service.startNewGame({},"species",{"synthetic-player-id","Player"});
     QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer));
     service.finishGame();
-    QCOMPARE(service.saveCurrentResult("Player"), GameService::SaveStatus::Failed);
+    QCOMPARE(service.saveCurrentResult(), GameService::SaveStatus::Failed);
     history.fail = false;
-    QCOMPARE(service.saveCurrentResult("Player"), GameService::SaveStatus::Saved);
-    QCOMPARE(service.saveCurrentResult("Player"), GameService::SaveStatus::NotNeeded);
+    QCOMPARE(service.saveCurrentResult(), GameService::SaveStatus::Saved);
+    QCOMPARE(service.saveCurrentResult(), GameService::SaveStatus::NotNeeded);
     QCOMPARE(history.attempts, 2);
     QCOMPARE(history.saved, 1);
 }
@@ -414,6 +424,39 @@ void GameServiceTests::gameKeepsStartingPlayer()
         foundLia |= row.toMap().value("playerName").toString() == "Lia";
     }
     QVERIFY(foundLia);
+}
+
+void GameServiceTests::permanentIdentitySurvivesRenameDeleteAndSelectionDuringGame()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("session-identity.sqlite");
+    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Ada"));
+    controller.startGame(); const auto owner=controller.sessionPlayerId();
+    QCOMPARE(owner,controller.currentPlayerId()); QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
+    controller.answerSelected(controller.answerOptions().first());
+    QVERIFY(controller.renameCurrentPlayerProfile("Lia")); QCOMPARE(controller.currentPlayerId(),owner);
+    QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
+    QVERIFY(controller.addPlayerProfile("Bia")); QVERIFY(controller.currentPlayerId()!=owner);
+    controller.selectPlayerProfile(owner); QVERIFY(controller.deleteCurrentPlayerProfile());
+    QVERIFY(controller.addPlayerProfile("Lia")); const auto replacement=controller.currentPlayerId(); QVERIFY(replacement!=owner);
+    controller.stopGame(); QVERIFY(!controller.resultPending());
+    QCOMPARE(controller.ranking().size(),1); const auto result=controller.ranking().first().toMap();
+    QCOMPARE(result["playerId"].toString(),owner); QCOMPARE(result["snapshotName"].toString(),QString("Ada"));
+    QVERIFY(result["deletedProfile"].toBool()); QVERIFY(controller.personalRecord().isEmpty());
+    QCOMPARE(controller.playerMetrics()["answered"].toInt(),0);
+    controller.startGame(); QCOMPARE(controller.sessionPlayerId(),replacement);
+    controller.answerSelected(controller.answerOptions().first()); controller.stopGame();
+    QCOMPARE(controller.ranking().size(),2);
+    SqliteGameHistoryRepository inspection(path);
+    QCOMPARE(inspection.playerMetrics("free",owner).answered,1);
+    QCOMPARE(inspection.playerMetrics("free",replacement).answered,1);
+}
+
+void GameServiceTests::sessionWithoutIdentityCannotChooseAnOwnerAtSaveTime()
+{
+    QTemporaryDir dir; SqliteGameHistoryRepository history(dir.filePath("anonymous.sqlite")); JsonSpeciesCatalog catalog;
+    GameService service(&catalog,&history); service.startNewGame();
+    QVERIFY(service.submitAnswer(service.currentQuestion().correctAnswer)); service.finishGame();
+    QCOMPARE(service.saveCurrentResult(),GameService::SaveStatus::Failed); QVERIFY(history.loadTopResults().isEmpty());
 }
 
 void GameServiceTests::controllerCanRetrySqliteFailure()
@@ -455,17 +498,17 @@ void GameServiceTests::rankingUpdatesExistingPlayer()
     const QString path = directory.filePath("ranking.sqlite");
     {
         SqliteGameHistoryRepository history(path);
-        QVERIFY(history.saveResult("Ada", 10, 10));
-        QVERIFY(history.saveResult("Lia", 5, 5));
-        QVERIFY(history.saveResult(" ada ", 2, 2));
+        QVERIFY(history.saveResult(testPlayer(history, "Ada"), 10, 10));
+        QVERIFY(history.saveResult(testPlayer(history, "Lia"), 5, 5));
+        QVERIFY(history.saveResult(testPlayer(history, " ada "), 2, 2));
         const auto entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 2);
-        QCOMPARE(entries.at(0).playerName, QString("ada"));
+        QCOMPARE(entries.at(0).playerName, QString("Ada"));
         QCOMPARE(entries.at(1).playerName, QString("Lia"));
         QCOMPARE(entries.at(0).scoreUnits, 10);
         QCOMPARE(entries.at(0).lastScoreUnits, qint64(2));
         QVERIFY(entries.at(1).playedAt.isValid());
-        QVERIFY(!history.saveResult("   ", 99, 99));
+        QVERIFY(!history.saveResult(testPlayer(history, "   "), 99, 99));
     }
     SqliteGameHistoryRepository reopened(path);
     QCOMPARE(reopened.loadTopResults(10).size(), 2);
@@ -498,12 +541,12 @@ void GameServiceTests::legacyRankingKeepsLatestResultPerPlayer()
         QCOMPARE(entries.first().playerName, QString("ADA"));
         QCOMPARE(entries.first().scoreUnits, qint64(120));
         QCOMPARE(entries.first().lastPlayedAt.toString(Qt::ISODate), QString("2026-02-01T00:00:00Z"));
-        QVERIFY(history.saveResult("Ada", 1, 1));
-        QCOMPARE(history.loadTopResults(10).size(), 2);
+        QVERIFY(history.saveResult(testPlayer(history, "Ada"), 1, 1));
+        QCOMPARE(history.loadTopResults(10).size(), 3); // Old ranking retained separately from the new identity.
     }
     SqliteGameHistoryRepository reopened(path);
-    QCOMPARE(reopened.loadTopResults(10).size(), 2);
-    QCOMPARE(reopened.loadTopResults(10).first().lastScoreUnits, qint64(1));
+    QCOMPARE(reopened.loadTopResults(10).size(), 3);
+    QCOMPARE(reopened.loadPlayerResult("free",reopened.profileNamed("Ada").id).first().lastScoreUnits, qint64(1));
 }
 
 void GameServiceTests::failedRankingUpdateKeepsPreviousResult()
@@ -512,7 +555,7 @@ void GameServiceTests::failedRankingUpdateKeepsPreviousResult()
     QVERIFY(directory.isValid());
     const QString path = directory.filePath("update.sqlite");
     SqliteGameHistoryRepository history(path);
-    QVERIFY(history.saveResult("Ada", 10, 10));
+    QVERIFY(history.saveResult(testPlayer(history, "Ada"), 10, 10));
     const QDateTime previousDate = history.loadTopResults(10).first().playedAt;
     {
         auto database = QSqlDatabase::addDatabase("QSQLITE", "update_failure_test");
@@ -520,13 +563,13 @@ void GameServiceTests::failedRankingUpdateKeepsPreviousResult()
         QVERIFY(database.open());
         QSqlQuery query(database);
         QVERIFY(query.exec("CREATE TRIGGER reject_update BEFORE UPDATE ON history BEGIN SELECT RAISE(FAIL, 'test update failure'); END"));
-        QVERIFY(!history.saveResult("Ada", 2, 2));
+        QVERIFY(!history.saveResult(testPlayer(history, "Ada"), 2, 2));
         auto entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 1);
         QCOMPARE(entries.first().scoreUnits, 10);
         QCOMPARE(entries.first().playedAt, previousDate);
         QVERIFY(query.exec("DROP TRIGGER reject_update"));
-        QVERIFY(history.saveResult("Ada", 2, 2));
+        QVERIFY(history.saveResult(testPlayer(history, "Ada"), 2, 2));
         entries = history.loadTopResults(10);
         QCOMPARE(entries.size(), 1);
         QCOMPARE(entries.first().scoreUnits, 10);
@@ -889,7 +932,7 @@ void GameServiceTests::catalogMigrationPreservesPlayerDataAndStoredRecords()
     const QString catalogPath = dir.filePath("catalog.sqlite");
     SqliteGameHistoryRepository history(historyPath);
     QVERIFY(history.addPlayerProfile("Ada"));
-    QVERIFY(history.saveResult("Ada", 17, 17));
+    QVERIFY(history.saveResult(testPlayer(history, "Ada"), 17, 17));
     {
         auto db = QSqlDatabase::addDatabase("QSQLITE", "catalog_migration_test");
         db.setDatabaseName(catalogPath); QVERIFY(db.open());
@@ -1174,22 +1217,22 @@ void GameServiceTests::fractionalHistoryMigrationAndAnswerLedger()
     {
         SqliteGameHistoryRepository history(path);
         QCOMPARE(history.loadTopResults().first().scoreUnits,qint64(60));
-        QVERIFY(history.saveResult("Novo",6,3,answers,"game-one"));
-        QVERIFY(history.saveResult("Novo",6,3,answers,"game-one"));
+        QVERIFY(history.saveResult(testPlayer(history, "Novo"),6,3,answers,"game-one"));
+        QVERIFY(history.saveResult(testPlayer(history, "Novo"),6,3,answers,"game-one"));
         QCOMPARE(history.loadTopResults().size(),2);
         auto inspect=QSqlDatabase::addDatabase("QSQLITE","fractional-inspect");inspect.setDatabaseName(path);QVERIFY(inspect.open());
         QSqlQuery q(inspect);QVERIFY(q.exec("SELECT COUNT(*),SUM(awarded_units),SUM(is_correct) FROM answer_records"));QVERIFY(q.next());
         QCOMPARE(q.value(0).toInt(),3);QCOMPARE(q.value(1).toInt(),6);QCOMPARE(q.value(2).toInt(),3);
         QVERIFY(q.exec("CREATE TRIGGER reject_score BEFORE UPDATE ON history BEGIN SELECT RAISE(FAIL,'blocked'); END"));
-        QVERIFY(!history.saveResult("Novo",2,1,{answers.first()},"game-two"));
+        QVERIFY(!history.saveResult(testPlayer(history, "Novo"),2,1,{answers.first()},"game-two"));
         QVERIFY(q.exec("SELECT COUNT(*) FROM game_runs WHERE id='game-two'"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),0);
         QVERIFY(q.exec("DROP TRIGGER reject_score"));
-        QVERIFY(history.saveResult("Frações",5,2));
-        QVERIFY(history.saveResult("Mais frações",4,2));
-        QVERIFY(history.saveResult("novo",2,1,{answers.first()},"game-two"));
+        QVERIFY(history.saveResult(testPlayer(history, "Frações"),5,2));
+        QVERIFY(history.saveResult(testPlayer(history, "Mais frações"),4,2));
+        QVERIFY(history.saveResult(testPlayer(history, "novo"),2,1,{answers.first()},"game-two"));
         auto rows=history.loadTopResults();QCOMPARE(rows.size(),4);QCOMPARE(rows.last().scoreUnits,qint64(4));
         QCOMPARE(rows[1].scoreUnits,qint64(6));QCOMPARE(rows[2].scoreUnits,qint64(5));
-        QCOMPARE(history.loadPlayerProfiles(),QStringList{"Antigo"});
+        QCOMPARE(history.loadPlayerProfiles(),(QStringList{"Antigo","Frações","Mais frações","Novo"}));
     }
     QSqlDatabase::removeDatabase("fractional-inspect");
     SqliteGameHistoryRepository reopened(path);
@@ -1293,7 +1336,7 @@ void GameServiceTests::replacementsRetireOldSpeciesWithoutDeletingHistory()
     QTemporaryDir dir;
     const QString path=dir.filePath("catalog.sqlite");
     SqliteGameHistoryRepository history(dir.filePath("history.sqlite"));
-    QVERIFY(history.addPlayerProfile("Ada")); QVERIFY(history.saveResult("Ada",17,17));
+    QVERIFY(history.addPlayerProfile("Ada")); QVERIFY(history.saveResult(testPlayer(history, "Ada"),17,17));
     QFile file(":/resources/data/catalog_replacements.json"); QVERIFY(file.open(QIODevice::ReadOnly));
     const auto replacement=QJsonDocument::fromJson(file.readAll()).object().value("replacements").toArray().first().toObject();
     const auto old=replacement.value("old").toObject();
@@ -1333,7 +1376,7 @@ void GameServiceTests::competitiveLifecycleAndConfigurationIsolation()
     GameService game(&catalog,&history);
     const auto configuration=GameService::competitiveConfiguration();
     QCOMPARE(configuration.questionLimit,20);
-    game.startConfiguredGame(configuration);
+    game.startConfiguredGame(configuration,history.createPlayer("Ada").identity());
     QVERIFY(!game.isFinished());
     QSet<int> seen;
     for (int i=0;i<20;++i) {
@@ -1349,32 +1392,32 @@ void GameServiceTests::competitiveLifecycleAndConfigurationIsolation()
     }
     QCOMPARE(game.scoreUnits(),qint64(120)); QCOMPARE(game.correctAnswers(),20);
     QVERIFY(!game.submitAnswer("anything")); QCOMPARE(game.answeredCount(),20);
-    QCOMPARE(game.saveCurrentResult("Ada"),GameService::SaveStatus::Saved);
+    QCOMPARE(game.saveCurrentResult(),GameService::SaveStatus::Saved);
     QVERIFY(history.loadTopResults().isEmpty());
     QCOMPARE(history.loadRanking(configuration.rankingKey()).first().scoreUnits,qint64(120));
-    QCOMPARE(history.playerMetrics(configuration.rankingKey(),"ada").answered,20);
-    QCOMPARE(history.playerMetrics(configuration.rankingKey(),"Ada").unassistedCorrect,20);
+    QCOMPARE(history.playerMetrics(configuration.rankingKey(),history.profileNamed("ada").id).answered,20);
+    QCOMPARE(history.playerMetrics(configuration.rankingKey(),history.profileNamed("Ada").id).unassistedCorrect,20);
     auto changed=configuration; changed.questionLimit=10;
     QVERIFY(history.loadRanking(changed.rankingKey()).isEmpty());
     changed=configuration; changed.difficulty=QuestionDifficulty::Close;
     QVERIFY(history.loadRanking(changed.rankingKey()).isEmpty());
     changed=configuration; changed.contentVersion="other-bundle";
     QVERIFY(history.loadRanking(changed.rankingKey()).isEmpty());
-    game.startConfiguredGame(configuration);
+    game.startConfiguredGame(configuration,history.createPlayer("Lia").identity());
     QVERIFY(game.submitAnswer(game.currentQuestion().correctAnswer));
-    game.finishGame(); QCOMPARE(game.saveCurrentResult("Lia"),GameService::SaveStatus::Saved);
+    game.finishGame(); QCOMPARE(game.saveCurrentResult(),GameService::SaveStatus::Saved);
     QCOMPARE(history.loadRanking(configuration.rankingKey()).size(),1);
-    QCOMPARE(history.playerMetrics(configuration.rankingKey(),"Lia").answered,0);
-    game.startNewGame({},"genus");
+    QCOMPARE(history.playerMetrics(configuration.rankingKey(),history.profileNamed("Lia").id).answered,0);
+    game.startNewGame({},"genus",history.profileNamed("Ada").identity());
     for(int i=0;i<30;++i) QVERIFY(game.submitAnswer(game.currentQuestion().correctAnswer));
     QVERIFY(!game.isFinished()); game.finishGame();
-    QCOMPARE(game.saveCurrentResult("Ada"),GameService::SaveStatus::Saved);
+    QCOMPARE(game.saveCurrentResult(),GameService::SaveStatus::Saved);
     QCOMPARE(history.loadTopResults().first().scoreUnits,qint64(180));
-    QCOMPARE(history.playerMetrics("free","Ada").answered,30);
+    QCOMPARE(history.playerMetrics("free",history.profileNamed("Ada").id).answered,30);
     auto records=game.answers();
-    QVERIFY(history.saveConfiguredResult("Ada",180,30,records,"retry",{}));
+    QVERIFY(history.saveConfiguredResult(testPlayer(history, "Ada"),180,30,records,"retry",{}));
     records.first().speciesId+=100;
-    QVERIFY(!history.saveConfiguredResult("Ada",180,30,records,"retry",{}));
+    QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),180,30,records,"retry",{}));
     MemoryCatalog tiny; tiny.items=catalog.loadSpecies().mid(0,4);
     GameService tooSmall(&tiny); tooSmall.startConfiguredGame(configuration);
     QVERIFY(tooSmall.isFinished());
@@ -1458,7 +1501,7 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
     SqliteGameHistoryRepository reopened(path);QCOMPARE(reopened.loadTopResults().first().scoreUnits,qint64(6));
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
-        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),3);
+        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),4);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
     }
     db.close();db={};QSqlDatabase::removeDatabase("v2-inspect");
@@ -1485,11 +1528,11 @@ void GameServiceTests::failedSchemaMigrationPreservesOriginalDatabase()
     QSqlDatabase::removeDatabase("rollback-inspect");
     SqliteGameHistoryRepository recovered(path);
     QCOMPARE(recovered.loadTopResults().first().scoreUnits,qint64(150));
-    QVERIFY(recovered.saveResult("Ada",60,10));
-    QVERIFY(recovered.saveResult("Ada",102,17));
+    QVERIFY(recovered.saveResult(testPlayer(recovered, "Ada"),60,10));
+    QVERIFY(recovered.saveResult(testPlayer(recovered, "Ada"),102,17));
     QCOMPARE(recovered.loadTopResults().first().scoreUnits,qint64(150));
-    QCOMPARE(recovered.loadTopResults().first().lastScoreUnits,qint64(102));
-    QVERIFY(recovered.saveResult("Bia",150,25));
+    QCOMPARE(recovered.loadPlayerResult("free",recovered.profileNamed("Ada").id).first().lastScoreUnits,qint64(102));
+    QVERIFY(recovered.saveResult(testPlayer(recovered, "Bia"),150,25));
     {
         auto db=QSqlDatabase::addDatabase("QSQLITE","tie-inspect");db.setDatabaseName(path);QVERIFY(db.open());
         QSqlQuery q(db);QVERIFY(q.exec("UPDATE ranking_records SET best_played_at='2026-01-01T00:00:00Z'"));
@@ -1607,18 +1650,18 @@ void GameServiceTests::assistanceSnapshotsAndLegacyV2Migration()
         QCOMPARE(migrated.first().maximumUnits,3);QCOMPARE(migrated.first().ceilings[1],3);
         QCOMPARE(history.loadRanking(old.rankingKey()).first().scoreUnits,qint64(3));
         QVERIFY(history.loadRanking(current.rankingKey()).isEmpty());
-        QVERIFY(history.saveConfiguredResult("Ada",2,1,{answer},"new",current));
-        QVERIFY(history.saveConfiguredResult("Ada",2,1,{answer},"new",current));
-        auto bad=answer;bad.ceilings[1]=4;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"bad-ceiling",current));
-        bad=answer;bad.assessmentIds[1].clear();QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"missing-proof",current));
-        bad=answer;bad.maximumUnits=3;bad.awardedUnits=3;QVERIFY(!history.saveConfiguredResult("Ada",3,1,{bad},"wrong-cap",current));
-        bad=answer;bad.ceilings[1]=6;bad.maximumUnits=6;bad.awardedUnits=6;QVERIFY(!history.saveConfiguredResult("Ada",6,1,{bad},"forged-grade",current));
-        bad=answer;bad.revealedHints=2;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"unrevealed-charge",current));
-        bad=answer;bad.assessmentPayloads[1].insert("scientific_name","Unrelated species");QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"tampered-payload",current));
-        bad=answer;bad.rulesVersion=LegacyScoringRules;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"wrong-policy",current));
-        bad=answer;bad.ceilings[2]=3;QVERIFY(!history.saveConfiguredResult("Ada",2,1,{bad},"new",current));
-        QCOMPARE(history.playerMetrics(current.rankingKey(),"Ada").correct,1);
-        QCOMPARE(history.playerMetrics(current.rankingKey(),"Ada").units,qint64(2));
+        QVERIFY(history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{answer},"new",current));
+        QVERIFY(history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{answer},"new",current));
+        auto bad=answer;bad.ceilings[1]=4;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"bad-ceiling",current));
+        bad=answer;bad.assessmentIds[1].clear();QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"missing-proof",current));
+        bad=answer;bad.maximumUnits=3;bad.awardedUnits=3;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),3,1,{bad},"wrong-cap",current));
+        bad=answer;bad.ceilings[1]=6;bad.maximumUnits=6;bad.awardedUnits=6;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),6,1,{bad},"forged-grade",current));
+        bad=answer;bad.revealedHints=2;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"unrevealed-charge",current));
+        bad=answer;bad.assessmentPayloads[1].insert("scientific_name","Unrelated species");QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"tampered-payload",current));
+        bad=answer;bad.rulesVersion=LegacyScoringRules;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"wrong-policy",current));
+        bad=answer;bad.ceilings[2]=3;QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Ada"),2,1,{bad},"new",current));
+        QCOMPARE(history.playerMetrics(current.rankingKey(),history.profileNamed("Ada").id).correct,1);
+        QCOMPARE(history.playerMetrics(current.rankingKey(),history.profileNamed("Ada").id).units,qint64(2));
     }
     SqliteGameHistoryRepository reopened(path);
     QCOMPARE(reopened.loadAnswers("old").first().awardedUnits,3);
@@ -1674,16 +1717,16 @@ void GameServiceTests::progressiveCoverageHistoryAndReports()
     QTemporaryDir directory;const auto path=directory.filePath("new-progressive.sqlite");QVector<AnswerRecord> saved;
     {
         SqliteGameHistoryRepository history(path);GameService game(&source,&history);
-        game.startConfiguredGame(GameService::competitiveConfiguration());
+        game.startConfiguredGame(GameService::competitiveConfiguration(),history.createPlayer("Synthetic Player").identity());
         for(int i=0;i<20;++i){QVERIFY(!game.isFinished());const auto q=game.currentQuestion();
             for(int slot:{2,0,1})if(q.hints[slot].available())QVERIFY(game.revealHintSlot(slot));
             QVERIFY(game.submitAnswer(q.correctAnswer));QVERIFY(validAnswerScoring(game.answers().last(),CurrentScoringRules));}
-        QCOMPARE(game.answeredCount(),20);QCOMPARE(game.saveCurrentResult("Synthetic Player"),GameService::SaveStatus::Saved);
+        QCOMPARE(game.answeredCount(),20);QCOMPARE(game.saveCurrentResult(),GameService::SaveStatus::Saved);
         saved=game.answers();QCOMPARE(history.loadAnswers(game.configuration().rulesVersion).size(),0);
         // Save a known game ID as well to test snapshot round trips and tampering.
-        auto cfg=game.configuration();QVERIFY(history.saveConfiguredResult("Synthetic Player",game.scoreUnits(),20,saved,"snapshot-v4",cfg));
+        auto cfg=game.configuration();QVERIFY(history.saveConfiguredResult(testPlayer(history, "Synthetic Player"),game.scoreUnits(),20,saved,"snapshot-v4",cfg));
         auto bad=saved;auto &a=bad[0];a.contentVersion="changed";
-        QVERIFY(!history.saveConfiguredResult("Synthetic Player",game.scoreUnits(),20,bad,"bad-v4",cfg));
+        QVERIFY(!history.saveConfiguredResult(testPlayer(history, "Synthetic Player"),game.scoreUnits(),20,bad,"bad-v4",cfg));
     }
     {
         SqliteGameHistoryRepository reopened(path);const auto loaded=reopened.loadAnswers("snapshot-v4");QCOMPARE(loaded.size(),20);

@@ -16,8 +16,9 @@ public:
     explicit GameService(SpeciesCatalog *catalog = nullptr, GameHistoryRepository *history = nullptr,
                          const EducationalContent &content = EducationalContent());
 
-    void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"));
-    void startConfiguredGame(GameConfiguration configuration);
+    void startNewGame(const QString &filter = QString(), const QString &rank = QStringLiteral("species"), const PlayerIdentity &player = {});
+    void startConfiguredGame(GameConfiguration configuration, const PlayerIdentity &player = {});
+    PlayerIdentity sessionPlayer() const { return session_.player; }
     static GameConfiguration competitiveConfiguration();
     static QString contentFingerprint(const QByteArray &education);
     GameConfiguration configuration() const { return session_.configuration; }
@@ -42,7 +43,7 @@ public:
     bool isFinished() const;
     TaxonomicPerformance performance() const { return performance_; }
     QVector<HistoryEntry> history() const;
-    SaveStatus saveCurrentResult(const QString &playerName);
+    SaveStatus saveCurrentResult();
 
 private:
     void buildQuestionForCurrentSpecies();

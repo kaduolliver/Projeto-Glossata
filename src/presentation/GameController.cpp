@@ -21,11 +21,12 @@ GameController::GameController(QObject *parent, const QString &databasePath)
       service_(&catalog_, &historyRepository_)
 {
     if (historyRepository_.loadPlayerProfiles().isEmpty()) {
-        historyRepository_.addPlayerProfile(QStringLiteral("Jogador 1"));
+        historyRepository_.createPlayer(QStringLiteral("Jogador 1"));
     }
-    const QStringList profiles = historyRepository_.loadPlayerProfiles();
+    const auto profiles = historyRepository_.profiles();
     if (!profiles.isEmpty()) {
-        currentPlayerName_ = profiles.first();
+        currentPlayerName_ = profiles.first().displayName;
+        currentPlayerId_ = profiles.first().id;
     }
     startGame();
 }
@@ -88,13 +89,30 @@ QString GameController::currentPlayerName() const
 
 void GameController::setCurrentPlayerName(const QString &name)
 {
-    if (currentPlayerName_ == name || !playerProfiles().contains(name)) {
-        return;
-    }
+    selectPlayerProfile(historyRepository_.profileNamed(name).id);
+}
 
-    currentPlayerName_ = name;
+void GameController::selectPlayerProfile(const QString &id)
+{
+    const auto profile = historyRepository_.player(id);
+    if (!profile.selectable() || currentPlayerId_ == id) return;
+    currentPlayerId_ = profile.id;
+    currentPlayerName_ = profile.displayName;
     emit currentPlayerNameChanged();
     loadRanking();
+}
+
+QVariantList GameController::playerProfileItems() const
+{
+    QVariantList result;
+    for (const auto &p : historyRepository_.profiles()) result.append(QVariantMap{{"playerId",p.id},{"name",p.displayName}});
+    return result;
+}
+
+QString GameController::identityNotice() const
+{
+    const int count = historyRepository_.unresolvedLegacyPlayers();
+    return count ? QStringLiteral("Há %1 conjunto(s) de resultados anteriores à identificação permanente. Permanecem no ranking como legado, sem vínculo presumido com perfis atuais. As métricas pessoais incluem somente o ID deste perfil.").arg(count) : QString();
 }
 
 qint64 GameController::scoreUnits() const
@@ -200,7 +218,11 @@ void GameController::startWithConfiguration(const GameConfiguration &configurati
         emit feedbackTextChanged();
         return;
     }
-    sessionPlayerName_ = currentPlayerName_;
+    const auto player = historyRepository_.player(currentPlayerId_);
+    if (!player.selectable()) {
+        feedbackText_ = QStringLiteral("Selecione um perfil ativo antes de iniciar a partida.");
+        emit feedbackTextChanged(); return;
+    }
     identificationRank_ = rank;
     sessionTaxonId_ = taxonomy_.describe(family).value("title").toString().isEmpty() ? QString() : family;
     categoryName_ = family.isEmpty() ? QStringLiteral("Todas as espécies")
@@ -210,7 +232,7 @@ void GameController::startWithConfiguration(const GameConfiguration &configurati
     displayedRevealedHints_=0;
     correctStreak_ = 0;
     bestStreak_ = 0;
-    service_.startConfiguredGame(configuration);
+    service_.startConfiguredGame(configuration, player.identity());
     rankingMode_ = configuration.modeKey();
     displayedQuestion_=service_.currentQuestion();
     feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
@@ -377,7 +399,7 @@ void GameController::retrySaveResult()
     if (!service_.isFinished()) {
         return;
     }
-    resultPending_ = service_.saveCurrentResult(sessionPlayerName_) == GameService::SaveStatus::Failed;
+    resultPending_ = service_.saveCurrentResult() == GameService::SaveStatus::Failed;
     feedbackText_ = resultPending_
         ? QStringLiteral("Não foi possível salvar a pontuação. Tente salvar novamente antes de fechar o jogo.")
         : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(scoreText());
@@ -390,7 +412,8 @@ void GameController::loadRanking()
 {
     const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
     auto row = [](const HistoryEntry &entry) {
-        return QVariantMap{{"playerName",entry.playerName},{"scoreUnits",entry.scoreUnits},
+        return QVariantMap{{"playerName",entry.playerName},{"playerId",entry.playerId},{"snapshotName",entry.snapshotName},
+            {"legacyIdentity",entry.legacyIdentity},{"deletedProfile",entry.deletedProfile},{"scoreUnits",entry.scoreUnits},
             {"scoreText",formatScore(entry.scoreUnits)},{"correctAnswers",entry.correctAnswers},
             {"playedAt",entry.playedAt.toString("dd/MM/yyyy")},{"lastScoreText",formatScore(entry.lastScoreUnits)},
             {"lastScoreUnits",entry.lastScoreUnits},{"lastCorrectAnswers",entry.lastCorrectAnswers},
@@ -398,9 +421,9 @@ void GameController::loadRanking()
     };
     ranking_.clear();
     for (const auto &entry : historyRepository_.loadRanking(key,5)) ranking_.append(row(entry));
-    const auto personal = historyRepository_.loadPlayerResult(key,currentPlayerName_);
+    const auto personal = historyRepository_.loadPlayerResult(key,currentPlayerId_);
     personalRecord_ = personal.isEmpty() ? QVariantMap{} : row(personal.first());
-    playerMetrics_ = presentMetrics(historyRepository_.playerMetrics(key,currentPlayerName_));
+    playerMetrics_ = presentMetrics(historyRepository_.playerMetrics(key,currentPlayerId_));
     emit rankingChanged();
 }
 
@@ -443,15 +466,15 @@ QVariantList GameController::achievements() const
 bool GameController::addPlayerProfile(const QString &name)
 {
     const QString profileName = name.trimmed();
-    if (profileName.isEmpty() || profileName.size() > 32
-        || !historyRepository_.addPlayerProfile(profileName)) {
+    const auto created = historyRepository_.createPlayer(profileName);
+    if (!created.selectable()) {
         feedbackText_ = QStringLiteral("Nome inválido ou já cadastrado.");
         emit feedbackTextChanged();
         return false;
     }
 
     emit playerProfilesChanged();
-    setCurrentPlayerName(profileName);
+    selectPlayerProfile(created.id);
     feedbackText_ = QStringLiteral("Perfil criado.");
     emit feedbackTextChanged();
     return true;
@@ -461,7 +484,7 @@ bool GameController::renameCurrentPlayerProfile(const QString &name)
 {
     const QString profileName = name.trimmed();
     if (profileName.isEmpty() || profileName.size() > 32
-        || !historyRepository_.renamePlayerProfile(currentPlayerName_, profileName)) {
+        || !historyRepository_.renamePlayer(currentPlayerId_, profileName)) {
         feedbackText_ = QStringLiteral("Não foi possível renomear o perfil.");
         emit feedbackTextChanged();
         return false;
@@ -478,13 +501,15 @@ bool GameController::renameCurrentPlayerProfile(const QString &name)
 
 bool GameController::deleteCurrentPlayerProfile()
 {
-    if (playerProfiles().size() <= 1 || !historyRepository_.deletePlayerProfile(currentPlayerName_)) {
+    if (playerProfiles().size() <= 1 || !historyRepository_.deletePlayer(currentPlayerId_)) {
         feedbackText_ = QStringLiteral("Mantenha ao menos um perfil cadastrado.");
         emit feedbackTextChanged();
         return false;
     }
 
-    currentPlayerName_ = playerProfiles().first();
+    const auto next = historyRepository_.profiles().first();
+    currentPlayerName_ = next.displayName;
+    currentPlayerId_ = next.id;
     emit currentPlayerNameChanged();
     loadRanking();
     emit playerProfilesChanged();

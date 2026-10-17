@@ -15,12 +15,12 @@ GameService::GameService(SpeciesCatalog *catalog, GameHistoryRepository *history
 {
 }
 
-void GameService::startNewGame(const QString &filter, const QString &rank)
+void GameService::startNewGame(const QString &filter, const QString &rank, const PlayerIdentity &player)
 {
     GameConfiguration configuration;
     configuration.group = filter;
     configuration.rank = rank;
-    startConfiguredGame(configuration);
+    startConfiguredGame(configuration, player);
 }
 
 GameConfiguration GameService::competitiveConfiguration()
@@ -49,7 +49,7 @@ QString GameService::contentFingerprint(const QByteArray &education)
     return QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex());
 }
 
-void GameService::startConfiguredGame(GameConfiguration configuration)
+void GameService::startConfiguredGame(GameConfiguration configuration, const PlayerIdentity &player)
 {
     // Legacy rules interpret stored games; new sessions always use current rules.
     configuration.rulesVersion=CurrentScoringRules;
@@ -61,6 +61,7 @@ void GameService::startConfiguredGame(GameConfiguration configuration)
     resultSaved_ = false;
     revealedHints_ = 0;
     session_ = GameSession();
+    session_.player = player;
     session_.configuration = configuration;
     session_.id=QUuid::createUuid().toString(QUuid::WithoutBraces);
     performance_ = TaxonomicPerformance();
@@ -239,14 +240,14 @@ QVector<HistoryEntry> GameService::history() const
     return history_->loadRanking(session_.configuration.rankingKey(), 5);
 }
 
-GameService::SaveStatus GameService::saveCurrentResult(const QString &playerName)
+GameService::SaveStatus GameService::saveCurrentResult()
 {
     if (!session_.finished || session_.answeredCount == 0 || resultSaved_) {
         return SaveStatus::NotNeeded;
     }
 
-    if (history_ == nullptr || playerName.trimmed().isEmpty()
-        || !history_->saveConfiguredResult(playerName.trimmed(), session_.scoreUnits, session_.correctAnswers, session_.answers, session_.id, session_.configuration)) {
+    if (history_ == nullptr || !session_.player.isValid()
+        || !history_->saveConfiguredResult(session_.player, session_.scoreUnits, session_.correctAnswers, session_.answers, session_.id, session_.configuration)) {
         return SaveStatus::Failed;
     }
     resultSaved_ = true;

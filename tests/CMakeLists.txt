@@ -12,6 +12,7 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 
@@ -39,6 +40,7 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -76,3 +78,12 @@ add_test(NAME GlossataRepositoryProtectionTests COMMAND ${Python3_EXECUTABLE} ${
 add_test(NAME GlossataMaintenanceHttpTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_maintenance_http.py)
 add_test(NAME GlossataPermissionRecoveryTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_permission_recovery.py)
 add_test(NAME GlossataGovernanceConcurrencyTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_governance_concurrency.py)
+
+add_executable(glossata_identity_tests
+    PlayerIdentityTests.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
+)
+target_include_directories(glossata_identity_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_link_libraries(glossata_identity_tests PRIVATE Qt6::Core Qt6::Sql Qt6::Test)
+add_test(NAME GlossataPlayerIdentityTests COMMAND glossata_identity_tests -o ${CMAKE_CURRENT_BINARY_DIR}/identity-results.txt,txt)

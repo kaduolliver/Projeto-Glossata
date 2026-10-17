@@ -20,6 +20,10 @@ class GameController : public QObject {
     Q_PROPERTY(bool hintRevealed READ hintRevealed NOTIFY extraHintChanged)
     Q_PROPERTY(QStringList answerOptions READ answerOptions NOTIFY answerOptionsChanged)
     Q_PROPERTY(QStringList playerProfiles READ playerProfiles NOTIFY playerProfilesChanged)
+    Q_PROPERTY(QVariantList playerProfileItems READ playerProfileItems NOTIFY playerProfilesChanged)
+    Q_PROPERTY(QString currentPlayerId READ currentPlayerId NOTIFY currentPlayerNameChanged)
+    Q_PROPERTY(QString sessionPlayerId READ sessionPlayerId NOTIFY gameFinishedChanged)
+    Q_PROPERTY(QString identityNotice READ identityNotice NOTIFY rankingChanged)
     Q_PROPERTY(QString currentPlayerName READ currentPlayerName WRITE setCurrentPlayerName NOTIFY currentPlayerNameChanged)
     Q_PROPERTY(QString sessionPlayerName READ sessionPlayerName NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool resultPending READ resultPending NOTIFY resultPendingChanged)
@@ -71,8 +75,12 @@ public:
     bool hintRevealed() const;
     QStringList answerOptions() const;
     QStringList playerProfiles() const;
+    QVariantList playerProfileItems() const;
+    QString currentPlayerId() const { return currentPlayerId_; }
+    QString sessionPlayerId() const { return service_.sessionPlayer().id; }
+    QString identityNotice() const;
     QString currentPlayerName() const;
-    QString sessionPlayerName() const { return sessionPlayerName_; }
+    QString sessionPlayerName() const { return service_.sessionPlayer().displayName; }
     bool resultPending() const { return resultPending_; }
     void setCurrentPlayerName(const QString &name);
     qint64 scoreUnits() const;
@@ -127,6 +135,7 @@ public slots:
     void stopGame();
     void retrySaveResult();
     bool addPlayerProfile(const QString &name);
+    void selectPlayerProfile(const QString &id);
     bool renameCurrentPlayerProfile(const QString &name);
     bool deleteCurrentPlayerProfile();
     void loadRanking();
@@ -156,7 +165,7 @@ private:
     SqliteGameHistoryRepository historyRepository_;
     GameService service_;
     QString currentPlayerName_;
-    QString sessionPlayerName_;
+    QString currentPlayerId_;
     bool resultPending_ = false;
     QString feedbackText_;
     QString categoryName_;

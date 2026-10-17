@@ -32,9 +32,16 @@ Item {
                         Layout.fillWidth: true
                         Layout.maximumWidth: 330
                         implicitHeight: 42
-                        model: view.backend.playerProfiles
-                        currentIndex: view.backend.playerProfiles.indexOf(view.backend.currentPlayerName)
-                        onActivated: view.backend.currentPlayerName = currentText
+                        model: view.backend.playerProfileItems
+                        textRole: "name"
+                        valueRole: "playerId"
+                        currentIndex: {
+                            const items = view.backend.playerProfileItems
+                            for (let i = 0; i < items.length; ++i)
+                                if (items[i].playerId === view.backend.currentPlayerId) return i
+                            return -1
+                        }
+                        onActivated: view.backend.selectPlayerProfile(currentValue)
                     }
                 }
                 TextField {
@@ -102,7 +109,7 @@ Item {
             UiButton { text: "Excluir"; danger: true; DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole }
         }
         background: Rectangle { radius: 16; color: "#18313B"; border.color: "#38535B" }
-        contentItem: Label { text: "Os resultados já salvos no ranking serão mantidos."; color: "#B3C9C7"; wrapMode: Text.WordWrap }
+        contentItem: Label { text: "Os resultados e a identidade deste perfil serão mantidos no histórico. Outro perfil com o mesmo nome terá uma identidade nova e não herdará esses resultados."; color: "#B3C9C7"; wrapMode: Text.WordWrap }
         onAccepted: { view.backend.deleteCurrentPlayerProfile(); profileName.text = view.backend.currentPlayerName }
     }
 }

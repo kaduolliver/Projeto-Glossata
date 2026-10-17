@@ -386,7 +386,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     controller.stopGame();
     {
         SqliteGameHistoryRepository history(directory.filePath("ui.sqlite"));
-        for (int i = 1; i <= 5; ++i) QVERIFY(history.saveResult("Perfil " + QString::number(i), i, i));
+        for (int i = 1; i <= 5; ++i) QVERIFY(history.saveResult(history.createPlayer("Perfil " + QString::number(i)).identity(), i, i));
     }
     controller.loadRanking();
     showPage("statistics");
