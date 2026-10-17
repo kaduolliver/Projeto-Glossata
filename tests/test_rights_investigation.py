@@ -15,6 +15,7 @@ import test_content_governance as fixtures
 import content_governance as g
 import rights_investigation as rights
 import distribution
+import licensing_inventory
 
 
 class InvestigationTests(unittest.TestCase):
@@ -261,6 +262,75 @@ class InvestigationTests(unittest.TestCase):
         self.assertEqual({r['path'] for r in history['resources']}, {'old.jpg'})
         self.assertEqual(report['summary']['history_only_media_paths'], 1)
         self.assertFalse(any('local-only' in r['path'] for r in history['resources']))
+
+    def licensing_report(self, paths, **kwargs):
+        with mock.patch.object(licensing_inventory, 'tracked', return_value=paths), mock.patch.object(
+                licensing_inventory.subprocess, 'check_output', return_value=b'a'*40):
+            return licensing_inventory.collect(self.root, at='2026-10-17T12:00:00+00:00', **kwargs)
+
+    def test_documentary_categories_do_not_establish_ownership_or_choose_a_license(self):
+        paths = ['src/example.cpp', 'scripts/example.py', 'resources/qml/Example.qml', 'README.md',
+                 'resources/data/species_profiles.json', 'resources/data/species.json',
+                 'resources/images/7.jpg', 'resources/branding/icon.png', 'vendor/example.cpp', 'docs/images/quiz.png']
+        report = self.licensing_report(paths)
+        self.assertEqual(set(r['category'] for r in report['files']), set(licensing_inventory.CATEGORIES))
+        self.assertTrue(all(count == 1 for count in report['counts'].values()))
+        self.assertFalse(report['license_selected_by_this_report']); self.assertEqual(report['approvals_created'], 0)
+        for row in report['files']: self.assertFalse(row['ownership_confirmed_by_this_inventory'])
+        for row in report['files']:
+            if row['category'] != 'third_party_photographs': self.assertNotIn('declared_license', row)
+
+    def test_photo_license_does_not_license_its_metadata_code_or_derived_capture(self):
+        report = self.licensing_report(['resources/images/7.jpg', 'resources/data/species.json', 'docs/images/quiz.png'])
+        photo, metadata, capture = report['files']
+        self.assertEqual(photo['declared_license'], 'cc-by'); self.assertIsNone(photo['evidenced_license_version'])
+        self.assertTrue(photo['documentary_issues']); self.assertNotIn('declared_license', metadata)
+        self.assertNotIn('declared_license', capture)
+
+    def test_dependency_declarations_keep_or_with_conditions_and_missing_notices(self):
+        package = self.root / 'package'; package.mkdir()
+        g.save(package / 'compliance/dependencies.json', {'packages': [
+            {'name': 'synthetic-dependency', 'version': ['1.2.3-4'], 'license_files': [],
+             'declared_licenses': ['MIT OR GPL-3.0-only WITH synthetic-exception'], 'obligations_review': 'pending'}], 'binaries': []})
+        report = self.licensing_report([], package=package)
+        row = report['package']['components'][0]
+        self.assertEqual(row['declared_licenses'], ['MIT OR GPL-3.0-only WITH synthetic-exception'])
+        self.assertEqual(row['version'], ['1.2.3-4']); self.assertEqual(row['obligations_review'], 'pending')
+        self.assertEqual(row['notice_integrity'], [])
+        self.assertIn('dependency_obligations_unresolved', {e['error'] for e in report['package']['errors']})
+
+    def test_additional_notice_candidate_is_not_copied_or_approved(self):
+        package = self.root / 'package'; package.mkdir()
+        prefix = self.root / 'installation'; notice = prefix / 'share/icu/1.2/LICENSE'
+        notice.parent.mkdir(parents=True); notice.write_bytes(b'Synthetic notice only')
+        g.save(package / 'compliance/dependencies.json', {'packages': [
+            {'name': 'synthetic-icu', 'version': ['1.2-3'], 'license_files': [], 'declared_licenses': ['ICU'],
+             'obligations_review': 'pending'}], 'binaries': []})
+        before = {p: p.read_bytes() for p in package.rglob('*') if p.is_file()}
+        report = self.licensing_report([], package=package, prefix=prefix)
+        candidate = report['package']['additional_notice_candidates'][0]
+        self.assertTrue(candidate['exists']); self.assertEqual(candidate['sha256'], rights.file_hash(notice))
+        self.assertFalse(candidate['installed_package_version_matches'])
+        self.assertEqual(before, {p: p.read_bytes() for p in package.rglob('*') if p.is_file()})
+        self.assertEqual(report['package']['components'][0]['obligations_review'], 'pending')
+        desc = prefix.parent / 'var/lib/pacman/local/synthetic-icu-1.2-3/desc'
+        desc.parent.mkdir(parents=True); desc.write_text('%NAME%\nsynthetic-icu\n\n%VERSION%\n1.2-3\n', encoding='utf8')
+        updated = self.licensing_report([], package=package, prefix=prefix)
+        self.assertTrue(updated['package']['additional_notice_candidates'][0]['installed_package_version_matches'])
+
+    def test_licensing_inventory_is_read_only_and_cannot_bypass_existing_gate(self):
+        before = self.files()
+        with (mock.patch.object(distribution, 'dependencies', side_effect=AssertionError('No inventory/export writes')),
+                mock.patch.object(g, 'confirm_permission', side_effect=AssertionError('No grants')),
+                mock.patch.object(g, 'append_review', side_effect=AssertionError('No reviews'))):
+            report = self.licensing_report(['resources/data/species.json'])
+        self.assertEqual(before, self.files()); self.assertTrue(report['gate']['distribution_blocked'])
+        self.assertFalse(report['package']['assessed'])
+
+    def test_inventory_omits_self_hash_and_flags_missing_bytes_without_invented_licenses(self):
+        report = self.licensing_report([licensing_inventory.ARCHIVE, 'src/missing.cpp'])
+        self.assertEqual(len(report['files']), 1); self.assertIsNone(report['files'][0]['sha256'])
+        self.assertNotIn('declared_license', report['files'][0])
 
 
 if __name__ == '__main__':
