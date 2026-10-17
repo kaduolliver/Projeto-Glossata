@@ -40,6 +40,7 @@ private slots:
     void photographEdgesFadeWithoutHidingTheOrganism();
     void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
+    void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
 
 void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
@@ -538,7 +539,11 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QCOMPARE(controller.answerDetails()["awardedText"].toString(),QString("0,33"));
     QVERIFY(!controller.revealHintCategory(controller.hints()[0].toMap()["id"].toString()));
     controller.nextQuestion();showPage("quiz");QCOMPARE(controller.possibleScoreText(),QString("1,00"));
-    controller.stopGame();showPage("categories");QVERIFY(click("startCompetitiveButton"));
+    controller.stopGame();
+    // Earlier independent UI scenarios deliberately opened other games. Their
+    // persisted sessions now require an explicit decision instead of vanishing.
+    for (const auto &pending:controller.recoverableSessions()) QVERIFY(controller.abandonSession(pending.toMap()["id"].toString()));
+    showPage("categories");QVERIFY(click("startCompetitiveButton"));
     QCOMPARE(controller.gameMode(),QString("competitive"));
     const auto competitiveHints=controller.hints();
     QVERIFY(std::any_of(competitiveHints.begin(),competitiveHints.end(),[](const QVariant &v){return v.toMap()["available"].toBool();}));
@@ -566,6 +571,46 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QVERIFY(click("freeRankingButton"));QCOMPARE(controller.rankingMode(),QString("free"));
     qInstallMessageHandler(runtimeHandler);
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("recover-ui.sqlite"); QString id; QStringList options; qint64 score;
+    {
+        GameController first(nullptr,path); QVERIFY(first.startCompetitiveGame());
+        const auto hints=first.hints();
+        auto hint=std::find_if(hints.begin(),hints.end(),[](const QVariant &v){return v.toMap()["available"].toBool();});
+        QVERIFY(hint!=hints.end()); QVERIFY(first.revealHintCategory(hint->toMap()["id"].toString()));
+        first.answerSelected(first.answerOptions().first()); first.nextQuestion();
+        QCOMPARE(first.answeredCount(),1); score=first.scoreUnits(); options=first.answerOptions();
+        QVERIFY(first.prepareToClose()); // A normal close suspends, it does not finish/rank the game.
+        SqliteGameHistoryRepository inspect(path); QCOMPARE(inspect.recoverableSessions().size(),1); id=inspect.recoverableSessions().first().id;
+        QVERIFY(inspect.loadRanking(GameService::competitiveConfiguration().rankingKey()).isEmpty());
+    }
+    GameController controller(nullptr,path); QCOMPARE(controller.recoverableSessions().size(),1);
+    QVERIFY(!controller.startCompetitiveGame()); // A new preview cannot silently replace the saved game.
+    GameController second(nullptr,path);
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    auto banner=findVisualItem(window->contentItem(),"sessionRecoveryBanner"); QVERIFY(banner); QVERIFY(banner->isVisible());
+    auto resume=findVisualItem(window->contentItem(),"resumeSessionButton"); QVERIFY(resume); QVERIFY(resume->isEnabled());
+    QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,resume->mapToScene(QPointF(resume->width()/2,resume->height()/2)).toPoint());
+    QTRY_COMPARE(window->property("page").toString(),QString("quiz"));
+    QCOMPARE(controller.answeredCount(),1); QCOMPARE(controller.scoreUnits(),score); QCOMPARE(controller.answerOptions(),options);
+    QVERIFY(controller.recoverableSessions().isEmpty()); QVERIFY(!controller.answerPending());
+    QVERIFY(QDir().mkpath("previews")); QVERIFY(window->grabWindow().save("previews/recovered-quiz.png"));
+    // A second window now offers the same durable session; abandonment is explicit.
+    engine.rootContext()->setContextProperty("gameController",&second); window->setProperty("backend",QVariant::fromValue(&second));
+    window->setProperty("page","home"); QTest::qWait(80);
+    QVERIFY(window->grabWindow().save("previews/session-recovery.png"));
+    auto abandon=findVisualItem(window->contentItem(),"abandonSessionButton"); QVERIFY(abandon); QVERIFY(abandon->isVisible());
+    QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,abandon->mapToScene(QPointF(abandon->width()/2,abandon->height()/2)).toPoint());
+    auto dialog=window->findChild<QObject *>("abandonRecoveryDialog"); QVERIFY(dialog); QTRY_VERIFY(dialog->property("visible").toBool());
+    QVERIFY(QMetaObject::invokeMethod(dialog,"accept")); QTRY_VERIFY(second.recoverableSessions().isEmpty());
+    SqliteGameHistoryRepository inspect(path); QCOMPARE(inspect.checkpoint(id).state,QString("abandoned")); QVERIFY(inspect.loadTopResults().isEmpty());
+    QVERIFY(window->close());
 }
 
 QTEST_MAIN(QmlInterfaceTests)

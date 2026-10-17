@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &presence, &DiscordRichPresence::stop);
 
     GameController controller(nullptr, smokeDirectory ? smokeDirectory->filePath("smoke.sqlite") : QString());
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &controller, &GameController::prepareToClose);
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);

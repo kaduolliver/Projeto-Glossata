@@ -29,6 +29,10 @@ GameController::GameController(QObject *parent, const QString &databasePath)
         currentPlayerId_ = profiles.first().id;
     }
     startGame();
+    // Constructor preview supplies the existing home counters, but does not
+    // create a recoverable game merely because the home screen was opened.
+    service_.setCheckpointRepository(&historyRepository_);
+    initializing_=false;
 }
 
 QVariantMap GameController::legalInformation() const
@@ -167,14 +171,14 @@ QVariantMap GameController::sessionMetrics() const
     return presentMetrics(service_.metrics());
 }
 
-void GameController::startGame()
+bool GameController::startGame()
 {
-    startCategoryGame(QString());
+    return startCategoryGame(QString());
 }
 
-void GameController::startCategoryGame(const QString &family)
+bool GameController::startCategoryGame(const QString &family)
 {
-    startTaxonGame(family, QStringLiteral("species"));
+    return startTaxonGame(family, QStringLiteral("species"));
 }
 
 void GameController::exploreTaxon(const QString &taxonId)
@@ -194,34 +198,38 @@ QVariantMap GameController::questionPhoto() const
         {"attribution",p.attribution.toVariantMap()}};
 }
 
-void GameController::startTaxonGame(const QString &family, const QString &rank)
+bool GameController::startTaxonGame(const QString &family, const QString &rank)
 {
     GameConfiguration configuration;
     configuration.group = family;
     configuration.rank = rank;
     configuration.difficulty = difficulty_ == "broad" ? QuestionDifficulty::Broad
         : difficulty_ == "close" ? QuestionDifficulty::Close : QuestionDifficulty::Balanced;
-    startWithConfiguration(configuration);
+    return startWithConfiguration(configuration);
 }
 
-void GameController::startCompetitiveGame()
+bool GameController::startCompetitiveGame()
 {
-    startWithConfiguration(GameService::competitiveConfiguration());
+    return startWithConfiguration(GameService::competitiveConfiguration());
 }
 
-void GameController::startWithConfiguration(const GameConfiguration &configuration)
+bool GameController::startWithConfiguration(const GameConfiguration &configuration)
 {
     const QString family = configuration.group;
     const QString rank = configuration.rank;
+    if (!initializing_ && !recoverableSessions().isEmpty()) {
+        feedbackText_=QStringLiteral("Continue ou abandone as sessões recuperáveis antes de iniciar outra partida.");
+        emit feedbackTextChanged(); return false;
+    }
     if (resultPending_) {
         feedbackText_ = QStringLiteral("Salve o resultado pendente antes de iniciar outra partida.");
         emit feedbackTextChanged();
-        return;
+        return false;
     }
     const auto player = historyRepository_.player(currentPlayerId_);
     if (!player.selectable()) {
         feedbackText_ = QStringLiteral("Selecione um perfil ativo antes de iniciar a partida.");
-        emit feedbackTextChanged(); return;
+        emit feedbackTextChanged(); return false;
     }
     identificationRank_ = rank;
     sessionTaxonId_ = taxonomy_.describe(family).value("title").toString().isEmpty() ? QString() : family;
@@ -235,7 +243,7 @@ void GameController::startWithConfiguration(const GameConfiguration &configurati
     service_.startConfiguredGame(configuration, player.identity());
     rankingMode_ = configuration.modeKey();
     displayedQuestion_=service_.currentQuestion();
-    feedbackText_ = service_.currentQuestion().correctAnswer.isEmpty()
+    feedbackText_ = !service_.checkpointError().isEmpty() ? service_.checkpointError() : service_.currentQuestion().correctAnswer.isEmpty()
         ? QStringLiteral("Não há quatro alternativas aprovadas adequadas a este nível e à dificuldade selecionada.")
         : QStringLiteral("Escolha a opção correta para continuar.");
     emit questionTextChanged();
@@ -247,7 +255,9 @@ void GameController::startWithConfiguration(const GameConfiguration &configurati
     emit gameFinishedChanged();
     emit feedbackTextChanged();
     emit answerDetailsChanged();
+    emit recoveryChanged();
     loadRanking();
+    return !service_.isFinished();
 }
 
 void GameController::answerSelected(const QString &selectedOption)
@@ -257,7 +267,11 @@ void GameController::answerSelected(const QString &selectedOption)
     }
 
     const Question answeredQuestion = displayedQuestion_;
+    const int before=service_.answeredCount();
     const bool correct = service_.submitAnswer(selectedOption);
+    if (service_.answeredCount()==before) {
+        feedbackText_=service_.checkpointError(); emit feedbackTextChanged(); emit recoveryChanged(); return;
+    }
     answerPending_ = true;
     const auto profile=content_.profile(answeredQuestion.species);
     const auto curiosity=content_.curiosity(answeredQuestion.species);
@@ -315,6 +329,7 @@ void GameController::answerSelected(const QString &selectedOption)
     emit answerOptionsChanged();
     emit feedbackTextChanged();
     emit answerDetailsChanged();
+    emit recoveryChanged();
     if (service_.isFinished()) { retrySaveResult(); emit gameFinishedChanged(); }
 }
 
@@ -358,8 +373,8 @@ bool GameController::revealHintCategory(const QString &category)
         const auto &hint=displayedQuestion_.hints[i];
         if(hint.id!=category && hintKey(hint.type)!=category)continue;
         if(displayedRevealedHints_&(1<<i))return true;
-        if(!service_.revealHintSlot(i))return false;
-        displayedRevealedHints_=service_.revealedHints();emit extraHintChanged();return true;
+        if(!service_.revealHintSlot(i)) { emit recoveryChanged(); return false; }
+        displayedRevealedHints_=service_.revealedHints();emit extraHintChanged();emit recoveryChanged();return true;
     }
     return false;
 }
@@ -389,6 +404,7 @@ void GameController::stopGame()
     }
 
     service_.finishGame();
+    if (!service_.isFinished()) { feedbackText_=service_.checkpointError(); emit feedbackTextChanged(); emit recoveryChanged(); return; }
     retrySaveResult();
     emit answerOptionsChanged();
     emit gameFinishedChanged();
@@ -404,8 +420,63 @@ void GameController::retrySaveResult()
         ? QStringLiteral("Não foi possível salvar a pontuação. Tente salvar novamente antes de fechar o jogo.")
         : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(scoreText());
     emit resultPendingChanged();
+    emit recoveryChanged();
     emit feedbackTextChanged();
     loadRanking();
+}
+
+QVariantList GameController::recoverableSessions() const
+{
+    QVariantList rows;
+    for (const auto &s:historyRepository_.recoverableSessions()) {
+        if (service_.hasCheckpoint() && service_.sessionId()==s.id && service_.checkpointError().isEmpty()) continue;
+        const auto owner=historyRepository_.player(s.playerId);
+        const QString name=owner.id.isEmpty() ? s.payload["player_name"].toString() : owner.displayName;
+        const int count=s.payload["answers"].toArray().size();
+        rows.append(QVariantMap{{"id",s.id},{"playerId",s.playerId},{"name",name},{"answered",count},
+            {"state",s.state},{"updatedAt",s.updatedAt},{"error",s.error},
+            {"label",QStringLiteral("%1 · %2 resposta(s) · %3").arg(name).arg(count).arg(s.state=="finished" ? QStringLiteral("finalização pendente") : QStringLiteral("em andamento"))}});
+    }
+    return rows;
+}
+
+bool GameController::resumeSession(const QString &id)
+{
+    if (resultPending_) return false;
+    if (!service_.recoverSession(id)) { feedbackText_=service_.checkpointError(); emit feedbackTextChanged(); emit recoveryChanged(); return false; }
+    const auto c=service_.configuration(); identificationRank_=c.rank; rankingMode_=c.modeKey(); difficulty_=c.difficultyKey();
+    sessionTaxonId_=taxonomy_.describe(c.group).value("title").toString().isEmpty() ? QString() : c.group;
+    categoryName_=c.group.isEmpty() ? QStringLiteral("Todas as espécies") : sessionTaxonId_.isEmpty() ? c.group : taxonomy_.describe(c.group).value("title").toString();
+    displayedQuestion_=service_.currentQuestion(); displayedRevealedHints_=service_.revealedHints();
+    answerPending_=false; answerDetails_.clear(); correctStreak_=bestStreak_=0;
+    for (const auto &a:service_.answers()) { correctStreak_=a.correct ? correctStreak_+1 : 0; bestStreak_=std::max(bestStreak_,correctStreak_); }
+    selectPlayerProfile(service_.sessionPlayer().id); // Retired owners remain retired; ownership never changes.
+    feedbackText_=QStringLiteral("Partida recuperada. Respostas e dicas confirmadas foram preservadas.");
+    if (service_.isFinished()) retrySaveResult();
+    emit questionTextChanged(); emit factTextChanged(); emit extraHintChanged(); emit answerOptionsChanged();
+    emit scoreChanged(); emit roundChanged(); emit gameFinishedChanged(); emit answerDetailsChanged();
+    emit difficultyChanged(); emit feedbackTextChanged(); emit recoveryChanged(); loadRanking(); return true;
+}
+
+bool GameController::abandonSession(const QString &id)
+{
+    const auto s=historyRepository_.checkpoint(id);
+    if (s.id.isEmpty() || !historyRepository_.abandonCheckpoint(id,s.revision)) return false;
+    feedbackText_=QStringLiteral("Sessão abandonada. O checkpoint foi conservado e o ranking não foi alterado.");
+    emit feedbackTextChanged(); emit recoveryChanged(); return true;
+}
+
+bool GameController::prepareToClose()
+{
+    if (resultPending_) retrySaveResult();
+    const bool ok=service_.hasCheckpoint() ? service_.checkpointProgress() : !resultPending_;
+    emit recoveryChanged(); return ok;
+}
+
+void GameController::retryCheckpoint()
+{
+    if (service_.hasCheckpoint()) service_.checkpointProgress();
+    emit recoveryChanged();
 }
 
 void GameController::loadRanking()

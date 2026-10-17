@@ -27,6 +27,9 @@ class GameController : public QObject {
     Q_PROPERTY(QString currentPlayerName READ currentPlayerName WRITE setCurrentPlayerName NOTIFY currentPlayerNameChanged)
     Q_PROPERTY(QString sessionPlayerName READ sessionPlayerName NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool resultPending READ resultPending NOTIFY resultPendingChanged)
+    Q_PROPERTY(QVariantList recoverableSessions READ recoverableSessions NOTIFY recoveryChanged)
+    Q_PROPERTY(QString progressError READ progressError NOTIFY recoveryChanged)
+    Q_PROPERTY(bool canRetryCheckpoint READ canRetryCheckpoint NOTIFY recoveryChanged)
     Q_PROPERTY(qint64 scoreUnits READ scoreUnits NOTIFY scoreChanged)
     Q_PROPERTY(QString scoreText READ scoreText NOTIFY scoreChanged)
     Q_PROPERTY(int correctAnswers READ correctAnswers NOTIFY scoreChanged)
@@ -82,6 +85,9 @@ public:
     QString currentPlayerName() const;
     QString sessionPlayerName() const { return service_.sessionPlayer().displayName; }
     bool resultPending() const { return resultPending_; }
+    QVariantList recoverableSessions() const;
+    QString progressError() const { return service_.checkpointError(); }
+    bool canRetryCheckpoint() const { return service_.hasCheckpoint(); }
     void setCurrentPlayerName(const QString &name);
     qint64 scoreUnits() const;
     QString scoreText() const { return formatScore(scoreUnits()); }
@@ -122,10 +128,10 @@ public:
     QString hintSourceUrl() const { return displayedQuestion_.hintSourceUrl; }
 
 public slots:
-    void startGame();
-    void startCategoryGame(const QString &family);
-    void startTaxonGame(const QString &taxonId, const QString &rank);
-    void startCompetitiveGame();
+    bool startGame();
+    bool startCategoryGame(const QString &family);
+    bool startTaxonGame(const QString &taxonId, const QString &rank);
+    bool startCompetitiveGame();
     void exploreTaxon(const QString &taxonId);
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
@@ -134,6 +140,10 @@ public slots:
     QVariantMap hintReport(const QString &id,const QString &problem) const;
     void stopGame();
     void retrySaveResult();
+    bool resumeSession(const QString &id);
+    bool abandonSession(const QString &id);
+    bool prepareToClose();
+    void retryCheckpoint();
     bool addPlayerProfile(const QString &name);
     void selectPlayerProfile(const QString &id);
     bool renameCurrentPlayerProfile(const QString &name);
@@ -156,9 +166,11 @@ signals:
     void answerDetailsChanged();
     void explorationChanged();
     void difficultyChanged();
+    void recoveryChanged();
 
 private:
-    void startWithConfiguration(const GameConfiguration &configuration);
+    bool startWithConfiguration(const GameConfiguration &configuration);
+    bool initializing_ = true;
     SqliteSpeciesCatalog catalog_;
     JsonExplorationMediaCatalog explorationMedia_;
     TaxonomyIndex taxonomy_;
