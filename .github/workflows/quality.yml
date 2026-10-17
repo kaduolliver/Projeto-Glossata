@@ -53,6 +53,7 @@ jobs:
           git diff --exit-code -- resources/data/species.json resources/data/taxonomy.json docs/AUDITORIA_FILOGENETICA.json
           git diff --exit-code -- docs/AUDITORIA_ASSISTENCIA.json
           python scripts/review_updates.py
+          python scripts/review_updates.py --rights-report
           python scripts/release.py check
       - name: Comparar histórico de governança com a base do evento
         shell: msys2 {0}
@@ -75,6 +76,7 @@ jobs:
             build/repository-audit.json
             build/project-status-check.json
             build/governance-history.json
+            build/rights-investigation.json
             build/update-proposals/*.json
             build/tests/*results.txt
           if-no-files-found: warn

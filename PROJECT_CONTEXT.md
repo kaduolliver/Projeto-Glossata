@@ -14,7 +14,7 @@
 | SQLite e snapshots | histórico 6; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
 | Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
 | Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
-| Testes registrados | **24 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
+| Testes registrados | **25 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |
 
 Valores derivados das fontes locais. Este bloco não comprova publicação, execução da CI ou aprovação do gate de distribuição.
 <!-- glossata:status:end -->
@@ -66,6 +66,8 @@ photo_provenance.json e snapshots mínimos preservam crédito literal e evidênc
 Há 120 fotos distintas do quiz, com pendências de versão/data de licença e confirmação humana, sete divergências de crédito, direitos da arte/textos e obrigações de dependências. Duas fotos de origem Casual exigem revisão prioritária. 109 imagens de apresentação têm licenças públicas por arquivo evidenciadas na coleta; isso não aprova cientificamente seu uso nem resolve os recursos legados. Nenhuma nova aprovação de especialista foi criada. O gate de distribuição permanece obrigatório.
 
 ## Provedores científicos e expansão
+
+Saneamento INV-08: review_updates.py --rights-report gera relatório offline por foto/material em build/rights-investigation.json, reutilizando release_gate, credits, evidências e IDs da fila. --online coleta somente metadados públicos de fotos específicas em lotes limitados, com transporte seguro/cache minimizado em build/update-proposals; nunca altera dados publicados. --package package avalia o inventário existente e sua integridade separadamente. Casos científicos ambíguos continuam pendentes; ver docs/SANEAMENTO_DIREITOS.md.
 
 scripts/scientific_sources define contratos, adaptadores, transporte limitado/cache, reconciliação e SQLite exclusivo de candidatos. scientific_catalog.py opera offline por padrão; --online habilita consultas explícitas. GBIF, CoL/ChecklistBank, WoRMS e Commons estão integrados; NCBI, LPSN, POWO e MycoBank têm planos/restrições em provider_plan.json. GBIF usa checklist fixo e CoL usa release 316165 (2026-08-26 XR), não um latest implícito. A descoberta por ancestral confirmado atende Archaea/Mollusca; Discoba ainda não tem rota integrada.
 
