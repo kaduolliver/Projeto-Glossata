@@ -24,6 +24,8 @@ Opções para o mantenedor avaliar, sem escolha automática:
 
 Somente a escolha do código foi ativada: `content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. `texts` e `collection` permanecem `null`; as opções de Creative Commons acima não são concessões. A redação antes incorporada em `scripts/build_education.py` está em `resources/data/group_education.json`, com a mesma pendência de direitos; a lógica Python separada está enumerada sob Apache-2.0. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos. A declaração do mantenedor de que criou os ícones com ChatGPT foi registrada como evidência parcial de origem, sem concessão gráfica ou aprovação presumida. Consulte [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
 
+A identidade visual atual foi preservada por decisão administrativa do mantenedor em 2026-10-17. Consulte a [documentação independente](IDENTIDADE_VISUAL.md) e a [proposta de condições gráficas ainda não ativada](propostas/USO_IDENTIDADE_VISUAL.md). A adoção dos ícones não muda os três estados de permissão pendente, não concede direitos gráficos e não encerra os achados da Issue #2.
+
 ## Política das fotografias
 
 O padrão técnico aceita somente **CC0 e CC BY**, por fotografia. Créditos de CC0 são preservados por decisão editorial; não se sugere endosso do titular ou do iNaturalist. O nome do fotógrafo é o crédito fornecido pela fonte da imagem, que pode diferir do observador. Título só é registrado quando fornecido. O link específico da fotografia não é substituído por um link genérico do site.

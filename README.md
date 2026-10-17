@@ -331,6 +331,8 @@ O Projeto Glossata permanece experimental: a iniciativa oficial é educacional, 
 
 A licença do código **não autoriza automaticamente redistribuir mídias ou pacotes pendentes**, nem concede direitos de marca. Consulte os [direitos por camada](docs/DIREITOS_E_LICENCAS.md), o [inventário histórico de preparação](docs/INVENTARIO_LICENCIAMENTO.json), os [créditos](docs/PHOTO_CREDITS.md) e o [relatório de implementação](docs/RELATORIO_IMPLEMENTACAO_APACHE_2_0.md). Os gates de distribuição continuam ativos.
 
+Os três ícones atuais foram mantidos como [identidade visual oficial](docs/IDENTIDADE_VISUAL.md): mariposa estilizada e biodiversidade, com direção criativa do mantenedor e geração declarada via ChatGPT. Essa adoção preserva os arquivos e suas pendências de direitos; não ativa uma licença gráfica.
+
 ---
 
 **Projeto Glossata — Explore a diversidade da vida.**
