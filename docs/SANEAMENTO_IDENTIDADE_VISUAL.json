@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-17T21:38:21.325357+00:00",
+  "base_commit": "d2280de6a6825125d04a8fd4579357838c684096",
+  "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2",
+  "merged_pr12_commit": "d2280de6a6825125d04a8fd4579357838c684096",
+  "files": {
+    "glossata.png": {
+      "sha256": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+      "bytes": 1830645,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "info_keys": [],
+      "format": "PNG",
+      "decoded_rgba_sha256": "fa40e933a4ec72a36b3ee2274af7874f7a0b069899e6d501be7514839fa5d393"
+    },
+    "glossata_discord.png": {
+      "sha256": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+      "bytes": 1929682,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "info_keys": [],
+      "format": "PNG",
+      "decoded_rgba_sha256": "d1286952969cc5f10248f50d1959725c2ac7bd5265bab5795ac1129fa052048d"
+    },
+    "glossata.ico": {
+      "sha256": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+      "bytes": 150153,
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "info_keys": [
+        "sizes"
+      ],
+      "format": "ICO",
+      "frames": [
+        [
+          16,
+          16
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          32,
+          32
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          128,
+          128
+        ],
+        [
+          256,
+          256
+        ]
+      ]
+    }
+  },
+  "ico_pixel_comparison": {
+    "library": "Pillow",
+    "library_version": "12.2.0",
+    "method": "Decode RGBA; compare all bytes against each Lanczos resize of glossata.png without writing a new image.",
+    "frames": [
+      {
+        "width": 16,
+        "height": 16,
+        "decoded_rgba_sha256": "0b672d8580987c9ea2b99ded6d605949ef74039e34233ab3d2fb19614c0ac507",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 24,
+        "height": 24,
+        "decoded_rgba_sha256": "debd3f09044d80d0109ce350e2629da17e35294ea4044f2b75d1ba9060bf856f",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 32,
+        "height": 32,
+        "decoded_rgba_sha256": "9f65590c4c88dd1a0296a39558bc4d49f95920281f43700c600c488b98cfc6f7",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 48,
+        "height": 48,
+        "decoded_rgba_sha256": "04835f925f9bac3e7f7a5e82fc36bbcc2a467e08faa3730de75400667fe19b81",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 64,
+        "height": 64,
+        "decoded_rgba_sha256": "6982e08777578af8e1c7cffce7043f93c7028dbfefab2c0e8139dd95383e256d",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 128,
+        "height": 128,
+        "decoded_rgba_sha256": "f444d556fd5a0b2d6f62f90e91567754afce2612be066f9503488e057212ec9b",
+        "pixel_equal_to_png_lanczos_resize": true
+      },
+      {
+        "width": 256,
+        "height": 256,
+        "decoded_rgba_sha256": "a489df5c76616b1c3c12ed73b4f3db5ac4605dd379a20b70e1fa3829b1e0e0fb",
+        "pixel_equal_to_png_lanczos_resize": true
+      }
+    ],
+    "limitation": "Numerical equivalence is not proof of the historical tool, creation date, ownership or permission."
+  },
+  "origin_records": {
+    "previous": {
+      "path": "resources/compliance/branding/origin-declaration.json",
+      "sha256": "5476a9a1bd0339e81831611b4539b294d03ecd6fda827a04b6a2eee5adc5e1f7",
+      "preserved_unchanged": true
+    },
+    "additional": {
+      "path": "resources/compliance/branding/reference-disclosure.json",
+      "sha256": "e003c046b2d3d1d433a3d90427aa40bb2f62eb638c2fbc9cfa4839a7cfd62dbb",
+      "grants_permission": false
+    }
+  },
+  "comparison_reference": {
+    "publisher": "Naughty Dog",
+    "article_url": "https://www.naughtydog.com/blog/celebrating-the-last-of-us-day-2026",
+    "locator": "Steam Avatars; central Fireflies emblem in the linked promotional image",
+    "article_date": "2026-09-28",
+    "image_url": "https://cdn.craft.cloud/22b11234-f633-4f7c-8ac2-099f2dba995c/assets/uploads/TLOUDay2026_SteamAvatars_16x9.png",
+    "observed_image_sha256": "ec2a8591bd97de2644b8a3864bdf2b518154f0b921a3dcfdc438a75aab8cc101",
+    "consulted_on": "2026-10-17",
+    "inspection": "Official image viewed from an ignored local inspection cache; not copied into tracked resources, reports, package or QRC.",
+    "historical_input_identity": "Unknown; this comparison image is not claimed to be the file used during creation.",
+    "assessment_kind": "Qualitative visual analysis assisted by AI; not authenticated human, legal or specialist review."
+  },
+  "terms_consulted": {
+    "url": "https://openai.com/policies/row-terms-of-use/",
+    "displayed_effective_date": "2026-01-01",
+    "consulted_on": "2026-10-17",
+    "sections": [
+      "Content / Your content",
+      "Content / Ownership of content",
+      "Content / Similarity of content",
+      "Using our Services / Third party Services",
+      "Our IP rights"
+    ],
+    "scope": "Current individual-service terms; historical plan/version/terms and third-party permissions unknown."
+  },
+  "brand_findings": {
+    "before": 3,
+    "after": 3,
+    "rights_approved": 0,
+    "distribution_allowed": [
+      false,
+      false,
+      false
+    ]
+  },
+  "gate": {
+    "before": {
+      "technical_errors": 0,
+      "photo_licensing": 120,
+      "asset_licensing": 7,
+      "scientific_release_blocks": 2
+    },
+    "after": {
+      "technical_errors": 0,
+      "photo_licensing": 120,
+      "asset_licensing": 7,
+      "scientific_release_blocks": 2
+    },
+    "distribution_blocked": true
+  },
+  "tests": {
+    "status": "passed_local_checks",
+    "release_build": "passed",
+    "ctest_suites_passed": 26,
+    "ctest_suites_total": 26,
+    "ctest_seconds": 131.09,
+    "rights_investigation_tests": 38,
+    "governance_tests": 23,
+    "strict_catalog": "passed; 122 organisms, 120 distinct quiz photographs, competitive pool 80",
+    "icon_hashes_preserved": true,
+    "prior_origin_statement_preserved": true,
+    "core_files_verified_unchanged": 17,
+    "apache_license_scope": "passed; unchanged license, notice and explicit scope",
+    "catalog_manifest_project_status_and_visual_history": "passed",
+    "ledger_comparison": "prefix_preserved against d2280de6a6825125d04a8fd4579357838c684096",
+    "permission_recovery": "consistent; no replay or event created",
+    "existing_automated_pedagogy": "valid; no review date renewed",
+    "distribution_exit_code": 2,
+    "distribution_blocked": true,
+    "remote_ci": "Tracked in the new PR; no remote result asserted before its execution."
+  },
+  "human_decisions_created": 0,
+  "new_images_generated": 0,
+  "existing_graphics_modified": 0
+}
