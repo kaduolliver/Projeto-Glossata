@@ -1,5 +1,7 @@
 #include "infrastructure/persistence/SqliteGameHistoryRepository.h"
 #include "PlayerIdentityMigration.h"
+#include "PlayerNameMigration.h"
+#include "domain/PlayerNamePolicy.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -97,11 +99,6 @@ QString resolvedDatabasePath(const QString &requestedPath)
     return QFileInfo(resolvedPath).absoluteFilePath();
 }
 
-QString nameKey(const QString &name)
-{
-    return name.trimmed().normalized(QString::NormalizationForm_C).toCaseFolded().normalized(QString::NormalizationForm_C);
-}
-
 bool upsertRanking(const QSqlDatabase &database, const QString &key, const PlayerIdentity &player,
                    qint64 units, int correct, const QString &date)
 {
@@ -138,9 +135,9 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 4) { database_.close(); return; }
-    if (version == 4) {
-        if (!query.exec("PRAGMA foreign_key_check") || query.next()) database_.close();
+    if (version > 5) { database_.close(); return; }
+    if (version == 5) {
+        if (!validatePlayerNames(database_) || !query.exec("PRAGMA foreign_key_check") || query.next()) database_.close();
         return;
     }
     if (!database_.transaction()) { database_.close(); return; }
@@ -151,60 +148,64 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         while (query.next()) result.insert(query.value(1).toString());
         query.finish(); return result;
     };
-    bool ok = exec("CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, player_name TEXT NOT NULL, score INTEGER NOT NULL, correct_answers INTEGER NOT NULL, played_at TEXT NOT NULL)")
-        && exec("CREATE TABLE IF NOT EXISTS player_profiles (name TEXT PRIMARY KEY COLLATE NOCASE)");
-    if (ok && !columns("history").contains("score_units"))
-        ok = exec("ALTER TABLE history RENAME COLUMN score TO score_units") && exec("UPDATE history SET score_units=score_units*6");
-    // Preserve even obsolete duplicate rows before retaining the existing unique-name policy.
-    if (ok && version < 2) ok = exec("CREATE TABLE IF NOT EXISTS legacy_history_results (original_id INTEGER PRIMARY KEY, player_name TEXT NOT NULL, score_units INTEGER NOT NULL, correct_answers INTEGER NOT NULL, played_at TEXT NOT NULL)")
-        && exec("INSERT OR IGNORE INTO legacy_history_results SELECT id,player_name,score_units,correct_answers,played_at FROM history");
-    ok = ok && exec("CREATE TABLE IF NOT EXISTS game_runs (id TEXT PRIMARY KEY, player_name TEXT NOT NULL, finished_at TEXT NOT NULL)")
-        && exec("CREATE TABLE IF NOT EXISTS answer_records (game_id TEXT NOT NULL REFERENCES game_runs(id), question_number INTEGER NOT NULL, species_id INTEGER NOT NULL, scientific_name TEXT NOT NULL, photo_id TEXT NOT NULL, rank TEXT NOT NULL, selected_answer TEXT NOT NULL, correct_answer TEXT NOT NULL, is_correct INTEGER NOT NULL CHECK(is_correct IN (0,1)), revealed_hints INTEGER NOT NULL CHECK(revealed_hints BETWEEN 0 AND 7), maximum_units INTEGER NOT NULL CHECK(maximum_units IN (2,3,6)), awarded_units INTEGER NOT NULL CHECK(awarded_units IN (0,2,3,6)), PRIMARY KEY(game_id,question_number), CHECK(awarded_units=CASE WHEN is_correct=1 THEN maximum_units ELSE 0 END))");
-    const auto existing = columns("game_runs");
-    for (const auto &column : QStringList{
-        "mode TEXT NOT NULL DEFAULT 'free'", "question_limit INTEGER NOT NULL DEFAULT 0", "group_id TEXT NOT NULL DEFAULT ''",
-        "rank TEXT NOT NULL DEFAULT ''", "difficulty TEXT NOT NULL DEFAULT 'balanced'", "rules_version TEXT NOT NULL DEFAULT 'legacy'",
-        "content_version TEXT NOT NULL DEFAULT ''", "ranking_key TEXT NOT NULL DEFAULT 'free'", "score_units INTEGER",
-        "correct_answers INTEGER", "answered_count INTEGER", "is_complete INTEGER NOT NULL DEFAULT 0"}) {
-        if (ok && !existing.contains(column.section(' ', 0, 0))) ok = exec("ALTER TABLE game_runs ADD COLUMN " + column);
-    }
-    ok = ok && exec("CREATE TABLE IF NOT EXISTS ranking_records (ranking_key TEXT NOT NULL, player_name TEXT NOT NULL COLLATE NOCASE, best_units INTEGER NOT NULL, best_correct INTEGER NOT NULL, best_played_at TEXT NOT NULL, last_units INTEGER NOT NULL, last_correct INTEGER NOT NULL, last_played_at TEXT NOT NULL, PRIMARY KEY(ranking_key,player_name))")
-        && exec("CREATE INDEX IF NOT EXISTS game_runs_player_configuration ON game_runs(player_name COLLATE NOCASE,ranking_key)");
-    if (ok && version < 2) {
-        ok = exec("UPDATE game_runs SET score_units=(SELECT SUM(awarded_units) FROM answer_records WHERE game_id=game_runs.id), correct_answers=(SELECT SUM(is_correct) FROM answer_records WHERE game_id=game_runs.id), answered_count=(SELECT COUNT(*) FROM answer_records WHERE game_id=game_runs.id), is_complete=1 WHERE EXISTS(SELECT 1 FROM answer_records WHERE game_id=game_runs.id)");
-        QVector<QVariantList> available;
-        if (ok) ok = query.exec("SELECT player_name,score_units,correct_answers,finished_at FROM game_runs WHERE score_units IS NOT NULL ORDER BY finished_at,rowid");
-        while (query.next()) available.append({query.value(0),query.value(1),query.value(2),query.value(3)});
-        query.finish();
-        if (ok) ok = query.exec("SELECT player_name,score_units,correct_answers,played_at FROM legacy_history_results ORDER BY played_at,original_id");
-        while (query.next()) available.append({query.value(0),query.value(1),query.value(2),query.value(3)});
-        query.finish();
-        for (const auto &row : available) if (ok) ok = upsertLegacyRanking(database_, "free", row[0].toString(),row[1].toLongLong(),row[2].toInt(),row[3].toString());
-    }
-    const auto answerColumns=columns("answer_records");
-    if (ok && !answerColumns.contains("rules_version")) ok=exec("ALTER TABLE answer_records ADD COLUMN rules_version TEXT NOT NULL DEFAULT 'identification-v2'");
-    if (ok && !answerColumns.contains("hint_snapshot")) ok=exec("ALTER TABLE answer_records ADD COLUMN hint_snapshot TEXT NOT NULL DEFAULT '{}'");
-    if (ok && version<3) {
-        QVector<QVariantList> legacy;
-        ok=query.exec("SELECT a.game_id,a.question_number,a.revealed_hints,g.rules_version FROM answer_records a JOIN game_runs g ON g.id=a.game_id");
-        while (query.next()) legacy.append({query.value(0),query.value(1),query.value(2),query.value(3)});
-        query.finish();
-        for (const auto &row : legacy) {
-            AnswerRecord answer;answer.revealedHints=row[2].toInt();answer.rulesVersion=row[3].toString();
-            // Freeze the historical category policy; never UPDATE points/rankings.
-            for (int i=0;i<3;++i) if (answer.revealedHints & (1<<i)) answer.ceilings[i]=legacyMaximumScoreUnits(1<<i);
-            query.prepare("UPDATE answer_records SET rules_version=?,hint_snapshot=? WHERE game_id=? AND question_number=?");
-            for (const auto &v : QVariantList{answer.rulesVersion,answerSnapshot(answer),row[0],row[1]}) query.addBindValue(v);
-            if (!query.exec()) {ok=false;break;}
+    bool ok = true;
+    if (version < 4) {
+        ok = exec("CREATE TABLE IF NOT EXISTS history (id INTEGER PRIMARY KEY AUTOINCREMENT, player_name TEXT NOT NULL, score INTEGER NOT NULL, correct_answers INTEGER NOT NULL, played_at TEXT NOT NULL)")
+            && exec("CREATE TABLE IF NOT EXISTS player_profiles (name TEXT PRIMARY KEY COLLATE NOCASE)");
+        if (ok && !columns("history").contains("score_units"))
+            ok = exec("ALTER TABLE history RENAME COLUMN score TO score_units") && exec("UPDATE history SET score_units=score_units*6");
+        // Preserve even obsolete duplicate rows before retaining the existing unique-name policy.
+        if (ok && version < 2) ok = exec("CREATE TABLE IF NOT EXISTS legacy_history_results (original_id INTEGER PRIMARY KEY, player_name TEXT NOT NULL, score_units INTEGER NOT NULL, correct_answers INTEGER NOT NULL, played_at TEXT NOT NULL)")
+            && exec("INSERT OR IGNORE INTO legacy_history_results SELECT id,player_name,score_units,correct_answers,played_at FROM history");
+        ok = ok && exec("CREATE TABLE IF NOT EXISTS game_runs (id TEXT PRIMARY KEY, player_name TEXT NOT NULL, finished_at TEXT NOT NULL)")
+            && exec("CREATE TABLE IF NOT EXISTS answer_records (game_id TEXT NOT NULL REFERENCES game_runs(id), question_number INTEGER NOT NULL, species_id INTEGER NOT NULL, scientific_name TEXT NOT NULL, photo_id TEXT NOT NULL, rank TEXT NOT NULL, selected_answer TEXT NOT NULL, correct_answer TEXT NOT NULL, is_correct INTEGER NOT NULL CHECK(is_correct IN (0,1)), revealed_hints INTEGER NOT NULL CHECK(revealed_hints BETWEEN 0 AND 7), maximum_units INTEGER NOT NULL CHECK(maximum_units IN (2,3,6)), awarded_units INTEGER NOT NULL CHECK(awarded_units IN (0,2,3,6)), PRIMARY KEY(game_id,question_number), CHECK(awarded_units=CASE WHEN is_correct=1 THEN maximum_units ELSE 0 END))");
+        const auto existing = columns("game_runs");
+        for (const auto &column : QStringList{
+            "mode TEXT NOT NULL DEFAULT 'free'", "question_limit INTEGER NOT NULL DEFAULT 0", "group_id TEXT NOT NULL DEFAULT ''",
+            "rank TEXT NOT NULL DEFAULT ''", "difficulty TEXT NOT NULL DEFAULT 'balanced'", "rules_version TEXT NOT NULL DEFAULT 'legacy'",
+            "content_version TEXT NOT NULL DEFAULT ''", "ranking_key TEXT NOT NULL DEFAULT 'free'", "score_units INTEGER",
+            "correct_answers INTEGER", "answered_count INTEGER", "is_complete INTEGER NOT NULL DEFAULT 0"}) {
+            if (ok && !existing.contains(column.section(' ', 0, 0))) ok = exec("ALTER TABLE game_runs ADD COLUMN " + column);
         }
+        ok = ok && exec("CREATE TABLE IF NOT EXISTS ranking_records (ranking_key TEXT NOT NULL, player_name TEXT NOT NULL COLLATE NOCASE, best_units INTEGER NOT NULL, best_correct INTEGER NOT NULL, best_played_at TEXT NOT NULL, last_units INTEGER NOT NULL, last_correct INTEGER NOT NULL, last_played_at TEXT NOT NULL, PRIMARY KEY(ranking_key,player_name))")
+            && exec("CREATE INDEX IF NOT EXISTS game_runs_player_configuration ON game_runs(player_name COLLATE NOCASE,ranking_key)");
+        if (ok && version < 2) {
+            ok = exec("UPDATE game_runs SET score_units=(SELECT SUM(awarded_units) FROM answer_records WHERE game_id=game_runs.id), correct_answers=(SELECT SUM(is_correct) FROM answer_records WHERE game_id=game_runs.id), answered_count=(SELECT COUNT(*) FROM answer_records WHERE game_id=game_runs.id), is_complete=1 WHERE EXISTS(SELECT 1 FROM answer_records WHERE game_id=game_runs.id)");
+            QVector<QVariantList> available;
+            if (ok) ok = query.exec("SELECT player_name,score_units,correct_answers,finished_at FROM game_runs WHERE score_units IS NOT NULL ORDER BY finished_at,rowid");
+            while (query.next()) available.append({query.value(0),query.value(1),query.value(2),query.value(3)});
+            query.finish();
+            if (ok) ok = query.exec("SELECT player_name,score_units,correct_answers,played_at FROM legacy_history_results ORDER BY played_at,original_id");
+            while (query.next()) available.append({query.value(0),query.value(1),query.value(2),query.value(3)});
+            query.finish();
+            for (const auto &row : available) if (ok) ok = upsertLegacyRanking(database_, "free", row[0].toString(),row[1].toLongLong(),row[2].toInt(),row[3].toString());
+        }
+        const auto answerColumns=columns("answer_records");
+        if (ok && !answerColumns.contains("rules_version")) ok=exec("ALTER TABLE answer_records ADD COLUMN rules_version TEXT NOT NULL DEFAULT 'identification-v2'");
+        if (ok && !answerColumns.contains("hint_snapshot")) ok=exec("ALTER TABLE answer_records ADD COLUMN hint_snapshot TEXT NOT NULL DEFAULT '{}'");
+        if (ok && version<3) {
+            QVector<QVariantList> legacy;
+            ok=query.exec("SELECT a.game_id,a.question_number,a.revealed_hints,g.rules_version FROM answer_records a JOIN game_runs g ON g.id=a.game_id");
+            while (query.next()) legacy.append({query.value(0),query.value(1),query.value(2),query.value(3)});
+            query.finish();
+            for (const auto &row : legacy) {
+                AnswerRecord answer;answer.revealedHints=row[2].toInt();answer.rulesVersion=row[3].toString();
+                // Freeze the historical category policy; never UPDATE points/rankings.
+                for (int i=0;i<3;++i) if (answer.revealedHints & (1<<i)) answer.ceilings[i]=legacyMaximumScoreUnits(1<<i);
+                query.prepare("UPDATE answer_records SET rules_version=?,hint_snapshot=? WHERE game_id=? AND question_number=?");
+                for (const auto &v : QVariantList{answer.rulesVersion,answerSnapshot(answer),row[0],row[1]}) query.addBindValue(v);
+                if (!query.exec()) {ok=false;break;}
+            }
+        }
+        if (ok) ok = migratePlayerIdentity(database_);
     }
-    if (ok) ok = migratePlayerIdentity(database_);
+    if (ok) ok = migratePlayerNames(database_);
     if (ok) {
         ok = exec("PRAGMA foreign_key_check");
         if (query.next()) ok = false;
         query.finish();
     }
-    ok = ok && exec("PRAGMA user_version=4");
+    ok = ok && exec("PRAGMA user_version=5");
     if (!ok || !database_.commit()) {
         qWarning() << "Não foi possível migrar o histórico:" << query.lastError().text() << database_.lastError().text();
         database_.rollback(); database_.close();
@@ -445,9 +446,13 @@ PlayerProfile SqliteGameHistoryRepository::player(const QString &id) const
 PlayerProfile SqliteGameHistoryRepository::profileNamed(const QString &name) const
 {
     const auto active = profiles();
-    for (const auto &p : active) if (p.displayName == name.trimmed()) return p;
     PlayerProfile selected;
-    for (const auto &p : active) if (nameKey(p.displayName) == nameKey(name)) {
+    for (const auto &p : active) if (p.displayName == PlayerNamePolicy::displayName(name)) {
+        if (!selected.id.isEmpty()) return {};
+        selected=p;
+    }
+    if (!selected.id.isEmpty()) return selected;
+    for (const auto &p : active) if (PlayerNamePolicy::key(p.displayName) == PlayerNamePolicy::key(name)) {
         if (!selected.id.isEmpty()) return {}; // A Unicode collision from an old DB is not a merge.
         selected = p;
     }
@@ -456,22 +461,22 @@ PlayerProfile SqliteGameHistoryRepository::profileNamed(const QString &name) con
 
 PlayerProfile SqliteGameHistoryRepository::createPlayer(const QString &name)
 {
-    const QString display = name.trimmed();
-    if (!database_.isOpen() || display.isEmpty() || display.size()>32) return {};
+    const QString display = PlayerNamePolicy::displayName(name);
+    if (!database_.isOpen() || !PlayerNamePolicy::validDisplayName(display)) return {};
     const QString id = QUuid::createUuid().toString(QUuid::WithoutBraces);
     QSqlQuery q(database_); q.prepare("INSERT INTO player_profiles(id,name,name_key,origin) VALUES(?,?,?,'profile')");
-    q.addBindValue(id); q.addBindValue(display); q.addBindValue(nameKey(display));
+    q.addBindValue(id); q.addBindValue(display); q.addBindValue(PlayerNamePolicy::key(display));
     return q.exec() ? player(id) : PlayerProfile{};
 }
 
 bool SqliteGameHistoryRepository::renamePlayer(const QString &id, const QString &name)
 {
-    const QString display = name.trimmed();
+    const QString display = PlayerNamePolicy::displayName(name);
     const auto current = player(id);
-    if (!current.selectable() || display.isEmpty() || display.size()>32) return false;
+    if (!current.selectable() || !PlayerNamePolicy::validDisplayName(display)) return false;
     if (display==current.displayName) return true;
     QSqlQuery q(database_); q.prepare("UPDATE player_profiles SET name=?,name_key=? WHERE id=? AND deleted_at IS NULL AND origin='profile'");
-    q.addBindValue(display); q.addBindValue(nameKey(display)); q.addBindValue(id);
+    q.addBindValue(display); q.addBindValue(PlayerNamePolicy::key(display)); q.addBindValue(id);
     return q.exec() && q.numRowsAffected()==1;
 }
 

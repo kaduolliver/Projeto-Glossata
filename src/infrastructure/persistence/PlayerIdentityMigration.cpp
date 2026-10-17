@@ -1,4 +1,5 @@
 #include "PlayerIdentityMigration.h"
+#include "domain/PlayerNamePolicy.h"
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QUuid>
@@ -30,7 +31,7 @@ bool migratePlayerIdentity(const QSqlDatabase &database)
         const QString playerId = id();
         q.prepare("INSERT INTO player_profiles(id,name,name_key,origin) VALUES(?,?,?,'profile')");
         q.addBindValue(playerId); q.addBindValue(name);
-        q.addBindValue(name.trimmed().normalized(QString::NormalizationForm_C).toCaseFolded().normalized(QString::NormalizationForm_C));
+        q.addBindValue(PlayerNamePolicy::key(name));
         if (!q.exec()) return false;
         q.prepare("INSERT INTO identity_migration_notes(player_id,source_table,source_key,reason) VALUES(?,'legacy_player_profiles_v3',?,'profile_id_created; historical ownership not inferred from name')");
         q.addBindValue(playerId); q.addBindValue(name);

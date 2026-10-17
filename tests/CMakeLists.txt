@@ -13,6 +13,7 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 
@@ -41,6 +42,7 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/presentation/GameController.cpp
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
@@ -83,6 +85,7 @@ add_executable(glossata_identity_tests
     PlayerIdentityTests.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
 )
 target_include_directories(glossata_identity_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(glossata_identity_tests PRIVATE Qt6::Core Qt6::Sql Qt6::Test)
