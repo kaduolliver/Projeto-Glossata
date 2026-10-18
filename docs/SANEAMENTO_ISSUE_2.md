@@ -1,5 +1,29 @@
 # Saneamento documental da Issue #2
 
+## Lote 2 — conferência final das fichas, 2026-10-18
+
+O PR #19 foi confirmado como integrado: merge `09e8eb759172e32b9554c4c86d8a583a667e4dcc`, em 2026-10-18. A `main` local foi atualizada por avanço direto e a revisão ocorre em `fix/issue-2-species-profiles-lote-2`, com workspace inicialmente limpo. O lote de grupos aprovado e os registros anteriores foram preservados. As seções seguintes registram etapas anteriores e não descrevem necessariamente o estado remoto atual.
+
+A [conferência única das fichas](propostas/REVISAO_FICHAS_LOTE_2.md) apresenta nove redações para 34 campos de 28 organismos, com comparação, fontes, licenças específicas, limitações e vínculos individuais. **Fingerprint final da proposta: `e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478`.** A versão anterior, fingerprint `a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460`, permanece no Git; a revisão estruturada está em `profile_openstax_batch.proposal_revision` no JSON existente.
+
+Foram mantidas quatro redações e ajustadas cinco, alterando nove das 34 ocorrências propostas. As ressalvas administrativas de predação, comparação de plantas, parceiros de líquen e comprovação fotográfica das cianobactérias foram deslocadas para os metadados e a conferência. A ressalva de *Gomphosphaeria* permanece no texto por ser necessária para distinguir cultura estudada e imagem de apoio. Nenhum resultado experimental de *Haania orlovi* ou *Cladonia grayi* foi atribuído às espécies do catálogo.
+
+A revisão encontrou uma lacuna concreta na referência anterior sobre micélio: Challacombe et al. (2019) não sustentava claramente o trecho sobre estruturas reprodutivas. A nova síntese distingue hifas/micélio e corpos de frutificação, usando [Islam et al. (2017)](https://doi.org/10.1038/s41598-017-13295-2) e [Berger et al. (2022)](https://doi.org/10.3390/microorganisms10071379). Foram arquivados somente metadados bibliográficos e licença específica CC BY 4.0, com datas reais e hashes; figuras e texto integral não foram incorporados. As sete evidências anteriores continuam preservadas; oito referências sustentam a versão final. As referências alternativas que não apresentaram licença aberta comprovada nos metadados não foram baixadas nem usadas na proposta. A referência bibliográfica anterior ao OpenStax não foi tratada como prova de infração.
+
+**Estado atual: proposta, aguardando duas confirmações distintas do mantenedor.** A primeira trata da revisão editorial das notas exatas e do mesmo conteúdo científico no alias morfológico de `110`; a segunda trata de CC BY 4.0 somente nos direitos efetivamente disponíveis nessas redações assistidas por IA. Nenhuma aprovação é herdada do lote de grupos, do conteúdo legado ou da existência de referências. Tópicos agregados que incluem outras passagens e graus de assistência ficam fora da aprovação solicitada.
+
+`species_profiles.json` continua com SHA-256 `df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec`; não foram alterados conteúdo ativo, permissões ou ledgers. Permanecem 122 organismos, pool competitivo de 80 e as decisões do organismo 82. As demais passagens das fichas continuam inconclusivas; não se declara o arquivo regularizado. Após respostas concretas, somente o subconjunto aprovado poderá ser incorporado, regenerado e validado antes de publicar a branch e abrir o PR. A Issue #2 permanece aberta; nenhum pacote, tag ou release será criado.
+
+### Verificações desta preparação
+
+- Configure e compilação Release/Ninja aprovados; **26/26 suítes CTest passaram em 196,21 segundos**, incluindo pontuação, persistência, recuperação, governança e admissão. Não se presume validação remota ou visual manual.
+- **20 testes de importação/geração** e **52 de investigação de direitos** passaram. A nova regressão vincula proposta, documento de conferência, fonte, fingerprint e escopo aos 34 ponteiros originais. Na simulação temporária, 35 notas derivadas mudam; 121 receitas ficam idênticas e a aparência de `110` preserva graus/categorias/níveis/foto. Regenerar não aprova cientificamente as novas notas.
+- Auditoria estrita: 122 organismos e pool competitivo de 80. Apache, integridade de manifestos/estado, histórico frente ao merge do PR #19, repositório, exploração, cobertura, assistência e `qmllint` aprovados. Educação, créditos e filogenia reproduzíveis; dados ativos e os 41 eventos editoriais permanecem idênticos à base.
+- `curation_requests.py plan` e `sync` **sem `--apply`**: 15 solicitações / 3.309 achados, como antes; `remote_checked: false`, zero criações/atualizações. Os indicadores não foram reduzidos por existirem propostas.
+- Gate de distribuição: retorno **2**, zero erros técnicos, 120 pendências fotográficas, três textuais e dois bloqueios científicos. Os bloqueios continuam ativos. As 34 notas ainda não receberam revisão humana nem licença; a incorporação e o PR dependem das duas confirmações solicitadas na etapa 5 do pedido.
+
+Estes resultados verificam a preparação com o catálogo ativo preservado. Depois da confirmação e aplicação efetivas será necessário regenerar os recursos e executar novamente as verificações pertinentes, inclusive CTest completo. Não se usa esta rodada como aprovação de um lote ainda não aplicado.
+
 ## Consolidação para Pull Request — 2026-10-18
 
 A branch `fix/issue-2-educational-text-rights` preserva o merge do PR #18 (`ed7e5c44e1acea80674b3c3bf402071d0836454c`) como base. Na conferência remota desta etapa, `main` continua nesse commit e protegida; não existia outro PR para a branch. A solicitação de continuidade autoriza publicar a branch e abrir o PR após a validação, sem merge ou encerramento da Issue. Nenhuma redação aprovada, evento editorial ou evidência de confirmação foi recriada.

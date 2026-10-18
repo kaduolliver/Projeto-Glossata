@@ -351,6 +351,45 @@ class ImportTests(unittest.TestCase):
             for key in changed:
                 self.assertFalse(regenerated['notes'][key]['governance']['usable'])
 
+    def test_profile_batch_revision_is_bound_to_history_and_exact_review_document(self):
+        import content_governance as governance
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
+        packet=report['educational_regularization']['profile_openstax_batch']
+        revision=packet['proposal_revision']
+        previous=json.loads(self.historical_bytes(revision['base_commit'],'docs/SANEAMENTO_ISSUE_2.json'))
+        original=previous['educational_regularization']['profile_openstax_batch']['proposed_changes']
+        changes=packet['proposed_changes']
+        self.assertEqual(governance.digest(original),revision['previous_fingerprint'])
+        self.assertEqual(governance.digest(changes),revision['final_fingerprint'])
+        self.assertEqual(packet['proposal_fingerprint'],revision['final_fingerprint'])
+        view=(PROJECT/'docs/propostas/REVISAO_FICHAS_LOTE_2.md').read_text(encoding='utf8')
+        self.assertIn('`'+revision['final_fingerprint']+'`',view)
+        self.assertEqual(len({c['pointer'].split('/')[1] for c in changes}),28)
+        self.assertEqual(len({c['draft_kind'] for c in changes}),9)
+        # A proposal revision cannot silently widen its original organism/field scope.
+        self.assertEqual([c['pointer'] for c in changes],[c['pointer'] for c in original])
+        changed={c['pointer'] for before,c in zip(original,changes) if before!=c}
+        self.assertEqual(changed,set(revision['changed_pointers']))
+        self.assertEqual(len(changed),9)
+        self.assertFalse(revision['human_approval_recorded'])
+        self.assertFalse(revision['specialist_review_performed'])
+        for change in changes:
+            self.assertIn(change['proposed_note']['text'],view)
+            check=revision['checks_by_wording'][change['draft_kind']]
+            self.assertTrue(check['evidence']);self.assertTrue(check['limitations'])
+            self.assertIn(check['reason'],view)
+        morphology=next(c for c in changes if c['pointer']=='/110/morphology')
+        old_morphology=next(c for c in original if c['pointer']=='/110/morphology')
+        self.assertEqual(morphology,old_morphology)
+        self.assertIn('DSM 107014',morphology['proposed_note']['scope_name'])
+        self.assertIn('não confirma',morphology['proposed_note']['text'])
+        # The replacement fungal reference needs both independent factual scopes.
+        fungal=next(c for c in changes if c['draft_kind']=='fungal_mycelium')
+        ids={json.loads((PROJECT/ref['path']).read_bytes())['license_check']['pmcid']
+             for ref in fungal['scientific_sources']}
+        self.assertEqual(ids,{'PMC5638950','PMC9315710'})
+        self.assertIn('PMC6909477',packet['source_evidence'])
+
     def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
