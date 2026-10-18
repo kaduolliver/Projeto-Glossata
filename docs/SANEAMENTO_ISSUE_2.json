@@ -3699,6 +3699,43 @@
       "resolved_issue_2_findings_this_phase": 1,
       "remaining_text_asset_findings": 3,
       "remaining_work": "The profile drafts and all other legacy profile/hint/derived passages remain outside the confirmed group batch. No whole-corpus or package permission granted."
+    },
+    "pr_consolidation": {
+      "checked_at": "2026-10-18T11:52:13.516562+00:00",
+      "base_pr": 18,
+      "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
+      "base_ancestry_confirmed": true,
+      "maintainer_confirmations_unchanged": true,
+      "group_source_unchanged_since_confirmation": true,
+      "new_human_events_created": 0,
+      "draft_review_document": "docs/propostas/REVISAO_FICHAS_LOTE_2.md",
+      "draft_changes_sha256": "a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460",
+      "profile_drafts_applied": false,
+      "proposal_count": 34,
+      "proposal_organisms": 28,
+      "configure_and_build": "passed",
+      "ctest": {
+        "passed": 26,
+        "total": 26,
+        "seconds": 154.66
+      },
+      "strict_catalog": {
+        "organisms": 122,
+        "competitive_pool": 80,
+        "errors": 0
+      },
+      "apache": "passed",
+      "manifest_and_status": "passed",
+      "governance_history": "prefix_preserved",
+      "distribution": {
+        "exit_code": 2,
+        "technical_errors": 0,
+        "photo_licensing": 120,
+        "asset_licensing": 3,
+        "scientific_release_blocks": 2
+      },
+      "remote_validation_authority": "Actual GitHub Actions checks on the published Pull Request; not inferred from local tests.",
+      "new_package_validated": false
     }
   }
 }

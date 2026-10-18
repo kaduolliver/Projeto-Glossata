@@ -1,5 +1,17 @@
 # Saneamento documental da Issue #2
 
+## Consolidação para Pull Request — 2026-10-18
+
+A branch `fix/issue-2-educational-text-rights` preserva o merge do PR #18 (`ed7e5c44e1acea80674b3c3bf402071d0836454c`) como base. Na conferência remota desta etapa, `main` continua nesse commit e protegida; não existia outro PR para a branch. A solicitação de continuidade autoriza publicar a branch e abrir o PR após a validação, sem merge ou encerramento da Issue. Nenhuma redação aprovada, evento editorial ou evidência de confirmação foi recriada.
+
+Foi preparada a [comparação das 34 propostas para fichas](propostas/REVISAO_FICHAS_LOTE_2.md), com índice por organismo/campo, redação atual/proposta, bibliografia, localizador, licença verificada, evidência, limitações e impacto previsto. É uma apresentação do registro existente, sem nova investigação externa ou alteração das propostas. O fingerprint das 34 mudanças é `a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460`; a fonte ativa `species_profiles.json` permanece intacta. Os nove textos compartilhados conservam os 34 vínculos individuais. Não se registrou nova aprovação ou concessão.
+
+A conferência não encontrou nova inconsistência estrutural. Permanecem os cuidados já documentados: distinguir grupo e espécie, não transferir resultados de *Cladonia grayi* ou *Haania orlovi*, não chamar *Euphorbia* de planta sem flores e não identificar *Gomphosphaeria* pela imagem de apoio. Isso não equivale a revisão científica humana. A sequência dos lotes 2–5 está preparada no comparativo, condicionada à integração do primeiro PR e às decisões concretas aplicáveis.
+
+**Nova validação local para publicação:** configure/compilação Release aprovados; **26/26 suítes CTest passaram em 154,66 segundos**. Gerador, direitos, governança, dicas progressivas e demais regressões foram executados pelo CTest. Auditoria estrita, Apache, manifesto/estado, histórico frente ao PR #18, repositório, exploração, cobertura, assistência e `qmllint` passaram; os derivados são reproduzíveis. O gate mantém retorno **2**, com zero erros técnicos, 120 pendências fotográficas, três textuais e dois bloqueios científicos prioritários. Os testes não certificam direitos ou ciência; não foi validado um novo pacote.
+
+Os resultados remotos devem ser verificados nos checks do PR publicado; a entrega e seu corpo registram as URLs e conclusões efetivamente observadas. Esta anotação documenta verificações locais e não presume sucesso remoto. Os registros abaixo preservam as etapas anteriores à publicação.
+
 ## Lote de grupos confirmado e aplicado — 2026-10-18
 
 O mantenedor respondeu **“Aprovo editorialmente essa versão”** e, separadamente, **“Confirmo a aplicação delimitada ao lote”**. As perguntas completas, respostas reais, data civil, 68 vínculos e limites estão na [evidência imutável da confirmação](../resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json). A identidade é declarada, sem assinatura digital ou autenticação independente. Não se inventou o instante das respostas nem uma revisão por especialista.
@@ -27,7 +39,7 @@ A nova assinatura do ledger exige regenerar a avaliação automática das dicas 
 
 As **34 propostas de fichas para 28 organismos continuam como rascunhos**, fora desta confirmação. Não foram aplicadas, licenciadas ou aprovadas editorialmente por extensão. Permanecem também as demais passagens das fichas, etimologias/justificativas e seus derivados. O achado de `group_education.json` foi resolvido somente no escopo delimitado e verificável acima; a Issue #2 permanece aberta e a regularização integral não foi declarada concluída. A sincronização segue simulada, sem escrita remota.
 
-### Validação da promoção confirmada
+### Validação da promoção confirmada, anterior à publicação
 
 - Configure e compilação Release aprovados; **26/26 suítes CTest passaram**, em **133,44 segundos**, na rodada final.
 - **19 testes de importação/geração** e **52 testes de investigação de direitos** passaram. Cobrem a versão exata, invalidação pontual após mudança, preservação do organismo 82 e recusa de concessão emprestada, escopo ampliado ou evidência malformada; usam cópias temporárias e fixtures sintéticas.
