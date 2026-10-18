@@ -495,6 +495,39 @@ def generate_credits(root=ROOT):
     return data
 
 
+def branding_permission_issues(root, asset, grant):
+    """Verify the documented, official-project scope, not legal exclusivity.
+
+    A service term or an icon-selection decision alone is not a file grant.
+    This checks the explicit evidence/declarations and current byte bindings.
+    """
+    try:
+        proof = load(local_file(root, grant['evidence_path']), {})
+        declaration = proof.get('maintainer_declaration', {})
+        authorization = proof.get('administrative_authorization', {})
+        if (grant.get('scope') != 'official_project_distribution'
+                or proof.get('kind') != 'official_branding_distribution_basis'
+                or proof.get('distribution_scope') != grant['scope']
+                or proof.get('file_bindings', {}).get(asset['path']) != asset['sha256']
+                or not declaration.get('declared_by') or not declaration.get('statement')
+                or not parse_time(declaration.get('recorded_on'))
+                or declaration.get('account_category') != 'personal'
+                or declaration.get('third_party_components_added') is not False
+                or authorization.get('scope') != grant['scope']
+                or not authorization.get('statement') or not authorization.get('declared_by')
+                or not parse_time(authorization.get('recorded_on'))
+                or grant.get('holder') != authorization.get('declared_by')
+                or not proof.get('terms_reference', {}).get('source_url', '').startswith('https://openai.com/policies/')
+                or proof.get('exclusive_rights_claimed') is not False
+                or proof.get('general_graphic_license_granted') is not False
+                or grant.get('general_graphic_reuse_granted') is not False
+                or asset.get('administrative_policy', {}).get('id') != 'reserved-to-project'):
+            return ['branding_official_scope_or_basis_invalid']
+        return []
+    except (KeyError, ValueError, TypeError, AttributeError):
+        return ['branding_official_scope_or_basis_invalid']
+
+
 def audit_governance(root=ROOT, at=None):
     at = at or datetime.now(timezone.utc); settings = policy(root)
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
@@ -561,6 +594,9 @@ def audit_governance(root=ROOT, at=None):
                 if not ev.is_file() or hashlib.sha256(ev.read_bytes()).hexdigest() != grant.get('evidence_sha256'):
                     asset_errors.append({'path': asset['path'], 'error': 'asset_permission_evidence_invalid'})
             except ValueError: asset_errors.append({'path': asset['path'], 'error': 'asset_permission_path'})
+            if asset.get('kind') == 'branding':
+                asset_errors.extend({'path': asset['path'], 'error': issue}
+                    for issue in branding_permission_issues(root, asset, grant))
             if asset.get('kind') == 'text_authorship':
                 # Only inspect claimed grants. Pending legacy resources retain
                 # their existing findings; this never creates a grant from prose metadata.

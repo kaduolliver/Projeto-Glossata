@@ -324,6 +324,35 @@ class InvestigationTests(unittest.TestCase):
         self.assertNotIn('passage_attribution_incomplete', rights.educational_text_inventory(self.root)
             ['rights_metadata']['records'][0]['rights_issues'])
 
+    def test_official_branding_basis_is_scoped_and_bound_to_each_file(self):
+        asset={'path':'resources/branding/synthetic.png','sha256':'a'*64,
+            'administrative_policy':{'id':'reserved-to-project'}}
+        proof={'kind':'official_branding_distribution_basis',
+            'distribution_scope':'official_project_distribution',
+            'file_bindings':{asset['path']:asset['sha256']},'exclusive_rights_claimed':False,
+            'general_graphic_license_granted':False,
+            'administrative_authorization':{'scope':'official_project_distribution',
+                'statement':'Synthetic permission only','declared_by':'Synthetic user','recorded_on':'2026-10-18'},
+            'terms_reference':{'source_url':'https://openai.com/policies/terms-of-use/'},
+            'maintainer_declaration':{'declared_by':'Synthetic user','statement':'Synthetic fixture only',
+                'recorded_on':'2026-10-18','account_category':'personal','third_party_components_added':False}}
+        path='resources/compliance/synthetic-branding.json';g.save(self.root/path,proof)
+        grant={'scope':'official_project_distribution','evidence_path':path,
+            'holder':'Synthetic user','general_graphic_reuse_granted':False}
+        self.assertEqual(g.branding_permission_issues(self.root,asset,grant),[])
+        for field,value in [('scope','general_graphic_reuse'),('evidence_path','../outside.json'),
+                            ('holder','Another synthetic user'),('general_graphic_reuse_granted',True)]:
+            changed=dict(grant);changed[field]=value
+            self.assertTrue(g.branding_permission_issues(self.root,asset,changed))
+        changed=dict(asset,sha256='b'*64)
+        self.assertTrue(g.branding_permission_issues(self.root,changed,grant))
+        proof['maintainer_declaration']['third_party_components_added']=None
+        g.save(self.root/path,proof)
+        self.assertTrue(g.branding_permission_issues(self.root,asset,grant))
+        proof['maintainer_declaration']['third_party_components_added']=False
+        proof.pop('administrative_authorization');g.save(self.root/path,proof)
+        self.assertTrue(g.branding_permission_issues(self.root,asset,grant))
+
     def test_missing_source_photo_license_and_private_credit_are_not_treated_as_permission(self):
         observation = self.observation(); observation['photos'][0].pop('license_code')
         row = self.run_report(online=True, client=self.client(observation))['photos'][0]
