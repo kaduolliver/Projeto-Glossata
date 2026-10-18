@@ -600,10 +600,12 @@ def audit_governance(root=ROOT, at=None):
             if asset.get('kind') == 'text_authorship':
                 # Only inspect claimed grants. Pending legacy resources retain
                 # their existing findings; this never creates a grant from prose metadata.
-                from rights_investigation import educational_text_inventory, text_resource_issues
+                from rights_investigation import educational_text_inventory, text_resource_issues, text_permission_binding_issues
                 if text_inventory is None: text_inventory = educational_text_inventory(root)
                 asset_errors.extend({'path': asset['path'], 'error': issue}
                     for issue in text_resource_issues(text_inventory, asset['path']))
+                asset_errors.extend({'path': asset['path'], 'error': issue}
+                    for issue in text_permission_binding_issues(root, asset, grant))
     if not assets.get('assets'): asset_errors.append({'error': 'asset_inventory_missing'})
     permitted_paths = {s.get('photo', {}).get('path') for s in load(root / 'resources/data/species.json', [])}
     permitted_paths.update(a['path'] for a in assets.get('assets', []))

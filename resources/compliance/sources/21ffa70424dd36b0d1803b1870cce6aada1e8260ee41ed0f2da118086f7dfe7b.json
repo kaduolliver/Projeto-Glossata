@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC13094072&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:38:43.516386+00:00",
+    "response_sha256": "58789e61f4d891b74ac048f654f2499338160e7de066f8301374d951087e5825",
+    "pmcid": "PMC13094072",
+    "metadata": {
+      "id": "41964065",
+      "source": "MED",
+      "title": "A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
+      "authorString": "Bäumler F, Gorb SN, Büsse S.",
+      "doi": "10.1186/s12983-026-00610-9",
+      "pubYear": "2026",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s12983-026-00610-9"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC13094072"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC13094072?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13094072/fullTextXML",
+    "consulted_at": "2026-10-18T04:39:14.726809+00:00",
+    "response_sha256": "19511b9018b703e191409592ac35f1706d715e779f2a65d687101df9edfbeb70",
+    "bytes": 158063,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC13094072",
+    "title": "A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
+    "author_credit": "Bäumler F, Gorb SN, Büsse S.",
+    "doi": "10.1186/s12983-026-00610-9",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

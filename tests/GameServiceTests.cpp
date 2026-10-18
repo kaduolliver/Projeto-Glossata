@@ -1087,7 +1087,17 @@ void GameServiceTests::introductionsAndMissingContent()
         ++described; ranks.insert(t.rank);
         const auto words=intro.value("text").toString().split(' ',Qt::SkipEmptyParts).size();
         QVERIFY(words>=40 && words<=90);
-        QVERIFY(intro.value("verified").toBool());
+        // Legacy flags are not the authority for a newly reviewed assertion.
+        // The exact replacement has a real, separate editorial ledger event.
+        QVERIFY(!intro.value("verified").toBool());
+        QVERIFY(intro.value("reviewed_on").toString().isEmpty());
+        const auto review=intro.value("governance").toMap();
+        QCOMPARE(review.value("state").toString(),QString("approved_editorial"));
+        QCOMPARE(review.value("review_kind").toString(),QString("editorial"));
+        QVERIFY(review.value("usable").toBool());
+        QVERIFY(!review.value("reviewer").toString().isEmpty());
+        QVERIFY(!review.value("reviewed_at").toString().isEmpty());
+        QVERIFY(!review.value("content_sha256").toString().isEmpty());
         QVERIFY(intro.value("source_url").toString().startsWith("https://"));
     }
     QCOMPARE(described,14);

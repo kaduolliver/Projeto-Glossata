@@ -10,7 +10,7 @@
     "scripts/review_hints.py": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
     "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
-    "resources/compliance/review_history.jsonl": "57fc17cbf490418108ae1bad01faa508e60656891ee8c530ddd72efe0e2b088f",
+    "resources/compliance/review_history.jsonl": "b35edf57a8a072e4104c8d12cae1dfb7bd8150c9b601835107080a7209829bf3",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
   },
   "species": {
@@ -16653,9 +16653,9 @@
     "actor_type": "automated",
     "process": "scripts/review_hints.py + contextual validation in EducationalContent",
     "policy_version": "progressive-pedagogy-v1",
-    "reviewed_at": "2026-10-18T03:24:28.759646+00:00",
-    "due_at": "2027-10-18T03:24:28.759646+00:00",
-    "content_sha256": "476dcdd4430233c24d220a8ea024d1ebd6a92af947a64d543a4f233e54fced7e",
+    "reviewed_at": "2026-10-18T07:44:47.489082+00:00",
+    "due_at": "2027-10-18T07:44:47.489082+00:00",
+    "content_sha256": "a56e740dc500b3669865467f23ad9fae073d117aaa05f666c845de97ed9ba222",
     "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
     "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
   }

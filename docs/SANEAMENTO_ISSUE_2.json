@@ -1035,5 +1035,2707 @@
       "previous_history_prefixes_preserved": true,
       "human_or_legal_certification": false
     }
+  },
+  "educational_regularization": {
+    "group_batch": {
+      "schema_version": 1,
+      "state": "applied_after_explicit_confirmation",
+      "origin": "automation",
+      "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
+      "target": "resources/data/group_education.json",
+      "previous_file_sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
+      "proposed_file_sha256": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
+      "created_at": "2026-10-18T04:27:02.655109+00:00",
+      "proposed_content_path": "docs/propostas/group_education.json",
+      "proposed_changes": [
+        {
+          "pointer": "/definitions/0/4",
+          "previous_text_sha256": "4248e71eaf5eb96af3c0a089547749a11ac8ed7f1a4159fdb8d2f67a549450ac",
+          "text_sha256": "4686ff301563462650b0c7d78b5ab1f3a74cd494b8508d2beaadf4a5f6fb9d0c",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+              "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef",
+              "locator": "Introduction; multicellularity and differentiation"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Holozoa / Metazoa"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/0/5",
+          "previous_text_sha256": "4be6b841b1a91d09efa894fe8d78d0ddebfc2bdde3d588b208d36cd63fa2f8fc",
+          "text_sha256": "c02792f4a4bcf7180fbb647402623eecee0dc00570b8bfd730719dac673fc4fd",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+              "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef",
+              "locator": "Introduction; multicellularity and differentiation"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Holozoa / Metazoa"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/0/6",
+          "previous_text_sha256": "3c956c481d2d78ba900cb25e78b2e012115f1bf68d7553d619754f9fdc366fe7",
+          "text_sha256": "3ff0a34c320d8960ad52ae8a726fad63c671bc908848d9accb57665b0d836732",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+              "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef",
+              "locator": "Introduction; multicellularity and differentiation"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Holozoa / Metazoa"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/1/4",
+          "previous_text_sha256": "94d186f9bc7db5f90f297b1dcfb9ed82cc712027ac4893c23c2b2d19f6cfdc19",
+          "text_sha256": "e7195dcc7ee76a16c4fdcafaaad8525b3ee32c9f1a566047e77c6f727515f9e9",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+              "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b",
+              "locator": "Introduction / cell-wall composition and diversity"
+            },
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/1/5",
+          "previous_text_sha256": "17e73efe3469abb12036bcc4126b4e26ea5f6313cd1010f488f7aa0f380591fe",
+          "text_sha256": "9980711423070c134fa625c06ed2c3bffba73fdc7b2ab7d095e563306dc33404",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+              "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b",
+              "locator": "Introduction / cell-wall composition and diversity"
+            },
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/1/6",
+          "previous_text_sha256": "cfaa7c7120b4b38e3b8dbfdbc51bb99afe2a2ca3271b796ae61ccd653bddfaf0",
+          "text_sha256": "4883ae4b03ad876827d40ddf9bbbc6951d332990654d245dd61f5bf7168053e2",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+              "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b",
+              "locator": "Introduction / cell-wall composition and diversity"
+            },
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/2/4",
+          "previous_text_sha256": "3831d26ae7c0e38e6821d178ea99d60d26a95dad1e0883ef9b6da9fad414499d",
+          "text_sha256": "0b9b8f69d936914c7e73ade1ac45f544a655ff080714a41232f4e3f456aeab9b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Fungi and Dikarya"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/2/5",
+          "previous_text_sha256": "681d8205f487004b4065ed658f0e19b0bee2c1706b078a0eddd2d11cabf6616c",
+          "text_sha256": "b5a602dde7098688d8c71e8b3601d3041fa447cd175971dbfb171b1fb848ae2d",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Fungi and Dikarya"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/2/6",
+          "previous_text_sha256": "d0f49ec1c0f96ee5ec8389386c45dea4fc43482daf0ec9c6191dcb15c54254c8",
+          "text_sha256": "c22db82819a4c84c1c512bf9de338c766ba864f7f7879cadda6de036cb4f274c",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Fungi and Dikarya"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/3/4",
+          "previous_text_sha256": "b04a5711ceada97e0c53591e4e7effdec9f71c84a545ca6ff419f53701e038e5",
+          "text_sha256": "7010878348b52f1bffd0364fa78c99ea1a183cd64399d58b79f5e8bc441605be",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Introduction; major changes and rank-independent eukaryote classification"
+            },
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / Whittaker and Margulis"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/3/6",
+          "previous_text_sha256": "fae118b2324b4165261faa3ba5c89d2cc631106398be1ef559ce3547ecf18573",
+          "text_sha256": "14fcfaddbe69cc7b669ceb23f66a5ba34b56fa82261d4f7f1a040a32697a6c6e",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Introduction; major changes and rank-independent eukaryote classification"
+            },
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / Whittaker and Margulis"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/4/4",
+          "previous_text_sha256": "ac2ebcf6caeced9f7735d67a1a30db098e1648d253cae92b7db20e109bf9337c",
+          "text_sha256": "b5a768eeec8552d90280c7cf308360a52ccbcf28891103b7603352367ac58af4",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / five-kingdom systems and paraphyletic prokaryotes"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/5/4",
+          "previous_text_sha256": "2df63c9b36500fb15881bacb14a4057f0d31111e13906d19a10a536dd2a94c35",
+          "text_sha256": "fd44898567ef0f95c4c3bbb9ff8e40865c544e442a6da1cd852694afe9be2721",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fcece3df207107c0f429194d6a05b3756e2e3e3dde065416615e8ceef71fa513.json",
+              "sha256": "238a302766e68b418f53f6ad8aa0fd3176c2e9c3a016d3e82f891c9e524872b2",
+              "locator": "Introduction / articulated appendages"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / cuticle and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/5/5",
+          "previous_text_sha256": "1328c822005b13560590d87e7e757d5b9ec9ccdf5d128d52921684e2701d3633",
+          "text_sha256": "fa66c6836b82fd2176586158b1b4f9ce6ac0b3224806f80ad995c7111c6b09f2",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fcece3df207107c0f429194d6a05b3756e2e3e3dde065416615e8ceef71fa513.json",
+              "sha256": "238a302766e68b418f53f6ad8aa0fd3176c2e9c3a016d3e82f891c9e524872b2",
+              "locator": "Introduction / articulated appendages"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / cuticle and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/6/4",
+          "previous_text_sha256": "d231c5af037def697876feb8f21e359fd75366fd7e076197340a005d19731dbf",
+          "text_sha256": "d542a5cda273d7b5c49bd977f735265c3aa3500ebace3e914f5c31d0f8a5720e",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/3f4b0c6fb91d1c66e3efb51b103ea086e34e21aaef99265ae44fe733721844af.json",
+              "sha256": "82ec09f08f386e28fe14a8b17f4a45fca19564855060776f398e8c1a66afd141",
+              "locator": "Introduction; Head; Thorax; Abdomen"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval development and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/7/4",
+          "previous_text_sha256": "830b6dfac3e5834c934e6164dd6fc01d2b4e9797712b648c545fc96cdc390aaa",
+          "text_sha256": "4884fe26576d0736e9f262a6bb08b73b51965b0f38889ad34d6334c6379a69d8",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/b791cac8848078bdb8d84d6708c27fee55737a71801959a4d335b890225669e7.json",
+              "sha256": "282d592ff8ecc5ee54ca39c789dec79d45f8dafb76feb1de73b2ca21da8a4e81",
+              "locator": "Introduction / shared chordate features and Figure 1; images excluded"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/7/5",
+          "previous_text_sha256": "8b62a4706bad280e7cb025dffaf863ee9e8aab0d23e540caad2d3bf57f8baec5",
+          "text_sha256": "95e3d715f297bbe3d32518b8fde2b9505387f441f6292a8a2031269164f26bc4",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/b791cac8848078bdb8d84d6708c27fee55737a71801959a4d335b890225669e7.json",
+              "sha256": "282d592ff8ecc5ee54ca39c789dec79d45f8dafb76feb1de73b2ca21da8a4e81",
+              "locator": "Introduction / shared chordate features and Figure 1; images excluded"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/7/6",
+          "previous_text_sha256": "0ccf5423dfc4dd08efe3638a7cabcb447f7c67ebe78c6e88e11e63f0be56085d",
+          "text_sha256": "97cbe4414a94600d01726ce25b19dce9d11e5971ac7ed022dbd15cd052c07377",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/b791cac8848078bdb8d84d6708c27fee55737a71801959a4d335b890225669e7.json",
+              "sha256": "282d592ff8ecc5ee54ca39c789dec79d45f8dafb76feb1de73b2ca21da8a4e81",
+              "locator": "Introduction / shared chordate features and Figure 1; images excluded"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/8/4",
+          "previous_text_sha256": "07ab2fefd0bf04845548dd05460675ce61a198012c8e77429076a679d5fe748c",
+          "text_sha256": "0d98e93164cbf870a0c5a5960a1122bc55fd987f6d57ac77f77a6e2011fb0069",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/8/5",
+          "previous_text_sha256": "862d7531d27f81ae2a55b3597a3503b546445e7b63b8d3a4a64d92a9239f2d40",
+          "text_sha256": "0031f3707d2bfdf02e21efbf9c24b842d923a945b711feea180c8adac4bf3bf1",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/8/6",
+          "previous_text_sha256": "849c2efc57c99164aa49db1d3d5ec0056f9826220ee2c30015121e62b03898b7",
+          "text_sha256": "de8afdf8a6bc0a72e158739c6c75828cd372ab5881fecfb2bae71f4283ee38d8",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/9/4",
+          "previous_text_sha256": "9f6c0db91c0cadca062c121a22978201a6a3e4bdef7427398419258b94dfc7c2",
+          "text_sha256": "1fe6eb7e061d1b5d70d068002269dd205397fca54058cb5b79f5b7d7bc628bb3",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Dikarya / Ascomycota"
+            },
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background / ecological functions"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/10/4",
+          "previous_text_sha256": "710583757efde17dbec88e4e3005cc3a475bbb7fc1a9ef60aaf560244ed48d64",
+          "text_sha256": "34cfe549a9422997fc7ef7fb66ecf1d9c0ab87b361663183c202869685d443cb",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Dikarya / Basidiomycota"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/10/5",
+          "previous_text_sha256": "1caf193c07bb2dcc5144236dc4faf99679f2720b4e128e73309ae0573d75b424",
+          "text_sha256": "74fb83e4abe828162af6076e3f110c58386ec76d7a2a778bca6edf6b19810b8a",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Dikarya / Basidiomycota"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/11/4",
+          "previous_text_sha256": "7b5e630166c099632697add0476da003ce798fc918d79e75f14c7735a7d8b086",
+          "text_sha256": "e1c365fb07d002f30d88eca4f2d20a63f5d0dfa22622471ab198a4b3765d7f2d",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Amoebozoa; locomotion and trophic forms"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/11/5",
+          "previous_text_sha256": "c6f22dff3c841679089fbdaa2e4f5f5f1ed28634e4448b36a79c5051c864c425",
+          "text_sha256": "dd0f70a379d41df4b4bb84a4b3e8464d50e200cf15cea95396c1be8d51ecf7f1",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Amoebozoa; locomotion and trophic forms"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/12/4",
+          "previous_text_sha256": "b5948d9dcd0edcaf17a608615a670270ad5bed09588b0a7837247540efc12999",
+          "text_sha256": "bd6e5ac7246c6bbdabe47eb204f0e763882989cfbd37b2875fce7ea181a019f1",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Evolutionary implications / amoebae, plasmodia and spores"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/13/4",
+          "previous_text_sha256": "b35e083732a00023dd4b5696ca1c280367a85a02eb67b7808a5844f39c5b0532",
+          "text_sha256": "e6a755292b67894ac1407b2647c1ef46c3277187748e6bfe7a5d8dcc5bb490a8",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Materials and methods / scales and pupal stages"
+            },
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / caterpillars and adults"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/13/5",
+          "previous_text_sha256": "be79953138472be9cf9d7dc3ee489fce603838ec224d9685e93fdfd6654bcf40",
+          "text_sha256": "73741891dba78a29382c755387802b56abc33076e15922c5e95bb2d19b5aeb77",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Materials and methods / scales and pupal stages"
+            },
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / caterpillars and adults"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/13/6",
+          "previous_text_sha256": "cb4f0eda441ed5f314b35c8950b4cf5b02d15f3f64dd1d5ed43941d1c431df42",
+          "text_sha256": "e2a60614853c33e362ba3fed5f4d8247bc207bd783ca597c0e3613716902d767",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Materials and methods / scales and pupal stages"
+            },
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / caterpillars and adults"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/14/4",
+          "previous_text_sha256": "0fa3ef0559c7c99b292451e6b1054ad48962e9a2db3e92fa7e05a082aa3e9619",
+          "text_sha256": "071e6c4ded7c5f1746a51c09dfc720ae7ea29885bd11fcf88293f951d584e815",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality"
+            },
+            {
+              "path": "resources/compliance/sources/ad22d1b525fe744bf7379364310ff9596cea73b84ab24afb847996c833638573.json",
+              "sha256": "cdd168ec2e9806645e93aa1db26ba258597a90f4b06be7f856f0091db4cede44",
+              "locator": "Introduction / tailless representative of Papilionidae"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/14/5",
+          "previous_text_sha256": "515e7c804c0c723b83c4b3b4f6e7a60718e345fc5294ddbd61abf21f6c596745",
+          "text_sha256": "da2ebd7357f0456bb6d3e6e5a73374bacde2b760e2774cd8bafd9685be718344",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality"
+            },
+            {
+              "path": "resources/compliance/sources/ad22d1b525fe744bf7379364310ff9596cea73b84ab24afb847996c833638573.json",
+              "sha256": "cdd168ec2e9806645e93aa1db26ba258597a90f4b06be7f856f0091db4cede44",
+              "locator": "Introduction / tailless representative of Papilionidae"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/15/4",
+          "previous_text_sha256": "81e19092794a14f4d74b8da17195b250d40c108ea291beb81b437c11bf2e3dfe",
+          "text_sha256": "69dabbc13de33aab7a91e07feb85c8bebce089d87733f978b288975bb2d90d54",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / non-feeding adults and larval food"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/15/5",
+          "previous_text_sha256": "8a1def81ea18dcff38d93b263769dd20c1b3619b602cee441b531e3506eb8dd0",
+          "text_sha256": "5d56ff92f2ddca9ce3fb2e4f5e956198ef2cd23aa47dc624f721df4d93995df5",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / non-feeding adults and larval food"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/16/4",
+          "previous_text_sha256": "bdd5e31415176e5f2a8d90808aa6458d9a7c16c443bd7bc6d60485e0315673a4",
+          "text_sha256": "42d1791d5b70d4832d63db197e59882406714da999b6784596f8e6d993a51ed4",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Eumycetozoa; catalog source name retained"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/16/5",
+          "previous_text_sha256": "0c9d58f392c38dc685fc9d0e6c43cd3d4a6601b26d61484f6dd2f3b59534ed6e",
+          "text_sha256": "52cd96dc478086160286d2787538c3eedcb4bfa33f0d030ea4624741ac021ac2",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Eumycetozoa; catalog source name retained"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/16/6",
+          "previous_text_sha256": "a3eeada7feac6f32f4ae1502222d9e331bd4498bec2525ee8daff146742d315e",
+          "text_sha256": "8be59e849d1ea0a2afd0f94183ecc194094f7a1113305c6a9e69fcefcf7575ec",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Eumycetozoa; catalog source name retained"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/17/4",
+          "previous_text_sha256": "244aaea0159a72249a4d8c6abb333659eff5487e7e1a33cd0f4a69336d5a6ed9",
+          "text_sha256": "beaf76f715a8da8a12e4cf572c311b96a9f5a1be7502d4ebaee77b8aeece1123",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f7e73c4ed5aed56da4453fd7daf40058389538b15d104621c7a09ea288668b3d.json",
+              "sha256": "2b295a112db5e0d5722e965034824bd23a27ed8147cafe0610192808d8fa801e",
+              "locator": "Background / pellicle, flagella and diverse feeding mechanisms"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/18/4",
+          "previous_text_sha256": "d523105bfbeee1e9a404126d4adee4e28caf2fc61f17d5c0c6473870a900aca1",
+          "text_sha256": "3ce25d7b41406f59d47ef3d67941488da2ba4ef3afd5860c0d0e574cff69975b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+              "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33",
+              "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/18/5",
+          "previous_text_sha256": "bfaa52e511ccf14769b5d7ad8ed3d9de985356f43f2b233692f6ae8a24d971d0",
+          "text_sha256": "5bb0f22d014a03180a6ef3b5fd193650c2fb5727b9c476808b848b8ce6c7ce20",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+              "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33",
+              "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog"
+            }
+          ]
+        },
+        {
+          "pointer": "/definitions/18/6",
+          "previous_text_sha256": "06a27b3005ef82f9bdf28b3a4bb1bdac378f8be794f21ded9b8fa22b58210272",
+          "text_sha256": "3dcf47ad1b2ee99a754b1e656db4252b2944108566bee51c3a78db959ba15495",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+              "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33",
+              "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Animalia/0",
+          "previous_text_sha256": "52c2ebfa86396dca7bd2996f594e0a3238b5f40a3aec5324c9e8e65044a72df7",
+          "text_sha256": "00b6f800e744016541962105eb401264ac756f3e21741ea3d1d8ddeba02ea67f",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+              "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef",
+              "locator": "Introduction; multicellularity and differentiation"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Holozoa / Metazoa"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Animalia/1",
+          "previous_text_sha256": "30fef430bb02f635e3eeaf7f03be26f28aa54a6d31f9b29d4d05c250d329b422",
+          "text_sha256": "882e1dd8a0a5cceba473cdb3a53a78f9ce714a621662b5b455f26e50b0886567",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+              "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef",
+              "locator": "Introduction; multicellularity and differentiation"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Holozoa / Metazoa"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Plantae/0",
+          "previous_text_sha256": "f80bedc1a4324584289f90e2e0990736af546264a5adce4cd99ee7f767c6c752",
+          "text_sha256": "5aa3b2bb266e16e87ff9c042b65715dbe5502950d4fd0a4c1fa1ee8a98e99e64",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+              "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b",
+              "locator": "Introduction / cell-wall composition and diversity"
+            },
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Plantae/1",
+          "previous_text_sha256": "e7cf98f56a72c4131399b377f74ca34cb95aca98f3f7d49977691eec1b5fbea4",
+          "text_sha256": "72a023f3bf9acbd133449a5d84b0d0a7ba79d9b25f4744fd438f7ca45f76d78f",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+              "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b",
+              "locator": "Introduction / cell-wall composition and diversity"
+            },
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Fungi/0",
+          "previous_text_sha256": "4471022239f2156c26beb8fbf375568aa6be79ec1d36f323d2fa067e1dec0d11",
+          "text_sha256": "2fe67b2947fa1d62b05e66d195c51b45528e551a935cff547a9da0c975fb4ea1",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Fungi and Dikarya"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Fungi/1",
+          "previous_text_sha256": "20f3f26d2a75f97eeb037bea9401e0fd5d6c538a1bda474f88d05a7b60ee9960",
+          "text_sha256": "d4cfaa5d5bc7044d209240a9f6cca1c2d17812808365b8b35a83f710e413387c",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Fungi and Dikarya"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Protista/1",
+          "previous_text_sha256": "279a351d98e02e7dfda1c8e4a45012959e120ae8fcd16bb6fa2d7b58ab5bcb92",
+          "text_sha256": "89e3c83703ca8177b172a11c2b8c4287bdb2779ad7835cd7a88445be76cdb626",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Introduction; major changes and rank-independent eukaryote classification"
+            },
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / Whittaker and Margulis"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Monera/0",
+          "previous_text_sha256": "6eb10a3f9f7cbdf4d6d883278ac58514140753e997293956046369910ceebf08",
+          "text_sha256": "08f111187dd63bc230a9e83dae3e5c529ac011165b28b322255bfe33f17add5d",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / five-kingdom systems and paraphyletic prokaryotes"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Monera/1",
+          "previous_text_sha256": "d4b150a86ff62605a372191782712b2c512325caab3086463996bc65191055d6",
+          "text_sha256": "25591be0646b2e0fc7b21d49a960cec2de6761d98c668192bca7c12f10868b3b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+              "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb",
+              "locator": "Historical trees / five-kingdom systems and paraphyletic prokaryotes"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Arthropoda/0",
+          "previous_text_sha256": "986ae4562b87d65c9f4f55eb8835059447e830e88eedbd2c319b67bf6d408b9f",
+          "text_sha256": "ef5e577d21cbd2712f2a854d7fb846827e8c00236f59688dbbbcaa8643dc075f",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fcece3df207107c0f429194d6a05b3756e2e3e3dde065416615e8ceef71fa513.json",
+              "sha256": "238a302766e68b418f53f6ad8aa0fd3176c2e9c3a016d3e82f891c9e524872b2",
+              "locator": "Introduction / articulated appendages"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / cuticle and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Arthropoda/1",
+          "previous_text_sha256": "5d9905d72eb41521ea3088de36af2e810b18108b41efd1ba8d82b79d2d1fa276",
+          "text_sha256": "29d416e6f50b3f961e29671c77b23e1c06b63ee38de6f9140633ee10ab26caf0",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fcece3df207107c0f429194d6a05b3756e2e3e3dde065416615e8ceef71fa513.json",
+              "sha256": "238a302766e68b418f53f6ad8aa0fd3176c2e9c3a016d3e82f891c9e524872b2",
+              "locator": "Introduction / articulated appendages"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / cuticle and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Insecta/0",
+          "previous_text_sha256": "668aba00269e7b0c75a347889a19ff09e0c0deb3a755d97145882441d1af1d10",
+          "text_sha256": "8311003ef562654268144ac77e4f7649630676f79a0bab88dd19726c4d3d8db1",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/3f4b0c6fb91d1c66e3efb51b103ea086e34e21aaef99265ae44fe733721844af.json",
+              "sha256": "82ec09f08f386e28fe14a8b17f4a45fca19564855060776f398e8c1a66afd141",
+              "locator": "Introduction; Head; Thorax; Abdomen"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval development and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Insecta/1",
+          "previous_text_sha256": "356c40859849e645eaada32b6e7f9e5fd16674b50b83d250831c387c9c2b6b29",
+          "text_sha256": "1e09360aeca12ee67bf2cf4019efb239f4fcea21ea536558c3e079ed4008f111",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/3f4b0c6fb91d1c66e3efb51b103ea086e34e21aaef99265ae44fe733721844af.json",
+              "sha256": "82ec09f08f386e28fe14a8b17f4a45fca19564855060776f398e8c1a66afd141",
+              "locator": "Introduction; Head; Thorax; Abdomen"
+            },
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval development and ecdysis"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Chordata/1",
+          "previous_text_sha256": "3b657fe9def46a5b47097dede95a739affd91514bf93a765d2fcd618b0549e75",
+          "text_sha256": "19dc9a7216757b5d8da17328e6c7776435492a268698a86b30a2370a39bd9ada",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/b791cac8848078bdb8d84d6708c27fee55737a71801959a4d335b890225669e7.json",
+              "sha256": "282d592ff8ecc5ee54ca39c789dec79d45f8dafb76feb1de73b2ca21da8a4e81",
+              "locator": "Introduction / shared chordate features and Figure 1; images excluded"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Tracheophyta/0",
+          "previous_text_sha256": "3a0c22316c3b2930dbbe6b87e28d9daab21a53633486bd5292463929963af922",
+          "text_sha256": "7f2a6e752a697a5aa54069d1e8b3d7268d684df21ef6d0ca9352e382ac58096c",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Tracheophyta/1",
+          "previous_text_sha256": "6309b43899efd289f7998e4dbd7c19ddc9c280b096574e27830b5f049fb7b6f8",
+          "text_sha256": "440840f8a9e0fe2f5c1d1f54c63faf9771cf4263b22312231aa89a45276bc7fd",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Basidiomycota/1",
+          "previous_text_sha256": "193acf488f15935ffb1e386df95549c4de5d3053c19292e14e490ff564c5f41e",
+          "text_sha256": "19545369b6faedf97df796845e489473870109a57d497fde912ee42830c3184f",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Dikarya / Basidiomycota"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Mycetozoa/0",
+          "previous_text_sha256": "892f63403881023ae9b26168b9cedc57191f8b04b62d81608a4bd265154d48c7",
+          "text_sha256": "d5bf574688933aa314fc45e97cafe05afef9a760c1c7c50077d410799e2f550d",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Eumycetozoa; catalog source name retained"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Mycetozoa/1",
+          "previous_text_sha256": "f91ec8f49d77642867542edde38e4ea82b049db75a37cc3f887f9ed43c08a5f8",
+          "text_sha256": "6889e87123bcf942594c7caec4d301d432049584f932048cedbe0660c467cb6e",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+              "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de",
+              "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages"
+            },
+            {
+              "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+              "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba",
+              "locator": "Table 2 / Eumycetozoa; catalog source name retained"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Lepidoptera/0",
+          "previous_text_sha256": "5635bd99d75c90d28cb073fa4ab4c2a5c9147b34e68886f749b6c00474ab534a",
+          "text_sha256": "3debbd5eaa7da36f3e85c63f0504898fd47a78f04c1ddd3280b602b81b707f18",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Materials and methods / scales and pupal stages"
+            },
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / caterpillars and adults"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Lepidoptera/1",
+          "previous_text_sha256": "ae3f63a8df1be2c2d7aa9aa5444cd3b988d7900cae21a121b74a91ef30728c92",
+          "text_sha256": "8a44dfefba2503fe6c843258f55ed5e07b0e02c7f6de3d210e5f02b33ba8788b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Materials and methods / scales and pupal stages"
+            },
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / caterpillars and adults"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Papilionidae/0",
+          "previous_text_sha256": "72125e2b7142aa2be418b5e1c7160b653965d9e1a779f5ffe134e74c8f620865",
+          "text_sha256": "31cd7c9b7fd6cb968b0b2b682ace8501d0782819c06ea38a159d64d325ec37c5",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality"
+            },
+            {
+              "path": "resources/compliance/sources/ad22d1b525fe744bf7379364310ff9596cea73b84ab24afb847996c833638573.json",
+              "sha256": "cdd168ec2e9806645e93aa1db26ba258597a90f4b06be7f856f0091db4cede44",
+              "locator": "Introduction / tailless representative of Papilionidae"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Papilionidae/1",
+          "previous_text_sha256": "a11fe62f48f4cde9243f202a32ac605f1abd397bef6657148b63cadc531a0ab4",
+          "text_sha256": "fc5ce3591429fae0421be0bd9fd00d79386de0d9a495a3beabacfe4dbc3dea5b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+              "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1",
+              "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality"
+            },
+            {
+              "path": "resources/compliance/sources/ad22d1b525fe744bf7379364310ff9596cea73b84ab24afb847996c833638573.json",
+              "sha256": "cdd168ec2e9806645e93aa1db26ba258597a90f4b06be7f856f0091db4cede44",
+              "locator": "Introduction / tailless representative of Papilionidae"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Saturniidae/0",
+          "previous_text_sha256": "f9d8beb1c3a55a7d09a778381eb1e2642d57a45e6c051c8e728cf26bb069a2db",
+          "text_sha256": "3806b2177447c097232f7542074b042a845623c6fc712e45b8075164a06239af",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / non-feeding adults and larval food"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Saturniidae/1",
+          "previous_text_sha256": "12fee9caa4e7f385293f3d3520abc0e371a86c0fa3deaefa8e920422a951c264",
+          "text_sha256": "08a531cebe8859dd2c28827058b16107b8c30aa622711f7d432f16384c9bfa21",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+              "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e",
+              "locator": "Introduction / non-feeding adults and larval food"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Chiton/0",
+          "previous_text_sha256": "617cfc854fb5d5b45a0df23553888709a6eef977f54f934cdbb2751716596709",
+          "text_sha256": "5cdf3c4cc319294c6f8023ff62e9d70a93e3011c3097fbc2585a69619df5c025",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+              "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33",
+              "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog"
+            }
+          ]
+        },
+        {
+          "pointer": "/plain_notes/Chiton/1",
+          "previous_text_sha256": "d57161c6ab4330b29fb1a2d688b77b370f81888dd1a13c934410fecf64138bfb",
+          "text_sha256": "b4eb8731f849633daae3b055e52ed7982ec05eb7bcb7a06e2a4e114fcda3f6da",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+              "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33",
+              "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog"
+            }
+          ]
+        }
+      ],
+      "source_evidence": {
+        "PMC10506793": {
+          "path": "resources/compliance/sources/b791cac8848078bdb8d84d6708c27fee55737a71801959a4d335b890225669e7.json",
+          "sha256": "282d592ff8ecc5ee54ca39c789dec79d45f8dafb76feb1de73b2ca21da8a4e81"
+        },
+        "PMC10538957": {
+          "path": "resources/compliance/sources/be28811f4d0383560afcc66db4ca54217ff95a3cc7e8f3e700a3c0a286b9d485.json",
+          "sha256": "169fff5b8408e89aaf2dcd72c8fc605449f01d5d6fc1503583326d3f3d7135d1"
+        },
+        "PMC11422720": {
+          "path": "resources/compliance/sources/fcece3df207107c0f429194d6a05b3756e2e3e3dde065416615e8ceef71fa513.json",
+          "sha256": "238a302766e68b418f53f6ad8aa0fd3176c2e9c3a016d3e82f891c9e524872b2"
+        },
+        "PMC11457947": {
+          "path": "resources/compliance/sources/3f4b0c6fb91d1c66e3efb51b103ea086e34e21aaef99265ae44fe733721844af.json",
+          "sha256": "82ec09f08f386e28fe14a8b17f4a45fca19564855060776f398e8c1a66afd141"
+        },
+        "PMC3390603": {
+          "path": "resources/compliance/sources/26c9df74595a2b5a7ec03ae89a3560eb18fe32ec6db727b4b649bab6b11102a7.json",
+          "sha256": "4f6cb77719c65b4e8435d78812e61bb19dd3ea650ee418100906cc99a1c1459b"
+        },
+        "PMC6492006": {
+          "path": "resources/compliance/sources/f46637d7264e6f5b0b98be129d9ff13837deef3894ffb628f5532b981815e567.json",
+          "sha256": "587f51d3a98fd60efb45dc725811f68e498bece9676f60ac3450a30c2f08d0ba"
+        },
+        "PMC6909477": {
+          "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+          "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354"
+        },
+        "PMC6930221": {
+          "path": "resources/compliance/sources/ac49683f09133ed021c388f691e49f0f7b3920b5c9ebcf80e45946fd24afe4eb.json",
+          "sha256": "b401a6294d46bfca93e0de0b85fe9d406bc739cef496a7fc24aded670cf917de"
+        },
+        "PMC6961905": {
+          "path": "resources/compliance/sources/823fbbb6945d1e824c16f55161f52935f4543777bcc96de85227127d1a88ae7b.json",
+          "sha256": "f3a8a55cbfa14fa193f26f776416fd22560fc67e25b055fb88ec111c40098ccb"
+        },
+        "PMC7003433": {
+          "path": "resources/compliance/sources/6a467fa2559daea26a782209fffd877e2fd4d1917ba32dbc15107e7acd76ab23.json",
+          "sha256": "66ca98c7c29f7334426e17eeb97ced0875ade9d26d8d1cbcc64a593c81373e33"
+        },
+        "PMC7052976": {
+          "path": "resources/compliance/sources/f7e73c4ed5aed56da4453fd7daf40058389538b15d104621c7a09ea288668b3d.json",
+          "sha256": "2b295a112db5e0d5722e965034824bd23a27ed8147cafe0610192808d8fa801e"
+        },
+        "PMC7746661": {
+          "path": "resources/compliance/sources/90ea6e48e4f94fd9dcb4b81d967f2917881dddf64d4352796883a6a42f3771fb.json",
+          "sha256": "9d00ceddf4789d5895fb5fc3e254b6878a5771268cd9999cf635135c04bd4a0e"
+        },
+        "PMC7772430": {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad"
+        },
+        "PMC9381480": {
+          "path": "resources/compliance/sources/eae1738a00c6356fd619e50f000b62d8d182190cb4befb27f9a284d739dba628.json",
+          "sha256": "b9251d103ab2e6e0849abab68b241cfda01bd67475b66c846406a988a1465cef"
+        },
+        "PMC9434249": {
+          "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+          "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48"
+        },
+        "UF_IFAS_IN219": {
+          "path": "resources/compliance/sources/ad22d1b525fe744bf7379364310ff9596cea73b84ab24afb847996c833638573.json",
+          "sha256": "cdd168ec2e9806645e93aa1db26ba258597a90f4b06be7f856f0091db4cede44",
+          "locator": "Introduction / tailless representative of Papilionidae"
+        }
+      },
+      "origin_kind_proposed": "independent_factual_synthesis",
+      "creation_process": "New Brazilian Portuguese drafting assisted by AI after identifying the intended factual scope and checking the listed scientific sources. Legacy wording and OpenStax citations remain in Git; no OpenStax chapter was downloaded or submitted for this drafting.",
+      "license_proposal": {
+        "license": "CC-BY-4.0",
+        "scope": "Only rights actually available in eligible new wording; scientific facts and external works are not claimed as exclusive property.",
+        "state": "applied_after_explicit_confirmation",
+        "human_approval_recorded": true,
+        "confirmation_evidence": {
+          "path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+          "sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+          "locator": "editorial_confirmation, license_confirmation, file_sha256 and occurrences"
+        }
+      },
+      "reviewer": "Carlos Eduardo Lima de Oliveira",
+      "reviewed_at": "2026-10-18",
+      "limitations": [
+        "Draft, not independent specialist review or legal certification.",
+        "Sources support facts; attribution and observed licenses do not certify human review or exclusive authorship.",
+        "Protected expressions and images from supplementary factual references are not incorporated or relicensed."
+      ],
+      "active_content_changed": true,
+      "permissions_changed": true,
+      "decisions_created": 38,
+      "validation": {
+        "checked_at": "2026-10-18T04:32:24.943204+00:00",
+        "draft_occurrences": 68,
+        "changed_generated_notes": 38,
+        "unchanged_species": 122,
+        "unchanged_recipe_sets": 122,
+        "unchanged_taxonomic_links": true,
+        "competitive_pool_in_proposed_workspace": 80,
+        "strict_audit_errors": 0,
+        "changed_notes_require_editorial_review": true,
+        "prior_human_decisions_preserved": true,
+        "active_content_changed": false,
+        "human_approvals_created": 0,
+        "no_distribution_permission_created": true
+      },
+      "checks": {
+        "configure_and_build": "passed",
+        "ctest_passed": 26,
+        "ctest_total": 26,
+        "ctest_seconds": 146.37,
+        "import_tests_including_new_draft_regression": 18,
+        "maintenance_http_tests": 21,
+        "apache_check": "passed",
+        "history_comparison": "prefix_preserved",
+        "new_human_events": 0,
+        "distribution_exit_code": 2,
+        "distribution_counts": {
+          "technical_errors": 0,
+          "photo_licensing": 120,
+          "asset_licensing": 4,
+          "scientific_release_blocks": 2
+        },
+        "curation_preview": {
+          "requests": 15,
+          "findings": 3348,
+          "by_area": {
+            "science": 4,
+            "taxonomy": 2,
+            "photography": 3,
+            "licensing": 4,
+            "pedagogy": 2
+          }
+        },
+        "curation_sync": {
+          "apply": false,
+          "remote_checked": false,
+          "created": [],
+          "updated": [],
+          "unchanged": [],
+          "deferred": [
+            "curation-v1-0e1e342d79c4a471e90b77b7",
+            "curation-v1-4f2ce3678bf9c200687be506",
+            "curation-v1-4f8760306e86c24daed2b65f",
+            "curation-v1-e35310e769d13cb759ca395b",
+            "curation-v1-1cc1b436a21de1d9d0be66b9",
+            "curation-v1-2e39aba9876536b5996bb856",
+            "curation-v1-31532b3cf0432db473633560",
+            "curation-v1-4a273c6a313f9fa62da8dc54",
+            "curation-v1-853dfb0fc7643997a535bc5d",
+            "curation-v1-9910093ad6de9bc1994b5f92",
+            "curation-v1-a672fad5b190c29f760f51ea",
+            "curation-v1-dac0f1c9ef6896aa46343811",
+            "curation-v1-eb057cb6f61a03b07bf20947",
+            "curation-v1-15d54331deaf12cd0403f574",
+            "curation-v1-d03720c8ea4e93e86e45d1f7"
+          ],
+          "closed_unresolved": [],
+          "conflicts": [],
+          "errors": [],
+          "project": "not_configured",
+          "notice": "Offline preview; no token, network call or publication."
+        },
+        "qmllint": "passed",
+        "final_checked_at": "2026-10-18T04:50:59.144302+00:00",
+        "remote_ci_verified": false
+      },
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+        "sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+        "locator": "editorial_confirmation, license_confirmation, file_sha256 and occurrences"
+      },
+      "recorded_decisions": [
+        {
+          "key": "note:0:curiosity",
+          "content_sha256": "01845752abe5f7173e921e229ceb19fa623a49b2a1127c2028f75fc33896d2d5",
+          "event_sha256": "cf48d0d615f2983b5a77963b15a83787a0d4dfae09d71bc8d207190f8a608b20"
+        },
+        {
+          "key": "note:0:hint",
+          "content_sha256": "bc63230b5162866ee54232d62410836c3cb99cfbe89afae0abdf457a3b32efa5",
+          "event_sha256": "74a3ea9cde5e0695749cd7a41817bc3c68b39dfdcc4167a6dbc26eed99d0b57b"
+        },
+        {
+          "key": "note:0:intro",
+          "content_sha256": "a7c89796ef798c8d01111c139370305a7c807eb8e2976877074eeec8d51cc5cb",
+          "event_sha256": "0b68d8d12ef2fa40ab4b53d73ca6d14e92d3c11725a84342120b2f039967b9a3"
+        },
+        {
+          "key": "note:10:curiosity",
+          "content_sha256": "aef26052fcfab2c82ba4e175ec75d4521821deca10813fdbb716e393d71b99ed",
+          "event_sha256": "3189ea2116695b6f88e3233419aff205b5dfd822aa2656cfa83ba7d7a16bfdbb"
+        },
+        {
+          "key": "note:10:intro",
+          "content_sha256": "29cb14b37c5492dcdeade4ebc25c8c9f30f700b4ed2345cab46139bcdb8db863",
+          "event_sha256": "dbe8fd277af5e13e1e3689f7401786a9b974fa0796916e307fc43fe46b8c43b6"
+        },
+        {
+          "key": "note:13:curiosity",
+          "content_sha256": "6adbeb770b805a5efe755b342c840e5a830dea0da5b61ddfa6706a9257b0026d",
+          "event_sha256": "51d934a45cf8bb1f66837c22dec09f0350fb673ef7a9adb9fa55cbeb15443d79"
+        },
+        {
+          "key": "note:13:hint",
+          "content_sha256": "7b88c20109cfa596ce06a35496cc5423612065c9e5008e8871f730054b23f429",
+          "event_sha256": "27a5455ed27a323e86a93dc749673e5f9dd4376aa9fcb7aa1fdcb482f6a01a49"
+        },
+        {
+          "key": "note:13:intro",
+          "content_sha256": "578462f81b90f0fd4c1c1def8a4b449e7f42c7cebcbb6d85b7c876183d63944e",
+          "event_sha256": "04a540de5d58a810896537f7b1c18c5609a1c574ea8b58ffd958092c2e49239f"
+        },
+        {
+          "key": "note:14:curiosity",
+          "content_sha256": "53556ad89b968a9e7d3f320f5ba2df7b22b917ca2e8a1eb5eecb5b2b8b1a94fe",
+          "event_sha256": "a617b50ed74567fcf735acb3105993556e8d1f9851f8af83a2918f51af533f1e"
+        },
+        {
+          "key": "note:14:hint",
+          "content_sha256": "32b96bd5fe82fb48d30de9eb3b3a75649c0dd7c03962b38d8a44b2d17e6399a5",
+          "event_sha256": "ec1243c4e45277616bcc88834831d6c2f0535f498471e4694daaece18ddeda7d"
+        },
+        {
+          "key": "note:14:intro",
+          "content_sha256": "299a8cece9bc18d9b8e3f0c6a27e12f5167c2483a9c6d920c66a5b4b3ace52fc",
+          "event_sha256": "56b48e258255d6eb6d61e3a15ca089e1a5c8491b8abad555f364ae9101b2916f"
+        },
+        {
+          "key": "note:15:curiosity",
+          "content_sha256": "88cd20149343b482ff8530154347335f598f5f5438639459eb2acbf8bf36a26d",
+          "event_sha256": "00d72cc43b3bc49b7b49ff671852b3343439b7ebad7d7bdf0696af561b668c46"
+        },
+        {
+          "key": "note:15:hint",
+          "content_sha256": "9de8f329883eea0088998a2f05fbbbeb4f3a3b6b39752c9636ede60cea9f24f7",
+          "event_sha256": "130fb97d5fec7efc2fa8fc3700d28c2c29996fdac072e360441448d338a440cd"
+        },
+        {
+          "key": "note:15:intro",
+          "content_sha256": "2431b0e04a1b0889220743efa139158565216905398e38b4a23587d55ebc0401",
+          "event_sha256": "0ac097c0e37a61b229c2f1a485f9029f58f77210e2501877beb0500afac69404"
+        },
+        {
+          "key": "note:16:curiosity",
+          "content_sha256": "c55c210b11eec8b261ad1de4498a61369bc2cc663d629b4796eb650eb53d54f6",
+          "event_sha256": "1ee42d87dbcfb718516690b47697a2729aaadd6eef9a45ac3336024740f4cb98"
+        },
+        {
+          "key": "note:16:hint",
+          "content_sha256": "231d8dd904812a753dad9bbfe796f091a6ddb696062cf0cc12a89c4651c45163",
+          "event_sha256": "1ca021032b4263503e96dcd886192aefd7dc52e904cf824ac492c41fc8783acb"
+        },
+        {
+          "key": "note:16:intro",
+          "content_sha256": "bdd89f3ac9069debc4268aa4ef411ebb7f1fc44b6dfc3428ccbef23dea55150f",
+          "event_sha256": "9ba0d294d11363f5b9dc1fe08875f14fd97a39268e2155aed475fb2d2b5d942f"
+        },
+        {
+          "key": "note:18:curiosity",
+          "content_sha256": "cb4705887be12621e916a4275c34fa84dc4cc070998bcdb259af475eb90aa4a5",
+          "event_sha256": "86651bfd5abe30a349f772b950f1307e231d5f2391e7f8f87df03e37757d00b1"
+        },
+        {
+          "key": "note:18:hint",
+          "content_sha256": "56030369df9879b921251d334640ba914575635bbdee0734893124ae77ed4047",
+          "event_sha256": "b462a5700296822ebd4f509b681e261dcbfd9bef85eade979a09e29437be8246"
+        },
+        {
+          "key": "note:18:intro",
+          "content_sha256": "773505c3eff5ea53a7dd7ad67bda5b520786f4728990cf16ea0a500c36da453c",
+          "event_sha256": "27d5de25bfff274f73433a983d0e3f57292fe16224989f49470d844ea5f789d2"
+        },
+        {
+          "key": "note:1:curiosity",
+          "content_sha256": "b7fc835efb950e6063d771cc46ee857a3e81f23a2ef58a632f6ac7f93dd3e4d5",
+          "event_sha256": "455081da5310db36b6127c381a267071327d24a89ca2afc6f23f9644f476a87f"
+        },
+        {
+          "key": "note:1:hint",
+          "content_sha256": "1fd2afb6ad2ea869b786c338d4d0abfb94af5f0386f8c0e68ac508724cdf2c62",
+          "event_sha256": "6f22a9762e1240347abef2c4120a1a1d26a3bd11b35c653bd7bb8daa9a586e4b"
+        },
+        {
+          "key": "note:1:intro",
+          "content_sha256": "a92ee071865057d37792b987c79440391211af9be416a77950adb2d9f83d3ab7",
+          "event_sha256": "210963f2af39cfd77c712b5b17802e055deb39717bf0dccf48fd308376e65dab"
+        },
+        {
+          "key": "note:2:curiosity",
+          "content_sha256": "8c1b94bed9a13d95a66cad7e3b368190811a9b56562d6683470b8df19c72fed9",
+          "event_sha256": "802ee5505827cfdcfc09a27729e3be9c2d14befb2bf36a6a0777a6e66918961b"
+        },
+        {
+          "key": "note:2:hint",
+          "content_sha256": "557481073cf09f934cfbc792127c89ee2b6c2e87b82045b7111a062d9dea099a",
+          "event_sha256": "f62c330401953e9a9168ef077d3d39daf985c9e92bcc9144b4e1dce7f8b3a8e7"
+        },
+        {
+          "key": "note:2:intro",
+          "content_sha256": "010192100f523b596a87df2d84bb47f10219ffb76e9117f1cd7c971f1af337f6",
+          "event_sha256": "e462e442720e608c460f4d4ae909f508d5a85372573d15ccafe38c7b37655488"
+        },
+        {
+          "key": "note:5:curiosity",
+          "content_sha256": "853efd925fbd7582d9c2bec34105032642240aa0c6d8fe8aa740f4d2c1e873b7",
+          "event_sha256": "a27ac49bf75a8c4ee5f807d099f8f6aa8200f0e9b666258db89b6c20898a57de"
+        },
+        {
+          "key": "note:5:hint",
+          "content_sha256": "49f00d5760071ef88c23c71547d5166f1e3b3aedccd087ab0bbbc6900c82d98f",
+          "event_sha256": "9d4cc5f311e85f4d48684c6f53ea998a5a4eef6086c446752c80a58167b19f7e"
+        },
+        {
+          "key": "note:5:intro",
+          "content_sha256": "b3f28b382e179a50f57f94f97dd418f5e3a6bd2a9e0b8482bcc029898b25a12f",
+          "event_sha256": "1414c501b45d1e4baead6687b7be4aa01085a1019c1570842272484159792fff"
+        },
+        {
+          "key": "note:6:curiosity",
+          "content_sha256": "82aa839ce2fb03b7c1c1d565ba32ddbbf3bb6e92e8810c24c3412346ba9e439e",
+          "event_sha256": "a15ccadd64deb201031a3919e0bbed17787e276d7432395b4520e4d5f8db45bf"
+        },
+        {
+          "key": "note:6:hint",
+          "content_sha256": "e056e093c3f2ac42b87225bb9bb2427613cea466ca22fe45890f13c9b119b32e",
+          "event_sha256": "bf7b272f5ea0825bc9e3a360e7f534323d9bf6d07d52a30047d977a108fd26b8"
+        },
+        {
+          "key": "note:6:intro",
+          "content_sha256": "cbc5ddf65fc1b289ed8a86c5f2af94078ba910da682f6b9ef7c9eb8d7ef7a3e3",
+          "event_sha256": "48fdc24d0c1e1edb1a165e42a8945debb932927bf1a1816c46ab2c259bd0045a"
+        },
+        {
+          "key": "note:7:curiosity",
+          "content_sha256": "a963f2c07e92beda55249b3fcbe81e665ba038c21a5b7fec4a4a19320b2b0a52",
+          "event_sha256": "482529e4ee7cd134bb5bf4d7fa5da3b4a7dbb64530232dc9696bb92edaedef64"
+        },
+        {
+          "key": "note:7:intro",
+          "content_sha256": "70c2975441f1f4b7a44e82e4012fbecb600b614ddf21ea5d40e9d793c13d8687",
+          "event_sha256": "68da30186fd5da5fe24be50ba1901ca8b81ed03ef7db89b85e828b45e53b8c1b"
+        },
+        {
+          "key": "note:8:curiosity",
+          "content_sha256": "5bbcfa6d2677ca9791a6542a9e1cf98864093c7fbec9c0b22542fa1eaacce2ae",
+          "event_sha256": "1e60308a1010cb50b27d7cc5935beeeba95b7ce7d6c3ec65ab7e9971978bea2b"
+        },
+        {
+          "key": "note:8:hint",
+          "content_sha256": "559a7e9ca879de7f41c7d5125eb9d0f1fdd24697c6e19b53c740f0a54aaf9efb",
+          "event_sha256": "3618da2ff2ca337256b567726653cab369b6b7e91cf380962636424fb3042598"
+        },
+        {
+          "key": "note:8:intro",
+          "content_sha256": "f0e8f974f4ffa346d4b1a5073054593c4e679b24d128cd6cc1501f3080934547",
+          "event_sha256": "6fb1800b92db3412612dbb2f6aceebff3db09818f0933ad4929e141fc9a7e86b"
+        },
+        {
+          "key": "note:9:intro",
+          "content_sha256": "d9ed06dfe94be7dc1384416c6ec3254f81e35ec9fd4780bc191cd427a51b84e9",
+          "event_sha256": "8f9cf3f05a97f9e210dc84991742c8b446a56990c8bdf4c9a58d059d27abbe6d"
+        }
+      ],
+      "promotion": {
+        "recorded_on": "2026-10-18",
+        "exact_file_sha256": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
+        "active_occurrences": 68,
+        "active_generated_notes": 38,
+        "new_editorial_events": 38,
+        "repeated_decisions": "already_recorded",
+        "unchanged_recipe_sets": 122,
+        "other_note_payloads_unchanged": true,
+        "organism_82_unchanged": true,
+        "whole_corpus_license_granted": false,
+        "source_works_relicensed": false
+      },
+      "confirmation_validation": {
+        "checked_at": "2026-10-18T07:57:24.534016+00:00",
+        "configure_and_build": "passed",
+        "ctest": {
+          "passed": 26,
+          "total": 26,
+          "seconds": 133.44,
+          "initial_failure": "Legacy verified flag assertion in introductionsAndMissingContent; replaced with stronger checks on the actual editorial ledger authority and the full suite rerun after recompiling."
+        },
+        "import_tests": 19,
+        "rights_investigation_tests": 52,
+        "strict_catalog": {
+          "organisms": 122,
+          "competitive_pool": 80,
+          "errors": 0
+        },
+        "identical_recipe_sets": 122,
+        "prior_human_events_preserved": 3,
+        "new_editorial_events": 38,
+        "specialist_events_created": 0,
+        "historical_prefix_preserved": true,
+        "apache_check": "passed",
+        "manifest_and_status": "passed",
+        "qml_lint": "passed",
+        "distribution": {
+          "exit_code": 2,
+          "technical_errors": 0,
+          "photo_licensing": 120,
+          "asset_licensing": 3,
+          "scientific_release_blocks": 2
+        },
+        "curation_preview": {
+          "requests": 15,
+          "findings": 3309,
+          "by_area": {
+            "science": 4,
+            "taxonomy": 2,
+            "photography": 3,
+            "licensing": 4,
+            "pedagogy": 2
+          }
+        },
+        "curation_sync": {
+          "apply": false,
+          "remote_checked": false,
+          "created": [],
+          "updated": [],
+          "errors": []
+        },
+        "remote_ci_verified": false,
+        "new_package_validated": false
+      }
+    },
+    "next_batches": {
+      "species_profiles.json": {
+        "state": "partial_draft_34_contexts_prepared_not_applied",
+        "organism_records": 122,
+        "source_domains": {
+          "animaldiversity.org": 72,
+          "www.inaturalist.org": 251,
+          "animals.sandiegozoo.org": 6,
+          "entnemdept.ufl.edu": 6,
+          "ask.ifas.ufl.edu": 18,
+          "blogs.ifas.ufl.edu": 6,
+          "www.biointeractive.org": 5,
+          "www.birdlife.org": 4,
+          "digimorph.geo.utexas.edu": 4,
+          "plants.ces.ncsu.edu": 21,
+          "openstax.org": 34,
+          "link.springer.com": 6,
+          "powo.science.kew.org": 18,
+          "burkeherbarium.org": 5,
+          "bryophyteportal.org": 5,
+          "plants.sdsu.edu": 5,
+          "pza.sanbi.org": 5,
+          "www.nzpcn.org.nz": 11,
+          "www.mushroomexpert.com": 27,
+          "myco-lb.jgi.doe.gov": 6,
+          "pmc.ncbi.nlm.nih.gov": 59,
+          "www.atcc.org": 11,
+          "www.mykoweb.com": 6,
+          "www.montereybayaquarium.org": 6,
+          "seanet.stanford.edu": 12,
+          "www.marlin.ac.uk": 24,
+          "www.habitas.org.uk": 6,
+          "ditsong.org.za": 6,
+          "www.fishbase.se": 6,
+          "www.uwyo.edu": 6,
+          "www.amnh.org": 6,
+          "www.britishbryologicalsociety.org.uk": 6,
+          "www.cornare.gov.co": 5,
+          "ucmp.berkeley.edu": 21,
+          "www.amentsoc.org": 18,
+          "butterfly-conservation.org": 8,
+          "www.ukmoths.org.uk": 2,
+          "www.fs.usda.gov": 2,
+          "wetlandinfo.detsi.qld.gov.au": 1,
+          "www.doc.govt.nz": 3,
+          "www.museum.qld.gov.au": 3,
+          "www.first-nature.com": 40,
+          "www.algaebase.org": 4,
+          "www.si.edu": 1,
+          "www.microbiologyresearch.org": 9,
+          "limnolfwbiol.com": 6,
+          "journals.asm.org": 12,
+          "www.frontiersin.org": 2,
+          "pubmed.ncbi.nlm.nih.gov": 2,
+          "www.dsmz.de": 2,
+          "sib.gob.ar": 4,
+          "www.ebr.or.kr": 6,
+          "www.preslia.cz": 6,
+          "www.mapress.com": 5,
+          "journals.indianapolis.iu.edu": 1,
+          "sagdb.uni-goettingen.de": 6,
+          "onlinelibrary.wiley.com": 1
+        },
+        "openstax_contexts": [
+          {
+            "pointer": "/133/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/53/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/61/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/44/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/47/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/43/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/48/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/49/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/51/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/54/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/57/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/50/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/55/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/23/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/26/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/30/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/31/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/34/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/35/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/41/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/41/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods"
+          },
+          {
+            "pointer": "/52/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/52/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/60/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/60/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/62/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/62/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life"
+          },
+          {
+            "pointer": "/65/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi"
+          },
+          {
+            "pointer": "/65/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/24-3-ecology-of-fungi"
+          },
+          {
+            "pointer": "/70/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi"
+          },
+          {
+            "pointer": "/71/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi"
+          },
+          {
+            "pointer": "/81/curiosity",
+            "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi"
+          },
+          {
+            "pointer": "/110/nutrition",
+            "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity"
+          },
+          {
+            "pointer": "/110/morphology",
+            "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity"
+          }
+        ],
+        "openstax_roles": {
+          "nutrition": 19,
+          "curiosity": 14,
+          "morphology": 1
+        },
+        "scientific_claims_rechecked": 0,
+        "rights_or_human_approvals_created": 0,
+        "limitation": "Structural source triage only, not textual-origin certification or a scientific review of the full file.",
+        "proposal": "educational_regularization.profile_openstax_batch"
+      },
+      "hint_education.json": {
+        "state": "not_rewritten_pending_first_batch_review",
+        "organism_records": 122,
+        "source_domains": {
+          "www.first-nature.com": 26,
+          "lpsn.dsmz.de": 24,
+          "rhinos.org": 2,
+          "plants.ces.ncsu.edu": 5,
+          "pza.sanbi.org": 1,
+          "www.nzpcn.org.nz": 2,
+          "www.marlin.ac.uk": 2,
+          "www.heliconius.org": 1,
+          "ielc.libguides.com": 2,
+          "link.springer.com": 1
+        },
+        "openstax_contexts": [],
+        "openstax_roles": {},
+        "scientific_claims_rechecked": 0,
+        "rights_or_human_approvals_created": 0,
+        "limitation": "Structural source triage only, not textual-origin certification or a scientific review of the full file."
+      }
+    },
+    "profile_openstax_batch": {
+      "schema_version": 1,
+      "state": "draft",
+      "origin": "automation",
+      "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
+      "target": "resources/data/species_profiles.json",
+      "previous_file_sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+      "created_at": "2026-10-18T04:45:15.172704+00:00",
+      "proposed_changes": [
+        {
+          "pointer": "/133/nutrition",
+          "scientific_name": "Ginkgo biloba",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/53/nutrition",
+          "scientific_name": "Viburnum opulus",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/61/nutrition",
+          "scientific_name": "Verbascum thapsus",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/44/nutrition",
+          "scientific_name": "Dictyanthus pavonii",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/47/nutrition",
+          "scientific_name": "Polypodium glycyrrhiza",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/43/nutrition",
+          "scientific_name": "Kindbergia oregana",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/48/nutrition",
+          "scientific_name": "Marah macrocarpa",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/49/nutrition",
+          "scientific_name": "Mastigostyla macbridei",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/51/nutrition",
+          "scientific_name": "Mimetes chrysanthus",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/54/nutrition",
+          "scientific_name": "Xanthosoma robustum",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/57/nutrition",
+          "scientific_name": "Pleurophyllum speciosum",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/50/nutrition",
+          "scientific_name": "Tulipa regelii",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/55/nutrition",
+          "scientific_name": "Pleurothallis maitamae",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/23/curiosity",
+          "scientific_name": "Titanomis sisyrota",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/26/curiosity",
+          "scientific_name": "Geminaria canalis",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/30/curiosity",
+          "scientific_name": "Xenocnema spinipes",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/31/curiosity",
+          "scientific_name": "Sphaerocoris annulus",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/34/curiosity",
+          "scientific_name": "Dicarnosis erythrocephala",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/35/curiosity",
+          "scientific_name": "Pachypodistes angulata",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/41/curiosity",
+          "scientific_name": "Ovalimantis maculata",
+          "topic": "curiosity",
+          "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+          "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+          "proposed_note": {
+            "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+            "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Insetos",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+          },
+          "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+              "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+              "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+            }
+          ],
+          "draft_kind": "insect_molt"
+        },
+        {
+          "pointer": "/41/nutrition",
+          "scientific_name": "Ovalimantis maculata",
+          "topic": "nutrition",
+          "previous_note_sha256": "f68dbe5add854235d948a82b47ff6133e3d93b1c3bfc617698ca73dc16d46532",
+          "previous_text_sha256": "48ef0fb698a0bd1ec7d3bdf21540b497628e069b11b2f340df1c4526170efe1c",
+          "proposed_note": {
+            "text": "Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa; o estudo de movimentos de outra espécie não descreve uma dieta exclusiva de Ovalimantis.",
+            "source_url": "https://doi.org/10.1186/s12983-026-00610-9",
+            "source_title": "Bäumler F et al. (2026) — A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Louva-a-deus",
+            "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded"
+          },
+          "proposed_note_sha256": "fec74fb24562edeb308b39e3c7ad66e1b9c7091ee1bb27a1da3c5f8817eb9225",
+          "text_sha256": "d477c932bc4e252e76e3fea84ec866df1ba5841917645172c94ed7aa66a67082",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/21ffa70424dd36b0d1803b1870cce6aada1e8260ee41ed0f2da118086f7dfe7b.json",
+              "sha256": "8d38a801390ae92664c812933d0a525ff0999c186eb3609eb28ee352fbf43cf4",
+              "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded"
+            }
+          ],
+          "draft_kind": "mantis_nutrition"
+        },
+        {
+          "pointer": "/52/curiosity",
+          "scientific_name": "Asterella drummondii",
+          "topic": "curiosity",
+          "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+          "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+          "proposed_note": {
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "source_url": "https://doi.org/10.1093/plphys/kiac304",
+            "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+          },
+          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
+          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+            }
+          ],
+          "draft_kind": "plant_diversity"
+        },
+        {
+          "pointer": "/52/nutrition",
+          "scientific_name": "Asterella drummondii",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/60/curiosity",
+          "scientific_name": "Huperzia lucidula",
+          "topic": "curiosity",
+          "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+          "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+          "proposed_note": {
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "source_url": "https://doi.org/10.1093/plphys/kiac304",
+            "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+          },
+          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
+          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+            }
+          ],
+          "draft_kind": "plant_diversity"
+        },
+        {
+          "pointer": "/60/nutrition",
+          "scientific_name": "Huperzia lucidula",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/62/curiosity",
+          "scientific_name": "Euphorbia duckei",
+          "topic": "curiosity",
+          "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+          "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+          "proposed_note": {
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "source_url": "https://doi.org/10.1093/plphys/kiac304",
+            "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+          },
+          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
+          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+              "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+              "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+            }
+          ],
+          "draft_kind": "plant_diversity"
+        },
+        {
+          "pointer": "/62/nutrition",
+          "scientific_name": "Euphorbia duckei",
+          "topic": "nutrition",
+          "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+          "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+          "proposed_note": {
+            "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Plantas fotossintetizantes",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+          },
+          "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+            }
+          ],
+          "draft_kind": "plant_nutrition"
+        },
+        {
+          "pointer": "/65/curiosity",
+          "scientific_name": "Cladonia imperialis",
+          "topic": "curiosity",
+          "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+          "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+          "proposed_note": {
+            "text": "Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada. A pesquisa citada examina Cladonia grayi; ela não identifica os parceiros de Cladonia imperialis.",
+            "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+            "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Líquens; comparação com estudo de outra espécie",
+            "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis"
+          },
+          "proposed_note_sha256": "dcc52073d34f28ccbe39b5d9ba04462176039972cd7133f049c7a40063610ae6",
+          "text_sha256": "c42d1db628893b446960e264093e80aa4f8c9e80873838b2b53deb22ba429c72",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
+              "sha256": "17111371f43431bd39f9694d1a63a78ebdf343af31c0860e119f19afe58330e1",
+              "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis"
+            }
+          ],
+          "draft_kind": "lichen_curiosity"
+        },
+        {
+          "pointer": "/65/nutrition",
+          "scientific_name": "Cladonia imperialis",
+          "topic": "nutrition",
+          "previous_note_sha256": "42fa51eb18d54f1cf0adad99572e8ee37e23840fa2892580867c091151f1b483",
+          "previous_text_sha256": "a7fdd2bc0e2b2c5f53c6b8ed4dfd98707e44c3c3667d07fc319a39f77ce01909",
+          "proposed_note": {
+            "text": "No líquen, o parceiro fotossintetizante fornece compostos de carbono à associação. O fungo participa da organização do corpo visível, chamado talo; são organismos associados, não um único tecido vegetal.",
+            "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+            "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Líquens",
+            "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope"
+          },
+          "proposed_note_sha256": "5565131410b3b7bc1165d60b1331cbe8563778d869bb3ffbaec4fb5124b7c785",
+          "text_sha256": "627a7262814dec15174c396298c970164213411d1986685efc1135f551c6c4f7",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
+              "sha256": "17111371f43431bd39f9694d1a63a78ebdf343af31c0860e119f19afe58330e1",
+              "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope"
+            }
+          ],
+          "draft_kind": "lichen_nutrition"
+        },
+        {
+          "pointer": "/70/curiosity",
+          "scientific_name": "Ganoderma brownii",
+          "topic": "curiosity",
+          "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+          "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+          "proposed_note": {
+            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
+            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Fungos",
+            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+          },
+          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
+          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            }
+          ],
+          "draft_kind": "fungal_mycelium"
+        },
+        {
+          "pointer": "/71/curiosity",
+          "scientific_name": "Marasmius haematocephalus",
+          "topic": "curiosity",
+          "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+          "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+          "proposed_note": {
+            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
+            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Fungos",
+            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+          },
+          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
+          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            }
+          ],
+          "draft_kind": "fungal_mycelium"
+        },
+        {
+          "pointer": "/81/curiosity",
+          "scientific_name": "Entoloma trachyosporum",
+          "topic": "curiosity",
+          "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+          "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+          "proposed_note": {
+            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
+            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Fungos",
+            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+          },
+          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
+          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
+              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            }
+          ],
+          "draft_kind": "fungal_mycelium"
+        },
+        {
+          "pointer": "/110/nutrition",
+          "scientific_name": "Gomphosphaeria aponina",
+          "topic": "nutrition",
+          "previous_note_sha256": "bbbb98c7f305b96a20579b82f78b4b88e1ddee548dcbc1def595a49ee1112b0a",
+          "previous_text_sha256": "872ed55f449b9eeef491335970bacc2a8f40cdddefc0eede39061f5adf87bb64",
+          "proposed_note": {
+            "text": "A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio. É uma explicação do grupo, não uma conclusão obtida da fotografia do jogo.",
+            "source_url": "https://doi.org/10.1042/ebc20160016",
+            "source_title": "Johnson MP. (2016) — Photosynthesis.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Cianobactérias",
+            "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation"
+          },
+          "proposed_note_sha256": "a006e19f69ee7241e9195fee663006dfb4bc67b12c34db49d68295b2e244a40a",
+          "text_sha256": "ccd63182c3f15fb2ffd2fcc5cd90722bd1362d971e577bbf04379e7f73f4d93c",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+              "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+              "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation"
+            }
+          ],
+          "draft_kind": "cyanobacterial_nutrition"
+        },
+        {
+          "pointer": "/110/morphology",
+          "scientific_name": "Gomphosphaeria aponina",
+          "topic": "morphology",
+          "previous_note_sha256": "0de023db1d1532c6b520b45097ff75a07cd0f8931c897500930c6675803e6ade",
+          "previous_text_sha256": "a7c42c9fea9785edf52f2d828038317f411b85e2a29b4a4df95b972e28ec4c85",
+          "proposed_note": {
+            "text": "Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+            "source_url": "https://doi.org/10.3390/genes12030389",
+            "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio",
+            "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded"
+          },
+          "proposed_note_sha256": "9127f91c26f4934e0739a5b511d21b4b0ea929fdb4ad875b3cfc3b9b712a2efc",
+          "text_sha256": "e04ff18ce72d3c14eef9942e30968d4f0159a87f50c328dbd63f6e3c763d8d49",
+          "scientific_sources": [
+            {
+              "path": "resources/compliance/sources/b159e807c97831c17f6dff5db0bc764f1ef56502776589510642ddb3a10733b6.json",
+              "sha256": "24a02c98a2474b1be25bddef527d5195145dd5e3886545da9d5c71a1e715bf53",
+              "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded"
+            }
+          ],
+          "draft_kind": "gomphosphaeria_morphology"
+        }
+      ],
+      "source_evidence": {
+        "PMC5264509": {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0"
+        },
+        "PMC6652019": {
+          "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
+          "sha256": "17111371f43431bd39f9694d1a63a78ebdf343af31c0860e119f19afe58330e1"
+        },
+        "PMC13094072": {
+          "path": "resources/compliance/sources/21ffa70424dd36b0d1803b1870cce6aada1e8260ee41ed0f2da118086f7dfe7b.json",
+          "sha256": "8d38a801390ae92664c812933d0a525ff0999c186eb3609eb28ee352fbf43cf4"
+        },
+        "PMC8001431": {
+          "path": "resources/compliance/sources/b159e807c97831c17f6dff5db0bc764f1ef56502776589510642ddb3a10733b6.json",
+          "sha256": "24a02c98a2474b1be25bddef527d5195145dd5e3886545da9d5c71a1e715bf53"
+        },
+        "PMC7772430": {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad"
+        },
+        "PMC9434249": {
+          "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+          "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48"
+        },
+        "PMC6909477": {
+          "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
+          "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354"
+        }
+      },
+      "origin_kind_proposed": "independent_factual_synthesis",
+      "creation_process": "Fresh AI-assisted Brazilian Portuguese drafts grounded in the identified factual scopes and licensed publications. Legacy references are retained in the active files and Git. No OpenStax chapter was ingested for generation.",
+      "reviewer": null,
+      "reviewed_at": null,
+      "license_proposal": {
+        "license": "CC-BY-4.0",
+        "scope": "Only rights actually available in eligible new wording; scientific facts and external works are not claimed as exclusive property.",
+        "state": "pending_maintainer_confirmation_of_batch_eligibility",
+        "human_approval_recorded": false
+      },
+      "active_content_changed": false,
+      "permissions_changed": false,
+      "decisions_created": 0,
+      "limitations": [
+        "Only the 34 direct OpenStax bibliographic contexts are proposed here; other profile passages remain inconclusive.",
+        "Drafts are not human editorial approval, specialist review or legal certification.",
+        "Group facts and study organisms are explicitly distinguished from claims about the catalog species or its photograph.",
+        "No historical reviewer, review date or source permission is inherited by replacement wording."
+      ],
+      "validation": {
+        "checked_at": "2026-10-18T04:50:22.088223+00:00",
+        "test_command": "python tests/test_import_inaturalist.py",
+        "tests_passed": 18,
+        "changed_generated_notes_including_morphological_alias": 35,
+        "prior_automated_pedagogy_invalidated": true,
+        "regeneration_does_not_approve_notes": true,
+        "unchanged_recipe_sets": 121,
+        "remaining_recipe_set_preserves_grades_categories_ranks_photo_bindings": true,
+        "organism_82_unchanged": true,
+        "active_content_changed": false,
+        "human_approvals_created": 0
+      }
+    },
+    "phase_balance": {
+      "checked_at": "2026-10-18T07:44:47.881709+00:00",
+      "draft_occurrences_prepared": 102,
+      "promoted_occurrences": 68,
+      "remaining_profile_draft_occurrences": 34,
+      "new_editorial_events": 38,
+      "occurrences_with_delimited_text_grant": 68,
+      "text_resource_grants": 1,
+      "active_occurrences_origin_inconclusive": 2334,
+      "active_unique_text_hashes_inconclusive": 795,
+      "active_total_occurrences": 2402,
+      "active_unique_passages": 863,
+      "resolved_issue_2_findings_this_phase": 1,
+      "remaining_text_asset_findings": 3,
+      "remaining_work": "The profile drafts and all other legacy profile/hint/derived passages remain outside the confirmed group batch. No whole-corpus or package permission granted."
+    },
+    "pr_consolidation": {
+      "checked_at": "2026-10-18T11:52:13.516562+00:00",
+      "base_pr": 18,
+      "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
+      "base_ancestry_confirmed": true,
+      "maintainer_confirmations_unchanged": true,
+      "group_source_unchanged_since_confirmation": true,
+      "new_human_events_created": 0,
+      "draft_review_document": "docs/propostas/REVISAO_FICHAS_LOTE_2.md",
+      "draft_changes_sha256": "a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460",
+      "profile_drafts_applied": false,
+      "proposal_count": 34,
+      "proposal_organisms": 28,
+      "configure_and_build": "passed",
+      "ctest": {
+        "passed": 26,
+        "total": 26,
+        "seconds": 154.66
+      },
+      "strict_catalog": {
+        "organisms": 122,
+        "competitive_pool": 80,
+        "errors": 0
+      },
+      "apache": "passed",
+      "manifest_and_status": "passed",
+      "governance_history": "prefix_preserved",
+      "distribution": {
+        "exit_code": 2,
+        "technical_errors": 0,
+        "photo_licensing": 120,
+        "asset_licensing": 3,
+        "scientific_release_blocks": 2
+      },
+      "remote_validation_authority": "Actual GitHub Actions checks on the published Pull Request; not inferred from local tests.",
+      "new_package_validated": false
+    }
   }
 }

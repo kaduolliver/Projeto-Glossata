@@ -380,6 +380,39 @@ def educational_rights_metadata(root, passages):
     return {'technical_errors': errors, 'records': rows, 'grants_created': 0}
 
 
+def text_permission_binding_issues(root, asset, grant):
+    """Bind a scoped batch grant to its exact bytes, not a whole corpus.
+
+    Checks consistency of a declared confirmation, not human authentication or
+    legal ownership. Other, independently documented grant formats stay intact.
+    """
+    try:
+        proof = g.load(g.local_file(root, grant.get('evidence_path', '')), {})
+        if not isinstance(proof, dict):
+            return ['text_grant_binding_invalid']
+        if (proof.get('kind') != 'educational_group_batch_confirmation'
+                and grant.get('scope') != 'eligible_group_wording_only'):
+            return []
+        confirmation = proof.get('license_confirmation', {})
+        if not isinstance(confirmation, dict):
+            return ['text_grant_binding_invalid']
+        date = g.parse_time(confirmation.get('recorded_on'))
+        if (grant.get('scope') != 'eligible_group_wording_only'
+                or proof.get('kind') != 'educational_group_batch_confirmation'
+                or proof.get('file') != asset['path']
+                or proof.get('file_sha256') != asset['sha256']
+                or not confirmation.get('declared_by') or not confirmation.get('statement')
+                or not date or date > g.parse_time(g.now())
+                or confirmation.get('license') != 'CC-BY-4.0'
+                or grant.get('license') != confirmation['license']
+                or not confirmation.get('scope')
+                or confirmation.get('license_url') != 'https://creativecommons.org/licenses/by/4.0/'):
+            return ['text_grant_binding_invalid']
+    except (KeyError, TypeError, ValueError, OSError):
+        return ['text_grant_binding_invalid']
+    return []
+
+
 def text_resource_issues(inventory, path):
     """A file grant cannot cover only one component of a mixed prose resource.
 

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC6909477&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:32.612084+00:00",
+    "response_sha256": "e460824c929fb01bf344cfba4dd2fdf9f390eb42237a7ce054dca4fe8ef798e4",
+    "pmcid": "PMC6909477",
+    "metadata": {
+      "id": "31830917",
+      "source": "MED",
+      "title": "Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+      "authorString": "Challacombe JF, Hesse CN, Bramer LM, McCue LA, Lipton M, Purvine S, Nicora C, Gallegos-Graves V, Porras-Alfaro A, Kuske CR.",
+      "doi": "10.1186/s12864-019-6358-x",
+      "pubYear": "2019",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s12864-019-6358-x"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6909477"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6909477?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6909477/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:28.259643+00:00",
+    "response_sha256": "210db896c7e80800471f3d98f50b861d0b6094e3a29c924f1c7165fb3271b178",
+    "bytes": 349277,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC6909477",
+    "title": "Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+    "author_credit": "Challacombe JF, Hesse CN, Bramer LM, McCue LA, Lipton M, Purvine S, Nicora C, Gallegos-Graves V, Porras-Alfaro A, Kuske CR.",
+    "doi": "10.1186/s12864-019-6358-x",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

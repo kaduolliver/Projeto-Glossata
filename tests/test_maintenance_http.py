@@ -107,6 +107,19 @@ class MaintenanceTests(unittest.TestCase):
         self.assertTrue(all(s.closed for s in network.sockets))
         self.assertTrue(all(t.daemon and t.cancelled and t.interval <= 45 for t in self.timers))
 
+    def test_bibliographic_metadata_host_keeps_public_dns_and_https_guards(self):
+        url = 'https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=synthetic&format=json'
+        network = Network([response(body=b'{"resultList":{"result":[]}}')])
+        self.assertEqual(self.client(network).get(url, as_json=True), {'resultList': {'result': []}})
+        self.assertEqual(network.sni, ['www.ebi.ac.uk'])
+        private = Network([], {'www.ebi.ac.uk': ['127.0.0.1']})
+        with self.assertRaises(http.UnsafeDestination):
+            self.client(private).get(url, as_json=True)
+        self.assertEqual(private.connected, [])
+        for unsafe in [url.replace('https:', 'http:'), url.replace('.ac.uk/', '.ac.uk:8443/')]:
+            with self.assertRaises(http.UnsafeDestination):
+                http.DestinationPolicy().validate(unsafe)
+
     def test_legitimate_doi_cross_host_and_relative_redirect_chain(self):
         network = Network([response(302, 'https://www.nature.com/article'), response(307, '/article/latest'), response()])
         result = self.client(network).get('https://doi.org/10.1038/example')

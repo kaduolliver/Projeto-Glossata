@@ -1,10 +1,10 @@
 {
   "notes": {
     "note:0:intro": {
-      "text": "Animalia reúne organismos eucariontes multicelulares que obtêm alimento de outros seres vivos ou de matéria orgânica. Suas células não possuem parede celular. O grupo apresenta diversidade de formas corporais, modos de reprodução e relações ecológicas, incluindo organismos aquáticos, terrestres e parasitas.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
-      "verified": true,
+      "text": "Os animais são eucariontes cujo corpo se desenvolve a partir de um embrião multicelular. Suas células trabalham em conjunto e não possuem a parede rígida encontrada em plantas e fungos. A obtenção de matéria orgânica de outros organismos sustenta uma grande variedade de modos de vida, inclusive formas fixas e parasitas.",
+      "source_title": "Jacques F et al. (2022) — Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+      "source_url": "https://doi.org/10.1007/s12032-022-01740-w",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -14,28 +14,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Animalia",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "4f156a5cb8b36d0eca160875c931fcdc8904713661f3dcebbaa22adde67607d9",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1007/s12032-022-01740-w",
+            "locator": "Introduction; multicellularity and differentiation",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Holozoa / Metazoa",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "a7c89796ef798c8d01111c139370305a7c807eb8e2976877074eeec8d51cc5cb",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:0:hint": {
-      "text": "Obtém alimento de outros seres vivos ou de matéria orgânica.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
-      "verified": true,
+      "text": "Obtém matéria orgânica de outros organismos; a forma adulta pode ser móvel ou fixa.",
+      "source_title": "Jacques F et al. (2022) — Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+      "source_url": "https://doi.org/10.1007/s12032-022-01740-w",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -45,28 +56,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Animalia",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "ef276b89f86f2dd827db18907fabae0d705f2f5655f88a068cdce34bd028d1a6",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1007/s12032-022-01740-w",
+            "locator": "Introduction; multicellularity and differentiation",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Holozoa / Metazoa",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "bc63230b5162866ee54232d62410836c3cb99cfbe89afae0abdf457a3b32efa5",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:0:curiosity": {
-      "text": "Os animais ocupam ambientes muito diferentes: água, solo, árvores e até o corpo de outros seres.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
-      "verified": true,
+      "text": "Há animais de vida livre e animais parasitas: o grupo não se limita a um tipo de ambiente.",
+      "source_title": "Jacques F et al. (2022) — Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+      "source_url": "https://doi.org/10.1007/s12032-022-01740-w",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -76,28 +98,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Animalia",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "ac96a3e436971bf572b7402bda2ef972cacd1a71e823142b3194011916d068d8",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1007/s12032-022-01740-w",
+            "locator": "Introduction; multicellularity and differentiation",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Holozoa / Metazoa",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "01845752abe5f7173e921e229ceb19fa623a49b2a1127c2028f75fc33896d2d5",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:1:intro": {
-      "text": "Plantae reúne linhagens de organismos eucariontes com paredes celulares que contêm celulose. Muitas realizam fotossíntese, embora existam formas parasitas. Nas plantas terrestres, a proteção do embrião e adaptações contra a perda de água foram importantes para a ocupação de ambientes fora da água.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "verified": true,
+      "text": "O nome Plantae tem abrangências diferentes entre classificações; aqui acompanha o grupo registrado no catálogo. Células das plantas apresentam paredes que ajudam a manter a forma e incluem celulose. A história das plantas terrestres envolve proteção do embrião, transporte interno e reprodução fora da água; nem todas produzem flores ou sementes.",
+      "source_title": "Fangel JU et al. (2012) — Cell wall evolution and diversity.",
+      "source_url": "https://doi.org/10.3389/fpls.2012.00152",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -107,28 +140,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Plantae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "bb4b75a46881e1838d99865962039ef521612ab566102ad93f5630844c916fbc",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fpls.2012.00152",
+            "locator": "Introduction / cell-wall composition and diversity",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "a92ee071865057d37792b987c79440391211af9be416a77950adb2d9f83d3ab7",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:1:hint": {
-      "text": "Muitas formas usam a luz para produzir seu próprio alimento.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "verified": true,
+      "text": "A parede celular participa da sustentação; a fotossíntese é frequente, mas admite exceções.",
+      "source_title": "Fangel JU et al. (2012) — Cell wall evolution and diversity.",
+      "source_url": "https://doi.org/10.3389/fpls.2012.00152",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -138,28 +182,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Plantae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "c67ce69f8848628abb0f268e2d2c8efa34170763b818d9c1f3f6c4165133df57",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fpls.2012.00152",
+            "locator": "Introduction / cell-wall composition and diversity",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "1fd2afb6ad2ea869b786c338d4d0abfb94af5f0386f8c0e68ac508724cdf2c62",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:1:curiosity": {
-      "text": "Existem plantas que se reproduzem por esporos e não produzem flores.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "verified": true,
+      "text": "Ter vasos condutores não implica produzir flores: samambaias também são plantas vasculares.",
+      "source_title": "Fangel JU et al. (2012) — Cell wall evolution and diversity.",
+      "source_url": "https://doi.org/10.3389/fpls.2012.00152",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -169,28 +224,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Plantae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "ed24171fc5afb33cc15ebaf5f198861617890a2fb003aef177b2519632094f46",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fpls.2012.00152",
+            "locator": "Introduction / cell-wall composition and diversity",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / Embryophytes and tracheophytes",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "b7fc835efb950e6063d771cc46ee857a3e81f23a2ef58a632f6ac7f93dd3e4d5",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:2:intro": {
-      "text": "Fungi reúne organismos eucariontes heterotróficos que absorvem nutrientes do ambiente. Muitos crescem como filamentos chamados hifas, formando um micélio, enquanto outros são unicelulares. Suas paredes celulares contêm quitina. Decomposição, associações com plantas e relações parasitárias estão entre os papéis ecológicos presentes neste grupo.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "verified": true,
+      "text": "A absorção de compostos orgânicos é uma forma frequente de nutrição entre fungos. Em muitas espécies, uma rede de filamentos, as hifas, explora o substrato; outras crescem como células isoladas. A liberação de enzimas permite aproveitar materiais complexos. Há decompositores, parasitas e parceiros de outros organismos, com diferenças importantes entre espécies.",
+      "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+      "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -200,28 +266,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Fungi",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "133ad0dfbea28c709f32401dff6b441c2e20b2bf85a629a3d7c7f6b7dda676ff",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Fungi and Dikarya",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "010192100f523b596a87df2d84bb47f10219ffb76e9117f1cd7c971f1af337f6",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:2:hint": {
-      "text": "Obtém nutrientes do ambiente por absorção.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "verified": true,
+      "text": "Enzimas atuam sobre o substrato antes da absorção de compostos pelas células.",
+      "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+      "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -231,28 +308,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Fungi",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "0bb7ff69009d77b01f182540b1fc24b64a005ca9036bb22b5e2dba148bd37d0e",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Fungi and Dikarya",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "557481073cf09f934cfbc792127c89ee2b6c2e87b82045b7111a062d9dea099a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:2:curiosity": {
-      "text": "O cogumelo visível é apenas uma parte do organismo; outra parte pode crescer na madeira ou no solo.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "verified": true,
+      "text": "O cogumelo corresponde a uma estrutura reprodutiva, não a toda a rede de filamentos do fungo.",
+      "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+      "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -262,28 +350,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Fungi",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "015f649fccc0f0823a9af3dcbec392b12f973609ae240c78a67b4f4c3fb3d05a",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "locator": "Background; Discussion / secreted enzymes and fungal hyphal growth",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Fungi and Dikarya",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "8c1b94bed9a13d95a66cad7e3b368190811a9b56562d6683470b8df19c72fed9",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:5:intro": {
-      "text": "Arthropoda reúne animais com corpo segmentado, apêndices articulados e exoesqueleto. O revestimento externo fornece proteção e pontos de inserção muscular, mas exige mudas durante o crescimento. Seus representantes ocupam ambientes terrestres e aquáticos, com apêndices especializados para locomoção, alimentação e percepção do ambiente.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "Nos artrópodes, segmentos do corpo e apêndices articulados combinam proteção e movimento. O esqueleto externo oferece apoio aos músculos, mas precisa ser renovado durante o crescimento. Pernas, antenas e peças bucais podem assumir funções diferentes. Por isso, observar como essas estruturas se organizam costuma ajudar mais que comparar apenas a cor do animal.",
+      "source_title": "Klementz BC et al. (2024) — A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+      "source_url": "https://doi.org/10.1093/molbev/msae188",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -293,28 +392,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Arthropoda",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd21bc81f4d1e8c50673aab1cd9257ad41306d200186f4b7225ccfc1de6aa8de",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/molbev/msae188",
+            "locator": "Introduction / articulated appendages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / cuticle and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "b3f28b382e179a50f57f94f97dd418f5e3a6bd2a9e0b8482bcc029898b25a12f",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:5:hint": {
-      "text": "Observe o revestimento externo e as pernas articuladas.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "Procure articulações entre os segmentos dos apêndices e um revestimento externo de sustentação.",
+      "source_title": "Klementz BC et al. (2024) — A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+      "source_url": "https://doi.org/10.1093/molbev/msae188",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -324,28 +434,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Arthropoda",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "5ed1d2ea01befc09f089a462e742abd719f3db3d591c88f7ecd061a0f6c9fb01",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/molbev/msae188",
+            "locator": "Introduction / articulated appendages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / cuticle and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "49f00d5760071ef88c23c71547d5166f1e3b3aedccd087ab0bbbc6900c82d98f",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:5:curiosity": {
-      "text": "O revestimento externo precisa ser trocado para que muitos integrantes cresçam.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "Crescer exige renovar o revestimento externo, em um processo de muda.",
+      "source_title": "Klementz BC et al. (2024) — A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+      "source_url": "https://doi.org/10.1093/molbev/msae188",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -355,28 +476,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Arthropoda",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "9e2ecc5fa95a81fc70592f4ff7dd35e62fed2776a9f225c5a6064194a571a8de",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/molbev/msae188",
+            "locator": "Introduction / articulated appendages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / cuticle and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "853efd925fbd7582d9c2bec34105032642240aa0c6d8fe8aa740f4d2c1e873b7",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:6:intro": {
-      "text": "Insecta reúne artrópodes cujo corpo adulto se organiza em cabeça, tórax e abdome. Possuem três pares de pernas ligados ao tórax e um par de antenas. As asas, quando presentes, ampliam a capacidade de dispersão. O grupo participa de processos como polinização e de numerosas relações alimentares.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "O corpo de um inseto adulto apresenta cabeça, tórax e abdome. Os três pares de pernas se ligam ao tórax, enquanto as antenas ficam na cabeça. Asas estão presentes em muitas linhagens, mas não em todas. Larvas podem ter aparência muito diferente, portanto os caracteres usados para reconhecer um adulto não devem ser aplicados indiscriminadamente a todas as fases.",
+      "source_title": "Jürgens KJ et al. (2024) — An anatomical atlas of Drosophila melanogaster-the wild-type.",
+      "source_url": "https://doi.org/10.1093/genetics/iyae129",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -386,28 +518,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Insecta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "1a778f5b03b38bc53f0dd4365a52afbbbf58363d633d5b5fa8ed4965341bf697",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/genetics/iyae129",
+            "locator": "Introduction; Head; Thorax; Abdomen",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval development and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "cbc5ddf65fc1b289ed8a86c5f2af94078ba910da682f6b9ef7c9eb8d7ef7a3e3",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:6:hint": {
-      "text": "No adulto, procure três pares de pernas e um par de antenas.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "No adulto, conte as pernas ligadas ao tórax e observe as antenas na cabeça.",
+      "source_title": "Jürgens KJ et al. (2024) — An anatomical atlas of Drosophila melanogaster-the wild-type.",
+      "source_url": "https://doi.org/10.1093/genetics/iyae129",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -417,28 +560,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Insecta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "c58e23a1abfaed315222c0193a7a3e3bc584e296a229f1836f347a9f1ebc6dbd",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/genetics/iyae129",
+            "locator": "Introduction; Head; Thorax; Abdomen",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval development and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "e056e093c3f2ac42b87225bb9bb2427613cea466ca22fe45890f13c9b119b32e",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:6:curiosity": {
-      "text": "As asas aparecem na fase adulta de muitas espécies, mas há integrantes sem asas.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "verified": true,
+      "text": "A forma da larva pode ser muito diferente da forma adulta; compare a mesma etapa da vida.",
+      "source_title": "Jürgens KJ et al. (2024) — An anatomical atlas of Drosophila melanogaster-the wild-type.",
+      "source_url": "https://doi.org/10.1093/genetics/iyae129",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -448,28 +602,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Insecta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "6778e0285993ad3a9d2575912bd6ad8d845f94c6863494c37e2b35dfdf754702",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/genetics/iyae129",
+            "locator": "Introduction; Head; Thorax; Abdomen",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval development and ecdysis",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "82aa839ce2fb03b7c1c1d565ba32ddbbf3bb6e92e8810c24c3412346ba9e439e",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:7:intro": {
-      "text": "Chordata reúne animais que apresentam notocorda, tubo nervoso dorsal e outras características em algum momento do desenvolvimento. Nos vertebrados, algumas dessas estruturas são modificadas durante a formação do corpo. O filo também inclui linhagens sem coluna vertebral, mostrando que cordados e vertebrados não são termos equivalentes.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
-      "verified": true,
+      "text": "A notocorda, uma estrutura de sustentação ao longo do corpo, integra o plano corporal dos cordados em alguma fase da vida. Outro caráter importante é o tubo nervoso dorsal. Vertebrados pertencem a esse grupo, mas não esgotam sua diversidade: anfioxos e tunicados ajudam a estudar características compartilhadas que podem se modificar durante o desenvolvimento.",
+      "source_title": "D'Aniello S et al. (2023) — Amphioxus as a model to study the evolution of development in chordates.",
+      "source_url": "https://doi.org/10.7554/elife.87028",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -479,28 +644,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Chordata",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "35fed795aef1050253b3207e0899f25332aadff2a43afb8bdfffc6e1a6da4810",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.87028",
+            "locator": "Introduction / shared chordate features and Figure 1; images excluded",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "70c2975441f1f4b7a44e82e4012fbecb600b614ddf21ea5d40e9d793c13d8687",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:7:curiosity": {
-      "text": "Peixes, aves e mamíferos compartilham parentesco, apesar das diferenças de aparência.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
-      "verified": true,
+      "text": "A notocorda pode ser transitória; por isso, alguns caracteres são estudados no embrião.",
+      "source_title": "D'Aniello S et al. (2023) — Amphioxus as a model to study the evolution of development in chordates.",
+      "source_url": "https://doi.org/10.7554/elife.87028",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -510,28 +681,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Chordata",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "0b8dba246ec1e71be035f6cf6aa98163904a82997c4e93e3f57b7b5d71542737",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.87028",
+            "locator": "Introduction / shared chordate features and Figure 1; images excluded",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "a963f2c07e92beda55249b3fcbe81e665ba038c21a5b7fec4a4a19320b2b0a52",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:8:intro": {
-      "text": "Tracheophyta reúne plantas com tecidos vasculares especializados no transporte interno de substâncias. O xilema participa da condução de água e minerais, enquanto o floema transporta compostos orgânicos. Essa organização está associada à diferenciação de órgãos e permite compreender a diversidade de formas das plantas vasculares.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
-      "verified": true,
+      "text": "As plantas vasculares possuem xilema e floema, tecidos que distribuem substâncias pelo organismo. O xilema participa do transporte de água e sais; o floema conduz compostos orgânicos. Esse sistema permite integrar órgãos separados por distâncias consideráveis. O grupo inclui tanto plantas com sementes quanto linhagens que se reproduzem por esporos.",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -541,28 +718,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Tracheophyta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "c8fd97da4841f014fa8b3b9db63210f89e1daa140acd06de33a650c7d61625d3",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "f0e8f974f4ffa346d4b1a5073054593c4e679b24d128cd6cc1501f3080934547",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:8:hint": {
-      "text": "Água e nutrientes são transportados dentro da planta.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
-      "verified": true,
+      "text": "O transporte interno ocorre por tecidos especializados, conectando diferentes partes da planta.",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -572,28 +755,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Tracheophyta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "5fae352b99c6bd7ad15072b0258eafdcd216f6951363ef2ee02966480e0902f3",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "559a7e9ca879de7f41c7d5125eb9d0f1fdd24697c6e19b53c740f0a54aaf9efb",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:8:curiosity": {
-      "text": "Há estruturas internas que levam água das raízes para outras partes da planta.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
-      "verified": true,
+      "text": "Xilema e floema têm funções distintas no transporte e fazem parte de um sistema integrado.",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -603,28 +792,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Tracheophyta",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "214edf478eafd12f1f172fd85ddc873b64ec83d9fd5158f1d66f9562e0a09fc1",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1 / Tracheophytes; xylem and phloem",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "5bbcfa6d2677ca9791a6542a9e1cf98864093c7fbec9c0b22542fa1eaacce2ae",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:9:intro": {
-      "text": "Ascomycota é uma linhagem de fungos caracterizada pela formação de esporos sexuais em estruturas chamadas ascos. Inclui formas unicelulares e filamentosas. Seus representantes apresentam modos de vida variados, incluindo decomposição, parasitismo e associações simbióticas. As estruturas reprodutivas são importantes para reconhecer e estudar seus grupos.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
-      "verified": true,
+      "text": "Nos ascomicetos, a reprodução sexuada envolve esporos formados em ascos. Essa característica reúne organismos com aparências muito diferentes, de leveduras unicelulares a fungos filamentosos e formas que produzem estruturas visíveis. A diversidade também é ecológica: há decompositores, parceiros simbióticos e parasitas. O aspecto externo, sozinho, pode ser insuficiente para reconhecer a linhagem.",
+      "source_title": "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -634,28 +829,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Ascomycota",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "214e10595375de117e50f3541ec4260001378dacdede8a8e4368f868d7f993ef",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Dikarya / Ascomycota",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1186/s12864-019-6358-x",
+            "locator": "Background / ecological functions",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "d9ed06dfe94be7dc1384416c6ec3254f81e35ec9fd4780bc191cd427a51b84e9",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:10:intro": {
-      "text": "Basidiomycota reúne fungos que produzem esporos sexuais associados a estruturas chamadas basídios. O grupo inclui muitos cogumelos, mas também outras formas de organização. Alguns representantes decompõem matéria orgânica ou estabelecem associações com plantas. Estruturas microscópicas e reprodutivas complementam a observação do corpo de frutificação.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
-      "verified": true,
+      "text": "Basidiomycota inclui fungos cuja reprodução sexuada envolve basídios e basidiósporos. Muitos cogumelos pertencem a essa linhagem, mas sua diversidade vai além das formas com chapéu e pé. Estruturas microscópicas ajudam a distinguir grupos visualmente parecidos. Seus representantes podem decompor substratos, associar-se a plantas ou parasitar outros organismos, dependendo da espécie.",
+      "source_title": "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -665,28 +871,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Basidiomycota",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "2e94d18820031fb4773990ec134a52fe4e85aeb1f76891bc24db749931ece53c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Dikarya / Basidiomycota",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "29cb14b37c5492dcdeade4ebc25c8c9f30f700b4ed2345cab46139bcdb8db863",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:10:curiosity": {
-      "text": "Muitos representantes produzem estruturas visíveis acima do solo ou da madeira.",
-      "source_title": "OpenStax — Biology 2e",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
-      "verified": true,
+      "text": "Há muitos cogumelos nesta linhagem, mas ela não se resume aos que têm chapéu e pé.",
+      "source_title": "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "source_url": "https://doi.org/10.1111/jeu.12691",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -696,28 +908,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Basidiomycota",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "3f9833f63d124890afe42aedeb8dcdb9940290b982a7a6866a9ea4ca06c57f65",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Dikarya / Basidiomycota",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "aef26052fcfab2c82ba4e175ec75d4521821deca10813fdbb716e393d71b99ed",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:13:intro": {
-      "text": "Lepidoptera é a ordem de insetos que inclui borboletas e mariposas. As asas dos adultos apresentam pequenas escamas, e o ciclo de vida passa por ovo, lagarta, pupa e adulto. Características das asas, das antenas e de outras estruturas ajudam a reconhecer seus diferentes grupos.",
-      "source_title": "Amateur Entomologists' Society",
-      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
-      "verified": true,
+      "text": "Borboletas e mariposas pertencem a Lepidoptera. Seus adultos têm escamas nas asas, cuja pigmentação e organização contribuem para cores e padrões. O desenvolvimento com metamorfose completa passa por ovo, lagarta, pupa e adulto. Reconhecer essas etapas ajuda a compreender por que o mesmo organismo muda tanto de forma e de atividade ao longo da vida.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -727,28 +945,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Lepidoptera",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "c7aafef11a9a01f561dc1f63630b3106a7d5f5b0a1bff19d63616735167888b3",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Materials and methods / scales and pupal stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / caterpillars and adults",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "578462f81b90f0fd4c1c1def8a4b449e7f42c7cebcbb6d85b7c876183d63944e",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:13:hint": {
-      "text": "Antes de ter asas, passa pelas fases de lagarta e pupa.",
-      "source_title": "Amateur Entomologists' Society",
-      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
-      "verified": true,
+      "text": "O adulto surge após uma fase de pupa; a lagarta é uma etapa anterior do mesmo ciclo.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -758,28 +987,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Lepidoptera",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "66865d77edd485f0b8a814348567deb0f5397c7554c44f80ae904de9c39c1bd3",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Materials and methods / scales and pupal stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / caterpillars and adults",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "7b88c20109cfa596ce06a35496cc5423612065c9e5008e8871f730054b23f429",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:13:curiosity": {
-      "text": "As asas têm pequenas escamas que participam de seus desenhos e cores.",
-      "source_title": "Amateur Entomologists' Society",
-      "source_url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
-      "verified": true,
+      "text": "As escamas podem produzir efeitos visuais por sua estrutura microscópica, além dos pigmentos.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -789,28 +1029,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Lepidoptera",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "58bea722df6a408986d29af274e73aeff143c8b2e68c77a4b36164d790d2801b",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Materials and methods / scales and pupal stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / caterpillars and adults",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "6adbeb770b805a5efe755b342c840e5a830dea0da5b61ddfa6706a9257b0026d",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:14:intro": {
-      "text": "Papilionidae reúne borboletas entre as quais muitas apresentam prolongamentos nas asas posteriores. Esse caráter ajuda na observação, embora não esteja presente em todas as espécies. A identificação dos representantes deve considerar um conjunto de estruturas e padrões, em vez de depender somente de cor ou tamanho.",
-      "source_title": "North Carolina State University",
-      "source_url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
-      "verified": true,
+      "text": "Papilionidae é uma família de borboletas com grande diversidade de desenhos e estruturas nas asas. Algumas espécies possuem prolongamentos nas asas posteriores, mas esse caráter não é universal. As escamas também apresentam variedade microscópica. A identificação deve combinar caracteres e contexto, em vez de considerar qualquer borboleta com uma ponta alongada como prova suficiente.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -820,28 +1071,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Papilionidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "8abe78875fee91b2dab67ea1cd19a5f4aee32444369792e1aec2b7133a2fdb6a",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://ask.ifas.ufl.edu/publication/IN219",
+            "locator": "Introduction / tailless representative of Papilionidae",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "299a8cece9bc18d9b8e3f0c6a27e12f5167c2483a9c6d920c66a5b4b3ace52fc",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:14:hint": {
-      "text": "Muitas formas têm prolongamentos nas asas de trás.",
-      "source_title": "North Carolina State University",
-      "source_url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
-      "verified": true,
+      "text": "Observe os prolongamentos posteriores quando existirem, junto aos outros caracteres das asas.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -851,28 +1113,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Papilionidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "e161bce12c37e700d73057c8c6e0e42ea5083b133ec808c108f7d52130da93df",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://ask.ifas.ufl.edu/publication/IN219",
+            "locator": "Introduction / tailless representative of Papilionidae",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "32b96bd5fe82fb48d30de9eb3b3a75649c0dd7c03962b38d8a44b2d17e6399a5",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:14:curiosity": {
-      "text": "Os prolongamentos das asas ajudam na observação, mas não aparecem em todas as espécies.",
-      "source_title": "North Carolina State University",
-      "source_url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
-      "verified": true,
+      "text": "A família inclui formas com e sem prolongamentos evidentes; uma característica isolada não basta.",
+      "source_title": "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "source_url": "https://doi.org/10.7554/elife.89082",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -882,28 +1155,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Papilionidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "0d6345f5bab79ff4c63f97bc87d0984b6c2e9927562d0b0392dc7385df73ff3d",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.7554/elife.89082",
+            "locator": "Introduction; Discussion / diversity of scales; not a source for tail universality",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://ask.ifas.ufl.edu/publication/IN219",
+            "locator": "Introduction / tailless representative of Papilionidae",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "53556ad89b968a9e7d3f320f5ba2df7b22b917ca2e8a1eb5eecb5b2b8b1a94fe",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:15:intro": {
-      "text": "Saturniidae reúne mariposas que incluem numerosas formas de grande porte. Em muitas espécies, os adultos têm vida breve e não se alimentam, dependendo de reservas acumuladas anteriormente. A diversidade apresenta particularidades de comportamento e desenvolvimento. A identificação pode exigir a comparação cuidadosa de características e dados adicionais.",
-      "source_title": "Publicação científica — Ecology and Evolution",
-      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
-      "verified": true,
+      "text": "A família Saturniidae reúne mariposas conhecidas, entre outros aspectos, pela diversidade de suas lagartas e asas adultas. Em muitas espécies, o adulto não se alimenta e depende das reservas acumuladas no crescimento larval. Isso torna a alimentação da lagarta importante para a vida posterior. As particularidades variam entre espécies e não devem ser generalizadas a todas as mariposas.",
+      "source_title": "Ballesteros Mejia L et al. (2020) — A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+      "source_url": "https://doi.org/10.3897/bdj.8.e60027",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -913,28 +1197,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Saturniidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "7e96871a48c52bc3427697fa0dd70cc7a3d5bdf76a1ab07ac13f380941f6a7ee",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / non-feeding adults and larval food",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "2431b0e04a1b0889220743efa139158565216905398e38b4a23587d55ebc0401",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:15:hint": {
-      "text": "Em muitas espécies, o adulto vive das reservas acumuladas pela lagarta.",
-      "source_title": "Publicação científica — Ecology and Evolution",
-      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
-      "verified": true,
+      "text": "Muitos adultos utilizam as reservas acumuladas pela lagarta, em vez de buscar alimento.",
+      "source_title": "Ballesteros Mejia L et al. (2020) — A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+      "source_url": "https://doi.org/10.3897/bdj.8.e60027",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -944,28 +1234,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Saturniidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "cbbecbd1058f7687f5b7c859dfe59645d97f1e593044fca95121914c83011123",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / non-feeding adults and larval food",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "9de8f329883eea0088998a2f05fbbbeb4f3a3b6b39752c9636ede60cea9f24f7",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:15:curiosity": {
-      "text": "Algumas mariposas adultas não se alimentam durante sua curta vida.",
-      "source_title": "Publicação científica — Ecology and Evolution",
-      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
-      "verified": true,
+      "text": "A alimentação larval pode sustentar a curta fase reprodutiva do adulto.",
+      "source_title": "Ballesteros Mejia L et al. (2020) — A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+      "source_url": "https://doi.org/10.3897/bdj.8.e60027",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -975,28 +1271,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Saturniidae",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "95b5fe7a245ea5288d98b27d813ac9b393b1cf0ba25ea0fde76b00d290ddedc5",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3897/bdj.8.e60027",
+            "locator": "Introduction / non-feeding adults and larval food",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "88cd20149343b482ff8530154347335f598f5f5438639459eb2acbf8bf36a26d",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:16:intro": {
-      "text": "Mycetozoa é um agrupamento conservado na classificação da fonte deste catálogo. Seus representantes incluem formas com fases ameboides e plasmodiais, além de estruturas produtoras de esporos. A semelhança visual com fungos em certas fases não indica a mesma organização celular ou uma relação de parentesco próxima.",
-      "source_title": "University of California, Berkeley — Museum of Paleontology",
-      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
-      "verified": true,
+      "text": "Mycetozoa é um nome mantido em parte do caminho taxonômico fornecido pela fonte do catálogo. Entre os organismos ali registrados estão formas com fases ameboides ou plasmodiais e produção de esporos. Essas características não os transformam em fungos. A leitura filogenética deve considerar o ramo em que cada registro está colocado e os limites da classificação utilizada.",
+      "source_title": "Rikkinen J et al. (2019) — Morphological stasis in the first myxomycete from the Mesozoic, and the likely role of cryptobiosis.",
+      "source_url": "https://doi.org/10.1038/s41598-019-55622-9",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1006,28 +1308,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Mycetozoa",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "a015d220d2a299ce8716ad4484c5b74cfa80124f6c5a7df97b671b72eacc6d1f",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1038/s41598-019-55622-9",
+            "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Eumycetozoa; catalog source name retained",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "bdd89f3ac9069debc4268aa4ef411ebb7f1fc44b6dfc3428ccbef23dea55150f",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:16:hint": {
-      "text": "Algumas fases lembram uma pequena massa sobre superfícies úmidas.",
-      "source_title": "University of California, Berkeley — Museum of Paleontology",
-      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
-      "verified": true,
+      "text": "Considere a fase do ciclo: uma massa em crescimento pode depois formar estruturas reprodutivas.",
+      "source_title": "Rikkinen J et al. (2019) — Morphological stasis in the first myxomycete from the Mesozoic, and the likely role of cryptobiosis.",
+      "source_url": "https://doi.org/10.1038/s41598-019-55622-9",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1037,28 +1350,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Mycetozoa",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "0aca8f3894d75652776329f30b95070ba4c5632369fdc014165135289d0afc80",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1038/s41598-019-55622-9",
+            "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Eumycetozoa; catalog source name retained",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "231d8dd904812a753dad9bbfe796f091a6ddb696062cf0cc12a89c4651c45163",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:16:curiosity": {
-      "text": "Esses organismos podem parecer fungos, mas têm um modo de vida diferente.",
-      "source_title": "University of California, Berkeley — Museum of Paleontology",
-      "source_url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
-      "verified": true,
+      "text": "A semelhança com um cogumelo não significa ter a mesma forma de obter alimento.",
+      "source_title": "Rikkinen J et al. (2019) — Morphological stasis in the first myxomycete from the Mesozoic, and the likely role of cryptobiosis.",
+      "source_url": "https://doi.org/10.1038/s41598-019-55622-9",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1068,28 +1392,39 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Mycetozoa",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "c0af63896b55db71c7eb765f77aa0d00efb48b21d3475cd3db73a366995136f0",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1038/s41598-019-55622-9",
+            "locator": "Introduction; Evolutionary implications / Amoebozoa and trophic stages",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          },
+          {
+            "url": "https://doi.org/10.1111/jeu.12691",
+            "locator": "Table 2 / Eumycetozoa; catalog source name retained",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "c55c210b11eec8b261ad1de4498a61369bc2cc663d629b4796eb650eb53d54f6",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:18:intro": {
-      "text": "Chiton é um gênero de moluscos pertencente à classe Polyplacophora. Os caracteres compartilhados nessa classe incluem oito placas de concha e uma faixa de tecidos ao redor delas. A organização do revestimento e do pé muscular ajuda esses animais a permanecerem associados a superfícies rochosas.",
-      "source_title": "Queensland Museum",
-      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
-      "verified": true,
+      "text": "Chiton é um gênero de moluscos marinhos da classe Polyplacophora. Nos adultos dessa classe, oito placas dorsais se articulam e são circundadas por uma faixa de tecidos. O pé muscular ajuda a manter contato com o substrato. Essa organização combina proteção e capacidade de acompanhar superfícies irregulares, mas a identificação do gênero exige caracteres além dessa descrição geral.",
+      "source_title": "Irisarri I et al. (2020) — A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+      "source_url": "https://doi.org/10.1186/s12862-019-1573-2",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1099,28 +1434,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Chiton",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "6a91ed6d7ece47e3cc8a991da2562cbc3ff6c7447a4458d4a27cd01884a3000e",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12862-019-1573-2",
+            "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "773505c3eff5ea53a7dd7ad67bda5b520786f4728990cf16ea0a500c36da453c",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:18:hint": {
-      "text": "Procure placas alinhadas sobre um corpo oval.",
-      "source_title": "Queensland Museum",
-      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
-      "verified": true,
+      "text": "Uma sequência de placas dorsais acompanha o eixo de um corpo geralmente oval.",
+      "source_title": "Irisarri I et al. (2020) — A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+      "source_url": "https://doi.org/10.1186/s12862-019-1573-2",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1130,28 +1471,34 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Chiton",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "ab0f43d3a086ebea7f7d6eb32cc1f15761f1bcce9245cf654e88227d56680351",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12862-019-1573-2",
+            "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "56030369df9879b921251d334640ba914575635bbdee0734893124ae77ed4047",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "note:18:curiosity": {
-      "text": "As placas protegem o corpo sem impedir que ele acompanhe as irregularidades das rochas.",
-      "source_title": "Queensland Museum",
-      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
-      "verified": true,
+      "text": "Placas articuladas e pé muscular permitem proteção e contato com superfícies irregulares.",
+      "source_title": "Irisarri I et al. (2020) — A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+      "source_url": "https://doi.org/10.1186/s12862-019-1573-2",
+      "verified": false,
       "ranks": [
         "species",
         "genus",
@@ -1161,19 +1508,25 @@
         "phylum",
         "kingdom"
       ],
-      "reviewed_on": "2026-10-14",
+      "reviewed_on": null,
       "scope_name": "Chiton",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b176cc9cd71e3191c6cd5ac33e096aa201ad38d0d1e6efb72c8d853987dfb70b",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente essa versão”, vinculada ao lote SHA-256 1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f. Escopo de grupo; sem revisão especializada, aprovação de pesos de dicas ou extensão a outros arquivos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12862-019-1573-2",
+            "locator": "Background / Polyplacophora morphology; genus membership from preserved catalog",
+            "supports": "Factual background for the independently drafted group note; source expression/images are not relicensed."
+          }
+        ],
+        "content_sha256": "cb4705887be12621e916a4275c34fa84dc4cc070998bcdb259af475eb90aa4a5",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -75494,7 +75847,7 @@
       "scripts/review_hints.py": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
       "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
       "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
-      "resources/compliance/review_history.jsonl": "57fc17cbf490418108ae1bad01faa508e60656891ee8c530ddd72efe0e2b088f",
+      "resources/compliance/review_history.jsonl": "b35edf57a8a072e4104c8d12cae1dfb7bd8150c9b601835107080a7209829bf3",
       "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
     },
     "species": {
@@ -92137,9 +92490,9 @@
       "actor_type": "automated",
       "process": "scripts/review_hints.py + contextual validation in EducationalContent",
       "policy_version": "progressive-pedagogy-v1",
-      "reviewed_at": "2026-10-18T03:24:28.759646+00:00",
-      "due_at": "2027-10-18T03:24:28.759646+00:00",
-      "content_sha256": "476dcdd4430233c24d220a8ea024d1ebd6a92af947a64d543a4f233e54fced7e",
+      "reviewed_at": "2026-10-18T07:44:47.489082+00:00",
+      "due_at": "2027-10-18T07:44:47.489082+00:00",
+      "content_sha256": "a56e740dc500b3669865467f23ad9fae073d117aaa05f666c845de97ed9ba222",
       "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
       "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
     },
@@ -92151,8 +92504,8 @@
     "species_profiles.json": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
     "hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
-    "group_education.json": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
-    "progressive_hints.json": "fa8aa6308f5bfd1ffae000ea2cd1c39346273efe9ef3a70d65adb965dc6334a2",
+    "group_education.json": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
+    "progressive_hints.json": "83064cd9630135eb88ffc93ebd77c44fc0300a78f605b480233e505c97522205",
     "phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6"
   }
 }

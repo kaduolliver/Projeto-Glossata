@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC6652019&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:38:42.445389+00:00",
+    "response_sha256": "95c8e435a09b5322e94d516027d37f86db003d4795953dd741b1399e98d79550",
+    "pmcid": "PMC6652019",
+    "metadata": {
+      "id": "31337355",
+      "source": "MED",
+      "title": "The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+      "authorString": "Armaleo D, Müller O, Lutzoni F, Andrésson ÓS, Blanc G, Bode HB, Collart FR, Dal Grande F, Dietrich F, Grigoriev IV, Joneson S, Kuo A, Larsen PE, Logsdon JM, Lopez D, Martin F, May SP, McDonald TR, Merchant SS, Miao V, Morin E, Oono R, Pellegrini M, Rubinstein N, Sanchez-Puerta MV, Savelkoul E, Schmitt I, Slot JC, Soanes D, Szövényi P, Talbot NJ, Veneault-Fourrey C, Xavier BB.",
+      "doi": "10.1186/s12864-019-5629-x",
+      "pubYear": "2019",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://bmcgenomics.biomedcentral.com/track/pdf/10.1186/s12864-019-5629-x"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s12864-019-5629-x"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6652019"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6652019?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6652019/fullTextXML",
+    "consulted_at": "2026-10-18T04:39:11.747062+00:00",
+    "response_sha256": "a71e12a8081429584c4acc3450510b30e542e0d55a506e4d7ee9228ad87b0b47",
+    "bytes": 427544,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC6652019",
+    "title": "The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+    "author_credit": "Armaleo D, Müller O, Lutzoni F, Andrésson ÓS, Blanc G, Bode HB, Collart FR, Dal Grande F, Dietrich F, Grigoriev IV, Joneson S, Kuo A, Larsen PE, Logsdon JM, Lopez D, Martin F, May SP, McDonald TR, Merchant SS, Miao V, Morin E, Oono R, Pellegrini M, Rubinstein N, Sanchez-Puerta MV, Savelkoul E, Schmitt I, Slot JC, Soanes D, Szövényi P, Talbot NJ, Veneault-Fourrey C, Xavier BB.",
+    "doi": "10.1186/s12864-019-5629-x",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

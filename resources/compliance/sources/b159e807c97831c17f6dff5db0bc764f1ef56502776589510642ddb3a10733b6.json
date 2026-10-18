@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC8001431&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:39:53.537143+00:00",
+    "response_sha256": "133dffd596ffd8390d681b54d4a6ab0dc5be03ecae6c9d15b7cf37fa56c49c78",
+    "pmcid": "PMC8001431",
+    "metadata": {
+      "id": "33803228",
+      "source": "MED",
+      "title": "Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+      "authorString": "Marter P, Huang S, Brinkmann H, Pradella S, Jarek M, Rohde M, Bunk B, Petersen J.",
+      "doi": "10.3390/genes12030389",
+      "pubYear": "2021",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://www.mdpi.com/2073-4425/12/3/389/pdf?version=1615462907"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3390/genes12030389"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC8001431"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC8001431?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8001431/fullTextXML",
+    "consulted_at": "2026-10-18T04:39:55.856506+00:00",
+    "response_sha256": "3994be7d48adaabb3cbda709555e66a46bbd01c9f9371c7d3877ac03ff7d4d76",
+    "bytes": 222982,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC8001431",
+    "title": "Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+    "author_credit": "Marter P, Huang S, Brinkmann H, Pradella S, Jarek M, Rohde M, Bunk B, Petersen J.",
+    "doi": "10.3390/genes12030389",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

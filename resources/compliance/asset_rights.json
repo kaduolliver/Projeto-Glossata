@@ -150,14 +150,18 @@
     {
       "path": "resources/data/group_education.json",
       "kind": "text_authorship",
-      "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
-      "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
+      "sha256": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
+      "source": "New Brazilian Portuguese factual synthesis assisted by AI; exact batch editorially confirmed by the maintainer. Source references and licenses remain individually documented.",
       "permission": {
-        "holder": null,
-        "evidence_path": null,
-        "distribution_allowed": false
+        "holder": "Carlos Eduardo Lima de Oliveira",
+        "holder_capacity": "Mantenedor e concedente somente dos direitos efetivamente disponíveis nas redações deste lote; sem autoria humana exclusiva afirmada.",
+        "evidence_path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+        "evidence_sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+        "distribution_allowed": true,
+        "scope": "eligible_group_wording_only",
+        "license": "CC-BY-4.0"
       },
-      "state": "pending_originality_and_rights_review",
+      "state": "source_license_evidenced",
       "inventory_history": [
         {
           "sha256": "a5ad075602a9c748378e655ac1e8582bbb27f1c74b65904cdbde7d7f205a473b",
@@ -187,10 +191,17 @@
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-17T21:03:17.641512+00:00",
           "reason": "PR #12: verified Euglenida journal/year/DOI label correction only. Educational prose, license, permission and review state unchanged."
+        },
+        {
+          "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
+          "state": "pending_originality_and_rights_review",
+          "recorded_on": "2026-10-18",
+          "reason": "Explicitly confirmed group text replacement and necessary automated input-hash regeneration; historical bytes remain in Git."
         }
       ],
-      "integrity_note": "Educational prose extracted unchanged from the previous mixed generator; original path/hash/history retained. Permission fields and pending state unchanged.",
-      "related_code": "scripts/build_education.py"
+      "integrity_note": "Exact approved replacement file; prior hashes and pending legacy wording remain in inventory history and Git.",
+      "related_code": "scripts/build_education.py",
+      "license": "CC-BY-4.0"
     },
     {
       "path": "resources/images/exploration/lion.jpg",
@@ -2157,7 +2168,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "fa8aa6308f5bfd1ffae000ea2cd1c39346273efe9ef3a70d65adb965dc6334a2",
+      "sha256": "83064cd9630135eb88ffc93ebd77c44fc0300a78f605b480233e505c97522205",
       "source": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros.",
       "permission": {
         "holder": null,
@@ -2188,6 +2199,12 @@
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-18T03:24:41.601548+00:00",
           "reason": "Three explicitly confirmed editorial events for organism 82 changed the ledger input hash. Existing generators refreshed automatic metadata; all recipes and prose preserved. No copyright or icon permission granted."
+        },
+        {
+          "sha256": "fa8aa6308f5bfd1ffae000ea2cd1c39346273efe9ef3a70d65adb965dc6334a2",
+          "state": "pending_originality_and_rights_review",
+          "recorded_on": "2026-10-18",
+          "reason": "Explicitly confirmed group text replacement and necessary automated input-hash regeneration; historical bytes remain in Git."
         }
       ]
     }
@@ -2202,362 +2219,366 @@
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/0/4",
-          "text_sha256": "4248e71eaf5eb96af3c0a089547749a11ac8ed7f1a4159fdb8d2f67a549450ac"
+          "text_sha256": "4686ff301563462650b0c7d78b5ab1f3a74cd494b8508d2beaadf4a5f6fb9d0c"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/0/5",
-          "text_sha256": "4be6b841b1a91d09efa894fe8d78d0ddebfc2bdde3d588b208d36cd63fa2f8fc"
+          "text_sha256": "c02792f4a4bcf7180fbb647402623eecee0dc00570b8bfd730719dac673fc4fd"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/0/6",
-          "text_sha256": "3c956c481d2d78ba900cb25e78b2e012115f1bf68d7553d619754f9fdc366fe7"
+          "text_sha256": "3ff0a34c320d8960ad52ae8a726fad63c671bc908848d9accb57665b0d836732"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/1/4",
-          "text_sha256": "94d186f9bc7db5f90f297b1dcfb9ed82cc712027ac4893c23c2b2d19f6cfdc19"
+          "text_sha256": "e7195dcc7ee76a16c4fdcafaaad8525b3ee32c9f1a566047e77c6f727515f9e9"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/1/5",
-          "text_sha256": "17e73efe3469abb12036bcc4126b4e26ea5f6313cd1010f488f7aa0f380591fe"
+          "text_sha256": "9980711423070c134fa625c06ed2c3bffba73fdc7b2ab7d095e563306dc33404"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/1/6",
-          "text_sha256": "cfaa7c7120b4b38e3b8dbfdbc51bb99afe2a2ca3271b796ae61ccd653bddfaf0"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/10/4",
-          "text_sha256": "710583757efde17dbec88e4e3005cc3a475bbb7fc1a9ef60aaf560244ed48d64"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/10/5",
-          "text_sha256": "1caf193c07bb2dcc5144236dc4faf99679f2720b4e128e73309ae0573d75b424"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/11/4",
-          "text_sha256": "7b5e630166c099632697add0476da003ce798fc918d79e75f14c7735a7d8b086"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/11/5",
-          "text_sha256": "c6f22dff3c841679089fbdaa2e4f5f5f1ed28634e4448b36a79c5051c864c425"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/12/4",
-          "text_sha256": "b5948d9dcd0edcaf17a608615a670270ad5bed09588b0a7837247540efc12999"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/13/4",
-          "text_sha256": "b35e083732a00023dd4b5696ca1c280367a85a02eb67b7808a5844f39c5b0532"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/13/5",
-          "text_sha256": "be79953138472be9cf9d7dc3ee489fce603838ec224d9685e93fdfd6654bcf40"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/13/6",
-          "text_sha256": "cb4f0eda441ed5f314b35c8950b4cf5b02d15f3f64dd1d5ed43941d1c431df42"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/14/4",
-          "text_sha256": "0fa3ef0559c7c99b292451e6b1054ad48962e9a2db3e92fa7e05a082aa3e9619"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/14/5",
-          "text_sha256": "515e7c804c0c723b83c4b3b4f6e7a60718e345fc5294ddbd61abf21f6c596745"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/15/4",
-          "text_sha256": "81e19092794a14f4d74b8da17195b250d40c108ea291beb81b437c11bf2e3dfe"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/15/5",
-          "text_sha256": "8a1def81ea18dcff38d93b263769dd20c1b3619b602cee441b531e3506eb8dd0"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/16/4",
-          "text_sha256": "bdd5e31415176e5f2a8d90808aa6458d9a7c16c443bd7bc6d60485e0315673a4"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/16/5",
-          "text_sha256": "0c9d58f392c38dc685fc9d0e6c43cd3d4a6601b26d61484f6dd2f3b59534ed6e"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/16/6",
-          "text_sha256": "a3eeada7feac6f32f4ae1502222d9e331bd4498bec2525ee8daff146742d315e"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/17/4",
-          "text_sha256": "244aaea0159a72249a4d8c6abb333659eff5487e7e1a33cd0f4a69336d5a6ed9"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/18/4",
-          "text_sha256": "d523105bfbeee1e9a404126d4adee4e28caf2fc61f17d5c0c6473870a900aca1"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/18/5",
-          "text_sha256": "bfaa52e511ccf14769b5d7ad8ed3d9de985356f43f2b233692f6ae8a24d971d0"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/definitions/18/6",
-          "text_sha256": "06a27b3005ef82f9bdf28b3a4bb1bdac378f8be794f21ded9b8fa22b58210272"
+          "text_sha256": "4883ae4b03ad876827d40ddf9bbbc6951d332990654d245dd61f5bf7168053e2"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/2/4",
-          "text_sha256": "3831d26ae7c0e38e6821d178ea99d60d26a95dad1e0883ef9b6da9fad414499d"
+          "text_sha256": "0b9b8f69d936914c7e73ade1ac45f544a655ff080714a41232f4e3f456aeab9b"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/2/5",
-          "text_sha256": "681d8205f487004b4065ed658f0e19b0bee2c1706b078a0eddd2d11cabf6616c"
+          "text_sha256": "b5a602dde7098688d8c71e8b3601d3041fa447cd175971dbfb171b1fb848ae2d"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/2/6",
-          "text_sha256": "d0f49ec1c0f96ee5ec8389386c45dea4fc43482daf0ec9c6191dcb15c54254c8"
+          "text_sha256": "c22db82819a4c84c1c512bf9de338c766ba864f7f7879cadda6de036cb4f274c"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/3/4",
-          "text_sha256": "b04a5711ceada97e0c53591e4e7effdec9f71c84a545ca6ff419f53701e038e5"
+          "text_sha256": "7010878348b52f1bffd0364fa78c99ea1a183cd64399d58b79f5e8bc441605be"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/3/6",
-          "text_sha256": "fae118b2324b4165261faa3ba5c89d2cc631106398be1ef559ce3547ecf18573"
+          "text_sha256": "14fcfaddbe69cc7b669ceb23f66a5ba34b56fa82261d4f7f1a040a32697a6c6e"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/4/4",
-          "text_sha256": "ac2ebcf6caeced9f7735d67a1a30db098e1648d253cae92b7db20e109bf9337c"
+          "text_sha256": "b5a768eeec8552d90280c7cf308360a52ccbcf28891103b7603352367ac58af4"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/5/4",
-          "text_sha256": "2df63c9b36500fb15881bacb14a4057f0d31111e13906d19a10a536dd2a94c35"
+          "text_sha256": "fd44898567ef0f95c4c3bbb9ff8e40865c544e442a6da1cd852694afe9be2721"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/5/5",
-          "text_sha256": "1328c822005b13560590d87e7e757d5b9ec9ccdf5d128d52921684e2701d3633"
+          "text_sha256": "fa66c6836b82fd2176586158b1b4f9ce6ac0b3224806f80ad995c7111c6b09f2"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/6/4",
-          "text_sha256": "d231c5af037def697876feb8f21e359fd75366fd7e076197340a005d19731dbf"
+          "text_sha256": "d542a5cda273d7b5c49bd977f735265c3aa3500ebace3e914f5c31d0f8a5720e"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/7/4",
-          "text_sha256": "830b6dfac3e5834c934e6164dd6fc01d2b4e9797712b648c545fc96cdc390aaa"
+          "text_sha256": "4884fe26576d0736e9f262a6bb08b73b51965b0f38889ad34d6334c6379a69d8"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/7/5",
-          "text_sha256": "8b62a4706bad280e7cb025dffaf863ee9e8aab0d23e540caad2d3bf57f8baec5"
+          "text_sha256": "95e3d715f297bbe3d32518b8fde2b9505387f441f6292a8a2031269164f26bc4"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/7/6",
-          "text_sha256": "0ccf5423dfc4dd08efe3638a7cabcb447f7c67ebe78c6e88e11e63f0be56085d"
+          "text_sha256": "97cbe4414a94600d01726ce25b19dce9d11e5971ac7ed022dbd15cd052c07377"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/8/4",
-          "text_sha256": "07ab2fefd0bf04845548dd05460675ce61a198012c8e77429076a679d5fe748c"
+          "text_sha256": "0d98e93164cbf870a0c5a5960a1122bc55fd987f6d57ac77f77a6e2011fb0069"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/8/5",
-          "text_sha256": "862d7531d27f81ae2a55b3597a3503b546445e7b63b8d3a4a64d92a9239f2d40"
+          "text_sha256": "0031f3707d2bfdf02e21efbf9c24b842d923a945b711feea180c8adac4bf3bf1"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/8/6",
-          "text_sha256": "849c2efc57c99164aa49db1d3d5ec0056f9826220ee2c30015121e62b03898b7"
+          "text_sha256": "de8afdf8a6bc0a72e158739c6c75828cd372ab5881fecfb2bae71f4283ee38d8"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/definitions/9/4",
-          "text_sha256": "9f6c0db91c0cadca062c121a22978201a6a3e4bdef7427398419258b94dfc7c2"
+          "text_sha256": "1fe6eb7e061d1b5d70d068002269dd205397fca54058cb5b79f5b7d7bc628bb3"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/10/4",
+          "text_sha256": "34cfe549a9422997fc7ef7fb66ecf1d9c0ab87b361663183c202869685d443cb"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/10/5",
+          "text_sha256": "74fb83e4abe828162af6076e3f110c58386ec76d7a2a778bca6edf6b19810b8a"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/11/4",
+          "text_sha256": "e1c365fb07d002f30d88eca4f2d20a63f5d0dfa22622471ab198a4b3765d7f2d"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/11/5",
+          "text_sha256": "dd0f70a379d41df4b4bb84a4b3e8464d50e200cf15cea95396c1be8d51ecf7f1"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/12/4",
+          "text_sha256": "bd6e5ac7246c6bbdabe47eb204f0e763882989cfbd37b2875fce7ea181a019f1"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/13/4",
+          "text_sha256": "e6a755292b67894ac1407b2647c1ef46c3277187748e6bfe7a5d8dcc5bb490a8"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/13/5",
+          "text_sha256": "73741891dba78a29382c755387802b56abc33076e15922c5e95bb2d19b5aeb77"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/13/6",
+          "text_sha256": "e2a60614853c33e362ba3fed5f4d8247bc207bd783ca597c0e3613716902d767"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/14/4",
+          "text_sha256": "071e6c4ded7c5f1746a51c09dfc720ae7ea29885bd11fcf88293f951d584e815"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/14/5",
+          "text_sha256": "da2ebd7357f0456bb6d3e6e5a73374bacde2b760e2774cd8bafd9685be718344"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/15/4",
+          "text_sha256": "69dabbc13de33aab7a91e07feb85c8bebce089d87733f978b288975bb2d90d54"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/15/5",
+          "text_sha256": "5d56ff92f2ddca9ce3fb2e4f5e956198ef2cd23aa47dc624f721df4d93995df5"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/16/4",
+          "text_sha256": "42d1791d5b70d4832d63db197e59882406714da999b6784596f8e6d993a51ed4"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/16/5",
+          "text_sha256": "52cd96dc478086160286d2787538c3eedcb4bfa33f0d030ea4624741ac021ac2"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/16/6",
+          "text_sha256": "8be59e849d1ea0a2afd0f94183ecc194094f7a1113305c6a9e69fcefcf7575ec"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/17/4",
+          "text_sha256": "beaf76f715a8da8a12e4cf572c311b96a9f5a1be7502d4ebaee77b8aeece1123"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/18/4",
+          "text_sha256": "3ce25d7b41406f59d47ef3d67941488da2ba4ef3afd5860c0d0e574cff69975b"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/18/5",
+          "text_sha256": "5bb0f22d014a03180a6ef3b5fd193650c2fb5727b9c476808b848b8ce6c7ce20"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/definitions/18/6",
+          "text_sha256": "3dcf47ad1b2ee99a754b1e656db4252b2944108566bee51c3a78db959ba15495"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Animalia/0",
-          "text_sha256": "52c2ebfa86396dca7bd2996f594e0a3238b5f40a3aec5324c9e8e65044a72df7"
+          "text_sha256": "00b6f800e744016541962105eb401264ac756f3e21741ea3d1d8ddeba02ea67f"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Animalia/1",
-          "text_sha256": "30fef430bb02f635e3eeaf7f03be26f28aa54a6d31f9b29d4d05c250d329b422"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Arthropoda/0",
-          "text_sha256": "986ae4562b87d65c9f4f55eb8835059447e830e88eedbd2c319b67bf6d408b9f"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Arthropoda/1",
-          "text_sha256": "5d9905d72eb41521ea3088de36af2e810b18108b41efd1ba8d82b79d2d1fa276"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Basidiomycota/1",
-          "text_sha256": "193acf488f15935ffb1e386df95549c4de5d3053c19292e14e490ff564c5f41e"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Chiton/0",
-          "text_sha256": "617cfc854fb5d5b45a0df23553888709a6eef977f54f934cdbb2751716596709"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Chiton/1",
-          "text_sha256": "d57161c6ab4330b29fb1a2d688b77b370f81888dd1a13c934410fecf64138bfb"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Chordata/1",
-          "text_sha256": "3b657fe9def46a5b47097dede95a739affd91514bf93a765d2fcd618b0549e75"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Fungi/0",
-          "text_sha256": "4471022239f2156c26beb8fbf375568aa6be79ec1d36f323d2fa067e1dec0d11"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Fungi/1",
-          "text_sha256": "20f3f26d2a75f97eeb037bea9401e0fd5d6c538a1bda474f88d05a7b60ee9960"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Insecta/0",
-          "text_sha256": "668aba00269e7b0c75a347889a19ff09e0c0deb3a755d97145882441d1af1d10"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Insecta/1",
-          "text_sha256": "356c40859849e645eaada32b6e7f9e5fd16674b50b83d250831c387c9c2b6b29"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Lepidoptera/0",
-          "text_sha256": "5635bd99d75c90d28cb073fa4ab4c2a5c9147b34e68886f749b6c00474ab534a"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Lepidoptera/1",
-          "text_sha256": "ae3f63a8df1be2c2d7aa9aa5444cd3b988d7900cae21a121b74a91ef30728c92"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Monera/0",
-          "text_sha256": "6eb10a3f9f7cbdf4d6d883278ac58514140753e997293956046369910ceebf08"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Monera/1",
-          "text_sha256": "d4b150a86ff62605a372191782712b2c512325caab3086463996bc65191055d6"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Mycetozoa/0",
-          "text_sha256": "892f63403881023ae9b26168b9cedc57191f8b04b62d81608a4bd265154d48c7"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Mycetozoa/1",
-          "text_sha256": "f91ec8f49d77642867542edde38e4ea82b049db75a37cc3f887f9ed43c08a5f8"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Papilionidae/0",
-          "text_sha256": "72125e2b7142aa2be418b5e1c7160b653965d9e1a779f5ffe134e74c8f620865"
-        },
-        {
-          "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Papilionidae/1",
-          "text_sha256": "a11fe62f48f4cde9243f202a32ac605f1abd397bef6657148b63cadc531a0ab4"
+          "text_sha256": "882e1dd8a0a5cceba473cdb3a53a78f9ce714a621662b5b455f26e50b0886567"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Plantae/0",
-          "text_sha256": "f80bedc1a4324584289f90e2e0990736af546264a5adce4cd99ee7f767c6c752"
+          "text_sha256": "5aa3b2bb266e16e87ff9c042b65715dbe5502950d4fd0a4c1fa1ee8a98e99e64"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Plantae/1",
-          "text_sha256": "e7cf98f56a72c4131399b377f74ca34cb95aca98f3f7d49977691eec1b5fbea4"
+          "text_sha256": "72a023f3bf9acbd133449a5d84b0d0a7ba79d9b25f4744fd438f7ca45f76d78f"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Fungi/0",
+          "text_sha256": "2fe67b2947fa1d62b05e66d195c51b45528e551a935cff547a9da0c975fb4ea1"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Fungi/1",
+          "text_sha256": "d4cfaa5d5bc7044d209240a9f6cca1c2d17812808365b8b35a83f710e413387c"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Protista/1",
-          "text_sha256": "279a351d98e02e7dfda1c8e4a45012959e120ae8fcd16bb6fa2d7b58ab5bcb92"
+          "text_sha256": "89e3c83703ca8177b172a11c2b8c4287bdb2779ad7835cd7a88445be76cdb626"
         },
         {
           "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Saturniidae/0",
-          "text_sha256": "f9d8beb1c3a55a7d09a778381eb1e2642d57a45e6c051c8e728cf26bb069a2db"
+          "pointer": "/plain_notes/Monera/0",
+          "text_sha256": "08f111187dd63bc230a9e83dae3e5c529ac011165b28b322255bfe33f17add5d"
         },
         {
           "file": "resources/data/group_education.json",
-          "pointer": "/plain_notes/Saturniidae/1",
-          "text_sha256": "12fee9caa4e7f385293f3d3520abc0e371a86c0fa3deaefa8e920422a951c264"
+          "pointer": "/plain_notes/Monera/1",
+          "text_sha256": "25591be0646b2e0fc7b21d49a960cec2de6761d98c668192bca7c12f10868b3b"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Arthropoda/0",
+          "text_sha256": "ef5e577d21cbd2712f2a854d7fb846827e8c00236f59688dbbbcaa8643dc075f"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Arthropoda/1",
+          "text_sha256": "29d416e6f50b3f961e29671c77b23e1c06b63ee38de6f9140633ee10ab26caf0"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Insecta/0",
+          "text_sha256": "8311003ef562654268144ac77e4f7649630676f79a0bab88dd19726c4d3d8db1"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Insecta/1",
+          "text_sha256": "1e09360aeca12ee67bf2cf4019efb239f4fcea21ea536558c3e079ed4008f111"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Chordata/1",
+          "text_sha256": "19dc9a7216757b5d8da17328e6c7776435492a268698a86b30a2370a39bd9ada"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Tracheophyta/0",
-          "text_sha256": "3a0c22316c3b2930dbbe6b87e28d9daab21a53633486bd5292463929963af922"
+          "text_sha256": "7f2a6e752a697a5aa54069d1e8b3d7268d684df21ef6d0ca9352e382ac58096c"
         },
         {
           "file": "resources/data/group_education.json",
           "pointer": "/plain_notes/Tracheophyta/1",
-          "text_sha256": "6309b43899efd289f7998e4dbd7c19ddc9c280b096574e27830b5f049fb7b6f8"
+          "text_sha256": "440840f8a9e0fe2f5c1d1f54c63faf9771cf4263b22312231aa89a45276bc7fd"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Basidiomycota/1",
+          "text_sha256": "19545369b6faedf97df796845e489473870109a57d497fde912ee42830c3184f"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Mycetozoa/0",
+          "text_sha256": "d5bf574688933aa314fc45e97cafe05afef9a760c1c7c50077d410799e2f550d"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Mycetozoa/1",
+          "text_sha256": "6889e87123bcf942594c7caec4d301d432049584f932048cedbe0660c467cb6e"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Lepidoptera/0",
+          "text_sha256": "3debbd5eaa7da36f3e85c63f0504898fd47a78f04c1ddd3280b602b81b707f18"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Lepidoptera/1",
+          "text_sha256": "8a44dfefba2503fe6c843258f55ed5e07b0e02c7f6de3d210e5f02b33ba8788b"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Papilionidae/0",
+          "text_sha256": "31cd7c9b7fd6cb968b0b2b682ace8501d0782819c06ea38a159d64d325ec37c5"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Papilionidae/1",
+          "text_sha256": "fc5ce3591429fae0421be0bd9fd00d79386de0d9a495a3beabacfe4dbc3dea5b"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Saturniidae/0",
+          "text_sha256": "3806b2177447c097232f7542074b042a845623c6fc712e45b8075164a06239af"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Saturniidae/1",
+          "text_sha256": "08a531cebe8859dd2c28827058b16107b8c30aa622711f7d432f16384c9bfa21"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Chiton/0",
+          "text_sha256": "5cdf3c4cc319294c6f8023ff62e9d70a93e3011c3097fbc2585a69619df5c025"
+        },
+        {
+          "file": "resources/data/group_education.json",
+          "pointer": "/plain_notes/Chiton/1",
+          "text_sha256": "b4eb8731f849633daae3b055e52ed7982ec05eb7bcb7a06e2a4e114fcda3f6da"
         }
       ],
-      "origin_kind": "inconclusive",
-      "declared_origin": "Legacy AI-assisted prose as recorded in the existing asset inventory. Local history/derivation checked; authorial source and available rights not established for every occurrence.",
+      "origin_kind": "independent_factual_synthesis",
+      "declared_origin": "Fresh AI-assisted Brazilian Portuguese drafting documented in the batch proposal; actual maintainer editorial confirmation and a separate limited license confirmation. No exclusive human authorship is asserted.",
       "source_text": null,
       "transformations": [],
-      "rights_available": null,
-      "declared_license": null,
+      "rights_available": "Only the rights actually available in this new AI-assisted group wording; source works retain their individual conditions. No exclusive human authorship, scientific facts ownership or whole-corpus license is asserted.",
+      "declared_license": "CC-BY-4.0",
       "evidence": [
         {
-          "path": "resources/compliance/sources/9d025650d441a54d169d8f82f0f9dff459011dc9fe63c30301ffd9712e026c8f.json",
-          "sha256": "5de2420b017a77468905139592b5c3b65f19e3dded1a5388217ef743903dc1ca",
-          "locator": "files, group_extraction and progressive_generation; Git commits identify public history only"
+          "path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+          "sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+          "locator": "editorial_confirmation, license_confirmation, file_sha256 and occurrences"
         }
       ],
-      "investigation_state": "inconclusive",
+      "investigation_state": "documented",
       "editorial_review_key": null,
       "attribution": {
-        "author_credit": null,
-        "license_url": null
+        "author_credit": "Projeto Glossata — redação assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira",
+        "title": "Projeto Glossata — redações educativas de grupos, lote de 2026-10-18",
+        "original_url": "https://github.com/kaduolliver/Projeto-Glossata",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "notices": "Somente direitos disponíveis sobre as 68 redações indicadas. Fontes e créditos individuais preservados; sem endosso ou certificação.",
+        "modifications": "New independent factual wording replaces the legacy passages; no source image or protected passage is incorporated."
       }
     },
     {

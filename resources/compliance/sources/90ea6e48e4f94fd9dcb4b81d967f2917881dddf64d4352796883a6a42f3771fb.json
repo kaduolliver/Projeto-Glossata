@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC7746661&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:27.973055+00:00",
+    "response_sha256": "4406f20100041b2b746d883b47397d1926b0565f81205464922f480d9f6dedf0",
+    "pmcid": "PMC7746661",
+    "metadata": {
+      "id": "33343218",
+      "source": "MED",
+      "title": "A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+      "authorString": "Ballesteros Mejia L, Arnal P, Hallwachs W, Haxaire J, Janzen D, Kitching IJ, Rougerie R.",
+      "doi": "10.3897/bdj.8.e60027",
+      "pubYear": "2020",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "doi",
+            "site": "Unpaywall",
+            "url": "https://doi.org/10.3897/bdj.8.e60027"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3897/BDJ.8.e60027"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7746661"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7746661?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7746661/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:15.241574+00:00",
+    "response_sha256": "f85da73b1880c982dc1f83801de07916695e749357434f28fbf090e1e27d07e2",
+    "bytes": 75550,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC7746661",
+    "title": "A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+    "author_credit": "Ballesteros Mejia L, Arnal P, Hallwachs W, Haxaire J, Janzen D, Kitching IJ, Rougerie R.",
+    "doi": "10.3897/bdj.8.e60027",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

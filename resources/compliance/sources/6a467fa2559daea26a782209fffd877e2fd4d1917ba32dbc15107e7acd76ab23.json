@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC7003433&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:29.101507+00:00",
+    "response_sha256": "aa0940f198336dab3f1b203ce170889cf5d7fef67dccf30d5dcf9573e127fe64",
+    "pmcid": "PMC7003433",
+    "metadata": {
+      "id": "32024460",
+      "source": "MED",
+      "title": "A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+      "authorString": "Irisarri I, Uribe JE, Eernisse DJ, Zardoya R.",
+      "doi": "10.1186/s12862-019-1573-2",
+      "pubYear": "2020",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s12862-019-1573-2"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7003433"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7003433?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7003433/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:18.476897+00:00",
+    "response_sha256": "099082850086eedca33af2768252c2639370813fbe8168ea10e79fb26dab77a8",
+    "bytes": 186760,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC7003433",
+    "title": "A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+    "author_credit": "Irisarri I, Uribe JE, Eernisse DJ, Zardoya R.",
+    "doi": "10.1186/s12862-019-1573-2",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

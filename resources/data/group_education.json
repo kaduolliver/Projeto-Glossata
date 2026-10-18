@@ -4,235 +4,235 @@
     [
       "Animalia",
       "educational_kingdom",
-      "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
-      "OpenStax — Biology 2e",
-      "Animalia reúne organismos eucariontes multicelulares que obtêm alimento de outros seres vivos ou de matéria orgânica. Suas células não possuem parede celular. O grupo apresenta diversidade de formas corporais, modos de reprodução e relações ecológicas, incluindo organismos aquáticos, terrestres e parasitas.",
-      "As células deste grupo não possuem parede celular.",
-      "O desenvolvimento embrionário e a organização dos tecidos ajudam a compreender a diversidade de planos corporais."
+      "https://doi.org/10.1007/s12032-022-01740-w",
+      "Jacques F et al. (2022) — Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+      "Os animais são eucariontes cujo corpo se desenvolve a partir de um embrião multicelular. Suas células trabalham em conjunto e não possuem a parede rígida encontrada em plantas e fungos. A obtenção de matéria orgânica de outros organismos sustenta uma grande variedade de modos de vida, inclusive formas fixas e parasitas.",
+      "A organização multicelular envolve cooperação entre células sem uma parede celular rígida.",
+      "Um animal pode permanecer fixo ao substrato: deslocar-se na fase adulta não é condição para pertencer ao grupo."
     ],
     [
       "Plantae",
       "educational_kingdom",
-      "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "OpenStax — Biology 2e",
-      "Plantae reúne linhagens de organismos eucariontes com paredes celulares que contêm celulose. Muitas realizam fotossíntese, embora existam formas parasitas. Nas plantas terrestres, a proteção do embrião e adaptações contra a perda de água foram importantes para a ocupação de ambientes fora da água.",
-      "A parede celular contém celulose, que contribui para a sustentação.",
-      "A colonização terrestre envolveu adaptações para conservar água e proteger estruturas reprodutivas."
+      "https://doi.org/10.3389/fpls.2012.00152",
+      "Fangel JU et al. (2012) — Cell wall evolution and diversity.",
+      "O nome Plantae tem abrangências diferentes entre classificações; aqui acompanha o grupo registrado no catálogo. Células das plantas apresentam paredes que ajudam a manter a forma e incluem celulose. A história das plantas terrestres envolve proteção do embrião, transporte interno e reprodução fora da água; nem todas produzem flores ou sementes.",
+      "A celulose integra uma parede que dá resistência e participa do crescimento das células.",
+      "Samambaias mostram que uma planta pode possuir vasos condutores e produzir esporos, sem formar flores."
     ],
     [
       "Fungi",
       "educational_kingdom",
-      "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "OpenStax — Biology 2e",
-      "Fungi reúne organismos eucariontes heterotróficos que absorvem nutrientes do ambiente. Muitos crescem como filamentos chamados hifas, formando um micélio, enquanto outros são unicelulares. Suas paredes celulares contêm quitina. Decomposição, associações com plantas e relações parasitárias estão entre os papéis ecológicos presentes neste grupo.",
-      "A nutrição ocorre por absorção após digestão externa.",
-      "Enzimas liberadas no ambiente decompõem moléculas; os produtos menores podem então ser absorvidos."
+      "https://doi.org/10.1186/s12864-019-6358-x",
+      "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+      "A absorção de compostos orgânicos é uma forma frequente de nutrição entre fungos. Em muitas espécies, uma rede de filamentos, as hifas, explora o substrato; outras crescem como células isoladas. A liberação de enzimas permite aproveitar materiais complexos. Há decompositores, parasitas e parceiros de outros organismos, com diferenças importantes entre espécies.",
+      "A digestão de materiais do substrato pode começar fora das células, pela ação de enzimas.",
+      "O corpo de frutificação que vemos não representa toda a rede de hifas presente no substrato."
     ],
     [
       "Protista",
       "educational_kingdom",
-      "https://openstax.org/books/biology-2e/pages/23-2-characteristics-of-protists",
-      "OpenStax — Biology 2e",
-      "Protista é uma referência histórica que reuniu linhagens eucarióticas diversas, sem constituir um clado. O termo não é usado como grupo natural na navegação atual.",
+      "https://doi.org/10.1111/jeu.12691",
+      "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "Protista aparece aqui como nome histórico, usado para reunir eucariontes que não se enquadravam nos grupos tradicionais de animais, plantas e fungos. Essa reunião não corresponde a uma única linhagem evolutiva. A exploração atual apresenta esses organismos em seus ramos filogenéticos, sem recuperar Protista como um clado.",
       "",
-      "A diversidade inclui formas com nutrição, organização celular e estruturas de locomoção diferentes."
+      "Tamanho microscópico ou presença de flagelos, isoladamente, não demonstram parentesco próximo entre eucariontes."
     ],
     [
       "Monera",
       "educational_kingdom",
-      "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-      "OpenStax — Biology 2e",
-      "Monera é uma referência histórica para organismos procarióticos, não um grupo natural. A navegação atual distingue Bacteria e Archaea como domínios didáticos.",
+      "https://doi.org/10.1371/journal.pone.0226567",
+      "Fisler M et al. (2020) — The treeness of the tree of historical trees of life.",
+      "Monera designou historicamente um reino de organismos sem núcleo delimitado por membrana. Essa característica reúne formas com histórias evolutivas distintas e não define um clado adotado pelo Glossata. A navegação usa Bacteria e Archaea como domínios didáticos, preservando no material histórico a memória das classificações anteriores.",
       "",
       ""
     ],
     [
       "Arthropoda",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "OpenStax — Biology 2e",
-      "Arthropoda reúne animais com corpo segmentado, apêndices articulados e exoesqueleto. O revestimento externo fornece proteção e pontos de inserção muscular, mas exige mudas durante o crescimento. Seus representantes ocupam ambientes terrestres e aquáticos, com apêndices especializados para locomoção, alimentação e percepção do ambiente.",
-      "Apêndices articulados e revestimento externo sustentam o corpo.",
+      "https://doi.org/10.1093/molbev/msae188",
+      "Klementz BC et al. (2024) — A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+      "Nos artrópodes, segmentos do corpo e apêndices articulados combinam proteção e movimento. O esqueleto externo oferece apoio aos músculos, mas precisa ser renovado durante o crescimento. Pernas, antenas e peças bucais podem assumir funções diferentes. Por isso, observar como essas estruturas se organizam costuma ajudar mais que comparar apenas a cor do animal.",
+      "Observe a combinação de segmentos, articulações e revestimento externo do corpo.",
       ""
     ],
     [
       "Insecta",
       "class",
-      "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "OpenStax — Biology 2e",
-      "Insecta reúne artrópodes cujo corpo adulto se organiza em cabeça, tórax e abdome. Possuem três pares de pernas ligados ao tórax e um par de antenas. As asas, quando presentes, ampliam a capacidade de dispersão. O grupo participa de processos como polinização e de numerosas relações alimentares.",
+      "https://doi.org/10.1093/genetics/iyae129",
+      "Jürgens KJ et al. (2024) — An anatomical atlas of Drosophila melanogaster-the wild-type.",
+      "O corpo de um inseto adulto apresenta cabeça, tórax e abdome. Os três pares de pernas se ligam ao tórax, enquanto as antenas ficam na cabeça. Asas estão presentes em muitas linhagens, mas não em todas. Larvas podem ter aparência muito diferente, portanto os caracteres usados para reconhecer um adulto não devem ser aplicados indiscriminadamente a todas as fases.",
       "",
       ""
     ],
     [
       "Chordata",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/29-1-chordates",
-      "OpenStax — Biology 2e",
-      "Chordata reúne animais que apresentam notocorda, tubo nervoso dorsal e outras características em algum momento do desenvolvimento. Nos vertebrados, algumas dessas estruturas são modificadas durante a formação do corpo. O filo também inclui linhagens sem coluna vertebral, mostrando que cordados e vertebrados não são termos equivalentes.",
-      "Uma estrutura de suporte axial aparece durante o desenvolvimento.",
-      "Algumas características compartilhadas aparecem apenas no embrião e mudam posteriormente."
+      "https://doi.org/10.7554/elife.87028",
+      "D'Aniello S et al. (2023) — Amphioxus as a model to study the evolution of development in chordates.",
+      "A notocorda, uma estrutura de sustentação ao longo do corpo, integra o plano corporal dos cordados em alguma fase da vida. Outro caráter importante é o tubo nervoso dorsal. Vertebrados pertencem a esse grupo, mas não esgotam sua diversidade: anfioxos e tunicados ajudam a estudar características compartilhadas que podem se modificar durante o desenvolvimento.",
+      "A notocorda pode aparecer no desenvolvimento mesmo quando não permanece reconhecível no adulto.",
+      "Cordado não é sinônimo de animal com coluna vertebral; o grupo também inclui outras linhagens."
     ],
     [
       "Tracheophyta",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
-      "OpenStax — Biology 2e",
-      "Tracheophyta reúne plantas com tecidos vasculares especializados no transporte interno de substâncias. O xilema participa da condução de água e minerais, enquanto o floema transporta compostos orgânicos. Essa organização está associada à diferenciação de órgãos e permite compreender a diversidade de formas das plantas vasculares.",
-      "Tecidos especializados transportam água e compostos orgânicos.",
-      "Transporte interno e sustentação foram importantes na diversificação das plantas vasculares."
+      "https://doi.org/10.1093/plphys/kiac304",
+      "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "As plantas vasculares possuem xilema e floema, tecidos que distribuem substâncias pelo organismo. O xilema participa do transporte de água e sais; o floema conduz compostos orgânicos. Esse sistema permite integrar órgãos separados por distâncias consideráveis. O grupo inclui tanto plantas com sementes quanto linhagens que se reproduzem por esporos.",
+      "Procure a organização de uma planta com transporte interno por tecidos vasculares.",
+      "Os tecidos condutores conectam partes da planta que exercem funções diferentes, como raízes e folhas."
     ],
     [
       "Ascomycota",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
-      "OpenStax — Biology 2e",
-      "Ascomycota é uma linhagem de fungos caracterizada pela formação de esporos sexuais em estruturas chamadas ascos. Inclui formas unicelulares e filamentosas. Seus representantes apresentam modos de vida variados, incluindo decomposição, parasitismo e associações simbióticas. As estruturas reprodutivas são importantes para reconhecer e estudar seus grupos.",
+      "https://doi.org/10.1111/jeu.12691",
+      "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "Nos ascomicetos, a reprodução sexuada envolve esporos formados em ascos. Essa característica reúne organismos com aparências muito diferentes, de leveduras unicelulares a fungos filamentosos e formas que produzem estruturas visíveis. A diversidade também é ecológica: há decompositores, parceiros simbióticos e parasitas. O aspecto externo, sozinho, pode ser insuficiente para reconhecer a linhagem.",
       "",
       ""
     ],
     [
       "Basidiomycota",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
-      "OpenStax — Biology 2e",
-      "Basidiomycota reúne fungos que produzem esporos sexuais associados a estruturas chamadas basídios. O grupo inclui muitos cogumelos, mas também outras formas de organização. Alguns representantes decompõem matéria orgânica ou estabelecem associações com plantas. Estruturas microscópicas e reprodutivas complementam a observação do corpo de frutificação.",
-      "A reprodução sexual envolve estruturas produtoras de esporos.",
+      "https://doi.org/10.1111/jeu.12691",
+      "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "Basidiomycota inclui fungos cuja reprodução sexuada envolve basídios e basidiósporos. Muitos cogumelos pertencem a essa linhagem, mas sua diversidade vai além das formas com chapéu e pé. Estruturas microscópicas ajudam a distinguir grupos visualmente parecidos. Seus representantes podem decompor substratos, associar-se a plantas ou parasitar outros organismos, dependendo da espécie.",
+      "Estruturas microscópicas da reprodução complementam a observação das formas visíveis.",
       ""
     ],
     [
       "Amoebozoa",
       "phylum",
-      "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
-      "OpenStax — Biology 2e",
-      "Amoebozoa reúne eucariontes com formas de organização variadas, incluindo organismos ameboides e linhagens com fases multinucleadas. Pseudópodes lobosos ou tubulares participam do movimento e da alimentação em muitos representantes. Algumas linhagens possuem estruturas protetoras, enquanto outras apresentam fases e corpos produtores de esporos.",
-      "Projeções celulares podem participar de locomoção e alimentação.",
+      "https://doi.org/10.1111/jeu.12691",
+      "Adl SM et al. (2019) — Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "Amoebozoa reúne linhagens de eucariontes em que a forma ameboide é frequente. Prolongamentos da célula participam da locomoção ou da captura de alimento em muitos representantes. A diversidade inclui organismos com proteção externa e ciclos com fases distintas. Ser ameboide, por si só, não basta para atribuir qualquer organismo a essa linhagem.",
+      "A célula pode formar prolongamentos para explorar o ambiente e capturar partículas.",
       ""
     ],
     [
       "Myxogastria",
       "class",
-      "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
-      "OpenStax — Biology 2e",
-      "Myxogastria reúne organismos com uma fase plasmodial, formada por uma massa celular multinucleada. Durante a fase de alimentação, partículas podem ser englobadas. A formação de estruturas com esporos lembra superficialmente alguns fungos, mas esse aspecto não significa que os organismos tenham o mesmo modo de alimentação ou organização.",
+      "https://doi.org/10.1038/s41598-019-55622-9",
+      "Rikkinen J et al. (2019) — Morphological stasis in the first myxomycete from the Mesozoic, and the likely role of cryptobiosis.",
+      "O ciclo de muitos mixogástrios inclui um plasmódio: uma célula grande com numerosos núcleos. Essa fase explora superfícies úmidas e ingere alimento por englobamento. Em outra etapa, surgem estruturas que liberam esporos. A mudança de aparência entre as fases explica por que uma fotografia do corpo reprodutivo não mostra toda a biologia do organismo.",
       "",
       ""
     ],
     [
       "Lepidoptera",
       "order",
-      "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
-      "Amateur Entomologists' Society",
-      "Lepidoptera é a ordem de insetos que inclui borboletas e mariposas. As asas dos adultos apresentam pequenas escamas, e o ciclo de vida passa por ovo, lagarta, pupa e adulto. Características das asas, das antenas e de outras estruturas ajudam a reconhecer seus diferentes grupos.",
-      "O ciclo de vida inclui uma fase de pupa entre lagarta e adulto.",
-      "A cobertura de pequenas escamas participa dos padrões observados nas asas."
+      "https://doi.org/10.7554/elife.89082",
+      "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "Borboletas e mariposas pertencem a Lepidoptera. Seus adultos têm escamas nas asas, cuja pigmentação e organização contribuem para cores e padrões. O desenvolvimento com metamorfose completa passa por ovo, lagarta, pupa e adulto. Reconhecer essas etapas ajuda a compreender por que o mesmo organismo muda tanto de forma e de atividade ao longo da vida.",
+      "A metamorfose inclui uma pupa entre a fase de lagarta e a fase adulta.",
+      "Parte das cores das asas resulta da organização microscópica das escamas, além de pigmentos."
     ],
     [
       "Papilionidae",
       "family",
-      "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
-      "North Carolina State University",
-      "Papilionidae reúne borboletas entre as quais muitas apresentam prolongamentos nas asas posteriores. Esse caráter ajuda na observação, embora não esteja presente em todas as espécies. A identificação dos representantes deve considerar um conjunto de estruturas e padrões, em vez de depender somente de cor ou tamanho.",
-      "Muitas formas apresentam prolongamentos nas asas posteriores.",
+      "https://doi.org/10.7554/elife.89082",
+      "Seah KS et al. (2023) — Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "Papilionidae é uma família de borboletas com grande diversidade de desenhos e estruturas nas asas. Algumas espécies possuem prolongamentos nas asas posteriores, mas esse caráter não é universal. As escamas também apresentam variedade microscópica. A identificação deve combinar caracteres e contexto, em vez de considerar qualquer borboleta com uma ponta alongada como prova suficiente.",
+      "Prolongamentos nas asas posteriores podem ajudar na observação, sem constituir um caráter universal.",
       ""
     ],
     [
       "Saturniidae",
       "family",
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
-      "Publicação científica — Ecology and Evolution",
-      "Saturniidae reúne mariposas que incluem numerosas formas de grande porte. Em muitas espécies, os adultos têm vida breve e não se alimentam, dependendo de reservas acumuladas anteriormente. A diversidade apresenta particularidades de comportamento e desenvolvimento. A identificação pode exigir a comparação cuidadosa de características e dados adicionais.",
-      "Em muitas espécies, o adulto depende de reservas da fase larval.",
+      "https://doi.org/10.3897/bdj.8.e60027",
+      "Ballesteros Mejia L et al. (2020) — A global food plant dataset for wild silkmoths and hawkmoths and its use in documenting polyphagy of their caterpillars (Lepidoptera: Bombycoidea: Saturniidae, Sphingidae).",
+      "A família Saturniidae reúne mariposas conhecidas, entre outros aspectos, pela diversidade de suas lagartas e asas adultas. Em muitas espécies, o adulto não se alimenta e depende das reservas acumuladas no crescimento larval. Isso torna a alimentação da lagarta importante para a vida posterior. As particularidades variam entre espécies e não devem ser generalizadas a todas as mariposas.",
+      "Em muitas espécies, a energia do adulto vem de reservas formadas antes da metamorfose.",
       ""
     ],
     [
       "Mycetozoa",
       "phylum",
-      "https://ucmp.berkeley.edu/protista/slimemolds.html",
-      "University of California, Berkeley — Museum of Paleontology",
-      "Mycetozoa é um agrupamento conservado na classificação da fonte deste catálogo. Seus representantes incluem formas com fases ameboides e plasmodiais, além de estruturas produtoras de esporos. A semelhança visual com fungos em certas fases não indica a mesma organização celular ou uma relação de parentesco próxima.",
-      "Algumas fases são massas celulares com numerosos núcleos.",
-      "A formação de estruturas com esporos não significa que esse organismo seja um fungo."
+      "https://doi.org/10.1038/s41598-019-55622-9",
+      "Rikkinen J et al. (2019) — Morphological stasis in the first myxomycete from the Mesozoic, and the likely role of cryptobiosis.",
+      "Mycetozoa é um nome mantido em parte do caminho taxonômico fornecido pela fonte do catálogo. Entre os organismos ali registrados estão formas com fases ameboides ou plasmodiais e produção de esporos. Essas características não os transformam em fungos. A leitura filogenética deve considerar o ramo em que cada registro está colocado e os limites da classificação utilizada.",
+      "A aparência de uma pequena massa ou de um corpo com esporos depende da fase observada.",
+      "Produzir esporos não é uma exclusividade dos fungos e não demonstra, sozinho, parentesco próximo."
     ],
     [
       "Euglenida",
       "class",
-      "https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/",
-      "Publicação científica — BMC Biology (2020), DOI: 10.1186/s12915-020-0754-1",
-      "Euglenida reúne eucariontes unicelulares flagelados com uma película rica em proteínas. O grupo inclui linhagens fotossintetizantes e heterotróficas, com diversidade de alimentação e de organização celular. A película pode permitir mudanças de forma em alguns representantes. Características microscópicas e dados moleculares são importantes na identificação.",
+      "https://doi.org/10.1186/s12915-020-0754-1",
+      "Butenko A et al. (2020) — Evolution of metabolic capabilities and molecular features of diplonemids, kinetoplastids, and euglenids.",
+      "Euglenídeos são eucariontes flagelados que apresentam uma película de componentes proteicos na superfície celular. Há formas fotossintetizantes e formas que obtêm alimento sem fotossíntese. Em alguns representantes, a película permite alterações marcantes do formato da célula. Essa combinação de características mostra por que uma descrição única de alimentação ou movimento não serve para toda a linhagem.",
       "",
       ""
     ],
     [
       "Chiton",
       "genus",
-      "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
-      "Queensland Museum",
-      "Chiton é um gênero de moluscos pertencente à classe Polyplacophora. Os caracteres compartilhados nessa classe incluem oito placas de concha e uma faixa de tecidos ao redor delas. A organização do revestimento e do pé muscular ajuda esses animais a permanecerem associados a superfícies rochosas.",
-      "O revestimento apresenta uma sequência de placas articuladas.",
-      "As placas permitem proteção e flexibilidade sobre superfícies irregulares."
+      "https://doi.org/10.1186/s12862-019-1573-2",
+      "Irisarri I et al. (2020) — A mitogenomic phylogeny of chitons (Mollusca: Polyplacophora).",
+      "Chiton é um gênero de moluscos marinhos da classe Polyplacophora. Nos adultos dessa classe, oito placas dorsais se articulam e são circundadas por uma faixa de tecidos. O pé muscular ajuda a manter contato com o substrato. Essa organização combina proteção e capacidade de acompanhar superfícies irregulares, mas a identificação do gênero exige caracteres além dessa descrição geral.",
+      "Observe a série de placas dorsais e a faixa de tecidos ao redor delas.",
+      "As articulações entre as placas permitem flexibilidade sem retirar a proteção dorsal do corpo."
     ]
   ],
   "plain_notes": {
     "Animalia": [
-      "Obtém alimento de outros seres vivos ou de matéria orgânica.",
-      "Os animais ocupam ambientes muito diferentes: água, solo, árvores e até o corpo de outros seres."
+      "Obtém matéria orgânica de outros organismos; a forma adulta pode ser móvel ou fixa.",
+      "Há animais de vida livre e animais parasitas: o grupo não se limita a um tipo de ambiente."
     ],
     "Plantae": [
-      "Muitas formas usam a luz para produzir seu próprio alimento.",
-      "Existem plantas que se reproduzem por esporos e não produzem flores."
+      "A parede celular participa da sustentação; a fotossíntese é frequente, mas admite exceções.",
+      "Ter vasos condutores não implica produzir flores: samambaias também são plantas vasculares."
     ],
     "Fungi": [
-      "Obtém nutrientes do ambiente por absorção.",
-      "O cogumelo visível é apenas uma parte do organismo; outra parte pode crescer na madeira ou no solo."
+      "Enzimas atuam sobre o substrato antes da absorção de compostos pelas células.",
+      "O cogumelo corresponde a uma estrutura reprodutiva, não a toda a rede de filamentos do fungo."
     ],
     "Protista": [
       "",
-      "Neste agrupamento didático há organismos muito diferentes, desde formas microscópicas até algas grandes."
+      "O nome histórico não transforma organismos eucariontes muito diferentes em um único ramo evolutivo."
     ],
     "Monera": [
-      "É microscópico e não tem um núcleo separado por membrana.",
-      "Alguns integrantes vivem na água, outros no solo ou associados a plantas e animais."
+      "A ausência de um núcleo membranoso é uma característica celular, não um parentesco suficiente.",
+      "Bacteria e Archaea são tratados separadamente na navegação atual; Monera fica como referência histórica."
     ],
     "Arthropoda": [
-      "Observe o revestimento externo e as pernas articuladas.",
-      "O revestimento externo precisa ser trocado para que muitos integrantes cresçam."
+      "Procure articulações entre os segmentos dos apêndices e um revestimento externo de sustentação.",
+      "Crescer exige renovar o revestimento externo, em um processo de muda."
     ],
     "Insecta": [
-      "No adulto, procure três pares de pernas e um par de antenas.",
-      "As asas aparecem na fase adulta de muitas espécies, mas há integrantes sem asas."
+      "No adulto, conte as pernas ligadas ao tórax e observe as antenas na cabeça.",
+      "A forma da larva pode ser muito diferente da forma adulta; compare a mesma etapa da vida."
     ],
     "Chordata": [
       "",
-      "Peixes, aves e mamíferos compartilham parentesco, apesar das diferenças de aparência."
+      "A notocorda pode ser transitória; por isso, alguns caracteres são estudados no embrião."
     ],
     "Tracheophyta": [
-      "Água e nutrientes são transportados dentro da planta.",
-      "Há estruturas internas que levam água das raízes para outras partes da planta."
+      "O transporte interno ocorre por tecidos especializados, conectando diferentes partes da planta.",
+      "Xilema e floema têm funções distintas no transporte e fazem parte de um sistema integrado."
     ],
     "Basidiomycota": [
       "",
-      "Muitos representantes produzem estruturas visíveis acima do solo ou da madeira."
+      "Há muitos cogumelos nesta linhagem, mas ela não se resume aos que têm chapéu e pé."
     ],
     "Mycetozoa": [
-      "Algumas fases lembram uma pequena massa sobre superfícies úmidas.",
-      "Esses organismos podem parecer fungos, mas têm um modo de vida diferente."
+      "Considere a fase do ciclo: uma massa em crescimento pode depois formar estruturas reprodutivas.",
+      "A semelhança com um cogumelo não significa ter a mesma forma de obter alimento."
     ],
     "Lepidoptera": [
-      "Antes de ter asas, passa pelas fases de lagarta e pupa.",
-      "As asas têm pequenas escamas que participam de seus desenhos e cores."
+      "O adulto surge após uma fase de pupa; a lagarta é uma etapa anterior do mesmo ciclo.",
+      "As escamas podem produzir efeitos visuais por sua estrutura microscópica, além dos pigmentos."
     ],
     "Papilionidae": [
-      "Muitas formas têm prolongamentos nas asas de trás.",
-      "Os prolongamentos das asas ajudam na observação, mas não aparecem em todas as espécies."
+      "Observe os prolongamentos posteriores quando existirem, junto aos outros caracteres das asas.",
+      "A família inclui formas com e sem prolongamentos evidentes; uma característica isolada não basta."
     ],
     "Saturniidae": [
-      "Em muitas espécies, o adulto vive das reservas acumuladas pela lagarta.",
-      "Algumas mariposas adultas não se alimentam durante sua curta vida."
+      "Muitos adultos utilizam as reservas acumuladas pela lagarta, em vez de buscar alimento.",
+      "A alimentação larval pode sustentar a curta fase reprodutiva do adulto."
     ],
     "Chiton": [
-      "Procure placas alinhadas sobre um corpo oval.",
-      "As placas protegem o corpo sem impedir que ele acompanhe as irregularidades das rochas."
+      "Uma sequência de placas dorsais acompanha o eixo de um corpo geralmente oval.",
+      "Placas articuladas e pé muscular permitem proteção e contato com superfícies irregulares."
     ]
   }
 }

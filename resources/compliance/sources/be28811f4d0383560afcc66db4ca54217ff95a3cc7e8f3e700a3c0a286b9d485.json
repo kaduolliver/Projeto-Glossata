@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC10538957&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:37.581917+00:00",
+    "response_sha256": "52120843169b5c1e79211776ffa4ea3b123d8efc025451c1f2c9a410ee10b80f",
+    "pmcid": "PMC10538957",
+    "metadata": {
+      "id": "37768710",
+      "source": "MED",
+      "title": "Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+      "authorString": "Seah KS, Saranathan V.",
+      "doi": "10.7554/elife.89082",
+      "pubYear": "2023",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.7554/eLife.89082"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10538957"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10538957?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10538957/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:40.640774+00:00",
+    "response_sha256": "172f3a5cecb3fad40f4b24efacee3335c6ff0afb8e839a919dc2dafad6c5e3de",
+    "bytes": 199884,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC10538957",
+    "title": "Hierarchical morphogenesis of swallowtail butterfly wing scale nanostructures.",
+    "author_credit": "Seah KS, Saranathan V.",
+    "doi": "10.7554/elife.89082",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

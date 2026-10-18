@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC5264509&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:43:35.438877+00:00",
+    "response_sha256": "55d0fc35211fc5628b6c76bf0ca31549a045ddcced665c4eb98b69f9148557ee",
+    "pmcid": "PMC5264509",
+    "metadata": {
+      "id": "27784776",
+      "source": "MED",
+      "title": "Photosynthesis.",
+      "authorString": "Johnson MP.",
+      "doi": "10.1042/ebc20160016",
+      "pubYear": "2016",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1042/EBC20160016"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC5264509"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC5264509?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5264509/fullTextXML",
+    "consulted_at": "2026-10-18T04:43:37.559645+00:00",
+    "response_sha256": "a55afed57ba8d3f4a7e45cecc47ed22166ca9439d8220cef9433d6684abd2fe7",
+    "bytes": 76677,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC5264509",
+    "title": "Photosynthesis.",
+    "author_credit": "Johnson MP.",
+    "doi": "10.1042/ebc20160016",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

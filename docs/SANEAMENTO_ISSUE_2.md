@@ -1,5 +1,113 @@
 # Saneamento documental da Issue #2
 
+## Consolidação para Pull Request — 2026-10-18
+
+A branch `fix/issue-2-educational-text-rights` preserva o merge do PR #18 (`ed7e5c44e1acea80674b3c3bf402071d0836454c`) como base. Na conferência remota desta etapa, `main` continua nesse commit e protegida; não existia outro PR para a branch. A solicitação de continuidade autoriza publicar a branch e abrir o PR após a validação, sem merge ou encerramento da Issue. Nenhuma redação aprovada, evento editorial ou evidência de confirmação foi recriada.
+
+Foi preparada a [comparação das 34 propostas para fichas](propostas/REVISAO_FICHAS_LOTE_2.md), com índice por organismo/campo, redação atual/proposta, bibliografia, localizador, licença verificada, evidência, limitações e impacto previsto. É uma apresentação do registro existente, sem nova investigação externa ou alteração das propostas. O fingerprint das 34 mudanças é `a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460`; a fonte ativa `species_profiles.json` permanece intacta. Os nove textos compartilhados conservam os 34 vínculos individuais. Não se registrou nova aprovação ou concessão.
+
+A conferência não encontrou nova inconsistência estrutural. Permanecem os cuidados já documentados: distinguir grupo e espécie, não transferir resultados de *Cladonia grayi* ou *Haania orlovi*, não chamar *Euphorbia* de planta sem flores e não identificar *Gomphosphaeria* pela imagem de apoio. Isso não equivale a revisão científica humana. A sequência dos lotes 2–5 está preparada no comparativo, condicionada à integração do primeiro PR e às decisões concretas aplicáveis.
+
+**Nova validação local para publicação:** configure/compilação Release aprovados; **26/26 suítes CTest passaram em 154,66 segundos**. Gerador, direitos, governança, dicas progressivas e demais regressões foram executados pelo CTest. Auditoria estrita, Apache, manifesto/estado, histórico frente ao PR #18, repositório, exploração, cobertura, assistência e `qmllint` passaram; os derivados são reproduzíveis. O gate mantém retorno **2**, com zero erros técnicos, 120 pendências fotográficas, três textuais e dois bloqueios científicos prioritários. Os testes não certificam direitos ou ciência; não foi validado um novo pacote.
+
+Os resultados remotos devem ser verificados nos checks do PR publicado; a entrega e seu corpo registram as URLs e conclusões efetivamente observadas. Esta anotação documenta verificações locais e não presume sucesso remoto. Os registros abaixo preservam as etapas anteriores à publicação.
+
+## Lote de grupos confirmado e aplicado — 2026-10-18
+
+O mantenedor respondeu **“Aprovo editorialmente essa versão”** e, separadamente, **“Confirmo a aplicação delimitada ao lote”**. As perguntas completas, respostas reais, data civil, 68 vínculos e limites estão na [evidência imutável da confirmação](../resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json). A identidade é declarada, sem assinatura digital ou autenticação independente. Não se inventou o instante das respostas nem uma revisão por especialista.
+
+O arquivo ativo `resources/data/group_education.json` foi substituído **pelos bytes exatos aprovados**, SHA-256 `1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f`. São 68 ocorrências para 19 definições e 15 conjuntos complementares, com referências e licenças individuais preservadas. As redações legadas, seus hashes e os registros preparatórios abaixo permanecem no Git e no histórico do inventário.
+
+Foram registrados **38 eventos editoriais** para as notas efetivamente geradas pelo aplicativo, pelo bridge existente e sob a trava comum. Cada evento está vinculado ao conteúdo atual, escopo de grupo, evidências científicas e confirmação concreta. A repetição dos mesmos envelopes retornou `already_recorded`; o ledger passou de três para 41 eventos, preservando o prefixo anterior. As três decisões do organismo 82 não foram alteradas. A aprovação de conteúdo não aprova graus de assistência.
+
+O gerador agora conserva os campos legados `verified` e `reviewed_on` somente enquanto a afirmação, a fonte e o escopo forem iguais. Nas novas notas esses campos ficam `false`/`null`; a revisão real está exclusivamente em `governance`, como `approved_editorial`, responsável Carlos Eduardo Lima de Oliveira e data **2026-10-18**. Uma alteração posterior invalida a nota modificada e não suspende as demais notas aprovadas. O teste histórico de extração continua usando os valores originais da base Git, sem substituir seu hash esperado pela nova redação.
+
+A concessão **CC BY 4.0 abrange apenas os direitos efetivamente disponíveis nas 68 redações novas**. Crédito do lote: **Projeto Glossata — redação assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira**. Preservar identificação do lote, [origem do projeto](https://github.com/kaduolliver/Projeto-Glossata), [licença](https://creativecommons.org/licenses/by/4.0/), avisos e indicação de alterações. Autores, títulos, URLs, licenças/versões e localizadores das fontes científicas continuam em `group_batch.source_evidence` e nos snapshots referenciados. Não se atribui ao mantenedor a autoria dos artigos, dos fatos científicos ou autoria humana exclusiva dessas redações.
+
+O contrato `educational_text_rights` foi atualizado para as 68 ocorrências ativas, com origem, processo, evidência, crédito e concessão delimitados. A permissão do recurso é `eligible_group_wording_only`, vinculada ao mesmo arquivo e à confirmação. O gate recusa a reutilização dessa prova para outros bytes, escopos ou recursos, mesmo que se atualize apenas o hash do inventário. `own_material_licenses.texts` continua `null`: não existe licença global sobre o corpus. Fotografias, identidade visual, coletânea, artigos externos e código conservam seus direitos separados.
+
+A nova assinatura do ledger exige regenerar a avaliação automática das dicas e a projeção educativa. Isso foi feito pelo fluxo existente, com **os 122 conjuntos de receitas idênticos**, incluindo redações, fontes, graus, alternativas taxonômicas e vínculos fotográficos. Mudaram somente as entradas/metadados automáticos necessários; não houve nova aprovação científica das dicas. Os 122 organismos e o pool competitivo de 80 permanecem preservados.
+
+| Indicador | Preparação anterior | Após a confirmação deste lote |
+| --- | --- | --- |
+| Ocorrências novas promovidas | 0 | 68 de grupos |
+| Eventos editoriais novos nesta fase | 0 | 38; nenhum de especialista |
+| Concessões textuais delimitadas | 0 | 1 recurso / 68 ocorrências |
+| Ocorrências ativas com origem ainda inconclusiva | 2.402 | 2.334, agrupadas em 795 hashes |
+| Achados textuais da Issue #2 | 4 | 3: fichas, dicas de origem e dicas derivadas |
+| Fila local de curadoria | 15 solicitações / 3.348 achados | 15 solicitações / 3.309 achados |
+
+As **34 propostas de fichas para 28 organismos continuam como rascunhos**, fora desta confirmação. Não foram aplicadas, licenciadas ou aprovadas editorialmente por extensão. Permanecem também as demais passagens das fichas, etimologias/justificativas e seus derivados. O achado de `group_education.json` foi resolvido somente no escopo delimitado e verificável acima; a Issue #2 permanece aberta e a regularização integral não foi declarada concluída. A sincronização segue simulada, sem escrita remota.
+
+### Validação da promoção confirmada, anterior à publicação
+
+- Configure e compilação Release aprovados; **26/26 suítes CTest passaram**, em **133,44 segundos**, na rodada final.
+- **19 testes de importação/geração** e **52 testes de investigação de direitos** passaram. Cobrem a versão exata, invalidação pontual após mudança, preservação do organismo 82 e recusa de concessão emprestada, escopo ampliado ou evidência malformada; usam cópias temporárias e fixtures sintéticas.
+- A primeira rodada CTest encontrou uma expectativa legada em `introductionsAndMissingContent`, que exigia `verified: true`. O teste passou a exigir a revisão editorial real, responsável, data, hash e utilização permitida, mantendo os campos legados vazios. Foram preservadas as exigências de qualidade/tamanho e cobertura das introduções. Após recompilar, a suíte completa foi repetida com sucesso. A regressão histórica de extração usa o Git da base registrada; a CI já faz checkout com histórico completo.
+- Auditoria estrita: **122 organismos, pool competitivo 80**, sem erros. Receitas dos 122 organismos idênticas à base; fotos, créditos, fontes das fichas/dicas e prefixos históricos preservados. Apache, recuperação de permissões, auditoria do repositório, exploração, cobertura, assistência, manifesto/estado, auditoria histórica, histórico de captura e `qmllint` aprovados localmente.
+- `distribution.py check` continua com retorno **2**: **zero erros técnicos, 120 pendências fotográficas, três textuais e dois bloqueios científicos prioritários**. Não foi produzido ou validado um novo pacote; obrigações de dependências continuam independentes.
+- Plano e sincronização simulada: **15 solicitações / 3.309 achados**, `apply: false`, `remote_checked: false`, nenhuma Issue criada/atualizada ou erro. Não houve push, merge, release, tag ou encerramento da Issue. Testes e declarações não constituem certificação jurídica, revisão especializada ou autenticação de autoria.
+
+## Registro preparatório anterior à confirmação — 2026-10-18
+
+O registro abaixo descreve a etapa de propostas antes das respostas reais. Seus números e pendências devem ser lidos naquele contexto; o estado atual está na seção acima.
+
+PR #18 confirmado como integrado em `ed7e5c44e1acea80674b3c3bf402071d0836454c`. A branch `fix/issue-2-educational-text-rights` parte dessa base limpa. Os registros autênticos dos ícones e do organismo 82 permanecem intactos; esta etapa não solicita nova escolha de identidade ou de licença padrão.
+
+As **68 ocorrências de grupos** foram examinadas e receberam propostas de substituição em [propostas/group_education.json](propostas/group_education.json): 19 definições e 15 conjuntos de notas, preservando as lacunas vazias anteriores. São redações novas assistidas por IA, com referências localizadas e processo declarado; não se afirma autoria humana exclusiva ou originalidade universal por ausência de correspondências. O SHA-256 da proposta é `1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f`. O JSON deste relatório, em `educational_regularization.group_batch`, contém os vínculos por ponteiro/hash, evidências e limitações.
+
+**A proposta ainda não substitui o arquivo ativo.** Sua revisão editorial humana e a confirmação da aplicação do padrão CC BY 4.0 aos direitos efetivamente disponíveis neste lote permanecem pendentes. Isso não reabre a escolha da licença. O objetivo é conferir a versão concreta antes de registrar qualquer decisão ou promover a nova redação. Os quatro recursos textuais continuam bloqueados; nenhum achado foi encerrado nesta etapa.
+
+| Escopo examinado | Fonte científica e localizador utilizados |
+| --- | --- |
+| Animalia | Jacques et al. (2022), introdução/multicelularidade; Adl et al. (2019), Holozoa/Metazoa |
+| Plantae e Tracheophyta | Fangel et al. (2012), parede celular; Woudenberg et al. (2022), introdução e tabela 1, tecidos condutores |
+| Fungi, Ascomycota e Basidiomycota | Challacombe et al. (2019), enzimas e hifas; Adl et al. (2019), diagnósticos de Fungi/Dikarya |
+| Monera e Protista, somente como história | Fisler et al. (2020), árvores e sistemas históricos; Adl et al. (2019), linhagens eucarióticas atuais |
+| Arthropoda e Insecta | Klementz et al. (2024), apêndices articulados; Jürgens et al. (2024), cabeça/tórax/abdome; Schumann e Triphan (2020), cutícula e muda |
+| Chordata | D'Aniello et al. (2023), caracteres compartilhados; imagens do artigo excluídas |
+| Amoebozoa, Myxogastria e Mycetozoa | Adl et al. (2019), diagnósticos; Rikkinen et al. (2019), ciclo de vida e implicações evolutivas; nomes da fonte do catálogo preservados |
+| Lepidoptera, Papilionidae e Saturniidae | Seah e Saranathan (2023), escamas; Ballesteros Mejia et al. (2020), lagartas e adultos. Hall, UF/IFAS IN219, fornece somente o fato de existir representante sem caudas; sua redação e imagens não são reproduzidas ou adaptadas |
+| Euglenida | Butenko et al. (2020), Background, película e diversidade nutricional |
+| Chiton | Irisarri et al. (2020), Background, placas e pé; vínculo do gênero preservado no catálogo |
+
+Foram conferidos metadados e trechos pertinentes de **15 publicações abertas**, sem afirmar leitura integral: 14 com CC BY 4.0 e uma com CC BY 3.0. A versão 3.0 de Fangel et al. não foi substituída por 4.0; a licença proposta alcança somente os direitos disponíveis sobre as novas redações, preservando direitos/atribuição das fontes. Em Schumann e Triphan, o XML declara CC BY sem versão: a versão 4.0 foi conferida no link de copyright **do artigo específico**, sem presumir a licença geral de todo o portal. Há uma referência factual complementar, com licença não inferida. Fontes científicas e origem da expressão são registros separados.
+
+As evidências selecionadas em `resources/compliance/sources/` registram autores fornecidos pela fonte, DOI, URI da licença, consulta efetiva, localizador e hash da resposta XML quando obtida. São registros de investigação assistida, sem assinatura humana ou certificação. Os artigos completos ficam apenas no cache local ignorado pelo Git; nenhuma imagem dos artigos foi incorporada. A política HTTP recebeu somente o host explícito da API bibliográfica do EMBL-EBI; HTTPS/443, validação DNS/IP, limites e demais proteções continuam ativos. Não houve novo provedor de catálogo ou consulta durante a execução normal do jogo.
+
+Não foram baixados capítulos do OpenStax para esta redação. O diagnóstico anterior sobre Biology 2e e os URLs legados permanecem no histórico e na base ativa até uma substituição aprovada. Referenciar o livro não foi tratado como prova de infração; mudar a bibliografia, isoladamente, não regulariza uma redação antiga.
+
+Validação do lote em workspace temporário, pelo gerador real: 68 vínculos conferidos; **38 notas geradas seriam alteradas**, todas corretamente passam a `needs_review`, sem herdar revisão legada. A auditoria estrita da cópia com a proposta mantém **122 organismos e pool competitivo 80**, sem erros técnicos. Os 122 perfis, 122 conjuntos de receitas, ligações taxonômicas e avaliação pedagógica permanecem idênticos. A proposta não altera o organismo 82, fotografias, ícones, pontos ou dados dos jogadores.
+
+A regressão reproduzível integra a suíte existente: `python tests/test_import_inaturalist.py`, **18 testes aprovados**, incluindo os casos que conferem cada ponteiro/hash/evidência e testam a projeção isolada dos dois lotes. Os **21 testes do transporte simulado** passaram, incluindo o host bibliográfico com recusa de DNS privado, HTTP e porta não permitida. Na rodada final, configure/compilação Release e **26/26 suítes CTest** passaram em **146,37 segundos**, já com as novas regressões. Apache/escopo, auditoria estrita do catálogo ativo e histórico frente à base do PR #18 estão consistentes; os três eventos anteriores permanecem byte a byte intactos. Os verificadores offline relacionados da CI e `qmllint` foram executados localmente; não houve execução remota presumida.
+
+Triagem estrutural dos próximos lotes: `species_profiles.json` contém **34 contextos bibliográficos do OpenStax** (19 de nutrição, 14 de curiosidade e um de morfologia). `hint_education.json` não possui URLs diretos desse livro. Isso não estabelece autoria ou infração nem comprova inexistência de dependência indireta. Fontes de 122 fichas e 122 registros de dicas foram mapeadas para os próximos lotes, sem afirmar que todos os seus conteúdos já foram revistos cientificamente ou reescritos.
+
+### Segundo lote preparado, sem promoção
+
+Após a validação técnica isolada do procedimento de grupos, foram preparadas **34 notas novas para 28 fichas**, limitadas aos contextos diretos acima. Os objetos propostos estão em `educational_regularization.profile_openstax_batch.proposed_changes` no [relatório estruturado](SANEAMENTO_ISSUE_2.json), cada um com ponteiro, identidade, hashes anterior/novo, referência e localizador. Nenhum objeto foi aplicado a `species_profiles.json`. As datas de revisão propostas estão vazias e `verified` é falso; a redação nova não recebe a aprovação da nota anterior.
+
+| Conteúdo proposto | Ocorrências | Fundamentação e limites |
+| --- | --- | --- |
+| Nutrição de plantas fotossintetizantes | 16 | Johnson (2016), DOI `10.1042/EBC20160016`, visão geral/fixação de carbono. Explicação do grupo; não atribui raízes a musgos ou hepáticas |
+| Muda de insetos | 7 | Schumann e Triphan (2020), introdução/cutícula e ecdise. Não presume crescimento ou muda continuada dos adultos |
+| Diversidade reprodutiva de plantas | 3 | Woudenberg et al. (2022), tabela 1 e grupos de plantas terrestres. A comparação com plantas sem flores não transforma *Euphorbia* em planta sem flores |
+| Nutrição e curiosidade do líquen | 2 | Armaleo et al. (2019), DOI `10.1186/s12864-019-5629-x`, Background. Distingue associação, células e genomas; o estudo de *Cladonia grayi* não identifica os parceiros de *C. imperialis* |
+| Micélio e estruturas reprodutivas de fungos | 3 | Challacombe et al. (2019), Background/Discussion. Escopo geral explicitado; sem alteração do organismo 82 |
+| Nutrição de louva-a-deus | 1 | Bäumler et al. (2026), DOI `10.1186/s12983-026-00610-9`, Background. Usa o contexto de predação; não atribui a estratégia particular de *Haania orlovi* a *Ovalimantis* |
+| Nutrição de cianobactérias | 1 | Johnson (2016), fotossíntese oxigênica. O grupo é o escopo; a fotografia não demonstra o metabolismo |
+| Morfologia de *Gomphosphaeria aponina* | 1 | Marter et al. (2021), DOI `10.3390/genes12030389`, seção 3.1, cultura DSM 107014. Mantém a limitação da imagem de apoio e a necessidade de microscopia |
+
+As quatro publicações adicionais têm **CC BY 4.0 verificada no XML do artigo específico**; suas evidências selecionadas integram o inventário já usado pelo primeiro lote. Ao todo são 19 publicações abertas com licença verificada (18 CC BY 4.0 e uma CC BY 3.0), mais a referência factual complementar de Hall. Não houve reprodução de figuras, ingestão de capítulos do OpenStax ou declaração de autoria humana exclusiva. Referências e licenças das fontes não constituem, por si, concessão de direitos sobre as propostas.
+
+A nova regressão offline confere os 34 vínculos e aplica as propostas somente em diretório temporário. **35 notas geradas mudariam**, incluindo o alias morfológico de `110`; todas ficam `needs_review`. A avaliação pedagógica antiga é invalidada, e a regeneração automática explícita não aprova cientificamente as notas. As receitas dos outros 121 organismos permanecem idênticas; em `110`, os graus, categorias, níveis, vínculos fotográficos e justificativas são preservados. Apenas a redação, fonte e localizador da receita de aparência acompanham a nota de origem. O organismo 82 mantém suas notas e decisões. **18 testes da suíte de importação passaram**, incluindo os dois lotes.
+
+### Balanço desta fase
+
+Foram examinadas para substituição **102 ocorrências**: 68 de grupos e 34 de fichas, com propostas novas e evidência factual localizada. **Zero substituições foram promovidas ao catálogo ativo e zero novas concessões ou aprovações humanas foram registradas.** A documentação do processo dos rascunhos é mais completa, mas sua revisão editorial e a confirmação da elegibilidade concreta dos direitos continuam pendentes. O corpus ativo conserva suas 2.402 ocorrências/863 hashes inconclusivos quanto à origem; os quatro achados textuais da Issue #2 permanecem abertos. As demais passagens das fichas, as etimologias/justificativas das dicas e suas projeções ainda precisam dos lotes seguintes. Não se declara regularização integral.
+
+O próximo passo é a conferência editorial do lote concreto de grupos pelo mantenedor. Sua aprovação, se ocorrer, será vinculada à versão apresentada e registrada no fluxo existente; o inventário `educational_text_rights` somente será atualizado para os hashes ativos quando houver promoção. A expansão às fichas e dicas usa o mesmo processo; nenhuma aprovação do lote de grupos se estende automaticamente aos demais recursos. A sincronização local continua em simulação, sem criação ou encerramento de Issues. A rotina real deve ser conferida depois de uma eventual integração na `main`.
+
 ## Conferência concentrada de 2026-10-18 após PR #17
 
 Base `49e4e3dcfe8c6b18237a5f61e816bdc39e154d21`; PR #17 confirmado como integrado. Branch `fix/issue-2-final-compliance`. O registro estruturado existente recebeu `final_compliance`, preservando as etapas anteriores. A escolha de CC BY 4.0 e a política visual reservada não foram reabertas.
