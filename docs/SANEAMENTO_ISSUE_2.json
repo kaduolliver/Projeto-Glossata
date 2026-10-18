@@ -5165,22 +5165,23 @@
     "consolidated_draft": {
       "state": "complete_wording_draft_source_review_in_progress",
       "proposal": "docs/propostas/TEXTOS_RESTANTES_ISSUE_2.json",
-      "proposal_sha256": "32bc3ca47b834b25d92a5f577002c216e4b418dd85174b9d7376f5ea832c03ad",
-      "draft_fingerprint": "7039f53fd8e0f5bd2128e4f872fb8391414451330c2de18c74587fea6ebaec03",
+      "proposal_sha256": "93f037f3d74c372d2c9801dd33d945a249eb4a7d92bcfc248285f7c573e634b1",
+      "draft_fingerprint": "15a13eecea8d7aaa8717a58bebf7f64f7fee4b8dba5657f528c5629ae013ba8a",
       "source_replacements": 887,
       "retained_editorial_wordings": 2,
       "source_check_counts": {
-        "requires_claim_and_terms_check": 716,
+        "facts_compared_source_sharealike_scope_pending": 22,
         "local_documentary_statement_pending_editorial_review": 142,
-        "source_compared_by_ai_pending_editorial_review": 29
+        "requires_claim_and_terms_check": 628,
+        "source_compared_by_ai_pending_editorial_review": 95
       },
       "protected_occurrences": 1249,
       "derived_occurrences_to_regenerate": 264,
       "preview_organisms": 122,
       "preview_recipes": 855,
       "validation": {
-        "rights_tests": "62/62 passed",
-        "ctest": "26/26 passed, 146.00 s",
+        "rights_tests": "65/65 passed",
+        "ctest": "26/26 passed, 179.65 s",
         "strict_catalog": "passed, 122 organisms",
         "apache_code": "passed",
         "release_metadata": "passed"

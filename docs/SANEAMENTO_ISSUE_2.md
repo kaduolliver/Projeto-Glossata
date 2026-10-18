@@ -26,11 +26,14 @@ síntese independente da reprodução ou adaptação de expressão protegida.
 O [rascunho consolidado](propostas/TEXTOS_RESTANTES_ISSUE_2.json) contém **887
 substituições propostas** e preserva as duas notas do organismo 82 que já possuem
 aprovação editorial, cuja questão de direitos permanece separada. Não faltam
-redações de origem, mas **a conferência das fontes ainda não terminou**: 29
-ocorrências têm comparação técnica registrada com fontes CC BY 4.0; outras 142
+redações de origem, mas **a conferência das fontes ainda não terminou**: 95
+ocorrências têm comparação técnica registrada com fontes CC BY (versões 2.0,
+3.0 ou 4.0, conforme cada artigo); outras 142
 explicam estados documentais locais (conservação e prefixos), sem criar avaliações
-de conservação ou confirmações fotográficas. Restam 716 ocorrências com
-conferência de afirmação/condições da fonte pendente. Esses estados não são
+de conservação ou confirmações fotográficas. Em 22 etimologias, o sentido foi
+comparado com a LPSN, mantendo explícitos CC BY-SA 4.0, atribuição e a análise
+pendente do alcance dos direitos sobre a síntese independente. Restam 628
+ocorrências sem conferência de afirmação/condições da fonte concluída. Esses estados não são
 aprovações humanas nem concessões de direitos.
 
 A prévia foi regenerada com `review_hints.evaluate` e `build_education.build` em
@@ -49,6 +52,29 @@ licença CC BY 4.0 foi conferida no XML. Os snapshots selecionados estão incorp
 ao rascunho para futura utilização no mecanismo existente de evidências; não
 representam decisões do mantenedor. As notas continuam fora do catálogo ativo.
 
+A continuação conferiu notas compartilhadas sobre metamorfose de lepidópteros
+e ciclo alimentar/reprodutivo de mixomicetos; *Ceratiomyxa* permanece pendente
+onde a descrição geral consultada não permite confirmar a aplicabilidade.
+Foram também conferidas redações de *Ginkgo biloba*, *Dionaea muscipula*,
+*Hydnora esculenta*, *Coprinus comatus*, *Hericium erinaceus* e três notas
+coloniais de *Gomphosphaeria aponina*. Os vínculos individuais especificam quais
+tópicos foram comparados: isso não aprova a ficha inteira. As fontes sobre
+ginkgo e fungos não foram utilizadas para acrescentar alegações medicinais.
+As duas versões anteriores de CC BY usadas em dioneia foram preservadas nas
+evidências; não foram convertidas em licenças 4.0 dos artigos.
+
+A LPSN consultada lista *Leptothrix discophora* como sinônimo de
+*Sphaerotilus discophorus* no tratamento adotado pela fonte. A divergência foi
+registrada no rascunho para revisão, sem alterar a taxonomia do catálogo.
+Nenhum coletor automático de páginas LPSN foi acrescentado: seus termos
+direcionam coleta automatizada para API/download autorizado.
+
+O preparo agora verifica a ligação entre texto, referência e hash da evidência,
+inclusive snapshots incorporados à proposta para portabilidade. Rejeita
+evidências ausentes/adulteradas, referências divergentes, caminhos externos
+e comparações que tentem declarar aprovação humana ou concessão. São controles
+de integridade documental; não certificam o conteúdo ou os direitos.
+
 Também foi confirmada a condição [CC BY-NC-ND 4.0 do UF/IFAS](https://ask.ifas.ufl.edu/copyright).
 A referência científica não demonstra reprodução textual nem transfere essa
 licença para uma nova síntese. Não se está usando essa condição como autorização
@@ -64,10 +90,11 @@ de vínculo desatualizado, mudança do fingerprint, idempotência e ausência de
 gravações nos recursos. A preparação também recusa cobertura parcial, duplicatas,
 alteração de conteúdo protegido, hashes adulterados, reaproveitamento de aprovação
 legada e mudança do grau de assistência. A suíte de investigação de direitos
-passou **62/62**; o CTest completo passou **26/26** (146,00 s). Auditoria estrita,
+passou **65/65**; o CTest completo passou **26/26** (179,65 s). Auditoria estrita,
 verificação Apache 2.0 e integridade dos metadados de versão passaram. Não houve
 nova compilação C++ nem validação visual nesta continuação; as mudanças são de
-governança e preparação documental.
+governança e preparação documental. O gate de distribuição foi reexecutado:
+permanece bloqueado por pendências documentais, com `technical_errors: []`.
 
 ## Lote técnico confirmado e aplicado — 2026-10-18
 
