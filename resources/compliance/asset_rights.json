@@ -24,6 +24,11 @@
         "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
         "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
         "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
+      },
+      "origin_addendum": {
+        "path": "resources/compliance/branding/text-only-declaration.json",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
+        "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },
     {
@@ -48,6 +53,11 @@
         "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
         "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
         "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
+      },
+      "origin_addendum": {
+        "path": "resources/compliance/branding/text-only-declaration.json",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
+        "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },
     {
@@ -72,12 +82,17 @@
         "decision_record_sha256": "c2527663c05696bb9891487b284998a3f6294e692367508dc12441b99d0cbf9c",
         "document": "docs/propostas/USO_IDENTIDADE_VISUAL.md",
         "scope": "Administrative usage policy only; not ownership evidence or distribution permission."
+      },
+      "origin_addendum": {
+        "path": "resources/compliance/branding/text-only-declaration.json",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
+        "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },
     {
       "path": "resources/data/species_profiles.json",
       "kind": "text_authorship",
-      "sha256": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
+      "sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -90,6 +105,12 @@
           "sha256": "bec6e7c398506c0a49af3fbd4053dc88256f54a106b9b34157a9b37807d45368",
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-16T04:22:45.708774+00:00"
+        },
+        {
+          "sha256": "66e43f50408755b996b7271f8ee2e66fe00a2bab896e5b054e6001f202a50a88",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-17T23:55:35.344399+00:00",
+          "reason": "Source-backed draft correction of species 82 nutrition/curiosity and necessary automatic derivative regeneration; no permission granted."
         }
       ],
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
@@ -2124,7 +2145,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "d5664a5fe9edc130159a1992a0447d5caca11dcdc1fda83f1b1a6024b7d0ae00",
+      "sha256": "460a6cc947b2a35be05683f104de4e3093bdd1dc88dd71305cde511073240cbc",
       "source": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros.",
       "permission": {
         "holder": null,
@@ -2137,6 +2158,12 @@
           "sha256": "fc5e4d2bd18517479e06b24e2a7138e4c0313f7fc4f607e393c1f142dc18a975",
           "superseded_on": "2026-10-17",
           "reason": "Administrative code-license policy changed; existing automated pedagogy re-evaluated with identical recipes, text, grades and source assertions. Human/scientific review and rights state unchanged."
+        },
+        {
+          "sha256": "d5664a5fe9edc130159a1992a0447d5caca11dcdc1fda83f1b1a6024b7d0ae00",
+          "state": "superseded_inventory_hash",
+          "recorded_at": "2026-10-17T23:55:35.344399+00:00",
+          "reason": "Source-backed draft correction of species 82 nutrition/curiosity and necessary automatic derivative regeneration; no permission granted."
         }
       ]
     }
