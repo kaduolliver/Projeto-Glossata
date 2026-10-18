@@ -590,6 +590,97 @@ def educational_text_inventory(root=g.ROOT):
         'passages': [passages[k] for k in sorted(passages)]}
 
 
+def text_replacement_scope(inventory):
+    """Partition exact current bindings for one consolidated replacement review.
+
+    This is a read-only preparation view of the existing inventory, not a new
+    approval store. A documented occurrence is protected individually: the same
+    wording elsewhere does not inherit its grant. Derived copies keep their
+    source links and must be accounted for by the existing generator.
+    """
+    documented = set()
+    errors = list(inventory['rights_metadata']['technical_errors'])
+    for row in inventory['rights_metadata']['records']:
+        if not row['rights_issues'] and row['declared_metadata'].get('investigation_state') == 'documented':
+            documented.update(tuple(b[k] for k in ('file', 'pointer', 'text_sha256'))
+                              for b in row.get('bindings', [row.get('binding', {})]))
+    protected = []; source = []; derived = []
+    for passage in inventory['passages']:
+        for occurrence in passage['occurrences']:
+            binding = dict(occurrence, text_sha256=passage['text_sha256'])
+            key = tuple(binding[k] for k in ('file', 'pointer', 'text_sha256'))
+            if key in documented:
+                protected.append(binding)
+            elif binding['file'].endswith('/progressive_hints.json'):
+                derived.append(binding)
+            else:
+                source.append(binding)
+    order = lambda row: (row['file'], row['pointer'])
+    body = {'source_replacements': sorted(source, key=order),
+            'derived_replacements': sorted(derived, key=order),
+            'protected_occurrences': sorted(protected, key=order),
+            'source_files': inventory['files']}
+    return dict(body, fingerprint=g.digest(body), technical_errors=errors,
+                human_approval_recorded=False, permissions_created=0,
+                limitation='Coverage preparation only; citations, text hashes and this fingerprint do not demonstrate scientific support, independent expression or permission.')
+
+
+def prepare_text_replacement_inputs(root, packet):
+    """Validate a complete draft against current bindings, returning copies only.
+
+    This is a staging check, not an admission or permission operation. It never
+    writes resources or treats a source URL or proposed wording as approval.
+    """
+    scope = text_replacement_scope(educational_text_inventory(root))
+    if scope['technical_errors'] or packet.get('scope_fingerprint') != scope['fingerprint']:
+        raise ValueError('Text replacement inventory is stale or invalid')
+    allowed = {(r['file'], r['pointer']): r for r in scope['source_replacements']}
+    outputs = {}; seen = set()
+    for row in packet.get('changes', []):
+        key = (row['file'], row['pointer'])
+        if key not in allowed or key in seen:
+            raise ValueError('Duplicate, protected or out-of-scope replacement')
+        seen.add(key)
+        if row['file'] not in outputs:
+            outputs[row['file']] = copy.deepcopy(g.load(root / row['file']))
+        data = outputs[row['file']]
+        parts = row['pointer'].strip('/').split('/')
+        node = data
+        for part in parts[:-1]:
+            node = node[int(part)] if isinstance(node, list) else node[part]
+        field = parts[-1]
+        if field not in {'text', 'prefix'}:
+            raise ValueError('Only pending prose may be replaced')
+        if (file_hash(root / row['file']) is None
+                or row.get('previous_text_sha256') != allowed[key]['text_sha256']
+                or g.digest(node) != row.get('previous_note_sha256')):
+            raise ValueError('Replacement does not match the original note')
+        proposed = row['proposed_note']
+        text = row['proposed_text']
+        if (not isinstance(text, str) or not text.strip() or text == node[field]
+                or proposed.get(field) != text
+                or hashlib.sha256(text.encode('utf8')).hexdigest() != row.get('text_sha256')):
+            raise ValueError('Invalid proposed wording or hash')
+        # Preserve identity, photo linkage, assistance and editorial scope.
+        mutable = {field, 'verified', 'reviewed_on', 'source_url', 'source_title', 'locator'}
+        if ({k: v for k, v in proposed.items() if k not in mutable}
+                != {k: v for k, v in node.items() if k not in mutable}):
+            raise ValueError('Replacement changes non-prose policy or identity')
+        if field == 'text' and (proposed.get('verified') is not False or proposed.get('reviewed_on') is not None):
+            raise ValueError('New wording cannot inherit a legacy approval')
+        if field == 'prefix' and any(proposed.get(k) != node.get(k) for k in ('verified', 'reviewed_on')):
+            raise ValueError('A prefix replacement cannot declare a review')
+        node.clear(); node.update(copy.deepcopy(proposed))
+    for row in packet.get('retained_wording_requiring_rights_check', []):
+        key = (row['file'], row['pointer'])
+        if key not in allowed or key in seen or row.get('text_sha256') != allowed[key]['text_sha256']:
+            raise ValueError('Invalid retained wording binding')
+        seen.add(key)
+    if seen != set(allowed):
+        raise ValueError('Incomplete replacement coverage')
+    return outputs
+
+
 def other_materials_resolution(materials, inventory, technical_errors=()):
     """Summarize the existing material gate; never creates decisions or closes Issues.
 
@@ -774,6 +865,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
     history = public_history_media(root, tracked)
     screenshots = screenshot_inventory(root, locate, quiz)
     text_inventory = educational_text_inventory(root)
+    replacement_scope = text_replacement_scope(text_inventory)
     return {'schema_version': 1, 'report_kind': 'rights_investigation', 'checked_at': at or g.now(),
         'mode': 'public_metadata_proposals' if online else 'offline',
         'versions': {'application': (root / 'VERSION.txt').read_text(encoding='utf8').strip() if (root / 'VERSION.txt').is_file() else None,
@@ -782,6 +874,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
         'notice': 'Documentary/scientific pending items are not proven copyright violations. Nonprofit status is not inferred permission.',
         'remote_freshness': 'Source comparisons use the explicitly dated last archived consultation, not a new verification of the remote service. checked_at is the local audit date only.',
         'decisions_created': 0, 'scientific_approvals_created': 0,
+        'text_replacement_scope': replacement_scope,
         'assurances': g.assurances(),
         'source_inputs': {p: file_hash(root / p) for p in INPUTS},
         'historical_comparison': {'source': 'docs/INVESTIGACAO_EVIDENCIAS.json',
