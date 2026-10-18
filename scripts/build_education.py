@@ -71,9 +71,9 @@ def build(root=None, *, persist=True):
             unchanged=all(prior.get(field)==value for field,value in note.items())
             # Retain legacy compatibility fields only for the same assertion.
             # Current human approvals remain solely in the hash-bound ledger.
-            note.update(verified=prior.get('verified',False) if unchanged else False,
-                        reviewed_on=prior.get('reviewed_on') if unchanged else None)
-            data["notes"][key]=note
+            data["notes"][key]={"text":text,"source_title":title,"source_url":url,
+                                "verified":prior.get('verified',False) if unchanged else False,"ranks":RANKS,
+                                "reviewed_on":prior.get('reviewed_on') if unchanged else None,"scope_name":name}
             for node in nodes:
                 if kind=="intro": data["taxons"][node["id"]]=key
                 elif kind=="hint": data["group_hints"][node["id"]]=[key]

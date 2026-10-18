@@ -6,6 +6,7 @@ import io
 import json
 import pathlib
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -23,6 +24,9 @@ with mock.patch.dict(sys.modules, {"import_inaturalist": importer}):
 
 
 class ImportTests(unittest.TestCase):
+    def historical_bytes(self, revision, relative):
+        return subprocess.check_output(['git','show',revision+':'+relative],cwd=PROJECT)
+
     def setUp(self):
         self.species = json.loads((PROJECT / "resources/data/species.json").read_text(encoding="utf-8"))
 
@@ -182,17 +186,25 @@ class ImportTests(unittest.TestCase):
             for reference in change['scientific_sources']:
                 self.assertEqual(hashlib.sha256((PROJECT/reference['path']).read_bytes()).hexdigest(),reference['sha256'])
                 self.assertTrue(reference['locator'])
-        if packet['state']!='draft':
-            return  # Archived evidence stays checked; applied versions use normal generation/review tests.
-        self.assertIsNone(packet['reviewer']);self.assertIsNone(packet['reviewed_at'])
-        self.assertFalse(packet['active_content_changed'])
-        self.assertEqual(hashlib.sha256((PROJECT/packet['target']).read_bytes()).hexdigest(),packet['previous_file_sha256'])
+        if packet['state']=='draft':
+            self.assertIsNone(packet['reviewer']);self.assertIsNone(packet['reviewed_at'])
+            self.assertFalse(packet['active_content_changed'])
+            self.assertEqual(hashlib.sha256((PROJECT/packet['target']).read_bytes()).hexdigest(),packet['previous_file_sha256'])
+        else:
+            self.assertEqual(packet['state'],'applied_after_explicit_confirmation')
+            self.assertEqual((PROJECT/packet['target']).read_bytes(),draft_path.read_bytes())
         with tempfile.TemporaryDirectory() as directory:
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
             for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
+            if packet['state']!='draft':
+                # Restore the real pre-confirmation fixture in this temporary
+                # workspace. The actual ledger is never edited by this test.
+                for relative in (packet['target'],'resources/data/education.json',
+                                 'resources/data/progressive_hints.json','resources/compliance/review_history.jsonl'):
+                    (root/relative).write_bytes(self.historical_bytes(packet['base_commit'],relative))
             before=education.build(root,persist=False)
             recipes=review_hints.prepare(root)
             governance.save(root/packet['target'],draft)
@@ -211,6 +223,56 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(recipes,review_hints.prepare(root))
             governance.save(root/'resources/data/education.json',after)
             self.assertEqual(after,education.build(root,persist=False))
+
+    def test_confirmed_group_batch_is_scoped_and_changed_wording_requires_new_review(self):
+        import content_governance as governance
+        import rights_investigation
+        packet=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())['educational_regularization']['group_batch']
+        self.assertEqual(packet['state'],'applied_after_explicit_confirmation')
+        reference=packet['confirmation_evidence']
+        self.assertEqual(hashlib.sha256((PROJECT/reference['path']).read_bytes()).hexdigest(),reference['sha256'])
+        proof=json.loads((PROJECT/reference['path']).read_bytes())
+        self.assertEqual(proof['file_sha256'],packet['proposed_file_sha256'])
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente essa versão')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada ao lote')
+        self.assertFalse(proof['legal_or_scientific_certification'])
+        inventory=rights_investigation.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        self.assertEqual(rights_investigation.text_resource_issues(inventory,packet['target']),[])
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        self.assertIsNone(assets['own_material_licenses']['texts'])
+        for asset in assets['assets']:
+            if asset['kind']!='text_authorship': continue
+            self.assertEqual(asset['permission']['distribution_allowed'],asset['path']==packet['target'])
+        current=education.build(PROJECT,persist=False)
+        recorded={row['key']:row for row in packet['recorded_decisions']}
+        self.assertEqual(len(recorded),38)
+        events={row['event_sha256']:row for row in governance.read_ledger(PROJECT)}
+        for key,receipt in recorded.items():
+            note=current['notes'][key]
+            self.assertEqual(note['governance']['state'],'approved_editorial')
+            self.assertEqual(note['governance']['review_kind'],'editorial')
+            self.assertFalse(note['verified']);self.assertIsNone(note['reviewed_on'])
+            event=events[receipt['event_sha256']]
+            self.assertEqual(event['confirmation_evidence'],reference)
+            self.assertEqual(event['content_sha256'],note['governance']['content_sha256'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            shutil.copytree(PROJECT/'resources/data',root/'resources/data')
+            shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
+            original_ledger=(root/'resources/compliance/review_history.jsonl').read_bytes()
+            groups=governance.load(root/packet['target'])
+            groups['definitions'][0][4]+=' Synthetic change in a temporary fixture.'
+            governance.save(root/packet['target'],groups)
+            changed=education.build(root,persist=False)
+            self.assertEqual(changed['notes']['note:0:intro']['governance']['state'],'needs_review')
+            self.assertFalse(changed['notes']['note:0:intro']['governance']['usable'])
+            self.assertEqual(changed['species']['82'],current['species']['82'])
+            for key in recorded:
+                if key!='note:0:intro': self.assertEqual(changed['notes'][key],current['notes'][key])
+            self.assertEqual((root/'resources/compliance/review_history.jsonl').read_bytes(),original_ledger)
 
     def test_profile_redaction_drafts_preserve_other_topics_and_do_not_inherit_reviews(self):
         import content_governance as governance
@@ -304,7 +366,11 @@ class ImportTests(unittest.TestCase):
 
     def test_extracted_group_prose_matches_the_audited_pre_refactor_values(self):
         import content_governance as governance
-        definitions, notes = education.load_group_content(PROJECT)
+        packet=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())['educational_regularization']['group_batch']
+        # This is an extraction regression, not a requirement to keep legacy
+        # wording active after a separately approved replacement.
+        historical=json.loads(self.historical_bytes(packet['base_commit'],packet['target']))
+        definitions, notes = historical['definitions'], historical['plain_notes']
         self.assertEqual(len(definitions), 19)
         self.assertEqual(len(notes), 15)
         # Preserve the extraction baseline, allowing only the verified bibliographic correction.

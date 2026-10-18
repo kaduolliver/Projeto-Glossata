@@ -1039,7 +1039,7 @@
   "educational_regularization": {
     "group_batch": {
       "schema_version": 1,
-      "state": "draft",
+      "state": "applied_after_explicit_confirmation",
       "origin": "automation",
       "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
       "target": "resources/data/group_education.json",
@@ -2137,19 +2137,24 @@
       "license_proposal": {
         "license": "CC-BY-4.0",
         "scope": "Only rights actually available in eligible new wording; scientific facts and external works are not claimed as exclusive property.",
-        "state": "pending_maintainer_confirmation_of_batch_eligibility",
-        "human_approval_recorded": false
+        "state": "applied_after_explicit_confirmation",
+        "human_approval_recorded": true,
+        "confirmation_evidence": {
+          "path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+          "sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+          "locator": "editorial_confirmation, license_confirmation, file_sha256 and occurrences"
+        }
       },
-      "reviewer": null,
-      "reviewed_at": null,
+      "reviewer": "Carlos Eduardo Lima de Oliveira",
+      "reviewed_at": "2026-10-18",
       "limitations": [
         "Draft, not independent specialist review or legal certification.",
         "Sources support facts; attribution and observed licenses do not certify human review or exclusive authorship.",
         "Protected expressions and images from supplementary factual references are not incorporated or relicensed."
       ],
-      "active_content_changed": false,
-      "permissions_changed": false,
-      "decisions_created": 0,
+      "active_content_changed": true,
+      "permissions_changed": true,
+      "decisions_created": 38,
       "validation": {
         "checked_at": "2026-10-18T04:32:24.943204+00:00",
         "draft_occurrences": 68,
@@ -2225,6 +2230,268 @@
         "qmllint": "passed",
         "final_checked_at": "2026-10-18T04:50:59.144302+00:00",
         "remote_ci_verified": false
+      },
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json",
+        "sha256": "dab479e7517e414b8b87f8a6d4b55f9855ad583f501cacb0341f58198098353b",
+        "locator": "editorial_confirmation, license_confirmation, file_sha256 and occurrences"
+      },
+      "recorded_decisions": [
+        {
+          "key": "note:0:curiosity",
+          "content_sha256": "01845752abe5f7173e921e229ceb19fa623a49b2a1127c2028f75fc33896d2d5",
+          "event_sha256": "cf48d0d615f2983b5a77963b15a83787a0d4dfae09d71bc8d207190f8a608b20"
+        },
+        {
+          "key": "note:0:hint",
+          "content_sha256": "bc63230b5162866ee54232d62410836c3cb99cfbe89afae0abdf457a3b32efa5",
+          "event_sha256": "74a3ea9cde5e0695749cd7a41817bc3c68b39dfdcc4167a6dbc26eed99d0b57b"
+        },
+        {
+          "key": "note:0:intro",
+          "content_sha256": "a7c89796ef798c8d01111c139370305a7c807eb8e2976877074eeec8d51cc5cb",
+          "event_sha256": "0b68d8d12ef2fa40ab4b53d73ca6d14e92d3c11725a84342120b2f039967b9a3"
+        },
+        {
+          "key": "note:10:curiosity",
+          "content_sha256": "aef26052fcfab2c82ba4e175ec75d4521821deca10813fdbb716e393d71b99ed",
+          "event_sha256": "3189ea2116695b6f88e3233419aff205b5dfd822aa2656cfa83ba7d7a16bfdbb"
+        },
+        {
+          "key": "note:10:intro",
+          "content_sha256": "29cb14b37c5492dcdeade4ebc25c8c9f30f700b4ed2345cab46139bcdb8db863",
+          "event_sha256": "dbe8fd277af5e13e1e3689f7401786a9b974fa0796916e307fc43fe46b8c43b6"
+        },
+        {
+          "key": "note:13:curiosity",
+          "content_sha256": "6adbeb770b805a5efe755b342c840e5a830dea0da5b61ddfa6706a9257b0026d",
+          "event_sha256": "51d934a45cf8bb1f66837c22dec09f0350fb673ef7a9adb9fa55cbeb15443d79"
+        },
+        {
+          "key": "note:13:hint",
+          "content_sha256": "7b88c20109cfa596ce06a35496cc5423612065c9e5008e8871f730054b23f429",
+          "event_sha256": "27a5455ed27a323e86a93dc749673e5f9dd4376aa9fcb7aa1fdcb482f6a01a49"
+        },
+        {
+          "key": "note:13:intro",
+          "content_sha256": "578462f81b90f0fd4c1c1def8a4b449e7f42c7cebcbb6d85b7c876183d63944e",
+          "event_sha256": "04a540de5d58a810896537f7b1c18c5609a1c574ea8b58ffd958092c2e49239f"
+        },
+        {
+          "key": "note:14:curiosity",
+          "content_sha256": "53556ad89b968a9e7d3f320f5ba2df7b22b917ca2e8a1eb5eecb5b2b8b1a94fe",
+          "event_sha256": "a617b50ed74567fcf735acb3105993556e8d1f9851f8af83a2918f51af533f1e"
+        },
+        {
+          "key": "note:14:hint",
+          "content_sha256": "32b96bd5fe82fb48d30de9eb3b3a75649c0dd7c03962b38d8a44b2d17e6399a5",
+          "event_sha256": "ec1243c4e45277616bcc88834831d6c2f0535f498471e4694daaece18ddeda7d"
+        },
+        {
+          "key": "note:14:intro",
+          "content_sha256": "299a8cece9bc18d9b8e3f0c6a27e12f5167c2483a9c6d920c66a5b4b3ace52fc",
+          "event_sha256": "56b48e258255d6eb6d61e3a15ca089e1a5c8491b8abad555f364ae9101b2916f"
+        },
+        {
+          "key": "note:15:curiosity",
+          "content_sha256": "88cd20149343b482ff8530154347335f598f5f5438639459eb2acbf8bf36a26d",
+          "event_sha256": "00d72cc43b3bc49b7b49ff671852b3343439b7ebad7d7bdf0696af561b668c46"
+        },
+        {
+          "key": "note:15:hint",
+          "content_sha256": "9de8f329883eea0088998a2f05fbbbeb4f3a3b6b39752c9636ede60cea9f24f7",
+          "event_sha256": "130fb97d5fec7efc2fa8fc3700d28c2c29996fdac072e360441448d338a440cd"
+        },
+        {
+          "key": "note:15:intro",
+          "content_sha256": "2431b0e04a1b0889220743efa139158565216905398e38b4a23587d55ebc0401",
+          "event_sha256": "0ac097c0e37a61b229c2f1a485f9029f58f77210e2501877beb0500afac69404"
+        },
+        {
+          "key": "note:16:curiosity",
+          "content_sha256": "c55c210b11eec8b261ad1de4498a61369bc2cc663d629b4796eb650eb53d54f6",
+          "event_sha256": "1ee42d87dbcfb718516690b47697a2729aaadd6eef9a45ac3336024740f4cb98"
+        },
+        {
+          "key": "note:16:hint",
+          "content_sha256": "231d8dd904812a753dad9bbfe796f091a6ddb696062cf0cc12a89c4651c45163",
+          "event_sha256": "1ca021032b4263503e96dcd886192aefd7dc52e904cf824ac492c41fc8783acb"
+        },
+        {
+          "key": "note:16:intro",
+          "content_sha256": "bdd89f3ac9069debc4268aa4ef411ebb7f1fc44b6dfc3428ccbef23dea55150f",
+          "event_sha256": "9ba0d294d11363f5b9dc1fe08875f14fd97a39268e2155aed475fb2d2b5d942f"
+        },
+        {
+          "key": "note:18:curiosity",
+          "content_sha256": "cb4705887be12621e916a4275c34fa84dc4cc070998bcdb259af475eb90aa4a5",
+          "event_sha256": "86651bfd5abe30a349f772b950f1307e231d5f2391e7f8f87df03e37757d00b1"
+        },
+        {
+          "key": "note:18:hint",
+          "content_sha256": "56030369df9879b921251d334640ba914575635bbdee0734893124ae77ed4047",
+          "event_sha256": "b462a5700296822ebd4f509b681e261dcbfd9bef85eade979a09e29437be8246"
+        },
+        {
+          "key": "note:18:intro",
+          "content_sha256": "773505c3eff5ea53a7dd7ad67bda5b520786f4728990cf16ea0a500c36da453c",
+          "event_sha256": "27d5de25bfff274f73433a983d0e3f57292fe16224989f49470d844ea5f789d2"
+        },
+        {
+          "key": "note:1:curiosity",
+          "content_sha256": "b7fc835efb950e6063d771cc46ee857a3e81f23a2ef58a632f6ac7f93dd3e4d5",
+          "event_sha256": "455081da5310db36b6127c381a267071327d24a89ca2afc6f23f9644f476a87f"
+        },
+        {
+          "key": "note:1:hint",
+          "content_sha256": "1fd2afb6ad2ea869b786c338d4d0abfb94af5f0386f8c0e68ac508724cdf2c62",
+          "event_sha256": "6f22a9762e1240347abef2c4120a1a1d26a3bd11b35c653bd7bb8daa9a586e4b"
+        },
+        {
+          "key": "note:1:intro",
+          "content_sha256": "a92ee071865057d37792b987c79440391211af9be416a77950adb2d9f83d3ab7",
+          "event_sha256": "210963f2af39cfd77c712b5b17802e055deb39717bf0dccf48fd308376e65dab"
+        },
+        {
+          "key": "note:2:curiosity",
+          "content_sha256": "8c1b94bed9a13d95a66cad7e3b368190811a9b56562d6683470b8df19c72fed9",
+          "event_sha256": "802ee5505827cfdcfc09a27729e3be9c2d14befb2bf36a6a0777a6e66918961b"
+        },
+        {
+          "key": "note:2:hint",
+          "content_sha256": "557481073cf09f934cfbc792127c89ee2b6c2e87b82045b7111a062d9dea099a",
+          "event_sha256": "f62c330401953e9a9168ef077d3d39daf985c9e92bcc9144b4e1dce7f8b3a8e7"
+        },
+        {
+          "key": "note:2:intro",
+          "content_sha256": "010192100f523b596a87df2d84bb47f10219ffb76e9117f1cd7c971f1af337f6",
+          "event_sha256": "e462e442720e608c460f4d4ae909f508d5a85372573d15ccafe38c7b37655488"
+        },
+        {
+          "key": "note:5:curiosity",
+          "content_sha256": "853efd925fbd7582d9c2bec34105032642240aa0c6d8fe8aa740f4d2c1e873b7",
+          "event_sha256": "a27ac49bf75a8c4ee5f807d099f8f6aa8200f0e9b666258db89b6c20898a57de"
+        },
+        {
+          "key": "note:5:hint",
+          "content_sha256": "49f00d5760071ef88c23c71547d5166f1e3b3aedccd087ab0bbbc6900c82d98f",
+          "event_sha256": "9d4cc5f311e85f4d48684c6f53ea998a5a4eef6086c446752c80a58167b19f7e"
+        },
+        {
+          "key": "note:5:intro",
+          "content_sha256": "b3f28b382e179a50f57f94f97dd418f5e3a6bd2a9e0b8482bcc029898b25a12f",
+          "event_sha256": "1414c501b45d1e4baead6687b7be4aa01085a1019c1570842272484159792fff"
+        },
+        {
+          "key": "note:6:curiosity",
+          "content_sha256": "82aa839ce2fb03b7c1c1d565ba32ddbbf3bb6e92e8810c24c3412346ba9e439e",
+          "event_sha256": "a15ccadd64deb201031a3919e0bbed17787e276d7432395b4520e4d5f8db45bf"
+        },
+        {
+          "key": "note:6:hint",
+          "content_sha256": "e056e093c3f2ac42b87225bb9bb2427613cea466ca22fe45890f13c9b119b32e",
+          "event_sha256": "bf7b272f5ea0825bc9e3a360e7f534323d9bf6d07d52a30047d977a108fd26b8"
+        },
+        {
+          "key": "note:6:intro",
+          "content_sha256": "cbc5ddf65fc1b289ed8a86c5f2af94078ba910da682f6b9ef7c9eb8d7ef7a3e3",
+          "event_sha256": "48fdc24d0c1e1edb1a165e42a8945debb932927bf1a1816c46ab2c259bd0045a"
+        },
+        {
+          "key": "note:7:curiosity",
+          "content_sha256": "a963f2c07e92beda55249b3fcbe81e665ba038c21a5b7fec4a4a19320b2b0a52",
+          "event_sha256": "482529e4ee7cd134bb5bf4d7fa5da3b4a7dbb64530232dc9696bb92edaedef64"
+        },
+        {
+          "key": "note:7:intro",
+          "content_sha256": "70c2975441f1f4b7a44e82e4012fbecb600b614ddf21ea5d40e9d793c13d8687",
+          "event_sha256": "68da30186fd5da5fe24be50ba1901ca8b81ed03ef7db89b85e828b45e53b8c1b"
+        },
+        {
+          "key": "note:8:curiosity",
+          "content_sha256": "5bbcfa6d2677ca9791a6542a9e1cf98864093c7fbec9c0b22542fa1eaacce2ae",
+          "event_sha256": "1e60308a1010cb50b27d7cc5935beeeba95b7ce7d6c3ec65ab7e9971978bea2b"
+        },
+        {
+          "key": "note:8:hint",
+          "content_sha256": "559a7e9ca879de7f41c7d5125eb9d0f1fdd24697c6e19b53c740f0a54aaf9efb",
+          "event_sha256": "3618da2ff2ca337256b567726653cab369b6b7e91cf380962636424fb3042598"
+        },
+        {
+          "key": "note:8:intro",
+          "content_sha256": "f0e8f974f4ffa346d4b1a5073054593c4e679b24d128cd6cc1501f3080934547",
+          "event_sha256": "6fb1800b92db3412612dbb2f6aceebff3db09818f0933ad4929e141fc9a7e86b"
+        },
+        {
+          "key": "note:9:intro",
+          "content_sha256": "d9ed06dfe94be7dc1384416c6ec3254f81e35ec9fd4780bc191cd427a51b84e9",
+          "event_sha256": "8f9cf3f05a97f9e210dc84991742c8b446a56990c8bdf4c9a58d059d27abbe6d"
+        }
+      ],
+      "promotion": {
+        "recorded_on": "2026-10-18",
+        "exact_file_sha256": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
+        "active_occurrences": 68,
+        "active_generated_notes": 38,
+        "new_editorial_events": 38,
+        "repeated_decisions": "already_recorded",
+        "unchanged_recipe_sets": 122,
+        "other_note_payloads_unchanged": true,
+        "organism_82_unchanged": true,
+        "whole_corpus_license_granted": false,
+        "source_works_relicensed": false
+      },
+      "confirmation_validation": {
+        "checked_at": "2026-10-18T07:57:24.534016+00:00",
+        "configure_and_build": "passed",
+        "ctest": {
+          "passed": 26,
+          "total": 26,
+          "seconds": 133.44,
+          "initial_failure": "Legacy verified flag assertion in introductionsAndMissingContent; replaced with stronger checks on the actual editorial ledger authority and the full suite rerun after recompiling."
+        },
+        "import_tests": 19,
+        "rights_investigation_tests": 52,
+        "strict_catalog": {
+          "organisms": 122,
+          "competitive_pool": 80,
+          "errors": 0
+        },
+        "identical_recipe_sets": 122,
+        "prior_human_events_preserved": 3,
+        "new_editorial_events": 38,
+        "specialist_events_created": 0,
+        "historical_prefix_preserved": true,
+        "apache_check": "passed",
+        "manifest_and_status": "passed",
+        "qml_lint": "passed",
+        "distribution": {
+          "exit_code": 2,
+          "technical_errors": 0,
+          "photo_licensing": 120,
+          "asset_licensing": 3,
+          "scientific_release_blocks": 2
+        },
+        "curation_preview": {
+          "requests": 15,
+          "findings": 3309,
+          "by_area": {
+            "science": 4,
+            "taxonomy": 2,
+            "photography": 3,
+            "licensing": 4,
+            "pedagogy": 2
+          }
+        },
+        "curation_sync": {
+          "apply": false,
+          "remote_checked": false,
+          "created": [],
+          "updated": [],
+          "errors": []
+        },
+        "remote_ci_verified": false,
+        "new_package_validated": false
       }
     },
     "next_batches": {
@@ -3418,18 +3685,20 @@
       }
     },
     "phase_balance": {
-      "checked_at": "2026-10-18T04:50:22.088223+00:00",
-      "draft_occurrences": 102,
-      "draft_group_occurrences": 68,
-      "draft_profile_occurrences": 34,
-      "promoted_occurrences": 0,
-      "new_human_approvals": 0,
-      "new_text_license_grants": 0,
-      "active_occurrences_origin_inconclusive": 2402,
-      "active_unique_text_hashes_inconclusive": 863,
-      "resolved_issue_2_findings_this_phase": 0,
-      "remaining_text_asset_findings": 4,
-      "remaining_work": "Human editorial review and batch eligibility confirmation before promotion; additional profile passages, etymologies, pedagogical rationales and generated counterparts still require subsequent batches."
+      "checked_at": "2026-10-18T07:44:47.881709+00:00",
+      "draft_occurrences_prepared": 102,
+      "promoted_occurrences": 68,
+      "remaining_profile_draft_occurrences": 34,
+      "new_editorial_events": 38,
+      "occurrences_with_delimited_text_grant": 68,
+      "text_resource_grants": 1,
+      "active_occurrences_origin_inconclusive": 2334,
+      "active_unique_text_hashes_inconclusive": 795,
+      "active_total_occurrences": 2402,
+      "active_unique_passages": 863,
+      "resolved_issue_2_findings_this_phase": 1,
+      "remaining_text_asset_findings": 3,
+      "remaining_work": "The profile drafts and all other legacy profile/hint/derived passages remain outside the confirmed group batch. No whole-corpus or package permission granted."
     }
   }
 }

@@ -1,6 +1,44 @@
 # Saneamento documental da Issue #2
 
-## Regularização textual iniciada em 2026-10-18 — lote de grupos
+## Lote de grupos confirmado e aplicado — 2026-10-18
+
+O mantenedor respondeu **“Aprovo editorialmente essa versão”** e, separadamente, **“Confirmo a aplicação delimitada ao lote”**. As perguntas completas, respostas reais, data civil, 68 vínculos e limites estão na [evidência imutável da confirmação](../resources/compliance/sources/4ee212a1aabf07d279a3732180fe819413b8daad932a8f8721c3acd141b2997c.json). A identidade é declarada, sem assinatura digital ou autenticação independente. Não se inventou o instante das respostas nem uma revisão por especialista.
+
+O arquivo ativo `resources/data/group_education.json` foi substituído **pelos bytes exatos aprovados**, SHA-256 `1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f`. São 68 ocorrências para 19 definições e 15 conjuntos complementares, com referências e licenças individuais preservadas. As redações legadas, seus hashes e os registros preparatórios abaixo permanecem no Git e no histórico do inventário.
+
+Foram registrados **38 eventos editoriais** para as notas efetivamente geradas pelo aplicativo, pelo bridge existente e sob a trava comum. Cada evento está vinculado ao conteúdo atual, escopo de grupo, evidências científicas e confirmação concreta. A repetição dos mesmos envelopes retornou `already_recorded`; o ledger passou de três para 41 eventos, preservando o prefixo anterior. As três decisões do organismo 82 não foram alteradas. A aprovação de conteúdo não aprova graus de assistência.
+
+O gerador agora conserva os campos legados `verified` e `reviewed_on` somente enquanto a afirmação, a fonte e o escopo forem iguais. Nas novas notas esses campos ficam `false`/`null`; a revisão real está exclusivamente em `governance`, como `approved_editorial`, responsável Carlos Eduardo Lima de Oliveira e data **2026-10-18**. Uma alteração posterior invalida a nota modificada e não suspende as demais notas aprovadas. O teste histórico de extração continua usando os valores originais da base Git, sem substituir seu hash esperado pela nova redação.
+
+A concessão **CC BY 4.0 abrange apenas os direitos efetivamente disponíveis nas 68 redações novas**. Crédito do lote: **Projeto Glossata — redação assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira**. Preservar identificação do lote, [origem do projeto](https://github.com/kaduolliver/Projeto-Glossata), [licença](https://creativecommons.org/licenses/by/4.0/), avisos e indicação de alterações. Autores, títulos, URLs, licenças/versões e localizadores das fontes científicas continuam em `group_batch.source_evidence` e nos snapshots referenciados. Não se atribui ao mantenedor a autoria dos artigos, dos fatos científicos ou autoria humana exclusiva dessas redações.
+
+O contrato `educational_text_rights` foi atualizado para as 68 ocorrências ativas, com origem, processo, evidência, crédito e concessão delimitados. A permissão do recurso é `eligible_group_wording_only`, vinculada ao mesmo arquivo e à confirmação. O gate recusa a reutilização dessa prova para outros bytes, escopos ou recursos, mesmo que se atualize apenas o hash do inventário. `own_material_licenses.texts` continua `null`: não existe licença global sobre o corpus. Fotografias, identidade visual, coletânea, artigos externos e código conservam seus direitos separados.
+
+A nova assinatura do ledger exige regenerar a avaliação automática das dicas e a projeção educativa. Isso foi feito pelo fluxo existente, com **os 122 conjuntos de receitas idênticos**, incluindo redações, fontes, graus, alternativas taxonômicas e vínculos fotográficos. Mudaram somente as entradas/metadados automáticos necessários; não houve nova aprovação científica das dicas. Os 122 organismos e o pool competitivo de 80 permanecem preservados.
+
+| Indicador | Preparação anterior | Após a confirmação deste lote |
+| --- | --- | --- |
+| Ocorrências novas promovidas | 0 | 68 de grupos |
+| Eventos editoriais novos nesta fase | 0 | 38; nenhum de especialista |
+| Concessões textuais delimitadas | 0 | 1 recurso / 68 ocorrências |
+| Ocorrências ativas com origem ainda inconclusiva | 2.402 | 2.334, agrupadas em 795 hashes |
+| Achados textuais da Issue #2 | 4 | 3: fichas, dicas de origem e dicas derivadas |
+| Fila local de curadoria | 15 solicitações / 3.348 achados | 15 solicitações / 3.309 achados |
+
+As **34 propostas de fichas para 28 organismos continuam como rascunhos**, fora desta confirmação. Não foram aplicadas, licenciadas ou aprovadas editorialmente por extensão. Permanecem também as demais passagens das fichas, etimologias/justificativas e seus derivados. O achado de `group_education.json` foi resolvido somente no escopo delimitado e verificável acima; a Issue #2 permanece aberta e a regularização integral não foi declarada concluída. A sincronização segue simulada, sem escrita remota.
+
+### Validação da promoção confirmada
+
+- Configure e compilação Release aprovados; **26/26 suítes CTest passaram**, em **133,44 segundos**, na rodada final.
+- **19 testes de importação/geração** e **52 testes de investigação de direitos** passaram. Cobrem a versão exata, invalidação pontual após mudança, preservação do organismo 82 e recusa de concessão emprestada, escopo ampliado ou evidência malformada; usam cópias temporárias e fixtures sintéticas.
+- A primeira rodada CTest encontrou uma expectativa legada em `introductionsAndMissingContent`, que exigia `verified: true`. O teste passou a exigir a revisão editorial real, responsável, data, hash e utilização permitida, mantendo os campos legados vazios. Foram preservadas as exigências de qualidade/tamanho e cobertura das introduções. Após recompilar, a suíte completa foi repetida com sucesso. A regressão histórica de extração usa o Git da base registrada; a CI já faz checkout com histórico completo.
+- Auditoria estrita: **122 organismos, pool competitivo 80**, sem erros. Receitas dos 122 organismos idênticas à base; fotos, créditos, fontes das fichas/dicas e prefixos históricos preservados. Apache, recuperação de permissões, auditoria do repositório, exploração, cobertura, assistência, manifesto/estado, auditoria histórica, histórico de captura e `qmllint` aprovados localmente.
+- `distribution.py check` continua com retorno **2**: **zero erros técnicos, 120 pendências fotográficas, três textuais e dois bloqueios científicos prioritários**. Não foi produzido ou validado um novo pacote; obrigações de dependências continuam independentes.
+- Plano e sincronização simulada: **15 solicitações / 3.309 achados**, `apply: false`, `remote_checked: false`, nenhuma Issue criada/atualizada ou erro. Não houve push, merge, release, tag ou encerramento da Issue. Testes e declarações não constituem certificação jurídica, revisão especializada ou autenticação de autoria.
+
+## Registro preparatório anterior à confirmação — 2026-10-18
+
+O registro abaixo descreve a etapa de propostas antes das respostas reais. Seus números e pendências devem ser lidos naquele contexto; o estado atual está na seção acima.
 
 PR #18 confirmado como integrado em `ed7e5c44e1acea80674b3c3bf402071d0836454c`. A branch `fix/issue-2-educational-text-rights` parte dessa base limpa. Os registros autênticos dos ícones e do organismo 82 permanecem intactos; esta etapa não solicita nova escolha de identidade ou de licença padrão.
 

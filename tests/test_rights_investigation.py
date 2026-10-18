@@ -270,6 +270,38 @@ class InvestigationTests(unittest.TestCase):
         self.write_text_rights([record])
         return record, proof
 
+    def test_scoped_text_confirmation_cannot_be_reused_for_changed_bytes_or_other_resources(self):
+        relative='resources/data/group_education.json'
+        g.save(self.root/relative,{'synthetic':'Original test-only wording.'})
+        asset={'path':relative,'sha256':hashlib.sha256((self.root/relative).read_bytes()).hexdigest()}
+        proof={'kind':'educational_group_batch_confirmation','file':relative,'file_sha256':asset['sha256'],
+            'license_confirmation':{'declared_by':'Synthetic fixture maintainer','recorded_on':'2020-01-01',
+                'statement':'Synthetic confirmation, not a real permission.','scope':'Test-only wording.',
+                'license':'CC-BY-4.0','license_url':'https://creativecommons.org/licenses/by/4.0/'}}
+        evidence='resources/compliance/synthetic-group-confirmation.json'
+        g.save(self.root/evidence,proof)
+        grant={'scope':'eligible_group_wording_only','license':'CC-BY-4.0','evidence_path':evidence}
+        check=rights.text_permission_binding_issues
+        self.assertEqual(check(self.root,asset,grant),[])
+        self.assertEqual(check(self.root,dict(asset,path='resources/data/species_profiles.json'),grant),
+                         ['text_grant_binding_invalid'])
+        self.assertEqual(check(self.root,asset,dict(grant,scope='all_content')),['text_grant_binding_invalid'])
+        self.assertEqual(check(self.root,asset,dict(grant,scope=None)),['text_grant_binding_invalid'])
+        for field,value in [('statement',None),('declared_by',None),('recorded_on','2999-01-01'),
+                            ('license','CC-BY-SA-4.0')]:
+            broken=copy.deepcopy(proof);broken['license_confirmation'][field]=value
+            g.save(self.root/evidence,broken)
+            self.assertEqual(check(self.root,asset,grant),['text_grant_binding_invalid'])
+        g.save(self.root/evidence,proof)
+        for invalid in ([],dict(proof,license_confirmation=[])):
+            g.save(self.root/evidence,invalid)
+            self.assertEqual(check(self.root,asset,grant),['text_grant_binding_invalid'])
+        g.save(self.root/evidence,proof)
+        g.save(self.root/relative,{'synthetic':'Changed test-only wording.'})
+        # Updating the inventory hash does not renew the immutable confirmation.
+        asset['sha256']=hashlib.sha256((self.root/relative).read_bytes()).hexdigest()
+        self.assertEqual(check(self.root,asset,grant),['text_grant_binding_invalid'])
+
     def test_partial_coverage_cannot_release_a_whole_file_or_override_source_terms(self):
         record, proof = self.documented_text_fixture()
         self.fixture.write('species_profiles.json', {'1': {'summary': {'text':'Synthetic educational passage.'},

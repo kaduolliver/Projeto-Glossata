@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Lote de grupos aplicado após confirmação editorial expressa da versão exata e concessão CC BY 4.0 limitada aos direitos disponíveis: 68 ocorrências documentadas e 38 eventos editoriais idempotentes. Gerador invalida metadados legados após mudança de afirmação/fonte; concessão fica vinculada ao arquivo aprovado. Receitas, graus de assistência, organismo 82 e demais permissões preservados; fichas propostas continuam rascunhos e distribuição permanece bloqueada.
+
 - Regularização textual: lote de 68 redações novas de grupos e proposta delimitada de 34 notas de fichas preparados para conferência, fontes/licenças localizadas e validação do gerador em workspace temporário. Conteúdo ativo e direitos permanecem intactos até decisões reais dos lotes; API bibliográfica do EMBL-EBI incluída explicitamente na política de manutenção, preservando os guardas do transporte.
 
 - Issue #2: vínculos documentais das 2.402 ocorrências educativas agrupados no inventário existente, preservando origem inconclusiva e direitos externos. Gate reforçado contra liberação parcial de arquivos mistos. Após aprovação expressa do mantenedor, registradas as duas notas e o agregado do organismo 82 como revisão editorial, restaurando essas notas sem alterar receitas ou pontos. Três ícones com uso/distribuição documentados exclusivamente nas versões oficiais após autorização específica; sem licença gráfica geral ou concessão textual. Quatro pendências textuais e demais bloqueios do pacote preservados.
