@@ -328,6 +328,48 @@ def profile_batch_binding_issues(root, record):
     return []
 
 
+def technical_wording_batch_binding_issues(root, record):
+    """Validate a declared wording-only grant, never an assistance/science review."""
+    try:
+        for ref in record.get('evidence', []):
+            proof = g.load(g.local_file(root, ref['path']), {})
+            if proof.get('kind') != 'educational_technical_wording_confirmation': continue
+            wordings = proof['wordings']; expected = set()
+            if not isinstance(wordings, list) or not wordings or g.digest(wordings) != proof.get('proposal_fingerprint'):
+                raise ValueError('Changed wording proposal')
+            for name in ('editorial_confirmation', 'license_confirmation'):
+                confirmation = proof[name]; recorded = g.parse_time(confirmation.get('recorded_on'))
+                if (not confirmation.get('declared_by') or not confirmation.get('statement')
+                        or confirmation.get('scope') != 'technical_wording_only'
+                        or not recorded or recorded > g.parse_time(g.now())):
+                    raise ValueError('Missing scoped confirmation')
+            license_confirmation = proof['license_confirmation']
+            if (license_confirmation.get('license') != 'CC-BY-4.0'
+                    or license_confirmation.get('license_url') != 'https://creativecommons.org/licenses/by/4.0/'
+                    or record.get('declared_license') != license_confirmation['license']):
+                raise ValueError('License outside confirmed scope')
+            for wording in wordings:
+                sha = hashlib.sha256(wording['proposed_text'].encode('utf8')).hexdigest()
+                if sha != wording['text_sha256'] or not wording['occurrences']:
+                    raise ValueError('Changed wording')
+                for occurrence in wording['occurrences']:
+                    path = occurrence['file']; pointer = occurrence['pointer']
+                    if (path not in {'resources/data/hint_education.json', 'resources/data/progressive_hints.json'}
+                            or not (pointer.endswith('/rationale') or
+                                    path.endswith('progressive_hints.json') and pointer == '/evaluation/limitations')):
+                        raise ValueError('Scientific wording outside confirmed scope')
+                    binding = (path, pointer, sha)
+                    if binding in expected: raise ValueError('Duplicate confirmed occurrence')
+                    expected.add(binding)
+            occurrence_set = lambda rows: {tuple(o[k] for k in ('file', 'pointer', 'text_sha256')) for o in rows}
+            if (occurrence_set(proof['occurrences']) != expected
+                    or not occurrence_set(record.get('occurrences', [record])) <= expected):
+                raise ValueError('Grant outside confirmed bindings')
+    except (KeyError, TypeError, ValueError, OSError, AttributeError):
+        return ['technical_wording_grant_binding_invalid']
+    return []
+
+
 def educational_rights_metadata(root, passages):
     """Read optional documentary records in the existing asset inventory.
 
@@ -383,7 +425,7 @@ def educational_rights_metadata(root, passages):
                     raise ValueError('Evidence does not match')
             except (KeyError, TypeError, ValueError, OSError):
                 errors.append(label + ':invalid_evidence')
-        issues = profile_batch_binding_issues(root, record)
+        issues = profile_batch_binding_issues(root, record) + technical_wording_batch_binding_issues(root, record)
         if record.get('origin_kind') == 'inconclusive': issues.append('origin_inconclusive')
         if not evidence or not record.get('rights_available'): issues.append('rights_evidence_incomplete')
         declared_license = record.get('declared_license')

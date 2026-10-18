@@ -377,6 +377,43 @@ class InvestigationTests(unittest.TestCase):
                       rights.text_resource_issues(rights.educational_text_inventory(self.root),record['file']))
         self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
 
+    def test_technical_wording_grant_requires_two_scoped_confirmations_and_exact_bindings(self):
+        record, ref = self.documented_text_fixture()
+        record.update(file='resources/data/hint_education.json',pointer='/1/taxonomic_assistance/rationale')
+        self.fixture.write('hint_education.json',{'1':{'taxonomic_assistance':{'rationale':'Synthetic educational passage.'}}})
+        binding={k:record[k] for k in ('file','pointer','text_sha256')}
+        wordings=[{'proposed_text':'Synthetic educational passage.','text_sha256':record['text_sha256'],
+                   'occurrences':[dict(binding,previous_text_sha256='0'*64)]}]
+        proof={'kind':'educational_technical_wording_confirmation','wordings':wordings,
+            'proposal_fingerprint':g.digest(wordings),'occurrences':[binding],
+            'editorial_confirmation':{'declared_by':'Synthetic fixture maintainer','statement':'Synthetic wording acceptance.',
+                'recorded_on':'2020-01-01','scope':'technical_wording_only'},
+            'license_confirmation':{'declared_by':'Synthetic fixture maintainer','statement':'Synthetic limited grant.',
+                'recorded_on':'2020-01-01','scope':'technical_wording_only','license':'CC-BY-4.0',
+                'license_url':'https://creativecommons.org/licenses/by/4.0/'}}
+        def write(value):
+            g.save(self.root/ref['path'],value)
+            record['evidence'][0]['sha256']=hashlib.sha256((self.root/ref['path']).read_bytes()).hexdigest()
+            self.write_text_rights([record])
+        before=g.read_ledger(self.root);write(proof)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),[])
+        self.assertEqual(rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]['rights_issues'],[])
+        for name in ('editorial_confirmation','license_confirmation'):
+            for field,value in [('statement',None),('scope','scientific_approval'),('recorded_on','2999-01-01')]:
+                altered=copy.deepcopy(proof);altered[name][field]=value;write(altered)
+                self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        for altered in (dict(record,pointer='/1/etymology_hints/genus/text'),dict(record,file='resources/data/species_profiles.json'),
+                        dict(record,declared_license='CC0-1.0'),dict(record,text_sha256='0'*64)):
+            write(proof)
+            self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,altered),['technical_wording_grant_binding_invalid'])
+        changed=copy.deepcopy(proof);changed['wordings'][0]['proposed_text']='Not confirmed.';write(changed)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        changed=copy.deepcopy(proof);changed['occurrences'][0]['pointer']='/2/taxonomic_assistance/rationale';write(changed)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        write(proof)
+        self.assertEqual(g.read_ledger(self.root),before)  # Wording acceptance never approves assistance grades.
+        self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
+
     def test_partial_coverage_cannot_release_a_whole_file_or_override_source_terms(self):
         record, proof = self.documented_text_fixture()
         self.fixture.write('species_profiles.json', {'1': {'summary': {'text':'Synthetic educational passage.'},
