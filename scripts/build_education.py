@@ -66,8 +66,14 @@ def build(root=None, *, persist=True):
         for kind,text in (("intro",description),("hint",hint),("curiosity",curiosity)):
             if not text: continue
             key=f"note:{number}:{kind}"
-            data["notes"][key]={"text":text,"source_title":title,"source_url":url,"verified":previous.get('notes', {}).get(key, {}).get('verified', False),"ranks":RANKS,
-                                "reviewed_on":previous.get('notes', {}).get(key, {}).get('reviewed_on'),"scope_name":name}
+            note={"text":text,"source_title":title,"source_url":url,"ranks":RANKS,"scope_name":name}
+            prior=previous.get('notes', {}).get(key, {})
+            unchanged=all(prior.get(field)==value for field,value in note.items())
+            # Retain legacy compatibility fields only for the same assertion.
+            # Current human approvals remain solely in the hash-bound ledger.
+            note.update(verified=prior.get('verified',False) if unchanged else False,
+                        reviewed_on=prior.get('reviewed_on') if unchanged else None)
+            data["notes"][key]=note
             for node in nodes:
                 if kind=="intro": data["taxons"][node["id"]]=key
                 elif kind=="hint": data["group_hints"][node["id"]]=[key]

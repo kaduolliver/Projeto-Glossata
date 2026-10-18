@@ -203,10 +203,14 @@ class ImportTests(unittest.TestCase):
             for key in changed:
                 self.assertEqual(after['notes'][key]['governance']['state'],'needs_review')
                 self.assertFalse(after['notes'][key]['governance']['usable'])
+                self.assertFalse(after['notes'][key]['verified'])
+                self.assertIsNone(after['notes'][key]['reviewed_on'])
             self.assertEqual(before['species'],after['species'])
             self.assertEqual(before['taxons'],after['taxons'])
             self.assertEqual(before['group_hints'],after['group_hints'])
             self.assertEqual(recipes,review_hints.prepare(root))
+            governance.save(root/'resources/data/education.json',after)
+            self.assertEqual(after,education.build(root,persist=False))
 
     def test_profile_redaction_drafts_preserve_other_topics_and_do_not_inherit_reviews(self):
         import content_governance as governance
