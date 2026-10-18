@@ -27,7 +27,7 @@
       },
       "origin_addendum": {
         "path": "resources/compliance/branding/text-only-declaration.json",
-        "sha256": "113d9e9da718d2c823b928fbcb1f1f6823729dc8fa24f3147d0a8a20104f4ce7",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
         "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },
@@ -56,7 +56,7 @@
       },
       "origin_addendum": {
         "path": "resources/compliance/branding/text-only-declaration.json",
-        "sha256": "113d9e9da718d2c823b928fbcb1f1f6823729dc8fa24f3147d0a8a20104f4ce7",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
         "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },
@@ -85,7 +85,7 @@
       },
       "origin_addendum": {
         "path": "resources/compliance/branding/text-only-declaration.json",
-        "sha256": "113d9e9da718d2c823b928fbcb1f1f6823729dc8fa24f3147d0a8a20104f4ce7",
+        "sha256": "2a3fa69524239caa8a41715bdd01071211e41c9be6a53fa3e30d82f09e70f08c",
         "scope": "Maintainer declares text-only input; not permission, exclusivity or third-party clearance."
       }
     },

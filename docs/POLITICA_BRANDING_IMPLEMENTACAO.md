@@ -1,6 +1,6 @@
 # Implementação da política de identidade visual reservada
 
-Atualização de proveniência após o PR #15: o mantenedor declarou geração dos três ícones somente por descrição de texto. O [registro complementar](../resources/compliance/branding/text-only-declaration.json) preserva essa informação sem alterar a declaração anterior. A lacuna sobre imagens de entrada foi esclarecida; não deve ser solicitada novamente. As demais conclusões abaixo são o registro da implementação da política. A [situação atual da Issue #2](SANEAMENTO_ISSUE_2.md) delimita o que ainda falta para distribuição, sem exigir exclusividade, registro de marca ou publicação de conversas privadas.
+Atualização de proveniência após o PR #15: o mantenedor respondeu “Apenas descrição de texto” sobre a geração da arte. O [registro complementar](../resources/compliance/branding/text-only-declaration.json) preserva essa informação sem alterar a declaração anterior, distinguindo-a de eventuais edições, preparação de variantes e conversão para ICO. Não se afirma geração textual independente dos três arquivos finais; etapas posteriores não declaradas continuam desconhecidas. As demais conclusões abaixo são o registro da implementação da política. A [situação atual da Issue #2](SANEAMENTO_ISSUE_2.md) delimita o que ainda falta para distribuição, sem exigir exclusividade, registro de marca ou publicação de conversas privadas.
 
 ## Decisão e alcance
 

@@ -6,14 +6,31 @@
   "identity_basis": "Nome já fornecido pelo mantenedor; declaração na conversa de manutenção, sem autenticação por assinatura.",
   "statement": "Apenas descrição de texto",
   "statement_context": "Resposta à pergunta sobre uso de descrições de texto ou imagens de entrada na geração dos três ícones atuais.",
-  "image_inputs": "none_declared",
+  "statement_scope": "Declaração sobre as entradas na geração da arte; não comprova geração textual independente de cada arquivo final nem descreve todas as etapas posteriores de edição, preparação de variantes ou conversão.",
+  "image_inputs": "none_declared_for_art_generation",
+  "subsequent_processing": {
+    "glossata.png": {
+      "generation_and_edit_sequence": null
+    },
+    "glossata_discord.png": {
+      "documented_role": "Variante para Rich Presence, conforme resources/branding/README.md.",
+      "generation_or_edit_sequence": null,
+      "image_inputs_in_later_edits": null
+    },
+    "glossata.ico": {
+      "format": "Windows ICO com sete resoluções: 16, 24, 32, 48, 64, 128 e 256 pixels.",
+      "current_pixel_relationship": "Conferência somente leitura: os sete frames RGBA coincidem com glossata.png redimensionado por Lanczos no Pillow. Essa correspondência atual não comprova a ferramenta, a sequência ou o arquivo de entrada usados historicamente.",
+      "historical_conversion_tool": null,
+      "historical_source_image": null
+    }
+  },
   "prior_statement": "resources/compliance/branding/origin-declaration.json",
   "files": {
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
     "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
   },
-  "limitations": "Esclarece as entradas de imagem declaradas; não comprova exclusividade, direitos sobre a expressão de saída ou autorização externa. Não exige publicar prompts ou conversas privadas.",
+  "limitations": "Preserva a resposta literal do mantenedor sobre geração por texto, sem estendê-la a todas as etapas de edição e conversão dos três arquivos. As imagens finais foram fornecidas em pacote, e a sequência de preparação não está integralmente documentada. Não comprova exclusividade, direitos sobre a expressão de saída ou autorização externa; não exige publicar prompts ou conversas privadas.",
   "permission_granted_by_this_record": false,
   "scientific_or_legal_approval": false
 }
