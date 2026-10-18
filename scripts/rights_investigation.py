@@ -303,19 +303,29 @@ def educational_rights_metadata(root, passages):
         return {'technical_errors': ['text_rights_records_not_a_list'], 'records': [], 'grants_created': 0}
     origins = {'original', 'external_reproduction', 'adaptation', 'translation',
                'independent_factual_synthesis', 'inconclusive'}
-    allowed = {'file', 'pointer', 'text_sha256', 'origin_kind', 'declared_origin', 'source_text',
+    allowed = {'file', 'pointer', 'text_sha256', 'occurrences', 'origin_kind', 'declared_origin', 'source_text',
                'transformations', 'rights_available', 'declared_license', 'evidence',
                'investigation_state', 'editorial_review_key', 'attribution'}
     for i, record in enumerate(records):
         label = 'text_rights:' + str(i)
         if not isinstance(record, dict) or set(record) - allowed:
             errors.append(label + ':invalid_fields'); continue
-        binding = tuple(record.get(k) for k in ('file', 'pointer', 'text_sha256'))
-        if not all(isinstance(v, str) for v in binding):
+        keys = ('file', 'pointer', 'text_sha256')
+        grouped = 'occurrences' in record
+        occurrences = record.get('occurrences') if grouped else [{k: record.get(k) for k in keys}]
+        if (not isinstance(occurrences, list) or not occurrences
+                or (grouped and any(k in record for k in keys))):
             errors.append(label + ':invalid_binding'); continue
-        if binding not in bindings: errors.append(label + ':stale_or_unknown_occurrence')
-        if binding in seen: errors.append(label + ':duplicate_occurrence')
-        seen.add(binding)
+        bound = []
+        for occurrence in occurrences:
+            if not isinstance(occurrence, dict) or set(occurrence) != set(keys):
+                errors.append(label + ':invalid_binding'); continue
+            binding = tuple(occurrence[k] for k in keys)
+            if not all(isinstance(v, str) for v in binding):
+                errors.append(label + ':invalid_binding'); continue
+            if binding not in bindings: errors.append(label + ':stale_or_unknown_occurrence')
+            if binding in seen: errors.append(label + ':duplicate_occurrence')
+            seen.add(binding); bound.append(occurrence)
         if not isinstance(record.get('origin_kind'), str) or record['origin_kind'] not in origins:
             errors.append(label + ':invalid_origin_kind')
         source = record.get('source_text') or {}
@@ -338,6 +348,16 @@ def educational_rights_metadata(root, passages):
         issues = []
         if record.get('origin_kind') == 'inconclusive': issues.append('origin_inconclusive')
         if not evidence or not record.get('rights_available'): issues.append('rights_evidence_incomplete')
+        declared_license = record.get('declared_license')
+        if not declared_license: issues.append('passage_license_undetermined')
+        elif not isinstance(declared_license, str): errors.append(label + ':invalid_declared_license')
+        attribution = record.get('attribution') or {}
+        if not isinstance(attribution, dict):
+            errors.append(label + ':invalid_attribution')
+        elif isinstance(declared_license, str) and (not attribution.get('license_url') or
+                (declared_license.upper().startswith('CC-BY') and not attribution.get('author_credit')
+                 and attribution.get('credit_not_supplied_by_source') is not True)):
+            issues.append('passage_attribution_incomplete')
         if record.get('origin_kind') in ('external_reproduction', 'adaptation', 'translation') and not source.get('url'):
             issues.append('textual_source_missing')
         source_license = source.get('license') or ''
@@ -352,9 +372,34 @@ def educational_rights_metadata(root, passages):
         if 'NC' in conditions: issues.append('noncommercial_conditions_require_review')
         if 'ND' in conditions and (transforms or record.get('origin_kind') in ('translation', 'adaptation')):
             issues.append('no_derivatives_conditions_require_review')
-        rows.append({'binding': dict(zip(('file', 'pointer', 'text_sha256'), binding)),
-            'declared_metadata': record, 'rights_issues': issues, 'permission_created': False})
+        row = {'declared_metadata': {k: v for k, v in record.items() if k != 'occurrences'},
+            'rights_issues': issues, 'permission_created': False}
+        if grouped: row['bindings'] = bound
+        elif bound: row['binding'] = bound[0]
+        rows.append(row)
     return {'technical_errors': errors, 'records': rows, 'grants_created': 0}
+
+
+def text_resource_issues(inventory, path):
+    """A file grant cannot cover only one component of a mixed prose resource.
+
+    Full coverage and valid evidence are necessary, never sufficient to create
+    permission. The explicit resource grant remains a separate requirement.
+    """
+    metadata = inventory['rights_metadata']
+    expected = {(o['file'], o['pointer'], p['text_sha256']) for p in inventory['passages']
+                for o in p['occurrences'] if o['file'] == path}
+    covered = set(); pending = False
+    for row in metadata['records']:
+        for binding in row.get('bindings', [row.get('binding', {})]):
+            if binding.get('file') != path: continue
+            covered.add(tuple(binding.get(k) for k in ('file', 'pointer', 'text_sha256')))
+            pending |= bool(row['rights_issues']) or row['declared_metadata'].get('investigation_state') != 'documented'
+    issues = []
+    if not expected or covered != expected: issues.append('text_component_coverage_incomplete')
+    if pending: issues.append('text_component_rights_pending')
+    if metadata['technical_errors']: issues.append('text_component_metadata_invalid')
+    return issues
 
 
 def educational_text_inventory(root=g.ROOT):

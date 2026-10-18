@@ -544,12 +544,16 @@ def audit_governance(root=ROOT, at=None):
     licensing = [{'photo_id': p['photo_id'], 'errors': p['rights_issues']} for p in attribution['photos'].values() if p['rights_issues']]
     assets = load(root / 'resources/compliance/asset_rights.json', {'assets': []})
     asset_errors = []
+    text_inventory = None
     for asset in assets.get('assets', []):
         path = local_file(root, asset['path'])
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != asset.get('sha256'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_changed_or_missing'})
         grant = asset.get('permission', {})
-        if not grant.get('holder') or not grant.get('evidence_path') or not grant.get('distribution_allowed'):
+        holders = grant.get('holders')
+        identified_holders = grant.get('holder') or (isinstance(holders, list) and bool(holders)
+            and all(isinstance(h, str) and h.strip() for h in holders))
+        if not identified_holders or not grant.get('evidence_path') or not grant.get('distribution_allowed'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_permission_missing'})
         else:
             try:
@@ -557,6 +561,13 @@ def audit_governance(root=ROOT, at=None):
                 if not ev.is_file() or hashlib.sha256(ev.read_bytes()).hexdigest() != grant.get('evidence_sha256'):
                     asset_errors.append({'path': asset['path'], 'error': 'asset_permission_evidence_invalid'})
             except ValueError: asset_errors.append({'path': asset['path'], 'error': 'asset_permission_path'})
+            if asset.get('kind') == 'text_authorship':
+                # Only inspect claimed grants. Pending legacy resources retain
+                # their existing findings; this never creates a grant from prose metadata.
+                from rights_investigation import educational_text_inventory, text_resource_issues
+                if text_inventory is None: text_inventory = educational_text_inventory(root)
+                asset_errors.extend({'path': asset['path'], 'error': issue}
+                    for issue in text_resource_issues(text_inventory, asset['path']))
     if not assets.get('assets'): asset_errors.append({'error': 'asset_inventory_missing'})
     permitted_paths = {s.get('photo', {}).get('path') for s in load(root / 'resources/data/species.json', [])}
     permitted_paths.update(a['path'] for a in assets.get('assets', []))
