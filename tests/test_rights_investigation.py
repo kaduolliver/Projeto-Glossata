@@ -105,6 +105,141 @@ class InvestigationTests(unittest.TestCase):
         self.assertTrue(result['distribution_gate']['source_blocked'])
         self.assertEqual(g.load(self.root / 'resources/data/species.json')[0]['photo']['license'], 'cc-by')
 
+    def editorial_policy_fixture(self):
+        actual = g.policy()
+        policy = g.policy(self.root)
+        policy['editorial_text_policy'] = copy.deepcopy(actual['editorial_text_policy'])
+        decision = copy.deepcopy(next(d for d in actual['maintainer_decisions']
+            if d['id'] == policy['editorial_text_policy']['decision_id']))
+        policy['maintainer_decisions'] = [d for d in policy.get('maintainer_decisions', [])
+            if d['id'] != decision['id']] + [decision]
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        return policy
+
+    def text_rights_fixture(self, origin='inconclusive', source_license=None):
+        self.fixture.write('species_profiles.json', {'1': {'summary': {
+            'text': 'Synthetic educational passage.', 'source_url': 'https://example.org/scientific-evidence'}}})
+        record = {'file': 'resources/data/species_profiles.json', 'pointer': '/1/summary/text',
+            'text_sha256': hashlib.sha256(b'Synthetic educational passage.').hexdigest(),
+            'origin_kind': origin, 'declared_origin': 'Synthetic fixture only.',
+            'source_text': {'url': 'https://example.org/text', 'license': source_license},
+            'declared_license': None, 'transformations': [], 'rights_available': None,
+            'evidence': [], 'investigation_state': 'pending_human_review',
+            'editorial_review_key': None, 'attribution': {}}
+        self.write_text_rights([record])
+        return record
+
+    def write_text_rights(self, records):
+        assets = g.load(self.root / 'resources/compliance/asset_rights.json', {})
+        assets['educational_text_rights'] = records
+        g.save(self.root / 'resources/compliance/asset_rights.json', assets)
+
+    def test_editorial_default_never_licenses_inconclusive_or_external_prose(self):
+        record = self.text_rights_fixture()
+        self.editorial_policy_fixture()
+        before = self.files(); gate = distribution.release_gate(self.root)
+        with mock.patch.object(g, 'confirm_permission', side_effect=AssertionError('No permission')), \
+             mock.patch.object(g, 'append_review', side_effect=AssertionError('No review')):
+            result = rights.educational_text_inventory(self.root)
+        metadata = result['rights_metadata']
+        self.assertEqual(metadata['technical_errors'], [])
+        self.assertIn('origin_inconclusive', metadata['records'][0]['rights_issues'])
+        self.assertIsNone(metadata['records'][0]['declared_metadata']['declared_license'])
+        self.assertFalse(result['passages'][0]['permission_created'])
+        self.assertEqual(metadata['grants_created'], 0)
+        self.assertEqual(before, self.files())
+        self.assertEqual(gate, distribution.release_gate(self.root))
+        record['origin_kind'] = 'external_reproduction'; self.write_text_rights([record])
+        self.assertIsNone(rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+            ['declared_metadata']['declared_license'])
+
+    def test_editorial_default_cannot_replace_sharealike_translation_license(self):
+        record = self.text_rights_fixture('translation', 'CC-BY-SA-4.0')
+        record.update(declared_license='CC-BY-4.0', transformations=['translation'])
+        self.write_text_rights([record])
+        row = rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+        self.assertIn('sharealike_cannot_be_replaced_by_default', row['rights_issues'])
+        record['source_text']['license'] = 'cc-by-sa'; self.write_text_rights([record])
+        row = rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+        self.assertIn('sharealike_cannot_be_replaced_by_default', row['rights_issues'])
+        self.assertEqual(row['declared_metadata']['source_text']['license'], 'cc-by-sa')
+        record['declared_license'] = 'CC-BY-SA-4.0'; self.write_text_rights([record])
+        row = rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+        self.assertNotIn('sharealike_cannot_be_replaced_by_default', row['rights_issues'])
+        self.assertFalse(row['permission_created'])
+
+    def test_noncommercial_and_no_derivatives_need_specific_review(self):
+        record = self.text_rights_fixture('adaptation', 'CC-BY-NC-ND-4.0')
+        record['transformations'] = ['adaptation']; self.write_text_rights([record])
+        row = rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+        self.assertIn('noncommercial_conditions_require_review', row['rights_issues'])
+        self.assertIn('no_derivatives_conditions_require_review', row['rights_issues'])
+        self.assertFalse(row['permission_created'])
+        record.update(origin_kind='external_reproduction', transformations=[])
+        self.write_text_rights([record])
+        row = rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]
+        self.assertNotIn('no_derivatives_conditions_require_review', row['rights_issues'])
+        self.assertFalse(row['permission_created'])
+
+    def test_text_rights_bind_location_and_hash_and_preserve_scientific_source(self):
+        record = self.text_rights_fixture('original')
+        self.fixture.write('species_profiles.json', {'1': {'summary': {
+            'text': 'Synthetic educational passage.', 'source_url': 'https://example.org/scientific-evidence'}},
+            '2': {'summary': {'text': 'Synthetic educational passage.', 'source_url': 'https://example.org/another'}}})
+        result = rights.educational_text_inventory(self.root)
+        self.assertEqual(result['unique_passages'], 1)
+        self.assertEqual(result['total_occurrences'], 2)
+        self.assertEqual(len(result['rights_metadata']['records']), 1)
+        self.assertEqual(result['rights_metadata']['records'][0]['binding']['pointer'], '/1/summary/text')
+        self.assertNotEqual(record['source_text']['url'], result['passages'][0]['occurrences'][0]['source_url'])
+        record['text_sha256'] = '0' * 64; self.write_text_rights([record, record])
+        errors = rights.educational_text_inventory(self.root)['rights_metadata']['technical_errors']
+        self.assertIn('text_rights:0:stale_or_unknown_occurrence', errors)
+        self.assertIn('text_rights:1:duplicate_occurrence', errors)
+
+    def test_evidence_hashes_are_checked_without_making_approval(self):
+        record = self.text_rights_fixture('original')
+        path = self.root / 'resources/compliance/synthetic-text-evidence.json'
+        g.save(path, {'synthetic': True})
+        record.update(evidence=[{'path': path.relative_to(self.root).as_posix(),
+            'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'locator': 'Synthetic record'}],
+            rights_available='Synthetic test statement; not a real grant.', declared_license='CC-BY-4.0')
+        self.write_text_rights([record]); before = self.files()
+        result = rights.educational_text_inventory(self.root)['rights_metadata']
+        self.assertEqual(result['technical_errors'], [])
+        self.assertFalse(result['records'][0]['permission_created'])
+        self.assertEqual(before, self.files())
+        g.save(path, {'synthetic': 'modified'})
+        self.assertIn('text_rights:0:invalid_evidence',
+            rights.educational_text_inventory(self.root)['rights_metadata']['technical_errors'])
+
+    def test_documentary_metadata_cannot_smuggle_approval_or_malformed_fields(self):
+        record = self.text_rights_fixture(); record['distribution_allowed'] = True
+        self.write_text_rights([record])
+        self.assertIn('text_rights:0:invalid_fields',
+            rights.educational_text_inventory(self.root)['rights_metadata']['technical_errors'])
+        record.pop('distribution_allowed'); record['origin_kind'] = []
+        self.write_text_rights([record])
+        self.assertIn('text_rights:0:invalid_origin_kind',
+            rights.educational_text_inventory(self.root)['rights_metadata']['technical_errors'])
+
+    def test_editorial_policy_is_checked_by_existing_code_license_command(self):
+        self.code_license_fixture(); policy = self.editorial_policy_fixture()
+        self.assertEqual(self.code_errors(), [])
+        without_default = copy.deepcopy(policy); without_default.pop('editorial_text_policy')
+        g.save(self.root / 'resources/data/content_policy.json', without_default)
+        self.assertIn('editorial_default_missing', self.code_errors())
+        policy['editorial_text_policy']['automatic_grants'] = True
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        self.assertIn('editorial_default_invalid_or_overbroad', self.code_errors())
+        policy['editorial_text_policy']['automatic_grants'] = False
+        policy['own_material_licenses']['texts'] = 'CC-BY-4.0'
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        self.assertIn('editorial_default_is_not_a_corpus_grant', self.code_errors())
+        policy['own_material_licenses']['texts'] = None; policy['maintainer_decisions'] = []
+        g.save(self.root / 'resources/data/content_policy.json', policy)
+        self.assertIn('editorial_default_decision_not_linked', self.code_errors())
+
     def test_missing_source_photo_license_and_private_credit_are_not_treated_as_permission(self):
         observation = self.observation(); observation['photos'][0].pop('license_code')
         row = self.run_report(online=True, client=self.client(observation))['photos'][0]
@@ -419,6 +554,7 @@ class InvestigationTests(unittest.TestCase):
         g.save(self.root / licensing_inventory.CODE_SCOPE, scope)
         policy = g.policy(self.root)
         policy['own_material_licenses'] = {'code': 'Apache-2.0', 'texts': None, 'collection': None}
+        policy.pop('editorial_text_policy', None)  # Legacy code-only fixture.
         policy['maintainer_decisions'] = [scope['maintainer_decision']]
         g.save(self.root / 'resources/data/content_policy.json', policy)
         assets = g.load(self.root / 'resources/compliance/asset_rights.json', {'assets': []})

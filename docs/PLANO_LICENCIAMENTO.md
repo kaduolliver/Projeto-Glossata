@@ -1,5 +1,7 @@
 # Preparação de licenciamento do Projeto Glossata
 
+> **Decisão editorial posterior — 2026-10-17:** a [política editorial](propostas/LICENCIAMENTO_TEXTOS.md) adota CC BY 4.0 como padrão para redações próprias elegíveis, limitada aos direitos demonstráveis. Não é licença global ou liberação do corpus legado. A organização da coletânea permanece decisão independente. O diagnóstico abaixo conserva seu caráter histórico.
+
 > **Saneamento posterior — 2026-10-17, Issue #2:** a lógica Python do gerador passou ao escopo Apache após extração exata da redação para `group_education.json`. A pendência de direitos segue com a redação; sete casos continuam ativos. A origem dos ícones foi parcialmente esclarecida por declaração de criação via ChatGPT, sem autorização gráfica presumida. Este plano e seu inventário continuam históricos; veja [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
 
 > **Atualização administrativa — 2026-10-17, posterior à preparação abaixo:** o mantenedor decidiu expressamente Apache-2.0 para o código próprio, fornecendo Carlos Eduardo Lima de Oliveira como criador original. LICENSE/NOTICE e o [escopo enumerado](ESCOPO_LICENCIAMENTO.md) implementam a concessão delimitada. Textos/coletânea e o gerador misto continuam pendentes; fotos, marca e dependências não foram relicenciadas. O texto e o inventário abaixo preservam o estado anterior à decisão, inclusive a então correta ausência de LICENSE. Consulte o [relatório da implementação](RELATORIO_IMPLEMENTACAO_APACHE_2_0.md).
