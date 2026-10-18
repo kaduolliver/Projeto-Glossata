@@ -4,6 +4,7 @@ All writes are confined to the existing build/update-proposals staging area.
 Remote metadata is photo-specific, minimized and kept separate from published data.
 """
 import copy
+from collections import Counter
 import hashlib
 import http.client
 import json
@@ -547,6 +548,52 @@ def educational_text_inventory(root=g.ROOT):
         'passages': [passages[k] for k in sorted(passages)]}
 
 
+def other_materials_resolution(materials, inventory, technical_errors=()):
+    """Summarize the existing material gate; never creates decisions or closes Issues.
+
+    Generated copies keep their source bindings. Counts are review work, not
+    independent works or evidence that permission has been established.
+    """
+    rows = []; unresolved = set(); roles = Counter()
+    for material in materials:
+        path = material['path']; documented = set(); issues = set(material.get('issues', []))
+        expected = {(o['file'], o['pointer'], p['text_sha256']) for p in inventory['passages']
+                    for o in p['occurrences'] if o['file'] == path}
+        for row in inventory['rights_metadata']['records']:
+            metadata = row['declared_metadata']
+            for binding in row.get('bindings', [row.get('binding', {})]):
+                if binding.get('file') != path: continue
+                pending = bool(row['rights_issues']) or metadata.get('investigation_state') != 'documented'
+                if not pending:
+                    key = tuple(binding[k] for k in ('file', 'pointer', 'text_sha256'))
+                    documented.add(key)
+        remaining = expected - documented; unresolved.update(remaining)
+        bindings = [dict(zip(('file', 'pointer', 'text_sha256'), b)) for b in sorted(remaining)]
+        if expected: issues.update(text_resource_issues(inventory, path))
+        rows.append({'path': path, 'resource_issues': sorted(issues),
+                     'pending_occurrences': bindings, 'pending_count': len(bindings),
+                     'resource_ready_for_closure_review': not issues and not bindings,
+                     'note': 'No whole-resource permission is inferred from partial or shared wording.'})
+    for passage in inventory['passages']:
+        for occurrence in passage['occurrences']:
+            if (occurrence['file'], occurrence['pointer'], passage['text_sha256']) in unresolved:
+                roles[occurrence['role']] += 1
+    errors = list(technical_errors) + inventory['rights_metadata']['technical_errors']
+    pending_resources = [r['path'] for r in rows if not r['resource_ready_for_closure_review']]
+    return {'scope': 'Issue licensing / other-materials only; excludes photo, science and dependency decisions.',
+            'ready_for_maintainer_closure_review': bool(rows) and not pending_resources and not errors,
+            'automatic_closure': False, 'decisions_created': 0, 'permissions_created': 0,
+            'pending_resources': pending_resources, 'technical_errors': errors,
+            'pending_occurrences': len(unresolved),
+            'pending_unique_texts': len({b[2] for b in unresolved}), 'pending_by_role': dict(roles),
+            'materials': rows,
+            'required_next_steps': ['Resolve authorial source and available rights per current binding; replace only when justified.',
+                                    'Record actual decisions through the existing governance bridge; no inherited human approval.',
+                                    'Regenerate derived content and rerun the authoritative asset gate.',
+                                    'Review the integrated main commit before explicitly closing the Issue.'],
+            'limitations': 'A closure summary, closed Issue or tests never authorize a resource or approve the package.'}
+
+
 def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), refresh=False, client=None, at=None):
     root = Path(root); package = Path(package) if package else None
     source = distribution.release_gate(root)  # Existing authority, never replaced by proposal findings.
@@ -684,6 +731,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
     quiz = [r for r in rows if r['kind'] == 'quiz_photo']
     history = public_history_media(root, tracked)
     screenshots = screenshot_inventory(root, locate, quiz)
+    text_inventory = educational_text_inventory(root)
     return {'schema_version': 1, 'report_kind': 'rights_investigation', 'checked_at': at or g.now(),
         'mode': 'public_metadata_proposals' if online else 'offline',
         'versions': {'application': (root / 'VERSION.txt').read_text(encoding='utf8').strip() if (root / 'VERSION.txt').is_file() else None,
@@ -710,7 +758,8 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'history_only_media_paths': len({r['path'] for r in history['resources']}) if history['assessed'] else None,
             'local_unbundled_media': len(source['unbundled_media']), 'dependency_components': len(dependencies)},
         'photos': sorted(rows, key=lambda r: (r['priority'], r['id'])), 'materials': materials,
-        'educational_texts': educational_text_inventory(root),
+        'educational_texts': text_inventory,
+        'other_materials_resolution': other_materials_resolution(materials, text_inventory, source['technical_errors']),
         'other_tracked_media': repository_media,
         'readme_screenshots': screenshots, 'public_git_history': history,
         'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1 if locate(f['path'])['tracked_in_current_git'] else 3,

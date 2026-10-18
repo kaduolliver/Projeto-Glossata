@@ -48,6 +48,40 @@ class InvestigationTests(unittest.TestCase):
         self.assertIn('attribution_incomplete', row['rights_issues'])
         self.assertEqual(row['investigation_state'], 'pending_human_review')
 
+    def test_material_closure_requires_real_full_coverage_not_shared_text_or_issue_state(self):
+        record, _ = self.documented_text_fixture()
+        self.fixture.write('species_profiles.json',{'1':{'summary':{'text':'Synthetic educational passage.'}},
+                                                   '2':{'summary':{'text':'Synthetic educational passage.'}}})
+        before=self.files()
+        inventory=rights.educational_text_inventory(self.root)
+        materials=[{'path':record['file'],'issues':['asset_permission_missing']}]
+        result=rights.other_materials_resolution(materials,inventory)
+        self.assertFalse(result['ready_for_maintainer_closure_review'])
+        self.assertEqual(result['pending_occurrences'],1)
+        self.assertEqual(result['pending_unique_texts'],1)
+        self.assertEqual(result['materials'][0]['pending_occurrences'][0]['pointer'],'/2/summary/text')
+        self.assertFalse(result['automatic_closure']);self.assertEqual(result['permissions_created'],0)
+        self.assertEqual(self.files(),before)
+        self.write_text_rights([])
+        result=rights.other_materials_resolution(materials,rights.educational_text_inventory(self.root))
+        self.assertEqual(result['pending_occurrences'],2)
+        self.assertEqual(result['pending_unique_texts'],1)
+
+    def test_material_closure_is_independent_of_photos_but_never_overrides_any_gate(self):
+        record, _ = self.documented_text_fixture()
+        inventory=rights.educational_text_inventory(self.root)
+        materials=[{'path':record['file'],'issues':[]}]
+        before=self.files();gate=distribution.release_gate(self.root)
+        self.assertTrue(gate['distribution_blocked'])
+        result=rights.other_materials_resolution(materials,inventory)
+        self.assertTrue(result['ready_for_maintainer_closure_review'])
+        self.assertFalse(result['automatic_closure'])
+        self.assertFalse(rights.other_materials_resolution(materials,inventory,['synthetic integrity error'])
+                         ['ready_for_maintainer_closure_review'])
+        self.assertFalse(rights.other_materials_resolution([],inventory)['ready_for_maintainer_closure_review'])
+        self.assertEqual(self.files(),before)
+        self.assertEqual(distribution.release_gate(self.root),gate)
+
     def test_educational_inventory_deduplicates_text_without_merging_source_bindings(self):
         self.fixture.write('species_profiles.json', {'1': {'summary': {
             'text': 'Shared synthetic fact.', 'source_url': 'https://example.org/a'}},
