@@ -240,6 +240,119 @@ class InvestigationTests(unittest.TestCase):
         g.save(self.root / 'resources/data/content_policy.json', policy)
         self.assertIn('editorial_default_decision_not_linked', self.code_errors())
 
+    def test_grouped_rights_keep_all_bindings_without_merging_distinct_contexts(self):
+        record = self.text_rights_fixture()
+        self.fixture.write('species_profiles.json', {'1': {'summary': {'text': 'Synthetic educational passage.'}},
+            '2': {'summary': {'text': 'Synthetic educational passage.'}}})
+        binding = {k: record.pop(k) for k in ('file','pointer','text_sha256')}
+        other = dict(binding, pointer='/2/summary/text')
+        record['occurrences'] = [binding, other]; self.write_text_rights([record])
+        inv = rights.educational_text_inventory(self.root)
+        self.assertEqual(inv['rights_metadata']['technical_errors'], [])
+        self.assertEqual(len(inv['rights_metadata']['records']), 1)
+        self.assertEqual(inv['rights_metadata']['records'][0]['bindings'], [binding, other])
+        self.assertNotIn('occurrences', inv['rights_metadata']['records'][0]['declared_metadata'])
+        self.assertIn('text_component_rights_pending', rights.text_resource_issues(inv, binding['file']))
+        record['occurrences'].append(binding); self.write_text_rights([record])
+        self.assertIn('text_rights:0:duplicate_occurrence',
+            rights.educational_text_inventory(self.root)['rights_metadata']['technical_errors'])
+
+    def documented_text_fixture(self):
+        record = self.text_rights_fixture('original')
+        path = self.root/'resources/compliance/synthetic-prose.json'
+        g.save(path, {'synthetic': 'Available rights documented for this test only; not a real grant.'})
+        proof = {'path': path.relative_to(self.root).as_posix(),
+            'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+        record.update(declared_license='CC-BY-4.0', rights_available='Synthetic own expression only.',
+            evidence=[proof], investigation_state='documented',
+            attribution={'author_credit':'Synthetic contributor A',
+                'license_url':'https://creativecommons.org/licenses/by/4.0/'})
+        self.write_text_rights([record])
+        return record, proof
+
+    def test_partial_coverage_cannot_release_a_whole_file_or_override_source_terms(self):
+        record, proof = self.documented_text_fixture()
+        self.fixture.write('species_profiles.json', {'1': {'summary': {'text':'Synthetic educational passage.'},
+            'hint': {'text':'Another synthetic component.'}}})
+        assets = g.load(self.root/'resources/compliance/asset_rights.json')
+        assets.setdefault('assets',[]).append({'path':record['file'],'kind':'text_authorship',
+            'sha256':hashlib.sha256((self.root/record['file']).read_bytes()).hexdigest(),
+            'permission':{'holders':['Synthetic contributor A','Synthetic contributor B'],
+                'distribution_allowed':True,'evidence_path':proof['path'],'evidence_sha256':proof['sha256']}})
+        g.save(self.root/'resources/compliance/asset_rights.json', assets)
+        errors = g.audit_governance(self.root)['asset_licensing']
+        self.assertIn({'path':record['file'],'error':'text_component_coverage_incomplete'}, errors)
+        second = copy.deepcopy(record); second.update(pointer='/1/hint/text',
+            text_sha256=hashlib.sha256(b'Another synthetic component.').hexdigest())
+        second['attribution']['author_credit']='Synthetic contributor B'
+        self.write_text_rights([record,second])
+        self.assertEqual(rights.text_resource_issues(rights.educational_text_inventory(self.root),record['file']),[])
+        self.assertFalse(any(e['path']==record['file'] for e in g.audit_governance(self.root)['asset_licensing']))
+        # Component documentation alone never creates the separate file grant.
+        assets=g.load(self.root/'resources/compliance/asset_rights.json')
+        assets['assets'][0]['permission']['distribution_allowed']=False
+        g.save(self.root/'resources/compliance/asset_rights.json',assets)
+        self.assertIn({'path':record['file'],'error':'asset_permission_missing'},
+            g.audit_governance(self.root)['asset_licensing'])
+        second.update(origin_kind='translation',transformations=['translation'],source_text={
+            'url':'https://example.org/source','license':'CC-BY-SA-4.0'})
+        self.write_text_rights([record,second])
+        self.assertIn('text_component_rights_pending',rights.text_resource_issues(
+            rights.educational_text_inventory(self.root),record['file']))
+
+    def test_full_mixed_coverage_still_requires_current_evidence_origin_and_attribution(self):
+        record, proof = self.documented_text_fixture()
+        self.assertEqual(rights.text_resource_issues(rights.educational_text_inventory(self.root),record['file']),[])
+        for field,value in [('origin_kind','inconclusive'),('evidence',[]),('attribution',{})]:
+            changed=copy.deepcopy(record);changed[field]=value;self.write_text_rights([changed])
+            self.assertIn('text_component_rights_pending',rights.text_resource_issues(
+                rights.educational_text_inventory(self.root),record['file']))
+        self.write_text_rights([record]);(self.root/proof['path']).write_text('Modified fixture',encoding='utf8')
+        self.assertIn('text_component_metadata_invalid',rights.text_resource_issues(
+            rights.educational_text_inventory(self.root),record['file']))
+
+    def test_attribution_does_not_invent_or_require_unprovided_author_names(self):
+        record, _ = self.documented_text_fixture()
+        record['attribution']['author_credit']=None
+        record['attribution']['credit_not_supplied_by_source']=True
+        self.write_text_rights([record])
+        self.assertNotIn('passage_attribution_incomplete', rights.educational_text_inventory(self.root)
+            ['rights_metadata']['records'][0]['rights_issues'])
+        record['attribution'].pop('credit_not_supplied_by_source');record['declared_license']='CC0-1.0'
+        record['attribution']['license_url']='https://creativecommons.org/publicdomain/zero/1.0/'
+        self.write_text_rights([record])
+        self.assertNotIn('passage_attribution_incomplete', rights.educational_text_inventory(self.root)
+            ['rights_metadata']['records'][0]['rights_issues'])
+
+    def test_official_branding_basis_is_scoped_and_bound_to_each_file(self):
+        asset={'path':'resources/branding/synthetic.png','sha256':'a'*64,
+            'administrative_policy':{'id':'reserved-to-project'}}
+        proof={'kind':'official_branding_distribution_basis',
+            'distribution_scope':'official_project_distribution',
+            'file_bindings':{asset['path']:asset['sha256']},'exclusive_rights_claimed':False,
+            'general_graphic_license_granted':False,
+            'administrative_authorization':{'scope':'official_project_distribution',
+                'statement':'Synthetic permission only','declared_by':'Synthetic user','recorded_on':'2026-10-18'},
+            'terms_reference':{'source_url':'https://openai.com/policies/terms-of-use/'},
+            'maintainer_declaration':{'declared_by':'Synthetic user','statement':'Synthetic fixture only',
+                'recorded_on':'2026-10-18','account_category':'personal','third_party_components_added':False}}
+        path='resources/compliance/synthetic-branding.json';g.save(self.root/path,proof)
+        grant={'scope':'official_project_distribution','evidence_path':path,
+            'holder':'Synthetic user','general_graphic_reuse_granted':False}
+        self.assertEqual(g.branding_permission_issues(self.root,asset,grant),[])
+        for field,value in [('scope','general_graphic_reuse'),('evidence_path','../outside.json'),
+                            ('holder','Another synthetic user'),('general_graphic_reuse_granted',True)]:
+            changed=dict(grant);changed[field]=value
+            self.assertTrue(g.branding_permission_issues(self.root,asset,changed))
+        changed=dict(asset,sha256='b'*64)
+        self.assertTrue(g.branding_permission_issues(self.root,changed,grant))
+        proof['maintainer_declaration']['third_party_components_added']=None
+        g.save(self.root/path,proof)
+        self.assertTrue(g.branding_permission_issues(self.root,asset,grant))
+        proof['maintainer_declaration']['third_party_components_added']=False
+        proof.pop('administrative_authorization');g.save(self.root/path,proof)
+        self.assertTrue(g.branding_permission_issues(self.root,asset,grant))
+
     def test_missing_source_photo_license_and_private_credit_are_not_treated_as_permission(self):
         observation = self.observation(); observation['photos'][0].pop('license_code')
         row = self.run_report(online=True, client=self.client(observation))['photos'][0]

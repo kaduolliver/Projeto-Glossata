@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "kind": "official_branding_distribution_basis",
+  "recorded_on": "2026-10-18",
+  "distribution_scope": "official_project_distribution",
+  "file_bindings": {
+    "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+    "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
+  },
+  "maintainer_declaration": {
+    "declared_by": "Carlos Eduardo Lima de Oliveira",
+    "recorded_on": "2026-10-18",
+    "statement": "outubro de 2026, foi usado conta pessoal e não houve inclusão de componentes externos",
+    "generation_period": "2026-10",
+    "account_category": "personal",
+    "third_party_components_added": false
+  },
+  "administrative_authorization": {
+    "declared_by": "Carlos Eduardo Lima de Oliveira",
+    "recorded_on": "2026-10-18",
+    "statement": "Autorizar o registro limitado ao uso oficial",
+    "scope": "official_project_distribution",
+    "confirmed_action": "Registrar distribution_allowed: true para estes três arquivos exclusivamente nas versões oficiais do Projeto Glossata, com política reservada e direitos efetivamente disponíveis.",
+    "identity_basis": "Identificação fornecida pelo mantenedor e resposta expressa nesta solicitação; não é assinatura digital nem autenticação independente."
+  },
+  "terms_reference": {
+    "source_url": "https://openai.com/policies/terms-of-use/",
+    "effective_date_shown": "2026-01-01",
+    "locator": "Content / Ownership of content; Similarity of content",
+    "consultation_evidence": {
+      "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+      "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+    },
+    "period_basis": "General individual-use terms shown effective January 2026 compared with the declared October 2026 personal generation.",
+    "service_terms_url": "https://openai.com/policies/service-terms/",
+    "service_terms_limitation": "Current page updated October 16, 2026, later than first Git inclusion of the files. No retrospective application or enterprise/API indemnity asserted."
+  },
+  "prior_evidence": [
+    {
+      "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+      "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+    },
+    {
+      "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+      "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+    }
+  ],
+  "exclusive_rights_claimed": false,
+  "general_graphic_license_granted": false,
+  "third_party_clearance_certified": false,
+  "legal_or_scientific_certification": false,
+  "rights_basis": "Direitos disponíveis sobre os resultados perante o provedor nos termos individuais consultados e declaração factual do mantenedor; autorização expressa limitada ao projeto oficial. Não atesta exclusividade ou direitos de terceiros.",
+  "limitations": "Não licencia fotografias, textos, materiais externos ou pacote; não concede reutilização gráfica geral ou sublicenciamento. Novos fatos concretos sobre direitos externos exigem análise. Geração da arte-base e preparação das variantes não são tratadas como três gerações independentes."
+}

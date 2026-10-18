@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Issue #2: vínculos documentais das 2.402 ocorrências educativas agrupados no inventário existente, preservando origem inconclusiva e direitos externos. Gate reforçado contra liberação parcial de arquivos mistos. Após aprovação expressa do mantenedor, registradas as duas notas e o agregado do organismo 82 como revisão editorial, restaurando essas notas sem alterar receitas ou pontos. Três ícones com uso/distribuição documentados exclusivamente nas versões oficiais após autorização específica; sem licença gráfica geral ou concessão textual. Quatro pendências textuais e demais bloqueios do pacote preservados.
+
 - Política editorial de licenciamento misto formalizada por decisão do mantenedor: CC BY 4.0 como padrão para redações próprias elegíveis, sem concessão automática sobre o corpus. Inventário existente recebe contrato documental por ocorrência e validações de vínculo/evidência, com alertas SA/NC/ND; textos, ícones e fotografias mantêm pendências. Sem alteração de ciência, interface ou versão do aplicativo.
 
 - Revisão do PR #16: declaração literal de geração por texto delimitada à origem declarada da arte, sem inferir ausência de imagens nas etapas de edição, preparação da variante Discord ou conversão para ICO. Etapas desconhecidas preservadas como tais; não há mudança em imagens, ciência, aprovações ou permissões.

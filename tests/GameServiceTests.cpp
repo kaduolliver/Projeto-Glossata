@@ -1111,15 +1111,21 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY2(!profile.isEmpty(),qPrintable(s.name));
         ++profiles;
         QVERIFY(!profile.value("displayName").toString().isEmpty());
-        QVERIFY(profile.value("reviewedOn").toString().isEmpty());
+        QCOMPARE(profile.value("reviewedOn").toString().isEmpty(),s.id!=82);
         const auto review=profile.value("governance").toMap().value("education").toMap();
-        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("needs_review") : QString("legacy"));
-        QVERIFY(review.value("reviewer").toString().isEmpty());
+        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("approved_editorial") : QString("legacy"));
+        QCOMPARE(review.value("reviewer").toString().isEmpty(),s.id!=82);
         if (s.id==82) {
-            // Revised claims cannot inherit the former legacy approval.
-            QVERIFY(profile.value("nutrition").toMap().isEmpty());
-            QVERIFY(profile.value("curiosity").toMap().isEmpty());
-            QVERIFY(!review.value("usable").toBool());
+            // Restored only after the maintainer's explicit, hash-bound editorial decision.
+            for (const auto &field : {QString("nutrition"),QString("curiosity")}) {
+                const auto note=profile.value(field).toMap();
+                QVERIFY(!note.value("text").toString().isEmpty());
+                const auto noteReview=note.value("governance").toMap();
+                QCOMPARE(noteReview.value("state").toString(),QString("approved_editorial"));
+                QCOMPARE(noteReview.value("review_kind").toString(),QString("editorial"));
+                QVERIFY(!noteReview.value("reviewer").toString().isEmpty());
+            }
+            QVERIFY(review.value("usable").toBool());
         }
         for (const QString &field : {QString("summary"),QString("distribution"),QString("morphology"),QString("conservation")}) {
             const auto item=profile.value(field).toMap();

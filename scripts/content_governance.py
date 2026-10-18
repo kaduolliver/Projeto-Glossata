@@ -495,6 +495,39 @@ def generate_credits(root=ROOT):
     return data
 
 
+def branding_permission_issues(root, asset, grant):
+    """Verify the documented, official-project scope, not legal exclusivity.
+
+    A service term or an icon-selection decision alone is not a file grant.
+    This checks the explicit evidence/declarations and current byte bindings.
+    """
+    try:
+        proof = load(local_file(root, grant['evidence_path']), {})
+        declaration = proof.get('maintainer_declaration', {})
+        authorization = proof.get('administrative_authorization', {})
+        if (grant.get('scope') != 'official_project_distribution'
+                or proof.get('kind') != 'official_branding_distribution_basis'
+                or proof.get('distribution_scope') != grant['scope']
+                or proof.get('file_bindings', {}).get(asset['path']) != asset['sha256']
+                or not declaration.get('declared_by') or not declaration.get('statement')
+                or not parse_time(declaration.get('recorded_on'))
+                or declaration.get('account_category') != 'personal'
+                or declaration.get('third_party_components_added') is not False
+                or authorization.get('scope') != grant['scope']
+                or not authorization.get('statement') or not authorization.get('declared_by')
+                or not parse_time(authorization.get('recorded_on'))
+                or grant.get('holder') != authorization.get('declared_by')
+                or not proof.get('terms_reference', {}).get('source_url', '').startswith('https://openai.com/policies/')
+                or proof.get('exclusive_rights_claimed') is not False
+                or proof.get('general_graphic_license_granted') is not False
+                or grant.get('general_graphic_reuse_granted') is not False
+                or asset.get('administrative_policy', {}).get('id') != 'reserved-to-project'):
+            return ['branding_official_scope_or_basis_invalid']
+        return []
+    except (KeyError, ValueError, TypeError, AttributeError):
+        return ['branding_official_scope_or_basis_invalid']
+
+
 def audit_governance(root=ROOT, at=None):
     at = at or datetime.now(timezone.utc); settings = policy(root)
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
@@ -544,12 +577,16 @@ def audit_governance(root=ROOT, at=None):
     licensing = [{'photo_id': p['photo_id'], 'errors': p['rights_issues']} for p in attribution['photos'].values() if p['rights_issues']]
     assets = load(root / 'resources/compliance/asset_rights.json', {'assets': []})
     asset_errors = []
+    text_inventory = None
     for asset in assets.get('assets', []):
         path = local_file(root, asset['path'])
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != asset.get('sha256'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_changed_or_missing'})
         grant = asset.get('permission', {})
-        if not grant.get('holder') or not grant.get('evidence_path') or not grant.get('distribution_allowed'):
+        holders = grant.get('holders')
+        identified_holders = grant.get('holder') or (isinstance(holders, list) and bool(holders)
+            and all(isinstance(h, str) and h.strip() for h in holders))
+        if not identified_holders or not grant.get('evidence_path') or not grant.get('distribution_allowed'):
             asset_errors.append({'path': asset['path'], 'error': 'asset_permission_missing'})
         else:
             try:
@@ -557,6 +594,16 @@ def audit_governance(root=ROOT, at=None):
                 if not ev.is_file() or hashlib.sha256(ev.read_bytes()).hexdigest() != grant.get('evidence_sha256'):
                     asset_errors.append({'path': asset['path'], 'error': 'asset_permission_evidence_invalid'})
             except ValueError: asset_errors.append({'path': asset['path'], 'error': 'asset_permission_path'})
+            if asset.get('kind') == 'branding':
+                asset_errors.extend({'path': asset['path'], 'error': issue}
+                    for issue in branding_permission_issues(root, asset, grant))
+            if asset.get('kind') == 'text_authorship':
+                # Only inspect claimed grants. Pending legacy resources retain
+                # their existing findings; this never creates a grant from prose metadata.
+                from rights_investigation import educational_text_inventory, text_resource_issues
+                if text_inventory is None: text_inventory = educational_text_inventory(root)
+                asset_errors.extend({'path': asset['path'], 'error': issue}
+                    for issue in text_resource_issues(text_inventory, asset['path']))
     if not assets.get('assets'): asset_errors.append({'error': 'asset_inventory_missing'})
     permitted_paths = {s.get('photo', {}).get('path') for s in load(root / 'resources/data/species.json', [])}
     permitted_paths.update(a['path'] for a in assets.get('assets', []))

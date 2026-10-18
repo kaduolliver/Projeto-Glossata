@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "kind": "public_source_findings",
+  "consulted_at": "2026-10-18T03:12:16.108143+00:00",
+  "openai_terms": {
+    "url": "https://openai.com/policies/terms-of-use/",
+    "effective_date_shown": "2026-01-01",
+    "locators": [
+      "Content / Ownership of content",
+      "Content / Similarity of content",
+      "Using our Services",
+      "Disclaimer of warranties"
+    ],
+    "historical_comparison": "https://openai.com/policies/oct-2024-row-terms/",
+    "finding": "Between user and provider, available output rights are assigned to the user to the extent law permits. Outputs need not be unique. The user remains responsible for inputs and lawful use; third-party rights are not cleared by this provision.",
+    "limitation": "Creation date, account/contract category and final-variant preparation have not been established. Current terms are not silently applied retrospectively; no exclusive copyright or trademark registration inferred."
+  },
+  "pseudoboletus": {
+    "doi": "10.1073/pnas.1922539117",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+    "authors": "Sanchez-Garcia et al.",
+    "year": 2020,
+    "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+    "source_license_as_displayed": "CC-BY-NC-ND-4.0",
+    "access": "Relevant primary-source section retrieved through the search index. Direct PMC page requires browser verification; publisher page redirects. No complete reading of article or supplements claimed.",
+    "finding": "The section describes uncertainty over parasitic nutrition in the named fungal genera and discusses evidence for ectomycorrhizal association as well as parasitism of other fungi.",
+    "editorial_inference": "The caution about inferring nutrition from growing on another fungus is an educational inference, not a quotation or an experimental conclusion attributed verbatim to this study.",
+    "copyright_limitation": "Citation and extraction of facts do not authorize copying/translating/adapting protected expression under a different license. No paper text or images archived."
+  },
+  "permissions_created": 0,
+  "human_reviews_created": 0
+}

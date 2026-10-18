@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "kind": "educational_origin_investigation",
+  "consulted_at": "2026-10-18T03:10:57.843396+00:00",
+  "base_commit": "49e4e3dcfe8c6b18237a5f61e816bdc39e154d21",
+  "scope": "All current prose occurrences: structural inventory, file history and generator bindings. Not a whole-corpus semantic originality or scientific certification.",
+  "files": {
+    "resources/data/group_education.json": {
+      "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
+      "file_history_commits": [
+        "5ede24c706ae9497954e7e5091de91db8bbce584",
+        "808dd6c4aff7c677af68bcbeaa06f00332a439c9"
+      ],
+      "origin_kind": "inconclusive",
+      "limitation": "Commit authors/availability, scientific citations and AI assistance do not establish exclusive ownership or textual source."
+    },
+    "resources/data/hint_education.json": {
+      "sha256": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
+      "file_history_commits": [
+        "5a119b3b6549d6eaf8e103fe0edeb01441a47f70",
+        "035d4d0a25adbaafc831b2531a6d558c114fd03d",
+        "f4b870505e224eb48997cbe96f88225290cdaae3"
+      ],
+      "origin_kind": "inconclusive",
+      "limitation": "Commit authors/availability, scientific citations and AI assistance do not establish exclusive ownership or textual source."
+    },
+    "resources/data/progressive_hints.json": {
+      "sha256": "a90ff4f604c0f05f8c4dd05889052d672e60c5732d2b4117fbc0743a8fb181e5",
+      "file_history_commits": [
+        "03648b7b792cb6098660599dc0470473114e6763",
+        "79586a51f0e020541f98c0a8d39405b0ddda2bd8",
+        "4d047561840b33e785c82aab029691d9644c2ddb",
+        "d7c523eb3cceb2ae832f366f543ec16c0f0e48fc"
+      ],
+      "origin_kind": "inconclusive",
+      "limitation": "Commit authors/availability, scientific citations and AI assistance do not establish exclusive ownership or textual source."
+    },
+    "resources/data/species_profiles.json": {
+      "sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+      "file_history_commits": [
+        "79586a51f0e020541f98c0a8d39405b0ddda2bd8",
+        "011b1da2f6fca4695931a6024190c0f5b19276e6"
+      ],
+      "origin_kind": "inconclusive",
+      "limitation": "Commit authors/availability, scientific citations and AI assistance do not establish exclusive ownership or textual source."
+    }
+  },
+  "human_decisions_created": 0,
+  "group_extraction": {
+    "source_commit": "808dd6c4aff7c677af68bcbeaa06f00332a439c9^",
+    "source_path": "scripts/build_education.py",
+    "constants": [
+      "DEFINITIONS",
+      "PLAIN_NOTES"
+    ],
+    "all_prose_preserved": true,
+    "definitions": 19,
+    "plain_note_sets": 15,
+    "bibliographic_bindings": [
+      {
+        "group": "Animalia",
+        "url": "https://openstax.org/books/biology-2e/pages/27-1-features-of-the-animal-kingdom",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Plantae",
+        "url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Fungi",
+        "url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Protista",
+        "url": "https://openstax.org/books/biology-2e/pages/23-2-characteristics-of-protists",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Monera",
+        "url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Arthropoda",
+        "url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Insecta",
+        "url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Chordata",
+        "url": "https://openstax.org/books/biology-2e/pages/29-1-chordates",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Tracheophyta",
+        "url": "https://openstax.org/books/biology-2e/pages/25-4-seedless-vascular-plants",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Ascomycota",
+        "url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Basidiomycota",
+        "url": "https://openstax.org/books/biology-2e/pages/24-2-classifications-of-fungi",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Amoebozoa",
+        "url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Myxogastria",
+        "url": "https://openstax.org/books/biology-2e/pages/23-3-groups-of-protists",
+        "title": "OpenStax — Biology 2e"
+      },
+      {
+        "group": "Lepidoptera",
+        "url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+        "title": "Amateur Entomologists' Society"
+      },
+      {
+        "group": "Papilionidae",
+        "url": "https://genent.cals.ncsu.edu/insect-identification/order-lepidoptera/family-papilionidae/",
+        "title": "North Carolina State University"
+      },
+      {
+        "group": "Saturniidae",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5723595/",
+        "title": "Publicação científica — Ecology and Evolution"
+      },
+      {
+        "group": "Mycetozoa",
+        "url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+        "title": "University of California, Berkeley — Museum of Paleontology"
+      },
+      {
+        "group": "Euglenida",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7052976/",
+        "title": "Publicação científica — BMC Biology (2020), DOI: 10.1186/s12915-020-0754-1"
+      },
+      {
+        "group": "Chiton",
+        "url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+        "title": "Queensland Museum"
+      }
+    ],
+    "limitation": "Exact extraction is evidence of local derivation, not proof of original expression or rights in the underlying prose."
+  },
+  "progressive_generation": {
+    "generator": "scripts/review_hints.py",
+    "generator_sha256": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
+    "matches_current_generator": true,
+    "derived_occurrences": 1119,
+    "limitation": "Generated copies and rationales inherit source questions; no independent rights inferred."
+  }
+}

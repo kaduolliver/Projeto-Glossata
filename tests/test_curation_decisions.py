@@ -27,6 +27,17 @@ class DecisionTests(unittest.TestCase):
         self.assertIsNone(draft['decision']['reviewer']);self.assertEqual(draft['decision']['state'],'pending')
         self.assertEqual(before,(self.root/'resources/compliance/review_baseline.json').read_bytes())
         self.assertFalse((self.root/'resources/compliance/review_history.jsonl').exists())
+    def test_prepared_editorial_proposal_is_not_human_confirmation(self):
+        draft=decisions.template(self.root,self.config,'review',self.key,self.rid,1)
+        draft['proposed_state_after_confirmation_only']='approved_editorial'
+        draft['decision'].update(state='approved_editorial',review_kind='editorial',claim_scope='species',
+            evidence=[{'url':'https://example.org/study','locator':'Synthetic section',
+                       'supports':'Synthetic claim only'}])
+        with self.assertRaisesRegex(ValueError,'real human'):
+            decisions.record_decision(self.root,self.config,draft)
+        with self.assertRaises(ValueError):
+            governance.append_review(self.root,self.key,draft['decision'])
+        self.assertEqual(governance.read_ledger(self.root),[])
     def test_approved_decision_routes_to_existing_history_and_replay_is_idempotent(self):
         envelope=self.envelope();first=decisions.record_decision(self.root,self.config,envelope)
         path=self.root/'resources/compliance/review_history.jsonl';before=path.read_bytes()
