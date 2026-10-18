@@ -262,6 +262,79 @@ def required_actions(issues, scientific=()):
     return actions
 
 
+def educational_text_inventory(root=g.ROOT):
+    """Deduplicate exact prose and retain every source binding; never decide rights.
+
+    The existing rights report owns this inventory. No corpus, review date or
+    permission is written, and different citations of identical text stay distinct.
+    """
+    names = ('group_education', 'species_profiles', 'hint_education', 'progressive_hints')
+    data = {n: g.load(root / ('resources/data/' + n + '.json'), {}) for n in names}
+    passages = {}; counts = {n: 0 for n in names}
+
+    def add(name, pointer, text, source=None, role='educational_assertion', derived_from=None):
+        if not isinstance(text, str) or not text.strip(): return
+        key = hashlib.sha256(text.encode('utf8')).hexdigest()
+        row = passages.setdefault(key, {'text_sha256': key, 'characters': len(text),
+            'originality_state': 'inconclusive', 'permission_created': False, 'occurrences': []})
+        source = source or {}
+        occurrence = {'file': 'resources/data/' + name + '.json', 'pointer': pointer,
+            'role': role, 'source_url': source.get('source_url'), 'source_locator': source.get('locator')}
+        if derived_from: occurrence['derived_from'] = derived_from
+        row['occurrences'].append(occurrence); counts[name] += 1
+
+    definitions = data['group_education'].get('definitions', [])
+    by_group = {d[0]: {'source_url': d[2]} for d in definitions}
+    for i, definition in enumerate(definitions):
+        for j in (4, 5, 6):
+            add('group_education', '/definitions/' + str(i) + '/' + str(j), definition[j], by_group[definition[0]])
+    for name, notes in data['group_education'].get('plain_notes', {}).items():
+        for j, text in enumerate(notes):
+            add('group_education', '/plain_notes/' + name + '/' + str(j), text, by_group.get(name))
+
+    def walk(name, value, pointer='', source=None):
+        if isinstance(value, dict):
+            source = value if value.get('source_url') else source
+            for key, child in sorted(value.items()):
+                part = pointer + '/' + key.replace('~', '~0').replace('/', '~1')
+                if key in {'text', 'rationale', 'prefix'}:
+                    add(name, part, child, source,
+                        'pedagogical_rationale' if key == 'rationale' else 'educational_assertion')
+                else: walk(name, child, part, source)
+        elif isinstance(value, list):
+            for i, child in enumerate(value): walk(name, child, pointer + '/' + str(i), source)
+
+    for name in ('species_profiles', 'hint_education'):
+        walk(name, data[name])
+    for sid, item in data['progressive_hints'].get('species', {}).items():
+        for i, recipe in enumerate(item.get('recipes', [])):
+            pointer = '/species/' + sid + '/recipes/' + str(i)
+            origin = recipe.get('source_note') or ('taxonomy.json / ' + recipe.get('node', {}).get('id', ''))
+            for field in ('text', 'source_text', 'rationale'):
+                add('progressive_hints', pointer + '/' + field, recipe.get(field), recipe,
+                    'generated_pedagogical_rationale' if field == 'rationale' else 'generated_copy', origin)
+    for field in ('rationale', 'limitations'):
+        add('progressive_hints', '/evaluation/' + field, data['progressive_hints'].get('evaluation', {}).get(field),
+            role='automated_evaluation_metadata')
+    projection = {'state': 'not_present', 'matches_generator': None}
+    if data['progressive_hints']:
+        try:
+            import review_hints
+            current = {k: v for k, v in data['progressive_hints'].items() if k != 'evaluation'}
+            projection = {'state': 'compared_without_evaluation', 'matches_generator': current == review_hints.prepare(root)}
+        except (KeyError, TypeError, ValueError, OSError):
+            projection = {'state': 'source_incomplete_or_invalid', 'matches_generator': False}
+    return {'scope': 'All nonempty educational text/rationale/prefix fields in four sources, including unused group definitions; no semantic originality certification.',
+        'files': {n + '.json': {'sha256': file_hash(root / ('resources/data/' + n + '.json')),
+                               'passage_occurrences': counts[n]} for n in names},
+        'definition_count': len(definitions), 'plain_note_sets': len(data['group_education'].get('plain_notes', {})),
+        'profile_count': len(data['species_profiles']), 'hint_identity_count': len(data['hint_education']),
+        'generated_identity_count': len(data['progressive_hints'].get('species', {})),
+        'unique_passages': len(passages), 'total_occurrences': sum(counts.values()),
+        'projection': projection, 'decisions_created': 0, 'external_consultations': 0,
+        'passages': [passages[k] for k in sorted(passages)]}
+
+
 def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), refresh=False, client=None, at=None):
     root = Path(root); package = Path(package) if package else None
     source = distribution.release_gate(root)  # Existing authority, never replaced by proposal findings.
@@ -374,8 +447,12 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'local_sha256': file_hash(g.local_file(root, relative)), 'scope': locate(relative),
             'registered_state': asset.get('state'), 'investigation_state': 'pending_human_review', 'priority': 1,
             'issues': [f['error'] for f in source['asset_licensing'] if f.get('path') == relative],
+            'origin_statements': [asset[k] for k in ('origin_statement', 'origin_addendum') if asset.get(k)],
+            'administrative_policy': asset.get('administrative_policy'),
             'curation_request_id': request_id('licensing', 'other-materials'),
-            'actions': ['Maintainer must document ownership/originality, third-party portions and intended grant; supplying a file is not proof of rights.']})
+            'actions': (['Use the recorded origin declarations and chosen visual policy; do not repeat identity selection. Establish available rights and the legitimate scope of official distribution; no exclusive ownership or trademark registration is presumed.']
+                if asset.get('kind') == 'branding' and asset.get('administrative_policy') else
+                ['Document rights, third-party portions and the applicable grant; for educational prose use educational_texts to review passage-specific origin. Citations and generated copies are not permission.'])})
     repository_media = [{'path': p, 'sha256': file_hash(g.local_file(root, p)), 'scope': locate(p),
         'usage': 'test_fixture' if p.startswith('tests/') else 'documentation_or_other_media',
         'priority': 3 if p.startswith('tests/') else 1, 'investigation_state': 'pending_human_review',
@@ -421,6 +498,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'history_only_media_paths': len({r['path'] for r in history['resources']}) if history['assessed'] else None,
             'local_unbundled_media': len(source['unbundled_media']), 'dependency_components': len(dependencies)},
         'photos': sorted(rows, key=lambda r: (r['priority'], r['id'])), 'materials': materials,
+        'educational_texts': educational_text_inventory(root),
         'other_tracked_media': repository_media,
         'readme_screenshots': screenshots, 'public_git_history': history,
         'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1 if locate(f['path'])['tracked_in_current_git'] else 3,

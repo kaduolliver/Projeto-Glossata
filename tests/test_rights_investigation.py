@@ -48,6 +48,53 @@ class InvestigationTests(unittest.TestCase):
         self.assertIn('attribution_incomplete', row['rights_issues'])
         self.assertEqual(row['investigation_state'], 'pending_human_review')
 
+    def test_educational_inventory_deduplicates_text_without_merging_source_bindings(self):
+        self.fixture.write('species_profiles.json', {'1': {'summary': {
+            'text': 'Shared synthetic fact.', 'source_url': 'https://example.org/a'}},
+            '2': {'summary': {'text': 'Shared synthetic fact.', 'source_url': 'https://example.org/b'}}})
+        before = self.files()
+        result = rights.educational_text_inventory(self.root)
+        self.assertEqual(result['unique_passages'], 1)
+        self.assertEqual(result['total_occurrences'], 2)
+        row = result['passages'][0]
+        self.assertEqual({o['source_url'] for o in row['occurrences']}, {'https://example.org/a', 'https://example.org/b'})
+        self.assertEqual(row['originality_state'], 'inconclusive')
+        self.assertFalse(row['permission_created'])
+        self.assertEqual(self.files(), before)
+        self.assertEqual(result, rights.educational_text_inventory(self.root))
+
+    def test_inventory_covers_unused_group_definitions_notes_and_assistance_rationales(self):
+        self.fixture.write('group_education.json', {'definitions': [
+            ['Unused', 'genus', 'https://example.org/group', 'Source', 'Intro.', 'Hint.', 'Fact.']],
+            'plain_notes': {'Unused': ['Alternative hint.', 'Alternative fact.']}})
+        self.fixture.write('hint_education.json', {'1': {'etymology_hints': {'species': {
+            'text': 'Name origin.', 'source_url': 'https://example.org/name',
+            'assistance': {'rationale': 'Synthetic pedagogical rationale.'}}}}})
+        result = rights.educational_text_inventory(self.root)
+        self.assertEqual(result['definition_count'], 1)
+        self.assertEqual(result['plain_note_sets'], 1)
+        self.assertEqual(result['total_occurrences'], 7)
+        self.assertEqual(result['files']['group_education.json']['passage_occurrences'], 5)
+        self.assertEqual(result['decisions_created'], 0)
+
+    def test_inventory_checks_generated_projection_without_renewing_or_approving_it(self):
+        import review_hints
+        self.fixture.write('species_profiles.json', {'1': {'summary': self.fixture.note}})
+        self.fixture.write('hint_education.json', {'1': {}})
+        generated = review_hints.prepare(self.root)
+        generated['evaluation'] = {'state': 'approved_automated', 'reviewed_at': 'synthetic unchanged date'}
+        self.fixture.write('progressive_hints.json', generated)
+        before = self.files()
+        with mock.patch.object(review_hints, 'evaluate', side_effect=AssertionError('Must not evaluate')):
+            result = rights.educational_text_inventory(self.root)
+            self.assertTrue(result['projection']['matches_generator'])
+            self.assertEqual(self.files(), before)
+            generated['species']['1']['recipes'].append({'id': 'tampered', 'text': 'Unbound claim.'})
+            self.fixture.write('progressive_hints.json', generated)
+            result = rights.educational_text_inventory(self.root)
+            self.assertFalse(result['projection']['matches_generator'])
+        self.assertEqual(result['decisions_created'], 0)
+
     def test_observation_license_is_not_photo_permission_and_changes_do_not_revoke_old_grant(self):
         observation = self.observation(); observation['license_code'] = 'cc0'; observation['photos'][0]['license_code'] = 'all-rights-reserved'
         result = self.run_report(online=True, client=self.client(observation))
@@ -109,6 +156,10 @@ class InvestigationTests(unittest.TestCase):
             self.assertTrue(result['distribution_blocked'])
             self.assertEqual(self.files(), before)
         self.assertFalse((self.root / 'resources/compliance/permission_history.jsonl').exists())
+        row = next(r for r in self.run_report()['materials'] if r['path'] == path)
+        self.assertEqual(row['administrative_policy']['id'], 'reserved-to-project')
+        self.assertIsNone(row['permission_evidence'])
+        self.assertEqual(row['registered_state'], 'pending_permission')
 
     def test_casual_captive_context_is_observation_evidence_not_taxon_reclassification(self):
         observation = self.observation(); observation['quality_grade'] = 'casual'
