@@ -146,6 +146,58 @@ class InvestigationTests(unittest.TestCase):
             forged = copy.deepcopy(packet); forged['changes'][0]['proposed_note'].update(change)
             with self.subTest(change=change), self.assertRaises(ValueError):
                 rights.prepare_text_replacement_inputs(self.root, forged)
+
+    def replacement_source_packet(self):
+        packet = self.replacement_packet()
+        path = 'build/update-proposals/rights-evidence/synthetic.json'
+        evidence = {'kind': 'synthetic_reference', 'scientific_approval': False}
+        raw = (json.dumps(evidence, ensure_ascii=False, indent=2) + '\n').encode('utf8')
+        packet['source_evidence_to_archive'] = {path: evidence}
+        row = packet['changes'][0]
+        row['source_verification_state'] = 'source_compared_by_ai_pending_editorial_review'
+        row['source_check'] = {'state': row['source_verification_state'],
+            'text_sha256': row['text_sha256'], 'human_approval': False, 'permission_created': False,
+            'reference_updates': {}, 'evidence': {'path': path, 'sha256': hashlib.sha256(raw).hexdigest()}}
+        return packet, path
+
+    def test_portable_source_evidence_is_checked_without_creating_a_grant(self):
+        packet, path = self.replacement_source_packet(); before = self.files()
+        outputs = rights.prepare_text_replacement_inputs(self.root, packet)
+        self.assertFalse(outputs['resources/data/species_profiles.json']['2']['summary']['verified'])
+        self.assertEqual(self.files(), before)
+        self.assertFalse((self.root / path).exists())
+        changed = copy.deepcopy(packet)
+        changed['source_evidence_to_archive'][path]['scientific_approval'] = True
+        with self.assertRaisesRegex(ValueError, 'Embedded source evidence'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+
+    def test_source_check_rejects_stale_text_missing_evidence_and_fictitious_approval(self):
+        packet, path = self.replacement_source_packet()
+        for alteration in ({'text_sha256': '0' * 64}, {'human_approval': True},
+                           {'permission_created': True}, {'state': 'approved'},
+                           {'reference_updates': {'source_url': 'https://example.org/other'}}):
+            changed = copy.deepcopy(packet); changed['changes'][0]['source_check'].update(alteration)
+            with self.subTest(alteration=alteration), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, changed)
+        changed = copy.deepcopy(packet); changed.pop('source_evidence_to_archive')
+        with self.assertRaisesRegex(ValueError, 'missing'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+        changed = copy.deepcopy(packet); changed['changes'][0]['source_check'] = None
+        with self.assertRaisesRegex(ValueError, 'no evidence'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+
+    def test_source_check_rejects_changed_local_copy_and_path_escape(self):
+        packet, path = self.replacement_source_packet()
+        g.save(self.root / path, {'kind': 'different synthetic reference'})
+        with self.assertRaisesRegex(ValueError, 'Local source evidence'):
+            rights.prepare_text_replacement_inputs(self.root, packet)
+        for unsafe in ('../outside.json', 'resources/data/../../../outside.json',
+                       'C:/outside.json', 'resources\\data\\outside.json'):
+            changed = copy.deepcopy(packet)
+            changed['changes'][0]['source_check']['evidence']['path'] = unsafe
+            with self.subTest(path=unsafe), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, changed)
+
     def test_material_closure_is_independent_of_photos_but_never_overrides_any_gate(self):
         record, _ = self.documented_text_fixture()
         inventory=rights.educational_text_inventory(self.root)

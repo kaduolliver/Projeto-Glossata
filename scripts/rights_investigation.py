@@ -625,6 +625,51 @@ def text_replacement_scope(inventory):
                 limitation='Coverage preparation only; citations, text hashes and this fingerprint do not demonstrate scientific support, independent expression or permission.')
 
 
+def validate_text_replacement_source(root, packet, row):
+    """Check evidence bindings, not the truth or legal sufficiency of a source.
+
+    A portable draft can embed selected evidence before it is archived. Its
+    serialized hash must still match the recorded evidence, just as a local
+    snapshot must. Neither representation is a human decision.
+    """
+    check = row.get('source_check')
+    if check is None:
+        if row.get('source_verification_state') not in (None, 'requires_claim_and_terms_check'):
+            raise ValueError('Source comparison has no evidence binding')
+        return
+    if (not isinstance(check, dict) or check.get('text_sha256') != row.get('text_sha256')
+            or check.get('state') != row.get('source_verification_state')
+            or check.get('human_approval') is not False or check.get('permission_created') is not False):
+        raise ValueError('Invalid source comparison binding or implied approval')
+    updates = check.get('reference_updates', {})
+    if (not isinstance(updates, dict)
+            or set(updates) - {'source_url', 'source_title', 'locator'}
+            or any(row['proposed_note'].get(k) != v for k, v in updates.items())):
+        raise ValueError('Source comparison differs from the proposed reference')
+    ref = check.get('evidence', {})
+    path = ref.get('path') if isinstance(ref, dict) else None
+    if (not isinstance(path, str) or '\\' in path or '..' in path.split('/')
+            or not path.startswith(('resources/compliance/', 'resources/data/',
+                                    'build/update-proposals/rights-evidence/'))):
+        raise ValueError('Invalid source evidence path')
+    target = (Path(root) / path).resolve()
+    if not target.is_relative_to(Path(root).resolve()):
+        raise ValueError('Source evidence escapes the project')
+    expected = ref.get('sha256')
+    if not isinstance(expected, str) or not re.fullmatch(r'[0-9a-f]{64}', expected):
+        raise ValueError('Invalid source evidence hash')
+    embedded = packet.get('source_evidence_to_archive', {})
+    if path in embedded:
+        raw = (json.dumps(embedded[path], ensure_ascii=False, indent=2) + '\n').encode('utf8')
+        if hashlib.sha256(raw).hexdigest() != expected:
+            raise ValueError('Embedded source evidence was changed')
+    if target.is_file():
+        if file_hash(target) != expected:
+            raise ValueError('Local source evidence was changed')
+    elif path not in embedded:
+        raise ValueError('Source evidence is missing')
+
+
 def prepare_text_replacement_inputs(root, packet):
     """Validate a complete draft against current bindings, returning copies only.
 
@@ -670,6 +715,7 @@ def prepare_text_replacement_inputs(root, packet):
             raise ValueError('New wording cannot inherit a legacy approval')
         if field == 'prefix' and any(proposed.get(k) != node.get(k) for k in ('verified', 'reviewed_on')):
             raise ValueError('A prefix replacement cannot declare a review')
+        validate_text_replacement_source(root, packet, row)
         node.clear(); node.update(copy.deepcopy(proposed))
     for row in packet.get('retained_wording_requiring_rights_check', []):
         key = (row['file'], row['pointer'])
