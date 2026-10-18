@@ -279,12 +279,12 @@ class ImportTests(unittest.TestCase):
         import review_hints
         report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
         packet=report['educational_regularization']['profile_openstax_batch']
-        self.assertEqual(packet['state'],'draft')
-        self.assertIsNone(packet['reviewer']);self.assertIsNone(packet['reviewed_at'])
-        self.assertFalse(packet['active_content_changed'])
-        source_path=PROJECT/packet['target']
-        self.assertEqual(hashlib.sha256(source_path.read_bytes()).hexdigest(),packet['previous_file_sha256'])
-        profiles=json.loads(source_path.read_bytes())
+        # Exercise invalidation from the exact pre-confirmation baseline, even
+        # after the separately confirmed batch has been incorporated.
+        base=packet['promotion']['proposal_git_commit']
+        source_bytes=self.historical_bytes(base,packet['target'])
+        self.assertEqual(hashlib.sha256(source_bytes).hexdigest(),packet['previous_file_sha256'])
+        profiles=json.loads(source_bytes)
         replacements=json.loads(json.dumps(profiles))
         pointers=set()
         for change in packet['proposed_changes']:
@@ -314,6 +314,9 @@ class ImportTests(unittest.TestCase):
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
             for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
+            for relative in (packet['target'],'resources/data/education.json','resources/data/progressive_hints.json',
+                             'resources/compliance/review_history.jsonl','resources/compliance/asset_rights.json'):
+                (root/relative).write_bytes(self.historical_bytes(base,relative))
             before=education.build(root,persist=False)
             before_recipes=review_hints.prepare(root)
             governance.save(root/packet['target'],replacements)
@@ -350,6 +353,73 @@ class ImportTests(unittest.TestCase):
             self.assertEqual(regenerated['species']['82'],before['species']['82'])
             for key in changed:
                 self.assertFalse(regenerated['notes'][key]['governance']['usable'])
+
+    def test_confirmed_profile_batch_restores_only_approved_notes_and_keeps_rights_partial(self):
+        import content_governance as governance
+        import rights_investigation
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
+        packet=report['educational_regularization']['profile_openstax_batch']
+        self.assertEqual(packet['state'],'applied_after_explicit_confirmation')
+        ref=packet['confirmation_evidence']
+        self.assertEqual(hashlib.sha256((PROJECT/ref['path']).read_bytes()).hexdigest(),ref['sha256'])
+        proof=json.loads((PROJECT/ref['path']).read_bytes())
+        self.assertEqual(governance.digest(proof['proposed_changes']),packet['proposal_fingerprint'])
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente esta versão completa')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada a este lote')
+        self.assertFalse(proof['legal_or_scientific_certification'])
+        profiles=governance.load(PROJECT/packet['target'])
+        baseline=json.loads(self.historical_bytes(packet['promotion']['proposal_git_commit'],packet['target']))
+        expected=set()
+        for change in packet['proposed_changes']:
+            _,sid,field=change['pointer'].split('/')
+            self.assertEqual(profiles[sid][field],change['proposed_note'])
+            expected.add((sid,field))
+        self.assertEqual({(sid,k) for sid,p in profiles.items() for k,v in p.items() if v!=baseline[sid][k]},expected)
+        inventory=rights_investigation.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        self.assertEqual(rights_investigation.text_resource_issues(inventory,packet['target']),['text_component_rights_pending'])
+        rows=[r for r in inventory['rights_metadata']['records']
+              if any(b['file']==packet['target'] for b in r.get('bindings',[]))]
+        self.assertEqual(sorted((r['declared_metadata']['investigation_state'],len(r['bindings'])) for r in rows),
+                         [('documented',34),('inconclusive',805)])
+        current=education.build(PROJECT,persist=False)
+        receipts={r['key']:r for r in packet['recorded_decisions']}
+        self.assertEqual(len(receipts),35)
+        events={e['event_sha256']:e for e in governance.read_ledger(PROJECT)}
+        for key,receipt in receipts.items():
+            note=current['notes'][key]
+            self.assertEqual(note['governance']['state'],'approved_editorial')
+            self.assertFalse(note['verified']);self.assertIsNone(note['reviewed_on'])
+            self.assertEqual(events[receipt['event_sha256']]['confirmation_evidence'],ref)
+            self.assertEqual(receipt['content_sha256'],note['governance']['content_sha256'])
+        for sid in {sid for sid,_ in expected}:
+            self.assertEqual(current['species'][sid]['governance']['education']['state'],'needs_review')
+            self.assertFalse(current['species'][sid]['governance']['education']['usable'])
+        self.assertFalse(current['notes']['species:110:morphological_hint']['assistance']['governance']['usable'])
+        old_education=json.loads(self.historical_bytes(packet['promotion']['proposal_git_commit'],'resources/data/education.json'))
+        self.assertEqual(current['species']['82'],old_education['species']['82'])
+        self.assertEqual({k:v for k,v in current['notes'].items() if k not in receipts},
+                         {k:v for k,v in old_education['notes'].items() if k not in receipts})
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        self.assertIsNone(assets['own_material_licenses']['texts'])
+        for asset in assets['assets']:
+            if asset['path'] in {packet['target'],'resources/data/progressive_hints.json'}:
+                self.assertFalse(asset['permission']['distribution_allowed'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            shutil.copytree(PROJECT/'resources/data',root/'resources/data')
+            shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
+            ledger=(root/'resources/compliance/review_history.jsonl').read_bytes()
+            changed_profiles=governance.load(root/packet['target'])
+            changed_profiles['41']['nutrition']['text']+=' Synthetic fixture change.'
+            governance.save(root/packet['target'],changed_profiles)
+            changed=education.build(root,persist=False)
+            self.assertEqual(changed['notes']['species:41:nutrition']['governance']['state'],'needs_review')
+            self.assertFalse(changed['notes']['species:41:nutrition']['governance']['usable'])
+            for key in receipts:
+                if key!='species:41:nutrition': self.assertEqual(changed['notes'][key],current['notes'][key])
+            self.assertEqual((root/'resources/compliance/review_history.jsonl').read_bytes(),ledger)
+            self.assertTrue(rights_investigation.educational_text_inventory(root)['rights_metadata']['technical_errors'])
 
     def test_profile_batch_revision_is_bound_to_history_and_exact_review_document(self):
         import content_governance as governance

@@ -302,6 +302,47 @@ class InvestigationTests(unittest.TestCase):
         asset['sha256']=hashlib.sha256((self.root/relative).read_bytes()).hexdigest()
         self.assertEqual(check(self.root,asset,grant),['text_grant_binding_invalid'])
 
+    def test_partial_profile_grant_is_bound_to_confirmed_wordings_and_not_whole_file(self):
+        record, ref = self.documented_text_fixture()
+        note = g.load(self.root/record['file'])['1']['summary']
+        changes = [{'pointer':'/1/summary','proposed_note':note,
+                    'proposed_note_sha256':g.digest(note),'text_sha256':record['text_sha256']}]
+        binding = {k:record[k] for k in ('file','pointer','text_sha256')}
+        proof = {'kind':'educational_profile_batch_confirmation','file':record['file'],
+            'proposed_changes':changes,'proposal_fingerprint':g.digest(changes),'occurrences':[binding],
+            'license_confirmation':{'declared_by':'Synthetic fixture maintainer','recorded_on':'2020-01-01',
+                'statement':'Synthetic confirmation only.','scope':'One synthetic wording only.',
+                'license':'CC-BY-4.0','license_url':'https://creativecommons.org/licenses/by/4.0/'}}
+        def write(proposal, row):
+            g.save(self.root/ref['path'],proposal)
+            row['evidence'][0]['sha256']=hashlib.sha256((self.root/ref['path']).read_bytes()).hexdigest()
+            self.write_text_rights([row])
+        write(proof,record)
+        self.assertEqual(rights.profile_batch_binding_issues(self.root,record),[])
+        self.assertEqual(rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]['rights_issues'],[])
+        for row in (dict(record,pointer='/2/summary/text'),dict(record,file='resources/data/hint_education.json'),
+                    dict(record,text_sha256='0'*64),dict(record,declared_license='CC0-1.0')):
+            self.assertEqual(rights.profile_batch_binding_issues(self.root,row),['profile_batch_grant_binding_invalid'])
+        for field,value in [('statement',None),('declared_by',None),('scope',None),('recorded_on','2999-01-01'),
+                            ('license','CC-BY-SA-4.0')]:
+            changed=copy.deepcopy(proof);changed['license_confirmation'][field]=value
+            write(changed,record)
+            self.assertIn('profile_batch_grant_binding_invalid',rights.educational_text_inventory(self.root)
+                          ['rights_metadata']['records'][0]['rights_issues'])
+        changed=copy.deepcopy(proof);changed['proposed_changes'][0]['proposed_note']['text']='Unconfirmed change.'
+        write(changed,record)
+        self.assertEqual(rights.profile_batch_binding_issues(self.root,record),['profile_batch_grant_binding_invalid'])
+        # Updating the outer fingerprint alone cannot validate stale note/text hashes.
+        changed['proposal_fingerprint']=g.digest(changed['proposed_changes']);write(changed,record)
+        self.assertEqual(rights.profile_batch_binding_issues(self.root,record),['profile_batch_grant_binding_invalid'])
+        changed=copy.deepcopy(proof);changed['occurrences'][0]['pointer']='/2/summary/text';write(changed,record)
+        self.assertEqual(rights.profile_batch_binding_issues(self.root,record),['profile_batch_grant_binding_invalid'])
+        write(proof,record)
+        self.fixture.write('species_profiles.json',{'1':{'summary':note,'hint':{'text':'Another unconfirmed wording.'}}})
+        self.assertIn('text_component_coverage_incomplete',
+                      rights.text_resource_issues(rights.educational_text_inventory(self.root),record['file']))
+        self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
+
     def test_partial_coverage_cannot_release_a_whole_file_or_override_source_terms(self):
         record, proof = self.documented_text_fixture()
         self.fixture.write('species_profiles.json', {'1': {'summary': {'text':'Synthetic educational passage.'},

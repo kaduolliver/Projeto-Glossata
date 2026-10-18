@@ -290,6 +290,43 @@ def editorial_policy_errors(root=g.ROOT):
     return errors
 
 
+def profile_batch_binding_issues(root, record):
+    """Check an explicit partial grant against its immutable confirmed proposal.
+
+    This verifies declared scope and bytes, never identity, ownership or consent.
+    Other evidence formats retain their existing validation.
+    """
+    try:
+        for ref in record.get('evidence', []):
+            proof = g.load(g.local_file(root, ref['path']), {})
+            if proof.get('kind') != 'educational_profile_batch_confirmation': continue
+            changes = proof['proposed_changes']; confirmation = proof['license_confirmation']
+            recorded = g.parse_time(confirmation.get('recorded_on'))
+            if (not isinstance(changes, list) or not changes
+                    or g.digest(changes) != proof.get('proposal_fingerprint')
+                    or proof.get('file') != 'resources/data/species_profiles.json'
+                    or not confirmation.get('declared_by') or not confirmation.get('statement')
+                    or not confirmation.get('scope') or not recorded or recorded > g.parse_time(g.now())
+                    or confirmation.get('license') != 'CC-BY-4.0'
+                    or record.get('declared_license') != confirmation['license']
+                    or confirmation.get('license_url') != 'https://creativecommons.org/licenses/by/4.0/'):
+                raise ValueError('Invalid confirmed batch')
+            expected = set()
+            for change in changes:
+                note = change['proposed_note']
+                if (g.digest(note) != change['proposed_note_sha256']
+                        or hashlib.sha256(note['text'].encode('utf8')).hexdigest() != change['text_sha256']):
+                    raise ValueError('Changed proposal')
+                expected.add((proof['file'], change['pointer'] + '/text', change['text_sha256']))
+            occurrence_set = lambda rows: {tuple(o[k] for k in ('file', 'pointer', 'text_sha256')) for o in rows}
+            bound = record.get('occurrences', [record])
+            if occurrence_set(proof['occurrences']) != expected or not occurrence_set(bound) <= expected:
+                raise ValueError('Grant extends beyond confirmed wordings')
+    except (KeyError, TypeError, ValueError, OSError, AttributeError):
+        return ['profile_batch_grant_binding_invalid']
+    return []
+
+
 def educational_rights_metadata(root, passages):
     """Read optional documentary records in the existing asset inventory.
 
@@ -345,7 +382,7 @@ def educational_rights_metadata(root, passages):
                     raise ValueError('Evidence does not match')
             except (KeyError, TypeError, ValueError, OSError):
                 errors.append(label + ':invalid_evidence')
-        issues = []
+        issues = profile_batch_binding_issues(root, record)
         if record.get('origin_kind') == 'inconclusive': issues.append('origin_inconclusive')
         if not evidence or not record.get('rights_available'): issues.append('rights_evidence_incomplete')
         declared_license = record.get('declared_license')

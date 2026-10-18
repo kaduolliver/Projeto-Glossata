@@ -1115,7 +1115,9 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
 {
     JsonSpeciesCatalog catalog;
     EducationalContent content;
-    int profiles=0,confirmed=0;
+    const QSet<int> profileBatch{133,53,61,44,47,43,48,49,51,54,57,50,55,52,60,62,
+                                23,26,30,31,34,35,41,65,70,71,81,110};
+    int profiles=0,confirmed=0,editorialNotes=0;
     for (const Species &s : catalog.loadSpecies()) {
         const auto profile=content.profile(s);
         QVERIFY2(!profile.isEmpty(),qPrintable(s.name));
@@ -1123,8 +1125,10 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY(!profile.value("displayName").toString().isEmpty());
         QCOMPARE(profile.value("reviewedOn").toString().isEmpty(),s.id!=82);
         const auto review=profile.value("governance").toMap().value("education").toMap();
-        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("approved_editorial") : QString("legacy"));
+        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("approved_editorial")
+                 : profileBatch.contains(s.id) ? QString("needs_review") : QString("legacy"));
         QCOMPARE(review.value("reviewer").toString().isEmpty(),s.id!=82);
+        if (profileBatch.contains(s.id)) QVERIFY(!review.value("usable").toBool());
         if (s.id==82) {
             // Restored only after the maintainer's explicit, hash-bound editorial decision.
             for (const auto &field : {QString("nutrition"),QString("curiosity")}) {
@@ -1142,8 +1146,17 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
             QVERIFY2(!item.value("text").toString().isEmpty(),qPrintable(s.name+":"+field));
             QVERIFY(item.value("source_url").toString().startsWith("https://"));
             const auto claimReview=item.value("governance").toMap();
-            QCOMPARE(claimReview.value("state").toString(),QString("legacy"));
-            QVERIFY(claimReview.value("reviewed_at").toString().isEmpty());
+            const bool approvedMorphology=s.id==110 && field=="morphology";
+            QCOMPARE(claimReview.value("state").toString(),approvedMorphology ? QString("approved_editorial") : QString("legacy"));
+            QCOMPARE(claimReview.value("reviewed_at").toString().isEmpty(),!approvedMorphology);
+        }
+        for (const auto &field : {QString("nutrition"),QString("curiosity"),QString("morphology")}) {
+            const auto note=profile.value(field).toMap();
+            if (s.id==82 || note.value("governance").toMap().value("state").toString()!="approved_editorial") continue;
+            QVERIFY(profileBatch.contains(s.id));
+            QVERIFY(!note.value("text").toString().isEmpty());
+            QCOMPARE(note.value("governance").toMap().value("review_kind").toString(),QString("editorial"));
+            ++editorialNotes;
         }
         QVERIFY(!profile.value("distribution").toMap().value("text").toString().contains("não revisada"));
         const auto status=profile.value("conservation").toMap();
@@ -1153,8 +1166,11 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         }
         if (s.educationalKingdom=="Plantae" || s.educationalKingdom=="Protista" || s.educationalKingdom=="Monera")
             QVERIFY(!profile.value("nutrition").toMap().isEmpty());
-        if (s.educationalKingdom=="Monera")
-            QVERIFY(profile.value("morphology").toMap().value("text").toString().contains("apenas apoio"));
+        if (s.educationalKingdom=="Monera") {
+            const auto text=profile.value("morphology").toMap().value("text").toString();
+            QVERIFY(text.contains(s.id==110 ? "imagem de apoio" : "apenas apoio"));
+            QVERIFY(text.contains("não confirma"));
+        }
         QVERIFY2(!content.hint(s,"genus",{s.answerAtRank("genus")}).isEmpty(),qPrintable(s.name));
         QVERIFY(!content.curiosity(s).isEmpty());
         if (s.name=="Panthera leo") {
@@ -1168,6 +1184,7 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY(content.profile(reused).isEmpty());
     }
     QCOMPARE(profiles,122);
+    QCOMPARE(editorialNotes,34);
     QCOMPARE(confirmed,22);
     Species missing; missing.id=9999;
     QVERIFY(content.profile(missing).isEmpty());

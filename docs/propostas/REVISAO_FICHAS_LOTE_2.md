@@ -1,14 +1,14 @@
 # Lote 2 — comparação das propostas para fichas
 
-**Estado: versão revisada para duas confirmações distintas; ainda não aplicada.**
+**Estado: versão integralmente confirmada e incorporada em 2026-10-18.**
 
-Conferência única do lote, preparada a partir da `main` que integrou o PR #19. Esta apresentação deriva de `educational_regularization.profile_openstax_batch` em [SANEAMENTO_ISSUE_2.json](../SANEAMENTO_ISSUE_2.json). Foram conferidas as fontes arquivadas, ajustadas cinco redações compartilhadas e acrescentadas duas referências específicas para sanar a lacuna sobre micélio. Não houve aprovação editorial humana, concessão de direitos ou alteração de `species_profiles.json`.
+Conferência única do lote, preparada a partir da `main` que integrou o PR #19. Esta apresentação deriva de `educational_regularization.profile_openstax_batch` em [SANEAMENTO_ISSUE_2.json](../SANEAMENTO_ISSUE_2.json). Foram conferidas as fontes arquivadas, ajustadas cinco redações compartilhadas e acrescentadas duas referências específicas para sanar a lacuna sobre micélio. A preparação anterior não criou aprovações; posteriormente o mantenedor confirmou separadamente a versão editorial e os direitos disponíveis, conforme a evidência indicada abaixo.
 
-São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações compartilhadas, sem perder os vínculos individuais. A confirmação das 68 redações de grupos não alcança este lote. Datas de revisão permanecem vazias, `verified: false`, e a aplicação de CC BY 4.0 aos direitos disponíveis ainda depende da confirmação concreta correspondente.
+São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações compartilhadas, sem perder os vínculos individuais. A confirmação das 68 redações de grupos não alcança este lote. Os campos legados permanecem `verified: false` e `reviewed_on: null`; a revisão real é `approved_editorial` no ledger existente. A confirmação de CC BY 4.0 abrange somente as 34 redações identificadas, sem licença global.
 
 **Fingerprint das 34 propostas** (SHA-256 do JSON canônico de `proposed_changes`): `e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478`.
 
-**Fonte ativa preservada:** `resources/data/species_profiles.json`, SHA-256 `df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec`.
+**Fonte anterior à promoção, preservada no Git:** `resources/data/species_profiles.json`, SHA-256 `df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec`.
 
 **Versão anterior preservada no Git:** fingerprint `a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460`; documento no merge do PR #19, `09e8eb759172e32b9554c4c86d8a583a667e4dcc`. A revisão técnica assistida por IA não é revisão por especialista nem prova de autoria humana exclusiva.
 
@@ -61,11 +61,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Alimentação/nutrição. **Escopo proposto:** Plantas fotossintetizantes.
 
-**Redação atual:** Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.
+**Redação anterior à promoção:** Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.
 
-**Redação proposta, ainda não aplicada:** A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.
+**Redação aprovada e incorporada:** A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/25-1-early-plant-life). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/25-1-early-plant-life). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Johnson MP. (2016) — Photosynthesis.](https://doi.org/10.1042/ebc20160016).
 
@@ -93,11 +93,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Curiosidade. **Escopo proposto:** Insetos.
 
-**Redação atual:** O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.
+**Redação anterior à promoção:** O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.
 
-**Redação proposta, ainda não aplicada:** Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.
+**Redação aprovada e incorporada:** Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.](https://doi.org/10.3389/fnbeh.2020.612313).
 
@@ -125,11 +125,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Alimentação/nutrição. **Escopo proposto:** Louva-a-deus.
 
-**Redação atual:** Captura insetos e outros pequenos animais.
+**Redação anterior à promoção:** Captura insetos e outros pequenos animais.
 
-**Redação proposta, ainda não aplicada:** Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa.
+**Redação aprovada e incorporada:** Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Bäumler F et al. (2026) — A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.](https://doi.org/10.1186/s12983-026-00610-9).
 
@@ -157,11 +157,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Curiosidade. **Escopo proposto:** Plantas.
 
-**Redação atual:** Nem todas as plantas produzem flores; vários grupos se reproduzem por esporos.
+**Redação anterior à promoção:** Nem todas as plantas produzem flores; vários grupos se reproduzem por esporos.
 
-**Redação proposta, ainda não aplicada:** A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.
+**Redação aprovada e incorporada:** A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/25-1-early-plant-life). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/25-1-early-plant-life). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.](https://doi.org/10.1093/plphys/kiac304).
 
@@ -189,11 +189,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Curiosidade. **Escopo proposto:** Líquens; comparação com estudo de outra espécie.
 
-**Redação atual:** A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.
+**Redação anterior à promoção:** A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.
 
-**Redação proposta, ainda não aplicada:** Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada.
+**Redação aprovada e incorporada:** Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.](https://doi.org/10.1186/s12864-019-5629-x).
 
@@ -221,11 +221,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Alimentação/nutrição. **Escopo proposto:** Líquens.
 
-**Redação atual:** O parceiro fotossintetizante produz açúcares; o fungo participa da estrutura da associação.
+**Redação anterior à promoção:** O parceiro fotossintetizante produz açúcares; o fungo participa da estrutura da associação.
 
-**Redação proposta, ainda não aplicada:** No líquen, o parceiro fotossintetizante fornece compostos de carbono à associação. O fungo participa da organização do corpo visível, chamado talo; são organismos associados, não um único tecido vegetal.
+**Redação aprovada e incorporada:** No líquen, o parceiro fotossintetizante fornece compostos de carbono à associação. O fungo participa da organização do corpo visível, chamado talo; são organismos associados, não um único tecido vegetal.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-3-ecology-of-fungi). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-3-ecology-of-fungi). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.](https://doi.org/10.1186/s12864-019-5629-x).
 
@@ -253,11 +253,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Curiosidade. **Escopo proposto:** Fungos filamentosos que formam cogumelos.
 
-**Redação atual:** A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.
+**Redação anterior à promoção:** A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.
 
-**Redação proposta, ainda não aplicada:** Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.
+**Redação aprovada e incorporada:** Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.](https://doi.org/10.3390/microorganisms10071379).
 
@@ -287,11 +287,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Alimentação/nutrição. **Escopo proposto:** Cianobactérias.
 
-**Redação atual:** Faz fotossíntese.
+**Redação anterior à promoção:** Faz fotossíntese.
 
-**Redação proposta, ainda não aplicada:** A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio.
+**Redação aprovada e incorporada:** A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Johnson MP. (2016) — Photosynthesis.](https://doi.org/10.1042/ebc20160016).
 
@@ -319,11 +319,11 @@ São **34 ocorrências em 28 organismos**, agrupadas abaixo em nove redações c
 
 **Campo:** Morfologia. **Escopo proposto:** Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio.
 
-**Redação atual:** Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.
+**Redação anterior à promoção:** Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.
 
-**Redação proposta, ainda não aplicada:** Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.
+**Redação aprovada e incorporada:** Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.
 
-**Referência atual:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity). Sua presença não demonstra cópia ou infração.
+**Referência anterior:** [OpenStax · Biology 2e](https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity). Sua presença não demonstra cópia ou infração.
 
 **Referência proposta:** [Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.](https://doi.org/10.3390/genes12030389).
 
@@ -349,27 +349,27 @@ As sete evidências anteriores foram preservadas; oito referências sustentam a 
 
 Na simulação temporária já existente, as 34 alterações produzem 35 notas derivadas diferentes, incluindo o alias morfológico de `110`; todas exigem nova revisão. A avaliação automática das dicas é invalidada e deve ser regenerada explicitamente. As receitas de 121 organismos permanecem idênticas; na receita de aparência de `110`, acompanham a origem somente texto, fonte e localizador, preservando categorias, graus, níveis, fotografia e justificativa. A aprovação científica dessa nota não aprovará automaticamente seu peso pedagógico.
 
-O organismo 82 está fora das propostas. Não há mudança de distribuição, conservação, identidade, fotografia ou licença fotográfica neste lote. A imagem de `110` continua apenas apoio; o bloqueio da identificação visual não é removido. O catálogo ativo continua com 122 organismos e pool competitivo de 80 enquanto as propostas permanecem inativas.
+O organismo 82 está fora das propostas. Não há mudança de distribuição, conservação, identidade, fotografia ou licença fotográfica neste lote. A imagem de `110` continua apenas apoio; o bloqueio da identificação visual não é removido. A incorporação preserva 122 organismos e pool competitivo de 80; as demais informações de cada ficha continuam independentes destas notas.
 
 As ressalvas sobre espécies experimentais e prova fotográfica permanecem nos metadados e nesta conferência. A ressalva de Gomphosphaeria também permanece na redação do jogador por ser essencial. Quatro redações adequadas foram preservadas; cinco foram ajustadas em nove das 34 ocorrências. Não foi ingerido capítulo do OpenStax para redigir esta revisão. A troca de referência não prova infração da redação anterior.
 
 A aprovação solicitada alcança somente estas 34 notas e o mesmo conteúdo científico no alias morfológico derivado de 110. Não aprova tópicos agregados que incluam outras passagens, outros textos, identificação da fotografia, dificuldade da dica, permissões fotográficas ou o arquivo inteiro. Os tópicos agregados alterados devem refletir a necessidade de revisão sem suspender notas individuais não alteradas. A decisão de direitos é independente e não transforma a CC BY 4.0 em licença global do catálogo.
 
-## Duas confirmações necessárias
+## Duas confirmações recebidas
 
 1. **Editorial:** aprovar as nove redações finais nos 34 campos listados, incluindo o mesmo conteúdo científico no alias morfológico de 110, vinculados ao fingerprint acima. É revisão editorial do mantenedor, sem alegação de revisão por especialista ou aprovação do grau de assistência.
 
 2. **Direitos:** confirmar CC BY 4.0 somente nos direitos efetivamente disponíveis sobre essas 34 redações assistidas por IA, preservando crédito do projeto, identificação do lote, fontes e avisos; sem autoria humana exclusiva, relicenciamento dos artigos ou liberação das demais passagens e materiais.
 
-Respostas parciais devem indicar as propostas ou os ponteiros aprovados; somente esse subconjunto poderá ser aplicado. Até as respostas concretas, revisores e datas permanecem vazios, os ledgers e permissões estão inalterados e nenhuma nota foi incorporada.
+O mantenedor respondeu **“Aprovo editorialmente esta versão completa”** e, separadamente, **“Confirmo a aplicação delimitada a este lote”**. As perguntas e respostas reais, o fingerprint, todas as notas e os vínculos estão na [evidência da confirmação](../../resources/compliance/sources/2e9ce124b2056fdb0683dbd55b15dd2391f6e42bb0ffb1dd712ecb572510c5ce.json), SHA-256 `f0651e9f4f618f2e9a36a3d04bc8d300ab00b21e61f2dc4c91e5fdf6bc5f324d`. Foram incorporadas as 34 notas e registrados 35 eventos editoriais, incluindo o alias científico de 110. Não foram aprovados tópicos agregados ou graus de assistência. O restante do arquivo continua pendente; sua distribuição integral permanece bloqueada.
 
 ## Continuidade após o PR #19
 
-O lote de grupos já foi integrado em `09e8eb759172e32b9554c4c86d8a583a667e4dcc` e permanece intacto. As próximas etapas dependem das decisões delimitadas deste lote; não há nova aprovação ou concessão inferida.
+O lote de grupos já foi integrado em `09e8eb759172e32b9554c4c86d8a583a667e4dcc` e permanece intacto. As confirmações deste lote foram registradas sem ampliar o seu escopo; os lotes seguintes continuam dependentes de evidências e decisões próprias.
 
 | Lote | Conteúdo | Próximo critério antes da promoção |
 | --- | --- | --- |
-| 2 | Estas 34 propostas de fichas | Conferir esta versão revisada e registrar separadamente as decisões concretas de revisão e direitos; preservar as passagens restantes como pendentes. |
+| 2 | Estas 34 notas de fichas | Incorporadas após as duas confirmações; as 805 passagens restantes da origem continuam inconclusivas e o arquivo inteiro não foi liberado. |
 | 3 | Demais passagens de `species_profiles.json` | Investigar origem por ocorrência, reutilizar evidências suficientes e só propor substituições fundamentadas; manter incertezas de distribuição/conservação e a revisão já realizada de `82`. |
 | 4 | Etimologias, explicações e justificativas de `hint_education.json` | Conferir fontes nomenclaturais e expressão textual separadamente; preservar categorias e graus, reavaliando contexto apenas quando mudanças reais exigirem. |
 | 5 | Conferência final de `progressive_hints.json` | Regenerar exclusivamente pelo fluxo existente e verificar a cobertura de direitos das origens, sem licença independente inferida sobre derivados. |

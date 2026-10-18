@@ -1,6 +1,43 @@
 # Saneamento documental da Issue #2
 
-## Lote 2 — conferência final das fichas, 2026-10-18
+## Lote 2 confirmado e incorporado — 2026-10-18
+
+O mantenedor confirmou **“Aprovo editorialmente esta versão completa”** e, separadamente, **“Confirmo a aplicação delimitada a este lote”**, para o fingerprint `e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478`. A confirmação concreta está na [evidência imutável](../resources/compliance/sources/2e9ce124b2056fdb0683dbd55b15dd2391f6e42bb0ffb1dd712ecb572510c5ce.json), SHA-256 `f0651e9f4f618f2e9a36a3d04bc8d300ab00b21e61f2dc4c91e5fdf6bc5f324d`, com perguntas, respostas, 34 notas, vínculos, limites e data civil real. A identidade é declarada, sem assinatura digital ou autenticação independente; não se inventou horário da resposta ou revisão especializada.
+
+Foram substituídas **34 notas em 28 organismos**, correspondentes às nove redações da [conferência aprovada](propostas/REVISAO_FICHAS_LOTE_2.md). O arquivo resultante tem SHA-256 `a3e485307481475e8d320dacde35f437fc35a59b74eb9b54870a7fd652b66055`. A comparação com a proposta confirma igualdade dos objetos aprovados e ausência de outras alterações nas fichas. Os bytes anteriores e a versão apresentada no commit `63599f2` permanecem no Git. As oito referências utilizadas conservam autores, DOI, licença específica CC BY 4.0, localizadores e evidências; a nona evidência histórica substituída não foi apagada. Não foi incorporada imagem ou reprodução textual dos artigos.
+
+O bridge de decisões e a trava comum registraram **35 eventos editoriais**: 34 notas e o conteúdo científico idêntico no alias morfológico de `110`. O ledger passou de 41 para 76 eventos, preservando integralmente o prefixo anterior. Repetir cada envelope retornou `already_recorded`. Os campos legados das novas notas ficam `verified: false` / `reviewed_on: null`; a responsabilidade e data reais estão em `governance`, como `approved_editorial`. As três decisões de `82` e as 38 de grupos continuam intactas.
+
+A aprovação **não abrange tópicos agregados** que incluem outras passagens. Os agregados educativos dos 28 organismos e o agregado morfológico de `110` refletem `needs_review`; isso não oculta notas individuais não alteradas nem as 35 agora aprovadas. As demais informações das fichas, dicas válidas e a jogabilidade permanecem preservadas. Aprovação editorial não significa revisão por especialista, comprovação da fotografia ou aprovação da dificuldade da dica.
+
+**Direitos:** 34 ocorrências em `educational_text_rights` recebem `independent_factual_synthesis`, `documented` e CC BY 4.0 somente sobre direitos disponíveis nessas redações assistidas por IA. Crédito: **Projeto Glossata — redação assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira**. Preservar identificação do lote, [origem](https://github.com/kaduolliver/Projeto-Glossata), [licença](https://creativecommons.org/licenses/by/4.0/), avisos, fontes e indicação de alterações. Não se reivindica autoria humana exclusiva, exclusividade sobre fatos ou direitos sobre os artigos.
+
+As **805 outras ocorrências de `species_profiles.json` continuam inconclusivas**. A permissão do arquivo inteiro permanece `distribution_allowed: false`, assim como a de `progressive_hints.json`; não houve licença global de textos/coletânea. O validador existente foi ampliado para conferir a concessão parcial contra os ponteiros, hashes e a proposta imutável confirmada, recusando reutilização em outro arquivo/texto, ampliação da licença ou confirmação incompleta. A verificação é documental, não autenticação humana ou certificação jurídica. A política e as licenças de fotos, código e branding continuam independentes.
+
+**Organismo 110:** a observação pertence à cultura DSM 107014 (= SAG 52.96), sem associação presumida à fotografia de apoio `160680326`. A ressalva educativa foi mantida. O fluxo existente regenerou a aparência e a receita correspondente; somente texto, fonte e localizador acompanham a origem. Os 121 outros conjuntos de receitas permanecem idênticas; categorias, graus, níveis, valores de pontos e vínculos fotográficos foram preservados. A assistência continua sem aprovação humana e a identificação visual não foi liberada. Duas ocorrências da receita composta tiveram seus hashes atualizados, mantendo direitos inconclusivos do conjunto; não receberam concessão independente por derivação.
+
+| Indicador | Antes do lote 2 | Após incorporação |
+| --- | --- | --- |
+| Notas deste lote incorporadas | 0 | 34, para 28 organismos |
+| Eventos editoriais totais | 41 | 76; 35 novos, nenhum de especialista |
+| Ocorrências de fichas com concessão delimitada | 0 | 34; arquivo inteiro ainda bloqueado |
+| Ocorrências das fichas com origem inconclusiva | 839 | 805 |
+| Ocorrências inconclusivas em todo o inventário | 2.334 / 795 hashes | 2.300 / 788 hashes |
+| Achados textuais da Issue #2 | 3 | 3: fichas, dicas de origem e receitas compostas |
+
+O inventário permanece com 2.402 ocorrências, agora agrupadas em 865 hashes; diversidade de redações não é contagem de recursos autorizados. A redução de 34 pendências por ocorrência não resolve o achado do arquivo inteiro. As seções abaixo preservam a preparação e o primeiro lote como registros anteriores. A Issue #2 permanece aberta. Próximo lote recomendado: outras passagens de fichas, priorizando os agregados alterados e mantendo a aprovação de `82`; investigar origem por ocorrência, sem ampliar concessões anteriores.
+
+### Validação da incorporação
+
+- Configure e compilação Release/Ninja aprovados; **26/26 suítes CTest passaram em 218,67 segundos**, incluindo pontuação, persistência, recuperação de sessões/perfis e governança. Não se declara validação visual manual ou de pacote.
+- **21 testes de importação/geração** e **53 de investigação de direitos** passaram. As regressões históricas usam o estado anterior à confirmação em workspace temporário; as novas cobrem promoção exata, revisão somente das notas autorizadas, preservação das demais, invalidação pontual após mudança, concessão parcial e tentativas de ampliar ponteiro/arquivo/licença. Nenhum teste altera registros reais.
+- Auditoria estrita: **122 organismos e pool competitivo de 80**. Apache, governança/histórico, manifestos/estado, proteção proposta do repositório, investigação documental, exploração, cobertura, assistência, filogenia e `qmllint` passaram. Os geradores mantêm bytes idênticos na repetição; não renovam uma avaliação válida. As mídias, os créditos, a política, o lote de grupos, o organismo 82 e as regras do jogo foram comparados à base e preservados.
+- Curadoria: `plan` passou de **15 solicitações / 3.309 achados para 15 / 3.274**, preservando os identificadores das solicitações. `sync` sem `--apply`: simulação offline, zero alterações remotas; Issue #2 aberta. A redução é de 35 revisões rastreáveis, sem reduzir artificialmente achados do arquivo inteiro.
+- Gate de distribuição: retorno **2**, **zero erros técnicos**, **120 pendências fotográficas**, **três textuais** e **31 bloqueios científicos**. São os dois bloqueios fotográficos preexistentes mais **29 agregados alterados** (28 tópicos educativos e a morfologia de 110) que ficaram explicitamente fora da confirmação. Não se usa a aprovação de uma nota para aprovar um agregado com outras passagens. O próximo lote deve tratar esses agregados com análise e decisão próprias; não foi relaxado o gate.
+
+Os logs detalhados desta rodada ficam localmente em `build/lote2-validation-*.log`, com comandos/resultados no JSON deste relatório; a CI repetirá os controles após a publicação da branch. Resultados remotos serão registrados quando efetivamente observados. Não houve release, tag, pacote, merge, contato externo ou mudança nas proteções da main.
+
+## Preparação do lote 2 — registro anterior às confirmações, 2026-10-18
 
 O PR #19 foi confirmado como integrado: merge `09e8eb759172e32b9554c4c86d8a583a667e4dcc`, em 2026-10-18. A `main` local foi atualizada por avanço direto e a revisão ocorre em `fix/issue-2-species-profiles-lote-2`, com workspace inicialmente limpo. O lote de grupos aprovado e os registros anteriores foram preservados. As seções seguintes registram etapas anteriores e não descrevem necessariamente o estado remoto atual.
 

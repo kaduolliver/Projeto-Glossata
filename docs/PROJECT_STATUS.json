@@ -7,7 +7,7 @@
   "catalog": {
     "version": "2.4.0",
     "declared_status": "unreleased",
-    "content_sha256": "be3d0273067e40d52dad176bac87d8b4f870ce1bc6d5e31378abbb09530e2a33"
+    "content_sha256": "1cc7654425c0de06687147ffa13500d25b2670780cb02cd0b3e1c8c11e2840e8"
   },
   "scoring": {
     "current": "identification-v4-progressive",
@@ -61,11 +61,11 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "338d7f70e5d943b5c1d782f3f300e04862ade296456b0df509221e52fcb15db2",
+    "CHANGELOG.md": "408890ce34ddacb033e121582617e7d0df7067b2dd7809a48fde031aa82100f0",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "bb7320d831e7a151aa901c35e7326c752fa2ef5024f30768c42319b8bed171ed",
-    "docs/CATALOGO_CHANGELOG.md": "38c28e0f5434f0ae34658082b685b07554647be7d93991b712ac8a0bdbba5a2b",
-    "resources/data/catalog_manifest.json": "86fff98915578ff1dfa19e2439e133512174b93a413a1962980d9470713a98ef",
+    "docs/CATALOGO_CHANGELOG.md": "4fd59283b5ee08cdc88886d79193939a818320ce6d97ffe0fdb35775206c4a41",
+    "resources/data/catalog_manifest.json": "5125226b7f3f6cba5778aae705c14db7442403feac0eed6c2c4ba02d1295a11b",
     "resources/data/exploration_photos.json": "7557fc276899b250e11947420703bf5f84de69d434c8143f00058e66265043ce",
     "resources/data/species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
     "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",

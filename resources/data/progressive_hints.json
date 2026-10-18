@@ -4,13 +4,13 @@
     "species.json": "06da2561f12a71b90f5412e316eeb68e7085933b5c0c6e347c797c8be0257cd8",
     "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
     "hint_education.json": "cbf9f139a64409c966ea1fbdf80a713773a92d65411b4ecc92aae58af39dd2bc",
-    "species_profiles.json": "a3d7bbbf7e3ae91f1d157748c18567e3702dda8c976214bcdc4bb761b6409e19",
+    "species_profiles.json": "2f8ca34731cf7c56340b367616f78fafa95047c375c327cc2f2fd96d90b2139f",
     "curation_reviews.json": "3e65f1fdb4c9e91f5cd4d2339259d78977ab5d72390f45a9257cb304566c4b71",
     "content_policy.json": "74946cc18dc7ed1a556b74ac064a14686a1f596b0f581cfc885c5344c53f7fd8",
     "scripts/review_hints.py": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
     "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
-    "resources/compliance/review_history.jsonl": "b35edf57a8a072e4104c8d12cae1dfb7bd8150c9b601835107080a7209829bf3",
+    "resources/compliance/review_history.jsonl": "cfe29efa003b8bcdfb310637fcc350f387b832d493f1858f1e2f5ebe5bd963c1",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
   },
   "species": {
@@ -14764,8 +14764,8 @@
           "id": "appearance",
           "kind": "note",
           "category": "morphological",
-          "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
-          "source_text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+          "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+          "source_text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
           "ranks": [
             "species",
             "genus",
@@ -14780,9 +14780,9 @@
             "genus"
           ],
           "organism_scope": true,
-          "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-          "source_title": "OpenStax · Biology 2e",
-          "locator": "Ficha local 110 / morphology",
+          "source_url": "https://doi.org/10.3390/genes12030389",
+          "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+          "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
           "grade": "moderate",
           "rationale": "A nota acrescenta detalhe estrutural, quantitativo ou celular que pode orientar a comparação. Não foi demonstrado que seja diagnóstico entre as quatro alternativas; assistência moderada apenas proposta. Nos níveis superiores, a nota é explicitamente sobre este organismo; não define todo o táxon solicitado.",
           "scientific_topic": "morphology",
@@ -16653,9 +16653,9 @@
     "actor_type": "automated",
     "process": "scripts/review_hints.py + contextual validation in EducationalContent",
     "policy_version": "progressive-pedagogy-v1",
-    "reviewed_at": "2026-10-18T07:44:47.489082+00:00",
-    "due_at": "2027-10-18T07:44:47.489082+00:00",
-    "content_sha256": "a56e740dc500b3669865467f23ad9fae073d117aaa05f666c845de97ed9ba222",
+    "reviewed_at": "2026-10-18T12:49:27.127455+00:00",
+    "due_at": "2027-10-18T12:49:27.127455+00:00",
+    "content_sha256": "7b0b1283ba1080dbb2d2c8795aca3ff99c1ead2d57922531b444a3e6b028f22d",
     "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
     "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
   }

@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Lote 2 incorporado após confirmação editorial e CC BY 4.0 delimitada: 34 notas/28 organismos, 35 eventos editoriais idempotentes e 805 outras passagens das fichas ainda pendentes. Projeções regeneradas pelo fluxo existente, com aparência de `110` atualizada sem reclassificar assistência ou alterar fotos/pontos; concessões parciais verificadas contra a proposta exata. Distribuição integral continua bloqueada.
+
 - Lote 2 das fichas: revisão assistida por IA das nove propostas, com ressalvas transferidas para metadados quando seguro e referências específicas para micélio. Conferência de 34 campos/28 organismos vinculada a fingerprint e teste de preservação do escopo; aplicação e direitos dependem de duas confirmações concretas. Catálogo ativo e decisões anteriores preservados.
 
 - Continuidade da Issue #2: comparativo das 34 propostas de fichas preparado por organismo/campo, com fontes, licenças, limites e impacto. Propostas e registros de revisão preservados; sequência dos próximos lotes documentada, sem aplicar conteúdo ou ampliar permissões.

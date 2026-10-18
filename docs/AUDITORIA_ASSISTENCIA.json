@@ -7203,7 +7203,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7219,7 +7219,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f4a105993602087a11d5da361ef9b269b250c4df4028b8a866c787b7d93a27cc",
+      "assessment_sha256": "a387d49547f48af70396d88e2991fcc97e94af3843caab4fe5951b4bcbb6719a",
       "competitive_approved": false
     },
     {
