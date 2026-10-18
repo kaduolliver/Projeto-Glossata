@@ -1,6 +1,64 @@
 # Saneamento documental da Issue #2
 
-## Atualização administrativa — política editorial após PR #16
+## Conferência concentrada de 2026-10-18 após PR #17
+
+Base `49e4e3dcfe8c6b18237a5f61e816bdc39e154d21`; PR #17 confirmado como integrado. Branch `fix/issue-2-final-compliance`. O registro estruturado existente recebeu `final_compliance`, preservando as etapas anteriores. A escolha de CC BY 4.0 e a política visual reservada não foram reabertas.
+
+| Material | Estado anterior | Correção realizada | Evidência | Estado atual |
+| --- | --- | --- | --- | --- |
+| `group_education.json` | Origem/direitos pendentes | Conferidas as 19 definições e os 15 conjuntos de notas; as 68 redações não vazias são equivalentes às constantes históricas extraídas do gerador. Registrados todos os vínculos, sem atribuir autoria por Git | Snapshot documental referenciado em `final_compliance.prose_evidence`, histórico público e contrato por ocorrência | `inconclusive`; origem autoral e eventual independência da expressão ainda exigem confirmação. Nenhuma licença externa foi convertida |
+| `hint_education.json` | Origem/direitos pendentes | 374 ocorrências vinculadas ao histórico e à bibliografia existente, sem alterar graus ou etimologias | Mesmo snapshot e inventário existente, com contexto individual preservado | Direitos pendentes; não houve busca exaustiva de similaridade ou prova de originalidade |
+| `species_profiles.json` | Origem/direitos pendentes | 839 ocorrências dos 122 organismos vinculadas; três decisões editoriais do organismo 82 registradas após aprovação expressa | Histórico, fonte, confirmação real e `final_compliance.editorial_review_82.recorded_decisions` | Direitos pendentes; as duas notas e o agregado estão `approved_editorial`, sem revisão especializada |
+| `progressive_hints.json` | Direitos das origens pendentes | Conferida equivalência exata com o gerador atual e preservadas ligações às fontes, sem licença independente inferida | Projeção reproduzível e snapshot documental | Pendências das redações de origem preservadas; avaliação automática regenerada somente após o novo ledger editorial |
+| `glossata.png` | Permissão pendente | Termos oficiais consultados, contexto confirmado e autorização específica registrada para os bytes atuais | Declarações anteriores, consulta e [autorização limitada](../resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json) | `documented_official_use`; distribuição permitida exclusivamente nas versões oficiais |
+| `glossata_discord.png` | Permissão pendente | Uso e variante identificados; ausência de componentes externos confirmada, sem inferir ferramenta ou sequência histórica | Mesma autorização vinculada ao hash específico e [conclusão individual](IDENTIDADE_VISUAL.md) | `documented_official_use`; sem licença gráfica geral |
+| `glossata.ico` | Permissão pendente | Relação atual com o PNG preservada e uso oficial autorizado para este hash | Correspondência dos sete frames e autorização sobre a arte-base e os arquivos finais | `documented_official_use`; uso oficial limitado, sem exclusividade afirmada |
+
+**Medição objetiva:** 2.402 ocorrências, agrupadas em 863 hashes de redação, receberam exame estrutural/documental e vínculo ao histórico; não se afirma leitura científica integral, comparação com toda a literatura ou revisão humana desses 863 textos. Quatro registros compartilhados conservam cada ponteiro/hash, sem milhares de declarações de autoria redundantes. A derivação local das 68 redações de grupos e a projeção das dicas são verificáveis, mas isso não comprova origem autoral. **Zero passagens receberam licença nova; as 2.402 ocorrências/863 hashes permanecem inconclusivos quanto à origem autoral. Dos sete achados de outros materiais, três foram resolvidos no escopo documentado de uso oficial dos ícones e quatro textuais permanecem.** Isso não encerra a Issue ou libera o pacote. Não se presumiu reprodução indevida onde não há prova, nem se reescreveram textos apenas para melhorar contagens.
+
+O gate foi reforçado para recursos textuais que aleguem uma permissão: exige cobertura de todos os componentes atuais, evidência íntegra, condições/atribuição aplicáveis e ausência de pendências, além da autorização explícita do recurso. Preserva múltiplos titulares sem inventar um titular único. O inventário por passagem continua sem poderes de aprovação. Entre os 116 recursos inventariados, somente as permissões dos três ícones mudaram, após autorização específica; os demais estados foram preservados. A resposta adicional do mantenedor sobre os textos expressa crença em redação assistida por IA com Biology 2e como referência, mas não confirma ausência de cópia/tradução/adaptação; por isso a origem autoral continua inconclusiva e nenhuma passagem recebeu CC BY automaticamente.
+
+O mantenedor confirmou **“Autorizar o registro limitado ao uso oficial”**, após conferir a proposta concreta de `distribution_allowed: true` dos três ícones. O registro separa essa autorização dos fatos de geração e dos termos consultados, vincula os três hashes e limita a permissão a `official_project_distribution`. O validador exige esses vínculos e recusa ampliação do escopo, ausência da confirmação ou troca de bytes. Os registros anteriores de origem e política permanecem intactos. A recusa inicial da revisão automática e a autorização adicional posterior estão preservadas no JSON; a proposta foi aplicada somente após essa resposta. Não há licença gráfica geral, certificação jurídica, exclusividade autoral, registro de marca ou autorização de terceiros presumida.
+
+### Revisão editorial do organismo 82 registrada
+
+O registro JSON mostra redações anteriores/atuais, DOI, localizador, limitações, recomendação e hashes atuais das duas notas e do agregado. A seção pertinente de Sánchez-García et al. (2020), DOI `10.1073/pnas.1922539117`, foi conferida pelo texto indexado da fonte primária: **Results and Discussion / Many gains, and few losses, of ECM symbiosis**, discussão de *Pseudoboletus*, referências 36–42. O acesso direto à PMC exige validação de navegador; não se afirma leitura integral do artigo ou suplementos.
+
+As duas frases atuais mantêm a incerteza adequada. A curiosidade é uma inferência educativa prudente, não citação do estudo. A fonte indica CC BY-NC-ND 4.0; citar fatos não licencia tradução/adaptação de sua expressão protegida sob CC BY. Não foi copiado texto do artigo para o catálogo.
+
+O mantenedor respondeu expressamente: **“Aprovo editorialmente as duas notas e o tópico agregado nessa versão”**. A confirmação foi vinculada aos três hashes e registrada pelo bridge existente em `review_history.jsonl`, com responsável Carlos Eduardo Lima de Oliveira, estado `approved_editorial`, tipo editorial e data efetiva **2026-10-18**. Usou-se a data civil da resposta, sem inventar seu instante exato. A repetição exata de cada decisão retornou `already_recorded` e preservou três eventos, sem duplicação. Os rascunhos anteriores permanecem no JSON como histórico; `recorded_decisions` aponta os eventos efetivos.
+
+As duas notas voltam a ficar disponíveis; os outros campos, dicas e regras foram preservados. Não houve revisão por especialista ou concessão de direitos textuais. O hash do ledger invalida a avaliação automática das dicas, tornando necessária sua regeneração e a projeção educativa pelo fluxo existente. Comparações confirmaram os 122 conjuntos de receitas idênticos; foram atualizados somente os metadados automáticos, os três estados editoriais e os hashes derivados correspondentes. O hash anterior do recurso foi preservado no inventário.
+
+### Curadoria e providências humanas
+
+A fila local foi reexecutada e a sincronização simulada **sem `--apply`**: `apply: false`, `remote_checked: false`, nenhuma Issue criada/atualizada e nenhum erro. A simulação não verificou a situação remota da Issue após um futuro merge. A origem incerta dos textos foi mantida conforme a ressalva expressa do mantenedor. A aprovação editorial específica e a autorização limitada dos ícones já foram registradas. Não se escolhe outra licença nem se exige equipe externa. A Issue #2 deve continuar aberta; depois de eventual merge, a rotina de `main` deve ser conferida novamente, preservando os quatro achados textuais restantes. O mantenedor ainda precisa esclarecer origens textuais quando houver evidências ou autorizar redações independentes para casos concretos; bibliografia, geração automática e ausência de correspondências não bastam para conceder direitos.
+
+| Medição local | Antes desta intervenção | Após as confirmações efetivas |
+| --- | --- | --- |
+| Achados de outros materiais, Issue #2 | 7 | 4 textuais; 3 permissões gráficas limitadas documentadas |
+| Pendências documentais de fotos do quiz | 120 | 120, inalteradas |
+| Registros científicos prioritários | 5 | 2 associações fotográficas; os 3 registros editoriais de `82` foram decididos |
+| Fila de curadoria | 15 solicitações / 3.354 achados | 15 solicitações / 3.348 achados |
+| Erros técnicos do gate do repositório | 0 | 0; distribuição continua bloqueada |
+
+### Validação local desta intervenção
+
+| Verificação | Resultado efetivamente observado |
+| --- | --- |
+| Configure e compilação Release com CMake/Ninja | Aprovados |
+| CTest completo após atualização do inventário e dos recursos | **26/26 suítes passaram**, em 173,64 segundos |
+| Regressões de investigação de direitos e decisões | 51 e 12 testes passaram, respectivamente; fixtures sintéticas e diretórios temporários |
+| `audit_catalog.py --strict`, avaliação de dicas e projeção educativa | Aprovados; 122 organismos, pool competitivo 80; receitas dos 122 organismos idênticas à base |
+| Apache/escopo, manifesto e estado atual | `licensing_inventory.py --check-code`, `release.py check`, `check-history` e `project_status.py check --build build` aprovados |
+| Governança e recuperação | `recover-permissions` consistente; `audit-history --base 49e4e3dcfe8c6b18237a5f61e816bdc39e154d21` confirma prefixos anteriores preservados e exatamente três novos eventos editoriais |
+| Dados, créditos, mídias e QML | Fontes científicas editáveis, política, proveniência, fotos, ícones, LICENSE/NOTICE e créditos preservados; geradores reproduzíveis; qmllint aprovado |
+| Auditorias auxiliares da CI | Repositório, proposta de proteção, exploração, cobertura, assistência e propostas de manutenção offline executadas sem erro técnico; não houve ativação de configuração remota |
+| `distribution.py check` | Retorno **2**, bloqueio legítimo: 120 fotos, 4 materiais textuais e 2 registros científicos prioritários; zero erros técnicos |
+
+Não foi produzido ou auditado um novo pacote; obrigações de dependências distribuídas, incluindo a pendência histórica do ICU, não foram declaradas resolvidas. Estes resultados não são certificação jurídica ou científica. A validação remota do commit será consultada no Pull Request; este relatório registra os testes locais, sem presumir execução remota futura. Não houve merge, tag, release, pacote público ou encerramento da Issue.
+
+## Registro histórico — política editorial após PR #16
 
 O PR #16 foi integrado à `main` em `b7c7a493e9ee44b2790caa20b7ba1125865f763a`. Na intervenção seguinte, o mantenedor decidiu expressamente **CC BY 4.0 como padrão para redações educativas próprias elegíveis**, inclusive futuras redações enciclopédicas, com usos comerciais e adaptações mediante atribuição. A [política consolidada](propostas/LICENCIAMENTO_TEXTOS.md) distingue essa escolha de uma concessão válida sobre cada material e estabelece condições para fontes externas, proveniência, atribuição e futuras contribuições.
 

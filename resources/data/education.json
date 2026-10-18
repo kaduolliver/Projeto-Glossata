@@ -17182,17 +17182,28 @@
       "origin": "ai_revision_pending_editorial_review",
       "scope_name": "",
       "governance": {
-        "state": "needs_review",
-        "label": "Conteúdo ou evidência alterados; nova revisão necessária",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Conteúdo legado alterado; revisão humana necessária.",
-        "evidence": [],
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa do mantenedor das duas redações e da versão agregada apresentadas. Mantida a incerteza da relação trófica; a curiosidade é inferência educativa prudente. Não se declara leitura integral do artigo pelo mantenedor, revisão especializada ou aprovação de direitos autorais. Demais tópicos legados mantêm sua proveniência individual.",
+        "evidence": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+            "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+            "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+          },
+          {
+            "url": "https://github.com/kaduolliver/Projeto-Glossata/blob/fix/issue-2-final-compliance/resources/compliance/sources/238a9c0113ad6ad7419073c1481af0c258fc8f778b3b0a38798f152886b86afd.json",
+            "locator": "statement, content_bindings and scope",
+            "supports": "Actual maintainer editorial confirmation for these hashes; declared identity only."
+          }
+        ],
         "content_sha256": "0d243e119f68df6d6ff04f0e530391e9f7169e75bc7a4b4a3031d8a8b7ac14e9",
-        "claim_scope": null,
-        "usable": false,
+        "claim_scope": "species",
+        "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
@@ -17282,17 +17293,28 @@
       "origin": "ai_revision_pending_editorial_review",
       "scope_name": "",
       "governance": {
-        "state": "needs_review",
-        "label": "Conteúdo ou evidência alterados; nova revisão necessária",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Conteúdo legado alterado; revisão humana necessária.",
-        "evidence": [],
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa do mantenedor das duas redações e da versão agregada apresentadas. Mantida a incerteza da relação trófica; a curiosidade é inferência educativa prudente. Não se declara leitura integral do artigo pelo mantenedor, revisão especializada ou aprovação de direitos autorais. Demais tópicos legados mantêm sua proveniência individual.",
+        "evidence": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+            "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+            "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+          },
+          {
+            "url": "https://github.com/kaduolliver/Projeto-Glossata/blob/fix/issue-2-final-compliance/resources/compliance/sources/238a9c0113ad6ad7419073c1481af0c258fc8f778b3b0a38798f152886b86afd.json",
+            "locator": "statement, content_bindings and scope",
+            "supports": "Actual maintainer editorial confirmation for these hashes; declared identity only."
+          }
+        ],
         "content_sha256": "3eed43bc6312510e8931fa0fde434b3476fcdb89a7e5ff0d12c1addac7b8d63c",
-        "claim_scope": null,
-        "usable": false,
+        "claim_scope": "species",
+        "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
@@ -68864,17 +68886,28 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "needs_review",
-          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
-          "reviewer": null,
-          "reviewed_at": null,
-          "review_kind": null,
-          "due_at": null,
-          "reason": "Conteúdo legado alterado; revisão humana necessária.",
-          "evidence": [],
+          "state": "approved_editorial",
+          "label": "Revisão editorial registrada",
+          "reviewer": "Carlos Eduardo Lima de Oliveira",
+          "reviewed_at": "2026-10-18",
+          "review_kind": "editorial",
+          "due_at": "2027-10-18T00:00:00+00:00",
+          "reason": "Aprovação editorial expressa do mantenedor das duas redações e da versão agregada apresentadas. Mantida a incerteza da relação trófica; a curiosidade é inferência educativa prudente. Não se declara leitura integral do artigo pelo mantenedor, revisão especializada ou aprovação de direitos autorais. Demais tópicos legados mantêm sua proveniência individual.",
+          "evidence": [
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+              "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+              "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+            },
+            {
+              "url": "https://github.com/kaduolliver/Projeto-Glossata/blob/fix/issue-2-final-compliance/resources/compliance/sources/238a9c0113ad6ad7419073c1481af0c258fc8f778b3b0a38798f152886b86afd.json",
+              "locator": "statement, content_bindings and scope",
+              "supports": "Actual maintainer editorial confirmation for these hashes; declared identity only."
+            }
+          ],
           "content_sha256": "62ff68abacc6fd0992f46199b66a73e51867916fb97bff9d7a5e535e41922d3c",
-          "claim_scope": null,
-          "usable": false,
+          "claim_scope": "species",
+          "usable": true,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -75461,7 +75494,7 @@
       "scripts/review_hints.py": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
       "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
       "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
-      "resources/compliance/review_history.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "resources/compliance/review_history.jsonl": "57fc17cbf490418108ae1bad01faa508e60656891ee8c530ddd72efe0e2b088f",
       "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
     },
     "species": {
@@ -92104,9 +92137,9 @@
       "actor_type": "automated",
       "process": "scripts/review_hints.py + contextual validation in EducationalContent",
       "policy_version": "progressive-pedagogy-v1",
-      "reviewed_at": "2026-10-18T02:17:58.826783+00:00",
-      "due_at": "2027-10-18T02:17:58.826783+00:00",
-      "content_sha256": "c7a4ab2fb87160b9d924e28692503528e4a82a6832df84580e8871187cd0d64d",
+      "reviewed_at": "2026-10-18T03:24:28.759646+00:00",
+      "due_at": "2027-10-18T03:24:28.759646+00:00",
+      "content_sha256": "476dcdd4430233c24d220a8ea024d1ebd6a92af947a64d543a4f233e54fced7e",
       "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
       "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
     },
@@ -92119,7 +92152,7 @@
     "hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
     "group_education.json": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
-    "progressive_hints.json": "a90ff4f604c0f05f8c4dd05889052d672e60c5732d2b4117fbc0743a8fb181e5",
+    "progressive_hints.json": "fa8aa6308f5bfd1ffae000ea2cd1c39346273efe9ef3a70d65adb965dc6334a2",
     "phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6"
   }
 }

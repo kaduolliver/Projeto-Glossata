@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "kind": "maintainer_editorial_confirmation",
+  "recorded_on": "2026-10-18",
+  "declared_by": "Carlos Eduardo Lima de Oliveira",
+  "statement": "Aprovo editorialmente as duas notas e o tópico agregado nessa versão",
+  "content_bindings": {
+    "species:82:nutrition": "0d243e119f68df6d6ff04f0e530391e9f7169e75bc7a4b4a3031d8a8b7ac14e9",
+    "species:82:curiosity": "3eed43bc6312510e8931fa0fde434b3476fcdb89a7e5ff0d12c1addac7b8d63c",
+    "topic:82:education": "62ff68abacc6fd0992f46199b66a73e51867916fb97bff9d7a5e535e41922d3c"
+  },
+  "scope": "Two presented sentences and the aggregate educational version of organism 82; editorial review only. Other legacy claims retain their individual provenance/review states.",
+  "does_not_approve": [
+    "Copyright permissions",
+    "Independent specialist review",
+    "Whole-article reading by maintainer"
+  ],
+  "identity_basis": "Actual explicit maintainer reply in this maintenance conversation; declared identity, not signature-authenticated."
+}

@@ -502,5 +502,538 @@
       "review_ledgers_unchanged": true,
       "all_recipes_unchanged": true
     }
+  },
+  "final_compliance": {
+    "base_commit": "49e4e3dcfe8c6b18237a5f61e816bdc39e154d21",
+    "checked_at": "2026-10-18T03:10:57.843396+00:00",
+    "prose_evidence": {
+      "path": "resources/compliance/sources/9d025650d441a54d169d8f82f0f9dff459011dc9fe63c30301ffd9712e026c8f.json",
+      "sha256": "5de2420b017a77468905139592b5c3b65f19e3dded1a5388217ef743903dc1ca",
+      "locator": "files, group_extraction and progressive_generation; Git commits identify public history only"
+    },
+    "examined_occurrences_structural_and_documentary": 2402,
+    "unique_prose_hashes": 863,
+    "declared_origin_records": 4,
+    "copyright_origin_sufficiently_established": 0,
+    "passages_newly_licensed": 0,
+    "authorial_origin_inconclusive_occurrences": 2402,
+    "authorial_origin_inconclusive_unique_hashes": 863,
+    "local_group_derivation_established": 68,
+    "generated_occurrence_derivation_established": 1119,
+    "rights_findings_resolved": 3,
+    "limitation": "Local derivation is distinct from authorial provenance. No exhaustive third-party corpus search or full scientific review was claimed.",
+    "public_source_findings": {
+      "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+      "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+    },
+    "branding_conclusions": [
+      {
+        "path": "resources/branding/glossata.png",
+        "sha256": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+        "state": "documented_official_use",
+        "distribution_allowed": true,
+        "known": [
+          "Maintainer tool/text-input declarations retained with their limited scope.",
+          "Official adoption, reserved policy, current bytes and intended use already documented.",
+          "Maintainer confirmed October 2026 personal-account generation with no additional external components."
+        ],
+        "service_rights_basis": {
+          "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+          "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+        },
+        "remaining": [
+          "Sem licença gráfica geral, exclusividade ou certificação de direitos de terceiros. Alterações dos bytes ou novos conflitos concretos exigem nova conferência."
+        ],
+        "unnecessary_requirements": [
+          "Exclusive AI copyright",
+          "Trademark registration",
+          "Universal proof of absence of third-party rights",
+          "Publication of private prompts or conversations"
+        ],
+        "can_update_distribution_now": true,
+        "maintainer_context_confirmation": {
+          "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+          "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+        },
+        "distribution_scope": "official_project_distribution",
+        "authorization_evidence": {
+          "path": "resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json",
+          "sha256": "041d99ef0f2854c1983f14b53c67483ae4a8e1d8368bc4c5de4dd63383122071"
+        }
+      },
+      {
+        "path": "resources/branding/glossata_discord.png",
+        "sha256": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+        "state": "documented_official_use",
+        "distribution_allowed": true,
+        "known": [
+          "Maintainer tool/text-input declarations retained with their limited scope.",
+          "Official adoption, reserved policy, current bytes and intended use already documented.",
+          "Maintainer confirmed October 2026 personal-account generation with no additional external components."
+        ],
+        "service_rights_basis": {
+          "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+          "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+        },
+        "remaining": [
+          "Sem licença gráfica geral, exclusividade ou certificação de direitos de terceiros. Alterações dos bytes ou novos conflitos concretos exigem nova conferência."
+        ],
+        "unnecessary_requirements": [
+          "Exclusive AI copyright",
+          "Trademark registration",
+          "Universal proof of absence of third-party rights",
+          "Publication of private prompts or conversations"
+        ],
+        "can_update_distribution_now": true,
+        "maintainer_context_confirmation": {
+          "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+          "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+        },
+        "distribution_scope": "official_project_distribution",
+        "authorization_evidence": {
+          "path": "resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json",
+          "sha256": "041d99ef0f2854c1983f14b53c67483ae4a8e1d8368bc4c5de4dd63383122071"
+        }
+      },
+      {
+        "path": "resources/branding/glossata.ico",
+        "sha256": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+        "state": "documented_official_use",
+        "distribution_allowed": true,
+        "known": [
+          "Maintainer tool/text-input declarations retained with their limited scope.",
+          "Official adoption, reserved policy, current bytes and intended use already documented.",
+          "Maintainer confirmed October 2026 personal-account generation with no additional external components."
+        ],
+        "service_rights_basis": {
+          "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+          "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+        },
+        "remaining": [
+          "Sem licença gráfica geral, exclusividade ou certificação de direitos de terceiros. Alterações dos bytes ou novos conflitos concretos exigem nova conferência."
+        ],
+        "unnecessary_requirements": [
+          "Exclusive AI copyright",
+          "Trademark registration",
+          "Universal proof of absence of third-party rights",
+          "Publication of private prompts or conversations"
+        ],
+        "can_update_distribution_now": true,
+        "maintainer_context_confirmation": {
+          "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+          "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+        },
+        "distribution_scope": "official_project_distribution",
+        "authorization_evidence": {
+          "path": "resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json",
+          "sha256": "041d99ef0f2854c1983f14b53c67483ae4a8e1d8368bc4c5de4dd63383122071"
+        }
+      }
+    ],
+    "editorial_review_82": {
+      "status": "approved_editorial_recorded",
+      "source_findings": {
+        "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+        "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+      },
+      "before_after": [
+        {
+          "field": "/82/nutrition",
+          "before": "Obtém recursos por uma associação parasitária com outro fungo.",
+          "current": "Cresce associado a outros fungos; há estudos que discutem se a relação envolve parasitismo ou associação com raízes de plantas."
+        },
+        {
+          "field": "/82/curiosity",
+          "before": "Um fungo também pode viver associado de forma parasitária a outro fungo.",
+          "current": "Crescer sobre outro fungo não demonstra, por si só, como o organismo obtém seus nutrientes."
+        }
+      ],
+      "drafts": [
+        {
+          "key": "species:82:nutrition",
+          "current_content_sha256": "0d243e119f68df6d6ff04f0e530391e9f7169e75bc7a4b4a3031d8a8b7ac14e9",
+          "proposed_state_after_confirmation_only": "approved_editorial",
+          "recommendation": "Approve editorially only after the maintainer actually reviews the two sentences and the aggregate profile version; no specialist or copyright approval.",
+          "envelope": {
+            "schema_version": 1,
+            "kind": "review",
+            "key": "species:82:nutrition",
+            "curation": {
+              "request_id": "curation-v1-4f2ce3678bf9c200687be506",
+              "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2"
+            },
+            "decision": {
+              "reviewer": null,
+              "reviewed_at": null,
+              "rationale": null,
+              "actor_type": "human",
+              "state": "pending",
+              "review_kind": "editorial",
+              "claim_scope": "species",
+              "evidence": [
+                {
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+                  "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+                  "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+                }
+              ],
+              "content_sha256": "0d243e119f68df6d6ff04f0e530391e9f7169e75bc7a4b4a3031d8a8b7ac14e9"
+            },
+            "expected_previous_event_sha256": "",
+            "notice": "Incomplete human draft; never imports Issue state, implies consent or sends a message."
+          }
+        },
+        {
+          "key": "species:82:curiosity",
+          "current_content_sha256": "3eed43bc6312510e8931fa0fde434b3476fcdb89a7e5ff0d12c1addac7b8d63c",
+          "proposed_state_after_confirmation_only": "approved_editorial",
+          "recommendation": "Approve editorially only after the maintainer actually reviews the two sentences and the aggregate profile version; no specialist or copyright approval.",
+          "envelope": {
+            "schema_version": 1,
+            "kind": "review",
+            "key": "species:82:curiosity",
+            "curation": {
+              "request_id": "curation-v1-4f2ce3678bf9c200687be506",
+              "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2"
+            },
+            "decision": {
+              "reviewer": null,
+              "reviewed_at": null,
+              "rationale": null,
+              "actor_type": "human",
+              "state": "pending",
+              "review_kind": "editorial",
+              "claim_scope": "species",
+              "evidence": [
+                {
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+                  "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+                  "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+                }
+              ],
+              "content_sha256": "3eed43bc6312510e8931fa0fde434b3476fcdb89a7e5ff0d12c1addac7b8d63c"
+            },
+            "expected_previous_event_sha256": "",
+            "notice": "Incomplete human draft; never imports Issue state, implies consent or sends a message."
+          }
+        },
+        {
+          "key": "topic:82:education",
+          "current_content_sha256": "62ff68abacc6fd0992f46199b66a73e51867916fb97bff9d7a5e535e41922d3c",
+          "proposed_state_after_confirmation_only": "approved_editorial",
+          "recommendation": "Approve editorially only after the maintainer actually reviews the two sentences and the aggregate profile version; no specialist or copyright approval.",
+          "envelope": {
+            "schema_version": 1,
+            "kind": "review",
+            "key": "topic:82:education",
+            "curation": {
+              "request_id": "curation-v1-4f2ce3678bf9c200687be506",
+              "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2"
+            },
+            "decision": {
+              "reviewer": null,
+              "reviewed_at": null,
+              "rationale": null,
+              "actor_type": "human",
+              "state": "pending",
+              "review_kind": "editorial",
+              "claim_scope": "species",
+              "evidence": [
+                {
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+                  "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; paragraph discussing Pseudoboletus; references 36-42",
+                  "supports": "Cautious presentation of an unresolved trophic association; curiosity is an editorial inference, not a quotation."
+                }
+              ],
+              "content_sha256": "62ff68abacc6fd0992f46199b66a73e51867916fb97bff9d7a5e535e41922d3c"
+            },
+            "expected_previous_event_sha256": "",
+            "notice": "Incomplete human draft; never imports Issue state, implies consent or sends a message."
+          }
+        }
+      ],
+      "human_decisions_created": 3,
+      "limitation": "Drafts have pending state, null reviewer/date/rationale and cannot be recorded by the existing bridge. An actor_type field is not authentication.",
+      "confirmation": {
+        "path": "resources/compliance/sources/238a9c0113ad6ad7419073c1481af0c258fc8f778b3b0a38798f152886b86afd.json",
+        "sha256": "9881ba20cd6b4d85338777bbefd7116735fd914a9015366a28755129068e4ca5"
+      },
+      "recorded_decisions": [
+        {
+          "key": "species:82:nutrition",
+          "content_sha256": "0d243e119f68df6d6ff04f0e530391e9f7169e75bc7a4b4a3031d8a8b7ac14e9",
+          "state": "recorded",
+          "event_sha256": "9572fbebca0abbbab153582f0cc787c1740a15ac27073a4983a929bccd608fdc",
+          "replay": "already_recorded"
+        },
+        {
+          "key": "species:82:curiosity",
+          "content_sha256": "3eed43bc6312510e8931fa0fde434b3476fcdb89a7e5ff0d12c1addac7b8d63c",
+          "state": "recorded",
+          "event_sha256": "d9ef33bf449479d47bc7e97214d27abff9a9019160454aebdd58a3f0b7944307",
+          "replay": "already_recorded"
+        },
+        {
+          "key": "topic:82:education",
+          "content_sha256": "62ff68abacc6fd0992f46199b66a73e51867916fb97bff9d7a5e535e41922d3c",
+          "state": "recorded",
+          "event_sha256": "f8ab470837cbcea8823a85d03aa53159d448812099ac022c9d99d975e2888e1f",
+          "replay": "already_recorded"
+        }
+      ],
+      "review_date_precision": "Calendar date of the actual reply in America/Sao_Paulo; exact response time not invented."
+    },
+    "text_origin_reply": {
+      "declared_by": "Carlos Eduardo Lima de Oliveira",
+      "recorded_on": "2026-10-18",
+      "statement": "Acredito que os textos educativos tenham sido produzidos com auxílio de IA, utilizando principalmente o livro Biology 2e, da OpenStax, como referência científica. Não consigo confirmar se houve cópia, tradução ou adaptação direta de trechos externos.",
+      "consequence": "All inconclusive textual origins remain pending; no corpus-wide CC BY grant inferred."
+    },
+    "branding_context_confirmation": {
+      "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+      "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+    },
+    "branding_distribution_proposal": {
+      "state": "applied_after_explicit_confirmation",
+      "scope": "official_project_distribution",
+      "files": {
+        "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+        "resources/branding/glossata_discord.png": "e0c34c105919bfc2e49fb02804ec52794241958793f0926b14939992282a2549",
+        "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06"
+      },
+      "requested_effect": "Document scoped use/distribution of unchanged icons in official Projeto Glossata versions. No general graphic license for independent projects; code Apache unaffected.",
+      "basis": [
+        {
+          "path": "resources/compliance/sources/17ea46497d98a20c7506c5dcad1b5db9fe5ecdff8d45faf5906b89dcb71c0a4d.json",
+          "sha256": "9222940139dc6e158afca84828a269c55d5b87bfaa1fe7e05fb19497af552642"
+        },
+        {
+          "path": "resources/compliance/sources/8a93c3630cec59db8e35d48d163fbeb3362d5b11bbd94eaae378c3930fe362cb.json",
+          "sha256": "ef823e50352eadfc9610b98981dda0355db5dd3c0678379d983f262ab03ac585"
+        }
+      ],
+      "limits": "Available output rights only; no exclusive copyright, third-party guarantee or package-wide release.",
+      "automatic_approval_review": {
+        "state": "rejected_before_execution",
+        "action": "Changing distribution_allowed to true for the three icons",
+        "reason": "Review considered general service terms and declarations insufficient for this state change without specific additional authorization.",
+        "subsequent_specific_authorization": {
+          "path": "resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json",
+          "sha256": "041d99ef0f2854c1983f14b53c67483ae4a8e1d8368bc4c5de4dd63383122071"
+        }
+      },
+      "applied": true,
+      "authorization_evidence": {
+        "path": "resources/compliance/sources/c17e8fcc2b053085aa17ea30db3b173cb56fc3917846f10f544d814ff517e29f.json",
+        "sha256": "041d99ef0f2854c1983f14b53c67483ae4a8e1d8368bc4c5de4dd63383122071"
+      },
+      "applied_scope": "official_project_distribution"
+    },
+    "rights_findings_remaining": 4,
+    "reconciliation": {
+      "measured_at": "2026-10-18T03:37:36.847388+00:00",
+      "queue_before": {
+        "requests": 15,
+        "findings": 3354,
+        "by_area": {
+          "science": 4,
+          "taxonomy": 2,
+          "photography": 3,
+          "licensing": 4,
+          "pedagogy": 2
+        }
+      },
+      "queue_after": {
+        "requests": 15,
+        "findings": 3348,
+        "by_area": {
+          "science": 4,
+          "taxonomy": 2,
+          "photography": 3,
+          "licensing": 4,
+          "pedagogy": 2
+        }
+      },
+      "issue_2_findings_before": 7,
+      "issue_2_findings_after": 4,
+      "scientific_priority_before": 5,
+      "scientific_priority_after": 2,
+      "photo_documentation_before": 120,
+      "photo_documentation_after": 120,
+      "technical_errors": [],
+      "distribution_blocked": true,
+      "sync_preview": {
+        "apply": false,
+        "remote_checked": false,
+        "created": [],
+        "updated": [],
+        "unchanged": [],
+        "deferred": [
+          "curation-v1-0e1e342d79c4a471e90b77b7",
+          "curation-v1-4f2ce3678bf9c200687be506",
+          "curation-v1-4f8760306e86c24daed2b65f",
+          "curation-v1-e35310e769d13cb759ca395b",
+          "curation-v1-1cc1b436a21de1d9d0be66b9",
+          "curation-v1-2e39aba9876536b5996bb856",
+          "curation-v1-31532b3cf0432db473633560",
+          "curation-v1-4a273c6a313f9fa62da8dc54",
+          "curation-v1-853dfb0fc7643997a535bc5d",
+          "curation-v1-9910093ad6de9bc1994b5f92",
+          "curation-v1-a672fad5b190c29f760f51ea",
+          "curation-v1-dac0f1c9ef6896aa46343811",
+          "curation-v1-eb057cb6f61a03b07bf20947",
+          "curation-v1-15d54331deaf12cd0403f574",
+          "curation-v1-d03720c8ea4e93e86e45d1f7"
+        ],
+        "closed_unresolved": [],
+        "conflicts": [],
+        "errors": [],
+        "project": "not_configured",
+        "notice": "Offline preview; no token, network call or publication."
+      },
+      "issue_2_closed": false,
+      "permission_photo_events_created": 0,
+      "scope": "Local queue and repository gate only. Public issue body not updated; package/dependency clearance not asserted."
+    },
+    "validation": {
+      "performed_on": "2026-10-18",
+      "scope": "Local checks only; remote head checks to be consulted in the Pull Request.",
+      "configure_build": "passed",
+      "ctest": {
+        "passed": 26,
+        "total": 26,
+        "seconds": 173.64
+      },
+      "rights_regressions_passed": 51,
+      "decision_regressions_passed": 12,
+      "qmllint": "passed",
+      "offline_commands": [
+        {
+          "command": [
+            "scripts/repository_protection.py",
+            "check"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/licensing_inventory.py",
+            "--check-code"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/content_governance.py",
+            "recover-permissions"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/content_governance.py",
+            "audit-history",
+            "--base",
+            "49e4e3dcfe8c6b18237a5f61e816bdc39e154d21"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/audit_repository.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/review_hints.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/build_education.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/content_governance.py",
+            "credits"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/audit_catalog.py",
+            "--strict"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/exploration_media.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/scientific_catalog.py",
+            "coverage"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/audit_hint_assistance.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/review_updates.py"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/review_updates.py",
+            "--rights-report"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/release.py",
+            "check"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/release.py",
+            "check-history",
+            "--base",
+            "49e4e3dcfe8c6b18237a5f61e816bdc39e154d21"
+          ],
+          "returncode": 0
+        },
+        {
+          "command": [
+            "scripts/project_status.py",
+            "check",
+            "--build",
+            "build"
+          ],
+          "returncode": 0
+        }
+      ],
+      "distribution_exit_code": 2,
+      "no_package_generated": true,
+      "unchanged_scientific_inputs_and_media": true,
+      "unchanged_recipe_sets": 122,
+      "previous_history_prefixes_preserved": true,
+      "human_or_legal_certification": false
+    }
   }
 }

@@ -1,5 +1,11 @@
 # Implementação da política de identidade visual reservada
 
+Conferência posterior em **2026-10-18**: os termos oficiais do serviço e as conclusões individuais foram acrescentados a [IDENTIDADE_VISUAL.md](IDENTIDADE_VISUAL.md), com fonte pública e limites. O mantenedor confirmou outubro de 2026, conta pessoal e ausência de componentes externos adicionais. Após a recusa inicial da revisão automática, autorizou expressamente o registro limitado ao uso oficial. Os três ícones passam a `documented_official_use`, com `distribution_allowed: true` somente no escopo `official_project_distribution`, vinculado aos hashes preservados. Não há licença gráfica geral, exclusividade ou certificação jurídica; textos, fotografias e pacote continuam bloqueados. O gate agora exige autorização específica e evidência vinculada aos arquivos, além dos fatos e termos consultados. Os resultados atuais estão em [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
+
+## Registro histórico da implementação da política em 2026-10-17
+
+O texto a seguir preserva a situação anterior à confirmação adicional de uso oficial; os estados pendentes nas tabelas históricas não descrevem o inventário atual.
+
 Atualização de proveniência após o PR #15: o mantenedor respondeu “Apenas descrição de texto” sobre a geração da arte. O [registro complementar](../resources/compliance/branding/text-only-declaration.json) preserva essa informação sem alterar a declaração anterior, distinguindo-a de eventuais edições, preparação de variantes e conversão para ICO. Não se afirma geração textual independente dos três arquivos finais; etapas posteriores não declaradas continuam desconhecidas. As demais conclusões abaixo são o registro da implementação da política. A [situação atual da Issue #2](SANEAMENTO_ISSUE_2.md) delimita o que ainda falta para distribuição, sem exigir exclusividade, registro de marca ou publicação de conversas privadas.
 
 ## Decisão e alcance
