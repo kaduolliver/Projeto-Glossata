@@ -290,5 +290,217 @@
       "remote_ci": "New commit checks tracked in existing PR #12; no remote result asserted by this pre-push record."
     },
     "human_approval_events_created": 0
+  },
+  "integral_resolution": {
+    "base_commit": "f3dc5806868b9e9afe78a661dcdb516b9f551d33",
+    "previous_automated_evaluation": {
+      "state": "approved_automated",
+      "actor_type": "automated",
+      "process": "scripts/review_hints.py + contextual validation in EducationalContent",
+      "policy_version": "progressive-pedagogy-v1",
+      "reviewed_at": "2026-10-17T18:15:51.335812+00:00",
+      "due_at": "2027-10-17T18:15:51.335812+00:00",
+      "content_sha256": "d4372ddda582e133b76f066097ba0bbe414910f2a912399197a6d206b4f14572",
+      "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
+      "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
+    },
+    "regeneration_reason": "Only species_profiles.json input hash changed after two source-backed factual corrections; all recipe payloads and pedagogical policy are unchanged.",
+    "human_permissions_created": 0,
+    "graphic_findings_resolved": 0,
+    "text_findings_resolved": 0,
+    "educational_texts": {
+      "scope": "All nonempty educational text/rationale/prefix fields in four sources, including unused group definitions; no semantic originality certification.",
+      "files": {
+        "group_education.json": {
+          "sha256": "3dcddf3df4fa8afec61e345e2530d706b32f3356a4c66af2ef931eaad27d6332",
+          "passage_occurrences": 68
+        },
+        "species_profiles.json": {
+          "sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+          "passage_occurrences": 839
+        },
+        "hint_education.json": {
+          "sha256": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
+          "passage_occurrences": 374
+        },
+        "progressive_hints.json": {
+          "sha256": "460a6cc947b2a35be05683f104de4e3093bdd1dc88dd71305cde511073240cbc",
+          "passage_occurrences": 1121
+        }
+      },
+      "definition_count": 19,
+      "plain_note_sets": 15,
+      "profile_count": 122,
+      "hint_identity_count": 122,
+      "generated_identity_count": 122,
+      "unique_passages": 863,
+      "total_occurrences": 2402,
+      "projection": {
+        "state": "compared_without_evaluation",
+        "matches_generator": true
+      },
+      "decisions_created": 0,
+      "external_consultations": 0,
+      "detail_sha256": "9e1a043b1f72946f88b3e694ea07199d5532ea6c84dd9691ff82fc8774b9baf1",
+      "detail_command": "python scripts/review_updates.py --rights-report",
+      "detail_location": "build/rights-investigation.json / educational_texts",
+      "notice": "Detailed passage pointers are reproducible from committed inputs and the existing rights report; not duplicated in this historical snapshot.",
+      "generator_sha256": "f7598b5a4b6b78ca14411f7349436e472b5d9c96edb1a35eda353dcbd1a0f106"
+    },
+    "current_automated_evaluation": {
+      "state": "approved_automated",
+      "actor_type": "automated",
+      "process": "scripts/review_hints.py + contextual validation in EducationalContent",
+      "policy_version": "progressive-pedagogy-v1",
+      "reviewed_at": "2026-10-17T23:54:49.459507+00:00",
+      "due_at": "2027-10-17T23:54:49.459507+00:00",
+      "content_sha256": "cd68fc662698bd845b5c76d0f7a3dbafe2515f66b14d790b4dc7dff72370992c",
+      "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
+      "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
+    },
+    "all_recipes_unchanged": true,
+    "text_changes": [
+      {
+        "file": "resources/data/species_profiles.json",
+        "pointer": "/82/nutrition",
+        "old": {
+          "text": "Obtém recursos por uma associação parasitária com outro fungo.",
+          "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+          "source_title": "First Nature · ficha do fungo",
+          "verified": true,
+          "reviewed_on": "2026-10-14",
+          "scope_name": ""
+        },
+        "new": {
+          "text": "Cresce associado a outros fungos; há estudos que discutem se a relação envolve parasitismo ou associação com raízes de plantas.",
+          "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+          "source_title": "Sánchez-García et al. (2020) — PNAS, DOI: 10.1073/pnas.1922539117",
+          "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; parágrafo sobre Pseudoboletus",
+          "verified": false,
+          "reviewed_on": null,
+          "origin": "ai_revision_pending_editorial_review",
+          "scope_name": ""
+        },
+        "reason": "Do not present a disputed trophic relationship as established; independently worded factual uncertainty, awaiting editorial review."
+      },
+      {
+        "file": "resources/data/species_profiles.json",
+        "pointer": "/82/curiosity",
+        "old": {
+          "text": "Um fungo também pode viver associado de forma parasitária a outro fungo.",
+          "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+          "source_title": "First Nature · ficha do fungo",
+          "verified": true,
+          "reviewed_on": "2026-10-14",
+          "scope_name": ""
+        },
+        "new": {
+          "text": "Crescer sobre outro fungo não demonstra, por si só, como o organismo obtém seus nutrientes.",
+          "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+          "source_title": "Sánchez-García et al. (2020) — PNAS, DOI: 10.1073/pnas.1922539117",
+          "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; parágrafo sobre Pseudoboletus",
+          "verified": false,
+          "reviewed_on": null,
+          "origin": "ai_revision_pending_editorial_review",
+          "scope_name": ""
+        },
+        "reason": "Do not present a disputed trophic relationship as established; independently worded factual uncertainty, awaiting editorial review."
+      }
+    ],
+    "checked_at": "2026-10-17T23:57:54.657809+00:00",
+    "source_checks": [
+      {
+        "url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+        "locator": "Geographic Range; Physical Description; Food Habits",
+        "access": "primary institutional account, page/indexed sections",
+        "finding": "Supports the cited morphology and larva/adult food distinction; does not license the Glossata prose or certify every geographical detail."
+      },
+      {
+        "url": "https://seanet.stanford.edu/Ochrophyta",
+        "locator": "Nereocystis luetkeana; Egregia menziesii",
+        "access": "primary institutional page",
+        "finding": "Supports terminal float/blades and lateral blades/floats respectively; no whole-corpus originality claim."
+      },
+      {
+        "url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
+        "locator": "Etymology; record 40754",
+        "access": "primary database record",
+        "finding": "Confirms the dedication to Edward Jenner; etymological fact distinguished from source expression."
+      },
+      {
+        "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+        "locator": "Description, first two paragraphs",
+        "access": "primary institutional page",
+        "finding": "Supports the stated name origins; no rewrite or ownership inference."
+      },
+      {
+        "url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+        "locator": "Description",
+        "access": "primary institutional page/indexed text",
+        "finding": "Supports the little-mousetrap epithet; no inference from photograph licenses to text."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+        "locator": "Figure 2; taxonomic accounts Merismopedia tranquilla and Merismopedia convoluta",
+        "access": "primary article indexed sections only; direct page browser challenge",
+        "finding": "Supports cell rows, colony shapes and the qualified locality/ecology statements; not a claim of full-paper reading."
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+        "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis",
+        "doi": "10.1073/pnas.1922539117",
+        "access": "primary article indexed passage; direct PMC browser challenge; publisher PDF unavailable",
+        "finding": "The trophic relationship is discussed as uncertain; supports two cautious factual drafts, not specialist approval."
+      },
+      {
+        "url": "https://commons.clarku.edu/faculty_biology/170/",
+        "locator": "Publication Title; DOI; Creative Commons License",
+        "access": "institutional author repository, bibliographic record/abstract",
+        "license_as_displayed": "CC BY-NC-ND 4.0",
+        "finding": "Confirms bibliographic identity and restrictive source grant; no paper or protected paragraphs redistributed."
+      },
+      {
+        "url": "https://openstax.org/books/biology-2e/pages/preface",
+        "locator": "About OpenStax resources / Customization",
+        "access": "reuse dated evidence already recorded in final_pr12_correction; not a new historical-version verification",
+        "license_as_displayed": "CC BY-NC-SA 4.0",
+        "finding": "Reference is not proof of reproduction; edition/revision grant must not be presumed."
+      },
+      {
+        "url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+        "locator": "Chitons",
+        "access": "institutional page",
+        "finding": "Institutional reference for the group account; no wholesale taxonomy revision or text license inferred."
+      }
+    ],
+    "classification": {
+      "scientific_facts": "Distinguished from expression; targeted source checks only, no exclusive ownership claimed.",
+      "legacy_ai_assisted_prose": "Individual originality remains inconclusive, not proved or disproved by AI involvement or wording differences.",
+      "bibliographic_citations": "Source bindings retained; not treated as permission or quotations.",
+      "verbatim_quotations": "No incompatible reproduction concretely established in the consulted passages; no exhaustive absence claim.",
+      "potential_adaptations": "Require passage-specific evidence and applicable source conditions; no automatic original-content classification.",
+      "generated_passages": "Source restrictions retained; no independent license grant by generation."
+    },
+    "validation": {
+      "ctest": {
+        "suites": 26,
+        "passed": 26,
+        "seconds": 136.56
+      },
+      "rights_tests": 39,
+      "strict_catalog_species": 122,
+      "competitive_pool": 80,
+      "source_gate": {
+        "technical_errors": 0,
+        "photo_findings": 120,
+        "other_material_findings": 7,
+        "original_photo_blocks": 2,
+        "new_scientific_review_records_for_species_82": 3
+      },
+      "permission_states_unchanged": true,
+      "licenses_activated": [],
+      "review_ledgers_unchanged": true,
+      "all_recipes_unchanged": true
+    }
   }
 }

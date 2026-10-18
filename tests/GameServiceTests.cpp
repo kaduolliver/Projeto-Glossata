@@ -1113,8 +1113,14 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY(!profile.value("displayName").toString().isEmpty());
         QVERIFY(profile.value("reviewedOn").toString().isEmpty());
         const auto review=profile.value("governance").toMap().value("education").toMap();
-        QCOMPARE(review.value("state").toString(),QString("legacy"));
+        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("needs_review") : QString("legacy"));
         QVERIFY(review.value("reviewer").toString().isEmpty());
+        if (s.id==82) {
+            // Revised claims cannot inherit the former legacy approval.
+            QVERIFY(profile.value("nutrition").toMap().isEmpty());
+            QVERIFY(profile.value("curiosity").toMap().isEmpty());
+            QVERIFY(!review.value("usable").toBool());
+        }
         for (const QString &field : {QString("summary"),QString("distribution"),QString("morphology"),QString("conservation")}) {
             const auto item=profile.value(field).toMap();
             QVERIFY2(!item.value("text").toString().isEmpty(),qPrintable(s.name+":"+field));

@@ -1,5 +1,7 @@
 # Implementação da política de identidade visual reservada
 
+Atualização de proveniência após o PR #15: o mantenedor declarou geração dos três ícones somente por descrição de texto. O [registro complementar](../resources/compliance/branding/text-only-declaration.json) preserva essa informação sem alterar a declaração anterior. A lacuna sobre imagens de entrada foi esclarecida; não deve ser solicitada novamente. As demais conclusões abaixo são o registro da implementação da política. A [situação atual da Issue #2](SANEAMENTO_ISSUE_2.md) delimita o que ainda falta para distribuição, sem exigir exclusividade, registro de marca ou publicação de conversas privadas.
+
 ## Decisão e alcance
 
 Em 2026-10-17, o mantenedor escolheu expressamente **identidade visual reservada ao Projeto Glossata**, com intenção de uso dos três ícones nas versões oficiais. A [política adotada](propostas/USO_IDENTIDADE_VISUAL.md) substitui o estado de proposta não escolhida; o caminho anterior foi mantido para preservar referências. A reserva limita-se aos direitos efetivamente disponíveis, sem afirmar autoria exclusiva de resultados de IA, registro de marca ou ausência de direitos de terceiros.

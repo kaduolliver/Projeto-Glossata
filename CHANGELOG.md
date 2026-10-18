@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Saneamento concentrado da Issue #2: inventário de passagens e vínculos de origem incorporado ao relatório de direitos existente; projeção de dicas conferida sem criar aprovações. Dois trechos sobre a nutrição de Pseudoboletus parasiticus corrigidos como rascunhos fundamentados, sem alterar receitas/pontos. Nova declaração real de geração dos ícones somente por texto preservada separadamente. Proposta de licença educativa preparada, sem ativação; sete pendências de direitos mantidas. Veja [SANEAMENTO_ISSUE_2.md](docs/SANEAMENTO_ISSUE_2.md).
+
 - Política visual reservada escolhida expressamente pelo mantenedor: sem concessão gráfica geral para projetos independentes, limitada aos direitos disponíveis e respeitando Apache-2.0, visualização/fork e usos legalmente permitidos. Registro administrativo vinculado aos três recursos, sem alterar imagens, permissões ou liberar distribuição. Fluxo de substituição em forks e pendências individuais documentados em [POLITICA_BRANDING_IMPLEMENTACAO.md](docs/POLITICA_BRANDING_IMPLEMENTACAO.md).
 
 - Identidade visual: decisão administrativa de preservar os três ícones atuais, com documentação independente de finalidades, origem declarada e proposta gráfica não ativada. Bytes dos ícones, licenças, permissões e histórico preservados; nenhuma aprovação de distribuição. Consulte [IDENTIDADE_VISUAL.md](docs/IDENTIDADE_VISUAL.md).

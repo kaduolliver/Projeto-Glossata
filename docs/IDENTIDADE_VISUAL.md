@@ -22,6 +22,8 @@ O [registro original de origem](../resources/compliance/branding/origin-declarat
 
 Os registros disponíveis não permitem reconstruir integralmente o processo de geração, as entradas utilizadas e as condições aplicáveis à época. Não se declara ausência de referências externas. A declaração da ferramenta não demonstra, isoladamente, titularidade suficiente ou autorização de terceiros. Documentos privados de criação não são publicados por esta intervenção; eventual conferência deve preservar a privacidade e registrar somente evidência pública necessária.
 
+No saneamento posterior ao PR #15, o mantenedor esclareceu: “Apenas descrição de texto”. O [registro complementar](../resources/compliance/branding/text-only-declaration.json) documenta a ausência declarada de imagens de entrada para os três arquivos, sem reescrever o registro anterior. Isso não declara ausência de referências textuais nem certifica direitos sobre a expressão resultante. A análise restante deve ser proporcional ao uso oficial pretendido, sem exigir exclusividade, registro de marca ou publicação de material privado.
+
 ## Direitos e distribuição
 
 O código próprio enumerado permanece sob Apache-2.0; essa concessão não licencia os ícones, a marca, os textos educativos ou os materiais externos. Consulte [escopo do código](ESCOPO_LICENCIAMENTO.md) e [direitos por camada](DIREITOS_E_LICENCAS.md).

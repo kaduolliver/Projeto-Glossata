@@ -7073,11 +7073,13 @@
       "scope_name": ""
     },
     "nutrition": {
-      "text": "Obtém recursos por uma associação parasitária com outro fungo.",
-      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
-      "source_title": "First Nature · ficha do fungo",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Cresce associado a outros fungos; há estudos que discutem se a relação envolve parasitismo ou associação com raízes de plantas.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+      "source_title": "Sánchez-García et al. (2020) — PNAS, DOI: 10.1073/pnas.1922539117",
+      "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; parágrafo sobre Pseudoboletus",
+      "verified": false,
+      "reviewed_on": null,
+      "origin": "ai_revision_pending_editorial_review",
       "scope_name": ""
     },
     "morphology": {
@@ -7089,11 +7091,13 @@
       "scope_name": ""
     },
     "curiosity": {
-      "text": "Um fungo também pode viver associado de forma parasitária a outro fungo.",
-      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
-      "source_title": "First Nature · ficha do fungo",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Crescer sobre outro fungo não demonstra, por si só, como o organismo obtém seus nutrientes.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/",
+      "source_title": "Sánchez-García et al. (2020) — PNAS, DOI: 10.1073/pnas.1922539117",
+      "locator": "Results and Discussion / Many gains, and few losses, of ECM symbiosis; parágrafo sobre Pseudoboletus",
+      "verified": false,
+      "reviewed_on": null,
+      "origin": "ai_revision_pending_editorial_review",
       "scope_name": ""
     },
     "hint": {
