@@ -460,6 +460,58 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(ids,{'PMC5638950','PMC9315710'})
         self.assertIn('PMC6909477',packet['source_evidence'])
 
+    def test_issue2_technical_wording_changes_only_bound_rationales(self):
+        import copy
+        import content_governance as governance
+        proposal=json.loads((PROJECT/'docs/propostas/REDACAO_TECNICA_ISSUE_2.json').read_bytes())
+        self.assertEqual(governance.digest(proposal['wordings']),proposal['fingerprint'])
+        self.assertEqual(len(proposal['wordings']),15)
+        self.assertIn(proposal['fingerprint'],(PROJECT/'docs/propostas/REDACAO_TECNICA_ISSUE_2.md').read_text(encoding='utf8'))
+        self.assertFalse(proposal['human_approval_recorded'])
+        originals={name:self.historical_bytes(proposal['base_commit'],name) for name in proposal['source_files']}
+        for name,raw in originals.items():
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),proposal['source_files'][name])
+        data={name:json.loads(raw) for name,raw in originals.items() if name.endswith('.json')}
+        changed=copy.deepcopy(data);seen=set()
+        for wording in proposal['wordings']:
+            self.assertEqual(hashlib.sha256(wording['proposed_text'].encode('utf8')).hexdigest(),wording['text_sha256'])
+            for binding in wording['occurrences']:
+                key=(binding['file'],binding['pointer']);self.assertNotIn(key,seen);seen.add(key)
+                parts=binding['pointer'].strip('/').split('/');node=changed[binding['file']]
+                for part in parts[:-1]:node=node[int(part)] if isinstance(node,list) else node[part]
+                field=int(parts[-1]) if isinstance(node,list) else parts[-1]
+                self.assertEqual(hashlib.sha256(node[field].encode('utf8')).hexdigest(),binding['previous_text_sha256'])
+                self.assertIn(parts[-1],{'rationale','limitations'})
+                node[field]=wording['proposed_text']
+        self.assertEqual(len(seen),1147)
+        script=originals['scripts/review_hints.py'].decode('utf8')
+        self.assertEqual(len(proposal['generator_literal_replacements']),4)
+        for replacement in proposal['generator_literal_replacements']:
+            self.assertEqual(script.count(replacement['previous_text']),1)
+            script=script.replace(replacement['previous_text'],replacement['proposed_text'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            for folder in ('resources/data','resources/compliance'):
+                shutil.copytree(PROJECT/folder,root/folder)
+            for name in ('src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                (root/name).parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/name,root/name)
+            # Compare both versions inside the same isolated root. No production
+            # file, review event or permission is written by this regression.
+            for name,value in data.items():governance.save(root/name,value)
+            before=governance.records(root,education.build(root,persist=False))
+            governance.save(root/'resources/data/hint_education.json',changed['resources/data/hint_education.json'])
+            target=root/'scripts/review_hints.py';target.parent.mkdir(parents=True)
+            namespace={'__name__':'proposal_regression','__file__':str(target)}
+            exec(compile(script,str(target),'exec'),namespace)
+            generated=namespace['evaluate'](root)
+            self.assertEqual(generated['species'],changed['resources/data/progressive_hints.json']['species'])
+            for field in ('rationale','limitations'):
+                self.assertEqual(generated['evaluation'][field],changed['resources/data/progressive_hints.json']['evaluation'][field])
+            governance.save(root/'resources/data/progressive_hints.json',generated)
+            after=governance.records(root,education.build(root,persist=False))
+            self.assertEqual({k:v['content_sha256'] for k,v in before.items() if v['kind']!='assistance'},
+                             {k:v['content_sha256'] for k,v in after.items() if v['kind']!='assistance'})
+
     def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:

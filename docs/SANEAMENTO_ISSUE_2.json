@@ -4529,5 +4529,471 @@
       "remote_validation_authority": "Actual GitHub Actions checks on the published Pull Request; not inferred from local tests.",
       "new_package_validated": false
     }
+  },
+  "remaining_text_regularization": {
+    "checked_at": "2026-10-18T14:54:27.328915+00:00",
+    "base_commit": "ba57dfe037915b81c86f03c7ecd9782374c6fb0e",
+    "status": "in_progress_human_decisions_and_remaining_provenance_required",
+    "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2",
+    "issue_state": "OPEN",
+    "issue_managed_block_refresh": {
+      "findings_before": 7,
+      "findings_now": 3,
+      "fingerprint": "8979abd80b0d64de8716ba5a85170b43b1451e846eb4f26601060ccb7538c310",
+      "source_commit": "ba57dfe037915b81c86f03c7ecd9782374c6fb0e",
+      "human_section_preserved": true,
+      "issue_closed": false,
+      "other_issues_changed": false
+    },
+    "authoritative_gate": {
+      "command": "python scripts/distribution.py check",
+      "exit_code": 2,
+      "blocked": true,
+      "technical_errors": [],
+      "photo_findings": 120,
+      "material_findings": 3,
+      "scientific_release_blocks": 31,
+      "package_assessed": false
+    },
+    "current_text_counts": {
+      "pending_resources": [
+        "resources/data/species_profiles.json",
+        "resources/data/hint_education.json",
+        "resources/data/progressive_hints.json"
+      ],
+      "pending_occurrences": 2300,
+      "pending_unique_texts": 788,
+      "pending_by_role": {
+        "educational_assertion": 889,
+        "generated_copy": 264,
+        "pedagogical_rationale": 290,
+        "generated_pedagogical_rationale": 855,
+        "automated_evaluation_metadata": 2
+      }
+    },
+    "pending_groups": [
+      {
+        "path": "resources/data/hint_education.json",
+        "topic_or_role": "educational_assertion",
+        "occurrences": 84,
+        "unique_hashes": 64,
+        "source_reference_count": 48,
+        "source_examples": [
+          {
+            "url": "not_supplied",
+            "occurrences": 20
+          },
+          {
+            "url": "https://www.first-nature.com/fungi/~naming.php",
+            "occurrences": 6
+          },
+          {
+            "url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+            "occurrences": 2
+          },
+          {
+            "url": "https://lpsn.dsmz.de/genus/merismopedia",
+            "occurrences": 2
+          },
+          {
+            "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "path": "resources/data/hint_education.json",
+        "topic_or_role": "pedagogical_rationale",
+        "occurrences": 290,
+        "unique_hashes": 70,
+        "source_reference_count": 48,
+        "source_examples": [
+          {
+            "url": "not_supplied",
+            "occurrences": 226
+          },
+          {
+            "url": "https://www.first-nature.com/fungi/~naming.php",
+            "occurrences": 6
+          },
+          {
+            "url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+            "occurrences": 2
+          },
+          {
+            "url": "https://lpsn.dsmz.de/genus/merismopedia",
+            "occurrences": 2
+          },
+          {
+            "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "path": "resources/data/progressive_hints.json",
+        "topic_or_role": "automated_evaluation_metadata",
+        "occurrences": 2,
+        "unique_hashes": 2,
+        "source_reference_count": 1,
+        "source_examples": [
+          {
+            "url": "not_supplied",
+            "occurrences": 2
+          }
+        ]
+      },
+      {
+        "path": "resources/data/progressive_hints.json",
+        "topic_or_role": "generated_copy",
+        "occurrences": 264,
+        "unique_hashes": 163,
+        "source_reference_count": 132,
+        "source_examples": [
+          {
+            "url": "https://www.first-nature.com/fungi/~naming.php",
+            "occurrences": 6
+          },
+          {
+            "url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+            "occurrences": 4
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 4
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 4
+          },
+          {
+            "url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+            "occurrences": 4
+          }
+        ]
+      },
+      {
+        "path": "resources/data/progressive_hints.json",
+        "topic_or_role": "generated_pedagogical_rationale",
+        "occurrences": 855,
+        "unique_hashes": 66,
+        "source_reference_count": 451,
+        "source_examples": [
+          {
+            "url": "https://www.inaturalist.org/taxa/1",
+            "occurrences": 42
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/47120",
+            "occurrences": 30
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/47158",
+            "occurrences": 29
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/47157",
+            "occurrences": 22
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/47126",
+            "occurrences": 20
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "conservation",
+        "occurrences": 122,
+        "unique_hashes": 6,
+        "source_reference_count": 122,
+        "source_examples": [
+          {
+            "url": "https://www.inaturalist.org/taxa/1051359",
+            "occurrences": 1
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/1051363",
+            "occurrences": 1
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/1075803",
+            "occurrences": 1
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/1096796",
+            "occurrences": 1
+          },
+          {
+            "url": "https://www.inaturalist.org/taxa/1161132",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "curiosity",
+        "occurrences": 108,
+        "unique_hashes": 92,
+        "source_reference_count": 89,
+        "source_examples": [
+          {
+            "url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+            "occurrences": 10
+          },
+          {
+            "url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+            "occurrences": 9
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 2
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "distribution",
+        "occurrences": 122,
+        "unique_hashes": 116,
+        "source_reference_count": 121,
+        "source_examples": [
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "hint",
+        "occurrences": 122,
+        "unique_hashes": 122,
+        "source_reference_count": 120,
+        "source_examples": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 2
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "morphology",
+        "occurrences": 121,
+        "unique_hashes": 121,
+        "source_reference_count": 119,
+        "source_examples": [
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 2
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "nutrition",
+        "occurrences": 88,
+        "unique_hashes": 58,
+        "source_reference_count": 77,
+        "source_examples": [
+          {
+            "url": "https://ucmp.berkeley.edu/protista/slimemolds.html",
+            "occurrences": 10
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 2
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+            "occurrences": 1
+          }
+        ]
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "summary",
+        "occurrences": 122,
+        "unique_hashes": 114,
+        "source_reference_count": 112,
+        "source_examples": [
+          {
+            "url": "https://www.amentsoc.org/insects/fact-files/orders/lepidoptera.html",
+            "occurrences": 9
+          },
+          {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+            "occurrences": 2
+          },
+          {
+            "url": "https://seanet.stanford.edu/Ochrophyta",
+            "occurrences": 2
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Actias_luna/",
+            "occurrences": 1
+          },
+          {
+            "url": "https://animaldiversity.org/accounts/Agalychnis_callidryas/",
+            "occurrences": 1
+          }
+        ]
+      }
+    ],
+    "binding_index": "resources/compliance/asset_rights.json / educational_text_rights",
+    "regeneration_command": "python scripts/review_updates.py --rights-report",
+    "objective_resolution_check": "build/rights-investigation.json / other_materials_resolution",
+    "local_generation_evidence": [
+      {
+        "local_path": "build/compose_profiles.py",
+        "sha256": "4f3a5a9d4ae20e72aaba2c4c666dd8954b3fea389059a3fc5f6e9f04a12488cb",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      },
+      {
+        "local_path": "build/prepare_hint_data.py",
+        "sha256": "b820abf7f9478c8faee66dcda7fd62ce9e55a7507c50e8e93f3720c43f94ae5f",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      },
+      {
+        "local_path": "build/seed_assistance.py",
+        "sha256": "f6398de6a7d71c30f73ab04744951251aaaa5e6aa55ad2e57aeac19c334bbb82",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      }
+    ],
+    "technical_wording_draft": {
+      "path": "docs/propostas/REDACAO_TECNICA_ISSUE_2.json",
+      "review_document": "docs/propostas/REDACAO_TECNICA_ISSUE_2.md",
+      "fingerprint": "87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e",
+      "occurrences": 1147,
+      "unique_wordings": 15,
+      "status": "draft_not_applied",
+      "human_approval_recorded": false,
+      "rights_confirmation_recorded": false,
+      "remaining_if_legitimately_confirmed_and_applied": 1153
+    },
+    "preservation": {
+      "tracked_resource_source_license_version_differences": [],
+      "organisms": 122,
+      "competitive_pool": 80,
+      "scientific_review_events": 76,
+      "actual_human_decisions_created": 0,
+      "permission_events_created": 0,
+      "other_text_grants_created": 0,
+      "catalog_or_application_version_changed": false
+    },
+    "validation": {
+      "rights_investigation_tests": {
+        "passed": 55
+      },
+      "import_and_generation_tests": {
+        "passed": 22
+      },
+      "full_ctest": {
+        "passed": 26,
+        "failed": 0,
+        "seconds": 185.38
+      },
+      "code_license_check": "passed",
+      "strict_catalog_audit": "passed",
+      "release_metadata_check": "passed",
+      "visual_validation_performed": false,
+      "remote_tests_for_this_branch": "not_published",
+      "configure_and_release_build": "passed",
+      "additional_checks": [
+        "permission-recovery",
+        "repository-protection-local",
+        "repository-audit",
+        "exploration-media",
+        "scientific-coverage",
+        "hint-assistance",
+        "governance-history",
+        "release-history",
+        "qmllint"
+      ],
+      "derived_resources_byte_identical_to_base": true,
+      "external_content_queries": 0
+    },
+    "next_human_decisions": [
+      "Review the concrete technical wording proposal separately from assistance grades.",
+      "Confirm only rights actually available in the concrete new wording, never unknown legacy corpus rights.",
+      "Investigate or replace remaining biological and etymological prose with individually supported drafts, then review exact batches.",
+      "Consider closure only after integrated main has zero material findings and complete evidence; other gates remain independent."
+    ],
+    "limitations": [
+      "2300 occurrences and 788 hashes are documentary review units, not proven infringements or independent works.",
+      "No new external source consultation, authorship certification or legal/scientific approval occurred.",
+      "Closed Issues, URL existence, local script declarations and technical tests never establish permission."
+    ]
   }
 }
