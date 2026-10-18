@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC9381480&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:30.218087+00:00",
+    "response_sha256": "d5f252956d03d198e9253eab417d80a1c6b5b2b6712f94054c6c26cc131aabe8",
+    "pmcid": "PMC9381480",
+    "metadata": {
+      "id": "35972622",
+      "source": "MED",
+      "title": "Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+      "authorString": "Jacques F, Baratchart E, Pienta KJ, Hammarlund EU.",
+      "doi": "10.1007/s12032-022-01740-w",
+      "pubYear": "2022",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://link.springer.com/content/pdf/10.1007/s12032-022-01740-w.pdf"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://link.springer.com/content/pdf/10.1007/s12032-022-01740-w.pdf"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1007/s12032-022-01740-w"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9381480"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9381480?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9381480/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:21.470110+00:00",
+    "response_sha256": "a42b37cfc324f395f17fde33c8c77aaedaf413a64a2d1c83abb93ed97b5fbc10",
+    "bytes": 169830,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC9381480",
+    "title": "Origin and evolution of animal multicellularity in the light of phylogenomics and cancer genetics.",
+    "author_credit": "Jacques F, Baratchart E, Pienta KJ, Hammarlund EU.",
+    "doi": "10.1007/s12032-022-01740-w",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

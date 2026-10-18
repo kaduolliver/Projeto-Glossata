@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC3390603&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:34.854023+00:00",
+    "response_sha256": "0a56c0af07aa335a5cd856dc986b2c76a0cfdb1b5728a555a64cab360ff55b12",
+    "pmcid": "PMC3390603",
+    "metadata": {
+      "id": "22783271",
+      "source": "MED",
+      "title": "Cell wall evolution and diversity.",
+      "authorString": "Fangel JU, Ulvskov P, Knox JP, Mikkelsen MD, Harholt J, Popper ZA, Willats WG.",
+      "doi": "10.3389/fpls.2012.00152",
+      "pubYear": "2012",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3389/fpls.2012.00152"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC3390603"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC3390603?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3390603/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:34.454445+00:00",
+    "response_sha256": "1d07043994328f8789685e7512d0b09934da21fbf001bbe174cff78ec5cc8fa8",
+    "bytes": 146347,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC3390603",
+    "title": "Cell wall evolution and diversity.",
+    "author_credit": "Fangel JU, Ulvskov P, Knox JP, Mikkelsen MD, Harholt J, Popper ZA, Willats WG.",
+    "doi": "10.3389/fpls.2012.00152",
+    "license_url": "http://creativecommons.org/licenses/by/3.0/",
+    "license": "CC-BY-3.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

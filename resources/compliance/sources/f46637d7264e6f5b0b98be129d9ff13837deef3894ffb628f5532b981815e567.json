@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1111%2Fjeu.12691&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:19:05.575425+00:00",
+    "response_sha256": "014950e9382e7c8fbb0e4b29499d8db6622c20c7170f3f8c1345f2d5505898e7",
+    "pmcid": "PMC6492006",
+    "metadata": {
+      "id": "30257078",
+      "source": "MED",
+      "title": "Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+      "authorString": "Adl SM, Bass D, Lane CE, Lukeš J, Lukeš J, Schoch CL, Smirnov A, Smirnov A, Agatha S, Berney C, Brown MW, Burki F, Cárdenas P, Čepička I, Chistyakova L, Del Campo J, Dunthorn M, Edvardsen B, Eglit Y, Guillou L, Hampl V, Heiss AA, Hoppenrath M, James TY, Karnkowska A, Karpov S, Kim E, Kolisko M, Kudryavtsev A, Lahr DJG, Lara E, Le Gall L, Lynn DH, Mann DG, Massana R, Mitchell EAD, Morrow C, Park JS, Pawlowski JW, Powell MJ, Richter DJ, Rueckert S, Shadwick L, Shimano S, Spiegel FW, Torruella G, Youssef N, Zlatogursky V, Zhang Q.",
+      "doi": "10.1111/jeu.12691",
+      "pubYear": "2019",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/jeu.12691"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1111/jeu.12691"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6492006"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6492006?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6492006/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:09.167547+00:00",
+    "response_sha256": "f13988bf10570fce537f501886369111c05f421052101d1e757a4a8c53bdc9bc",
+    "bytes": 860101,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC6492006",
+    "title": "Revisions to the Classification, Nomenclature, and Diversity of Eukaryotes.",
+    "author_credit": "Adl SM, Bass D, Lane CE, Lukeš J, Lukeš J, Schoch CL, Smirnov A, Smirnov A, Agatha S, Berney C, Brown MW, Burki F, Cárdenas P, Čepička I, Chistyakova L, Del Campo J, Dunthorn M, Edvardsen B, Eglit Y, Guillou L, Hampl V, Heiss AA, Hoppenrath M, James TY, Karnkowska A, Karpov S, Kim E, Kolisko M, Kudryavtsev A, Lahr DJG, Lara E, Le Gall L, Lynn DH, Mann DG, Massana R, Mitchell EAD, Morrow C, Park JS, Pawlowski JW, Powell MJ, Richter DJ, Rueckert S, Shadwick L, Shimano S, Spiegel FW, Torruella G, Youssef N, Zlatogursky V, Zhang Q.",
+    "doi": "10.1111/jeu.12691",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

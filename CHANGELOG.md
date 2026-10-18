@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Regularização textual: lote de 68 redações novas de grupos e proposta delimitada de 34 notas de fichas preparados para conferência, fontes/licenças localizadas e validação do gerador em workspace temporário. Conteúdo ativo e direitos permanecem intactos até decisões reais dos lotes; API bibliográfica do EMBL-EBI incluída explicitamente na política de manutenção, preservando os guardas do transporte.
+
 - Issue #2: vínculos documentais das 2.402 ocorrências educativas agrupados no inventário existente, preservando origem inconclusiva e direitos externos. Gate reforçado contra liberação parcial de arquivos mistos. Após aprovação expressa do mantenedor, registradas as duas notas e o agregado do organismo 82 como revisão editorial, restaurando essas notas sem alterar receitas ou pontos. Três ícones com uso/distribuição documentados exclusivamente nas versões oficiais após autorização específica; sem licença gráfica geral ou concessão textual. Quatro pendências textuais e demais bloqueios do pacote preservados.
 
 - Política editorial de licenciamento misto formalizada por decisão do mantenedor: CC BY 4.0 como padrão para redações próprias elegíveis, sem concessão automática sobre o corpus. Inventário existente recebe contrato documental por ocorrência e validações de vínculo/evidência, com alertas SA/NC/ND; textos, ícones e fotografias mantêm pendências. Sem alteração de ciência, interface ou versão do aplicativo.

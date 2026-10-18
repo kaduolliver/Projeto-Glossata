@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC7052976&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:26.907232+00:00",
+    "response_sha256": "b16cf8072d417bea910fcbb6e99a827f5fb2e349b792b60324de46dc6459da7c",
+    "pmcid": "PMC7052976",
+    "metadata": {
+      "id": "32122335",
+      "source": "MED",
+      "title": "Evolution of metabolic capabilities and molecular features of diplonemids, kinetoplastids, and euglenids.",
+      "authorString": "Butenko A, Opperdoes FR, Flegontova O, Horák A, Hampl V, Keeling P, Gawryluk RMR, Tikhonenkov D, Flegontov P, Lukeš J.",
+      "doi": "10.1186/s12915-020-0754-1",
+      "pubYear": "2020",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://bmcbiol.biomedcentral.com/track/pdf/10.1186/s12915-020-0754-1"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1186/s12915-020-0754-1"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7052976"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7052976?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7052976/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:12.494798+00:00",
+    "response_sha256": "bf3dd8534600a14e88ad5b84e2c3171b04793885203217bd6190c9d4d0c15442",
+    "bytes": 381677,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC7052976",
+    "title": "Evolution of metabolic capabilities and molecular features of diplonemids, kinetoplastids, and euglenids.",
+    "author_credit": "Butenko A, Opperdoes FR, Flegontova O, Horák A, Hampl V, Keeling P, Gawryluk RMR, Tikhonenkov D, Flegontov P, Lukeš J.",
+    "doi": "10.1186/s12915-020-0754-1",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

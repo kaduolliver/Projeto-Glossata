@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC11422720&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:33.752295+00:00",
+    "response_sha256": "4d5127a2042e12ccfe0f5abcb66b70af56a27ef32457af28ef3edf94ca2691c9",
+    "pmcid": "PMC11422720",
+    "metadata": {
+      "id": "39235104",
+      "source": "MED",
+      "title": "A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+      "authorString": "Klementz BC, Brenneis G, Hinne IA, Laumer EM, Neu SM, Hareid GM, Gainett G, Setton EVW, Simian C, Vrech DE, Joyce I, Barnett AA, Patel NH, Harvey MS, Peretti AV, Gulia-Nuss M, Sharma PP.",
+      "doi": "10.1093/molbev/msae188",
+      "pubYear": "2024",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1093/molbev/msae188"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11422720"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11422720?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11422720/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:31.406173+00:00",
+    "response_sha256": "58dbd0d01527f1330db88e31807417b35fc46147da4a2adc68a95550849d4987",
+    "bytes": 247494,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC11422720",
+    "title": "A Novel Expression Domain of extradenticle Underlies the Evolutionary Developmental Origin of the Chelicerate Patella.",
+    "author_credit": "Klementz BC, Brenneis G, Hinne IA, Laumer EM, Neu SM, Hareid GM, Gainett G, Setton EVW, Simian C, Vrech DE, Joyce I, Barnett AA, Patel NH, Harvey MS, Peretti AV, Gulia-Nuss M, Sharma PP.",
+    "doi": "10.1093/molbev/msae188",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

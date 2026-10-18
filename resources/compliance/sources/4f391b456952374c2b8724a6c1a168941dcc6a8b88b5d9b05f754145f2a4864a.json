@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC9434249&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:31.473946+00:00",
+    "response_sha256": "f3becec84e817776ff765e04ff42343837cbe487827d1588083a3e381ae811bf",
+    "pmcid": "PMC9434249",
+    "metadata": {
+      "id": "35904762",
+      "source": "MED",
+      "title": "Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "authorString": "Woudenberg S, Renema J, Tomescu AMF, De Rybel B, Weijers D.",
+      "doi": "10.1093/plphys/kiac304",
+      "pubYear": "2022",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1093/plphys/kiac304"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9434249"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC9434249?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9434249/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:24.761213+00:00",
+    "response_sha256": "70cc46836ec0cb9e53e79e473dcf71c8cf7f8defdc810126a733fc2fd37295c1",
+    "bytes": 177959,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC9434249",
+    "title": "Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+    "author_credit": "Woudenberg S, Renema J, Tomescu AMF, De Rybel B, Weijers D.",
+    "doi": "10.1093/plphys/kiac304",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

@@ -161,6 +161,130 @@ class ImportTests(unittest.TestCase):
                 actual=education.build()
             self.assertEqual(actual,expected)
 
+    def test_group_redaction_draft_binds_every_occurrence_and_invalidates_only_group_notes(self):
+        import content_governance as governance
+        import review_hints
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_text(encoding='utf8'))
+        packet=report['educational_regularization']['group_batch']
+        draft_path=PROJECT/packet['proposed_content_path']
+        self.assertEqual(hashlib.sha256(draft_path.read_bytes()).hexdigest(),packet['proposed_file_sha256'])
+        draft=json.loads(draft_path.read_bytes())
+        self.assertEqual(len(packet['proposed_changes']),68)
+        seen=set()
+        for change in packet['proposed_changes']:
+            self.assertNotIn(change['pointer'],seen);seen.add(change['pointer'])
+            value=draft
+            for part in change['pointer'].split('/')[1:]:
+                value=value[int(part)] if isinstance(value,list) else value[part]
+            self.assertEqual(hashlib.sha256(value.encode()).hexdigest(),change['text_sha256'])
+            self.assertNotEqual(change['previous_text_sha256'],change['text_sha256'])
+            self.assertTrue(change['scientific_sources'])
+            for reference in change['scientific_sources']:
+                self.assertEqual(hashlib.sha256((PROJECT/reference['path']).read_bytes()).hexdigest(),reference['sha256'])
+                self.assertTrue(reference['locator'])
+        if packet['state']!='draft':
+            return  # Archived evidence stays checked; applied versions use normal generation/review tests.
+        self.assertIsNone(packet['reviewer']);self.assertIsNone(packet['reviewed_at'])
+        self.assertFalse(packet['active_content_changed'])
+        self.assertEqual(hashlib.sha256((PROJECT/packet['target']).read_bytes()).hexdigest(),packet['previous_file_sha256'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            shutil.copytree(PROJECT/'resources/data',root/'resources/data')
+            shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
+            before=education.build(root,persist=False)
+            recipes=review_hints.prepare(root)
+            governance.save(root/packet['target'],draft)
+            after=education.build(root,persist=False)
+            changed={key for key in before['notes'] if before['notes'][key]!=after['notes'][key]}
+            self.assertEqual(len(changed),38)
+            self.assertTrue(all(key.startswith('note:') for key in changed))
+            for key in changed:
+                self.assertEqual(after['notes'][key]['governance']['state'],'needs_review')
+                self.assertFalse(after['notes'][key]['governance']['usable'])
+            self.assertEqual(before['species'],after['species'])
+            self.assertEqual(before['taxons'],after['taxons'])
+            self.assertEqual(before['group_hints'],after['group_hints'])
+            self.assertEqual(recipes,review_hints.prepare(root))
+
+    def test_profile_redaction_drafts_preserve_other_topics_and_do_not_inherit_reviews(self):
+        import content_governance as governance
+        import review_hints
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
+        packet=report['educational_regularization']['profile_openstax_batch']
+        self.assertEqual(packet['state'],'draft')
+        self.assertIsNone(packet['reviewer']);self.assertIsNone(packet['reviewed_at'])
+        self.assertFalse(packet['active_content_changed'])
+        source_path=PROJECT/packet['target']
+        self.assertEqual(hashlib.sha256(source_path.read_bytes()).hexdigest(),packet['previous_file_sha256'])
+        profiles=json.loads(source_path.read_bytes())
+        replacements=json.loads(json.dumps(profiles))
+        pointers=set()
+        for change in packet['proposed_changes']:
+            pointer=change['pointer'];self.assertNotIn(pointer,pointers);pointers.add(pointer)
+            _,sid,field=pointer.split('/')
+            self.assertNotEqual(sid,'82')
+            self.assertEqual(change['scientific_name'],profiles[sid]['scientific_name'])
+            self.assertEqual(governance.digest(profiles[sid][field]),change['previous_note_sha256'])
+            proposed=change['proposed_note']
+            self.assertEqual(governance.digest(proposed),change['proposed_note_sha256'])
+            self.assertEqual(hashlib.sha256(proposed['text'].encode()).hexdigest(),change['text_sha256'])
+            self.assertNotEqual(change['previous_text_sha256'],change['text_sha256'])
+            self.assertFalse(proposed['verified']);self.assertIsNone(proposed['reviewed_on'])
+            for reference in change['scientific_sources']:
+                evidence_path=PROJECT/reference['path']
+                self.assertEqual(hashlib.sha256(evidence_path.read_bytes()).hexdigest(),reference['sha256'])
+                evidence=json.loads(evidence_path.read_bytes())
+                self.assertTrue(reference['locator'])
+                self.assertFalse(evidence['scientific_approval'])
+                self.assertEqual(evidence['license_check']['license'],'CC-BY-4.0')
+            replacements[sid][field]=proposed
+        self.assertEqual(len(pointers),34)
+        self.assertEqual(replacements['82'],profiles['82'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            shutil.copytree(PROJECT/'resources/data',root/'resources/data')
+            shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
+            before=education.build(root,persist=False)
+            before_recipes=review_hints.prepare(root)
+            governance.save(root/packet['target'],replacements)
+            after=education.build(root,persist=False)
+            changed={key for key in before['notes'] if before['notes'][key]!=after['notes'][key]}
+            expected={'species:'+p.split('/')[1]+':'+p.split('/')[2] for p in pointers}
+            # The existing morphological alias also reflects the changed source note.
+            expected.add('species:110:morphological_hint')
+            self.assertEqual(changed,expected)
+            for key in changed:
+                self.assertFalse(after['notes'][key]['governance']['usable'])
+                self.assertEqual(after['notes'][key]['governance']['state'],'needs_review')
+            self.assertEqual(before['species']['82'],after['species']['82'])
+            self.assertEqual(before['taxons'],after['taxons'])
+            self.assertEqual(before['group_hints'],after['group_hints'])
+            self.assertEqual(before['group_curiosities'],after['group_curiosities'])
+            self.assertFalse(after['automated_pedagogy']['usable'])
+            # An explicit automated regeneration refreshes only input hashes and
+            # the affected appearance recipe. Assistance grades stay unchanged.
+            after_recipes=review_hints.prepare(root)
+            for sid,old in before_recipes['species'].items():
+                current=after_recipes['species'][sid]
+                if sid!='110':
+                    self.assertEqual(old,current)
+                else:
+                    self.assertEqual(len(old['recipes']),len(current['recipes']))
+                    for old_recipe,new_recipe in zip(old['recipes'],current['recipes']):
+                        for key,value in old_recipe.items():
+                            if key not in {'text','source_text','source_url','source_title','locator'}:
+                                self.assertEqual(value,new_recipe[key])
+            review_hints.evaluate(root)
+            regenerated=education.build(root,persist=False)
+            self.assertTrue(regenerated['automated_pedagogy']['usable'])
+            self.assertEqual(regenerated['species']['82'],before['species']['82'])
+            for key in changed:
+                self.assertFalse(regenerated['notes'][key]['governance']['usable'])
+
     def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:

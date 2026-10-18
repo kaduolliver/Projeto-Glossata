@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.3389%2Ffnbeh.2020.612313&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:19:55.939503+00:00",
+    "response_sha256": "7156f127f06f8d0743fa3a69a1049ca07960a67dd91e168b3de2da572c461180",
+    "pmcid": "PMC7772430",
+    "metadata": {
+      "id": "33390912",
+      "source": "MED",
+      "title": "The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "authorString": "Schumann I, Triphan T.",
+      "doi": "10.3389/fnbeh.2020.612313",
+      "pubYear": "2020",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Unpaywall",
+            "url": "https://www.frontiersin.org/articles/10.3389/fnbeh.2020.612313/pdf"
+          },
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7772430"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC7772430?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata only; no scientific or human approval."
+  },
+  "license_check": null,
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false,
+  "limitation": "CC BY declared by source; version not yet demonstrated in XML. Scientific reference only; no claim of permission to reproduce its protected expression."
+}

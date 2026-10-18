@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC11457947&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:36.421229+00:00",
+    "response_sha256": "b3b3dd7496aacffb1ecf3b936d6b01dff2ecd989744c0bd6bece077cca0c883d",
+    "pmcid": "PMC11457947",
+    "metadata": {
+      "id": "39240573",
+      "source": "MED",
+      "title": "An anatomical atlas of Drosophila melanogaster-the wild-type.",
+      "authorString": "Jürgens KJ, Drechsler M, Paululat A.",
+      "doi": "10.1093/genetics/iyae129",
+      "pubYear": "2024",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1093/genetics/iyae129"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11457947"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC11457947?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11457947/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:37.445062+00:00",
+    "response_sha256": "e63d7a192297186ac12ce923188d35d557dfad70e3d2c042665a60edc43eca9c",
+    "bytes": 187324,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC11457947",
+    "title": "An anatomical atlas of Drosophila melanogaster-the wild-type.",
+    "author_credit": "Jürgens KJ, Drechsler M, Paululat A.",
+    "doi": "10.1093/genetics/iyae129",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

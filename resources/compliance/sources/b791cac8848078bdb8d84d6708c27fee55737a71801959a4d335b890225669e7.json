@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMC10506793&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T04:17:38.651450+00:00",
+    "response_sha256": "40c6bb29a9ac7d4f008fa15dd22fcf22ff75c0ac834ace7cae69e371258bb934",
+    "pmcid": "PMC10506793",
+    "metadata": {
+      "id": "37721204",
+      "source": "MED",
+      "title": "Amphioxus as a model to study the evolution of development in chordates.",
+      "authorString": "D'Aniello S, Bertrand S, Escriva H.",
+      "doi": "10.7554/elife.87028",
+      "pubYear": "2023",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.7554/eLife.87028"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10506793"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC10506793?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10506793/fullTextXML",
+    "consulted_at": "2026-10-18T04:19:43.779686+00:00",
+    "response_sha256": "b85c728f906204704fd7c9f2fe595776bc55382a2653471739d7ca0805c70894",
+    "bytes": 187135,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC10506793",
+    "title": "Amphioxus as a model to study the evolution of development in chordates.",
+    "author_credit": "D'Aniello S, Bertrand S, Escriva H.",
+    "doi": "10.7554/elife.87028",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for new AI-assisted draft; no article images or full-text redistribution.",
+  "scientific_approval": false
+}

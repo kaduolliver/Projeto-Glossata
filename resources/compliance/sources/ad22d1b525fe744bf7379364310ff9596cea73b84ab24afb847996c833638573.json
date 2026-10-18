@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "kind": "factual_bibliographic_check",
+  "source_url": "https://ask.ifas.ufl.edu/publication/IN219",
+  "checked_at": "2026-10-18T04:27:02.610373+00:00",
+  "title": "Polydamas Swallowtail, Gold Rim, Tailless Swallowtail, Battus polydamas lucayus",
+  "author_credit": "Donald W. Hall",
+  "locator": "Introduction / tailless representative of Papilionidae",
+  "fact_checked": "Battus polydamas lucayus is a Papilionidae representative without hindwing tails; the presence of tails cannot be universal for the family.",
+  "license": null,
+  "use": "Bibliographic factual reference only; no protected passage, image, translation or adaptation of the account is incorporated.",
+  "scientific_or_copyright_approval": false
+}

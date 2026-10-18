@@ -1,5 +1,63 @@
 # Saneamento documental da Issue #2
 
+## Regularização textual iniciada em 2026-10-18 — lote de grupos
+
+PR #18 confirmado como integrado em `ed7e5c44e1acea80674b3c3bf402071d0836454c`. A branch `fix/issue-2-educational-text-rights` parte dessa base limpa. Os registros autênticos dos ícones e do organismo 82 permanecem intactos; esta etapa não solicita nova escolha de identidade ou de licença padrão.
+
+As **68 ocorrências de grupos** foram examinadas e receberam propostas de substituição em [propostas/group_education.json](propostas/group_education.json): 19 definições e 15 conjuntos de notas, preservando as lacunas vazias anteriores. São redações novas assistidas por IA, com referências localizadas e processo declarado; não se afirma autoria humana exclusiva ou originalidade universal por ausência de correspondências. O SHA-256 da proposta é `1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f`. O JSON deste relatório, em `educational_regularization.group_batch`, contém os vínculos por ponteiro/hash, evidências e limitações.
+
+**A proposta ainda não substitui o arquivo ativo.** Sua revisão editorial humana e a confirmação da aplicação do padrão CC BY 4.0 aos direitos efetivamente disponíveis neste lote permanecem pendentes. Isso não reabre a escolha da licença. O objetivo é conferir a versão concreta antes de registrar qualquer decisão ou promover a nova redação. Os quatro recursos textuais continuam bloqueados; nenhum achado foi encerrado nesta etapa.
+
+| Escopo examinado | Fonte científica e localizador utilizados |
+| --- | --- |
+| Animalia | Jacques et al. (2022), introdução/multicelularidade; Adl et al. (2019), Holozoa/Metazoa |
+| Plantae e Tracheophyta | Fangel et al. (2012), parede celular; Woudenberg et al. (2022), introdução e tabela 1, tecidos condutores |
+| Fungi, Ascomycota e Basidiomycota | Challacombe et al. (2019), enzimas e hifas; Adl et al. (2019), diagnósticos de Fungi/Dikarya |
+| Monera e Protista, somente como história | Fisler et al. (2020), árvores e sistemas históricos; Adl et al. (2019), linhagens eucarióticas atuais |
+| Arthropoda e Insecta | Klementz et al. (2024), apêndices articulados; Jürgens et al. (2024), cabeça/tórax/abdome; Schumann e Triphan (2020), cutícula e muda |
+| Chordata | D'Aniello et al. (2023), caracteres compartilhados; imagens do artigo excluídas |
+| Amoebozoa, Myxogastria e Mycetozoa | Adl et al. (2019), diagnósticos; Rikkinen et al. (2019), ciclo de vida e implicações evolutivas; nomes da fonte do catálogo preservados |
+| Lepidoptera, Papilionidae e Saturniidae | Seah e Saranathan (2023), escamas; Ballesteros Mejia et al. (2020), lagartas e adultos. Hall, UF/IFAS IN219, fornece somente o fato de existir representante sem caudas; sua redação e imagens não são reproduzidas ou adaptadas |
+| Euglenida | Butenko et al. (2020), Background, película e diversidade nutricional |
+| Chiton | Irisarri et al. (2020), Background, placas e pé; vínculo do gênero preservado no catálogo |
+
+Foram conferidos metadados e trechos pertinentes de **15 publicações abertas**, sem afirmar leitura integral: 14 com CC BY 4.0 e uma com CC BY 3.0. A versão 3.0 de Fangel et al. não foi substituída por 4.0; a licença proposta alcança somente os direitos disponíveis sobre as novas redações, preservando direitos/atribuição das fontes. Em Schumann e Triphan, o XML declara CC BY sem versão: a versão 4.0 foi conferida no link de copyright **do artigo específico**, sem presumir a licença geral de todo o portal. Há uma referência factual complementar, com licença não inferida. Fontes científicas e origem da expressão são registros separados.
+
+As evidências selecionadas em `resources/compliance/sources/` registram autores fornecidos pela fonte, DOI, URI da licença, consulta efetiva, localizador e hash da resposta XML quando obtida. São registros de investigação assistida, sem assinatura humana ou certificação. Os artigos completos ficam apenas no cache local ignorado pelo Git; nenhuma imagem dos artigos foi incorporada. A política HTTP recebeu somente o host explícito da API bibliográfica do EMBL-EBI; HTTPS/443, validação DNS/IP, limites e demais proteções continuam ativos. Não houve novo provedor de catálogo ou consulta durante a execução normal do jogo.
+
+Não foram baixados capítulos do OpenStax para esta redação. O diagnóstico anterior sobre Biology 2e e os URLs legados permanecem no histórico e na base ativa até uma substituição aprovada. Referenciar o livro não foi tratado como prova de infração; mudar a bibliografia, isoladamente, não regulariza uma redação antiga.
+
+Validação do lote em workspace temporário, pelo gerador real: 68 vínculos conferidos; **38 notas geradas seriam alteradas**, todas corretamente passam a `needs_review`, sem herdar revisão legada. A auditoria estrita da cópia com a proposta mantém **122 organismos e pool competitivo 80**, sem erros técnicos. Os 122 perfis, 122 conjuntos de receitas, ligações taxonômicas e avaliação pedagógica permanecem idênticos. A proposta não altera o organismo 82, fotografias, ícones, pontos ou dados dos jogadores.
+
+A regressão reproduzível integra a suíte existente: `python tests/test_import_inaturalist.py`, **18 testes aprovados**, incluindo os casos que conferem cada ponteiro/hash/evidência e testam a projeção isolada dos dois lotes. Os **21 testes do transporte simulado** passaram, incluindo o host bibliográfico com recusa de DNS privado, HTTP e porta não permitida. Na rodada final, configure/compilação Release e **26/26 suítes CTest** passaram em **146,37 segundos**, já com as novas regressões. Apache/escopo, auditoria estrita do catálogo ativo e histórico frente à base do PR #18 estão consistentes; os três eventos anteriores permanecem byte a byte intactos. Os verificadores offline relacionados da CI e `qmllint` foram executados localmente; não houve execução remota presumida.
+
+Triagem estrutural dos próximos lotes: `species_profiles.json` contém **34 contextos bibliográficos do OpenStax** (19 de nutrição, 14 de curiosidade e um de morfologia). `hint_education.json` não possui URLs diretos desse livro. Isso não estabelece autoria ou infração nem comprova inexistência de dependência indireta. Fontes de 122 fichas e 122 registros de dicas foram mapeadas para os próximos lotes, sem afirmar que todos os seus conteúdos já foram revistos cientificamente ou reescritos.
+
+### Segundo lote preparado, sem promoção
+
+Após a validação técnica isolada do procedimento de grupos, foram preparadas **34 notas novas para 28 fichas**, limitadas aos contextos diretos acima. Os objetos propostos estão em `educational_regularization.profile_openstax_batch.proposed_changes` no [relatório estruturado](SANEAMENTO_ISSUE_2.json), cada um com ponteiro, identidade, hashes anterior/novo, referência e localizador. Nenhum objeto foi aplicado a `species_profiles.json`. As datas de revisão propostas estão vazias e `verified` é falso; a redação nova não recebe a aprovação da nota anterior.
+
+| Conteúdo proposto | Ocorrências | Fundamentação e limites |
+| --- | --- | --- |
+| Nutrição de plantas fotossintetizantes | 16 | Johnson (2016), DOI `10.1042/EBC20160016`, visão geral/fixação de carbono. Explicação do grupo; não atribui raízes a musgos ou hepáticas |
+| Muda de insetos | 7 | Schumann e Triphan (2020), introdução/cutícula e ecdise. Não presume crescimento ou muda continuada dos adultos |
+| Diversidade reprodutiva de plantas | 3 | Woudenberg et al. (2022), tabela 1 e grupos de plantas terrestres. A comparação com plantas sem flores não transforma *Euphorbia* em planta sem flores |
+| Nutrição e curiosidade do líquen | 2 | Armaleo et al. (2019), DOI `10.1186/s12864-019-5629-x`, Background. Distingue associação, células e genomas; o estudo de *Cladonia grayi* não identifica os parceiros de *C. imperialis* |
+| Micélio e estruturas reprodutivas de fungos | 3 | Challacombe et al. (2019), Background/Discussion. Escopo geral explicitado; sem alteração do organismo 82 |
+| Nutrição de louva-a-deus | 1 | Bäumler et al. (2026), DOI `10.1186/s12983-026-00610-9`, Background. Usa o contexto de predação; não atribui a estratégia particular de *Haania orlovi* a *Ovalimantis* |
+| Nutrição de cianobactérias | 1 | Johnson (2016), fotossíntese oxigênica. O grupo é o escopo; a fotografia não demonstra o metabolismo |
+| Morfologia de *Gomphosphaeria aponina* | 1 | Marter et al. (2021), DOI `10.3390/genes12030389`, seção 3.1, cultura DSM 107014. Mantém a limitação da imagem de apoio e a necessidade de microscopia |
+
+As quatro publicações adicionais têm **CC BY 4.0 verificada no XML do artigo específico**; suas evidências selecionadas integram o inventário já usado pelo primeiro lote. Ao todo são 19 publicações abertas com licença verificada (18 CC BY 4.0 e uma CC BY 3.0), mais a referência factual complementar de Hall. Não houve reprodução de figuras, ingestão de capítulos do OpenStax ou declaração de autoria humana exclusiva. Referências e licenças das fontes não constituem, por si, concessão de direitos sobre as propostas.
+
+A nova regressão offline confere os 34 vínculos e aplica as propostas somente em diretório temporário. **35 notas geradas mudariam**, incluindo o alias morfológico de `110`; todas ficam `needs_review`. A avaliação pedagógica antiga é invalidada, e a regeneração automática explícita não aprova cientificamente as notas. As receitas dos outros 121 organismos permanecem idênticas; em `110`, os graus, categorias, níveis, vínculos fotográficos e justificativas são preservados. Apenas a redação, fonte e localizador da receita de aparência acompanham a nota de origem. O organismo 82 mantém suas notas e decisões. **18 testes da suíte de importação passaram**, incluindo os dois lotes.
+
+### Balanço desta fase
+
+Foram examinadas para substituição **102 ocorrências**: 68 de grupos e 34 de fichas, com propostas novas e evidência factual localizada. **Zero substituições foram promovidas ao catálogo ativo e zero novas concessões ou aprovações humanas foram registradas.** A documentação do processo dos rascunhos é mais completa, mas sua revisão editorial e a confirmação da elegibilidade concreta dos direitos continuam pendentes. O corpus ativo conserva suas 2.402 ocorrências/863 hashes inconclusivos quanto à origem; os quatro achados textuais da Issue #2 permanecem abertos. As demais passagens das fichas, as etimologias/justificativas das dicas e suas projeções ainda precisam dos lotes seguintes. Não se declara regularização integral.
+
+O próximo passo é a conferência editorial do lote concreto de grupos pelo mantenedor. Sua aprovação, se ocorrer, será vinculada à versão apresentada e registrada no fluxo existente; o inventário `educational_text_rights` somente será atualizado para os hashes ativos quando houver promoção. A expansão às fichas e dicas usa o mesmo processo; nenhuma aprovação do lote de grupos se estende automaticamente aos demais recursos. A sincronização local continua em simulação, sem criação ou encerramento de Issues. A rotina real deve ser conferida depois de uma eventual integração na `main`.
+
 ## Conferência concentrada de 2026-10-18 após PR #17
 
 Base `49e4e3dcfe8c6b18237a5f61e816bdc39e154d21`; PR #17 confirmado como integrado. Branch `fix/issue-2-final-compliance`. O registro estruturado existente recebeu `final_compliance`, preservando as etapas anteriores. A escolha de CC BY 4.0 e a política visual reservada não foram reabertas.
