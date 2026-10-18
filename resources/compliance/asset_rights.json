@@ -104,7 +104,7 @@
     {
       "path": "resources/data/species_profiles.json",
       "kind": "text_authorship",
-      "sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+      "sha256": "a3e485307481475e8d320dacde35f437fc35a59b74eb9b54870a7fd652b66055",
       "source": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros.",
       "permission": {
         "holder": null,
@@ -123,6 +123,12 @@
           "state": "superseded_inventory_hash",
           "recorded_at": "2026-10-17T23:55:35.344399+00:00",
           "reason": "Source-backed draft correction of species 82 nutrition/curiosity and necessary automatic derivative regeneration; no permission granted."
+        },
+        {
+          "sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+          "state": "pending_originality_and_rights_review",
+          "recorded_on": "2026-10-18",
+          "reason": "Exact confirmed profile batch and necessary derived regeneration; only 34 source wordings granted, all other rights remain pending."
         }
       ],
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação."
@@ -2168,7 +2174,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "83064cd9630135eb88ffc93ebd77c44fc0300a78f605b480233e505c97522205",
+      "sha256": "491b344fc6baa0531f4f36ff85ee6f6aad0679b64283273da2d019c8392ed851",
       "source": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros.",
       "permission": {
         "holder": null,
@@ -2205,6 +2211,12 @@
           "state": "pending_originality_and_rights_review",
           "recorded_on": "2026-10-18",
           "reason": "Explicitly confirmed group text replacement and necessary automated input-hash regeneration; historical bytes remain in Git."
+        },
+        {
+          "sha256": "83064cd9630135eb88ffc93ebd77c44fc0300a78f605b480233e505c97522205",
+          "state": "pending_originality_and_rights_review",
+          "recorded_on": "2026-10-18",
+          "reason": "Exact confirmed profile batch and necessary derived regeneration; only 34 source wordings granted, all other rights remain pending."
         }
       ]
     }
@@ -5014,12 +5026,12 @@
         {
           "file": "resources/data/progressive_hints.json",
           "pointer": "/species/110/recipes/5/source_text",
-          "text_sha256": "4562d2a6de6875c02250d70777cac08f78ebe46b3326c23e55a2a3c0134cd64b"
+          "text_sha256": "5ad0fd25a5799cdbb87d5e3ca83cc58f9cc228e8a9c98e1f74fda1f00a4c1482"
         },
         {
           "file": "resources/data/progressive_hints.json",
           "pointer": "/species/110/recipes/5/text",
-          "text_sha256": "4562d2a6de6875c02250d70777cac08f78ebe46b3326c23e55a2a3c0134cd64b"
+          "text_sha256": "5ad0fd25a5799cdbb87d5e3ca83cc58f9cc228e8a9c98e1f74fda1f00a4c1482"
         },
         {
           "file": "resources/data/progressive_hints.json",
@@ -10476,16 +10488,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/110/morphology/text",
-          "text_sha256": "a7c42c9fea9785edf52f2d828038317f411b85e2a29b4a4df95b972e28ec4c85"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/110/nutrition/text",
-          "text_sha256": "872ed55f449b9eeef491335970bacc2a8f40cdddefc0eede39061f5adf87bb64"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/110/summary/text",
           "text_sha256": "e694c8acfcced568c91954a35f6418a0644e44e5987d7ae147a3d46064137e90"
         },
@@ -11318,11 +11320,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/133/morphology/text",
           "text_sha256": "ff24e15ea3d7605b0c1c7af04ff9345751db0a92012113504bfd1ac4e1dc7985"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/133/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12201,11 +12198,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/23/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/23/distribution/text",
           "text_sha256": "d406071c27c5a2a25e0a63df645aba2172317b7f361820ec608348975e87cb40"
         },
@@ -12293,11 +12285,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/26/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/26/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12431,11 +12418,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/30/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/30/distribution/text",
           "text_sha256": "5b0e080265551c536db0a4763e6fc0819d9fbbd406edc96b9ab761477d70e83a"
         },
@@ -12458,11 +12440,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/31/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/31/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12491,11 +12468,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/34/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/34/distribution/text",
           "text_sha256": "a55f4abf2525867fb888df5c2aae8935b02ede2406b735369a5544728063f1c9"
         },
@@ -12518,11 +12490,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/35/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/35/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12681,11 +12648,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/41/curiosity/text",
-          "text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/41/distribution/text",
           "text_sha256": "715a2ea6caa09b83f2a05a037dae14b8feb64db5348d63b00e18d4019ec5b0b6"
         },
@@ -12698,11 +12660,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/41/morphology/text",
           "text_sha256": "420f70ac789c60fd83d6b3946264cab5929e2dc6946e0b7a33b0b8847b7e9b87"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/41/nutrition/text",
-          "text_sha256": "48ef0fb698a0bd1ec7d3bdf21540b497628e069b11b2f340df1c4526170efe1c"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12766,11 +12723,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/43/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/43/summary/text",
           "text_sha256": "6d65d3956a2e53257b5fa18fa06c1a861317d0a05230480f0202d0ffaae16aba"
         },
@@ -12798,11 +12750,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/44/morphology/text",
           "text_sha256": "ee1b324b865686733684393f535d340d45cbdb316333288720a2ed7b909f8e46"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/44/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -12906,11 +12853,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/47/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/47/summary/text",
           "text_sha256": "74785fe051b1b2ba8a6a18c938701c0d2e8bd973e0f992cb85950edf5f522a5a"
         },
@@ -12941,11 +12883,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/48/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/48/summary/text",
           "text_sha256": "00edd1c4431b473a0519368ca4636f16e1360362b61a5df967e6bcce2ecdc694"
         },
@@ -12973,11 +12910,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/49/morphology/text",
           "text_sha256": "d835435753ea1e874570e8d6679451ba6896e1ae19c79024f77308e0dc5a1e16"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/49/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13046,11 +12978,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/50/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/50/summary/text",
           "text_sha256": "de1e8640b58ec3d79309539b133346ff7b15e36a953e9e7c5315b0f4bad8979b"
         },
@@ -13081,11 +13008,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/51/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/51/summary/text",
           "text_sha256": "757f570ff5c84100bfefa5d9a1c8c2087b94cde79f5dda4691028ed310ba5718"
         },
@@ -13093,11 +13015,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/52/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/52/curiosity/text",
-          "text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13113,11 +13030,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/52/morphology/text",
           "text_sha256": "bacca28aea667190575b7fa9a352a5b396b153409b372f54338cace273878120"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/52/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13151,11 +13063,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/53/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/53/summary/text",
           "text_sha256": "5fd43cbb852b90ed26e1a08375c9466131ac02644b1cc8106cccb1162e20749d"
         },
@@ -13183,11 +13090,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/54/morphology/text",
           "text_sha256": "bbbc4fe71ff6bff19403364631ce87fa7e9550ad51a205297e90defd0c029aef"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/54/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13221,11 +13123,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/55/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/55/summary/text",
           "text_sha256": "24eed41f8bcc22b4af589d4a1f18122e96815291e038d82d6cadd863a5f591cc"
         },
@@ -13253,11 +13150,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/57/morphology/text",
           "text_sha256": "f74aa1a11c3c2f06bc90293bcf7337408d73d8ae64c2f9362f2577e9dd1ea0a1"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/57/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13341,11 +13233,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/60/curiosity/text",
-          "text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/60/distribution/text",
           "text_sha256": "ee2f32c6a0e557cca55c40b095127456db50f7a10c9ebdf33c462991ab32b0d8"
         },
@@ -13358,11 +13245,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/60/morphology/text",
           "text_sha256": "757bf1070e9777c81f08545e36a8a1fa55550594e9953671606912de561e2457"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/60/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13396,11 +13278,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/61/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/61/summary/text",
           "text_sha256": "3eb19676d8d788f944075bbc361719c86290d3083a040cfdac9afbafb10338b1"
         },
@@ -13408,11 +13285,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/62/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/62/curiosity/text",
-          "text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13428,11 +13300,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/62/morphology/text",
           "text_sha256": "444364efb3a7660fe88a2df694688932d604bb7af1d9c77a15015efbdf1f81af"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/62/nutrition/text",
-          "text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13516,11 +13383,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/65/curiosity/text",
-          "text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/65/distribution/text",
           "text_sha256": "43ec687350a60292891561dd8dc488367c6172b7db1a7e99ca4e75249bc55f60"
         },
@@ -13533,11 +13395,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/65/morphology/text",
           "text_sha256": "2933f71ea87741c84581c0b65f642e894246a90b804e0e88e5725bd1b110e9ec"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/65/nutrition/text",
-          "text_sha256": "a7fdd2bc0e2b2c5f53c6b8ed4dfd98707e44c3c3667d07fc319a39f77ce01909"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13621,11 +13478,6 @@
         },
         {
           "file": "resources/data/species_profiles.json",
-          "pointer": "/70/curiosity/text",
-          "text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
           "pointer": "/70/distribution/text",
           "text_sha256": "68105c2a09fbd72c7e6f2693453ac538c8530e4feb982cf7083409cec37f90ee"
         },
@@ -13648,11 +13500,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/71/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/71/curiosity/text",
-          "text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -13888,11 +13735,6 @@
           "file": "resources/data/species_profiles.json",
           "pointer": "/81/conservation/text",
           "text_sha256": "a4061e6b08064261c00cca57dd9c60d2be61ca3e2cad5e34fb0c9465fb154e71"
-        },
-        {
-          "file": "resources/data/species_profiles.json",
-          "pointer": "/81/curiosity/text",
-          "text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18"
         },
         {
           "file": "resources/data/species_profiles.json",
@@ -14318,6 +14160,203 @@
       "attribution": {
         "author_credit": null,
         "license_url": null
+      }
+    },
+    {
+      "occurrences": [
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/133/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/53/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/61/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/44/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/47/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/43/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/48/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/49/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/51/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/54/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/57/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/50/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/55/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/23/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/26/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/30/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/31/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/34/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/35/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/41/curiosity/text",
+          "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/41/nutrition/text",
+          "text_sha256": "805d664ecbbb232a847d7c5091cba9bf9ebee156439cd38864311b2873bc9c07"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/52/curiosity/text",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/52/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/60/curiosity/text",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/60/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/62/curiosity/text",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/62/nutrition/text",
+          "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/65/curiosity/text",
+          "text_sha256": "e6b9875ae2d6d936718ab69196abfc1dc268b3d3745ffb304a3c13898396c278"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/65/nutrition/text",
+          "text_sha256": "627a7262814dec15174c396298c970164213411d1986685efc1135f551c6c4f7"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/70/curiosity/text",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/71/curiosity/text",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/81/curiosity/text",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/110/nutrition/text",
+          "text_sha256": "125cd1f269d3c4b9289ecf94947b31087feafda1990746f3c11e10eab48ab3b0"
+        },
+        {
+          "file": "resources/data/species_profiles.json",
+          "pointer": "/110/morphology/text",
+          "text_sha256": "e04ff18ce72d3c14eef9942e30968d4f0159a87f50c328dbd63f6e3c763d8d49"
+        }
+      ],
+      "origin_kind": "independent_factual_synthesis",
+      "declared_origin": "Fresh AI-assisted factual wording bound to the source-checked proposal and separately confirmed by the maintainer for editorial use and available rights. No exclusive human authorship asserted.",
+      "source_text": null,
+      "transformations": [],
+      "rights_available": "Only rights actually available in the 34 AI-assisted wordings identified by the exact occurrences and proposal fingerprint; no exclusive human authorship, source-work relicensing or whole-file/corpus grant.",
+      "declared_license": "CC-BY-4.0",
+      "evidence": [
+        {
+          "path": "resources/compliance/sources/2e9ce124b2056fdb0683dbd55b15dd2391f6e42bb0ffb1dd712ecb572510c5ce.json",
+          "sha256": "f0651e9f4f618f2e9a36a3d04bc8d300ab00b21e61f2dc4c91e5fdf6bc5f324d",
+          "locator": "proposal_fingerprint, proposed_changes, occurrences, editorial_confirmation and license_confirmation"
+        }
+      ],
+      "investigation_state": "documented",
+      "editorial_review_key": null,
+      "attribution": {
+        "author_credit": "Projeto Glossata — redação assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira",
+        "title": "Projeto Glossata — fichas científicas, lote 2 de 2026-10-18",
+        "original_url": "https://github.com/kaduolliver/Projeto-Glossata",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "notices": "Somente os direitos disponíveis nas 34 passagens listadas; fontes externas e créditos preservados, sem endosso ou certificação.",
+        "modifications": "New factual wording replaces the listed legacy notes. Article images and protected source passages are not incorporated."
       }
     }
   ],

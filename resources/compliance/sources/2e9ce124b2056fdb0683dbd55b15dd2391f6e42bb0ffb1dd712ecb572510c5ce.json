@@ -1,0 +1,1117 @@
+{
+  "schema_version": 1,
+  "kind": "educational_profile_batch_confirmation",
+  "recorded_on": "2026-10-18",
+  "file": "resources/data/species_profiles.json",
+  "proposal_git_commit": "63599f2",
+  "proposal_fingerprint": "e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478",
+  "proposal_path": "docs/propostas/REVISAO_FICHAS_LOTE_2.md",
+  "previous_file_sha256": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+  "proposed_changes": [
+    {
+      "pointer": "/133/nutrition",
+      "scientific_name": "Ginkgo biloba",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/53/nutrition",
+      "scientific_name": "Viburnum opulus",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/61/nutrition",
+      "scientific_name": "Verbascum thapsus",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/44/nutrition",
+      "scientific_name": "Dictyanthus pavonii",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/47/nutrition",
+      "scientific_name": "Polypodium glycyrrhiza",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/43/nutrition",
+      "scientific_name": "Kindbergia oregana",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/48/nutrition",
+      "scientific_name": "Marah macrocarpa",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/49/nutrition",
+      "scientific_name": "Mastigostyla macbridei",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/51/nutrition",
+      "scientific_name": "Mimetes chrysanthus",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/54/nutrition",
+      "scientific_name": "Xanthosoma robustum",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/57/nutrition",
+      "scientific_name": "Pleurophyllum speciosum",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/50/nutrition",
+      "scientific_name": "Tulipa regelii",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/55/nutrition",
+      "scientific_name": "Pleurothallis maitamae",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/23/curiosity",
+      "scientific_name": "Titanomis sisyrota",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/26/curiosity",
+      "scientific_name": "Geminaria canalis",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/30/curiosity",
+      "scientific_name": "Xenocnema spinipes",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/31/curiosity",
+      "scientific_name": "Sphaerocoris annulus",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/34/curiosity",
+      "scientific_name": "Dicarnosis erythrocephala",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/35/curiosity",
+      "scientific_name": "Pachypodistes angulata",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/41/curiosity",
+      "scientific_name": "Ovalimantis maculata",
+      "topic": "curiosity",
+      "previous_note_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
+      "previous_text_sha256": "a48cc60260bcaa308e45785b3499ae9ffdf5250518f6b8597d3b93c1a49e4235",
+      "proposed_note": {
+        "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+        "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+        "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Insetos",
+        "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+      },
+      "proposed_note_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/46d5c405344ea48434f5e0d58763f5522cb3353a587a7881816a11bd0fba1de1.json",
+          "sha256": "525baa38b13b08fddd65a1cebd54419fc241ef9b88e5cfd92787353cf90907ad",
+          "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment"
+        }
+      ],
+      "draft_kind": "insect_molt"
+    },
+    {
+      "pointer": "/41/nutrition",
+      "scientific_name": "Ovalimantis maculata",
+      "topic": "nutrition",
+      "previous_note_sha256": "f68dbe5add854235d948a82b47ff6133e3d93b1c3bfc617698ca73dc16d46532",
+      "previous_text_sha256": "48ef0fb698a0bd1ec7d3bdf21540b497628e069b11b2f340df1c4526170efe1c",
+      "proposed_note": {
+        "text": "Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa.",
+        "source_url": "https://doi.org/10.1186/s12983-026-00610-9",
+        "source_title": "Bäumler F et al. (2026) — A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Louva-a-deus",
+        "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded"
+      },
+      "proposed_note_sha256": "e1d42bcda824721707f8e8efa48f2c5b14d5ac6d67517da59d55aede0fdd7c85",
+      "text_sha256": "805d664ecbbb232a847d7c5091cba9bf9ebee156439cd38864311b2873bc9c07",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/21ffa70424dd36b0d1803b1870cce6aada1e8260ee41ed0f2da118086f7dfe7b.json",
+          "sha256": "8d38a801390ae92664c812933d0a525ff0999c186eb3609eb28ee352fbf43cf4",
+          "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded"
+        }
+      ],
+      "draft_kind": "mantis_nutrition"
+    },
+    {
+      "pointer": "/52/curiosity",
+      "scientific_name": "Asterella drummondii",
+      "topic": "curiosity",
+      "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+      "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+      "proposed_note": {
+        "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+        "source_url": "https://doi.org/10.1093/plphys/kiac304",
+        "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas",
+        "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+      },
+      "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+          "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+          "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+        }
+      ],
+      "draft_kind": "plant_diversity"
+    },
+    {
+      "pointer": "/52/nutrition",
+      "scientific_name": "Asterella drummondii",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/60/curiosity",
+      "scientific_name": "Huperzia lucidula",
+      "topic": "curiosity",
+      "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+      "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+      "proposed_note": {
+        "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+        "source_url": "https://doi.org/10.1093/plphys/kiac304",
+        "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas",
+        "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+      },
+      "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+          "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+          "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+        }
+      ],
+      "draft_kind": "plant_diversity"
+    },
+    {
+      "pointer": "/60/nutrition",
+      "scientific_name": "Huperzia lucidula",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/62/curiosity",
+      "scientific_name": "Euphorbia duckei",
+      "topic": "curiosity",
+      "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
+      "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
+      "proposed_note": {
+        "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+        "source_url": "https://doi.org/10.1093/plphys/kiac304",
+        "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas",
+        "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+      },
+      "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
+          "sha256": "af13bf0be3f2031430cc7bfdc518a910a2fba0aedc3a1ce1f61d5c6b33735f48",
+          "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
+        }
+      ],
+      "draft_kind": "plant_diversity"
+    },
+    {
+      "pointer": "/62/nutrition",
+      "scientific_name": "Euphorbia duckei",
+      "topic": "nutrition",
+      "previous_note_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
+      "previous_text_sha256": "c7dd4f4d7995803c22f7635dd8944ba5e5e4ddfe6e65fc02aae07dca7003a0a4",
+      "proposed_note": {
+        "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Plantas fotossintetizantes",
+        "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+      },
+      "proposed_note_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation"
+        }
+      ],
+      "draft_kind": "plant_nutrition"
+    },
+    {
+      "pointer": "/65/curiosity",
+      "scientific_name": "Cladonia imperialis",
+      "topic": "curiosity",
+      "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+      "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+      "proposed_note": {
+        "text": "Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada.",
+        "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+        "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Líquens; comparação com estudo de outra espécie",
+        "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis"
+      },
+      "proposed_note_sha256": "f901c7e5f741f76c919c72c15ad935f38922339dfc1873242ade8ccaba3acc20",
+      "text_sha256": "e6b9875ae2d6d936718ab69196abfc1dc268b3d3745ffb304a3c13898396c278",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
+          "sha256": "17111371f43431bd39f9694d1a63a78ebdf343af31c0860e119f19afe58330e1",
+          "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis"
+        }
+      ],
+      "draft_kind": "lichen_curiosity"
+    },
+    {
+      "pointer": "/65/nutrition",
+      "scientific_name": "Cladonia imperialis",
+      "topic": "nutrition",
+      "previous_note_sha256": "42fa51eb18d54f1cf0adad99572e8ee37e23840fa2892580867c091151f1b483",
+      "previous_text_sha256": "a7fdd2bc0e2b2c5f53c6b8ed4dfd98707e44c3c3667d07fc319a39f77ce01909",
+      "proposed_note": {
+        "text": "No líquen, o parceiro fotossintetizante fornece compostos de carbono à associação. O fungo participa da organização do corpo visível, chamado talo; são organismos associados, não um único tecido vegetal.",
+        "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+        "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Líquens",
+        "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope"
+      },
+      "proposed_note_sha256": "5565131410b3b7bc1165d60b1331cbe8563778d869bb3ffbaec4fb5124b7c785",
+      "text_sha256": "627a7262814dec15174c396298c970164213411d1986685efc1135f551c6c4f7",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
+          "sha256": "17111371f43431bd39f9694d1a63a78ebdf343af31c0860e119f19afe58330e1",
+          "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope"
+        }
+      ],
+      "draft_kind": "lichen_nutrition"
+    },
+    {
+      "pointer": "/70/curiosity",
+      "scientific_name": "Ganoderma brownii",
+      "topic": "curiosity",
+      "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+      "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+      "proposed_note": {
+        "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+        "source_url": "https://doi.org/10.3390/microorganisms10071379",
+        "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Fungos filamentosos que formam cogumelos",
+        "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
+      },
+      "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+          "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+          "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+        },
+        {
+          "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+          "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+          "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
+        }
+      ],
+      "draft_kind": "fungal_mycelium"
+    },
+    {
+      "pointer": "/71/curiosity",
+      "scientific_name": "Marasmius haematocephalus",
+      "topic": "curiosity",
+      "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+      "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+      "proposed_note": {
+        "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+        "source_url": "https://doi.org/10.3390/microorganisms10071379",
+        "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Fungos filamentosos que formam cogumelos",
+        "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
+      },
+      "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+          "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+          "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+        },
+        {
+          "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+          "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+          "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
+        }
+      ],
+      "draft_kind": "fungal_mycelium"
+    },
+    {
+      "pointer": "/81/curiosity",
+      "scientific_name": "Entoloma trachyosporum",
+      "topic": "curiosity",
+      "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
+      "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
+      "proposed_note": {
+        "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+        "source_url": "https://doi.org/10.3390/microorganisms10071379",
+        "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Fungos filamentosos que formam cogumelos",
+        "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
+      },
+      "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+          "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+          "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+        },
+        {
+          "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+          "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+          "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
+        }
+      ],
+      "draft_kind": "fungal_mycelium"
+    },
+    {
+      "pointer": "/110/nutrition",
+      "scientific_name": "Gomphosphaeria aponina",
+      "topic": "nutrition",
+      "previous_note_sha256": "bbbb98c7f305b96a20579b82f78b4b88e1ddee548dcbc1def595a49ee1112b0a",
+      "previous_text_sha256": "872ed55f449b9eeef491335970bacc2a8f40cdddefc0eede39061f5adf87bb64",
+      "proposed_note": {
+        "text": "A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio.",
+        "source_url": "https://doi.org/10.1042/ebc20160016",
+        "source_title": "Johnson MP. (2016) — Photosynthesis.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Cianobactérias",
+        "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation"
+      },
+      "proposed_note_sha256": "8007f8d3d6fe5c884052d234b08911530dfe44ff066dfef39c9b0e75271bdd85",
+      "text_sha256": "125cd1f269d3c4b9289ecf94947b31087feafda1990746f3c11e10eab48ab3b0",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
+          "sha256": "7516098a9094cfc796bab73c878ba7fa942f52dde69ad069e67a867b11efb9e0",
+          "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation"
+        }
+      ],
+      "draft_kind": "cyanobacterial_nutrition"
+    },
+    {
+      "pointer": "/110/morphology",
+      "scientific_name": "Gomphosphaeria aponina",
+      "topic": "morphology",
+      "previous_note_sha256": "0de023db1d1532c6b520b45097ff75a07cd0f8931c897500930c6675803e6ade",
+      "previous_text_sha256": "a7c42c9fea9785edf52f2d828038317f411b85e2a29b4a4df95b972e28ec4c85",
+      "proposed_note": {
+        "text": "Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+        "source_url": "https://doi.org/10.3390/genes12030389",
+        "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+        "verified": false,
+        "reviewed_on": null,
+        "scope_name": "Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio",
+        "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded"
+      },
+      "proposed_note_sha256": "9127f91c26f4934e0739a5b511d21b4b0ea929fdb4ad875b3cfc3b9b712a2efc",
+      "text_sha256": "e04ff18ce72d3c14eef9942e30968d4f0159a87f50c328dbd63f6e3c763d8d49",
+      "scientific_sources": [
+        {
+          "path": "resources/compliance/sources/b159e807c97831c17f6dff5db0bc764f1ef56502776589510642ddb3a10733b6.json",
+          "sha256": "24a02c98a2474b1be25bddef527d5195145dd5e3886545da9d5c71a1e715bf53",
+          "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded"
+        }
+      ],
+      "draft_kind": "gomphosphaeria_morphology"
+    }
+  ],
+  "occurrences": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/133/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/23/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/26/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/30/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/31/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/34/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/35/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/41/curiosity/text",
+      "text_sha256": "d300db13d7eaf269b4f7378c1700958531cdcddbb780fb78d0a5ae87d646d546"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/41/nutrition/text",
+      "text_sha256": "805d664ecbbb232a847d7c5091cba9bf9ebee156439cd38864311b2873bc9c07"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/52/curiosity/text",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/52/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/60/curiosity/text",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/60/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/62/curiosity/text",
+      "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/62/nutrition/text",
+      "text_sha256": "3f53a430c94b4260d63bec62902402a444e93458b002a76ead120760b631637b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/65/curiosity/text",
+      "text_sha256": "e6b9875ae2d6d936718ab69196abfc1dc268b3d3745ffb304a3c13898396c278"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/65/nutrition/text",
+      "text_sha256": "627a7262814dec15174c396298c970164213411d1986685efc1135f551c6c4f7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/70/curiosity/text",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/71/curiosity/text",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/81/curiosity/text",
+      "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/110/nutrition/text",
+      "text_sha256": "125cd1f269d3c4b9289ecf94947b31087feafda1990746f3c11e10eab48ab3b0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/110/morphology/text",
+      "text_sha256": "e04ff18ce72d3c14eef9942e30968d4f0159a87f50c328dbd63f6e3c763d8d49"
+    }
+  ],
+  "editorial_confirmation": {
+    "declared_by": "Carlos Eduardo Lima de Oliveira",
+    "recorded_on": "2026-10-18",
+    "question": "Após conferir docs/propostas/REVISAO_FICHAS_LOTE_2.md, você aprova editorialmente as nove redações nos 34 campos listados, para 28 organismos, vinculados ao fingerprint SHA-256 e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478? A aprovação abrange o mesmo conteúdo científico no alias morfológico de 110, sem aprovar o grau de assistência, outros textos ou tópicos agregados. Você pode indicar apenas um subconjunto.",
+    "statement": "Aprovo editorialmente esta versão completa",
+    "review_kind": "editorial",
+    "scope": "Only the 34 listed source notes and the same scientific content in the derived morphological alias of organism 110.",
+    "independent_specialist_review_claimed": false
+  },
+  "license_confirmation": {
+    "declared_by": "Carlos Eduardo Lima de Oliveira",
+    "recorded_on": "2026-10-18",
+    "question": "Para esse mesmo lote, fingerprint e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478, confirma a aplicação de CC BY 4.0 exclusivamente aos direitos efetivamente disponíveis nessas 34 redações assistidas por IA, preservando crédito, fontes e avisos, sem autoria humana exclusiva, relicenciamento dos artigos ou liberação das demais passagens e materiais?",
+    "statement": "Confirmo a aplicação delimitada a este lote",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "scope": "Only rights actually available in the 34 AI-assisted wordings identified by the exact occurrences and proposal fingerprint; no exclusive human authorship, source-work relicensing or whole-file/corpus grant."
+  },
+  "identity_basis": "Maintainer identity previously supplied and actual answers in this session; declared identity, not independently authenticated authorship or signature.",
+  "date_basis": "Civil date of the actual answers; no exact answer timestamp invented.",
+  "excluded": [
+    "unlisted profile passages",
+    "aggregate topics",
+    "hint assistance grades",
+    "independent grant for derived composite recipes",
+    "photos",
+    "branding",
+    "source works",
+    "collection",
+    "code licensing",
+    "whole file",
+    "whole package"
+  ],
+  "legal_or_scientific_certification": false
+}

@@ -2729,7 +2729,7 @@
     },
     "profile_openstax_batch": {
       "schema_version": 1,
-      "state": "draft",
+      "state": "applied_after_explicit_confirmation",
       "origin": "automation",
       "base_commit": "ed7e5c44e1acea80674b3c3bf402071d0836454c",
       "target": "resources/data/species_profiles.json",
@@ -3263,7 +3263,7 @@
           "previous_note_sha256": "f68dbe5add854235d948a82b47ff6133e3d93b1c3bfc617698ca73dc16d46532",
           "previous_text_sha256": "48ef0fb698a0bd1ec7d3bdf21540b497628e069b11b2f340df1c4526170efe1c",
           "proposed_note": {
-            "text": "Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa; o estudo de movimentos de outra espécie não descreve uma dieta exclusiva de Ovalimantis.",
+            "text": "Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa.",
             "source_url": "https://doi.org/10.1186/s12983-026-00610-9",
             "source_title": "Bäumler F et al. (2026) — A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
             "verified": false,
@@ -3271,8 +3271,8 @@
             "scope_name": "Louva-a-deus",
             "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded"
           },
-          "proposed_note_sha256": "fec74fb24562edeb308b39e3c7ad66e1b9c7091ee1bb27a1da3c5f8817eb9225",
-          "text_sha256": "d477c932bc4e252e76e3fea84ec866df1ba5841917645172c94ed7aa66a67082",
+          "proposed_note_sha256": "e1d42bcda824721707f8e8efa48f2c5b14d5ac6d67517da59d55aede0fdd7c85",
+          "text_sha256": "805d664ecbbb232a847d7c5091cba9bf9ebee156439cd38864311b2873bc9c07",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/21ffa70424dd36b0d1803b1870cce6aada1e8260ee41ed0f2da118086f7dfe7b.json",
@@ -3289,7 +3289,7 @@
           "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
           "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
           "proposed_note": {
-            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
             "source_url": "https://doi.org/10.1093/plphys/kiac304",
             "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
             "verified": false,
@@ -3297,8 +3297,8 @@
             "scope_name": "Plantas",
             "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
           },
-          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
-          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
@@ -3341,7 +3341,7 @@
           "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
           "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
           "proposed_note": {
-            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
             "source_url": "https://doi.org/10.1093/plphys/kiac304",
             "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
             "verified": false,
@@ -3349,8 +3349,8 @@
             "scope_name": "Plantas",
             "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
           },
-          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
-          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
@@ -3393,7 +3393,7 @@
           "previous_note_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
           "previous_text_sha256": "fe2709eae9f1a8d01e18b41299a0e2da735bef6d5a96dfd79df30e90fed8dfc6",
           "proposed_note": {
-            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos. Essa comparação descreve a diversidade do grupo, não uma característica exclusiva desta espécie.",
+            "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
             "source_url": "https://doi.org/10.1093/plphys/kiac304",
             "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
             "verified": false,
@@ -3401,8 +3401,8 @@
             "scope_name": "Plantas",
             "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded"
           },
-          "proposed_note_sha256": "bb6b390b03830d914204a9b1d092270d13c9bd77346d233d154f404e9fde1215",
-          "text_sha256": "68fe25316902effaf425c2bec8a7fa4be0e08d773a7f53530550d84c77f7dc08",
+          "proposed_note_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "text_sha256": "8add7bd37ed52d83c0b730675bab851c2888dd42b2ccbf07c4b01bffe4b1ac97",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/4f391b456952374c2b8724a6c1a168941dcc6a8b88b5d9b05f754145f2a4864a.json",
@@ -3445,7 +3445,7 @@
           "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
           "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
           "proposed_note": {
-            "text": "Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada. A pesquisa citada examina Cladonia grayi; ela não identifica os parceiros de Cladonia imperialis.",
+            "text": "Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada.",
             "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
             "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
             "verified": false,
@@ -3453,8 +3453,8 @@
             "scope_name": "Líquens; comparação com estudo de outra espécie",
             "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis"
           },
-          "proposed_note_sha256": "dcc52073d34f28ccbe39b5d9ba04462176039972cd7133f049c7a40063610ae6",
-          "text_sha256": "c42d1db628893b446960e264093e80aa4f8c9e80873838b2b53deb22ba429c72",
+          "proposed_note_sha256": "f901c7e5f741f76c919c72c15ad935f38922339dfc1873242ade8ccaba3acc20",
+          "text_sha256": "e6b9875ae2d6d936718ab69196abfc1dc268b3d3745ffb304a3c13898396c278",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/fc47932ea1637452ba9a3a8e780310e2d9922f66a6d77bbe06035195a8f07342.json",
@@ -3497,21 +3497,26 @@
           "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
           "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
           "proposed_note": {
-            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
-            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
-            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+            "source_url": "https://doi.org/10.3390/microorganisms10071379",
+            "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
             "verified": false,
             "reviewed_on": null,
-            "scope_name": "Fungos",
-            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            "scope_name": "Fungos filamentosos que formam cogumelos",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
           },
-          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
-          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
           "scientific_sources": [
             {
-              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
-              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
-              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+              "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+              "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+              "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+            },
+            {
+              "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+              "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+              "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
             }
           ],
           "draft_kind": "fungal_mycelium"
@@ -3523,21 +3528,26 @@
           "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
           "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
           "proposed_note": {
-            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
-            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
-            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+            "source_url": "https://doi.org/10.3390/microorganisms10071379",
+            "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
             "verified": false,
             "reviewed_on": null,
-            "scope_name": "Fungos",
-            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            "scope_name": "Fungos filamentosos que formam cogumelos",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
           },
-          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
-          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
           "scientific_sources": [
             {
-              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
-              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
-              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+              "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+              "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+              "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+            },
+            {
+              "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+              "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+              "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
             }
           ],
           "draft_kind": "fungal_mycelium"
@@ -3549,21 +3559,26 @@
           "previous_note_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
           "previous_text_sha256": "a2e6a59121d8b31353263e601e7c44b137c4d8fea9641bcdbcf898d0930b8d18",
           "proposed_note": {
-            "text": "Em muitos fungos filamentosos, as hifas formam uma rede chamada micélio. Estruturas reprodutivas visíveis podem ser apenas parte dessa rede, que também se estende pelo material onde o fungo cresce.",
-            "source_url": "https://doi.org/10.1186/s12864-019-6358-x",
-            "source_title": "Challacombe JF et al. (2019) — Genomes and secretomes of Ascomycota fungi reveal diverse functions in plant biomass decomposition and pathogenesis.",
+            "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+            "source_url": "https://doi.org/10.3390/microorganisms10071379",
+            "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
             "verified": false,
             "reviewed_on": null,
-            "scope_name": "Fungos",
-            "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+            "scope_name": "Fungos filamentosos que formam cogumelos",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network"
           },
-          "proposed_note_sha256": "c7ceb6d3470b93907ac32b5d6b2f203767b26ff9259363da6d38caaf25ba8b56",
-          "text_sha256": "0feab643a3e770ea9810de8ff861441204e63b30be43627ee66fe070691db301",
+          "proposed_note_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "text_sha256": "2213ee569e97bc671ab75a1813a9f1fb1b1c07efe418a57f88504953b3376ea7",
           "scientific_sources": [
             {
-              "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
-              "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354",
-              "locator": "Background; Discussion / hyphae, mycelial growth and ecological functions; general fungal scope"
+              "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+              "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd",
+              "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded"
+            },
+            {
+              "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+              "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f",
+              "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred"
             }
           ],
           "draft_kind": "fungal_mycelium"
@@ -3575,7 +3590,7 @@
           "previous_note_sha256": "bbbb98c7f305b96a20579b82f78b4b88e1ddee548dcbc1def595a49ee1112b0a",
           "previous_text_sha256": "872ed55f449b9eeef491335970bacc2a8f40cdddefc0eede39061f5adf87bb64",
           "proposed_note": {
-            "text": "A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio. É uma explicação do grupo, não uma conclusão obtida da fotografia do jogo.",
+            "text": "A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio.",
             "source_url": "https://doi.org/10.1042/ebc20160016",
             "source_title": "Johnson MP. (2016) — Photosynthesis.",
             "verified": false,
@@ -3583,8 +3598,8 @@
             "scope_name": "Cianobactérias",
             "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation"
           },
-          "proposed_note_sha256": "a006e19f69ee7241e9195fee663006dfb4bc67b12c34db49d68295b2e244a40a",
-          "text_sha256": "ccd63182c3f15fb2ffd2fcc5cd90722bd1362d971e577bbf04379e7f73f4d93c",
+          "proposed_note_sha256": "8007f8d3d6fe5c884052d234b08911530dfe44ff066dfef39c9b0e75271bdd85",
+          "text_sha256": "125cd1f269d3c4b9289ecf94947b31087feafda1990746f3c11e10eab48ab3b0",
           "scientific_sources": [
             {
               "path": "resources/compliance/sources/5e1e3142021152579254d2eab48550b6d09ba4d78c48afef23fd8f3fa96bb495.json",
@@ -3649,39 +3664,815 @@
         "PMC6909477": {
           "path": "resources/compliance/sources/0f5598eee53d628515cd5f921985fd60856389c82098bf36f3729ffe077d94d2.json",
           "sha256": "21fb8c70e124ac29123a904dd297eff63667bc8a682de7b204f52d70ecdcc354"
+        },
+        "PMC5638950": {
+          "path": "resources/compliance/sources/f3be6e0ac7c150341c9f995eff21a808e59aaee1a2ecaac8b96f2539e67b35ee.json",
+          "sha256": "23e713ee682d52bbf17a212fb02bf07813900a73509e62a93696643d3b71c69f"
+        },
+        "PMC9315710": {
+          "path": "resources/compliance/sources/e9718603ce7828b220217216878e3dba5c61a48ce0023b084838ede5583500d0.json",
+          "sha256": "354685cd9b248370c79f2367df8bedb3bcb924ed788b1c991e1ee66c8a4009bd"
         }
       },
       "origin_kind_proposed": "independent_factual_synthesis",
       "creation_process": "Fresh AI-assisted Brazilian Portuguese drafts grounded in the identified factual scopes and licensed publications. Legacy references are retained in the active files and Git. No OpenStax chapter was ingested for generation.",
-      "reviewer": null,
-      "reviewed_at": null,
+      "reviewer": "Carlos Eduardo Lima de Oliveira",
+      "reviewed_at": "2026-10-18",
       "license_proposal": {
         "license": "CC-BY-4.0",
         "scope": "Only rights actually available in eligible new wording; scientific facts and external works are not claimed as exclusive property.",
-        "state": "pending_maintainer_confirmation_of_batch_eligibility",
-        "human_approval_recorded": false
+        "state": "applied_after_explicit_confirmation",
+        "human_approval_recorded": true,
+        "confirmation_evidence": {
+          "path": "resources/compliance/sources/2e9ce124b2056fdb0683dbd55b15dd2391f6e42bb0ffb1dd712ecb572510c5ce.json",
+          "sha256": "f0651e9f4f618f2e9a36a3d04bc8d300ab00b21e61f2dc4c91e5fdf6bc5f324d",
+          "locator": "proposal_fingerprint, proposed_changes, occurrences, editorial_confirmation and license_confirmation"
+        }
       },
-      "active_content_changed": false,
-      "permissions_changed": false,
-      "decisions_created": 0,
+      "active_content_changed": true,
+      "permissions_changed": true,
+      "decisions_created": 35,
       "limitations": [
         "Only the 34 direct OpenStax bibliographic contexts are proposed here; other profile passages remain inconclusive.",
         "Drafts are not human editorial approval, specialist review or legal certification.",
         "Group facts and study organisms are explicitly distinguished from claims about the catalog species or its photograph.",
         "No historical reviewer, review date or source permission is inherited by replacement wording."
       ],
-      "validation": {
-        "checked_at": "2026-10-18T04:50:22.088223+00:00",
-        "test_command": "python tests/test_import_inaturalist.py",
-        "tests_passed": 18,
-        "changed_generated_notes_including_morphological_alias": 35,
-        "prior_automated_pedagogy_invalidated": true,
-        "regeneration_does_not_approve_notes": true,
+      "proposal_fingerprint": "e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478",
+      "proposal_revision": {
+        "schema_version": 1,
+        "base_commit": "09e8eb759172e32b9554c4c86d8a583a667e4dcc",
+        "prepared_at": "2026-10-18T12:21:46.164851+00:00",
+        "origin": "automation",
+        "review_kind": "ai_assisted_source_and_scope_check",
+        "human_approval_recorded": false,
+        "specialist_review_performed": false,
+        "previous_fingerprint": "a6139ee7e5e468cec7506a282c90ceb5eaa9d895b5d7c5acf1595bd770be5460",
+        "final_fingerprint": "e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478",
+        "previous_proposal_git_path": "09e8eb759172e32b9554c4c86d8a583a667e4dcc:docs/SANEAMENTO_ISSUE_2.json",
+        "changed_pointers": [
+          "/41/nutrition",
+          "/52/curiosity",
+          "/60/curiosity",
+          "/62/curiosity",
+          "/65/curiosity",
+          "/70/curiosity",
+          "/71/curiosity",
+          "/81/curiosity",
+          "/110/nutrition"
+        ],
+        "checks_by_wording": {
+          "plant_nutrition": {
+            "decision": "preserved",
+            "reason": "A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+            "evidence": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz.",
+            "limitations": [
+              "Restrita às 16 plantas fotossintetizantes relacionadas; não se estende à planta parasita Hydnora.",
+              "Não descreve todas as fontes de carbono possíveis de cada espécie nem uma observação da fotografia."
+            ]
+          },
+          "insect_molt": {
+            "decision": "preserved",
+            "reason": "A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+            "evidence": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos.",
+            "limitations": [
+              "Não transfere cronologia, hormônios ou medidas experimentais de Drosophila às sete espécies."
+            ]
+          },
+          "mantis_nutrition": {
+            "decision": "administrative_caveat_moved",
+            "reason": "Retirada do texto do jogador a ressalva sobre a espécie experimental; preservada aqui e na conferência.",
+            "evidence": "Bäumler et al., Background, segundo parágrafo: Mantodea como predadores de artrópodes e uso de pernas dianteiras raptoriais.",
+            "limitations": [
+              "O experimento trata de Haania orlovi, não Ovalimantis maculata.",
+              "Não atribui empalamento, velocidades, mecanismo elástico ou dieta exclusiva de Haania a Ovalimantis."
+            ]
+          },
+          "plant_diversity": {
+            "decision": "administrative_caveat_moved",
+            "reason": "Mantida uma comparação explícita entre plantas; retirada a explicação administrativa sobre exclusividade.",
+            "evidence": "Woudenberg et al., Table 1: bryophytes/free-sporing, liverwort sporangia, moss sporangia, seed-free ferns e angiosperms/flowering plants.",
+            "limitations": [
+              "É uma comparação de grupos, não diagnóstico das três espécies.",
+              "Euphorbia duckei não é classificada como planta sem flores.",
+              "Não afirma que apenas plantas sem flores produzam esporos."
+            ]
+          },
+          "lichen_curiosity": {
+            "decision": "administrative_caveat_moved",
+            "reason": "Preservada a independência celular/genética como fato geral; a identificação da espécie experimental fica nos metadados.",
+            "evidence": "Armaleo et al., Background, segundo parágrafo: parceiros mantêm independência genética/celular, sem fusão de genomas.",
+            "limitations": [
+              "O artigo estuda Cladonia grayi e Asterochloris glomerata, não identifica parceiros de Cladonia imperialis.",
+              "Não reivindica identidade de fotobionte, fusão de genomas ou direitos sobre a fotografia do artigo."
+            ]
+          },
+          "lichen_nutrition": {
+            "decision": "preserved",
+            "reason": "Explicação de associação e transferência de carbono adequada ao escopo; sem atribuir um fotobionte nominal.",
+            "evidence": "Armaleo et al., Background; Inferences from differential transcription about nutritional fluxes at the symbiotic interface; Figure 1 caption apenas como localizador factual de talo/tecido fúngico, imagem não incorporada.",
+            "limitations": [
+              "Não transfere parceiros específicos ou previsões genômicas de Cladonia grayi para Cladonia imperialis."
+            ]
+          },
+          "fungal_mycelium": {
+            "decision": "clarified_and_sources_replaced",
+            "reason": "A referência anterior não sustentava claramente corpos de frutificação. A nova síntese distingue estruturas reprodutivas e micélio vegetativo, sem chamar todo cogumelo de parte indiferenciada da rede.",
+            "evidence": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação.",
+            "limitations": [
+              "Síntese geral de fungos filamentosos, não estudo das três espécies do catálogo.",
+              "Não transfere composição química, comestibilidade, propriedades medicinais ou resultados mecânicos dos organismos estudados.",
+              "Challacombe et al. (2019) é preservado como evidência histórica da versão anterior, sem sustentar o trecho reprodutivo revisado.",
+              "Nenhuma figura dos artigos foi incorporada."
+            ]
+          },
+          "cyanobacterial_nutrition": {
+            "decision": "administrative_caveat_moved",
+            "reason": "Retirada a explicação sobre o processo de comprovação fotográfica, mantendo o metabolismo como afirmação de grupo.",
+            "evidence": "Johnson, Introduction: fotossíntese oxigênica, carbono orgânico e cianobactérias.",
+            "limitations": [
+              "A fotografia de apoio não comprova metabolismo nem identificação da espécie."
+            ]
+          },
+          "gomphosphaeria_morphology": {
+            "decision": "preserved_essential_caveat",
+            "reason": "Mantida a ressalva no texto porque retirar a distinção entre cultura observada e imagem de apoio permitiria uma leitura enganosa.",
+            "evidence": "Marter et al., 3.1, primeiro parágrafo: células de DSM 107014 (= SAG 52.96) conectadas por hastes mucilaginosas e formando colônias.",
+            "limitations": [
+              "A cultura DSM 107014 não é apresentada como origem da fotografia de apoio 160680326.",
+              "Não confirma identidade visual ou caracteres diagnósticos nas alternativas.",
+              "A aprovação editorial do texto não aprova automaticamente o grau moderado da dica."
+            ]
+          }
+        },
+        "new_source_count": 2,
+        "archived_sources_reused": 7,
+        "previous_source_retained_for_history": "PMC6909477",
+        "required_confirmations": [
+          "editorial_approval_of_exact_batch",
+          "cc_by_4_0_only_rights_actually_available_in_exact_wordings"
+        ],
+        "approval_scope": "Only the 34 listed source notes and the identical scientific content in the derived morphological alias of 110. No approval of unrelated aggregate topics or hint-assistance grades."
+      },
+      "validation_history": [
+        {
+          "checked_at": "2026-10-18T04:50:22.088223+00:00",
+          "test_command": "python tests/test_import_inaturalist.py",
+          "tests_passed": 18,
+          "changed_generated_notes_including_morphological_alias": 35,
+          "prior_automated_pedagogy_invalidated": true,
+          "regeneration_does_not_approve_notes": true,
+          "unchanged_recipe_sets": 121,
+          "remaining_recipe_set_preserves_grades_categories_ranks_photo_bindings": true,
+          "organism_82_unchanged": true,
+          "active_content_changed": false,
+          "human_approvals_created": 0
+        },
+        {
+          "checked_at": "2026-10-18T12:29:29.760628+00:00",
+          "scope": "Revised proposal and unchanged active catalog before the two required confirmations; not validation of an applied batch.",
+          "test_command": "python tests/test_import_inaturalist.py",
+          "tests_passed": 20,
+          "rights_tests_command": "python tests/test_rights_investigation.py",
+          "rights_tests_passed": 52,
+          "configure_and_build": "Release / Ninja; successful",
+          "ctest_command": "ctest --test-dir build --output-on-failure",
+          "ctest_suites_passed": 26,
+          "ctest_suites_total": 26,
+          "ctest_elapsed_seconds": 196.21,
+          "strict_catalog_audit": {
+            "total_species": 122,
+            "competitive_pool": 80,
+            "passed": true
+          },
+          "apache_check_passed": true,
+          "governance_technical_errors": 0,
+          "history_reference_preserved": "09e8eb759172e32b9554c4c86d8a583a667e4dcc",
+          "unchanged_editorial_events": 41,
+          "derived_resources_reproducible": true,
+          "changed_generated_notes_including_morphological_alias_in_temporary_simulation": 35,
+          "prior_automated_pedagogy_invalidated_in_simulation": true,
+          "regeneration_does_not_approve_notes": true,
+          "unchanged_recipe_sets_in_simulation": 121,
+          "remaining_recipe_set_preserves_grades_categories_ranks_photo_bindings": true,
+          "organism_82_unchanged": true,
+          "active_content_changed": false,
+          "human_approvals_created": 0,
+          "permissions_changed": false,
+          "distribution_gate": {
+            "exit_code": 2,
+            "technical_errors": 0,
+            "photo_findings": 120,
+            "text_resource_findings": 3,
+            "scientific_release_blocks": 2
+          },
+          "curation": {
+            "requests": 15,
+            "findings": 3309,
+            "by_area": {
+              "science": 4,
+              "taxonomy": 2,
+              "photography": 3,
+              "licensing": 4,
+              "pedagogy": 2
+            },
+            "apply": false,
+            "remote_checked": false,
+            "created": 0,
+            "updated": 0
+          },
+          "limitations": [
+            "Local preparation checks only; no new PR or remote validation yet.",
+            "After actual confirmations and incorporation, regenerate and rerun the applicable checks, including full CTest.",
+            "Tests are not scientific or legal certification."
+          ]
+        }
+      ],
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/2e9ce124b2056fdb0683dbd55b15dd2391f6e42bb0ffb1dd712ecb572510c5ce.json",
+        "sha256": "f0651e9f4f618f2e9a36a3d04bc8d300ab00b21e61f2dc4c91e5fdf6bc5f324d",
+        "locator": "proposal_fingerprint, proposed_changes, occurrences, editorial_confirmation and license_confirmation"
+      },
+      "recorded_decisions": [
+        {
+          "key": "species:110:morphological_hint",
+          "content_sha256": "b39c4f2842f96dbc5c72d7b425541ecfdc31ca456aac891abaf782e314a3e741",
+          "event_sha256": "9c616a32b5cfeb4d35f004cc52b1f9a3a8744bf2795bd030b2d002ea87556e3d"
+        },
+        {
+          "key": "species:110:morphology",
+          "content_sha256": "9127f91c26f4934e0739a5b511d21b4b0ea929fdb4ad875b3cfc3b9b712a2efc",
+          "event_sha256": "559726c33009e0e0459c16745e17f649feb02742c787ed024480d525a643d4cf"
+        },
+        {
+          "key": "species:110:nutrition",
+          "content_sha256": "8007f8d3d6fe5c884052d234b08911530dfe44ff066dfef39c9b0e75271bdd85",
+          "event_sha256": "5d43f2fa5a6554bd0d5a3440acdf05abb16bfaf452a10fa835fbb4f3c280952f"
+        },
+        {
+          "key": "species:133:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "ce9384c0f360726f706f1b08cc0ab2d627551d9fd37898c0b27a9d4473bb72aa"
+        },
+        {
+          "key": "species:23:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "cf5b5f76a673cbeeae08a890b1e6dba7322f59b603cf35b511dbf9bbf6e2326f"
+        },
+        {
+          "key": "species:26:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "e2a892af7f4fc720dce79216b81dd91748c40967513b15c5f80a440108c2f594"
+        },
+        {
+          "key": "species:30:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "5caafd99315181bddbcf0da0f48199fb6d83dcc40264b1ba91c5883f649f136a"
+        },
+        {
+          "key": "species:31:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "7b80da2be78b33a7f8a9829287b64d8eacb157f736417d24030cebc4aeabf1c2"
+        },
+        {
+          "key": "species:34:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "1469c82fc1a4839bdfcd2d1beb4d9cd7e485a902089d5f9f1a6215ab2c2bfea7"
+        },
+        {
+          "key": "species:35:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "9f0927ceb9a9d94a884e1a96d42ef81b5c5efe238fd388fda5c83b512e916b71"
+        },
+        {
+          "key": "species:41:curiosity",
+          "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+          "event_sha256": "bb1ef199ad7cf799b5b9a39fad86e1c3bde40f531ee03fbb0df9cdcce945475e"
+        },
+        {
+          "key": "species:41:nutrition",
+          "content_sha256": "e1d42bcda824721707f8e8efa48f2c5b14d5ac6d67517da59d55aede0fdd7c85",
+          "event_sha256": "ca7bc83441db6ed1c73a32de0691c827c6d5d953a19ceb1d49db953941f15101"
+        },
+        {
+          "key": "species:43:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "c88f2533f3d0c7d78628a826804909425495c2113de2203bc7796eec1ddafeb5"
+        },
+        {
+          "key": "species:44:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "d2c122af68000595c51cbac6c584a9c73e28ae4164ad596f315bb8039b266472"
+        },
+        {
+          "key": "species:47:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "de7d30f51aca2f0bf6d2d538641755174493e92d2a3ad0cb26f6755e7c7e356b"
+        },
+        {
+          "key": "species:48:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "4e82910bbdf45490fe98152f9eb65c9bad72af9de81406edef6cb0e9f32a5a00"
+        },
+        {
+          "key": "species:49:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "5f6e275c7d881b8d0b7de2cfb65ef73c9b5e2760d04737399620df96bcbde18d"
+        },
+        {
+          "key": "species:50:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "107c06727165d0f6885bc160f601605ef63ef0a6a24a2bbbdd652543299af1e8"
+        },
+        {
+          "key": "species:51:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "b5742d1cc02ac108bdf830075deab53f0ad820e01416ded0815129ffbd2f0c31"
+        },
+        {
+          "key": "species:52:curiosity",
+          "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "event_sha256": "f7d59093fd4d5075377f3e366efc3772a564409e55ec4a6f309672e5de2e0f07"
+        },
+        {
+          "key": "species:52:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "03f153b6d6ef04590ed7e699c91f4836f83edfed5f43ff0df356ff08adfa8873"
+        },
+        {
+          "key": "species:53:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "206db636cf66dd40166eb9eba8a276e99d26db836090c28cf35c70c7cb528a46"
+        },
+        {
+          "key": "species:54:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "6dfd2e9e63d20205686c4798baca91d488db04fde2aa891a4df2110cb34a85c3"
+        },
+        {
+          "key": "species:55:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "56fab3b4f0d78c57d41ffa2f7a4293fb831463fcb49151b6bb6abb68ecf27314"
+        },
+        {
+          "key": "species:57:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "765c39083795b4d58b47677d11c982deb11addbf82c7bca456b0963254f9659d"
+        },
+        {
+          "key": "species:60:curiosity",
+          "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "event_sha256": "af300fc3403a757f7a98e4eeb49ea259be9830512243df70615560648ddc7706"
+        },
+        {
+          "key": "species:60:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "410612dfa6442ad9f420c63cf1b2810b356f8802f81ca0de3085baeb3e083155"
+        },
+        {
+          "key": "species:61:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "ad817ed88ea9f9071fde25c6d72f046913576d7c958fcd593bb7fbb3778795f2"
+        },
+        {
+          "key": "species:62:curiosity",
+          "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+          "event_sha256": "20533b2883c40819a7fd889957f5a43d12fc19db64e0bf2e2ae550c1bfbf7349"
+        },
+        {
+          "key": "species:62:nutrition",
+          "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+          "event_sha256": "67d7112345ccbf7fcc09ec4dadae4e4fc8da5bd22d3dc8550dee9b77c06f46a2"
+        },
+        {
+          "key": "species:65:curiosity",
+          "content_sha256": "f901c7e5f741f76c919c72c15ad935f38922339dfc1873242ade8ccaba3acc20",
+          "event_sha256": "8fbd6f9b8601d5017800c773e593ebbf8e91b74f3e1f1c6a3789417710a2e333"
+        },
+        {
+          "key": "species:65:nutrition",
+          "content_sha256": "5565131410b3b7bc1165d60b1331cbe8563778d869bb3ffbaec4fb5124b7c785",
+          "event_sha256": "7967fd5f71629bb243fd9b6a9722b42482ccbb714020da9bcf5c77b6d5c01e2e"
+        },
+        {
+          "key": "species:70:curiosity",
+          "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "event_sha256": "b8a7d26fbfa5f92ef3251102cdb9864a0b58e152a0cd684eb9e6783346ae6783"
+        },
+        {
+          "key": "species:71:curiosity",
+          "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "event_sha256": "133dddb4e9e9c327d17363d740af3c76e6cbfae1162febc0ed1d16e85e65da53"
+        },
+        {
+          "key": "species:81:curiosity",
+          "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+          "event_sha256": "273f740d7293ec0f4efc9cd960b208b27cc368c0d8ecd238db0c375420322498"
+        }
+      ],
+      "promotion": {
+        "recorded_on": "2026-10-18",
+        "proposal_git_commit": "63599f2",
+        "proposal_fingerprint": "e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478",
+        "applied_file_sha256": "a3e485307481475e8d320dacde35f437fc35a59b74eb9b54870a7fd652b66055",
+        "active_occurrences": 34,
+        "organisms": 28,
+        "new_editorial_events": 35,
+        "ledger_events_before": 41,
+        "ledger_events_after": 76,
+        "repeated_decisions": "already_recorded",
         "unchanged_recipe_sets": 121,
-        "remaining_recipe_set_preserves_grades_categories_ranks_photo_bindings": true,
+        "unchanged_other_note_payloads": true,
         "organism_82_unchanged": true,
-        "active_content_changed": false,
-        "human_approvals_created": 0
+        "derived_binding_updates": [
+          {
+            "file": "resources/data/progressive_hints.json",
+            "pointer": "/species/110/recipes/5/source_text",
+            "previous_text_sha256": "4562d2a6de6875c02250d70777cac08f78ebe46b3326c23e55a2a3c0134cd64b",
+            "text_sha256": "5ad0fd25a5799cdbb87d5e3ca83cc58f9cc228e8a9c98e1f74fda1f00a4c1482"
+          },
+          {
+            "file": "resources/data/progressive_hints.json",
+            "pointer": "/species/110/recipes/5/text",
+            "previous_text_sha256": "4562d2a6de6875c02250d70777cac08f78ebe46b3326c23e55a2a3c0134cd64b",
+            "text_sha256": "5ad0fd25a5799cdbb87d5e3ca83cc58f9cc228e8a9c98e1f74fda1f00a4c1482"
+          }
+        ],
+        "remaining_profile_occurrences_inconclusive": 805,
+        "whole_file_permission_granted": false,
+        "whole_corpus_license_granted": false,
+        "source_works_relicensed": false,
+        "aggregate_topics_approved": false,
+        "hint_assistance_approved": false,
+        "active_occurrences_origin_inconclusive": 2300,
+        "active_unique_hashes_inconclusive": 788
+      },
+      "validation": {
+        "checked_at": "2026-10-18T13:01:25.368267+00:00",
+        "scope": "Actual applied batch; local validation only, not rights/scientific certification.",
+        "configure_and_build": "Release / Ninja; successful",
+        "ctest_command": "ctest --test-dir build --output-on-failure",
+        "ctest_suites_passed": 26,
+        "ctest_suites_total": 26,
+        "ctest_elapsed_seconds": 218.67,
+        "import_tests_passed": 21,
+        "rights_tests_passed": 53,
+        "validator_commands": [
+          {
+            "command": "python scripts/repository_protection.py check",
+            "exit_code": 0,
+            "log": "build/lote2-validation-00.log"
+          },
+          {
+            "command": "python scripts/licensing_inventory.py --check-code",
+            "exit_code": 0,
+            "log": "build/lote2-validation-01.log"
+          },
+          {
+            "command": "python scripts/content_governance.py recover-permissions",
+            "exit_code": 0,
+            "log": "build/lote2-validation-02.log"
+          },
+          {
+            "command": "python scripts/audit_repository.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-03.log"
+          },
+          {
+            "command": "python scripts/review_hints.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-04.log"
+          },
+          {
+            "command": "python scripts/build_education.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-05.log"
+          },
+          {
+            "command": "python scripts/content_governance.py credits",
+            "exit_code": 0,
+            "log": "build/lote2-validation-06.log"
+          },
+          {
+            "command": "python scripts/content_governance.py audit",
+            "exit_code": 0,
+            "log": "build/lote2-validation-07.log"
+          },
+          {
+            "command": "python scripts/content_governance.py audit-history --base 09e8eb759172e32b9554c4c86d8a583a667e4dcc",
+            "exit_code": 0,
+            "log": "build/lote2-validation-08.log"
+          },
+          {
+            "command": "python scripts/audit_catalog.py --strict",
+            "exit_code": 0,
+            "log": "build/lote2-validation-09.log"
+          },
+          {
+            "command": "python scripts/exploration_media.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-10.log"
+          },
+          {
+            "command": "python scripts/scientific_catalog.py coverage",
+            "exit_code": 0,
+            "log": "build/lote2-validation-11.log"
+          },
+          {
+            "command": "python scripts/audit_hint_assistance.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-12.log"
+          },
+          {
+            "command": "python scripts/phylogeny.py --apply",
+            "exit_code": 0,
+            "log": "build/lote2-validation-13.log"
+          },
+          {
+            "command": "python scripts/review_updates.py",
+            "exit_code": 0,
+            "log": "build/lote2-validation-14.log"
+          },
+          {
+            "command": "python scripts/review_updates.py --rights-report",
+            "exit_code": 0,
+            "log": "build/lote2-validation-15.log"
+          },
+          {
+            "command": "python scripts/release.py check",
+            "exit_code": 0,
+            "log": "build/lote2-validation-16.log"
+          },
+          {
+            "command": "python scripts/release.py check-history --base 09e8eb759172e32b9554c4c86d8a583a667e4dcc",
+            "exit_code": 0,
+            "log": "build/lote2-validation-17.log"
+          },
+          {
+            "command": "python scripts/project_status.py check --build build",
+            "exit_code": 0,
+            "log": "build/lote2-validation-18.log"
+          }
+        ],
+        "qmllint_passed": true,
+        "generators_byte_reproducible": true,
+        "strict_catalog_audit": {
+          "total_species": 122,
+          "competitive_pool": 80,
+          "passed": true
+        },
+        "ledger_events": 76,
+        "previous_events_byte_prefix_preserved": 41,
+        "new_editorial_events": 35,
+        "organism_82_unchanged": true,
+        "unchanged_recipe_sets": 121,
+        "assistance_grades_categories_and_points_unchanged": true,
+        "distribution_gate": {
+          "exit_code": 2,
+          "technical_errors": 0,
+          "photo_findings": 120,
+          "text_resource_findings": 3,
+          "scientific_release_blocks": 31,
+          "previous_photo_blocks": 2,
+          "unapproved_aggregate_topics": [
+            {
+              "key": "topic:23:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "37184197a7fbdf58c0291b77e164756e9c8baf299840fa14ad4038a753138f31"
+            },
+            {
+              "key": "topic:26:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "41432a453f0b97f6596047248f5d82e0b0312d7aeae454618c8a64c136cca648"
+            },
+            {
+              "key": "topic:30:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "c3b4932faac1ea7001b84ea2e577ed396d692ec32b75a9d3da76c24dc0f6c758"
+            },
+            {
+              "key": "topic:31:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "bc6bde63e3989d65353a81a03e115e5f3733c6d3275e291529a6e06021c1cf73"
+            },
+            {
+              "key": "topic:34:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "cefcb007f922e81937b5e76c963a4f9893cec37a61155e024e81ee6c1b9e601f"
+            },
+            {
+              "key": "topic:35:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "d3cb36a9308c10a0def72c66e3f60b42ac92d26822acc1e18d0830751bf0f16f"
+            },
+            {
+              "key": "topic:41:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "b1e7a32b84a46f890d7ea8375a056d75bec9a81f82f2a5da0ea9f01c3275b579"
+            },
+            {
+              "key": "topic:43:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "b777aed206302cdd877a90c32886686cb542284cd3bab67aa1300dd06f0389d8"
+            },
+            {
+              "key": "topic:44:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "0406babd2c3570384af723c014cbe724082772d6a72c5126e8aedf099282e445"
+            },
+            {
+              "key": "topic:47:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "64c950031902a1fe1ae6ce06fd420c9df248ad77ef986094c6d160a858e2ebd6"
+            },
+            {
+              "key": "topic:48:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "db72cdef4270f9291a6f63de478eb42c44bd1ef034940f7cc29b2d0f33f9dd1a"
+            },
+            {
+              "key": "topic:49:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "008c92222790cb5b9fca1dc6912623c14407f21a9bbe7390a07ddf558bc8b760"
+            },
+            {
+              "key": "topic:50:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "b08d50315dcdf84a9fc1104cc00ab1f1aa3f245747b24462b40452bdd0d8b90b"
+            },
+            {
+              "key": "topic:51:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "8651b0c612b20d1f4993375b89ceb2ecc1ecb41b82a1895688094654ac1d20b0"
+            },
+            {
+              "key": "topic:52:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "34699d2512edbf8149dbd014904a35465a8f86aed84e4065308f033c18372931"
+            },
+            {
+              "key": "topic:53:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "3aa92538bc35252bae93e44906ca1ff90543945986d309b8fd80e722940bb0f4"
+            },
+            {
+              "key": "topic:54:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "07dbc45a7cf265c73e8ae06571fa32df4c7e4e9154b932e4eba725760e468b70"
+            },
+            {
+              "key": "topic:55:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "fbbb997c390785981d0cdc7ab8f818c698d9c716db178a9443960235ded1b00b"
+            },
+            {
+              "key": "topic:133:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "6eccf17b7ef225996102ac5f9f3ad87ffa8e60c5511d9ad2a5dd9c091ff2c973"
+            },
+            {
+              "key": "topic:57:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "98382cf418db7e5711b3a82ba3b923b63e0a1934524813465ca8af78733614da"
+            },
+            {
+              "key": "topic:60:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "3632aa50cd2df06d7876aa1b8dfe2d1a2b5c82028d16ffebad1041f7503f276b"
+            },
+            {
+              "key": "topic:61:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "3c9e2188c7a6b5d1f63f5dde9196ccd65a49915389d0cb70e854b2a24593a588"
+            },
+            {
+              "key": "topic:62:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "0a0b233e52c80fb0a4ba70b73dbbd8707ff5c4794c0cc807d29ce1b94b9e99d7"
+            },
+            {
+              "key": "topic:65:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "c0851947c5e3e110bd559ad0f6d8eaae4c4464f7111d74bb51c2fe301eada669"
+            },
+            {
+              "key": "topic:70:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "2a67dba003eead028b3c9f302b07a5dd8129714e208a04127e1fa4853627a7f5"
+            },
+            {
+              "key": "topic:71:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "591d4a16fddd3efa28df2fe5d5e24c71e341cac6043212478ba5fa83a645d0b9"
+            },
+            {
+              "key": "topic:81:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "a55d1e8a243ecd4da1832b014e3dd9c7745fa96a30c8b18637b64aef7eb5fcd9"
+            },
+            {
+              "key": "topic:110:morphology",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "5a83c3cd5919dda1049d1301b8836245757203254574a6f699f396260014c1c0"
+            },
+            {
+              "key": "topic:110:education",
+              "state": "needs_review",
+              "severity": "high",
+              "reason": "Conteúdo legado alterado; revisão humana necessária.",
+              "content_sha256": "50a9e0a67dd20a2b45c67582b7a5611deb78acad594e7b27926d054af6736774"
+            }
+          ]
+        },
+        "curation": {
+          "before": {
+            "requests": 15,
+            "findings": 3309,
+            "by_area": {
+              "science": 4,
+              "taxonomy": 2,
+              "photography": 3,
+              "licensing": 4,
+              "pedagogy": 2
+            }
+          },
+          "after": {
+            "requests": 15,
+            "findings": 3274,
+            "by_area": {
+              "science": 4,
+              "taxonomy": 2,
+              "photography": 3,
+              "licensing": 4,
+              "pedagogy": 2
+            }
+          },
+          "stable_request_ids": true,
+          "apply": false,
+          "remote_checked": false,
+          "created": 0,
+          "updated": 0
+        },
+        "whole_file_or_corpus_grant_created": false,
+        "specialist_review_claimed": false,
+        "remote_validation": "not_yet_run",
+        "package_validation": "not_performed; no package or executable published"
       }
     },
     "phase_balance": {
@@ -3698,7 +4489,8 @@
       "active_unique_passages": 863,
       "resolved_issue_2_findings_this_phase": 1,
       "remaining_text_asset_findings": 3,
-      "remaining_work": "The profile drafts and all other legacy profile/hint/derived passages remain outside the confirmed group batch. No whole-corpus or package permission granted."
+      "remaining_work": "The profile drafts and all other legacy profile/hint/derived passages remain outside the confirmed group batch. No whole-corpus or package permission granted.",
+      "scope": "Historical group-batch balance; current profile-batch balance is profile_openstax_batch.promotion."
     },
     "pr_consolidation": {
       "checked_at": "2026-10-18T11:52:13.516562+00:00",

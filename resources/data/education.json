@@ -4978,23 +4978,30 @@
       }
     },
     "species:133:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -5310,23 +5317,30 @@
       }
     },
     "species:53:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -5474,23 +5488,30 @@
       }
     },
     "species:61:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -5802,23 +5823,30 @@
       }
     },
     "species:44:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -5966,23 +5994,30 @@
       }
     },
     "species:47:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6130,23 +6165,30 @@
       }
     },
     "species:43:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6294,23 +6336,30 @@
       }
     },
     "species:48:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6458,23 +6507,30 @@
       }
     },
     "species:49:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6622,23 +6678,30 @@
       }
     },
     "species:51:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6788,23 +6851,30 @@
       }
     },
     "species:54:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -6952,23 +7022,30 @@
       }
     },
     "species:57:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -10732,23 +10809,30 @@
       }
     },
     "species:50:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -10898,23 +10982,30 @@
       }
     },
     "species:55:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11138,23 +11229,30 @@
       }
     },
     "species:23:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11280,23 +11378,30 @@
       }
     },
     "species:26:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11422,23 +11527,30 @@
       }
     },
     "species:30:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11564,23 +11676,30 @@
       }
     },
     "species:31:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11706,23 +11825,30 @@
       }
     },
     "species:34:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11848,23 +11974,30 @@
       }
     },
     "species:35:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -11914,23 +12047,30 @@
       }
     },
     "species:41:nutrition": {
-      "text": "Captura insetos e outros pequenos animais.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Louva-a-deus são predadores de outros artrópodes. As pernas dianteiras participam da captura e da retenção da presa.",
+      "source_url": "https://doi.org/10.1186/s12983-026-00610-9",
+      "source_title": "Bäumler F et al. (2026) — A striking difference: biomechanics of the impaling hunting strategy of a moss mantis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Louva-a-deus",
+      "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "f68dbe5add854235d948a82b47ff6133e3d93b1c3bfc617698ca73dc16d46532",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Retirada do texto do jogador a ressalva sobre a espécie experimental; preservada aqui e na conferência.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12983-026-00610-9",
+            "locator": "Background / mantodean predators and prehensile forelegs; species-specific impaling strategy excluded",
+            "supports": "Bäumler et al., Background, segundo parágrafo: Mantodea como predadores de artrópodes e uso de pernas dianteiras raptoriais."
+          }
+        ],
+        "content_sha256": "e1d42bcda824721707f8e8efa48f2c5b14d5ac6d67517da59d55aede0fdd7c85",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12012,23 +12152,30 @@
       }
     },
     "species:41:curiosity": {
-      "text": "O corpo tem um revestimento externo que precisa ser trocado durante o crescimento.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/28-6-superphylum-ecdysozoa-arthropods",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "Na fase de crescimento, o inseto renova periodicamente a cutícula, o revestimento externo do corpo. Essa troca é chamada muda ou ecdise.",
+      "source_url": "https://doi.org/10.3389/fnbeh.2020.612313",
+      "source_title": "Schumann I et al. (2020) — The PEDtracker: An Automatic Staging Approach for <i>Drosophila melanogaster</i> Larvae.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Insetos",
+      "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "dd93937c2eec82a7ef227936a36a5a4da37def17d2cc279708719cae304ec719",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A fase de crescimento delimita corretamente muda/ecdise e evita atribuir muda contínua a todos os adultos.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3389/fnbeh.2020.612313",
+            "locator": "Introduction / larval cuticle and ecdysis; general insect scope, not a species-specific experiment",
+            "supports": "Schumann e Triphan, Introduction, primeiro parágrafo: cutícula e renovação ao longo do desenvolvimento pós-embrionário; resultados experimentais de Drosophila não transferidos."
+          }
+        ],
+        "content_sha256": "28f4ca0baf93462c0b484b43aa0e9f7cd51c9a9c824f205185fe8e4d52580ba2",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12078,23 +12225,30 @@
       }
     },
     "species:52:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12176,23 +12330,30 @@
       }
     },
     "species:52:curiosity": {
-      "text": "Nem todas as plantas produzem flores; vários grupos se reproduzem por esporos.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas",
+      "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Mantida uma comparação explícita entre plantas; retirada a explicação administrativa sobre exclusividade.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
+            "supports": "Woudenberg et al., Table 1: bryophytes/free-sporing, liverwort sporangia, moss sporangia, seed-free ferns e angiosperms/flowering plants."
+          }
+        ],
+        "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12242,23 +12403,30 @@
       }
     },
     "species:60:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12340,23 +12508,30 @@
       }
     },
     "species:60:curiosity": {
-      "text": "Nem todas as plantas produzem flores; vários grupos se reproduzem por esporos.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas",
+      "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Mantida uma comparação explícita entre plantas; retirada a explicação administrativa sobre exclusividade.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
+            "supports": "Woudenberg et al., Table 1: bryophytes/free-sporing, liverwort sporangia, moss sporangia, seed-free ferns e angiosperms/flowering plants."
+          }
+        ],
+        "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12406,23 +12581,30 @@
       }
     },
     "species:62:nutrition": {
-      "text": "Produz açúcares por fotossíntese e absorve água e sais minerais do ambiente.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A energia da luz sustenta a produção de compostos orgânicos a partir do gás carbônico. Água e nutrientes minerais também são necessários; não são substituídos pela luz.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas fotossintetizantes",
+      "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "b954fc50a23eef326e691da43c3aae42a5103ace83c85f7e571f8d23d8ab619c",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A síntese distingue energia luminosa, fonte de carbono, água e nutrientes; não atribui raízes a musgos ou hepáticas.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / photosynthetic energy conversion; Overview of photosynthesis; carbon fixation",
+            "supports": "Johnson, Introduction: conversão de água e CO2 em compostos orgânicos; The light reactions / The major pigments: complexos proteicos, magnésio da clorofila e cofatores minerais. Explicação bioquímica de grupo, sem inferir absorção exclusiva pela raiz."
+          }
+        ],
+        "content_sha256": "36544f4934820f82b10f3472cd5aaabbd4659a75aba7477737fa7b2abd7c14db",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12504,23 +12686,30 @@
       }
     },
     "species:62:curiosity": {
-      "text": "Nem todas as plantas produzem flores; vários grupos se reproduzem por esporos.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/25-1-early-plant-life",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A reprodução das plantas não se resume às flores: musgos, hepáticas e samambaias formam esporos.",
+      "source_url": "https://doi.org/10.1093/plphys/kiac304",
+      "source_title": "Woudenberg S et al. (2022) — Deep origin and gradual evolution of transporting tissues: Perspectives from across the land plants.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Plantas",
+      "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "16815bb84bc3aa82e154da62e392045cbffdf3d2f989f7fd0cff3ee696d834de",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Mantida uma comparação explícita entre plantas; retirada a explicação administrativa sobre exclusividade.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1093/plphys/kiac304",
+            "locator": "Introduction; Table 1; Figure 2 / mosses, liverworts, ferns and seed plants; images excluded",
+            "supports": "Woudenberg et al., Table 1: bryophytes/free-sporing, liverwort sporangia, moss sporangia, seed-free ferns e angiosperms/flowering plants."
+          }
+        ],
+        "content_sha256": "510cc9414f1564807002fb6fd3230f3d19651cf390eeb0a50099524b782b376a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12570,23 +12759,30 @@
       }
     },
     "species:65:nutrition": {
-      "text": "O parceiro fotossintetizante produz açúcares; o fungo participa da estrutura da associação.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-3-ecology-of-fungi",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "No líquen, o parceiro fotossintetizante fornece compostos de carbono à associação. O fungo participa da organização do corpo visível, chamado talo; são organismos associados, não um único tecido vegetal.",
+      "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+      "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Líquens",
+      "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "42fa51eb18d54f1cf0adad99572e8ee37e23840fa2892580867c091151f1b483",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Explicação de associação e transferência de carbono adequada ao escopo; sem atribuir um fotobionte nominal.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12864-019-5629-x",
+            "locator": "Background / lichen symbionts; primary symbiotic interfaces and carbon transfer; general lichen scope",
+            "supports": "Armaleo et al., Background; Inferences from differential transcription about nutritional fluxes at the symbiotic interface; Figure 1 caption apenas como localizador factual de talo/tecido fúngico, imagem não incorporada."
+          }
+        ],
+        "content_sha256": "5565131410b3b7bc1165d60b1331cbe8563778d869bb3ffbaec4fb5124b7c785",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12668,23 +12864,30 @@
       }
     },
     "species:65:curiosity": {
-      "text": "A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Fungos",
+      "text": "Os parceiros de um líquen mantêm suas células e genomas distintos, mesmo formando uma estrutura integrada.",
+      "source_url": "https://doi.org/10.1186/s12864-019-5629-x",
+      "source_title": "Armaleo D et al. (2019) — The lichen symbiosis re-viewed through the genomes of Cladonia grayi and its algal partner Asterochloris glomerata.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Líquens; comparação com estudo de outra espécie",
+      "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Preservada a independência celular/genética como fato geral; a identificação da espécie experimental fica nos metadados.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1186/s12864-019-5629-x",
+            "locator": "Background / mycobiont and photobiont; study on Cladonia grayi, not Cladonia imperialis",
+            "supports": "Armaleo et al., Background, segundo parágrafo: parceiros mantêm independência genética/celular, sem fusão de genomas."
+          }
+        ],
+        "content_sha256": "f901c7e5f741f76c919c72c15ad935f38922339dfc1873242ade8ccaba3acc20",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12810,23 +13013,35 @@
       }
     },
     "species:70:curiosity": {
-      "text": "A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Fungos",
+      "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+      "source_url": "https://doi.org/10.3390/microorganisms10071379",
+      "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Fungos filamentosos que formam cogumelos",
+      "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A referência anterior não sustentava claramente corpos de frutificação. A nova síntese distingue estruturas reprodutivas e micélio vegetativo, sem chamar todo cogumelo de parte indiferenciada da rede.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3390/microorganisms10071379",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          },
+          {
+            "url": "https://doi.org/10.1038/s41598-017-13295-2",
+            "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          }
+        ],
+        "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -12952,23 +13167,35 @@
       }
     },
     "species:71:curiosity": {
-      "text": "A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Fungos",
+      "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+      "source_url": "https://doi.org/10.3390/microorganisms10071379",
+      "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Fungos filamentosos que formam cogumelos",
+      "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A referência anterior não sustentava claramente corpos de frutificação. A nova síntese distingue estruturas reprodutivas e micélio vegetativo, sem chamar todo cogumelo de parte indiferenciada da rede.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3390/microorganisms10071379",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          },
+          {
+            "url": "https://doi.org/10.1038/s41598-017-13295-2",
+            "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          }
+        ],
+        "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -13258,23 +13485,35 @@
       }
     },
     "species:81:curiosity": {
-      "text": "A parte visível de muitos fungos é apenas uma parte do organismo, que também cresce no substrato.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/24-1-characteristics-of-fungi",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Fungos",
+      "text": "Em muitos fungos, filamentos chamados hifas se ramificam e formam uma rede, o micélio. Nos fungos que produzem cogumelos, as estruturas reprodutivas visíveis não representam todo o organismo: o micélio também cresce no substrato.",
+      "source_url": "https://doi.org/10.3390/microorganisms10071379",
+      "source_title": "Berger RG et al. (2022) — Mycelium vs. Fruiting Bodies of Edible Fungi—A Comparison of Metabolites.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Fungos filamentosos que formam cogumelos",
+      "locator": "2. Chemical Composition / mycelia and fruiting bodies; complemento: Islam et al. (2017), DOI 10.1038/s41598-017-13295-2, Introduction / hyphae and mycelial network",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "008a96a14c6f5ca2ccd9d148562688a3dffa05230b5f12e87d0b11149db62c45",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. A referência anterior não sustentava claramente corpos de frutificação. A nova síntese distingue estruturas reprodutivas e micélio vegetativo, sem chamar todo cogumelo de parte indiferenciada da rede.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3390/microorganisms10071379",
+            "locator": "2. Chemical Composition / mycelia and fruiting bodies; Figure 1 images excluded",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          },
+          {
+            "url": "https://doi.org/10.1038/s41598-017-13295-2",
+            "locator": "Introduction / branching hyphae and mycelial network; experimental mechanics not transferred",
+            "supports": "Islam et al. (2017), Introduction: hifas ramificadas e rede micelial; Berger et al. (2022), 2. Chemical Composition: distinção de morfologia, desenvolvimento e localização de micélio e corpos de frutificação."
+          }
+        ],
+        "content_sha256": "b0f26cbaf31431b484c0f2c4ee59f37635b116420dd8aa0ee77383e7fe7adb5a",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -19192,45 +19431,59 @@
       }
     },
     "species:110:nutrition": {
-      "text": "Faz fotossíntese.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
+      "text": "A fotossíntese permite às cianobactérias usar luz para incorporar carbono em compostos orgânicos, liberando oxigênio.",
+      "source_url": "https://doi.org/10.1042/ebc20160016",
+      "source_title": "Johnson MP. (2016) — Photosynthesis.",
+      "verified": false,
+      "reviewed_on": null,
       "scope_name": "Cianobactérias",
+      "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "bbbb98c7f305b96a20579b82f78b4b88e1ddee548dcbc1def595a49ee1112b0a",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Retirada a explicação sobre o processo de comprovação fotográfica, mantendo o metabolismo como afirmação de grupo.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.1042/ebc20160016",
+            "locator": "Introduction / oxygenic photosynthesis in plants, algae and cyanobacteria; carbon fixation",
+            "supports": "Johnson, Introduction: fotossíntese oxigênica, carbono orgânico e cianobactérias."
+          }
+        ],
+        "content_sha256": "8007f8d3d6fe5c884052d234b08911530dfe44ff066dfef39c9b0e75271bdd85",
+        "claim_scope": "group",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
     },
     "species:110:morphology": {
-      "text": "Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Cianobactérias coloniais",
+      "text": "Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+      "source_url": "https://doi.org/10.3390/genes12030389",
+      "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio",
+      "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "0de023db1d1532c6b520b45097ff75a07cd0f8931c897500930c6675803e6ade",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Mantida a ressalva no texto porque retirar a distinção entre cultura observada e imagem de apoio permitiria uma leitura enganosa.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3390/genes12030389",
+            "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
+            "supports": "Marter et al., 3.1, primeiro parágrafo: células de DSM 107014 (= SAG 52.96) conectadas por hastes mucilaginosas e formando colônias."
+          }
+        ],
+        "content_sha256": "9127f91c26f4934e0739a5b511d21b4b0ea929fdb4ad875b3cfc3b9b712a2efc",
+        "claim_scope": "species",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -35329,12 +35582,13 @@
       }
     },
     "species:110:morphological_hint": {
-      "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
-      "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-      "source_title": "OpenStax · Biology 2e",
-      "verified": true,
-      "reviewed_on": "2026-10-14",
-      "scope_name": "Cianobactérias coloniais",
+      "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+      "source_url": "https://doi.org/10.3390/genes12030389",
+      "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+      "verified": false,
+      "reviewed_on": null,
+      "scope_name": "Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio",
+      "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
       "ranks": [
         "species",
         "genus"
@@ -35366,7 +35620,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "f4a105993602087a11d5da361ef9b269b250c4df4028b8a866c787b7d93a27cc",
+          "content_sha256": "a387d49547f48af70396d88e2991fcc97e94af3843caab4fe5951b4bcbb6719a",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -35376,12 +35630,13 @@
           "species_id": "110",
           "category": "morphological",
           "source": {
-            "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
-            "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-            "source_title": "OpenStax · Biology 2e",
-            "verified": true,
-            "reviewed_on": "2026-10-14",
-            "scope_name": "Cianobactérias coloniais",
+            "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+            "source_url": "https://doi.org/10.3390/genes12030389",
+            "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+            "verified": false,
+            "reviewed_on": null,
+            "scope_name": "Gomphosphaeria aponina, cultura DSM 107014; imagem apenas de apoio",
+            "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
             "ranks": [
               "species",
               "genus"
@@ -35413,16 +35668,22 @@
         }
       },
       "governance": {
-        "state": "legacy",
-        "label": "Legado sem revisão humana rastreável",
-        "reviewer": null,
-        "reviewed_at": null,
-        "review_kind": null,
-        "due_at": null,
-        "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-        "evidence": [],
-        "content_sha256": "10d1f17d8317c41fde1d281b426510c4ff34ec61dd56c48df733425e994bfc3b",
-        "claim_scope": null,
+        "state": "approved_editorial",
+        "label": "Revisão editorial registrada",
+        "reviewer": "Carlos Eduardo Lima de Oliveira",
+        "reviewed_at": "2026-10-18",
+        "review_kind": "editorial",
+        "due_at": "2027-10-18T00:00:00+00:00",
+        "reason": "Aprovação editorial expressa: “Aprovo editorialmente esta versão completa”, lote e0d6ac843d4da1111698d4c1f478840e231cedb7a6f67949318bcc1ad2e55478. Somente a nota e o conteúdo científico idêntico no alias autorizado; sem revisão especializada, aprovação de fotografia, tópicos agregados ou grau de assistência. Mantida a ressalva no texto porque retirar a distinção entre cultura observada e imagem de apoio permitiria uma leitura enganosa.",
+        "evidence": [
+          {
+            "url": "https://doi.org/10.3390/genes12030389",
+            "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
+            "supports": "Marter et al., 3.1, primeiro parágrafo: células de DSM 107014 (= SAG 52.96) conectadas por hastes mucilaginosas e formando colônias."
+          }
+        ],
+        "content_sha256": "b39c4f2842f96dbc5c72d7b425541ecfdc31ca456aac891abaf782e314a3e741",
+        "claim_scope": "species",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -44439,17 +44700,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "9db8e7ac39970405ba2ce9e15dde75a5a34c6e4c3502f8dc261920a2a00ba143",
+          "content_sha256": "6eccf17b7ef225996102ac5f9f3ad87ffa8e60c5511d9ad2a5dd9c091ff2c973",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -45047,17 +45308,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "38110165a6d0b5fe0f343961f1b5ccce50feb5652e74fe13ecc91502091c0e14",
+          "content_sha256": "3aa92538bc35252bae93e44906ca1ff90543945986d309b8fd80e722940bb0f4",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -45360,17 +45621,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "12e28b11107a5bc2062be6d0f766e7863372fba380ee79d492ce76f4ad5a3273",
+          "content_sha256": "3c9e2188c7a6b5d1f63f5dde9196ccd65a49915389d0cb70e854b2a24593a588",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -45982,17 +46243,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "0673c2da06dea434b56aeb033f2ec84f54cf23a80374d33a5e05e9c4e0e678a9",
+          "content_sha256": "0406babd2c3570384af723c014cbe724082772d6a72c5126e8aedf099282e445",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -46293,17 +46554,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "3893814bbc354544501a1e3382d18e1e6ad090f3a30e7b0d559776804766a685",
+          "content_sha256": "64c950031902a1fe1ae6ce06fd420c9df248ad77ef986094c6d160a858e2ebd6",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -46580,17 +46841,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "1f835e1461a1bd93d13e7c8f5343fcf31b5d9bd028687376baac528598f44870",
+          "content_sha256": "b777aed206302cdd877a90c32886686cb542284cd3bab67aa1300dd06f0389d8",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -46883,17 +47144,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "69e7b6e15a7c0d3a206f231204891f595a313a82e36ca78154eba57c78bf4ccc",
+          "content_sha256": "db72cdef4270f9291a6f63de478eb42c44bd1ef034940f7cc29b2d0f33f9dd1a",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -47194,17 +47455,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "3dcd8049f65bd5c93ecb854f905dcbccf5c67efc2fc1c44567a800e94646ef94",
+          "content_sha256": "008c92222790cb5b9fca1dc6912623c14407f21a9bbe7390a07ddf558bc8b760",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -47521,17 +47782,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "3e0c84e54ec499fb86fbf35886b8437d2f91f9b081e67ba6d982b33dced4b750",
+          "content_sha256": "8651b0c612b20d1f4993375b89ceb2ecc1ecb41b82a1895688094654ac1d20b0",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -47832,17 +48093,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "151f8df3710f0cf13df040c1865a2fefaec4af6a24682133ff7818f79f9d4102",
+          "content_sha256": "07dbc45a7cf265c73e8ae06571fa32df4c7e4e9154b932e4eba725760e468b70",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -48159,17 +48420,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "52e869c4b0a79c0299f3ee09b13a07cd899e9988a62e8b5934023f9893d3de73",
+          "content_sha256": "98382cf418db7e5711b3a82ba3b923b63e0a1934524813465ca8af78733614da",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -55392,17 +55653,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "2aec0598b4728a9766ec64acfec85fecbe6298deade66149d5615af1e790d9a7",
+          "content_sha256": "b08d50315dcdf84a9fc1104cc00ab1f1aa3f245747b24462b40452bdd0d8b90b",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -55727,17 +55988,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "1bd5dc46ceb4931b4dd50eefdf0e69117b01169dc8b8cc894174ab022384d117",
+          "content_sha256": "fbbb997c390785981d0cdc7ab8f818c698d9c716db178a9443960235ded1b00b",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -56036,17 +56297,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "6fa97f0ad732b84deadb7c9e452804deb2c4bf2a8289b2f38530f5753093d20b",
+          "content_sha256": "37184197a7fbdf58c0291b77e164756e9c8baf299840fa14ad4038a753138f31",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -56369,17 +56630,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "5e49ab346e8aab8dea1e8e549b14a18bfbe2c48c776ac5bf2d5fa0b31307b5d1",
+          "content_sha256": "41432a453f0b97f6596047248f5d82e0b0312d7aeae454618c8a64c136cca648",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -56710,17 +56971,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "7f4a68acf643b78e94e8cde34b63c42b3ea17f671e01f81a267ccd2a7f7c7df1",
+          "content_sha256": "c3b4932faac1ea7001b84ea2e577ed396d692ec32b75a9d3da76c24dc0f6c758",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -57052,17 +57313,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "7d967220a4824c0130889cb280b6cc76b1cbb0e51273d86707a406f5ac385e08",
+          "content_sha256": "bc6bde63e3989d65353a81a03e115e5f3733c6d3275e291529a6e06021c1cf73",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -57386,17 +57647,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "2c65810b5985cfeda790f8b4195cd5e9f46b75656887f4634f2ee2fce8214d97",
+          "content_sha256": "cefcb007f922e81937b5e76c963a4f9893cec37a61155e024e81ee6c1b9e601f",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -57704,17 +57965,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "97e79c41ab830c10b9fdc274a094ef39cf312e2150501733a603c443a444cb71",
+          "content_sha256": "d3cb36a9308c10a0def72c66e3f60b42ac92d26822acc1e18d0830751bf0f16f",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -58055,17 +58316,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "d8f3c0a8e910e7930927142bb2e29f20731a1e02d7901d1b2f8afd828920deb9",
+          "content_sha256": "b1e7a32b84a46f890d7ea8375a056d75bec9a81f82f2a5da0ea9f01c3275b579",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -58349,17 +58610,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "12d49c4a6f2206a1a5bd2ad4ba2c389d13867b4f2d0e37f71cafe4c9fe73824d",
+          "content_sha256": "34699d2512edbf8149dbd014904a35465a8f86aed84e4065308f033c18372931",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -58643,17 +58904,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "2d450109c16bc9cf4e7bd9c3f90f399e0769782972cbedbb38a199172774d440",
+          "content_sha256": "3632aa50cd2df06d7876aa1b8dfe2d1a2b5c82028d16ffebad1041f7503f276b",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -58977,17 +59238,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "3898f94c2c07210a40ec995e30291080e9ce34c85fdbf0aa683ef25407815272",
+          "content_sha256": "0a0b233e52c80fb0a4ba70b73dbbd8707ff5c4794c0cc807d29ce1b94b9e99d7",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -59280,17 +59541,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "cd272e4aa81f3289dbfa8d1cf33a0dbcd40fff5808c47f1725985235d9698063",
+          "content_sha256": "c0851947c5e3e110bd559ad0f6d8eaae4c4464f7111d74bb51c2fe301eada669",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -59590,17 +59851,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "a2d79cbb77023eb9cbcffda236dc694342bcbeb97a595f3469ba00dd524a26d0",
+          "content_sha256": "2a67dba003eead028b3c9f302b07a5dd8129714e208a04127e1fa4853627a7f5",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -59940,17 +60201,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "619ac2902c43008f7fabcca3d4573c8a5a01f65156324ef2ff096e1ae5d161a0",
+          "content_sha256": "591d4a16fddd3efa28df2fe5d5e24c71e341cac6043212478ba5fa83a645d0b9",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -60593,17 +60854,17 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "8cd35c87a4926e8ae0138b0387eb8a6dac4c00fa002590db5c709e6e981441de",
+          "content_sha256": "a55d1e8a243ecd4da1832b014e3dd9c7745fa96a30c8b18637b64aef7eb5fcd9",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -72230,31 +72491,31 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "morphology": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "1d3d4fdfd552d2a9313a5432b1df83369c67e2921fa87972b5def9a2c89da3ae",
+          "content_sha256": "5a83c3cd5919dda1049d1301b8836245757203254574a6f699f396260014c1c0",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "education": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
+          "state": "needs_review",
+          "label": "Conteúdo ou evidência alterados; nova revisão necessária",
           "reviewer": null,
           "reviewed_at": null,
           "review_kind": null,
           "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
+          "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "d39f78f1bccf11574cbf66342904292e3aaf8e2a46942868860121a26955a579",
+          "content_sha256": "50a9e0a67dd20a2b45c67582b7a5611deb78acad594e7b27926d054af6736774",
           "claim_scope": null,
-          "usable": true,
+          "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "phylogeny": {
@@ -75841,13 +76102,13 @@
       "species.json": "06da2561f12a71b90f5412e316eeb68e7085933b5c0c6e347c797c8be0257cd8",
       "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
       "hint_education.json": "cbf9f139a64409c966ea1fbdf80a713773a92d65411b4ecc92aae58af39dd2bc",
-      "species_profiles.json": "a3d7bbbf7e3ae91f1d157748c18567e3702dda8c976214bcdc4bb761b6409e19",
+      "species_profiles.json": "2f8ca34731cf7c56340b367616f78fafa95047c375c327cc2f2fd96d90b2139f",
       "curation_reviews.json": "3e65f1fdb4c9e91f5cd4d2339259d78977ab5d72390f45a9257cb304566c4b71",
       "content_policy.json": "74946cc18dc7ed1a556b74ac064a14686a1f596b0f581cfc885c5344c53f7fd8",
       "scripts/review_hints.py": "c5c7d85940a6aa9a7948b536c12028c0d246eff6e64b08e325fd85f0ac45a215",
       "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
       "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
-      "resources/compliance/review_history.jsonl": "b35edf57a8a072e4104c8d12cae1dfb7bd8150c9b601835107080a7209829bf3",
+      "resources/compliance/review_history.jsonl": "cfe29efa003b8bcdfb310637fcc350f387b832d493f1858f1e2f5ebe5bd963c1",
       "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
     },
     "species": {
@@ -90601,8 +90862,8 @@
             "id": "appearance",
             "kind": "note",
             "category": "morphological",
-            "text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
-            "source_text": "Informação complementar (a imagem é de apoio): Células agrupadas em colônias, protegidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+            "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+            "source_text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
             "ranks": [
               "species",
               "genus",
@@ -90617,9 +90878,9 @@
               "genus"
             ],
             "organism_scope": true,
-            "source_url": "https://openstax.org/books/biology-2e/pages/22-1-prokaryotic-diversity",
-            "source_title": "OpenStax · Biology 2e",
-            "locator": "Ficha local 110 / morphology",
+            "source_url": "https://doi.org/10.3390/genes12030389",
+            "source_title": "Marter P et al. (2021) — Filling the Gaps in the Cyanobacterial Tree of Life-Metagenome Analysis of <i>Stigonema ocellatum</i> DSM 106950, <i>Chlorogloea purpurea</i> SAG 13.99 and <i>Gomphosphaeria aponina</i> DSM 107014.",
+            "locator": "3.1 Light and Scanning Electron Microscopy / G. aponina DSM 107014 (= SAG 52.96); Figure 1 excluded",
             "grade": "moderate",
             "rationale": "A nota acrescenta detalhe estrutural, quantitativo ou celular que pode orientar a comparação. Não foi demonstrado que seja diagnóstico entre as quatro alternativas; assistência moderada apenas proposta. Nos níveis superiores, a nota é explicitamente sobre este organismo; não define todo o táxon solicitado.",
             "scientific_topic": "morphology",
@@ -92490,9 +92751,9 @@
       "actor_type": "automated",
       "process": "scripts/review_hints.py + contextual validation in EducationalContent",
       "policy_version": "progressive-pedagogy-v1",
-      "reviewed_at": "2026-10-18T07:44:47.489082+00:00",
-      "due_at": "2027-10-18T07:44:47.489082+00:00",
-      "content_sha256": "a56e740dc500b3669865467f23ad9fae073d117aaa05f666c845de97ed9ba222",
+      "reviewed_at": "2026-10-18T12:49:27.127455+00:00",
+      "due_at": "2027-10-18T12:49:27.127455+00:00",
+      "content_sha256": "7b0b1283ba1080dbb2d2c8795aca3ff99c1ead2d57922531b444a3e6b028f22d",
       "rationale": "Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.",
       "limitations": "Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media."
     },
@@ -92501,11 +92762,11 @@
   "generated_source_sha256": {
     "species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
     "taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
-    "species_profiles.json": "df137441551f36ce54e326c944bd8292221b9e537481a5c84e084602272a8bec",
+    "species_profiles.json": "a3e485307481475e8d320dacde35f437fc35a59b74eb9b54870a7fd652b66055",
     "hint_education.json": "4c10ffca3c59f69ea0aeed4dfca3caa13249319bbebf0ffb2917e9e99a4b7e37",
     "curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
     "group_education.json": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
-    "progressive_hints.json": "83064cd9630135eb88ffc93ebd77c44fc0300a78f605b480233e505c97522205",
+    "progressive_hints.json": "491b344fc6baa0531f4f36ff85ee6f6aad0679b64283273da2d019c8392ed851",
     "phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6"
   }
 }
