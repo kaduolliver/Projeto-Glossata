@@ -1,5 +1,74 @@
 # Saneamento documental da Issue #2
 
+## Conferência integral solicitada — preparação em 2026-10-18
+
+**Não concluída; nenhuma nova aprovação ou concessão registrada.** O diagnóstico
+offline atual continua apontando os três recursos textuais pendentes. A nova
+visão `text_replacement_scope`, no relatório existente de
+`scripts/review_updates.py --rights-report`, separa **889 ocorrências de origem**
+(805 passagens de fichas, 64 etimologias e 20 prefixos), **264 ocorrências
+derivadas** e **1.249 ocorrências já documentadas**, a preservar. Os vínculos
+contêm arquivo, ponteiro, hash, referência e, quando disponível, origem geradora.
+O fingerprint dessa cobertura é
+`75bd1a0a8b4fdcd7f04bb209e84ff00ccded91388bbc7bc9f3b73f1f0f02dba1`;
+ele identifica o inventário de partida, **não um lote de redações aprovado**.
+
+A conferência das condições de fontes encontrou diferenças que precisam ser
+tratadas individualmente: [LPSN](https://www.lpsn.dsmz.de/text/copyright)
+declara CC BY-SA 4.0 e requisitos de atribuição; [MarLIN](https://www.marlin.ac.uk/termsandconditions)
+declara CC BY-NC-SA 4.0 para informações, com exceções indicadas por produto;
+[ADW](https://animaldiversity.org/about/use_conditions/) identifica condições
+Creative Commons próprias para textos e condições distintas para imagens.
+Nenhuma dessas páginas demonstra uma concessão CC BY 4.0 sobre todo seu conteúdo.
+Isso não prova infração nas fichas nem impede citar fatos: exige distinguir uma
+síntese independente da reprodução ou adaptação de expressão protegida.
+
+O [rascunho consolidado](propostas/TEXTOS_RESTANTES_ISSUE_2.json) contém **887
+substituições propostas** e preserva as duas notas do organismo 82 que já possuem
+aprovação editorial, cuja questão de direitos permanece separada. Não faltam
+redações de origem, mas **a conferência das fontes ainda não terminou**: 29
+ocorrências têm comparação técnica registrada com fontes CC BY 4.0; outras 142
+explicam estados documentais locais (conservação e prefixos), sem criar avaliações
+de conservação ou confirmações fotográficas. Restam 716 ocorrências com
+conferência de afirmação/condições da fonte pendente. Esses estados não são
+aprovações humanas nem concessões de direitos.
+
+A prévia foi regenerada com `review_hints.evaluate` e `build_education.build` em
+diretório temporário. Preservou os **122 organismos, 855 receitas, parâmetros de
+assistência e 1.249 ocorrências já documentadas**; os hashes dos recursos ativos
+e históricos foram comparados antes e depois. Foram identificados 1.414 vínculos
+de governança afetados, incluindo notas, tópicos agregados e assistência. A
+prévia não registrou revisões: a alteração de uma redação não pode herdar a
+aprovação da versão anterior nem aprovar seu grau de assistência.
+
+Na conferência específica de *Arthrospira jenneri*, o rascunho passou a mencionar
+filamentos retos **ou** espiralados, conforme a descrição primária; não transfere
+características de *Limnospira* nem muda a taxonomia. Seis propostas de *Galleria
+mellonella* foram vinculadas às seções pertinentes de Kwadha et al. (2017), cuja
+licença CC BY 4.0 foi conferida no XML. Os snapshots selecionados estão incorporados
+ao rascunho para futura utilização no mecanismo existente de evidências; não
+representam decisões do mantenedor. As notas continuam fora do catálogo ativo.
+
+Também foi confirmada a condição [CC BY-NC-ND 4.0 do UF/IFAS](https://ask.ifas.ufl.edu/copyright).
+A referência científica não demonstra reprodução textual nem transfere essa
+licença para uma nova síntese. Não se está usando essa condição como autorização
+para adaptar ou relicenciar os artigos. A substituição de referências e a
+distinção entre fatos e expressão protegida ainda precisam ser concluídas por
+ocorrência antes da conferência editorial única. Não se pede aprovação de um
+conjunto incompleto; os dados ativos, permissões, históricos e gate permanecem
+intactos, e a Issue segue pendente.
+
+As regressões sintéticas verificam separação entre origem e derivado, proteção
+por ocorrência exata (sem transferir uma concessão para outra cópia), detecção
+de vínculo desatualizado, mudança do fingerprint, idempotência e ausência de
+gravações nos recursos. A preparação também recusa cobertura parcial, duplicatas,
+alteração de conteúdo protegido, hashes adulterados, reaproveitamento de aprovação
+legada e mudança do grau de assistência. A suíte de investigação de direitos
+passou **62/62**; o CTest completo passou **26/26** (146,00 s). Auditoria estrita,
+verificação Apache 2.0 e integridade dos metadados de versão passaram. Não houve
+nova compilação C++ nem validação visual nesta continuação; as mudanças são de
+governança e preparação documental.
+
 ## Lote técnico confirmado e aplicado — 2026-10-18
 
 O mantenedor respondeu **“Aprovo editorialmente esse lote”** e, separadamente, **“Confirmo a aplicação delimitada ao lote”**, para o fingerprint `87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e`. A [evidência imutável](../resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json), SHA-256 `a10ea67162acfa1c69777b54836f49a915a380446d3812afd15bf0f05d40c5b8`, contém perguntas, respostas reais, redações, ponteiros, hashes anteriores e quatro literais do gerador. Registra-se a data civil real, sem inventar horário da resposta, assinatura ou autenticação independente.

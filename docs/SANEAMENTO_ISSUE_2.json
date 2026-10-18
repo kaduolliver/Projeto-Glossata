@@ -5161,6 +5161,35 @@
       "permission_events_created": 0,
       "other_text_grants_created": 0,
       "catalog_or_application_version_changed": false
+    },
+    "consolidated_draft": {
+      "state": "complete_wording_draft_source_review_in_progress",
+      "proposal": "docs/propostas/TEXTOS_RESTANTES_ISSUE_2.json",
+      "proposal_sha256": "32bc3ca47b834b25d92a5f577002c216e4b418dd85174b9d7376f5ea832c03ad",
+      "draft_fingerprint": "7039f53fd8e0f5bd2128e4f872fb8391414451330c2de18c74587fea6ebaec03",
+      "source_replacements": 887,
+      "retained_editorial_wordings": 2,
+      "source_check_counts": {
+        "requires_claim_and_terms_check": 716,
+        "local_documentary_statement_pending_editorial_review": 142,
+        "source_compared_by_ai_pending_editorial_review": 29
+      },
+      "protected_occurrences": 1249,
+      "derived_occurrences_to_regenerate": 264,
+      "preview_organisms": 122,
+      "preview_recipes": 855,
+      "validation": {
+        "rights_tests": "62/62 passed",
+        "ctest": "26/26 passed, 146.00 s",
+        "strict_catalog": "passed, 122 organisms",
+        "apache_code": "passed",
+        "release_metadata": "passed"
+      },
+      "human_approvals_created": 0,
+      "permissions_created": 0,
+      "active_resources_changed": false,
+      "ready_for_consolidated_human_review": false,
+      "next_step": "Complete claim/source-terms comparisons, regenerate and render one consolidated editorial conference; no partial approval requested."
     }
   }
 }
