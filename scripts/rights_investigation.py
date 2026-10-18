@@ -262,6 +262,101 @@ def required_actions(issues, scientific=()):
     return actions
 
 
+def editorial_policy_errors(root=g.ROOT):
+    """An administrative default is neither a whole-corpus grant nor a review."""
+    policy = g.policy(root)
+    editorial = policy.get('editorial_text_policy')
+    if editorial is None:
+        # Compatible with older inventories, but not a dangling new decision.
+        return (['editorial_default_missing'] if any(d.get('kind') == 'editorial_default_only'
+            for d in policy.get('maintainer_decisions', [])) else [])
+    expected = {'default_license': 'CC-BY-4.0',
+        'license_url': 'https://creativecommons.org/licenses/by/4.0/',
+        'scope': 'eligible_original_educational_expression_only',
+        'automatic_grants': False, 'per_material_evidence_required': True,
+        'document': 'docs/propostas/LICENCIAMENTO_TEXTOS.md'}
+    if not isinstance(editorial, dict) or any(editorial.get(k) != v for k, v in expected.items()):
+        return ['editorial_default_invalid_or_overbroad']
+    errors = []
+    if policy.get('own_material_licenses', {}).get('texts') is not None:
+        errors.append('editorial_default_is_not_a_corpus_grant')
+    decisions = policy.get('maintainer_decisions', [])
+    matches = [d for d in decisions if d.get('id') == editorial.get('decision_id')]
+    if (len(matches) != 1 or matches[0].get('license') != editorial['default_license']
+            or matches[0].get('kind') != 'editorial_default_only'
+            or matches[0].get('scope') != editorial['document']
+            or not matches[0].get('authority_basis') or not matches[0].get('recorded_on')):
+        errors.append('editorial_default_decision_not_linked')
+    return errors
+
+
+def educational_rights_metadata(root, passages):
+    """Read optional documentary records in the existing asset inventory.
+
+    Bind each occurrence, not just a shared text hash. These records never grant
+    permission, replace review events or change the distribution authority.
+    """
+    records = g.load(root / 'resources/compliance/asset_rights.json', {}).get('educational_text_rights', [])
+    errors = []; rows = []; seen = set()
+    bindings = {(o['file'], o['pointer'], p['text_sha256']) for p in passages for o in p['occurrences']}
+    if not isinstance(records, list):
+        return {'technical_errors': ['text_rights_records_not_a_list'], 'records': [], 'grants_created': 0}
+    origins = {'original', 'external_reproduction', 'adaptation', 'translation',
+               'independent_factual_synthesis', 'inconclusive'}
+    allowed = {'file', 'pointer', 'text_sha256', 'origin_kind', 'declared_origin', 'source_text',
+               'transformations', 'rights_available', 'declared_license', 'evidence',
+               'investigation_state', 'editorial_review_key', 'attribution'}
+    for i, record in enumerate(records):
+        label = 'text_rights:' + str(i)
+        if not isinstance(record, dict) or set(record) - allowed:
+            errors.append(label + ':invalid_fields'); continue
+        binding = tuple(record.get(k) for k in ('file', 'pointer', 'text_sha256'))
+        if not all(isinstance(v, str) for v in binding):
+            errors.append(label + ':invalid_binding'); continue
+        if binding not in bindings: errors.append(label + ':stale_or_unknown_occurrence')
+        if binding in seen: errors.append(label + ':duplicate_occurrence')
+        seen.add(binding)
+        if not isinstance(record.get('origin_kind'), str) or record['origin_kind'] not in origins:
+            errors.append(label + ':invalid_origin_kind')
+        source = record.get('source_text') or {}
+        transforms = record.get('transformations', [])
+        evidence = record.get('evidence', [])
+        if (not isinstance(source, dict) or not isinstance(transforms, list)
+                or any(not isinstance(t, str) or t not in {'translation', 'adaptation'} for t in transforms)
+                or not isinstance(evidence, list)):
+            errors.append(label + ':invalid_metadata'); continue
+        if (not isinstance(record.get('investigation_state'), str) or record['investigation_state'] not in
+                {'pending_human_review', 'documented', 'inconclusive', 'rejected', 'suspended'}):
+            errors.append(label + ':invalid_investigation_state')
+        for item in evidence:
+            try:
+                if (not isinstance(item, dict) or not item.get('sha256')
+                        or file_hash(g.local_file(root, item['path'])) != item['sha256']):
+                    raise ValueError('Evidence does not match')
+            except (KeyError, TypeError, ValueError, OSError):
+                errors.append(label + ':invalid_evidence')
+        issues = []
+        if record.get('origin_kind') == 'inconclusive': issues.append('origin_inconclusive')
+        if not evidence or not record.get('rights_available'): issues.append('rights_evidence_incomplete')
+        if record.get('origin_kind') in ('external_reproduction', 'adaptation', 'translation') and not source.get('url'):
+            issues.append('textual_source_missing')
+        source_license = source.get('license') or ''
+        if not isinstance(source_license, str):
+            errors.append(label + ':invalid_source_license'); continue
+        if record.get('origin_kind') in ('external_reproduction', 'adaptation', 'translation') and not source_license:
+            issues.append('textual_source_license_missing')
+        # Compare common CC labels without rewriting the recorded license/version.
+        conditions = set(source_license.upper().replace(' ', '-').split('-'))
+        if 'SA' in conditions and record.get('declared_license') == 'CC-BY-4.0':
+            issues.append('sharealike_cannot_be_replaced_by_default')
+        if 'NC' in conditions: issues.append('noncommercial_conditions_require_review')
+        if 'ND' in conditions and (transforms or record.get('origin_kind') in ('translation', 'adaptation')):
+            issues.append('no_derivatives_conditions_require_review')
+        rows.append({'binding': dict(zip(('file', 'pointer', 'text_sha256'), binding)),
+            'declared_metadata': record, 'rights_issues': issues, 'permission_created': False})
+    return {'technical_errors': errors, 'records': rows, 'grants_created': 0}
+
+
 def educational_text_inventory(root=g.ROOT):
     """Deduplicate exact prose and retain every source binding; never decide rights.
 
@@ -332,6 +427,8 @@ def educational_text_inventory(root=g.ROOT):
         'generated_identity_count': len(data['progressive_hints'].get('species', {})),
         'unique_passages': len(passages), 'total_occurrences': sum(counts.values()),
         'projection': projection, 'decisions_created': 0, 'external_consultations': 0,
+        'editorial_default': g.policy(root).get('editorial_text_policy'),
+        'rights_metadata': educational_rights_metadata(root, list(passages.values())),
         'passages': [passages[k] for k in sorted(passages)]}
 
 

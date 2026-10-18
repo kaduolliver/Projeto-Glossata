@@ -32,7 +32,25 @@
     "texts": null,
     "collection": null
   },
+  "editorial_text_policy": {
+    "default_license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "scope": "eligible_original_educational_expression_only",
+    "automatic_grants": false,
+    "per_material_evidence_required": true,
+    "document": "docs/propostas/LICENCIAMENTO_TEXTOS.md",
+    "decision_id": "eligible-original-text-cc-by-4.0-2026-10-17"
+  },
   "maintainer_decisions": [
+    {
+      "id": "eligible-original-text-cc-by-4.0-2026-10-17",
+      "recorded_on": "2026-10-17",
+      "license": "CC-BY-4.0",
+      "kind": "editorial_default_only",
+      "scope": "docs/propostas/LICENCIAMENTO_TEXTOS.md",
+      "declared_by": "Carlos Eduardo Lima de Oliveira",
+      "authority_basis": "Express maintainer instruction adopting the default for eligible original educational prose and future own encyclopedia writing, limited to rights actually available. No corpus-wide grant, signature, exclusive human authorship or specialist review inferred."
+    },
     {
       "id": "own-code-apache-2.0-2026-10-17",
       "recorded_on": "2026-10-17",

@@ -7,22 +7,24 @@ A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) preserva o diagnóstic
 | Camada | Registro | Situação e providência |
 | --- | --- | --- |
 | Código próprio enumerado | `ESCOPO_LICENCIAMENTO.json`, LICENSE/NOTICE e política | Apache-2.0 adotada; lógica do gerador incluída após extração da redação; limites da investigação de origem documentados |
-| Textos próprios | Corpus e introduções, incluindo assistência de IA | Revisar originalidade e evidências; escolher licença apenas do texto próprio |
+| Textos próprios | Corpus e introduções, incluindo assistência de IA | CC BY 4.0 escolhida como padrão para redações próprias elegíveis; delimitação dos direitos por passagem permanece pendente |
 | Organização da coletânea | Seleção/estrutura do catálogo | Definir direitos sobre a organização, respeitando fatos e contribuições individuais |
 | Dados de terceiros | Identificadores, classificações e registros das fontes | Conferir termos/direitos aplicáveis sem inferir licença das fotos |
 | Fotografias | `photo_provenance.json` e snapshots por foto | Completar evidência de licença, versão, crédito e data |
 | Ícones/identidade | `asset_rights.json` | Documentar titular e autorização para distribuição |
 | Bibliotecas, fontes e outros recursos | `package/compliance/dependencies.json` | Revisar por componente e versão; cumprir avisos e obrigações |
 
-Opções para o mantenedor avaliar, sem escolha automática:
+Decisões de licença e opções ainda pendentes:
 
 | Material próprio | Opções a considerar | Registro necessário |
 | --- | --- | --- |
 | Código | Apache-2.0 escolhida para o escopo próprio delimitado | Concessão expressa; compatibilidade/obrigações do pacote e contribuições externas permanecem análises separadas |
-| Texto educativo original | CC BY 4.0, CC BY-SA 4.0 ou termos próprios | Autoria, escopo, condições desejadas e exclusões de terceiros |
+| Texto educativo original | CC BY 4.0 escolhida como padrão, inclusive para futuras redações próprias | Origem, direitos efetivamente disponíveis e exclusões por passagem; padrão não licencia automaticamente arquivos inteiros |
 | Organização/dados próprios | CC0, CC BY ou termos próprios quando cabíveis | Delimitar quais direitos pertencem ao mantenedor e quais dados vêm de terceiros |
 
-Somente a escolha do código foi ativada: `content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. `texts` e `collection` permanecem `null`; as opções de Creative Commons acima não são concessões. A redação antes incorporada em `scripts/build_education.py` está em `resources/data/group_education.json`, com a mesma pendência de direitos; a lógica Python separada está enumerada sob Apache-2.0. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos. A declaração do mantenedor de que criou os ícones com ChatGPT foi registrada como evidência parcial de origem, sem concessão gráfica ou aprovação presumida. Consulte [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
+`content_policy.json` e `asset_rights.json` registram `code: "Apache-2.0"`. Em **2026-10-17**, o mantenedor também adotou a [política editorial de licenciamento misto](propostas/LICENCIAMENTO_TEXTOS.md): CC BY 4.0 para redações próprias elegíveis, com usos comerciais e adaptações mediante atribuição, limitada aos direitos disponíveis. Essa decisão está separada em `editorial_text_policy`; `own_material_licenses.texts` permanece `null` porque não há concessão indistinta ao corpus. `collection` continua pendente. Textos externos conservam condições próprias, incluindo SA/NC/ND quando aplicáveis; bibliografia não comprova origem autoral. Nenhuma passagem legada foi declarada regularizada nesta decisão.
+
+A redação antes incorporada em `scripts/build_education.py` está em `resources/data/group_education.json`, com a mesma pendência de direitos; a lógica Python separada está enumerada sob Apache-2.0. A licença do código não engloba fotos nem substitui avisos/obrigações de terceiros. Nome/logotipo/ícones têm tratamento próprio, sem declaração de registro de marca ou concessão automática. Os sete achados de outros materiais continuam ativos. A declaração do mantenedor de que criou os ícones com ChatGPT foi registrada como evidência parcial de origem, sem concessão gráfica ou aprovação presumida. Consulte [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
 
 A identidade visual atual foi preservada e sua [política reservada](propostas/USO_IDENTIDADE_VISUAL.md) foi escolhida expressamente pelo mantenedor em 2026-10-17. Não há concessão gráfica geral para reutilização ou sublicenciamento por projetos independentes; a reserva limita-se aos direitos efetivamente disponíveis. A intenção de uso nas versões oficiais não comprova titularidade exclusiva nem direitos de terceiros. Consulte a [documentação independente](IDENTIDADE_VISUAL.md) e a [situação individual dos recursos](POLITICA_BRANDING_IMPLEMENTACAO.md). Os três estados de permissão continuam pendentes. Apache-2.0, visualização/fork no GitHub e usos legalmente permitidos permanecem respeitados; nenhum achado da Issue #2 é encerrado por esta decisão.
 

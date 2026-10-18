@@ -11,7 +11,7 @@ import subprocess
 
 import content_governance as g
 import distribution
-from rights_investigation import file_hash
+from rights_investigation import file_hash, editorial_policy_errors, educational_text_inventory
 
 ARCHIVE = 'docs/INVENTARIO_LICENCIAMENTO.json'
 CODE_SCOPE = 'docs/ESCOPO_LICENCIAMENTO.json'
@@ -137,6 +137,8 @@ def check_code_license(root=g.ROOT, paths=None):
         errors.append('administrative_decision_not_linked')
     if scope.get('license_text') != {'source_url': APACHE_SOURCE, 'sha256': APACHE_SHA256}:
         errors.append('official_license_reference_differs')
+    errors.extend(editorial_policy_errors(root))
+    errors.extend(educational_text_inventory(root)['rights_metadata']['technical_errors'])
     return errors
 
 

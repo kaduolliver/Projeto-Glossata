@@ -39,6 +39,8 @@ Informe IDs, táxon e fontes que sustentem cada afirmação, com seção/página
 
 Novos organismos entram como candidatos, pelo [fluxo de admissão](docs/PRONTIDAO_EXPANSAO_CATALOGO.md), sem copiar diretamente para o catálogo ativo. Conteúdo assistido por IA entra como rascunho. Submeta textos próprios/sínteses com origem declarada e verifique se há trechos reproduzidos. Uma citação não concede licença para copiar o texto citado.
 
+A [política editorial de licenciamento misto](docs/propostas/LICENCIAMENTO_TEXTOS.md) adota CC BY 4.0 como padrão para redações próprias elegíveis, inclusive futuras contribuições com termos compatíveis e direitos demonstrados. Declare origem, autores, transformações e condições da sua contribuição; não se presume cessão de direitos. Textos externos, traduções e adaptações preservam os requisitos da fonte, incluindo ShareAlike, NC e ND quando aplicáveis. Fonte científica e origem da redação são registros distintos; a escolha do padrão não aprova nem licencia automaticamente o material enviado.
+
 A revisão editorial do mantenedor é distinta de revisão por especialista. Não invente revisores, identidade humana, datas, especialidade ou aprovações; uma resposta de API, URL, teste ou fechamento de Issue não conclui uma revisão. Alterações relevantes exigem nova revisão vinculada ao hash atual. Use os mecanismos existentes para decisões e preserve eventos/evidências anteriores.
 
 ## Fotografias e materiais de terceiros

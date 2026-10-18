@@ -1,6 +1,18 @@
 # Saneamento documental da Issue #2
 
-## Situação atual — saneamento concentrado após PR #15
+## Atualização administrativa — política editorial após PR #16
+
+O PR #16 foi integrado à `main` em `b7c7a493e9ee44b2790caa20b7ba1125865f763a`. Na intervenção seguinte, o mantenedor decidiu expressamente **CC BY 4.0 como padrão para redações educativas próprias elegíveis**, inclusive futuras redações enciclopédicas, com usos comerciais e adaptações mediante atribuição. A [política consolidada](propostas/LICENCIAMENTO_TEXTOS.md) distingue essa escolha de uma concessão válida sobre cada material e estabelece condições para fontes externas, proveniência, atribuição e futuras contribuições.
+
+A decisão administrativa foi concluída; não se declarou que os quatro recursos educativos são integralmente próprios ou regularizados. `editorial_text_policy` registra o padrão separadamente; `own_material_licenses.texts` e `collection` permanecem `null`. O inventário de passagens é reaproveitado, com contrato documental opcional em `asset_rights.json`; a lista começa vazia, sem atribuir origens desconhecidas ou registrar aprovações. **Zero achados encerrados: quatro de textos e três de ícones continuam pendentes.** As 120 pendências fotográficas e os cinco registros científicos prioritários também permanecem.
+
+A documentação da antiga proposta passa a refletir a escolha efetiva, sem alterar o registro histórico abaixo. Continuam necessárias a conferência de direitos/origem e delimitação de partes elegíveis, a conclusão fundamentada para distribuição dos ícones e a revisão editorial real dos dois trechos do organismo 82. Não houve alteração de ciência, mídia, interface, licença externa ou gate.
+
+A política integra os hashes de entrada da avaliação automática de dicas; sua alteração exigiu regeneração pelo fluxo existente, preservando integralmente os 122 conjuntos de receitas e suas redações, fontes, graus e pontos. Somente o hash da política e os metadados de avaliação automática foram atualizados nos derivados; o hash anterior do recurso permanece em `inventory_history`, e a avaliação anterior no Git. Não houve nova revisão humana. A lista documental de direitos por passagem permanece vazia; o relatório de direitos existente passa a expor o padrão administrativo e a validação dos futuros registros, sem conceder permissões.
+
+Validação local desta política: compilação aprovada e **26/26 suítes CTest passaram em 176,77 segundos**. A suíte de investigação de direitos contém 46 testes, incluindo sete novos casos de regressão. Apache/escopo, política editorial, auditoria estrita (122 organismos e pool competitivo 80), manifestos, preservação do histórico frente à base, recuperação de permissões, créditos reproduzíveis e qmllint passaram. O relatório mantém 2.402 ocorrências e 863 passagens únicas, zero registros de direitos criados e zero aprovações concedidas. `distribution.py check` continua retornando **2**, com zero erros técnicos, 120 pendências fotográficas, sete de outros materiais e cinco registros científicos prioritários. Não houve pacote, release, tag, merge ou encerramento da Issue #2; esses testes não certificam direitos nem revisão científica.
+
+## Registro da etapa do PR #16 — saneamento concentrado após PR #15
 
 Base: `f3dc5806868b9e9afe78a661dcdb516b9f551d33`, com PR #15 confirmado como integrado. Branch `fix/issue-2-rights-resolution`. O JSON existente recebeu a seção `integral_resolution`, sem substituir os registros anteriores. **Zero dos sete achados de direitos foi encerrado; sete permanecem pendentes.** Não foi demonstrada autorização suficiente para ampliar permissões. Foram corrigidos dois trechos científicos e removida uma lacuna de declaração de origem, sem apresentar essas correções como regularização jurídica.
 

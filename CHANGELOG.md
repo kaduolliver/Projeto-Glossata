@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Política editorial de licenciamento misto formalizada por decisão do mantenedor: CC BY 4.0 como padrão para redações próprias elegíveis, sem concessão automática sobre o corpus. Inventário existente recebe contrato documental por ocorrência e validações de vínculo/evidência, com alertas SA/NC/ND; textos, ícones e fotografias mantêm pendências. Sem alteração de ciência, interface ou versão do aplicativo.
+
 - Revisão do PR #16: declaração literal de geração por texto delimitada à origem declarada da arte, sem inferir ausência de imagens nas etapas de edição, preparação da variante Discord ou conversão para ICO. Etapas desconhecidas preservadas como tais; não há mudança em imagens, ciência, aprovações ou permissões.
 
 - Saneamento concentrado da Issue #2: inventário de passagens e vínculos de origem incorporado ao relatório de direitos existente; projeção de dicas conferida sem criar aprovações. Dois trechos sobre a nutrição de Pseudoboletus parasiticus corrigidos como rascunhos fundamentados, sem alterar receitas/pontos. Nova declaração real de geração dos ícones somente por texto preservada separadamente. Proposta de licença educativa preparada, sem ativação; sete pendências de direitos mantidas. Veja [SANEAMENTO_ISSUE_2.md](docs/SANEAMENTO_ISSUE_2.md).
