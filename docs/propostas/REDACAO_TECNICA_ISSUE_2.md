@@ -1,5 +1,9 @@
 # Issue #2 — conferência da redação técnica
 
+**Atualização de 2026-10-18:** o mantenedor confirmou a revisão editorial e, separadamente, a concessão delimitada de CC BY 4.0. Este lote exato foi aplicado, sem aprovação de graus ou ciência; a [evidência das respostas](../../resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json) e o [relatório de aplicação](../SANEAMENTO_ISSUE_2.md) registram os limites. O JSON original e o texto de preparação abaixo ficam preservados como histórico da proposta anterior à confirmação.
+
+## Registro da preparação
+
 **Rascunho: não aplicado e sem nova licença ou aprovação registrada.**
 
 São 15 redações compartilhadas em **1.147 ocorrências**: 290 justificativas de origem, 855 justificativas derivadas e dois textos de avaliação automática. Não são 1.147 obras independentes.

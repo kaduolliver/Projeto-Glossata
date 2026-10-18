@@ -397,9 +397,17 @@ class ImportTests(unittest.TestCase):
             self.assertFalse(current['species'][sid]['governance']['education']['usable'])
         self.assertFalse(current['notes']['species:110:morphological_hint']['assistance']['governance']['usable'])
         old_education=json.loads(self.historical_bytes(packet['promotion']['proposal_git_commit'],'resources/data/education.json'))
-        self.assertEqual(current['species']['82'],old_education['species']['82'])
-        self.assertEqual({k:v for k,v in current['notes'].items() if k not in receipts},
-                         {k:v for k,v in old_education['notes'].items() if k not in receipts})
+        def scientific_values(value):
+            # Later, separately confirmed technical wording changes assessments
+            # only. Their exact fields/grades are checked by the dedicated batch
+            # regression; this historical profile test preserves every other field.
+            if isinstance(value,dict):return {k:scientific_values(v) for k,v in value.items()
+                                              if k not in {'assistance','taxonomic_assistance'}}
+            if isinstance(value,list):return [scientific_values(v) for v in value]
+            return value
+        self.assertEqual(scientific_values(current['species']['82']),scientific_values(old_education['species']['82']))
+        self.assertEqual(scientific_values({k:v for k,v in current['notes'].items() if k not in receipts}),
+                         scientific_values({k:v for k,v in old_education['notes'].items() if k not in receipts}))
         assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
         self.assertIsNone(assets['own_material_licenses']['texts'])
         for asset in assets['assets']:
@@ -511,6 +519,56 @@ class ImportTests(unittest.TestCase):
             after=governance.records(root,education.build(root,persist=False))
             self.assertEqual({k:v['content_sha256'] for k,v in before.items() if v['kind']!='assistance'},
                              {k:v['content_sha256'] for k,v in after.items() if v['kind']!='assistance'})
+
+    def test_confirmed_technical_wording_preserves_science_grades_and_partial_rights(self):
+        import content_governance as governance
+        import rights_investigation
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
+        application=report['remaining_text_regularization']['technical_wording_application']
+        ref=application['confirmation_evidence'];raw=(PROJECT/ref['path']).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),ref['sha256'])
+        proof=json.loads(raw);proposal=json.loads((PROJECT/proof['proposal_document']).read_bytes())
+        self.assertEqual(proof['wordings'],proposal['wordings'])
+        self.assertEqual(proof['proposal_fingerprint'],governance.digest(proof['wordings']))
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente esse lote')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada ao lote')
+        self.assertFalse(any(proof['limits'].values()))
+        self.assertEqual(proof['generator_literal_replacements'],proposal['generator_literal_replacements'])
+        source_files={name:json.loads((PROJECT/name).read_bytes()) for name in proof['source_files'] if name.endswith('.json')}
+        seen=set()
+        for wording in proof['wordings']:
+            for binding in wording['occurrences']:
+                node=source_files[binding['file']]
+                for part in binding['pointer'].strip('/').split('/'):
+                    node=node[int(part)] if isinstance(node,list) else node[part]
+                self.assertEqual(node,wording['proposed_text']);seen.add((binding['file'],binding['pointer']))
+        self.assertEqual(len(seen),1147)
+        def without_rationale(value):
+            if isinstance(value,dict):return {k:without_rationale(v) for k,v in value.items() if k!='rationale'}
+            if isinstance(value,list):return [without_rationale(v) for v in value]
+            return value
+        previous_hints=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/hint_education.json'))
+        self.assertEqual(without_rationale(source_files['resources/data/hint_education.json']),without_rationale(previous_hints))
+        previous_recipes=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/progressive_hints.json'))
+        self.assertEqual(without_rationale(source_files['resources/data/progressive_hints.json']['species']),
+                         without_rationale(previous_recipes['species']))
+        current=education.build(PROJECT,persist=False)
+        previous_education=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/education.json'))
+        old=governance.records(PROJECT,previous_education);new=governance.records(PROJECT,current)
+        self.assertEqual({k:v['content_sha256'] for k,v in old.items() if v['kind']!='assistance'},
+                         {k:v['content_sha256'] for k,v in new.items() if v['kind']!='assistance'})
+        self.assertEqual((PROJECT/'resources/compliance/review_history.jsonl').read_bytes(),
+                         self.historical_bytes(proof['base_commit'],'resources/compliance/review_history.jsonl'))
+        inventory=rights_investigation.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        rows=[r for r in inventory['rights_metadata']['records']
+              if any(e.get('path')==ref['path'] for e in r['declared_metadata'].get('evidence',[]))]
+        self.assertEqual(len(rows),15);self.assertEqual(sum(len(r['bindings']) for r in rows),1147)
+        self.assertFalse(any(r['rights_issues'] for r in rows))
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        self.assertIsNone(assets['own_material_licenses']['texts']);self.assertIsNone(assets['own_material_licenses']['collection'])
+        for asset in assets['assets']:
+            if asset['path'] in source_files:self.assertFalse(asset['permission']['distribution_allowed'])
 
     def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))

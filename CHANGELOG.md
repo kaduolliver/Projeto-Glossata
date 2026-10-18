@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Lote técnico da Issue #2 aplicado após as duas confirmações expressas do mantenedor: 15 redações / 1.147 ocorrências, com CC BY 4.0 somente nos direitos disponíveis e validação dos vínculos exatos. Derivados regenerados; ciência, graus, pontos e 76 eventos anteriores preservados. Restam 1.153 ocorrências documentais em três arquivos; permissões integrais e distribuição continuam bloqueadas.
+
 - Issue #2: resumo de prontidão por recurso integrado à investigação existente, com contagem de vínculos pendentes e testes contra cobertura parcial. Preparadas 15 redações técnicas para conferência (1.147 ocorrências), sem aplicação ou concessão automática; diagnóstico da Issue atualizado de sete para três recursos pendentes, preservando acompanhamento humano e bloqueios de distribuição.
 
 - Lote 2 incorporado após confirmação editorial e CC BY 4.0 delimitada: 34 notas/28 organismos, 35 eventos editoriais idempotentes e 805 outras passagens das fichas ainda pendentes. Projeções regeneradas pelo fluxo existente, com aparência de `110` atualizada sem reclassificar assistência ou alterar fotos/pontos; concessões parciais verificadas contra a proposta exata. Distribuição integral continua bloqueada.

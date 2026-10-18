@@ -4533,7 +4533,7 @@
   "remaining_text_regularization": {
     "checked_at": "2026-10-18T14:54:27.328915+00:00",
     "base_commit": "ba57dfe037915b81c86f03c7ecd9782374c6fb0e",
-    "status": "in_progress_human_decisions_and_remaining_provenance_required",
+    "status": "partially_resolved_after_explicit_technical_wording_confirmation",
     "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2",
     "issue_state": "OPEN",
     "issue_managed_block_refresh": {
@@ -4561,6 +4561,160 @@
         "resources/data/hint_education.json",
         "resources/data/progressive_hints.json"
       ],
+      "pending_occurrences": 1153,
+      "pending_unique_texts": 713,
+      "pending_by_role": {
+        "educational_assertion": 889,
+        "generated_copy": 264
+      }
+    },
+    "pending_groups": [
+      {
+        "path": "resources/data/hint_education.json",
+        "topic_or_role": "educational_assertion",
+        "occurrences": 84,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/progressive_hints.json",
+        "topic_or_role": "generated_copy",
+        "occurrences": 264,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "conservation",
+        "occurrences": 122,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "curiosity",
+        "occurrences": 108,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "distribution",
+        "occurrences": 122,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "hint",
+        "occurrences": 122,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "morphology",
+        "occurrences": 121,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "nutrition",
+        "occurrences": 88,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      },
+      {
+        "path": "resources/data/species_profiles.json",
+        "topic_or_role": "summary",
+        "occurrences": 122,
+        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
+      }
+    ],
+    "binding_index": "resources/compliance/asset_rights.json / educational_text_rights",
+    "regeneration_command": "python scripts/review_updates.py --rights-report",
+    "objective_resolution_check": "build/rights-investigation.json / other_materials_resolution",
+    "local_generation_evidence": [
+      {
+        "local_path": "build/compose_profiles.py",
+        "sha256": "4f3a5a9d4ae20e72aaba2c4c666dd8954b3fea389059a3fc5f6e9f04a12488cb",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      },
+      {
+        "local_path": "build/prepare_hint_data.py",
+        "sha256": "b820abf7f9478c8faee66dcda7fd62ce9e55a7507c50e8e93f3720c43f94ae5f",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      },
+      {
+        "local_path": "build/seed_assistance.py",
+        "sha256": "f6398de6a7d71c30f73ab04744951251aaaa5e6aa55ad2e57aeac19c334bbb82",
+        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
+        "published": false,
+        "raw_prose_republished": false
+      }
+    ],
+    "technical_wording_draft": {
+      "path": "docs/propostas/REDACAO_TECNICA_ISSUE_2.json",
+      "review_document": "docs/propostas/REDACAO_TECNICA_ISSUE_2.md",
+      "fingerprint": "87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e",
+      "occurrences": 1147,
+      "unique_wordings": 15,
+      "status": "applied_after_exact_confirmation",
+      "human_approval_recorded": true,
+      "rights_confirmation_recorded": true,
+      "remaining_if_legitimately_confirmed_and_applied": 1153,
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json",
+        "sha256": "a10ea67162acfa1c69777b54836f49a915a380446d3812afd15bf0f05d40c5b8"
+      }
+    },
+    "validation": {
+      "rights_investigation_tests": {
+        "passed": 55
+      },
+      "import_and_generation_tests": {
+        "passed": 22
+      },
+      "full_ctest": {
+        "passed": 26,
+        "failed": 0,
+        "seconds": 185.38
+      },
+      "code_license_check": "passed",
+      "strict_catalog_audit": "passed",
+      "release_metadata_check": "passed",
+      "visual_validation_performed": false,
+      "remote_tests_for_this_branch": "not_published",
+      "configure_and_release_build": "passed",
+      "additional_checks": [
+        "permission-recovery",
+        "repository-protection-local",
+        "repository-audit",
+        "exploration-media",
+        "scientific-coverage",
+        "hint-assistance",
+        "governance-history",
+        "release-history",
+        "qmllint"
+      ],
+      "derived_resources_byte_identical_to_base": true,
+      "external_content_queries": 0
+    },
+    "next_human_decisions": [
+      "The technical wording batch is confirmed and applied; do not request its acceptance again.",
+      "Investigate or independently redraft the remaining 805 profile passages, 64 etymological wordings and 20 prefixes; bind scientific sources and actual wording-specific rights.",
+      "Review exact new biological/etymological batches editorially, separately from assistance grades and specialist review.",
+      "Regenerate the 264 dependent biological wordings and preserve every source binding; partial grants cannot release whole files.",
+      "Only consider closure after complete evidence, zero material findings and review of the integrated main commit."
+    ],
+    "limitations": [
+      "2300 occurrences and 788 hashes are documentary review units, not proven infringements or independent works.",
+      "No new external source consultation, authorship certification or legal/scientific approval occurred.",
+      "Closed Issues, URL existence, local script declarations and technical tests never establish permission."
+    ],
+    "before_application_text_counts": {
+      "pending_resources": [
+        "resources/data/species_profiles.json",
+        "resources/data/hint_education.json",
+        "resources/data/progressive_hints.json"
+      ],
       "pending_occurrences": 2300,
       "pending_unique_texts": 788,
       "pending_by_role": {
@@ -4571,7 +4725,100 @@
         "automated_evaluation_metadata": 2
       }
     },
-    "pending_groups": [
+    "technical_wording_application": {
+      "state": "applied_after_explicit_confirmation",
+      "recorded_on": "2026-10-18",
+      "proposal_fingerprint": "87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e",
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json",
+        "sha256": "a10ea67162acfa1c69777b54836f49a915a380446d3812afd15bf0f05d40c5b8"
+      },
+      "editorial_statement": "Aprovo editorialmente esse lote",
+      "license_statement": "Confirmo a aplicação delimitada ao lote",
+      "license": "CC-BY-4.0",
+      "scope": "technical_wording_only",
+      "unique_wordings": 15,
+      "occurrences": 1147,
+      "source_rationales": 290,
+      "derived_rationales": 855,
+      "evaluation_wordings": 2,
+      "generator_literals": 4,
+      "scientific_record_hashes_unchanged": 1777,
+      "scientific_review_events_created": 0,
+      "assistance_grade_approvals_created": 0,
+      "whole_resource_permissions_created": 0,
+      "identity_authentication_or_specialist_review_claimed": false,
+      "editorial_record_location": "Immutable scoped confirmation, not an assistance/science ledger approval.",
+      "idempotence": {
+        "observed_state": "already_applied",
+        "occurrences_verified": 1147,
+        "events_created": 0
+      },
+      "resulting_files": {
+        "resources/data/hint_education.json": "deace749a0b622d82f2349f248802f424363316b6dff5ba2f05b092cb116d4ed",
+        "resources/data/progressive_hints.json": "109c19a160540383c54f91f37ede1bd95032450d8bc36e5f4eaa3f616facc2f7",
+        "resources/data/education.json": "8d15105896589be297b156ad22895a42d3bf0da662c78ef12aca51f810fc93db",
+        "scripts/review_hints.py": "9fad75a1c04cb2d9aad5be9d2171a735851daf821d8705a32f8339b244c5df64",
+        "docs/AUDITORIA_ASSISTENCIA.json": "6c9aa5773c302e54cc01c5f392972044fa00198756c76ef77f14ddf788b8359f"
+      },
+      "pending_after_application": {
+        "occurrences": 1153,
+        "unique_hashes": 713,
+        "profiles": 805,
+        "etymological_wordings": 64,
+        "prefixes": 20,
+        "generated_biological_wordings": 264
+      },
+      "validation": {
+        "scope_binding_regression_tests": {
+          "passed": 56
+        },
+        "full_ctest": {
+          "passed": 26,
+          "failed": 0,
+          "seconds": 183.24
+        },
+        "distribution_blocked": true,
+        "distribution_technical_errors": [],
+        "photo_findings": 120,
+        "material_findings": 3,
+        "scientific_blocks": 31,
+        "remote_checks": "not_pushed",
+        "visual_or_package_validation_performed": false,
+        "import_and_generation_tests": {
+          "passed": 23
+        },
+        "release_configure_and_build": "passed",
+        "additional_checks": [
+          "Apache-2.0",
+          "strict-catalog",
+          "permission-recovery",
+          "local-repository-protection",
+          "exploration-media",
+          "scientific-coverage",
+          "assistance-audit",
+          "governance-history",
+          "release-metadata",
+          "release-history",
+          "qmllint"
+        ],
+        "derived_resources_reproducible": true,
+        "audit_projection_only_rationale_and_hashes_changed": true,
+        "external_content_queries": 0
+      }
+    },
+    "preservation_after_application": {
+      "organisms": 122,
+      "competitive_pool": 80,
+      "science_and_grade_review_ledger_events": 76,
+      "science_review_ledger_byte_identical_to_base": true,
+      "whole_text_file_permissions_still_false": true,
+      "own_material_licenses_texts_and_collection_still_null": true,
+      "application_and_catalog_versions_unchanged": true,
+      "catalog_snapshot_refreshed": true,
+      "protected_photos_profiles_taxonomy_credits_scoring_and_code_license_unchanged": true
+    },
+    "before_application_pending_groups": [
       {
         "path": "resources/data/hint_education.json",
         "topic_or_role": "educational_assertion",
@@ -4905,44 +5152,7 @@
         ]
       }
     ],
-    "binding_index": "resources/compliance/asset_rights.json / educational_text_rights",
-    "regeneration_command": "python scripts/review_updates.py --rights-report",
-    "objective_resolution_check": "build/rights-investigation.json / other_materials_resolution",
-    "local_generation_evidence": [
-      {
-        "local_path": "build/compose_profiles.py",
-        "sha256": "4f3a5a9d4ae20e72aaba2c4c666dd8954b3fea389059a3fc5f6e9f04a12488cb",
-        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
-        "published": false,
-        "raw_prose_republished": false
-      },
-      {
-        "local_path": "build/prepare_hint_data.py",
-        "sha256": "b820abf7f9478c8faee66dcda7fd62ce9e55a7507c50e8e93f3720c43f94ae5f",
-        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
-        "published": false,
-        "raw_prose_republished": false
-      },
-      {
-        "local_path": "build/seed_assistance.py",
-        "sha256": "f6398de6a7d71c30f73ab04744951251aaaa5e6aa55ad2e57aeac19c334bbb82",
-        "status": "untracked local implementation inspected; not proof of creation date, ownership or grant",
-        "published": false,
-        "raw_prose_republished": false
-      }
-    ],
-    "technical_wording_draft": {
-      "path": "docs/propostas/REDACAO_TECNICA_ISSUE_2.json",
-      "review_document": "docs/propostas/REDACAO_TECNICA_ISSUE_2.md",
-      "fingerprint": "87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e",
-      "occurrences": 1147,
-      "unique_wordings": 15,
-      "status": "draft_not_applied",
-      "human_approval_recorded": false,
-      "rights_confirmation_recorded": false,
-      "remaining_if_legitimately_confirmed_and_applied": 1153
-    },
-    "preservation": {
+    "before_application_preservation": {
       "tracked_resource_source_license_version_differences": [],
       "organisms": 122,
       "competitive_pool": 80,
@@ -4951,49 +5161,6 @@
       "permission_events_created": 0,
       "other_text_grants_created": 0,
       "catalog_or_application_version_changed": false
-    },
-    "validation": {
-      "rights_investigation_tests": {
-        "passed": 55
-      },
-      "import_and_generation_tests": {
-        "passed": 22
-      },
-      "full_ctest": {
-        "passed": 26,
-        "failed": 0,
-        "seconds": 185.38
-      },
-      "code_license_check": "passed",
-      "strict_catalog_audit": "passed",
-      "release_metadata_check": "passed",
-      "visual_validation_performed": false,
-      "remote_tests_for_this_branch": "not_published",
-      "configure_and_release_build": "passed",
-      "additional_checks": [
-        "permission-recovery",
-        "repository-protection-local",
-        "repository-audit",
-        "exploration-media",
-        "scientific-coverage",
-        "hint-assistance",
-        "governance-history",
-        "release-history",
-        "qmllint"
-      ],
-      "derived_resources_byte_identical_to_base": true,
-      "external_content_queries": 0
-    },
-    "next_human_decisions": [
-      "Review the concrete technical wording proposal separately from assistance grades.",
-      "Confirm only rights actually available in the concrete new wording, never unknown legacy corpus rights.",
-      "Investigate or replace remaining biological and etymological prose with individually supported drafts, then review exact batches.",
-      "Consider closure only after integrated main has zero material findings and complete evidence; other gates remain independent."
-    ],
-    "limitations": [
-      "2300 occurrences and 788 hashes are documentary review units, not proven infringements or independent works.",
-      "No new external source consultation, authorship certification or legal/scientific approval occurred.",
-      "Closed Issues, URL existence, local script declarations and technical tests never establish permission."
-    ]
+    }
   }
 }

@@ -1,5 +1,48 @@
 # Saneamento documental da Issue #2
 
+## Lote técnico confirmado e aplicado — 2026-10-18
+
+O mantenedor respondeu **“Aprovo editorialmente esse lote”** e, separadamente, **“Confirmo a aplicação delimitada ao lote”**, para o fingerprint `87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e`. A [evidência imutável](../resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json), SHA-256 `a10ea67162acfa1c69777b54836f49a915a380446d3812afd15bf0f05d40c5b8`, contém perguntas, respostas reais, redações, ponteiros, hashes anteriores e quatro literais do gerador. Registra-se a data civil real, sem inventar horário da resposta, assinatura ou autenticação independente.
+
+Foram aplicadas **15 redações compartilhadas em 1.147 ocorrências**: 290 justificativas de origem, 855 derivadas e dois textos da avaliação automática. Os quatro literais educativos de `scripts/review_hints.py` foram alterados exatamente como propostos; a lógica Python permanece Apache-2.0. Os textos biológicos e etimológicos, fontes, identificadores, fotos, alternativas, graus e regras de pontuação foram preservados. Dicas e projeção educativa foram regeneradas pelos mecanismos existentes; a nova avaliação automática registra a execução real e não constitui revisão humana.
+
+### Alcance das confirmações
+
+A aceitação editorial abrange **somente a redação técnica**. Foi registrada na evidência existente de origem/decisão, sem criar eventos de aprovação de assistência ou ciência no ledger. Os **76 eventos anteriores** e os **1.777 hashes de afirmações/tópicos científicos** permanecem iguais. As 290 avaliações de assistência continuam rascunhos. A repetição da aplicação verificou as 1.147 ocorrências e retornou `already_applied`, sem eventos duplicados.
+
+A concessão **CC BY 4.0 abrange somente os direitos efetivamente disponíveis nessas redações assistidas por IA**, suas composições enumeradas e os quatro literais técnicos. Crédito: **Projeto Glossata — redação técnica assistida por IA; revisão editorial de Carlos Eduardo Lima de Oliveira**. Preservar identificação do lote, [origem do projeto](https://github.com/kaduolliver/Projeto-Glossata), [licença](https://creativecommons.org/licenses/by/4.0/), avisos e indicação de alterações. Não se declara autoria humana exclusiva, propriedade dos fatos, concessão sobre fontes ou endosso.
+
+O inventário recebeu 15 registros agrupados com os 1.147 vínculos exatos. O validador verifica as duas confirmações distintas, suas datas/escopos, fingerprint, texto e ponteiros; recusa uso para textos biológicos, etimologias ou outros locais. Direitos sobre as outras passagens e licenças individuais permanecem preservados. A cobertura parcial não concede permissão ao arquivo inteiro; as três permissões integrais continuam `distribution_allowed: false`, e `texts`/`collection` continuam `null`.
+
+### Resultado documental
+
+| Indicador | Antes da aplicação | Após a aplicação |
+| --- | ---: | ---: |
+| Ocorrências pendentes | 2.300 | **1.153** |
+| Hashes de redações pendentes | 788 | **713** |
+| Recursos textuais ainda pendentes | 3 | **3** |
+| Aprovações científicas ou de assistência criadas | 0 | **0** |
+| Permissões integrais de arquivos concedidas | 0 | **0** |
+
+Restam **805 passagens das fichas, 64 etimologias, 20 prefixos e 264 cópias biológicas geradas**. Os índices completos por arquivo/ponteiro/hash continuam no inventário existente; a investigação offline mostra o saldo atual. O total mede vínculos documentais, sem presumir obras independentes ou violações. As seções de preparação abaixo são registros históricos; o lote técnico não aguarda uma nova confirmação.
+
+### Preservação e próximos passos
+
+Permanecem os 122 organismos, pool competitivo de 80, fotografias/créditos, fichas e fontes biológicas, três ícones, perfis, históricos e pontuação. Os hashes antigos dos dois recursos modificados foram acrescentados ao histórico do inventário; as evidências e propostas anteriores permanecem intactas. O manifesto foi regenerado no catálogo **2.4.0 ainda não lançado**, mantendo app **1.7.0**. Nenhuma tag, release ou pacote foi produzido.
+
+A Issue #2 continua aberta. Seu bloco remoto descreve a `main` publicada e ainda registra os mesmos três recursos; esta aplicação está somente na branch local até autorização de publicação. Não foram criadas ou encerradas outras Issues. O próximo trabalho é demonstrar a origem/direitos ou preparar novas sínteses fundamentadas das passagens biológicas restantes, com conferência editorial das versões concretas e propagação dos vínculos aos derivados. Aprovar este lote não aprova o restante do corpus.
+
+### Verificação da aplicação
+
+As primeiras regressões detectaram uma comparação histórica de fichas que ainda exigia as antigas justificativas de assistência. A comparação agora preserva todos os demais campos, enquanto a regressão específica verifica os novos textos, graus e limites. Duas cópias temporárias também colidiram com a trava operacional durante uma aplicação simultânea de conferência; a repetição sequencial passou, sem alterar ou remover a trava. Esses erros não foram tratados como aprovação do conteúdo ou motivo para desativar proteções.
+
+A rodada final passou: configure/compilação **Release/Ninja** e **26/26 suítes CTest em 183,24 segundos**, incluindo **23 testes de importação/geração e 56 de investigação de direitos**. As regressões verificam a prova exata, invalidação por troca de palavras/local/escopo/licença, preservação dos 1.777 hashes científicos, dos demais campos das receitas e do ledger, sem aprovação de assistência. A comparação histórica de fichas continua cobrindo os demais campos; a regressão específica cobre as justificativas novas.
+
+Passaram Apache-2.0, auditoria estrita (122 organismos; pool 80), recuperação de permissões, regras locais do repositório, exploração, cobertura científica, assistência, histórico de governança frente à base publicada, metadados/histórico de lançamento e `qmllint`. Educação, dicas, créditos e filogenia são reproduzíveis. `AUDITORIA_ASSISTENCIA.json` foi regenerado: mudam somente as justificativas e seus hashes, mantendo estados, graus, flags e demais campos iguais. A investigação de direitos reutilizou evidências offline, sem novas consultas externas.
+
+O gate `python scripts/distribution.py check` manteve retorno **2**, **zero erros técnicos, 120 pendências fotográficas, três textuais e 31 bloqueios científicos de alta prioridade**. O resultado é esperado e não foi contornado. Não houve validação de pacote, renderização visual manual, autenticação de identidade ou revisão especializada. Os checks remotos desta branch não foram executados, pois não houve push; a Issue não foi encerrada.
+
+
 ## Continuidade: diagnóstico atual e redação técnica — 2026-10-18
 
 **A Issue #2 ainda não pode ser encerrada legitimamente.** A base desta etapa é o merge do PR #20, `ba57dfe037915b81c86f03c7ecd9782374c6fb0e`. As aprovações concretas anteriores foram preservadas; elas não alcançam outras redações por semelhança, arquivo ou assunto. Os registros abaixo desta seção documentam etapas anteriores e não substituem este diagnóstico atual.
