@@ -4,6 +4,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import "components"
 import "views"
+import "style" as Style
 
 ApplicationWindow {
     id: root
@@ -31,6 +32,8 @@ ApplicationWindow {
     property var presence: discordPresence
     property string page: "home"
     property bool motionEnabled: true
+    onMotionEnabledChanged: Style.Theme.motionEnabled = motionEnabled
+    Component.onCompleted: Style.Theme.motionEnabled = motionEnabled
     property bool sessionStarted: false
     property bool forceClose: false
     property string abandonedSessionId: ""
@@ -262,7 +265,7 @@ ApplicationWindow {
             }
         }
     }
-    NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: root.motionEnabled ? 180 : 0 }
+    NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationPage }
     Component { id: homePage; HomeView { app: root; backend: root.backend } }
     Component { id: categoriesPage; CategoryView { app: root; backend: root.backend } }
     Component { id: taxonomyPage; TaxonomyView { app: root; backend: root.backend } }

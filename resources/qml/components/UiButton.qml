@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import "../style" as Style
 
 Button {
     id: control
@@ -7,33 +8,34 @@ Button {
     property bool secondary: false
     property bool danger: false
     property bool compact: false
-    implicitHeight: compact ? 40 : 50
+    implicitHeight: compact ? Style.Theme.compactHeight : Style.Theme.controlHeight
     implicitWidth: Math.max(110, caption.implicitWidth + (iconName ? 66 : 44))
-    padding: 12
+    padding: Style.Theme.spaceMd
     hoverEnabled: true
-    opacity: enabled ? 1 : 0.4
-    font.pixelSize: 14
+    opacity: 1
+    activeFocusOnTab: true
+    font.family: Style.Theme.fontFamily
+    font.pixelSize: Style.Theme.bodySize
     font.weight: Font.DemiBold
     Accessible.name: text
     background: Rectangle {
-        radius: 12
-        border.width: control.activeFocus ? 2 : 1
-        border.color: control.activeFocus ? "#BCF6D9" : (control.secondary ? "#2A424C" : (control.danger ? "#EB8A7A" : "#35CF80"))
-        gradient: Gradient {
-            GradientStop { position: 0; color: control.secondary ? (control.hovered ? "#243C47" : "#1B303B") : (control.danger ? "#EE7469" : (control.hovered ? "#43D88A" : "#29C878")) }
-            GradientStop { position: 1; color: control.secondary ? "#142731" : (control.danger ? "#CB4C47" : "#0DA662") }
-        }
-        scale: control.down ? 0.98 : 1
-        Behavior on scale { NumberAnimation { duration: 100 } }
+        radius: Style.Theme.controlRadius
+        border.width: control.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+        border.color: control.activeFocus ? Style.Theme.focus : Style.Theme.border
+        color: !control.enabled ? Style.Theme.disabledSurface
+             : control.secondary ? (control.down ? Style.Theme.surface : control.hovered ? Style.Theme.surfaceHover : Style.Theme.surfaceRaised)
+             : control.danger ? (control.down ? Style.Theme.dangerPressed : control.hovered ? Style.Theme.dangerHover : Style.Theme.danger)
+             : control.down ? Style.Theme.primaryPressed : control.hovered ? Style.Theme.primaryHover : Style.Theme.primary
+        Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
     }
     contentItem: Item {
         implicitWidth: caption.implicitWidth + (control.iconName ? 26 : 0)
         implicitHeight: 22
         Row {
             anchors.centerIn: parent
-            spacing: 10
-            UiIcon { visible: control.iconName !== ""; name: control.iconName; ink: "#F4FAF7"; implicitWidth: 18; implicitHeight: 18; anchors.verticalCenter: parent.verticalCenter }
-            Text { id: caption; text: control.text; font: control.font; color: "#F4FAF7"; anchors.verticalCenter: parent.verticalCenter }
+            spacing: Style.Theme.spaceSm
+            UiIcon { visible: control.iconName !== ""; name: control.iconName; ink: control.enabled ? Style.Theme.text : Style.Theme.textDisabled; implicitWidth: 18; implicitHeight: 18; anchors.verticalCenter: parent.verticalCenter }
+            Text { id: caption; text: control.text; font: control.font; color: control.enabled ? Style.Theme.text : Style.Theme.textDisabled; anchors.verticalCenter: parent.verticalCenter }
         }
     }
 }

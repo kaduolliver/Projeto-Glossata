@@ -4,7 +4,7 @@ Decisão administrativa de **2026-10-17**: o mantenedor autorizou expressamente 
 
 ## Arquivos abrangidos
 
-O [registro enumerado por arquivo](ESCOPO_LICENCIAMENTO.json), campo `files`, delimita a concessão vigente: **156 arquivos** de C++, QML próprio, scripts Python/PowerShell, testes, build, launcher e automação/configuração. A enumeração é explícita: um arquivo futuro não recebe licença por estar na mesma pasta. O código de testes não licencia as fixtures/dados que lê; o manifesto QRC não licencia os recursos que referencia. A concessão se limita aos direitos disponíveis sobre as partes próprias.
+O [registro enumerado por arquivo](ESCOPO_LICENCIAMENTO.json), campo `files`, delimita a concessão vigente: **157 arquivos** de C++, QML próprio, scripts Python/PowerShell, testes, build, launcher e automação/configuração. A enumeração é explícita: um arquivo futuro não recebe licença por estar na mesma pasta. O código de testes não licencia as fixtures/dados que lê; o manifesto QRC não licencia os recursos que referencia. A concessão se limita aos direitos disponíveis sobre as partes próprias.
 
 No saneamento da Issue #2 em **2026-10-17**, a redação de `build_education.py` foi extraída sem alteração para `resources/data/group_education.json`. A lógica Python separada foi inspecionada, sem avisos ou fragmentos externos identificados, e incluída explicitamente na concessão de código já autorizada pelo mantenedor. Os limites de titularidade abaixo continuam aplicáveis. A pendência de direitos da redação acompanha o novo recurso, com caminho/hash anteriores preservados no inventário. A extração não é aprovação dos textos. Consulte [SANEAMENTO_ISSUE_2.md](SANEAMENTO_ISSUE_2.md).
 

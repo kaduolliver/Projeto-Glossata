@@ -1,22 +1,23 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../style" as Style
 
 Rectangle {
     id: card
     property string title: ""
     property string value: "0"
     property string iconName: "chart"
-    property color accent: "#39CE87"
+    property color accent: Style.Theme.green
     implicitHeight: 118
     implicitWidth: 200
-    radius: 16
-    color: "#122630"
-    border.color: "#223C45"
+    radius: Style.Theme.cardRadius
+    color: Style.Theme.surface
+    border.color: Style.Theme.border
     RowLayout {
         anchors.fill: parent
-        anchors.margins: 20
-        spacing: 15
+        anchors.margins: Style.Theme.spaceLg
+        spacing: Style.Theme.spaceMd
         Rectangle {
             implicitWidth: 42; implicitHeight: 42; radius: 14
             color: Qt.rgba(card.accent.r, card.accent.g, card.accent.b, 0.13)
@@ -24,9 +25,9 @@ Rectangle {
         }
         ColumnLayout {
             Layout.fillWidth: true
-            spacing: 6
-            Label { text: card.title; color: "#91AAB2"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            Label { text: card.value; color: "#F4FAF7"; font.pixelSize: 28; font.weight: Font.DemiBold; fontSizeMode: Text.Fit; minimumPixelSize: 14; Layout.fillWidth: true }
+            spacing: Style.Theme.spaceXs
+            Label { text: card.title; color: Style.Theme.textMuted; font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            Label { text: card.value; color: Style.Theme.text; font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.metricSize; font.weight: Font.DemiBold; fontSizeMode: Text.Fit; minimumPixelSize: Style.Theme.bodySize; Layout.fillWidth: true }
         }
     }
 }

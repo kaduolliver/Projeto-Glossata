@@ -1,25 +1,29 @@
 pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls
+import "../style" as Style
 Button {
     id: control
-    implicitHeight: 36
+    implicitHeight: Style.Theme.actionHeight
     implicitWidth: label.implicitWidth + 24
-    leftPadding: 12; rightPadding: 12; topPadding: 8; bottomPadding: 8
+    leftPadding: Style.Theme.spaceMd; rightPadding: Style.Theme.spaceMd; topPadding: 8; bottomPadding: 8
     hoverEnabled: true
-    opacity: enabled ? 1 : 0.4
-    font.pixelSize: 12
+    opacity: 1
+    activeFocusOnTab: true
+    font.family: Style.Theme.fontFamily
+    font.pixelSize: Style.Theme.captionSize
     Accessible.name: text
     background: Rectangle {
         objectName: "textActionBackground"
-        radius: 10
-        color: control.down ? control.palette.highlight : (control.hovered || control.activeFocus ? control.palette.button : "transparent")
-        border.color: control.activeFocus ? control.palette.light : "transparent"
-        border.width: control.activeFocus ? 2 : 0
+        radius: Style.Theme.controlRadius
+        color: !control.enabled ? Style.Theme.disabledSurface : control.down ? Style.Theme.primaryPressed : (control.hovered || control.activeFocus ? Style.Theme.surfaceHover : "transparent")
+        border.color: control.activeFocus ? Style.Theme.focus : "transparent"
+        border.width: control.activeFocus ? Style.Theme.focusWidth : 0
+        Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
     }
     contentItem: Text {
         id: label
-        text: control.text; font: control.font; color: control.palette.text
+        text: control.text; font: control.font; color: control.enabled ? Style.Theme.text : Style.Theme.textDisabled
         textFormat: Text.PlainText; verticalAlignment: Text.AlignVCenter; elide: Text.ElideRight
     }
 }

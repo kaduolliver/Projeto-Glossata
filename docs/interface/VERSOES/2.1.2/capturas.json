@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "base_commit": "15cc212b097eb2dc72ecdec84c869cf141e56da4",
+  "rendering": "Qt 6.11.2, offscreen/software, Basic, temporary SQLite, Discord disabled",
+  "production_home_record": "../../../images/tela-inicial.json",
+  "source_sha256": {
+    "resources/qml/components/EndGameDialog.qml": "616e19824a2cacc7b3fd05ef53623f1e1a99c9a04edb73f5167ab4a7f7f17ff2",
+    "resources/qml/components/ExploreCard.qml": "c2d770867a4d3abad8e6c4ea8cb6094632fafea75616d53fb7598e1bd1923056",
+    "resources/qml/components/FeatheredPhoto.qml": "4b19e28f79457793d2e9e3e44dd2ccacdf945e678332dfd2caf703a4aafdfe54",
+    "resources/qml/components/HintPanel.qml": "ad9b743b48746530fe807113584e9e0fc9ad84c3aef6f268ae963d389a7432f5",
+    "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
+    "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
+    "resources/qml/components/NavItem.qml": "816fb58b5eb2c8458b4037d9774019f4d462e90be509e680f45ac613d8e6a961",
+    "resources/qml/components/PlayModeSelector.qml": "8c88362c19a29463560470e7409ea6ed2ae20195ffde48193fe481b7839dc553",
+    "resources/qml/components/SpeciesArtwork.qml": "c68ac879ce6658ab20a1a8e041c20a08a45634fc246a6b1b73d04dc060673f12",
+    "resources/qml/components/SpeciesPortrait.qml": "8add7526477800ec3c92ca603480000e77bff5e7a1b1295ebe7c1988fd3f04a4",
+    "resources/qml/components/StatCard.qml": "d9cdde9aa31f62c46ef9f0d3dbf52d21c5e09a44422ec83bddedf1938bc33322",
+    "resources/qml/components/TaxonComboBox.qml": "da3a036ea663f590b585b5bbeece1711bb7802766991e39112dc5c67b14e3048",
+    "resources/qml/components/TextAction.qml": "283e8862de44ca5bab271070dd5bb09dd14e90a2b834b7d9999c2b715c472001",
+    "resources/qml/components/UiButton.qml": "a67306b901be9ee7611fc518bf3af7d86bf61435d212bab4a76aefd3789513e4",
+    "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
+    "resources/qml/Main.qml": "dc80179f13b0b221aed2afe38ea2ca722c67182042c8633004eb1c37b7d0fa54",
+    "resources/qml/style/qmldir": "8a9e1301a00c98c76b795513d7ea8f550f6c16b5c3ab662b40e158412009f546",
+    "resources/qml/style/Theme.qml": "9dfb965846d4fe3e5f17f73639588b22b0743ab42afa9998bb168e53e5b66d83",
+    "resources/qml/views/AchievementsView.qml": "4fc4585b7705a80b6b0d5a5c69c717bbdc90f0061448ec71e48c73e64aa5a0ec",
+    "resources/qml/views/CategoryView.qml": "5597d793541dbd9c75c34e19b798d256a5937440f93923cb4ca70f61bb0a48de",
+    "resources/qml/views/CreditsView.qml": "2b726a0ea4104ec231bfea27c8c9367b7d300f8c5dff3755994dc5368a9ddfda",
+    "resources/qml/views/FeedbackView.qml": "e1c16c616b673976909b710f204bcdffcfadb4afe70f705c30e3a60878baf2e7",
+    "resources/qml/views/HomeView.qml": "a71f3924741f7a5a362fe0251ee6ed5a18d321e7ee2871bc089bfa079210d41e",
+    "resources/qml/views/InfoView.qml": "13a654a5c2fbd49e73b8cc83438bb6eb2aef0d6e769ba6835b303535503ac766",
+    "resources/qml/views/QuizView.qml": "d078a50ba36bb5c0c8f35479b8f3379031522896436dd6e6a7de94631749dd94",
+    "resources/qml/views/ResultsView.qml": "db3a080aaa9b43adfdf88d276b29f35427335ff4487795bc3bbac7f1706ba53a",
+    "resources/qml/views/SettingsView.qml": "96b4689c6e9c00ffdf104690040429b3741e2ae386be817eefbfbee8f10eccb4",
+    "resources/qml/views/StatisticsView.qml": "b439d40a6defd3659cf8bac64c282b3bb98eae69d3d369ed557bca54a4f5c99c",
+    "resources/qml/views/TaxonomyView.qml": "436f4795c210523da9e5bf65571402fe3c0204a6ce9f1381f158b6156fed38e7"
+  },
+  "frames": [
+    {
+      "file": "capturas/inicio.png",
+      "sha256": "c63c34f75ef575ca19885f79984b4fa8643f999cb19d6fd2b6a2a29aad47c381",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:56:31.858638+00:00",
+      "method": "QQuickWindow::grabWindow; production executable --capture-home",
+      "binary_sha256": "60a7a1766bc08bcd3072aed9777bc7980e65c51d6dffcaf4c0e5e3640e2662d0"
+    },
+    {
+      "file": "capturas/estatisticas.png",
+      "sha256": "d902a38db675e7cc55a111009e22528403a640e2367a70c891ae5b9df4f3aceb",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:56:43.661094+00:00",
+      "method": "QQuickWindow::grabWindow; production Main.qml and GameController in QmlInterfaceTests.navigateAndConfirmAnswers",
+      "binary_sha256": "cf32f2d81d1ba42463e50a3f28b4c89c64d8c044d02a05f6e8e5218dc9526ded"
+    },
+    {
+      "file": "capturas/perfis-ajustes.png",
+      "sha256": "d518f18906c5f837c12cf7480364fa5f9571f39b2c7d1c1d9d2a10eca9d89d44",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:56:44.013671+00:00",
+      "method": "QQuickWindow::grabWindow; production Main.qml and GameController in QmlInterfaceTests.navigateAndConfirmAnswers",
+      "binary_sha256": "cf32f2d81d1ba42463e50a3f28b4c89c64d8c044d02a05f6e8e5218dc9526ded"
+    }
+  ],
+  "implementation_commit": "679f7f744c17e5c9f2f28d52ab32105cf0ed8b51",
+  "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/28"
+}

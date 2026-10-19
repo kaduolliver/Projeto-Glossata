@@ -6,6 +6,8 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
+Revisão implementada: [2.1.2 — design system](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md) e capturas reais próprias. O baseline permanece histórico.
+
 1. Antes de alterar QML, crie uma versão em `VERSOES/<identificador>/` com o commit exato da interface e as telas afetadas. Conserve as versões anteriores.
 2. Recompile o aplicativo e gere capturas da **janela real** com banco temporário, registrando método, ambiente, horários, dimensões, hashes do binário e dos PNGs. Se a tela inicial mudar, execute `scripts/capture_home.py` e atualize também `docs/images/tela-inicial.png` e seu registro no **mesmo commit visual**.
 3. Documente a diferença observável, as limitações da captura e o caminho do PR em `CHANGELOG_UI.md`. Inclua o commit final da mudança após criá-lo; se ainda não existir, deixe a referência como pendente, sem antecipar hash.

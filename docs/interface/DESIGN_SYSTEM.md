@@ -1,4 +1,29 @@
-# Inventário do design system atual
+# Design system — revisão 2.1.2
+
+Os tokens ficam em `resources/qml/style/Theme.qml`, singleton QML local registrado por `qmldir` e embarcado no QRC. `UiButton`, `NavItem`, `StatCard` e `TextAction` usam os tokens; as demais views conservam seus estilos. Não há dependência nova ou mudança na organização das telas.
+
+| Papel | Tokens/valores |
+| --- | --- |
+| Fundo e superfícies | `canvas` #091A22; `surface` #10262D; `surfaceRaised` #18343C; `surfaceHover` #21444A |
+| Verde | `forest` #174D38; `primary` #216445; hover #29744E; pressionado #164C35 |
+| Perigo | #8F3535; hover #A34040; pressionado #712B2B |
+| Texto | principal #F0F5EC; auxiliar #B4C9CA; desabilitado #91A6AA |
+| Seleção/foco | dourado #E2C477; foco #F1D58B, borda 2 px; borda normal 1 px |
+| Tipografia | Segoe UI; título 30, subtítulo 20, corpo 14, rótulo 13, legenda 12, métrica 28 px; fonte científica em itálico |
+| Espaçamentos | 6, 10, 12 e 20 px; padding de navegação 14 px |
+| Formas | raio 10 px nos controles e 16 px nos cartões; alturas anteriores preservadas |
+
+Títulos/subtítulos e fonte científica estão preparados para consumo futuro; esta etapa não migra a tipografia de todas as telas. Acentos específicos, perigo, sucesso e assistência conservam significados distintos. A referência conceitual orientou acabamento e paleta, sem importar imagens, ícones, taxonomia ou funcionalidades.
+
+## Estados e acessibilidade implementados
+
+Foco de teclado com borda dourada de 2 px; seleção da navegação também possui indicador lateral. Estados normal, hover, pressionado e desabilitado usam cores próprias. O texto desabilitado mantém opacidade integral. Transições de cor duram 120 ms, sem escala ao pressionar; transição de página permanece 180 ms. A opção existente “Transições suaves” alimenta `Theme.motionEnabled`: ao desligar, Behaviors ficam inativos e durações vão a zero. Não há detecção automática da preferência de movimento do sistema operacional.
+
+O teste Qt `designSystemStatesAndContrast` verifica contraste por luminância sRGB de pelo menos 4,5:1 entre texto/fundos ativos de UiButton nas variantes primária, secundária e perigo (normal/hover/pressionado), 3:1 entre foco e canvas, navegação Tab, ativação Space, bloqueio do clique desabilitado e redução de movimento. Isso não certifica acessibilidade de todas as telas, escalas ou leitores de tela.
+
+Implementação nativa: [Behavior do Qt Quick](https://doc.qt.io/qt-6/qml-qtquick-behavior.html). Veja os [contratos dos componentes](COMPONENTES.md) e a [revisão com capturas](VERSOES/2.1.2/README.md).
+
+## Inventário histórico anterior à revisão
 
 Base: `b201e20c2d83fda6d790bc6a96217c0fdc75307e`. Este documento descreve valores existentes; não cria tokens nem altera QML.
 
