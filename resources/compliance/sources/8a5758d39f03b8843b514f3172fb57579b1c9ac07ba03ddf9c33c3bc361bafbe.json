@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Thin overlapping zoned fruiting bodies, tiny pores, wood decomposition, widespread records; common-name visual comparison.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+      "consulted_at": "2026-10-18T23:35:09.798595+00:00",
+      "response_sha256": "9ef0d7c7c1f4810c7e51491c79c0d37cf43d154b406c94912370074deff15a74"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/curiosity/text",
+      "text_sha256": "808418062ba387fa699220562464ede158d9aa5f0f0863b1f3807568a254e273"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/distribution/text",
+      "text_sha256": "9734d8e1f5d6ffc9961f2a1b91264e2ce49ae5813219b20012080de93919c4ab"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/hint/text",
+      "text_sha256": "fb21a713aad7680680b63ff9686cefdb28e30fa51a12dac1f9e61545c4619324"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/morphology/text",
+      "text_sha256": "5074e5205b92f189faad1339e65ecbdc823ccfa37c52bd752c842a0fd6932810"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/nutrition/text",
+      "text_sha256": "dd5a815420687120003649e1a23b61fbe9eadeb1401d21f9ed7fc535af29451a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/67/summary/text",
+      "text_sha256": "8d79e55feaf8dff60ddb153d94ec75c11cbbd2a5be24b0fb72cd98f2005f3966"
+    }
+  ]
+}

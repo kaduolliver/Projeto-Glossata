@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Provisional South Korean freshwater record; colonies of trichomes radiating from a centre, basal versus apical structure. No coordinates reproduced and no molecularly confirmed identification inferred from morphological diagnosis.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.ebr.or.kr/journal/article.php?Array=&code=95553",
+      "consulted_at": "2026-10-18T23:42:43.885091+00:00",
+      "response_sha256": "47bdc127f7c244844db22eee07f9cb6393e45f94deb7c87dfa449e0eef1e6016"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/curiosity/text",
+      "text_sha256": "22fcf0a7dfb4424d7609e0fd11635da0a0807208b2bedab72b1f10f6c621de2f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/distribution/text",
+      "text_sha256": "88fdc3301be600621f6e4429479270d8eb54c3939b1b4cea5b6b66251ff2f3ee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/hint/text",
+      "text_sha256": "03f0c6e1b10a0ad053b171a8d245ba9f4a098a2f017e3a290f765a68c3e11ed8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/morphology/text",
+      "text_sha256": "4e45e3c52cd7865d7ab53a9b1e4f9ffe0055d34fec1b45eaa1ca87b9f3ac8220"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/nutrition/text",
+      "text_sha256": "0b0e591a1b64fc5794950b438f341452a5b452d096aca3705f378f06ce4e6a04"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/113/summary/text",
+      "text_sha256": "3aef93d1da7247796918452dcc5d9ddeb730ab5b29b3f9cdde1041dd68681290"
+    }
+  ]
+}

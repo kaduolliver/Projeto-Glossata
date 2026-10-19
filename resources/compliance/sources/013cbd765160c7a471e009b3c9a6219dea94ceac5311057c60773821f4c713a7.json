@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Long pale stipe, initial dark gleba, strong odor, insects and spore transport; European/other records and organic substrates.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "consulted_at": "2026-10-18T23:35:17.132040+00:00",
+      "response_sha256": "19e1d4c9bfb849b4d1dcab07b8bfdbb4e0362fcca32f5daad57b5bc60eb015d1"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/curiosity/text",
+      "text_sha256": "50cc11eaec9d6efad55508e1d7af15985c4c80cb27c7b69d529085825e7464aa"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/distribution/text",
+      "text_sha256": "b90d1633eb17fca2794404f42ded709ce0181a7b44dc94eccc153e9d246574e3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/hint/text",
+      "text_sha256": "6fdac0599d3116db0d01f3621fed30c5cd1acc6ba13caf40c808655eb8aff2e3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/morphology/text",
+      "text_sha256": "97471ced3b7193817dd984a430c9bcf026de6077fe42513491f04fc6fcbb9d30"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/nutrition/text",
+      "text_sha256": "677e3be9882f0cd6573564f39ddcfe6b2229ec8d02113ff75db4847393daa6c3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/138/summary/text",
+      "text_sha256": "229df64f9604b41c47ec16e00286f901d142aa583e1147cbe07134cbb7beaa88"
+    }
+  ]
+}

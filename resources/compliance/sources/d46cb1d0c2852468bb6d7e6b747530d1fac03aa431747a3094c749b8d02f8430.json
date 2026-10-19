@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Forking blades, midrib and commonly paired bladders; bladders can be absent. North Atlantic/Baltic rocky intertidal. Does not treat absence of bladders as exclusion of the species.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.marlin.ac.uk/species/detail/1330",
+      "consulted_at": "2026-10-18T23:43:24.634845+00:00",
+      "response_sha256": "f80b2cd692f9d435528d9536a0a40a2a89c324a9230564afa730b32a235488a7"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/curiosity/text",
+      "text_sha256": "9350ec95d9de40d9d1fb46b29f2c10eec5eb540e5b79b41b11375fc27bc83d65"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/distribution/text",
+      "text_sha256": "fc13e203ac6b7e83ff1acd7fe5a34d3ff301ee51294a822730fdbe5780b88494"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/hint/text",
+      "text_sha256": "b9e83a50484094ec5798de80e9bae48cb23e450903cb4173f3a1442aba42c72e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/morphology/text",
+      "text_sha256": "1edb8d2f49c38af57eade2c265f2f9e0d89e8819d6f388667e0a797c2ccf37d9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/143/summary/text",
+      "text_sha256": "858bd3f6f854708fe17d67dc319f6d5bef3acb53c47a96d2e3f26e2736a1b7d9"
+    }
+  ]
+}

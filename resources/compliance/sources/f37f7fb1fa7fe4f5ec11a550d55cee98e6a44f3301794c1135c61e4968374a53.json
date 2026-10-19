@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Dark cap with blue stalk/gills; color is descriptive and explicitly insufficient for identity. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/143074966",
+      "consulted_at": "2026-10-18T23:59:24.427001+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/245357302.jpg",
+      "sha256": "4cf5a8f0a3992421dbe59480cb140761a2a5acf0d57503faa66751ce35fde26f",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/81/summary/text",
+      "text_sha256": "bd92f63f885a90638b4b9f3032989ce48264e13401a9322c7d95124158a5243b"
+    }
+  ]
+}

@@ -48,6 +48,171 @@ class InvestigationTests(unittest.TestCase):
         self.assertIn('attribution_incomplete', row['rights_issues'])
         self.assertEqual(row['investigation_state'], 'pending_human_review')
 
+    def test_replacement_scope_preserves_exact_grants_and_tracks_derived_copies(self):
+        record, _ = self.documented_text_fixture()
+        self.fixture.write('species_profiles.json', {'1': {'summary': {'text': 'Synthetic educational passage.'}},
+                                                   '2': {'summary': {'text': 'Synthetic educational passage.'}}})
+        self.fixture.write('progressive_hints.json', {'species': {'2': {'recipes': [
+            {'text': 'Synthetic educational passage.', 'source_note': 'species:2:summary'}]}}})
+        before = self.files()
+        result = rights.text_replacement_scope(rights.educational_text_inventory(self.root))
+        self.assertEqual(len(result['protected_occurrences']), 1)
+        self.assertEqual(result['protected_occurrences'][0]['pointer'], '/1/summary/text')
+        self.assertEqual(result['source_replacements'][0]['pointer'], '/2/summary/text')
+        self.assertEqual(result['derived_replacements'][0]['derived_from'], 'species:2:summary')
+        self.assertFalse(result['human_approval_recorded'])
+        self.assertEqual(result['permissions_created'], 0)
+        self.assertEqual(self.files(), before)
+        repeated = rights.text_replacement_scope(rights.educational_text_inventory(self.root))
+        self.assertEqual(result, repeated)
+
+    def test_replacement_scope_does_not_protect_inconclusive_or_stale_grants(self):
+        record, _ = self.documented_text_fixture()
+        record['investigation_state'] = 'inconclusive'
+        self.write_text_rights([record])
+        first = rights.text_replacement_scope(rights.educational_text_inventory(self.root))
+        self.assertEqual(first['protected_occurrences'], [])
+        self.assertEqual(len(first['source_replacements']), 1)
+        self.fixture.write('species_profiles.json', {'1': {'summary': {'text': 'Changed factual statement.'}}})
+        second = rights.text_replacement_scope(rights.educational_text_inventory(self.root))
+        self.assertNotEqual(first['fingerprint'], second['fingerprint'])
+        self.assertTrue(second['technical_errors'])
+        self.assertEqual(second['protected_occurrences'], [])
+
+    def test_material_closure_requires_real_full_coverage_not_shared_text_or_issue_state(self):
+        record, _ = self.documented_text_fixture()
+        self.fixture.write('species_profiles.json',{'1':{'summary':{'text':'Synthetic educational passage.'}},
+                                                   '2':{'summary':{'text':'Synthetic educational passage.'}}})
+        before=self.files()
+        inventory=rights.educational_text_inventory(self.root)
+        materials=[{'path':record['file'],'issues':['asset_permission_missing']}]
+        result=rights.other_materials_resolution(materials,inventory)
+        self.assertFalse(result['ready_for_maintainer_closure_review'])
+        self.assertEqual(result['pending_occurrences'],1)
+        self.assertEqual(result['pending_unique_texts'],1)
+        self.assertEqual(result['materials'][0]['pending_occurrences'][0]['pointer'],'/2/summary/text')
+        self.assertFalse(result['automatic_closure']);self.assertEqual(result['permissions_created'],0)
+        self.assertEqual(self.files(),before)
+        self.write_text_rights([])
+        result=rights.other_materials_resolution(materials,rights.educational_text_inventory(self.root))
+        self.assertEqual(result['pending_occurrences'],2)
+        self.assertEqual(result['pending_unique_texts'],1)
+
+    def replacement_packet(self):
+        self.documented_text_fixture()
+        profiles = g.load(self.root / 'resources/data/species_profiles.json')
+        original = {'text': 'Uncleared synthetic statement.', 'verified': True,
+                    'reviewed_on': '2025-01-01', 'source_url': 'https://example.org/record',
+                    'assistance': {'grade': 'light', 'state': 'draft'}}
+        profiles['2'] = {'summary': original}
+        self.fixture.write('species_profiles.json', profiles)
+        scope = rights.text_replacement_scope(rights.educational_text_inventory(self.root))
+        proposed = dict(original, text='New synthetic statement.', verified=False, reviewed_on=None)
+        row = {'file': 'resources/data/species_profiles.json', 'pointer': '/2/summary/text',
+               'previous_text_sha256': hashlib.sha256(original['text'].encode()).hexdigest(),
+               'previous_note_sha256': g.digest(original), 'proposed_note': proposed,
+               'proposed_text': proposed['text'], 'text_sha256': hashlib.sha256(proposed['text'].encode()).hexdigest()}
+        return {'scope_fingerprint': scope['fingerprint'], 'changes': [row]}
+
+    def test_replacement_preparation_is_complete_read_only_and_does_not_approve(self):
+        packet = self.replacement_packet(); before = self.files()
+        result = rights.prepare_text_replacement_inputs(self.root, packet)
+        note = result['resources/data/species_profiles.json']['2']['summary']
+        self.assertFalse(note['verified']); self.assertIsNone(note['reviewed_on'])
+        self.assertEqual(note['assistance'], {'grade': 'light', 'state': 'draft'})
+        self.assertEqual(result, rights.prepare_text_replacement_inputs(self.root, packet))
+        self.assertEqual(self.files(), before)
+
+    def test_replacement_preparation_rejects_partial_duplicate_and_protected_changes(self):
+        packet = self.replacement_packet()
+        for changes in ([], packet['changes'] * 2,
+                        [dict(packet['changes'][0], pointer='/1/summary/text')]):
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, dict(packet, changes=changes))
+
+    def test_replacement_preparation_rejects_stale_and_forged_bindings(self):
+        packet = self.replacement_packet()
+        for key in ('previous_note_sha256', 'previous_text_sha256', 'text_sha256'):
+            forged = copy.deepcopy(packet); forged['changes'][0][key] = '0' * 64
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, forged)
+        with self.assertRaises(ValueError):
+            rights.prepare_text_replacement_inputs(self.root, dict(packet, scope_fingerprint='0' * 64))
+
+    def test_replacement_preparation_rejects_inherited_approval_and_scoring_change(self):
+        packet = self.replacement_packet()
+        for change in ({'verified': True}, {'reviewed_on': '2026-01-01'},
+                       {'assistance': {'grade': 'strong', 'state': 'draft'}}):
+            forged = copy.deepcopy(packet); forged['changes'][0]['proposed_note'].update(change)
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, forged)
+
+    def replacement_source_packet(self):
+        packet = self.replacement_packet()
+        path = 'build/update-proposals/rights-evidence/synthetic.json'
+        evidence = {'kind': 'synthetic_reference', 'scientific_approval': False}
+        raw = (json.dumps(evidence, ensure_ascii=False, indent=2) + '\n').encode('utf8')
+        packet['source_evidence_to_archive'] = {path: evidence}
+        row = packet['changes'][0]
+        row['source_verification_state'] = 'source_compared_by_ai_pending_editorial_review'
+        row['source_check'] = {'state': row['source_verification_state'],
+            'text_sha256': row['text_sha256'], 'human_approval': False, 'permission_created': False,
+            'reference_updates': {}, 'evidence': {'path': path, 'sha256': hashlib.sha256(raw).hexdigest()}}
+        return packet, path
+
+    def test_portable_source_evidence_is_checked_without_creating_a_grant(self):
+        packet, path = self.replacement_source_packet(); before = self.files()
+        outputs = rights.prepare_text_replacement_inputs(self.root, packet)
+        self.assertFalse(outputs['resources/data/species_profiles.json']['2']['summary']['verified'])
+        self.assertEqual(self.files(), before)
+        self.assertFalse((self.root / path).exists())
+        changed = copy.deepcopy(packet)
+        changed['source_evidence_to_archive'][path]['scientific_approval'] = True
+        with self.assertRaisesRegex(ValueError, 'Embedded source evidence'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+
+    def test_source_check_rejects_stale_text_missing_evidence_and_fictitious_approval(self):
+        packet, path = self.replacement_source_packet()
+        for alteration in ({'text_sha256': '0' * 64}, {'human_approval': True},
+                           {'permission_created': True}, {'state': 'approved'},
+                           {'reference_updates': {'source_url': 'https://example.org/other'}}):
+            changed = copy.deepcopy(packet); changed['changes'][0]['source_check'].update(alteration)
+            with self.subTest(alteration=alteration), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, changed)
+        changed = copy.deepcopy(packet); changed.pop('source_evidence_to_archive')
+        with self.assertRaisesRegex(ValueError, 'missing'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+        changed = copy.deepcopy(packet); changed['changes'][0]['source_check'] = None
+        with self.assertRaisesRegex(ValueError, 'no evidence'):
+            rights.prepare_text_replacement_inputs(self.root, changed)
+
+    def test_source_check_rejects_changed_local_copy_and_path_escape(self):
+        packet, path = self.replacement_source_packet()
+        g.save(self.root / path, {'kind': 'different synthetic reference'})
+        with self.assertRaisesRegex(ValueError, 'Local source evidence'):
+            rights.prepare_text_replacement_inputs(self.root, packet)
+        for unsafe in ('../outside.json', 'resources/data/../../../outside.json',
+                       'C:/outside.json', 'resources\\data\\outside.json'):
+            changed = copy.deepcopy(packet)
+            changed['changes'][0]['source_check']['evidence']['path'] = unsafe
+            with self.subTest(path=unsafe), self.assertRaises(ValueError):
+                rights.prepare_text_replacement_inputs(self.root, changed)
+
+    def test_material_closure_is_independent_of_photos_but_never_overrides_any_gate(self):
+        record, _ = self.documented_text_fixture()
+        inventory=rights.educational_text_inventory(self.root)
+        materials=[{'path':record['file'],'issues':[]}]
+        before=self.files();gate=distribution.release_gate(self.root)
+        self.assertTrue(gate['distribution_blocked'])
+        result=rights.other_materials_resolution(materials,inventory)
+        self.assertTrue(result['ready_for_maintainer_closure_review'])
+        self.assertFalse(result['automatic_closure'])
+        self.assertFalse(rights.other_materials_resolution(materials,inventory,['synthetic integrity error'])
+                         ['ready_for_maintainer_closure_review'])
+        self.assertFalse(rights.other_materials_resolution([],inventory)['ready_for_maintainer_closure_review'])
+        self.assertEqual(self.files(),before)
+        self.assertEqual(distribution.release_gate(self.root),gate)
+
     def test_educational_inventory_deduplicates_text_without_merging_source_bindings(self):
         self.fixture.write('species_profiles.json', {'1': {'summary': {
             'text': 'Shared synthetic fact.', 'source_url': 'https://example.org/a'}},
@@ -341,6 +506,43 @@ class InvestigationTests(unittest.TestCase):
         self.fixture.write('species_profiles.json',{'1':{'summary':note,'hint':{'text':'Another unconfirmed wording.'}}})
         self.assertIn('text_component_coverage_incomplete',
                       rights.text_resource_issues(rights.educational_text_inventory(self.root),record['file']))
+        self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
+
+    def test_technical_wording_grant_requires_two_scoped_confirmations_and_exact_bindings(self):
+        record, ref = self.documented_text_fixture()
+        record.update(file='resources/data/hint_education.json',pointer='/1/taxonomic_assistance/rationale')
+        self.fixture.write('hint_education.json',{'1':{'taxonomic_assistance':{'rationale':'Synthetic educational passage.'}}})
+        binding={k:record[k] for k in ('file','pointer','text_sha256')}
+        wordings=[{'proposed_text':'Synthetic educational passage.','text_sha256':record['text_sha256'],
+                   'occurrences':[dict(binding,previous_text_sha256='0'*64)]}]
+        proof={'kind':'educational_technical_wording_confirmation','wordings':wordings,
+            'proposal_fingerprint':g.digest(wordings),'occurrences':[binding],
+            'editorial_confirmation':{'declared_by':'Synthetic fixture maintainer','statement':'Synthetic wording acceptance.',
+                'recorded_on':'2020-01-01','scope':'technical_wording_only'},
+            'license_confirmation':{'declared_by':'Synthetic fixture maintainer','statement':'Synthetic limited grant.',
+                'recorded_on':'2020-01-01','scope':'technical_wording_only','license':'CC-BY-4.0',
+                'license_url':'https://creativecommons.org/licenses/by/4.0/'}}
+        def write(value):
+            g.save(self.root/ref['path'],value)
+            record['evidence'][0]['sha256']=hashlib.sha256((self.root/ref['path']).read_bytes()).hexdigest()
+            self.write_text_rights([record])
+        before=g.read_ledger(self.root);write(proof)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),[])
+        self.assertEqual(rights.educational_text_inventory(self.root)['rights_metadata']['records'][0]['rights_issues'],[])
+        for name in ('editorial_confirmation','license_confirmation'):
+            for field,value in [('statement',None),('scope','scientific_approval'),('recorded_on','2999-01-01')]:
+                altered=copy.deepcopy(proof);altered[name][field]=value;write(altered)
+                self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        for altered in (dict(record,pointer='/1/etymology_hints/genus/text'),dict(record,file='resources/data/species_profiles.json'),
+                        dict(record,declared_license='CC0-1.0'),dict(record,text_sha256='0'*64)):
+            write(proof)
+            self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,altered),['technical_wording_grant_binding_invalid'])
+        changed=copy.deepcopy(proof);changed['wordings'][0]['proposed_text']='Not confirmed.';write(changed)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        changed=copy.deepcopy(proof);changed['occurrences'][0]['pointer']='/2/taxonomic_assistance/rationale';write(changed)
+        self.assertEqual(rights.technical_wording_batch_binding_issues(self.root,record),['technical_wording_grant_binding_invalid'])
+        write(proof)
+        self.assertEqual(g.read_ledger(self.root),before)  # Wording acceptance never approves assistance grades.
         self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
 
     def test_partial_coverage_cannot_release_a_whole_file_or_override_source_terms(self):

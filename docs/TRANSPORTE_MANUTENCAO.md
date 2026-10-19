@@ -13,14 +13,24 @@ O comportamento anterior que seguia um redirecionamento público HTTPS até HTTP
 | `scripts/maintenance_http.py` | Política, resolução limitada, conexão HTTPS fixada e controle de saltos/leitura |
 | `scripts/maintenance_http_policy.json` | Lista explícita de hosts e porta |
 | `scripts/review_updates.py` | Reexportação compatível e registro de destinos recusados como propostas |
-| `tests/test_maintenance_http.py` | Vinte testes sem rede real |
+| `tests/test_maintenance_http.py` | Testes sem rede real, incluindo cobertura dos hosts atuais e recusa de novos destinos não enumerados |
 | `tests/test_content_governance.py` | Regressão de preservação do conteúdo após recusa |
 | `tests/CMakeLists.txt` | Registro da 17ª suíte |
 | `docs/TRANSPORTE_MANUTENCAO.md`, `docs/RELATORIO_INVESTIGATIVO.md`, `CHANGELOG.md` | Política, limites, resultados e histórico da correção |
 
 ## Política explícita
 
-[maintenance_http_policy.json](../scripts/maintenance_http_policy.json) contém **111 hosts exatos**, cobrindo as referências atuais, aliases canônicos selecionados e rotas editoriais previstas para DOI. Não há wildcard, confiança automática em novos hosts do catálogo ou descoberta de permissões por resposta HTTP.
+[maintenance_http_policy.json](../scripts/maintenance_http_policy.json) contém os **hosts exatos** permitidos, cobrindo as referências atuais, aliases canônicos selecionados e rotas editoriais previstas para DOI. A lista é a fonte de verdade; sua contagem não é duplicada neste documento. Não há wildcard, confiança automática em novos hosts do catálogo ou descoberta de permissões por resposta HTTP.
+
+Na conferência da Issue #2 em 2026-10-18 foram acrescentados explicitamente os
+destinos bibliográficos ANBG (`anbg.gov.au`), Smithsonian/STRI
+(`biogeodb.stri.si.edu`), EOL (`eol.org`), Lepiforum (`lepiforum.org`), CDN da IUCN
+(`nc.iucnredlist.org`), eFloras (`www.efloras.org`), FNCV (`www.fncv.org.au`),
+Montpellier (`www.montpellier.fr`) e San Francisco Zoo (`www.sfzoo.org`). O exame
+das referências está documentado no [lote consolidado](SANEAMENTO_ISSUE_2.md).
+Não foram relaxados protocolo/porta, DNS público fixado, validação de saltos,
+limites ou restrições de acesso. A inclusão permite apenas tentar a consulta
+segura; não aprova a ciência, os direitos ou a redistribuição da fonte.
 
 | Aspecto | Regra |
 | --- | --- |

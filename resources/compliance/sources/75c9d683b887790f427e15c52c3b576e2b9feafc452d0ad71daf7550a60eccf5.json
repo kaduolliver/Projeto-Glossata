@@ -1,0 +1,31 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 75731994,
+    "taxon": {
+      "id": 1238320,
+      "name": "Dicarnosis erythrocephala",
+      "rank": "species"
+    },
+    "community_taxon_id": 1238320,
+    "quality_grade": "research",
+    "photo_ids": [
+      "123931576",
+      "123931582",
+      "123931589"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:45.077875+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/75731994",
+  "catalog_species_id": "34",
+  "catalog_photo_id": "123931576",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "cfaae5a07be2ed896c36d44267965c6d137f76ee69d2c0b177721c19040b7416",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

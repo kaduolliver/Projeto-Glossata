@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.008773+00:00",
+  "source_url": "https://www.inaturalist.org/observations/42850346",
+  "species_id": "35",
+  "photo_id": "68055096",
+  "photo_sha256": "1acae2e9eb03009aabdf15e83d2fea9767943c910a3a42b29e61142d1963d579",
+  "comparison": "Elevated angular colored pronotal structure; comparisons with a leaf are visual, not proof of mimicry.",
+  "archived_taxon": {
+    "id": 1075803,
+    "name": "Pachypodistes angulata",
+    "rank": "species"
+  },
+  "observation_id": 42850346,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "c400b3417a96113d22913b34490acbbd95bfbee47e13944bfa48cc764f45a88d"
+}

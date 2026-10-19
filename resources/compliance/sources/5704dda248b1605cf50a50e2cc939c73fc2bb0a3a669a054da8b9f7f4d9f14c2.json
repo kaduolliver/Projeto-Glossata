@@ -1,0 +1,51 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Compared small lateral orange poroid fruiting body and wood substrates; corrected the draft distribution to Australia, Italy, Kenya and New Zealand as enumerated in the paper. Madagascar material belongs to F. calocera sensu stricto, not this taxon.",
+  "limitations": [
+    "No species ID/taxonomy change, photograph validation, map or figure reuse."
+  ],
+  "sources": [
+    {
+      "source_url": "https://mdpi-res.com/d_attachment/forests/forests-12-01397/article_deploy/forests-12-01397-v2.pdf",
+      "consulted_on": "2026-10-18",
+      "method": "Publisher PDF read with web research tool; selected sections, no full PDF redistribution.",
+      "license": "CC-BY-4.0",
+      "license_locator": "p. 1 / copyright and license statement"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/curiosity/text",
+      "text_sha256": "4175fc1093c0eaae387a9d794fee7e8f44e7451e8fc790bb28afb72fff378621"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/distribution/text",
+      "text_sha256": "288cc64f5a5aab1347df97721c19be2a61639fb153ad4cf82fef25f7bac8bb62"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/hint/text",
+      "text_sha256": "5c721db71c324b6e30c02ea0617ce479e5bf50a484c1d50758efde43438d99f5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/morphology/text",
+      "text_sha256": "112c00c4785bbc0ece98920d6da6461a838b3779346336fd28601214706cd897"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/nutrition/text",
+      "text_sha256": "4ebeb9a1ff029672ec8b37a557b6624040dd454c42f7ab02772ae3de154805b8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/64/summary/text",
+      "text_sha256": "c5a43133487862fbc3979188704352f18290b7782293181df14026630d4e9d3f"
+    }
+  ]
+}

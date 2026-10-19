@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Black ground with contrasting colored bands and documented geographic variation; individual photo does not represent all races.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.heliconius.org/species/heliconius-melpomene/",
+      "consulted_at": "2026-10-18T23:43:18.259271+00:00",
+      "response_sha256": "7361062d77a202c84795c225d26ebe440882328a16d366c98f4af2e69f6a6540"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/15/hint/text",
+      "text_sha256": "46df71d13fd83250c86bf9826c4a4c9b46d4b59cd605a846114e6efe6b1566ce"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/15/morphology/text",
+      "text_sha256": "bc45ca66003f0cad561a3fd2901267fa9b62d327c250691da7d60bb865e74433"
+    }
+  ]
+}

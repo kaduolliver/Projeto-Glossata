@@ -1,0 +1,30 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 192798616,
+    "taxon": {
+      "id": 748796,
+      "name": "Ovalimantis maculata",
+      "rank": "species"
+    },
+    "community_taxon_id": 748796,
+    "quality_grade": "research",
+    "photo_ids": [
+      "338534567",
+      "338538715"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:45.371950+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/192798616",
+  "catalog_species_id": "41",
+  "catalog_photo_id": "338534567",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "e900871b8ff451d2c3e7d74fa0593ef546995c8743b6b7abe85b111ef83c2e83",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

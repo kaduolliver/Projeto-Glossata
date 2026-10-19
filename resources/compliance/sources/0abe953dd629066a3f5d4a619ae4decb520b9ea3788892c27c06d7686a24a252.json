@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Round dark structures on very fine stalks. Shape describes the photographed stage, not all mature stages of Comatricha nigra. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification. Spore-producing stage separately corroborated by Adl et al. Myxogastria diagnosis.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/105275177",
+      "consulted_at": "2026-10-18T23:59:24.428000+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "locator": "Appendix 1 / Myxogastria: plasmodium and spore-forming sporocarps",
+      "consulted_at": "2026-10-18T23:59:24.427001+00:00"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/176600250.jpeg",
+      "sha256": "6ac3703a3f516192a2ba6462839c66eb8f59f683d51add77767a82745f3d429a",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/83/summary/text",
+      "text_sha256": "b678061a01ad9a16a0afa797c9700df2f4d5d1dfbe3f98a3472eb2bc6fbb4a15"
+    }
+  ]
+}

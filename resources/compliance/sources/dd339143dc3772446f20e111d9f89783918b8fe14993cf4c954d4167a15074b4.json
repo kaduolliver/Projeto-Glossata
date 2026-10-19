@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Institutional entry describes nectar-rich flowers and cabbage as caterpillar host. RHS cabbage-caterpillar account independently supports larval folivory; wording distinguishes phases and does not assert exclusive adult/larval diet.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.montpellier.fr/sites/default/files/2024-12/Pollinisation.pdf",
+      "consulted_at": "2026-10-19T00:13:23.922970+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.rhs.org.uk/biodiversity/cabbage-caterpillars",
+      "locator": "What are cabbage caterpillars? / Pieris brassicae leaf feeding",
+      "consulted_at": "2026-10-19T00:13:23.922970+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/18/nutrition/text",
+      "text_sha256": "bdcbfac75671de337240eec1bcf225a1402baa8cb761167c54aa355021295706"
+    }
+  ]
+}

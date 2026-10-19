@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.846620+00:00",
+  "source_url": "https://www.inaturalist.org/observations/213128873",
+  "species_id": "2",
+  "photo_id": "376647594",
+  "photo_sha256": "b0df1d38363777752b9d153d474ee0c08a9438db2e86fb23b3f851a8e0819228",
+  "comparison": "Dark wings, red band and white apical patches; ventral versus dorsal surface are not the same pattern.",
+  "archived_taxon": {
+    "id": 49133,
+    "name": "Vanessa atalanta",
+    "rank": "species"
+  },
+  "observation_id": 213128873,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "d0511751b85d62e9a84b4d12a540bb2a1e09d4bf5d8a34f17b9c4f2491728961"
+}

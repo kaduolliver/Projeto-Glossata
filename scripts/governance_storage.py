@@ -71,8 +71,18 @@ def atomic_write(path, data, *, before_replace=None):
             output.flush()
             os.fsync(output.fileno())
             _checkpoint('temporary_synced', path)
-        if before_replace is not None: before_replace()
-        os.replace(temporary, path)
+        # Windows readers (including file indexers) can briefly deny replacement.
+        # Keep the same synced file and common writer lock; never fall back to
+        # truncating the destination or bypassing its access permissions.
+        for attempt in range(6):
+            if before_replace is not None: before_replace()
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError as error:
+                if getattr(error, 'winerror', None) not in {5, 32, 33} or attempt == 5:
+                    raise
+                time.sleep(.05 * 2 ** attempt)
         _checkpoint('replaced', path)
         # Windows supports file fsync, but not this POSIX directory operation.
         if os.name != 'nt':

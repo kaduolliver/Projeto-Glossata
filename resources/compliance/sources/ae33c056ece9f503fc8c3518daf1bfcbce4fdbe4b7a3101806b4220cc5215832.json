@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.366179+00:00",
+  "source_url": "https://www.inaturalist.org/observations/329195316",
+  "species_id": "84",
+  "photo_id": "596675431",
+  "photo_sha256": "8cc91f90882609eea79e56ac2407543969e3d49f7d5b116bd4d8c1089b6355ed",
+  "comparison": "Yellow interconnected surface pattern. No claim about unphotographed stages inferred.",
+  "archived_taxon": {
+    "id": 179151,
+    "name": "Hemitrichia serpula",
+    "rank": "species"
+  },
+  "observation_id": 329195316,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "65416d771c37f660a92adb01242e89905c9bd26a5491d739f9789e35a58cf516"
+}

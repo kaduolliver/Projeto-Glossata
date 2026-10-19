@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.485976+00:00",
+  "source_url": "https://www.inaturalist.org/observations/3907100",
+  "species_id": "90",
+  "photo_id": "4592237",
+  "photo_sha256": "2032dccfee1c90a14ceb4f89a14d91afdda804523616ca90fe53cc7a4c58fd3d",
+  "comparison": "Pink/red expanded tuft-like structures on woody/plant material; stage interpretation requires the myxomycete reference.",
+  "archived_taxon": {
+    "id": 56262,
+    "name": "Arcyria denudata",
+    "rank": "species"
+  },
+  "observation_id": 3907100,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "c2c46b38bb6136b82c025c502441ec74bc732d427492cc9458fc5ecc4b575847"
+}

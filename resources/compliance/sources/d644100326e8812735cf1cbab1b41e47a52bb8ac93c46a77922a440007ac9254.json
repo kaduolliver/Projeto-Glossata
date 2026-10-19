@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Phallic shape and shameless; anatomical comparison, not behavior.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
+      "consulted_at": "2026-10-18T23:35:17.132040+00:00",
+      "response_sha256": "19e1d4c9bfb849b4d1dcab07b8bfdbb4e0362fcca32f5daad57b5bc60eb015d1"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/138/etymology_hints/genus/text",
+      "text_sha256": "3cf3eec7154f7519c3d99a11a5a38a92a1ac49adeb642fe598a3529cb31ff753"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/138/etymology_hints/species/text",
+      "text_sha256": "569f8bb22138e78e6bf75d6ffeecfc8adb1deba96ab331ff50e0d8b2b55dd2ab"
+    }
+  ]
+}

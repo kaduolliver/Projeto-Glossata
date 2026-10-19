@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Xylon, wood; not an assertion that every species uses identical substrates.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/xylaria-hypoxylon.php",
+      "consulted_at": "2026-10-18T23:36:47.244566+00:00",
+      "response_sha256": "4ccddc0bb6e2dc551f7691581e4ba464388a2876c49d6afc2e8ad6b5652d973c"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/76/etymology_hints/genus/text",
+      "text_sha256": "0818afce4362ed28058d519e80d364acb5e542d2b7e8abc512e2e151c7936f20"
+    }
+  ]
+}

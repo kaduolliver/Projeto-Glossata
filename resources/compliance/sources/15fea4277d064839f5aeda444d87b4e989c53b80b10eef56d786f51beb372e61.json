@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Southern/southwestern Madagascar, forests/dry scrub, social groups, banded tail, grey body/white-dark face, fruit/leaves/flowers. Replaced the unsupported raised-tail explanation with documented visual/vocal/olfactory communication.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Lemur_catta/",
+      "consulted_at": "2026-10-18T23:30:43.600126+00:00",
+      "response_sha256": "ce7fadaf9eca311fa272a593c2ba4fd4b15306d5be4235c58648dfdff5531ba2"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/curiosity/text",
+      "text_sha256": "a2be69f72140bc085d4bd29c95104f4cae3eda784344954926177fa0bf849987"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/distribution/text",
+      "text_sha256": "79559ffd971b265cf0a41fca0489a4ec1d9f97ffd8a9edd54400edd5c4459e50"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/hint/text",
+      "text_sha256": "57c23e9115233a3e552ad16915ee71870fbe6b00ca3002c3b0b6a7b387436225"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/morphology/text",
+      "text_sha256": "97719536d48b858255328c1543cc4493c798609d8f0a54208a02c4ca753bae2c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/nutrition/text",
+      "text_sha256": "cf31de0891c52103ecad334f8fbf40394fb13eeb7ab73d0a7e871cc7b3ddea3b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/128/summary/text",
+      "text_sha256": "b6034406047712fe172b362a39074a4d00c5bc50f2fc4a0f624eadd0950b4f5c"
+    }
+  ]
+}

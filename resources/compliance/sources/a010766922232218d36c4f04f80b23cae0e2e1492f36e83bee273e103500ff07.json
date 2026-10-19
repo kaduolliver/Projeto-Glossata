@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.326731+00:00",
+  "source_url": "https://www.inaturalist.org/observations/143074966",
+  "species_id": "81",
+  "photo_id": "245357302",
+  "photo_sha256": "4cf5a8f0a3992421dbe59480cb140761a2a5acf0d57503faa66751ce35fde26f",
+  "comparison": "Dark cap with blue stalk/gills; color is descriptive and explicitly insufficient for identity.",
+  "archived_taxon": {
+    "id": 1423743,
+    "name": "Entoloma trachyosporum",
+    "rank": "species"
+  },
+  "observation_id": 143074966,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "4db3c42d4de67c7409ea9300539a59c812ae36653e6e7756534b41507a2cca1c"
+}

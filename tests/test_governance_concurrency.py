@@ -314,6 +314,65 @@ class GovernanceConcurrencyTests(unittest.TestCase):
                     storage.append_event(self.root,ledger,{'synthetic':'blocked'},event['event_sha256'])
                 self.assertEqual(data,path.read_bytes())
 
+    def test_transient_windows_sharing_errors_retry_without_duplicate_events(self):
+        replace = storage.os.replace
+        calls = []
+        def busy_then_replace(source, destination):
+            calls.append((source, destination))
+            if len(calls) < 3:
+                error = PermissionError('Synthetic Windows sharing conflict')
+                error.winerror = 32
+                raise error
+            return replace(source, destination)
+        with mock.patch.object(storage.os, 'replace', side_effect=busy_then_replace), \
+             mock.patch.object(storage.time, 'sleep') as sleep:
+            event = storage.append_event(self.root, 'review_history.jsonl', {'synthetic':'retry'}, '')
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(sleep.call_args_list, [mock.call(.05), mock.call(.1)])
+        self.assertEqual(self.events(), [event])
+        self.assertEqual(len({str(source) for source, _ in calls}), 1)
+
+    def test_persistent_windows_denial_is_bounded_and_preserves_history_and_lock(self):
+        first = storage.append_event(self.root, 'review_history.jsonl', {'synthetic':'prefix'}, '')
+        path = self.root/'resources/compliance/review_history.jsonl'; prefix = path.read_bytes()
+        error = PermissionError('Synthetic persistent denial'); error.winerror = 5
+        with mock.patch.object(storage.os, 'replace', side_effect=error) as replace, \
+             mock.patch.object(storage.time, 'sleep') as sleep:
+            with self.assertRaises(PermissionError):
+                storage.append_event(self.root, path.name, {'synthetic':'not committed'}, first['event_sha256'])
+        self.assertEqual(replace.call_count, 6); self.assertEqual(sleep.call_count, 5)
+        self.assertEqual(path.read_bytes(), prefix)
+        self.assertEqual(list(path.parent.glob('*.part')), [])
+        storage.append_event(self.root, path.name, {'synthetic':'after denial'}, first['event_sha256'])
+        self.assertEqual(len(self.events()), 2)
+
+    def test_tip_is_rechecked_after_a_sharing_conflict_before_any_retry(self):
+        first = storage.append_event(self.root, 'review_history.jsonl', {'synthetic':'prefix'}, '')
+        path = self.root/'resources/compliance/review_history.jsonl'; prefix = path.read_bytes()
+        foreign = {'synthetic':'ignores lock', 'previous_sha256':first['event_sha256']}
+        foreign['event_sha256'] = storage.digest(foreign)
+        changed = prefix + (json.dumps(foreign)+'\n').encode('utf8')
+        def interference(source, destination):
+            path.write_bytes(changed)
+            error = PermissionError('Synthetic sharing conflict'); error.winerror = 33
+            raise error
+        with mock.patch.object(storage.os, 'replace', side_effect=interference) as replace, \
+             mock.patch.object(storage.time, 'sleep'):
+            with self.assertRaisesRegex(ValueError, 'changed before commit'):
+                storage.append_event(self.root, path.name, {'synthetic':'blocked'}, first['event_sha256'])
+        self.assertEqual(replace.call_count, 1)
+        self.assertEqual(path.read_bytes(), changed)
+        self.assertEqual(len(self.events()), 2)
+
+    def test_unrelated_permission_failure_is_not_retried(self):
+        error = PermissionError('Synthetic unrelated permission failure'); error.winerror = 999
+        with mock.patch.object(storage.os, 'replace', side_effect=error) as replace, \
+             mock.patch.object(storage.time, 'sleep') as sleep:
+            with self.assertRaises(PermissionError):
+                storage.append_event(self.root, 'review_history.jsonl', {'synthetic':'denied'}, '')
+        self.assertEqual(replace.call_count, 1); sleep.assert_not_called()
+        self.assertEqual(self.events(), [])
+
     def test_private_paths_require_ownership_and_invalid_timeouts_are_refused(self):
         with self.assertRaises(RuntimeError): governance._append_review(self.root,'species:1:summary',{})
         with self.assertRaises(RuntimeError): governance._confirm_permission(self.root,{})

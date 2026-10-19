@@ -1,0 +1,134 @@
+{
+  "kind": "educational_reference_check",
+  "sources": [
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC10572177&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:06:47.713100+00:00",
+        "response_sha256": "a7d81adfa901c7ebc2b22404164b36816c6f119f1f2e5a36d16c493e3569c376",
+        "pmcid": "PMC10572177",
+        "metadata": {
+          "id": "37834050",
+          "source": "MED",
+          "title": "Overview and Recent Progress on the Biosynthesis and Regulation of Flavonoids in <i>Ginkgo biloba</i> L.",
+          "authorString": "Guo J, Wang Y, Li J, Zhang J, Wu Y, Wang G.",
+          "doi": "10.3390/ijms241914604",
+          "pubYear": "2023",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.3390/ijms241914604"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC10572177"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC10572177?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10572177/fullTextXML",
+        "consulted_at": "2026-10-18T23:06:59.940444+00:00",
+        "response_sha256": "8df8639ef92de0a4720fe67e23ea7d866b03f3061826b0715e2cb8fa380cdd97",
+        "bytes": 161506,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC10572177",
+        "title": "Overview and Recent Progress on the Biosynthesis and Regulation of Flavonoids in <i>Ginkgo biloba</i> L.",
+        "author_credit": "Guo J, Wang Y, Li J, Zhang J, Wu Y, Wang G.",
+        "doi": "10.3390/ijms241914604",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license": "CC-BY-4.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    },
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC11174492&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:08:21.020683+00:00",
+        "response_sha256": "4ea5641dfe475a69efa5377240dbd92714d14bf1978f492baba708a86f4fa0cc",
+        "pmcid": "PMC11174492",
+        "metadata": {
+          "id": "38891310",
+          "source": "MED",
+          "title": "<i>Ginkgo biloba</i> Sex Identification Methods Using Hyperspectral Imaging and Machine Learning.",
+          "authorString": "Chen M, Lin C, Sun Y, Yang R, Lu X, Lou W, Deng X, Zhao Y, Liu F.",
+          "doi": "10.3390/plants13111501",
+          "pubYear": "2024",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.3390/plants13111501"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC11174492"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC11174492?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11174492/fullTextXML",
+        "consulted_at": "2026-10-18T23:08:34.073913+00:00",
+        "response_sha256": "e784c9bca815ed2b76ca305f10b3c62ce5e4a6f7f2fdc291f35dc0860f540373",
+        "bytes": 143557,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC11174492",
+        "title": "<i>Ginkgo biloba</i> Sex Identification Methods Using Hyperspectral Imaging and Machine Learning.",
+        "author_credit": "Chen M, Lin C, Sun Y, Yang R, Lu X, Lou W, Deng X, Zhao Y, Liu F.",
+        "doi": "10.3390/plants13111501",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license": "CC-BY-4.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    }
+  ],
+  "locators": [
+    "Guo et al., section 2 Biological Characteristics of Ginkgo",
+    "Chen et al., section 2.1 Data Acquisition"
+  ],
+  "use": "Only fan-shaped and optionally lobed foliage, autumn color, Chinese origin and cultivation. No medical claims, machine-learning conclusions or asserted flowers/fruits.",
+  "scientific_approval": false,
+  "permission_created": false
+}

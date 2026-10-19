@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Cortina as a curtain-like veil; genus meaning only, not transfer of another species morphology.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/cortinarius-violaceus.php",
+      "consulted_at": "2026-10-18T23:36:44.937475+00:00",
+      "response_sha256": "fad726fd407d30fcbb73a1aa2bc937c2af3148373f4b2bb3f20a572e93818f72"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/75/etymology_hints/genus/text",
+      "text_sha256": "f22945511f83e704828e0f04307599e49aa20c7ef6c5017195ecd582b56bfb8a"
+    }
+  ]
+}

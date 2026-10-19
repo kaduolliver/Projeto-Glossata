@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Alaska–California, Washington on both sides of Cascades; moist banks/rocks/tree trunks/logs; divided blade and round/oval sori on underside. Sori are spore-bearing structures, not flowers.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://burkeherbarium.org/imagecollection/taxon.php?Taxon=Polypodium+glycyrrhiza",
+      "consulted_at": "2026-10-18T23:40:23.702648+00:00",
+      "response_sha256": "d20d6d0ddeb4acebfb24aa89a9bc87891d07e34c3670d49e81f0ade83c473e96"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/curiosity/text",
+      "text_sha256": "10bb42b79604f0515bcb29ec5a54a88331667c9f14985303929e15f1a1185728"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/distribution/text",
+      "text_sha256": "64f59f87ab03cf8c30dfe5c88149c0a83d4af2f66b9ee0190f31bfc46ce906c6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/hint/text",
+      "text_sha256": "3ac07359ab99a71a90cb96d39d6222476ac5c9f35490128f1fd661ed0c4ef814"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/morphology/text",
+      "text_sha256": "396ee264aa2c80024b5e25073cec3a99222af07dd81ad380af5fccf25e9f8dfe"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/47/summary/text",
+      "text_sha256": "3563cb563bb5f665c9f6cdb201bc6f62f3f97c2ef1e51e7ebf0d2e9a570d1be0"
+    }
+  ]
+}

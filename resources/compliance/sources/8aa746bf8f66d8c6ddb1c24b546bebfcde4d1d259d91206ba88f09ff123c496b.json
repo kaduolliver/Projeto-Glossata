@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Eurasian origin, North American introduction, larval defoliation, brown plumose-antennal males and paler females. Does not treat flightless western female condition as universal across Asian populations; no pesticide guidance or figures copied.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.fs.usda.gov/foresthealth/technology/pdfs/Pogue_Lymantria_web.pdf",
+      "consulted_at": "2026-10-19T00:13:23.924889+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/5/distribution/text",
+      "text_sha256": "4b5dff546688db559f2103269e55298069255850d45a30fff455a2b05e0bef0e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/5/hint/text",
+      "text_sha256": "ec3b6a73b8c03c0f0efdd693af8a2bc73f225c0ac249978a319adc9000c420dc"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/5/morphology/text",
+      "text_sha256": "d4a7a5a66624aad921c229e1de6942b53a847ce4824c20a9e5ba739d97cca7f9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/5/nutrition/text",
+      "text_sha256": "3229daf71bf034d8af0b313b86eb01fea65413d4a1a4ec57c0ce0d8258fbd284"
+    }
+  ]
+}

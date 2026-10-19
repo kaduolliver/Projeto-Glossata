@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Orange males versus differently patterned females explicitly described by the scientific provider; pictured males alone do not establish female traits. Provider excerpt examined via indexed page after direct access returned 403, not represented as a full-page snapshot.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://eol.org/pages/1025163/articles",
+      "consulted_at": "2026-10-19T00:07:35.275286+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/42/hint/text",
+      "text_sha256": "ff69f78c7dc0e6adf680a66be31907d3f8f9c1e8f9d3244b3b33d990994a0c88"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/42/morphology/text",
+      "text_sha256": "9c7de8a3cca61cbebbf717ae12a4ed7303adab080a8bda79dc2412b65fa21946"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 3907100,
+    "taxon": {
+      "id": 56262,
+      "name": "Arcyria denudata",
+      "rank": "species"
+    },
+    "community_taxon_id": 56262,
+    "quality_grade": "research",
+    "photo_ids": [
+      "4592237",
+      "4592194",
+      "4592197"
+    ],
+    "archived_response_sha256": "b93100f3eaf963f246a33f4f6aa147b1dc7dd66a91f1b59e913755b06387d0e4",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:47.311753+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/3907100",
+  "catalog_species_id": "90",
+  "catalog_photo_id": "4592237",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "55c1c18bd494ecdc76a03c63d15225fe1d8e58967155d36ead7fd4971c560dcd",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

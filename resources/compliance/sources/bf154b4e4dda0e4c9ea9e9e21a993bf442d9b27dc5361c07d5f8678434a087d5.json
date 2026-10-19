@@ -1,0 +1,64 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Rod-like cells; red prodigiosin in some environmental strains, absent in many strains and variable with conditions; soil/water habitats. No strain treated as universally pigmented and no clinical recommendation. Pittman, Kline and Kenyon (2015), Introduction, independently confirms environmental soil/water records, pigment heterogeneity and organic-carbon culture context, under verified CC BY 4.0. Mahlen morphology remains a factual reference, not relicensed prose.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3194826/",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5023268/fullTextXML",
+      "consulted_at": "2026-10-19T00:08:17.601275+00:00",
+      "response_sha256": "72384cc6a7b3900684633af35e8b8691c3adfe96954654d545c2406d6a0628ff",
+      "bytes": 100489,
+      "kind": "selected_article_license_metadata",
+      "pmcid": "PMC5023268",
+      "title": "Carbon-Starvation Induces Cross-Resistance to Thermal, Acid, and Oxidative Stress in Serratia marcescens.",
+      "author_credit": "Pittman JR, Kline LC, Kenyon WJ.",
+      "doi": "10.3390/microorganisms3040746",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "license": "CC-BY-4.0",
+      "locator": "front/article-meta/permissions/license; article DOI",
+      "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/curiosity/text",
+      "text_sha256": "df0e2d18ebbb1e86f1f19bf2f557fd6846337c4d57bb92ddea9aa3deb57fe824"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/distribution/text",
+      "text_sha256": "53a46e3de3ebe3505f1badd91cbe39a55a36a0b0043ae4ac93c482abd1e8b807"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/hint/text",
+      "text_sha256": "52303da03ae17ceabf8a5e58bd4e2b690e91d78de16a242d47fa91ace1c15379"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/morphology/text",
+      "text_sha256": "b78f9f10b3432ccd7535457ad0454bdbb074ec3fa4443a257b663bfb5ca7d8bb"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/nutrition/text",
+      "text_sha256": "d661917fc129819cd1a6dad95588018240a2bf52ea15e41c1564af606e99c45c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/105/summary/text",
+      "text_sha256": "0509e7037d4f14e7f98983a090943cc870b90b3102b20c8777b819a97f41e038"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Relatório da implementação — 15/10/2026
 
+> **Atualização administrativa — 2026-10-18:** o [lote textual consolidado da Issue #2](SANEAMENTO_ISSUE_2.md) foi confirmado e incorporado na branch em revisão: zero pendências textuais nesse escopo, com direitos disponíveis e revisão editorial documentados. Os números abaixo permanecem históricos. Fotografias, dependências, curadoria agregada e o gate geral continuam independentes e bloqueados quando aplicável; não há certificação jurídica/científica, merge ou lançamento.
+
 > **Atualização administrativa — 2026-10-17:** Apache-2.0 foi autorizada somente para o [código próprio enumerado](ESCOPO_LICENCIAMENTO.md), com LICENSE/NOTICE. A ausência de licença descrita nesta etapa histórica era correta à época. Textos/coletânea, mídias, marca, dependências e pendências científicas permanecem separados; nenhum resultado histórico de auditoria foi reescrito.
 
 > Registro histórico desta etapa. A investigação INV-08 de 17/10/2026 está em [SANEAMENTO_DIREITOS.md](SANEAMENTO_DIREITOS.md). Corrigida abaixo uma inversão documental de IDs: o catálogo e as evidências sempre associaram `707161720` a *Panthera tigris* e `659755043` a *Lemur catta*. A correção não altera associações ou revisões científicas.

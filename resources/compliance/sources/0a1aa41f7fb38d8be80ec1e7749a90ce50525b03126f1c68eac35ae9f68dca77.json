@@ -1,0 +1,32 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 237414880,
+    "taxon": {
+      "id": 398792,
+      "name": "Xenocnema spinipes",
+      "rank": "species"
+    },
+    "community_taxon_id": 398792,
+    "quality_grade": "research",
+    "photo_ids": [
+      "422526180",
+      "422526311",
+      "422526318",
+      "422526325"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:44.881414+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/237414880",
+  "catalog_species_id": "30",
+  "catalog_photo_id": "422526180",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "006e23672a08ef0c1384601f4a1c27a898774117435ae32671a7d9c0b0f80bdb",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

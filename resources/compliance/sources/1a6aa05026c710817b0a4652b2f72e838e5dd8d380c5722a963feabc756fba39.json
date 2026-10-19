@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "General green-plant photosynthesis, already compared for this batch; distinguishes light energy from mineral/water requirements. Not an experiment or quantitative claim specific to Dracaena.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5264509/",
+      "consulted_at": "2026-10-19T00:03:44.660132+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/nutrition/text",
+      "text_sha256": "20a14416849af44babcf412c85ec686fb6c1e96ba9bc414ec91f28dc8eae2389"
+    }
+  ]
+}

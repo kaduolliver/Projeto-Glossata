@@ -30,6 +30,8 @@ O [NOTICE](../NOTICE) reconhece a criação original e distingue contribuidores 
 
 ## Registros e verificação
 
+Em 2026-10-18, o mantenedor confirmou separadamente a revisão editorial e CC BY 4.0 somente nos direitos disponíveis no [lote de redação técnica](propostas/REDACAO_TECNICA_ISSUE_2.md), fingerprint `87f0ab41d22b1e707dbd39723d2ab6cf2dc617606e6eb7fbb096ac5cbaaa1d1e`. A concessão abrange as 15 redações, suas 1.147 ocorrências enumeradas e os quatro literais educativos identificados de `scripts/review_hints.py`; a lógica Python continua Apache-2.0. A [evidência](../resources/compliance/sources/45e9500b19f69515b8eae6cd5dca4370fe372a8f52d0c5bc1794ba8e60a0712d.json) distingue aceitação da expressão textual, licença e limites. Não há concessão sobre o restante do corpus, fontes, etimologias ou fotografias, nem aprovação dos graus de assistência ou da ciência.
+
 `content_policy.json` registra a decisão administrativa e `own_material_licenses.code = "Apache-2.0"`; `asset_rights.json` mantém a mesma declaração. A referência de escopo é este registro enumerado. Não se criaram eventos de revisão científica, confirmação de fotos ou assinatura humana. A autorização é a solicitação expressa desta implementação, não um ato jurídico independente simulado.
 
 `LICENSE` foi obtido de [ASF — texto oficial](https://www.apache.org/licenses/LICENSE-2.0.txt), sem edição, inclusive o apêndice padrão. SHA-256: `cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30`. Os campos exemplificativos do apêndice oficial não são avisos nominais preenchidos pelo projeto. A atribuição real está no NOTICE.

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Blue-green young cap, age-related fading, stem veil remnants; Europe/North America and saprobic habitats.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "consulted_at": "2026-10-18T23:35:05.080929+00:00",
+      "response_sha256": "66fbdc75f9a9830566da9ec49625069a0675ff92ce68246722312c9af4b25d95"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/curiosity/text",
+      "text_sha256": "a6fd1674b5b3b28d7fb90e9ac1b9b148e4fb7e306fb6da6ee495a86ab95e986b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/distribution/text",
+      "text_sha256": "f6f5369710dce531692b27a905b058bb7a4f1adae3b6e618e5293de6888b91e8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/hint/text",
+      "text_sha256": "8901dbe9976d613b3c9669c3b90a846df68e43bb9492e61a271085d91865c35b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/morphology/text",
+      "text_sha256": "f25f5adebb04b27cd776b653013fe4866cb7444193050d15ce60c61719462d1a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/nutrition/text",
+      "text_sha256": "677e3be9882f0cd6573564f39ddcfe6b2229ec8d02113ff75db4847393daa6c3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/63/summary/text",
+      "text_sha256": "1dc1e65847be86e79a57f343f7d3756d6f6621b08697fdbad0a5168f233ec19c"
+    }
+  ]
+}

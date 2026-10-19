@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Greek nose/horn; Latin one/horn explicitly stated. Replaces the poorly located long husbandry manual with the specific institutional account. No population numbers, maps or source prose copied.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://rhinos.org/about-rhinos/rhino-species/greater-one-horned-rhino/",
+      "consulted_at": "2026-10-18T23:56:22.456641+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/131/etymology_hints/genus/text",
+      "text_sha256": "5422b0ae7ec167d327403719a66f0221882c5a7b3eddb0d71fd1e4f0cca35b5e"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/131/etymology_hints/species/text",
+      "text_sha256": "83233dd6797dbed959f5555b1b4088b99d789cc45b6cdbd9e891b28c1c51da7e"
+    }
+  ]
+}

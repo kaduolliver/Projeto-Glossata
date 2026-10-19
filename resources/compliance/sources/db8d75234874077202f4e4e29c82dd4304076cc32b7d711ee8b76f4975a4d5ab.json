@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Thin and several colors; not an exact number of color bands.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
+      "consulted_at": "2026-10-18T23:35:09.798595+00:00",
+      "response_sha256": "9ef0d7c7c1f4810c7e51491c79c0d37cf43d154b406c94912370074deff15a74"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/67/etymology_hints/genus/text",
+      "text_sha256": "2ef8e7723ca15eed1d533b4a3efd0b829a20d07ef972871ffec742a1dcbad585"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/67/etymology_hints/species/text",
+      "text_sha256": "d0a95eff8772b2bc3f2cf480c8c6a133dd2511bb6f68e2cf137247aaee8c038d"
+    }
+  ]
+}

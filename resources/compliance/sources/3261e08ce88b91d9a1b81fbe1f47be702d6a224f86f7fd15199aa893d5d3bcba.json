@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Sub-Saharan Africa and Gir region in India; social groups with members not always together; tawny coat, dark tail tuft, age/sex-dependent mane; predation and scavenging. No adoption of obsolete subspecies or demographic estimates.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Panthera_leo/",
+      "consulted_at": "2026-10-18T23:30:41.683064+00:00",
+      "response_sha256": "301db81c3222a00e934eaa640df881943ec73051bc1e3b416b0d247fde445227"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/curiosity/text",
+      "text_sha256": "515f7dc733f796045e1df869e89ff6714f3d549ab74a5415a896d150da5d8f3f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/distribution/text",
+      "text_sha256": "bc226060d6cd43f663efb567ee120edf2666925bf3a963b170bc0d2a6bb67f9c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/hint/text",
+      "text_sha256": "129cce49ee04e7cf5aa1f1a1fbe17393b0d7026aeee30f554391e4f1e9680c1c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/morphology/text",
+      "text_sha256": "34c1a9a5a43d4176bab95c6a82eb5400728dbc56d5edf29b96542d7cdec831a2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/nutrition/text",
+      "text_sha256": "8ee964b5d6fcd1036f1abc40f7e9a2004faef47e528b2526c921bea8cb08ecc4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/126/summary/text",
+      "text_sha256": "f23a67740d9f06ea6be8e3be43019d8ca2f7c16bbd76180a29f4b947e038f0e0"
+    }
+  ]
+}

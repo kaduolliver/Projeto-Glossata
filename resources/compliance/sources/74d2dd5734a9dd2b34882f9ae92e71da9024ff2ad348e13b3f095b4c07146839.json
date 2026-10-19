@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Deciduous ornamental shrub, white clusters and red drupes, lobed leaves, seasonally different flowering/fruiting appearance. Europe and Asia are included in, not equated with all of, its natural range; no ingestion advice.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/viburnum-opulus/",
+      "consulted_at": "2026-10-18T23:40:03.959771+00:00",
+      "response_sha256": "196e51e04ca2baf9bda718e98a15250a17b8ec17e3927a56cd042ed24492f09f"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/curiosity/text",
+      "text_sha256": "a0a7f9e992d41da91c45167e188bff81df42d0f7b0e582b47d47a258c5e45c7c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/distribution/text",
+      "text_sha256": "7a6c1f2482f27898287caadecb6cab771184e6e4f0a5ac1debc39d4ef960a781"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/hint/text",
+      "text_sha256": "66804f0f4e57353ddcc2aeed5cdde52900bab3f7494d61f2f3f2fbbf24719c5e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/morphology/text",
+      "text_sha256": "ee5a00362b1134e89f1b91856c1f6cb4df11f06b2c488f3e1118a1162878c13f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/53/summary/text",
+      "text_sha256": "3b2d1711f5b3f6aff2b8555f0e8c942cfd6e77bcacf9c021f866a2cfc3d4b322"
+    }
+  ]
+}

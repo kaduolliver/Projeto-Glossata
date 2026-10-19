@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.879578+00:00",
+  "source_url": "https://www.inaturalist.org/observations/6805086",
+  "species_id": "26",
+  "photo_id": "8658322",
+  "photo_sha256": "584da1ca070b5c0c72515f24e2d09cb2b7737ed1fe450699c04a8f4026ccec64",
+  "comparison": "Hairy fly body and transparent patterned wings; classification Bombyliidae comes from archived taxon identity, not resemblance to a bee.",
+  "archived_taxon": {
+    "id": 259535,
+    "name": "Geminaria canalis",
+    "rank": "species"
+  },
+  "observation_id": 6805086,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "45162db968d47ed967e251da298efa152afe56cf600618c5512f7d527a3e360c"
+}

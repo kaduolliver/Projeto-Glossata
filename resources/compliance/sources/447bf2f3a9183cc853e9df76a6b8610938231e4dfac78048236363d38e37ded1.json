@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.056955+00:00",
+  "source_url": "https://www.inaturalist.org/observations/192798616",
+  "species_id": "41",
+  "photo_id": "338534567",
+  "photo_sha256": "17239ef76bdb8b417d20ba9ae311011fc21e1cf94841698adf8266981f55a542",
+  "comparison": "Brown mantis with folded spined forelegs and leaf-like body outline. A static image does not itself prove prey-capture behavior.",
+  "archived_taxon": {
+    "id": 748796,
+    "name": "Ovalimantis maculata",
+    "rank": "species"
+  },
+  "observation_id": 192798616,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "335b19c669084beabaf6fe750cbd56c9016478f264d14d523314860e2ea90629"
+}

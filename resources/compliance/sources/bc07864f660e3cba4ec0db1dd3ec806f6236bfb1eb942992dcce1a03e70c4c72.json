@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Ceratiomyxa explicitly treated separately from Myxogastria: amoeboid trophic stages and extracellular fruiting platforms; Amoebozoa feeding on bacteria with listed exceptions. No transfer of the myxogastrid-specific feeding experiment or fungal taxonomy.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "consulted_at": "2026-10-18T23:59:24.415571+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/89/curiosity/text",
+      "text_sha256": "6886110ac99d5abe9fd119934db769f0aa05e0fbd816ffed4c68daf4e7de50e8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/89/nutrition/text",
+      "text_sha256": "a7e495f0f535d64542d70d9ed00da7f3884d9acb91346c5e85b708be926866a7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/89/summary/text",
+      "text_sha256": "a1701cc4f9951b4a2a0812d3f2ada20800bd44a60c20e30240d2566fdce4c4c6"
+    }
+  ]
+}

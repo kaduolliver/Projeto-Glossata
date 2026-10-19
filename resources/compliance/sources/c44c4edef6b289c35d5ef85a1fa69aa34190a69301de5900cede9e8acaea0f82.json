@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Acetate use and energetic sulfide oxidation demonstrated in a particular strain; no recipes or growth conditions copied and no claim about all strains having identical capabilities.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/7283635/",
+      "consulted_at": "2026-10-18T23:59:24.414462+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/curiosity/text",
+      "text_sha256": "0b6cdc7f8723a5aadbe6b47d97f95f8b348b7285c3e0db3a38ccdc30b08d1d29"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/nutrition/text",
+      "text_sha256": "50cc95b687e8c9b59f3aedbeb5b2f6255f9d21bf27a63766a37813ad24948f14"
+    }
+  ]
+}

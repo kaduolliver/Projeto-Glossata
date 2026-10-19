@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.963787+00:00",
+  "source_url": "https://www.inaturalist.org/observations/75731994",
+  "species_id": "34",
+  "photo_id": "123931576",
+  "photo_sha256": "908419e30c8f48d536936d7a23913702511519d2421217150d8b73477422687f",
+  "comparison": "Large eyes, conspicuous head appendages and patterned wings. The text does not identify an unobservable physiological function.",
+  "archived_taxon": {
+    "id": 1238320,
+    "name": "Dicarnosis erythrocephala",
+    "rank": "species"
+  },
+  "observation_id": 75731994,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "211d0b4802d7f4b4735495e6e469ddfcf1afd4760a53f1cafd9d953174036bb0"
+}

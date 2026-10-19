@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Global stored-product association; reddish copper distal/grey proximal forewing; larval stored dry food versus mainly nonfeeding adult. The source reports anecdotal interest in sugar baits: do not state an absolute physiological impossibility.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ask.ifas.ufl.edu/publication/IN153",
+      "consulted_at": "2026-10-18T23:32:41.329524+00:00",
+      "response_sha256": "6b139983b64395e359d20602673ea469331c7100d5f066dfd6be709d76494576"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/curiosity/text",
+      "text_sha256": "6e332fa51045d107e78d39c6b007312f631eb8305c5eba50f67269135d23b0df"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/distribution/text",
+      "text_sha256": "277c928ca55bf4562748ef126cce2e5be17c975d851866cef33ea82f89d769d6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/hint/text",
+      "text_sha256": "98875e9cbb4cba59a893c7bd38b2afb11b51d4a68ba0d474d54e509425711e76"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/morphology/text",
+      "text_sha256": "4f4288c90141e8a0a6ceb7e02a40cfd0e26c84ce59d76025577bd3993b0a6f16"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/nutrition/text",
+      "text_sha256": "c00d48647214ac911f2a2baca704dc8bd742030019485c4779dfab9e663b60d8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/20/summary/text",
+      "text_sha256": "bde2d9eb6da55936e4144ae1b71be142cdf0ed5f8d496dd647f4659d7c65729e"
+    }
+  ]
+}

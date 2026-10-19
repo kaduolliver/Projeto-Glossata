@@ -1,0 +1,101 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Indian/Sri Lankan origin versus captive occurrences; sexual dimorphism, blue male neck, ornamental ocelli; mixed animal/plant food. Other geographical statements in this older account are not imported. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account. Tail-covert versus actual tail distinction independently checked in San Diego Zoo peafowl account.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Pavo_cristatus/",
+      "consulted_at": "2026-10-18T23:31:16.684468+00:00",
+      "response_sha256": "0b2f00de7cff5cebead12efac433b09ddfdee9f4d58d4a86132dc4979f8d27d1"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-18T23:49:09.255947+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-18T23:56:02.362031+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-18T23:56:22.453657+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-18T23:59:10.847432+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-18T23:59:24.408995+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-19T00:03:44.653601+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-19T00:07:35.266747+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-19T00:12:01.310947+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    },
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/peafowl",
+      "consulted_at": "2026-10-19T00:13:23.916354+00:00",
+      "method": "Web research, About / train made of tail coverts, not the tail feathers"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/curiosity/text",
+      "text_sha256": "cd6b42206b7419ba683cb4c8896cd3dc965e00c90ef21814e4e84db4ada1b83b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/distribution/text",
+      "text_sha256": "8815ca1dc395bcf002ed107be7f6d1bc1b0bfe2ea7de818f459e8bc03e9e8be0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/hint/text",
+      "text_sha256": "107a9419132e0f38c537879e0f284d387e3a4b2ab4ac686fddabf5054cfd96d8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/morphology/text",
+      "text_sha256": "275adf55d7b021c6680ea0ca6bb923815865bad8706c4b7a2a515879e09670f0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/nutrition/text",
+      "text_sha256": "5f7971f31a5fa781b31534a22d754a5b958efb077788913ea095eb6c4b824886"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/129/summary/text",
+      "text_sha256": "a2616845c88a1b4e154aa16dfcb831e19eb0e41a108ab0a5a10ad978b43901cb"
+    }
+  ]
+}

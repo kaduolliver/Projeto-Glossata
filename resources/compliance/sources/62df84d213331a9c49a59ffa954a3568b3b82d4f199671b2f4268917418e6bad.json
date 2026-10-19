@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.259847+00:00",
+  "source_url": "https://www.inaturalist.org/observations/106224223",
+  "species_id": "79",
+  "photo_id": "178409675",
+  "photo_sha256": "2c39e33e296276f605a2ee144fe85fb3135a6c4bc69f26c69652057361f53082",
+  "comparison": "Pale laterally attached small caps and gills on wood, not pores. No luminescence inferred from this nonluminescent image.",
+  "archived_taxon": {
+    "id": 68309,
+    "name": "Panellus stipticus",
+    "rank": "species"
+  },
+  "observation_id": 106224223,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "41cc23f511484b498e7bebd6010034faa578dfbf02e10df408f162dd535b3f91"
+}

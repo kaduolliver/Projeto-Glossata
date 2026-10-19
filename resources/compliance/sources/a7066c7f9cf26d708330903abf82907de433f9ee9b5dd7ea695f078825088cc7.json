@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Mud, Louisiana, USA. Archive supplies the isolation origin, not a complete distribution or confirmation of every freshwater ecosystem.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.dsmz.de/collection/catalogue/details/culture/DSM-1416",
+      "consulted_at": "2026-10-18T23:56:22.459647+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/distribution/text",
+      "text_sha256": "0e3a286fc2c2de26f757484a96f51056609e9f05b6ed9c8b5cfffd8d87a4cba8"
+    }
+  ]
+}

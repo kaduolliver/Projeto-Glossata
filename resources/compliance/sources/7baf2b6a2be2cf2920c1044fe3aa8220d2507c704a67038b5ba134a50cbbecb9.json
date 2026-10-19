@@ -1,0 +1,25 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Indiana rock-ledge record explicitly listed. Removed an unsupported soil qualifier from this species-specific range; not a worldwide map.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording.",
+    "Historical occurrence only; soil records of neighboring Scytonema entries on the same printed page are not assigned to Hassallia."
+  ],
+  "sources": [
+    {
+      "source_url": "https://journals.indianapolis.iu.edu/index.php/ias/article/download/4914/4920/10925",
+      "consulted_at": "2026-10-19T00:07:35.272757+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/117/distribution/text",
+      "text_sha256": "7cbc892778fd2681ba3f4c19dd4d5734bae73b8169cd1b7554aa994bf858d419"
+    }
+  ]
+}

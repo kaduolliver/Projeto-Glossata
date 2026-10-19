@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Specific epithet explicitly means little mousetrap; this does not imply feeding on rodents.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
+      "consulted_at": "2026-10-18T23:40:01.694777+00:00",
+      "response_sha256": "ad4370d528dbd5f153afc409e451999c47683ae39ede76a5d15cc51ebfec96a2"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/134/etymology_hints/species/text",
+      "text_sha256": "00cff224ec5ff28b83722195fc40a60b88181bde6fb45024e81e3440ecdff8e3"
+    }
+  ]
+}

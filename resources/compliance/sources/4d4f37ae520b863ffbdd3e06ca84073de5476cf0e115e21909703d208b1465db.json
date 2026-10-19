@@ -1,0 +1,45 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Central Mexico–Central America in narrative native range; explicit discrepancy: detailed list includes India as native although narrative omits it. Draft says area includes Mexico/Central America, not that every other occurrence is introduced. Large arrowlike blades/long petioles inspected; no food or medicinal recommendation.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording.",
+    "POWO displays dataset-specific terms, including WCVP CC BY 3.0 and different terms for descriptions/images. No site-wide permission or third-party media grant inferred."
+  ],
+  "sources": [
+    {
+      "source_url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:89369-1",
+      "consulted_at": "2026-10-19T00:03:44.660132+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/curiosity/text",
+      "text_sha256": "f8fef7d576a94b5314688fb83af7003e0632b8812efd5f01da6583e3d1793c7c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/distribution/text",
+      "text_sha256": "f386f8d4797f257389c52010ce0fe7abd97794e36833ec128743441d8436582c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/hint/text",
+      "text_sha256": "c97221b627145403b6fe66bb6f80b0172a2187cc679631685ffe38b16f12a921"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/morphology/text",
+      "text_sha256": "5080dcee2772d2516ebcaf1b7300d39455646820346d6394d3343115d878c9e5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/54/summary/text",
+      "text_sha256": "ce54c510a231e31bc57d23aeb503271c0b3c8a43a2b93f3728a166edf9d19f7f"
+    }
+  ]
+}

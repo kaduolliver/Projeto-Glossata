@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.776867+00:00",
+  "source_url": "https://www.inaturalist.org/observations/92293",
+  "species_id": "150",
+  "photo_id": "134408",
+  "photo_sha256": "b2e46a4b4f1f0c73821abd5255b0e4e839e4852a85d1d86db64f8df5247a995c",
+  "comparison": "Thick angular/cup-like blades grouped on branches. Tropical range requires herbarium/other geographic evidence.",
+  "archived_taxon": {
+    "id": 130567,
+    "name": "Turbinaria ornata",
+    "rank": "species"
+  },
+  "observation_id": 92293,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "2849ad662754a6d19da762e282b686d711176fb4d712f70d4685cd9ac98691c4"
+}

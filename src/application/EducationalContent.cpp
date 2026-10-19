@@ -43,11 +43,12 @@ QJsonObject EducationalContent::speciesContent(const Species &s) const
 }
 QVariantMap EducationalContent::nameOrigin(const Species &s) const
 {
-    if (!usableReview(speciesContent(s).value("governance").toObject().value("etymology").toObject())) return {};
+    const auto topic=speciesContent(s).value("governance").toObject().value("etymology").toObject();
     const auto refs=speciesContent(s).value("name_origin").toObject().value("parts").toArray();
     QStringList texts,urls;
     QString title;
     for(const auto &ref : refs) {
+        if(!usableScientificHintNote(resolve(ref),topic,"etymology"))return {};
         const auto part=note(resolve(ref));if(part.isEmpty())return {};
         texts.append(part.value("text").toString());
         const auto url=part.value("source_url").toString();
@@ -148,8 +149,9 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
                   {"source_title","iNaturalist · classificação do grupo"},{"assistance",item.value("taxonomic_assistance").toVariant()}});
         if(result[0].available())break;
     }
-    if (usableReview(item.value("governance").toObject().value("etymology").toObject()))
-        assign(1,note(resolve(item.value("etymology_hints").toObject().value(rank))));
+    const auto etymology=resolve(item.value("etymology_hints").toObject().value(rank));
+    if (usableScientificHintNote(etymology,item.value("governance").toObject().value("etymology").toObject(),"etymology"))
+        assign(1,note(etymology));
     // Existing reviewed appearance notes are reused, but habitat/diet clues and
     // vague group fallbacks must not silently become high-assistance morphology.
     const auto morphology=note(resolve(item.value("morphological_hint")));
@@ -169,7 +171,7 @@ QuestionHints EducationalContent::questionHints(const Species &s,const QString &
         }
         distinguishes = documentedAlternatives < 3 || sharedAlternatives < 3;
     }
-    if(distinguishes && usableReview(item.value("governance").toObject().value("morphology").toObject())
+    if(distinguishes && usableScientificHintNote(QJsonObject::fromVariantMap(morphology),item.value("governance").toObject().value("morphology").toObject(),"morphology")
        && morphology.value("ranks").toList().contains(rank)
        && morphology.value("photo_id").toString()==s.photo.id
        && !leaks(morphology.value("text").toString(),s,options))assign(2,morphology);
@@ -227,7 +229,8 @@ QuestionHints EducationalContent::progressiveHints(const Species &s,const QStrin
                     || assistanceCeiling(assistanceLevel(recipe.value("grade").toString()))!=result[slot].ceiling())continue;
                 const auto item=speciesContent(s);const auto topic=recipe.value("scientific_topic").toString();
                 const auto source=resolve(recipe.value("source_note"));
-                if(!usableReview(item.value("governance").toObject().value(topic).toObject()) || note(source).isEmpty()
+                if(!usableScientificHintNote(source,item.value("governance").toObject().value(topic).toObject(),topic)
+                    || (type==HintType::Morphological && source.value("photo_id").toString()!=s.photo.id)
                     || source.value("text").toString()!=recipe.value("source_text").toString(text) || source.value("source_url").toString()!=url)continue;
                 if(recipe.value("organism_scope").toBool() && !recipe.value("original_ranks").toArray().contains(rank))
                     text=QStringLiteral("Sobre este organismo, sem generalizar para todo o grupo: ")+text;

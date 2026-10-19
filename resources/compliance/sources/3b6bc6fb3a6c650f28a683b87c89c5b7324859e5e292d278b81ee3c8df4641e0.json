@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Drying/wilting; linguistic meaning, not proof of hydration state.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/marasmius-rotula.php",
+      "consulted_at": "2026-10-18T23:36:42.519585+00:00",
+      "response_sha256": "b7b81d6f8142725ba1653089d2acb8b7f3ed67655a479771a3ad40af6271107b"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/71/etymology_hints/genus/text",
+      "text_sha256": "21d88f4f29de71a9e15b702178f275bbe0056e55b9d80dc35f4e56eabd340864"
+    }
+  ]
+}

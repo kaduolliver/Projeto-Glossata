@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Woody shrub, yellow/golden flower groups near branch ends, restricted Western Cape rocky fynbos. Narrowed the draft to the documented Western Cape/Gamkaberg and an eastern population; no unverified Perdeberg name.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
+      "consulted_at": "2026-10-19T00:13:23.912260+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/curiosity/text",
+      "text_sha256": "3b2f827ac20121674ca71b04b7ce3aba394b12ea3376e34a5c1747647fc7093e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/distribution/text",
+      "text_sha256": "5259770068a710c8b81f525285c254d418dbed17e77aba4b8319d50ff960d0d6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/hint/text",
+      "text_sha256": "3f3564246c40e97b9fb9b151e4cac42ff66b18b73bc70160dcb556ecaffd510b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/morphology/text",
+      "text_sha256": "846540901393139a462eff2433612c761a88bb9881b970d1478d811e3aaa2eb1"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/51/summary/text",
+      "text_sha256": "66d24656879e7bb57e73304958f45a6862c8ec5365bed3a35c092f0d2689360f"
+    }
+  ]
+}

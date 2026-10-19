@@ -1,5 +1,6 @@
 """Offline import and provenance regression tests; no requests to the live API."""
 import contextlib
+import functools
 import hashlib
 import importlib.util
 import io
@@ -10,9 +11,34 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from unittest import mock
 
 PROJECT = pathlib.Path(__file__).resolve().parents[1]
+REPOSITORY = PROJECT
+
+
+@functools.lru_cache(maxsize=2)
+def historical_catalog_archive(commit):
+    return subprocess.check_output(['git','archive','--format=zip',commit,
+        'resources','docs','scripts','src'],cwd=REPOSITORY)
+
+
+def at_catalog_commit(commit):
+    """Historical batch assertions run at their real state, never today's grants."""
+    def decorate(method):
+        @functools.wraps(method)
+        def run(self):
+            with tempfile.TemporaryDirectory(prefix='glossata-historical-catalog-') as directory:
+                root=pathlib.Path(directory)
+                with zipfile.ZipFile(io.BytesIO(historical_catalog_archive(commit))) as archive:
+                    for entry in archive.infolist():
+                        self.assertTrue((root/entry.filename).resolve().is_relative_to(root.resolve()))
+                    archive.extractall(root)
+                with mock.patch.object(sys.modules[__name__],'PROJECT',root):
+                    return method(self)
+        return run
+    return decorate
 sys.path.insert(0, str(PROJECT / "scripts"))
 spec = importlib.util.spec_from_file_location("importer", PROJECT / "scripts/import_inaturalist.py")
 importer = importlib.util.module_from_spec(spec)
@@ -25,7 +51,7 @@ with mock.patch.dict(sys.modules, {"import_inaturalist": importer}):
 
 class ImportTests(unittest.TestCase):
     def historical_bytes(self, revision, relative):
-        return subprocess.check_output(['git','show',revision+':'+relative],cwd=PROJECT)
+        return subprocess.check_output(['git','show',revision+':'+relative],cwd=REPOSITORY)
 
     def setUp(self):
         self.species = json.loads((PROJECT / "resources/data/species.json").read_text(encoding="utf-8"))
@@ -159,7 +185,8 @@ class ImportTests(unittest.TestCase):
                          'photo_provenance.json','content_policy.json','education.json','phylogeny.json','progressive_hints.json','group_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
@@ -197,7 +224,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             if packet['state']!='draft':
                 # Restore the real pre-confirmation fixture in this temporary
@@ -224,6 +252,7 @@ class ImportTests(unittest.TestCase):
             governance.save(root/'resources/data/education.json',after)
             self.assertEqual(after,education.build(root,persist=False))
 
+    @at_catalog_commit('1dc3c75')
     def test_confirmed_group_batch_is_scoped_and_changed_wording_requires_new_review(self):
         import content_governance as governance
         import rights_investigation
@@ -260,7 +289,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             original_ledger=(root/'resources/compliance/review_history.jsonl').read_bytes()
             groups=governance.load(root/packet['target'])
@@ -312,7 +342,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             for relative in (packet['target'],'resources/data/education.json','resources/data/progressive_hints.json',
                              'resources/compliance/review_history.jsonl','resources/compliance/asset_rights.json'):
@@ -354,6 +385,7 @@ class ImportTests(unittest.TestCase):
             for key in changed:
                 self.assertFalse(regenerated['notes'][key]['governance']['usable'])
 
+    @at_catalog_commit('1dc3c75')
     def test_confirmed_profile_batch_restores_only_approved_notes_and_keeps_rights_partial(self):
         import content_governance as governance
         import rights_investigation
@@ -397,9 +429,17 @@ class ImportTests(unittest.TestCase):
             self.assertFalse(current['species'][sid]['governance']['education']['usable'])
         self.assertFalse(current['notes']['species:110:morphological_hint']['assistance']['governance']['usable'])
         old_education=json.loads(self.historical_bytes(packet['promotion']['proposal_git_commit'],'resources/data/education.json'))
-        self.assertEqual(current['species']['82'],old_education['species']['82'])
-        self.assertEqual({k:v for k,v in current['notes'].items() if k not in receipts},
-                         {k:v for k,v in old_education['notes'].items() if k not in receipts})
+        def scientific_values(value):
+            # Later, separately confirmed technical wording changes assessments
+            # only. Their exact fields/grades are checked by the dedicated batch
+            # regression; this historical profile test preserves every other field.
+            if isinstance(value,dict):return {k:scientific_values(v) for k,v in value.items()
+                                              if k not in {'assistance','taxonomic_assistance'}}
+            if isinstance(value,list):return [scientific_values(v) for v in value]
+            return value
+        self.assertEqual(scientific_values(current['species']['82']),scientific_values(old_education['species']['82']))
+        self.assertEqual(scientific_values({k:v for k,v in current['notes'].items() if k not in receipts}),
+                         scientific_values({k:v for k,v in old_education['notes'].items() if k not in receipts}))
         assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
         self.assertIsNone(assets['own_material_licenses']['texts'])
         for asset in assets['assets']:
@@ -460,6 +500,110 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(ids,{'PMC5638950','PMC9315710'})
         self.assertIn('PMC6909477',packet['source_evidence'])
 
+    @at_catalog_commit('1dc3c75')
+    def test_issue2_technical_wording_changes_only_bound_rationales(self):
+        import copy
+        import content_governance as governance
+        proposal=json.loads((PROJECT/'docs/propostas/REDACAO_TECNICA_ISSUE_2.json').read_bytes())
+        self.assertEqual(governance.digest(proposal['wordings']),proposal['fingerprint'])
+        self.assertEqual(len(proposal['wordings']),15)
+        self.assertIn(proposal['fingerprint'],(PROJECT/'docs/propostas/REDACAO_TECNICA_ISSUE_2.md').read_text(encoding='utf8'))
+        self.assertFalse(proposal['human_approval_recorded'])
+        originals={name:self.historical_bytes(proposal['base_commit'],name) for name in proposal['source_files']}
+        for name,raw in originals.items():
+            self.assertEqual(hashlib.sha256(raw).hexdigest(),proposal['source_files'][name])
+        data={name:json.loads(raw) for name,raw in originals.items() if name.endswith('.json')}
+        changed=copy.deepcopy(data);seen=set()
+        for wording in proposal['wordings']:
+            self.assertEqual(hashlib.sha256(wording['proposed_text'].encode('utf8')).hexdigest(),wording['text_sha256'])
+            for binding in wording['occurrences']:
+                key=(binding['file'],binding['pointer']);self.assertNotIn(key,seen);seen.add(key)
+                parts=binding['pointer'].strip('/').split('/');node=changed[binding['file']]
+                for part in parts[:-1]:node=node[int(part)] if isinstance(node,list) else node[part]
+                field=int(parts[-1]) if isinstance(node,list) else parts[-1]
+                self.assertEqual(hashlib.sha256(node[field].encode('utf8')).hexdigest(),binding['previous_text_sha256'])
+                self.assertIn(parts[-1],{'rationale','limitations'})
+                node[field]=wording['proposed_text']
+        self.assertEqual(len(seen),1147)
+        script=originals['scripts/review_hints.py'].decode('utf8')
+        self.assertEqual(len(proposal['generator_literal_replacements']),4)
+        for replacement in proposal['generator_literal_replacements']:
+            self.assertEqual(script.count(replacement['previous_text']),1)
+            script=script.replace(replacement['previous_text'],replacement['proposed_text'])
+        with tempfile.TemporaryDirectory() as directory:
+            root=pathlib.Path(directory)
+            for folder in ('resources/data','resources/compliance'):
+                shutil.copytree(PROJECT/folder,root/folder)
+            for name in ('src/application/EducationalContent.cpp','src/domain/Hint.h'):
+                (root/name).parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/name,root/name)
+            # Compare both versions inside the same isolated root. No production
+            # file, review event or permission is written by this regression.
+            for name,value in data.items():governance.save(root/name,value)
+            before=governance.records(root,education.build(root,persist=False))
+            governance.save(root/'resources/data/hint_education.json',changed['resources/data/hint_education.json'])
+            target=root/'scripts/review_hints.py';target.parent.mkdir(parents=True)
+            namespace={'__name__':'proposal_regression','__file__':str(target)}
+            exec(compile(script,str(target),'exec'),namespace)
+            generated=namespace['evaluate'](root)
+            self.assertEqual(generated['species'],changed['resources/data/progressive_hints.json']['species'])
+            for field in ('rationale','limitations'):
+                self.assertEqual(generated['evaluation'][field],changed['resources/data/progressive_hints.json']['evaluation'][field])
+            governance.save(root/'resources/data/progressive_hints.json',generated)
+            after=governance.records(root,education.build(root,persist=False))
+            self.assertEqual({k:v['content_sha256'] for k,v in before.items() if v['kind']!='assistance'},
+                             {k:v['content_sha256'] for k,v in after.items() if v['kind']!='assistance'})
+
+    @at_catalog_commit('1dc3c75')
+    def test_confirmed_technical_wording_preserves_science_grades_and_partial_rights(self):
+        import content_governance as governance
+        import rights_investigation
+        report=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())
+        application=report['remaining_text_regularization']['technical_wording_application']
+        ref=application['confirmation_evidence'];raw=(PROJECT/ref['path']).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),ref['sha256'])
+        proof=json.loads(raw);proposal=json.loads((PROJECT/proof['proposal_document']).read_bytes())
+        self.assertEqual(proof['wordings'],proposal['wordings'])
+        self.assertEqual(proof['proposal_fingerprint'],governance.digest(proof['wordings']))
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente esse lote')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada ao lote')
+        self.assertFalse(any(proof['limits'].values()))
+        self.assertEqual(proof['generator_literal_replacements'],proposal['generator_literal_replacements'])
+        source_files={name:json.loads((PROJECT/name).read_bytes()) for name in proof['source_files'] if name.endswith('.json')}
+        seen=set()
+        for wording in proof['wordings']:
+            for binding in wording['occurrences']:
+                node=source_files[binding['file']]
+                for part in binding['pointer'].strip('/').split('/'):
+                    node=node[int(part)] if isinstance(node,list) else node[part]
+                self.assertEqual(node,wording['proposed_text']);seen.add((binding['file'],binding['pointer']))
+        self.assertEqual(len(seen),1147)
+        def without_rationale(value):
+            if isinstance(value,dict):return {k:without_rationale(v) for k,v in value.items() if k!='rationale'}
+            if isinstance(value,list):return [without_rationale(v) for v in value]
+            return value
+        previous_hints=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/hint_education.json'))
+        self.assertEqual(without_rationale(source_files['resources/data/hint_education.json']),without_rationale(previous_hints))
+        previous_recipes=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/progressive_hints.json'))
+        self.assertEqual(without_rationale(source_files['resources/data/progressive_hints.json']['species']),
+                         without_rationale(previous_recipes['species']))
+        current=education.build(PROJECT,persist=False)
+        previous_education=json.loads(self.historical_bytes(proof['base_commit'],'resources/data/education.json'))
+        old=governance.records(PROJECT,previous_education);new=governance.records(PROJECT,current)
+        self.assertEqual({k:v['content_sha256'] for k,v in old.items() if v['kind']!='assistance'},
+                         {k:v['content_sha256'] for k,v in new.items() if v['kind']!='assistance'})
+        self.assertEqual((PROJECT/'resources/compliance/review_history.jsonl').read_bytes(),
+                         self.historical_bytes(proof['base_commit'],'resources/compliance/review_history.jsonl'))
+        inventory=rights_investigation.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        rows=[r for r in inventory['rights_metadata']['records']
+              if any(e.get('path')==ref['path'] for e in r['declared_metadata'].get('evidence',[]))]
+        self.assertEqual(len(rows),15);self.assertEqual(sum(len(r['bindings']) for r in rows),1147)
+        self.assertFalse(any(r['rights_issues'] for r in rows))
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        self.assertIsNone(assets['own_material_licenses']['texts']);self.assertIsNone(assets['own_material_licenses']['collection'])
+        for asset in assets['assets']:
+            if asset['path'] in source_files:self.assertFalse(asset['permission']['distribution_allowed'])
+
     def test_education_rejects_wrong_identity_missing_text_and_regional_status(self):
         original=json.loads((PROJECT/'resources/data/species_profiles.json').read_text(encoding='utf8'))
         with tempfile.TemporaryDirectory() as directory:
@@ -472,6 +616,60 @@ class ImportTests(unittest.TestCase):
                 (root/'resources/data/species_profiles.json').write_text(json.dumps(profiles),encoding='utf8')
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
                     education.load_profiles()
+
+    def test_consolidated_confirmation_covers_exact_texts_without_approving_aggregates(self):
+        import content_governance as governance
+        import rights_investigation as rights
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        grants=[a for a in assets['assets'] if a.get('permission',{}).get('scope')=='documented_educational_expression_only']
+        self.assertEqual({a['path'] for a in grants},{'resources/data/species_profiles.json',
+            'resources/data/hint_education.json','resources/data/progressive_hints.json'})
+        reference=grants[0]['permission']
+        raw=(PROJECT/reference['evidence_path']).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),reference['evidence_sha256'])
+        proof=json.loads(raw)
+        self.assertEqual(proof['kind'],'educational_consolidated_text_confirmation')
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente o lote consolidado')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada ao lote')
+        proposal=governance.load(PROJECT/proof['proposal']['path'])
+        self.assertEqual(hashlib.sha256((PROJECT/proof['proposal']['path']).read_bytes()).hexdigest(),proof['proposal']['sha256'])
+        self.assertEqual(governance.digest(proof['conference_scope']),proof['conference_fingerprint'])
+        self.assertEqual(proposal['conference_scope'],proof['conference_scope'])
+        self.assertEqual(governance.digest(proposal['changes']),proof['source_replacement_fingerprint'])
+        self.assertEqual(len(proposal['changes']),887)
+        self.assertEqual(len(proof['occurrences']),1153)
+        seen=set()
+        for binding in proof['occurrences']+proposal['protected_occurrences']:
+            data=governance.load(PROJECT/binding['file'])
+            for part in binding['pointer'].strip('/').split('/'):
+                data=data[int(part)] if isinstance(data,list) else data[part]
+            self.assertEqual(hashlib.sha256(data.encode('utf8')).hexdigest(),binding['text_sha256'])
+            key=(binding['file'],binding['pointer']);self.assertNotIn(key,seen);seen.add(key)
+        inventory=rights.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        self.assertFalse(any(r['rights_issues'] for r in inventory['rights_metadata']['records']))
+        for asset in grants:
+            self.assertTrue(asset['permission']['distribution_allowed'])
+            self.assertEqual(rights.text_resource_issues(inventory,asset['path']),[])
+        self.assertIsNone(assets['own_material_licenses']['texts'])
+        self.assertIsNone(assets['own_material_licenses']['collection'])
+        ledger=PROJECT/'resources/compliance/review_history.jsonl'
+        self.assertTrue(ledger.read_bytes().startswith(self.historical_bytes('1dc3c75',ledger.relative_to(PROJECT).as_posix())))
+        events=governance.read_ledger(PROJECT)
+        self.assertEqual(len(events),1047)
+        records=governance.records(PROJECT)
+        for event in events[76:]:
+            self.assertEqual(event['state'],'approved_editorial')
+            self.assertEqual(records[event['key']]['kind'],'claim')
+            self.assertEqual(records[event['key']]['content_sha256'],event['content_sha256'])
+            self.assertEqual(event['confirmation_evidence']['path'],reference['evidence_path'])
+        generated=education.build(PROJECT,persist=False)
+        self.assertEqual(generated,governance.load(PROJECT/'resources/data/education.json'))
+        for entry in generated['species'].values():
+            self.assertEqual(entry['governance']['education']['state'],'needs_review')
+            self.assertFalse(entry['governance']['education']['usable'])
+        for event in events[76:]:
+            self.assertEqual(generated['notes'][event['key']]['governance']['state'],'approved_editorial')
 
     def test_extracted_group_prose_matches_the_audited_pre_refactor_values(self):
         import content_governance as governance
@@ -534,7 +732,9 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(result['total_species'],122)
         self.assertEqual(result['valid_photo_records'],122)
         self.assertEqual(result['competitive_pool'],80)
+        # Current usable assertions come from hash-bound reviews, not raw flags.
         self.assertEqual(result['verified_etymology'],49)
+        self.assertEqual(result['verified_morphology'],104)
         self.assertEqual(result['incompatible_photo_licenses'],[])
         self.assertEqual(result['errors'],[])
         self.assertNotIn('20',result['eligible_ids_by_rank']['species'])

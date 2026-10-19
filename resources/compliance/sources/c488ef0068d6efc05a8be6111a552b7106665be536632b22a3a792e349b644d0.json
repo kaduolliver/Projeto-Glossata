@@ -1,0 +1,64 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Chiton group: eight plates in girdle, muscular foot and grazing algae/other surface organisms; named Chiton glaucus specimen documents New Zealand. DOC ecosystem report independently records coralline-algal diet under the old name Amaurochiton glaucus, synonym confirmed in WoRMS. No assumption that Queensland page records this species in Queensland.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.museum.qld.gov.au/learn-and-discover/animals-of-queensland/molluscs/chitons",
+      "consulted_at": "2026-10-18T23:43:33.305320+00:00",
+      "response_sha256": "6197b7b2bdef93a51fba23e71c9cf80da06e748d50c58766cf5a658fab9daf9b"
+    },
+    {
+      "source_url": "https://collections.tepapa.govt.nz/object/494602",
+      "locator": "Species identification; New Zealand locality; specimen M.145149",
+      "consulted_at": "2026-10-19T00:13:23.923909+00:00"
+    },
+    {
+      "source_url": "https://www.doc.govt.nz/globalassets/documents/science-and-technical/sfc288entire.pdf",
+      "locator": "Lundquist and Pinkerton, printed p.62 / Amaurochiton glaucus and Creese (1988)",
+      "consulted_at": "2026-10-19T00:13:23.923909+00:00"
+    },
+    {
+      "source_url": "https://www.marinespecies.org/aphia.php?p=taxlist&pid=64&rComp=%3E%3D&tRank=220",
+      "locator": "Amaurochiton glaucus accepted as Chiton glaucus",
+      "consulted_at": "2026-10-19T00:13:23.923909+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/curiosity/text",
+      "text_sha256": "cb383d725c3704560c3634fdf8b666b34202cbf8f8dccc5b2b3b2b0dec77c9a7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/distribution/text",
+      "text_sha256": "c76a0ae29d38c284b5a190901c96ce4ca9942a0e8a5f5499a80e7d0e2cfe763e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/hint/text",
+      "text_sha256": "1636876828db458ea76bb70d13977274bb548125cb02d8d8d5b1613fb8e78f34"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/morphology/text",
+      "text_sha256": "7134b15ba4b0a06803ed61dd608eeef829a309a0c79e136b99a81f6de3793b0f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/nutrition/text",
+      "text_sha256": "3899ceb82bba422bcb403826e1526daf7fda32d9ce1ff2a5f612223dcd009c2a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/25/summary/text",
+      "text_sha256": "a70601a185fc3946c214014f511f273276832cd302e275ac8da4adafa1bb0a59"
+    }
+  ]
+}

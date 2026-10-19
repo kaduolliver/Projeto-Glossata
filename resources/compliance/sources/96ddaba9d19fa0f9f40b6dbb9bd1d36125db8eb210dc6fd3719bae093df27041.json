@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.400174+00:00",
+  "source_url": "https://www.inaturalist.org/observations/50942703",
+  "species_id": "85",
+  "photo_id": "80915734",
+  "photo_sha256": "42bf5da2a497e9de080294d1e01576666ebd71f0da415ddf143896ca2b9d9d43",
+  "comparison": "Clusters of dark small stalked structures with rounded lobes.",
+  "archived_taxon": {
+    "id": 552574,
+    "name": "Metatrichia vesparia",
+    "rank": "species"
+  },
+  "observation_id": 50942703,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "643e57af787640c19a6e4c25428b56fb8de3e62f423eede4d78b821d3982eb11"
+}

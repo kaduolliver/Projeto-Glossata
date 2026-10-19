@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Rod-shaped fluorescent pseudomonads, soil/rhizosphere/water records and organic resources. Preserves strain/species-complex limitations; does not import a new taxonomy or medical conclusions.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4187640/",
+      "consulted_at": "2026-10-19T00:07:35.272757+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/curiosity/text",
+      "text_sha256": "a2cc556e4e40c5d5a5e66f8716ab2b60f304a9f0ed6181b43343290cc0b792e9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/distribution/text",
+      "text_sha256": "48f142149c499ac72b2ce7a568a0f7deb8885cfe1b261ae227425b6f8f1e8cb5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/hint/text",
+      "text_sha256": "75a3d47867e580678050350df73f2ad8a856615fe561875a784c0a1cde86776f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/morphology/text",
+      "text_sha256": "4ee28dc1edc2baa97103d2dafa8a2b6c6e550fe3e6be58e96a9a0365a2f7e1ee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/nutrition/text",
+      "text_sha256": "e9221141b3272ae9b4571df9beb0483d7e349ee5aaabea9ba5443ad2e6d86237"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/119/summary/text",
+      "text_sha256": "803def7676c488103b36c65fac23f39e3137f2cb6ff551258b3526397dfc9d47"
+    }
+  ]
+}

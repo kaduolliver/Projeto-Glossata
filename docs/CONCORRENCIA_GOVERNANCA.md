@@ -41,6 +41,18 @@ Por padrão, a aquisição não espera: conflito gera `FileExistsError` antes da
 
 Exceções liberam a posse em `finally`. Encerrar o processo também fecha seus descritores e libera o bloqueio; o arquivo pode continuar existindo sem impedir a próxima operação. Interrupção antes da substituição deixa o histórico antigo; depois dela, o evento completo permanece. Para permissões, a projeção atrasada segue o [procedimento do INV-02](RECUPERACAO_PERMISSOES.md). Não se acrescenta evento compensatório nem se apaga decisão para restaurar uma cadeia.
 
+Em 2026-10-18, a conferência textual da Issue #2 reproduziu recusas temporárias de
+`os.replace` no Windows, tanto na cópia isolada quanto na aplicação. O gravador
+agora permite até seis tentativas para `PermissionError` com códigos Windows
+5, 32 ou 33, com cinco esperas que somam no máximo 1,55 s, além do tempo das
+operações de disco. Mantém o mesmo temporário sincronizado e a trava, e confere
+novamente o topo antes de cada tentativa. Não trunca o destino nem contorna ACLs.
+Uma recusa persistente continua sendo erro; falhas de permissão não reconhecidas
+não são repetidas. Quatro regressões sintéticas verificam sucesso sem duplicidade,
+limite com preservação do prefixo/liberação da trava, interferência entre
+tentativas e propagação de erro não reconhecido. A retomada do lote isolado
+preservou os 1.047 eventos byte a byte.
+
 **Atualização de instalações antigas:** finalize os processos de manutenção antes de trocar os scripts. A trava antiga em `build/curation/governance.lock` não é o novo ponto de coordenação; não há garantia de interoperabilidade com uma versão antiga já carregada em memória. Uma antiga `build/curation/decision.lock` é recusada conservadoramente: verifique seu processo proprietário antes de remover somente essa sentinela legada. A trava `sync.lock` da publicação de Issues continua independente e não concede aprovação de conteúdo.
 
 O arquivo operacional é ignorado pelo Git, rejeitado pelo auditor se for adicionado à força e explicitamente excluído do manifesto e da cópia de evidências para o pacote. Não se exclui outro arquivo de licença ou histórico desses controles. O caminho canônico faz aliases do mesmo diretório de históricos usarem a mesma trava. Clones com arquivos separados não compartilham uma trava global: uma eventual mesclagem de históricos divergentes precisa de avaliação humana; não se apagam eventos para fazer o merge passar.

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "North/Central America and Caribbean; larval solanaceous foliage versus adult nectar; green larva/diagonal marks/red horn versus mottled adult and yellow-orange abdominal spots.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ask.ifas.ufl.edu/publication/IN1187",
+      "consulted_at": "2026-10-18T23:32:43.834813+00:00",
+      "response_sha256": "ccaae1a2f47308d405e13994acd948cd35c7757f8251b8a651e483e7985ab009"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/curiosity/text",
+      "text_sha256": "462306376e1bad0e88209590e7c9138a935d36debc013b76fd4d04edb1e15973"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/distribution/text",
+      "text_sha256": "05ea90910955173bc7cfbfbd8b2b5c9005bdbebb120b99435b8b847e750b0a9c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/hint/text",
+      "text_sha256": "84fdc863bc7100b47f75c0877f74a8a4330cb0ab57c8f030f065e9224d9df502"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/morphology/text",
+      "text_sha256": "7280e35c97236f5043caaf5fee0d36ad8b8801b83633df57294e09db5885393a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/nutrition/text",
+      "text_sha256": "ffe6c4d250611a72bf078c5b288e7ccbbaac8d8ab74193a18039212d40774247"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/21/summary/text",
+      "text_sha256": "81bb82f4658853d9c42445e35f5410b67fa1ff6d54f2552003651905777bf723"
+    }
+  ]
+}

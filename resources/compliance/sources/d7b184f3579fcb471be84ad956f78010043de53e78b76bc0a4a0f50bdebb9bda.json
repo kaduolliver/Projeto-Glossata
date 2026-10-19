@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Lemures: ghosts/spectres; catta: New Latin cat. Cultural comparison, no assertion of feline relationship.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
+      "consulted_at": "2026-10-18T23:41:24.970121+00:00",
+      "response_sha256": "acffd8d6db868629a720141ff8fa62bf34b56af1d41c163c94728803e0f8d788"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/128/etymology_hints/genus/text",
+      "text_sha256": "a51557f57ce5ae156bf78cc44147d83caafafd412d7919e6bbbfd0722b2dc07c"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/128/etymology_hints/species/text",
+      "text_sha256": "49524ff9c3b0a8b0500606701fc4081c4144fbe6af4b98e697c1ea4df38c072d"
+    }
+  ]
+}

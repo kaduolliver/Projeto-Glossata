@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Extracellular Mn oxidation, pyruvate in growth medium, iron influence and biogenic oxides. Metal transformation is explicitly distinguished from proof that a metal is the sole energy source.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2648177/",
+      "consulted_at": "2026-10-18T23:56:22.458644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.atcc.org/products/43182",
+      "locator": "Specific applications: iron-oxidizing protein",
+      "consulted_at": "2026-10-18T23:56:22.458644+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/curiosity/text",
+      "text_sha256": "41332d2ca8e47eec17f044de09d4f736a7b6518088528d182632d36cb000f4b4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/hint/text",
+      "text_sha256": "f4ee533d26322823184d7b0458e522ebb0e2f62073429ceff470a8321f60980e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/nutrition/text",
+      "text_sha256": "96ab1a5d0b7d28ec44e67c7738317ca6b00bd8b31dfcfd53df16b3426a830557"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/summary/text",
+      "text_sha256": "8c2ea6b3c63125bf68ed2d1b19445312169c960ed39a31031869c8d943f21bb0"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Large Achromatium cells, calcium carbonate and sulfur inclusions, aquatic sediments and sulfur cycling. Different populations and inferred genomic potentials not treated as identical experimentally demonstrated metabolism. Gray et al. documents named A. oxaliferum communities in northern England.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2015.00822/full",
+      "consulted_at": "2026-10-18T23:56:22.458644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC91685/",
+      "locator": "Gray et al. (1999), Abstract",
+      "consulted_at": "2026-10-18T23:56:22.458644+00:00",
+      "method": "Europe PMC official bibliographic API abstract examined; not full text"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/curiosity/text",
+      "text_sha256": "f4680249734c5ed4a6d94877702167d0bc9fcae903736173c4d4947d8b4f97f9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/distribution/text",
+      "text_sha256": "3a58e049bab9e64e44f23f1beca83f5455f851b093e2b621d3b30ec03f72aa9e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/hint/text",
+      "text_sha256": "299b6256bef384c36f242c5f79ed0c1bd8ad27ccce2d04e23bc4596af7aae6be"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/morphology/text",
+      "text_sha256": "decd6fd882d10e1e5ac1619de342253c72d40698c17713c781b52d3f23c115be"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/nutrition/text",
+      "text_sha256": "2cf22ef7cd3a99d1d218990bfffe77f451b50f23278bfefae249d07e3ba7c359"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/120/summary/text",
+      "text_sha256": "9016dfae600309467a560785a70c8fad346d1f8897b49c1479b9f340747c6fac"
+    }
+  ]
+}

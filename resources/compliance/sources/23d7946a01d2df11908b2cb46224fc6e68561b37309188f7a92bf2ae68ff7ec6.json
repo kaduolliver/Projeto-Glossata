@@ -1,0 +1,31 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 20379678,
+    "taxon": {
+      "id": 503891,
+      "name": "Physarum psittacinum",
+      "rank": "species"
+    },
+    "community_taxon_id": 503891,
+    "quality_grade": "research",
+    "photo_ids": [
+      "31473154",
+      "31473155",
+      "31473157"
+    ],
+    "archived_response_sha256": "b93100f3eaf963f246a33f4f6aa147b1dc7dd66a91f1b59e913755b06387d0e4",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:47.289375+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/20379678",
+  "catalog_species_id": "88",
+  "catalog_photo_id": "31473154",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "3e6e12b0287a016881b7837ee424a9df893262754ded53c4ece02f0de7f34c09",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

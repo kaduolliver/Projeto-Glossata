@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "B. alba filaments store intracellular sulfur. Filamentous organization/inclusions are the only structural facts used; no claim of complete sulfur oxidation to sulfate (which this study explicitly contradicts).",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/3316186/",
+      "consulted_at": "2026-10-18T23:59:24.414462+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.dsmz.de/collection/catalogue/details/culture/DSM-1416",
+      "locator": "Aquatic mud strain origin",
+      "consulted_at": "2026-10-18T23:59:24.414462+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/hint/text",
+      "text_sha256": "6a0dcbc307e2fb1a6f9a0ecccb0d60e1384d33dda82aae212c47c625e7ee1ce0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/morphology/text",
+      "text_sha256": "a3093c6d13eac109af059b46596246b84e2d018c41a9f1267d23d24c30858c05"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/109/summary/text",
+      "text_sha256": "feee06231edebf632e4bea46360f25be465b365638dfb00afac707b50b5e19ef"
+    }
+  ]
+}

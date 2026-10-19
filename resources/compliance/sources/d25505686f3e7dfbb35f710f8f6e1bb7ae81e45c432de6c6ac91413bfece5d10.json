@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Button-like thallus versus elongated straplike reproductive fronds, rocky shores. The long straps are not the whole vegetative body.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.marlin.ac.uk/species/detail/1358",
+      "consulted_at": "2026-10-18T23:43:27.842769+00:00",
+      "response_sha256": "d0f5b724654ffee5e0d5651316860d3fb04633b3d87ea220990eeacf07847117"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/curiosity/text",
+      "text_sha256": "5eb140d455324bc7b04b68c80a21b17d4cf44d23bf7d54d720da06dbd8c6cd10"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/distribution/text",
+      "text_sha256": "6c146ea41f08067c171e49c05de40a82fcfebe0769f26ab81d5b85296f39d7ae"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/hint/text",
+      "text_sha256": "5b0f3578d21a74ca3110bbb28cc692859110b3a560c4b6ac5ee92b57bdace3d4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/morphology/text",
+      "text_sha256": "1ac15c44b2934161005e8767c7402f9b21ab14c7f79e32810e7ce47b6f9eb18b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/144/summary/text",
+      "text_sha256": "cd9c91a3fb6ff4be3cf5fa809bce8c73077d7d711fd8ab7c006f76c6749a061e"
+    }
+  ]
+}

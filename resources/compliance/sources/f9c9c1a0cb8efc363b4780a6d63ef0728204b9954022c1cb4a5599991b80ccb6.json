@@ -1,0 +1,69 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Aquatic environmental association and organic compost isolate; independent 2011 genome abstract explicitly rod-shaped. No statement of universal presence in water, no clinical advice or laboratory protocol copied.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4029632/",
+      "consulted_at": "2026-10-19T00:07:35.272757+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3067608/",
+      "locator": "Beatson et al. (2011), Abstract: rod-shaped cells",
+      "consulted_at": "2026-10-19T00:07:35.272757+00:00"
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4029632/fullTextXML",
+      "consulted_at": "2026-10-19T00:08:10.979868+00:00",
+      "response_sha256": "4921a1928c7a3a1f82a3627e64af454f11e8c74bded7c5371a5f72e6ec39b6ec",
+      "bytes": 91382,
+      "kind": "selected_article_license_metadata",
+      "pmcid": "PMC4029632",
+      "title": "Quorum sensing activity of Aeromonas caviae strain YL12, a bacterium isolated from compost.",
+      "author_credit": "Lim YL, Ee R, Yin WF, Chan KG.",
+      "doi": "10.3390/s140407026",
+      "license_url": "http://creativecommons.org/licenses/by/3.0/",
+      "license": "CC-BY-3.0",
+      "locator": "front/article-meta/permissions/license; article DOI",
+      "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/curiosity/text",
+      "text_sha256": "347f300a8be65a98f7334b46130e278a03f74e44a99de23227a461254ee3a699"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/distribution/text",
+      "text_sha256": "85a1dc78f38a42c8ae1a536137396d87b4f7e974630abfdcc78226c555975ef7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/hint/text",
+      "text_sha256": "f8f1f33e1f8b0d914bc42a4e933cf18d5f4ba176a3c64e6653b30e1350a707bc"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/morphology/text",
+      "text_sha256": "508b86f0df9a6f3c37edc0c7c623fb17e49cfad07f0f76c410382840f01c91b9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/nutrition/text",
+      "text_sha256": "0e4d848d114151eeb78e8acd7fa47d15e12ae4db5c7352e3d1434ac637e57f00"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/118/summary/text",
+      "text_sha256": "3ebd1d86dce870724363592e0ec60cb67f9d7e92d1cb33480ed6e135674b6a40"
+    }
+  ]
+}

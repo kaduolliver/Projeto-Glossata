@@ -1,0 +1,30 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 167950949,
+    "taxon": {
+      "id": 1598948,
+      "name": "Badhamia polycephala",
+      "rank": "species"
+    },
+    "community_taxon_id": 1598948,
+    "quality_grade": "research",
+    "photo_ids": [
+      "291002427",
+      "291002452"
+    ],
+    "archived_response_sha256": "e54977bd9029beef2c968650e653bf69915aa786934bb339ad8776f5a9cf66f9",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:40.614587+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/167950949",
+  "catalog_species_id": "97",
+  "catalog_photo_id": "291002427",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "46cbc6eb76f0efbe4be8aad828897fcb80f0a5d553f36f352ddde381d8d0fc24",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

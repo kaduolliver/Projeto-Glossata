@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Hairy fly body and transparent patterned wings; classification Bombyliidae comes from archived taxon identity, not resemblance to a bee. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/6805086",
+      "consulted_at": "2026-10-18T23:59:24.421003+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/8658322.jpg",
+      "sha256": "584da1ca070b5c0c72515f24e2d09cb2b7737ed1fe450699c04a8f4026ccec64",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/26/summary/text",
+      "text_sha256": "691058886d4f39e7d2d47f25698817b5d1c16acf9a80be2da5bc7504a94ff0c9"
+    }
+  ]
+}

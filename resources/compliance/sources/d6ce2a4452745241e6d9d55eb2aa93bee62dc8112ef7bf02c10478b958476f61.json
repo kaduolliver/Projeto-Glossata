@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Compared the actual species account: regional range, larval host foliage and adult flower feeding; does not declare nectar its only possible adult resource or make an obsolete conservation assessment.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Vanessa_cardui/",
+      "consulted_at": "2026-10-19T00:13:23.926010+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/8/distribution/text",
+      "text_sha256": "c9f4010c8c38734be7d5f9a1254456c5ff87833d5858762c767ada0d32926a5f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/8/nutrition/text",
+      "text_sha256": "bdcbfac75671de337240eec1bcf225a1402baa8cb761167c54aa355021295706"
+    }
+  ]
+}

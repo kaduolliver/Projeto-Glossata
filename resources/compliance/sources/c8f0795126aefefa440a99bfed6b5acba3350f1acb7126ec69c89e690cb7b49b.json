@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Adult red eyes/green body, expanded toe pads and climbing, southern Mexico–Central America humid forests, animal prey and eggs above water. Replaced the unverified resting-posture explanation with a distinction between observed color and unproved defensive function. Does not adopt the page’s nonstandard old conservation label.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.sfzoo.org/animals-exhibits/a-to-z/red-eyed-tree-frog/",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/curiosity/text",
+      "text_sha256": "3fd4749f992c7bc2ebe0767cb1a6a5fe168faba8af929151cc6ba97fbdc62d0e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/distribution/text",
+      "text_sha256": "4f3172bd1fe95f3bc67290a5f371c696fd68c116a638737cda5a7687e9280653"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/hint/text",
+      "text_sha256": "5ed52c671ba3718ce8c020e8d1ec394f3ccdb932d541ccbf7f95bdd145b3bde8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/morphology/text",
+      "text_sha256": "92afde5f154eeaa7897076ce8d94db8296267a22e2d367ef801e069b0bce3fe5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/nutrition/text",
+      "text_sha256": "30770e2a06277db5da2871a52ea4e83dc66801e7299fed22bdaa438f529bd66f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/130/summary/text",
+      "text_sha256": "836bc626e5a833326d85d26075dbe76f8e1929b3967f5a8cc05b1c9611042842"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 109915205,
+    "taxon": {
+      "id": 82407,
+      "name": "Huperzia lucidula",
+      "rank": "species"
+    },
+    "community_taxon_id": 82407,
+    "quality_grade": "research",
+    "photo_ids": [
+      "185341429",
+      "185341509",
+      "185341536"
+    ],
+    "archived_response_sha256": "e1fe6303f9950cae5933d876f98dbf14bae42324cd441e1e8e999352c26b4d6a",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:41.874259+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/109915205",
+  "catalog_species_id": "60",
+  "catalog_photo_id": "185341429",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "8e6ef2f72b65fc77b205e1d4761cc24b6680850ecd5e312eadb99b9b02a0f65e",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

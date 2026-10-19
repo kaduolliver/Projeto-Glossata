@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Hedgehog-related comparison for genus and epithet.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
+      "consulted_at": "2026-10-18T23:35:22.072501+00:00",
+      "response_sha256": "658cfb71eb0fe8cb2f3f36d23b5e3043acb6c1e6d90de6bc3cbee4d86a91c3bb"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/140/etymology_hints/genus/text",
+      "text_sha256": "39eb324e7600e060406cc39fa20863b5df5751490fb18a91275a0566b9360060"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/140/etymology_hints/species/text",
+      "text_sha256": "8e5c040c2b5539b5a4942ba610deef6dea2d46d0418359e5c7fc19346d71b86d"
+    }
+  ]
+}

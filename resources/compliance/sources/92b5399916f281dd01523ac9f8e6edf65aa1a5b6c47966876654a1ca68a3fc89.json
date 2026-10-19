@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Small brown-yellow boletoid body, pores and observed association with earthballs; Europe/North America. The page has conflicting categorical parasitism claims; these are NOT adopted. Existing PNAS-based nutrition/curiosity are retained.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+      "consulted_at": "2026-10-18T23:35:31.496081+00:00",
+      "response_sha256": "2ceab94906e74265f3e11e06ce6b9f68d5bdebcd11e8d05ab28c4f4f178f4c8c"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/82/distribution/text",
+      "text_sha256": "b8c5d9881f4765068bc0c8f9ddbd1ab81752beac1939372394883966c99cf6a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/82/hint/text",
+      "text_sha256": "5250ac862e0b8e91b8fc7365b1c6059a5f79afda5819f405c77f91722a6e62ff"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/82/morphology/text",
+      "text_sha256": "21f39e81fcb721161ee25b9a8e08df764838080f81b5eaba4c987bbe2a14bae8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/82/summary/text",
+      "text_sha256": "cc7d1b6b046f29aca46c6891633e58308c94bfc2c076e951e49a9d95c1ce893a"
+    }
+  ]
+}

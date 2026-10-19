@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Southeastern Alaska to northern Baja and temperate Southern Hemisphere waters. Range is not continuous presence in every temperate sea.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://seanet.stanford.edu/Ochrophyta",
+      "consulted_at": "2026-10-18T23:41:50.760835+00:00",
+      "response_sha256": "33cd9b1e947addc4e71008a8a8f9a938585ad272cc53abb085c5ec5d7c0cb276"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/141/distribution/text",
+      "text_sha256": "03195dee9f95633f3c9ab25b142088ccdee28b338264bd8adc5d368a930104ba"
+    }
+  ]
+}

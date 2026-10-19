@@ -4,6 +4,7 @@ All writes are confined to the existing build/update-proposals staging area.
 Remote metadata is photo-specific, minimized and kept separate from published data.
 """
 import copy
+from collections import Counter
 import hashlib
 import http.client
 import json
@@ -327,6 +328,48 @@ def profile_batch_binding_issues(root, record):
     return []
 
 
+def technical_wording_batch_binding_issues(root, record):
+    """Validate a declared wording-only grant, never an assistance/science review."""
+    try:
+        for ref in record.get('evidence', []):
+            proof = g.load(g.local_file(root, ref['path']), {})
+            if proof.get('kind') != 'educational_technical_wording_confirmation': continue
+            wordings = proof['wordings']; expected = set()
+            if not isinstance(wordings, list) or not wordings or g.digest(wordings) != proof.get('proposal_fingerprint'):
+                raise ValueError('Changed wording proposal')
+            for name in ('editorial_confirmation', 'license_confirmation'):
+                confirmation = proof[name]; recorded = g.parse_time(confirmation.get('recorded_on'))
+                if (not confirmation.get('declared_by') or not confirmation.get('statement')
+                        or confirmation.get('scope') != 'technical_wording_only'
+                        or not recorded or recorded > g.parse_time(g.now())):
+                    raise ValueError('Missing scoped confirmation')
+            license_confirmation = proof['license_confirmation']
+            if (license_confirmation.get('license') != 'CC-BY-4.0'
+                    or license_confirmation.get('license_url') != 'https://creativecommons.org/licenses/by/4.0/'
+                    or record.get('declared_license') != license_confirmation['license']):
+                raise ValueError('License outside confirmed scope')
+            for wording in wordings:
+                sha = hashlib.sha256(wording['proposed_text'].encode('utf8')).hexdigest()
+                if sha != wording['text_sha256'] or not wording['occurrences']:
+                    raise ValueError('Changed wording')
+                for occurrence in wording['occurrences']:
+                    path = occurrence['file']; pointer = occurrence['pointer']
+                    if (path not in {'resources/data/hint_education.json', 'resources/data/progressive_hints.json'}
+                            or not (pointer.endswith('/rationale') or
+                                    path.endswith('progressive_hints.json') and pointer == '/evaluation/limitations')):
+                        raise ValueError('Scientific wording outside confirmed scope')
+                    binding = (path, pointer, sha)
+                    if binding in expected: raise ValueError('Duplicate confirmed occurrence')
+                    expected.add(binding)
+            occurrence_set = lambda rows: {tuple(o[k] for k in ('file', 'pointer', 'text_sha256')) for o in rows}
+            if (occurrence_set(proof['occurrences']) != expected
+                    or not occurrence_set(record.get('occurrences', [record])) <= expected):
+                raise ValueError('Grant outside confirmed bindings')
+    except (KeyError, TypeError, ValueError, OSError, AttributeError):
+        return ['technical_wording_grant_binding_invalid']
+    return []
+
+
 def educational_rights_metadata(root, passages):
     """Read optional documentary records in the existing asset inventory.
 
@@ -382,7 +425,7 @@ def educational_rights_metadata(root, passages):
                     raise ValueError('Evidence does not match')
             except (KeyError, TypeError, ValueError, OSError):
                 errors.append(label + ':invalid_evidence')
-        issues = profile_batch_binding_issues(root, record)
+        issues = profile_batch_binding_issues(root, record) + technical_wording_batch_binding_issues(root, record)
         if record.get('origin_kind') == 'inconclusive': issues.append('origin_inconclusive')
         if not evidence or not record.get('rights_available'): issues.append('rights_evidence_incomplete')
         declared_license = record.get('declared_license')
@@ -547,6 +590,189 @@ def educational_text_inventory(root=g.ROOT):
         'passages': [passages[k] for k in sorted(passages)]}
 
 
+def text_replacement_scope(inventory):
+    """Partition exact current bindings for one consolidated replacement review.
+
+    This is a read-only preparation view of the existing inventory, not a new
+    approval store. A documented occurrence is protected individually: the same
+    wording elsewhere does not inherit its grant. Derived copies keep their
+    source links and must be accounted for by the existing generator.
+    """
+    documented = set()
+    errors = list(inventory['rights_metadata']['technical_errors'])
+    for row in inventory['rights_metadata']['records']:
+        if not row['rights_issues'] and row['declared_metadata'].get('investigation_state') == 'documented':
+            documented.update(tuple(b[k] for k in ('file', 'pointer', 'text_sha256'))
+                              for b in row.get('bindings', [row.get('binding', {})]))
+    protected = []; source = []; derived = []
+    for passage in inventory['passages']:
+        for occurrence in passage['occurrences']:
+            binding = dict(occurrence, text_sha256=passage['text_sha256'])
+            key = tuple(binding[k] for k in ('file', 'pointer', 'text_sha256'))
+            if key in documented:
+                protected.append(binding)
+            elif binding['file'].endswith('/progressive_hints.json'):
+                derived.append(binding)
+            else:
+                source.append(binding)
+    order = lambda row: (row['file'], row['pointer'])
+    body = {'source_replacements': sorted(source, key=order),
+            'derived_replacements': sorted(derived, key=order),
+            'protected_occurrences': sorted(protected, key=order),
+            'source_files': inventory['files']}
+    return dict(body, fingerprint=g.digest(body), technical_errors=errors,
+                human_approval_recorded=False, permissions_created=0,
+                limitation='Coverage preparation only; citations, text hashes and this fingerprint do not demonstrate scientific support, independent expression or permission.')
+
+
+def validate_text_replacement_source(root, packet, row):
+    """Check evidence bindings, not the truth or legal sufficiency of a source.
+
+    A portable draft can embed selected evidence before it is archived. Its
+    serialized hash must still match the recorded evidence, just as a local
+    snapshot must. Neither representation is a human decision.
+    """
+    check = row.get('source_check')
+    if check is None:
+        if row.get('source_verification_state') not in (None, 'requires_claim_and_terms_check'):
+            raise ValueError('Source comparison has no evidence binding')
+        return
+    if (not isinstance(check, dict) or check.get('text_sha256') != row.get('text_sha256')
+            or check.get('state') != row.get('source_verification_state')
+            or check.get('human_approval') is not False or check.get('permission_created') is not False):
+        raise ValueError('Invalid source comparison binding or implied approval')
+    updates = check.get('reference_updates', {})
+    if (not isinstance(updates, dict)
+            or set(updates) - {'source_url', 'source_title', 'locator'}
+            or any(row['proposed_note'].get(k) != v for k, v in updates.items())):
+        raise ValueError('Source comparison differs from the proposed reference')
+    ref = check.get('evidence', {})
+    path = ref.get('path') if isinstance(ref, dict) else None
+    if (not isinstance(path, str) or '\\' in path or '..' in path.split('/')
+            or not path.startswith(('resources/compliance/', 'resources/data/',
+                                    'build/update-proposals/rights-evidence/'))):
+        raise ValueError('Invalid source evidence path')
+    target = (Path(root) / path).resolve()
+    if not target.is_relative_to(Path(root).resolve()):
+        raise ValueError('Source evidence escapes the project')
+    expected = ref.get('sha256')
+    if not isinstance(expected, str) or not re.fullmatch(r'[0-9a-f]{64}', expected):
+        raise ValueError('Invalid source evidence hash')
+    embedded = packet.get('source_evidence_to_archive', {})
+    if path in embedded:
+        raw = (json.dumps(embedded[path], ensure_ascii=False, indent=2) + '\n').encode('utf8')
+        if hashlib.sha256(raw).hexdigest() != expected:
+            raise ValueError('Embedded source evidence was changed')
+    if target.is_file():
+        if file_hash(target) != expected:
+            raise ValueError('Local source evidence was changed')
+    elif path not in embedded:
+        raise ValueError('Source evidence is missing')
+
+
+def prepare_text_replacement_inputs(root, packet):
+    """Validate a complete draft against current bindings, returning copies only.
+
+    This is a staging check, not an admission or permission operation. It never
+    writes resources or treats a source URL or proposed wording as approval.
+    """
+    scope = text_replacement_scope(educational_text_inventory(root))
+    if scope['technical_errors'] or packet.get('scope_fingerprint') != scope['fingerprint']:
+        raise ValueError('Text replacement inventory is stale or invalid')
+    allowed = {(r['file'], r['pointer']): r for r in scope['source_replacements']}
+    outputs = {}; seen = set()
+    for row in packet.get('changes', []):
+        key = (row['file'], row['pointer'])
+        if key not in allowed or key in seen:
+            raise ValueError('Duplicate, protected or out-of-scope replacement')
+        seen.add(key)
+        if row['file'] not in outputs:
+            outputs[row['file']] = copy.deepcopy(g.load(root / row['file']))
+        data = outputs[row['file']]
+        parts = row['pointer'].strip('/').split('/')
+        node = data
+        for part in parts[:-1]:
+            node = node[int(part)] if isinstance(node, list) else node[part]
+        field = parts[-1]
+        if field not in {'text', 'prefix'}:
+            raise ValueError('Only pending prose may be replaced')
+        if (file_hash(root / row['file']) is None
+                or row.get('previous_text_sha256') != allowed[key]['text_sha256']
+                or g.digest(node) != row.get('previous_note_sha256')):
+            raise ValueError('Replacement does not match the original note')
+        proposed = row['proposed_note']
+        text = row['proposed_text']
+        if (not isinstance(text, str) or not text.strip() or text == node[field]
+                or proposed.get(field) != text
+                or hashlib.sha256(text.encode('utf8')).hexdigest() != row.get('text_sha256')):
+            raise ValueError('Invalid proposed wording or hash')
+        # Preserve identity, photo linkage, assistance and editorial scope.
+        mutable = {field, 'verified', 'reviewed_on', 'source_url', 'source_title', 'locator'}
+        if ({k: v for k, v in proposed.items() if k not in mutable}
+                != {k: v for k, v in node.items() if k not in mutable}):
+            raise ValueError('Replacement changes non-prose policy or identity')
+        if field == 'text' and (proposed.get('verified') is not False or proposed.get('reviewed_on') is not None):
+            raise ValueError('New wording cannot inherit a legacy approval')
+        if field == 'prefix' and any(proposed.get(k) != node.get(k) for k in ('verified', 'reviewed_on')):
+            raise ValueError('A prefix replacement cannot declare a review')
+        validate_text_replacement_source(root, packet, row)
+        node.clear(); node.update(copy.deepcopy(proposed))
+    for row in packet.get('retained_wording_requiring_rights_check', []):
+        key = (row['file'], row['pointer'])
+        if key not in allowed or key in seen or row.get('text_sha256') != allowed[key]['text_sha256']:
+            raise ValueError('Invalid retained wording binding')
+        seen.add(key)
+    if seen != set(allowed):
+        raise ValueError('Incomplete replacement coverage')
+    return outputs
+
+
+def other_materials_resolution(materials, inventory, technical_errors=()):
+    """Summarize the existing material gate; never creates decisions or closes Issues.
+
+    Generated copies keep their source bindings. Counts are review work, not
+    independent works or evidence that permission has been established.
+    """
+    rows = []; unresolved = set(); roles = Counter()
+    for material in materials:
+        path = material['path']; documented = set(); issues = set(material.get('issues', []))
+        expected = {(o['file'], o['pointer'], p['text_sha256']) for p in inventory['passages']
+                    for o in p['occurrences'] if o['file'] == path}
+        for row in inventory['rights_metadata']['records']:
+            metadata = row['declared_metadata']
+            for binding in row.get('bindings', [row.get('binding', {})]):
+                if binding.get('file') != path: continue
+                pending = bool(row['rights_issues']) or metadata.get('investigation_state') != 'documented'
+                if not pending:
+                    key = tuple(binding[k] for k in ('file', 'pointer', 'text_sha256'))
+                    documented.add(key)
+        remaining = expected - documented; unresolved.update(remaining)
+        bindings = [dict(zip(('file', 'pointer', 'text_sha256'), b)) for b in sorted(remaining)]
+        if expected: issues.update(text_resource_issues(inventory, path))
+        rows.append({'path': path, 'resource_issues': sorted(issues),
+                     'pending_occurrences': bindings, 'pending_count': len(bindings),
+                     'resource_ready_for_closure_review': not issues and not bindings,
+                     'note': 'No whole-resource permission is inferred from partial or shared wording.'})
+    for passage in inventory['passages']:
+        for occurrence in passage['occurrences']:
+            if (occurrence['file'], occurrence['pointer'], passage['text_sha256']) in unresolved:
+                roles[occurrence['role']] += 1
+    errors = list(technical_errors) + inventory['rights_metadata']['technical_errors']
+    pending_resources = [r['path'] for r in rows if not r['resource_ready_for_closure_review']]
+    return {'scope': 'Issue licensing / other-materials only; excludes photo, science and dependency decisions.',
+            'ready_for_maintainer_closure_review': bool(rows) and not pending_resources and not errors,
+            'automatic_closure': False, 'decisions_created': 0, 'permissions_created': 0,
+            'pending_resources': pending_resources, 'technical_errors': errors,
+            'pending_occurrences': len(unresolved),
+            'pending_unique_texts': len({b[2] for b in unresolved}), 'pending_by_role': dict(roles),
+            'materials': rows,
+            'required_next_steps': ['Resolve authorial source and available rights per current binding; replace only when justified.',
+                                    'Record actual decisions through the existing governance bridge; no inherited human approval.',
+                                    'Regenerate derived content and rerun the authoritative asset gate.',
+                                    'Review the integrated main commit before explicitly closing the Issue.'],
+            'limitations': 'A closure summary, closed Issue or tests never authorize a resource or approve the package.'}
+
+
 def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), refresh=False, client=None, at=None):
     root = Path(root); package = Path(package) if package else None
     source = distribution.release_gate(root)  # Existing authority, never replaced by proposal findings.
@@ -684,6 +910,8 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
     quiz = [r for r in rows if r['kind'] == 'quiz_photo']
     history = public_history_media(root, tracked)
     screenshots = screenshot_inventory(root, locate, quiz)
+    text_inventory = educational_text_inventory(root)
+    replacement_scope = text_replacement_scope(text_inventory)
     return {'schema_version': 1, 'report_kind': 'rights_investigation', 'checked_at': at or g.now(),
         'mode': 'public_metadata_proposals' if online else 'offline',
         'versions': {'application': (root / 'VERSION.txt').read_text(encoding='utf8').strip() if (root / 'VERSION.txt').is_file() else None,
@@ -692,6 +920,7 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
         'notice': 'Documentary/scientific pending items are not proven copyright violations. Nonprofit status is not inferred permission.',
         'remote_freshness': 'Source comparisons use the explicitly dated last archived consultation, not a new verification of the remote service. checked_at is the local audit date only.',
         'decisions_created': 0, 'scientific_approvals_created': 0,
+        'text_replacement_scope': replacement_scope,
         'assurances': g.assurances(),
         'source_inputs': {p: file_hash(root / p) for p in INPUTS},
         'historical_comparison': {'source': 'docs/INVESTIGACAO_EVIDENCIAS.json',
@@ -710,7 +939,8 @@ def report(root=g.ROOT, package=None, online=False, maximum=25, selected=(), ref
             'history_only_media_paths': len({r['path'] for r in history['resources']}) if history['assessed'] else None,
             'local_unbundled_media': len(source['unbundled_media']), 'dependency_components': len(dependencies)},
         'photos': sorted(rows, key=lambda r: (r['priority'], r['id'])), 'materials': materials,
-        'educational_texts': educational_text_inventory(root),
+        'educational_texts': text_inventory,
+        'other_materials_resolution': other_materials_resolution(materials, text_inventory, source['technical_errors']),
         'other_tracked_media': repository_media,
         'readme_screenshots': screenshots, 'public_git_history': history,
         'local_unbundled_media': [dict(f, scope=locate(f['path']), priority=1 if locate(f['path'])['tracked_in_current_git'] else 3,

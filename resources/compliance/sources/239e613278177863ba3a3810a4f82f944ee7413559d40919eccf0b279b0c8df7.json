@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Grey/cream/dark wing mottling. The photo does not establish unknown biology; the draft summary is narrowed to the archived New Zealand record. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/202565126",
+      "consulted_at": "2026-10-18T23:59:24.419994+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/357771622.jpeg",
+      "sha256": "758c74cf23b83c61f815563b37b90911a00d5d457a08d463a988548ee11cd979",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/23/summary/text",
+      "text_sha256": "b9ae0719c693274b75e7d96bdc48864df66d4cc2ebf00ed93e046c58bceb6d7e"
+    }
+  ]
+}

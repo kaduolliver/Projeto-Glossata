@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "New Zealand and subantarctic occurrences supported; page alone does not support detailed morphology, buoyancy or wave mechanics.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+      "consulted_at": "2026-10-18T23:40:19.857167+00:00",
+      "response_sha256": "4b7b25e0fcc48ef33cf51d3296b7f7198bb3d72ccafdb7847c6ad377759f96d9"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/148/distribution/text",
+      "text_sha256": "6046f4e49277e56ec7f8da1243e6043e66fcfb36431da6ca9a9773ab5dfbb9a0"
+    }
+  ]
+}

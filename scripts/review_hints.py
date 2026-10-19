@@ -17,6 +17,7 @@ def inputs(root):
              'curation_reviews.json', 'content_policy.json']
     result = {name: digest(load(root / 'resources/data' / name)) for name in names}
     for name in ['scripts/review_hints.py', 'src/application/EducationalContent.cpp', 'src/domain/Hint.h',
+                 'src/infrastructure/content/ReviewStatus.h',
                  'resources/compliance/review_history.jsonl', 'resources/compliance/review_baseline.json']:
         result[name] = hashlib.sha256((root/name).read_bytes() if (root/name).exists() else b'').hexdigest()
     return result
@@ -37,7 +38,7 @@ def prepare(root=ROOT):
                 'node': n, 'source_url': 'https://www.inaturalist.org/taxa/'+n['source_taxon_id'],
                 'source_title': 'iNaturalist · registro taxonômico do ancestral',
                 'locator': 'taxon '+n['source_taxon_id']+' / ancestors; catálogo local '+str(s['id']),
-                'rationale': 'Contexto amplo compartilhado pode ser leve; ancestral intermediário e contraste próximo documentados acrescentam informação. A contagem auxilia a segurança, não mede dificuldade humana.'})
+                'rationale': 'A pista apresenta contexto de um ancestral. Seu grau depende das regras de especificidade e das linhagens efetivamente conhecidas nas alternativas; a quantidade de alternativas compatíveis é apenas uma salvaguarda, sem medir dificuldade humana.'})
         m = h.get('morphological_hint', {})
         a = m.get('assistance', {})
         if m and a.get('suitability') != 'inadequate':
@@ -49,7 +50,7 @@ def prepare(root=ROOT):
                 'original_ranks':m['ranks'], 'organism_scope':True,
                 'source_url': note['source_url'], 'source_title': note['source_title'],
                 'locator': note.get('locator', 'Ficha local '+sid+' / '+m['reference']),
-                'grade': a['grade'], 'rationale': a['rationale']+' Nos níveis superiores, a nota é explicitamente sobre este organismo; não define todo o táxon solicitado.', 'scientific_topic': 'morphology',
+                'grade': a['grade'], 'rationale': a['rationale']+' Quando o nível solicitado é mais amplo, a descrição continua restrita ao organismo do registro; ela não caracteriza todos os integrantes do táxon.', 'scientific_topic': 'morphology',
                 'source_note': 'species:'+sid+':morphological_hint'})
         for rank, n in h.get('etymology_hints', {}).items():
             a = n['assistance']
@@ -75,8 +76,8 @@ def evaluate(root=ROOT):
         'process':'scripts/review_hints.py + contextual validation in EducationalContent',
         'policy_version':POLICY, 'reviewed_at':stamp,
         'due_at':(parse_time(stamp)+timedelta(days=days)).isoformat(), 'content_sha256':fingerprint,
-        'rationale':'Existing source assertions only; identity/photo binding, independent scientific gates, literal safety, known lineages for every option, specificity and distinct progression checked at question assembly.',
-        'limitations':'Pedagogical test policy; not independent scientific review, measured human difficulty, or permission to redistribute media.'}
+        'rationale':'Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.',
+        'limitations':'O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança.'}
     save(root/'resources/data/progressive_hints.json', data)
     return data
 

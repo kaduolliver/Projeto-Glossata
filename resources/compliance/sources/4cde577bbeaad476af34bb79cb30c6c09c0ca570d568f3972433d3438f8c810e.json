@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.229102+00:00",
+  "source_url": "https://www.inaturalist.org/observations/198464364",
+  "species_id": "70",
+  "photo_id": "349810134",
+  "photo_sha256": "6c220ee184956e70a6e21d53fe9189829eca0ee63e307954121f5a1f56af6510",
+  "comparison": "Broad woody-looking lateral bracket with brown upper surface/pale underside on wood. No Ganoderma lucidum traits transferred.",
+  "archived_taxon": {
+    "id": 348812,
+    "name": "Ganoderma brownii",
+    "rank": "species"
+  },
+  "observation_id": 198464364,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "8ad7fdf31b9fa1218143e885576ac230905d12ad926efe5b3d668b185f5b5eb0"
+}

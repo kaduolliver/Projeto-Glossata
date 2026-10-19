@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.822918+00:00",
+  "source_url": "https://www.inaturalist.org/observations/130413689",
+  "species_id": "18",
+  "photo_id": "221780102",
+  "photo_sha256": "58791341775619c2e6765b551f242c478068a34ef14c7311a793831ff794acc9",
+  "comparison": "Pale wing, dark apical edge partly visible on closed forewing; a single view does not establish sex-related spot counts.",
+  "archived_taxon": {
+    "id": 55401,
+    "name": "Pieris brassicae",
+    "rank": "species"
+  },
+  "observation_id": 130413689,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "acab144b7209f7deadd3a07d46e9f3f220e5be65fdebe4fb77b7d47c5fe28f82"
+}

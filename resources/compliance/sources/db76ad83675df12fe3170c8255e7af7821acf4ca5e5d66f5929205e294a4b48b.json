@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Wood-chip substrate in urban Pacific-coast sites; brown cap/dark lamellae/pale stipe and bluing in original diagnosis. Does not transfer P. cyanescens wavy-cap character or provide consumption advice.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.mykoweb.com/CAF/species/Psilocybe_allenii.html",
+      "consulted_at": "2026-10-18T23:43:37.759747+00:00",
+      "response_sha256": "046e5e923f8e053c796590346d1004e671c30087013ce7ce84e6cdcbde771397"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/curiosity/text",
+      "text_sha256": "fb056b456ac09e700fca5a0155705685518ec7ea1a09caddde582a696e16dc8d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/distribution/text",
+      "text_sha256": "4df387a429e1e4cd14886153f10b37f798d511f3915508bd47f95efb92c1b0f3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/hint/text",
+      "text_sha256": "95a38c060ef144252b278f9b706a8c58dfc518c278ed5902ffdc4459f8c73eb5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/morphology/text",
+      "text_sha256": "232aa1094b96c4ad5b70ed096270f7a71cb497c28def934908a51b30e852df7d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/nutrition/text",
+      "text_sha256": "21af9d683054312d045bdb428a53bf33939869554c42da97e9aa7e37c490b6b9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/123/summary/text",
+      "text_sha256": "43ee9fcb17a01635b98262d30530f3d798571cc1986af9ec3a226ef9f5ad8965"
+    }
+  ]
+}

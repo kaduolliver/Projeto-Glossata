@@ -1,0 +1,45 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 42850346,
+    "taxon": {
+      "id": 1075803,
+      "name": "Pachypodistes angulata",
+      "rank": "species"
+    },
+    "community_taxon_id": 1075803,
+    "quality_grade": "research",
+    "photo_ids": [
+      "68055096",
+      "68055135",
+      "68055172",
+      "68055228"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:45.173524+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/42850346",
+  "catalog_species_id": "35",
+  "catalog_photo_id": "68055096",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "d7b7bf9a67d7a4a319b027a1adb9b0b0925385c3f79df55a1f93a0d45340d45e",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported.",
+  "coarse_place_evidence": {
+    "source_url": "https://api.inaturalist.org/v1/places/7512",
+    "consulted_at": "2026-10-19T00:10:34.285914+00:00",
+    "selected_metadata": [
+      {
+        "id": 7512,
+        "name": "Ecuador",
+        "display_name": "Ecuador",
+        "place_type": 12,
+        "admin_level": 0
+      }
+    ]
+  }
+}

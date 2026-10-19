@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Specific epithet explicitly means two-lobed; no universal identical leaf shape inferred.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
+      "consulted_at": "2026-10-18T23:39:59.623400+00:00",
+      "response_sha256": "02182db2c07e8c8921f7554660d0340ba7bb0c84380c8c6545342879fdc72c8a"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/133/etymology_hints/species/text",
+      "text_sha256": "5a5450efe2904cb3c6d8adc7567bfaa247b5c75a08154d49c44c92a00640fd01"
+    }
+  ]
+}

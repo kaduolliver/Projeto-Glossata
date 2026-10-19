@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Current India/Nepal versus historical range; floodplains and wallowing; herbivory including grasses/leaves/aquatic plants; one horn and folded skin. No population counts or protected locations imported.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Rhinoceros_unicornis/",
+      "consulted_at": "2026-10-18T23:31:20.573380+00:00",
+      "response_sha256": "d4932521ff1cd44933e31c5e19038166f6fd2e83e0f3844d037bc5e3208daf8f"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/curiosity/text",
+      "text_sha256": "16e7c31432f6dfe4ae2876663493d01a4a9e53a715450967cf8310fba9343522"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/distribution/text",
+      "text_sha256": "84069466c804ef8efadca6809faf50007a0abcbf6f3440f80237f03ce2ad3a5e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/hint/text",
+      "text_sha256": "31bcb5d3468e215d050c95c707c9bb7dee50d19d7c13e886835da32ffccbbd57"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/morphology/text",
+      "text_sha256": "063ac6cb45f7ca6e0bdc8858502a0d8b2eeeaf3f3bdeb0795a31457a36714712"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/nutrition/text",
+      "text_sha256": "94c5cf227422ff21f985416a6eb54292a1920443394313b65cad3f4b6592b4d6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/131/summary/text",
+      "text_sha256": "e00e4f7c1415b267bff7bf8bc03439ce090456cc5fe4b97f464fa7b34035f825"
+    }
+  ]
+}

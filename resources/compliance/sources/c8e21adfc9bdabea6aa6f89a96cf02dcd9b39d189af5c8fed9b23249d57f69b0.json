@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.426826+00:00",
+  "source_url": "https://www.inaturalist.org/observations/20379678",
+  "species_id": "88",
+  "photo_id": "31473154",
+  "photo_sha256": "b321dcd94291d6adfc1e5f89ef988dc0e82aece67f63636dc8a7015086455f98",
+  "comparison": "Bright yellow/orange rounded structures on thin stalks.",
+  "archived_taxon": {
+    "id": 503891,
+    "name": "Physarum psittacinum",
+    "rank": "species"
+  },
+  "observation_id": 20379678,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "f27292ec1639b5adcdb544fda7dda61c849ccb6a0dfca5cc62328eaf699d7741"
+}

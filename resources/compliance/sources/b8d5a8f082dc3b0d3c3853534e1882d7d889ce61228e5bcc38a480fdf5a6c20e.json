@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Cap variations and removable veil remains, pale ringed stipe/bulbous base, northern distribution/introductions and ectomycorrhiza. No food/poisoning procedure.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+      "consulted_at": "2026-10-18T23:35:12.345749+00:00",
+      "response_sha256": "c607829657d789b8ce748e4e4482702c3d8a0ace58ca484f219d6277a37f44c2"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/curiosity/text",
+      "text_sha256": "06bcc781c36588918239b0f0d292760979472563274c90f38aa6226bbe8fcf7f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/distribution/text",
+      "text_sha256": "df507741898f5257c952fc3ef886f68e99cc3606f2c139dec84ac3a3005b4374"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/hint/text",
+      "text_sha256": "4d1dd8947518c6c7c55b4300d333219482b3a262224417965f5063c96f624a61"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/morphology/text",
+      "text_sha256": "009740b3d114f8d9c6de87b87dca2f87e0155048849d7f83f09f7ccb96ac35e6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/nutrition/text",
+      "text_sha256": "0f03b31c61daaee77c3c5f81ad97055143c2689d0a64df9fb2b447e77464086e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/136/summary/text",
+      "text_sha256": "d99533078ea8379fed03974563481a3ed60a8a4c8ae0d3aafb67b66cd792b67f"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "kind": "educational_reference_check",
+  "sources": [
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC12030463&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:12:05.332597+00:00",
+        "response_sha256": "7f52efed31e44b1f0f04c8d5733a1be3d3ec6bd18a0e26f2c5c9205a392cb37d",
+        "pmcid": "PMC12030463",
+        "metadata": {
+          "id": "40284172",
+          "source": "MED",
+          "title": "Lion's Mane Mushroom (&lt;i&gt;Hericium erinaceus&lt;/i&gt;): A Neuroprotective Fungus with Antioxidant, Anti-Inflammatory, and Antimicrobial Potential-A Narrative Review.",
+          "authorString": "Contato AG, Conte-Junior CA.",
+          "doi": "10.3390/nu17081307",
+          "pubYear": "2025",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.3390/nu17081307"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC12030463"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC12030463?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12030463/fullTextXML",
+        "consulted_at": "2026-10-18T23:12:14.187751+00:00",
+        "response_sha256": "dddb1e5256b95f227a427f9c94b9a0364b1e1007ccb594786e54894ff89e3177",
+        "bytes": 358208,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC12030463",
+        "title": "Lion's Mane Mushroom (&lt;i&gt;Hericium erinaceus&lt;/i&gt;): A Neuroprotective Fungus with Antioxidant, Anti-Inflammatory, and Antimicrobial Potential-A Narrative Review.",
+        "author_credit": "Contato AG, Conte-Junior CA.",
+        "doi": "10.3390/nu17081307",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license": "CC-BY-4.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    }
+  ],
+  "locators": [
+    "3.1 Taxonomy and Morphology",
+    "3.2 Habitat and Cultivation Methods of H. erinaceus"
+  ],
+  "use": "Only morphology, spores, temperate distribution and wood-associated nutrition. No medical claims or cultivation recipe.",
+  "scientific_approval": false,
+  "permission_created": false
+}

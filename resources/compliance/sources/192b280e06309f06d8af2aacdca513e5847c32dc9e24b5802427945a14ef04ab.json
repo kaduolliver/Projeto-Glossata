@@ -1,0 +1,54 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Actual named H. byssoidea filaments with mucilaginous fibrous sheath. No transfer of H. littoralis-only morphology, no nanometric numerical measurements or whole-biofilm function assigned to the supplied support photo.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9173694/",
+      "consulted_at": "2026-10-19T00:07:35.271759+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9173694/fullTextXML",
+      "consulted_at": "2026-10-19T00:08:07.952703+00:00",
+      "response_sha256": "8c22b4f125e8933f6e92569973a186723e63213eea158d7db6da5af67d5b42f6",
+      "bytes": 69928,
+      "kind": "selected_article_license_metadata",
+      "pmcid": "PMC9173694",
+      "title": "Superhydrophobic Terrestrial Cyanobacteria and Land Plant Transition.",
+      "author_credit": "Barthlott W, Büdel B, Mail M, Neumann KM, Bartels D, Fischer E.",
+      "doi": "10.3389/fpls.2022.880439",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license": "CC-BY-4.0",
+      "locator": "front/article-meta/permissions/license; article DOI",
+      "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/117/curiosity/text",
+      "text_sha256": "d115289b321153f6fa3eab3d55795114ecd8a627eab34642f5801ff93b92b411"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/117/hint/text",
+      "text_sha256": "5094139e4eb8e3abc0535c7b6fe35fb14196cbe1da5229a5d42c460919b89b49"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/117/morphology/text",
+      "text_sha256": "6b26e2a7a8dfc2a75ac2dd7a4cbc3f8c8c8842751d3e4badaf6d9708449f9aee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/117/summary/text",
+      "text_sha256": "f5dd0d32da569f06f8a51729dd13ec46fd45bfc600dd17a00a8a66c4cb2cbd24"
+    }
+  ]
+}

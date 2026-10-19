@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Groups of small convoluted structures on plant/woody debris; shape alone explicitly insufficient for species identification. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification. Spore-producing stage separately corroborated by Adl et al. Myxogastria diagnosis.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/167950949",
+      "consulted_at": "2026-10-18T23:59:24.430549+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "locator": "Appendix 1 / Myxogastria: plasmodium and spore-forming sporocarps",
+      "consulted_at": "2026-10-18T23:59:24.429556+00:00"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/291002427.jpg",
+      "sha256": "12cd5e62f5047a8bf22222a5423930c8e93b1207407f11a65b2385ac166c607d",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/97/summary/text",
+      "text_sha256": "a0998a2cb81cbafc2fe6acf2f4e7ae0b9669349624c2c9d787e3db0a32a8b1dc"
+    }
+  ]
+}

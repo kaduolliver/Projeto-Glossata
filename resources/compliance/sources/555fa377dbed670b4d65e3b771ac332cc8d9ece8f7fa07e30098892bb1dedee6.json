@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.177012+00:00",
+  "source_url": "https://www.inaturalist.org/observations/135963380",
+  "species_id": "65",
+  "photo_id": "231974984",
+  "photo_sha256": "dc55d43d5eb127e999259917f0ac5bdd0593b1b68307f7243f66ef1528bbc1f2",
+  "comparison": "Pale repeatedly branched structures in tufts. Lichen symbiosis is backed by the separately consulted lichen reference, not inferred from color.",
+  "archived_taxon": {
+    "id": 1228995,
+    "name": "Cladonia imperialis",
+    "rank": "species"
+  },
+  "observation_id": 135963380,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "5b88ddf187b3f35a4b1ee066bc61f369440a911028940eb7453ec40e80364d63"
+}

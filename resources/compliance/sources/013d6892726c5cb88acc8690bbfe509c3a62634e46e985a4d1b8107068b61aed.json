@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Presence in Argentine protected areas documented; Korean freshwater occurrence independently examined in this conference. Point/area records do not define an exhaustive range.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://sib.gob.ar/especies/gomphosphaeria-aponina",
+      "consulted_at": "2026-10-18T23:41:52.969115+00:00",
+      "response_sha256": "f4ed7fd676cdaa890b41b2d9c07e9638fe793aafbb4d48e811268e9de191783f"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/110/distribution/text",
+      "text_sha256": "ed915fb10aee97717678f296ef2b1d984e22bbf192b76950da6014ef922bd89b"
+    }
+  ]
+}

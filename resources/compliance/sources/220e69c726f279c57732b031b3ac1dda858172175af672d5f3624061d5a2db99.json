@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Single long stipe with one terminal float and multiple blades; Alaska–central California, wave-exposed kelp margins.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://seanet.stanford.edu/Ochrophyta",
+      "consulted_at": "2026-10-18T23:41:50.760835+00:00",
+      "response_sha256": "33cd9b1e947addc4e71008a8a8f9a938585ad272cc53abb085c5ec5d7c0cb276"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/curiosity/text",
+      "text_sha256": "ceae648c071c5bca0a23c7cdc8264624c600be691a2042333bc30b1c9a72bd08"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/distribution/text",
+      "text_sha256": "152d5cfb0a36c9d34c18fc9109c40d06baa1055932e65f030df1bc327653f56a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/hint/text",
+      "text_sha256": "22d60009d17e4f67066f599cd286c4740e7588d305ad1e0e4930c557ce048b00"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/morphology/text",
+      "text_sha256": "6aaa29e17ce66bb9520dc2fd901dfabe94c026dd9f1545482d111fafaac2d9f2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/142/summary/text",
+      "text_sha256": "d47e075e9a5b629be6a6113745a2b2668e9c2123a41301a3eb00805410e5fe2a"
+    }
+  ]
+}

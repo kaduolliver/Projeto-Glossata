@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Heterocystous filamentous cyanobacterium; photosynthesis and nitrogen fixation; brackish-water salt-tolerant strain studied in culture. No experimental treatment extrapolated to worldwide range.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://journals.asm.org/doi/10.1128/jb.183.19.5778-5781.2001",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/curiosity/text",
+      "text_sha256": "7dac90fe2d7801a328576224de6c02efd7e0b92f93fdf11b839faad83235e2e4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/distribution/text",
+      "text_sha256": "a7852b2a9451076f33df4bdd6e98d496bec4a6a165dbed696a9e8e3b2d17b2d1"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/hint/text",
+      "text_sha256": "3c0abf4290355d979ce447ff0f9f12552985986af25c37e0fe2ac40c015c2658"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/morphology/text",
+      "text_sha256": "9c293f3e609f15cd6d16ed50f6d11e3430b26d689a8f813ac6756a2264daf74f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/nutrition/text",
+      "text_sha256": "ebaa822f14eff9203fc0afea9ae1f744b0c7cceda1a9e983f93ea78a5ac5e2fd"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/111/summary/text",
+      "text_sha256": "89887f72bb099f28b2591ee456edaeaac2053c611c1426e9e454a4b653737439"
+    }
+  ]
+}

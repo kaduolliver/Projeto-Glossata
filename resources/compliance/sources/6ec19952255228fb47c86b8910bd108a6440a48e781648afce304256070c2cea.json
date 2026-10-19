@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.865337+00:00",
+  "source_url": "https://www.inaturalist.org/observations/202565126",
+  "species_id": "23",
+  "photo_id": "357771622",
+  "photo_sha256": "758c74cf23b83c61f815563b37b90911a00d5d457a08d463a988548ee11cd979",
+  "comparison": "Grey/cream/dark wing mottling. The photo does not establish unknown biology; the draft summary is narrowed to the archived New Zealand record.",
+  "archived_taxon": {
+    "id": 398171,
+    "name": "Titanomis sisyrota",
+    "rank": "species"
+  },
+  "observation_id": 202565126,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "2ad015d5be5355d23750ded0548961c3c8f4463a4e52e3b96dc7df0dde2e01bd"
+}

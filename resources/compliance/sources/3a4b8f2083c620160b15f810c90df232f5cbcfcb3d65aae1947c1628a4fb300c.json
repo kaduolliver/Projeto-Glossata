@@ -1,0 +1,21 @@
+{
+  "kind": "educational_reference_check",
+  "consulted_at": "2026-10-18T23:09:46.344018+00:00",
+  "source_url": "https://link.springer.com/article/10.1007/s12225-024-10193-5",
+  "doi": "10.1007/s12225-024-10193-5",
+  "title": "A taxonomic revision of the genus Hydnora (Hydnoraceae)",
+  "author_credit": "Sebastian A. Hatt; Chris J. Thorogood; Jay F. Bolin; Lytton J. Musselman; Duncan D. Cameron; Olwen M. Grace",
+  "year": 2024,
+  "license": "CC-BY-4.0",
+  "license_url": "http://creativecommons.org/licenses/by/4.0/",
+  "locators": [
+    "Summary",
+    "Introduction",
+    "5. Hydnora esculenta / Distribution, Habitat",
+    "Rights and permissions"
+  ],
+  "method": "Selected publisher sections read using the web research tool; this is a research note, not a hash of the full publisher page.",
+  "use": "Independent short synthesis of holoparasitism, subterranean habit, fleshy flowers, no green leaves and Madagascar range. No map, coordinates, illustrations or species-description reproduction.",
+  "scientific_approval": false,
+  "permission_created": false
+}

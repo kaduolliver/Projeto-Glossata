@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit genus-level Dolichospermum filamentous organization and straight/curved/coiled trichomes. New morphology explicitly labels the genus-level scope; no new record of D. lemmermannii in Peru is invented. Light use already checked in the batch cyanobacterial photosynthesis reference.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11435830/",
+      "consulted_at": "2026-10-19T00:13:23.921888+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/104/hint/text",
+      "text_sha256": "d728fb472f488ef0da07bbdb23754aa0a3b8d2c9bad048d035cc58d4e48ade3d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/104/morphology/text",
+      "text_sha256": "4d9095b1f05ec6d9e9fe33ef31c6b8aed511d745a749e5924f17ced3c1e5a86e"
+    }
+  ]
+}

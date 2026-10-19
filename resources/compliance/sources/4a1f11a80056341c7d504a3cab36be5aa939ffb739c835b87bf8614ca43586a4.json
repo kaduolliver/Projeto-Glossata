@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Eastern North America, forest and modified wooded habitats; contrasting wing bands and larger male antennae; broad-leaf larval hosts; nonfeeding adults.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Hyalophora_cecropia/",
+      "consulted_at": "2026-10-18T23:30:37.535315+00:00",
+      "response_sha256": "de542d3c6af3a7922bf1ae97b46c71ca33545846642d4fdc90c27cce87e853f6"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/curiosity/text",
+      "text_sha256": "0801bc07f13a8b41ccf456b022de87ee0c4356d550c49dea7ad23b3234eb9bde"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/distribution/text",
+      "text_sha256": "43a734144f5df316e8be962249f53196bcc890631fcfb9fd883b8752db4278b8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/hint/text",
+      "text_sha256": "bfdea406d35c7bcbcf55cea14bd47092c95bcf29d9f05ad77ea6ba5b2ccd4450"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/morphology/text",
+      "text_sha256": "1416937d99bd656d665f7fbd9e8c609da414aa6fdddc4b6c2c1902b14d37ad3f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/nutrition/text",
+      "text_sha256": "a44b9dc8aae0a902bbb8e48e9a8acdef9fbef5d7aa97e6cf33b4a9fb0ac77080"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/12/summary/text",
+      "text_sha256": "badeb4c5d17f9bc864b52988700fae75e401b82dac410b71ab6189bf0b73ee24"
+    }
+  ]
+}

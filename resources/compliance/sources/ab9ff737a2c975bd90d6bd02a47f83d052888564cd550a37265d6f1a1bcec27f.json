@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Hollow ridged/pitted fruiting body, European record scope; source nutritional alternatives are explicitly hypotheses, not a resolved life-history claim. Avoid transferring look-alike North American distributions.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+      "consulted_at": "2026-10-18T23:35:26.921915+00:00",
+      "response_sha256": "0e51b552ab29395823edfc6438d4d06e4bde219cf610fec0a0c1d8a31f3abfd3"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/curiosity/text",
+      "text_sha256": "12ac4a724a83a6be8fbec900a292e0c5b2272b85dc5da3e6b8bd971ed4ea92f5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/distribution/text",
+      "text_sha256": "5ac525d9866fba30a79fc2148f3a855f83e6cea7de396ec702d075e09800a0e8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/hint/text",
+      "text_sha256": "eef7117a3cb17eecf23791e13f1d2e20337c27ead9c59220383436fa19b8c4ee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/morphology/text",
+      "text_sha256": "d3078748b2d9a10a88834b320bdda205fbf2947fe8e71e80784d39182481bc34"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/nutrition/text",
+      "text_sha256": "9437f342edd50b585b1fd3e32aea4b3eb37c4ca0ea6dd25761d37e16ca3d739f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/137/summary/text",
+      "text_sha256": "2408b8d0138641e2614b3ea52a3c442c8aa21ee8c3b525c4cc6925969984a182"
+    }
+  ]
+}

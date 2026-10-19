@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "South/Southeast Asia, tropical/subtropical forests; large brown-orange wings and hyaline patches; larvae eat leaves and adults have nonfunctional mouthparts and use stored resources.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Attacus_atlas/",
+      "consulted_at": "2026-10-18T23:32:51.430673+00:00",
+      "response_sha256": "daf3b9dc8c479e4bb3fab58ecaeb329c39bffd1e53ee0bf3e2500409a6dbfba3"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/curiosity/text",
+      "text_sha256": "684f7535d1eae3f636a5850abc2b75d5e6738971658113addd426a117fefe120"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/distribution/text",
+      "text_sha256": "cefb171452d843a16a1d70515514857faf3a6557b60e568edf5e179f5c412c82"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/hint/text",
+      "text_sha256": "8ef9bf7f8ccd68871f2bcf6112644dcb488c6f8421c09cb5e90f0e7da4600d42"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/morphology/text",
+      "text_sha256": "64e0acef64cae8c1523c154b581caa620e40ee3d6f7ca32596a58e37fe72bc39"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/nutrition/text",
+      "text_sha256": "738638cf8a0096e929bd40fead3793c4de9dbf74a7cccdcc984ecd0b85b08fca"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/10/summary/text",
+      "text_sha256": "8ab52890613520a9c29369bbcbd583b5b71fb22ca89690b18b09f8ec95b0d286"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Asia including India/China/Malaysia and fly/bird-dropping resemblance. Independently worded draft describes visual interpretation, not a demonstrated mechanism of predator avoidance, odor efficacy, or literal flies present on the moth.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.biointeractive.org/sites/default/files/media/file/2020-03/ArtofHiding-StudentHO-PI.pdf",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/24/curiosity/text",
+      "text_sha256": "e737ae248092af904cbf773dc87855b48a221fe8d975e9557f5c10a14c8c070b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/24/distribution/text",
+      "text_sha256": "9d25bfae119d5f5f61da9a6ce302e851b2c362a00497c9c89128da3473e9cdad"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/24/hint/text",
+      "text_sha256": "5a0cb320fff3cd3055939ab5dac1fd22178def3e9785a563402a19385d74d025"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/24/morphology/text",
+      "text_sha256": "b838d199b16977a4ef02c07a44bf69c9cbebc192710128b4eca6a27ca6b52ad6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/24/summary/text",
+      "text_sha256": "3f92e6f4cedb5441837ac61dc36fa10dee5e97d2a0d769138845d3517f5fcb83"
+    }
+  ]
+}

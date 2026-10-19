@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Species-specific mycorrhizal mushroom under Eucalyptus, violet cap/stipe aging brown and rust-brown spores. Does not substitute C. abnormis data from another JGI genome. Only independently worded factual synthesis; full book not redistributed.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.fncv.org.au/wp-content/uploads/publications/fungi_in_australia/fia-3-basidio-agarico-I.pdf",
+      "consulted_at": "2026-10-19T00:07:35.276304+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/curiosity/text",
+      "text_sha256": "d39c3d2f6e5d60640bb2daaf20b394764564b9d6cbd3ce2cef831f5a8f6de734"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/distribution/text",
+      "text_sha256": "498053dc0f1f9d3a377b2507e5dc9344ce479c62f9e7b577139ae469bbe5fb59"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/hint/text",
+      "text_sha256": "c57a2813cfce065f8275e8fd3a52bece67e5dd8b344485e3bfed04e6f6bad80e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/morphology/text",
+      "text_sha256": "57e0e95366fbaf9f2d8ced3c17cb01d141aeeb18e7ce72d26f6c47420a29b04c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/nutrition/text",
+      "text_sha256": "b5eb274faf0b02b832c60f5f277cc774dbc632aac71f7ad93efd01b63cae5c21"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/75/summary/text",
+      "text_sha256": "63a0c58f99c044a72536103c43b061b9e4d5205274c0feb8252eff5e33778c86"
+    }
+  ]
+}

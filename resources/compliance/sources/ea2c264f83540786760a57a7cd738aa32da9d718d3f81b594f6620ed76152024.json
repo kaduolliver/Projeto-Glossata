@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Star-like split exterior, central spore sac and collar, European/North American records and woodland soil.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+      "consulted_at": "2026-10-18T23:35:19.478733+00:00",
+      "response_sha256": "c2b1107e71027a53fce2d72f2a306dce1186bcfb9a67aa2b2d6d397c4e782e85"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/curiosity/text",
+      "text_sha256": "b7cc9b3575fcf1d0c1fab98a500d74b4df37d3136cd771c94885e9a4c666fd47"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/distribution/text",
+      "text_sha256": "d2afff20c816b0315c43a9eb39f2fed8e2273600260dd27c2520a4dc95c34bd8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/hint/text",
+      "text_sha256": "c12727ef3f10670ba91399aedae484e076f6906c0a8a769e24e65fce3a1e13e9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/morphology/text",
+      "text_sha256": "b6578d40d64b24f8c115cc67588eee4ecc1efabd612e1b9f18507a488a835ce2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/nutrition/text",
+      "text_sha256": "677e3be9882f0cd6573564f39ddcfe6b2229ec8d02113ff75db4847393daa6c3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/139/summary/text",
+      "text_sha256": "860646af68ffcea6e4396440beace62bba28813f83596c1d04aec7439e558e55"
+    }
+  ]
+}

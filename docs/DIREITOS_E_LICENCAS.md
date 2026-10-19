@@ -7,7 +7,7 @@ A [preparação de licenciamento](PLANO_LICENCIAMENTO.md) preserva o diagnóstic
 | Camada | Registro | Situação e providência |
 | --- | --- | --- |
 | Código próprio enumerado | `ESCOPO_LICENCIAMENTO.json`, LICENSE/NOTICE e política | Apache-2.0 adotada; lógica do gerador incluída após extração da redação; limites da investigação de origem documentados |
-| Textos próprios | Corpus e introduções, incluindo assistência de IA | CC BY 4.0 como padrão; concessão específica para 68 redações novas de grupos. Demais fichas/dicas continuam pendentes |
+| Textos próprios | Corpus e introduções, incluindo assistência de IA | CC BY 4.0 limitada à expressão educativa documentada por passagem; grupos, fichas e dicas atuais cobertos pelos lotes expressamente confirmados, sem licença global de fatos, fontes ou materiais |
 | Organização da coletânea | Seleção/estrutura do catálogo | Definir direitos sobre a organização, respeitando fatos e contribuições individuais |
 | Dados de terceiros | Identificadores, classificações e registros das fontes | Conferir termos/direitos aplicáveis sem inferir licença das fotos |
 | Fotografias | `photo_provenance.json` e snapshots por foto | Completar evidência de licença, versão, crédito e data |
@@ -29,6 +29,20 @@ A redação antes incorporada em `scripts/build_education.py` foi extraída para
 A identidade visual atual foi preservada e sua [política reservada](propostas/USO_IDENTIDADE_VISUAL.md) foi escolhida expressamente pelo mantenedor em 2026-10-17. Não há concessão gráfica geral para reutilização ou sublicenciamento por projetos independentes; a reserva limita-se aos direitos efetivamente disponíveis. A autorização adicional de 2026-10-18 permite somente o uso/distribuição oficial dos três hashes documentados (`documented_official_use`), sem comprovar titularidade exclusiva ou direitos de terceiros. Consulte a [documentação independente](IDENTIDADE_VISUAL.md) e a [situação individual dos recursos](POLITICA_BRANDING_IMPLEMENTACAO.md). Apache-2.0, visualização/fork no GitHub e usos legalmente permitidos permanecem respeitados. A Issue #2 continua aberta e o gate do pacote permanece bloqueado pelas demais pendências.
 
 Atualização do lote 2 em **2026-10-18**: após duas confirmações expressas do mantenedor, 34 novas notas de fichas/28 organismos recebem revisão editorial e CC BY 4.0 apenas sobre direitos disponíveis na versão identificada pelo fingerprint. Outras 805 ocorrências de `species_profiles.json` permanecem inconclusivas; a permissão do arquivo inteiro continua falsa, assim como a das receitas compostas. O inventário por passagem e a [evidência do lote](SANEAMENTO_ISSUE_2.md) delimitam o alcance. Fontes externas, fatos, fotografias e branding não são relicenciados. A regularização do grupo anterior e suas permissões foram preservadas.
+
+## Resolução textual consolidada — 2026-10-18
+
+Após as duas confirmações reais do mantenedor, o lote consolidado incorporou 887
+substituições e 264 cópias derivadas, preservando duas notas já aprovadas e 1.249
+ocorrências anteriormente documentadas. Os três recursos textuais remanescentes
+da Issue #2 têm cobertura de direitos por passagem, limitada à expressão educativa
+e aos direitos efetivamente disponíveis. Fontes, fatos e dados externos não são
+relicenciados; não há autoria humana exclusiva ou revisão especializada presumida.
+O [relatório e a evidência](SANEAMENTO_ISSUE_2.md) registram o escopo, os testes e
+a preservação dos 76 eventos anteriores. As contagens de 805 passagens e três
+pendências nos registros de lotes anteriores acima descrevem aquelas etapas.
+O gate geral continua bloqueado por pendências de outros recursos. A integração
+e o encerramento da Issue dependem de ação do mantenedor.
 
 ## Política das fotografias
 
