@@ -61,10 +61,10 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "5f5fe704caaf4130063c58183935a089d234d71d236c4bf96b2e13f476e1119a",
+    "CHANGELOG.md": "979eadf582587747e6b3d6cfd2db85b738f8def7ad3730f80100bf927d9ec852",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "bb7320d831e7a151aa901c35e7326c752fa2ef5024f30768c42319b8bed171ed",
-    "docs/CATALOGO_CHANGELOG.md": "5c9f884faaea2223106620d3acf688dbb89fa35a7dfd81e97f36da12fdf11bef",
+    "docs/CATALOGO_CHANGELOG.md": "e391935a265b886e02d66f800a1add02d0883debe0b01f0e39a29a1c6a03cf78",
     "resources/data/catalog_manifest.json": "6702b74dd42bb4528f00f60d1462725d9d8c91c5b6acb4269fd38a680a4e0302",
     "resources/data/exploration_photos.json": "7557fc276899b250e11947420703bf5f84de69d434c8143f00058e66265043ce",
     "resources/data/species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
