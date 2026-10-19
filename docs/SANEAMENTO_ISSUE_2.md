@@ -1,100 +1,95 @@
 # Saneamento documental da Issue #2
 
-## Conferência integral solicitada — preparação em 2026-10-18
+## Conferência das fontes concluída — 2026-10-18
 
-**Não concluída; nenhuma nova aprovação ou concessão registrada.** O diagnóstico
-offline atual continua apontando os três recursos textuais pendentes. A nova
-visão `text_replacement_scope`, no relatório existente de
-`scripts/review_updates.py --rights-report`, separa **889 ocorrências de origem**
-(805 passagens de fichas, 64 etimologias e 20 prefixos), **264 ocorrências
-derivadas** e **1.249 ocorrências já documentadas**, a preservar. Os vínculos
-contêm arquivo, ponteiro, hash, referência e, quando disponível, origem geradora.
-O fingerprint dessa cobertura é
-`75bd1a0a8b4fdcd7f04bb209e84ff00ccded91388bbc7bc9f3b73f1f0f02dba1`;
-ele identifica o inventário de partida, **não um lote de redações aprovado**.
+**Concluída a preparação técnica das fontes; aguardando conferência editorial e
+decisão delimitada de direitos do mantenedor.** As **887 substituições propostas**
+têm comparação de afirmação e fonte registrada. São **690 redações diferentes**,
+803 passagens de fichas e 84 entradas de dicas (64 etimologias e 20 prefixos).
+Não restam ocorrências sem exame nessa etapa. Isso não constitui aprovação humana,
+revisão especializada ou certificação jurídica.
 
-A conferência das condições de fontes encontrou diferenças que precisam ser
-tratadas individualmente: [LPSN](https://www.lpsn.dsmz.de/text/copyright)
-declara CC BY-SA 4.0 e requisitos de atribuição; [MarLIN](https://www.marlin.ac.uk/termsandconditions)
-declara CC BY-NC-SA 4.0 para informações, com exceções indicadas por produto;
-[ADW](https://animaldiversity.org/about/use_conditions/) identifica condições
-Creative Commons próprias para textos e condições distintas para imagens.
-Nenhuma dessas páginas demonstra uma concessão CC BY 4.0 sobre todo seu conteúdo.
-Isso não prova infração nas fichas nem impede citar fatos: exige distinguir uma
-síntese independente da reprodução ou adaptação de expressão protegida.
+A [conferência única para leitura](propostas/CONFERENCIA_TEXTOS_RESTANTES_ISSUE_2.md)
+agrupa as redações repetidas e identifica seus destinos, referências e limitações.
+O [JSON da proposta](propostas/TEXTOS_RESTANTES_ISSUE_2.json) incorpora **261
+snapshots selecionados**, preservando hashes e datas reais disponíveis. Foi validado
+sem depender do cache local `build/`. O fingerprint da conferência completa é
+`31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449`;
+abrange as substituições, **duas notas mantidas do organismo 82** e **264
+ocorrências derivadas** explicitamente identificadas. O fingerprint somente das
+substituições é `dfd87301edf8140078ec955e0d744c95af5b56d8e8d091a92b1d6f0e30e8f6a4`.
+O inventário de partida conserva o fingerprint
+`75bd1a0a8b4fdcd7f04bb209e84ff00ccded91388bbc7bc9f3b73f1f0f02dba1`.
 
-O [rascunho consolidado](propostas/TEXTOS_RESTANTES_ISSUE_2.json) contém **887
-substituições propostas** e preserva as duas notas do organismo 82 que já possuem
-aprovação editorial, cuja questão de direitos permanece separada. Não faltam
-redações de origem, mas **a conferência das fontes ainda não terminou**: 95
-ocorrências têm comparação técnica registrada com fontes CC BY (versões 2.0,
-3.0 ou 4.0, conforme cada artigo); outras 142
-explicam estados documentais locais (conservação e prefixos), sem criar avaliações
-de conservação ou confirmações fotográficas. Em 22 etimologias, o sentido foi
-comparado com a LPSN, mantendo explícitos CC BY-SA 4.0, atribuição e a análise
-pendente do alcance dos direitos sobre a síntese independente. Restam 628
-ocorrências sem conferência de afirmação/condições da fonte concluída. Esses estados não são
-aprovações humanas nem concessões de direitos.
+### Resultados da investigação
 
-A prévia foi regenerada com `review_hints.evaluate` e `build_education.build` em
-diretório temporário. Preservou os **122 organismos, 855 receitas, parâmetros de
-assistência e 1.249 ocorrências já documentadas**; os hashes dos recursos ativos
-e históricos foram comparados antes e depois. Foram identificados 1.414 vínculos
-de governança afetados, incluindo notas, tópicos agregados e assistência. A
-prévia não registrou revisões: a alteração de uma redação não pode herdar a
-aprovação da versão anterior nem aprovar seu grau de assistência.
+Foram retiradas ou limitadas afirmações que excediam a evidência. Entre os casos:
 
-Na conferência específica de *Arthrospira jenneri*, o rascunho passou a mencionar
-filamentos retos **ou** espiralados, conforme a descrição primária; não transfere
-características de *Limnospira* nem muda a taxonomia. Seis propostas de *Galleria
-mellonella* foram vinculadas às seções pertinentes de Kwadha et al. (2017), cuja
-licença CC BY 4.0 foi conferida no XML. Os snapshots selecionados estão incorporados
-ao rascunho para futura utilização no mecanismo existente de evidências; não
-representam decisões do mantenedor. As notas continuam fora do catálogo ativo.
+- *Favolaschia claudopus*: distribuição confrontada com o
+  [estudo primário de Zhang e Dai (2021)](https://doi.org/10.3390/f12101397),
+  distinguindo-a de outras espécies do complexo *F. calocera*.
+- *Morchella esculenta*: alcance geográfico limitado ao sustentado pela referência;
+  sem transferir automaticamente identificações norte-americanas ou impor uma
+  hipótese nutricional como definitiva.
+- *Johanseninema constrictum*: a descrição primária foi distinguida da nota de
+  correção nomenclatural; características de outros gêneros não foram transferidas.
+- *Ceratiomyxa*: notas comparadas com o tratamento de
+  [Adl et al. (2019)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/),
+  sem atribuir indiscriminadamente resultados experimentais de Myxogastria.
+- Ocorrências pontuais e aspectos visíveis das fotos foram tratados nesse alcance;
+  não comprovam distribuição integral, dieta específica ou identificação definitiva.
+  As fotografias e a taxonomia do catálogo não foram modificadas.
 
-A continuação conferiu notas compartilhadas sobre metamorfose de lepidópteros
-e ciclo alimentar/reprodutivo de mixomicetos; *Ceratiomyxa* permanece pendente
-onde a descrição geral consultada não permite confirmar a aplicabilidade.
-Foram também conferidas redações de *Ginkgo biloba*, *Dionaea muscipula*,
-*Hydnora esculenta*, *Coprinus comatus*, *Hericium erinaceus* e três notas
-coloniais de *Gomphosphaeria aponina*. Os vínculos individuais especificam quais
-tópicos foram comparados: isso não aprova a ficha inteira. As fontes sobre
-ginkgo e fungos não foram utilizadas para acrescentar alegações medicinais.
-As duas versões anteriores de CC BY usadas em dioneia foram preservadas nas
-evidências; não foram convertidas em licenças 4.0 dos artigos.
+As fontes CC BY conservaram suas versões efetivamente verificadas. Também se
+registraram condições diferentes: [LPSN](https://lpsn.dsmz.de/text/copyright),
+[ADW](https://animaldiversity.org/about/use_conditions/),
+[UF/IFAS](https://ask.ifas.ufl.edu/copyright),
+[MarLIN](https://www.marlin.ac.uk/termsandconditions), artigos NC/ND e fontes sem
+licença de redação demonstrada. Elas não foram classificadas como CC0/CC BY 4.0.
+A proposta utiliza fatos para novas redações independentes, sem incorporar
+parágrafos ou figuras externos nem presumir autorização de adaptação. Limitações
+de leitura e condições por fonte estão nas comparações. Qualquer dúvida concreta
+de direitos deve permanecer pendente, inclusive após testes técnicos.
 
-A LPSN consultada lista *Leptothrix discophora* como sinônimo de
-*Sphaerotilus discophorus* no tratamento adotado pela fonte. A divergência foi
-registrada no rascunho para revisão, sem alterar a taxonomia do catálogo.
-Nenhum coletor automático de páginas LPSN foi acrescentado: seus termos
-direcionam coleta automatizada para API/download autorizado.
+As duas notas de *Pseudoboletus parasiticus* mantêm sua redação e a confirmação
+editorial real anterior. A investigação já arquivada sobre
+[Sánchez-García et al. (2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/)
+foi reutilizada; a inferência educativa foi distinguida do resultado do artigo.
+Permanece apenas sua decisão delimitada de direitos, sem nova aprovação editorial
+e sem relicenciamento da fonte NC/ND.
 
-O preparo agora verifica a ligação entre texto, referência e hash da evidência,
-inclusive snapshots incorporados à proposta para portabilidade. Rejeita
-evidências ausentes/adulteradas, referências divergentes, caminhos externos
-e comparações que tentem declarar aprovação humana ou concessão. São controles
-de integridade documental; não certificam o conteúdo ou os direitos.
+### Preservação e validações
 
-Também foi confirmada a condição [CC BY-NC-ND 4.0 do UF/IFAS](https://ask.ifas.ufl.edu/copyright).
-A referência científica não demonstra reprodução textual nem transfere essa
-licença para uma nova síntese. Não se está usando essa condição como autorização
-para adaptar ou relicenciar os artigos. A substituição de referências e a
-distinção entre fatos e expressão protegida ainda precisam ser concluídas por
-ocorrência antes da conferência editorial única. Não se pede aprovação de um
-conjunto incompleto; os dados ativos, permissões, históricos e gate permanecem
-intactos, e a Issue segue pendente.
+A prévia foi regenerada pelos geradores existentes, em diretório temporário:
+**122 organismos, 855 receitas e 1.249 ocorrências já documentadas preservados**.
+Os parâmetros de assistência foram comparados; não houve alteração de regras,
+pontuação, fotografias, interface ou dados dos jogadores. Os **1.414 vínculos de
+governança afetados** foram identificados para a incorporação futura. Novos textos
+não herdam aprovações antigas; os vínculos inalterados conservam seu estado.
+Nenhuma decisão, permissão ou escrita nos recursos ativos foi produzida.
 
-As regressões sintéticas verificam separação entre origem e derivado, proteção
-por ocorrência exata (sem transferir uma concessão para outra cópia), detecção
-de vínculo desatualizado, mudança do fingerprint, idempotência e ausência de
-gravações nos recursos. A preparação também recusa cobertura parcial, duplicatas,
-alteração de conteúdo protegido, hashes adulterados, reaproveitamento de aprovação
-legada e mudança do grau de assistência. A suíte de investigação de direitos
-passou **65/65**; o CTest completo passou **26/26** (179,65 s). Auditoria estrita,
-verificação Apache 2.0 e integridade dos metadados de versão passaram. Não houve
-nova compilação C++ nem validação visual nesta continuação; as mudanças são de
-governança e preparação documental. O gate de distribuição foi reexecutado:
-permanece bloqueado por pendências documentais, com `technical_errors: []`.
+CTest completo: **26/26, 139,36 s**, incluindo **65/65** testes de investigação de
+direitos. Auditoria estrita (122 organismos), verificação Apache 2.0,
+metadados/manifestos, estado do projeto e histórico de governança passaram.
+Os **76 eventos** e o baseline permaneceram idênticos à base
+`ba57dfe037915b81c86f03c7ecd9782374c6fb0e`. A conferência portátil sem cache também
+passou. Não houve nova compilação C++ nem validação visual nesta intervenção
+documental.
+
+O gate de distribuição foi reexecutado e continua **bloqueado**, com
+`technical_errors: []`. Na Issue #2 persistem os três recursos textuais pendentes
+enquanto as decisões do mantenedor não forem registradas e aplicadas pelo fluxo
+existente. Outras pendências de distribuição continuam fora deste escopo.
+
+### Próxima decisão
+
+A conferência consolidada está pronta. Falta a confirmação editorial das novas
+redações e, separadamente, a aplicação de CC BY 4.0 somente aos direitos
+efetivamente disponíveis sobre o lote concreto, incluindo as duas notas mantidas
+e as cópias derivadas identificadas. As confirmações anteriores não serão
+solicitadas novamente. Depois das decisões reais: incorporar, regenerar,
+invalidar somente revisões afetadas, executar novamente as verificações e entregar
+o único Pull Request autorizado, sem merge automático. A Issue não foi encerrada.
 
 ## Lote técnico confirmado e aplicado — 2026-10-18
 

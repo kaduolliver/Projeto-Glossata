@@ -5163,17 +5163,20 @@
       "catalog_or_application_version_changed": false
     },
     "consolidated_draft": {
-      "state": "complete_wording_draft_source_review_in_progress",
+      "state": "source_comparisons_recorded_pending_consolidated_human_review",
       "proposal": "docs/propostas/TEXTOS_RESTANTES_ISSUE_2.json",
-      "proposal_sha256": "93f037f3d74c372d2c9801dd33d945a249eb4a7d92bcfc248285f7c573e634b1",
-      "draft_fingerprint": "15a13eecea8d7aaa8717a58bebf7f64f7fee4b8dba5657f528c5629ae013ba8a",
+      "proposal_sha256": "a6d01ebc2c9a989fc08db42df35c8ca960ccc77a6f0ac849065a6d880bf73da4",
+      "draft_fingerprint": "dfd87301edf8140078ec955e0d744c95af5b56d8e8d091a92b1d6f0e30e8f6a4",
       "source_replacements": 887,
       "retained_editorial_wordings": 2,
       "source_check_counts": {
-        "facts_compared_source_sharealike_scope_pending": 22,
+        "facts_compared_source_sharealike_scope_pending": 21,
         "local_documentary_statement_pending_editorial_review": 142,
-        "requires_claim_and_terms_check": 628,
-        "source_compared_by_ai_pending_editorial_review": 95
+        "facts_compared_independent_wording_pending_editorial_review": 478,
+        "facts_compared_source_reuse_scope_pending": 72,
+        "source_compared_by_ai_pending_editorial_review": 84,
+        "archived_occurrence_compared_pending_editorial_review": 26,
+        "photographed_appearance_compared_pending_editorial_review": 64
       },
       "protected_occurrences": 1249,
       "derived_occurrences_to_regenerate": 264,
@@ -5181,16 +5184,26 @@
       "preview_recipes": 855,
       "validation": {
         "rights_tests": "65/65 passed",
-        "ctest": "26/26 passed, 179.65 s",
+        "ctest": "26/26 passed, 139.36 s",
         "strict_catalog": "passed, 122 organisms",
         "apache_code": "passed",
-        "release_metadata": "passed"
+        "release_metadata": "passed",
+        "portable_without_build_cache": "passed",
+        "governance_history": "passed, 76 events unchanged",
+        "project_status": "passed",
+        "distribution": "blocked as expected; technical_errors=[]; three textual resources pending"
       },
       "human_approvals_created": 0,
       "permissions_created": 0,
       "active_resources_changed": false,
-      "ready_for_consolidated_human_review": false,
-      "next_step": "Complete claim/source-terms comparisons, regenerate and render one consolidated editorial conference; no partial approval requested."
+      "ready_for_consolidated_human_review": true,
+      "next_step": "Actual consolidated editorial review and separate limited available-rights decision; no approval, permission or active replacement created by source checks.",
+      "conference": "docs/propostas/CONFERENCIA_TEXTOS_RESTANTES_ISSUE_2.md",
+      "conference_fingerprint": "31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449",
+      "source_comparisons_recorded": 887,
+      "unchecked_source_replacements": 0,
+      "unique_proposed_wordings": 690,
+      "portable_evidence_snapshots": 261
     }
   }
 }
