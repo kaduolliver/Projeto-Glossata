@@ -1006,6 +1006,23 @@ void GameServiceTests::invalidPhotoLicenseDisablesVisualQuestion()
 
 void GameServiceTests::photoResolverRejectsMissingCorruptAndUnverifiedResources()
 {
+    for (const auto &organism : JsonSpeciesCatalog().loadSpecies()) {
+        if (organism.id!=125 && organism.id!=128) continue;
+        const auto declared=organism.photo;
+        QVERIFY(declared.valid);
+        QVERIFY(declared.licenseUrl.isEmpty());
+        QVERIFY(declared.attribution.value("license_version").isNull());
+        QVERIFY(declared.attribution.value("source_declaration_verified").toBool());
+        auto tampered=declared;
+        tampered.attribution.remove("source_declaration_verified");
+        QVERIFY(!PhotoResolver::validate(tampered,organism.name).valid);
+        tampered=declared; tampered.licenseUrl="https://creativecommons.org/licenses/by/4.0/";
+        QVERIFY(!PhotoResolver::validate(tampered,organism.name).valid);
+        tampered=declared; tampered.author="Different person";
+        QVERIFY(!PhotoResolver::validate(tampered,organism.name).valid);
+        tampered=declared; tampered.license="cc-by-sa";
+        QVERIFY(!PhotoResolver::validate(tampered,organism.name).valid);
+    }
     const auto species=eligibleQuizSpecies(JsonSpeciesCatalog().loadSpecies(),"species");
     QVERIFY(species.size()>=4);
     const auto photo=species.first().photo;

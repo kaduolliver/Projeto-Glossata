@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- PR #23: referências ativas das duas fotos declaram CC BY sem versão comprovada; URLs inferidos removidos, evidências e decisão editorial expressa preservadas. Uso local exige declaração por arquivo verificável; distribuição continua bloqueada.
+- Etapa 1 (#4/#22): duas fotos de origem Casual substituídas por Research Grade, com associação editorial expressa, créditos e proveniência por arquivo; 855 receitas e direitos textuais preservados. Versões de licença ainda pendentes, sem liberação de distribuição.
 - PR #21: dicas podem usar a revisão válida da afirmação individual sem exigir aprovação de seu agregado independente. Mantidos os bloqueios de notas sem revisão, vencidas, rejeitadas ou incompatíveis, a progressão leve/moderada/forte e a pontuação. Indicadores científicos passam a consultar a governança atual, sem depender de flags legadas.
 - Issue #2: incorporado o lote consolidado após confirmações editorial e de direitos disponíveis: 887 substituições, duas notas mantidas e 264 cópias derivadas. Cobertura textual atual completa por passagem nos três recursos, com 971 novos registros editoriais e os 76 anteriores preservados. Organismos, fotos, regras e dados dos jogadores intactos; distribuição geral permanece bloqueada.
 - Gravação de governança tolera recusas transitórias reconhecidas do Windows com retentativas limitadas, mantendo atomicidade, trava e verificação do topo em cada tentativa; erros persistentes continuam sendo recusados.

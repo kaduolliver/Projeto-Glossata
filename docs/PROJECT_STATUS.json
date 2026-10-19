@@ -7,7 +7,7 @@
   "catalog": {
     "version": "2.4.0",
     "declared_status": "unreleased",
-    "content_sha256": "cd18c2b499b51fc8f19d9a3c53b8f036bf25e2247cb23f819161d4380b9a3d08"
+    "content_sha256": "1c650fcf2e65c447d50bdadaa0d002dfb44b5b43c009918ca6c4b998a944dbb5"
   },
   "scoring": {
     "current": "identification-v4-progressive",
@@ -61,13 +61,13 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "bcbd3ba2fb292c4ee0778a6a8e7cd32fd3a69fef789805bed50a2083891930c8",
+    "CHANGELOG.md": "8a246cbe8a8aeceabe98407adb2e4919ef1285e516b56f15dd216c82444345a9",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "bb7320d831e7a151aa901c35e7326c752fa2ef5024f30768c42319b8bed171ed",
-    "docs/CATALOGO_CHANGELOG.md": "fc27b895812f5fc6fe6bb0a1764e56c6373569924f85314c9287a27e7929f4a0",
-    "resources/data/catalog_manifest.json": "62802f62cf5b543786b42394ae7d367e03d51f4af5ee6c1e29468b21b363d14e",
+    "docs/CATALOGO_CHANGELOG.md": "b2f851a1495250975406a02c8936b4d08e1c8b19601626648f72e45c3853c301",
+    "resources/data/catalog_manifest.json": "f35417773672c0b8979fec64d4f437603abb027c87c717346f2ace1b015efa73",
     "resources/data/exploration_photos.json": "7557fc276899b250e11947420703bf5f84de69d434c8143f00058e66265043ce",
-    "resources/data/species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
+    "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
     "src/app/main.cpp": "76a882dbf755b814c84a3219e68ef5fcb7c8b827c1a204f2085fd36a875a96ca",
     "src/domain/GameConfiguration.h": "54bd17ce644314aa383bc04340141d97e1c2251dfe71a8955517a41648c6d41b",

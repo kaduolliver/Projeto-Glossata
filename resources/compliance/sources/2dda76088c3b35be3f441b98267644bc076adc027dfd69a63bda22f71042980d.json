@@ -1,0 +1,44 @@
+{
+  "record": {
+    "observation_id": "68706928",
+    "community_taxon_id": "130793",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 130793,
+      "name": "Panthera tigris tigris",
+      "rank": "subspecies",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        40151,
+        848317,
+        848320,
+        848324,
+        41573,
+        41944,
+        846273,
+        41962,
+        41967,
+        130793
+      ]
+    },
+    "photo": {
+      "id": 111317641,
+      "license_code": "cc-by",
+      "attribution": "(c) Morten Ross, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/square.jpg",
+      "hidden": false,
+      "flags": false
+    }
+  },
+  "collected_at": "2026-10-19T14:01:38.663320+00:00",
+  "dimensions": {
+    "width": 2048,
+    "height": 1324
+  },
+  "captive": false,
+  "quality_metrics": []
+}

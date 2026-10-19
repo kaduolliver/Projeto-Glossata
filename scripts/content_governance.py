@@ -423,7 +423,8 @@ def permission_issues(photo, metadata, root=ROOT):
     if not metadata.get('evidence_paths'): errors.append('permission_evidence_missing')
     if not parse_time(metadata.get('original_collected_at')) and not parse_time(metadata.get('first_evidenced_at')):
         errors.append('original_collection_date_unknown')
-    if not metadata.get('license_version') or metadata.get('declared_license_url') != photo.get('license_url'):
+    if (not metadata.get('license_version') or not https_url(photo.get('license_url'))
+            or metadata.get('declared_license_url') != photo.get('license_url')):
         errors.append('license_version_not_evidenced')
     elif ('/' + metadata['license_version'] + '/') not in photo.get('license_url', ''):
         errors.append('license_version_url_mismatch')
@@ -465,6 +466,28 @@ def permission_issues(photo, metadata, root=ROOT):
     return sorted(set(errors))
 
 
+def source_declared_photo_license(photo, metadata, root=ROOT):
+    """Validate a per-file CC BY declaration for local use, never distribution.
+
+    An absent version/URL stays absent. The existing permission validator must
+    find only the three explicit confirmation/version gaps, with all identity,
+    credit, evidence, hash and collection checks satisfied.
+    """
+    if (photo.get('license') != 'cc-by' or photo.get('license_url') is not None
+            or photo.get('license_version') is not None
+            or photo.get('license_status') != 'source_declared_version_unverified'
+            or not photo.get('source_verified')
+            or metadata.get('license_version') is not None
+            or metadata.get('declared_license_url') is not None):
+        return False
+    recovery = permission_recovery(root)
+    if recovery['errors'] or photo.get('id') in recovery['pending_photo_ids']:
+        return False
+    return set(permission_issues(photo, metadata, root)) == {
+        'license_version_not_evidenced', 'license_version_evidence_missing',
+        'permission_confirmation_missing_or_changed'}
+
+
 def source_findings(photo, metadata, root=ROOT):
     findings = []
     for relative in metadata.get('evidence_paths', []):
@@ -488,6 +511,10 @@ def credits(root=ROOT):
              'modifications': p.get('modifications'), 'sha256': p.get('sha256'), 'organisms': [],
              'rights_issues': permission_issues(p, metadata, root), 'evidence_paths': metadata.get('evidence_paths', [])})
         record['distribution_exception'] = bool(documented_exception(p, 'distribution', root))
+        if p.get('license_status') == 'source_declared_version_unverified':
+            record.update(license_status=p['license_status'],
+                          source_declaration_verified=source_declared_photo_license(p, metadata, root),
+                          license_source_url=record['photo_url'])
         if recovery['errors'] or p['id'] in recovery['pending_photo_ids']:
             record['rights_issues'].append('permission_projection_inconsistent')
         record['scientific_source_issues'] = source_findings(p, metadata, root)
@@ -503,7 +530,10 @@ def render_credits(data):
     for pid, p in sorted(data['photos'].items()):
         title = f" — título: {safe(p['title'])}" if p['title'] else ''
         names = ', '.join(safe(s['name']) for s in p['organisms'])
-        lines += [f"- **{names}** — {safe(p['author']) or 'Autoria não identificada'}{title} — [foto {pid}]({p['photo_url']}) — [observação]({p['source']}) — [{safe(p['license']).upper()}]({p['license_url']}) — {safe(p['modifications'])}",
+        license_text = (f"[CC BY — versão ainda não comprovada]({p['license_source_url']})"
+                        if p.get('license_status') == 'source_declared_version_unverified'
+                        else f"[{safe(p['license']).upper()}]({p['license_url']})")
+        lines += [f"- **{names}** — {safe(p['author']) or 'Autoria não identificada'}{title} — [foto {pid}]({p['photo_url']}) — [observação]({p['source']}) — {license_text} — {safe(p['modifications'])}",
                   f"  SHA-256: `{p['sha256']}`. Pendências: {', '.join(p['rights_issues']) or 'nenhuma detectada automaticamente'}. Mais metadados: resources/data/photo_provenance.json."]
     lines += ['', '## Fotografias dos cartões de exploração', '',
               'Representantes visuais dos grupos; não substituem fotos de identificação do quiz nem revisão por especialista. Micrografias e alterações estão identificadas.', '']

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "kind": "photo_association_editorial_confirmation",
+  "recorded_at": "2026-10-19T14:06:32.000240+00:00",
+  "reviewer": "Carlos Eduardo Lima de Oliveira",
+  "actor_type": "human",
+  "review_kind": "editorial",
+  "answer": "Aprovo editorialmente as duas associações e dicas",
+  "source": "Resposta expressa do mantenedor nesta sessão à conferência de docs/ETAPA_1_FOTOGRAFIAS.md.",
+  "scope": "Associação das duas fotos aos organismos 125 e 128 nos sete níveis já usados e vínculo das duas dicas morfológicas transcritas. A fonte do tigre identifica P. t. tigris, ancestral espécie 41967.",
+  "excluded": [
+    "permission_confirmation",
+    "license_version",
+    "distribution",
+    "hint_assistance",
+    "aggregate_morphology",
+    "specialist_review"
+  ],
+  "photos": [
+    {
+      "organism_id": 125,
+      "photo_id": "111317641",
+      "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
+      "hint": "Observe se as marcas da pelagem são listras, em vez de manchas arredondadas."
+    },
+    {
+      "organism_id": 128,
+      "photo_id": "2068079",
+      "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9",
+      "hint": "Concentre a comparação na longa cauda e na alternância de anéis pretos e brancos."
+    }
+  ],
+  "limitation": "Declaração editorial fornecida pelo mantenedor; não é assinatura digital, revisão independente ou prova de licença."
+}

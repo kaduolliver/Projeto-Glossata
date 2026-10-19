@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "origin": "live_api",
+  "collected_at": "2026-10-19T13:56:22.021383+00:00",
+  "request_url": "https://api.inaturalist.org/v1/observations/361508293,386235634",
+  "expected_photo_id": "707161720",
+  "photo_present": true,
+  "record": {
+    "observation_id": "386235634",
+    "community_taxon_id": "41967",
+    "quality_grade": "casual",
+    "taxon": {
+      "id": 41967,
+      "name": "Panthera tigris",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        40151,
+        848317,
+        848320,
+        848324,
+        41573,
+        41944,
+        846273,
+        41962,
+        41967
+      ]
+    },
+    "photo": {
+      "id": 707161720,
+      "license_code": "cc-by",
+      "attribution": "(c) Craig A. C. Symonds, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/707161720/square.jpg",
+      "hidden": false,
+      "flags": false
+    }
+  },
+  "observation_context": {
+    "captive": true,
+    "quality_metrics": [
+      {
+        "metric": "wild",
+        "agree": false
+      }
+    ]
+  },
+  "notice": "Public source metadata only; no permission, review or identification approved."
+}

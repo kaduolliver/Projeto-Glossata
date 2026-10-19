@@ -1,17 +1,17 @@
 {
   "policy": "progressive-pedagogy-v1",
   "inputs": {
-    "species.json": "06da2561f12a71b90f5412e316eeb68e7085933b5c0c6e347c797c8be0257cd8",
+    "species.json": "a1798e62fd9e94ee4b71f9b85427f562def906c996bf42b3f9e2530d0e4e46a4",
     "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
-    "hint_education.json": "fb79fa71e6b1fcff115c415c17b768be2ce889d7b6645772911c8b33fb93a951",
+    "hint_education.json": "95dda3b53b21e1c9e1223be0d26da8039e59da60dd8009f6df2e03ee23008c7e",
     "species_profiles.json": "25189c1de694d37a917e0700cbff3bbeba1d608aa0fa35c403570cdbef7806be",
-    "curation_reviews.json": "3e65f1fdb4c9e91f5cd4d2339259d78977ab5d72390f45a9257cb304566c4b71",
+    "curation_reviews.json": "3c774c59ef0ddef652ec9682001eb842ef189229ad6b2caf7f6309cb592d0eaf",
     "content_policy.json": "74946cc18dc7ed1a556b74ac064a14686a1f596b0f581cfc885c5344c53f7fd8",
     "scripts/review_hints.py": "ff6ec3b0abf5f7c26ca46f22fe49b13d28764ff4f1eebdef30cdbb358acc21ac",
     "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
     "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
-    "resources/compliance/review_history.jsonl": "952e612b3e5604ddb7be892bdb959eca5e3c1d37948fe282b6188f2998abb9d9",
+    "resources/compliance/review_history.jsonl": "1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
   },
   "species": {
@@ -1127,8 +1127,8 @@
     "125": {
       "scientific_name": "Panthera tigris",
       "photo": {
-        "id": "707161720",
-        "sha256": "5649ee9848c2fcefa977d4bb2f4ebfeff2a8885e30092e5cb760ae8dae1c5b00"
+        "id": "111317641",
+        "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646"
       },
       "recipes": [
         {
@@ -3745,8 +3745,8 @@
     "128": {
       "scientific_name": "Lemur catta",
       "photo": {
-        "id": "659755043",
-        "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+        "id": "2068079",
+        "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
       },
       "recipes": [
         {
@@ -16654,9 +16654,9 @@
     "actor_type": "automated",
     "process": "scripts/review_hints.py + contextual validation in EducationalContent",
     "policy_version": "progressive-pedagogy-v1",
-    "reviewed_at": "2026-10-19T11:39:24.965152+00:00",
-    "due_at": "2027-10-19T11:39:24.965152+00:00",
-    "content_sha256": "4b1301ba7e120743d9af8cbeaf211d2a6ab6caac69c9ada91a9b8b0145e72a83",
+    "reviewed_at": "2026-10-19T17:33:52.465614+00:00",
+    "due_at": "2027-10-19T17:33:52.465614+00:00",
+    "content_sha256": "41c2bfb7daf3da953fe5551beea4d438e9b545f16a6d0e0168c19e8d5d6f0c42",
     "rationale": "Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.",
     "limitations": "O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança."
   }

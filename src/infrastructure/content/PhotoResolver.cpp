@@ -47,7 +47,19 @@ Photo PhotoResolver::validate(Photo p, const QString &expectedName)
     if (QFileInfo(p.image).completeBaseName()!=p.id
         || !QUrl(p.downloadUrl).path().contains("/photos/"+p.id+"/"))
         return reject(QStringLiteral("Identidade do arquivo da fotografia não confere."));
-    const QString version=p.attribution.value("license_version").toString("4.0");
+    const bool versionUnverified=p.attribution.value("license_status").toString()=="source_declared_version_unverified";
+    // The compiled credits record validates the photo-specific source evidence.
+    // This permits local learning only; missing version/permission still blocks distribution.
+    const bool sourceDeclaration=versionUnverified && p.license=="cc-by" && p.licenseUrl.isEmpty()
+        && p.attribution.value("source_declaration_verified").toBool()
+        && p.attribution.value("license_url").isNull() && p.attribution.value("license_version").isNull()
+        && p.attribution.value("photo_id").toString()==p.id
+        && p.attribution.value("sha256").toString()==p.sha256
+        && p.attribution.value("license").toString()==p.license
+        && p.attribution.value("author").toString()==p.author
+        && p.attribution.value("source").toString()==p.sourceUrl
+        && p.attribution.value("download_url").toString()==p.downloadUrl;
+    const QString version=versionUnverified ? QString() : p.attribution.value("license_version").toString("4.0");
     const QString requiredLicense = p.license == "cc0" ? "https://creativecommons.org/publicdomain/zero/1.0/"
         : p.license == "cc-by" && QStringList{"1.0","2.0","2.5","3.0","4.0"}.contains(version)
             ? "https://creativecommons.org/licenses/by/"+version+"/" : QString();
@@ -56,7 +68,7 @@ Photo PhotoResolver::validate(Photo p, const QString &expectedName)
         && p.attribution.value("license").toString()==p.license
         && p.attribution.value("license_url").toString()==p.licenseUrl
         && p.attribution.value("rights_issues").toArray().isEmpty();
-    if (!documentedException && (requiredLicense.isEmpty() || p.licenseUrl != requiredLicense))
+    if (!documentedException && !sourceDeclaration && (requiredLicense.isEmpty() || p.licenseUrl != requiredLicense))
         return reject(QStringLiteral("Licença da fotografia não aprovada."));
     if (p.author.trimmed().isEmpty() || p.author == "no rights reserved" || p.sourceUrl.isEmpty()
         || p.downloadUrl.isEmpty() || p.modifications.isEmpty() || p.sha256.size()!=64)

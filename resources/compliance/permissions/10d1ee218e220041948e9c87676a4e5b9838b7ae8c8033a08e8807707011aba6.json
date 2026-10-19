@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "origin": "live_api",
+  "collected_at": "2026-10-19T14:02:13.051973+00:00",
+  "archived_at": "2026-10-19T14:06:32.231009+00:00",
+  "source_url": "https://api.inaturalist.org/v1/observations/1707124",
+  "record": {
+    "observation_id": "1707124",
+    "community_taxon_id": "43617",
+    "quality_grade": "research",
+    "taxon": {
+      "id": 43617,
+      "name": "Lemur catta",
+      "rank": "species",
+      "is_active": true,
+      "ancestor_ids": [
+        48460,
+        1,
+        2,
+        355675,
+        40151,
+        848317,
+        848320,
+        848323,
+        43367,
+        936382,
+        1369268,
+        467897,
+        43607,
+        43616,
+        43617
+      ]
+    },
+    "photo": {
+      "id": 2068079,
+      "license_code": "cc-by",
+      "attribution": "(c) Rafael Medina, some rights reserved (CC BY)",
+      "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2068079/square.jpg",
+      "hidden": false,
+      "flags": false
+    }
+  }
+}
