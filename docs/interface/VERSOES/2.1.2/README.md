@@ -1,5 +1,7 @@
 # Revisão visual 2.1.2 — design system
 
+Implementado no commit [`679f7f744c17e5c9f2f28d52ab32105cf0ed8b51`](https://github.com/kaduolliver/Projeto-Glossata/commit/679f7f744c17e5c9f2f28d52ab32105cf0ed8b51), no [PR #28](https://github.com/kaduolliver/Projeto-Glossata/pull/28).
+
 Subetapa 2.1.2 da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Base anterior: `15cc212b097eb2dc72ecdec84c869cf141e56da4`. 2.1.2 identifica a etapa documental; o aplicativo continua 1.7.0 em desenvolvimento, sem lançamento.
 
 Tokens QML locais centralizam cores, tipografia, espaçamentos, bordas e movimento em quatro componentes compartilhados. Botões têm fundos mais escuros, navegação usa dourado discreto na seleção e cartões estatísticos ganham bordas e texto mais legíveis. Layout, fotografias, ícones e regras são preservados. Não há carrossel, nova exploração, quiz reformulado ou novas conquistas.

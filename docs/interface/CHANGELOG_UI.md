@@ -2,6 +2,8 @@
 
 ## 2.1.2 — Design system — 2026-10-19
 
+Implementado no commit [`679f7f744c17e5c9f2f28d52ab32105cf0ed8b51`](https://github.com/kaduolliver/Projeto-Glossata/commit/679f7f744c17e5c9f2f28d52ab32105cf0ed8b51), no [PR #28](https://github.com/kaduolliver/Projeto-Glossata/pull/28).
+
 - Tokens locais Qt/QML e modernização de UiButton, NavItem, StatCard e TextAction: verde-floresta, superfícies em azul-petróleo, seleção/foco dourados, contraste e estados interativos.
 - Redução de movimento conectada ao ajuste existente; contratos públicos, navegação e regras preservados.
 - [Decisões, capturas e validação](VERSOES/2.1.2/README.md). Tela inicial e registro atualizados no mesmo commit visual. Baseline intacto.

@@ -62,5 +62,7 @@
       "method": "QQuickWindow::grabWindow; production Main.qml and GameController in QmlInterfaceTests.navigateAndConfirmAnswers",
       "binary_sha256": "cf32f2d81d1ba42463e50a3f28b4c89c64d8c044d02a05f6e8e5218dc9526ded"
     }
-  ]
+  ],
+  "implementation_commit": "679f7f744c17e5c9f2f28d52ab32105cf0ed8b51",
+  "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/28"
 }
