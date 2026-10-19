@@ -29,11 +29,20 @@ class PhylogenyTests(unittest.TestCase):
         self.assertEqual(projected, self.species)
         self.assertEqual({n['id']:n for n in nodes}, {n['id']:n for n in self.taxons})
         before = load(ROOT / 'resources/compliance/taxonomy_migration_v1.json')['records']
+        replacements = {str(row['organism_id']): row
+                        for row in load(ROOT / 'docs/ETAPA_1_FOTOGRAFIAS.json')['changes']}
         self.assertEqual(set(before), {str(s['id']) for s in projected})
         for s in projected:
             previous=before[str(s['id'])]
             self.assertEqual(s['name'], previous['name'])
-            self.assertEqual(s['photo'], previous['photo'])
+            replacement = replacements.get(str(s['id']))
+            if replacement:
+                # The immutable migration snapshot predates these explicitly
+                # documented photo replacements, checked by import/governance tests.
+                self.assertEqual(replacement['old_photo'], previous['photo'])
+                self.assertEqual(s['photo'], replacement['new_photo'])
+            else:
+                self.assertEqual(s['photo'], previous['photo'])
             self.assertEqual([n['id'] for n in s['source_taxonomy']], previous['taxonomy'])
             self.assertEqual(s['legacy_educational_kingdom'], previous['legacy_educational_kingdom'])
 

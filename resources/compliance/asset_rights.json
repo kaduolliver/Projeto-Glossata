@@ -155,7 +155,7 @@
     {
       "path": "resources/data/hint_education.json",
       "kind": "text_authorship",
-      "sha256": "a79c83338f1b4299f77a96f6ae3968ad212638c8a5714d0b99407c2baa2f57a5",
+      "sha256": "0434559ed22de5f359805afbaa74e862a1824dbb010fe3ad7d338698c650a0a4",
       "source": "Redações educativas assistidas por IA e composições identificadas; lotes concretos com conferência de fontes, confirmação editorial e concessão delimitada de direitos disponíveis. Origem, atribuições e evidências por ocorrência em educational_text_rights. Bibliografia não autoriza reproduzir expressão protegida das fontes.",
       "permission": {
         "holder": "Carlos Eduardo Lima de Oliveira",
@@ -191,6 +191,11 @@
           "recorded_on": "2026-10-18",
           "reason": "Explicit consolidated editorial and available-rights confirmations applied; exact previous grants and historical evidence retained. No photo, source-work or package permission.",
           "source_at_previous_hash": "Corpus legado assistido por IA; bibliografia n?o equivale a licen?a de reprodu??o. Revisar originalidade, par?frases e eventuais trechos de terceiros."
+        },
+        {
+          "sha256": "a79c83338f1b4299f77a96f6ae3968ad212638c8a5714d0b99407c2baa2f57a5",
+          "recorded_at": "2026-10-19T14:06:32.000240+00:00",
+          "reason": "Substituição fotográfica editorial das espécies 125/128; redações, receitas e concessões preservadas."
         }
       ],
       "integrity_note": "Hash do inventário atualizado para os bytes existentes; não concede direitos nem altera autor, licença ou aprovação.",
@@ -2218,7 +2223,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "72958896389145e4694ea79931ebc79d4e8aa4580b66e680f3769676632d61c5",
+      "sha256": "57f85660f76246d9befbfb96da9f7338345fbed6fe2c632a19bd10d3cff5800d",
       "source": "Redações educativas assistidas por IA e composições identificadas; lotes concretos com conferência de fontes, confirmação editorial e concessão delimitada de direitos disponíveis. Origem, atribuições e evidências por ocorrência em educational_text_rights. Bibliografia não autoriza reproduzir expressão protegida das fontes.",
       "permission": {
         "holder": "Carlos Eduardo Lima de Oliveira",
@@ -2290,6 +2295,11 @@
           "state": "documented_scoped_text_rights",
           "recorded_at": "2026-10-19T11:39:25.425270+00:00",
           "reason": "Scientific hint-use policy now accepts exact valid assertion reviews independently of unrelated aggregates. Existing automatic evaluation regenerated; all 855 recipes, wordings, grades, sources and scoped rights confirmations remain identical. No human review or permission created."
+        },
+        {
+          "sha256": "72958896389145e4694ea79931ebc79d4e8aa4580b66e680f3769676632d61c5",
+          "recorded_at": "2026-10-19T14:06:32.000240+00:00",
+          "reason": "Substituição fotográfica editorial das espécies 125/128; redações, receitas e concessões preservadas."
         }
       ],
       "license": "CC-BY-4.0",

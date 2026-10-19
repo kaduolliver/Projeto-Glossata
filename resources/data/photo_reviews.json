@@ -1842,7 +1842,7 @@
     "source": "https://www.inaturalist.org/observations/28050388"
   },
   "41967": {
-    "photo_id": "707161720",
+    "photo_id": "111317641",
     "scientific_name": "Panthera tigris",
     "approved_ranks": [
       "species",
@@ -1854,10 +1854,12 @@
       "kingdom"
     ],
     "display": true,
-    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
-    "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/386235634",
-    "identification_reference": "https://animaldiversity.org/accounts/Panthera_tigris/"
+    "note": "Associação e uso visual aprovados editorialmente pelo mantenedor nesta versão; não constitui revisão por especialista nem confirmação de direitos.",
+    "reviewed_on": "2026-10-19",
+    "reviewer": "Carlos Eduardo Lima de Oliveira",
+    "review_kind": "editorial",
+    "source": "https://www.inaturalist.org/observations/68706928",
+    "confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
   },
   "41964": {
     "photo_id": "748172022",
@@ -1896,7 +1898,7 @@
     "identification_reference": "https://animaldiversity.org/accounts/Panthera_onca/"
   },
   "43617": {
-    "photo_id": "659755043",
+    "photo_id": "2068079",
     "scientific_name": "Lemur catta",
     "approved_ranks": [
       "species",
@@ -1908,10 +1910,12 @@
       "kingdom"
     ],
     "display": true,
-    "note": "Fotografia individual inspecionada: organismo visível e reconhecível nos níveis declarados. Espécie restrita quando a foto não fornece diagnóstico suficiente.",
-    "reviewed_on": "2026-10-14",
-    "source": "https://www.inaturalist.org/observations/361508293",
-    "identification_reference": "https://animaldiversity.org/accounts/Lemur_catta/"
+    "note": "Associação e uso visual aprovados editorialmente pelo mantenedor nesta versão; não constitui revisão por especialista nem confirmação de direitos.",
+    "reviewed_on": "2026-10-19",
+    "reviewer": "Carlos Eduardo Lima de Oliveira",
+    "review_kind": "editorial",
+    "source": "https://www.inaturalist.org/observations/1707124",
+    "confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
   },
   "1204": {
     "photo_id": "307026691",

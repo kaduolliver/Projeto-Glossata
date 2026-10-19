@@ -2398,5 +2398,55 @@
     "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
     "permission_state": "legacy_evidence_incomplete",
     "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+  },
+  "111317641": {
+    "photo_id": "111317641",
+    "observation_id": "68706928",
+    "photo_url": "https://www.inaturalist.org/photos/111317641",
+    "observation_url": "https://www.inaturalist.org/observations/68706928",
+    "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/large.jpg",
+    "credit_as_supplied": "(c) Morten Ross, some rights reserved (CC BY)",
+    "title": null,
+    "license": "cc-by",
+    "declared_license_url": null,
+    "license_version": null,
+    "original_collected_at": "2026-10-19T14:01:38.663320+00:00",
+    "evidence_paths": [
+      "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json"
+    ],
+    "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
+    "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
+    "permission_state": "pending_version_confirmation",
+    "license_url_note": "O campo photo.license_url mantém o destino convencional do formato do catálogo; a API somente declara cc-by. Versão e URL por fotografia ainda não comprovadas, não autoriza distribuição.",
+    "version_verification": {
+      "source_url": "https://www.inaturalist.org/photos/111317641",
+      "state": "unverified",
+      "reason": "Página específica não disponível na consulta; não inferir versão da licença."
+    }
+  },
+  "2068079": {
+    "photo_id": "2068079",
+    "observation_id": "1707124",
+    "photo_url": "https://www.inaturalist.org/photos/2068079",
+    "observation_url": "https://www.inaturalist.org/observations/1707124",
+    "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2068079/large.jpg",
+    "credit_as_supplied": "(c) Rafael Medina, some rights reserved (CC BY)",
+    "title": null,
+    "license": "cc-by",
+    "declared_license_url": null,
+    "license_version": null,
+    "original_collected_at": "2026-10-19T14:02:13.051973+00:00",
+    "evidence_paths": [
+      "resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json"
+    ],
+    "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9",
+    "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
+    "permission_state": "pending_version_confirmation",
+    "license_url_note": "O campo photo.license_url mantém o destino convencional do formato do catálogo; a API somente declara cc-by. Versão e URL por fotografia ainda não comprovadas, não autoriza distribuição.",
+    "version_verification": {
+      "source_url": "https://www.inaturalist.org/photos/2068079",
+      "state": "unverified",
+      "reason": "Página específica não disponível na consulta; não inferir versão da licença."
+    }
   }
 }

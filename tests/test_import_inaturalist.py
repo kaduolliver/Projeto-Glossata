@@ -50,6 +50,80 @@ with mock.patch.dict(sys.modules, {"import_inaturalist": importer}):
 
 
 class ImportTests(unittest.TestCase):
+    def test_priority_photo_replacement_preserves_catalog_recipes_and_history(self):
+        base = 'afabb70186cf99906f6148585e09749243626db5'
+        old = json.loads(self.historical_bytes(base, 'resources/data/species.json'))
+        self.assertEqual(len(self.species), 122)
+        self.assertEqual([s['id'] for s in old], [s['id'] for s in self.species])
+        for previous, current in zip(old, self.species):
+            if current['id'] in (125, 128):
+                self.assertEqual({k: v for k, v in previous.items() if k not in ('photo', 'image')},
+                                 {k: v for k, v in current.items() if k not in ('photo', 'image')})
+                self.assertNotEqual(previous['photo']['id'], current['photo']['id'])
+                self.assertEqual(hashlib.sha256((PROJECT / previous['photo']['path']).read_bytes()).hexdigest(),
+                                 previous['photo']['sha256'])
+            else:
+                self.assertEqual(previous, current)
+        before = json.loads(self.historical_bytes(base, 'resources/data/progressive_hints.json'))
+        after = json.loads((PROJECT / 'resources/data/progressive_hints.json').read_text(encoding='utf8'))
+        self.assertEqual(sum(len(s['recipes']) for s in after['species'].values()), 855)
+        for sid in before['species']:
+            self.assertEqual(before['species'][sid]['recipes'], after['species'][sid]['recipes'])
+        ledger = 'resources/compliance/review_history.jsonl'
+        prefix = self.historical_bytes(base, ledger)
+        current = (PROJECT / ledger).read_bytes()
+        self.assertTrue(current.startswith(prefix))
+        added = [json.loads(line) for line in current[len(prefix):].splitlines()]
+        self.assertEqual({e['key'] for e in added}, {'topic:125:photo', 'topic:128:photo',
+            'species:125:morphological_hint', 'species:128:morphological_hint'})
+        self.assertEqual(len(added), 4)
+        self.assertTrue(all(e['state'] == 'approved_editorial' for e in added))
+        for path in ('resources/data/content_policy.json', 'resources/data/taxonomy.json',
+                     'resources/data/species_profiles.json', 'resources/compliance/review_baseline.json'):
+            self.assertEqual(self.historical_bytes(base, path), (PROJECT / path).read_bytes())
+
+    def test_priority_photo_evidence_and_editorial_scope(self):
+        import content_governance as governance
+        import rights_investigation as rights
+        inventory = rights.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'], [])
+        self.assertFalse(any(row['rights_issues'] for row in inventory['rights_metadata']['records']))
+        document = governance.load(PROJECT / 'docs/ETAPA_1_FOTOGRAFIAS.json')
+        provenance = governance.permission_provenance(PROJECT)
+        content = governance.load(PROJECT / 'resources/data/education.json')
+        qrc = (PROJECT / 'resources.qrc').read_text(encoding='utf8')
+        for change in document['changes']:
+            sid = str(change['organism_id']); photo = change['new_photo']
+            source = governance.load(PROJECT / change['source_evidence'])['record']
+            old = governance.load(PROJECT / change['old_source_evidence'])
+            self.assertTrue(old['observation_context']['captive'])
+            self.assertEqual(old['record']['quality_grade'], 'casual')
+            self.assertEqual(source['quality_grade'], 'research')
+            self.assertEqual(source['community_taxon_id'], str(source['taxon']['id']))
+            self.assertEqual(str(source['photo']['id']), photo['id'])
+            self.assertEqual(source['photo']['attribution'], photo['author'])
+            self.assertEqual(source['photo']['license_code'], photo['license'])
+            self.assertIn(int(photo['taxon_id']), source['taxon']['ancestor_ids'])
+            self.assertEqual(str(source['taxon']['id']), photo['observation_taxon_id'])
+            self.assertEqual(governance.source_findings(photo, provenance[photo['id']], PROJECT), [])
+            pending = governance.permission_issues(photo, provenance[photo['id']], PROJECT)
+            self.assertIn('license_version_not_evidenced', pending)
+            self.assertIn('permission_confirmation_missing_or_changed', pending)
+            self.assertNotIn('permission_confirmation', provenance[photo['id']])
+            self.assertIn(photo['path'], qrc)
+            self.assertNotIn(change['old_photo']['path'], qrc)
+            note = content['notes']['species:' + sid + ':morphological_hint']
+            self.assertEqual(note['photo_id'], photo['id'])
+            self.assertEqual(note['governance']['state'], 'approved_editorial')
+            self.assertTrue(content['species'][sid]['governance']['photo']['usable'])
+            self.assertFalse(content['species'][sid]['governance']['morphology']['usable'])
+            # A further change must not inherit the editorial approval just recorded.
+            changed = json.loads(json.dumps(content))
+            changed['notes']['species:' + sid + ':morphological_hint']['photo_id'] = '999999'
+            governance.annotate_education(PROJECT, changed)
+            self.assertEqual(changed['notes']['species:' + sid + ':morphological_hint']['governance']['state'],
+                             'needs_review')
+
     def historical_bytes(self, revision, relative):
         return subprocess.check_output(['git','show',revision+':'+relative],cwd=REPOSITORY)
 
@@ -617,6 +691,7 @@ class ImportTests(unittest.TestCase):
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
                     education.load_profiles()
 
+    @at_catalog_commit('afabb70186cf99906f6148585e09749243626db5')
     def test_consolidated_confirmation_covers_exact_texts_without_approving_aggregates(self):
         import content_governance as governance
         import rights_investigation as rights

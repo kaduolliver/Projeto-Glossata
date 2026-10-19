@@ -91,12 +91,14 @@
     "scientific_name": "Panthera tigris",
     "taxonomy": "approved",
     "photo": "approved",
-    "photo_id": "707161720",
+    "photo_id": "111317641",
     "etymology": "pending",
     "morphology": "approved",
     "education": "approved",
     "reviewed_on": "2026-10-14",
-    "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+    "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json.",
+    "photo_reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+    "photo_confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
   },
   "10": {
     "scientific_name": "Attacus atlas",
@@ -311,12 +313,14 @@
     "scientific_name": "Lemur catta",
     "taxonomy": "approved",
     "photo": "approved",
-    "photo_id": "659755043",
+    "photo_id": "2068079",
     "etymology": "approved",
     "morphology": "approved",
     "education": "approved",
     "reviewed_on": "2026-10-14",
-    "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+    "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json.",
+    "photo_reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+    "photo_confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
   },
   "30": {
     "scientific_name": "Xenocnema spinipes",

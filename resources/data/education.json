@@ -33355,7 +33355,7 @@
         "genus"
       ],
       "locator": "Habitat; Physical Description; Behavior; Food Habits",
-      "photo_id": "707161720",
+      "photo_id": "111317641",
       "assistance": {
         "grade": "light",
         "ranks": [
@@ -33382,7 +33382,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "e0bfa3fae41c0fdae1533803d097ab4ca18b3618ecee2906fa87f3e823abdc13",
+          "content_sha256": "ad3a7c81f1986c73b7e2cc62ce4160546c31e40cbb96f05b9183789b50486f4c",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -33403,11 +33403,11 @@
               "genus"
             ],
             "locator": "Habitat; Physical Description; Behavior; Food Habits",
-            "photo_id": "707161720"
+            "photo_id": "111317641"
           },
           "photo": {
-            "id": "707161720",
-            "sha256": "5649ee9848c2fcefa977d4bb2f4ebfeff2a8885e30092e5cb760ae8dae1c5b00"
+            "id": "111317641",
+            "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646"
           },
           "assessment": {
             "grade": "light",
@@ -33433,19 +33433,29 @@
         "state": "approved_editorial",
         "label": "Revisão editorial registrada",
         "reviewer": "Carlos Eduardo Lima de Oliveira",
-        "reviewed_at": "2026-10-18",
+        "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
         "review_kind": "editorial",
-        "due_at": "2027-10-18T00:00:00+00:00",
-        "reason": "Confirmação editorial expressa do lote 31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449. Somente a redação identificada, incluindo o mesmo conteúdo em alias gerado; sem revisão por especialista, aprovação de fotografia, agregado ou grau de assistência.",
+        "due_at": "2027-10-19T14:06:32.000240+00:00",
+        "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
         "evidence": [
           {
             "url": "https://animaldiversity.org/accounts/Panthera_tigris/",
             "locator": "Habitat; Physical Description; Behavior; Food Habits",
-            "supports": "Solitary hunting, vegetative cover, striped orange/light coat and robust limbs, ungulate prey. Removed the unsupported mechanistic camouflage explanation; new curiosity describes documented variation in stripe dimensions."
+            "supports": "Redação anteriormente aprovada preservada; vínculo visual renovado para a nova fotografia."
+          },
+          {
+            "url": "https://www.inaturalist.org/observations/68706928",
+            "locator": "photo 111317641; resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json",
+            "supports": "Identificação comunitária, foto associada e ancestral espécie; inspeção editorial visual confirmada."
+          },
+          {
+            "url": "https://github.com/kaduolliver/Projeto-Glossata/issues/4",
+            "locator": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
+            "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
           }
         ],
-        "content_sha256": "c2676763a175cc85f5124b7d63594f3fcea6e54d55c2a220c1607043ca372a79",
-        "claim_scope": "species",
+        "content_sha256": "e9901b15a669c8c2cadd3ba487d1682b08b80c606bbc0382c1793476e906df4c",
+        "claim_scope": "photographic_observation",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -35178,7 +35188,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "d2c77d56dd5904bef1029b8422f39ff75fcc9fc5f77e877780ad4f14caf82b13",
+          "content_sha256": "31c3c6349073fd03cecc778d13a2d1e36e35ac110984a212c31d7b71b192b8dc",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -35199,8 +35209,8 @@
             ]
           },
           "photo": {
-            "id": "659755043",
-            "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+            "id": "2068079",
+            "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
           },
           "assessment": {
             "grade": "light",
@@ -35275,7 +35285,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "eb096a58236effe9104368eff292a613fd7bbb0b71618d1c663b05a64581c7e6",
+          "content_sha256": "b39c53b1f942d5284e7f3d0c762f0ce358639f427df24867d983c2554d65897f",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -35296,8 +35306,8 @@
             ]
           },
           "photo": {
-            "id": "659755043",
-            "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+            "id": "2068079",
+            "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
           },
           "assessment": {
             "grade": "moderate",
@@ -35354,7 +35364,7 @@
         "genus"
       ],
       "locator": "Geographic Range; Habitat; Physical Description; Behavior; Communication and Perception; Food Habits",
-      "photo_id": "659755043",
+      "photo_id": "2068079",
       "assistance": {
         "grade": "light",
         "ranks": [
@@ -35381,7 +35391,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "cdbb95c0d7b7513b93e76c69661ba040a878d67c36132cceefe83c20ff050629",
+          "content_sha256": "945700ec51d37b3215627da10c2bc9b1dfb7082355408246c0ed559908b5c318",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -35402,11 +35412,11 @@
               "genus"
             ],
             "locator": "Geographic Range; Habitat; Physical Description; Behavior; Communication and Perception; Food Habits",
-            "photo_id": "659755043"
+            "photo_id": "2068079"
           },
           "photo": {
-            "id": "659755043",
-            "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+            "id": "2068079",
+            "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
           },
           "assessment": {
             "grade": "light",
@@ -35432,19 +35442,29 @@
         "state": "approved_editorial",
         "label": "Revisão editorial registrada",
         "reviewer": "Carlos Eduardo Lima de Oliveira",
-        "reviewed_at": "2026-10-18",
+        "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
         "review_kind": "editorial",
-        "due_at": "2027-10-18T00:00:00+00:00",
-        "reason": "Confirmação editorial expressa do lote 31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449. Somente a redação identificada, incluindo o mesmo conteúdo em alias gerado; sem revisão por especialista, aprovação de fotografia, agregado ou grau de assistência.",
+        "due_at": "2027-10-19T14:06:32.000240+00:00",
+        "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
         "evidence": [
           {
             "url": "https://animaldiversity.org/accounts/Lemur_catta/",
             "locator": "Geographic Range; Habitat; Physical Description; Behavior; Communication and Perception; Food Habits",
-            "supports": "Southern/southwestern Madagascar, forests/dry scrub, social groups, banded tail, grey body/white-dark face, fruit/leaves/flowers. Replaced the unsupported raised-tail explanation with documented visual/vocal/olfactory communication."
+            "supports": "Redação anteriormente aprovada preservada; vínculo visual renovado para a nova fotografia."
+          },
+          {
+            "url": "https://www.inaturalist.org/observations/1707124",
+            "locator": "photo 2068079; resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json",
+            "supports": "Identificação comunitária, foto associada e ancestral espécie; inspeção editorial visual confirmada."
+          },
+          {
+            "url": "https://github.com/kaduolliver/Projeto-Glossata/issues/4",
+            "locator": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
+            "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
           }
         ],
-        "content_sha256": "56af7c7b6490a87e9a0690d628cf9d08cf54c5f66b936790c8b7bf7a8155e37e",
-        "claim_scope": "species",
+        "content_sha256": "d7f8ae3f8332b42217081eab411d51d0934b679cdb11ba77f880cb0cc56ee89f",
+        "claim_scope": "photographic_observation",
         "usable": true,
         "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
       }
@@ -45174,12 +45194,14 @@
         "scientific_name": "Panthera tigris",
         "taxonomy": "approved",
         "photo": "approved",
-        "photo_id": "707161720",
+        "photo_id": "111317641",
         "etymology": "pending",
         "morphology": "approved",
         "education": "approved",
         "reviewed_on": "2026-10-14",
-        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json.",
+        "photo_reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+        "photo_confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
       },
       "taxonomic_assistance": {
         "grade": "light",
@@ -45211,7 +45233,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "190c3f016ead9b4cbae49c6b2449ac67b30c756136f975c63836d61148468a1e",
+          "content_sha256": "d5cf1f422ee2c03645a6e86725d1fe27b87c4c7f7aff75e403af27acf277b66e",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -45324,8 +45346,8 @@
             ]
           },
           "photo": {
-            "id": "707161720",
-            "sha256": "5649ee9848c2fcefa977d4bb2f4ebfeff2a8885e30092e5cb760ae8dae1c5b00"
+            "id": "111317641",
+            "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646"
           },
           "assessment": {
             "grade": "light",
@@ -45372,16 +45394,27 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "photo": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
-          "reviewer": null,
-          "reviewed_at": null,
-          "review_kind": null,
-          "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-          "evidence": [],
-          "content_sha256": "4a07118f1e657587be0c4e2c2b2893c4b55b79efae258a2cb7519d0aa2f2aef4",
-          "claim_scope": null,
+          "state": "approved_editorial",
+          "label": "Revisão editorial registrada",
+          "reviewer": "Carlos Eduardo Lima de Oliveira",
+          "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+          "review_kind": "editorial",
+          "due_at": "2027-04-17T14:06:32.000240+00:00",
+          "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
+          "evidence": [
+            {
+              "url": "https://www.inaturalist.org/observations/68706928",
+              "locator": "photo 111317641; resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json",
+              "supports": "Identificação comunitária, foto associada e ancestral espécie; inspeção editorial visual confirmada."
+            },
+            {
+              "url": "https://github.com/kaduolliver/Projeto-Glossata/issues/4",
+              "locator": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
+              "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
+            }
+          ],
+          "content_sha256": "7e602fa86057046286bc845288369238f4577b90547168e7e1b8c6383c7ad8e6",
+          "claim_scope": "photographic_observation",
           "usable": true,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
@@ -45408,7 +45441,7 @@
           "due_at": null,
           "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "69f1f68d3afdc8dde4ad49e6dc6c6bcbbdee2b3c3ebad821e79140c7a8084972",
+          "content_sha256": "df60c2f529bb91259df10df8ffd3dc4471396770a71efda5388c4a819272cf38",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -46164,12 +46197,14 @@
         "scientific_name": "Lemur catta",
         "taxonomy": "approved",
         "photo": "approved",
-        "photo_id": "659755043",
+        "photo_id": "2068079",
         "etymology": "approved",
         "morphology": "approved",
         "education": "approved",
         "reviewed_on": "2026-10-14",
-        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json."
+        "note": "Revisão do corpus existente; aprovação fotográfica continua restrita aos níveis de photo_reviews.json.",
+        "photo_reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+        "photo_confirmation": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json"
       },
       "taxonomic_assistance": {
         "grade": "light",
@@ -46201,7 +46236,7 @@
           "due_at": null,
           "reason": "Sem revisão humana documentada.",
           "evidence": [],
-          "content_sha256": "9e4be276580dbcb2b249efa49169fb1e986e189553be65ed9521607b0781ad02",
+          "content_sha256": "6864a8757a62c6e74f8aeabcc122d4c4a7fd9d5af8a1cb49654ab2fdd8203ca5",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -46330,8 +46365,8 @@
             ]
           },
           "photo": {
-            "id": "659755043",
-            "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+            "id": "2068079",
+            "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
           },
           "assessment": {
             "grade": "light",
@@ -46385,16 +46420,27 @@
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
         "photo": {
-          "state": "legacy",
-          "label": "Legado sem revisão humana rastreável",
-          "reviewer": null,
-          "reviewed_at": null,
-          "review_kind": null,
-          "due_at": null,
-          "reason": "Registro anterior preservado; autor, data real e evidência de revisão não demonstrados.",
-          "evidence": [],
-          "content_sha256": "f9318239de1c98577e99f3fcdcb8d43c4f772992a3095686f83a860e824bab0b",
-          "claim_scope": null,
+          "state": "approved_editorial",
+          "label": "Revisão editorial registrada",
+          "reviewer": "Carlos Eduardo Lima de Oliveira",
+          "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
+          "review_kind": "editorial",
+          "due_at": "2027-04-17T14:06:32.000240+00:00",
+          "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
+          "evidence": [
+            {
+              "url": "https://www.inaturalist.org/observations/1707124",
+              "locator": "photo 2068079; resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json",
+              "supports": "Identificação comunitária, foto associada e ancestral espécie; inspeção editorial visual confirmada."
+            },
+            {
+              "url": "https://github.com/kaduolliver/Projeto-Glossata/issues/4",
+              "locator": "resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
+              "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
+            }
+          ],
+          "content_sha256": "f57cea2be68d67c18dd031f84cbc621bcb3eca71a47ee63922113251244b63e8",
+          "claim_scope": "photographic_observation",
           "usable": true,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
         },
@@ -46421,7 +46467,7 @@
           "due_at": null,
           "reason": "Conteúdo legado alterado; revisão humana necessária.",
           "evidence": [],
-          "content_sha256": "37140c237041911e3a49f9e93292f552cf92120e8321912ee209d8453ac6e935",
+          "content_sha256": "d1064eba737f2b166f4e043ba1ebd77baeea81814d3c9a678fb755454601269b",
           "claim_scope": null,
           "usable": false,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -82897,17 +82943,17 @@
   "automated_pedagogy": {
     "policy": "progressive-pedagogy-v1",
     "inputs": {
-      "species.json": "06da2561f12a71b90f5412e316eeb68e7085933b5c0c6e347c797c8be0257cd8",
+      "species.json": "e21b2355c7f17afe9d9018acdcfc59cdd3ceaa027a6962dfc2f4e618aa68d5cc",
       "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
-      "hint_education.json": "fb79fa71e6b1fcff115c415c17b768be2ce889d7b6645772911c8b33fb93a951",
+      "hint_education.json": "95dda3b53b21e1c9e1223be0d26da8039e59da60dd8009f6df2e03ee23008c7e",
       "species_profiles.json": "25189c1de694d37a917e0700cbff3bbeba1d608aa0fa35c403570cdbef7806be",
-      "curation_reviews.json": "3e65f1fdb4c9e91f5cd4d2339259d78977ab5d72390f45a9257cb304566c4b71",
+      "curation_reviews.json": "3c774c59ef0ddef652ec9682001eb842ef189229ad6b2caf7f6309cb592d0eaf",
       "content_policy.json": "74946cc18dc7ed1a556b74ac064a14686a1f596b0f581cfc885c5344c53f7fd8",
       "scripts/review_hints.py": "ff6ec3b0abf5f7c26ca46f22fe49b13d28764ff4f1eebdef30cdbb358acc21ac",
       "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
       "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
       "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
-      "resources/compliance/review_history.jsonl": "952e612b3e5604ddb7be892bdb959eca5e3c1d37948fe282b6188f2998abb9d9",
+      "resources/compliance/review_history.jsonl": "d487b7494b214e0cedc39893c082ace5d627aa2d9417faccea0679a6bbbd8d9d",
       "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
     },
     "species": {
@@ -84023,8 +84069,8 @@
       "125": {
         "scientific_name": "Panthera tigris",
         "photo": {
-          "id": "707161720",
-          "sha256": "5649ee9848c2fcefa977d4bb2f4ebfeff2a8885e30092e5cb760ae8dae1c5b00"
+          "id": "111317641",
+          "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646"
         },
         "recipes": [
           {
@@ -86641,8 +86687,8 @@
       "128": {
         "scientific_name": "Lemur catta",
         "photo": {
-          "id": "659755043",
-          "sha256": "f3f808be7ea1853399ac6cf661a84b98881900f26791fd76cfde4357fe2cbd62"
+          "id": "2068079",
+          "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9"
         },
         "recipes": [
           {
@@ -99550,22 +99596,22 @@
       "actor_type": "automated",
       "process": "scripts/review_hints.py + contextual validation in EducationalContent",
       "policy_version": "progressive-pedagogy-v1",
-      "reviewed_at": "2026-10-19T11:39:24.965152+00:00",
-      "due_at": "2027-10-19T11:39:24.965152+00:00",
-      "content_sha256": "4b1301ba7e120743d9af8cbeaf211d2a6ab6caac69c9ada91a9b8b0145e72a83",
+      "reviewed_at": "2026-10-19T14:06:34.326926+00:00",
+      "due_at": "2027-10-19T14:06:34.326926+00:00",
+      "content_sha256": "23ba201592b4aa350ca0b4f7834097ded90db2842c86d5fdd6e9b319e57e561c",
       "rationale": "Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.",
       "limitations": "O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança."
     },
     "usable": true
   },
   "generated_source_sha256": {
-    "species.json": "35d8e4f61f47429e24033bd23432197647c5c98f7e1c76c27cb7991837cde192",
+    "species.json": "90444c2b3e0893cbf7a6873e9bd414c070e06a448a27e070f8c2589f1544268f",
     "taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
     "species_profiles.json": "3959d5f9822d3007357214e1914ff379276fcae8a788a13b7f2abb52d41cdc75",
-    "hint_education.json": "a79c83338f1b4299f77a96f6ae3968ad212638c8a5714d0b99407c2baa2f57a5",
-    "curation_reviews.json": "d0e00914045560a463d59feb1863ff4cee65cfb3b828f053136304e3d59964e1",
+    "hint_education.json": "0434559ed22de5f359805afbaa74e862a1824dbb010fe3ad7d338698c650a0a4",
+    "curation_reviews.json": "b807841b9a0017de49634ad5d9a63df71226f17504a37bb99312b04946ecfc04",
     "group_education.json": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
-    "progressive_hints.json": "72958896389145e4694ea79931ebc79d4e8aa4580b66e680f3769676632d61c5",
+    "progressive_hints.json": "57f85660f76246d9befbfb96da9f7338345fbed6fe2c632a19bd10d3cff5800d",
     "phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6"
   }
 }
