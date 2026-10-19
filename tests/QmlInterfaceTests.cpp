@@ -13,6 +13,8 @@
 #include <functional>
 #include <QColor>
 #include <QSet>
+#include <QQmlProperty>
+#include <cmath>
 
 namespace {
 QStringList interfaceWarnings;
@@ -37,11 +39,79 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void designSystemStatesAndContrast();
     void photographEdgesFadeWithoutHidingTheOrganism();
     void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::designSystemStatesAndContrast()
+{
+    QQmlEngine engine;
+    QQmlComponent component(&engine);
+    component.setData(R"(
+        import QtQuick
+        import QtQuick.Controls
+        import "qrc:/resources/qml/components"
+        import "qrc:/resources/qml/style" as Style
+        ApplicationWindow {
+            visible: true; width: 520; height: 430; color: Style.Theme.canvas
+            property bool animations: true
+            onAnimationsChanged: Style.Theme.motionEnabled = animations
+            property int animationDuration: Style.Theme.durationFast
+            property color foreground: Style.Theme.text
+            property color focusColor: Style.Theme.focus
+            property color canvasColor: Style.Theme.canvas
+            property int activations: 0
+            Column {
+                x: 30; y: 30; spacing: 20
+                UiButton { objectName: "themeButton"; text: "Explorar"; onClicked: activations++ }
+                NavItem { objectName: "themeNav"; text: "Inicio"; selected: true }
+                TextAction { objectName: "themeAction"; text: "Fontes" }
+                StatCard { title: "Catalogo"; value: "122" }
+            }
+        }
+    )", QUrl("qrc:/design-system-test.qml"));
+    QScopedPointer<QObject> object(component.create());
+    QVERIFY2(object, qPrintable(component.errorString()));
+    auto window = qobject_cast<QQuickWindow *>(object.data()); QVERIFY(window);
+    auto button = findVisualItem(window->contentItem(), "themeButton"); QVERIFY(button);
+    auto background = button->property("background").value<QQuickItem *>(); QVERIFY(background);
+    const auto luminance = [](QColor c) {
+        const auto linear = [](double v) { return v <= 0.04045 ? v/12.92 : std::pow((v+0.055)/1.055, 2.4); };
+        return 0.2126*linear(c.redF()) + 0.7152*linear(c.greenF()) + 0.0722*linear(c.blueF());
+    };
+    const auto contrast = [&](QColor a, QColor b) { const auto x=luminance(a), y=luminance(b); return (qMax(x,y)+0.05)/(qMin(x,y)+0.05); };
+    window->setProperty("animations", false);
+    QCOMPARE(window->property("animationDuration").toInt(), 0);
+    QTest::qWait(180);
+    const QColor text = window->property("foreground").value<QColor>();
+    for (bool secondary : {false, true}) for (bool danger : {false, true}) {
+        button->setProperty("secondary", secondary); button->setProperty("danger", danger);
+        for (int state = 0; state < 3; ++state) {
+            QTest::mouseMove(window, state ? button->mapToScene(QPointF(20,20)).toPoint() : QPoint(510,420));
+            button->setProperty("down", state == 2);
+            QTest::qWait(1);
+            QVERIFY(contrast(text,background->property("color").value<QColor>()) >= 4.5);
+            button->setProperty("down", false);
+        }
+    }
+    button->setProperty("secondary", false); button->setProperty("danger", false);
+    button->forceActiveFocus(Qt::TabFocusReason);
+    QCOMPARE(QQmlProperty(background, "border.width").read().toInt(), 2);
+    QVERIFY(contrast(window->property("focusColor").value<QColor>(), window->property("canvasColor").value<QColor>()) >= 3.0);
+    QTest::keyClick(window, Qt::Key_Space); QCOMPARE(window->property("activations").toInt(), 1);
+    QTest::keyClick(window, Qt::Key_Tab);
+    QVERIFY(findVisualItem(window->contentItem(), "themeNav")->hasActiveFocus());
+    QTest::keyClick(window, Qt::Key_Tab);
+    QVERIFY(findVisualItem(window->contentItem(), "themeAction")->hasActiveFocus());
+    button->setEnabled(false);
+    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, button->mapToScene(QPointF(20,20)).toPoint());
+    QCOMPARE(window->property("activations").toInt(), 1);
+    window->setProperty("animations", true);
+    QVERIFY(window->property("animationDuration").toInt() > 0);
+}
 
 void QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
 {

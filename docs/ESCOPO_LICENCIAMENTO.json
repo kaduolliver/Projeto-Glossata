@@ -49,6 +49,7 @@
     "resources/qml/components/TextAction.qml",
     "resources/qml/components/UiButton.qml",
     "resources/qml/components/UiIcon.qml",
+    "resources/qml/style/Theme.qml",
     "resources/qml/views/AchievementsView.qml",
     "resources/qml/views/CategoryView.qml",
     "resources/qml/views/CreditsView.qml",

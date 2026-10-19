@@ -7,6 +7,8 @@
         <file>resources/branding/glossata.png</file>
         <file>resources/branding/glossata.ico</file>
         <file>resources/qml/Main.qml</file>
+        <file>resources/qml/style/qmldir</file>
+        <file>resources/qml/style/Theme.qml</file>
         <file>resources/qml/components/UiIcon.qml</file>
         <file>resources/qml/components/HintPanel.qml</file>
         <file>resources/qml/components/PlayModeSelector.qml</file>
