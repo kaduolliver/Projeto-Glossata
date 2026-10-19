@@ -2417,12 +2417,13 @@
     "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
     "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
     "permission_state": "pending_version_confirmation",
-    "license_url_note": "O campo photo.license_url mantém o destino convencional do formato do catálogo; a API somente declara cc-by. Versão e URL por fotografia ainda não comprovadas, não autoriza distribuição.",
+    "license_url_note": "CC BY declarada individualmente pela fonte; versão e URL da licença ainda não comprovadas. Nenhuma referência a uma versão específica autoriza distribuição.",
     "version_verification": {
       "source_url": "https://www.inaturalist.org/photos/111317641",
       "state": "unverified",
       "reason": "Página específica não disponível na consulta; não inferir versão da licença."
-    }
+    },
+    "license_status": "source_declared_version_unverified"
   },
   "2068079": {
     "photo_id": "2068079",
@@ -2442,11 +2443,12 @@
     "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9",
     "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
     "permission_state": "pending_version_confirmation",
-    "license_url_note": "O campo photo.license_url mantém o destino convencional do formato do catálogo; a API somente declara cc-by. Versão e URL por fotografia ainda não comprovadas, não autoriza distribuição.",
+    "license_url_note": "CC BY declarada individualmente pela fonte; versão e URL da licença ainda não comprovadas. Nenhuma referência a uma versão específica autoriza distribuição.",
     "version_verification": {
       "source_url": "https://www.inaturalist.org/photos/2068079",
       "state": "unverified",
       "reason": "Página específica não disponível na consulta; não inferir versão da licença."
-    }
+    },
+    "license_status": "source_declared_version_unverified"
   }
 }

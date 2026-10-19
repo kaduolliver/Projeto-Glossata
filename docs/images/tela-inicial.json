@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-19T16:40:15.861275+00:00",
+  "captured_at": "2026-10-19T17:36:55.674085+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "application_version": "1.7.0",
-  "binary_sha256": "0914711853dcb2eefeefd7e0e1e9141b208389feac146dd6dd8a3da36d7bcaa0",
+  "binary_sha256": "b13997e0006cd89293c51d3916f101977765b761a9ad7af79f4e6616da143ae8",
   "image_sha256": "b515f7a0758014ee0705256fecc5fd01acb3d0c718c0fe5b543760cf04719bb9",
   "width": 1240,
   "height": 820,
@@ -12,7 +12,7 @@
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
-    "resources/data/species.json": "90444c2b3e0893cbf7a6873e9bd414c070e06a448a27e070f8c2589f1544268f",
+    "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
     "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
     "resources/qml/components/NavItem.qml": "f1a4ac7fc2ea1dac01e880dda83942eca8ebd9687d04098e7c6875fc86fdbaff",

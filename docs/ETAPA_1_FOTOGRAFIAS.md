@@ -70,7 +70,7 @@ histórico. Esta etapa não encerra a Issue #4 nem resolve seus demais achados.
 | Conjunto competitivo elegível | 80 | 80 |
 | Bloqueios científicos de distribuição | 277 | 275; dois vínculos fotográficos resolvidos editorialmente |
 | Fotos ativas com pendências documentais de permissão | 120 | 120; nenhuma confirmação criada |
-| Eventos de revisão | 1.047 | 1.051; prefixo anterior preservado integralmente |
+| Eventos de revisão | 1.047 | 1.053; quatro registros editoriais e duas reindexações técnicas da mesma decisão; prefixos anteriores preservados |
 
 A classificação dos 122 organismos e os textos educativos não mudaram. A
 avaliação automática de dicas e `education.json` foram regeneradas pelos
@@ -83,10 +83,13 @@ As fotos antigas continuam presentes no Git e são apontadas pela governança
 como mídias não embarcadas com permissão documental pendente. A confirmação
 de versão/URL da licença e a revisão de permissão das duas novas fotos
 continuam necessárias no fluxo `confirm-permission`, quando houver evidência
-suficiente. O `license_url` do formato legado aponta ao destino convencional
-CC BY 4.0, mas `photo_provenance.json` registra explicitamente versão e URL
-declarada como desconhecidas. Esse valor convencional não é evidência nem
-libera o gate; a interface e os créditos mantêm o aviso de versão não comprovada.
+suficiente. Nos dois registros ativos, `license` é `cc-by`, `license_url` e
+`license_version` são `null`, e `license_status` é
+`source_declared_version_unverified`. A versão não é inferida do código da API.
+Os créditos apresentam “CC BY — versão ainda não comprovada” e apontam à página
+da fotografia, sem link a CC BY 4.0 como se fosse a licença demonstrada.
+As referências antigas nos snapshots históricos permanecem como fatos de seu
+estado anterior, sem servirem como prova da versão das fotografias novas.
 
 Não se exige alterar a política de importação para a substituição: a decisão
 editorial específica do mantenedor cobre a imagem de *P. t. tigris* como
@@ -97,7 +100,7 @@ Uma captura real da tela inicial foi renovada com perfil temporário porque
 seu registro de integridade inclui `species.json`; os pixels permanecem
 idênticos à captura anterior. Nenhum layout foi alterado.
 
-## Validação executada
+## Validação inicial das substituições
 
 Compilação Release com C++17/Qt 6 concluída; CTest **26/26 suítes aprovadas**
 em **194,42 s**, incluindo 52 casos do núcleo, testes reais QML e os testes
@@ -110,7 +113,7 @@ A comparação histórica da migração filogenética agora distingue estas duas
 substituições documentadas sem alterar seu snapshot original. O teste do lote
 textual consolidado executa no commit em que os 1.047 eventos foram incorporados;
 os testes atuais verificam separadamente as quatro decisões novas e os direitos.
-Nenhum validador de produção foi alterado.
+Na substituição inicial, nenhum validador de produção havia sido alterado.
 
 Aprovados: auditoria estrita dos 122 organismos, licenciamento Apache 2.0,
 manifestos e metadados de versões, cadeia/prefixo de governança, recuperação de
@@ -122,3 +125,35 @@ publicados. A cobertura real de dicas gerada pelo teste C++ permanece idêntica.
 com 120 registros fotográficos pendentes e 275 bloqueios científicos. Permanecem
 também as duas mídias antigas não embarcadas. Isso é o resultado esperado do
 gate; testes aprovados não equivalem a certificação científica ou jurídica.
+
+## Ajuste final das referências de licença
+
+A declaração expressa “Aprovo editorialmente as duas associações e dicas” foi
+conferida contra o registro desta sessão e a evidência imutável
+`resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json`.
+Os IDs, hashes e âmbito correspondem às imagens atuais. Essa evidência, as
+datas reais e os 1.051 eventos anteriores foram preservados byte a byte.
+
+Como o fingerprint fotográfico existente inclui os metadados da licença,
+acrescentaram-se duas reindexações técnicas: ligam a mesma decisão editorial
+ao registro corrigido, com o hash do evento original, evidência e data de
+revisão originais. Não houve nova manifestação humana, renovação da data,
+aprovação de direitos nem alteração retrospectiva da decisão. As duas dicas
+e as demais revisões não foram regravadas.
+
+O validador de aprendizado local reconhece a declaração CC BY sem versão
+somente quando a evidência por foto passa nos controles existentes de
+identidade, crédito, integridade e coleta; somente as três lacunas explícitas
+de versão/confirmação podem permanecer. Os créditos embarcados vinculam essa
+constatação aos bytes, autor, origem e licença. Evidência ausente, divergente
+ou adulterada continua bloqueando. O gate de distribuição mantém suas
+exigências de versão comprovada e confirmação humana; nenhum recurso foi
+liberado para distribuição. Os testes incluem esses casos negativos.
+
+Validação dos ajustes finais: compilação Release, **26/26 suítes CTest em
+201,55 s**, 25 testes de governança, qmllint, auditoria estrita, Apache 2.0,
+reprodutibilidade dos derivados e integridade dos manifestos aprovados. O teste
+da prova humana foi reexecutado após incluir a comparação byte a byte com o
+commit `285fc96` e passou. A evidência original e os 1.051 eventos anteriores
+permanecem íntegros; a data da revisão não foi renovada. O gate permanece
+bloqueado com 120 pendências fotográficas e 275 bloqueios científicos.

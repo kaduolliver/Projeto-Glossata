@@ -266,7 +266,7 @@
       "source": "https://www.inaturalist.org/observations/68706928",
       "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/large.jpg",
       "license": "cc-by",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_url": null,
       "license_version": null,
       "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
       "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
@@ -287,6 +287,9 @@
         "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json"
       ],
       "distribution_exception": false,
+      "license_status": "source_declared_version_unverified",
+      "source_declaration_verified": true,
+      "license_source_url": "https://www.inaturalist.org/photos/111317641",
       "scientific_source_issues": []
     },
     "60643931": {
@@ -905,7 +908,7 @@
       "source": "https://www.inaturalist.org/observations/1707124",
       "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2068079/large.jpg",
       "license": "cc-by",
-      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_url": null,
       "license_version": null,
       "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
       "sha256": "bc73f5580969cffeaabfe07bab6af27380a878c969939b8478f430abd5b6e1a9",
@@ -926,6 +929,9 @@
         "resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json"
       ],
       "distribution_exception": false,
+      "license_status": "source_declared_version_unverified",
+      "source_declaration_verified": true,
+      "license_source_url": "https://www.inaturalist.org/photos/2068079",
       "scientific_source_issues": []
     },
     "422526180": {

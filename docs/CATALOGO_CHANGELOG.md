@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Ajuste final do PR #23 em 2026-10-19, sem lançamento: referências das duas fotos passam a CC BY com versão/URL desconhecidas, sem presumir 4.0. Dois registros técnicos reindexam a mesma aprovação expressa, preservando prova, datas e todos os eventos anteriores. Nenhuma nova decisão humana ou permissão; receitas e imagens idênticas.
+
 Etapa 1 em 2026-10-19, sem lançamento: organismos 125 e 128 mantidos; fotos 707161720 e 659755043 substituídas por 111317641 e 2068079. Quatro eventos editoriais reais acrescentados para fotos e vínculos morfológicos; 855 receitas idênticas. Fotos antigas preservadas fora do QRC. CC BY declarada, versão e confirmação de permissão pendentes. Catálogo 2.4.0 não lançado atualizado; app 1.7.0 inalterado.
 
 Correção técnica em 2026-10-19, sem lançamento: avaliação automática e projeção educativa regeneradas para usar aprovações individuais suficientes nas dicas. As 855 receitas, redações, fontes, graus, 122 organismos, fotografias, direitos e eventos humanos permanecem idênticos. Agregados e demais pendências científicas não foram aprovados; apenas os metadados e a identidade do catálogo 2.4.0 não lançado foram atualizados pelo fluxo existente.

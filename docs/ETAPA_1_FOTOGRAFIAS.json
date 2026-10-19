@@ -41,7 +41,7 @@
         "scientific_name": "Panthera tigris",
         "taxon_id": "41967",
         "license": "cc-by",
-        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_url": null,
         "author": "(c) Morten Ross, some rights reserved (CC BY)",
         "source": "https://www.inaturalist.org/observations/68706928",
         "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/large.jpg",
@@ -64,7 +64,9 @@
         "observation_scientific_name": "Panthera tigris tigris",
         "observation_taxon_id": "130793",
         "role": "identification",
-        "permission_evidence": "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json"
+        "permission_evidence": "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json",
+        "license_version": null,
+        "license_status": "source_declared_version_unverified"
       },
       "source_evidence": "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json",
       "observation_context": "resources/compliance/sources/2dda76088c3b35be3f441b98267644bc076adc027dfd69a63bda22f71042980d.json",
@@ -96,6 +98,12 @@
         "consulted_at": "2026-10-19T14:10:48.667984+00:00",
         "purpose": "Verify photo-specific license version; no bypass of restrictions.",
         "http_status": 403
+      },
+      "license_metadata_correction": {
+        "recorded_at": "2026-10-19T17:33:51.182191+00:00",
+        "event_sha256": "630b69b3595bfa78c03bc7d3ab88221d6df6642b96cea9407429cdf29a3cb04e",
+        "prior_event_sha256": "3b4169731c5d3da834697884a104f43966137b97b3ee36ead41d19f93c067651",
+        "reviewed_at_unchanged": "2026-10-19T14:06:32.000240+00:00"
       }
     },
     {
@@ -135,7 +143,7 @@
         "scientific_name": "Lemur catta",
         "taxon_id": "43617",
         "license": "cc-by",
-        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_url": null,
         "author": "(c) Rafael Medina, some rights reserved (CC BY)",
         "source": "https://www.inaturalist.org/observations/1707124",
         "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2068079/large.jpg",
@@ -158,7 +166,9 @@
         "observation_scientific_name": "Lemur catta",
         "observation_taxon_id": "43617",
         "role": "identification",
-        "permission_evidence": "resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json"
+        "permission_evidence": "resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json",
+        "license_version": null,
+        "license_status": "source_declared_version_unverified"
       },
       "source_evidence": "resources/compliance/permissions/10d1ee218e220041948e9c87676a4e5b9838b7ae8c8033a08e8807707011aba6.json",
       "observation_context": "resources/compliance/sources/49e33ec0e4fa634e420aff477e6a3739a4c674cb7e52678980645014a784232e.json",
@@ -190,6 +200,12 @@
         "consulted_at": "2026-10-19T14:10:48.840586+00:00",
         "purpose": "Verify photo-specific license version; no bypass of restrictions.",
         "http_status": 403
+      },
+      "license_metadata_correction": {
+        "recorded_at": "2026-10-19T17:33:51.182191+00:00",
+        "event_sha256": "2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6",
+        "prior_event_sha256": "b6b847f7f6c33cbffa60bedddd16b3accb3be4e314ec4a6c09801106a290f50a",
+        "reviewed_at_unchanged": "2026-10-19T14:06:32.000240+00:00"
       }
     }
   ],
@@ -199,6 +215,19 @@
     "recipe_values_unchanged": true,
     "permission_history_unchanged": true,
     "review_events_appended": 4,
+    "distribution_permission_granted": false
+  },
+  "final_license_reference_correction": {
+    "recorded_at": "2026-10-19T17:33:51.182191+00:00",
+    "license": "cc-by",
+    "license_url": null,
+    "license_version": null,
+    "license_status": "source_declared_version_unverified",
+    "original_confirmation_unchanged": true,
+    "prior_history_preserved": true,
+    "review_dates_preserved": true,
+    "technical_reindex_events": 2,
+    "new_human_decisions": 0,
     "distribution_permission_granted": false
   }
 }

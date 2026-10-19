@@ -23,7 +23,7 @@ ColumnLayout {
     Label { visible: ((portrait.info.attribution || ({})).scientific_source_issues || []).length > 0; Layout.fillWidth: true; text: "Registro de origem com pendência de revisão da identificação."; color: "#D9BA7D"; font.pixelSize: 10; wrapMode: Text.WordWrap }
     RowLayout {
         visible: portrait.hasPhoto; Layout.fillWidth: true
-        TextAction { text: (portrait.info.license || "Licença não informada").toUpperCase() + ((portrait.info.attribution || ({})).license_version ? " " + portrait.info.attribution.license_version : " · versão não comprovada"); font.pixelSize: 10; onClicked: Qt.openUrlExternally(portrait.info.licenseUrl || "") }
+        TextAction { text: (portrait.info.license || "Licença não informada").toUpperCase() + ((portrait.info.attribution || ({})).license_version ? " " + portrait.info.attribution.license_version : " · versão não comprovada"); font.pixelSize: 10; onClicked: Qt.openUrlExternally(portrait.info.licenseUrl || (portrait.info.attribution || ({})).license_source_url || "") }
         Item { Layout.fillWidth: true }
         TextAction { text: "Foto e origem ↗"; font.pixelSize: 10; onClicked: Qt.openUrlExternally((portrait.info.attribution || ({})).photo_url || portrait.info.source || "") }
     }

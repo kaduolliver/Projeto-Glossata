@@ -2223,7 +2223,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "57f85660f76246d9befbfb96da9f7338345fbed6fe2c632a19bd10d3cff5800d",
+      "sha256": "567f56c82f77c3dcdb1029aa690361d6d2c9291710f9347f1bc1cac40034bc1f",
       "source": "Redações educativas assistidas por IA e composições identificadas; lotes concretos com conferência de fontes, confirmação editorial e concessão delimitada de direitos disponíveis. Origem, atribuições e evidências por ocorrência em educational_text_rights. Bibliografia não autoriza reproduzir expressão protegida das fontes.",
       "permission": {
         "holder": "Carlos Eduardo Lima de Oliveira",
@@ -2300,6 +2300,11 @@
           "sha256": "72958896389145e4694ea79931ebc79d4e8aa4580b66e680f3769676632d61c5",
           "recorded_at": "2026-10-19T14:06:32.000240+00:00",
           "reason": "Substituição fotográfica editorial das espécies 125/128; redações, receitas e concessões preservadas."
+        },
+        {
+          "sha256": "57f85660f76246d9befbfb96da9f7338345fbed6fe2c632a19bd10d3cff5800d",
+          "recorded_at": "2026-10-19T17:33:51.182191+00:00",
+          "reason": "Correção declarativa da licença de duas fotos; receitas e concessões textuais idênticas."
         }
       ],
       "license": "CC-BY-4.0",

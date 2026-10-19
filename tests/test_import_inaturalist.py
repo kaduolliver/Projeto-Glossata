@@ -76,7 +76,21 @@ class ImportTests(unittest.TestCase):
         added = [json.loads(line) for line in current[len(prefix):].splitlines()]
         self.assertEqual({e['key'] for e in added}, {'topic:125:photo', 'topic:128:photo',
             'species:125:morphological_hint', 'species:128:morphological_hint'})
-        self.assertEqual(len(added), 4)
+        self.assertEqual(len(added), 6)
+        corrections = [e for e in added if 'metadata_correction' in e]
+        self.assertEqual(len(corrections), 2)
+        original_by_hash = {e['event_sha256']: e for e in added[:4]}
+        for event in corrections:
+            original = original_by_hash[event['metadata_correction']['prior_event_sha256']]
+            self.assertEqual(event['reviewed_at'], original['reviewed_at'])
+            self.assertEqual(event['reviewer'], original['reviewer'])
+            self.assertEqual(event['evidence'], original['evidence'])
+            reference = event['metadata_correction']
+            proof = (PROJECT / reference['confirmation_path']).read_bytes()
+            self.assertEqual(proof, self.historical_bytes('285fc96', reference['confirmation_path']))
+            self.assertEqual(hashlib.sha256(proof).hexdigest(), reference['confirmation_sha256'])
+            self.assertEqual(json.loads(proof)['answer'], 'Aprovo editorialmente as duas associações e dicas')
+            self.assertFalse(reference['new_human_decision'])
         self.assertTrue(all(e['state'] == 'approved_editorial' for e in added))
         for path in ('resources/data/content_policy.json', 'resources/data/taxonomy.json',
                      'resources/data/species_profiles.json', 'resources/compliance/review_baseline.json'):
@@ -238,7 +252,14 @@ class ImportTests(unittest.TestCase):
             if not photo: continue
             self.assertIn(photo['path'],resources)
             self.assertEqual(hashlib.sha256((PROJECT/photo['path']).read_bytes()).hexdigest(),photo['sha256'])
-            self.assertEqual(photo['license_url'],importer.LICENSE_URLS[photo['license']])
+            if photo.get('license_status') == 'source_declared_version_unverified':
+                import content_governance as governance
+                metadata = governance.permission_provenance(PROJECT)[photo['id']]
+                self.assertIsNone(photo['license_url'])
+                self.assertIsNone(photo['license_version'])
+                self.assertTrue(governance.source_declared_photo_license(photo, metadata, PROJECT))
+            else:
+                self.assertEqual(photo['license_url'],importer.LICENSE_URLS[photo['license']])
             if photo.get('role')=='supporting':
                 self.assertEqual(species['domain'],'Bacteria')
                 self.assertEqual(photo['supporting_for'],species['name'])

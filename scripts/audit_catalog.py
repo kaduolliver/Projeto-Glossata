@@ -5,7 +5,7 @@ import hashlib
 import json
 import pathlib
 from refine_photos import image_dimensions
-from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception, usable_scientific_hint_note
+from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception, usable_scientific_hint_note, source_declared_photo_license
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RANKS = ('species', 'genus', 'family', 'order', 'class', 'phylum', 'kingdom', 'supergroup', 'domain')
@@ -24,6 +24,7 @@ def audit(root=ROOT):
     try: events = read_ledger(root)
     except ValueError: events = []  # The separate governance report fails integrity.
     settings = policy(root)
+    provenance = read('photo_provenance.json')
     def usable(sid, topic):
         key = f'topic:{sid}:{topic}'
         return status(key, current[key], baseline, events, settings)['usable']
@@ -61,6 +62,7 @@ def audit(root=ROOT):
         p = s.get('photo', {}); path = root / p.get('path', '')
         association = p.get('scientific_name') == s['name'] if p.get('role', 'identification') == 'identification' else p.get('supporting_for') == s['name'] and kingdom in {'Bacteria','Archaea'}
         license_ok = ((p.get('license') in LICENSES and p.get('license_url') == LICENSES.get(p.get('license')))
+                      or source_declared_photo_license(p, provenance.get(p.get('id'), {}), root)
                       or bool(documented_exception(p, 'distribution', root))) and license_allowed(p, root, 'distribution')
         if not license_ok: incompatible_licenses.append(sid)
         valid = association and p.get('source_verified') and path.is_file()

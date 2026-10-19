@@ -45400,7 +45400,7 @@
           "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
           "review_kind": "editorial",
           "due_at": "2027-04-17T14:06:32.000240+00:00",
-          "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
+          "reason": "Reindexação técnica da aprovação editorial expressa já fornecida para os mesmos IDs, bytes e associação. Somente a representação da licença sem versão foi corrigida; sem nova revisão, renovação da data, confirmação de direitos ou alteração da decisão original. Evidência: resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
           "evidence": [
             {
               "url": "https://www.inaturalist.org/observations/68706928",
@@ -45413,7 +45413,7 @@
               "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
             }
           ],
-          "content_sha256": "7e602fa86057046286bc845288369238f4577b90547168e7e1b8c6383c7ad8e6",
+          "content_sha256": "2c7789641f53826e331eb0fa787d579e65858c7c604c6453fbf74ef171ab4298",
           "claim_scope": "photographic_observation",
           "usable": true,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -46426,7 +46426,7 @@
           "reviewed_at": "2026-10-19T14:06:32.000240+00:00",
           "review_kind": "editorial",
           "due_at": "2027-04-17T14:06:32.000240+00:00",
-          "reason": "Aprovação editorial expressa: duas associações e dicas, conforme resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json. Escopo exclui direitos, graus de assistência e tópicos agregados.",
+          "reason": "Reindexação técnica da aprovação editorial expressa já fornecida para os mesmos IDs, bytes e associação. Somente a representação da licença sem versão foi corrigida; sem nova revisão, renovação da data, confirmação de direitos ou alteração da decisão original. Evidência: resources/compliance/sources/049d402bbc5f085abc1f014f5ea64a304470de9a0716f160227fa24b41debebd.json",
           "evidence": [
             {
               "url": "https://www.inaturalist.org/observations/1707124",
@@ -46439,7 +46439,7 @@
               "supports": "Resposta editorial expressa do mantenedor para estas duas fotografias e dicas; não é confirmação de permissão."
             }
           ],
-          "content_sha256": "f57cea2be68d67c18dd031f84cbc621bcb3eca71a47ee63922113251244b63e8",
+          "content_sha256": "a8ea5d56c3bc8c2d1a8e5bc941db80e998e33d7bc79f41f46284a31d80597251",
           "claim_scope": "photographic_observation",
           "usable": true,
           "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão."
@@ -82943,7 +82943,7 @@
   "automated_pedagogy": {
     "policy": "progressive-pedagogy-v1",
     "inputs": {
-      "species.json": "e21b2355c7f17afe9d9018acdcfc59cdd3ceaa027a6962dfc2f4e618aa68d5cc",
+      "species.json": "a1798e62fd9e94ee4b71f9b85427f562def906c996bf42b3f9e2530d0e4e46a4",
       "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
       "hint_education.json": "95dda3b53b21e1c9e1223be0d26da8039e59da60dd8009f6df2e03ee23008c7e",
       "species_profiles.json": "25189c1de694d37a917e0700cbff3bbeba1d608aa0fa35c403570cdbef7806be",
@@ -82953,7 +82953,7 @@
       "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
       "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
       "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
-      "resources/compliance/review_history.jsonl": "d487b7494b214e0cedc39893c082ace5d627aa2d9417faccea0679a6bbbd8d9d",
+      "resources/compliance/review_history.jsonl": "1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576",
       "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
     },
     "species": {
@@ -99596,22 +99596,22 @@
       "actor_type": "automated",
       "process": "scripts/review_hints.py + contextual validation in EducationalContent",
       "policy_version": "progressive-pedagogy-v1",
-      "reviewed_at": "2026-10-19T14:06:34.326926+00:00",
-      "due_at": "2027-10-19T14:06:34.326926+00:00",
-      "content_sha256": "23ba201592b4aa350ca0b4f7834097ded90db2842c86d5fdd6e9b319e57e561c",
+      "reviewed_at": "2026-10-19T17:33:52.465614+00:00",
+      "due_at": "2027-10-19T17:33:52.465614+00:00",
+      "content_sha256": "41c2bfb7daf3da953fe5551beea4d438e9b545f16a6d0e0168c19e8d5d6f0c42",
       "rationale": "Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.",
       "limitations": "O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança."
     },
     "usable": true
   },
   "generated_source_sha256": {
-    "species.json": "90444c2b3e0893cbf7a6873e9bd414c070e06a448a27e070f8c2589f1544268f",
+    "species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
     "species_profiles.json": "3959d5f9822d3007357214e1914ff379276fcae8a788a13b7f2abb52d41cdc75",
     "hint_education.json": "0434559ed22de5f359805afbaa74e862a1824dbb010fe3ad7d338698c650a0a4",
     "curation_reviews.json": "b807841b9a0017de49634ad5d9a63df71226f17504a37bb99312b04946ecfc04",
     "group_education.json": "1d62e0bc4e834d6548338f2787667e328704930ef0027ed588e5b2bbc4e6d23f",
-    "progressive_hints.json": "57f85660f76246d9befbfb96da9f7338345fbed6fe2c632a19bd10d3cff5800d",
+    "progressive_hints.json": "567f56c82f77c3dcdb1029aa690361d6d2c9291710f9347f1bc1cac40034bc1f",
     "phylogeny.json": "1471b999defc50497534ce6784f46c078055f1da9bcd39f22c8193007e063ed6"
   }
 }

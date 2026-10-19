@@ -232,6 +232,40 @@ class GovernanceTests(unittest.TestCase):
         self.assertIn('permission_identity', governance.permission_issues(self.species['photo'], metadata, self.root))
         self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
 
+    def test_source_declaration_keeps_unknown_version_and_distribution_blocked(self):
+        self.baseline()
+        path = governance.archive_permission(self.root, self.observation, self.photo,
+                                            'live_api', governance.now())
+        photo = self.species['photo']
+        photo.update(license_url=None, license_version=None,
+                     license_status='source_declared_version_unverified', source_verified=True)
+        metadata = governance.load(self.root / 'resources/data/photo_provenance.json')['7']
+        metadata.update(evidence_paths=[path], original_collected_at=governance.now(),
+                        license_version=None, declared_license_url=None)
+        self.write('species.json', [self.species])
+        self.write('photo_provenance.json', {'7': metadata})
+        self.assertTrue(governance.source_declared_photo_license(photo, metadata, self.root))
+        result = governance.generate_credits(self.root)
+        credit = result['photos']['7']
+        self.assertIsNone(credit['license_url']); self.assertIsNone(credit['license_version'])
+        self.assertTrue(credit['source_declaration_verified'])
+        rendered = governance.render_credits(result)
+        self.assertIn('CC BY — versão ainda não comprovada', rendered)
+        self.assertNotIn('creativecommons.org/licenses/by/4.0/', rendered)
+        self.assertTrue(distribution.release_gate(self.root)['distribution_blocked'])
+        self.assertIn('license_version_not_evidenced', governance.permission_issues(
+            photo, dict(metadata, license_version='4.0'), self.root))
+        for field, value in [('license', 'cc-by-nc'), ('sha256', 'b'*64),
+                             ('author', 'Different person'), ('id', '8'),
+                             ('license_url', 'https://creativecommons.org/licenses/by/4.0/')]:
+            changed = dict(photo, **{field: value})
+            self.assertFalse(governance.source_declared_photo_license(changed, metadata, self.root))
+        missing = dict(metadata, evidence_paths=[])
+        self.assertFalse(governance.source_declared_photo_license(photo, missing, self.root))
+        evidence = governance.load(self.root / path); evidence['record']['photo']['license_code'] = 'cc-by-sa'
+        governance.save(self.root / path, evidence)
+        self.assertFalse(governance.source_declared_photo_license(photo, metadata, self.root))
+
     def test_noncommercial_exception_needs_explicit_policy_and_scoped_documented_grant(self):
         evidence = self.root / 'grant.txt'; evidence.write_text('Test-only permission fixture.', encoding='utf8')
         photo = dict(self.photo, license_code='cc-by-nc')

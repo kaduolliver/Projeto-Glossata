@@ -1,7 +1,7 @@
 {
   "policy": "progressive-pedagogy-v1",
   "inputs": {
-    "species.json": "e21b2355c7f17afe9d9018acdcfc59cdd3ceaa027a6962dfc2f4e618aa68d5cc",
+    "species.json": "a1798e62fd9e94ee4b71f9b85427f562def906c996bf42b3f9e2530d0e4e46a4",
     "taxonomy.json": "c26a72270441c7e62a513be8a942f3ef4785a84ab05f53c19d2bd224435eba72",
     "hint_education.json": "95dda3b53b21e1c9e1223be0d26da8039e59da60dd8009f6df2e03ee23008c7e",
     "species_profiles.json": "25189c1de694d37a917e0700cbff3bbeba1d608aa0fa35c403570cdbef7806be",
@@ -11,7 +11,7 @@
     "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
     "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
-    "resources/compliance/review_history.jsonl": "d487b7494b214e0cedc39893c082ace5d627aa2d9417faccea0679a6bbbd8d9d",
+    "resources/compliance/review_history.jsonl": "1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
   },
   "species": {
@@ -16654,9 +16654,9 @@
     "actor_type": "automated",
     "process": "scripts/review_hints.py + contextual validation in EducationalContent",
     "policy_version": "progressive-pedagogy-v1",
-    "reviewed_at": "2026-10-19T14:06:34.326926+00:00",
-    "due_at": "2027-10-19T14:06:34.326926+00:00",
-    "content_sha256": "23ba201592b4aa350ca0b4f7834097ded90db2842c86d5fdd6e9b319e57e561c",
+    "reviewed_at": "2026-10-19T17:33:52.465614+00:00",
+    "due_at": "2027-10-19T17:33:52.465614+00:00",
+    "content_sha256": "41c2bfb7daf3da953fe5551beea4d438e9b545f16a6d0e0168c19e8d5d6f0c42",
     "rationale": "Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.",
     "limitations": "O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança."
   }
