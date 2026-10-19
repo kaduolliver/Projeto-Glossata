@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "b201e20c2d83fda6d790bc6a96217c0fdc75307e",
+  "capture_method": "QQuickWindow::grabWindow in QmlInterfaceTests.navigateAndConfirmAnswers, running production Main.qml with real GameController and temporary SQLite",
+  "test_binary_sha256": "060cf979dddb40f4d4a81f726bc9ee96232ed9f6642077a5297c65cfc66aa661",
+  "environment": {
+    "QT_QPA_PLATFORM": "offscreen",
+    "QT_QUICK_BACKEND": "software",
+    "QT_QUICK_CONTROLS_STYLE": "Basic",
+    "QT_SCALE_FACTOR": "1",
+    "QT_FONT_DPI": "96"
+  },
+  "privacy": "QTemporaryDir SQLite; local test profile and results; no real player database; Discord presence not started",
+  "frames": [
+    {
+      "file": "capturas/inicio.png",
+      "test_output": "build/tests/previews/01-home.png",
+      "sha256": "b515f7a0758014ee0705256fecc5fd01acb3d0c718c0fe5b543760cf04719bb9",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:24.478562+00:00"
+    },
+    {
+      "file": "capturas/explorar.png",
+      "test_output": "build/tests/previews/02-categories.png",
+      "sha256": "536ef81289d6bd2d8beee1128102010edaa157074fce404cf1f027edf7c6c1bf",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:25.174287+00:00"
+    },
+    {
+      "file": "capturas/dominio-eukaryota.png",
+      "test_output": "build/tests/previews/domain-2.png",
+      "sha256": "7999646e1bcb3faf0026a9353fa953c6752c7f27e7872f553b9f1ca99e4377ea",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:28.416286+00:00"
+    },
+    {
+      "file": "capturas/grupo-animalia.png",
+      "test_output": "build/tests/previews/quick-access-0.png",
+      "sha256": "808f8fbd99b80b56227abf1023c0be5e90395b1a5b3068a50e17cd900a698edb",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:25.356842+00:00"
+    },
+    {
+      "file": "capturas/quiz.png",
+      "test_output": "build/tests/previews/03-quiz.png",
+      "sha256": "874c0c6b3e2c56427c75545180dfb692230a1d0976ed832471376444c105f9d1",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:30.450481+00:00"
+    },
+    {
+      "file": "capturas/painel-dicas.png",
+      "test_output": "build/tests/previews/hint-category-selection.png",
+      "sha256": "35af5cba40955f059bd31479a8070a23e0c2d073798ba61b3773a0c29811287d",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:46.496862+00:00"
+    },
+    {
+      "file": "capturas/resposta-correta.png",
+      "test_output": "build/tests/previews/04-correct.png",
+      "sha256": "adf48264a5d0a7e31f9b9dce6ae3f5052adee1eac3286ff90cbdc1cbf3fb7176",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:31.096285+00:00"
+    },
+    {
+      "file": "capturas/resposta-incorreta.png",
+      "test_output": "build/tests/previews/05-incorrect.png",
+      "sha256": "89cf41c341b944407f08cb7344e2e6ccb2d6f3d0df4761ce4822f73e30994629",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:32.203911+00:00"
+    },
+    {
+      "file": "capturas/ficha-especie.png",
+      "test_output": "build/tests/previews/06-information.png",
+      "sha256": "1e7e4edbf2bb959dd3c40edea53aff08be046f60fb7f919c1cae2ce36acdf1ca",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:31.280250+00:00"
+    },
+    {
+      "file": "capturas/resultado.png",
+      "test_output": "build/tests/previews/07-results.png",
+      "sha256": "951ed57405351f2ec368d04d8ed7adcaf05c9fb47e8fe6360681f9cd6973bd08",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:32.565969+00:00"
+    },
+    {
+      "file": "capturas/estatisticas.png",
+      "test_output": "build/tests/previews/statistics.png",
+      "sha256": "7f9979e90f2db3bb682dffe8cccacff0b447e05da23550d51fbbc22098d63e99",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:32.735784+00:00"
+    },
+    {
+      "file": "capturas/conquistas.png",
+      "test_output": "build/tests/previews/achievements.png",
+      "sha256": "4571d5b6cbf9acd649a0199c44c814498894b1cf6a7d8764ffeba6c0904027f6",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:32.900943+00:00"
+    },
+    {
+      "file": "capturas/perfis-ajustes.png",
+      "test_output": "build/tests/previews/settings.png",
+      "sha256": "61b56d87aece465956a4e4118a6067d48be663617f96e097d3dda624c0e14ca4",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:33.054486+00:00"
+    },
+    {
+      "file": "capturas/creditos.png",
+      "test_output": "build/tests/previews/credits-transparency.png",
+      "sha256": "a3172168f3ae5c4e2d59d4b8f43ca8491f25dfbceeab1191542e760a76c56e41",
+      "width": 1240,
+      "height": 820,
+      "captured_at_utc": "2026-10-19T21:06:24.939459+00:00"
+    }
+  ]
+}

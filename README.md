@@ -305,6 +305,7 @@ A expansão abaixo expressa **objetivos e possibilidades**, e não funcionalidad
 
 ## Documentação complementar
 
+- [Linha de base e documentação da interface Qt/QML](docs/interface/README.md).
 - [`docs/ESTADO_DO_PROJETO.md`](docs/ESTADO_DO_PROJETO.md) — fontes de verdade, geração, validação e limites do estado atual.
 - [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md) — contexto geral, arquitetura, regras e decisões técnicas.
 - [`docs/CLASSIFICACAO_FILOGENETICA.md`](docs/CLASSIFICACAO_FILOGENETICA.md) — domínios, linhagens, fontes, divergências e migração.
