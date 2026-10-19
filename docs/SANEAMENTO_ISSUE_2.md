@@ -1,5 +1,7 @@
 # Saneamento documental da Issue #2
 
+Correção de disponibilidade no PR #21 (2026-10-19): o quiz passa a aproveitar a revisão vigente da afirmação individual, sem aprovar seu agregado. Em 581 contextos idênticos de quatro alternativas (seed 42, modo Livre), o conteúdo anterior ao PR oferecia 1.130 dicas; o PR antes da correção, 782, todas taxonômicas; após a correção, 1.132, incluindo 35 etimológicas e 497 morfológicas. Os indicadores de organismos com notas utilizáveis são 49/104, distintos dessa cobertura contextual. A comparação está no relatório existente [AUDITORIA_PROGRESSAO_DICAS.json](AUDITORIA_PROGRESSAO_DICAS.json). Receitas, textos, direitos, tetos, eventos humanos e os 277 bloqueios científicos de distribuição permanecem preservados; não são necessárias novas aprovações para recuperar essas notas já aprovadas. Lacunas por nível e contexto continuam explícitas.
+
 ## Lote consolidado confirmado e incorporado — 2026-10-18
 
 **Zero pendências textuais no escopo atual da Issue #2 e zero erros técnicos

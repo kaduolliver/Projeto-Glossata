@@ -5,7 +5,7 @@ import hashlib
 import json
 import pathlib
 from refine_photos import image_dimensions
-from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception
+from content_governance import audit_governance, records, status, policy, load, read_ledger, license_allowed, documented_exception, usable_scientific_hint_note
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 RANKS = ('species', 'genus', 'family', 'order', 'class', 'phylum', 'kingdom', 'supergroup', 'domain')
@@ -27,6 +27,13 @@ def audit(root=ROOT):
     def usable(sid, topic):
         key = f'topic:{sid}:{topic}'
         return status(key, current[key], baseline, events, settings)['usable']
+    def usable_note(sid, key, topic):
+        if key not in current:
+            return False
+        note = dict(education['notes'][key], governance=status(key, current[key], baseline, events, settings))
+        topic_key = f'topic:{sid}:{topic}'
+        topic_review = status(topic_key, current[topic_key], baseline, events, settings)
+        return usable_scientific_hint_note(note, topic_review, topic)
     eligible = {r: [] for r in RANKS}
     diversity, valid_photos, incompatible_licenses, errors, incomplete = {}, [], [], [], []
     etymology, morphology, competitive = [], [], []
@@ -68,9 +75,11 @@ def audit(root=ROOT):
             if rank in {'domain','supergroup'} and not usable(sid,'phylogeny'): continue
             answer = s['name'] if rank == 'species' else next((t['name'] for t in lineage if t['rank']==rank), '')
             if approved and rank in p.get('approved_ranks', []) and answer: eligible[rank].append((sid, answer))
-        if usable(sid, 'etymology') and any(n.get('verified') and n.get('source_url', '').startswith('https://') and 'inaturalist.org' not in n['source_url'] for n in content.get('etymology_hints', {}).values()): etymology.append(sid)
+        if any(usable_note(sid, key, 'etymology') and 'inaturalist.org' not in education['notes'][key].get('source_url', '')
+               for key in education.get('species', {}).get(sid, {}).get('etymology_hints', {}).values()): etymology.append(sid)
         m = content.get('morphological_hint', {})
-        if usable(sid, 'morphology') and m.get('photo_id') == p.get('id') and m.get('reference'): morphology.append(sid)
+        if (usable_note(sid, education.get('species', {}).get(sid, {}).get('morphological_hint'), 'morphology')
+                and m.get('photo_id') == p.get('id') and m.get('reference')): morphology.append(sid)
         pending = [f for f in ('taxonomy', 'photo', 'etymology', 'morphology', 'education') if review.get(f) != 'approved']
         if pending: incomplete.append({'id': sid, 'name': s['name'], 'fields': pending})
     for rank, values in eligible.items():
@@ -84,7 +93,7 @@ def audit(root=ROOT):
     assistance_summary={k:v for k,v in audit_assistance(root).items() if k not in {'rows','missing_content'}}
     return {'governance': audit_governance(root), 'hint_assistance': assistance_summary, 'total_species': len(species), 'valid_photo_records': len(valid_photos),
             'photo_validation': 'Technical SHA-256, association and dimensions; decoder belongs to Qt tests. Not permission or scientific certification.',
-            'legacy_metrics_notice': 'verified_etymology/morphology are backward-compatible content availability metrics, including legacy notes; not counts of traceable scientific approvals.',
+            'legacy_metrics_notice': 'verified_etymology/morphology count organisms with a usable sourced assertion, including eligible legacy notes. They do not guarantee a hint for every rank, grade or four-option context; see runtime coverage.',
             'eligible_by_rank': {r: len(v) for r, v in eligible.items()}, 'eligible_ids_by_rank': {r: [sid for sid, _ in v] for r, v in eligible.items()},
             'competitive_pool': len(competitive), 'verified_etymology': len(etymology), 'verified_morphology': len(morphology),
             'taxon_introductions': len(education.get('taxons', {})), 'diversity': diversity,

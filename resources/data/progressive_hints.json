@@ -7,9 +7,10 @@
     "species_profiles.json": "25189c1de694d37a917e0700cbff3bbeba1d608aa0fa35c403570cdbef7806be",
     "curation_reviews.json": "3e65f1fdb4c9e91f5cd4d2339259d78977ab5d72390f45a9257cb304566c4b71",
     "content_policy.json": "74946cc18dc7ed1a556b74ac064a14686a1f596b0f581cfc885c5344c53f7fd8",
-    "scripts/review_hints.py": "9fad75a1c04cb2d9aad5be9d2171a735851daf821d8705a32f8339b244c5df64",
-    "src/application/EducationalContent.cpp": "ae59feee0c9aa202c078d733e74f00656979632d4221048f7328147a448b66fc",
+    "scripts/review_hints.py": "ff6ec3b0abf5f7c26ca46f22fe49b13d28764ff4f1eebdef30cdbb358acc21ac",
+    "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
+    "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
     "resources/compliance/review_history.jsonl": "952e612b3e5604ddb7be892bdb959eca5e3c1d37948fe282b6188f2998abb9d9",
     "resources/compliance/review_baseline.json": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
   },
@@ -16653,9 +16654,9 @@
     "actor_type": "automated",
     "process": "scripts/review_hints.py + contextual validation in EducationalContent",
     "policy_version": "progressive-pedagogy-v1",
-    "reviewed_at": "2026-10-19T00:40:27.228443+00:00",
-    "due_at": "2027-10-19T00:40:27.228443+00:00",
-    "content_sha256": "c3519103d466ac4f4e9768e0b6d68f39cb2cf3a6f3ac4cd656351f253a33f26b",
+    "reviewed_at": "2026-10-19T11:39:24.965152+00:00",
+    "due_at": "2027-10-19T11:39:24.965152+00:00",
+    "content_sha256": "4b1301ba7e120743d9af8cbeaf211d2a6ab6caac69c9ada91a9b8b0145e72a83",
     "rationale": "Esta avaliação é automática e se limita aos controles pedagógicos implementados: vínculos de identidade e mídia, linhagens conhecidas, restrições de revelação e progressão de pistas. As decisões editoriais, científicas e de direitos seguem os fluxos próprios.",
     "limitations": "O resultado automático não comprova dificuldade para pessoas, revisão por especialista ou permissão de redistribuição. A condição de cada conteúdo e evidência continua sujeita aos controles independentes de governança."
   }

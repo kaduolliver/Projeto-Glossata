@@ -17,6 +17,7 @@ def inputs(root):
              'curation_reviews.json', 'content_policy.json']
     result = {name: digest(load(root / 'resources/data' / name)) for name in names}
     for name in ['scripts/review_hints.py', 'src/application/EducationalContent.cpp', 'src/domain/Hint.h',
+                 'src/infrastructure/content/ReviewStatus.h',
                  'resources/compliance/review_history.jsonl', 'resources/compliance/review_baseline.json']:
         result[name] = hashlib.sha256((root/name).read_bytes() if (root/name).exists() else b'').hexdigest()
     return result

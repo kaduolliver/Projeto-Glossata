@@ -124,7 +124,8 @@ QJsonObject progressiveFixture()
         for(int i=0;i<3;++i) {
             const QString key="synthetic:"+it.key()+":"+QString::number(i);
             const QString text=QString("Synthetic test-only %1: distinct documented clue.").arg(i);
-            notes[key]=QJsonObject{{"text",text},{"source_url","https://example.org/test-only"},{"governance",review}};
+            notes[key]=QJsonObject{{"text",text},{"source_url","https://example.org/test-only"},{"governance",review},
+                {"photo_id",entry["photo"].toObject()["id"]}};
             recipes.append(QJsonObject{{"id",key},{"kind","note"},{"category","morphological"},
                 {"text",text},{"ranks",QJsonArray{"genus"}},{"grade",i==0?"light":i==1?"moderate":"strong"},
                 {"source_url","https://example.org/test-only"},{"source_title","Synthetic fixture"},
@@ -191,6 +192,8 @@ private slots:
     void assistanceSnapshotsAndLegacyV2Migration();
     void assistanceChangesCompetitiveContentVersion();
     void progressiveCoverageHistoryAndReports();
+    void scientificHintCoverageWithFourOptions();
+    void individualHintReviewsDoNotRequireAggregateApproval();
 };
 
 void GameServiceTests::initialLoad_hasSpecies()
@@ -1669,21 +1672,69 @@ void GameServiceTests::contextualAssistanceAndUnknownDistractors()
     QVERIFY(!content.questionHints(correct,"genus",options,unknown,true)[0].available());
 
     EducationalContent actual;
-    QFile fixtureFile(":/resources/data/education.json");QVERIFY(fixtureFile.open(QIODevice::ReadOnly));
-    auto scopedData=QJsonDocument::fromJson(fixtureFile.readAll()).object();
-    auto scopedSpecies=scopedData["species"].toObject();reviewFixtureTopics(scopedSpecies);
-    scopedData["species"]=scopedSpecies;EducationalContent scopedFixture(scopedData);
     for(const auto &s:source.loadSpecies())if(QSet<int>{67,131,133}.contains(s.id)) {
         const auto choices=QStringList{s.name,"Example alpha","Example beta","Example gamma"};
-        // Source-text review does not silently approve its changed aggregate.
-        const auto pending=actual.questionHints(s,"species",choices,source.loadSpecies(),true);
-        QVERIFY(!pending[2].available());QVERIFY(!pending[2].unavailableReason.isEmpty());
-        // Test automatic grading separately, with explicit synthetic prerequisites.
-        const auto h=scopedFixture.questionHints(s,"species",choices,source.loadSpecies(),true);
+        // The exact assertion is approved; its unrelated aggregate remains pending.
+        const auto h=actual.questionHints(s,"species",choices,source.loadSpecies(),true);
         QVERIFY(h[2].available());QCOMPARE(h[2].assistance,AssistanceLevel::Strong);
         QCOMPARE(h[2].assessmentState,QString("approved_automated"));
     }
 
+}
+
+void GameServiceTests::individualHintReviewsDoNotRequireAggregateApproval()
+{
+    JsonSpeciesCatalog source;const auto pool=eligibleQuizSpecies(source.loadSpecies(),"genus");
+    const auto it=std::find_if(pool.cbegin(),pool.cend(),[](const Species &s){return s.id==67;});
+    QVERIFY(it!=pool.cend());const auto s=*it;
+    const QStringList options{"Trametes","Amanita","Panthera","Ginkgo"};
+    QFile file(":/resources/data/education.json");QVERIFY(file.open(QIODevice::ReadOnly));
+    const auto data=QJsonDocument::fromJson(file.readAll()).object();
+    const auto entry=data["species"].toObject()["67"].toObject();
+    const auto topics=entry["governance"].toObject();
+    for(const QString &topic:{QString("etymology"),QString("morphology")}) {
+        QCOMPARE(topics[topic].toObject()["state"].toString(),QString("needs_review"));
+        QVERIFY(!usableReview(topics[topic].toObject()));
+    }
+    const auto original=EducationalContent(data).questionHints(s,"genus",options,pool,true);
+    QVERIFY(std::any_of(original.begin(),original.end(),[](const Hint &h){return h.available() && h.type==HintType::Etymological;}));
+    QVERIFY(std::any_of(original.begin(),original.end(),[](const Hint &h){return h.available() && h.type==HintType::Morphological;}));
+    QVERIFY(!EducationalContent(data).nameOrigin(s).isEmpty());
+    const auto notes=data["notes"].toObject();
+    for(const QString &topic:{QString("etymology"),QString("morphology")}) {
+        const auto key=topic=="etymology" ? entry["etymology_hints"].toObject()["genus"].toString() : entry["morphological_hint"].toString();
+        const auto note=notes[key].toObject(),review=note["governance"].toObject();
+        QVERIFY(usableScientificHintNote(note,topics[topic].toObject(),topic));
+        for(const QString &state:{QString("draft"),QString("pending"),QString("needs_review"),QString("expired"),QString("rejected")}) {
+            auto changed=note,r=review;r["state"]=state;changed["governance"]=r;
+            QVERIFY(!usableScientificHintNote(changed,topics[topic].toObject(),topic));
+        }
+        for(const QString &field:{QString("reviewer"),QString("content_sha256"),QString("evidence"),QString("claim_scope")}) {
+            auto changed=note,r=review;r.remove(field);changed["governance"]=r;
+            QVERIFY(!usableScientificHintNote(changed,topics[topic].toObject(),topic));
+        }
+        auto changed=note,r=review;r["due_at"]="2000-01-01T00:00:00Z";changed["governance"]=r;
+        QVERIFY(!usableScientificHintNote(changed,topics[topic].toObject(),topic));
+        auto rejected=topics[topic].toObject();rejected["state"]="rejected";
+        QVERIFY(!usableScientificHintNote(note,rejected,topic));
+        r=review;r["state"]="legacy";changed["governance"]=r;
+        QVERIFY(!usableScientificHintNote(changed,topics[topic].toObject(),topic));
+        rejected["state"]="legacy";rejected["usable"]=true;rejected["content_sha256"]=QString(64,'a');
+        QVERIFY(usableScientificHintNote(changed,rejected,topic));
+        // A bad note removes that category, even if taxonomic fallbacks remain.
+        for(bool changePhoto:{false,true}) {
+            changed=note;
+            if(changePhoto && topic=="morphology")changed["photo_id"]="other-photo";
+            else if(!changePhoto)changed["text"]="Changed without review or re-evaluation.";
+            else continue;
+            auto altered=data,changedNotes=notes;changedNotes[key]=changed;altered["notes"]=changedNotes;
+            const auto hints=EducationalContent(altered).questionHints(s,"genus",options,pool,true);
+            QVERIFY(std::none_of(hints.begin(),hints.end(),[&](const Hint &h){return h.available()
+                && h.type==(topic=="etymology"?HintType::Etymological:HintType::Morphological);}));
+        }
+    }
+    // The appearance wording approval never approves the unreviewed trait list.
+    QVERIFY(s.morphologyTraits.isEmpty());
 }
 
 void GameServiceTests::assistanceSnapshotsAndLegacyV2Migration()
@@ -1812,6 +1863,41 @@ void GameServiceTests::progressiveCoverageHistoryAndReports()
     QVERIFY(!text.contains(controller.currentPlayerName()));QVERIFY(!text.contains(directory.path()));
     QVERIFY(!text.contains("correctAnswer"));QCOMPARE(controller.possibleScoreText(),score);
     for(int i=0;i<3;++i)if(i!=slot)QVERIFY(controller.hintReport(hints[i].toMap()["id"].toString(),"test").isEmpty());
+}
+
+// Free-mode generation keeps the seeded alternatives independent of hint
+// availability. The same contexts can therefore compare real historical bundles
+// and the fixed runtime without a synthetic approval or adaptive resampling.
+void GameServiceTests::scientificHintCoverageWithFourOptions()
+{
+    JsonSpeciesCatalog source;const auto all=source.loadSpecies();
+    const auto input=qEnvironmentVariable("GLOSSATA_HINT_EDUCATION");
+    QFile file(input.isEmpty() ? QString(":/resources/data/education.json") : input);
+    QVERIFY(file.open(QIODevice::ReadOnly));const auto bytes=file.readAll();
+    EducationalContent content(QJsonDocument::fromJson(bytes).object());
+    QJsonArray rows;
+    for(const QString &rank:{QString("species"),QString("genus"),QString("family"),QString("order"),QString("class"),QString("phylum"),QString("kingdom")}) {
+        const auto pool=eligibleQuizSpecies(all,rank);std::mt19937 random(42);
+        GameConfiguration cfg;cfg.rank=rank;
+        for(const auto &s:pool) {
+            const auto question=QuestionGenerator(content).generate(s,pool,cfg,random);
+            QCOMPARE(question.options.size(),4);
+            QCOMPARE(QSet<QString>(question.options.begin(),question.options.end()).size(),4);
+            QJsonArray hints;
+            for(int slot=0;slot<3;++slot) {
+                const auto &hint=question.hints[slot];
+                QCOMPARE(hint.ceiling(),slot==0?6:slot==1?3:2);
+                hints.append(QJsonObject{{"slot",slot+1},{"category",hintKey(hint.type)},
+                    {"available",hint.available()},{"ceiling",hint.ceiling()},{"reason",hint.unavailableReason}});
+            }
+            rows.append(QJsonObject{{"id",s.id},{"rank",rank},{"options",QJsonArray::fromStringList(question.options)},{"hints",hints}});
+        }
+    }
+    const auto output=qEnvironmentVariable("GLOSSATA_HINT_COVERAGE_OUTPUT");
+    QFile report(output.isEmpty()?QString("scientific-hint-coverage.json"):output);QVERIFY(report.open(QIODevice::WriteOnly));
+    report.write(QJsonDocument(QJsonObject{{"seed",42},{"mode","free"},
+        {"context","Same eligible pool and seeded four-option contexts; no adaptive resampling."},
+        {"education_sha256",QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex())},{"rows",rows}}).toJson());
 }
 
 QTEST_MAIN(GameServiceTests)

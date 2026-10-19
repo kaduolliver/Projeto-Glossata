@@ -92,6 +92,40 @@ class GovernanceTests(unittest.TestCase):
         species=governance.load(self.root/'resources/data/species.json');species[0]['photo']['id']='8';self.write('species.json',species)
         self.assertNotEqual(governance.records(self.root)[key]['content_sha256'],before)
 
+    def test_individual_assertion_review_does_not_approve_its_changed_aggregate(self):
+        data=governance.load(self.root/'resources/data/education.json')
+        key='species:1:etymology:species'
+        data['notes'][key]=dict(self.note,ranks=['species'])
+        data['species']['1']['etymology_hints']={'species':key}
+        self.write('education.json',data);self.baseline()
+        data['notes'][key]['text']='New synthetic nomenclatural statement.'
+        self.write('education.json',data)
+        decision=self.decision(key);decision['claim_scope']='nomenclature'
+        governance.append_review(self.root,key,decision)
+        before=governance.read_ledger(self.root)
+        governance.annotate_education(self.root,data)
+        note=data['notes'][key];topic=data['species']['1']['governance']['etymology']
+        self.assertEqual(topic['state'],'needs_review');self.assertFalse(topic['usable'])
+        self.assertTrue(governance.usable_scientific_hint_note(note,topic,'etymology'))
+        self.assertFalse(governance.usable_scientific_hint_note(note,topic,'morphology'))
+        for field,value in [('state','draft'),('state','pending'),('state','rejected'),
+                            ('state','expired'),('state','needs_review'),('evidence',[]),
+                            ('claim_scope','species'),('reviewer',None),('content_sha256',''),
+                            ('due_at','2000-01-01T00:00:00Z')]:
+            changed=copy.deepcopy(note);changed['governance'][field]=value
+            self.assertFalse(governance.usable_scientific_hint_note(changed,topic,'etymology'))
+        self.assertFalse(governance.usable_scientific_hint_note(note,dict(topic,state='rejected'),'etymology'))
+        legacy=copy.deepcopy(note);legacy['governance']['state']='legacy'
+        self.assertFalse(governance.usable_scientific_hint_note(legacy,topic,'etymology'))
+        self.assertTrue(governance.usable_scientific_hint_note(legacy,
+            dict(topic,state='legacy',usable=True),'etymology'))
+        # A source change invalidates the assertion itself, not only its aggregate.
+        data['notes'][key]['source_url']='https://example.org/changed-evidence'
+        governance.annotate_education(self.root,data)
+        self.assertEqual(data['notes'][key]['governance']['state'],'needs_review')
+        self.assertFalse(governance.usable_scientific_hint_note(data['notes'][key],topic,'etymology'))
+        self.assertEqual(before,governance.read_ledger(self.root))
+
     def test_photo_license_is_not_inherited_and_direct_download_is_guarded(self):
         for code in ('all-rights-reserved', None, '', 'cc-by-sa', 'cc-by-nd', 'cc-by-nc', 'unrecognized'):
             photo = dict(self.photo, license_code=code)

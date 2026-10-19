@@ -324,6 +324,33 @@ def status(key, record, baseline, events, settings, at=None):
             'limitation': 'Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão.'}
 
 
+def usable_scientific_hint_note(note, topic, kind, at=None):
+    """Use the exact assertion's review; never approve its independent aggregate.
+
+    Keep in sync with ReviewStatus.h. Callers auditing source files must first
+    derive fresh hash-bound statuses via status(), rather than trust raw flags.
+    """
+    at = at or datetime.now(timezone.utc)
+    def usable(review):
+        if not review.get('usable'):
+            return False
+        if review.get('state') == 'legacy':
+            return len(review.get('content_sha256', '')) == 64
+        when, due = parse_time(review.get('reviewed_at')), parse_time(review.get('due_at'))
+        return (review.get('state') in APPROVALS and bool(review.get('reviewer'))
+                and bool(when and due and when <= at < due))
+    review = note.get('governance', {})
+    if (kind not in {'etymology', 'morphology'} or topic.get('state') == 'rejected'
+            or not usable(review) or not note.get('text') or not https_url(note.get('source_url'))):
+        return False
+    if review['state'] == 'legacy':
+        return usable(topic)
+    scopes = {'nomenclature'} if kind == 'etymology' else {'species', 'photographic_observation'}
+    return (len(review.get('content_sha256', '')) == 64 and review.get('claim_scope') in scopes
+            and any(e.get('url') == note['source_url'] and e.get('locator') and e.get('supports')
+                    for e in review.get('evidence', [])))
+
+
 def annotate_education(root, data):
     baseline = load(root / 'resources/compliance/review_baseline.json', {})
     events = read_ledger(root); settings = policy(root)

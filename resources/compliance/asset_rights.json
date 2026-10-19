@@ -2218,7 +2218,7 @@
     {
       "path": "resources/data/progressive_hints.json",
       "kind": "text_authorship",
-      "sha256": "0fd7ad666b8c294b970a82aaefdba1be2c7bd3d9e00539e7db8fcf1d65ff0b29",
+      "sha256": "72958896389145e4694ea79931ebc79d4e8aa4580b66e680f3769676632d61c5",
       "source": "Redações educativas assistidas por IA e composições identificadas; lotes concretos com conferência de fontes, confirmação editorial e concessão delimitada de direitos disponíveis. Origem, atribuições e evidências por ocorrência em educational_text_rights. Bibliografia não autoriza reproduzir expressão protegida das fontes.",
       "permission": {
         "holder": "Carlos Eduardo Lima de Oliveira",
@@ -2284,6 +2284,12 @@
           "recorded_on": "2026-10-18",
           "reason": "Explicit consolidated editorial and available-rights confirmations applied; exact previous grants and historical evidence retained. No photo, source-work or package permission.",
           "source_at_previous_hash": "Receitas pedagógicas assistidas por IA, derivadas do corpus local e registros taxonômicos com referências individuais. Fontes não concedem direitos sobre textos de terceiros."
+        },
+        {
+          "sha256": "0fd7ad666b8c294b970a82aaefdba1be2c7bd3d9e00539e7db8fcf1d65ff0b29",
+          "state": "documented_scoped_text_rights",
+          "recorded_at": "2026-10-19T11:39:25.425270+00:00",
+          "reason": "Scientific hint-use policy now accepts exact valid assertion reviews independently of unrelated aggregates. Existing automatic evaluation regenerated; all 855 recipes, wordings, grades, sources and scoped rights confirmations remain identical. No human review or permission created."
         }
       ],
       "license": "CC-BY-4.0",

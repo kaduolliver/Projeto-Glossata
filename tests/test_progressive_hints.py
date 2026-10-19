@@ -16,7 +16,8 @@ class ProgressiveHints(unittest.TestCase):
         self.folder=tempfile.TemporaryDirectory();self.addCleanup(self.folder.cleanup)
         self.root=Path(self.folder.name)
         for relative in ['resources/data','resources/compliance/review_baseline.json',
-                         'scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h']:
+                         'scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                         'src/infrastructure/content/ReviewStatus.h']:
             source=ROOT/relative;target=self.root/relative;target.parent.mkdir(parents=True,exist_ok=True)
             if source.is_dir():shutil.copytree(source,target)
             else:shutil.copyfile(source,target)
@@ -38,6 +39,11 @@ class ProgressiveHints(unittest.TestCase):
         self.assertNotEqual(original['evaluation']['content_sha256'],updated['evaluation']['content_sha256'])
         (self.root/'src/domain/Hint.h').write_text('changed policy',encoding='utf8')
         self.assertFalse(valid(updated,self.root))
+
+    def test_scientific_use_policy_change_invalidates_automatic_assessment(self):
+        original=evaluate(self.root)
+        (self.root/'src/infrastructure/content/ReviewStatus.h').write_text('synthetic change',encoding='utf8')
+        self.assertFalse(valid(original,self.root))
 
     def test_expiry_and_recipe_tampering_are_not_approval(self):
         original=evaluate(self.root);expired=copy.deepcopy(original)

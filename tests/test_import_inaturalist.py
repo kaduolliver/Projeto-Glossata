@@ -185,7 +185,8 @@ class ImportTests(unittest.TestCase):
                          'photo_provenance.json','content_policy.json','education.json','phylogeny.json','progressive_hints.json','group_education.json'):
                 shutil.copyfile(PROJECT/'resources/data'/name,root/'resources/data'/name)
             shutil.copytree(PROJECT/'resources/compliance', root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             with mock.patch.object(education,'ROOT',root), mock.patch.object(importer.Api,'get',side_effect=AssertionError('Network forbidden')), contextlib.redirect_stdout(io.StringIO()):
                 actual=education.build()
@@ -223,7 +224,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             if packet['state']!='draft':
                 # Restore the real pre-confirmation fixture in this temporary
@@ -287,7 +289,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             original_ledger=(root/'resources/compliance/review_history.jsonl').read_bytes()
             groups=governance.load(root/packet['target'])
@@ -339,7 +342,8 @@ class ImportTests(unittest.TestCase):
             root=pathlib.Path(directory)
             shutil.copytree(PROJECT/'resources/data',root/'resources/data')
             shutil.copytree(PROJECT/'resources/compliance',root/'resources/compliance')
-            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h'):
+            for relative in ('scripts/review_hints.py','src/application/EducationalContent.cpp','src/domain/Hint.h',
+                             'src/infrastructure/content/ReviewStatus.h'):
                 target=root/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(PROJECT/relative,target)
             for relative in (packet['target'],'resources/data/education.json','resources/data/progressive_hints.json',
                              'resources/compliance/review_history.jsonl','resources/compliance/asset_rights.json'):
@@ -728,10 +732,9 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(result['total_species'],122)
         self.assertEqual(result['valid_photo_records'],122)
         self.assertEqual(result['competitive_pool'],80)
-        # This legacy metric counts source flags, not the separate review ledger.
-        hints=json.loads((PROJECT/'resources/data/hint_education.json').read_bytes())
-        self.assertEqual(result['verified_etymology'],sum(any(n.get('verified')
-            for n in row.get('etymology_hints',{}).values()) for row in hints.values()))
+        # Current usable assertions come from hash-bound reviews, not raw flags.
+        self.assertEqual(result['verified_etymology'],49)
+        self.assertEqual(result['verified_morphology'],104)
         self.assertEqual(result['incompatible_photo_licenses'],[])
         self.assertEqual(result['errors'],[])
         self.assertNotIn('20',result['eligible_ids_by_rank']['species'])
