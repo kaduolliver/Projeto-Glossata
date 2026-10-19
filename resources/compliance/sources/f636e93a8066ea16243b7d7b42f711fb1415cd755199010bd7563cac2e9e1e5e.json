@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "American distribution including Amazon/Pantanal, aquatic habitats and swimming; robust head and body, rosettes and melanism; mammal/reptile prey. Does not assert continuous occupation of the range.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Panthera_onca/",
+      "consulted_at": "2026-10-18T23:32:49.472307+00:00",
+      "response_sha256": "e08a8535e310418d5c08801a4ea6c0140d9b31ab034b961266a33e1724c07f46"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/curiosity/text",
+      "text_sha256": "10723276dc91ff69e55c2550d8b4c8fc06c766b760d8f9c3d5f218284ca997f2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/distribution/text",
+      "text_sha256": "5dbccd04a85890792ca85cc442e15c2b7b3b236a42a64f1b65c25a243ed27bca"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/hint/text",
+      "text_sha256": "7f44c7dc8459a5950b7d770580558a51aafb138dbe4221217d2b314a91cc2b17"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/morphology/text",
+      "text_sha256": "968d1d1597f565d4978a40021860e8f929eb2df38af9f7c2f846195b80328e2a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/nutrition/text",
+      "text_sha256": "d3e3f4d0a2cd8275b6d3d828388dded6588aa3bc1ad4a0d93d6f85e9385955cf"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/127/summary/text",
+      "text_sha256": "59dcbf36bdd5c43bcac008a15a526c2a4977610a49f5ec343f34a18cd0010d4a"
+    }
+  ]
+}

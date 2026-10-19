@@ -1,0 +1,34 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 198464364,
+    "taxon": {
+      "id": 348812,
+      "name": "Ganoderma brownii",
+      "rank": "species"
+    },
+    "community_taxon_id": 348812,
+    "quality_grade": "research",
+    "photo_ids": [
+      "349835505",
+      "349810134",
+      "349810142",
+      "349810150",
+      "349810159",
+      "349810128"
+    ],
+    "archived_response_sha256": "35a5312a37f0f9782cb2a65b415c322d5e9bd8340234597abdb346b7e30d4c49",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:42.178462+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/198464364",
+  "catalog_species_id": "70",
+  "catalog_photo_id": "349810134",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "3adf0f0473962928665245ebe30eb252076ca437c880447e6f9f72657f55100f",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

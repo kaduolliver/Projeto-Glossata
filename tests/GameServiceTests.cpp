@@ -62,6 +62,21 @@ void bindFixtureAssessment(QJsonObject &assessment,const QString &sid,const QStr
     assessment["binding"]=proof;assessment["governance"]=review;
 }
 
+// Rule tests declare their scientific prerequisites independently of the live
+// catalog's aggregate review state. Nothing is written to shipped data.
+void reviewFixtureTopics(QJsonObject &species)
+{
+    const QJsonObject review{{"state","approved_editorial"},{"usable",true},
+        {"reviewer","synthetic-test-fixture"},{"claim_scope","species"},
+        {"reviewed_at",QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
+        {"due_at",QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)}};
+    for (auto it=species.begin();it!=species.end();++it) {
+        auto entry=it.value().toObject(),topics=entry["governance"].toObject();
+        topics["etymology"]=review;topics["morphology"]=review;
+        entry["governance"]=topics;it.value()=entry;
+    }
+}
+
 // Synthetic grading scenarios ONLY. No approval is written to shipped data.
 QJsonObject gradedHintFixture()
 {
@@ -75,6 +90,7 @@ QJsonObject gradedHintFixture()
         {"due_at",QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)},
         {"content_sha256",QString(64,'a')}};
     auto species=data["species"].toObject(),notes=data["notes"].toObject();
+    reviewFixtureTopics(species);
     for (auto it=species.begin();it!=species.end();++it) {
         auto s=it.value().toObject(),taxonomy=s["taxonomic_assistance"].toObject();
         const auto photo=notes[s["morphological_hint"].toString()].toObject()["photo_id"].toString();
@@ -99,6 +115,8 @@ QJsonObject progressiveFixture()
 {
     QFile file(":/resources/data/education.json");if(!file.open(QIODevice::ReadOnly))return {};
     auto data=QJsonDocument::fromJson(file.readAll()).object();
+    auto scientificSpecies=data["species"].toObject();reviewFixtureTopics(scientificSpecies);
+    data["species"]=scientificSpecies;
     auto automatic=data["automated_pedagogy"].toObject(),species=automatic["species"].toObject(),notes=data["notes"].toObject();
     const QJsonObject review{{"state","legacy"},{"usable",true},{"content_sha256",QString(64,'a')}};
     for(auto it=species.begin();it!=species.end();++it) {
@@ -200,7 +218,7 @@ void GameServiceTests::extraHintCanBeRevealedOncePerRound()
 {
     JsonSpeciesCatalog source;MemoryCatalog catalog;
     for (const auto &s : source.loadSpecies()) if (QSet<int>{63,67,73,135}.contains(s.id)) catalog.items.append(s);
-    GameService service(&catalog);
+    GameService service(&catalog,nullptr,EducationalContent(progressiveFixture()));
     service.startNewGame({},"genus");
 
     QVERIFY(!service.hintRevealed());
@@ -1115,20 +1133,18 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
 {
     JsonSpeciesCatalog catalog;
     EducationalContent content;
-    const QSet<int> profileBatch{133,53,61,44,47,43,48,49,51,54,57,50,55,52,60,62,
-                                23,26,30,31,34,35,41,65,70,71,81,110};
     int profiles=0,confirmed=0,editorialNotes=0;
     for (const Species &s : catalog.loadSpecies()) {
         const auto profile=content.profile(s);
         QVERIFY2(!profile.isEmpty(),qPrintable(s.name));
         ++profiles;
         QVERIFY(!profile.value("displayName").toString().isEmpty());
-        QCOMPARE(profile.value("reviewedOn").toString().isEmpty(),s.id!=82);
+        QVERIFY(profile.value("reviewedOn").toString().isEmpty());
         const auto review=profile.value("governance").toMap().value("education").toMap();
-        QCOMPARE(review.value("state").toString(),s.id==82 ? QString("approved_editorial")
-                 : profileBatch.contains(s.id) ? QString("needs_review") : QString("legacy"));
-        QCOMPARE(review.value("reviewer").toString().isEmpty(),s.id!=82);
-        if (profileBatch.contains(s.id)) QVERIFY(!review.value("usable").toBool());
+        // The consolidated confirmation deliberately excluded aggregate topics.
+        QCOMPARE(review.value("state").toString(),QString("needs_review"));
+        QVERIFY(review.value("reviewer").toString().isEmpty());
+        QVERIFY(!review.value("usable").toBool());
         if (s.id==82) {
             // Restored only after the maintainer's explicit, hash-bound editorial decision.
             for (const auto &field : {QString("nutrition"),QString("curiosity")}) {
@@ -1139,21 +1155,19 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
                 QCOMPARE(noteReview.value("review_kind").toString(),QString("editorial"));
                 QVERIFY(!noteReview.value("reviewer").toString().isEmpty());
             }
-            QVERIFY(review.value("usable").toBool());
         }
         for (const QString &field : {QString("summary"),QString("distribution"),QString("morphology"),QString("conservation")}) {
             const auto item=profile.value(field).toMap();
             QVERIFY2(!item.value("text").toString().isEmpty(),qPrintable(s.name+":"+field));
             QVERIFY(item.value("source_url").toString().startsWith("https://"));
             const auto claimReview=item.value("governance").toMap();
-            const bool approvedMorphology=s.id==110 && field=="morphology";
-            QCOMPARE(claimReview.value("state").toString(),approvedMorphology ? QString("approved_editorial") : QString("legacy"));
-            QCOMPARE(claimReview.value("reviewed_at").toString().isEmpty(),!approvedMorphology);
+            QCOMPARE(claimReview.value("state").toString(),QString("approved_editorial"));
+            QVERIFY(!claimReview.value("reviewed_at").toString().isEmpty());
         }
         for (const auto &field : {QString("nutrition"),QString("curiosity"),QString("morphology")}) {
             const auto note=profile.value(field).toMap();
-            if (s.id==82 || note.value("governance").toMap().value("state").toString()!="approved_editorial") continue;
-            QVERIFY(profileBatch.contains(s.id));
+            if (note.isEmpty()) continue;
+            QCOMPARE(note.value("governance").toMap().value("state").toString(),QString("approved_editorial"));
             QVERIFY(!note.value("text").toString().isEmpty());
             QCOMPARE(note.value("governance").toMap().value("review_kind").toString(),QString("editorial"));
             ++editorialNotes;
@@ -1168,8 +1182,8 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
             QVERIFY(!profile.value("nutrition").toMap().isEmpty());
         if (s.educationalKingdom=="Monera") {
             const auto text=profile.value("morphology").toMap().value("text").toString();
-            QVERIFY(text.contains(s.id==110 ? "imagem de apoio" : "apenas apoio"));
-            QVERIFY(text.contains("não confirma"));
+            QVERIFY(text.contains("apoio"));
+            QVERIFY(text.contains("não confirma") || text.contains("nem confirma"));
         }
         QVERIFY2(!content.hint(s,"genus",{s.answerAtRank("genus")}).isEmpty(),qPrintable(s.name));
         QVERIFY(!content.curiosity(s).isEmpty());
@@ -1184,7 +1198,7 @@ void GameServiceTests::speciesProfilesHaveSourcesAndMatchIdentity()
         QVERIFY(content.profile(reused).isEmpty());
     }
     QCOMPARE(profiles,122);
-    QCOMPARE(editorialNotes,34);
+    QCOMPARE(editorialNotes,351);
     QCOMPARE(confirmed,22);
     Species missing; missing.id=9999;
     QVERIFY(content.profile(missing).isEmpty());
@@ -1655,9 +1669,17 @@ void GameServiceTests::contextualAssistanceAndUnknownDistractors()
     QVERIFY(!content.questionHints(correct,"genus",options,unknown,true)[0].available());
 
     EducationalContent actual;
+    QFile fixtureFile(":/resources/data/education.json");QVERIFY(fixtureFile.open(QIODevice::ReadOnly));
+    auto scopedData=QJsonDocument::fromJson(fixtureFile.readAll()).object();
+    auto scopedSpecies=scopedData["species"].toObject();reviewFixtureTopics(scopedSpecies);
+    scopedData["species"]=scopedSpecies;EducationalContent scopedFixture(scopedData);
     for(const auto &s:source.loadSpecies())if(QSet<int>{67,131,133}.contains(s.id)) {
         const auto choices=QStringList{s.name,"Example alpha","Example beta","Example gamma"};
-        const auto h=actual.questionHints(s,"species",choices,source.loadSpecies(),true);
+        // Source-text review does not silently approve its changed aggregate.
+        const auto pending=actual.questionHints(s,"species",choices,source.loadSpecies(),true);
+        QVERIFY(!pending[2].available());QVERIFY(!pending[2].unavailableReason.isEmpty());
+        // Test automatic grading separately, with explicit synthetic prerequisites.
+        const auto h=scopedFixture.questionHints(s,"species",choices,source.loadSpecies(),true);
         QVERIFY(h[2].available());QCOMPARE(h[2].assistance,AssistanceLevel::Strong);
         QCOMPARE(h[2].assessmentState,QString("approved_automated"));
     }

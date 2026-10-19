@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Barbascum/beard specifically linked to hairy stamens; thapsus to ancient Tunisian locality. Narrowed the draft from general whole-plant hair to stamens.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "consulted_at": "2026-10-18T23:40:06.203429+00:00",
+      "response_sha256": "00f742298c990506f83736f2d9b8705ebcc2a8ef7500f0e140b973c7583cef0e"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/61/etymology_hints/genus/text",
+      "text_sha256": "b734caeedd2d0a8c000162122e245b751e65f18381020955ba7aa31a06a50465"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/61/etymology_hints/species/text",
+      "text_sha256": "673268016fdb0f576f2fbbc43606cbc842661a949348f911fb7f70f078767ae6"
+    }
+  ]
+}

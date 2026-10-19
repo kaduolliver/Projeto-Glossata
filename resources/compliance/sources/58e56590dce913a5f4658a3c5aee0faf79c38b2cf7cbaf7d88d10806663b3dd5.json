@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Sheath-forming SP-6 versus sheathless variant and SS-1 explicitly distinguished. Does not imply every strain has a sheath; no cultivation recipe copied.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/16348826/",
+      "consulted_at": "2026-10-19T00:07:35.271759+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/morphology/text",
+      "text_sha256": "ff47b7b62fe0fc7ebf7acb0866b7f2d16f3a00a96409ac96823fa856b4de5773"
+    }
+  ]
+}

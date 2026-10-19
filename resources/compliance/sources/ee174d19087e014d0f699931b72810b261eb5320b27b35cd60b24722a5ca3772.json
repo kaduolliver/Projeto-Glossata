@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Large eyes, conspicuous head appendages and patterned wings. The text does not identify an unobservable physiological function. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/75731994",
+      "consulted_at": "2026-10-18T23:59:24.423002+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/123931576.jpg",
+      "sha256": "908419e30c8f48d536936d7a23913702511519d2421217150d8b73477422687f",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/34/summary/text",
+      "text_sha256": "f7db2279d927b65dbb3473b0b2431faaeaa1b1e63aba1fd8180a2ec25198c93e"
+    }
+  ]
+}

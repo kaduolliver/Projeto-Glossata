@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.931109+00:00",
+  "source_url": "https://www.inaturalist.org/observations/237414880",
+  "species_id": "30",
+  "photo_id": "422526180",
+  "photo_sha256": "72c70663f988ff450629192311bb49ea64e6ab893777841aeef0acf6a8d2c776",
+  "comparison": "Narrow dark elongated beetle, antennae and longitudinal wing covers visible; no hardness measurement inferred.",
+  "archived_taxon": {
+    "id": 398792,
+    "name": "Xenocnema spinipes",
+    "rank": "species"
+  },
+  "observation_id": 237414880,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "c07e01b89b8e0c05232d17ab4571fd4ae877f90f91f4faf8f221f7385522fadf"
+}

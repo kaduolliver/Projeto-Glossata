@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Freshwater sediment/epipelic filamentous cyanobacteria with cross-wall constrictions; separate nomenclatural correction does not itself establish all ecological details. No heterocyst claim introduced; name correction and organism facts have distinct locations.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.preslia.cz/article/pdf?id=122",
+      "consulted_at": "2026-10-18T23:59:24.414462+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/curiosity/text",
+      "text_sha256": "ed28f84e86f92603a044a8120882dc877b1aeaa4db91edea28619e7bb278401a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/distribution/text",
+      "text_sha256": "342a3a9cf10e06174280beb0fb455882a593340a2b805cd2f872c1064c0cdbbe"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/hint/text",
+      "text_sha256": "b8d6e8a2139040f8200eada7a23a570d21b2414eaa8daf8a56cddf8f6809d2a3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/morphology/text",
+      "text_sha256": "80a21bfac9c7789aaacf9fd77a83b55900535970399af78b100b977bbf07123b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/nutrition/text",
+      "text_sha256": "0b0e591a1b64fc5794950b438f341452a5b452d096aca3705f378f06ce4e6a04"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/115/summary/text",
+      "text_sha256": "f414a9f3b83ab4904246e3c598e6f2429b9ced665d1f3f6445140f2134936cd3"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Broad woody-looking lateral bracket with brown upper surface/pale underside on wood. No Ganoderma lucidum traits transferred. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/198464364",
+      "consulted_at": "2026-10-18T23:59:24.426007+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/349810134.jpeg",
+      "sha256": "6c220ee184956e70a6e21d53fe9189829eca0ee63e307954121f5a1f56af6510",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/70/summary/text",
+      "text_sha256": "6af92dc6b4cc88748eb85529dab0305e7aac3bcaa23435c5935eff288f5743a4"
+    }
+  ]
+}

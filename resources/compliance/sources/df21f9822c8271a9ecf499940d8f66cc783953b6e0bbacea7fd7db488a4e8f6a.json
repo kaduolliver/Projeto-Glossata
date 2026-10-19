@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.285464+00:00",
+  "source_url": "https://www.inaturalist.org/observations/407941868",
+  "species_id": "8",
+  "photo_id": "749769318",
+  "photo_sha256": "ab4281d92dcf6090a430113ce309bbfd603c7a722176f4daf0e675b34b5a8612",
+  "comparison": "Orange field, dark apices and white apical spots on open wings.",
+  "archived_taxon": {
+    "id": 48548,
+    "name": "Vanessa cardui",
+    "rank": "species"
+  },
+  "observation_id": 407941868,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "6c880a23354b9c42bbd83f42ecde30def32e6b289e28b0988d4cbd8befc6b3f0"
+}

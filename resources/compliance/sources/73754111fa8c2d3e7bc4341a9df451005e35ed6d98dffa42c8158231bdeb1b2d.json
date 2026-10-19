@@ -1,0 +1,55 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Compared North American range, adult wing marks and tails where applicable, sex differences, larval folivory and nonfeeding adults. Eye-like marks are described as wing patterns, not visual organs. No claim that defensive effectiveness is experimentally proved.",
+  "limitations": [
+    "Reference used for facts only, not permission to adapt protected expression. No quoted or translated source paragraphs; no figure reuse; source NC/ND conditions remain intact."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ask.ifas.ufl.edu/publication/IN737",
+      "consulted_at": "2026-10-18T23:32:36.569655+00:00",
+      "response_sha256": "9f2d528578e61d7cc90685908e7b9293fe6968c53e5c7c1ccdf3d99fb09480b2"
+    },
+    {
+      "source_url": "https://ask.ifas.ufl.edu/copyright",
+      "terms_checked_on": "2026-10-18",
+      "license": "CC-BY-NC-ND-4.0",
+      "images_excluded": true
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/curiosity/text",
+      "text_sha256": "0d8452e841a6395dcc72834ab7bf0907693845d2160fdb0e2a4399e21011f24d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/distribution/text",
+      "text_sha256": "0afdd041d8026654c3d2580706f49025833127643c2597c49299aae08d80073c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/hint/text",
+      "text_sha256": "8dcc2b7360c1653a05887e046611ade2d654d9fcde8b4bb51647443f6d5fe04b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/morphology/text",
+      "text_sha256": "470d7301503dac3b13c8f2eebb44f43abc9430bee7eb31d5ce67adf66fec4762"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/nutrition/text",
+      "text_sha256": "2e3e98531779a5d42e6d2efb2634b41a6c2ed74777381c4a892c6f83d76bf666"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/11/summary/text",
+      "text_sha256": "ae00526a52f6eaca18f1ba1546114a7d34926e428124700248779f7c2e5758da"
+    }
+  ]
+}

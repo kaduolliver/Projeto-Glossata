@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Chrysos and anthos explicitly interpreted as gold and flower.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
+      "consulted_at": "2026-10-19T00:13:23.912260+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/51/etymology_hints/species/text",
+      "text_sha256": "e5dfa1f4c2528c3abb9da51f7cb395c992553fe8c8793f19cd34b888f291a044"
+    }
+  ]
+}

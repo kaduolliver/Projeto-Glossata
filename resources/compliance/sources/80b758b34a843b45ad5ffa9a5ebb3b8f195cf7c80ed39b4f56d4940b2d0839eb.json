@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Colombian Sonsón/Antioquia mountain origin; cream/dark-purple small flowers and slender S-shaped petals; archived photo 20397049 compared. Community photo leads to taxonomic study, not an automatic species approval or a new global conservation assessment.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.cornare.gov.co/noticias-corporativas/pleurothallis-maitamae-la-nueva-orquidea-que-el-paramo-de-sonson-regalo-a-la-ciencia/",
+      "consulted_at": "2026-10-18T23:42:37.385712+00:00",
+      "response_sha256": "f7b9d101de4cb3f69bfc6e8f28a9efacf5fb382a94aee07abfad469bee1424a2"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/curiosity/text",
+      "text_sha256": "b99a23ab082f4953a466e98a02d4bf71a533ae88b075152f62d6e80db979270f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/distribution/text",
+      "text_sha256": "32d335adb074e6918416526ca3d2f183d40459781566ab5950033cd5003850b1"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/hint/text",
+      "text_sha256": "a5ad8ae0478d3df0570d9f16118d2f33d2d4ac0915911cd249ded03c6862ec89"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/morphology/text",
+      "text_sha256": "26a15614d1a527f34233dcf026066b140d8603366ad249576133de58f6c8260d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/55/summary/text",
+      "text_sha256": "2525b53ae2189e78af8743cead23ad3e910391d0659b65f3347c7a0b29513e2a"
+    }
+  ]
+}

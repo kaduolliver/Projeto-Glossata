@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Specific epithet explicitly refers to Antarctic; does not define its geographic limits.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
+      "consulted_at": "2026-10-18T23:40:19.857167+00:00",
+      "response_sha256": "4b7b25e0fcc48ef33cf51d3296b7f7198bb3d72ccafdb7847c6ad377759f96d9"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/148/etymology_hints/species/text",
+      "text_sha256": "ef5fa3f622228d82e726852d5aee53f3f5e62e7f307341b3d237ab3ae3f225b6"
+    }
+  ]
+}

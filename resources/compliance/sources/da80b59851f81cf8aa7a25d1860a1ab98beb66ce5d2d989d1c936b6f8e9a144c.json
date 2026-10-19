@@ -1,0 +1,141 @@
+{
+  "kind": "educational_reference_check",
+  "sources": [
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC3904726&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:06:50.891546+00:00",
+        "response_sha256": "7f7e510dc3a6aa6e740f13612f6258f0f2e2c626727fcb2568bab187375c7b62",
+        "pmcid": "PMC3904726",
+        "metadata": {
+          "id": "24420576",
+          "source": "MED",
+          "title": "The Venus flytrap attracts insects by the release of volatile organic compounds.",
+          "authorString": "Kreuzwieser J, Scheerer U, Kruse J, Burzlaff T, Honsel A, Alfarraj S, Georgiev P, Schnitzler JP, Ghirardo A, Kreuzer I, Hedrich R, Rennenberg H.",
+          "doi": "10.1093/jxb/ert455",
+          "pubYear": "2014",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Free",
+                "availabilityCode": "F",
+                "documentStyle": "pdf",
+                "site": "Unpaywall",
+                "url": "https://academic.oup.com/jxb/article-pdf/65/2/755/17141440/ert455.pdf"
+              },
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.1093/jxb/ert455"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC3904726"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC3904726?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3904726/fullTextXML",
+        "consulted_at": "2026-10-18T23:07:03.278567+00:00",
+        "response_sha256": "6c171f8dc42fb8d5b632ac96999c4914d93e54f453e225de6300f4c14ad0e376",
+        "bytes": 167455,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC3904726",
+        "title": "The Venus flytrap attracts insects by the release of volatile organic compounds.",
+        "author_credit": "Kreuzwieser J, Scheerer U, Kruse J, Burzlaff T, Honsel A, Alfarraj S, Georgiev P, Schnitzler JP, Ghirardo A, Kreuzer I, Hedrich R, Rennenberg H.",
+        "doi": "10.1093/jxb/ert455",
+        "license_url": "http://creativecommons.org/licenses/by/3.0",
+        "license": "CC-BY-3.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    },
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC4902084&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:08:22.071103+00:00",
+        "response_sha256": "357d06738d9581824393ccba75755a6d844a7b0881ea1d1e1efeca7bc9eedd7a",
+        "pmcid": "PMC4902084",
+        "metadata": {
+          "id": "27335756",
+          "source": "MED",
+          "title": "Comparative kinematical analyses of Venus flytrap (Dionaea muscipula) snap traps.",
+          "authorString": "Poppinga S, Kampowski T, Metzger A, Speck O, Speck T.",
+          "doi": "10.3762/bjnano.7.59",
+          "pubYear": "2016",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.3762/bjnano.7.59"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC4902084"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC4902084?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4902084/fullTextXML",
+        "consulted_at": "2026-10-18T23:08:37.114529+00:00",
+        "response_sha256": "b572b5767451e7205fcf2f25679c3bf8360b25ad8bd764b631d2cc974583e022",
+        "bytes": 88203,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC4902084",
+        "title": "Comparative kinematical analyses of Venus flytrap (Dionaea muscipula) snap traps.",
+        "author_credit": "Poppinga S, Kampowski T, Metzger A, Speck O, Speck T.",
+        "doi": "10.3762/bjnano.7.59",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "license": "CC-BY-2.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    }
+  ],
+  "locators": [
+    "Kreuzwieser et al., Introduction / range, habitat and nutrient acquisition",
+    "Poppinga et al., Figure 1 caption / photosynthesis, modified leaf, two lobes and marginal teeth"
+  ],
+  "use": "Facts from text/caption, without reusing figures. Preserve CC BY 3.0 and CC BY 2.0 for their respective sources; no upgrade of those licenses.",
+  "scientific_approval": false,
+  "permission_created": false
+}

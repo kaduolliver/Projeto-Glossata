@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Palearctic butterfly common in Europe/North Africa/Asia and Brassicaceae larval hosts. No transfer of distribution from P. rapae, regional threat status or the extinct Madeiran taxon.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9608253/",
+      "consulted_at": "2026-10-19T00:13:23.922970+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/18/distribution/text",
+      "text_sha256": "b14cd4d9d86010a7bfb967d99b23fd7511f425ca65f873b1b192b52d1d233bcc"
+    }
+  ]
+}

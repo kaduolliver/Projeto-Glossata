@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.566507+00:00",
+  "source_url": "https://www.inaturalist.org/observations/37588396",
+  "species_id": "99",
+  "photo_id": "59617028",
+  "photo_sha256": "9588735a6c1d138a1bf0518aec5b9e3dcf4a11998d046b2c17e03a4e8e62e5d8",
+  "comparison": "Very small white flattened/rounded structures on a leaf; additional microscopic characters not inferred.",
+  "archived_taxon": {
+    "id": 327919,
+    "name": "Diderma effusum",
+    "rank": "species"
+  },
+  "observation_id": 37588396,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "0c14b098e7af14dc2323f8ad9ca636ad99899d45224ed5d5eda18935dea3a63b"
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Havel around Potsdam type-locality sampling; flat one-cell-layer colonies with perpendicular regular rows. Individual locality is not a worldwide range. No map/coordinates, figures or article prose incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://onlinelibrary.wiley.com/doi/full/10.1111/jpy.70169",
+      "consulted_at": "2026-10-18T23:59:24.413465+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/curiosity/text",
+      "text_sha256": "74266af9858ac7a8db42d6b4e4d61d4fc483aacb12cd8dc666231239d4d8a3cd"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/distribution/text",
+      "text_sha256": "45b1bbcfcbfef60cf021ededdddfbe3547f46ec3d6c1e013f2494c1e439daeff"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/hint/text",
+      "text_sha256": "526be9bc557d412c04216719e4026e08b9f7d43901692b7d0388af0db295ed01"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/morphology/text",
+      "text_sha256": "24c5cad83b1d9732f6ef7cf859b807c835aa8be2c89b4208e3bb8e1c97bd3467"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/nutrition/text",
+      "text_sha256": "0b0e591a1b64fc5794950b438f341452a5b452d096aca3705f378f06ce4e6a04"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/124/summary/text",
+      "text_sha256": "c8e626501c0f9da49c1c62a62a7b6a199aa2144156cf5a2bbc05ee00605bae3c"
+    }
+  ]
+}

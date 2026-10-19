@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Europe/Asia origin and introduced North American occurrence; first-year hairy rosette versus tall second-year yellow inflorescence. Removed the unsupported North African range clause from this draft.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
+      "consulted_at": "2026-10-18T23:40:06.203429+00:00",
+      "response_sha256": "00f742298c990506f83736f2d9b8705ebcc2a8ef7500f0e140b973c7583cef0e"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/curiosity/text",
+      "text_sha256": "fbd05d2b503e06e77e1f3fd1f1638bf81ddefb4d7001e2194583517cc62bbb99"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/distribution/text",
+      "text_sha256": "1bf014a073976b647b36a2cfda8984306dd37491f480b57fcdc66e078dfe8fe0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/hint/text",
+      "text_sha256": "db22d118f09ab05d44663ae3f7cc9ea7cb89d1c90dc30c04c0aeb3489984bcb5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/morphology/text",
+      "text_sha256": "94002d349cb27a2da2b6c65af355dee4436818b379942dca420edd9f1db7348b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/61/summary/text",
+      "text_sha256": "b7998658efc3773b876d587fc00a72457ca44135008ec14c7ab66fbe4f3e36ab"
+    }
+  ]
+}

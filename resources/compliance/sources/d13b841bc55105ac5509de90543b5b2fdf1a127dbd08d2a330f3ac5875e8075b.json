@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Shared silk nests in vegetation and collective capture of animal prey; southern African observations. Group behavior is not presented as evidence that all spiders are social.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ditsong.org.za/en/social-spiders/",
+      "consulted_at": "2026-10-18T23:34:25.344356+00:00",
+      "response_sha256": "a1c3b809cc799d4c8caaf9f7bb1c1bcdfc960af2f414ab095de0241d30664b79"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/curiosity/text",
+      "text_sha256": "eb181c5e254e4907d01d1e8bc6e2864de00467d6263ad7ab2356d89103a31284"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/distribution/text",
+      "text_sha256": "a69b658b47d63d8e860e183ec63e44a9cc42af76a4424f45ed2ea7d45a289fda"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/hint/text",
+      "text_sha256": "a9e3418650b4f6e384736c39bbdf095cab81cadb86da6644ae5969acee5b0991"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/morphology/text",
+      "text_sha256": "663513c70ee85dcbbbbdeed66f65a7ae8b5e1b2abcf1b5e40d29df99781d70de"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/nutrition/text",
+      "text_sha256": "733d31a75aed02eb081ca41d3e29d887532eb82a4697f02fecad03c8c833256c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/27/summary/text",
+      "text_sha256": "952f1731fece4cf4388ee4b311116279d58e8398c7e5dc3c9f996547fa4541e9"
+    }
+  ]
+}

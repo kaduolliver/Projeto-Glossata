@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Auckland and Campbell islands, coast to montane herbfields; broad conspicuously ribbed leaves and purple daisy-like flower heads. The adapted Allan (1961) description is attributed to Flora of New Zealand Online, CC BY 3.0 NZ; images and regional conservation assessments are not incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
+      "consulted_at": "2026-10-18T23:40:15.423482+00:00",
+      "response_sha256": "f2dcd6ec44dd8d78e014bf59909b570a71c00cf300097bb9c94e57eca39e7089"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/curiosity/text",
+      "text_sha256": "4922f67772fdfef4a58efd0786b3e9239362b71e0db652f8c761e3bb30ea5756"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/distribution/text",
+      "text_sha256": "8714ef2125067164180883d490d9c3f240e4abc7bb5c873ada370224bdbd0483"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/hint/text",
+      "text_sha256": "2b541d5e44741f415174a6fe780f34dcf62cd1acca57bc083c4982f7b9d3a1a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/morphology/text",
+      "text_sha256": "1a88c76aabf6203e4e195488c0c4bab61f3539693309fccabeb253318cc64e16"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/57/summary/text",
+      "text_sha256": "27dfd39588f99c23710d8e8d2fbde2e850ac89d51cac9e567a082c45332ef3bd"
+    }
+  ]
+}

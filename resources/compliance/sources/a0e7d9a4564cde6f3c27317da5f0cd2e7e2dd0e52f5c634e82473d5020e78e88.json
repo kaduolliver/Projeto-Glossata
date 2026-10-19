@@ -1,0 +1,30 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 202565126,
+    "taxon": {
+      "id": 398171,
+      "name": "Titanomis sisyrota",
+      "rank": "species"
+    },
+    "community_taxon_id": 398171,
+    "quality_grade": "research",
+    "photo_ids": [
+      "357771622",
+      "361512103"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:44.685681+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/202565126",
+  "catalog_species_id": "23",
+  "catalog_photo_id": "357771622",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "232e2d1ee267ac35cbf0f15fd487bd6d1da54aafb6a491596279f2ce2cd0ae0c",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

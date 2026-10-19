@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Historic interpretation of parasitism; does not resolve current uncertainty about nutrition.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
+      "consulted_at": "2026-10-18T23:35:31.496081+00:00",
+      "response_sha256": "2ceab94906e74265f3e11e06ce6b9f68d5bdebcd11e8d05ab28c4f4f178f4c8c"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/82/etymology_hints/species/text",
+      "text_sha256": "3b9817bc3a16d5fad357c9de640f7e9029a56a2ae96e3eda8971bcce3c9d31d5"
+    }
+  ]
+}

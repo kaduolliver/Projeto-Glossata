@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Hardwood dead-wood saprobic clusters and broad reported range; luminescence varies among populations, not deduced from this photograph. No medicinal efficacy imported from the historical etymology or image reuse.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.mushroomexpert.com/panellus_stipticus.html",
+      "consulted_at": "2026-10-18T23:43:35.447106+00:00",
+      "response_sha256": "6e244ecb4cd38d7cd9d26b8cf75d2a5baad79f65b73d9157094a31402a6b8e62"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/79/curiosity/text",
+      "text_sha256": "f3e26d4899fff6f391c081329f70bfc0c22193185e0107f8d8b52f938e499f7a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/79/distribution/text",
+      "text_sha256": "1ccfaaa1d2b6939f2a4aeb520d80f6d479f8479b7744f57705d35a65d4770a54"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/79/nutrition/text",
+      "text_sha256": "4ebeb9a1ff029672ec8b37a557b6624040dd454c42f7ab02772ae3de154805b8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/79/summary/text",
+      "text_sha256": "980088890e624494a19691cad78bc007c00e97dca361f44c1ae08c2c749864f8"
+    }
+  ]
+}

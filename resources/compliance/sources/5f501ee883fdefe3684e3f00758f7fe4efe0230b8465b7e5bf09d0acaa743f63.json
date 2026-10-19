@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Shining surface/skin; source is about the genus name, not a claim that G. brownii is glossy.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/ganoderma-lucidum.php",
+      "consulted_at": "2026-10-18T23:36:40.184504+00:00",
+      "response_sha256": "90f866c790fee7ce954d4d8524ab106b169dfd6979e3601d80cf1ca6fcbc509e"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/70/etymology_hints/genus/text",
+      "text_sha256": "71563cde1a5d354da3e5d20a17493eea52dd2788d22c815d0ddb523ddf7738a1"
+    }
+  ]
+}

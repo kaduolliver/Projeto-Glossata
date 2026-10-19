@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Wave-exposed intertidal habitat; thick thong-like blades with buoyant gas-filled honeycomb medulla; flexible wave response. No force measurements, photographs or technical diagrams incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://doi.org/10.1016/S0022-0981(02)00007-2",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/148/curiosity/text",
+      "text_sha256": "7bf4f7f22ea84f84033f4ebf25846b5ae3395893fa72e633862c34c3a3a9ae73"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/148/hint/text",
+      "text_sha256": "47cd541ed255ca34f26ced639e62afcca08c4337f1b7e593b3c845df5857d01e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/148/morphology/text",
+      "text_sha256": "ec5fe3f22978e9aea4cf7656cd6f104463b7c4e277e4650c5f1ab97a944016c9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/148/summary/text",
+      "text_sha256": "d3dce1959b90bc0f2321f12c00e55b109187b0534518fb4a855eddeef394060c"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Metallic surface film of a pond, New York, USA. Source says pond, not necessarily lake; revised the draft accordingly. Material-transfer terms for a culture are not a license on new educational writing.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.atcc.org/products/43182",
+      "consulted_at": "2026-10-18T23:42:25.066862+00:00",
+      "response_sha256": "9855bbc1a4364f3658a416e7e5bdd544e44a39983861ef2ada76e4c540437a88"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/114/distribution/text",
+      "text_sha256": "fd4e2753bf4652ee6e338dfabb3907d95f61367a905a1b4c08d4922bb7f461c9"
+    }
+  ]
+}

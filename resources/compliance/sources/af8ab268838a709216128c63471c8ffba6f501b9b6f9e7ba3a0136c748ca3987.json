@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.017793+00:00",
+  "source_url": "https://www.inaturalist.org/observations/104690605",
+  "species_id": "4",
+  "photo_id": "175474265",
+  "photo_sha256": "1e526073bc7c587e3f81c7c7b6b4c5efcc3b6291fe79f600c05304b8c7404cd1",
+  "comparison": "Repeated cream/brown curved wing lines; broad wings and approximate bilateral pattern.",
+  "archived_taxon": {
+    "id": 700944,
+    "name": "Brahmaea wallichii",
+    "rank": "species"
+  },
+  "observation_id": 104690605,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "570ee3622f20b3fe294894d0bbc6080825d015a74bc1f481568c9ac3f12b4fde"
+}

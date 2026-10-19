@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Erect densely small-leaved shoots. Vascular/spore biology is not inferred merely from a photograph. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/109915205",
+      "consulted_at": "2026-10-18T23:59:24.424999+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.inaturalist.org/observations/109915205",
+      "locator": "Archived catalog taxon lineage; bryophyte/lycophyte biology",
+      "consulted_at": "2026-10-18T23:59:24.423999+00:00"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/185341429.jpeg",
+      "sha256": "6757ea87c07e303966347a2599fc359e12dd0f0bf80618a691a65e2a30efaec7",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/60/summary/text",
+      "text_sha256": "ecae08ddbfdb7b851f153f4f83e2c55eba496f233c46ee5277c405113f4f04f7"
+    }
+  ]
+}

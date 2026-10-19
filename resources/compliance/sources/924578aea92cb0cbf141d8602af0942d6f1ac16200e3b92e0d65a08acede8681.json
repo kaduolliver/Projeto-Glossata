@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.787366+00:00",
+  "source_url": "https://www.inaturalist.org/observations/28921401",
+  "species_id": "16",
+  "photo_id": "45110154",
+  "photo_sha256": "ec59238ea7ddb958d6801f045dea1ae634400a152ebd7f5593c52660b901d99d",
+  "comparison": "Blue dorsal areas, dark margins and hindwing tails; photographed individual only.",
+  "archived_taxon": {
+    "id": 67438,
+    "name": "Papilio ulysses",
+    "rank": "species"
+  },
+  "observation_id": 28921401,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "2e67ed3308b891c34a26a9db77193b959865d28ca4ad589e5786087092ab2266"
+}

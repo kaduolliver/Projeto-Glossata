@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Rabbit dung, Devon/England; narrow structures directly inspected in unchanged photo. Revised summary/nutrition to documented substrate instead of treating isolation as proof of a complete nutrition mechanism; removed unconfirmed US-range clause. No culture-transfer permission inferred.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.atcc.org/products/204456",
+      "consulted_at": "2026-10-18T23:42:18.123422+00:00",
+      "response_sha256": "7d75fbd118d814197ad0128db3296c56aa51c41764d7a2014bf818749c7a12ae"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/curiosity/text",
+      "text_sha256": "173b8a247b86dddf090ed01b7767b7debad4e1831adbf016f5e39c307e150a8b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/distribution/text",
+      "text_sha256": "dbd6c15f7de77b9369c673a0900d71e23790f1c9813c424a17446d6066893c85"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/hint/text",
+      "text_sha256": "8685f6c634860d80165d29a9fc328d138eb5400692ee6c3fea394315dd1eb6ab"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/morphology/text",
+      "text_sha256": "5e16ee7c1b909902d78f49ffebf9948b36903c2311455776cb81ce657d2a2314"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/nutrition/text",
+      "text_sha256": "0f4470bcbefed261729725e7f9bed56f4c4b08bba9fb25f11317b6a7a2477d33"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/80/summary/text",
+      "text_sha256": "76bc9ec4322b5de0ddbc99895006f3330932eddded8e68466844a4265cf91ac7"
+    }
+  ]
+}

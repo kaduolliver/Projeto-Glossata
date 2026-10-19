@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Brown mantis with folded spined forelegs and leaf-like body outline. A static image does not itself prove prey-capture behavior. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/192798616",
+      "consulted_at": "2026-10-18T23:59:24.423999+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/338534567.jpg",
+      "sha256": "17239ef76bdb8b417d20ba9ae311011fc21e1cf94841698adf8266981f55a542",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/41/summary/text",
+      "text_sha256": "78acfad4be595a49e9b3265824982abb748c945e43d2fa55a8220f3872a6486d"
+    }
+  ]
+}

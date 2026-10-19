@@ -1,5 +1,6 @@
 """Offline import and provenance regression tests; no requests to the live API."""
 import contextlib
+import functools
 import hashlib
 import importlib.util
 import io
@@ -10,9 +11,34 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 from unittest import mock
 
 PROJECT = pathlib.Path(__file__).resolve().parents[1]
+REPOSITORY = PROJECT
+
+
+@functools.lru_cache(maxsize=2)
+def historical_catalog_archive(commit):
+    return subprocess.check_output(['git','archive','--format=zip',commit,
+        'resources','docs','scripts','src'],cwd=REPOSITORY)
+
+
+def at_catalog_commit(commit):
+    """Historical batch assertions run at their real state, never today's grants."""
+    def decorate(method):
+        @functools.wraps(method)
+        def run(self):
+            with tempfile.TemporaryDirectory(prefix='glossata-historical-catalog-') as directory:
+                root=pathlib.Path(directory)
+                with zipfile.ZipFile(io.BytesIO(historical_catalog_archive(commit))) as archive:
+                    for entry in archive.infolist():
+                        self.assertTrue((root/entry.filename).resolve().is_relative_to(root.resolve()))
+                    archive.extractall(root)
+                with mock.patch.object(sys.modules[__name__],'PROJECT',root):
+                    return method(self)
+        return run
+    return decorate
 sys.path.insert(0, str(PROJECT / "scripts"))
 spec = importlib.util.spec_from_file_location("importer", PROJECT / "scripts/import_inaturalist.py")
 importer = importlib.util.module_from_spec(spec)
@@ -25,7 +51,7 @@ with mock.patch.dict(sys.modules, {"import_inaturalist": importer}):
 
 class ImportTests(unittest.TestCase):
     def historical_bytes(self, revision, relative):
-        return subprocess.check_output(['git','show',revision+':'+relative],cwd=PROJECT)
+        return subprocess.check_output(['git','show',revision+':'+relative],cwd=REPOSITORY)
 
     def setUp(self):
         self.species = json.loads((PROJECT / "resources/data/species.json").read_text(encoding="utf-8"))
@@ -224,6 +250,7 @@ class ImportTests(unittest.TestCase):
             governance.save(root/'resources/data/education.json',after)
             self.assertEqual(after,education.build(root,persist=False))
 
+    @at_catalog_commit('1dc3c75')
     def test_confirmed_group_batch_is_scoped_and_changed_wording_requires_new_review(self):
         import content_governance as governance
         import rights_investigation
@@ -354,6 +381,7 @@ class ImportTests(unittest.TestCase):
             for key in changed:
                 self.assertFalse(regenerated['notes'][key]['governance']['usable'])
 
+    @at_catalog_commit('1dc3c75')
     def test_confirmed_profile_batch_restores_only_approved_notes_and_keeps_rights_partial(self):
         import content_governance as governance
         import rights_investigation
@@ -468,6 +496,7 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(ids,{'PMC5638950','PMC9315710'})
         self.assertIn('PMC6909477',packet['source_evidence'])
 
+    @at_catalog_commit('1dc3c75')
     def test_issue2_technical_wording_changes_only_bound_rationales(self):
         import copy
         import content_governance as governance
@@ -520,6 +549,7 @@ class ImportTests(unittest.TestCase):
             self.assertEqual({k:v['content_sha256'] for k,v in before.items() if v['kind']!='assistance'},
                              {k:v['content_sha256'] for k,v in after.items() if v['kind']!='assistance'})
 
+    @at_catalog_commit('1dc3c75')
     def test_confirmed_technical_wording_preserves_science_grades_and_partial_rights(self):
         import content_governance as governance
         import rights_investigation
@@ -583,6 +613,60 @@ class ImportTests(unittest.TestCase):
                 with mock.patch.object(education,'ROOT',root),self.assertRaises(ValueError):
                     education.load_profiles()
 
+    def test_consolidated_confirmation_covers_exact_texts_without_approving_aggregates(self):
+        import content_governance as governance
+        import rights_investigation as rights
+        assets=governance.load(PROJECT/'resources/compliance/asset_rights.json')
+        grants=[a for a in assets['assets'] if a.get('permission',{}).get('scope')=='documented_educational_expression_only']
+        self.assertEqual({a['path'] for a in grants},{'resources/data/species_profiles.json',
+            'resources/data/hint_education.json','resources/data/progressive_hints.json'})
+        reference=grants[0]['permission']
+        raw=(PROJECT/reference['evidence_path']).read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),reference['evidence_sha256'])
+        proof=json.loads(raw)
+        self.assertEqual(proof['kind'],'educational_consolidated_text_confirmation')
+        self.assertEqual(proof['editorial_confirmation']['statement'],'Aprovo editorialmente o lote consolidado')
+        self.assertEqual(proof['license_confirmation']['statement'],'Confirmo a aplicação delimitada ao lote')
+        proposal=governance.load(PROJECT/proof['proposal']['path'])
+        self.assertEqual(hashlib.sha256((PROJECT/proof['proposal']['path']).read_bytes()).hexdigest(),proof['proposal']['sha256'])
+        self.assertEqual(governance.digest(proof['conference_scope']),proof['conference_fingerprint'])
+        self.assertEqual(proposal['conference_scope'],proof['conference_scope'])
+        self.assertEqual(governance.digest(proposal['changes']),proof['source_replacement_fingerprint'])
+        self.assertEqual(len(proposal['changes']),887)
+        self.assertEqual(len(proof['occurrences']),1153)
+        seen=set()
+        for binding in proof['occurrences']+proposal['protected_occurrences']:
+            data=governance.load(PROJECT/binding['file'])
+            for part in binding['pointer'].strip('/').split('/'):
+                data=data[int(part)] if isinstance(data,list) else data[part]
+            self.assertEqual(hashlib.sha256(data.encode('utf8')).hexdigest(),binding['text_sha256'])
+            key=(binding['file'],binding['pointer']);self.assertNotIn(key,seen);seen.add(key)
+        inventory=rights.educational_text_inventory(PROJECT)
+        self.assertEqual(inventory['rights_metadata']['technical_errors'],[])
+        self.assertFalse(any(r['rights_issues'] for r in inventory['rights_metadata']['records']))
+        for asset in grants:
+            self.assertTrue(asset['permission']['distribution_allowed'])
+            self.assertEqual(rights.text_resource_issues(inventory,asset['path']),[])
+        self.assertIsNone(assets['own_material_licenses']['texts'])
+        self.assertIsNone(assets['own_material_licenses']['collection'])
+        ledger=PROJECT/'resources/compliance/review_history.jsonl'
+        self.assertTrue(ledger.read_bytes().startswith(self.historical_bytes('1dc3c75',ledger.relative_to(PROJECT).as_posix())))
+        events=governance.read_ledger(PROJECT)
+        self.assertEqual(len(events),1047)
+        records=governance.records(PROJECT)
+        for event in events[76:]:
+            self.assertEqual(event['state'],'approved_editorial')
+            self.assertEqual(records[event['key']]['kind'],'claim')
+            self.assertEqual(records[event['key']]['content_sha256'],event['content_sha256'])
+            self.assertEqual(event['confirmation_evidence']['path'],reference['evidence_path'])
+        generated=education.build(PROJECT,persist=False)
+        self.assertEqual(generated,governance.load(PROJECT/'resources/data/education.json'))
+        for entry in generated['species'].values():
+            self.assertEqual(entry['governance']['education']['state'],'needs_review')
+            self.assertFalse(entry['governance']['education']['usable'])
+        for event in events[76:]:
+            self.assertEqual(generated['notes'][event['key']]['governance']['state'],'approved_editorial')
+
     def test_extracted_group_prose_matches_the_audited_pre_refactor_values(self):
         import content_governance as governance
         packet=json.loads((PROJECT/'docs/SANEAMENTO_ISSUE_2.json').read_bytes())['educational_regularization']['group_batch']
@@ -644,7 +728,10 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(result['total_species'],122)
         self.assertEqual(result['valid_photo_records'],122)
         self.assertEqual(result['competitive_pool'],80)
-        self.assertEqual(result['verified_etymology'],49)
+        # This legacy metric counts source flags, not the separate review ledger.
+        hints=json.loads((PROJECT/'resources/data/hint_education.json').read_bytes())
+        self.assertEqual(result['verified_etymology'],sum(any(n.get('verified')
+            for n in row.get('etymology_hints',{}).values()) for row in hints.values()))
         self.assertEqual(result['incompatible_photo_licenses'],[])
         self.assertEqual(result['errors'],[])
         self.assertNotIn('20',result['eligible_ids_by_rank']['species'])

@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Photosynthetic energy is a process distinct from visible shape; thick angular blades directly inspected. Source on photosynthesis supports the shared process, not a new species-specific metabolic experiment.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5264509/",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/150/curiosity/text",
+      "text_sha256": "ce7c2ec54389432e27b11866ba55625df17410b4fbff14218a4423d4d169b01f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/150/summary/text",
+      "text_sha256": "9fcb4295bd60b0d77c2c1e3be9e88aa8662cfb71f54c0822ab5f6e9c5c26c68f"
+    }
+  ]
+}

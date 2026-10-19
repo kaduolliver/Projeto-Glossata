@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Chroococcus turgidus caption explicitly describes spherical/hemispherical cells, small aggregates and multilayered sheath. Used to verify basic facts, without reproducing the figure or the protected caption.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC94402/",
+      "consulted_at": "2026-10-18T23:59:24.413465+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/122/curiosity/text",
+      "text_sha256": "948fedf1e74445d26b495d6de5613b40c18d16344b237849cadc0c8803200cf5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/122/hint/text",
+      "text_sha256": "44cc4144802d0f95485af94012d95601cd51f73bddc625aaaabfde8bc391d26b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/122/morphology/text",
+      "text_sha256": "aea644cd87849b439ceb27bf1fbe5626934246982f2ace3cebba753af0a6285d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/122/summary/text",
+      "text_sha256": "6004ad3c7f320723c482b98dfd09264281c5bc3c7612a82d062a69fe7cb2960c"
+    }
+  ]
+}

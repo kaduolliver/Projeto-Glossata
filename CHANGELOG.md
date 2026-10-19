@@ -4,6 +4,9 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Issue #2: incorporado o lote consolidado após confirmações editorial e de direitos disponíveis: 887 substituições, duas notas mantidas e 264 cópias derivadas. Cobertura textual atual completa por passagem nos três recursos, com 971 novos registros editoriais e os 76 anteriores preservados. Organismos, fotos, regras e dados dos jogadores intactos; distribuição geral permanece bloqueada.
+- Gravação de governança tolera recusas transitórias reconhecidas do Windows com retentativas limitadas, mantendo atomicidade, trava e verificação do topo em cada tentativa; erros persistentes continuam sendo recusados.
+
 - Lote técnico da Issue #2 aplicado após as duas confirmações expressas do mantenedor: 15 redações / 1.147 ocorrências, com CC BY 4.0 somente nos direitos disponíveis e validação dos vínculos exatos. Derivados regenerados; ciência, graus, pontos e 76 eventos anteriores preservados. Restam 1.153 ocorrências documentais em três arquivos; permissões integrais e distribuição continuam bloqueadas.
 
 - Issue #2: resumo de prontidão por recurso integrado à investigação existente, com contagem de vínculos pendentes e testes contra cobertura parcial. Preparadas 15 redações técnicas para conferência (1.147 ocorrências), sem aplicação ou concessão automática; diagnóstico da Issue atualizado de sete para três recursos pendentes, preservando acompanhamento humano e bloqueios de distribuição.

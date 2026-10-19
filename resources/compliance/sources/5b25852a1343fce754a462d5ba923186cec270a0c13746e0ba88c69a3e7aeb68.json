@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Historically attributed styptic properties; no efficacy or medical use claim.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/panellus-stipticus.php",
+      "consulted_at": "2026-10-18T23:35:29.210199+00:00",
+      "response_sha256": "8e36e2410e8e9cf9fc4b8ac082ef369b8bc53ae24ec2e7df925c350330af5a03"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/79/etymology_hints/species/text",
+      "text_sha256": "f67d08f123e1b6069de58d0546440aa8559e6cdcefc8d4b54fbb42bbfec1697a"
+    }
+  ]
+}

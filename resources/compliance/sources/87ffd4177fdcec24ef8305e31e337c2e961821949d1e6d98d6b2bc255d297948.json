@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Two strains from Acacia caven leaves in central Argentina; rod-shaped cells, yellow colonies and use of organic carbon compounds. No worldwide distribution inferred from the isolation locality.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.microbiologyresearch.org/content/journal/ijsem/10.1099/ijs.0.63102-0",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/curiosity/text",
+      "text_sha256": "cb855afca09c67e1b2ff6fb17165678eb84b0df95a1459b59444b297d06bd0ea"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/distribution/text",
+      "text_sha256": "c7b8ace317372d3278a28eba08618da4ee00517fb68fadf029ccae062ed49d3d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/hint/text",
+      "text_sha256": "cfe7bdf801313f859cdbfa372fd4f8f5300d64b4c99ab9a4c7a84c50659d166d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/morphology/text",
+      "text_sha256": "75019a60b0a8254be52b97bd344b974365a5736aa9b4d0e1891f77ba65e8be23"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/nutrition/text",
+      "text_sha256": "0e4d848d114151eeb78e8acd7fa47d15e12ae4db5c7352e3d1434ac637e57f00"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/103/summary/text",
+      "text_sha256": "60561044937574540b663701bc1cc166323d4b440d5de3d38aae04ac4597d067"
+    }
+  ]
+}

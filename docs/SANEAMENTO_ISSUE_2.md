@@ -1,95 +1,124 @@
 # Saneamento documental da Issue #2
 
-## Conferência das fontes concluída — 2026-10-18
+## Lote consolidado confirmado e incorporado — 2026-10-18
 
-**Concluída a preparação técnica das fontes; aguardando conferência editorial e
-decisão delimitada de direitos do mantenedor.** As **887 substituições propostas**
-têm comparação de afirmação e fonte registrada. São **690 redações diferentes**,
-803 passagens de fichas e 84 entradas de dicas (64 etimologias e 20 prefixos).
-Não restam ocorrências sem exame nessa etapa. Isso não constitui aprovação humana,
-revisão especializada ou certificação jurídica.
+**Zero pendências textuais no escopo atual da Issue #2 e zero erros técnicos
+nas verificações executadas.** Resultado da branch `fix/issue-2-textos-restantes`,
+a integrar por um único Pull Request. A Issue permanece aberta; não houve merge,
+tag, release ou publicação de pacote. O gate geral continua bloqueado por outras
+pendências, sem redução de exigências.
 
-A [conferência única para leitura](propostas/CONFERENCIA_TEXTOS_RESTANTES_ISSUE_2.md)
-agrupa as redações repetidas e identifica seus destinos, referências e limitações.
-O [JSON da proposta](propostas/TEXTOS_RESTANTES_ISSUE_2.json) incorpora **261
-snapshots selecionados**, preservando hashes e datas reais disponíveis. Foi validado
-sem depender do cache local `build/`. O fingerprint da conferência completa é
-`31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449`;
-abrange as substituições, **duas notas mantidas do organismo 82** e **264
-ocorrências derivadas** explicitamente identificadas. O fingerprint somente das
-substituições é `dfd87301edf8140078ec955e0d744c95af5b56d8e8d091a92b1d6f0e30e8f6a4`.
-O inventário de partida conserva o fingerprint
-`75bd1a0a8b4fdcd7f04bb209e84ff00ccded91388bbc7bc9f3b73f1f0f02dba1`.
+O mantenedor respondeu **“Aprovo editorialmente o lote consolidado”** e,
+separadamente, **“Confirmo a aplicação delimitada ao lote”**, para a
+[conferência apresentada](propostas/CONFERENCIA_TEXTOS_RESTANTES_ISSUE_2.md),
+fingerprint `31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449`.
+As perguntas e respostas reais, o escopo e os vínculos constam na
+[evidência imutável](../resources/compliance/sources/4b9c92eda7788bb0ae729ceb1428bc43fa90294d5775a6670131d2c2bb89079d.json), SHA-256 `ddef4620dd8dbb748f94788eed8b43d546168202f42dd0df61379e4020556aff`.
+A identidade é declarada, sem assinatura/autenticação independente ou revisão
+especializada afirmada. A data civil real é registrada sem inventar horário da resposta.
 
-### Resultados da investigação
+### Alterações e direitos
 
-Foram retiradas ou limitadas afirmações que excediam a evidência. Entre os casos:
+- **887 substituições**, agrupadas em **690 redações novas**, incorporadas nas
+  fichas e dicas. **Duas notas do organismo 82** conservaram exatamente sua redação
+  e a aprovação editorial anterior; somente seus direitos disponíveis foram confirmados.
+- **264 cópias derivadas** foram regeneradas e documentadas explicitamente.
+  `education.json` e `progressive_hints.json` foram produzidos pelos geradores
+  existentes, sem autorização presumida por derivação.
+- **261 evidências selecionadas** de fonte foram arquivadas no mecanismo existente.
+  O JSON da proposta foi preservado como registro da versão conferida, inclusive
+  sua indicação de rascunho à época; a confirmação posterior está na evidência acima.
+- Acrescentadas **971 revisões editoriais por afirmação/alias alterado**, mantendo
+  o prefixo original de **76 eventos**: **1.047 eventos** verificáveis. Não houve
+  aprovação de graus de assistência, tópicos agregados, fotografias ou especialistas.
+- **1.249 ocorrências já documentadas**, 122 organismos, identidades, fotografias,
+  créditos, taxonomia, 855 receitas, categorias, graus e regras de pontuação
+  preservados. Nenhum banco/perfil/histórico pessoal foi alterado.
 
-- *Favolaschia claudopus*: distribuição confrontada com o
-  [estudo primário de Zhang e Dai (2021)](https://doi.org/10.3390/f12101397),
-  distinguindo-a de outras espécies do complexo *F. calocera*.
-- *Morchella esculenta*: alcance geográfico limitado ao sustentado pela referência;
-  sem transferir automaticamente identificações norte-americanas ou impor uma
-  hipótese nutricional como definitiva.
-- *Johanseninema constrictum*: a descrição primária foi distinguida da nota de
-  correção nomenclatural; características de outros gêneros não foram transferidas.
-- *Ceratiomyxa*: notas comparadas com o tratamento de
-  [Adl et al. (2019)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/),
-  sem atribuir indiscriminadamente resultados experimentais de Myxogastria.
-- Ocorrências pontuais e aspectos visíveis das fotos foram tratados nesse alcance;
-  não comprovam distribuição integral, dieta específica ou identificação definitiva.
-  As fotografias e a taxonomia do catálogo não foram modificadas.
+| Recurso | Pendência antes | Situação atual da expressão educativa |
+| --- | ---: | --- |
+| `species_profiles.json` | 805 ocorrências | 803 substituídas e duas mantidas, com concessão delimitada documentada |
+| `hint_education.json` | 84 ocorrências | 64 etimologias e 20 prefixos substituídos, com concessão delimitada documentada |
+| `progressive_hints.json` | 264 ocorrências | Cópias exatas regeneradas e expressamente abrangidas |
 
-As fontes CC BY conservaram suas versões efetivamente verificadas. Também se
-registraram condições diferentes: [LPSN](https://lpsn.dsmz.de/text/copyright),
-[ADW](https://animaldiversity.org/about/use_conditions/),
-[UF/IFAS](https://ask.ifas.ufl.edu/copyright),
-[MarLIN](https://www.marlin.ac.uk/termsandconditions), artigos NC/ND e fontes sem
-licença de redação demonstrada. Elas não foram classificadas como CC0/CC BY 4.0.
-A proposta utiliza fatos para novas redações independentes, sem incorporar
-parágrafos ou figuras externos nem presumir autorização de adaptação. Limitações
-de leitura e condições por fonte estão nas comparações. Qualquer dúvida concreta
-de direitos deve permanecer pendente, inclusive após testes técnicos.
+A concessão é **CC BY 4.0 somente nos direitos efetivamente disponíveis sobre a
+expressão educativa identificada**, com atribuição do projeto, assistência de IA
+e revisão editorial do mantenedor. Não declara autoria humana exclusiva nem
+relicencia fatos, artigos, bases, fotografias, identidade visual ou bibliotecas.
+As permissões dos três recursos se baseiam na cobertura de todas as passagens
+atuais, somando o lote confirmado às concessões anteriores preservadas.
+Não é uma licença global do repositório: `own_material_licenses.texts` e
+`collection` continuam `null`, e novos textos exigem seu próprio exame.
 
-As duas notas de *Pseudoboletus parasiticus* mantêm sua redação e a confirmação
-editorial real anterior. A investigação já arquivada sobre
-[Sánchez-García et al. (2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7768725/)
-foi reutilizada; a inferência educativa foi distinguida do resultado do artigo.
-Permanece apenas sua decisão delimitada de direitos, sem nova aprovação editorial
-e sem relicenciamento da fonte NC/ND.
+**Limitação de curadoria preservada:** a confirmação por redação não aprovou os
+tópicos agregados. As 122 fichas têm o agregado educativo em `needs_review`; as
+notas individuais confirmadas continuam aprovadas. As consultas que exigem revisão
+agregada de etimologia/morfologia podem manter dicas indisponíveis, com motivo.
+Não foi removido esse controle para recuperar disponibilidade artificialmente.
+Essa revisão é uma pendência científica distinta dos direitos textuais da Issue #2.
 
-### Preservação e validações
+### Fontes e limites
 
-A prévia foi regenerada pelos geradores existentes, em diretório temporário:
-**122 organismos, 855 receitas e 1.249 ocorrências já documentadas preservados**.
-Os parâmetros de assistência foram comparados; não houve alteração de regras,
-pontuação, fotografias, interface ou dados dos jogadores. Os **1.414 vínculos de
-governança afetados** foram identificados para a incorporação futura. Novos textos
-não herdam aprovações antigas; os vínculos inalterados conservam seu estado.
-Nenhuma decisão, permissão ou escrita nos recursos ativos foi produzida.
+Todas as 887 substituições tiveram comparação registrada por afirmação e contexto.
+Foram corrigidas confusões entre espécies de *Favolaschia*, restringidas afirmações
+geográficas e tróficas sem sustentação suficiente e distinguidos fatos de grupo,
+ocorrência pontual e aparência da foto. As fontes e localizações individuais estão
+na conferência e nos snapshots, incluindo limitações de leitura parcial.
+Não houve mudança de taxonomia ou de fotografias para acomodar os textos.
 
-CTest completo: **26/26, 139,36 s**, incluindo **65/65** testes de investigação de
-direitos. Auditoria estrita (122 organismos), verificação Apache 2.0,
-metadados/manifestos, estado do projeto e histórico de governança passaram.
-Os **76 eventos** e o baseline permaneceram idênticos à base
-`ba57dfe037915b81c86f03c7ecd9782374c6fb0e`. A conferência portátil sem cache também
-passou. Não houve nova compilação C++ nem validação visual nesta intervenção
-documental.
+As versões efetivamente verificadas de CC BY foram preservadas. Fontes com
+SA/NC/ND, incluindo LPSN, ADW, UF/IFAS, MarLIN e artigos específicos, não foram
+tratadas como CC0/CC BY 4.0. Foram referências de fatos para redações independentes,
+sem incorporação de parágrafos ou figuras externos nem permissão presumida de
+adaptação. A conclusão é documental e editorial, sem certificação jurídica ou científica.
 
-O gate de distribuição foi reexecutado e continua **bloqueado**, com
-`technical_errors: []`. Na Issue #2 persistem os três recursos textuais pendentes
-enquanto as decisões do mantenedor não forem registradas e aplicadas pelo fluxo
-existente. Outras pendências de distribuição continuam fora deste escopo.
+### Verificações e preservação
 
-### Próxima decisão
+| Verificação | Resultado real |
+| --- | --- |
+| Compilação Release | Aprovada |
+| CTest completo | **26/26**, 165.11 s de execução do comando |
+| Concorrência/governança | **20/20**, incluindo quatro novas regressões para recusas Windows |
+| Investigação de direitos | **65/65**, incluídos no CTest |
+| Auditoria estrita | 122 organismos, sem erros |
+| Apache 2.0, manifestos e metadados atuais | Aprovados; app 1.7.0 e catálogo 2.4.0 continuam não lançados |
+| Geradores e créditos | Reprodutíveis; receitas e créditos fotográficos preservados |
+| Histórico e repetição isolada | Prefixo original preservado; repetição não altera os 1.047 eventos |
+| Direitos da Issue #2 | Zero recursos/ocorrências textuais pendentes; sem erros técnicos ou evidências de staging inválidas |
+| Gate geral de distribuição | **Bloqueado**, `technical_errors: []`; 120 pendências fotográficas e 277 bloqueios científicos |
 
-A conferência consolidada está pronta. Falta a confirmação editorial das novas
-redações e, separadamente, a aplicação de CC BY 4.0 somente aos direitos
-efetivamente disponíveis sobre o lote concreto, incluindo as duas notas mantidas
-e as cópias derivadas identificadas. As confirmações anteriores não serão
-solicitadas novamente. Depois das decisões reais: incorporar, regenerar,
-invalidar somente revisões afetadas, executar novamente as verificações e entregar
-o único Pull Request autorizado, sem merge automático. A Issue não foi encerrada.
+Os 277 bloqueios científicos são **122 agregados educativos, 104 de morfologia,
+49 de etimologia e os dois casos fotográficos já conhecidos**. Novas redações
+alteraram os vínculos dos agregados; a confirmação não os aprovou. Não são 277
+novas violações de direitos demonstradas. A aprovação por nota e os bloqueios
+agregados permanecem separados.
+
+A gravação em lote reproduziu uma recusa temporária de substituição de arquivo
+no Windows. O gravador comum recebeu retentativas limitadas, com a mesma trava,
+arquivo sincronizado e revalidação do topo a cada tentativa. Recusa persistente
+continua falhando sem descartar o prefixo. A recuperação foi testada em cópia
+isolada; não se apagou evento nem se recalculou a cadeia antiga. Consulte
+[CONCORRENCIA_GOVERNANCA.md](CONCORRENCIA_GOVERNANCA.md).
+
+Os comandos e resultados medidos estão no JSON deste relatório e em
+`build/issue2-final-validation.json`; a CI os reexecuta no clone. Não houve
+validação visual nova, alteração de layout ou captura conceitual. O trabalho
+restante no escopo desta intervenção é a revisão/integração do Pull Request pelo
+mantenedor e a decisão posterior de encerramento da Issue. Fotografias,
+associações científicas, dependências e outros bloqueios do pacote permanecem
+fora deste saneamento textual.
+
+Os testes históricos dos lotes anteriores agora usam uma cópia temporária do
+commit `1dc3c75`, preservando suas verificações de direitos parciais. Uma nova
+regressão examina os vínculos atuais, o prefixo do ledger e a ausência de
+aprovação agregada. Os testes de pontuação declaram seus pré-requisitos científicos
+somente em memória, sem depender do estado de curadoria do catálogo real.
+
+As nove origens bibliográficas novas foram enumeradas em
+`scripts/maintenance_http_policy.json`: ANBG, Smithsonian/STRI, EOL, Lepiforum,
+CDN da IUCN, eFloras, FNCV, Montpellier e San Francisco Zoo. Isso não aprova seu
+conteúdo ou direitos. HTTPS/443, DNS público fixado na conexão, validação de cada
+redirecionamento e os limites existentes continuam exigidos, sem curingas.
 
 ## Lote técnico confirmado e aplicado — 2026-10-18
 

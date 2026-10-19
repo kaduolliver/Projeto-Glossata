@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Musca, fly; historical name, no insecticidal recommendation.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
+      "consulted_at": "2026-10-18T23:35:12.345749+00:00",
+      "response_sha256": "c607829657d789b8ce748e4e4482702c3d8a0ace58ca484f219d6277a37f44c2"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/136/etymology_hints/species/text",
+      "text_sha256": "92d998405c9cdb5c11afb0ea175c4bab2c3eaf920ed87fef0a302cbedc1e854a"
+    }
+  ]
+}

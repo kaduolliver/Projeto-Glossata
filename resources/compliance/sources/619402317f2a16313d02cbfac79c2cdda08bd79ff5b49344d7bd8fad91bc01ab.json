@@ -1,0 +1,45 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Mexico, liana, seasonally dry tropical biome. Star-like patterned corolla directly inspected in the unchanged photograph. Climbing habit is independently documented by Kew, not inferred from a close-up.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording.",
+    "POWO displays dataset-specific terms, including WCVP CC BY 3.0 and different terms for descriptions/images. No site-wide permission or third-party media grant inferred."
+  ],
+  "sources": [
+    {
+      "source_url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:96864-1",
+      "consulted_at": "2026-10-19T00:03:44.657127+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/curiosity/text",
+      "text_sha256": "b0a78de4257bc216fa1e6bd0c682ff3845d8611f58e67c13d930ee4ee3ab0f2e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/distribution/text",
+      "text_sha256": "df74790c00aaa645377b1d38d372b6123c9afa7f0d0b1c8cab538d278d1c78f7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/hint/text",
+      "text_sha256": "4c0c39494c9ac4ae85a97b117e5c6da7351fef91901dcf8b3a3e04d27fbe1409"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/morphology/text",
+      "text_sha256": "7df4ef51b181583bcc144d459e41e94d895e39bf16f59bbed4e898eda27764b7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/44/summary/text",
+      "text_sha256": "e0e5aab7db4db334df6ed39869458249e948b0ba3fb72d6e150f9ac003757371"
+    }
+  ]
+}

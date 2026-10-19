@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Pink/red expanded tuft-like structures on woody/plant material; stage interpretation requires the myxomycete reference. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification. Spore-producing stage separately corroborated by Adl et al. Myxogastria diagnosis.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/3907100",
+      "consulted_at": "2026-10-18T23:59:24.429556+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "locator": "Appendix 1 / Myxogastria: plasmodium and spore-forming sporocarps",
+      "consulted_at": "2026-10-18T23:59:24.429016+00:00"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/4592237.jpeg",
+      "sha256": "2032dccfee1c90a14ceb4f89a14d91afdda804523616ca90fe53cc7a4c58fd3d",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/90/summary/text",
+      "text_sha256": "c3e577b85e7db9852dd7db46f6c8a55f59b80d9206291e7b1066f0ece99197c0"
+    }
+  ]
+}

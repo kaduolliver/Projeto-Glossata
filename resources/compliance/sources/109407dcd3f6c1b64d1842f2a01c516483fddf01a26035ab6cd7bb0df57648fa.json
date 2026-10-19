@@ -1,0 +1,185 @@
+{
+  "kind": "educational_reference_check",
+  "consulted_at": "2026-10-18T23:05:44.735104+00:00",
+  "method": "AI comparison of selected nomenclatural fields displayed by the web research tool; no bulk download.",
+  "source": "LPSN, DSMZ",
+  "terms_url": "https://lpsn.dsmz.de/text/copyright",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution_reference": "Freese et al. (2026), https://doi.org/10.1093/nar/gkaf1110",
+  "access_limit": "Automated collection requires the designated download/API route or explicit authorization; no scraper added.",
+  "scope": "Nomenclatural facts only; source rights remain CC BY-SA. No approval of CC BY relicensing or database reuse.",
+  "checks": [
+    {
+      "binding": "103/species",
+      "url": "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae",
+      "locator": "Etymology",
+      "comparison": "Surface-of-leaves environment (phyllosphere).",
+      "proposed_text_sha256": "3c2cf2f63482cf26362e3f344d30102ff7771718ae69924e94d3cc7f590f636e"
+    },
+    {
+      "binding": "104/genus",
+      "url": "https://lpsn.dsmz.de/genus/dolichospermum",
+      "locator": "Etymology",
+      "comparison": "Long and seed roots; not a claim that cyanobacteria form botanical seeds.",
+      "proposed_text_sha256": "c9a8a3ea243d776d4fa6b5a5ddec2cfdc995e8123fb5ed881a930304031fd5f7"
+    },
+    {
+      "binding": "105/species",
+      "url": "https://lpsn.dsmz.de/species/serratia-marcescens",
+      "locator": "Etymology",
+      "comparison": "Fading or becoming weak.",
+      "proposed_text_sha256": "05a85c62491b9a54e37648c5d9dc9a7e1e4a480a1e330e60bcbf6b23697afac6"
+    },
+    {
+      "binding": "106/species",
+      "url": "https://lpsn.dsmz.de/species/thiohalocapsa-halophila",
+      "locator": "Etymology",
+      "comparison": "Salt affinity; not a culture concentration.",
+      "proposed_text_sha256": "93fb56303efd4d311db708c126f8e8be518d4dacc2fbccfbf8573967e66713fa"
+    },
+    {
+      "binding": "107/genus",
+      "url": "https://lpsn.dsmz.de/genus/merismopedia",
+      "locator": "Etymology",
+      "comparison": "Division and a flat surface.",
+      "proposed_text_sha256": "6709d91dface603fc5ed06f1e0f672f2ac190ed39297e21f01acd732f080c11b"
+    },
+    {
+      "binding": "108/genus",
+      "url": "https://lpsn.dsmz.de/genus/arthrospira",
+      "locator": "Etymology",
+      "comparison": "Joint and spiral.",
+      "proposed_text_sha256": "dc9a86decfacb2444f226823f99d8f1db1262381f0347f16539988c3295a20c4"
+    },
+    {
+      "binding": "108/species",
+      "url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
+      "locator": "Etymology",
+      "comparison": "LPSN explicitly names Edward Jenner.",
+      "proposed_text_sha256": "fdd146016c77dd0a430c668bb20ed2d3a3560dc8cbd13f4c7b16dc6fc4dbe85d"
+    },
+    {
+      "binding": "109/species",
+      "url": "https://lpsn.dsmz.de/species/beggiatoa-alba",
+      "locator": "Etymology",
+      "comparison": "White.",
+      "proposed_text_sha256": "730f5793be2af50351e813cefb62f162578583e2b5db437203ebb978f781ea0a"
+    },
+    {
+      "binding": "110/species",
+      "url": "https://lpsn.dsmz.de/species/gomphosphaeria-aponina",
+      "locator": "Etymology",
+      "comparison": "Aponus and the Euganean thermal springs.",
+      "proposed_text_sha256": "043ddc13bca41e38744e138978d9a4e9162b318d3692483981df79a03303da2b"
+    },
+    {
+      "binding": "111/genus",
+      "url": "https://lpsn.dsmz.de/genus/anabaena",
+      "locator": "Etymology",
+      "comparison": "Ascending or floating.",
+      "proposed_text_sha256": "167124bc4782d89386776bc95f0d71a1a4e1a5650d96742968d7f39f3b1269db"
+    },
+    {
+      "binding": "112/species",
+      "url": "https://lpsn.dsmz.de/species/phytoplasma-asteris",
+      "locator": "Etymology",
+      "comparison": "Aster host name, with its Greek star root.",
+      "proposed_text_sha256": "851980c4b069559f723b31f7e64ae2c17cd3f2a310e6b8281dcbf31277134ad6"
+    },
+    {
+      "binding": "113/genus",
+      "url": "https://lpsn.dsmz.de/genus/gloeotrichia",
+      "locator": "Etymology",
+      "comparison": "Sticky and hair.",
+      "proposed_text_sha256": "ced702ddfe670a254ea4f460b4ce47496588446ca999303725501446ffa4da3e"
+    },
+    {
+      "binding": "114/species",
+      "url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
+      "locator": "Etymology",
+      "comparison": "Disk-bearing.",
+      "proposed_text_sha256": "69f8464fbfc9ba06cf7f962cfeefaacd0fb170dc1bd095bae446538d3d8ffb67"
+    },
+    {
+      "binding": "115/genus",
+      "url": "https://lpsn.dsmz.de/genus/johanseninema",
+      "locator": "Etymology",
+      "comparison": "The nema component means thread; the draft does not assert the other component.",
+      "proposed_text_sha256": "4662fc0927e9480c21c8fe10b5777e8d822d938eff8f009cd866fa0ff456f52e"
+    },
+    {
+      "binding": "116/species",
+      "url": "https://lpsn.dsmz.de/species/chlamydia-pecorum",
+      "locator": "Etymology",
+      "comparison": "Sheep flocks or cattle herds.",
+      "proposed_text_sha256": "5f9202233bf6b877668a693fc6cd16683c245215f6f32a48d4ab850508a5c784"
+    },
+    {
+      "binding": "117/genus",
+      "url": "https://lpsn.dsmz.de/genus/hassallia",
+      "locator": "Etymology",
+      "comparison": "Arthur Hill Hassall.",
+      "proposed_text_sha256": "00c2b266c5d0be6ff9e3c158c38d422e02168b216d3b0e2ce00a104d9e4d8e75"
+    },
+    {
+      "binding": "118/species",
+      "url": "https://lpsn.dsmz.de/species/aeromonas-caviae",
+      "locator": "Etymology",
+      "comparison": "Cavia, guinea pig.",
+      "proposed_text_sha256": "f8bc7a5dee789840e2a338398e08eab53249462aa9a7eb7f2a371d23af564098"
+    },
+    {
+      "binding": "119/species",
+      "url": "https://lpsn.dsmz.de/species/pseudomonas-fluorescens",
+      "locator": "Etymology",
+      "comparison": "Fluorescing.",
+      "proposed_text_sha256": "23e99845bdf3065dde6828570d3f3169f0b402427fca8e03abc7144f0efe5c99"
+    },
+    {
+      "binding": "120/genus",
+      "url": "https://lpsn.dsmz.de/genus/achromatium",
+      "locator": "Etymology",
+      "comparison": "Without color.",
+      "proposed_text_sha256": "9ba60978e5fef5abf71580177b2545488272987c7013bf2939508fd406af6d37"
+    },
+    {
+      "binding": "120/species",
+      "url": "https://lpsn.dsmz.de/species/achromatium-oxaliferum",
+      "locator": "Etymology",
+      "comparison": "Historically oxalate-containing; not a chemical analysis.",
+      "proposed_text_sha256": "1f2ba99f69a84ba77f2a6acc5b58a2ea9c3281442b116a82c2f11d60b157c0eb"
+    },
+    {
+      "binding": "122/genus",
+      "url": "https://lpsn.dsmz.de/genus/chroococcus",
+      "locator": "Etymology",
+      "comparison": "Colored coccus.",
+      "proposed_text_sha256": "0f706a1d581371e453ce2d1c54496015f77f1d953ab2cd95e66dce86c20ad5b7"
+    },
+    {
+      "binding": "124/genus",
+      "url": "https://lpsn.dsmz.de/genus/merismopedia",
+      "locator": "Etymology",
+      "comparison": "Division and a flat surface.",
+      "proposed_text_sha256": "6709d91dface603fc5ed06f1e0f672f2ac190ed39297e21f01acd732f080c11b"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "divergences": [
+    {
+      "taxon": "Leptothrix discophora",
+      "source_url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
+      "locator": "Taxonomic status / Correct name",
+      "finding": "Source currently lists Sphaerotilus discophorus as correct name under its adopted treatment.",
+      "action": "Review separately; no change to the catalog taxonomy in this textual-rights intervention."
+    }
+  ],
+  "unconfirmed": [
+    {
+      "binding": "113/species",
+      "reason": "Specific Gloeotrichia intermedia page was unavailable; do not infer a verified etymology from another taxon."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.499831+00:00",
+  "source_url": "https://www.inaturalist.org/observations/109708228",
+  "species_id": "95",
+  "photo_id": "185087187",
+  "photo_sha256": "a83ccb0f07b258738cd1ae6a86786b9d7f4d8d05af17c49c4cd00d82ca456b50",
+  "comparison": "Crowded yellow small rounded structures with opened/expanding upper portions.",
+  "archived_taxon": {
+    "id": 1581564,
+    "name": "Heterotrichia versicolor",
+    "rank": "species"
+  },
+  "observation_id": 109708228,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "a4a34fa7e330f669625474e117e9b8d3585ede83047ae69d4269ece919ed0952"
+}

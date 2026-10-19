@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Alternating branches with flattened oval blades and spherical gas floats; Pacific origin and documented British/Irish introduced occurrence. No unsupported global distribution map inferred.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.marlin.ac.uk/species/detail/1477",
+      "consulted_at": "2026-10-18T23:43:30.495197+00:00",
+      "response_sha256": "a9773016819e7002ba4691c914296009f07c570d1b11d33c4979cb60dc437fbc"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/curiosity/text",
+      "text_sha256": "e843898ae0ef0acb921a3d66bfc6642e79e631002051d285b66f3ec6e160a21e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/distribution/text",
+      "text_sha256": "b4c8c5df8e256d086e0aa35b8d54c339ae59116b523a902fa9a32fa7c75ecf25"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/hint/text",
+      "text_sha256": "045a77b8a3e1413f44030f04110979beb514139e69a27678f52de28e200f52b6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/morphology/text",
+      "text_sha256": "670576e9cec8f88a3c792de8450a743f46925111e0eccd9b00b3a4ddee572891"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/147/summary/text",
+      "text_sha256": "bcb940b32dad2e2c8beb69a653a3579086aae9cdbe88c90581ffe58e2b599aab"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.539931+00:00",
+  "source_url": "https://www.inaturalist.org/observations/167950949",
+  "species_id": "97",
+  "photo_id": "291002427",
+  "photo_sha256": "12cd5e62f5047a8bf22222a5423930c8e93b1207407f11a65b2385ac166c607d",
+  "comparison": "Groups of small convoluted structures on plant/woody debris; shape alone explicitly insufficient for species identification.",
+  "archived_taxon": {
+    "id": 1598948,
+    "name": "Badhamia polycephala",
+    "rank": "species"
+  },
+  "observation_id": 167950949,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "4a476b9f72d8e78846d4f0f8e13d7cb31bb95b0054c63e147f6c2dae4f5d3825"
+}

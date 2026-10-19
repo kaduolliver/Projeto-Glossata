@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Flexible ribbon blade with midrib, basal sporophylls; North Atlantic including Greenland/Iceland/European coast, exposed low shore/subtidal rock. No claim that the North Atlantic is its exclusive world range.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+      "consulted_at": "2026-10-18T23:43:21.640741+00:00",
+      "response_sha256": "e8089218b8534aab01936fceeccaa16dffa84d5a286144c790ea0dd278accd40"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/curiosity/text",
+      "text_sha256": "dd7c57ff1d985fa61f53b561948927760af19f54aa9dd205c66b501ef0fc5b16"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/distribution/text",
+      "text_sha256": "9213f1833056f8c3b960ea07c857063619bc3fed67aa1516778a05e54b51ee9d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/hint/text",
+      "text_sha256": "099d5efa206bc1be1fc9c0c0553503f67fe5595d667fde0fa4f467e08bb57651"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/morphology/text",
+      "text_sha256": "7ca4a52afd0516ee02136c7c7326825a763e5f778ca47c53683c7d7451d77107"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/149/summary/text",
+      "text_sha256": "3b5c70ffe980ddc216be65d5f7c4e729e9fe6e5ad28d6be03edca005350e390c"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Straplike axes with many side blades and small gas floats; Alaska–Baja; rocky low intertidal/shallow subtidal.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://seanet.stanford.edu/Ochrophyta",
+      "consulted_at": "2026-10-18T23:41:50.760835+00:00",
+      "response_sha256": "33cd9b1e947addc4e71008a8a8f9a938585ad272cc53abb085c5ec5d7c0cb276"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/curiosity/text",
+      "text_sha256": "bb8959cebfb693fd422743ed7ce6276b5e307168fe4f5926032943af1d5c6558"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/distribution/text",
+      "text_sha256": "8145ab6c5f620149d23396b367a9d945fd461abfaeaf8064332c1060b8f54acf"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/hint/text",
+      "text_sha256": "2e230514272cc4ef8d3456216bee35cc42c8d52f93fd299dabfa3828cbc52b29"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/morphology/text",
+      "text_sha256": "27b0c671d5fe6f7c29915c12ef4f198310f05200e25d52ef01685c34955e5346"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/145/summary/text",
+      "text_sha256": "689b221645d6244672177ebca0d6e00f5f652a6a9bf6ac131ac290ac946ddc13"
+    }
+  ]
+}

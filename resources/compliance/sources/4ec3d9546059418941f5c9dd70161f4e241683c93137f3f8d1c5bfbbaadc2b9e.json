@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Cage and red; not kinship or exact coloring of every fruitbody.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "consulted_at": "2026-10-18T23:35:07.372000+00:00",
+      "response_sha256": "b0880db115920bfd89cce4827df67a96839beeb7b069644ac1458b109674694b"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/135/etymology_hints/genus/text",
+      "text_sha256": "fc2ebf29225776fa137b5ed40e203bdb482ac57da024223bc565e9f5909e88ac"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/135/etymology_hints/species/text",
+      "text_sha256": "d6528ae0b48e37c3e95400a02592b4d70e6edc13805caeed18c260101d0d0c7c"
+    }
+  ]
+}

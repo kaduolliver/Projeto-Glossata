@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Europe/Asia and North American records; yellow/black adult wings with blue/red hindwing marks; larval host leaves versus adult nectar. No conservation inference or precise developmental timing.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Papilio_machaon/",
+      "consulted_at": "2026-10-18T23:32:45.765684+00:00",
+      "response_sha256": "75b0d9f845fc29b0a614e68c3626d9901c7cb39dfada00612cb80047468972a6"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/curiosity/text",
+      "text_sha256": "5984b1a73def883c3071ba9140598283c0ff83e7a7a8e042948c07170f1505b3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/distribution/text",
+      "text_sha256": "afe22f125a123c775975c504bc8fd1b13a64590ce650f879cff1b5cc7efe29a9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/hint/text",
+      "text_sha256": "b77c2cfff6b578c4cbf02eacc199ebf790d3d7557a26763b08f0c809c979da00"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/morphology/text",
+      "text_sha256": "6aa96244ce20c5626354cbbd1ad12b60869a72d73a5adef66b89af005b9d0eb9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/nutrition/text",
+      "text_sha256": "6c929c6d6f5e771cf502277552583485004fbbb47150cca020bf97035ff12ec3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/1/summary/text",
+      "text_sha256": "82826789de3b48e07dd4f5aea8d8e86555801ed6e5f5125fdc7dc6f2501e57f5"
+    }
+  ]
+}

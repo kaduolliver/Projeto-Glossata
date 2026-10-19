@@ -1,0 +1,29 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 310362605,
+    "taxon": {
+      "id": 147200,
+      "name": "Heliconius melpomene",
+      "rank": "species"
+    },
+    "community_taxon_id": 147200,
+    "quality_grade": "research",
+    "photo_ids": [
+      "560140869"
+    ],
+    "archived_response_sha256": "c4f248ee083cef368659fe247e8f8df02468548893b02d42d6209e31e57f5be8",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:45.574359+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/310362605",
+  "catalog_species_id": "15",
+  "catalog_photo_id": "560140869",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "82ab15dbb464bfa787319dfd94dd47367a09586e3231b0b5e377ad9412bb9c2c",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

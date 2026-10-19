@@ -1,0 +1,32 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 261552464,
+    "taxon": {
+      "id": 328225,
+      "name": "Marasmius haematocephalus",
+      "rank": "species"
+    },
+    "community_taxon_id": 328225,
+    "quality_grade": "research",
+    "photo_ids": [
+      "606817545",
+      "469916348",
+      "469912171",
+      "469916358"
+    ],
+    "archived_response_sha256": "2e66acb7f3df973b26c5c1d4d9bc039f9943fdfd1152b49fc8c98251f100221d",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:46.280990+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/261552464",
+  "catalog_species_id": "71",
+  "catalog_photo_id": "606817545",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "d8b5ec4e416df798eb32dada03be680347096fb86a4d42208f350b2e693f72ff",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

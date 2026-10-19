@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Red lattice emerging from an egg-like base, saprobic nutrition, Mediterranean records/introductions and insect-mediated spore transport.",
+  "limitations": [
+    "Independent educational drafting from facts only; page prose reuse permission not demonstrated. No images, culinary instructions, historical anecdotes or unsupported nutritional certainty incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
+      "consulted_at": "2026-10-18T23:35:07.372000+00:00",
+      "response_sha256": "b0880db115920bfd89cce4827df67a96839beeb7b069644ac1458b109674694b"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/curiosity/text",
+      "text_sha256": "38bd7c39c7e583f9b4ca6ee1d474393d8c2317c1047f472ef4d176185882eb4c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/distribution/text",
+      "text_sha256": "de815eed6518516db674775257bc1762d5b600a7b872c2f32f35748b419f04ac"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/hint/text",
+      "text_sha256": "8f71f73dccfab54ffe0ec9d260c061c15a9af4fa7c31f638b22501c7978d411f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/morphology/text",
+      "text_sha256": "b068b7ce3ce5115f1d24639ce3b4762056bb388b835a03b6c6d6bffcdfe9158e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/nutrition/text",
+      "text_sha256": "e04b31b876db40bd634ada09d183dd40a7f0563ebee6d0d5ab7513b2f811a745"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/135/summary/text",
+      "text_sha256": "c358a2d5c1b33585d4603c7bda999ae1d57f481a3b2a63df759382133d712812"
+    }
+  ]
+}

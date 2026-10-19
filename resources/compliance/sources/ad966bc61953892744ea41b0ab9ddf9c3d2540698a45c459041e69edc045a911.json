@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Observed shoreline blooms and microscopic cell counts in freshwater Baikal; narrowed distribution to this documented example, without a universal range or a new toxin claim. Source prose is CC BY-NC 4.0; only independent factual writing proposed.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://limnolfwbiol.com/index.php/LFWB/en/article/view/773",
+      "consulted_at": "2026-10-19T00:13:23.921888+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/104/curiosity/text",
+      "text_sha256": "427a39c1b95df2f330009e97e9b972464b8c419abeb49a5d4185c4af14451731"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/104/distribution/text",
+      "text_sha256": "7e73269c279be53729cacaa2c5ede828717fcf777c864cf430ed1787abf6ba4f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/104/summary/text",
+      "text_sha256": "1a3447425820925ffdd19a5ec9819e9386f7c69111366190c396edb6589ca63f"
+    }
+  ]
+}

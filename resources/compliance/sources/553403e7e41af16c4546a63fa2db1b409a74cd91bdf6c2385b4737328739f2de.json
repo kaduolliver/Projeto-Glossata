@@ -1,0 +1,54 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Named species: broad flattened head, upward eyes/near-vertical mouth, sand-bottom habitat and California–Peru range. Family-level DFL account supports burial/ambush context, explicitly kept as group context rather than direct dietary proof for every individual.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://biogeodb.stri.si.edu/sftep/en/thefishes/species/1710",
+      "consulted_at": "2026-10-19T00:07:35.275286+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://www.digitalfishlibrary.org/library/ViewFamily.php?id=85",
+      "locator": "Uranoscopidae / Remarks: ambush predators and partial burial, group level",
+      "consulted_at": "2026-10-19T00:07:35.275286+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/curiosity/text",
+      "text_sha256": "ed8671320c69e225f8831c561695e8af211b2c29555b4a3b5c220ff2a509cc21"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/distribution/text",
+      "text_sha256": "35006e2d8e6e126920fdd1ba3bcd876b45ffa14fdfacd4dbc0950f1a33fe2ae3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/hint/text",
+      "text_sha256": "0997ebc14ade0a6ba0cf913da45ef6bfcfd92ace8e30ab2f63cf619b97ee7281"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/morphology/text",
+      "text_sha256": "ae96e4f4775faf613276dc9cdd49e76ea462feac82a87b2861028e41dcbb26e9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/nutrition/text",
+      "text_sha256": "f07c65248bacff57c8cd131df90807e428ff466f177a40e7d8d53c601ee22236"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/28/summary/text",
+      "text_sha256": "1c6e6dbf8e6cdbe271d434ef1d85d7a1b216c375c38e2c93a97acd46c3cd8eaf"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.898186+00:00",
+  "source_url": "https://www.inaturalist.org/observations/324010008",
+  "species_id": "3",
+  "photo_id": "586365614",
+  "photo_sha256": "958e6abd3bbd5a69cdb8fbf9dacdb325666a4045f7ee787af6fde4d6b549e542",
+  "comparison": "Pale thoracic skull-like marking, dark forewings and yellow abdominal regions. No inference of migration or feeding from a static photograph.",
+  "archived_taxon": {
+    "id": 56530,
+    "name": "Acherontia atropos",
+    "rank": "species"
+  },
+  "observation_id": 324010008,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "beabcad4022f4d5219130a7ffb9bfc302f8bbdf8e10b54f35aeee0b184f22d9e"
+}

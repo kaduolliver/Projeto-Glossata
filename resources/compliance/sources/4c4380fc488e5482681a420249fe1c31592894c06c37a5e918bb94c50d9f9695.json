@@ -1,0 +1,56 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Solitary hunting, vegetative cover, striped orange/light coat and robust limbs, ungulate prey. Removed the unsupported mechanistic camouflage explanation; new curiosity describes documented variation in stripe dimensions.",
+  "limitations": [
+    "Source conditions permit no blanket CC BY relicensing. New independent factual wording still requires the actual editorial and available-rights decision.",
+    "No source prose, image, current conservation assessment or independent specialist approval incorporated."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Panthera_tigris/",
+      "consulted_at": "2026-10-18T23:30:39.609707+00:00",
+      "response_sha256": "af8adf5cfc9be99b9857bf9621ea557f3fbb39f3c49e6ca5e9691572cddaa93a"
+    },
+    {
+      "source_url": "https://animaldiversity.org/about/use_conditions/",
+      "license_deed_link": "https://creativecommons.org/licenses/by-nc-sa/3.0/",
+      "terms_checked_on": "2026-10-18",
+      "method": "Web research: Conditions of Use and its linked deed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/curiosity/text",
+      "text_sha256": "9768a02a19c3b091978dde7dfa74d42a37a83957f60e60f9f9fe585dae8b51f1"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/distribution/text",
+      "text_sha256": "96b7db9fbe1fcde9b98c232c814c64d9ded5d73cdae4e8f67b741dcc29989718"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/hint/text",
+      "text_sha256": "6f9f85bdec76af75ecdcc13dd1bafdc6a1df22dc452c57abe7f567c21b751934"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/morphology/text",
+      "text_sha256": "61853998d278fcf270268aa00c064907da3832e67e7a37f2c2f8eb53de09c3a5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/nutrition/text",
+      "text_sha256": "776c06f1776aafa3760864ab7d05d7e45e463ea1d5af3664ed1eac24356e62b9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/125/summary/text",
+      "text_sha256": "41b8616018f3abc14aed4a69f4ba1fa4b897a1ef6394b04342957c2731a3e6d3"
+    }
+  ]
+}

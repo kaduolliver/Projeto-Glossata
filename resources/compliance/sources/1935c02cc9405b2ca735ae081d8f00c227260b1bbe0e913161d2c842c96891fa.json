@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "First-party botanist account of orange flowers, tall flowering stem and Peruvian historical versus 2018 Huarimayo record. Exact Canta locality in the previous draft was not demonstrated here and is removed. No interviewed-person biography, personal data or quoted prose incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/blog/115883",
+      "consulted_at": "2026-10-19T00:03:44.659132+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/curiosity/text",
+      "text_sha256": "60869f02d125b8949d3258bd617b2bdea06c52d98504f4d1fac9470e121d6ba3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/distribution/text",
+      "text_sha256": "c30f7c25eb489af2df17fa14213774fda528ae0a4b21fb9bb5682a72a79ea202"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/hint/text",
+      "text_sha256": "fee00815f3bddac94393a19b69bdf7a1efaf7681fa8b3fd0ac329ebd1c14a301"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/morphology/text",
+      "text_sha256": "b23bcd21cada2f176c2557157f7ef0a7faf82a37ed1eaca916eb68aaa789b5c8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/49/summary/text",
+      "text_sha256": "4b59e7215f43a86f332048f7cfef5982e2e758d25903691490bdecbd28413cd3"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 135963380,
+    "taxon": {
+      "id": 1228995,
+      "name": "Cladonia imperialis",
+      "rank": "species"
+    },
+    "community_taxon_id": 1228995,
+    "quality_grade": "research",
+    "photo_ids": [
+      "231974984",
+      "231975000",
+      "231975023",
+      "231975050"
+    ],
+    "archived_response_sha256": "0eee7ac49302d136a7f3efef7f9f829da7a69a0e49b4137935e31e257ecf6c6e",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:46.994994+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/135963380",
+  "catalog_species_id": "65",
+  "catalog_photo_id": "231974984",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "2de6836e5b004fac26418e19a73115d750acb6b2db0d4c841d682c9977441220",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

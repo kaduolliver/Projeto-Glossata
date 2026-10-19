@@ -1,0 +1,54 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Exact source of a named halophilic phototrophic purple sulfur bacterium: red-layer salt-pan isolate in Camargue, pigment and sulfur inclusions. Preserves later Thiohalocapsa combination as cataloged. Does not infer species identity from the color of its support picture; no paywalled prose incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://link.springer.com/article/10.1007/BF00248613",
+      "consulted_at": "2026-10-19T00:13:23.921888+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/8177169/",
+      "locator": "Ollivier et al. (1994), Abstract / anoxygenic halophilic purple bacteria",
+      "consulted_at": "2026-10-19T00:13:23.921888+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/curiosity/text",
+      "text_sha256": "3c7bd6ed811fbd76f9de113ad041cd203bd4b4e116fb8a1f845a9546e881b601"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/distribution/text",
+      "text_sha256": "dfdc780ab4e14c0d41ba7943ba7e27fb0ead5c1eb8639feb7319288ad3e9100c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/hint/text",
+      "text_sha256": "3e45b73e32a98ce76c72926371482f94895a8546cd4cdc88a57d449ae078e674"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/morphology/text",
+      "text_sha256": "1729b0664d6efde7bd1d872854ddd33257883ebc1a41564c2a6e3a9047bb3162"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/nutrition/text",
+      "text_sha256": "f45a7d266ad809d7bcd50570125450aa00646552300ffad756a7fed33a61f6ee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/106/summary/text",
+      "text_sha256": "648451b27a068a5f050e038fc53ff994d9c904712706967240a179356bfba699"
+    }
+  ]
+}

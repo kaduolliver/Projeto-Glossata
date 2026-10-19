@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Dung and hairy; genus etymology does not establish species substrate.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
+      "consulted_at": "2026-10-18T23:35:14.776731+00:00",
+      "response_sha256": "8cd256b27b6940a6238287517752c9cabf12610b92df37f014a85baacf99951f"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/73/etymology_hints/genus/text",
+      "text_sha256": "348da34d2ab3f266a1f1f1dcf7cf3065d645a553012c102ec2ad1fdea840e086"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/73/etymology_hints/species/text",
+      "text_sha256": "8b7240c4e251868bbc3079ef753dad59d07589bb644e342226cb044d2fd6a4b1"
+    }
+  ]
+}

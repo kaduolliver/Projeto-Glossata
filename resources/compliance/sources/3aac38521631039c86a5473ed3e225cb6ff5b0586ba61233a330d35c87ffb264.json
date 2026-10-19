@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Larval potato foliage and adult entry into hives for honey explicitly described. Does not transfer the adult nectar diet typical of some other hawkmoths.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://ukmoths.org.uk/species/acherontia-atropos/",
+      "consulted_at": "2026-10-19T00:13:23.923909+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/3/nutrition/text",
+      "text_sha256": "e88b8a27c9a91c0950f4de3b440e93e933a21e1780011f020e0fbab6055bf4c7"
+    }
+  ]
+}

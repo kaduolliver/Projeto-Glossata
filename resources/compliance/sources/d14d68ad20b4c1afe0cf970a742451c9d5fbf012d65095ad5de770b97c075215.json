@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Very small white flattened/rounded structures on a leaf; additional microscopic characters not inferred. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification. Spore-producing stage separately corroborated by Adl et al. Myxogastria diagnosis.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/37588396",
+      "consulted_at": "2026-10-18T23:59:24.431554+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "locator": "Appendix 1 / Myxogastria: plasmodium and spore-forming sporocarps",
+      "consulted_at": "2026-10-18T23:59:24.430549+00:00"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/59617028.jpeg",
+      "sha256": "9588735a6c1d138a1bf0518aec5b9e3dcf4a11998d046b2c17e03a4e8e62e5d8",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/99/summary/text",
+      "text_sha256": "9fa8366c15cf046274a3798e6c9fc0bccefce6ef558c2ed7a6e82927de810962"
+    }
+  ]
+}

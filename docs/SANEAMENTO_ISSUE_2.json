@@ -4531,99 +4531,33 @@
     }
   },
   "remaining_text_regularization": {
-    "checked_at": "2026-10-18T14:54:27.328915+00:00",
+    "checked_at": "2026-10-19T00:57:12.279031+00:00",
     "base_commit": "ba57dfe037915b81c86f03c7ecd9782374c6fb0e",
-    "status": "partially_resolved_after_explicit_technical_wording_confirmation",
+    "status": "textual_resources_documented_after_actual_consolidated_confirmations",
     "issue_url": "https://github.com/kaduolliver/Projeto-Glossata/issues/2",
     "issue_state": "OPEN",
     "issue_managed_block_refresh": {
-      "findings_before": 7,
-      "findings_now": 3,
-      "fingerprint": "8979abd80b0d64de8716ba5a85170b43b1451e846eb4f26601060ccb7538c310",
-      "source_commit": "ba57dfe037915b81c86f03c7ecd9782374c6fb0e",
-      "human_section_preserved": true,
-      "issue_closed": false,
-      "other_issues_changed": false
+      "performed": false,
+      "reason": "No Issue edit/closure; integration and closure remain maintainer actions."
     },
     "authoritative_gate": {
-      "command": "python scripts/distribution.py check",
-      "exit_code": 2,
-      "blocked": true,
+      "source": "build/rights-investigation.json / other_materials_resolution",
+      "textual_resources_pending": 0,
+      "textual_occurrences_pending": 0,
       "technical_errors": [],
-      "photo_findings": 120,
-      "material_findings": 3,
-      "scientific_release_blocks": 31,
-      "package_assessed": false
+      "whole_package_distribution_blocked": true,
+      "notice": "Only the Issue #2 textual scope is resolved in this branch; no legal/scientific certification or automatic Issue closure."
     },
     "current_text_counts": {
-      "pending_resources": [
-        "resources/data/species_profiles.json",
-        "resources/data/hint_education.json",
-        "resources/data/progressive_hints.json"
-      ],
-      "pending_occurrences": 1153,
-      "pending_unique_texts": 713,
-      "pending_by_role": {
-        "educational_assertion": 889,
-        "generated_copy": 264
-      }
+      "pending_occurrences": 0,
+      "pending_resources": 0,
+      "source_wordings_replaced": 887,
+      "distinct_new_wordings": 690,
+      "retained_previously_editorially_approved_notes": 2,
+      "derived_copies_explicitly_documented": 264,
+      "previously_documented_occurrences_preserved": 1249
     },
-    "pending_groups": [
-      {
-        "path": "resources/data/hint_education.json",
-        "topic_or_role": "educational_assertion",
-        "occurrences": 84,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/progressive_hints.json",
-        "topic_or_role": "generated_copy",
-        "occurrences": 264,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "conservation",
-        "occurrences": 122,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "curiosity",
-        "occurrences": 108,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "distribution",
-        "occurrences": 122,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "hint",
-        "occurrences": 122,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "morphology",
-        "occurrences": 121,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "nutrition",
-        "occurrences": 88,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      },
-      {
-        "path": "resources/data/species_profiles.json",
-        "topic_or_role": "summary",
-        "occurrences": 122,
-        "source_index": "resources/compliance/asset_rights.json / educational_text_rights; regenerate rights report for all source references"
-      }
-    ],
+    "pending_groups": [],
     "binding_index": "resources/compliance/asset_rights.json / educational_text_rights",
     "regeneration_command": "python scripts/review_updates.py --rights-report",
     "objective_resolution_check": "build/rights-investigation.json / other_materials_resolution",
@@ -4666,44 +4600,301 @@
       }
     },
     "validation": {
-      "rights_investigation_tests": {
-        "passed": 55
-      },
-      "import_and_generation_tests": {
-        "passed": 22
-      },
-      "full_ctest": {
-        "passed": 26,
-        "failed": 0,
-        "seconds": 185.38
-      },
-      "code_license_check": "passed",
-      "strict_catalog_audit": "passed",
-      "release_metadata_check": "passed",
-      "visual_validation_performed": false,
-      "remote_tests_for_this_branch": "not_published",
-      "configure_and_release_build": "passed",
-      "additional_checks": [
-        "permission-recovery",
-        "repository-protection-local",
-        "repository-audit",
-        "exploration-media",
-        "scientific-coverage",
-        "hint-assistance",
-        "governance-history",
-        "release-history",
-        "qmllint"
+      "checked_at": "2026-10-19T00:53:07.436849+00:00",
+      "commands": [
+        {
+          "name": "assistance-report",
+          "command": [
+            "python",
+            "scripts/audit_hint_assistance.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.31,
+          "log": "build/issue2-validation-logs/assistance-report.log"
+        },
+        {
+          "name": "project-status-generation",
+          "command": [
+            "python",
+            "scripts/project_status.py",
+            "write"
+          ],
+          "exit_code": 0,
+          "seconds": 0.16,
+          "log": "build/issue2-validation-logs/project-status-generation.log"
+        },
+        {
+          "name": "repository-protection",
+          "command": [
+            "python",
+            "scripts/repository_protection.py",
+            "check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.06,
+          "log": "build/issue2-validation-logs/repository-protection.log"
+        },
+        {
+          "name": "apache",
+          "command": [
+            "python",
+            "scripts/licensing_inventory.py",
+            "--check-code"
+          ],
+          "exit_code": 0,
+          "seconds": 0.47,
+          "log": "build/issue2-validation-logs/apache.log"
+        },
+        {
+          "name": "permission-recovery",
+          "command": [
+            "python",
+            "scripts/content_governance.py",
+            "recover-permissions"
+          ],
+          "exit_code": 0,
+          "seconds": 0.11,
+          "log": "build/issue2-validation-logs/permission-recovery.log"
+        },
+        {
+          "name": "repository-audit",
+          "command": [
+            "python",
+            "scripts/audit_repository.py"
+          ],
+          "exit_code": 0,
+          "seconds": 1.09,
+          "log": "build/issue2-validation-logs/repository-audit.log"
+        },
+        {
+          "name": "pedagogy",
+          "command": [
+            "python",
+            "scripts/review_hints.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2,
+          "log": "build/issue2-validation-logs/pedagogy.log"
+        },
+        {
+          "name": "configure",
+          "command": [
+            "cmake",
+            "-S",
+            ".",
+            "-B",
+            "build",
+            "-G",
+            "Ninja",
+            "-DCMAKE_BUILD_TYPE=Release"
+          ],
+          "exit_code": 0,
+          "seconds": 2.11,
+          "log": "build/issue2-validation-logs/configure.log"
+        },
+        {
+          "name": "project-status",
+          "command": [
+            "python",
+            "scripts/project_status.py",
+            "check",
+            "--build",
+            "build",
+            "--report",
+            "build/project-status-check.json"
+          ],
+          "exit_code": 0,
+          "seconds": 0.19,
+          "log": "build/issue2-validation-logs/project-status.log"
+        },
+        {
+          "name": "build",
+          "command": [
+            "cmake",
+            "--build",
+            "build",
+            "--parallel",
+            "4"
+          ],
+          "exit_code": 0,
+          "seconds": 36.59,
+          "log": "build/issue2-validation-logs/build.log"
+        },
+        {
+          "name": "ctest",
+          "command": [
+            "ctest",
+            "--test-dir",
+            "build",
+            "--output-on-failure"
+          ],
+          "exit_code": 0,
+          "seconds": 165.11,
+          "log": "build/issue2-validation-logs/ctest.log"
+        },
+        {
+          "name": "qmllint",
+          "command": [
+            "qmllint",
+            "resources/qml/components/EndGameDialog.qml",
+            "resources/qml/components/ExploreCard.qml",
+            "resources/qml/components/FeatheredPhoto.qml",
+            "resources/qml/components/HintPanel.qml",
+            "resources/qml/components/KingdomArtwork.qml",
+            "resources/qml/components/LifeArtwork.qml",
+            "resources/qml/components/NavItem.qml",
+            "resources/qml/components/PlayModeSelector.qml",
+            "resources/qml/components/SpeciesArtwork.qml",
+            "resources/qml/components/SpeciesPortrait.qml",
+            "resources/qml/components/StatCard.qml",
+            "resources/qml/components/TaxonComboBox.qml",
+            "resources/qml/components/TextAction.qml",
+            "resources/qml/components/UiButton.qml",
+            "resources/qml/components/UiIcon.qml",
+            "resources/qml/Main.qml",
+            "resources/qml/views/AchievementsView.qml",
+            "resources/qml/views/CategoryView.qml",
+            "resources/qml/views/CreditsView.qml",
+            "resources/qml/views/FeedbackView.qml",
+            "resources/qml/views/HomeView.qml",
+            "resources/qml/views/InfoView.qml",
+            "resources/qml/views/QuizView.qml",
+            "resources/qml/views/ResultsView.qml",
+            "resources/qml/views/SettingsView.qml",
+            "resources/qml/views/StatisticsView.qml",
+            "resources/qml/views/TaxonomyView.qml",
+            "--unqualified",
+            "disable"
+          ],
+          "exit_code": 0,
+          "seconds": 2.97,
+          "log": "build/issue2-validation-logs/qmllint.log"
+        },
+        {
+          "name": "strict-catalog",
+          "command": [
+            "python",
+            "scripts/audit_catalog.py",
+            "--strict"
+          ],
+          "exit_code": 0,
+          "seconds": 2.38,
+          "log": "build/issue2-validation-logs/strict-catalog.log"
+        },
+        {
+          "name": "exploration",
+          "command": [
+            "python",
+            "scripts/exploration_media.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.28,
+          "log": "build/issue2-validation-logs/exploration.log"
+        },
+        {
+          "name": "coverage",
+          "command": [
+            "python",
+            "scripts/scientific_catalog.py",
+            "coverage"
+          ],
+          "exit_code": 0,
+          "seconds": 0.17,
+          "log": "build/issue2-validation-logs/coverage.log"
+        },
+        {
+          "name": "phylogeny",
+          "command": [
+            "python",
+            "scripts/phylogeny.py",
+            "--apply"
+          ],
+          "exit_code": 0,
+          "seconds": 0.16,
+          "log": "build/issue2-validation-logs/phylogeny.log"
+        },
+        {
+          "name": "updates",
+          "command": [
+            "python",
+            "scripts/review_updates.py"
+          ],
+          "exit_code": 0,
+          "seconds": 3.11,
+          "log": "build/issue2-validation-logs/updates.log"
+        },
+        {
+          "name": "rights",
+          "command": [
+            "python",
+            "scripts/review_updates.py",
+            "--rights-report"
+          ],
+          "exit_code": 0,
+          "seconds": 4.0,
+          "log": "build/issue2-validation-logs/rights.log"
+        },
+        {
+          "name": "release-metadata",
+          "command": [
+            "python",
+            "scripts/release.py",
+            "check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.28,
+          "log": "build/issue2-validation-logs/release-metadata.log"
+        },
+        {
+          "name": "history",
+          "command": [
+            "python",
+            "scripts/content_governance.py",
+            "audit-history",
+            "--base",
+            "ba57dfe037915b81c86f03c7ecd9782374c6fb0e"
+          ],
+          "exit_code": 0,
+          "seconds": 0.33,
+          "log": "build/issue2-validation-logs/history.log"
+        },
+        {
+          "name": "screenshot-history",
+          "command": [
+            "python",
+            "scripts/release.py",
+            "check-history",
+            "--base",
+            "ba57dfe037915b81c86f03c7ecd9782374c6fb0e"
+          ],
+          "exit_code": 0,
+          "seconds": 0.48,
+          "log": "build/issue2-validation-logs/screenshot-history.log"
+        },
+        {
+          "name": "distribution",
+          "command": [
+            "python",
+            "scripts/distribution.py",
+            "check"
+          ],
+          "exit_code": 2,
+          "seconds": 1.88,
+          "log": "build/issue2-validation-logs/distribution.log"
+        }
       ],
-      "derived_resources_byte_identical_to_base": true,
-      "external_content_queries": 0
+      "errors": [],
+      "generation_reproducible": true,
+      "textual_pending_resources": [],
+      "textual_pending_occurrences": 0,
+      "rights_technical_errors": [],
+      "staged_evidence_errors": [],
+      "distribution_blocked": true,
+      "photo_permission_findings": 120,
+      "scientific_release_blocks": 277,
+      "complete": true
     },
-    "next_human_decisions": [
-      "The technical wording batch is confirmed and applied; do not request its acceptance again.",
-      "Investigate or independently redraft the remaining 805 profile passages, 64 etymological wordings and 20 prefixes; bind scientific sources and actual wording-specific rights.",
-      "Review exact new biological/etymological batches editorially, separately from assistance grades and specialist review.",
-      "Regenerate the 264 dependent biological wordings and preserve every source binding; partial grants cannot release whole files.",
-      "Only consider closure after complete evidence, zero material findings and review of the integrated main commit."
-    ],
+    "next_human_decisions": [],
     "limitations": [
       "2300 occurrences and 788 hashes are documentary review units, not proven infringements or independent works.",
       "No new external source consultation, authorship certification or legal/scientific approval occurred.",
@@ -5163,7 +5354,7 @@
       "catalog_or_application_version_changed": false
     },
     "consolidated_draft": {
-      "state": "source_comparisons_recorded_pending_consolidated_human_review",
+      "state": "applied_after_actual_consolidated_confirmations",
       "proposal": "docs/propostas/TEXTOS_RESTANTES_ISSUE_2.json",
       "proposal_sha256": "a6d01ebc2c9a989fc08db42df35c8ca960ccc77a6f0ac849065a6d880bf73da4",
       "draft_fingerprint": "dfd87301edf8140078ec955e0d744c95af5b56d8e8d091a92b1d6f0e30e8f6a4",
@@ -5193,17 +5384,492 @@
         "project_status": "passed",
         "distribution": "blocked as expected; technical_errors=[]; three textual resources pending"
       },
-      "human_approvals_created": 0,
-      "permissions_created": 0,
-      "active_resources_changed": false,
-      "ready_for_consolidated_human_review": true,
-      "next_step": "Actual consolidated editorial review and separate limited available-rights decision; no approval, permission or active replacement created by source checks.",
+      "human_approvals_created": 971,
+      "permissions_created": 3,
+      "active_resources_changed": true,
+      "ready_for_consolidated_human_review": false,
+      "next_step": "Maintainer review/integration of the single Pull Request; no automatic Issue closure or package publication.",
       "conference": "docs/propostas/CONFERENCIA_TEXTOS_RESTANTES_ISSUE_2.md",
       "conference_fingerprint": "31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449",
       "source_comparisons_recorded": 887,
       "unchecked_source_replacements": 0,
       "unique_proposed_wordings": 690,
-      "portable_evidence_snapshots": 261
+      "portable_evidence_snapshots": 261,
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/4b9c92eda7788bb0ae729ceb1428bc43fa90294d5775a6670131d2c2bb89079d.json",
+        "sha256": "ddef4620dd8dbb748f94788eed8b43d546168202f42dd0df61379e4020556aff",
+        "locator": "conference_fingerprint, occurrences, editorial_confirmation and license_confirmation"
+      }
+    },
+    "before_consolidated_confirmation": {
+      "git_commit": "1dc3c75",
+      "pending_resources": 3,
+      "pending_source_occurrences": 889,
+      "pending_derived_occurrences": 264,
+      "pending_total_occurrences": 1153,
+      "previous_validation": {
+        "rights_investigation_tests": {
+          "passed": 55
+        },
+        "import_and_generation_tests": {
+          "passed": 22
+        },
+        "full_ctest": {
+          "passed": 26,
+          "failed": 0,
+          "seconds": 185.38
+        },
+        "code_license_check": "passed",
+        "strict_catalog_audit": "passed",
+        "release_metadata_check": "passed",
+        "visual_validation_performed": false,
+        "remote_tests_for_this_branch": "not_published",
+        "configure_and_release_build": "passed",
+        "additional_checks": [
+          "permission-recovery",
+          "repository-protection-local",
+          "repository-audit",
+          "exploration-media",
+          "scientific-coverage",
+          "hint-assistance",
+          "governance-history",
+          "release-history",
+          "qmllint"
+        ],
+        "derived_resources_byte_identical_to_base": true,
+        "external_content_queries": 0
+      }
+    },
+    "consolidated_application": {
+      "state": "applied_after_actual_consolidated_confirmations",
+      "recorded_on": "2026-10-18",
+      "conference_fingerprint": "31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449",
+      "confirmation_evidence": {
+        "path": "resources/compliance/sources/4b9c92eda7788bb0ae729ceb1428bc43fa90294d5775a6670131d2c2bb89079d.json",
+        "sha256": "ddef4620dd8dbb748f94788eed8b43d546168202f42dd0df61379e4020556aff",
+        "locator": "conference_fingerprint, occurrences, editorial_confirmation and license_confirmation"
+      },
+      "source_replacements": 887,
+      "retained_editorial_notes": 2,
+      "derived_occurrences": 264,
+      "new_editorial_events": 971,
+      "ledger_events_before": 76,
+      "ledger_events_after": 1047,
+      "aggregate_topics_approved": false,
+      "hint_assistance_approved": false,
+      "specialist_review_claimed": false,
+      "protected_occurrences_preserved": 1249,
+      "source_works_relicensed": false,
+      "global_text_or_collection_license_granted": false,
+      "other_scope_resources_unchanged": true,
+      "source_evidence_archived": 261,
+      "validation": {
+        "checked_at": "2026-10-19T00:53:07.436849+00:00",
+        "commands": [
+          {
+            "name": "assistance-report",
+            "command": [
+              "python",
+              "scripts/audit_hint_assistance.py"
+            ],
+            "exit_code": 0,
+            "seconds": 0.31,
+            "log": "build/issue2-validation-logs/assistance-report.log"
+          },
+          {
+            "name": "project-status-generation",
+            "command": [
+              "python",
+              "scripts/project_status.py",
+              "write"
+            ],
+            "exit_code": 0,
+            "seconds": 0.16,
+            "log": "build/issue2-validation-logs/project-status-generation.log"
+          },
+          {
+            "name": "repository-protection",
+            "command": [
+              "python",
+              "scripts/repository_protection.py",
+              "check"
+            ],
+            "exit_code": 0,
+            "seconds": 0.06,
+            "log": "build/issue2-validation-logs/repository-protection.log"
+          },
+          {
+            "name": "apache",
+            "command": [
+              "python",
+              "scripts/licensing_inventory.py",
+              "--check-code"
+            ],
+            "exit_code": 0,
+            "seconds": 0.47,
+            "log": "build/issue2-validation-logs/apache.log"
+          },
+          {
+            "name": "permission-recovery",
+            "command": [
+              "python",
+              "scripts/content_governance.py",
+              "recover-permissions"
+            ],
+            "exit_code": 0,
+            "seconds": 0.11,
+            "log": "build/issue2-validation-logs/permission-recovery.log"
+          },
+          {
+            "name": "repository-audit",
+            "command": [
+              "python",
+              "scripts/audit_repository.py"
+            ],
+            "exit_code": 0,
+            "seconds": 1.09,
+            "log": "build/issue2-validation-logs/repository-audit.log"
+          },
+          {
+            "name": "pedagogy",
+            "command": [
+              "python",
+              "scripts/review_hints.py"
+            ],
+            "exit_code": 0,
+            "seconds": 0.2,
+            "log": "build/issue2-validation-logs/pedagogy.log"
+          },
+          {
+            "name": "configure",
+            "command": [
+              "cmake",
+              "-S",
+              ".",
+              "-B",
+              "build",
+              "-G",
+              "Ninja",
+              "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "exit_code": 0,
+            "seconds": 2.11,
+            "log": "build/issue2-validation-logs/configure.log"
+          },
+          {
+            "name": "project-status",
+            "command": [
+              "python",
+              "scripts/project_status.py",
+              "check",
+              "--build",
+              "build",
+              "--report",
+              "build/project-status-check.json"
+            ],
+            "exit_code": 0,
+            "seconds": 0.19,
+            "log": "build/issue2-validation-logs/project-status.log"
+          },
+          {
+            "name": "build",
+            "command": [
+              "cmake",
+              "--build",
+              "build",
+              "--parallel",
+              "4"
+            ],
+            "exit_code": 0,
+            "seconds": 36.59,
+            "log": "build/issue2-validation-logs/build.log"
+          },
+          {
+            "name": "ctest",
+            "command": [
+              "ctest",
+              "--test-dir",
+              "build",
+              "--output-on-failure"
+            ],
+            "exit_code": 0,
+            "seconds": 165.11,
+            "log": "build/issue2-validation-logs/ctest.log"
+          },
+          {
+            "name": "qmllint",
+            "command": [
+              "qmllint",
+              "resources/qml/components/EndGameDialog.qml",
+              "resources/qml/components/ExploreCard.qml",
+              "resources/qml/components/FeatheredPhoto.qml",
+              "resources/qml/components/HintPanel.qml",
+              "resources/qml/components/KingdomArtwork.qml",
+              "resources/qml/components/LifeArtwork.qml",
+              "resources/qml/components/NavItem.qml",
+              "resources/qml/components/PlayModeSelector.qml",
+              "resources/qml/components/SpeciesArtwork.qml",
+              "resources/qml/components/SpeciesPortrait.qml",
+              "resources/qml/components/StatCard.qml",
+              "resources/qml/components/TaxonComboBox.qml",
+              "resources/qml/components/TextAction.qml",
+              "resources/qml/components/UiButton.qml",
+              "resources/qml/components/UiIcon.qml",
+              "resources/qml/Main.qml",
+              "resources/qml/views/AchievementsView.qml",
+              "resources/qml/views/CategoryView.qml",
+              "resources/qml/views/CreditsView.qml",
+              "resources/qml/views/FeedbackView.qml",
+              "resources/qml/views/HomeView.qml",
+              "resources/qml/views/InfoView.qml",
+              "resources/qml/views/QuizView.qml",
+              "resources/qml/views/ResultsView.qml",
+              "resources/qml/views/SettingsView.qml",
+              "resources/qml/views/StatisticsView.qml",
+              "resources/qml/views/TaxonomyView.qml",
+              "--unqualified",
+              "disable"
+            ],
+            "exit_code": 0,
+            "seconds": 2.97,
+            "log": "build/issue2-validation-logs/qmllint.log"
+          },
+          {
+            "name": "strict-catalog",
+            "command": [
+              "python",
+              "scripts/audit_catalog.py",
+              "--strict"
+            ],
+            "exit_code": 0,
+            "seconds": 2.38,
+            "log": "build/issue2-validation-logs/strict-catalog.log"
+          },
+          {
+            "name": "exploration",
+            "command": [
+              "python",
+              "scripts/exploration_media.py"
+            ],
+            "exit_code": 0,
+            "seconds": 0.28,
+            "log": "build/issue2-validation-logs/exploration.log"
+          },
+          {
+            "name": "coverage",
+            "command": [
+              "python",
+              "scripts/scientific_catalog.py",
+              "coverage"
+            ],
+            "exit_code": 0,
+            "seconds": 0.17,
+            "log": "build/issue2-validation-logs/coverage.log"
+          },
+          {
+            "name": "phylogeny",
+            "command": [
+              "python",
+              "scripts/phylogeny.py",
+              "--apply"
+            ],
+            "exit_code": 0,
+            "seconds": 0.16,
+            "log": "build/issue2-validation-logs/phylogeny.log"
+          },
+          {
+            "name": "updates",
+            "command": [
+              "python",
+              "scripts/review_updates.py"
+            ],
+            "exit_code": 0,
+            "seconds": 3.11,
+            "log": "build/issue2-validation-logs/updates.log"
+          },
+          {
+            "name": "rights",
+            "command": [
+              "python",
+              "scripts/review_updates.py",
+              "--rights-report"
+            ],
+            "exit_code": 0,
+            "seconds": 4.0,
+            "log": "build/issue2-validation-logs/rights.log"
+          },
+          {
+            "name": "release-metadata",
+            "command": [
+              "python",
+              "scripts/release.py",
+              "check"
+            ],
+            "exit_code": 0,
+            "seconds": 0.28,
+            "log": "build/issue2-validation-logs/release-metadata.log"
+          },
+          {
+            "name": "history",
+            "command": [
+              "python",
+              "scripts/content_governance.py",
+              "audit-history",
+              "--base",
+              "ba57dfe037915b81c86f03c7ecd9782374c6fb0e"
+            ],
+            "exit_code": 0,
+            "seconds": 0.33,
+            "log": "build/issue2-validation-logs/history.log"
+          },
+          {
+            "name": "screenshot-history",
+            "command": [
+              "python",
+              "scripts/release.py",
+              "check-history",
+              "--base",
+              "ba57dfe037915b81c86f03c7ecd9782374c6fb0e"
+            ],
+            "exit_code": 0,
+            "seconds": 0.48,
+            "log": "build/issue2-validation-logs/screenshot-history.log"
+          },
+          {
+            "name": "distribution",
+            "command": [
+              "python",
+              "scripts/distribution.py",
+              "check"
+            ],
+            "exit_code": 2,
+            "seconds": 1.88,
+            "log": "build/issue2-validation-logs/distribution.log"
+          }
+        ],
+        "errors": [],
+        "generation_reproducible": true,
+        "textual_pending_resources": [],
+        "textual_pending_occurrences": 0,
+        "rights_technical_errors": [],
+        "staged_evidence_errors": [],
+        "distribution_blocked": true,
+        "photo_permission_findings": 120,
+        "scientific_release_blocks": 277,
+        "complete": true
+      },
+      "isolated_replay": "1047 ledger events preserved byte-for-byte on repeat; no duplicate events.",
+      "windows_write_recovery": "Transient replacement denial reproduced. Common writer now retries only recognized Windows permission/sharing codes, at most six attempts, revalidating tip before each retry; 20 concurrency tests passed.",
+      "regression_adjustments": {
+        "historical_batch_tests": "Four prior-batch regressions run in an isolated Git snapshot at 1dc3c75; original partial-rights assertions retained.",
+        "current_batch_test": "Verify 1153 exact confirmed bindings, 1249 protected occurrences, preserved 76-event prefix and only 971 new claim reviews; no aggregate approvals.",
+        "rule_fixtures": "Synthetic prerequisite reviews only in in-memory rule fixtures, independent of the live catalog.",
+        "maintenance_hosts": [
+          "anbg.gov.au",
+          "biogeodb.stri.si.edu",
+          "eol.org",
+          "lepiforum.org",
+          "nc.iucnredlist.org",
+          "www.efloras.org",
+          "www.fncv.org.au",
+          "www.montpellier.fr",
+          "www.sfzoo.org"
+        ],
+        "transport_guarantees": "Explicit host list only; HTTPS/443, public pinned DNS, redirect validation and all limits preserved. No wildcard trust."
+      },
+      "rights_resolution": {
+        "scope": "Issue licensing / other-materials only; excludes photo, science and dependency decisions.",
+        "ready_for_maintainer_closure_review": true,
+        "automatic_closure": false,
+        "decisions_created": 0,
+        "permissions_created": 0,
+        "pending_resources": [],
+        "technical_errors": [],
+        "pending_occurrences": 0,
+        "pending_unique_texts": 0,
+        "pending_by_role": {},
+        "materials": [
+          {
+            "path": "resources/branding/glossata.png",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/branding/glossata_discord.png",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/branding/glossata.ico",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/data/species_profiles.json",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/data/hint_education.json",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/data/group_education.json",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          },
+          {
+            "path": "resources/data/progressive_hints.json",
+            "resource_issues": [],
+            "pending_occurrences": [],
+            "pending_count": 0,
+            "resource_ready_for_closure_review": true,
+            "note": "No whole-resource permission is inferred from partial or shared wording."
+          }
+        ],
+        "required_next_steps": [
+          "Resolve authorial source and available rights per current binding; replace only when justified.",
+          "Record actual decisions through the existing governance bridge; no inherited human approval.",
+          "Regenerate derived content and rerun the authoritative asset gate.",
+          "Review the integrated main commit before explicitly closing the Issue."
+        ],
+        "limitations": "A closure summary, closed Issue or tests never authorize a resource or approve the package."
+      }
     }
+  },
+  "current_resolution": {
+    "recorded_on": "2026-10-18",
+    "branch": "fix/issue-2-textos-restantes",
+    "scope": "Current educational expression in the three remaining Issue #2 resources",
+    "pending_textual_resources": 0,
+    "pending_textual_occurrences": 0,
+    "technical_errors": [],
+    "confirmation_evidence": {
+      "path": "resources/compliance/sources/4b9c92eda7788bb0ae729ceb1428bc43fa90294d5775a6670131d2c2bb89079d.json",
+      "sha256": "ddef4620dd8dbb748f94788eed8b43d546168202f42dd0df61379e4020556aff",
+      "locator": "conference_fingerprint, occurrences, editorial_confirmation and license_confirmation"
+    },
+    "distribution_blocked": true,
+    "issue_closed": false,
+    "notice": "Earlier sections preserve earlier investigations, counts and decisions. Current scoped resolution does not certify authorship, external rights, scientific accuracy or the package."
   }
 }

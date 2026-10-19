@@ -1,0 +1,61 @@
+{
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC5492075&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T18:11:40.116541+00:00",
+    "response_sha256": "37c0b428bc89e8a36767c4df7e5184246694973156895b40acfbbde82b33f798",
+    "pmcid": "PMC5492075",
+    "metadata": {
+      "id": "28598383",
+      "source": "MED",
+      "title": "The Biology and Control of the Greater Wax Moth, Galleria mellonella.",
+      "authorString": "Kwadha CA, Ong'amo GO, Ndegwa PN, Raina SK, Fombong AT.",
+      "doi": "10.3390/insects8020061",
+      "pubYear": "2017",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.3390/insects8020061"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC5492075"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC5492075?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5492075/fullTextXML",
+    "consulted_at": "2026-10-18T18:12:02.032427+00:00",
+    "response_sha256": "7931cacf4a214459a1c5011809afc89d1d22274d59273678c9463a2f0616fe9e",
+    "bytes": 178745,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC5492075",
+    "title": "The Biology and Control of the Greater Wax Moth, Galleria mellonella.",
+    "author_credit": "Kwadha CA, Ong'amo GO, Ndegwa PN, Raina SK, Fombong AT.",
+    "doi": "10.3390/insects8020061",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  }
+}

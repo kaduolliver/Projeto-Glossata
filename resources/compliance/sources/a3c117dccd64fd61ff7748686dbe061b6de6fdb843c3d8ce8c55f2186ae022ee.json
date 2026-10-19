@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Latin edible; not food safety advice.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
+      "consulted_at": "2026-10-18T23:35:26.921915+00:00",
+      "response_sha256": "0e51b552ab29395823edfc6438d4d06e4bde219cf610fec0a0c1d8a31f3abfd3"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/137/etymology_hints/species/text",
+      "text_sha256": "efe847b9c6cdea83cda9fa10f9f1a643ff6e9104d5656b39b37242c9e674edc1"
+    }
+  ]
+}

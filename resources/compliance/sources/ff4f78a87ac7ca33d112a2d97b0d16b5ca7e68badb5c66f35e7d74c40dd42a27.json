@@ -1,0 +1,30 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 134929063,
+    "taxon": {
+      "id": 625511,
+      "name": "Asterella drummondii",
+      "rank": "species"
+    },
+    "community_taxon_id": 625511,
+    "quality_grade": "research",
+    "photo_ids": [
+      "230066559",
+      "230066534"
+    ],
+    "archived_response_sha256": "e1fe6303f9950cae5933d876f98dbf14bae42324cd441e1e8e999352c26b4d6a",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:41.834882+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/134929063",
+  "catalog_species_id": "52",
+  "catalog_photo_id": "230066559",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "df06a93739a032b4c09f419f9a7007b62d7e0348a166ba344c2b59e447b95d24",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

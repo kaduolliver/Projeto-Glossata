@@ -3,11 +3,11 @@
     "scientific_name": "Stropharia caerulea",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa azul.",
+        "text": "A cor azul está na origem linguística deste epíteto. O significado de um nome não garante que todos os exemplares conservem a mesma cor.",
         "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: stropharia caerulea",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -23,14 +23,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero vem de uma palavra grega relacionada a um cinto, em referência ao anel no pé.",
+        "text": "A imagem de um cinto participa da formação deste nome: é uma comparação com o anel que pode aparecer ao redor do pé do cogumelo.",
         "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: stropharia caerulea",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -46,7 +47,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -106,11 +108,11 @@
     "scientific_name": "Clathrus ruber",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa vermelho.",
+        "text": "Este epíteto emprega uma palavra latina para a cor vermelha. A pista está no vocabulário da cor, não em uma classificação de parentesco.",
         "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: clathrus ruber",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -126,14 +128,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero significa gaiola.",
+        "text": "Pense em uma gaiola: essa é a comparação que deu origem ao nome deste gênero.",
         "source_url": "https://www.first-nature.com/fungi/clathrus-ruber.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: clathrus ruber",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -149,7 +152,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -212,11 +216,11 @@
     "scientific_name": "Trametes versicolor",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa de várias cores.",
+        "text": "O nome específico sugere diversidade de cores. É uma pista sobre o significado da palavra, e não sobre quantas cores cada exemplar precisa apresentar.",
         "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: trametes versicolor",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -233,14 +237,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "versicolor"
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero faz referência a estruturas finas.",
+        "text": "A ideia de pouca espessura está associada ao nome do gênero. A referência trata de forma, não de uma medida fixa para todos os exemplares.",
         "source_url": "https://www.first-nature.com/fungi/trametes-versicolor.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: trametes versicolor",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -256,7 +261,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -319,11 +325,11 @@
     "scientific_name": "Amanita muscaria",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico deriva de uma palavra latina que significa mosca.",
+        "text": "Uma palavra latina para mosca participa da origem deste epíteto. O nome guarda uma associação histórica; não informa, por si só, o papel dos insetos na vida do fungo.",
         "source_url": "https://www.first-nature.com/fungi/amanita-muscaria.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: amanita muscaria",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -339,7 +345,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -398,11 +405,11 @@
     "scientific_name": "Coprinus comatus",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa cabeludo, em referência às escamas do chapéu.",
+        "text": "O significado evoca cabelos. No cogumelo, a comparação é com o revestimento escamoso do chapéu, e não com pelos de um animal.",
         "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: coprinus comatus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -418,14 +425,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero significa viver sobre esterco; é uma origem linguística e não define a dieta desta espécie.",
+        "text": "A palavra que originou o nome remete a esterco. Não conclua a alimentação de uma espécie apenas a partir dessa origem do nome do gênero.",
         "source_url": "https://www.first-nature.com/fungi/coprinus-comatus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: coprinus comatus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -441,7 +449,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -504,11 +513,11 @@
     "scientific_name": "Phallus impudicus",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa sem pudor ou imodesto.",
+        "text": "Uma ideia de falta de pudor está expressa neste epíteto latino. Trata-se de uma escolha de nome, não de um comportamento do organismo.",
         "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: phallus impudicus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -525,14 +534,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "impudicus"
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero se refere à aparência fálica de suas estruturas reprodutivas.",
+        "text": "O nome usa uma comparação com a anatomia humana: a forma fálica de uma estrutura reprodutiva visível do fungo.",
         "source_url": "https://www.first-nature.com/fungi/phallus-impudicus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: phallus impudicus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -549,7 +559,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Phallus"
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -609,11 +620,11 @@
     "scientific_name": "Geastrum triplex",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa de três camadas.",
+        "text": "O número três aparece no sentido deste epíteto, associado a camadas.",
         "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: geastrum triplex",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -630,14 +641,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "triplex"
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero combina os sentidos de terra e estrela.",
+        "text": "Duas ideias se unem neste nome: o chão e uma estrela. A combinação descreve uma semelhança de forma.",
         "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: geastrum triplex",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -654,7 +666,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Geastrum"
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -717,11 +730,11 @@
     "scientific_name": "Hericium erinaceus",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa semelhante a um ouriço.",
+        "text": "O epíteto estabelece uma comparação com um ouriço. A semelhança evocada é visual; não indica parentesco com esse animal.",
         "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: hericium erinaceus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -737,14 +750,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       },
       "genus": {
-        "text": "O nome do gênero faz referência a um ouriço, por causa das estruturas semelhantes a espinhos.",
+        "text": "A referência linguística é um ouriço. As estruturas pendentes do fungo motivam essa comparação com espinhos.",
         "source_url": "https://www.first-nature.com/fungi/hericium-erinaceus.php",
-        "source_title": "First Nature · etimologia documentada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: hericium erinaceus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -760,7 +774,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -823,11 +838,11 @@
     "scientific_name": "Sphingomonas phyllosphaerae",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico se refere à região da superfície das folhas.",
+        "text": "O nome específico aponta para o ambiente da superfície de folhas. Essa pista linguística não delimita todos os lugares onde a bactéria pode ocorrer.",
         "source_url": "https://lpsn.dsmz.de/species/sphingomonas-phyllosphaerae",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -843,7 +858,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -851,7 +867,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -903,11 +919,11 @@
     "scientific_name": "Serratia marcescens",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico tem o sentido de enfraquecer ou desaparecer gradualmente.",
+        "text": "Este epíteto evoca um processo gradual de enfraquecimento ou desaparecimento. O sentido histórico do nome não descreve obrigatoriamente cada cultura atual.",
         "source_url": "https://lpsn.dsmz.de/species/serratia-marcescens",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -923,7 +939,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -931,7 +948,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -983,11 +1000,11 @@
     "scientific_name": "Thiohalocapsa halophila",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa que gosta de sal.",
+        "text": "A afinidade com sal está expressa no epíteto. O nome não fornece uma concentração de sal adequada para cultivo.",
         "source_url": "https://lpsn.dsmz.de/species/thiohalocapsa-halophila",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1004,7 +1021,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "halophila"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1012,7 +1030,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1064,11 +1082,11 @@
     "scientific_name": "Beggiatoa alba",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa branca.",
+        "text": "O branco é a cor evocada pelo epíteto latino. Use o significado como pista de linguagem, não como confirmação microscópica da identidade.",
         "source_url": "https://lpsn.dsmz.de/species/beggiatoa-alba",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1085,7 +1103,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "alba"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1093,7 +1112,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1145,11 +1164,11 @@
     "scientific_name": "Leptothrix discophora",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa que carrega discos.",
+        "text": "O nome específico combina a ideia de carregar algo com a de discos. A pista está nessa combinação de sentidos.",
         "source_url": "https://lpsn.dsmz.de/species/leptothrix-discophora",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1166,7 +1185,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "discophora"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1174,7 +1194,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1226,11 +1246,11 @@
     "scientific_name": "Chlamydophila pecorum",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico se refere a rebanhos de ovelhas ou de gado.",
+        "text": "O epíteto remete ao gado ou a rebanhos. Um nome relacionado a hospedeiros não é uma lista completa dos animais que podem abrigar o organismo.",
         "source_url": "https://lpsn.dsmz.de/species/chlamydia-pecorum",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1246,7 +1266,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1254,7 +1275,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1306,11 +1327,11 @@
     "scientific_name": "Aeromonas caviae",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico se refere a um porquinho-da-índia.",
+        "text": "Um pequeno mamífero, o porquinho-da-índia, está referido no epíteto. A relação é com a origem do nome; ela não define sozinha a ecologia da bactéria.",
         "source_url": "https://lpsn.dsmz.de/species/aeromonas-caviae",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -1326,7 +1347,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1334,7 +1356,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1386,11 +1408,11 @@
     "scientific_name": "Pseudomonas fluorescens",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa que apresenta fluorescência.",
+        "text": "A emissão de luz por fluorescência está evocada no epíteto. O significado da palavra não substitui um exame de identificação.",
         "source_url": "https://lpsn.dsmz.de/species/pseudomonas-fluorescens",
         "source_title": "LPSN · DSMZ · etimologia nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1407,7 +1429,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "fluorescens"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -1415,7 +1438,7 @@
     ],
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -1467,11 +1490,11 @@
     "scientific_name": "Rhinoceros unicornis",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico se refere a um único chifre.",
-        "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
-        "source_title": "International Rhino Foundation · manual científico",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "Quantidade e estrutura se combinam neste nome específico: um chifre. A pista ajuda a interpretar a palavra científica.",
+        "source_url": "https://rhinos.org/about-rhinos/rhino-species/greater-one-horned-rhino/",
+        "source_title": "International Rhino Foundation — Greater One-Horned Rhino",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1488,14 +1511,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "unicornis"
-        }
+        },
+        "locator": "Scientific Name and Origin"
       },
       "genus": {
-        "text": "O nome do gênero reúne os sentidos gregos de nariz e chifre.",
-        "source_url": "https://rhinos.org/wp-content/uploads/2020/10/rhino-husbandry-manual.compressed.pdf",
-        "source_title": "International Rhino Foundation · manual científico",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "No nome do gênero, duas raízes gregas relacionam uma região da face com um chifre: o nariz e a estrutura que se projeta sobre ele.",
+        "source_url": "https://rhinos.org/about-rhinos/rhino-species/greater-one-horned-rhino/",
+        "source_title": "International Rhino Foundation — Greater One-Horned Rhino",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1512,7 +1536,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Rhinoceros"
-        }
+        },
+        "locator": "Scientific Name and Origin"
       }
     },
     "name_origin": [
@@ -1572,11 +1597,11 @@
     "scientific_name": "Ginkgo biloba",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa dois lobos, em referência às folhas.",
+        "text": "A divisão em dois lobos está expressa neste epíteto. A alusão é ao formato foliar, sem exigir que todas as folhas tenham recortes idênticos.",
         "source_url": "https://plants.ces.ncsu.edu/plants/ginkgo-biloba/",
-        "source_title": "NCSU · Plant Toolbox",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NC State Extension — Ginkgo biloba",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -1593,7 +1618,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "biloba"
-        }
+        },
+        "locator": "Description / name explanation"
       }
     },
     "name_origin": [
@@ -1655,11 +1681,11 @@
     "scientific_name": "Verbascum thapsus",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico homenageia uma antiga localidade da atual Tunísia.",
+        "text": "O nome específico remete a uma localidade antiga situada na atual Tunísia. Um nome geográfico não demonstra que a espécie só exista naquele lugar.",
         "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
-        "source_title": "NCSU · Plant Toolbox",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NC State Extension — Verbascum thapsus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -1675,14 +1701,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Description / name explanation"
       },
       "genus": {
-        "text": "O nome do gênero está ligado ao sentido de barbado, em referência a estruturas com pelos.",
+        "text": "A ideia de barba participa da interpretação deste nome. A referência citada relaciona a comparação aos pelos dos estames, estruturas da flor.",
         "source_url": "https://plants.ces.ncsu.edu/plants/verbascum-thapsus/",
-        "source_title": "NCSU · Plant Toolbox",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NC State Extension — Verbascum thapsus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1698,7 +1725,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Description / name explanation"
       }
     },
     "name_origin": [
@@ -1758,11 +1786,11 @@
     "scientific_name": "Mimetes chrysanthus",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico combina os sentidos de dourado e flor.",
+        "text": "Uma cor e uma estrutura vegetal se encontram neste epíteto: dourado e flor.",
         "source_url": "https://pza.sanbi.org/mimetes-chrysanthus",
-        "source_title": "SANBI · PlantZAfrica",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "SANBI PlantZAfrica — Mimetes chrysanthus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1778,7 +1806,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Derivation of name and historical aspects"
       }
     },
     "name_origin": [
@@ -1837,11 +1866,11 @@
     "scientific_name": "Pleurophyllum speciosum",
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina os sentidos de nervura e folha.",
+        "text": "O nome reúne uma referência à folha e outra às suas nervuras. A pista está na organização visual da folha.",
         "source_url": "https://www.nzpcn.org.nz/flora/species/pleurophyllum-speciosum/",
-        "source_title": "NZPCN · etimologia botânica",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NZPCN — Pleurophyllum speciosum",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1857,7 +1886,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -1916,11 +1946,11 @@
     "scientific_name": "Alaria esculenta",
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa comestível; a origem linguística não é uma recomendação de consumo.",
+        "text": "A palavra latina usada no epíteto expressa a ideia de ser comestível. Nomes científicos não são orientação de consumo nem identificação de segurança alimentar.",
         "source_url": "https://www.marlin.ac.uk/species/detail/1291",
-        "source_title": "MarLIN · Marine Biological Association",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "MarLIN — Alaria esculenta",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1936,14 +1966,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Additional information"
       },
       "genus": {
-        "text": "O nome do gênero se refere a asas.",
+        "text": "O sentido de asas participa deste nome de gênero. É uma comparação de forma, não a indicação de capacidade de voar.",
         "source_url": "https://www.marlin.ac.uk/species/detail/1291",
-        "source_title": "MarLIN · Marine Biological Association",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "MarLIN — Alaria esculenta",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -1959,7 +1990,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Additional information"
       }
     },
     "name_origin": [
@@ -2763,11 +2795,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico remete à musa da tragédia na mitologia grega.",
+        "text": "A escolha do epíteto remete à musa grega ligada à tragédia. O nome registra uma referência cultural, não uma característica física da borboleta.",
         "source_url": "https://www.heliconius.org/species/heliconius-melpomene/",
-        "source_title": "Heliconius research community · etimologia e descrição original",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "Heliconius community — Heliconius melpomene",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -2783,7 +2815,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Name; Identification and geography"
       }
     },
     "name_origin": [
@@ -3407,11 +3440,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero deriva de um termo latino para fantasmas ou espectros.",
+        "text": "Fantasmas ou espectros são o sentido de um termo latino ligado ao nome do gênero. Essa origem não é uma classificação biológica.",
         "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
-        "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "San Diego Zoo Wildlife Alliance Library — Ring-tailed lemur taxonomy",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -3427,14 +3460,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       },
       "species": {
-        "text": "O epíteto tem origem no latim científico e se refere a um gato.",
+        "text": "O gato aparece no sentido do epíteto em latim científico. Essa comparação linguística não torna o primata um felino.",
         "source_url": "https://ielc.libguides.com/sdzg/factsheets/ringtailedlemur/taxonomy",
-        "source_title": "San Diego Zoo Wildlife Alliance · Gotch (1995)",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "San Diego Zoo Wildlife Alliance Library — Ring-tailed lemur taxonomy",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -3450,7 +3484,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -4685,11 +4720,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O gênero recebeu um nome de origem grega com o sentido de dragão fêmea.",
-        "source_url": "https://plants.ces.ncsu.edu/plants/dracaena/",
-        "source_title": "North Carolina State University · Plant Toolbox",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "A figura de uma fêmea de dragão está na raiz grega do nome. Trata-se de uma imagem cultural incorporada à nomenclatura botânica.",
+        "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+        "source_title": "Al-Okaishi (2021) — Exploring the historical distribution of Dracaena cinnabari",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -4705,14 +4740,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Socotra and dragon’s blood; NC State Dracaena / genus name; Rights and permissions"
       },
       "species": {
-        "text": "O epíteto está relacionado ao nome grego de um mineral vermelho, associado à cor da resina.",
+        "text": "No contexto histórico citado, a resina era chamada de cinábrio, nome também usado para um mineral vermelho. A referência descreve um uso da palavra, não uma análise química da resina.",
         "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
-        "source_title": "J. Ethnobiology and Ethnomedicine · estudo etnobotânico",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "Al-Okaishi (2021) — Exploring the historical distribution of Dracaena cinnabari",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -4728,7 +4764,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Socotra and dragon’s blood; NC State Dracaena / genus name; Rights and permissions"
       }
     },
     "name_origin": [
@@ -4788,11 +4825,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto significa pequena ratoeira em latim, em alusão ao fechamento das folhas.",
+        "text": "A imagem de uma pequena ratoeira está expressa no epíteto latino. A comparação é com uma armadilha, sem indicar que a planta dependa de capturar ratos.",
         "source_url": "https://plants.ces.ncsu.edu/plants/dionaea-muscipula/",
-        "source_title": "North Carolina State University · Plant Toolbox",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NC State Extension — Dionaea muscipula",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -4808,7 +4845,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Description / name explanation"
       }
     },
     "name_origin": [
@@ -4920,11 +4958,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O gênero combina uma referência latina a favos de mel e uma homenagem histórica ao botânico Wilhelm Gottfried Lasch.",
+        "text": "O nome associa a imagem de favos a uma homenagem ao botânico Wilhelm Gottfried Lasch. Assim, uma mesma palavra pode combinar descrição e memória de uma pessoa.",
         "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
-        "source_title": "Pat O’Reilly · nomenclatura dos fungos",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: favolaschia claudopus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -4941,7 +4979,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Favolaschia"
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5058,11 +5097,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de superfície brilhante.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "O brilho de uma superfície participa do significado deste nome. A origem do gênero não obriga todas as suas espécies a terem a mesma aparência.",
+        "source_url": "https://www.first-nature.com/fungi/ganoderma-lucidum.php",
+        "source_title": "First Nature — nomenclatural explanation: ganoderma lucidum",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5078,7 +5117,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5137,11 +5177,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de murcho.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "A ideia de murchar está ligada ao nome do gênero. A pista é linguística e não permite avaliar o estado de um exemplar na fotografia.",
+        "source_url": "https://www.first-nature.com/fungi/marasmius-rotula.php",
+        "source_title": "First Nature — nomenclatural explanation: marasmius rotula",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5157,7 +5197,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5216,11 +5257,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico significa comestível em latim. Esse significado histórico não determina a segurança de consumo.",
+        "text": "O epíteto usa o sentido latino de comestível. Uma tradução do nome não estabelece que um exemplar esteja corretamente identificado ou seja seguro para consumo.",
         "source_url": "https://www.first-nature.com/fungi/morchella-esculenta.php",
-        "source_title": "First Nature · nomenclatura dos cogumelos",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: morchella esculenta",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5236,7 +5277,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5295,11 +5337,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de cortina.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "Uma cortina é a imagem evocada pelo nome do gênero. A nomenclatura pode recorrer a objetos cotidianos para descrever estruturas de organismos.",
+        "source_url": "https://www.first-nature.com/fungi/cortinarius-violaceus.php",
+        "source_title": "First Nature — nomenclatural explanation: cortinarius violaceus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5315,7 +5357,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5374,11 +5417,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de madeira.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "A madeira está no sentido da palavra que originou este nome. O nome do gênero não determina, sozinho, o substrato de cada espécie.",
+        "source_url": "https://www.first-nature.com/fungi/xylaria-hypoxylon.php",
+        "source_title": "First Nature — nomenclatural explanation: xylaria hypoxylon",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5394,7 +5437,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5453,11 +5497,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto registra uma propriedade de conter sangramentos atribuída historicamente ao fungo; não é uma recomendação de uso.",
+        "text": "A ideia de estancar sangramento está associada ao epíteto. Ela documenta uma atribuição histórica; não comprova eficácia medicinal nem recomenda uso.",
         "source_url": "https://www.first-nature.com/fungi/panellus-stipticus.php",
-        "source_title": "First Nature · etimologia histórica",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: panellus stipticus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -5473,7 +5517,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5557,11 +5602,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de borda enrolada para dentro.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "Uma margem voltada para dentro está na formação deste nome. A imagem linguística se refere à forma de uma borda.",
+        "source_url": "https://www.first-nature.com/fungi/entoloma-sinuatum.php",
+        "source_title": "First Nature — nomenclatural explanation: entoloma sinuatum",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -5577,7 +5622,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -5635,11 +5681,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto surgiu da interpretação histórica de que este fungo parasitava corpos de frutificação de outro fungo.",
+        "text": "O epíteto conserva uma interpretação histórica de parasitismo sobre outro fungo. A existência desse nome não resolve a discussão científica sobre a nutrição do organismo.",
         "source_url": "https://www.first-nature.com/fungi/pseudoboletus-parasiticus.php",
-        "source_title": "First Nature · etimologia histórica",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "First Nature — nomenclatural explanation: pseudoboletus parasiticus",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -5656,7 +5702,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "parasiticus"
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -6348,11 +6395,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto específico faz referência à região antártica.",
+        "text": "A região antártica é a referência geográfica deste epíteto. O significado não deve ser tomado como um mapa completo de distribuição.",
         "source_url": "https://www.nzpcn.org.nz/flora/species/durvillaea-antarctica/",
-        "source_title": "New Zealand Plant Conservation Network · etimologia",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "source_title": "NZPCN — Durvillaea antarctica",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -6369,7 +6416,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "antarctica"
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -6453,7 +6501,7 @@
     "scientific_name": "Dolichospermum lemmermannii",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6480,11 +6528,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero foi formado com o sentido de organismo com sementes longas; trata-se da terminologia histórica do nome.",
+        "text": "A formação histórica do nome reúne ideias de comprimento e de sementes. Esse vocabulário antigo não significa que a cianobactéria produza sementes como uma planta.",
         "source_url": "https://lpsn.dsmz.de/genus/dolichospermum",
         "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -6500,7 +6548,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6533,7 +6582,7 @@
     "scientific_name": "Merismopedia convoluta",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6560,11 +6609,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+        "text": "Divisão e superfície plana são ideias combinadas neste nome. Elas oferecem uma pista linguística para a organização evocada pelo gênero.",
         "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
         "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -6580,7 +6629,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6613,7 +6663,7 @@
     "scientific_name": "Arthrospira jenneri",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6640,11 +6690,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de espiral articulada.",
+        "text": "A palavra combina articulação e espiral. É uma descrição evocada pelo nome, sem fornecer medidas ou confirmar a identificação de uma amostra.",
         "source_url": "https://lpsn.dsmz.de/genus/arthrospira",
         "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -6661,14 +6711,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Arthrospira"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       },
       "species": {
-        "text": "O epíteto homenageia Edward Jenner, médico e cientista inglês.",
+        "text": "Este epíteto é uma homenagem a Edward Jenner. O nome de uma pessoa pode fazer parte da nomenclatura sem descrever a aparência do organismo.",
         "source_url": "https://lpsn.dsmz.de/species/arthrospira-jenneri",
         "source_title": "DSMZ · LPSN, entrada nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -6685,7 +6736,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "jenneri"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6719,7 +6771,7 @@
     "scientific_name": "Gomphosphaeria aponina",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6746,11 +6798,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto remete ao nome de uma antiga divindade associada a fontes termais na região dos montes Eugâneos.",
+        "text": "Uma divindade antiga associada a águas termais dos montes Eugâneos é lembrada neste epíteto. A origem cultural do nome não define a tolerância térmica da espécie.",
         "source_url": "https://lpsn.dsmz.de/species/gomphosphaeria-aponina",
         "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "light",
           "ranks": [
@@ -6766,7 +6818,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6806,7 +6859,7 @@
     "scientific_name": "Anabaena torulosa",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6833,11 +6886,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero deriva de um verbo grego relacionado a subir ou flutuar.",
+        "text": "Uma ideia de subir ou flutuar está ligada ao verbo grego que originou o nome. Essa pista histórica não basta para concluir o comportamento de uma amostra.",
         "source_url": "https://lpsn.dsmz.de/genus/anabaena",
         "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -6853,7 +6906,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6886,7 +6940,7 @@
     "scientific_name": "Phytoplasma asteris",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6913,11 +6967,11 @@
     },
     "etymology_hints": {
       "species": {
-        "text": "O epíteto está ligado ao nome do primeiro hospedeiro conhecido, associado a um termo grego para estrela.",
+        "text": "O epíteto remete ao nome de um hospedeiro e, por essa via, ao sentido grego de estrela. A referência não demonstra uma lista exclusiva de hospedeiros.",
         "source_url": "https://lpsn.dsmz.de/species/phytoplasma-asteris",
         "source_title": "DSMZ · LPSN, nome Candidatus registrado",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -6933,7 +6987,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -6966,7 +7021,7 @@
     "scientific_name": "Gloeotrichia intermedia",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -6993,11 +7048,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de fio ou pelo pegajoso.",
-        "source_url": "https://lpsn.dsmz.de/genus/gloeotrichia",
-        "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "O nome combina a imagem de fios ou pelos com uma característica pegajosa. Não se trata de pelos de um animal.",
+        "source_url": "https://www.lpsn.dsmz.de/species/gloeotrichia-intermedia",
+        "source_title": "LPSN — Gloeotrichia intermedia, record 38559",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -7013,14 +7068,15 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology; persistent identifier https://doi.org/10.83108/rn.38559"
       },
       "species": {
-        "text": "O epíteto específico significa intermediária em latim.",
-        "source_url": "https://lpsn.dsmz.de/species/gloeotrichia-intermedia",
-        "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "O sentido latino de posição intermediária está expresso no epíteto. A palavra, sozinha, não diz entre quais organismos se deve comparar uma amostra.",
+        "source_url": "https://www.lpsn.dsmz.de/species/gloeotrichia-intermedia",
+        "source_title": "LPSN — Gloeotrichia intermedia, record 38559",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -7037,7 +7093,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "intermedia"
-        }
+        },
+        "locator": "Etymology; persistent identifier https://doi.org/10.83108/rn.38559"
       }
     },
     "name_origin": [
@@ -7071,7 +7128,7 @@
     "scientific_name": "Johanseninema constrictum",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -7098,11 +7155,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "Um elemento do nome do gênero é uma palavra grega com o significado de fio.",
+        "text": "Uma parte do nome tem origem em uma palavra grega para fio. A pista se refere a esse componente, sem explicar todos os elementos do nome.",
         "source_url": "https://lpsn.dsmz.de/genus/johanseninema",
         "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -7118,7 +7175,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -7151,7 +7209,7 @@
     "scientific_name": "Hassallia byssoidea",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -7178,11 +7236,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero homenageia Arthur Hill Hassall, médico e estudioso de organismos microscópicos.",
+        "text": "Arthur Hill Hassall é a pessoa homenageada neste nome de gênero. Uma homenagem registra história da nomenclatura, não um caráter de identificação visual.",
         "source_url": "https://lpsn.dsmz.de/genus/hassallia",
         "source_title": "DSMZ · LPSN, etimologia registrada",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -7199,7 +7257,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Hassallia"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -7232,7 +7291,7 @@
     "scientific_name": "Achromatium oxaliferum",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -7259,11 +7318,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de aquilo que não é colorido.",
+        "text": "A ausência de cor é a ideia evocada pela combinação que forma o nome. Não deduza, só por isso, as condições de iluminação de uma micrografia.",
         "source_url": "https://lpsn.dsmz.de/genus/achromatium",
         "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -7280,14 +7339,15 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "Achromatium"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       },
       "species": {
-        "text": "O epíteto foi criado com o sentido de portador de oxalato; essa origem histórica não confirma a composição das inclusões celulares.",
+        "text": "O nome foi construído com a ideia de carregar oxalato. É uma interpretação histórica e não uma análise química das inclusões da célula.",
         "source_url": "https://lpsn.dsmz.de/species/achromatium-oxaliferum",
         "source_title": "DSMZ · LPSN, entrada nomenclatural",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "strong",
           "ranks": [
@@ -7304,7 +7364,8 @@
             "distractors_not_semantically_reviewed"
           ],
           "association_token": "oxaliferum"
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -7338,7 +7399,7 @@
     "scientific_name": "Chroococcus turgidus",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -7365,11 +7426,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de célula arredondada colorida.",
+        "text": "Cor e forma arredondada participam da construção deste nome. A tradução não substitui a análise microscópica das células.",
         "source_url": "https://lpsn.dsmz.de/genus/chroococcus",
         "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -7385,7 +7446,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [
@@ -7444,11 +7506,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero está relacionado ao sentido de cabeça lisa ou sem revestimento.",
-        "source_url": "https://www.first-nature.com/fungi/~naming.php",
-        "source_title": "Pat O’Reilly · Fascinated by Fungi, apêndice de nomenclatura",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "text": "A imagem de uma cabeça sem revestimento está ligada ao nome do gênero. É uma comparação usada na nomenclatura dos fungos.",
+        "source_url": "https://www.first-nature.com/fungi/psilocybe-cyanescens.php",
+        "source_title": "First Nature — nomenclatural explanation: psilocybe cyanescens",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -7464,7 +7526,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology"
       }
     },
     "name_origin": [
@@ -7497,7 +7560,7 @@
     "scientific_name": "Merismopedia tranquilla",
     "morphological_hint": {
       "reference": "morphology",
-      "prefix": "Informação complementar (a imagem é de apoio): ",
+      "prefix": "Contexto descritivo; a imagem de apoio não comprova a identificação: ",
       "ranks": [
         "species",
         "genus"
@@ -7524,11 +7587,11 @@
     },
     "etymology_hints": {
       "genus": {
-        "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+        "text": "Divisão e superfície plana são ideias combinadas neste nome. Elas oferecem uma pista linguística para a organização evocada pelo gênero.",
         "source_url": "https://lpsn.dsmz.de/genus/merismopedia",
         "source_title": "DSMZ · List of Prokaryotic names with Standing in Nomenclature",
-        "verified": true,
-        "reviewed_on": "2026-10-14",
+        "verified": false,
+        "reviewed_on": null,
         "assistance": {
           "grade": "moderate",
           "ranks": [
@@ -7544,7 +7607,8 @@
             "human_review_pending",
             "distractors_not_semantically_reviewed"
           ]
-        }
+        },
+        "locator": "Etymology / the specific nomenclatural record; source terms: https://lpsn.dsmz.de/text/copyright"
       }
     },
     "name_origin": [

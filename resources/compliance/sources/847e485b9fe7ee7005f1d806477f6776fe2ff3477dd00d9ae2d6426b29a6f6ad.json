@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Plains-zebra range eastern/southern Africa, grassy/wooded habitats, grazing, short mane, striped equid. No mountain/Grevy zebra-only range transferred to Equus quagga.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animals.sandiegozoo.org/animals/zebra",
+      "consulted_at": "2026-10-18T23:34:19.065912+00:00",
+      "response_sha256": "69ac6c32264cee3c1a68e63bb118d1837f8692a4d0165a7691be553dac86ca5c"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/curiosity/text",
+      "text_sha256": "966e0b5938e6477b46d09c0b93bbcce9f190aa85c14c3ef60df563aa96bff795"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/distribution/text",
+      "text_sha256": "19b1efb4efa913bc07e8fc4076852e11267fac55232fc29c488fd3cadcd7bd09"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/hint/text",
+      "text_sha256": "a6519c607cf1ff30ab7f798cf896c42866aa7fd61bee5935d02a47d589749db7"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/morphology/text",
+      "text_sha256": "d2010a9cf51dc2963b2731cc34cba8606ed76cbe79dac4bff815f9ce96b9522b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/nutrition/text",
+      "text_sha256": "c64b12347df7926428bda666930b34d638cabcd23ce7777a8f290436881040a2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/132/summary/text",
+      "text_sha256": "99af2a6004d311dcdc1bcca4bb4fc8d211035e61033c08a9cb2dd60fd55090a7"
+    }
+  ]
+}

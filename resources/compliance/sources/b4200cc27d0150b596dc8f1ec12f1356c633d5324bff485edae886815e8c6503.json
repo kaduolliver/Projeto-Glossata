@@ -1,0 +1,45 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "SE Kazakhstan natural range; folded/grooved leaf and pale pinkish flower directly inspected. Removed the unsubstantiated universal rocky-ground qualifier from distribution; photo interpretation is limited to the pictured specimen.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording.",
+    "POWO displays dataset-specific terms, including WCVP CC BY 3.0 and different terms for descriptions/images. No site-wide permission or third-party media grant inferred."
+  ],
+  "sources": [
+    {
+      "source_url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:543057-1",
+      "consulted_at": "2026-10-19T00:03:44.660132+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/curiosity/text",
+      "text_sha256": "8093edce66dc2524ee5a62ce4afb05b4df456e227e965a6c4358140600c84c9c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/distribution/text",
+      "text_sha256": "6bcf9040354f293415a16991e1217ff722b8c19c6bc2a8096f83851a6f8e0200"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/hint/text",
+      "text_sha256": "932e72b119ca39ef97c52ad678783b76d88f50bb7be817e47d8f4f951391f237"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/morphology/text",
+      "text_sha256": "19fd6245e97195ba63f99e562a4e085a415be13784e0771cb026558ab9c48dfd"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/50/summary/text",
+      "text_sha256": "5d57102a1144f623fc6f3bb83712a2887fc61b86b3e9c558a9edb8a57dc86105"
+    }
+  ]
+}

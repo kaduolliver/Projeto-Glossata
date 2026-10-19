@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.140759+00:00",
+  "source_url": "https://www.inaturalist.org/observations/67163775",
+  "species_id": "62",
+  "photo_id": "108445674",
+  "photo_sha256": "79afa1078799f6b2c46a34b0b52324583aeb561d338da15ae71138e3936528ac",
+  "comparison": "Many small leaves along reddish shoots, small floral structures. Family and Brazilian occurrence checked in the archived record.",
+  "archived_taxon": {
+    "id": 936461,
+    "name": "Euphorbia duckei",
+    "rank": "species"
+  },
+  "observation_id": 67163775,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "02e3b65e8d93efed492009398bf7247d42ff785478dd3a53de5e33a8ac1930c9"
+}

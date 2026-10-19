@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit waved/rolled colonies, perpendicular rows of cells; freshwater benthic/tychoplanktonic observations. Replaced the over-specific nutrient-rich habitat statement with the variable freshwater habitat actually described. No image/caption/prose reproduction and no adoption of the new phylogenetic classification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13280775/",
+      "consulted_at": "2026-10-18T23:59:24.413465+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/curiosity/text",
+      "text_sha256": "6d4b1fa6cdf4fdd9bc1c2b4a4a692c720dfce38faf598703d3b64bafeeccd49e"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/distribution/text",
+      "text_sha256": "0249c46dda9cf9064abc4283a20a2b9e23caf3fe58dc54dc60974042ef0e406c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/hint/text",
+      "text_sha256": "bfd2aa93bd58305d485f0dde0186f3e15e26d66ed62e376073e2d6d3fb88adee"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/morphology/text",
+      "text_sha256": "12831f2e0326ee11858148b5d077c1eb8b69f6d801032f1b79b73817c50a8250"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/nutrition/text",
+      "text_sha256": "0b0e591a1b64fc5794950b438f341452a5b452d096aca3705f378f06ce4e6a04"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/107/summary/text",
+      "text_sha256": "8521f1bed17fe2b7075129d70064981a0bedf04a652f0df2025738e6733829a4"
+    }
+  ]
+}

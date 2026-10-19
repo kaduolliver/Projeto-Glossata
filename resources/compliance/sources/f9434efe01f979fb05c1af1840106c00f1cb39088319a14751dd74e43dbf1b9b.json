@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Favus/honeycomb plus Laschia/Lasch; no adoption of the uncertain claudopus etymology on the page.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/favolaschia-claudopus.php",
+      "consulted_at": "2026-10-18T23:35:24.590334+00:00",
+      "response_sha256": "38d26391c9978270e88aff55b5a18200623629a268ef2d3e6bf2adc4cc38f492"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/64/etymology_hints/genus/text",
+      "text_sha256": "c1424a7ab79c8930b715d8beb9ab372c08961b8ff3fdedb146b6cd269ca50f9b"
+    }
+  ]
+}

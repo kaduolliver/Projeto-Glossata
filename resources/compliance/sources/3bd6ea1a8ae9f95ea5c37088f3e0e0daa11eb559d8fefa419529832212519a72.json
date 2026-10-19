@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Mexico–Argentina, plant sap, elaborated pronotum resembling an ant. Description of resemblance does not establish an experimentally demonstrated defensive mechanism.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.amnh.org/explore/ology/ology-cards/367-cyphonia-clavata",
+      "consulted_at": "2026-10-19T00:13:23.909643+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/curiosity/text",
+      "text_sha256": "025836fc8d5d6dbaf2d1cad8e0944a219c131020908022e6b11632f65c850f16"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/distribution/text",
+      "text_sha256": "148fed4109f69c330daea456b5b81335b531ad126b279afa6bcdda1f1fafc922"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/hint/text",
+      "text_sha256": "09e720d9028df6965b87572c9d00f3a33729f0052e328157bb3faf7dfe318065"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/morphology/text",
+      "text_sha256": "219b02026baeaf30752785e106c193e90a2aec8689206e9d050f19d897e039d0"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/nutrition/text",
+      "text_sha256": "80541b944074de093288647aebb21c570fd6f8d68c4e1f2e9aff9e1092976ec4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/38/summary/text",
+      "text_sha256": "7fb0c29bfa536fcf6719b8a4219012edae83e2e8b32072eab73a16d7ad50cfde"
+    }
+  ]
+}

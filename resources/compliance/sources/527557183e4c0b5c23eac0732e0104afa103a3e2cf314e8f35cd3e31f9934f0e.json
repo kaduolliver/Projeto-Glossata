@@ -1,0 +1,34 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Species wording narrowed to historically documented cinnabar name of the red resin, without asserting the chemical identity or an undocumented naming intention. Genus Dracaena/female dragon separately explicit in NC State.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://plants.ces.ncsu.edu/plants/dracaena/",
+      "consulted_at": "2026-10-18T23:56:22.456641+00:00",
+      "locator": "Description / Greek drakaina; source prose not relicensed"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/58/etymology_hints/genus/text",
+      "text_sha256": "494721ac3fda566d10db3230c56780be96b5bdaf05f3bb0b6c82354afa109f18"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/58/etymology_hints/species/text",
+      "text_sha256": "542cd42be8e14676159641195d02b1598fb3efd40827de6f1b135b1a86859921"
+    }
+  ]
+}

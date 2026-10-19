@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Latin feminine adjective intermedia explicitly means intermediate. The alternative Rivularia combination is recorded by the source; this task does not change the catalog taxonomic backbone.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.lpsn.dsmz.de/species/gloeotrichia-intermedia",
+      "consulted_at": "2026-10-18T23:56:22.456641+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/113/etymology_hints/genus/text",
+      "text_sha256": "ced702ddfe670a254ea4f460b4ce47496588446ca999303725501446ffa4da3e"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/113/etymology_hints/species/text",
+      "text_sha256": "9bc590eb0615b39f143f3ec7306202503c18c9e0390f4354889d2781a0485d15"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Name explicitly linked to Greek Muse of tragedy; variable black/red/yellow wing patterns. No exact fixed pattern imposed on all populations.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.heliconius.org/species/heliconius-melpomene/",
+      "consulted_at": "2026-10-18T23:43:18.259271+00:00",
+      "response_sha256": "7361062d77a202c84795c225d26ebe440882328a16d366c98f4af2e69f6a6540"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/15/etymology_hints/species/text",
+      "text_sha256": "214035b2c8244f0c071b7354836ad6a45313684c71cff3a6a081acfa4c0b9526"
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "kind": "educational_reference_check",
+  "bibliographic_metadata": {
+    "kind": "bibliographic_metadata",
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC6711285&format=json&resultType=core&pageSize=1",
+    "consulted_at": "2026-10-18T23:04:30.110303+00:00",
+    "response_sha256": "e4d9bca788fb09c53af74a3505909581b3509f3dce4140a28f5ef673770ca14a",
+    "pmcid": "PMC6711285",
+    "metadata": {
+      "id": "31438820",
+      "source": "MED",
+      "title": "The evolution of insect metamorphosis: a developmental and endocrine view.",
+      "authorString": "Truman JW, Riddiford LM.",
+      "doi": "10.1098/rstb.2019.0070",
+      "pubYear": "2019",
+      "isOpenAccess": "Y",
+      "license": "cc by",
+      "fullTextUrlList": {
+        "fullTextUrl": [
+          {
+            "availability": "Subscription required",
+            "availabilityCode": "S",
+            "documentStyle": "doi",
+            "site": "DOI",
+            "url": "https://doi.org/10.1098/rstb.2019.0070"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "html",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6711285"
+          },
+          {
+            "availability": "Open access",
+            "availabilityCode": "OA",
+            "documentStyle": "pdf",
+            "site": "Europe_PMC",
+            "url": "https://europepmc.org/articles/PMC6711285?pdf=render"
+          }
+        ]
+      }
+    },
+    "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+  },
+  "license_check": {
+    "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6711285/fullTextXML",
+    "consulted_at": "2026-10-18T23:04:40.554877+00:00",
+    "response_sha256": "929cbe5a9d28b0221d25c2b0561db2e073c0f3b4508b20a2aaf5ee01e1e244ad",
+    "bytes": 155935,
+    "kind": "selected_article_license_metadata",
+    "pmcid": "PMC6711285",
+    "title": "The evolution of insect metamorphosis: a developmental and endocrine view.",
+    "author_credit": "Truman JW, Riddiford LM.",
+    "doi": "10.1098/rstb.2019.0070",
+    "license_url": "http://creativecommons.org/licenses/by/4.0/",
+    "license": "CC-BY-4.0",
+    "locator": "front/article-meta/permissions/license; article DOI",
+    "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+  },
+  "use": "Scientific facts for independent educational drafting; no images or article text redistributed.",
+  "scientific_approval": false
+}

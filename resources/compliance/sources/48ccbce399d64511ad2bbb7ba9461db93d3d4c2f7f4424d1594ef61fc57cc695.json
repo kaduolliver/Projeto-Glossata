@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Animal hosts include ruminants, swine and koalas; intracellular chlamydial biology. Host photo is not a laboratory identification. Name is retained as cataloged, not a silent taxonomy migration.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2820232/",
+      "consulted_at": "2026-10-18T23:56:22.458644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/curiosity/text",
+      "text_sha256": "38e26c7f8c4c1ccc6dbf06ea9890d72c9f4cb6bdecb6f64c37c259b16a4a5eae"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/distribution/text",
+      "text_sha256": "09106c1d8ada4b5c4b807195d4a530efdebe74c7d2d5710a2a26072c854b7102"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/hint/text",
+      "text_sha256": "4fb1a4aa78326a994314f40ae5222542113804a42d307dda2d0addc9f757b346"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/morphology/text",
+      "text_sha256": "3256b28276a33c3ffda8c0a0bb5bbaa65b4f6d987aa318d8bbc13db7639c392a"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/nutrition/text",
+      "text_sha256": "4e2ce4b80987c1d869366ab94bd4a823e28b645d806a9cf23cba2d5486a61e32"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/116/summary/text",
+      "text_sha256": "af4394fcff35293671d50cd3ba1f39aef8d7f4772295d3b798b07b155a91584c"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "North/Central American grass habitats; green/brown forms and hind legs; mainly grasses with occasional forbs. No crop-control instructions incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.uwyo.edu/entomology/grasshoppers/field-guide/chvi.html",
+      "consulted_at": "2026-10-18T23:34:27.806857+00:00",
+      "response_sha256": "be2add1ba75d40deb699bdf0ee2516666fdbf065de95818c94b997b2bde30a03"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/curiosity/text",
+      "text_sha256": "9a60257090ca16e6ff3d8c75dc2c4cb89edb709c238a8efe5c57c11adbc0e521"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/distribution/text",
+      "text_sha256": "b6ba4c16313ede2b50fb5e205ec5451f0a92d0ce4071614416c99c91fb5e70ec"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/hint/text",
+      "text_sha256": "d9fa18a325bb2f1ba410a9ed6c7b45d0c92da60e95ccba4fd41fdf9f9b846f42"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/morphology/text",
+      "text_sha256": "fb976ab77f116e3e2773f141f5db535fb65aa7cd77726d2e5e6a2add7cbd4463"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/nutrition/text",
+      "text_sha256": "fd9af99b4b0874a64a9a52860baca5a96f9d0c35f1b8f4af05124b52526b5279"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/36/summary/text",
+      "text_sha256": "8945097ecedc4d9926cfa06585943527ff65714cd294aa2dc7d24e406e0e443e"
+    }
+  ]
+}

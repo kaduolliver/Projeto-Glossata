@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit Asterella colony with raised archegoniophores, reproductive structures above thallus. Distinguishes raised gametophyte tissue from the small dependent sporophytes; does not call them flowers.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://anbg.gov.au/bryophyte/life-cycle-sporophyte-dev-liverworts.html",
+      "consulted_at": "2026-10-19T00:07:35.276304+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/52/hint/text",
+      "text_sha256": "d63ab35414b448f513e9b872f8f25caa82ee16971feab3766f27fb64172a11a2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/52/morphology/text",
+      "text_sha256": "4b7f4e620a635dc4b981ba0e6a033dec86947343992f605becaad8e5f275fcf7"
+    }
+  ]
+}

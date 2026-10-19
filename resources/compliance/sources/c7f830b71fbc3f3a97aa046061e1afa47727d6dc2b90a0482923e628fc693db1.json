@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Earth/star and three layers.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/geastrum-triplex.php",
+      "consulted_at": "2026-10-18T23:35:19.478733+00:00",
+      "response_sha256": "c2b1107e71027a53fce2d72f2a306dce1186bcfb9a67aa2b2d6d397c4e782e85"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/139/etymology_hints/genus/text",
+      "text_sha256": "1e54a10709fe916e9e9b3401117379efcdecea6322939bd5f6a5d1ff19767a9d"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/139/etymology_hints/species/text",
+      "text_sha256": "21ae9dd28cd410c117672ff89cb20201b5f71e97a9ad48927e7b4a259d057e00"
+    }
+  ]
+}

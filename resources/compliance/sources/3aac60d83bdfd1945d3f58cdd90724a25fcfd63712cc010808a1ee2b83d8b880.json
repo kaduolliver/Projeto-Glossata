@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.131721+00:00",
+  "source_url": "https://www.inaturalist.org/observations/109915205",
+  "species_id": "60",
+  "photo_id": "185341429",
+  "photo_sha256": "6757ea87c07e303966347a2599fc359e12dd0f0bf80618a691a65e2a30efaec7",
+  "comparison": "Erect densely small-leaved shoots. Vascular/spore biology is not inferred merely from a photograph.",
+  "archived_taxon": {
+    "id": 82407,
+    "name": "Huperzia lucidula",
+    "rank": "species"
+  },
+  "observation_id": 109915205,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "038b9c58810252eef9e30f88c6dfa154cec2934f81080407a07ee186577a24ef"
+}

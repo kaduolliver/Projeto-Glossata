@@ -1,0 +1,70 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit cell-wall-less bacterium and insect transmission between plant hosts; photos of plants do not display bacterial morphology. Existing Hogenhout review supports plant/insect host dependence.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5762862/",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640453/",
+      "locator": "Hogenhout et al. (2008), Abstract",
+      "consulted_at": "2026-10-18T23:56:22.457644+00:00",
+      "method": "Europe PMC official bibliographic API abstract examined; not full text"
+    },
+    {
+      "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5762862/fullTextXML",
+      "consulted_at": "2026-10-19T00:08:14.744953+00:00",
+      "response_sha256": "7f8f908a1813b11b3dadf2bdae275e2cc2ad2ff814009bb0819e62edd48189ee",
+      "bytes": 89971,
+      "kind": "selected_article_license_metadata",
+      "pmcid": "PMC5762862",
+      "title": "Aster leafhopper survival and reproduction, and Aster yellows transmission under static and fluctuating temperatures, using ddPCR for phytoplasma quantification.",
+      "author_credit": "Bahar MH, Wist TJ, Bekkaoui DR, Hegedus DD, Olivier CY.",
+      "doi": "10.1038/s41598-017-18437-0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "license": "CC-BY-4.0",
+      "locator": "front/article-meta/permissions/license; article DOI",
+      "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/curiosity/text",
+      "text_sha256": "5bf5e1da3c17634acfe1e5acc118f16458474ab2d80ffe35d80be5d5e7541360"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/distribution/text",
+      "text_sha256": "f9a41ffbd868c6188bbc86394f8f0f093683058d2f604d924d804af9fe03edfa"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/hint/text",
+      "text_sha256": "8f6aa2cdf1ad54351a67a7ef4908b0c8585513be70913c629aa93e3c916ef7b3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/morphology/text",
+      "text_sha256": "cd497b22cabf7ab26c55f64e76e2173f52e3b269bec9536b496664eb03ceefe2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/nutrition/text",
+      "text_sha256": "f7ce99448e1b0930ed5ae98c0391b0ef97d44f9830bd32db8acb179b47f32f5c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/112/summary/text",
+      "text_sha256": "dbcfd178780d53a919b99cb590691fa8185c532e6d3d2e478885e723dc479df5"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 109708228,
+    "taxon": {
+      "id": 1581564,
+      "name": "Heterotrichia versicolor",
+      "rank": "species"
+    },
+    "community_taxon_id": 1581564,
+    "quality_grade": "research",
+    "photo_ids": [
+      "185087187",
+      "185087194",
+      "184949202",
+      "185148614",
+      "185152312",
+      "185152314",
+      "185152317",
+      "185152320",
+      "185152325",
+      "185243278",
+      "185243279",
+      "185243282"
+    ],
+    "archived_response_sha256": "b93100f3eaf963f246a33f4f6aa147b1dc7dd66a91f1b59e913755b06387d0e4",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:47.323612+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/109708228",
+  "catalog_species_id": "95",
+  "catalog_photo_id": "185087187",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "3adf0f0473962928665245ebe30eb252076ca437c880447e6f9f72657f55100f",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

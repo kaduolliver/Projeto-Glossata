@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.251837+00:00",
+  "source_url": "https://www.inaturalist.org/observations/261552464",
+  "species_id": "71",
+  "photo_id": "606817545",
+  "photo_sha256": "954e18d79e26f39dffa7a9fe8fbfca7482469a65a4a265e19cca181c149aabb6",
+  "comparison": "Thin stalk and radially pleated pink/red cap. Substrate shown as plant debris; no nutritional mechanism inferred.",
+  "archived_taxon": {
+    "id": 328225,
+    "name": "Marasmius haematocephalus",
+    "rank": "species"
+  },
+  "observation_id": 261552464,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "181fa81221ae7ea5e8dbe3198a851517200d00cafd57d714601732da4962346a"
+}

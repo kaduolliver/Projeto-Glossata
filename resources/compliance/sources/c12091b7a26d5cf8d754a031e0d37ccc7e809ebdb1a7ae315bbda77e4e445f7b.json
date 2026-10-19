@@ -1,0 +1,31 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 6805086,
+    "taxon": {
+      "id": 259535,
+      "name": "Geminaria canalis",
+      "rank": "species"
+    },
+    "community_taxon_id": 259535,
+    "quality_grade": "research",
+    "photo_ids": [
+      "8658322",
+      "8658323",
+      "8658326"
+    ],
+    "archived_response_sha256": "c70fc666d9b9242f80b8e8592be2902c2d14fce2f9d38d5e3fc32f7197bb2550",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:44.787625+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/6805086",
+  "catalog_species_id": "26",
+  "catalog_photo_id": "8658322",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "3adf0f0473962928665245ebe30eb252076ca437c880447e6f9f72657f55100f",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

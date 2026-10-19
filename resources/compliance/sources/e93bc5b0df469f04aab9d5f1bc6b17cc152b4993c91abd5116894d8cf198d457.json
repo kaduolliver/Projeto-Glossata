@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "General green-plant energy process; removed an unsupported detailed water-entry mechanism from this draft, retaining the documented moist-surface setting.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5264509/",
+      "consulted_at": "2026-10-19T00:07:35.276304+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/nutrition/text",
+      "text_sha256": "6966789cdbabe80378627b76522cdf23aace0b9f976db2634449de6fdb8307b4"
+    }
+  ]
+}

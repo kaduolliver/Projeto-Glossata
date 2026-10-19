@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Smallest extant flightless bird and Inaccessible Island endemism explicit; small dark body/short wing directly inspected in photograph. No colonization-date reconstruction or taxonomic change added.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/30321695/",
+      "consulted_at": "2026-10-19T00:07:35.275286+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/37/curiosity/text",
+      "text_sha256": "92a28c25fa2f6e2eb2b8f5ecf8b761856c3f5d49544c2b68927f5b30eabad68b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/37/distribution/text",
+      "text_sha256": "1d84d4e6692e80edc6b556caa83d4c85d5d27ce18868d7e59b3d6731e4224460"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/37/hint/text",
+      "text_sha256": "9a5548d35992a7ef1b3e68ea31c918ea309aec46022c64f018c24a24d2bc03e1"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/37/morphology/text",
+      "text_sha256": "89c71525f1d93b20a2134e211a8bd3eb04d73ead6a0abf83f47d188b2ee67173"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/37/summary/text",
+      "text_sha256": "d67d045bc0ebb9bcfc105ae5c5af7c1ff6f5787f02e2f3756389e8b6a40c8220"
+    }
+  ]
+}

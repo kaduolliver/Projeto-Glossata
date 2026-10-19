@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:17.947211+00:00",
+  "source_url": "https://www.inaturalist.org/observations/19068005",
+  "species_id": "31",
+  "photo_id": "29250775",
+  "photo_sha256": "5bdc6d7fc1b852e8a8dd61e34da62b7e81fb14beb1822597d8898905e2d5161b",
+  "comparison": "Rounded colored dorsal surface, dark-ringed pale/orange patches. African occurrence is documentary, not inferred from coloration.",
+  "archived_taxon": {
+    "id": 357668,
+    "name": "Sphaerocoris annulus",
+    "rank": "species"
+  },
+  "observation_id": 19068005,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "84edc7ee681fe4319520b87a810c487609ef25c6e9a98a17fa89cf4683a5bf42"
+}

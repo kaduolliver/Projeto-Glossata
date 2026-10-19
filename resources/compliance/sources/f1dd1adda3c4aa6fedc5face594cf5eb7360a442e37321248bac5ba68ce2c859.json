@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.439355+00:00",
+  "source_url": "https://www.inaturalist.org/observations/194721193",
+  "species_id": "89",
+  "photo_id": "342355226",
+  "photo_sha256": "a42736e64b6b2faea2b4c8f909c4b274cb83e41daa7795058d282b3017e54891",
+  "comparison": "Delicate white finger-like branches on dark woody substrate. Ceratiomyxa nutrition requires its own evidence, not the myxogastrid-only feeding study.",
+  "archived_taxon": {
+    "id": 56252,
+    "name": "Ceratiomyxa fruticulosa",
+    "rank": "species"
+  },
+  "observation_id": 194721193,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "8c96e84ea9602fa214a0c8d5eec335bb090319f29354439ab916fae9ef2ec9b8"
+}

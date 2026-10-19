@@ -65,7 +65,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure asas amarelas com desenhos escuros e pontas alongadas nas asas de trás.",
+      "text": "Compare primeiro o fundo amarelo e os desenhos pretos; depois examine as pontas alongadas das asas posteriores.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -81,7 +81,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "d3c8858acc527df8051244b5f84970accaf4e8363344ddd704dc174aa837494e",
+      "assessment_sha256": "c8376334f8dbbd0da3a614462ef6f26e34fb7d5e6ca277f222b34c9581f2fd9e",
       "competitive_approved": false
     },
     {
@@ -124,7 +124,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as faixas avermelhadas e as manchas brancas nas asas escuras.",
+      "text": "Localize as faixas vermelhas e os pontos brancos; compare sua disposição sobre o fundo escuro.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -140,7 +140,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c2a7af9e6974550bb93f5d911abd319046b2e70af44a322759be3337778c654e",
+      "assessment_sha256": "eebc582533a21cc1f37303a683f24df3e1615baa1910e20d5624ea8f00de657d",
       "competitive_approved": false
     },
     {
@@ -183,7 +183,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o desenho claro no tórax, que lembra uma pequena caveira.",
+      "text": "Concentre a observação no tórax, entre a cabeça e o abdome: ali está a marca clara característica.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -199,7 +199,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "e1ba4abb3cdd720a0e246248bf38031030aea60a4d03d0588bfe83e5287a7e04",
+      "assessment_sha256": "1b2d0a38ed4a30784fde93ff074f03e7857bec7abb86c6b832a705ef5abd4751",
       "competitive_approved": false
     },
     {
@@ -242,7 +242,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os muitos desenhos curvos e simétricos nas asas largas.",
+      "text": "Acompanhe as linhas curvas das asas e compare os desenhos dos lados direito e esquerdo.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -258,7 +258,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "566669085c620e4df86b4ec9403341ef7cee0c1faa4d9d9f18a6de930731c7c4",
+      "assessment_sha256": "862e0c0322c28e952ebc7915968b67a5319e0b6ac4038ff40a2f07877a28da99",
       "competitive_approved": false
     },
     {
@@ -301,7 +301,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as antenas plumosas e as linhas nas asas.",
+      "text": "Observe as ramificações das antenas e as linhas das asas; considere também que os sexos diferem na aparência.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -317,7 +317,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b939e1682c7bfab04da7f56af142d0eacee2fe9dba943e7f0dd8d4ddc35020b2",
+      "assessment_sha256": "b3e5bce48b5b5365e89ea0835958057977e87c21541cd2b7604243865acefae2",
       "competitive_approved": false
     },
     {
@@ -360,7 +360,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as asas alaranjadas, as linhas pretas e os pontos brancos nas bordas.",
+      "text": "Nas asas, acompanhe as linhas pretas sobre o laranja e procure os pontos brancos junto às bordas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -376,7 +376,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9752795fe93807f774968361c814809a0416b89a901e1aff9ed24ed5bd730cb8",
+      "assessment_sha256": "fb9d66ab3ec00ed474a7865fb28785bda2ed4a5795530947598a70cd1c9b56a0",
       "competitive_approved": false
     },
     {
@@ -419,7 +419,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure grandes manchas em forma de olhos nas asas avermelhadas.",
+      "text": "Nas asas abertas, procure manchas arredondadas que lembram olhos e compare sua posição.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -435,7 +435,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "868c09fb700b027e18711291ae52b36ce934ee8792774eaf3718877bf05b8f31",
+      "assessment_sha256": "317d7eee030dadc89c6135b99018cf643ec32a8854adf85c972e58b9856de43f",
       "competitive_approved": false
     },
     {
@@ -478,7 +478,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as áreas alaranjadas e as pontas escuras com manchas brancas.",
+      "text": "Compare o centro alaranjado das asas com as extremidades escuras pontuadas de branco.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -494,7 +494,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "43f6a1ff6bbf5edafee59b1dcc4fd8f76231cc470154302ae1230e31c817d09a",
+      "assessment_sha256": "fa8b57c2c4ad4059c9d715d2babf2068f49e001db6316f6a3e8bf24bf4bbda7a",
       "competitive_approved": false
     },
     {
@@ -537,7 +537,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um grande felino de pelagem alaranjada com listras escuras.",
+      "text": "Observe se as marcas da pelagem são listras, em vez de manchas arredondadas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -553,7 +553,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "67ef141f3ad222e0c3efc437696c6ad8aeebb03ab6ec921eb41d8cd54a6e0cc7",
+      "assessment_sha256": "e0bfa3fae41c0fdae1533803d097ab4ca18b3618ecee2906fa87f3e823abdc13",
       "competitive_approved": false
     },
     {
@@ -596,7 +596,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as asas muito amplas, com pequenas áreas que parecem janelas transparentes.",
+      "text": "Procure pequenas regiões translúcidas dentro das asas largas, como espaços sem a coloração ao redor.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -612,7 +612,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8c400ccf1682eaf37a39e3535663a9e1f393572ab57267900b18386138bc0255",
+      "assessment_sha256": "3c4d23eb062282e995510b6b014461f3144e97d437b609608dbf78e311283357",
       "competitive_approved": false
     },
     {
@@ -655,7 +655,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure asas verde-claras com longas caudas nas asas posteriores.",
+      "text": "Observe o contorno das asas verdes: as posteriores terminam em projeções longas e estreitas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -671,7 +671,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bf13a52f8440d330d4ae1b633174768c526d7516cf6ae74c507a5c7b8c1e0e4b",
+      "assessment_sha256": "56c09e05912ede578e917678340f7db27ec761c86918242b4b67f5ee6e803d0b",
       "competitive_approved": false
     },
     {
@@ -714,7 +714,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as asas largas e castanhas com faixas claras e avermelhadas.",
+      "text": "Compare as faixas claras e avermelhadas com o fundo castanho das asas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -730,7 +730,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f395c2344480311acf512445cac3d4555eea70b43dab4d184ed741faa403426e",
+      "assessment_sha256": "81e8c124bf8eef1518dc3e42b583d5431fde55b1e3185f9d6c9902d183cec17a",
       "competitive_approved": false
     },
     {
@@ -773,7 +773,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure grandes manchas em forma de olhos nas asas de trás.",
+      "text": "Examine as asas posteriores e procure uma grande marca arredondada em cada lado.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -789,7 +789,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b0ccfc9ef1c6d3fabdac013bcbec14f82daaaedefa28cf7813da8b3debfa65a5",
+      "assessment_sha256": "d94344a10d91663dc3a54717c2ba012bc38fc4a6f11965386d84d12aae6ab204",
       "competitive_approved": false
     },
     {
@@ -832,7 +832,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as grandes manchas arredondadas nas asas posteriores.",
+      "text": "Observe o desenho arredondado de cada asa posterior, incluindo a pequena região translúcida.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -848,7 +848,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "816a5e73d61589b6880d90f22316b54f217cc3fbfbdd966572ffa896f7ef1992",
+      "assessment_sha256": "159c3ce6befdcb02ed4f0d933f9a32b9ff4029882a29e530c4f4265b66706668",
       "competitive_approved": false
     },
     {
@@ -890,7 +890,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico remete à musa da tragédia na mitologia grega.",
+      "text": "A escolha do epíteto remete à musa grega ligada à tragédia. O nome registra uma referência cultural, não uma característica física da borboleta.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -905,7 +905,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "140a1fbbc89f280defce846025938c5af7263ab10ba049f22822c1986a3abb9b",
+      "assessment_sha256": "c6abe726762da808230d71dbfca1396f52b7d781ab7a0874101b1babe9d0ebb5",
       "competitive_approved": false
     },
     {
@@ -917,7 +917,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as faixas vivas sobre o fundo escuro das asas.",
+      "text": "Compare as regiões escuras e as faixas coloridas das asas; a posição dessas faixas ajuda a observar o padrão.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -933,7 +933,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "42d844e84d18772a0a7054d4a1a3945fbe0fe6a4cf7f4f3546fd4e9a24cae665",
+      "assessment_sha256": "b84e0dc9713281b832148137ecf37595a1be0f361f8e9a49a6800bf3dce93b44",
       "competitive_approved": false
     },
     {
@@ -976,7 +976,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure o contraste entre azul brilhante e bordas escuras.",
+      "text": "Examine onde o azul encontra a margem escura e observe os prolongamentos das asas posteriores.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -992,7 +992,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "42003441b26ff6cedbc4fd117e85827cfdb58cc5e0590cf3af41fda9aff41856",
+      "assessment_sha256": "bd442d559468bca6f39c633e363fd8e309f5795fe15c3a307c6835d638ceeb41",
       "competitive_approved": false
     },
     {
@@ -1035,7 +1035,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe a pelagem amarelada e a cauda com tufo; nos machos adultos, a juba é uma pista importante.",
+      "text": "Compare a pelagem amarelada e o tufo da cauda. Se for um macho adulto, observe também a região da juba.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1051,7 +1051,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bae23b0ae8c2d15cf684444c48b63f28318f1ecab7793335e329c743b3cb6b81",
+      "assessment_sha256": "de5a26c7fb58012d3979f59d2116d9cbd1b3db0fe5a7a075b442cf420ecfdce2",
       "competitive_approved": false
     },
     {
@@ -1094,7 +1094,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as asas claras com pontas escuras.",
+      "text": "Compare a área clara de cada asa com o escurecimento em sua extremidade.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1110,7 +1110,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "522fbabc32a546b3b7e1dee96f0da6fc9b8e7fb01084fca9d9450b41278e38a8",
+      "assessment_sha256": "ece62562738e749f7a20f2cccddba9436dc292e284c346bd082609a2d3b301a5",
       "competitive_approved": false
     },
     {
@@ -1215,7 +1215,7 @@
         "species",
         "genus"
       ],
-      "text": "Na lagarta, procure o prolongamento na parte traseira do corpo; o adulto tem asas cinzentas.",
+      "text": "Se a imagem mostrar uma lagarta, examine o prolongamento na região posterior. No adulto, observe as asas cinzentas e o abdome marcado.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1230,7 +1230,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "49c75f702c22e7be72163badcdd3dd22f209b8be0355b7de4288f980a287ff11",
+      "assessment_sha256": "dbaf86a1080f24e75af10953579dd6f6d24efb7f098bafe59ca3587844dc718c",
       "competitive_approved": false
     },
     {
@@ -1273,7 +1273,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure manchas em forma de roseta, muitas com um ponto escuro no centro.",
+      "text": "Examine uma mancha de cada vez: procure rosetas que incluam um ponto no centro.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1289,7 +1289,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "536c47c12e12f10253c55f0c44b26fcf1a23406b524f04ac20e1bb13a12495c6",
+      "assessment_sha256": "c35bdaf9d59d0bdf9d7bd52351c360517f5cdfe71155858f9fd75247080eeb5f",
       "competitive_approved": false
     },
     {
@@ -1363,7 +1363,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as asas claras e os desenhos simétricos que lembram pequenos insetos.",
+      "text": "Compare os dois lados: há marcas pequenas e simétricas sobre o fundo claro das asas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1379,7 +1379,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5d81cc8ca95b5eed8c79fcdda19d80ab44c4cb5ecb70f324ac4722e808210c2f",
+      "assessment_sha256": "bf60d6e485a5345ec2c7e7f4bfe37572218ca49fef8f5bc39790e93130911d87",
       "competitive_approved": false
     },
     {
@@ -1422,7 +1422,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um corpo oval protegido por oito placas alinhadas.",
+      "text": "Conte as placas alinhadas sobre o corpo oval e observe a faixa que as contorna.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -1438,7 +1438,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "4bd6cceaf3642fdc0075841ed11ec3d972ae8a8231094adaab23769a7b29a69b",
+      "assessment_sha256": "6e11c7e1bc9954c0f1f03621ffd6015439df35f5fa13c13b543faec1d8ed3302",
       "competitive_approved": false
     },
     {
@@ -1512,7 +1512,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure várias aranhas pequenas reunidas em uma mesma teia.",
+      "text": "O contexto da observação importa: procure se existem vários indivíduos usando a mesma teia.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1527,7 +1527,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "249c2a661562d7363f45167714264fb1e5fddfff5a727cac4dd8c0d6473bcae9",
+      "assessment_sha256": "0bab3afa1dd355bf05d61e504f6a77a4471ca681a08bbbf8727b2f532bf78e7e",
       "competitive_approved": false
     },
     {
@@ -1570,7 +1570,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe a cabeça larga e os olhos voltados para cima.",
+      "text": "Observe para onde apontam os olhos e a boca, além da largura da cabeça.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -1586,7 +1586,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "86a793bc40259a58e82debbadb3e5cf49fee3c5b6634738ac20c57c35f053cec",
+      "assessment_sha256": "25964a8731323613da3b00f713cecdadde604c2b7f188cc76028d9a65e3fd2ab",
       "competitive_approved": false
     },
     {
@@ -1628,7 +1628,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero deriva de um termo latino para fantasmas ou espectros.",
+      "text": "Fantasmas ou espectros são o sentido de um termo latino ligado ao nome do gênero. Essa origem não é uma classificação biológica.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -1643,7 +1643,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "30a18183c0b03bf17cc4f900ae8cfedd0fcb62917455d82fd6eb2bf15d08efc9",
+      "assessment_sha256": "d2c77d56dd5904bef1029b8422f39ff75fcc9fc5f77e877780ad4f14caf82b13",
       "competitive_approved": false
     },
     {
@@ -1654,7 +1654,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto tem origem no latim científico e se refere a um gato.",
+      "text": "O gato aparece no sentido do epíteto em latim científico. Essa comparação linguística não torna o primata um felino.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -1669,7 +1669,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2d048b5359a0d07a796e441eb67272dc81195035e2788f4171d9fbedf807cd62",
+      "assessment_sha256": "eb096a58236effe9104368eff292a613fd7bbb0b71618d1c663b05a64581c7e6",
       "competitive_approved": false
     },
     {
@@ -1681,7 +1681,7 @@
         "species",
         "genus"
       ],
-      "text": "A cauda comprida com anéis pretos e brancos é a pista mais evidente.",
+      "text": "Concentre a comparação na longa cauda e na alternância de anéis pretos e brancos.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1697,7 +1697,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f5c04860b430e1468d18a6d13c272a23239e883a653b55307a3bd7926cb92b9b",
+      "assessment_sha256": "cdbb95c0d7b7513b93e76c69661ba040a878d67c36132cceefe83c20ff050629",
       "competitive_approved": false
     },
     {
@@ -1771,7 +1771,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os desenhos coloridos sobre o corpo arredondado.",
+      "text": "Compare os contornos das manchas coloridas na superfície arredondada do corpo.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1787,7 +1787,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5ac9b6f5ddfd35d2850ecbac53baf136d0672bad2b7a1aefbbd78f58b56c1697",
+      "assessment_sha256": "0289ca91ea02c7f9ef2224cdc4c553414750cadd4c35af0d78c3bfcad5540ae1",
       "competitive_approved": false
     },
     {
@@ -1830,7 +1830,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o penacho na cabeça; no macho, o pescoço azul e o leque com desenhos de olhos se destacam.",
+      "text": "Procure o penacho. Nos machos, compare também o pescoço azul e os desenhos semelhantes a olhos nas penas ornamentais.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1846,7 +1846,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "416886a42d9a716515e32ca0be305f1b02ad6cb744f8ed23e67e8b4159a3181b",
+      "assessment_sha256": "30bf6e9296f3788d1ae71a42efd9ba6a1c2715515b2a8b76ba83abc050b76e47",
       "competitive_approved": false
     },
     {
@@ -1889,7 +1889,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure olhos vermelhos em um corpo verde, com dedos largos para se apoiar nas folhas.",
+      "text": "Compare a combinação de olhos vermelhos e corpo verde, observando também as extremidades dos dedos.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -1905,7 +1905,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "494ab46ed5fa1b429e782c05a4fda25edafb0b49d8c9f7fa3d94d6a24797ed05",
+      "assessment_sha256": "ba421f301e226878e83719121d55999af1ebde345d12aa5ea1764a7668a79494",
       "competitive_approved": false
     },
     {
@@ -1948,7 +1948,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe a cabeça e os prolongamentos junto dos olhos.",
+      "text": "Comece pela cabeça e procure projeções próximas dos olhos.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -1964,7 +1964,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9bc14024846e4f798db7bd7331ec501b766148ac705a8bb13d022195e4406c31",
+      "assessment_sha256": "4cb331560dd9cfcb7dda4ebded300fdac031405abbbd79f5321989dbe33674be",
       "competitive_approved": false
     },
     {
@@ -2007,7 +2007,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe a estrutura grande e angular sobre o corpo.",
+      "text": "Examine a grande expansão angular do dorso, em vez de procurar apenas o contorno das asas.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -2023,7 +2023,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "46b2421754e6da49ff07fdc69e29bbea510a32cab8c285919e53c657a547b36f",
+      "assessment_sha256": "7eb62582a350529340992f4445fe02f2585b524dcb17a376f8b0de51f65a164e",
       "competitive_approved": false
     },
     {
@@ -2066,7 +2066,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as pernas posteriores compridas e fortes, adaptadas a saltar.",
+      "text": "Compare o tamanho das pernas posteriores com o das outras pernas; elas estão associadas ao salto.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2082,7 +2082,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "cdbd50139593c0c5a31d74f6e1cae2ab268f757fe5a3333342545b27eb8e8e7c",
+      "assessment_sha256": "058a820350a529414471e1ce1d5dcd106296d41aa55b4c939743e9d7e03a5f1b",
       "competitive_approved": false
     },
     {
@@ -2125,7 +2125,7 @@
         "species",
         "genus"
       ],
-      "text": "É uma ave muito pequena que caminha pela vegetação e não consegue voar.",
+      "text": "A informação de apoio é funcional: trata-se de uma ave diminuta que caminha entre plantas e não voa.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2140,7 +2140,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ee3336888a78ceabd40f3efb2869aff75df39ca7543f426cab8fae4d2124ced4",
+      "assessment_sha256": "859402d2f0a2a90cabb9d7d02314d899d0c9c0534e87994c582d34ee156f6863",
       "competitive_approved": false
     },
     {
@@ -2183,7 +2183,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o volume escuro sobre o corpo, que lembra uma pequena formiga.",
+      "text": "Examine a expansão acima do dorso e compare seu formato com o contorno de uma formiga.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -2199,7 +2199,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8ef3fef6cd0ad790e18d0351d4ceba84621e13a89eb7db358785563474d9da40",
+      "assessment_sha256": "72b08c5a9c5e88bba453302cb3db1a4c3362e141300363cb1daf41797806f48a",
       "competitive_approved": false
     },
     {
@@ -2241,7 +2241,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico se refere a um único chifre.",
+      "text": "Quantidade e estrutura se combinam neste nome específico: um chifre. A pista ajuda a interpretar a palavra científica.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -2256,7 +2256,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a6ea225fdda80be0bd6ac2613823bd052aa61c430520974ead62b58b28fab389",
+      "assessment_sha256": "39e1bd990b195948294e58b9fcd67a9735fa0e37fd084171eede354eba77926c",
       "competitive_approved": false
     },
     {
@@ -2267,7 +2267,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero reúne os sentidos gregos de nariz e chifre.",
+      "text": "No nome do gênero, duas raízes gregas relacionam uma região da face com um chifre: o nariz e a estrutura que se projeta sobre ele.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -2282,7 +2282,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ecf5fef81e0e37ee3db8179cfcaa4cda21d3720661560bccf60df9a58d08c84f",
+      "assessment_sha256": "df0ca1763bdea060d21e019b5d5a6fc470f3c9674f638412000a36b21947d089",
       "competitive_approved": false
     },
     {
@@ -2294,7 +2294,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o único chifre e as dobras da pele, semelhantes a uma armadura.",
+      "text": "Conte os chifres e observe as grandes dobras que segmentam visualmente a pele.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2310,7 +2310,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "45f5351afd4d61891909490da5f380a8b2d423048057d988898a25892b9e4cd7",
+      "assessment_sha256": "5526209cc1bb586b0eecd3864005fcbeb1990b7e946ef6fc90c99a1accaffd47",
       "competitive_approved": false
     },
     {
@@ -2353,7 +2353,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um corpo semelhante ao de um cavalo, com listras pretas e brancas.",
+      "text": "Combine a forma do corpo de um equídeo com o padrão de faixas pretas e brancas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2369,7 +2369,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b986735898a2e5eb78e09eb5d53d15939f14a917c048e75dee514711ebc7ff9c",
+      "assessment_sha256": "bed8d60f51f4bef8149cf794656a4cb6c3664079d068d004dbe9759569b4dd24",
       "competitive_approved": false
     },
     {
@@ -2412,7 +2412,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as pernas dianteiras dobradas e a aparência semelhante a uma folha seca.",
+      "text": "Observe as pernas anteriores recolhidas e o aspecto castanho semelhante a material vegetal seco.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2428,7 +2428,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1dd32cc1f946b735bafa6ade441286622fa168d2736a0c4c5a2b8569bb5ecfbd",
+      "assessment_sha256": "cb02d5a1c72012e482568ac9ee7a018be5b3935e0ad876fe97f3dfc8993eabfd",
       "competitive_approved": false
     },
     {
@@ -2471,7 +2471,7 @@
         "species",
         "genus"
       ],
-      "text": "Os machos tinham uma coloração alaranjada muito viva.",
+      "text": "Se o exemplar representado for macho, a coloração alaranjada intensa é uma característica importante.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2487,7 +2487,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "e8e9dd88aae0c1d914fefd779ab7a36132702bc3ae6880f7e07885759eaa00e5",
+      "assessment_sha256": "66bb39f030cd4e6486fb656158faa75f00ffc24a69dbb84b78174ad2421590b7",
       "competitive_approved": false
     },
     {
@@ -2530,7 +2530,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os raminhos finos e o aspecto de tapete verde.",
+      "text": "Aproxime a observação dos ramos: procure a organização fina e semelhante a penas dentro do tapete verde.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2546,7 +2546,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "228a369be674ecb02364b669d290cf2f0009d19dd9e7a38d15829527afbe70c5",
+      "assessment_sha256": "6b6fd9cb2ccb015cfc5841d197be35ee5ac883f7cb7ddab9599026e6f4f2d9c5",
       "competitive_approved": false
     },
     {
@@ -2589,7 +2589,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o hábito trepador e as flores com desenhos marcantes.",
+      "text": "Compare o contorno estrelado das flores e seus desenhos, considerando também o hábito trepador.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2605,7 +2605,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c67ca85ba37170750cd99149095460b109b5a5f88bdc4eb073e2b60ab08ea06d",
+      "assessment_sha256": "9cb94606258e1651f9bcaa324ae9cd69fc7668b5c2c27bc4ecce92b048fef5bb",
       "competitive_approved": false
     },
     {
@@ -2648,7 +2648,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma flor carnosa saindo do chão, sem folhas verdes ao redor.",
+      "text": "Procure a flor carnosa próxima ao chão, sem uma coroa de folhas verdes associada a ela.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2664,7 +2664,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "23f86ef719ce47abd7f0354db679ba75a48ccd3e78ef7fde5ee4de74a1303505",
+      "assessment_sha256": "aba06fdbaf5ab64f424030a1f58e6ade6c557a427777714dd1e43b207e93b3ac",
       "competitive_approved": false
     },
     {
@@ -2707,7 +2707,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um corpo verde achatado com pequenos recipientes em forma de meia-lua.",
+      "text": "Procure pequenas meias-luas elevadas sobre uma superfície vegetal verde e achatada.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -2723,7 +2723,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2a1b4a07076a5b8d0dd0b991e00847606ce60add03d1e0f2db867b56e5e92216",
+      "assessment_sha256": "3af517dfed14d93a13df68da7bdc92759de99157dbdf14f73b1a58fe9c8a6922",
       "competitive_approved": false
     },
     {
@@ -2766,7 +2766,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure folhas divididas e pequenos grupos de esporos na face inferior.",
+      "text": "Examine os segmentos da folha e, se visível, o padrão das estruturas arredondadas na face inferior.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2782,7 +2782,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "abd0ea416cd84a06f4e44250da5c8ae8c92c7264e62748b2a42fa9da7eebf500",
+      "assessment_sha256": "18ed20636c6b214a884ef663a1ae7039868e7e06c7b51d0c846f8fe4abf6e88d",
       "competitive_approved": false
     },
     {
@@ -2825,7 +2825,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure gavinhas e frutos verdes cobertos de espinhos.",
+      "text": "Procure a combinação de gavinhas, folhas recortadas e frutos com projeções espinhosas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2841,7 +2841,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8461b4c17ef83819663539cfba2d5d24bcc561bf2248e50e4259a168c2e331e0",
+      "assessment_sha256": "3fdc79293e8ba8d3e11c1c1740832160756019f7af20e7e66fec043e60ab3a32",
       "competitive_approved": false
     },
     {
@@ -2884,7 +2884,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as folhas estreitas e as flores alaranjadas.",
+      "text": "Compare a largura reduzida das folhas com a cor alaranjada das flores.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -2900,7 +2900,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "085ae0ab888d314ff7158ed8a6e08a5fe248e160dfa0a48da30235f5f0a0a9eb",
+      "assessment_sha256": "27cec15526932aba0356120c3a172e2ea4f35320aaf4d49637f77c7e3e0e1049",
       "competitive_approved": false
     },
     {
@@ -2943,7 +2943,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os sulcos fortes na folha, além da flor.",
+      "text": "Compare as nervuras e os sulcos da folha, além das cores da flor.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -2959,7 +2959,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "6c8be06e43b026010a722fcdb8efa4ba05123afda915500b597627200e889964",
+      "assessment_sha256": "694a0c2819ec8c4145660b68fdf66e9a907d75af59ab327b29f74876f21b3135",
       "competitive_approved": false
     },
     {
@@ -3001,7 +3001,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico combina os sentidos de dourado e flor.",
+      "text": "Uma cor e uma estrutura vegetal se encontram neste epíteto: dourado e flor.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3016,7 +3016,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a0cbdeb5647c725e8baaebdf20a57d55205c6b2729a4b565ab7112f57084579a",
+      "assessment_sha256": "372bdf0682003a28d3af7556427a711b6cc0ee8c57fcfbd29eb64fd369e96a23",
       "competitive_approved": false
     },
     {
@@ -3028,7 +3028,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure grupos de flores amarelas brilhantes nas pontas dos ramos.",
+      "text": "Observe como os agrupamentos amarelos se distribuem junto às extremidades dos ramos.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3044,7 +3044,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "659e8b860e6aead2f70ceea425dbbc20f9cd626abcf505917c4f7edc092cdf0f",
+      "assessment_sha256": "906cbaa0e9ad61d3b67f4928042af03c6d88ca924bd0bdc05e97ab228bf704d0",
       "competitive_approved": false
     },
     {
@@ -3118,7 +3118,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as folhas recortadas e os conjuntos de flores brancas ou frutos vermelhos.",
+      "text": "Observe os lobos das folhas e, conforme a fase, os agrupamentos de flores brancas ou de frutos vermelhos.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3134,7 +3134,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "23d6b8bcccb16419419231f5dc46b792762094cad6bcc2fcb4a0ec3bcbd10c23",
+      "assessment_sha256": "590792b7103bfe933c10d52f8871c429632749594857999bed7bd9d3071da771",
       "competitive_approved": false
     },
     {
@@ -3177,7 +3177,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as folhas grandes em forma de seta.",
+      "text": "Examine o contorno em seta das lâminas e os longos pecíolos que as sustentam.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3193,7 +3193,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "4f73c9ad8f899455b93755f40f46881c950385bb474fe4bc69e400f0389d87fc",
+      "assessment_sha256": "417df45d936885494344ab8d9ba31feaf4e1c30efa613ee44ca8fb03391c624d",
       "competitive_approved": false
     },
     {
@@ -3236,7 +3236,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as pequenas flores, com partes estreitas e alongadas.",
+      "text": "Examine as partes finas e alongadas das flores pequenas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3252,7 +3252,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "3738b6dc86cfab02d4358d67a0edfb432b7cb1161f9957353b84a2f7bf0fb0f6",
+      "assessment_sha256": "1eef3f7a3e1a66f08a3850eabe4ad8f6b75e0742b2a5ecf8fa1068955eb61a77",
       "competitive_approved": false
     },
     {
@@ -3294,7 +3294,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa dois lobos, em referência às folhas.",
+      "text": "A divisão em dois lobos está expressa neste epíteto. A alusão é ao formato foliar, sem exigir que todas as folhas tenham recortes idênticos.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -3309,7 +3309,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "344f22e40d66fa2024f32d496b01151ace4ac50bb4911f678dc84057cb8753a4",
+      "assessment_sha256": "6cec4118fd810034de719c73bfb41cb458c0a5d000f486b0cdbecf918c096862",
       "competitive_approved": false
     },
     {
@@ -3321,7 +3321,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as folhas em forma de leque, que ficam amarelas no outono.",
+      "text": "Examine o contorno da folha: ele se abre em leque, às vezes dividido por um recorte central.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3337,7 +3337,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "46bc84e8df04c3678b992a28ea55627273e49771e4ad90af5e12dbfd1d834762",
+      "assessment_sha256": "aca38e7371f61270336363006eac89d59ad076ea09abf60503306193cfb4c1a0",
       "competitive_approved": false
     },
     {
@@ -3379,7 +3379,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina os sentidos de nervura e folha.",
+      "text": "O nome reúne uma referência à folha e outra às suas nervuras. A pista está na organização visual da folha.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3394,7 +3394,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5bfcbfa3cf92c756f8096d8227363aee861e9de7fb85110ec721662f86a28291",
+      "assessment_sha256": "f0f98499c49068ea5cf4bcefa0b7d1b75a3ab0c6992eb306485a1e8424ffec48",
       "competitive_approved": false
     },
     {
@@ -3406,7 +3406,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as folhas largas e fortemente marcadas por nervuras.",
+      "text": "Observe a largura das folhas e o relevo produzido pelas nervuras.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3422,7 +3422,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a07e7cbafff9abc50e723b872480c20f7eb3e816a8ae42c703b6e41d81788797",
+      "assessment_sha256": "73d5b7f21d59bd03cddea074a0894d75fd838298c937b75e4daa90103feb1faf",
       "competitive_approved": false
     },
     {
@@ -3464,7 +3464,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O gênero recebeu um nome de origem grega com o sentido de dragão fêmea.",
+      "text": "A figura de uma fêmea de dragão está na raiz grega do nome. Trata-se de uma imagem cultural incorporada à nomenclatura botânica.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3479,7 +3479,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9c1211db78a7e15130115962fb296aebd1b9a5711ed5ac8701929ff4c5ee248e",
+      "assessment_sha256": "e7f3b4784cc33028a9c1f377ce84490dc1f2fead36ae9d416c9d85d8b6f3989f",
       "competitive_approved": false
     },
     {
@@ -3490,7 +3490,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto está relacionado ao nome grego de um mineral vermelho, associado à cor da resina.",
+      "text": "No contexto histórico citado, a resina era chamada de cinábrio, nome também usado para um mineral vermelho. A referência descreve um uso da palavra, não uma análise química da resina.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3505,7 +3505,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9631f70dda94ad469a1241994cefac5efb937fd56053c71a2085f00b18caf012",
+      "assessment_sha256": "ca4578e66b73bebbed308973d7482a2b47102f9d3e6cf3c6af536c59251facbf",
       "competitive_approved": false
     },
     {
@@ -3517,7 +3517,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma copa muito densa, parecida com um guarda-chuva.",
+      "text": "Compare o contorno achatado e denso da copa com um guarda-chuva aberto.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3533,7 +3533,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a756fd985f65acfd2eff3c0fbb3c5d21d7988c849a693ded14fda27a36e1e5dd",
+      "assessment_sha256": "c54437b89f1d438097c50d10a373867201fd676244c6576c5d7a3c6f323d4ce4",
       "competitive_approved": false
     },
     {
@@ -3575,7 +3575,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto significa pequena ratoeira em latim, em alusão ao fechamento das folhas.",
+      "text": "A imagem de uma pequena ratoeira está expressa no epíteto latino. A comparação é com uma armadilha, sem indicar que a planta dependa de capturar ratos.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3590,7 +3590,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5455aec34c06c4537dae050f24eb103673f8749675a4bf9c9379e940d645cbdf",
+      "assessment_sha256": "09a6113e5c44a68ae367d2b31ed3df442f526965b72d75211d3cf2def4e8ce1c",
       "competitive_approved": false
     },
     {
@@ -3602,7 +3602,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure folhas que se fecham como uma armadilha, com bordas semelhantes a dentes.",
+      "text": "Procure folhas com duas partes articuladas e uma fileira de projeções nas margens.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3618,7 +3618,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8a49ef5abd9bb88aa8e4f83b9be8c8f20a498c9d340704281a32a62a4671634b",
+      "assessment_sha256": "81ec13b3eebccda83793ccc0537f3bb306e4f0b19a8242a0842cc293641e7a13",
       "competitive_approved": false
     },
     {
@@ -3691,7 +3691,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico homenageia uma antiga localidade da atual Tunísia.",
+      "text": "O nome específico remete a uma localidade antiga situada na atual Tunísia. Um nome geográfico não demonstra que a espécie só exista naquele lugar.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -3706,7 +3706,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a98618b0bc80e637d30abd62cd7987124bb1df5befbbc4850d7f3876909946ae",
+      "assessment_sha256": "0ec4cedfe94ef2ba5e16786aabd50bc4b53606d54051455555d6bf182f2a06af",
       "competitive_approved": false
     },
     {
@@ -3717,7 +3717,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está ligado ao sentido de barbado, em referência a estruturas com pelos.",
+      "text": "A ideia de barba participa da interpretação deste nome. A referência citada relaciona a comparação aos pelos dos estames, estruturas da flor.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3732,7 +3732,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ec6497c5848f169c60b24f7268cf92f3ccde3c4c3eb19eb053618305b4d0b949",
+      "assessment_sha256": "4a1d16425e736a1aad94ad8f171b992fea5341dad0066b3f671ebbc934d0606b",
       "competitive_approved": false
     },
     {
@@ -3744,7 +3744,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure folhas aveludadas e uma haste alta com flores amarelas.",
+      "text": "Compare a roseta de folhas pilosas com a haste elevada de flores amarelas, quando ela estiver presente.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3760,7 +3760,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a276f50cb3e1e755557241c6c85e9e36504b875a26a233d28aa6de7d5097a5bd",
+      "assessment_sha256": "9377745bbede318275b64cf6d18af1b18841357ef5b966c4d51718998762183f",
       "competitive_approved": false
     },
     {
@@ -3833,7 +3833,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa azul.",
+      "text": "A cor azul está na origem linguística deste epíteto. O significado de um nome não garante que todos os exemplares conservem a mesma cor.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3848,7 +3848,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bbbc7aa3803de36760f9e18df6deb016be8e3d900171c2772e5814ff130a8c0c",
+      "assessment_sha256": "8b547a2356fc653e323bdfd8a3466a10161b538a22499c3cabc02f3c91a34ee3",
       "competitive_approved": false
     },
     {
@@ -3859,7 +3859,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero vem de uma palavra grega relacionada a um cinto, em referência ao anel no pé.",
+      "text": "A imagem de um cinto participa da formação deste nome: é uma comparação com o anel que pode aparecer ao redor do pé do cogumelo.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -3874,7 +3874,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "fb1fc4f9e83163cfca15801fecf961e4ec0f87b1c204cd9c1eb2d0a82786512a",
+      "assessment_sha256": "47084c8375163a5e7b1cf1f40cf30d05fb9fe85229f133ae942ff4b5ab0e22a1",
       "competitive_approved": false
     },
     {
@@ -3886,7 +3886,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o tom azul-esverdeado do chapéu, especialmente nos exemplares jovens.",
+      "text": "Nos exemplares jovens, procure a tonalidade azul-esverdeada do chapéu.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3902,7 +3902,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c6ee077781f8c0a7d519f9962ce43188a3377b17b2a7cf4b9e7d1715344ba3b3",
+      "assessment_sha256": "01386e02e729a852098015f32ec3269c94cbe564081e98dc4b88cab4c40c1a87",
       "competitive_approved": false
     },
     {
@@ -3944,7 +3944,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O gênero combina uma referência latina a favos de mel e uma homenagem histórica ao botânico Wilhelm Gottfried Lasch.",
+      "text": "O nome associa a imagem de favos a uma homenagem ao botânico Wilhelm Gottfried Lasch. Assim, uma mesma palavra pode combinar descrição e memória de uma pessoa.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -3959,7 +3959,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "47bec4cb767f932c635ab00f90d0ec08e098e11cc8bbc60db4ef6b8392d017fb",
+      "assessment_sha256": "e391c9f67f69ee83d5e2fe0efe01b47f9bb0e61a0b7b0032c3332eca8a5c6be7",
       "competitive_approved": false
     },
     {
@@ -3971,7 +3971,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure a cor alaranjada e os grandes poros na parte inferior.",
+      "text": "Procure a cor alaranjada e, se a face inferior estiver visível, os grandes poros.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -3987,7 +3987,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2480c32edd2db6765dcde7aa2d978a3a0d1ceaebafb5258947d0a62c0fb5523e",
+      "assessment_sha256": "c064ee6814d3db02718f7dd88a10a28055420c1b4bc47cf369e144023113113d",
       "competitive_approved": false
     },
     {
@@ -4030,7 +4030,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure tufos claros, com numerosas ramificações.",
+      "text": "Procure tufos claros formados por estruturas que se dividem muitas vezes.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4046,7 +4046,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1c1b9ebaa9e12cb3cc8dc13f18f5733ab3bc2f6a7892f3e3083dec1e8686d1d8",
+      "assessment_sha256": "9d0be00dce70b63883aba4c2d7a0cb29b835d34f897d389c20ace6ed2f9b79d5",
       "competitive_approved": false
     },
     {
@@ -4088,7 +4088,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa vermelho.",
+      "text": "Este epíteto emprega uma palavra latina para a cor vermelha. A pista está no vocabulário da cor, não em uma classificação de parentesco.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4103,7 +4103,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b76dc1fbfc3f9beb4d639e7b573a25b0d6d1a6ef9fc85145295e1df250f57125",
+      "assessment_sha256": "0b575bd9c816ef9531995c988204fea261d090ff9ddf2a145ceb2b7cdfc5022a",
       "competitive_approved": false
     },
     {
@@ -4114,7 +4114,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero significa gaiola.",
+      "text": "Pense em uma gaiola: essa é a comparação que deu origem ao nome deste gênero.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4129,7 +4129,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2d6979d6af00b417169ba5336bd73930d5ab5d6676d20652b7568e719681b865",
+      "assessment_sha256": "4fd490329345caeffdd60d37cc80db8a5a100d55028a5585880f1c1bc0540686",
       "competitive_approved": false
     },
     {
@@ -4141,7 +4141,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma estrutura vermelha e vazada, parecida com uma gaiola.",
+      "text": "Compare a estrutura vermelha vazada com uma gaiola ou rede tridimensional.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4157,7 +4157,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9ca06352ac9fb19b00d689994657a5cf47c584265734af76539a4e319072090f",
+      "assessment_sha256": "b4a4d8beeae26c164b05821e42c38b405492ac4162bf703b1e0952c98ba90f09",
       "competitive_approved": false
     },
     {
@@ -4199,7 +4199,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa de várias cores.",
+      "text": "O nome específico sugere diversidade de cores. É uma pista sobre o significado da palavra, e não sobre quantas cores cada exemplar precisa apresentar.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -4214,7 +4214,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "d25d5062c7da3fffe976e15acb572d56018bfb45914271ee2d187377cfda6138",
+      "assessment_sha256": "17a7f14c25b05d53a3f0083a734eeabd439b5d30aed85035371505427f092258",
       "competitive_approved": false
     },
     {
@@ -4225,7 +4225,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero faz referência a estruturas finas.",
+      "text": "A ideia de pouca espessura está associada ao nome do gênero. A referência trata de forma, não de uma medida fixa para todos os exemplares.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4240,7 +4240,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "7906af51be2220abb4d11251855bf92de438b0be3c0c297c713b8109a636847a",
+      "assessment_sha256": "b2bfaab015624ca7133f2d0d6fb2eaf68bfa5f0d78823021baa5feb554b4cd2c",
       "competitive_approved": false
     },
     {
@@ -4252,7 +4252,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure pequenas prateleiras sobrepostas com faixas de várias cores.",
+      "text": "Procure estruturas finas sobrepostas e acompanhe as faixas de cor de cada uma.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4268,7 +4268,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5be7bca58b10bc83f22a7d1656651db59980a2dd75da2fedaa8e31bfcf3f8dae",
+      "assessment_sha256": "697b3fb491f002fc1ea5b5d1a132c53d43cb12865a2b9d28fee60134db24d495",
       "competitive_approved": false
     },
     {
@@ -4310,7 +4310,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico deriva de uma palavra latina que significa mosca.",
+      "text": "Uma palavra latina para mosca participa da origem deste epíteto. O nome guarda uma associação histórica; não informa, por si só, o papel dos insetos na vida do fungo.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4325,7 +4325,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c39f443923c9da69774330c481de4805c6d837d3cccae370c301ed10cab1e1aa",
+      "assessment_sha256": "1ffed58f61fe6243896503b940ec0c4f4a5e4aa0ef60de8572623300be81c414",
       "competitive_approved": false
     },
     {
@@ -4337,7 +4337,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o chapéu colorido com manchas claras e o pé claro.",
+      "text": "Compare as marcas claras do chapéu colorido com o anel e a base do pé, quando visíveis.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4353,7 +4353,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "0a6fd018d2b552430e793a755adfc28a5c4fc4e3600a341cbf9ca23a22fadede",
+      "assessment_sha256": "a350d98246d0762910a82e102f5e98cb1df416a92c603733bca4292425ba60b3",
       "competitive_approved": false
     },
     {
@@ -4395,7 +4395,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de superfície brilhante.",
+      "text": "O brilho de uma superfície participa do significado deste nome. A origem do gênero não obriga todas as suas espécies a terem a mesma aparência.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4410,7 +4410,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "78c7232a8a2c1f044cc577fb19a0ed52353e48fccc83ac14cdd61a05863b7310",
+      "assessment_sha256": "1f4b4472476af932b5a5ac2e0dc51fa52eb4515acfeb2f7245745148ee5a6d86",
       "competitive_approved": false
     },
     {
@@ -4422,7 +4422,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma estrutura larga e rígida saindo da madeira como uma prateleira.",
+      "text": "Observe uma projeção larga e rígida na madeira, com aparência de prateleira.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4438,7 +4438,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "6a2216653404149aa722255c8b07794a379a87dfeb49c67a70315c4339461df9",
+      "assessment_sha256": "60eee1d1dc358aa65857b2faf4f2995b06781f0d22d15d5892fe4fa23b687cd7",
       "competitive_approved": false
     },
     {
@@ -4480,7 +4480,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de murcho.",
+      "text": "A ideia de murchar está ligada ao nome do gênero. A pista é linguística e não permite avaliar o estado de um exemplar na fotografia.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4495,7 +4495,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5fc554334a96ccb82f06c7e2e50e61dd3a9454ec8bfd9bb43c428673f0c483ec",
+      "assessment_sha256": "627c9b2eaf772d5fef7f0271c81787f8aa311dadd15ce0af509c4d1f7943d32b",
       "competitive_approved": false
     },
     {
@@ -4507,7 +4507,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o pequeno chapéu pregueado e o pé fino.",
+      "text": "Compare as pregas radiais do pequeno chapéu com a espessura reduzida do pé.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4523,7 +4523,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "49a8a532f2426774911c9727ee6ee9fd61167635c4ad192f129ad77992bb9eef",
+      "assessment_sha256": "4e12cd541a0b5c56f7c292f6e1eb617ab08e0d74a06034955e0293687c8fe4b2",
       "competitive_approved": false
     },
     {
@@ -4565,7 +4565,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa comestível em latim. Esse significado histórico não determina a segurança de consumo.",
+      "text": "O epíteto usa o sentido latino de comestível. Uma tradução do nome não estabelece que um exemplar esteja corretamente identificado ou seja seguro para consumo.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4580,7 +4580,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8c33500e1c3944497805fcafc99ecafba31ece83f7e20a03af4b48df781d84fd",
+      "assessment_sha256": "9b45d26f4d196fedf1f70ee037217c62bcb343132b8ed4791d4696d1280e051a",
       "competitive_approved": false
     },
     {
@@ -4592,7 +4592,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um chapéu com muitas cavidades, semelhante a um favo.",
+      "text": "Observe as cavidades separadas por cristas, formando um padrão semelhante a um favo.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4608,7 +4608,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8e00bf2f29d410d682267bdb55c65d144287a23d2c5eba1ed4d6e1e21357aed0",
+      "assessment_sha256": "5b7706cab2d9fdf03e93bb8084dee85dd5b4b1f46c662e5cd88ade42b5393eb5",
       "competitive_approved": false
     },
     {
@@ -4650,7 +4650,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa cabeludo, em referência às escamas do chapéu.",
+      "text": "O significado evoca cabelos. No cogumelo, a comparação é com o revestimento escamoso do chapéu, e não com pelos de um animal.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4665,7 +4665,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2e66a28946eb6222912db68443555bffbecb15898c12010fb4cf6a8a7e88c27c",
+      "assessment_sha256": "62285cda4db460ef90348f3c85d34457757cc3bccf888d23339d207d64e1922e",
       "competitive_approved": false
     },
     {
@@ -4676,7 +4676,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero significa viver sobre esterco; é uma origem linguística e não define a dieta desta espécie.",
+      "text": "A palavra que originou o nome remete a esterco. Não conclua a alimentação de uma espécie apenas a partir dessa origem do nome do gênero.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -4691,7 +4691,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "0d19ec7d5fcaa6a5a4c0068edd734bfe4386d5a879476fe1499224583d671549",
+      "assessment_sha256": "f09b152290dcfed5d34b6a02dc1ac16832e4b40dddd73ffd15c6567f7d986ae2",
       "competitive_approved": false
     },
     {
@@ -4703,7 +4703,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um chapéu branco e alongado com escamas que lembram fios.",
+      "text": "Observe o chapéu alongado e as escamas claras; em exemplares maduros, procure também o escurecimento.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4719,7 +4719,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bcfb7a5d1736a58492826496d083f9c1e4c201306c69bca207b9c464aed7f52e",
+      "assessment_sha256": "807fc5083db30212848c1480f844d268f02fc611cc7641703417876ed0050e48",
       "competitive_approved": false
     },
     {
@@ -4761,7 +4761,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa sem pudor ou imodesto.",
+      "text": "Uma ideia de falta de pudor está expressa neste epíteto latino. Trata-se de uma escolha de nome, não de um comportamento do organismo.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -4776,7 +4776,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c2a75e68d7d4a23725856ad7f9c96cd14b54cf410d8f741575c0b9623004ba41",
+      "assessment_sha256": "6f643c17217c1e108f5e37ab3aa1b16c81a39cca10137c64fe691ff916778464",
       "competitive_approved": false
     },
     {
@@ -4787,7 +4787,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero se refere à aparência fálica de suas estruturas reprodutivas.",
+      "text": "O nome usa uma comparação com a anatomia humana: a forma fálica de uma estrutura reprodutiva visível do fungo.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -4802,7 +4802,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2503f9640cf9b0db63f0b78813d357f7bf46c33d863968b5424908da299eb527",
+      "assessment_sha256": "5e62ef8e4adf9572b73a51275f8ae8d60b3b88249aab38d3fcf690a9a2c710bc",
       "competitive_approved": false
     },
     {
@@ -4814,7 +4814,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe o pé claro comprido e a cobertura escura na parte superior.",
+      "text": "Compare o pé comprido e claro com a cobertura escura da extremidade superior.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4830,7 +4830,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1af920e824342d7fecead746bfd091fae263e4c7c7c7807997291693378d4dea",
+      "assessment_sha256": "6739082edf3088aa4ce7bf82982476952ab5bfe621f221c91aeccab09bf6c6e1",
       "competitive_approved": false
     },
     {
@@ -4872,7 +4872,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de cortina.",
+      "text": "Uma cortina é a imagem evocada pelo nome do gênero. A nomenclatura pode recorrer a objetos cotidianos para descrever estruturas de organismos.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4887,7 +4887,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "fec9b5fd26a15d26431419a44557a6ed92ff3a123e2bd16711a79c91f0326b87",
+      "assessment_sha256": "f102b2a8e9a5d4acfcc7416a48592b36f02ab00fc75b3a6c6e95cc2545c9c6b6",
       "competitive_approved": false
     },
     {
@@ -4899,7 +4899,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os tons violetas no chapéu e no pé.",
+      "text": "Examine os tons violetas presentes no chapéu e no pé.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -4915,7 +4915,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "cdc888d8d1c8a6c53023e18654f2c10e2a4427461a57c74e385011d47c2a9aa3",
+      "assessment_sha256": "736414d8f863fbabcf677c3494a7885a7da5821c40bd23dc2b4de26e4d601a45",
       "competitive_approved": false
     },
     {
@@ -4957,7 +4957,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de madeira.",
+      "text": "A madeira está no sentido da palavra que originou este nome. O nome do gênero não determina, sozinho, o substrato de cada espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -4972,7 +4972,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "de03c5cf58f46b426546de7ed27a2434af2de633c2e652689db4e64f33d5e56d",
+      "assessment_sha256": "aec5850a0df212fdb8ea0a11ebdea84dfaeddb2977ae42ce3bb55f1f1617e49d",
       "competitive_approved": false
     },
     {
@@ -4984,7 +4984,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure estruturas estreitas e alongadas que lembram pequenos tentáculos.",
+      "text": "Procure prolongamentos estreitos, eventualmente ramificados, saindo do substrato.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5000,7 +5000,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9433bd5ddf4afdfe481eb165abc3e438b5cfe31fc386856176575364fb5fa06e",
+      "assessment_sha256": "84fbcadc5354887f03b3599498a6ff8a54ef4b7c9c4ac35a604b60ac3dfb88bb",
       "competitive_approved": false
     },
     {
@@ -5042,7 +5042,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa de três camadas.",
+      "text": "O número três aparece no sentido deste epíteto, associado a camadas.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -5057,7 +5057,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "0685497debc3f534c548c2113552015e63d51cdd2995aed73c625fcfe796a301",
+      "assessment_sha256": "e1c387d8c70e32e69ac020b5b60bc60d06ec8d757f305f41bef16276ce8be929",
       "competitive_approved": false
     },
     {
@@ -5068,7 +5068,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina os sentidos de terra e estrela.",
+      "text": "Duas ideias se unem neste nome: o chão e uma estrela. A combinação descreve uma semelhança de forma.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -5083,7 +5083,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1844329ba9fac8f2ffb463076815e85276afb71e850aece6975caea562a0d158",
+      "assessment_sha256": "cc3b5d93b98522d0c33f42d213d820e40db5674cd39e4d2d8e63d40781f3f174",
       "competitive_approved": false
     },
     {
@@ -5095,7 +5095,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma bolsa arredondada no centro de pontas que formam uma estrela.",
+      "text": "Compare a bolsa arredondada central com os raios abertos ao seu redor.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5111,7 +5111,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "dda0a39d95aaf1b47db59398eee50484ac082bf96bd8c4f5f2316f8163dc84e8",
+      "assessment_sha256": "c786a7e09684abb16b43e5b43f958bc2e4eaad3ffebf160fa0bf43e30090fbdb",
       "competitive_approved": false
     },
     {
@@ -5153,7 +5153,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa semelhante a um ouriço.",
+      "text": "O epíteto estabelece uma comparação com um ouriço. A semelhança evocada é visual; não indica parentesco com esse animal.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -5168,7 +5168,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b876a70a13872744e3c69fcb9c15a4fca42ec5864dd700a425090a8d7543566e",
+      "assessment_sha256": "b1817f8e29ee91214bd3cbe9631bd6beda1b5ba9c377b24763c730b7c272a98c",
       "competitive_approved": false
     },
     {
@@ -5179,7 +5179,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero faz referência a um ouriço, por causa das estruturas semelhantes a espinhos.",
+      "text": "A referência linguística é um ouriço. As estruturas pendentes do fungo motivam essa comparação com espinhos.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -5194,7 +5194,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "de262114c0a83b6f43b5d7d61fa7125dcd32b87707e6c3f677f80215281825b8",
+      "assessment_sha256": "22c43a5e09fbb8d0eed3554457daf4fe72294eb24ff200995791a511324c18a7",
       "competitive_approved": false
     },
     {
@@ -5206,7 +5206,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma massa clara com muitos espinhos pendentes.",
+      "text": "Procure a massa clara com numerosas projeções finas e pendentes, sem um chapéu típico.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5222,7 +5222,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "e033cbc1a8b3662aab57007c591516f82851bdc2678503821b30632a9125bcff",
+      "assessment_sha256": "403eeaa033b172ade33599e985d49433fb98680ee8c1b00f37ad585d772fcf9a",
       "competitive_approved": false
     },
     {
@@ -5264,7 +5264,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto registra uma propriedade de conter sangramentos atribuída historicamente ao fungo; não é uma recomendação de uso.",
+      "text": "A ideia de estancar sangramento está associada ao epíteto. Ela documenta uma atribuição histórica; não comprova eficácia medicinal nem recomenda uso.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -5279,7 +5279,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f900e974209c7c73970744b0006be93e09fbe94187a00eb1387041b77ec9e369",
+      "assessment_sha256": "2998877c6a3e07d1dc4cde17ba1deac14ed1b69e3452b08735305e17a4fc6275",
       "competitive_approved": false
     },
     {
@@ -5291,7 +5291,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure pequenos chapéus saindo lateralmente da madeira.",
+      "text": "Observe a fixação lateral dos pequenos chapéus à madeira.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5307,7 +5307,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "d2e5719f9d22033af904f9c27e2f1d62acfa1e92ac9ad4765a72ffc6aaf19df0",
+      "assessment_sha256": "f2d4743266f366d4e58dfa075c530528ccc63d7bf888fdf6efec29718740637d",
       "competitive_approved": false
     },
     {
@@ -5380,7 +5380,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de borda enrolada para dentro.",
+      "text": "Uma margem voltada para dentro está na formação deste nome. A imagem linguística se refere à forma de uma borda.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -5395,7 +5395,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "20e33e24880ad3d4b36651933c50f31dfe22924df3d540df180d5f295a315b75",
+      "assessment_sha256": "8513039334152d80c915e67e2578c02e56cb9c237a57a2e59a15d2eeba64bb8c",
       "competitive_approved": false
     },
     {
@@ -5407,7 +5407,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os tons azuis e o chapéu mais escuro.",
+      "text": "Compare o azul do pé com o tom mais escuro do chapéu.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5423,7 +5423,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "32750302bebe29f1391ab2bae47c98d00dc3c9c9e56c6955e1e372851af64fc5",
+      "assessment_sha256": "ab90f2f86ad5ff4ba158f67e48c8763d18d365528d0665dcdfb104c2cf88ce18",
       "competitive_approved": false
     },
     {
@@ -5465,7 +5465,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto surgiu da interpretação histórica de que este fungo parasitava corpos de frutificação de outro fungo.",
+      "text": "O epíteto conserva uma interpretação histórica de parasitismo sobre outro fungo. A existência desse nome não resolve a discussão científica sobre a nutrição do organismo.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -5480,7 +5480,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "0ee9a7f0b0a7f00e7a4a2671ead8946a3d930320bbc155116290a83ba17e50c4",
+      "assessment_sha256": "f09370ee233657cd212eb9b16de55be2acb265e354d4b46c4c0b76c520b934ea",
       "competitive_approved": false
     },
     {
@@ -5492,7 +5492,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um cogumelo pequeno crescendo diretamente junto de uma bola-da-terra.",
+      "text": "Considere a associação visível com uma bola-da-terra. Essa pista é ecológica e não descreve, sozinha, um caráter anatômico exclusivo.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5507,7 +5507,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "00299c13b99367d29ecfd1e8e6f15893c584094aa095bf5766770e19871b9874",
+      "assessment_sha256": "4eb2ae924f2151e442e5007eb159a6b1a0b5015e9ee6853f62782e665aa96369",
       "competitive_approved": false
     },
     {
@@ -5643,7 +5643,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as longas estruturas com várias lâminas e pequenas bolsas de gás.",
+      "text": "Procure várias lâminas e pequenas bolsas de gás distribuídas por estruturas compridas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5659,7 +5659,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "3b73ae4b902e89946bd00a31121e1134197763a33bfe73f70c845d1828e4c80a",
+      "assessment_sha256": "56cd4194b8dec53feef227e8339465882bc8858179518d151da262b522e5cc31",
       "competitive_approved": false
     },
     {
@@ -5702,7 +5702,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma grande bolsa de gás com várias lâminas saindo do mesmo ponto.",
+      "text": "Procure o ponto onde muitas lâminas se unem próximo a uma grande bolsa arredondada.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5718,7 +5718,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "66c8d391130425a23a7a72eced2b68775ec2b22aa133beb346727d90e3a5f030",
+      "assessment_sha256": "6052c681d83bcff8877aa2b7927afe34d84b3056bee868855ca71918a50ff4c3",
       "competitive_approved": false
     },
     {
@@ -5823,7 +5823,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure pequenos tufos rosados ou avermelhados sobre a madeira.",
+      "text": "Procure pequenos tufos de tons rosados ou avermelhados sobre o substrato.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5839,7 +5839,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "d7202036e303d8f2e76b694ecd485248b6de6da9dcd44baefc8d2f922a4d1ef5",
+      "assessment_sha256": "7e8f38f26a13e7e95d041fd6620ec877c5ed948e8f8a9bf852e8d261ac091961",
       "competitive_approved": false
     },
     {
@@ -5882,7 +5882,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure lâminas achatadas, com nervura central e pequenas bolsas de gás.",
+      "text": "Acompanhe a nervura central das partes achatadas e procure bolsas de gás, quando presentes.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5898,7 +5898,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "14b2643ee6d48c791f6993fa4f2a5136b2806ec54089f256d7da37247d8f93f2",
+      "assessment_sha256": "c0598df7ec02c12d4e0f1713960410f82f4c562bc476ee382bd403598c213a23",
       "competitive_approved": false
     },
     {
@@ -5941,7 +5941,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure tiras muito compridas saindo de uma pequena base arredondada.",
+      "text": "Compare o comprimento das tiras com o tamanho reduzido da base arredondada.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -5957,7 +5957,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "70d9a25622e5ef1649a3ce9a4ed83c05cbc10ea311ac3d9fecabb16fd4f76b78",
+      "assessment_sha256": "f6bbc3f72250d6052c85f4f6e95afa6a0f6a1e24201ce2a10d0bfa11d654ccc7",
       "competitive_approved": false
     },
     {
@@ -6000,7 +6000,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as pequenas lâminas alinhadas ao longo de uma tira comprida.",
+      "text": "Observe a repetição de pequenas lâminas laterais ao longo de um eixo achatado.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6016,7 +6016,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "02ce902b0eaec20e1b3e89b3ec5a366843055deeffc7e2509a73fec2579ae458",
+      "assessment_sha256": "916e487649663c8d2a4a3af8f578216bde50b863cfaff554232ca3007e5eda5c",
       "competitive_approved": false
     },
     {
@@ -6059,7 +6059,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure tiras achatadas que se dividem repetidamente em duas.",
+      "text": "Acompanhe uma tira e observe se ela se divide sucessivamente em duas partes semelhantes.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6075,7 +6075,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ee33828237706c299cf673d59fb8bbb7171c2c62720c2620b14feb726c3912a8",
+      "assessment_sha256": "6a963cbbe2e12fdd78bf9ec570899ff94b3f226735483a362befce036465c7e0",
       "competitive_approved": false
     },
     {
@@ -6211,7 +6211,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe os ramos finos com muitas pequenas bolsas arredondadas.",
+      "text": "Procure muitas bolsas arredondadas pequenas nos ramos finos.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6227,7 +6227,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "eba3ea259aef671911794b3dea5ea431bb23f24348823992db924d5be31ccc52",
+      "assessment_sha256": "c83dc0e525ef20b38edc6f3eb0d38f2729730004be27e62228ec36b1d8e72c6e",
       "competitive_approved": false
     },
     {
@@ -6300,7 +6300,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico faz referência à região antártica.",
+      "text": "A região antártica é a referência geográfica deste epíteto. O significado não deve ser tomado como um mapa completo de distribuição.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -6315,7 +6315,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "24567cb41f5628088f06a42c0824838f143494562c0f4d517670e29ebfdbaa97",
+      "assessment_sha256": "a8b11b5e23a9616d5c93235a5e490f3fb363da28599aa83e311223bc74d21ca7",
       "competitive_approved": false
     },
     {
@@ -6327,7 +6327,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure tiras grossas e flexíveis, de aparência semelhante a couro.",
+      "text": "Compare a espessura e o aspecto semelhante a couro das tiras.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6343,7 +6343,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ab7d095ec8db0f8ddd385ba3aef6ab10db89805699a3df0549cbaf185cdaba27",
+      "assessment_sha256": "7d581c0fbae7f27f678c105645894005b0970140db552be636bdbaaafceb7f67",
       "competitive_approved": false
     },
     {
@@ -6385,7 +6385,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa comestível; a origem linguística não é uma recomendação de consumo.",
+      "text": "A palavra latina usada no epíteto expressa a ideia de ser comestível. Nomes científicos não são orientação de consumo nem identificação de segurança alimentar.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6400,7 +6400,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "86221d57eb8153132a5571c7d4df48bfc83a4f5d239bd9d2305b926f81c05056",
+      "assessment_sha256": "20dc26e7e8f598547e457cf12f5116a4f68ae6aa7db848d2ded9693c608ff9ab",
       "competitive_approved": false
     },
     {
@@ -6411,7 +6411,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero se refere a asas.",
+      "text": "O sentido de asas participa deste nome de gênero. É uma comparação de forma, não a indicação de capacidade de voar.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6426,7 +6426,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "74afaa928c02f25240c47104aca1ff9d8b7fce4e5380181bce1d65d90995e605",
+      "assessment_sha256": "b7b358510d07f7dce5c4fa2c36a8555a65728e926f6c49389c9a51e7e910ce73",
       "competitive_approved": false
     },
     {
@@ -6438,7 +6438,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure uma longa lâmina com uma nervura central muito evidente.",
+      "text": "Procure uma lâmina comprida e acompanhe a nervura que passa por seu centro.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6454,7 +6454,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "d4bd2b110506786cd50deb2fc7687c350c942e184d2fbd50dd9e9cc79424687f",
+      "assessment_sha256": "a2a406c357a9a8784f796c36000f4b12b29585a3e25b599d62a6ae22aec3f6b1",
       "competitive_approved": false
     },
     {
@@ -6497,7 +6497,7 @@
         "species",
         "genus"
       ],
-      "text": "Observe as partes espessas agrupadas ao longo dos ramos.",
+      "text": "Observe a espessura das partes agrupadas nos ramos, em vez de procurar apenas lâminas finas.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6513,7 +6513,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a1090df40a332c01511d4f9624ecc88dba1e8a7d81a997114f17267a28efcfa0",
+      "assessment_sha256": "7e80d823b37ee28034799fa39b6f7f1e98246aaca5d5920e6cba1af09c78cc7c",
       "competitive_approved": false
     },
     {
@@ -6555,7 +6555,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico se refere à região da superfície das folhas.",
+      "text": "O nome específico aponta para o ambiente da superfície de folhas. Essa pista linguística não delimita todos os lugares onde a bactéria pode ocorrer.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6570,7 +6570,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "ae05c6eef31bc312b2e773e13c68ebb53cb3933a2738f2f5c5b9fb8c330939e4",
+      "assessment_sha256": "2cc500005ca498e45b1525f3c4462e8402248204e0485e7d72ff573252a5b59e",
       "competitive_approved": false
     },
     {
@@ -6582,7 +6582,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; as colônias cultivadas podem ser amarelas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: A descrição registra células em forma de bastonete e colônias que podem ser amarelas. Forma celular e cor de uma colônia são observações em escalas diferentes. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6598,7 +6598,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "b0b7878e2836e6c8f07c71dbb6fd37949dc8b771ab0e9bbcf49c11fa9c987e84",
+      "assessment_sha256": "7c50711a166ef9f35fe250b04f5bcbf3b6e3c0e8dcdbe185e4581977c66efb43",
       "competitive_approved": false
     },
     {
@@ -6640,7 +6640,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero foi formado com o sentido de organismo com sementes longas; trata-se da terminologia histórica do nome.",
+      "text": "A formação histórica do nome reúne ideias de comprimento e de sementes. Esse vocabulário antigo não significa que a cianobactéria produza sementes como uma planta.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6655,7 +6655,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "279b5d9635229ca2a6216c972bb6ac801c72ec7ab675422a30d1be1c6da04593",
+      "assessment_sha256": "97b5e380ba1315d9e2efac8828b50c1635640a79a7035f3a4c91aa80a8f501f6",
       "competitive_approved": false
     },
     {
@@ -6667,7 +6667,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas unidas em filamentos, que podem se curvar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Na descrição do gênero, células conectadas formam filamentos que podem apresentar curvas ou espirais. Filamento e célula são escalas diferentes de observação. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -6683,7 +6683,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1dbeb88f840011066d2a6bdb41445821b073d5785ed0b141357761db688470ce",
+      "assessment_sha256": "2966b174cea800628be807dc69e9d64b1b59468549d3c7e9cc51a4443c51b800",
       "competitive_approved": false
     },
     {
@@ -6725,7 +6725,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico tem o sentido de enfraquecer ou desaparecer gradualmente.",
+      "text": "Este epíteto evoca um processo gradual de enfraquecimento ou desaparecimento. O sentido histórico do nome não descreve obrigatoriamente cada cultura atual.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6740,7 +6740,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8c1042089aa4fe4a0e31c93f6941a941a4ddb97b42483450deaae80d6289a068",
+      "assessment_sha256": "4cd34c768a743c084931a6968b146a56a24084dcc1cd1e51888445be87631bc0",
       "competitive_approved": false
     },
     {
@@ -6752,7 +6752,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete. Algumas colônias são rosadas ou vermelhas, mas muitas não têm essa cor. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células têm forma de bastonete. Colônias de algumas linhagens podem ser rosadas ou vermelhas; outras não apresentam essa pigmentação. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6768,7 +6768,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "429901535a39c723f841c00bd84d5a60930ed8725d570f4464a31c77cfc99ca6",
+      "assessment_sha256": "0bee0cd8c1448c42b0625f227b18f50106098f53ff6175334703f070cdcf2190",
       "competitive_approved": false
     },
     {
@@ -6810,7 +6810,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa que gosta de sal.",
+      "text": "A afinidade com sal está expressa no epíteto. O nome não fornece uma concentração de sal adequada para cultivo.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -6825,7 +6825,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "6f87fa69352e1f7772485adec9d4e5a1fd015c381d3886d50b666c375786fdf7",
+      "assessment_sha256": "e14603f256ccb63b0e4b1b5f85d3a914e9f588464a93a682c257c95451a0aa4f",
       "competitive_approved": false
     },
     {
@@ -6837,7 +6837,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas; culturas e concentrações podem apresentar pigmentação avermelhada ou púrpura. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células são microscópicas. O conjunto em cultura ou em grande concentração pode apresentar tons vermelhos a púrpura; essa cor não é uma confirmação isolada de espécie. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -6853,7 +6853,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "e4d6ad528f2d17fc0d346a1206cdcd7ba0f04dbca9da46df37b3e503950eb994",
+      "assessment_sha256": "d3d1e8f34a8d749d0035049a3b81f27ea9d8bb358056ec92cf562002c5a3db22",
       "competitive_approved": false
     },
     {
@@ -6895,7 +6895,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+      "text": "Divisão e superfície plana são ideias combinadas neste nome. Elas oferecem uma pista linguística para a organização evocada pelo gênero.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -6910,7 +6910,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "83fa87a9bcbd0dc5b4fbdeb667c726fa0b4196da45d65ebb13f174746ac1f56e",
+      "assessment_sha256": "3f13041f70c4e4fdc7992fb774a148d7027756447ad91eee87a5e49821b2f1ac",
       "competitive_approved": false
     },
     {
@@ -6922,7 +6922,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células pequenas dispostas em filas, formando colônias que podem se dobrar ou enrolar. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Fileiras de células compõem colônias capazes de apresentar dobras ou enrolamentos. Observe a diferença entre organização celular e contorno da colônia. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -6938,7 +6938,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c606f227b4ee3ca47b72fb205ba6b2a49bccb6218442ea9d4ec4e757ea6aa6cd",
+      "assessment_sha256": "e6c92f4f628208b0211a3bd1853f80c7e605f1989992203a9b0874682446a8f8",
       "competitive_approved": false
     },
     {
@@ -6980,7 +6980,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de espiral articulada.",
+      "text": "A palavra combina articulação e espiral. É uma descrição evocada pelo nome, sem fornecer medidas ou confirmar a identificação de uma amostra.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -6995,7 +6995,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "3dbbdf1c56db7f38a3ff3a3c51ed1302abfb54e97550958685685875f2322331",
+      "assessment_sha256": "9a9ebd8df2242b8a165692f93a2e12c59eafe93f4a787e1c46c8dcac3d40d41f",
       "competitive_approved": false
     },
     {
@@ -7006,7 +7006,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto homenageia Edward Jenner, médico e cientista inglês.",
+      "text": "Este epíteto é uma homenagem a Edward Jenner. O nome de uma pessoa pode fazer parte da nomenclatura sem descrever a aparência do organismo.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7021,7 +7021,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "54ad776e8f23e114315be2583536b57ab80a26ad3a8de1bcf8bdc9770cd7941a",
+      "assessment_sha256": "5513e2fd47d06b515a2c7f88be22af0655bfa7872be091e263c313e961a3bcd1",
       "competitive_approved": false
     },
     {
@@ -7033,7 +7033,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos em espiral, formados por células ligadas em sequência. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Células ligadas em sequência compõem filamentos que podem ser espiralados ou retos. Quando presente, o desenho de mola corresponde ao conjunto, não à forma de cada célula. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7049,7 +7049,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "3a8496e63841441b764b5ab1595fe5443eaef17f52115d3d7d790050cd57e716",
+      "assessment_sha256": "866bef1d4b62e80b5b8c5e3f4fe1c2aa1f0063ef62b86bce4a942bb80999fe94",
       "competitive_approved": false
     },
     {
@@ -7091,7 +7091,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa branca.",
+      "text": "O branco é a cor evocada pelo epíteto latino. Use o significado como pista de linguagem, não como confirmação microscópica da identidade.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7106,7 +7106,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "7b628ebb4af3fe243ae311015e8255ad306fb5c08d2b226393e2559bf5eabaa8",
+      "assessment_sha256": "413df7779cada7cca69aef6082538994157725af641adfa730686696f11148c5",
       "competitive_approved": false
     },
     {
@@ -7118,7 +7118,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas alinhadas em filamentos; podem apresentar grânulos claros no interior. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Células alinhadas compõem os filamentos, podendo apresentar grânulos internos claros. A estrutura externa e as inclusões celulares são detalhes diferentes. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7134,7 +7134,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "32869e723e2db3ef4ac748cbde4ec6b6848adae7f0c167ae53688c4c8acdf7f6",
+      "assessment_sha256": "c542c36fcc2f81f590ac230edb1a2eda613e25f1155e0a71ff5ef8e8a0bd4d8c",
       "competitive_approved": false
     },
     {
@@ -7176,7 +7176,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto remete ao nome de uma antiga divindade associada a fontes termais na região dos montes Eugâneos.",
+      "text": "Uma divindade antiga associada a águas termais dos montes Eugâneos é lembrada neste epíteto. A origem cultural do nome não define a tolerância térmica da espécie.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -7191,7 +7191,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "425181b38d558518201d87ae369ee2b1166eb5510e626928ec1c1b7d38aacc4b",
+      "assessment_sha256": "fdd8b2cf25e9a2b425c4bab8af17d4c64b2375ccd1260271ab2102664e4f64fb",
       "competitive_approved": false
     },
     {
@@ -7203,7 +7203,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Em cultura estudada de Gomphosphaeria aponina, as células aparecem ligadas por estruturas mucilaginosas, formando colônias. Essa organização requer observação microscópica; a imagem de apoio do jogo não confirma a identidade nem esses detalhes.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7219,7 +7219,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "a4ce1a6ddd37d1f20eeacb52057a0ec11a6490b481ab3eae4bafa717018c283a",
+      "assessment_sha256": "d46307523e0133d68cc3b034196ff2d99bcdf5d858c12ef7abf2f02d5e77ca51",
       "competitive_approved": false
     },
     {
@@ -7261,7 +7261,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero deriva de um verbo grego relacionado a subir ou flutuar.",
+      "text": "Uma ideia de subir ou flutuar está ligada ao verbo grego que originou o nome. Essa pista histórica não basta para concluir o comportamento de uma amostra.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -7276,7 +7276,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bc89f3518bc481256d785c558f7f0d0687ba35281e8f6b82d5dd986a3e6db29d",
+      "assessment_sha256": "1285bcf57f6d4c614111709796e90f1da1f404b3380c9f50b5ec21decb76f55d",
       "competitive_approved": false
     },
     {
@@ -7288,7 +7288,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas ligadas em filamentos, com algumas células de aspecto diferente das vizinhas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células se ligam em filamentos; algumas podem apresentar aspecto diferente das vizinhas. A diferenciação exige observação microscópica. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7304,7 +7304,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9b8da5dc7622947d7c4da367b9f8bce23ec163723828d5af49ec30073412285d",
+      "assessment_sha256": "2bbda799d8809b6cc90456a078b5c9578f8be927d11441a91648b0a205b3ec0a",
       "competitive_approved": false
     },
     {
@@ -7346,7 +7346,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto está ligado ao nome do primeiro hospedeiro conhecido, associado a um termo grego para estrela.",
+      "text": "O epíteto remete ao nome de um hospedeiro e, por essa via, ao sentido grego de estrela. A referência não demonstra uma lista exclusiva de hospedeiros.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -7361,7 +7361,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f97e0a002fb5cad5ab0871c87d54d48cfe54a2e29ed4a11fd43e09b7ff2ece0a",
+      "assessment_sha256": "89a1bb32eb616150630ceda59782ff5a6302bb19cbe9568789cb62493bed2901",
       "competitive_approved": false
     },
     {
@@ -7373,7 +7373,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Muito pequena e sem parede celular rígida; fotografias da planta afetada não mostram sua forma real. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células são muito pequenas e não apresentam parede celular rígida. Sintomas ou imagens do hospedeiro não revelam diretamente essa forma celular. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7389,7 +7389,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "e38ff9d1284659ab2901acd8ab8cda4bf555f173dd47bcc8f80567693d1918b0",
+      "assessment_sha256": "cf27275fb318fbb85eb6183dcb809f9a0ec8c5bacfad75b92ce77c37296ce6c6",
       "competitive_approved": false
     },
     {
@@ -7431,7 +7431,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de fio ou pelo pegajoso.",
+      "text": "O nome combina a imagem de fios ou pelos com uma característica pegajosa. Não se trata de pelos de um animal.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -7446,7 +7446,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "c88b4c6ec4e34af24e4f0d7d69f90914678385e727f90c252e68a325c82c6c04",
+      "assessment_sha256": "f37e8ecea8b5634f6e62cb36c4b18d73cd1372027cfbf258d36de5848d4bac53",
       "competitive_approved": false
     },
     {
@@ -7457,7 +7457,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa intermediária em latim.",
+      "text": "O sentido latino de posição intermediária está expresso no epíteto. A palavra, sozinha, não diz entre quais organismos se deve comparar uma amostra.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7472,7 +7472,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "509707656545c6b9efeda89b2a6ca973154a13e6faec5793da7c9e69d8c69e11",
+      "assessment_sha256": "40e89b909e55b37e47f371ae9628c6bcd057d0da2ad9f13e7fd661abdbbc013f",
       "competitive_approved": false
     },
     {
@@ -7484,7 +7484,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos reunidos em colônias, com partes mais largas próximas da base. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Os filamentos agrupados apresentam regiões mais largas perto da base. A organização precisa ser examinada em escala microscópica. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7500,7 +7500,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "2d8801033b9937f5a6609534368f0ed0728596fd80533f0437d558ac1d0e807a",
+      "assessment_sha256": "36904cd216bb553ebb31b80eaf14a7cb4e2873a18a216bc65f7bb605a3e19750",
       "competitive_approved": false
     },
     {
@@ -7542,7 +7542,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa que carrega discos.",
+      "text": "O nome específico combina a ideia de carregar algo com a de discos. A pista está nessa combinação de sentidos.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7557,7 +7557,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "8963f3c86ab2596736399cbc62ab903bafa49b6da9680c137d9c34428f0b7ef9",
+      "assessment_sha256": "f815deed6e582aea332cf6e425d926b95b0ace57ed023b7184bcb2baa8d26073",
       "competitive_approved": false
     },
     {
@@ -7569,7 +7569,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas alongadas; algumas linhagens formam envoltórios tubulares e outras não. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células são alongadas. Envoltórios tubulares podem estar presentes em algumas linhagens e ausentes em outras. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -7585,7 +7585,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "282c3365a858f48b54a1acffd7d9e5e6c690c80b254ae84591456b041f855c5a",
+      "assessment_sha256": "2c87e3b7da739e14494581c0a86827d1c8625cac110575f3986ad52036a327aa",
       "competitive_approved": false
     },
     {
@@ -7627,7 +7627,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "Um elemento do nome do gênero é uma palavra grega com o significado de fio.",
+      "text": "Uma parte do nome tem origem em uma palavra grega para fio. A pista se refere a esse componente, sem explicar todos os elementos do nome.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -7642,7 +7642,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "66eeb9a1d7c1d5e3a4a6a875ab2dad03189309e3e8971706f4c5c1af1d9a7085",
+      "assessment_sha256": "603469d49f5a0cc96e3fb4c53f6a82af0c89decb72eb51fc0b3b79ecd2ec11ca",
       "competitive_approved": false
     },
     {
@@ -7654,7 +7654,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com células em sequência e pequenas constrições entre elas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Pequenas constrições aparecem entre células sucessivas do filamento. Esse detalhe pertence à escala microscópica. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7670,7 +7670,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "5405fcb1057ce15ce1aa377a1b93794699f83bda20c3e2686f8ec57ee33aa695",
+      "assessment_sha256": "3504f92cbbf1dc248d961aa47b19ad497bf2bb38afc63950b81d4910a59eb0b6",
       "competitive_approved": false
     },
     {
@@ -7712,7 +7712,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico se refere a rebanhos de ovelhas ou de gado.",
+      "text": "O epíteto remete ao gado ou a rebanhos. Um nome relacionado a hospedeiros não é uma lista completa dos animais que podem abrigar o organismo.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -7727,7 +7727,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "1b761ceca789175b2e813e95ba6349c1fa81abd647715a8b500f339845bb7924",
+      "assessment_sha256": "acfd7392683716e4b2f1fd5fb7b78da9e7a62b600326cfaea81d36188c43227c",
       "competitive_approved": false
     },
     {
@@ -7739,7 +7739,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células muito pequenas; sua observação exige técnicas microscópicas e laboratoriais. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As dimensões celulares exigem técnicas microscópicas e laboratoriais. Uma fotografia geral do hospedeiro não revela a bactéria. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -7755,7 +7755,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "bb6136711a7ae2420f0961e302f381e7eb543e7bbf72dd7861b6a8c35db59901",
+      "assessment_sha256": "6ab222900c3a620624b078f61ebf3041d785623b99e1433622ef6f34cd0dff9b",
       "competitive_approved": false
     },
     {
@@ -7797,7 +7797,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero homenageia Arthur Hill Hassall, médico e estudioso de organismos microscópicos.",
+      "text": "Arthur Hill Hassall é a pessoa homenageada neste nome de gênero. Uma homenagem registra história da nomenclatura, não um caráter de identificação visual.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7812,7 +7812,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "62208d0c21040c798e63360d36e03d33d07daa02e7da02e67ce9862919f08f62",
+      "assessment_sha256": "73f826c4264a38f29ac69967f1060543b33e77f02ea1fbf00a565c7ca477f496",
       "competitive_approved": false
     },
     {
@@ -7824,7 +7824,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Filamentos microscópicos com envoltório; detalhes das células são usados para comparar espécies. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Um envoltório circunda os filamentos. Caracteres celulares e do revestimento participam da comparação entre espécies. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -7840,7 +7840,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "98cab6ef21a5f79b41f8cc12ee613428bd520da546135d369d4f9c7001f6dd79",
+      "assessment_sha256": "2b274c0894076f4b66a36d26eb7e17ad186db1337786effb856610c3c6bc26e6",
       "competitive_approved": false
     },
     {
@@ -7882,7 +7882,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico se refere a um porquinho-da-índia.",
+      "text": "Um pequeno mamífero, o porquinho-da-índia, está referido no epíteto. A relação é com a origem do nome; ela não define sozinha a ecologia da bactéria.",
       "grade": "light",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 6,
@@ -7897,7 +7897,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "39851ba7cb5aa824becd8ea04f4e28cd19691a44a41f328626a64b7969736d7e",
+      "assessment_sha256": "12ff4cc490c3da5ea9a34e379fae087d66ded7b3308eb582340e80d1d42e1067",
       "competitive_approved": false
     },
     {
@@ -7909,7 +7909,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; a espécie precisa de confirmação laboratorial. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células têm forma de bastonete. Essa forma é compartilhada por muitas bactérias e não dispensa confirmação laboratorial. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -7925,7 +7925,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "4d9ee31a1b073f4f13722bbadb5ff1d5c50eb1a7f2cdc17c2ddad5b4a06ceae8",
+      "assessment_sha256": "f04795caab2fa7fbdbb02330f148925cd71b3ca3a311bf56a5c93f3ea2029093",
       "competitive_approved": false
     },
     {
@@ -7967,7 +7967,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto específico significa que apresenta fluorescência.",
+      "text": "A emissão de luz por fluorescência está evocada no epíteto. O significado da palavra não substitui um exame de identificação.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -7982,7 +7982,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "15e6f335605629e9cf2569124cf5cc253f175fb7ea5e573c5f8a23e003182072",
+      "assessment_sha256": "b6cf48c5b1fc8c5f8e95fce0071aa3b162dbf02936cc9d5f79a07f1e8439b924",
       "competitive_approved": false
     },
     {
@@ -7994,7 +7994,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas em forma de bastonete; algumas linhagens produzem pigmentos fluorescentes. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células têm forma de bastonete. Pigmentos de algumas linhagens podem apresentar fluorescência, uma observação diferente da simples forma celular. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -8010,7 +8010,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "01a823ac1c342e335bc8389c814570fc22d4daff970bcc7ac55c27f148e4e26d",
+      "assessment_sha256": "129277db861af8efcfb53441e9d37520925d863b24a07a79234cdb57779205c5",
       "competitive_approved": false
     },
     {
@@ -8052,7 +8052,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de aquilo que não é colorido.",
+      "text": "A ausência de cor é a ideia evocada pela combinação que forma o nome. Não deduza, só por isso, as condições de iluminação de uma micrografia.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -8067,7 +8067,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "0b608ee7cd42ceb433a9817016334036cc8151865057ef7eb60d035fbab75ca6",
+      "assessment_sha256": "035dff53f69c78d6170ddab5ab8c8614fdaba6a8667ee57ad1c7c29700b2521c",
       "competitive_approved": false
     },
     {
@@ -8078,7 +8078,7 @@
       "ranks": [
         "species"
       ],
-      "text": "O epíteto foi criado com o sentido de portador de oxalato; essa origem histórica não confirma a composição das inclusões celulares.",
+      "text": "O nome foi construído com a ideia de carregar oxalato. É uma interpretação histórica e não uma análise química das inclusões da célula.",
       "grade": "strong",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 2,
@@ -8093,7 +8093,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "29a8bc536573c64aaf684a6e6e9a7ee0fd95075546e6d4191740fcf1ce9091d5",
+      "assessment_sha256": "72be9a7ac2fc635a914bf5cc9e71b5845cc76a951e230031818899c044b16feb",
       "competitive_approved": false
     },
     {
@@ -8105,7 +8105,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células grandes para uma bactéria, com grânulos internos de carbonato de cálcio e enxofre. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células apresentam inclusões de carbonato de cálcio e de enxofre. A composição é estabelecida por estudos, não por reconhecer pontos claros em uma imagem de apoio. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -8121,7 +8121,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "461433be37eafdd63fbce6fc723a619a3fd1d716e89fd94218b7b9bd7c6c8329",
+      "assessment_sha256": "b5b34bd169a114d361e26847fbe45daf068f6f6fe65c812737663b801e4910b3",
       "competitive_approved": false
     },
     {
@@ -8163,7 +8163,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de célula arredondada colorida.",
+      "text": "Cor e forma arredondada participam da construção deste nome. A tradução não substitui a análise microscópica das células.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -8178,7 +8178,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "7a4f1a279ef59a3ed750b186220f547cc51526315c111b171499cf801a00edae",
+      "assessment_sha256": "d9753eba627d26471632d72dfcad91d961872e0c137a3831c74394799283c0bd",
       "competitive_approved": false
     },
     {
@@ -8190,7 +8190,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células arredondadas ou parcialmente arredondadas, envolvidas por uma camada gelatinosa. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: As células são arredondadas ou parcialmente arredondadas e apresentam material gelatinoso ao redor. O envoltório não deve ser confundido com o limite de cada célula. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -8206,7 +8206,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "064672ab61ad771d32894cf3f67367061d15b1a0f71344bec995f62b996e546c",
+      "assessment_sha256": "5e947455549648a189258d1f34dee755e2410f34656fb43b49bc5f25ee2205b3",
       "competitive_approved": false
     },
     {
@@ -8248,7 +8248,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero está relacionado ao sentido de cabeça lisa ou sem revestimento.",
+      "text": "A imagem de uma cabeça sem revestimento está ligada ao nome do gênero. É uma comparação usada na nomenclatura dos fungos.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -8263,7 +8263,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "f38b42f3e5879c87161133f004caf4963e15c6b79d4490764775c2737f3c23ea",
+      "assessment_sha256": "d755ad4b20ea044ba4d0251086bdd32eabba06d218be3f1d8bc884771184b987",
       "competitive_approved": false
     },
     {
@@ -8275,7 +8275,7 @@
         "species",
         "genus"
       ],
-      "text": "Procure um pequeno cogumelo castanho crescendo sobre restos de madeira.",
+      "text": "Observe o chapéu castanho e o pé claro, considerando também a presença de restos de madeira.",
       "grade": "light",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 6,
@@ -8291,7 +8291,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "9d16e0f5d061a7cf3508233e43b1f9db5778acc4df4c84dccde69863ebdb0f3a",
+      "assessment_sha256": "dbf0c4fe0d4062e67de5bf518376a6be6e0e106d3cd13956282184a433e41231",
       "competitive_approved": false
     },
     {
@@ -8333,7 +8333,7 @@
       "ranks": [
         "genus"
       ],
-      "text": "O nome do gênero combina elementos com o sentido de plano que se divide.",
+      "text": "Divisão e superfície plana são ideias combinadas neste nome. Elas oferecem uma pista linguística para a organização evocada pelo gênero.",
       "grade": "moderate",
       "previous_category_ceiling": 3,
       "proposed_ceiling": 3,
@@ -8348,7 +8348,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "de7d9463337e5cdc03c2c08252e874db8e7a70f185297ad9f0725cbc9090ae13",
+      "assessment_sha256": "b9a2a514ea0704f37a1c8492e0c82da1ebfe86da6e5f8116508cf5be85dc119d",
       "competitive_approved": false
     },
     {
@@ -8360,7 +8360,7 @@
         "species",
         "genus"
       ],
-      "text": "Informação complementar (a imagem é de apoio): Células microscópicas dispostas em filas regulares, formando placas pequenas. A imagem do jogo é apenas apoio e não confirma essas características.",
+      "text": "Contexto descritivo; a imagem de apoio não comprova a identificação: Fileiras regulares de células compõem pequenas placas. A regularidade descreve a organização da colônia em escala microscópica. A imagem apresentada é de apoio: ela não demonstra esses detalhes nem confirma a identificação da espécie.",
       "grade": "moderate",
       "previous_category_ceiling": 2,
       "proposed_ceiling": 3,
@@ -8376,7 +8376,7 @@
       "review_state": "draft",
       "reviewer": null,
       "reviewed_at": null,
-      "assessment_sha256": "4c1ed87caebb23b6b1790cc2d193e9ef239f8d74fcde0fe06134ce5d54ee163d",
+      "assessment_sha256": "bad911d641b199354bfd075a1efacf51c0d1d6fcd5d6aea0d55e17e4ae70831d",
       "competitive_approved": false
     }
   ],

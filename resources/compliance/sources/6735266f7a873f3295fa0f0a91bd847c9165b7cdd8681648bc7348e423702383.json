@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.524432+00:00",
+  "source_url": "https://www.inaturalist.org/observations/146101517",
+  "species_id": "96",
+  "photo_id": "251110486",
+  "photo_sha256": "1b80107916b440bb32fe71a469f9d4712d8b4089abce5b43fab283c0ebe3df5d",
+  "comparison": "Shiny orange grouped rounded structures; not evidence of nutrient acquisition.",
+  "archived_taxon": {
+    "id": 56273,
+    "name": "Leocarpus fragilis",
+    "rank": "species"
+  },
+  "observation_id": 146101517,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "93b7a50dd387ee96c3736c7cc6f8ed7fab7d5541f1160d60e0b731c5db0ce535"
+}

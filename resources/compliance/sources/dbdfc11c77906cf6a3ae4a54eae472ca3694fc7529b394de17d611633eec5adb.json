@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit continental/country records plus UKMoths late-season immigration from southern Europe; observation does not imply resident population everywhere.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://lepiforum.org/wiki/page/Acherontia_atropos",
+      "consulted_at": "2026-10-19T00:13:23.923909+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/3/distribution/text",
+      "text_sha256": "b4ac7d3e1546976ff99d77788424802e99327e367e39794a9e26f7bc0921a528"
+    }
+  ]
+}

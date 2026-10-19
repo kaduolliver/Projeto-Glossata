@@ -1,0 +1,34 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 67163775,
+    "taxon": {
+      "id": 936461,
+      "name": "Euphorbia duckei",
+      "rank": "species"
+    },
+    "community_taxon_id": 936461,
+    "quality_grade": "research",
+    "photo_ids": [
+      "108445674",
+      "108445708",
+      "108445783",
+      "108445825",
+      "108445936",
+      "108448024"
+    ],
+    "archived_response_sha256": "e1fe6303f9950cae5933d876f98dbf14bae42324cd441e1e8e999352c26b4d6a",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:41.893400+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/67163775",
+  "catalog_species_id": "62",
+  "catalog_photo_id": "108445674",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "ee80c85236ea86456f6b2aaeb48ce10d4f6cfa4f23e3f52db9d7c9e066bc43b4",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Thin stalk and radially pleated pink/red cap. Substrate shown as plant debris; no nutritional mechanism inferred. Summary limited to the photographed form and archived taxon; photo alone is not an independent scientific identification.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.inaturalist.org/observations/261552464",
+      "consulted_at": "2026-10-18T23:59:24.427001+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "local_photo": "resources/images/inaturalist/606817545.jpg",
+      "sha256": "954e18d79e26f39dffa7a9fe8fbfca7482469a65a4a265e19cca181c149aabb6",
+      "method": "view_image; no image modifications"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/71/summary/text",
+      "text_sha256": "8770db54a592eac81b8d8189387cd9f6c19a787006a692539dd4ffab8a23aafb"
+    }
+  ]
+}

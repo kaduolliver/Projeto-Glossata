@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Explicit Queensland regional record; not a complete species range and not an automatic new photo/identity approval.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://wetlandinfo.detsi.qld.gov.au/wetlands/facts-maps/wildlife/?AreaID=ibra-bioregion-wet-tropics-wet",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/16/distribution/text",
+      "text_sha256": "7674617552b0a02daf74568df2566a83ac1fbb47e16dab8f9ac8ff7d7a42ede4"
+    }
+  ]
+}

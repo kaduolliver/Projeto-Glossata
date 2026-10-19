@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Tentacle-like narrow appendages, dead-wood/leaf-litter habitat, Cuba/Korea/Mexico/Sri Lanka/USA. Does not transfer saline-beach habitat or traits of the other species X. ripicola. No diagnostic measurements or figure reuse.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4838588/",
+      "consulted_at": "2026-10-19T00:07:35.276304+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/curiosity/text",
+      "text_sha256": "948ab42757359bc1359b8664abf890eb8726cbbc65be34d7f2cad26f9fce23c4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/distribution/text",
+      "text_sha256": "c6dc14e19eafe602d9d438949442a3bee94606fe558db4253141a7aed422e1e6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/hint/text",
+      "text_sha256": "4840f7f34055d33c044762b75f55f1fdd7639366745505b3865735dd4029fdf4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/morphology/text",
+      "text_sha256": "97c14a983eb50c16fc79234a1839c90205bfe76777810dfa2d28ae8dabdd64c6"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/nutrition/text",
+      "text_sha256": "5d1d6f5fd9409dc5ec2754353c8e2e393d6d47ac44e1c4cf494f98d08ae55bb4"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/76/summary/text",
+      "text_sha256": "83b62800b381c564c24b9e645d418aa602de66883a9ff57dd6812412fed69e36"
+    }
+  ]
+}

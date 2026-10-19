@@ -1,0 +1,59 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "American origin/established populations elsewhere, orange-black-veined wings/white edge spots, milkweed larvae versus adult nectar. MJV separately demonstrates successive generations of migratory populations, not migration by all monarchs everywhere.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://animaldiversity.org/accounts/Danaus_plexippus/",
+      "consulted_at": "2026-10-18T23:32:47.551006+00:00",
+      "response_sha256": "a8c7bf1b50fee46402eded50fe91933edca3bcfc544846a20ccd0cc0b7454428"
+    },
+    {
+      "source_url": "https://monarchjointventure.org/monarch-biology/monarch-migration",
+      "locator": "Eastern Monarchs; Western Monarchs / successive generations",
+      "consulted_at": "2026-10-19T00:13:23.924889+00:00"
+    },
+    {
+      "source_url": "https://research.fs.usda.gov/treesearch/43796",
+      "locator": "Luna and Dumroese (2013), Abstract / larvae leaves, adult nectar",
+      "consulted_at": "2026-10-19T00:13:23.924889+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/curiosity/text",
+      "text_sha256": "c410632ce2b359ae7d16e83f0b2aaebafffe39988a8f06b726b572090169558d"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/distribution/text",
+      "text_sha256": "33d2808cd0cb4f3d2552a4a905421ce3591e5b6195f91ae8561f44d7e9d06004"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/hint/text",
+      "text_sha256": "815370ec4ec72c52be5a842662ac0a996d5090d3dab27e54b5d4ee6bd68b2ecb"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/morphology/text",
+      "text_sha256": "4641753f01235098ae3d03838c19fca31d5b634e9342e1bd959881f242e63b98"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/nutrition/text",
+      "text_sha256": "5f3d0cb49d2ec5ea9e50084acf2783e6a5ec52e39d72d5c671a38e22d4127f25"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/6/summary/text",
+      "text_sha256": "2c9925dd2383277b402b409be5387695b54b6f541abfe54ba63d2000db809dbd"
+    }
+  ]
+}

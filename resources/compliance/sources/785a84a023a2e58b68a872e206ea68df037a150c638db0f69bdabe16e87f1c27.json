@@ -1,0 +1,39 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Gas bladders at blade bases, flexible stipes, rock holdfast and canopy habitat. No claim that sunlight itself is a nutrient; photosynthetic energy distinguished from absorbed nutrients.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/giant-kelp",
+      "consulted_at": "2026-10-18T23:56:22.460158+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/141/curiosity/text",
+      "text_sha256": "43b55f782e7f43ea43649d629e3690a680715349f39266c76fbe6a47102547dc"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/141/hint/text",
+      "text_sha256": "31a93098daa6dd7bd6d1a0a7d91287818f58ef7eb48a51e7527990d3d23f6b0f"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/141/morphology/text",
+      "text_sha256": "42d45351e3afa403b59d2b65e7430216fbe1b86d2d9a63bb4125086eb6da050b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/141/summary/text",
+      "text_sha256": "e4bcc38d427110d50d830f0f5646f6df5ae7ac89068058bfd12925c0168a691a"
+    }
+  ]
+}

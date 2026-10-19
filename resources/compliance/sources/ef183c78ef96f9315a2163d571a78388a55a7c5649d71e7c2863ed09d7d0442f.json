@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Flat regular bifurcating thallus with parallel sides; Atlantic/European records, rock pools/subtidal. Shape is not conclusive identification; no full species diagnosis or illustrations reproduced.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.habitas.org.uk/marinelife/species.asp?item=ZR4570",
+      "consulted_at": "2026-10-19T00:07:35.273755+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/curiosity/text",
+      "text_sha256": "c64ae2ea5eb7a9bf5847ffdb3b612e73d6ee114da2698716b13461811f8e7d05"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/distribution/text",
+      "text_sha256": "4723d8935ac4d405ae490a0fdda6313844eb59666625aca76181da8f1e5a98a9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/hint/text",
+      "text_sha256": "a0cf63bbba9672c4c1e0bdd0f1a1ecdacde8d815f5a8c71cd6da9debcc149143"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/morphology/text",
+      "text_sha256": "6ecb3d7f804a056547fc698314ba2ba3cf24e44642126b2180e7a691ba19fd6c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/nutrition/text",
+      "text_sha256": "71c1a13b29563faba3c781decc229b1524abaa687dd78a66764b54247b3a01a8"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/146/summary/text",
+      "text_sha256": "f40e1d6ffe7442f1b75ec967b90a4fe211f0ec9efde565a3c969a6f14960c85f"
+    }
+  ]
+}

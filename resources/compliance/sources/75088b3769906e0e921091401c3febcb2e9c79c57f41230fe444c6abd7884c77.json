@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Belt and blue; not diagnostic certainty or a uniform color.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/stropharia-caerulea.php",
+      "consulted_at": "2026-10-18T23:35:05.080929+00:00",
+      "response_sha256": "66fbdc75f9a9830566da9ec49625069a0675ff92ce68246722312c9af4b25d95"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/63/etymology_hints/genus/text",
+      "text_sha256": "0f44be8e2bc7fbac0405f8028403a4dd566a7b3a43d2251df26be076250a1ca9"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/63/etymology_hints/species/text",
+      "text_sha256": "2a8dc3a8abb08404f60655facf9695caa129800ac6637ce46cccd159af32442b"
+    }
+  ]
+}

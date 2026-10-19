@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Inner and fringe/hem; generic morphological etymology only.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/entoloma-sinuatum.php",
+      "consulted_at": "2026-10-18T23:36:49.801696+00:00",
+      "response_sha256": "b18d8e1218d7e8ad38883bdb82060a0c18b690c406dcc435bf65b2d6850403fa"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/81/etymology_hints/genus/text",
+      "text_sha256": "f18152b6765d4cbc8db9a8b6150bf11a03296fcf9c972a1c9d4766ab4e06c5e6"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Cucurbitaceae vine with palmately cut leaves; photographed prickly fruits, small flowers, climbing shoots. CSU Channel Islands independently confirms perennial climber and spiky fruit. Range narrowed to documented southern California rather than unsupported extrapolation.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://plants.sdsu.edu/sdpls/plants/Marah_macrocarpa/",
+      "consulted_at": "2026-10-18T23:41:40.119637+00:00",
+      "response_sha256": "7054adf6655edf3ac77855b953ae8e846700b94d43a91de9de364234344c0baf"
+    },
+    {
+      "source_url": "https://www.csuci.edu/arts-sciences/biology/native-plants/marah-macrocarpa.html",
+      "locator": "General; Jepson Manual bibliographic reference",
+      "consulted_at": "2026-10-19T00:03:44.658152+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/curiosity/text",
+      "text_sha256": "c30934fe54dc7a64cb26220097a788dbca12c8bf5bb8398a359479e792f103f9"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/distribution/text",
+      "text_sha256": "73e087edb410dfea054185d6f83b9deed36459866df77bcd3f7c32a5a525968c"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/hint/text",
+      "text_sha256": "81cc567df995ad42ea832beb888944b838b08155c586b80a07a9dc689e551b9b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/morphology/text",
+      "text_sha256": "3414ff553df0762ef63630862299645cdc084cacccd53d1fb871254b0cd07dfb"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/48/summary/text",
+      "text_sha256": "700888536e317d618ff72703ebf65583bf7a3679ab2892a31919f9b22b6c9c83"
+    }
+  ]
+}

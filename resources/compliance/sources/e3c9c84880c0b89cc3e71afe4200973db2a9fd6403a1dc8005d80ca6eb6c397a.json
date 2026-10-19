@@ -1,0 +1,20 @@
+{
+  "kind": "visual_reference_comparison",
+  "method": "AI inspection with view_image of the unchanged local photograph; not expert identification",
+  "examined_at": "2026-10-18T23:52:18.192435+00:00",
+  "source_url": "https://www.inaturalist.org/observations/203242996",
+  "species_id": "7",
+  "photo_id": "359063525",
+  "photo_sha256": "a32b295d87ac290e1413f823ad693a0a9fb51af7233d9bbc0162a48713a3bc0e",
+  "comparison": "Four large contrasting eyespots on reddish open wings; eye-like marks are wing coloration.",
+  "archived_taxon": {
+    "id": 207977,
+    "name": "Aglais io",
+    "rank": "species"
+  },
+  "observation_id": 203242996,
+  "claim_scope": "Appearance of the recorded organism. Not a universal diagnostic character, a full distribution, a rights grant or a new photo approval.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "0b748487e466a846766220f0abed64f51e5bf7bfe53c2e54bc04df37e947b726"
+}

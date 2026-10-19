@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Smooth/bare head; a genus-name comparison, not a property exclusive to P. allenii.",
+  "limitations": [
+    "No open reuse license for the page prose demonstrated. No source paragraph or image is reproduced/translated; only nomenclatural facts support the new independent wording. Available rights still require the actual scoped decision."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.first-nature.com/fungi/psilocybe-cyanescens.php",
+      "consulted_at": "2026-10-18T23:36:37.652859+00:00",
+      "response_sha256": "5654a848372e44b04cc8b3eda658861233b0db1808fc6ce059757d4c0d7a09d0"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/123/etymology_hints/genus/text",
+      "text_sha256": "8fc38d0d3bfbca65bd735327615bdc6ac26ae749a983feb85d97467e16b04102"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "kind": "educational_reference_check",
+  "sources": [
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC7754439&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:11:50.958103+00:00",
+        "response_sha256": "af3ba99ea5bfd0836ec92603868075d212d6ec07928aed2742c0dca33e7d52c6",
+        "pmcid": "PMC7754439",
+        "metadata": {
+          "id": "32462723",
+          "source": "MED",
+          "title": "The two faces of Coprinus comatus-Functional properties and potential hazards.",
+          "authorString": "Nowakowski P, Naliwajko SK, Markiewicz-Żukowska R, Borawska MH, Socha K.",
+          "doi": "10.1002/ptr.6741",
+          "pubYear": "2020",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.1002/ptr.6741"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC7754439"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC7754439?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7754439/fullTextXML",
+        "consulted_at": "2026-10-18T23:12:07.338789+00:00",
+        "response_sha256": "aefbee481a9e85ec4bcf03501aa479687c280b23be53cdd47d6a89b17b95cc7b",
+        "bytes": 187283,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC7754439",
+        "title": "The two faces of Coprinus comatus-Functional properties and potential hazards.",
+        "author_credit": "Nowakowski P, Naliwajko SK, Markiewicz-Żukowska R, Borawska MH, Socha K.",
+        "doi": "10.1002/ptr.6741",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license": "CC-BY-4.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    },
+    {
+      "kind": "educational_reference_check",
+      "bibliographic_metadata": {
+        "kind": "bibliographic_metadata",
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=PMCID%3APMC4846694&format=json&resultType=core&pageSize=1",
+        "consulted_at": "2026-10-18T23:11:52.087213+00:00",
+        "response_sha256": "1ca6065751b1e3df23ff5d67fffc18d158d3186fb9ea60ed72d63c0358d07db8",
+        "pmcid": "PMC4846694",
+        "metadata": {
+          "id": "26705753",
+          "source": "MED",
+          "title": "Mercury bio-extraction by fungus Coprinus comatus: a possible bioindicator and mycoremediator of polluted soils?",
+          "authorString": "Falandysz J.",
+          "doi": "10.1007/s11356-015-5971-8",
+          "pubYear": "2016",
+          "isOpenAccess": "Y",
+          "license": "cc by",
+          "fullTextUrlList": {
+            "fullTextUrl": [
+              {
+                "availability": "Subscription required",
+                "availabilityCode": "S",
+                "documentStyle": "doi",
+                "site": "DOI",
+                "url": "https://doi.org/10.1007/s11356-015-5971-8"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "html",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC4846694"
+              },
+              {
+                "availability": "Open access",
+                "availabilityCode": "OA",
+                "documentStyle": "pdf",
+                "site": "Europe_PMC",
+                "url": "https://europepmc.org/articles/PMC4846694?pdf=render"
+              }
+            ]
+          }
+        },
+        "limitation": "Metadata and declared license only; not full-text reading, permission decision or scientific approval."
+      },
+      "license_check": {
+        "source_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4846694/fullTextXML",
+        "consulted_at": "2026-10-18T23:12:10.733728+00:00",
+        "response_sha256": "f62933de51209a7fef1483997de561cf7ef1cbe574a21933ed9c414328d809f9",
+        "bytes": 121990,
+        "kind": "selected_article_license_metadata",
+        "pmcid": "PMC4846694",
+        "title": "Mercury bio-extraction by fungus Coprinus comatus: a possible bioindicator and mycoremediator of polluted soils?",
+        "author_credit": "Falandysz J.",
+        "doi": "10.1007/s11356-015-5971-8",
+        "license_url": "http://creativecommons.org/licenses/by/4.0/",
+        "license": "CC-BY-4.0",
+        "locator": "front/article-meta/permissions/license; article DOI",
+        "limitations": "Selected XML metadata; no image, third-party figure or human scientific approval included."
+      }
+    }
+  ],
+  "locators": [
+    "Nowakowski et al., Introduction / cap, scales and autolysis",
+    "Falandysz, Introduction / saprophytic nutrition, moderate climate and habitats"
+  ],
+  "use": "New brief educational synthesis. No health benefit, edibility advice, contamination measurement or image reuse.",
+  "scientific_approval": false,
+  "permission_created": false
+}

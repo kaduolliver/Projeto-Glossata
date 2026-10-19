@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Indo-West Pacific label and Marshall Islands specimen; metadata explicitly CC0. A 1946 specimen is not a 2026 collection or complete distribution. No specimen image downloaded or redistributed.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.si.edu/object/turbinaria-ornata-turner-j-agardh%3Anmnhbotany_2330471",
+      "consulted_at": "2026-10-19T00:13:23.922970+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/150/distribution/text",
+      "text_sha256": "cd99e3c6241b6668b3bf8949529a3515cf32538fb8be6a80feb2db4dbc04d0b7"
+    }
+  ]
+}

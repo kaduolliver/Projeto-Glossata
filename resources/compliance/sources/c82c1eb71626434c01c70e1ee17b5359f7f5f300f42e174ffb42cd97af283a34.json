@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Plumose green/yellow-green plants; numerous small leaves, simple branches and mats on humus/logs in western North America. UBC teaching account independently describes pinnate mats; no illustration copied.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=250099201",
+      "consulted_at": "2026-10-19T00:03:44.657127+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://blogs.ubc.ca/biology321/?page_id=980",
+      "locator": "Habitat; Overall Structure",
+      "consulted_at": "2026-10-19T00:03:44.657127+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/curiosity/text",
+      "text_sha256": "5f1b0e78dc96b3b90c20b4c7a953ab68fba2c67d3d35f3ab1cdd0c91c0add7c3"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/distribution/text",
+      "text_sha256": "d8e0b01e7fb320d97ad5d36ab9815b8ba05b19a2686c7fb6a4921f50fd1a4121"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/hint/text",
+      "text_sha256": "ed7edf8abefd241aa9eb6ffc092ee526a7200bb12e1865b2059a138b1803d438"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/morphology/text",
+      "text_sha256": "b8d00ca5c2a80874725226d2c10637cd4461636f05bd2bd13604bccc08ed8e27"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/43/summary/text",
+      "text_sha256": "1908572fd4e61dbd94d1168b23c249037a49c908a823fd7e5d0bef5765737a49"
+    }
+  ]
+}

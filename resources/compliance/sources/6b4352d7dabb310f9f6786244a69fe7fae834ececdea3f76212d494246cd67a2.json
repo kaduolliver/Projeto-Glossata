@@ -1,0 +1,38 @@
+{
+  "kind": "archived_observation_reference_comparison",
+  "observation": {
+    "observation_id": 104690605,
+    "taxon": {
+      "id": 700944,
+      "name": "Brahmaea wallichii",
+      "rank": "species"
+    },
+    "community_taxon_id": 700944,
+    "quality_grade": "research",
+    "photo_ids": [
+      "175474265",
+      "175474276",
+      "175474285",
+      "175474257",
+      "175474243",
+      "175474236",
+      "175474228",
+      "175474224",
+      "175474215",
+      "175474206"
+    ],
+    "archived_response_sha256": "2085783ed6b0938e00f388b1c46b0c02642fc7fa6d8f95f1bb1ad4c66a284ce2",
+    "api_collected_at": null,
+    "cache_examined_at": "2026-10-18T23:49:40.929345+00:00",
+    "scope": "archived observation, not a distribution map or a new scientific review"
+  },
+  "source_url": "https://www.inaturalist.org/observations/104690605",
+  "catalog_species_id": "4",
+  "catalog_photo_id": "175474265",
+  "identity_and_photo_match": true,
+  "claim": "The wording reports a cited occurrence only, not total species range. Original cache acquisition time is unknown; examination time does not renew it.",
+  "human_approval": false,
+  "permission_created": false,
+  "text_sha256": "5534efc93c6b0124bfb6aae1891e1ad9e15e6ee2181a004b308090ffc08d72d5",
+  "geographical_comparison": "Compared the draft’s existing coarse place name with the cached locality label; no coordinates, hidden locations or more precise locality exported."
+}

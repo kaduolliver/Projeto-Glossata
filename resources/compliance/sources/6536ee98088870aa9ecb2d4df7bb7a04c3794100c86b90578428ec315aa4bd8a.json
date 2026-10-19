@@ -1,0 +1,44 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Flat thallus with crescent gemma cups, humid soil/gardens/walls/stream-bank habitat. Gemma reproduction is distinct from seed reproduction; no claim that this liverwort also makes seeds. Independent concise wording, not a translated guide description.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.britishbryologicalsociety.org.uk/wp-content/uploads/2020/12/Lunularia-cruciata.pdf",
+      "consulted_at": "2026-10-19T00:03:44.658152+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/curiosity/text",
+      "text_sha256": "1257872311a7db9ef6b594a12c6dafa024cb3428ae37eaabac6cf11f93ee6b12"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/distribution/text",
+      "text_sha256": "be1b614ff3cec1d55635e1ebeaaf97b0e3ea33cb13cfaccea2216e187e9c9594"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/hint/text",
+      "text_sha256": "0477c1d47726f223ef0719f417225618a14ad21125e580458b89e005dff98ff2"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/morphology/text",
+      "text_sha256": "ca5dd26b50aa6936a502ac6082c678664b621164716bac7437ff3b9e30a2e3fd"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/46/summary/text",
+      "text_sha256": "12f4b406b827c3936fb1d76e6a18e613db12c27fbfa042d354b6cf0bfdb5c7c3"
+    }
+  ]
+}

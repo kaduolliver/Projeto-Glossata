@@ -1,0 +1,49 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Socotra endemism independently documented in the article and Kew POWO. Umbrella-like crown, repeatedly branched supports and narrow terminal leaves directly inspected in catalog photo. No toponym/coordinate database, map, interview prose or medicinal claim incorporated.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://link.springer.com/article/10.1186/s13002-021-00452-1",
+      "consulted_at": "2026-10-19T00:03:44.660132+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    },
+    {
+      "source_url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:534145-1",
+      "locator": "Native range: Socotra; taxon identity",
+      "consulted_at": "2026-10-19T00:03:44.660132+00:00"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/curiosity/text",
+      "text_sha256": "39d27926257052ebe9e41c44883ddc932152377e0d3014dfc9d76db5cde2211b"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/distribution/text",
+      "text_sha256": "4be9340460daf5b0c1265468a601695a8d6f642bcdc6bba2aa5c3395c662bed5"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/hint/text",
+      "text_sha256": "8cf4809e1d01bf7ec24b4b47119f61e570f9f406f280bf6d3a83144d84f6aacd"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/morphology/text",
+      "text_sha256": "ec9fab6618a27ddb34adfa64ea950ec9fe5aec3e57ba7e47ae878dda41cb7e20"
+    },
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/58/summary/text",
+      "text_sha256": "70148f7fe0d507bad6a002c5093cb9c19e50f38bbb5a0a11ed99a8c42f0c9689"
+    }
+  ]
+}

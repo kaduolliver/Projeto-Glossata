@@ -1,0 +1,24 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Spore-associated capillitium and fruiting stage; pink tufts visibly inspected in photo 4592237. No flowers asserted.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6492006/",
+      "consulted_at": "2026-10-18T23:59:24.431554+00:00",
+      "method": "selected sections examined with web research tool, not a full-page archival hash"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/species_profiles.json",
+      "pointer": "/90/curiosity/text",
+      "text_sha256": "583c24e563b2d0751db97573f0ae27087e3d7b747b48b3ef338e55db32ed849a"
+    }
+  ]
+}

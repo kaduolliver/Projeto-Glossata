@@ -1,0 +1,29 @@
+{
+  "kind": "educational_reference_check",
+  "method": "explicit AI comparison, not human approval",
+  "comparison": "Scientific name explicitly interpreted as edible wings. Not an instruction or safety assurance for consumption.",
+  "limitations": [
+    "Facts compared by AI; no human review, legal certification, source-prose permission or available-rights grant inferred. No source paragraph, figure, or map incorporated. Source license does not become a license on the new wording."
+  ],
+  "sources": [
+    {
+      "source_url": "https://www.marlin.ac.uk/species/detail/1291",
+      "consulted_at": "2026-10-18T23:43:21.640741+00:00",
+      "response_sha256": "e8089218b8534aab01936fceeccaa16dffa84d5a286144c790ea0dd278accd40"
+    }
+  ],
+  "scientific_approval": false,
+  "permission_created": false,
+  "bindings": [
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/149/etymology_hints/genus/text",
+      "text_sha256": "899b53f378f30d2dd4e534c69d652787f0ae8b6054544cef8f975ba857335d78"
+    },
+    {
+      "file": "resources/data/hint_education.json",
+      "pointer": "/149/etymology_hints/species/text",
+      "text_sha256": "5c927046774b76509b57f34819dc0625475062cd8df3f75276e4da083a6fda89"
+    }
+  ]
+}
