@@ -12,6 +12,7 @@ public:
     QVector<Species> speciesFor(const QString &id) const;
     QVariantList domains() const;
     QVariantList quickAccess() const;
+    QVariantList homeSlides() const;
     QVariantList kingdoms() const { return domains(); } // Compatibility for older adapters.
     QVariantList children(const QString &id) const;
     QVariantList breadcrumbs(const QString &id) const;

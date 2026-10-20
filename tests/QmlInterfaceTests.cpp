@@ -42,12 +42,123 @@ class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
     void designSystemStatesAndContrast();
+    void homeCarouselPhotographsAndNavigation();
     void separateExploreAndPlayPreservesSessions();
     void photographEdgesFadeWithoutHidingTheOrganism();
     void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+{
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("carousel.sqlite"));
+    const auto slides = controller.homeSlides();
+    QCOMPARE(slides.size(), 4);
+    QSet<QString> images;
+    for (const auto &value : slides) {
+        const auto slide = value.toMap(), photo = slide["photo"].toMap();
+        QVERIFY(!photo["author"].toString().isEmpty());
+        QVERIFY(photo["licenseUrl"].toString().startsWith("https://creativecommons.org/"));
+        QCOMPARE(photo["evidenceSha256"].toString().size(), 64);
+        QVERIFY(!images.contains(photo["image"].toString()));
+        images.insert(photo["image"].toString());
+        QVERIFY(slide["introduction"].toMap()["text"].toString().startsWith(slide["excerpt"].toString()));
+        QVERIFY(!slide["excerpt"].toString().isEmpty());
+    }
+    DiscordRichPresence presence{QString(), QString()};
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+    QVERIFY(window);
+    auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto click = [&](const QString &name) {
+        auto button = item(name);
+        if (!button || !button->isVisible() || !button->isEnabled()) return false;
+        button->forceActiveFocus(Qt::TabFocusReason);
+        QTest::keyClick(window, Qt::Key_Space);
+        QTest::qWait(50);
+        return true;
+    };
+    QTRY_VERIFY(item("homeCarousel"));
+    auto home = item("homeCarousel");
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QVERIFY(home->property("transitionDuration").toInt() > 0);
+    QVERIFY(click("homeNextSlide"));
+    QCOMPARE(home->property("currentIndex").toInt(), 1);
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    window->setProperty("motionEnabled", false);
+    QCOMPARE(home->property("transitionDuration").toInt(), 0);
+    QVERIFY(click("homePreviousSlide"));
+    QCOMPARE(home->property("currentIndex").toInt(), 0);
+    QVERIFY(click("homePreviousSlide"));
+    QCOMPARE(home->property("currentIndex").toInt(), 3);
+    QTest::keyClick(window, Qt::Key_Right);
+    QCOMPARE(home->property("currentIndex").toInt(), 0);
+    QTest::keyClick(window, Qt::Key_End);
+    QCOMPARE(home->property("currentIndex").toInt(), 3);
+    QTest::keyClick(window, Qt::Key_Home);
+    QCOMPARE(home->property("currentIndex").toInt(), 0);
+    QVERIFY(QDir().mkpath("previews/carousel"));
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        for (int i = 0; i < slides.size(); ++i) {
+            QVERIFY(click("homeThumbnail" + QString::number(i)));
+            QCOMPARE(home->property("currentIndex").toInt(), i);
+            QTRY_VERIFY(home->property("photoReady").toBool());
+            // Thumbnail focus may scroll the document. Capture its top explicitly.
+            item("pageScroll")->setProperty("contentY", 0);
+            QTest::qWait(250);
+            QVERIFY(window->grabWindow().save(QString("previews/carousel/slide-%1-%2x%3.png")
+                .arg(i).arg(size.width()).arg(size.height())));
+            const auto hero = item("homeHeroPhoto");
+            QVERIFY(hero->width() > home->width() * 0.7);
+            QVERIFY(hero->height() >= 400);
+            for (const auto &name : {"homeExploreButton","homePlayButton","homeCreditsButton"}) {
+                auto control = item(name);
+                QVERIFY(control->isVisible());
+                const auto bounds = control->mapRectToScene(control->boundingRect());
+                QVERIFY(bounds.left() >= 0 && bounds.right() <= size.width());
+            }
+        }
+    }
+    window->resize(1240,820);
+    QVERIFY(click("homeCreditsButton"));
+    auto dialog = engine.rootObjects().first()->findChild<QObject *>("homeCreditsDialog");
+    QVERIFY(dialog);
+    QVERIFY(dialog->property("visible").toBool());
+    QTest::qWait(100);
+    QVERIFY(window->grabWindow().save("previews/carousel/credits-1240x820.png"));
+    QTest::keyClick(window, Qt::Key_Escape);
+    QTRY_VERIFY(!dialog->property("visible").toBool());
+    QVERIFY(item("homeCreditsButton")->hasActiveFocus());
+    // Missing presentation media never blocks the navigation routes.
+    home->setProperty("slides", QVariantList{});
+    QVERIFY(!item("homeNextSlide")->isEnabled());
+    QVERIFY(!item("homePreviousSlide")->isEnabled());
+    QVERIFY(!item("homeCreditsButton")->isVisible());
+    QCOMPARE(home->property("currentIndex").toInt(), 0);
+    QVERIFY(click("homeExploreButton"));
+    QCOMPARE(window->property("page").toString(), QString("explore"));
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homePlayButton"));
+    QCOMPARE(window->property("page").toString(), QString("categories"));
+    QVERIFY(click("categoryButton0"));
+    const auto options = controller.answerOptions();
+    const auto photo = controller.questionPhoto();
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homeExploreButton"));
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homePlayButton"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    QCOMPARE(controller.answerOptions(), options);
+    QCOMPARE(controller.questionPhoto(), photo);
+}
 
 void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
 {

@@ -1,5 +1,12 @@
 # Histórico visual
 
+## 2.2.1-A — Início fotográfico — 2026-10-20
+
+- Quatro fotografias existentes, preenchimento proporcional, gradiente, miniaturas, setas e posição; sem avanço automático.
+- Explorar abre a exploração científica; Jogar preserva início, retomada e resultados pendentes. Tema e ícones oficiais preservados.
+- Créditos, fonte educativa e evidência acessíveis por slide; nenhum estado de governança alterado.
+- [Decisões, capturas reais e validação](VERSOES/2.2.1-A/README.md).
+
 ## 2.1.3 — Navegação e estrutura — 2026-10-20
 
 - Ajuste no mesmo PR: restaurada a composição anterior do logotipo, com nome em uma linha e assinatura “APRENDA. EXPLORE.”; capturas reais atualizadas, mantendo as demais alterações.

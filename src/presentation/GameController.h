@@ -53,6 +53,7 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantMap answerDetails READ answerDetails NOTIFY answerDetailsChanged)
     Q_PROPERTY(QVariantList categories READ categories CONSTANT)
     Q_PROPERTY(QVariantList quickAccessGroups READ quickAccessGroups CONSTANT)
+    Q_PROPERTY(QVariantList homeSlides READ homeSlides CONSTANT)
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
     Q_PROPERTY(QVariantList achievements READ achievements NOTIFY scoreChanged)
     Q_PROPERTY(QString categoryName READ categoryName NOTIFY gameFinishedChanged)
@@ -114,6 +115,7 @@ public:
     QVariantMap answerDetails() const { return answerDetails_; }
     QVariantList categories() const;
     QVariantList quickAccessGroups() const { return taxonomy_.quickAccess(); }
+    QVariantList homeSlides() const { return taxonomy_.homeSlides(); }
     QVariantList categoryStats() const;
     QVariantList achievements() const;
     QString categoryName() const { return categoryName_; }

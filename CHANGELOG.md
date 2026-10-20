@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Subetapa 2.2.1-A (#22): Início com quatro fotografias locais, carrossel manual acessível, créditos e fontes por slide, ações Explorar/Jogar e redução de movimento. Nenhuma nova mídia ou alteração de catálogo.
+
 - Subetapa 2.1.3 (#22): navegação lateral com Explorar separado de Jogar, cabeçalho contextual e shell responsivo; sessões e retornos preservados, com testes de navegação e capturas reais.
 
 - Subetapa 2.1.2 (#22): tokens Qt/QML centralizados, quatro componentes compartilhados com estilos consistentes, foco de teclado e redução de movimento; capturas reais e teste de contraste/estados. Telas, catálogo e regras preservados.

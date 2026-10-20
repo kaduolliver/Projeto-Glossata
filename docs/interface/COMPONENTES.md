@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Início — 2.2.1-A
+
+`HomeView` reutiliza `FeatheredPhoto`, `UiButton`, `TextAction` e `StatCard`, sem alterar seus contratos. `homePlayButton` continua chamando `app.openPlay()`; `homeExploreButton` chama `app.openExplore()`. `homeCarousel.currentIndex` controla a apresentação; setas circulam, Home/End selecionam extremos e miniaturas aceitam Tab/Espaço. A preferência existente de movimento controla a transição de opacidade. Os controles preservam foco visível e o diálogo devolve o foco ao botão de créditos ao fechar.
+
+Os metadados de mídia expostos incluem título, autor, licença, URL, coleta, caminho e hash da evidência. Nenhum componente QML decide permissões ou registra revisão. O estado vazio não oferece créditos fictícios nem desativa as ações de navegação.
+
 ## Integração de navegação — 2.1.3
 
 - `Main.qml`: shell central com seis destinos, cabeçalho por seção e contexto, larguras/margens responsivas de `Theme.qml`. Os `NavItem` existentes recebem identificadores estáveis `navHome`, `navExplore`, `navPlay`, `navStatistics`, `navAchievements` e `navSettings`.

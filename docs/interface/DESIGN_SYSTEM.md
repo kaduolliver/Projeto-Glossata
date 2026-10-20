@@ -2,6 +2,8 @@
 
 Os tokens ficam em `resources/qml/style/Theme.qml`, singleton QML local registrado por `qmldir` e embarcado no QRC. `UiButton`, `NavItem`, `StatCard` e `TextAction` usam os tokens; as demais views conservam seus estilos. Não há dependência nova ou mudança na organização das telas.
 
+Na Subetapa 2.2.1-A, `HomeView` também utiliza esses tokens. A fotografia ocupa a região principal à direita com gradiente; a legenda usa superfície opaca para manter contraste independentemente da imagem. Miniaturas distinguem seleção (verde) e foco (dourado). A transição de opacidade segue `durationPage`, sem avanço automático. Os tokens e contratos compartilhados não foram alterados.
+
 | Papel | Tokens/valores |
 | --- | --- |
 | Fundo e superfícies | `canvas` #091A22; `surface` #10262D; `surfaceRaised` #18343C; `surfaceHover` #21444A |

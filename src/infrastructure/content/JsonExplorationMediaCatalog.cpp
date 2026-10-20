@@ -61,6 +61,9 @@ QVariantMap verifiedPhoto(const QJsonObject &photo, const QString &root) {
         {"license",license.toUpper()+" "+version}, {"licenseUrl",licenseUrl},
         {"photoUrl",photo["photo_url"].toString()}, {"kind",photo["kind"].toString()},
         {"identificationNote",photo["identification_note"].toString()},
+        {"title",photo["title"].toString()}, {"photoId",photo["photo_id"].toString()},
+        {"evidencePath",evidence}, {"evidenceSha256",photo["evidence_sha256"].toString()},
+        {"collectedAt",photo["collected_at"].toString()},
         {"focusX",focusX},{"focusY",focusY},
         {"modifications",photo["modifications"].toString()}};
 }

@@ -94,6 +94,32 @@ QVariantList TaxonomyIndex::quickAccess() const
     return list;
 }
 
+QVariantList TaxonomyIndex::homeSlides() const
+{
+    QVariantList slides;
+    QSet<QString> images;
+    // Explicit representatives, from the same verified associations as exploration.
+    // EducationalContent only returns introductions with usable existing reviews.
+    for (const QString &name : {"Animalia", "Arthropoda", "Plantae", "Fungi"}) {
+        for (const auto &node : taxons_) if (node.name == name) {
+            auto slide = describe(node.id);
+            const auto photo = slide.value("photo").toMap();
+            const auto introduction = slide.value("introduction").toMap();
+            const QString image = photo.value("image").toString();
+            const QString state = introduction.value("governance").toMap().value("state").toString();
+            if (image.isEmpty() || (state != "approved_editorial" && state != "approved_expert")
+                || images.contains(image)) break;
+            const QString text = introduction.value("text").toString();
+            const int end = text.indexOf(". ");
+            slide.insert("excerpt", end < 0 ? text : text.left(end + 1));
+            slides.append(slide);
+            images.insert(image);
+            break;
+        }
+    }
+    return slides;
+}
+
 QVariantList TaxonomyIndex::children(const QString &id) const
 {
     QVector<QString> ids = children_.value(id);

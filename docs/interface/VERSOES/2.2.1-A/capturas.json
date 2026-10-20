@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "base_commit": "599445eb4aef9d7141fbda6dab9957587a58d2c4",
+  "rendering": "Windows 11; Qt 6.11.2; offscreen/software; Basic; scale 1; 96 DPI",
+  "production_home_record": "../../../images/tela-inicial.json",
+  "source_sha256": {
+    "resources/qml/components/EndGameDialog.qml": "616e19824a2cacc7b3fd05ef53623f1e1a99c9a04edb73f5167ab4a7f7f17ff2",
+    "resources/qml/components/ExploreCard.qml": "c2d770867a4d3abad8e6c4ea8cb6094632fafea75616d53fb7598e1bd1923056",
+    "resources/qml/components/FeatheredPhoto.qml": "4b19e28f79457793d2e9e3e44dd2ccacdf945e678332dfd2caf703a4aafdfe54",
+    "resources/qml/components/HintPanel.qml": "ad9b743b48746530fe807113584e9e0fc9ad84c3aef6f268ae963d389a7432f5",
+    "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
+    "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
+    "resources/qml/components/NavItem.qml": "816fb58b5eb2c8458b4037d9774019f4d462e90be509e680f45ac613d8e6a961",
+    "resources/qml/components/PlayModeSelector.qml": "8c88362c19a29463560470e7409ea6ed2ae20195ffde48193fe481b7839dc553",
+    "resources/qml/components/SpeciesArtwork.qml": "c68ac879ce6658ab20a1a8e041c20a08a45634fc246a6b1b73d04dc060673f12",
+    "resources/qml/components/SpeciesPortrait.qml": "8add7526477800ec3c92ca603480000e77bff5e7a1b1295ebe7c1988fd3f04a4",
+    "resources/qml/components/StatCard.qml": "d9cdde9aa31f62c46ef9f0d3dbf52d21c5e09a44422ec83bddedf1938bc33322",
+    "resources/qml/components/TaxonComboBox.qml": "da3a036ea663f590b585b5bbeece1711bb7802766991e39112dc5c67b14e3048",
+    "resources/qml/components/TextAction.qml": "283e8862de44ca5bab271070dd5bb09dd14e90a2b834b7d9999c2b715c472001",
+    "resources/qml/components/UiButton.qml": "a67306b901be9ee7611fc518bf3af7d86bf61435d212bab4a76aefd3789513e4",
+    "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
+    "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
+    "resources/qml/style/Theme.qml": "d0d9c02238cd3817dd212ccfc7a23f8d58a7c97fed2cb41bbd28a47b184e5913",
+    "resources/qml/views/AchievementsView.qml": "4fc4585b7705a80b6b0d5a5c69c717bbdc90f0061448ec71e48c73e64aa5a0ec",
+    "resources/qml/views/CategoryView.qml": "8d4e95c149ae6d7d32212b201c7dfb548894abda52e45761de2f8ad254bd48ad",
+    "resources/qml/views/CreditsView.qml": "2b726a0ea4104ec231bfea27c8c9367b7d300f8c5dff3755994dc5368a9ddfda",
+    "resources/qml/views/FeedbackView.qml": "e1c16c616b673976909b710f204bcdffcfadb4afe70f705c30e3a60878baf2e7",
+    "resources/qml/views/HomeView.qml": "9ef5471d19826a7e36fd3d565d0b99207d58fc4e5ab203fd8717a0de6b841508",
+    "resources/qml/views/InfoView.qml": "13a654a5c2fbd49e73b8cc83438bb6eb2aef0d6e769ba6835b303535503ac766",
+    "resources/qml/views/QuizView.qml": "d078a50ba36bb5c0c8f35479b8f3379031522896436dd6e6a7de94631749dd94",
+    "resources/qml/views/ResultsView.qml": "db3a080aaa9b43adfdf88d276b29f35427335ff4487795bc3bbac7f1706ba53a",
+    "resources/qml/views/SettingsView.qml": "96b4689c6e9c00ffdf104690040429b3741e2ae386be817eefbfbee8f10eccb4",
+    "resources/qml/views/StatisticsView.qml": "b439d40a6defd3659cf8bac64c282b3bb98eae69d3d369ed557bca54a4f5c99c",
+    "resources/qml/views/TaxonomyView.qml": "3e4a43ed1cbc2817e76726480d768baed5ac2120d2e52d4130035a597010fd71",
+    "src/application/TaxonomyIndex.cpp": "d48a47582752e0c98555fb56bc734a67339efabc7a8023c57f592d0dd0ef40a9",
+    "src/application/TaxonomyIndex.h": "179ab9601600a95460612a49eecddd9c6f0ab3ffede7532aac0760dda53cd5e7",
+    "src/infrastructure/content/JsonExplorationMediaCatalog.cpp": "7599b930bcc231fccbc7c882db33dcb2c3f9a990f1eeeab600c49b4af40481fe",
+    "src/presentation/GameController.h": "4480cf999b96104297a37455ddc2c70428a86cf41de561e8de0ac9ebb501bd64"
+  },
+  "test_source_sha256": "3376091ffc6ec6778a93b3cbeddb4d8468bcc8df0b4d15c0ff4f33668414e08e",
+  "frames": [
+    {
+      "path": "capturas/credits-1240x820.png",
+      "sha256": "b2a6e3695d0c37caaefa54f3af75ae7f1580204d2755d1c8ed6a13700eb1b8e9",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T10:37:05.109980+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-0-1000x700.png",
+      "sha256": "eb017bc2909ea3c00e5e0dcfcd26ec77109027964a5812429d2206d84b4801aa",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T10:37:00.060850+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-0-1240x820.png",
+      "sha256": "b543618e94b0df8ed74b8fd5b2640ee769316386cff202c682085f78f802cddc",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T10:37:01.578331+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-0-1920x1080.png",
+      "sha256": "5ef4cd664580459b8fc89140a46967981dee3a92f26d1232b100fabb264dde4d",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T10:37:03.326595+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-1-1000x700.png",
+      "sha256": "b024ea47ea14c6e0e9e9b97ed702cde2d7a76e4e561a254b06ddae565bf2fa87",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T10:37:00.424584+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-1-1240x820.png",
+      "sha256": "66145b0d9d34ae2cba0f33b98b689f32815916bbf801c72b643f690f0108069f",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T10:37:01.989962+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-1-1920x1080.png",
+      "sha256": "d15af52ad2c7113b2f3c3cad17ae0443aabcd57bdb3925d0f188d897fce2a5b8",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T10:37:03.862094+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-2-1000x700.png",
+      "sha256": "5b58e994601e5b211910281ad5964bcbdf5cb16a89ea83baeadca5e4994b7068",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T10:37:00.807366+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-2-1240x820.png",
+      "sha256": "843ebd90bca687d3c406ff0be0cd80593d10306a56f7aec7e733cb5ebc15124f",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T10:37:02.383411+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-2-1920x1080.png",
+      "sha256": "53ec62879c9059b471ba269873b1ec509618a6e4d331bf4e4964d136ea3c896a",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T10:37:04.370057+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-3-1000x700.png",
+      "sha256": "650bf8469521720fe7851d87c894aa1736ffb4253105994f9a0b34500aee6d04",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T10:37:01.170582+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-3-1240x820.png",
+      "sha256": "be0bf8470129c24a1ba0592d4692db439ae9569471f62ffbb111c2940a71347b",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T10:37:02.783556+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/slide-3-1920x1080.png",
+      "sha256": "e7c117ff128c3ff160ffce27ed210f99d8bc494e0e4c21f799ed374ad3eeb634",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T10:37:04.901066+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled",
+      "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
+      "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
+    }
+  ]
+}

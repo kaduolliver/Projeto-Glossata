@@ -734,6 +734,10 @@ void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
     JsonSpeciesCatalog catalog;
     JsonExplorationMediaCatalog media;
     TaxonomyIndex index(catalog,&media);
+    QCOMPARE(index.homeSlides().size(), 4);
+    // No unverified fallback photo is admitted to the home carousel.
+    TaxonomyIndex withoutMedia(catalog);
+    QVERIFY(withoutMedia.homeSlides().isEmpty());
     const auto shortcuts=index.quickAccess();
     QCOMPARE(shortcuts.size(),3);
     const QStringList names{"Animalia","Plantae","Fungi"};
