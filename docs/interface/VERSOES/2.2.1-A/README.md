@@ -1,6 +1,6 @@
 # 2.2.1-A — Início fotográfico
 
-Subetapa da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Base: `599445eb4aef9d7141fbda6dab9957587a58d2c4`, com PR #29 integrado. Esta é uma revisão de interface, não um lançamento do aplicativo. O commit e o PR da entrega serão vinculados após sua criação.
+Subetapa da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Base: `599445eb4aef9d7141fbda6dab9957587a58d2c4`, com PR #29 integrado. Esta é uma revisão de interface, não um lançamento do aplicativo. Implementação no commit [`86041114bcb713744ab25d9072b8d14ba2584d84`](https://github.com/kaduolliver/Projeto-Glossata/commit/86041114bcb713744ab25d9072b8d14ba2584d84), entregue no [PR #30](https://github.com/kaduolliver/Projeto-Glossata/pull/30).
 
 ## Implementação
 

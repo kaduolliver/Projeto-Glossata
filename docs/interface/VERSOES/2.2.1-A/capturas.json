@@ -169,5 +169,7 @@
       "binary_sha256": "2709741189b2e6ea7feaff6b08ae603a8cef48583880e10b962904364ba37fcd",
       "modifications": "None after capture; photographs are cropped, scaled and faded by the application."
     }
-  ]
+  ],
+  "implementation_commit": "86041114bcb713744ab25d9072b8d14ba2584d84",
+  "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/30"
 }
