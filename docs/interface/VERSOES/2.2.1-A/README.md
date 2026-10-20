@@ -130,6 +130,8 @@ Validação final: compilação Release concluída; dez casos Qt/QML aprovados (
 
 ## Sincronização e pausa contextual
 
+Implementação, testes e capturas no commit [`2817e513ffa6b47469fa890fc37ea8a48c261f57`](https://github.com/kaduolliver/Projeto-Glossata/commit/2817e513ffa6b47469fa890fc37ea8a48c261f57).
+
 `beginTransition()` inicia apenas a mistura das fotografias. `finishTransition()` confirma o buffer e o índice da nova foto, atualizando juntos título, descrição, nome científico e créditos. A legenda anterior permanece durante os 600 ms, sem antecipar dados da próxima fotografia. Redução de movimento confirma imediatamente o destino, como anteriormente. Estilos, posições e textos permanecem iguais.
 
 O handler de hover global foi removido: a legenda e a barra de controles têm handlers próprios. Teclado, controles pressionados, diálogo aberto, janela inativa/oculta e Home invisível conservam suas proteções; a retomada reinicia oito segundos completos. Hover sobre a fotografia, apresentação ou ações Explorar/Jogar não impede o avanço automático.
