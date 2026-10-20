@@ -1,4 +1,28 @@
-# Arquitetura visual atual
+# Arquitetura visual
+
+## Navegação atual — Subetapa 2.1.3
+
+Base de implementação: `4449f8468d0e70485b5fa3b90f3814595e6771f9`, após o PR #28. [Decisões, capturas e validação da revisão](VERSOES/2.1.3/README.md).
+
+`Main.qml` continua responsável pelo shell: barra lateral, cabeçalho contextual, avisos globais e Loader rolável. A barra apresenta Início, Explorar, Jogar, Estatísticas, Conquistas e Perfis e ajustes. `currentSection` determina a seleção; Créditos permanece no contexto de Perfis e ajustes. O tema fornece cores, tipografia, margens e larguras compacta/normal.
+
+| Entrada/estado | Tela reutilizada | Distinção funcional |
+| --- | --- | --- |
+| Explorar (`explore`) | `CategoryView`, `browsingOnly: true` | Domínios e atalhos; sem modo competitivo, dificuldade ou ação de jogo misto. Navegar não inicia sessão. |
+| Grupo explorado (`taxonomy`, `taxonomyContext: explore`) | `TaxonomyView`, `browsingOnly: true` | Introdução, fontes, breadcrumbs e descendentes; sem seletor de quiz ou botão Começar. Voltar leva a Explorar. |
+| Jogar (`categories`) | `CategoryView`, modo padrão | Livre/Competitivo, dificuldade, jogo misto e grupos, com contratos existentes. |
+| Grupo para jogar (`taxonomy`, `taxonomyContext: play`) | `TaxonomyView`, modo padrão | Fontes, breadcrumbs, modos e níveis elegíveis. Voltar leva à seleção de Jogar. |
+| Quiz, feedback, ficha e resultado | Views existentes, sem reformulação | Menu Jogar selecionado; alternar seções não chama encerramento nem cria partida. |
+
+`openExplore()` abre os domínios. `openPlay()` prioriza resultado pendente, depois sessão em andamento e sua resposta/ficha, depois conclusão da sessão corrente, ou abre a seleção de modos. `lastGamePage` conserva o contexto de apresentação; o controlador permanece a autoridade sobre perguntas, respostas, dicas, pontos e checkpoints. Ao sair voluntariamente de um resultado concluído para a seleção, `sessionStarted` deixa de exigir retorno ao resultado anterior.
+
+`openTaxon()` e os breadcrumbs reutilizam o índice científico do controlador. Alterar o grupo de navegação não muda o grupo da sessão. Avisos de sessão recuperável, erro de checkpoint e resultado pendente continuam globais. O cabeçalho oferece Retomar partida quando o usuário consulta outra seção durante um jogo.
+
+Ao receber foco por teclado, controles da página são trazidos para a área visível do Flickable. A rolagem é limitada ao conteúdo da página; não desloca menu, cabeçalho ou diálogos.
+
+Não há nova enciclopédia, busca ou fonte de dados. A mudança não modifica QuizView, StatisticsView, AchievementsView, persistência, catálogo ou regras. O rótulo do botão inicial passa a “Começar a jogar” para refletir seu destino; o restante da Home continua igual. A área principal permanece rolável em 1000 × 700; textos contextuais longos quebram linha. As views ainda não migradas conservam seus estilos próprios.
+
+## Registro anterior — baseline da Subetapa 2.1.1
 
 Base: commit `b201e20c2d83fda6d790bc6a96217c0fdc75307e`. A interface de produção é `resources/qml/Main.qml`, embarcada por `resources.qrc` e carregada em `src/app/main.cpp`. `GameController` fornece o estado via contexto `gameController`; `DiscordRichPresence` fornece o estado opcional da presença. As telas são componentes em `resources/qml/views/`; os controles reutilizáveis ficam em `resources/qml/components/`.
 

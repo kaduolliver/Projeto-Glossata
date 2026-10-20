@@ -14,6 +14,8 @@
 #include <QColor>
 #include <QSet>
 #include <QQmlProperty>
+#include <QSqlDatabase>
+#include <QSqlQuery>
 #include <cmath>
 
 namespace {
@@ -40,11 +42,179 @@ class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
     void designSystemStatesAndContrast();
+    void separateExploreAndPlayPreservesSessions();
     void photographEdgesFadeWithoutHidingTheOrganism();
     void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
+{
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("navigation.sqlite"));
+    DiscordRichPresence presence{QString(), QString()};
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+    QVERIFY(window);
+    window->setProperty("motionEnabled", false);
+    auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto click = [&](const QString &name) {
+        auto button = item(name);
+        if (!button || !button->isVisible() || !button->isEnabled()) return false;
+        button->forceActiveFocus(Qt::TabFocusReason);
+        // Keyboard activation also covers controls below the viewport.
+        QTest::keyClick(window, Qt::Key_Space);
+        QTest::qWait(50);
+        return true;
+    };
+    auto selected = [&](const QString &name) { return item(name)->property("selected").toBool(); };
+    QVERIFY(QDir().mkpath("previews/navigation"));
+    auto capture = [&](const QString &name) {
+        QTest::qWait(120);
+        return window->grabWindow().save("previews/navigation/" + name + ".png");
+    };
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        const QString suffix = QString::number(size.width()) + "x" + QString::number(size.height());
+        QVERIFY(click("navHome")); QVERIFY(selected("navHome"));
+        QVERIFY(capture("home-" + suffix));
+        // All six destinations remain inside the window and keyboard-reachable.
+        qreal previousBottom = 0;
+        for (const QString &name : {"navHome", "navExplore", "navPlay", "navStatistics", "navAchievements", "navSettings"}) {
+            auto nav = item(name); QVERIFY(nav && nav->isVisible());
+            const auto rect = nav->mapRectToScene(nav->boundingRect());
+            QVERIFY(rect.top() >= previousBottom);
+            QVERIFY(rect.bottom() <= size.height());
+            QVERIFY(rect.right() < item("sectionHeader")->mapToScene(QPointF()).x());
+            previousBottom = rect.bottom();
+        }
+        item("navHome")->forceActiveFocus(Qt::TabFocusReason);
+        QTest::keyClick(window, Qt::Key_Tab); QVERIFY(item("navExplore")->hasActiveFocus());
+        QTest::keyClick(window, Qt::Key_Space); QTest::qWait(50);
+        QCOMPARE(window->property("page").toString(), QString("explore"));
+        QVERIFY(selected("navExplore")); QVERIFY(!selected("navPlay"));
+        QVERIFY(!item("playModeSelector")->isVisible());
+        QVERIFY(!item("categoryButton0")->isVisible());
+        QVERIFY(capture("explore-" + suffix));
+        for (int i = 0; i < 3; ++i) {
+            QVERIFY(click("domainButton" + QString::number(i)));
+            QCOMPARE(window->property("page").toString(), QString("taxonomy"));
+            QVERIFY(selected("navExplore"));
+            QVERIFY(item("breadcrumbButton0")->isVisible());
+            QVERIFY(!item("startTaxonButton")->isVisible());
+            QVERIFY(!item("playModeSelector")->isVisible());
+            QVERIFY(click("returnDomainsButton"));
+            QCOMPARE(window->property("page").toString(), QString("explore"));
+        }
+        QVERIFY(click("quickAccessButton0"));
+        QVERIFY(controller.breadcrumbs().size() > 1);
+        QVERIFY(capture("lineage-" + suffix));
+        const auto ancestor = controller.breadcrumbs().first().toMap().value("id");
+        QVERIFY(click("breadcrumbButton0"));
+        QCOMPARE(controller.browseTaxon().value("id"), ancestor);
+        QVERIFY(selected("navExplore"));
+        QVERIFY(click("navPlay")); QVERIFY(selected("navPlay"));
+        QCOMPARE(window->property("page").toString(), QString("categories"));
+        QVERIFY(item("playModeSelector")->isVisible());
+        QVERIFY(item("categoryButton0")->isVisible());
+        QVERIFY(capture("play-" + suffix));
+        item("domainButton2")->forceActiveFocus(Qt::TabFocusReason);
+        QTest::qWait(50);
+        const auto focusedRect = item("domainButton2")->mapRectToItem(item("pageScroll"), item("domainButton2")->boundingRect());
+        QVERIFY(focusedRect.top() >= -1);
+        QVERIFY(focusedRect.bottom() <= item("pageScroll")->height() + 1);
+        QVERIFY(click("quickAccessButton0"));
+        QVERIFY(selected("navPlay")); QVERIFY(item("startTaxonButton")->isVisible());
+        QVERIFY(click("returnDomainsButton"));
+        QCOMPARE(window->property("page").toString(), QString("categories"));
+    }
+    QCOMPARE(controller.answeredCount(), 0);
+    QVERIFY(controller.recoverableSessions().isEmpty()); // Browsing never starts a session.
+    QVERIFY(click("categoryButton0"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    const auto photo = controller.questionPhoto();
+    const auto alternatives = controller.answerOptions();
+    const auto sessionGroup = controller.sessionTaxonId();
+    const auto availableHints = controller.hints();
+    for (const auto &hint : availableHints) {
+        if (hint.toMap().value("available").toBool()) {
+            QVERIFY(controller.revealHintCategory(hint.toMap().value("id").toString()));
+            break;
+        }
+    }
+    const auto hints = controller.hints();
+    const auto ceiling = controller.possibleScoreText();
+    QVERIFY(click("navExplore"));
+    QVERIFY(click("quickAccessButton1"));
+    QCOMPARE(controller.questionPhoto(), photo);
+    QCOMPARE(controller.answerOptions(), alternatives);
+    QCOMPARE(controller.sessionTaxonId(), sessionGroup);
+    QCOMPARE(controller.hints(), hints);
+    QCOMPARE(controller.possibleScoreText(), ceiling);
+    QVERIFY(item("headerResumeGame")->isVisible());
+    QVERIFY(click("headerResumeGame"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    controller.answerSelected(alternatives.first());
+    QVERIFY(controller.answerPending());
+    window->setProperty("page", "info"); QTest::qWait(50);
+    const auto score = controller.scoreUnits();
+    const auto answered = controller.answeredCount();
+    QVERIFY(click("navExplore"));
+    QVERIFY(click("navPlay"));
+    QCOMPARE(window->property("page").toString(), QString("info"));
+    QCOMPARE(controller.answeredCount(), answered);
+    QCOMPARE(controller.scoreUnits(), score);
+    QVERIFY(controller.answerPending());
+    QVERIFY(click("speciesContinueButton"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    controller.stopGame();
+    window->setProperty("page", "results"); QTest::qWait(50);
+    QVERIFY(click("navExplore")); QVERIFY(click("navPlay"));
+    QCOMPARE(window->property("page").toString(), QString("results"));
+    QVERIFY(click("returnExplorationButton"));
+    QCOMPARE(window->property("page").toString(), QString("categories"));
+    // A real failed write in the isolated SQLite database keeps the global
+    // pending-result route intact, even after visiting another section.
+    QVERIFY(click("categoryButton0"));
+    controller.answerSelected(controller.answerOptions().first());
+    {
+        auto db = QSqlDatabase::addDatabase("QSQLITE", "navigation-failure");
+        db.setDatabaseName(directory.filePath("navigation.sqlite"));
+        QVERIFY(db.open());
+        QSqlQuery query(db);
+        QVERIFY(query.exec("CREATE TRIGGER reject_navigation_insert BEFORE INSERT ON history BEGIN SELECT RAISE(FAIL,'synthetic navigation failure'); END"));
+        QVERIFY(query.exec("CREATE TRIGGER reject_navigation_update BEFORE UPDATE ON history BEGIN SELECT RAISE(FAIL,'synthetic navigation failure'); END"));
+        controller.stopGame();
+        QVERIFY(controller.resultPending());
+        const auto pendingScore = controller.scoreUnits();
+        for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+            window->resize(size);
+            QVERIFY(click("navExplore"));
+            QVERIFY(controller.resultPending());
+            QVERIFY(capture("pending-" + QString::number(size.width()) + "x" + QString::number(size.height())));
+            QVERIFY(click("navPlay"));
+            QCOMPARE(window->property("page").toString(), QString("results"));
+            QCOMPARE(controller.scoreUnits(), pendingScore);
+            QVERIFY(!item("returnExplorationButton")->isEnabled());
+        }
+        QVERIFY(query.exec("DROP TRIGGER reject_navigation_insert"));
+        QVERIFY(query.exec("DROP TRIGGER reject_navigation_update"));
+        controller.retrySaveResult();
+        QVERIFY(!controller.resultPending());
+        db.close();
+    }
+    QSqlDatabase::removeDatabase("navigation-failure");
+    QVERIFY(click("navSettings")); QVERIFY(click("creditsButton"));
+    QCOMPARE(window->property("page").toString(), QString("credits"));
+    QVERIFY(selected("navSettings"));
+    QCOMPARE(item("sectionTitle")->property("text").toString(), QString::fromUtf8("Créditos e transparência"));
+}
 
 void QmlInterfaceTests::designSystemStatesAndContrast()
 {
@@ -668,6 +838,19 @@ void QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
     engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled", false);
+    // Exploration does not consume, replace or hide a recoverable session.
+    QVERIFY(QDir().mkpath("previews/navigation"));
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        auto explore=findVisualItem(window->contentItem(),"navExplore"); QVERIFY(explore);
+        explore->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(80);
+        QCOMPARE(window->property("page").toString(),QString("explore"));
+        QCOMPARE(controller.recoverableSessions().size(),1);
+        QVERIFY(findVisualItem(window->contentItem(),"sessionRecoveryBanner")->isVisible());
+        QVERIFY(window->grabWindow().save("previews/navigation/recovery-"+QString::number(size.width())+"x"+QString::number(size.height())+".png"));
+    }
+    window->resize(1240,820); QTest::qWait(50);
     auto banner=findVisualItem(window->contentItem(),"sessionRecoveryBanner"); QVERIFY(banner); QVERIFY(banner->isVisible());
     auto resume=findVisualItem(window->contentItem(),"resumeSessionButton"); QVERIFY(resume); QVERIFY(resume->isEnabled());
     QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,resume->mapToScene(QPointF(resume->width()/2,resume->height()/2)).toPoint());

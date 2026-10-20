@@ -47,4 +47,10 @@ QtObject {
     readonly property int compactHeight: 40
     readonly property int navHeight: 46
     readonly property int actionHeight: 36
+    readonly property int sidebarWidth: 220
+    readonly property int sidebarCompactWidth: 200
+    readonly property int pageMargin: 32
+    readonly property int pageCompactMargin: 20
+    readonly property int sectionLabelSize: 10
+    readonly property int brandSize: 16
 }

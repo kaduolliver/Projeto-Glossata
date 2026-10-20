@@ -1,4 +1,12 @@
-# Componentes compartilhados — 2.1.2
+# Componentes compartilhados
+
+## Integração de navegação — 2.1.3
+
+- `Main.qml`: shell central com seis destinos, cabeçalho por seção e contexto, larguras/margens responsivas de `Theme.qml`. Os `NavItem` existentes recebem identificadores estáveis `navHome`, `navExplore`, `navPlay`, `navStatistics`, `navAchievements` e `navSettings`.
+- `CategoryView` e `TaxonomyView`: nova propriedade opcional `browsingOnly`, padrão `false`. Ela oculta ações exclusivas de jogo na exploração; não muda os dados nem os contratos existentes. Os objectNames anteriores são mantidos.
+- `Theme.qml`: acrescenta tokens de largura lateral, margem de página, legenda de seção e marca. Sem novos recursos gráficos ou dependências.
+
+## Design system — 2.1.2
 
 | Componente | Contrato preservado | Revisão visual |
 | --- | --- | --- |

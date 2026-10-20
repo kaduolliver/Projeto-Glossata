@@ -15,9 +15,9 @@ ApplicationWindow {
     minimumWidth: 1000
     minimumHeight: 700
     title: "Projeto Glossata"
-    color: "#091A22"
-    font.family: "Segoe UI"
-    font.pixelSize: 14
+    color: Style.Theme.canvas
+    font.family: Style.Theme.fontFamily
+    font.pixelSize: Style.Theme.bodySize
     palette.window: "#132B35"
     palette.windowText: "#E6F1E9"
     palette.text: "#E6F1E9"
@@ -31,32 +31,72 @@ ApplicationWindow {
     property var backend: gameController
     property var presence: discordPresence
     property string page: "home"
+    property string taxonomyContext: "play"
+    readonly property bool compactNavigation: width < 1150
+    readonly property string currentSection: page === "explore" || (page === "taxonomy" && taxonomyContext === "explore")
+                                             ? "explore" : (["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(page) >= 0
+                                             ? "play" : (page === "credits" ? "settings" : page))
     property bool motionEnabled: true
     onMotionEnabledChanged: Style.Theme.motionEnabled = motionEnabled
     Component.onCompleted: Style.Theme.motionEnabled = motionEnabled
     property bool sessionStarted: false
+    property string lastGamePage: "quiz"
+    onPageChanged: {
+        if (["quiz", "feedback", "info", "results"].indexOf(page) >= 0) lastGamePage = page
+    }
     property bool forceClose: false
     property string abandonedSessionId: ""
     readonly property real accuracy: backend.answeredCount > 0 ? Math.round(100 * backend.correctAnswers / backend.answeredCount) : 0
     readonly property bool playing: sessionStarted && !backend.gameFinished
-    readonly property var pageTitles: ({home: "Seu próximo voo começa aqui", categories: "Explorar", taxonomy: "Explorar um grupo", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Seu desempenho", achievements: "Suas descobertas", settings: "Seu espaço"})
+    readonly property var pageTitles: ({home: "Início", explore: "Explorar", categories: "Jogar", taxonomy: taxonomyContext === "explore" ? "Explorar" : "Jogar", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Estatísticas", achievements: "Conquistas", settings: "Perfis e ajustes", credits: "Créditos e transparência"})
+    readonly property string sectionContext: page === "taxonomy" ? (backend.browseTaxon.title || "Grupos taxonômicos")
+                                           : currentSection === "explore" ? "Domínios e linhagens · navegação científica"
+                                           : currentSection === "play" ? (playing ? "Partida em andamento · progresso salvo por checkpoint" : "Modos Livre e Competitivo")
+                                           : page === "home" ? "Aprenda. Explore. Descubra." : "Dados locais · funcionamento offline"
 
     function navigate(destination) { page = destination }
+    // Keep keyboard focus visible inside the scrolling page without moving
+    // the sidebar, header or modal dialogs.
+    onActiveFocusItemChanged: Qt.callLater(revealFocusedControl)
+    function revealFocusedControl() {
+        const control = root.activeFocusItem
+        if (!control || !control.visible) return
+        let ancestor = control.parent
+        while (ancestor && ancestor !== screen) ancestor = ancestor.parent
+        if (!ancestor) return
+        const top = control.mapToItem(scroll, 0, 0).y
+        const bottom = top + control.height
+        const margin = Style.Theme.spaceSm
+        let offset = scroll.contentY
+        if (top < margin) offset += top - margin
+        else if (bottom > scroll.height - margin) offset += bottom - scroll.height + margin
+        scroll.contentY = Math.max(0, Math.min(offset, Math.max(0, scroll.contentHeight - scroll.height)))
+    }
+    function openExplore() { taxonomyContext = "explore"; page = "explore" }
     function openPlay() {
-        page = backend.resultPending ? "results" : (playing ? (backend.answerPending ? "feedback" : "quiz") : "categories")
+        taxonomyContext = "play"
+        if (backend.resultPending) page = "results"
+        else if (playing) page = backend.answerPending ? (lastGamePage === "info" ? "info" : "feedback") : "quiz"
+        else if (sessionStarted && backend.gameFinished) page = ["feedback", "info", "results"].indexOf(lastGamePage) >= 0 ? lastGamePage : "results"
+        else page = "categories"
     }
     function beginGame(family) {
         if (!backend.startCategoryGame(family)) return
         sessionStarted = !backend.gameFinished
         page = backend.gameFinished ? "results" : "quiz"
     }
-    function openTaxon(id) { backend.exploreTaxon(id); page = "taxonomy" }
+    function openTaxon(id) {
+        if (page !== "taxonomy") taxonomyContext = page === "explore" ? "explore" : "play"
+        backend.exploreTaxon(id); page = "taxonomy"
+    }
     function beginTaxonGame(id, rank) {
         if (!backend.startTaxonGame(id, rank)) return
         sessionStarted = !backend.gameFinished
         page = backend.gameFinished ? "taxonomy" : "quiz"
     }
     function returnToExploration() {
+        if (backend.gameFinished) sessionStarted = false
+        taxonomyContext = "play"
         if (backend.sessionTaxonId) openTaxon(backend.sessionTaxonId)
         else page = "categories"
     }
@@ -110,70 +150,76 @@ ApplicationWindow {
         anchors.fill: parent
         spacing: 0
         Rectangle {
-            Layout.preferredWidth: 208
+            objectName: "navigationSidebar"
+            Layout.preferredWidth: root.compactNavigation ? Style.Theme.sidebarCompactWidth : Style.Theme.sidebarWidth
             Layout.fillHeight: true
-            color: "#10242D"
-            border.color: "#203741"
+            color: Style.Theme.surface
+            border.color: Style.Theme.border
             ColumnLayout {
                 anchors.fill: parent
-                anchors.margins: 16
-                spacing: 7
+                anchors.margins: Style.Theme.spaceMd
+                spacing: Style.Theme.spaceXs
                 RowLayout {
-                    Layout.topMargin: 15
-                    Layout.bottomMargin: 38
-                    spacing: 10
+                    Layout.topMargin: Style.Theme.spaceLg
+                    Layout.bottomMargin: Style.Theme.spaceLg
+                    spacing: Style.Theme.spaceSm
                     Rectangle {
-                        implicitWidth: 36; implicitHeight: 36; radius: 12; color: "#174D3A"
+                        implicitWidth: 36; implicitHeight: 36; radius: Style.Theme.controlRadius; color: Style.Theme.forest
                         Image { anchors.fill: parent; anchors.margins: 2; source: "qrc:/resources/branding/glossata.png"; fillMode: Image.PreserveAspectFit; smooth: true; mipmap: true }
                     }
                     ColumnLayout {
                         spacing: 0
-                        Label { text: "Projeto Glossata"; color: "#F5FAF7"; font.pixelSize: 16; font.weight: Font.DemiBold }
-                        Label { text: "APRENDA. EXPLORE."; color: "#739399"; font.pixelSize: 8; font.letterSpacing: 1.5 }
+                        Label { text: "Projeto"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+                        Label { text: "Glossata"; color: Style.Theme.text; font.pixelSize: Style.Theme.brandSize; font.weight: Font.DemiBold }
                     }
                 }
-                Label { text: "DESCOBRIR"; color: "#62838D"; font.pixelSize: 10; font.letterSpacing: 1.6; Layout.leftMargin: 14; Layout.bottomMargin: 8 }
-                NavItem { Layout.fillWidth: true; text: "Início"; iconName: "home"; selected: root.page === "home"; onClicked: root.navigate("home") }
-                NavItem { Layout.fillWidth: true; text: "Jogar"; iconName: "play"; selected: ["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(root.page) >= 0; onClicked: root.openPlay() }
-                NavItem { Layout.fillWidth: true; text: "Estatísticas"; iconName: "chart"; selected: root.page === "statistics"; onClicked: root.navigate("statistics") }
-                NavItem { Layout.fillWidth: true; text: "Conquistas"; iconName: "trophy"; selected: root.page === "achievements"; onClicked: root.navigate("achievements") }
-                Item { Layout.preferredHeight: 18 }
-                Label { text: "SEU ESPAÇO"; color: "#62838D"; font.pixelSize: 10; font.letterSpacing: 1.6; Layout.leftMargin: 14; Layout.bottomMargin: 8 }
-                NavItem { Layout.fillWidth: true; text: "Perfis e ajustes"; iconName: "settings"; selected: root.page === "settings"; onClicked: root.navigate("settings") }
+                Label { text: "DESCOBRIR"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.6; Layout.leftMargin: Style.Theme.navPadding; Layout.bottomMargin: Style.Theme.spaceXs }
+                NavItem { objectName: "navHome"; Layout.fillWidth: true; text: "Início"; iconName: "home"; selected: root.currentSection === "home"; onClicked: root.navigate("home") }
+                NavItem { objectName: "navExplore"; Layout.fillWidth: true; text: "Explorar"; iconName: "book"; selected: root.currentSection === "explore"; onClicked: root.openExplore() }
+                NavItem { objectName: "navPlay"; Layout.fillWidth: true; text: "Jogar"; iconName: "play"; selected: root.currentSection === "play"; onClicked: root.openPlay() }
+                NavItem { objectName: "navStatistics"; Layout.fillWidth: true; text: "Estatísticas"; iconName: "chart"; selected: root.currentSection === "statistics"; onClicked: root.navigate("statistics") }
+                NavItem { objectName: "navAchievements"; Layout.fillWidth: true; text: "Conquistas"; iconName: "trophy"; selected: root.currentSection === "achievements"; onClicked: root.navigate("achievements") }
+                Item { Layout.preferredHeight: Style.Theme.spaceMd }
+                Label { text: "SEU ESPAÇO"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.6; Layout.leftMargin: Style.Theme.navPadding; Layout.bottomMargin: Style.Theme.spaceXs }
+                NavItem { objectName: "navSettings"; Layout.fillWidth: true; text: "Perfis e ajustes"; iconName: "settings"; selected: root.currentSection === "settings"; onClicked: root.navigate("settings") }
                 Item { Layout.fillHeight: true }
                 Rectangle {
                     Layout.fillWidth: true
                     implicitHeight: 80
-                    radius: 12
-                    color: "#162E37"
-                    border.color: "#28424A"
+                    radius: Style.Theme.controlRadius
+                    color: Style.Theme.surfaceRaised
+                    border.color: Style.Theme.border
                     RowLayout {
-                        anchors.fill: parent; anchors.margins: 12; spacing: 10
-                        Rectangle { implicitWidth: 32; implicitHeight: 32; radius: 16; color: "#284C43"; UiIcon { anchors.centerIn: parent; name: "user"; ink: "#8CD7AC"; implicitWidth: 18; implicitHeight: 18 } }
+                        anchors.fill: parent; anchors.margins: Style.Theme.spaceMd; spacing: Style.Theme.spaceSm
+                        Rectangle { implicitWidth: 32; implicitHeight: 32; radius: Style.Theme.cardRadius; color: Style.Theme.forest; UiIcon { anchors.centerIn: parent; name: "user"; ink: Style.Theme.green; implicitWidth: 18; implicitHeight: 18 } }
                         ColumnLayout {
                             Layout.fillWidth: true; spacing: 4
-                            Label { text: root.backend.currentPlayerName || "Sem perfil"; color: "#DCEBE5"; font.pixelSize: 12; font.weight: Font.DemiBold; elide: Text.ElideRight; Layout.fillWidth: true }
-                            Label { text: "Perfil selecionado"; color: "#789AA1"; font.pixelSize: 10 }
+                            Label { text: root.backend.currentPlayerName || "Sem perfil"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize; font.weight: Font.DemiBold; elide: Text.ElideRight; Layout.fillWidth: true }
+                            Label { text: "Perfil selecionado"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize }
                         }
                     }
                 }
-                Label { text: "Natureza em cada descoberta."; color: "#54757E"; font.pixelSize: 9; Layout.alignment: Qt.AlignHCenter; Layout.topMargin: 12; Layout.bottomMargin: 8 }
+                Label { text: "Natureza em cada descoberta."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; Layout.alignment: Qt.AlignHCenter; Layout.topMargin: Style.Theme.spaceXs; Layout.bottomMargin: Style.Theme.spaceXs }
             }
         }
         ColumnLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.margins: 32
-            spacing: 22
+            Layout.margins: root.compactNavigation ? Style.Theme.pageCompactMargin : Style.Theme.pageMargin
+            spacing: Style.Theme.spaceLg
             RowLayout {
+                objectName: "sectionHeader"
                 Layout.fillWidth: true
-                Layout.preferredHeight: 34
-                spacing: 10
-                UiIcon { name: "leaf"; ink: "#65C994"; implicitWidth: 17; implicitHeight: 17 }
-                Label { text: root.pageTitles[root.page] || "Projeto Glossata"; color: "#9AB2B8"; font.pixelSize: 12; Layout.fillWidth: true }
+                spacing: Style.Theme.spaceMd
+                ColumnLayout {
+                    Layout.fillWidth: true; spacing: Style.Theme.spaceXs
+                    Label { objectName: "sectionTitle"; text: root.pageTitles[root.page] || "Projeto Glossata"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
+                    Label { objectName: "sectionContext"; text: root.sectionContext; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                }
+                TextAction { objectName: "headerResumeGame"; visible: root.playing && root.currentSection !== "play"; text: "Retomar partida"; onClicked: root.openPlay() }
                 Rectangle {
-                    implicitWidth: 116; implicitHeight: 28; radius: 14; color: "#15372D"; border.color: "#285441"
-                    Row { anchors.centerIn: parent; spacing: 6; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: "#56D596"; anchors.verticalCenter: parent.verticalCenter } Label { text: "Ranking local"; color: "#86CBA5"; font.pixelSize: 10 } }
+                    implicitWidth: 116; implicitHeight: 28; radius: Style.Theme.controlRadius; color: Style.Theme.forest; border.color: Style.Theme.border
+                    Row { anchors.centerIn: parent; spacing: Style.Theme.spaceXs; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: Style.Theme.green; anchors.verticalCenter: parent.verticalCenter } Label { text: "Ranking local"; color: Style.Theme.text; font.pixelSize: Style.Theme.sectionLabelSize } }
                 }
             }
             Rectangle {
@@ -248,6 +294,7 @@ ApplicationWindow {
                     onLoaded: { scroll.contentY = 0; screenFade.restart() }
                     sourceComponent: {
                         switch (root.page) {
+                        case "explore": return explorePage
                         case "categories": return categoriesPage
                         case "taxonomy": return taxonomyPage
                         case "quiz": return quizPage
@@ -268,7 +315,8 @@ ApplicationWindow {
     NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationPage }
     Component { id: homePage; HomeView { app: root; backend: root.backend } }
     Component { id: categoriesPage; CategoryView { app: root; backend: root.backend } }
-    Component { id: taxonomyPage; TaxonomyView { app: root; backend: root.backend } }
+    Component { id: explorePage; CategoryView { app: root; backend: root.backend; browsingOnly: true } }
+    Component { id: taxonomyPage; TaxonomyView { app: root; backend: root.backend; browsingOnly: root.taxonomyContext === "explore" } }
     Component { id: quizPage; QuizView { app: root; backend: root.backend } }
     Component { id: feedbackPage; FeedbackView { app: root; backend: root.backend } }
     Component { id: infoPage; InfoView { app: root; backend: root.backend } }

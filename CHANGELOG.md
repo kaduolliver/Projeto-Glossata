@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Subetapa 2.1.3 (#22): navegação lateral com Explorar separado de Jogar, cabeçalho contextual e shell responsivo; sessões e retornos preservados, com testes de navegação e capturas reais.
+
 - Subetapa 2.1.2 (#22): tokens Qt/QML centralizados, quatro componentes compartilhados com estilos consistentes, foco de teclado e redução de movimento; capturas reais e teste de contraste/estados. Telas, catálogo e regras preservados.
 
 - PR #23: referências ativas das duas fotos declaram CC BY sem versão comprovada; URLs inferidos removidos, evidências e decisão editorial expressa preservadas. Uso local exige declaração por arquivo verificável; distribuição continua bloqueada.
