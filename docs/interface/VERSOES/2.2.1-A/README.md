@@ -96,6 +96,8 @@ As fotos dos cartões, os vínculos taxonômicos, os organismos, as receitas, os
 
 ## Correção de contagem e controles do PR #30
 
+Correções, testes e capturas no commit [`c823bd775a3cfb141cd221859d668af89eca07c9`](https://github.com/kaduolliver/Projeto-Glossata/commit/c823bd775a3cfb141cd221859d668af89eca07c9).
+
 Em 20/10/2026, uma consulta somente leitura ao catálogo local confirmou os registros históricos `edu:Animalia`, `edu:Plantae` e `edu:Fungi`, além dos grupos científicos atuais com os mesmos nomes. A seleção por nome em um `QHash` podia encontrar primeiro um registro antigo, sem introdução/foto utilizável, e interromper a busca. Isso explica a contagem variável entre o catálogo recém-criado das capturas e instalações existentes. A seleção agora usa os quatro IDs científicos explícitos; as exigências de fotografia e revisão continuam iguais. Nenhum registro antigo é removido ou migrado.
 
 Removido o rótulo numérico de posição; permanecem quatro pontos e a informação equivalente para tecnologias assistivas. `homeCreditsButton` deixa de preencher a largura da legenda, usando a largura implícita de `TextAction` e alinhamento à direita. O diálogo e suas atribuições permanecem intactos.
