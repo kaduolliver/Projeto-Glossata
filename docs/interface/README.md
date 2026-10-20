@@ -20,7 +20,7 @@ Os PNGs podem conter fotografias e identidade visual com direitos individuais. S
 Sequência da evolução visual da Home e das próximas telas:
 
 1. **2.2.1-A — Início fotográfico:** concluída no PR #30, integrado à main em `27294a18ffd0d1e533dcdeb47b44ee0011e97b35`.
-2. **2.2.1-B — Descoberta do Dia e indicadores dinâmicos:** implementação e verificação registradas na [revisão própria](VERSOES/2.2.1-B/README.md). Sem avanço para outra subetapa.
+2. **2.2.1-B — Descoberta do Dia e indicadores dinâmicos:** entregue no [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), aberto para revisão. Implementação e verificação na [revisão própria](VERSOES/2.2.1-B/README.md); sem merge ou avanço para outra subetapa.
 3. **2.2.2 — Explorar:** futura reformulação, fora do escopo de 2.2.1-B.
 4. **2.2.3 — Jogar:** futura reformulação, após Explorar e fora do escopo de 2.2.1-B.
 

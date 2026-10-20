@@ -5,7 +5,7 @@
 - Seção abaixo do carrossel com foto proporcional, nome científico, nome comum disponível, resumo existente, fonte e acesso ao nó da espécie no contexto Explorar. Estado vazio preserva as ações da Home.
 - Cartões passam a mostrar organismos únicos, domínios realmente representados e organismos com foto de identificação utilizável no app. `StatCard` oferece descrição opcional e nome acessível; usos anteriores mantêm a aparência.
 - Data civil local e ordem estável no C++; verificação periódica a cada 30 segundos e ao reativar o aplicativo. Sem rede obrigatória, novos dados, revisão presumida ou escrita em bancos de jogadores.
-- Carrossel da PR #30 e seu diálogo de créditos preservados. [Decisões, verificação e capturas reais](VERSOES/2.2.1-B/README.md), no commit local `24d1faaedefa077ec9492cba6dd01071ff6095f9`; PR pendente de publicação da branch e criação.
+- Carrossel da PR #30 e seu diálogo de créditos preservados. [Decisões, verificação e capturas reais](VERSOES/2.2.1-B/README.md), no commit `24d1faaedefa077ec9492cba6dd01071ff6095f9` e no [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), aberto para revisão e sem merge.
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
