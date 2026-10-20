@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-20T03:23:53.703793+00:00",
+  "captured_at": "2026-10-20T03:48:18.247784+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "application_version": "1.7.0",
-  "binary_sha256": "98bc39f106e3a3e9b37f08df611fc6ef42a1f2838337103dd68bb6c9029c0a97",
-  "image_sha256": "0e00923c136cab86638512ffd652017631762ed7cb6adf3286b4d5769ec02862",
+  "binary_sha256": "76a4df88657941e09579701a1388299bc260bce23b1e381b79c02a4d2d8de089",
+  "image_sha256": "e76fdf7eb4b231168333e8a76c5a8998c761aea5aba24c04701afbd57fbc3287",
   "width": 1240,
   "height": 820,
   "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
@@ -19,7 +19,7 @@
     "resources/qml/components/StatCard.qml": "d9cdde9aa31f62c46ef9f0d3dbf52d21c5e09a44422ec83bddedf1938bc33322",
     "resources/qml/components/UiButton.qml": "a67306b901be9ee7611fc518bf3af7d86bf61435d212bab4a76aefd3789513e4",
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
-    "resources/qml/Main.qml": "f3bc7b13a458a5e161637f70296b45045da25cf01df5f705b18541ff5755960a",
+    "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
     "resources/qml/views/HomeView.qml": "23b1b5e27f6d102b89572faf5d0342c9ac5318a35c699eb05f3ed6334bf37627",
     "src/presentation/GameController.cpp": "40c77d6026f4bfca7f8ca6789d6981d603902b4c2b8008dc9f7be659068d4c09",
     "src/presentation/GameController.h": "e779af8065d84399d5e2a17762729d0979c3035f2818a5eb1917a7d660850f25"

@@ -164,13 +164,13 @@ ApplicationWindow {
                     Layout.bottomMargin: Style.Theme.spaceLg
                     spacing: Style.Theme.spaceSm
                     Rectangle {
-                        implicitWidth: 36; implicitHeight: 36; radius: Style.Theme.controlRadius; color: Style.Theme.forest
+                        implicitWidth: 36; implicitHeight: 36; radius: 12; color: "#174D3A"
                         Image { anchors.fill: parent; anchors.margins: 2; source: "qrc:/resources/branding/glossata.png"; fillMode: Image.PreserveAspectFit; smooth: true; mipmap: true }
                     }
                     ColumnLayout {
                         spacing: 0
-                        Label { text: "Projeto"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
-                        Label { text: "Glossata"; color: Style.Theme.text; font.pixelSize: Style.Theme.brandSize; font.weight: Font.DemiBold }
+                        Label { text: "Projeto Glossata"; color: "#F5FAF7"; font.pixelSize: Style.Theme.brandSize; font.weight: Font.DemiBold }
+                        Label { text: "APRENDA. EXPLORE."; color: "#739399"; font.pixelSize: 8; font.letterSpacing: 1.5 }
                     }
                 }
                 Label { text: "DESCOBRIR"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.6; Layout.leftMargin: Style.Theme.navPadding; Layout.bottomMargin: Style.Theme.spaceXs }

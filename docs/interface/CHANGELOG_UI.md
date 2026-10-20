@@ -2,6 +2,8 @@
 
 ## 2.1.3 — Navegação e estrutura — 2026-10-20
 
+- Ajuste no mesmo PR: restaurada a composição anterior do logotipo, com nome em uma linha e assinatura “APRENDA. EXPLORE.”; capturas reais atualizadas, mantendo as demais alterações.
+
 - Barra lateral com seis destinos e tokens do tema; cabeçalho identifica seção e contexto, inclusive Créditos.
 - Explorar oferece navegação científica sem iniciar partida; Jogar mantém modos, filtros e conclusão. Breadcrumbs e retornos respeitam o contexto.
 - Alternância de seções preserva sessão, dicas, resposta confirmada e resultado pendente. Regressões exercitadas com SQLite temporário.

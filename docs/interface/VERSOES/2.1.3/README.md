@@ -6,6 +6,8 @@ Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossat
 
 A barra lateral mantém o logotipo oficial e acrescenta Explorar entre Início e Jogar. Usa os tokens do design system, seleção e foco dos NavItem existentes. O cabeçalho mostra seção, contexto e acesso a Retomar partida quando aplicável. A largura lateral é 200 px na janela compacta e 220 px nas demais; margens principais de 20/32 px. O conteúdo continua rolável.
 
+Ajuste solicitado pelo mantenedor: restaurada a composição anterior da marca, com “Projeto Glossata” em uma linha e “APRENDA. EXPLORE.” abaixo. O ícone mantém os bytes originais; as demais alterações da 2.1.3 são preservadas. As 12 capturas e a Home canônica foram atualizadas. Compilação, qmllint e integridade aprovados; suíte Qt/QML reexecutada com oito casos aprovados (37,91 s).
+
 Explorar reutiliza CategoryView/TaxonomyView com `browsingOnly`; apresenta domínios, atalhos, fontes, breadcrumbs e grupos filhos. Oculta controles de partida. Jogar mantém Livre/Competitivo, dificuldade e níveis elegíveis. Os cartões e as fotografias existentes não foram reformulados. O botão da Home agora diz “Começar a jogar”, mantendo sua função.
 
 O contexto de navegação é separado do estado da sessão. Uma visita a outro grupo não muda questões, alternativas, dicas ou pontuação. Retornar pelo menu Jogar preserva feedback/ficha de resposta confirmada e resultados pendentes. Sair de uma partida continua exigindo o fluxo existente de encerramento; as decisões sobre recuperação permanecem explícitas.
