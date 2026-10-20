@@ -16,6 +16,9 @@
 #include <QQmlProperty>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QScopeGuard>
+#include <QJsonDocument>
+#include <QFile>
 #include <cmath>
 
 namespace {
@@ -50,6 +53,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void dailyDiscoveryNavigationIndicatorsAndCaptures();
     void designSystemStatesAndContrast();
     void homeCarouselPhotographsAndNavigation();
     void homeCarouselTimingAndCrossfade();
@@ -59,6 +63,118 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
+{
+    interfaceWarnings.clear();
+    const auto previousHandler = qInstallMessageHandler(captureMessage);
+    const auto restoreHandler = qScopeGuard([previousHandler] { qInstallMessageHandler(previousHandler); });
+    QTemporaryDir directory;
+    QDate date = QDate::currentDate();
+    GameController controller(nullptr, directory.filePath("daily-interface.sqlite"), [&] { return date; });
+    DiscordRichPresence presence{QString(), QString()};
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    const auto activate = [&](const QString &name) {
+        auto control = item(name); if (!control) return false;
+        control->forceActiveFocus(Qt::TabFocusReason);
+        QTest::keyClick(window, Qt::Key_Space); QTest::qWait(50); return true;
+    };
+    window->setProperty("motionEnabled", false);
+    window->requestActivate();
+    QTRY_VERIFY(item("dailyDiscoveryPanel"));
+    QTRY_COMPARE(item("dailyDiscoveryPhoto")->property("status").toInt(), 1);
+    const auto indicators = controller.homeCatalogIndicators();
+    for (const auto &pair : {qMakePair("homeOrganismCount", "organisms"),
+                            qMakePair("homeDomainCount", "representedDomains"),
+                            qMakePair("homePhotoCount", "identificationPhotos")})
+        QCOMPARE(item(pair.first)->property("value").toString(), QString::number(indicators[pair.second].toInt()));
+    const auto verifyDiscovery = [&] {
+        QCOMPARE(item("dailyDiscoveryScientificName")->property("text").toString(), controller.dailyDiscovery()["scientificName"].toString());
+        QCOMPARE(item("dailyDiscoveryText")->property("text").toString(), controller.dailyDiscovery()["note"].toMap()["text"].toString());
+    };
+    verifyDiscovery();
+    const int firstId = controller.dailyDiscovery()["speciesId"].toInt();
+    date = date.addDays(1); controller.refreshHomeCatalog();
+    QTRY_VERIFY(controller.dailyDiscovery()["speciesId"].toInt() != firstId);
+    verifyDiscovery();
+    date = QDate::currentDate(); controller.refreshHomeCatalog();
+    QTRY_COMPARE(item("dailyDiscoveryPhoto")->property("status").toInt(), 1);
+    QVERIFY(QDir().mkpath("previews/daily-discovery"));
+    QFile context("previews/daily-discovery/context.json");
+    QVERIFY(context.open(QIODevice::WriteOnly));
+    context.write(QJsonDocument(QJsonObject::fromVariantMap({{"discovery", controller.dailyDiscovery()},
+        {"indicators", controller.homeCatalogIndicators()}})).toJson());
+    context.close();
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        item("navHome")->forceActiveFocus(Qt::MouseFocusReason);
+        item("pageScroll")->setProperty("contentY", 0);
+        QTest::qWait(300);
+        const QString suffix = QString::number(size.width()) + "x" + QString::number(size.height()) + ".png";
+        QVERIFY(window->grabWindow().save("previews/daily-discovery/home-" + suffix));
+        auto explore = item("dailyDiscoveryExplore"); QVERIFY(explore);
+        explore->forceActiveFocus(Qt::TabFocusReason);
+        QTest::qWait(100);
+        QVERIFY(explore->hasActiveFocus());
+        QVERIFY(explore->property("visualFocus").toBool());
+        QTest::keyClick(window, Qt::Key_Tab);
+        QTRY_VERIFY(item("dailyDiscoveryCredits")->hasActiveFocus());
+        QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+        QTRY_VERIFY(explore->hasActiveFocus());
+        const auto scroll = item("pageScroll");
+        const auto focusBounds = explore->mapRectToItem(scroll, explore->boundingRect());
+        QVERIFY(focusBounds.top() >= -1 && focusBounds.bottom() <= scroll->height() + 1);
+        const auto panel = item("dailyDiscoveryPanel");
+        for (const QString &name : {"dailyDiscoveryScientificName", "dailyDiscoveryCommonName", "dailyDiscoveryText"}) {
+            auto label = item(name); QVERIFY(label);
+            if (!label->isVisible()) continue;
+            QVERIFY(!label->property("truncated").toBool());
+            QVERIFY(label->property("paintedHeight").toReal() <= label->height() + 1);
+            QVERIFY(panel->boundingRect().contains(label->mapRectToItem(panel, label->boundingRect())));
+            QVERIFY(colorContrast(label->property("color").value<QColor>(), panel->property("color").value<QColor>()) >= 4.5);
+        }
+        // Keep the keyboard focus, then frame the complete discovery rather
+        // than only the focused button at the bottom of the viewport.
+        const qreal panelTop = scroll->property("contentY").toReal() + panel->mapToItem(scroll, QPointF()).y();
+        scroll->setProperty("contentY", qBound(0., panelTop,
+            qMax(0., scroll->property("contentHeight").toReal() - scroll->height())));
+        QTest::qWait(100);
+        QVERIFY(window->grabWindow().save("previews/daily-discovery/discovery-" + suffix));
+        scroll->setProperty("contentY", qMax(0., scroll->property("contentHeight").toReal() - scroll->height()));
+        QTest::qWait(100);
+        QVERIFY(window->grabWindow().save("previews/daily-discovery/indicators-" + suffix));
+    }
+    // Enter exploration directly while a quiz is running; preserve its state.
+    QVERIFY(activate("navPlay")); QVERIFY(activate("categoryButton0"));
+    const auto options = controller.answerOptions(); const auto photo = controller.questionPhoto();
+    QVERIFY(activate("navHome"));
+    const auto taxon = controller.dailyDiscovery()["taxonId"].toString();
+    QVERIFY(activate("dailyDiscoveryExplore"));
+    QCOMPARE(window->property("page").toString(), QString("taxonomy"));
+    QCOMPARE(window->property("currentSection").toString(), QString("explore"));
+    QCOMPARE(controller.browseTaxon()["id"].toString(), taxon);
+    QVERIFY(!item("startTaxonButton")->isVisible());
+    QVERIFY(activate("returnDomainsButton")); QCOMPARE(window->property("page").toString(), QString("explore"));
+    QVERIFY(activate("navPlay")); QCOMPARE(window->property("page").toString(), QString("quiz"));
+    QCOMPARE(controller.answerOptions(), options); QCOMPARE(controller.questionPhoto(), photo);
+    QVERIFY(activate("navHome"));
+    QVERIFY(activate("dailyDiscoveryCredits")); QCOMPARE(window->property("page").toString(), QString("credits"));
+    QVERIFY(activate("navHome"));
+    auto home = item("homeCarousel"); QVERIFY(home);
+    home->setProperty("discovery", QVariantMap{});
+    QTRY_VERIFY(item("dailyDiscoveryEmpty")->isVisible());
+    QVERIFY(!item("dailyDiscoveryExplore")->isVisible());
+    QVERIFY(item("homeExploreButton")->isEnabled() && item("homePlayButton")->isEnabled());
+    window->resize(1000, 700); item("pageScroll")->setProperty("contentY", 200); QTest::qWait(100);
+    QVERIFY(window->grabWindow().save("previews/daily-discovery/empty-1000x700.png"));
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
 {

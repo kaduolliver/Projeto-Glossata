@@ -1,0 +1,29 @@
+{
+  "base_commit": "27294a18ffd0d1e533dcdeb47b44ee0011e97b35",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "passed_suites": 26,
+    "failed_suites": 0,
+    "total_seconds": 303.81
+  },
+  "qt_logs": {
+    "core-results.txt": "f8cff946bda4d7375a213603a3e1aff8b4ba51056f65bf8e581a65a0616fb26c",
+    "ui-test-results.txt": "183b423615a34240a7b973e4ad504028c178256ca8a6aebd6af87d19a2bfda1f"
+  },
+  "checks": {
+    "qml_lint_all": true,
+    "strict_catalog_audit": true,
+    "apache_code_scope": true,
+    "project_metadata": true,
+    "release_metadata_and_capture": true,
+    "repository_hygiene": true,
+    "preserved_governance_events": 1053
+  },
+  "distribution": {
+    "blocked": true,
+    "technical_errors": 0,
+    "photo_licensing_findings": 120,
+    "scientific_release_blocks": 275
+  },
+  "limitations": "Execution results and internal hashes; no scientific/legal certification, release, merge or distribution approval."
+}

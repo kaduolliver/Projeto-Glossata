@@ -4,15 +4,18 @@
 #include <QHash>
 #include <QVariantList>
 #include <QVariantMap>
+#include <QDate>
 #include "application/EducationalContent.h"
 
 class TaxonomyIndex {
 public:
-    explicit TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMediaCatalog *media = nullptr);
+    explicit TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMediaCatalog *media = nullptr,
+                           const EducationalContent &content = EducationalContent());
     QVector<Species> speciesFor(const QString &id) const;
     QVariantList domains() const;
     QVariantList quickAccess() const;
     QVariantList homeSlides() const;
+    QVariantMap homeCatalog(const QDate &localDate) const;
     QVariantList kingdoms() const { return domains(); } // Compatibility for older adapters.
     QVariantList children(const QString &id) const;
     QVariantList breadcrumbs(const QString &id) const;
@@ -21,6 +24,7 @@ public:
     QString kingdomFor(const QString &id) const;
     int count(const QString &id = QString()) const;
 private:
+    const SpeciesCatalog &catalog_;
     const ExplorationMediaCatalog *media_;
     QVector<Species> species_;
     QHash<QString, Taxon> taxons_;

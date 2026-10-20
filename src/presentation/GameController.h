@@ -11,6 +11,8 @@
 #include <QVariantList>
 #include <QVariantMap>
 #include <QMap>
+#include <QTimer>
+#include <functional>
 
 class GameController : public QObject {
     Q_OBJECT
@@ -54,6 +56,8 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantList categories READ categories CONSTANT)
     Q_PROPERTY(QVariantList quickAccessGroups READ quickAccessGroups CONSTANT)
     Q_PROPERTY(QVariantList homeSlides READ homeSlides CONSTANT)
+    Q_PROPERTY(QVariantMap dailyDiscovery READ dailyDiscovery NOTIFY homeCatalogChanged)
+    Q_PROPERTY(QVariantMap homeCatalogIndicators READ homeCatalogIndicators NOTIFY homeCatalogChanged)
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
     Q_PROPERTY(QVariantList achievements READ achievements NOTIFY scoreChanged)
     Q_PROPERTY(QString categoryName READ categoryName NOTIFY gameFinishedChanged)
@@ -71,7 +75,8 @@ class GameController : public QObject {
 
 public:
     QVariantMap legalInformation() const;
-    explicit GameController(QObject *parent = nullptr, const QString &databasePath = QString());
+    explicit GameController(QObject *parent = nullptr, const QString &databasePath = QString(),
+                            std::function<QDate()> localDate = QDate::currentDate);
 
     QString questionText() const;
     QString factText() const;
@@ -116,6 +121,8 @@ public:
     QVariantList categories() const;
     QVariantList quickAccessGroups() const { return taxonomy_.quickAccess(); }
     QVariantList homeSlides() const { return taxonomy_.homeSlides(); }
+    QVariantMap dailyDiscovery() const { return homeCatalog_.value("discovery").toMap(); }
+    QVariantMap homeCatalogIndicators() const { return homeCatalog_.value("indicators").toMap(); }
     QVariantList categoryStats() const;
     QVariantList achievements() const;
     QString categoryName() const { return categoryName_; }
@@ -130,6 +137,7 @@ public:
     QString hintSourceUrl() const { return displayedQuestion_.hintSourceUrl; }
 
 public slots:
+    void refreshHomeCatalog();
     bool startGame();
     bool startCategoryGame(const QString &family);
     bool startTaxonGame(const QString &taxonId, const QString &rank);
@@ -153,6 +161,7 @@ public slots:
     void loadRanking();
 
 signals:
+    void homeCatalogChanged();
     void questionTextChanged();
     void factTextChanged();
     void extraHintChanged();
@@ -191,6 +200,9 @@ private:
     Question displayedQuestion_;
     int displayedRevealedHints_=0;
     EducationalContent content_;
+    std::function<QDate()> localDate_;
+    QTimer homeRefreshTimer_;
+    QVariantMap homeCatalog_;
     int correctStreak_ = 0;
     int bestStreak_ = 0;
     QString rankingMode_ = "free";

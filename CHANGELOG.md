@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Subetapa 2.2.1-B (#22): Descoberta do Dia offline e determinística pela data local, com fotografia de identificação, resumo editorial/especializado existente, fonte e acesso ao nó da espécie em Explorar. Três indicadores passam a contar organismos únicos, domínios representados e organismos com fotografia de identificação utilizável no aplicativo. Carrossel, quiz, persistência e governança preservados; validação e capturas em `docs/interface/VERSOES/2.2.1-B/`.
+
 - PR #30: hover da barra pausa somente nas áreas dos botões/indicadores, permitindo retomada nos espaçadores e intervalos vazios entre os pontos.
 
 - PR #30: legenda e créditos confirmam o novo slide somente ao concluir o crossfade de 600 ms; hover pausa apenas na legenda e nos controles, preservando teclado, créditos, janela inativa e retomada com oito segundos completos. Refinamentos futuros registrados sem implementação.

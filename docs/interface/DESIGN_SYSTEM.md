@@ -1,5 +1,7 @@
 # Design system — revisão 2.1.2
 
+Na revisão 2.2.1-B, a Descoberta do Dia usa os mesmos tokens de superfície, borda, tipografia e espaçamento; título dourado, nome científico em itálico e foto proporcional sem decoração nova. A área empilha foto/texto em larguras abaixo de 700 px de conteúdo. Os indicadores reutilizam `StatCard`, com descrições opcionais e valores reais. A página conserva a rolagem do shell para acomodar a seção após o carrossel. Não há mudança de paleta, ícones ou tokens.
+
 Os tokens ficam em `resources/qml/style/Theme.qml`, singleton QML local registrado por `qmldir` e embarcado no QRC. `UiButton`, `NavItem`, `StatCard` e `TextAction` usam os tokens; as demais views conservam seus estilos. Não há dependência nova ou mudança na organização das telas.
 
 Na Subetapa 2.2.1-A, `HomeView` também utiliza esses tokens. A fotografia ocupa a região principal à direita com gradiente; a legenda aparece diretamente sobre um degradê inferior escuro, transparente acima e nas laterais. O título do grupo usa `subtitleSize` e seminegrito; a descrição usa `bodySize`, seguida do nome científico em itálico e de Créditos. Pontos distinguem seleção (verde) e foco por teclado (dourado). O crossfade de 600 ms e o avanço automático de oito segundos usam `homeCrossfadeDuration` e `homeSlideInterval`, com pausa por interação/visibilidade e desativação pela redução de movimento. Os tokens e contratos compartilhados não foram alterados.

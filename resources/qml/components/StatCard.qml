@@ -7,13 +7,16 @@ Rectangle {
     id: card
     property string title: ""
     property string value: "0"
+    property string description: ""
     property string iconName: "chart"
     property color accent: Style.Theme.green
-    implicitHeight: 118
+    implicitHeight: description.length ? Math.max(154, labels.implicitHeight + 2 * Style.Theme.spaceLg) : 118
     implicitWidth: 200
     radius: Style.Theme.cardRadius
     color: Style.Theme.surface
     border.color: Style.Theme.border
+    Accessible.role: Accessible.StaticText
+    Accessible.name: title + ": " + value + (description.length ? ". " + description : "")
     RowLayout {
         anchors.fill: parent
         anchors.margins: Style.Theme.spaceLg
@@ -24,10 +27,12 @@ Rectangle {
             UiIcon { anchors.centerIn: parent; name: card.iconName; ink: card.accent; implicitWidth: 23; implicitHeight: 23 }
         }
         ColumnLayout {
+            id: labels
             Layout.fillWidth: true
             spacing: Style.Theme.spaceXs
             Label { text: card.title; color: Style.Theme.textMuted; font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { text: card.value; color: Style.Theme.text; font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.metricSize; font.weight: Font.DemiBold; fontSizeMode: Text.Fit; minimumPixelSize: Style.Theme.bodySize; Layout.fillWidth: true }
+            Label { visible: !!text; text: card.description; color: Style.Theme.textMuted; font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.captionSize; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         }
     }
 }

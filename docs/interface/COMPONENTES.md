@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Descoberta e indicadores — 2.2.1-B
+
+`HomeView` acrescenta `dailyDiscoveryPanel` abaixo dos controles do carrossel. A foto usa `Image.PreserveAspectFit`, com nome científico acessível, créditos locais e alternativa para falha de carregamento. Nome científico, nome comum disponível e resumo preservam texto simples e quebra de linha. `dailyDiscoverySource` mostra a referência com URL acessível/tooltip; links externos só abrem por ação explícita. `dailyDiscoveryExplore` abre o táxon exato no contexto Explorar, e `dailyDiscoveryCredits` leva à tela de créditos existente. Teclado e rolagem continuam sob os mecanismos do shell.
+
+`StatCard.description` é opcional, vazia por padrão; nesse caso a altura anterior permanece 118 px. Com descrição, a altura acompanha o conteúdo a partir de 154 px. O nome acessível inclui título, valor e descrição. Os três usos novos têm identificadores `homeOrganismCount`, `homeDomainCount` e `homePhotoCount`, ligados a propriedades notificáveis do controlador. Os contratos dos demais usos são preservados.
+
 ## Início — 2.2.1-A
 
 `HomeView` reutiliza `UiButton`, `TextAction` e `StatCard`, sem alterar seus contratos. Dois buffers `Image` locais cuidam do carrossel; `FeatheredPhoto` permanece nos cartões. `homePlayButton` continua chamando `app.openPlay()`; `homeExploreButton` chama `app.openExplore()`. `homeCarousel.currentIndex` identifica o slide confirmado ao concluir a transição, mantendo título, descrição, nome e créditos anteriores durante o crossfade. Setas circulam, Home/End selecionam extremos e os indicadores de posição aceitam Tab/Espaço. A preferência existente de movimento controla o crossfade de 600 ms e desativa o avanço automático de oito segundos; hover na legenda/controles, botão pressionado, foco de teclado, créditos e visibilidade pausam o Timer. Hover nas demais regiões da Home permite o avanço. Os controles preservam foco visível e o diálogo devolve o foco ao botão de créditos ao fechar.
