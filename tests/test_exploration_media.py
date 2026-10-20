@@ -39,7 +39,8 @@ class ExplorationMediaTests(unittest.TestCase):
         self.assertEqual(report['bindings']+report['documented_pending'],len(nodes))
         self.assertEqual(len(report['coverage']),report['total_cards'])
         self.assertEqual(sum(row['id']=='special:mixed' for row in report['coverage']),1)
-        self.assertLess(report['total_bytes'],25_000_000)
+        self.assertLess(sum(p['bytes'] for p in self.data['photos'].values() if p.get('usage')!='home'),25_000_000)
+        self.assertLess(sum(p['bytes'] for p in self.data['photos'].values() if p.get('usage')=='home'),8_000_000)
         for photo in self.data['photos'].values():
             self.assertEqual(governance.image_privacy_findings(ROOT/photo['path']),[])
             proof=governance.load(ROOT/photo['evidence_path'])['record']
@@ -78,6 +79,34 @@ class ExplorationMediaTests(unittest.TestCase):
                 changed=dict(photo,**{field:value});self.assertIn(error,media.photo_errors(changed,self.root))
         path=self.root/photo['path'];path.write_bytes(b'not an image')
         self.assertIn('photo_hash',media.photo_errors(photo,self.root))
+
+    def test_home_variants_require_same_source_and_native_resolution(self):
+        base=self.data['photos']['monarch'];variant=self.data['photos']['home-monarch']
+        self.assertTrue(media.matching_variant(base,variant,self.root))
+        self.assertEqual(media.photo_errors(variant,self.root),[])
+        for key in ['subject','photo_id','author','license_version','photo_url']:
+            changed=dict(variant,**{key:'different'})
+            self.assertFalse(media.matching_variant(base,changed,self.root),key)
+        changed=dict(variant,width=4000)
+        self.assertIn('unproved_native_resolution',media.photo_errors(changed,self.root))
+        self.data['home_variants']['monarch']='home-lion';self.persist()
+        self.assertIn('home_variant_identity',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_home_variant_does_not_replace_card_binding(self):
+        base=next(k for k,v in self.data['bindings'].items() if v=='monarch')
+        self.data['bindings'][base]='home-monarch';self.persist()
+        self.assertIn('home_variant_used_for_card',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_home_collection_rejects_server_upscaling(self):
+        info={'url':'https://upload.wikimedia.org/fixture.jpg','thumburl':'https://upload.wikimedia.org/fixture-thumb.jpg',
+              'width':100,'height':100,'extmetadata':{'Artist':{'value':'Fixture author'},
+              'LicenseShortName':{'value':'CC0'},'LicenseUrl':{'value':'https://creativecommons.org/publicdomain/zero/1.0/'}}}
+        response={'query':{'pages':{'1':{'imageinfo':[info]}}}}
+        raw=(self.root/self.data['photos']['lion']['path']).read_bytes()
+        with patch.object(media,'fetch',side_effect=[json.dumps(response).encode(),raw]):
+            with self.assertRaisesRegex(ValueError,'Upscaled'):
+                media.collect_commons('File:Fixture.jpg','upscaled','Fixture',self.root,width=2560,usage='home')
+        self.assertFalse((self.root/'resources/images/exploration/upscaled.jpg').exists())
 
     def test_misidentified_representative_and_missing_scope_are_detected(self):
         self.data['bindings']['domain:Bacteria']='lion';self.persist()

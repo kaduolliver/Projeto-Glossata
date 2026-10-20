@@ -51,8 +51,10 @@ QVariantMap verifiedPhoto(const QJsonObject &photo, const QString &root) {
         || photo["author"].toString()!=QTextDocumentFragment::fromHtml(metadata["Artist"].toObject()["value"].toString()).toPlainText().remove(QChar(0xfffc)).simplified()) return {};
     QImageReader reader(root+"/"+path);
     const QSize size=reader.size();
+    const bool home=photo["usage"]=="home";
     if (!reader.canRead() || size!=QSize(photo["width"].toInt(),photo["height"].toInt())
-        || qMin(size.width(),size.height())<160 || qMax(size.width(),size.height())>1024) return {};
+        || qMin(size.width(),size.height())<160 || qMax(size.width(),size.height())>(home ? 3072 : 1024)) return {};
+    if(home && (record["original_width"].toInt()<size.width() || record["original_height"].toInt()<size.height())) return {};
     for(const auto &key:{"focus_x","focus_y"})if(photo.contains(key) && !photo[key].isDouble())return {};
     const double focusX=photo["focus_x"].toDouble(0.5),focusY=photo["focus_y"].toDouble(0.5);
     if(focusX<0 || focusX>1 || focusY<0 || focusY>1)return {};
@@ -64,6 +66,7 @@ QVariantMap verifiedPhoto(const QJsonObject &photo, const QString &root) {
         {"title",photo["title"].toString()}, {"photoId",photo["photo_id"].toString()},
         {"evidencePath",evidence}, {"evidenceSha256",photo["evidence_sha256"].toString()},
         {"collectedAt",photo["collected_at"].toString()},
+        {"width",size.width()},{"height",size.height()},
         {"focusX",focusX},{"focusY",focusY},
         {"modifications",photo["modifications"].toString()}};
 }
@@ -76,6 +79,17 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
     for(auto it=photos.begin();it!=photos.end();++it) {
         const auto photo=verifiedPhoto(it.value().toObject(),root);
         if(!photo.isEmpty()) verified.insert(it.key(),photo);
+    }
+    const auto variants=data["home_variants"].toObject();
+    for(auto it=variants.begin();it!=variants.end();++it) {
+        const auto base=photos[it.key()].toObject(), variant=photos[it.value().toString()].toObject();
+        bool same=variant["usage"]=="home" && verified.contains(it.key()) && verified.contains(it.value().toString());
+        for(const auto &key:{"photo_id","subject","author","license","license_version","license_url","photo_url"})
+            if(base[key]!=variant[key])same=false;
+        const auto first=QJsonDocument::fromJson(read(root+"/"+base["evidence_path"].toString())).object()["record"].toObject();
+        const auto second=QJsonDocument::fromJson(read(root+"/"+variant["evidence_path"].toString())).object()["record"].toObject();
+        same=same && !first["original_sha1"].toString().isEmpty() && first["original_sha1"]==second["original_sha1"];
+        if(same)verified[it.key()].insert("homeVariant",verified.value(it.value().toString()));
     }
     const auto bindings=data["bindings"].toObject();
     QHash<int,QJsonObject> organisms;
@@ -109,7 +123,7 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
         }
         if((it.key()=="domain:Bacteria" || it.key()=="domain:Archaea") && photo["kind"]!="micrograph")compatible=false;
         if(!taxons.contains(it.key()) || (taxons[it.key()]["rank"]=="species" && taxons[it.key()]["name"]!=photo["subject"]))compatible=false;
-        if(compatible && verified.contains(key))photos_.insert(it.key(),verified.value(key));
+        if(compatible && photo["usage"]!="home" && verified.contains(key))photos_.insert(it.key(),verified.value(key));
     }
     const auto pending=data["pending"].toObject();
     for(auto it=pending.begin();it!=pending.end();++it)

@@ -825,6 +825,22 @@ void GameServiceTests::explorationPhotographsFailClosed()
     auto bindings=data["bindings"].toObject();bindings["domain:Bacteria"]="lion";data["bindings"]=bindings;
     QVERIFY(write(lion));JsonExplorationMediaCatalog mismatched(directory.path());
     QVERIFY(mismatched.photoFor("domain:Bacteria").isEmpty());
+    const auto homeLion=data["photos"].toObject()["home-lion"].toObject();
+    for(const auto &key:{"path","evidence_path"}) {
+        const QString path=homeLion[key].toString();
+        QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
+        QVERIFY(QFile::copy(":/"+path,directory.filePath(path)));
+    }
+    QVERIFY(write(lion));JsonExplorationMediaCatalog withVariant(directory.path());
+    const auto card=withVariant.photoFor("clade:Opisthokonta");
+    QCOMPARE(card["width"].toInt(),960);
+    QCOMPARE(card["homeVariant"].toMap()["width"].toInt(),1280);
+    auto changed=homeLion;changed["author"]="Not the source author";
+    auto photographs=data["photos"].toObject();photographs["home-lion"]=changed;data["photos"]=photographs;
+    QVERIFY(write(lion));JsonExplorationMediaCatalog rejectedVariant(directory.path());
+    const auto fallback=rejectedVariant.photoFor("clade:Opisthokonta");
+    QCOMPARE(fallback["image"],card["image"]);
+    QVERIFY(fallback["homeVariant"].toMap().isEmpty());
 }
 
 void GameServiceTests::newTaxonomicRanksRequireIndependentReview()

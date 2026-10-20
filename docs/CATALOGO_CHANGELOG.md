@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Refinamento do PR #30 em 2026-10-20, sem lançamento: quatro variantes da mesma fotografia-fonte, exclusivas da Home, com novas evidências públicas CC BY 2.0/CC0 1.0, dimensões nativas, hashes e créditos individuais. Preservados os 109 arquivos de exploração anteriores, os 122 organismos, as 855 receitas e todo o histórico de decisões. Catálogo 2.4.0 não lançado regenerado pelo fluxo existente; aplicativo 1.7.0 inalterado. Não libera os demais materiais nem o pacote.
+
 Ajuste final do PR #23 em 2026-10-19, sem lançamento: referências das duas fotos passam a CC BY com versão/URL desconhecidas, sem presumir 4.0. Dois registros técnicos reindexam a mesma aprovação expressa, preservando prova, datas e todos os eventos anteriores. Nenhuma nova decisão humana ou permissão; receitas e imagens idênticas.
 
 Etapa 1 em 2026-10-19, sem lançamento: organismos 125 e 128 mantidos; fotos 707161720 e 659755043 substituídas por 111317641 e 2068079. Quatro eventos editoriais reais acrescentados para fotos e vínculos morfológicos; 855 receitas idênticas. Fotos antigas preservadas fora do QRC. CC BY declarada, versão e confirmação de permissão pendentes. Catálogo 2.4.0 não lançado atualizado; app 1.7.0 inalterado.

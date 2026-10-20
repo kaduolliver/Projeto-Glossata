@@ -391,5 +391,13 @@
         <file>resources/compliance/exploration/representative-1404264-taxonomy.json</file>
         <file>resources/images/exploration/organism-27.jpg</file>
         <file>resources/compliance/exploration/organism-27.json</file>
+        <file>resources/images/exploration/home-lion.jpg</file>
+        <file>resources/compliance/exploration/home-lion.json</file>
+        <file>resources/images/exploration/home-monarch.jpg</file>
+        <file>resources/compliance/exploration/home-monarch.json</file>
+        <file>resources/images/exploration/home-sunflower.jpg</file>
+        <file>resources/compliance/exploration/home-sunflower.json</file>
+        <file>resources/images/exploration/home-amanita.jpg</file>
+        <file>resources/compliance/exploration/home-amanita.json</file>
     </qresource>
 </RCC>

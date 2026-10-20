@@ -103,7 +103,9 @@ QVariantList TaxonomyIndex::homeSlides() const
     for (const QString &name : {"Animalia", "Arthropoda", "Plantae", "Fungi"}) {
         for (const auto &node : taxons_) if (node.name == name) {
             auto slide = describe(node.id);
-            const auto photo = slide.value("photo").toMap();
+            auto photo = slide.value("photo").toMap();
+            if (!photo.value("homeVariant").toMap().isEmpty()) photo = photo.value("homeVariant").toMap();
+            slide.insert("photo", photo);
             const auto introduction = slide.value("introduction").toMap();
             const QString image = photo.value("image").toString();
             const QString state = introduction.value("governance").toMap().value("state").toString();

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-20T16:06:41.460587+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=2560&iiurlheight=2560&titles=File%3AAmanita+muscaria+%281%29+%288692325426%29.jpg&maxlag=5",
+  "record": {
+    "page_id": 70122479,
+    "revision_id": 885441073,
+    "file_title": "File:Amanita muscaria (1) (8692325426).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Amanita_muscaria_%281%29_%288692325426%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "567d02c32a121c7557db757198bbe9e2be94e2b0",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Amanita_muscaria_%281%29_%288692325426%29.jpg",
+    "original_width": 3000,
+    "original_height": 2129,
+    "metadata": {
+      "ObjectName": {
+        "value": "Amanita muscaria (1) (8692325426)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Amanita muscaria (1)",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/88123769@N02\">Bernard Spragg. NZ</a> from Christchurch, New Zealand",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/volvob12b/8692325426/\">Amanita muscaria (1)</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

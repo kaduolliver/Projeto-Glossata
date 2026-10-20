@@ -7,6 +7,8 @@ QtObject {
     property bool motionEnabled: true
     readonly property int durationFast: motionEnabled ? 120 : 0
     readonly property int durationPage: motionEnabled ? 180 : 0
+    readonly property int homeSlideInterval: 8000
+    readonly property int homeCrossfadeDuration: motionEnabled ? 600 : 0
     readonly property color canvas: "#091A22"
     readonly property color surface: "#10262D"
     readonly property color surfaceRaised: "#18343C"

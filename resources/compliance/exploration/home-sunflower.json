@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-20T16:06:40.187992+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=2560&iiurlheight=2560&titles=File%3ASunflowers+public+domain+helianthus+annuus+IMG+0815.jpg&maxlag=5",
+  "record": {
+    "page_id": 68617434,
+    "revision_id": 1215382183,
+    "file_title": "File:Sunflowers public domain helianthus annuus IMG 0815.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "c30f0c4a00a9cece7eabfa03b62774dfbfb80b99",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg",
+    "original_width": 3024,
+    "original_height": 3024,
+    "metadata": {
+      "ObjectName": {
+        "value": "Sunflowers public domain helianthus annuus IMG 0815",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Sunflower (helianthus annuus) in July, 2017 in Santa Rosa, California.",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Macdon&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Macdon (page does not exist)\">S.G.S.</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

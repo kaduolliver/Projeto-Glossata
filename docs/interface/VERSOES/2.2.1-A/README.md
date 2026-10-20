@@ -4,13 +4,13 @@ Subetapa da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/2
 
 ## Implementação
 
-O Início apresenta quatro fotografias locais, selecionadas das associações explícitas já verificadas pelo catálogo de mídia. O recorte proporcional respeita o ponto focal existente, com gradiente horizontal e legenda sobre superfície opaca. Setas e miniaturas selecionam as fotos; o indicador informa a posição. Não há avanço automático. Tab/Espaço, setas e Home/End permitem operar por teclado; foco visível e retorno do diálogo de créditos são preservados. A preferência de redução de movimento zera a duração das transições.
+O Início apresenta quatro fotografias locais, selecionadas das associações explícitas já verificadas pelo catálogo de mídia. O recorte proporcional respeita o ponto focal existente, com gradiente horizontal e legenda sobre superfície opaca. Setas e pequenos pontos selecionam as fotos; não há faixa de miniaturas. O avanço automático ocorre a cada oito segundos, com crossfade de 600 ms e retorno ao primeiro slide. A navegação manual reinicia o intervalo. Hover, foco de teclado no carrossel, créditos abertos, janela inativa/oculta/minimizada e Home invisível suspendem o avanço; ao retomar começa um intervalo completo. Tab/Espaço, setas e Home/End permitem operar por teclado; foco visível e retorno do diálogo de créditos são preservados. A preferência de redução de movimento zera a duração das transições e desativa o avanço automático. `Theme.homeSlideInterval` e `Theme.homeCrossfadeDuration` centralizam os tempos.
 
-Explorar abre a navegação científica; Jogar chama o fluxo existente de início/retomada, inclusive feedback e resultados pendentes. O carrossel não grava estado de sessão. Os três indicadores anteriores permanecem; não há Descoberta do Dia, novo indicador, fotografia importada ou reformulação de outras telas.
+Explorar abre a navegação científica; Jogar chama o fluxo existente de início/retomada, inclusive feedback e resultados pendentes. O carrossel não grava estado de sessão. Os três indicadores anteriores permanecem; não há Descoberta do Dia, novo indicador, nova espécie ou reformulação de outras telas.
 
 `TaxonomyIndex.homeSlides()` só oferece imagens aceitas pelo validador existente e introduções com revisão editorial/especializada utilizável. A legenda é a primeira frase completa da introdução aprovada do grupo, sem reescrever o conteúdo científico. Ausência de evidência, fotografia ou introdução utilizável omite o slide. Mesmo sem slides, os botões de navegação permanecem disponíveis.
 
-Arquivos de produção: `HomeView.qml`, `TaxonomyIndex.h/.cpp`, `GameController.h` e `JsonExplorationMediaCatalog.cpp`. Não foram modificados dados científicos, fotografias, ícones, permissões, revisões, banco de dados ou regras.
+Arquivos de produção do refinamento: `HomeView.qml`, `Theme.qml`, `TaxonomyIndex.cpp` e `JsonExplorationMediaCatalog.cpp`. Automação: `exploration_media.py` e `exploration_discovery.py`; recursos QRC, créditos, inventário de direitos e manifesto do catálogo regenerados. Dados científicos, imagens dos cartões/quiz, ícones, decisões humanas, banco e regras permanecem preservados.
 
 ## Fotografias, fontes e direitos
 
@@ -21,7 +21,7 @@ Arquivos de produção: `HomeView.qml`, `TaxonomyIndex.h/.cpp`, `GameController.
 | Plantae / *Helianthus annuus* | [S.G.S. — CC0 1.0](https://commons.wikimedia.org/wiki/File:Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg) | [sunflower.json](../../../../resources/compliance/exploration/sunflower.json) | [Fangel et al. (2012)](https://doi.org/10.3389/fpls.2012.00152) |
 | Fungi / *Amanita muscaria* | [Bernard Spragg. NZ from Christchurch, New Zealand — CC0 1.0](https://commons.wikimedia.org/wiki/File:Amanita_muscaria_(1)_(8692325426).jpg) | [amanita.json](../../../../resources/compliance/exploration/amanita.json) | [Challacombe et al. (2019)](https://doi.org/10.1186/s12864-019-6358-x) |
 
-As versões de licença provêm dos snapshots individuais já arquivados; não foram inferidas da licença do site. A interface apresenta autoria, título fornecido, licença com link, fonte específica, modificações, coleta e hash da evidência. Os [créditos completos](../../../PHOTO_CREDITS.md) e o [manifesto de fotografias](../../../../resources/data/exploration_photos.json) continuam sendo as referências de atribuição. As fontes educativas são bibliográficas, não licenças de fotografias.
+As versões de licença foram reconferidas nos metadados específicos dos quatro arquivos, com novos snapshots arquivados para as variantes; não foram inferidas da licença do site. A legenda exibe nome científico, trecho educativo e o botão Créditos. O diálogo conserva autoria, título fornecido, licença com link, fonte específica, modificações, coleta e hash da evidência. Os [créditos completos](../../../PHOTO_CREDITS.md) e o [manifesto de fotografias](../../../../resources/data/exploration_photos.json) continuam sendo as referências de atribuição. As fontes educativas são bibliográficas, não licenças de fotografias.
 
 As fotos mantêm identificação fornecida pela fonte; esta implementação não declara nova revisão humana, validação especializada ou endosso. As legendas descrevem grupos, não certificam todas as características do indivíduo fotografado. Nenhuma autorização foi ampliada.
 
@@ -38,11 +38,11 @@ As capturas reais e seus hashes são relacionados em `capturas.json`, com fontes
 | Girassol | [Captura](capturas/slide-2-1000x700.png) | [Captura](capturas/slide-2-1240x820.png) | [Captura](capturas/slide-2-1920x1080.png) |
 | Cogumelo | [Captura](capturas/slide-3-1000x700.png) | [Captura](capturas/slide-3-1240x820.png) | [Captura](capturas/slide-3-1920x1080.png) |
 
-[Diálogo de créditos](capturas/credits-1240x820.png). Versões anteriores preservadas integralmente. Em 1000 × 700, os indicadores inferiores usam a rolagem existente; não ficam inacessíveis. As imagens locais têm até 960 pixels e podem perder nitidez quando ampliadas; nenhuma imagem adicional foi baixada. Validação visual em Windows/Qt software, escala 1; outras GPUs, escalas e leitores de tela não foram ensaiados.
+[Diálogo de créditos](capturas/credits-1240x820.png). Versões anteriores preservadas integralmente. Em 1000 × 700, os indicadores inferiores usam a rolagem existente; não ficam inacessíveis. As variantes maiores são exclusivas da Home; a tabela abaixo registra as dimensões efetivas. O leão continua limitado pelo original de 1280 × 960, sem original de 1920 pixels de largura disponível; não foi ampliado artificialmente para simular detalhe. Validação visual em Windows/Qt software, escala 1; outras GPUs, escalas e leitores de tela não foram ensaiados.
 
 Comandos: `cmake --build build -j 4`, `ctest --test-dir build --output-on-failure`, `qmllint resources/qml/views/HomeView.qml --unqualified disable`, `python scripts/capture_home.py`, `python scripts/audit_catalog.py --strict`, `python scripts/licensing_inventory.py --check-code`, `python scripts/release.py check`, `python scripts/distribution.py check`.
 
-Resultados locais em 20/10/2026:
+Resultados da implementação inicial em 20/10/2026, antes deste refinamento (registro histórico; não representam a nova execução):
 
 - Compilação Release concluída. CTest completo: **26/26 suítes aprovadas** (191,89 s). Após os ajustes finais, domínio/aplicação e interface foram reexecutados: **2/2 suítes aprovadas** (68,56 s), com nove casos Qt/QML incluindo inicialização/finalização.
 - Após a normalização de finais de linha para o Git, o teste específico do carrossel foi executado novamente: aprovado (7,30 s). Suas 13 capturas finais estão no manifesto; a captura canônica do executável também foi regenerada.
@@ -50,3 +50,31 @@ Resultados locais em 20/10/2026:
 - Qmllint de todos os arquivos QML, auditoria estrita do catálogo, validação das 109 fotos de exploração, escopo Apache 2.0, integridade de release e higiene do repositório: aprovados.
 - A comparação de governança com a base preserva os 1.053 eventos existentes e seus hashes. Os arquivos de dados, fotografias, branding e compliance não têm alterações: 122 organismos e 855 receitas preservados; indicadores continuam em 49 etimologias e 104 morfologias.
 - Gate de distribuição continua **bloqueado**: zero erros técnicos, 120 pendências fotográficas, zero pendências de outros materiais e 275 bloqueios científicos. A interface não concede permissões nem resolve esses achados.
+
+
+## Refinamento do PR #30
+
+As imagens anteriores dos cartões e suas evidências foram preservadas byte a byte. `home_variants` associa explicitamente cada foto-base à variante do mesmo arquivo-fonte. O validador exige identificação, autoria, licença/versão, página e SHA-1 original coincidentes, além de hash local, evidência e resolução nativa comprovada. Variante inválida não substitui a foto-base. A descoberta de cartões ignora recursos com `usage: home`.
+
+| Organismo | Resolução real da Home | Licença comprovada | Evidência da nova coleta |
+| --- | --- | --- | --- |
+| *Panthera leo* | 1280 × 960 | CC BY 2.0 | [home-lion.json](../../../../resources/compliance/exploration/home-lion.json) |
+| *Danaus plexippus* | 2048 × 2021 | CC0 1.0 | [home-monarch.json](../../../../resources/compliance/exploration/home-monarch.json) |
+| *Helianthus annuus* | 3024 × 3024 | CC0 1.0 | [home-sunflower.json](../../../../resources/compliance/exploration/home-sunflower.json) |
+| *Amanita muscaria* | 3000 × 2129 | CC0 1.0 | [home-amanita.json](../../../../resources/compliance/exploration/home-amanita.json) |
+
+São os originais fornecidos pela fonte, totalizando 7.666.711 bytes; nenhuma ampliação ou edição dos arquivos foi feita. Todos passaram pela checagem existente de metadados sensíveis. Foram aproveitadas as mesmas identificações e referências, sem nova aprovação humana. A concessão pública por arquivo é registrada pelo mecanismo já existente; não elimina outros bloqueios. O catálogo 2.4.0 permanece não lançado, com identidade de conteúdo regenerada; aplicativo 1.7.0 inalterado.
+
+Dois buffers nativos `Image` mantêm a foto atual enquanto carregam a próxima. O recorte usa a proporção e o ponto focal, com um gradiente independente das imagens. Canvas é utilizado apenas para os recortes dos cantos; os cartões continuam usando seu componente anterior sem alterações. A renderização por Canvas das fotografias foi substituída após reproduzir invalidação de textura em um buffer pré-carregado invisível no renderizador software. O crossfade só começa após o carregamento do buffer de entrada; uma falha mantém a fotografia anterior e libera a navegação. A decodificação é limitada a 1920 pixels por lado, sem ampliar arquivos menores, e o cache dos buffers é desativado; não se mantêm as quatro imagens decodificadas pelo carrossel. O limite de 3072 pixels/5 MB por arquivo aplica-se somente às variantes da Home; os cartões conservam o orçamento anterior de 1024 pixels. Links externos continuam restritos a ações explícitas do usuário.
+
+Validação final do refinamento em 20/10/2026:
+
+- Compilação Release concluída; **26/26 suítes CTest aprovadas** (196,79 s). Suíte Qt/QML: **10 casos aprovados**, sem avisos, incluindo inicialização/finalização (57,39 s).
+- O teste aguarda um intervalo real de oito segundos, verifica os dois buffers simultaneamente durante o crossfade de 600 ms, o reinício após ação manual, hover, foco de teclado, créditos, janela inativa/oculta, redução de movimento e saída da Home. Intervalos acelerados são usados somente nas verificações posteriores de pausa/reinício. Testado também retorno ao primeiro slide.
+- As 12 capturas de slides são verificadas por amostragem de pixels reais para rejeitar um quadro vazio, além da prontidão de carregamento. Há 13 capturas finais: quatro slides nas três resoluções solicitadas e diálogo de créditos. Captura oficial regenerada pelo executável real; manifesto atualizado com PNGs, fontes, binários, horários e dados de cada mídia.
+- **21 testes de mídia aprovados**: licença, autoria, evidências, resolução nativa, rejeição de ampliação oferecida pelo servidor, vínculo ao mesmo arquivo-fonte e isolamento dos cartões. Auditoria das 113 entradas de mídia (109 anteriores e quatro variantes, não quatro novos organismos/fotografias-fonte): zero erros.
+- Qmllint de todos os QML, auditoria estrita do catálogo, Apache 2.0, integridade de manifestos e higiene do repositório aprovados. Permanecem 122 organismos, 855 receitas, 49 etimologias e 104 morfologias verificadas.
+- Comparação com `5eb1fc94be8f7570fe188c85101ce9e16128aa7b`: os 1.053 eventos, todos os 109 registros/arquivos anteriores e os vínculos dos cartões são preservados. Nenhuma alteração de decisões humanas, textos científicos, ícones, regras ou persistência.
+- Distribuição **bloqueada** por 120 pendências fotográficas e 275 bloqueios científicos; zero erros técnicos e zero pendências de outros materiais. Não foi publicado pacote ou release.
+
+O histórico inicial permanece no Git, e as versões baseline/2.1.2/2.1.3 não são modificadas. Renderização avaliada em Qt software/offscreen, escala 1; não há medição de FPS ou garantia sobre outras GPUs/escalas/leitores de tela.

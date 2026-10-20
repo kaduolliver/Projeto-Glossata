@@ -5,7 +5,7 @@ import QtQuick.Layouts
 import "../components"
 import "../style" as Style
 
-Item {
+FocusScope {
     id: view
     objectName: "homeCarousel"
     required property var app
@@ -14,13 +14,95 @@ Item {
     property int currentIndex: 0
     readonly property var slide: slides.length ? slides[currentIndex] : ({})
     readonly property var photo: slide.photo || ({})
-    readonly property bool photoReady: heroPhoto.ready
-    readonly property int transitionDuration: Style.Theme.durationPage
+    readonly property bool photoReady: (activeBuffer === 0 ? layerA.painted : layerB.painted)
+    readonly property int transitionDuration: Style.Theme.homeCrossfadeDuration
+    readonly property int slideInterval: Style.Theme.homeSlideInterval
+    readonly property bool windowActive: Window.window ? Window.window.active && Window.window.visible
+        && Window.window.visibility !== Window.Minimized : false
+    readonly property var focusedControl: Window.window ? Window.window.activeFocusItem : null
+    readonly property bool keyboardInteracting: activeFocus && focusedControl
+        && (focusedControl.focusReason === Qt.TabFocusReason || focusedControl.focusReason === Qt.BacktabFocusReason
+            || focusedControl.focusReason === Qt.ShortcutFocusReason || focusedControl.focusReason === Qt.OtherFocusReason)
+    readonly property bool canAutoAdvance: visible && windowActive && Style.Theme.motionEnabled
+        && slides.length > 1 && !interaction.hovered && !keyboardInteracting && !credits.visible
+    readonly property bool autoRunning: advanceTimer.running
+    readonly property bool transitioning: crossfade.running
+    property int activeBuffer: 0
+    property int pendingIndex: -1
+    property real blend: 0
     implicitHeight: 650
-    function selectSlide(index) {
-        if (slides.length) currentIndex = (index + slides.length) % slides.length
+
+    function resetSlides() {
+        crossfade.stop()
+        currentIndex = 0
+        pendingIndex = -1
+        blend = 0
+        activeBuffer = 0
+        layerA.dataPhoto = slides.length ? slides[0].photo : ({})
+        preloadNext()
     }
-    onSlidesChanged: currentIndex = 0
+    function preloadNext() {
+        if (pendingIndex >= 0 || crossfade.running) return
+        const next = slides.length > 1 ? slides[(currentIndex + 1) % slides.length].photo : ({})
+        if (activeBuffer === 0) layerB.dataPhoto = next
+        else layerA.dataPhoto = next
+    }
+    function selectSlide(index, manual = true) {
+        if (manual) restartInterval()
+        if (!slides.length || pendingIndex >= 0 || crossfade.running) return
+        const selected = (index + slides.length) % slides.length
+        if (selected === currentIndex) return
+        pendingIndex = selected
+        if (activeBuffer === 0) layerB.dataPhoto = slides[selected].photo
+        else layerA.dataPhoto = slides[selected].photo
+        Qt.callLater(beginTransition)
+    }
+    function beginTransition() {
+        const incoming = activeBuffer === 0 ? layerB : layerA
+        if (pendingIndex >= 0 && incoming.failed) { pendingIndex = -1; return }
+        if (pendingIndex < 0 || !incoming.painted || crossfade.running) return
+        currentIndex = pendingIndex
+        if (transitionDuration === 0) finishTransition()
+        else crossfade.start()
+    }
+    function finishTransition() {
+        if (pendingIndex < 0) return
+        crossfade.stop()
+        activeBuffer = 1 - activeBuffer
+        pendingIndex = -1
+        blend = 0
+        Qt.callLater(preloadNext)
+    }
+    function restartInterval() {
+        if (canAutoAdvance) advanceTimer.restart()
+        else advanceTimer.stop()
+    }
+    onSlidesChanged: Qt.callLater(resetSlides)
+    onCanAutoAdvanceChanged: restartInterval()
+    Component.onCompleted: { resetSlides(); restartInterval() }
+    HoverHandler { id: interaction }
+    Timer {
+        id: advanceTimer
+        objectName: "homeAdvanceTimer"
+        interval: view.slideInterval
+        repeat: true
+        onTriggered: view.selectSlide(view.currentIndex + 1, false)
+    }
+    NumberAnimation {
+        id: crossfade
+        target: view
+        property: "blend"
+        from: 0; to: 1
+        duration: view.transitionDuration
+        paused: running && (!view.visible || !view.windowActive || credits.visible)
+        onFinished: view.finishTransition()
+    }
+    Connections {
+        target: Style.Theme
+        function onMotionEnabledChanged() {
+            if (!Style.Theme.motionEnabled) view.finishTransition()
+        }
+    }
     Keys.onLeftPressed: selectSlide(currentIndex - 1)
     Keys.onRightPressed: selectSlide(currentIndex + 1)
     Keys.onPressed: event => {
@@ -39,23 +121,78 @@ Item {
             radius: Style.Theme.cardRadius
             color: Style.Theme.canvas
             border.color: Style.Theme.border
-            FeatheredPhoto {
-                id: heroPhoto
-                objectName: "homeHeroPhoto"
+            component SlidePhoto: Item {
+                id: buffer
+                property var dataPhoto: ({})
+                readonly property bool painted: bitmap.status === Image.Ready
+                readonly property bool failed: bitmap.status === Image.Error
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
                 anchors.margins: Style.Theme.borderWidth
                 width: parent.width * 0.76
-                cornerRadius: Style.Theme.cardRadius
-                source: view.photo.image || ""
-                focusX: view.photo.focusX === undefined ? 0.5 : view.photo.focusX
-                focusY: view.photo.focusY === undefined ? 0.5 : view.photo.focusY
-                opacity: ready ? 1 : 0
-                Behavior on opacity { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationPage } }
+                clip: true
+                Image {
+                    id: bitmap
+                    source: buffer.dataPhoto.image || ""
+                    asynchronous: true
+                    cache: false
+                    sourceSize: Qt.size(Math.min(1920, buffer.dataPhoto.width || 1920), Math.min(1920, buffer.dataPhoto.height || 1920))
+                    // Native image rendering avoids Canvas texture invalidation
+                    // while a preloaded buffer is invisible in the software backend.
+                    readonly property real cropScale: implicitWidth > 0 && implicitHeight > 0
+                        ? Math.max(buffer.width / implicitWidth, buffer.height / implicitHeight) : 1
+                    width: implicitWidth * cropScale
+                    height: implicitHeight * cropScale
+                    x: Math.max(buffer.width - width, Math.min(0, buffer.width / 2 - (buffer.dataPhoto.focusX === undefined ? 0.5 : buffer.dataPhoto.focusX) * width))
+                    y: Math.max(buffer.height - height, Math.min(0, buffer.height / 2 - (buffer.dataPhoto.focusY === undefined ? 0.5 : buffer.dataPhoto.focusY) * height))
+                }
+                onPaintedChanged: if (painted) Qt.callLater(view.beginTransition)
+                onFailedChanged: if (failed) Qt.callLater(view.beginTransition)
+            }
+            SlidePhoto {
+                id: layerA
+                objectName: "homeHeroPhoto"
+                opacity: view.activeBuffer === 0 ? 1 - view.blend : view.blend
                 Accessible.role: Accessible.Graphic
                 Accessible.name: view.photo.subject || ""
                 Accessible.description: "Identificação fornecida pela fonte; consulte os créditos."
+            }
+            SlidePhoto {
+                id: layerB
+                objectName: "homeIncomingPhoto"
+                opacity: view.activeBuffer === 1 ? 1 - view.blend : view.blend
+            }
+            Rectangle {
+                anchors.fill: layerA
+                gradient: Gradient {
+                    orientation: Gradient.Horizontal
+                    GradientStop { position: 0; color: Style.Theme.canvas }
+                    GradientStop { position: 0.28; color: Qt.rgba(Style.Theme.canvas.r, Style.Theme.canvas.g, Style.Theme.canvas.b, 0.56) }
+                    GradientStop { position: 0.65; color: "transparent" }
+                    GradientStop { position: 1; color: "transparent" }
+                }
+            }
+            Canvas {
+                anchors.fill: layerA
+                onWidthChanged: requestPaint()
+                onHeightChanged: requestPaint()
+                // Only the two corner cutouts are painted, on load/resize.
+                // Photographs and crossfade are handled by native Image items.
+                onPaint: {
+                    const ctx = getContext("2d")
+                    ctx.reset()
+                    const r = Style.Theme.cardRadius
+                    ctx.fillStyle = Style.Theme.canvas
+                    ctx.beginPath()
+                    ctx.moveTo(width - r, 0); ctx.lineTo(width, 0); ctx.lineTo(width, r)
+                    ctx.quadraticCurveTo(width, 0, width - r, 0)
+                    ctx.closePath(); ctx.fill()
+                    ctx.beginPath()
+                    ctx.moveTo(width, height - r); ctx.lineTo(width, height); ctx.lineTo(width - r, height)
+                    ctx.quadraticCurveTo(width, height, width, height - r)
+                    ctx.closePath(); ctx.fill()
+                }
             }
             ColumnLayout {
                 anchors.left: parent.left
@@ -126,7 +263,7 @@ Item {
                         objectName: "homeCreditsButton"
                         Layout.fillWidth: true
                         visible: view.slides.length > 0
-                        text: (view.photo.author || "") + " · " + (view.photo.license || "") + " · Créditos"
+                        text: "Créditos"
                         Accessible.name: "Ver autor, licença, proveniência e fonte educativa de " + (view.photo.subject || "")
                         onClicked: credits.open()
                     }
@@ -146,45 +283,38 @@ Item {
             spacing: Style.Theme.spaceSm
             UiButton {
                 objectName: "homePreviousSlide"; text: "‹"; Accessible.name: "Fotografia anterior"
-                implicitWidth: 42; secondary: true; enabled: view.slides.length > 1
+                implicitWidth: 42; compact: true; secondary: true
+                enabled: view.slides.length > 1 && view.pendingIndex < 0
                 onClicked: view.selectSlide(view.currentIndex - 1)
             }
+            Item { Layout.fillWidth: true }
             Repeater {
                 model: view.slides
                 Button {
-                    id: thumbnail
+                    id: dot
                     required property int index
-                    required property var modelData
-                    objectName: "homeThumbnail" + index
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 66
+                    objectName: "homeSlideDot" + index
+                    implicitWidth: 32; implicitHeight: 36
                     activeFocusOnTab: true
                     hoverEnabled: true
-                    Accessible.name: "Fotografia " + (index + 1) + ": " + modelData.photo.subject
+                    enabled: view.pendingIndex < 0
+                    Accessible.name: "Fotografia " + (index + 1) + ": " + (view.slides[index] ? view.slides[index].photo.subject : "")
                     Accessible.description: view.currentIndex === index ? "Selecionada" : "Mostrar fotografia"
                     background: Rectangle {
+                        color: "transparent"
                         radius: Style.Theme.controlRadius
-                        color: Style.Theme.surfaceRaised
-                        border.width: thumbnail.activeFocus || view.currentIndex === thumbnail.index ? Style.Theme.focusWidth : Style.Theme.borderWidth
-                        border.color: thumbnail.activeFocus ? Style.Theme.focus : view.currentIndex === thumbnail.index ? Style.Theme.green : Style.Theme.border
+                        border.color: dot.activeFocus ? Style.Theme.focus : "transparent"
+                        border.width: Style.Theme.focusWidth
                     }
-                    contentItem: Image {
-                        source: thumbnail.modelData.photo.image
-                        fillMode: Image.PreserveAspectCrop
-                        clip: true
-                        asynchronous: true
-                        opacity: thumbnail.hovered || view.currentIndex === thumbnail.index ? 1 : 0.65
-                        Behavior on opacity { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationFast } }
+                    contentItem: Item {
+                        Rectangle {
+                            anchors.centerIn: parent
+                            width: 8; height: 8; radius: 4
+                            color: view.currentIndex === dot.index ? Style.Theme.green : dot.hovered ? Style.Theme.text : Style.Theme.border
+                        }
                     }
                     onClicked: view.selectSlide(index)
-                    ToolTip.visible: hovered
-                    ToolTip.text: modelData.photo.subject
                 }
-            }
-            UiButton {
-                objectName: "homeNextSlide"; text: "›"; Accessible.name: "Próxima fotografia"
-                implicitWidth: 42; secondary: true; enabled: view.slides.length > 1
-                onClicked: view.selectSlide(view.currentIndex + 1)
             }
             Label {
                 objectName: "homeSlidePosition"
@@ -192,6 +322,13 @@ Item {
                 color: Style.Theme.textMuted
                 font.pixelSize: Style.Theme.captionSize
                 Accessible.name: "Posição da fotografia: " + text
+            }
+            Item { Layout.fillWidth: true }
+            UiButton {
+                objectName: "homeNextSlide"; text: "›"; Accessible.name: "Próxima fotografia"
+                implicitWidth: 42; compact: true; secondary: true
+                enabled: view.slides.length > 1 && view.pendingIndex < 0
+                onClicked: view.selectSlide(view.currentIndex + 1)
             }
         }
         RowLayout {

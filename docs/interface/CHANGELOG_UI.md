@@ -2,6 +2,8 @@
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
+- Refinamento no PR #30: quatro variantes nativas maiores somente na Home; miniaturas removidas em favor de pontos. Avanço automático de oito segundos, crossfade de 600 ms, pausas por interação/visibilidade e redução de movimento. Legenda compacta com Créditos; informações de atribuição preservadas no diálogo. Capturas e manifesto atualizados na mesma revisão.
+
 - Quatro fotografias existentes, preenchimento proporcional, gradiente, miniaturas, setas e posição; sem avanço automático.
 - Explorar abre a exploração científica; Jogar preserva início, retomada e resultados pendentes. Tema e ícones oficiais preservados.
 - Créditos, fonte educativa e evidência acessíveis por slide; nenhum estado de governança alterado.

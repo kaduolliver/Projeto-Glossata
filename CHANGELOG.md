@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- Refinamento do PR #30: variantes fotográficas maiores exclusivas da Home, indicadores sem miniaturas, avanço de oito segundos com pausas e crossfade de 600 ms, créditos compactos e novas capturas reais. Fotos dos cartões/quiz e regras preservadas.
+
 - Subetapa 2.2.1-A (#22): Início com quatro fotografias locais, carrossel manual acessível, créditos e fontes por slide, ações Explorar/Jogar e redução de movimento. Nenhuma nova mídia ou alteração de catálogo.
 
 - Subetapa 2.1.3 (#22): navegação lateral com Explorar separado de Jogar, cabeçalho contextual e shell responsivo; sessões e retornos preservados, com testes de navegação e capturas reais.

@@ -4,7 +4,7 @@
 
 `HomeView.qml` mantém o estado transitório do carrossel, sem persistir preferências ou alterar partidas. `GameController.homeSlides` expõe quatro representantes explícitos de `TaxonomyIndex`: Animalia, Arthropoda, Plantae e Fungi. A mesma porta `ExplorationMediaCatalog` valida fotos, licenças e evidências já utilizadas na exploração. Introduções passam por `EducationalContent`; só a primeira frase completa do texto utilizável é exibida, com referência preservada. Não há novas afirmações científicas ou aprovação automática.
 
-Fotografias indisponíveis ou introduções sem revisão utilizável não geram slides; a Home continua oferecendo Explorar e Jogar mesmo com zero slides. O componente existente `FeatheredPhoto` aplica recorte proporcional e gradiente em software. Não há timer de avanço automático, requisição de mídia ou nova dependência. Créditos usam um diálogo rolável com dados locais; links externos só abrem por ação do usuário. [Revisão e limites](VERSOES/2.2.1-A/README.md).
+Fotografias indisponíveis ou introduções sem revisão utilizável não geram slides; a Home continua oferecendo Explorar e Jogar mesmo com zero slides. A Home usa dois buffers nativos `Image`, com recorte proporcional e gradiente independente; Canvas pinta apenas os cantos. O componente `FeatheredPhoto` dos cartões permanece intacto. Um Timer de oito segundos avança somente com a Home visível e a janela ativa, sem interação ou créditos; redução de movimento o desativa. Não há download em execução normal ou nova dependência. Créditos usam um diálogo rolável com dados locais; links externos só abrem por ação do usuário. [Revisão e limites](VERSOES/2.2.1-A/README.md).
 
 ## Navegação atual — Subetapa 2.1.3
 
