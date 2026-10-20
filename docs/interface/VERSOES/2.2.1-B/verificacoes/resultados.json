@@ -7,8 +7,8 @@
     "total_seconds": 303.81
   },
   "qt_logs": {
-    "core-results.txt": "f8cff946bda4d7375a213603a3e1aff8b4ba51056f65bf8e581a65a0616fb26c",
-    "ui-test-results.txt": "183b423615a34240a7b973e4ad504028c178256ca8a6aebd6af87d19a2bfda1f"
+    "core-results.txt": "666170d77786fd00563f969efde6004fe3d8354f3eb1b0ce4fd6b010caaf47b5",
+    "ui-test-results.txt": "3e306b4c9534a1b8af18e3554a47a96a1461d4c95f74ccb564985c6cdb460a4c"
   },
   "checks": {
     "qml_lint_all": true,
@@ -25,5 +25,10 @@
     "photo_licensing_findings": 120,
     "scientific_release_blocks": 275
   },
-  "limitations": "Execution results and internal hashes; no scientific/legal certification, release, merge or distribution approval."
+  "limitations": "Execution results and internal hashes; no scientific/legal certification, release, merge or distribution approval.",
+  "original_qt_logs_sha256": {
+    "core-results.txt": "f8cff946bda4d7375a213603a3e1aff8b4ba51056f65bf8e581a65a0616fb26c",
+    "ui-test-results.txt": "183b423615a34240a7b973e4ad504028c178256ca8a6aebd6af87d19a2bfda1f"
+  },
+  "qt_log_normalization": "Only CRLF to LF when archiving, matching Git text normalization; test output content unchanged."
 }
