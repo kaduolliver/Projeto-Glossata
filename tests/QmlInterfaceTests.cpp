@@ -64,6 +64,8 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
         QVERIFY(!photo["author"].toString().isEmpty());
         QVERIFY(photo["licenseUrl"].toString().startsWith("https://creativecommons.org/"));
         QCOMPARE(photo["evidenceSha256"].toString().size(), 64);
+        QVERIFY(photo["width"].toInt() >= 1920);
+        QVERIFY(photo["height"].toInt() >= 1080);
         QVERIFY(!images.contains(photo["image"].toString()));
         images.insert(photo["image"].toString());
         QVERIFY(slide["introduction"].toMap()["text"].toString().startsWith(slide["excerpt"].toString()));

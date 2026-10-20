@@ -2381,6 +2381,24 @@
         "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
       },
       "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/home-lion-fhd.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "74231f781a4be5ba216f588a3c1e0718fb750cdd5e6d40ffdbb3d2f69ed3da01",
+      "source": "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_(8603270337).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Ron Knight from Seaford, East Sussex, United Kingdom",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-lion-fhd.json",
+        "evidence_sha256": "21e93151a66443314fc64648573550c007ff110bbc273b9a6595af04152f2789",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
     }
   ],
   "fonts": {

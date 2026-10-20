@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- PR #30: substituída somente a foto do leão na Home por outra de Panthera leo em 1920 × 1247, com identificação e licença CC BY 2.0 próprias; quatro fotos ativas passam a atender FHD, preservando os cartões e os fallbacks.
+
 - Refinamento do PR #30: variantes fotográficas maiores exclusivas da Home, indicadores sem miniaturas, avanço de oito segundos com pausas e crossfade de 600 ms, créditos compactos e novas capturas reais. Fotos dos cartões/quiz e regras preservadas.
 
 - Subetapa 2.2.1-A (#22): Início com quatro fotografias locais, carrossel manual acessível, créditos e fontes por slide, ações Explorar/Jogar e redução de movimento. Nenhuma nova mídia ou alteração de catálogo.

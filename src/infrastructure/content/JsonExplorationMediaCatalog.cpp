@@ -100,6 +100,21 @@ JsonExplorationMediaCatalog::JsonExplorationMediaCatalog(const QString &root) {
     for(const auto &entry:QJsonDocument::fromJson(read(root+"/resources/data/species.json")).array()) {
         const auto organism=entry.toObject();organisms.insert(organism["id"].toInt(),organism);
     }
+    const auto replacements=data["home_replacements"].toObject();
+    for(auto it=replacements.begin();it!=replacements.end();++it) {
+        const QString key=it.value().toString();
+        const auto base=photos[it.key()].toObject(), photo=photos[key].toObject();
+        const auto organism=organisms.value(photo["catalog_species_id"].toInt());
+        const QString subject=photo["subject"].toString();
+        const auto proof=QJsonDocument::fromJson(read(root+"/"+photo["evidence_path"].toString())).object()["record"].toObject();
+        const QRegularExpression category("^Category:"+QRegularExpression::escape(subject)+"(?:$|[ (])");
+        if(verified.contains(it.key()) && verified.contains(key) && photo["usage"]=="home"
+            && !subject.isEmpty() && subject==base["subject"] && organism["name"]==subject
+            && photo["catalog_species_id"]==base["catalog_species_id"]
+            && photo["width"].toInt()>=1920 && photo["height"].toInt()>=1080
+            && category.match(proof["identification_category"].toString()).hasMatch())
+            verified[it.key()].insert("homeReplacement",verified.value(key));
+    }
     for(auto it=bindings.begin();it!=bindings.end();++it) {
         const QString key=it.value().toString();
         const auto photo=photos[key].toObject();

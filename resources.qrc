@@ -399,5 +399,7 @@
         <file>resources/compliance/exploration/home-sunflower.json</file>
         <file>resources/images/exploration/home-amanita.jpg</file>
         <file>resources/compliance/exploration/home-amanita.json</file>
+        <file>resources/images/exploration/home-lion-fhd.jpg</file>
+        <file>resources/compliance/exploration/home-lion-fhd.json</file>
     </qresource>
 </RCC>

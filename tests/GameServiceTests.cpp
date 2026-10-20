@@ -841,6 +841,21 @@ void GameServiceTests::explorationPhotographsFailClosed()
     const auto fallback=rejectedVariant.photoFor("clade:Opisthokonta");
     QCOMPARE(fallback["image"],card["image"]);
     QVERIFY(fallback["homeVariant"].toMap().isEmpty());
+    const auto replacement=data["photos"].toObject()["home-lion-fhd"].toObject();
+    for(const auto &key:{"path","evidence_path"}) {
+        const QString path=replacement[key].toString();
+        QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
+        QVERIFY(QFile::copy(":/"+path,directory.filePath(path)));
+    }
+    QVERIFY(write(lion));JsonExplorationMediaCatalog replaced(directory.path());
+    const auto home=replaced.photoFor("clade:Opisthokonta")["homeReplacement"].toMap();
+    QCOMPARE(home["width"].toInt(),1920);
+    QCOMPARE(home["subject"].toString(),QString("Panthera leo"));
+    QCOMPARE(replaced.photoFor("clade:Opisthokonta")["image"],card["image"]);
+    auto wrongSpecies=replacement;wrongSpecies["subject"]="Panthera onca";
+    photographs=data["photos"].toObject();photographs["home-lion-fhd"]=wrongSpecies;data["photos"]=photographs;
+    QVERIFY(write(lion));JsonExplorationMediaCatalog unrelated(directory.path());
+    QVERIFY(unrelated.photoFor("clade:Opisthokonta")["homeReplacement"].toMap().isEmpty());
 }
 
 void GameServiceTests::newTaxonomicRanksRequireIndependentReview()

@@ -40,7 +40,13 @@ class ExplorationMediaTests(unittest.TestCase):
         self.assertEqual(len(report['coverage']),report['total_cards'])
         self.assertEqual(sum(row['id']=='special:mixed' for row in report['coverage']),1)
         self.assertLess(sum(p['bytes'] for p in self.data['photos'].values() if p.get('usage')!='home'),25_000_000)
-        self.assertLess(sum(p['bytes'] for p in self.data['photos'].values() if p.get('usage')=='home'),8_000_000)
+        # Four active FHD images, plus the prior low-resolution fallback kept for traceability.
+        self.assertLess(sum(p['bytes'] for p in self.data['photos'].values() if p.get('usage')=='home'),9_000_000)
+        active=dict(self.data['home_variants']);active.update(self.data.get('home_replacements',{}))
+        self.assertLess(sum(self.data['photos'][k]['bytes'] for k in active.values()),8_000_000)
+        for key in active.values():
+            self.assertGreaterEqual(self.data['photos'][key]['width'],1920)
+            self.assertGreaterEqual(self.data['photos'][key]['height'],1080)
         for photo in self.data['photos'].values():
             self.assertEqual(governance.image_privacy_findings(ROOT/photo['path']),[])
             proof=governance.load(ROOT/photo['evidence_path'])['record']
@@ -96,6 +102,17 @@ class ExplorationMediaTests(unittest.TestCase):
         base=next(k for k,v in self.data['bindings'].items() if v=='monarch')
         self.data['bindings'][base]='home-monarch';self.persist()
         self.assertIn('home_variant_used_for_card',{e['error'] for e in media.audit(self.root)['errors']})
+
+    def test_different_home_photo_requires_same_species_and_own_evidence(self):
+        base=self.data['photos']['lion'];replacement=self.data['photos']['home-lion-fhd']
+        self.assertFalse(media.matching_variant(base,replacement,self.root))
+        self.assertTrue(media.matching_replacement(base,replacement,self.root))
+        for field,value in [('subject','Panthera onca'),('catalog_species_id',999999),('width',1280),('height',960)]:
+            self.assertFalse(media.matching_replacement(base,dict(replacement,**{field:value}),self.root),field)
+        path=self.root/replacement['evidence_path'];evidence=governance.load(path)
+        evidence['record'].pop('identification_category');governance.save(path,evidence)
+        self.assertFalse(media.matching_replacement(base,replacement,self.root))
+        self.assertIn('permission_evidence_hash',media.photo_errors(replacement,self.root))
 
     def test_home_collection_rejects_server_upscaling(self):
         info={'url':'https://upload.wikimedia.org/fixture.jpg','thumburl':'https://upload.wikimedia.org/fixture-thumb.jpg',

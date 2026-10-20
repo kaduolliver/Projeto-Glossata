@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-20T16:35:21.795966+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo%7Ccategories&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=1920&iiurlheight=1920&titles=File%3ALion+%28Panthera+leo%29+%288603270337%29.jpg&maxlag=5&clcategories=Category%3APanthera+leo+of+Etosha+National+Park",
+  "record": {
+    "page_id": 32940755,
+    "revision_id": 1185505016,
+    "file_title": "File:Lion (Panthera leo) (8603270337).jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/Lion_%28Panthera_leo%29_%288603270337%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "78289a2f66a40289a044575b3895009ea1764cd1",
+    "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Lion_%28Panthera_leo%29_%288603270337%29.jpg/1920px-Lion_%28Panthera_leo%29_%288603270337%29.jpg",
+    "original_width": 5184,
+    "original_height": 3367,
+    "metadata": {
+      "ObjectName": {
+        "value": "Lion (Panthera leo) (8603270337)",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Male Southwest African lion in Etosha National Park, Namibia",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/9919745@N03\">Ron Knight</a> from Seaford, East Sussex, United Kingdom",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/sussexbirder/8603270337/\">Lion (Panthera leo)</a>",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    },
+    "identification_category": "Category:Panthera leo of Etosha National Park"
+  }
+}

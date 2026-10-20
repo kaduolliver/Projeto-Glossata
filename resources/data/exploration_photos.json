@@ -4339,6 +4339,36 @@
       "catalog_species_id": 136,
       "focus_x": 0.64,
       "focus_y": 0.38
+    },
+    "home-lion-fhd": {
+      "photo_id": "commons:32940755",
+      "subject": "Panthera leo",
+      "author": "Ron Knight from Seaford, East Sussex, United Kingdom",
+      "title": "Lion (Panthera leo) (8603270337)",
+      "photo_url": "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_(8603270337).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_(8603270337).jpg",
+      "source_revision_id": 1185505016,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Lion_%28Panthera_leo%29_%288603270337%29.jpg/1920px-Lion_%28Panthera_leo%29_%288603270337%29.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "collected_at": "2026-10-20T16:35:21.795966+00:00",
+      "path": "resources/images/exploration/home-lion-fhd.jpg",
+      "sha256": "74231f781a4be5ba216f588a3c1e0718fb750cdd5e6d40ffdbb3d2f69ed3da01",
+      "width": 1920,
+      "height": 1247,
+      "bytes": 568156,
+      "evidence_path": "resources/compliance/exploration/home-lion-fhd.json",
+      "evidence_sha256": "21e93151a66443314fc64648573550c007ff110bbc273b9a6595af04152f2789",
+      "modifications": "Imagem reduzida fornecida pelo Wikimedia Commons. Na interface: preenchimento proporcional com recorte centrado no ponto focal e gradiente horizontal de transparência; sem retoque do organismo.",
+      "permission_state": "source_license_evidenced",
+      "scientific_review": "source_identification; human review not declared",
+      "usage": "home",
+      "kind": "photograph",
+      "catalog_species_id": 126,
+      "focus_x": 0.55,
+      "focus_y": 0.45,
+      "identification_note": "A fonte identifica Panthera leo no título e na categoria de Etosha. Identificação da fonte; revisão humana especializada não declarada."
     }
   },
   "bindings": {
@@ -10044,5 +10074,8 @@
     "monarch": "home-monarch",
     "sunflower": "home-sunflower",
     "amanita": "home-amanita"
+  },
+  "home_replacements": {
+    "lion": "home-lion-fhd"
   }
 }

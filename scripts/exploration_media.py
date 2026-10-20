@@ -179,6 +179,20 @@ def matching_variant(base, variant, root=ROOT):
     except (KeyError,ValueError,OSError):return False
 
 
+def matching_replacement(base, replacement, root=ROOT):
+    """A different Home photo needs its own evidence, not the base photo's permission or review."""
+    if (replacement.get('usage')!='home' or replacement.get('subject')!=base.get('subject')
+        or replacement.get('catalog_species_id')!=base.get('catalog_species_id')
+        or replacement.get('width',0)<1920 or replacement.get('height',0)<1080):return False
+    try:
+        species=next(s for s in load(root/'resources/data/species.json') if s['id']==replacement['catalog_species_id'])
+        record=load(local_file(root,replacement['evidence_path']))['record']
+        category=record.get('identification_category','')
+        return species['name']==replacement['subject'] and bool(re.match(
+            r'^Category:'+re.escape(species['name'])+r'(?:$|[ (])',category))
+    except (KeyError,ValueError,OSError,StopIteration):return False
+
+
 def audit(root=ROOT):
     data=load(root/MANIFEST,{'photos':{},'bindings':{}});errors=[]
     nodes={n['id']:n for n in load(root/'resources/data/taxonomy.json',[])}
@@ -189,6 +203,9 @@ def audit(root=ROOT):
     for base,key in data.get('home_variants',{}).items():
         if base not in photos or key not in photos or not matching_variant(photos[base],photos[key],root):
             errors.append({'photo':key,'error':'home_variant_identity'})
+    for base,key in data.get('home_replacements',{}).items():
+        if base not in photos or key not in photos or not matching_replacement(photos[base],photos[key],root):
+            errors.append({'photo':key,'error':'home_replacement_identity'})
     for taxon,photo in data.get('bindings',{}).items():
         if taxon not in nodes or photo not in photos:errors.append({'taxon':taxon,'error':'invalid_binding'})
         elif photos[photo].get('usage')=='home':errors.append({'taxon':taxon,'error':'home_variant_used_for_card'})
@@ -273,6 +290,9 @@ if __name__=='__main__':
                     if entry.get('variant_of'):
                         if not matching_variant(photos.get(entry['variant_of'],{}),photo):raise ValueError('Variant source identity differs from archived base')
                         data.setdefault('home_variants',{})[entry['variant_of']]=entry['id']
+                    if entry.get('replacement_of'):
+                        if not matching_replacement(photos.get(entry['replacement_of'],{}),photo):raise ValueError('Replacement species or source evidence incompatible')
+                        data.setdefault('home_replacements',{})[entry['replacement_of']]=entry['id']
                     photos[entry['id']]=photo
                     save(ROOT/MANIFEST,data) # A bounded interrupted run preserves completed records.
                     print(entry['subject']+': prepared '+title,flush=True)
