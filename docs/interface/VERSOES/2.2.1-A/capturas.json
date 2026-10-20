@@ -265,5 +265,6 @@
       "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     }
-  ]
+  ],
+  "implementation_commit": "6cb4cdc076023a3730d5b5f2d3adfe6b1b4d590d"
 }
