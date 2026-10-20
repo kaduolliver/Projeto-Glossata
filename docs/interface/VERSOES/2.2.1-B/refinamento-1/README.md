@@ -4,7 +4,7 @@ Base exata: `023942f10905cba377611c01f96ff9d286da1804`. Escopo exclusivo da Sube
 
 Telas afetadas: Início e seu novo diálogo contextual. `StatCard` recebe dimensões opcionais com os padrões anteriores. O diálogo e o funcionamento do carrossel, os critérios e a contagem do catálogo, as demais telas, os dados científicos e a governança permanecem preservados.
 
-Implementação e capturas: commit pendente de criação, após as verificações abaixo. As capturas e os resultados iniciais da 2.2.1-B permanecem históricos na pasta superior. A entrega atualiza somente o [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), sem merge ou lançamento.
+Implementação, testes e capturas no commit [`c6adcb902afb1b75855db1f46fedbc7894f5186b`](https://github.com/kaduolliver/Projeto-Glossata/commit/c6adcb902afb1b75855db1f46fedbc7894f5186b). As capturas e os resultados iniciais da 2.2.1-B permanecem históricos na pasta superior. A entrega atualiza somente o [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), sem merge ou lançamento.
 
 ## Quatro ajustes
 

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "base_commit": "023942f10905cba377611c01f96ff9d286da1804",
-  "implementation_commit": null,
+  "implementation_commit": "c6adcb902afb1b75855db1f46fedbc7894f5186b",
   "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/31",
   "recorded_at": "2026-10-20T23:23:20.146384+00:00",
   "rendering": "Windows 11; Qt 6.11.2; offscreen/software; Basic; scale 1; 96 DPI",
