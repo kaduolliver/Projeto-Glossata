@@ -2,6 +2,8 @@
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
+- PR #30: removida a superfície sólida da legenda. Título do grupo seminegrito e descrição aparecem sobre a fotografia; nome científico em itálico e Créditos compartilham a linha inferior. Degradê estático desaparece acima e nas laterais, preservando imagens, transições e cantos. Capturas nas três resoluções atualizadas.
+
 - PR #30: foco visual em `UiButton`, `TextAction`, `NavItem` e pontos do carrossel passa a usar `visualFocus`. Destaque dourado preservado por teclado, sem aparecer apenas pelo clique; seleção, hover, cores e navegação inalterados. Capturas reais de mouse e teclado registradas.
 
 - Correção no PR #30: quatro slides selecionados pelos identificadores estáveis, inclusive em catálogos locais com grupos históricos homônimos; removida a contagem numérica e alinhado Créditos à direita, com área de foco limitada à largura do botão. Capturas reais atualizadas.

@@ -174,6 +174,46 @@ FocusScope {
                 }
             }
             Canvas {
+                objectName: "homeCaptionShade"
+                anchors.right: layerA.right
+                anchors.bottom: layerA.bottom
+                width: layerA.width
+                height: Math.min(layerA.height, caption.height + Style.Theme.spaceLg * 6)
+                onWidthChanged: requestPaint()
+                onHeightChanged: requestPaint()
+                // A static lower veil, feathered on both sides. Repaint only
+                // when its size changes; the photographs crossfade underneath.
+                onPaint: {
+                    const ctx = getContext("2d")
+                    ctx.reset()
+                    if (width <= 0 || height <= 0) return
+                    const ink = Style.Theme.canvas
+                    ctx.save()
+                    ctx.scale(width, height)
+                    const shade = ctx.createRadialGradient(0.72, 1.05, 0, 0.72, 1.05, 1.05)
+                    shade.addColorStop(0, Qt.rgba(ink.r, ink.g, ink.b, 0.96))
+                    shade.addColorStop(0.45, Qt.rgba(ink.r, ink.g, ink.b, 0.94))
+                    shade.addColorStop(0.72, Qt.rgba(ink.r, ink.g, ink.b, 0.70))
+                    shade.addColorStop(1, Qt.rgba(ink.r, ink.g, ink.b, 0))
+                    ctx.fillStyle = shade
+                    ctx.fillRect(0, 0, 1, 1)
+                    ctx.restore()
+                    ctx.globalCompositeOperation = "destination-in"
+                    const vertical = ctx.createLinearGradient(0, 0, 0, height)
+                    vertical.addColorStop(0, "transparent")
+                    vertical.addColorStop(0.28, "black")
+                    vertical.addColorStop(1, "black")
+                    ctx.fillStyle = vertical
+                    ctx.fillRect(0, 0, width, height)
+                    const horizontal = ctx.createLinearGradient(0, 0, width, 0)
+                    horizontal.addColorStop(0, "transparent")
+                    horizontal.addColorStop(0.20, "black")
+                    horizontal.addColorStop(1, "black")
+                    ctx.fillStyle = horizontal
+                    ctx.fillRect(0, 0, width, height)
+                }
+            }
+            Canvas {
                 anchors.fill: layerA
                 onWidthChanged: requestPaint()
                 onHeightChanged: requestPaint()
@@ -231,32 +271,41 @@ FocusScope {
                     wrapMode: Text.WordWrap
                 }
             }
-            Rectangle {
+            ColumnLayout {
+                id: caption
+                objectName: "homePhotoCaption"
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.margins: Style.Theme.spaceLg
-                width: parent.width * 0.46
-                height: caption.implicitHeight + Style.Theme.spaceLg * 2
-                radius: Style.Theme.controlRadius
-                color: Style.Theme.surface
-                ColumnLayout {
-                    id: caption
-                    objectName: "homePhotoCaption"
-                    anchors.fill: parent
-                    anchors.margins: Style.Theme.spaceLg
-                    spacing: Style.Theme.spaceXs
+                anchors.margins: Style.Theme.spaceLg * 2
+                width: parent.width * 0.44
+                spacing: Style.Theme.spaceXs
+                Label {
+                    objectName: "homeCaptionTitle"
+                    Layout.fillWidth: true
+                    text: view.slides.length ? view.slide.title : "Fotografias indisponíveis"
+                    color: Style.Theme.text
+                    font.family: Style.Theme.fontFamily
+                    font.pixelSize: Style.Theme.subtitleSize
+                    font.weight: Font.DemiBold
+                    wrapMode: Text.WordWrap
+                }
+                Label {
+                    objectName: "homeCaptionDescription"
+                    Layout.fillWidth: true
+                    text: view.slides.length ? view.slide.excerpt : "A exploração e os modos de jogo continuam disponíveis."
+                    color: Style.Theme.text
+                    font.pixelSize: Style.Theme.bodySize
+                    wrapMode: Text.WordWrap
+                }
+                RowLayout {
+                    Layout.fillWidth: true
+                    spacing: Style.Theme.spaceSm
                     Label {
+                        objectName: "homeCaptionScientificName"
                         Layout.fillWidth: true
-                        text: view.photo.subject || "Fotografias indisponíveis"
-                        color: Style.Theme.text
-                        font: Style.Theme.scientificFont
-                        wrapMode: Text.WordWrap
-                    }
-                    Label {
-                        Layout.fillWidth: true
-                        text: view.slides.length ? view.slide.title + " · " + view.slide.excerpt : "A exploração e os modos de jogo continuam disponíveis."
+                        text: view.photo.subject || ""
                         color: Style.Theme.textMuted
-                        font.pixelSize: Style.Theme.captionSize
+                        font: Style.Theme.scientificFont
                         wrapMode: Text.WordWrap
                     }
                     TextAction {
@@ -268,14 +317,14 @@ FocusScope {
                         Accessible.name: "Ver autor, licença, proveniência e fonte educativa de " + (view.photo.subject || "")
                         onClicked: credits.open()
                     }
-                    Label {
-                        Layout.fillWidth: true
-                        visible: view.slides.length > 0 && !view.photoReady
-                        text: "Fotografia ainda não disponível."
-                        color: Style.Theme.textMuted
-                        font.pixelSize: Style.Theme.captionSize
-                        wrapMode: Text.WordWrap
-                    }
+                }
+                Label {
+                    Layout.fillWidth: true
+                    visible: view.slides.length > 0 && !view.photoReady
+                    text: "Fotografia ainda não disponível."
+                    color: Style.Theme.textMuted
+                    font.pixelSize: Style.Theme.captionSize
+                    wrapMode: Text.WordWrap
                 }
             }
         }

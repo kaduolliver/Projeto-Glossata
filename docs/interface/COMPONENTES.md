@@ -8,6 +8,8 @@ Os metadados de mídia expostos incluem título, autor, licença, URL, coleta, c
 
 Os indicadores visuais usam somente pontos; a posição e o total permanecem no nome acessível de cada ponto. `homeCreditsButton` conserva a largura implícita de `TextAction`, alinhada à direita da legenda; hover e foco não se estendem ao restante do cartão.
 
+`homePhotoCaption` é um layout transparente: título do grupo, descrição existente e linha de nome científico/Créditos. `homeCaptionShade` desenha somente o degradê inferior com transparência vertical e lateral, repintado em redimensionamentos e mudanças de altura da legenda. A camada permanece independente das imagens e do crossfade; os recortes dos cantos continuam sendo aplicados por cima.
+
 ## Integração de navegação — 2.1.3
 
 - `Main.qml`: shell central com seis destinos, cabeçalho por seção e contexto, larguras/margens responsivas de `Theme.qml`. Os `NavItem` existentes recebem identificadores estáveis `navHome`, `navExplore`, `navPlay`, `navStatistics`, `navAchievements` e `navSettings`.

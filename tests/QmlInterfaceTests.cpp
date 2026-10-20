@@ -20,6 +20,15 @@
 
 namespace {
 QStringList interfaceWarnings;
+double colorContrast(QColor a, QColor b)
+{
+    const auto luminance = [](QColor c) {
+        const auto linear = [](double v) { return v <= 0.04045 ? v / 12.92 : std::pow((v + 0.055) / 1.055, 2.4); };
+        return 0.2126 * linear(c.redF()) + 0.7152 * linear(c.greenF()) + 0.0722 * linear(c.blueF());
+    };
+    const auto x = luminance(a), y = luminance(b);
+    return (qMax(x, y) + 0.05) / (qMin(x, y) + 0.05);
+}
 QString scientificGroup(const QString &name) {
     JsonSpeciesCatalog catalog;
     for(const auto &node : catalog.loadTaxons()) if(node.name==name)return node.id;
@@ -126,6 +135,58 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
             QVERIFY(qAbs(credit->width() - credit->implicitWidth()) < 1);
             QVERIFY(credit->width() < caption->width() / 2);
             QVERIFY(qAbs(credit->x() + credit->width() - caption->width()) < 1);
+            const auto title = item("homeCaptionTitle"), description = item("homeCaptionDescription");
+            const auto scientificName = item("homeCaptionScientificName");
+            QVERIFY(title && description && scientificName);
+            QCOMPARE(title->property("text").toString(), slides[i].toMap()["title"].toString());
+            QCOMPARE(description->property("text").toString(), slides[i].toMap()["excerpt"].toString());
+            QCOMPARE(scientificName->property("text").toString(), slides[i].toMap()["photo"].toMap()["subject"].toString());
+            QVERIFY(QQmlProperty(scientificName, "font.italic").read().toBool());
+            QVERIFY(QQmlProperty(title, "font.pixelSize").read().toInt() > QQmlProperty(description, "font.pixelSize").read().toInt());
+            QCOMPARE(QQmlProperty(title, "font.weight").read().toInt(), int(QFont::DemiBold));
+            const auto titleBounds = title->mapRectToScene(title->boundingRect());
+            const auto descriptionBounds = description->mapRectToScene(description->boundingRect());
+            const auto nameBounds = scientificName->mapRectToScene(scientificName->boundingRect());
+            QVERIFY(titleBounds.bottom() <= descriptionBounds.top());
+            QVERIFY(descriptionBounds.bottom() <= nameBounds.top());
+            for (auto text : {title, description, scientificName}) {
+                QVERIFY(!text->property("truncated").toBool());
+                QVERIFY(text->property("paintedHeight").toReal() <= text->height() + 1);
+                const auto bounds = text->mapRectToScene(text->boundingRect());
+                const auto heroBounds = item("homeHeroPhoto")->mapRectToScene(item("homeHeroPhoto")->boundingRect());
+                QVERIFY(heroBounds.contains(bounds));
+            }
+            if (i == 0) {
+                auto shade = item("homeCaptionShade");
+                QVERIFY(shade);
+                auto grab = shade->grabToImage();
+                QVERIFY(grab);
+                QTRY_VERIFY(!grab->image().isNull());
+                const auto veil = grab->image();
+                const int center = veil.width() / 2, bottom = veil.height() - 2;
+                QVERIFY(veil.pixelColor(center, 0).alpha() < 5);
+                QVERIFY(veil.pixelColor(center, bottom).alpha() > 220);
+                QVERIFY(veil.pixelColor(0, bottom).alpha() < 10);
+                QVERIFY(veil.pixelColor(veil.width() - 2, veil.height() / 4).alpha()
+                    < veil.pixelColor(center, bottom).alpha());
+                QVERIFY(veil.pixelColor(center, veil.height() / 3).alpha()
+                    < veil.pixelColor(center, veil.height() * 2 / 3).alpha());
+                // Contrast against a white photo pixel under the actual veil.
+                for (auto text : {title, description, scientificName, credit}) {
+                    const auto point = shade->mapFromItem(text, QPointF(2,
+                        qMin(text->height() / 2, QQmlProperty(text, "font.pixelSize").read().toReal() / 2)));
+                    const auto ink = veil.pixelColor(qBound(0, qRound(point.x() * veil.width() / shade->width()), veil.width() - 1),
+                        qBound(0, qRound(point.y() * veil.height() / shade->height()), veil.height() - 1));
+                    const auto alpha = ink.alphaF();
+                    const auto background = QColor::fromRgbF(ink.redF() * alpha + 1 - alpha,
+                        ink.greenF() * alpha + 1 - alpha, ink.blueF() * alpha + 1 - alpha);
+                    const auto foreground = text == credit
+                        ? credit->property("contentItem").value<QQuickItem *>()->property("color").value<QColor>()
+                        : text->property("color").value<QColor>();
+                    QVERIFY2(colorContrast(foreground, background) >= (text == title ? 3.0 : 4.5),
+                        qPrintable(text->objectName() + " must remain readable over bright photos"));
+                }
+            }
             const auto hero = item("homeHeroPhoto");
             const auto frame=window->grabWindow();
             const auto bounds=hero->mapRectToScene(hero->boundingRect());
@@ -509,11 +570,6 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
     auto window = qobject_cast<QQuickWindow *>(object.data()); QVERIFY(window);
     auto button = findVisualItem(window->contentItem(), "themeButton"); QVERIFY(button);
     auto background = button->property("background").value<QQuickItem *>(); QVERIFY(background);
-    const auto luminance = [](QColor c) {
-        const auto linear = [](double v) { return v <= 0.04045 ? v/12.92 : std::pow((v+0.055)/1.055, 2.4); };
-        return 0.2126*linear(c.redF()) + 0.7152*linear(c.greenF()) + 0.0722*linear(c.blueF());
-    };
-    const auto contrast = [&](QColor a, QColor b) { const auto x=luminance(a), y=luminance(b); return (qMax(x,y)+0.05)/(qMin(x,y)+0.05); };
     window->setProperty("animations", false);
     QCOMPARE(window->property("animationDuration").toInt(), 0);
     QTest::qWait(180);
@@ -524,14 +580,14 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
             QTest::mouseMove(window, state ? button->mapToScene(QPointF(20,20)).toPoint() : QPoint(510,420));
             button->setProperty("down", state == 2);
             QTest::qWait(1);
-            QVERIFY(contrast(text,background->property("color").value<QColor>()) >= 4.5);
+            QVERIFY(colorContrast(text,background->property("color").value<QColor>()) >= 4.5);
             button->setProperty("down", false);
         }
     }
     button->setProperty("secondary", false); button->setProperty("danger", false);
     button->forceActiveFocus(Qt::TabFocusReason);
     QCOMPARE(QQmlProperty(background, "border.width").read().toInt(), 2);
-    QVERIFY(contrast(window->property("focusColor").value<QColor>(), window->property("canvasColor").value<QColor>()) >= 3.0);
+    QVERIFY(colorContrast(window->property("focusColor").value<QColor>(), window->property("canvasColor").value<QColor>()) >= 3.0);
     QTest::keyClick(window, Qt::Key_Space); QCOMPARE(window->property("activations").toInt(), 1);
     QTest::keyClick(window, Qt::Key_Tab);
     QVERIFY(findVisualItem(window->contentItem(), "themeNav")->hasActiveFocus());
