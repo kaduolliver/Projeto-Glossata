@@ -1,6 +1,6 @@
 # 2.2.1-A — Início fotográfico
 
-Subetapa da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Base: `599445eb4aef9d7141fbda6dab9957587a58d2c4`, com PR #29 integrado. Esta é uma revisão de interface, não um lançamento do aplicativo. Implementação no commit [`86041114bcb713744ab25d9072b8d14ba2584d84`](https://github.com/kaduolliver/Projeto-Glossata/commit/86041114bcb713744ab25d9072b8d14ba2584d84), entregue no [PR #30](https://github.com/kaduolliver/Projeto-Glossata/pull/30).
+Subetapa da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Base: `599445eb4aef9d7141fbda6dab9957587a58d2c4`, com PR #29 integrado. Esta é uma revisão de interface, não um lançamento do aplicativo. Implementação inicial no commit [`86041114bcb713744ab25d9072b8d14ba2584d84`](https://github.com/kaduolliver/Projeto-Glossata/commit/86041114bcb713744ab25d9072b8d14ba2584d84), entregue no [PR #30](https://github.com/kaduolliver/Projeto-Glossata/pull/30).
 
 ## Implementação
 
@@ -53,6 +53,8 @@ Resultados da implementação inicial em 20/10/2026, antes deste refinamento (re
 
 
 ## Refinamento do PR #30
+
+Código, recursos e capturas finais no commit [`c3d70f06709a460d23d53212846992fcf3658a79`](https://github.com/kaduolliver/Projeto-Glossata/commit/c3d70f06709a460d23d53212846992fcf3658a79).
 
 As imagens anteriores dos cartões e suas evidências foram preservadas byte a byte. `home_variants` associa explicitamente cada foto-base à variante do mesmo arquivo-fonte. O validador exige identificação, autoria, licença/versão, página e SHA-1 original coincidentes, além de hash local, evidência e resolução nativa comprovada. Variante inválida não substitui a foto-base. A descoberta de cartões ignora recursos com `usage: home`.
 
