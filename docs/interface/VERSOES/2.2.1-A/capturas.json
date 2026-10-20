@@ -2,7 +2,7 @@
   "schema_version": 1,
   "base_commit": "599445eb4aef9d7141fbda6dab9957587a58d2c4",
   "initial_implementation_commit": "86041114bcb713744ab25d9072b8d14ba2584d84",
-  "refinement_base_commit": "64d6fbf67596d53342001208b62d83e5f7d5f41e",
+  "refinement_base_commit": "58942e9e2e8c0f8c6507680c8c604a380b8ee88e",
   "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/30",
   "rendering": "Windows 11; Qt 6.11.2; offscreen/software; Basic; scale 1; 96 DPI",
   "production_home_record": "../../../images/tela-inicial.json",
@@ -31,7 +31,7 @@
     "resources/qml/views/CategoryView.qml": "8d4e95c149ae6d7d32212b201c7dfb548894abda52e45761de2f8ad254bd48ad",
     "resources/qml/views/CreditsView.qml": "2b726a0ea4104ec231bfea27c8c9367b7d300f8c5dff3755994dc5368a9ddfda",
     "resources/qml/views/FeedbackView.qml": "e1c16c616b673976909b710f204bcdffcfadb4afe70f705c30e3a60878baf2e7",
-    "resources/qml/views/HomeView.qml": "a4e68bd6859434a4c00b8a214228200c0049a30a5a9b3ffa58a59b73e6d8f251",
+    "resources/qml/views/HomeView.qml": "17d2a09b083427357a61f0cb380d335797c80f220b5bca4540700ca0c83c18ff",
     "resources/qml/views/InfoView.qml": "13a654a5c2fbd49e73b8cc83438bb6eb2aef0d6e769ba6835b303535503ac766",
     "resources/qml/views/QuizView.qml": "d078a50ba36bb5c0c8f35479b8f3379031522896436dd6e6a7de94631749dd94",
     "resources/qml/views/ResultsView.qml": "db3a080aaa9b43adfdf88d276b29f35427335ff4487795bc3bbac7f1706ba53a",
@@ -43,7 +43,7 @@
     "src/infrastructure/content/JsonExplorationMediaCatalog.cpp": "425d03253a3ef2d3e24b6ed026f78ad138b3a2c8b9f7bcd891c57a6780a67446",
     "src/presentation/GameController.h": "4480cf999b96104297a37455ddc2c70428a86cf41de561e8de0ac9ebb501bd64"
   },
-  "test_source_sha256": "98b359036ef3c0e794fc541818540f5e13bdb36a5f386ed1824f3c2e73342483",
+  "test_source_sha256": "0a8ac51999c6e4c918504e4f34ea70cba9057c3ec74e6345314efd7491754e60",
   "media": [
     {
       "photo_id": "commons:32940755",
@@ -120,9 +120,9 @@
       "sha256": "a17930e63bea5a65264818ec5a0fe176e950d7e5fdd3e03d42df8f8bda928832",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:36.282173+00:00",
+      "captured_at": "2026-10-20T20:27:33.376328+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -130,9 +130,9 @@
       "sha256": "c1a06a106126d14a7bbddd9215c65216cfc0c25a169b7879cdaab90843071eab",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:36.841089+00:00",
+      "captured_at": "2026-10-20T20:27:33.898541+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -140,9 +140,9 @@
       "sha256": "c62fdbad7284919b236fdf1738f48b069558ebdf57cddb488bd42500901866eb",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:36.571274+00:00",
+      "captured_at": "2026-10-20T20:27:33.639004+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -150,9 +150,9 @@
       "sha256": "18cf48f0743a1639c1b0bb3f4e653bba0f8b8547e85e003a159171525b39f443",
       "width": 1000,
       "height": 700,
-      "captured_at": "2026-10-20T19:23:29.043233+00:00",
+      "captured_at": "2026-10-20T20:27:26.051885+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -160,9 +160,9 @@
       "sha256": "c38a2b2ec31dfef8e26b29f490b3368e64a03610b5cac9cf83b3f2cb4b60f290",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:30.981798+00:00",
+      "captured_at": "2026-10-20T20:27:28.034488+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -170,9 +170,9 @@
       "sha256": "60ba6010b2fff51350ea428db758440f01921ca2efc5adaee2dbada9e19ac5cc",
       "width": 1920,
       "height": 1080,
-      "captured_at": "2026-10-20T19:23:33.502302+00:00",
+      "captured_at": "2026-10-20T20:27:30.538155+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -180,9 +180,9 @@
       "sha256": "519ce5abf26c79b08af701c7a8acd8bb6d667c251cc960cea192ed048ddcf6d1",
       "width": 1000,
       "height": 700,
-      "captured_at": "2026-10-20T19:23:29.532231+00:00",
+      "captured_at": "2026-10-20T20:27:26.545902+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -190,9 +190,9 @@
       "sha256": "9bfca53a41175eed6a4f69df20a51150b83bfc7c5d3d6b30b45c6e123abcf3e6",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:31.504672+00:00",
+      "captured_at": "2026-10-20T20:27:28.575585+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -200,9 +200,9 @@
       "sha256": "663f23d2dabccef80471d9b5f977df145a3cc850e2c54cf12c091d4241db09e0",
       "width": 1920,
       "height": 1080,
-      "captured_at": "2026-10-20T19:23:34.355852+00:00",
+      "captured_at": "2026-10-20T20:27:31.403563+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -210,9 +210,9 @@
       "sha256": "921c645aa4ae0d8c2623d16781d8d617f84ce69fa21ad1536d4ed807be940b66",
       "width": 1000,
       "height": 700,
-      "captured_at": "2026-10-20T19:23:29.990472+00:00",
+      "captured_at": "2026-10-20T20:27:26.992907+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -220,9 +220,9 @@
       "sha256": "5c7fff4ebf0481a5d5409ab3dd610b64943074946074aa430bc422979c89b73e",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:32.001445+00:00",
+      "captured_at": "2026-10-20T20:27:29.101528+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -230,9 +230,9 @@
       "sha256": "84a36d5ecf80da0ff8122d37bd9fe3ae34bf54c3d66e7d56e723f0f1bb415ccf",
       "width": 1920,
       "height": 1080,
-      "captured_at": "2026-10-20T19:23:35.206598+00:00",
+      "captured_at": "2026-10-20T20:27:32.277745+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -240,9 +240,9 @@
       "sha256": "8862f7ff68ab1320add4aa42b346e407f11c0d11addb6b56d1ca6c580c35b419",
       "width": 1000,
       "height": 700,
-      "captured_at": "2026-10-20T19:23:30.424105+00:00",
+      "captured_at": "2026-10-20T20:27:27.422607+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -250,9 +250,9 @@
       "sha256": "8d60ddf5d62ab8a1a60c091da88d3b61d5934f3ef514d2bf9e04dbe9a7f6f5b5",
       "width": 1240,
       "height": 820,
-      "captured_at": "2026-10-20T19:23:32.516375+00:00",
+      "captured_at": "2026-10-20T20:27:29.600961+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     },
     {
@@ -260,11 +260,30 @@
       "sha256": "7ae3cc0ff6b58b422ac6e56062a83dc58064cbec95d419144df0793253de000e",
       "width": 1920,
       "height": 1080,
-      "captured_at": "2026-10-20T19:23:35.939989+00:00",
+      "captured_at": "2026-10-20T20:27:33.024286+00:00",
       "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture",
-      "binary_sha256": "206f58428c0e61e3bf16f7e00ab85fca2c254382772301d1982863ac174c0a9d",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
+      "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/transition-complete-1240x820.png",
+      "sha256": "b92bbda02c1a39acc0c2cce27d21bf5f2813358f0cea8d796b561186dc7d4abe",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T20:27:44.487819+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion enabled, automatic eight-second interval and live 600 ms crossfade",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
+      "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
+    },
+    {
+      "path": "capturas/transition-in-progress-1240x820.png",
+      "sha256": "15a1d88aa95c899e2d4f2d179256715853d79caba7cfa4386ca332b2e26012fb",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T20:27:44.035138+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion enabled, automatic eight-second interval and live 600 ms crossfade",
+      "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
       "modifications": "None after capture; photographs are proportionally cropped, scaled and faded by the application."
     }
-  ],
-  "implementation_commit": "6cb4cdc076023a3730d5b5f2d3adfe6b1b4d590d"
+  ]
 }

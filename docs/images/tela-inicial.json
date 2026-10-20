@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-20T19:23:44.258230+00:00",
+  "captured_at": "2026-10-20T20:29:56.826202+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "application_version": "1.7.0",
-  "binary_sha256": "4faa706a7f504bb834ef8af5fdb0defdaf8e9cf4f8ea1fe6bc7870cc01e6e359",
-  "image_sha256": "b75299d980b3b8210d55855e2d7208f36b4df6fccdcca6a02e79f37a3e2f8a5d",
+  "binary_sha256": "c3d4691bf33f491c3e2d198d029181bb21992b0653bdbdd30e5c9d2c0a096571",
+  "image_sha256": "c62fdbad7284919b236fdf1738f48b069558ebdf57cddb488bd42500901866eb",
   "width": 1240,
   "height": 820,
-  "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
+  "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production Main.qml and GameController in QtTest; mouse click on Credits, then Escape. No post-capture modifications.",
   "privacy": "Temporary database and default profile; Discord disabled; no player data accessed.",
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
@@ -20,8 +20,16 @@
     "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
     "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
-    "resources/qml/views/HomeView.qml": "a4e68bd6859434a4c00b8a214228200c0049a30a5a9b3ffa58a59b73e6d8f251",
+    "resources/qml/views/HomeView.qml": "17d2a09b083427357a61f0cb380d335797c80f220b5bca4540700ca0c83c18ff",
     "src/presentation/GameController.cpp": "40c77d6026f4bfca7f8ca6789d6981d603902b4c2b8008dc9f7be659068d4c09",
     "src/presentation/GameController.h": "4480cf999b96104297a37455ddc2c70428a86cf41de561e8de0ac9ebb501bd64"
-  }
+  },
+  "production_initial_capture": {
+    "method": "QQuickWindow::grabWindow / running application",
+    "captured_at": "2026-10-20T20:27:39.069598+00:00",
+    "binary_sha256": "cdf1c45360f70e4aa5c095f401f26e7725987db6ab8f1c9cf62353946d9cd506",
+    "image_sha256": "b75299d980b3b8210d55855e2d7208f36b4df6fccdcca6a02e79f37a3e2f8a5d"
+  },
+  "source_frame": "docs/interface/VERSOES/2.2.1-A/capturas/mouse-focus-1240x820.png",
+  "test_source_sha256": "0a8ac51999c6e4c918504e4f34ea70cba9057c3ec74e6345314efd7491754e60"
 }

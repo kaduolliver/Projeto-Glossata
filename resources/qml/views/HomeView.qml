@@ -23,8 +23,10 @@ FocusScope {
     readonly property bool keyboardInteracting: activeFocus && focusedControl
         && (focusedControl.focusReason === Qt.TabFocusReason || focusedControl.focusReason === Qt.BacktabFocusReason
             || focusedControl.focusReason === Qt.ShortcutFocusReason || focusedControl.focusReason === Qt.OtherFocusReason)
+    readonly property bool pointerInteracting: captionHover.hovered || controlsHover.hovered
+        || !!(activeFocus && focusedControl && focusedControl.down)
     readonly property bool canAutoAdvance: visible && windowActive && Style.Theme.motionEnabled
-        && slides.length > 1 && !interaction.hovered && !keyboardInteracting && !credits.visible
+        && slides.length > 1 && !pointerInteracting && !keyboardInteracting && !credits.visible
     readonly property bool autoRunning: advanceTimer.running
     readonly property bool transitioning: crossfade.running
     property int activeBuffer: 0
@@ -61,16 +63,19 @@ FocusScope {
         const incoming = activeBuffer === 0 ? layerB : layerA
         if (pendingIndex >= 0 && incoming.failed) { pendingIndex = -1; return }
         if (pendingIndex < 0 || !incoming.painted || crossfade.running) return
-        currentIndex = pendingIndex
         if (transitionDuration === 0) finishTransition()
         else crossfade.start()
     }
     function finishTransition() {
         if (pendingIndex < 0) return
+        const completedIndex = pendingIndex
         crossfade.stop()
         activeBuffer = 1 - activeBuffer
         pendingIndex = -1
         blend = 0
+        // Keep the outgoing photo's caption/credits until the incoming buffer
+        // is fully displayed; commit the visible slide as one completed step.
+        currentIndex = completedIndex
         Qt.callLater(preloadNext)
     }
     function restartInterval() {
@@ -80,7 +85,6 @@ FocusScope {
     onSlidesChanged: Qt.callLater(resetSlides)
     onCanAutoAdvanceChanged: restartInterval()
     Component.onCompleted: { resetSlides(); restartInterval() }
-    HoverHandler { id: interaction }
     Timer {
         id: advanceTimer
         objectName: "homeAdvanceTimer"
@@ -274,6 +278,7 @@ FocusScope {
             ColumnLayout {
                 id: caption
                 objectName: "homePhotoCaption"
+                HoverHandler { id: captionHover }
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
                 anchors.margins: Style.Theme.spaceLg * 2
@@ -329,6 +334,7 @@ FocusScope {
             }
         }
         RowLayout {
+            HoverHandler { id: controlsHover }
             Layout.fillWidth: true
             spacing: Style.Theme.spaceSm
             UiButton {

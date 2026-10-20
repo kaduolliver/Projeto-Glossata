@@ -295,8 +295,21 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     auto home=item("homeCarousel");QVERIFY(home);
     auto timer=window->findChild<QObject *>("homeAdvanceTimer");QVERIFY(timer);
     auto dialog=window->findChild<QObject *>("homeCreditsDialog");QVERIFY(dialog);
+    const auto slides = controller.homeSlides();
+    const auto captionMatches = [&](int index) {
+        const auto slide = slides[index].toMap();
+        return item("homeCaptionTitle")->property("text").toString() == slide["title"].toString()
+            && item("homeCaptionDescription")->property("text").toString() == slide["excerpt"].toString()
+            && item("homeCaptionScientificName")->property("text").toString() == slide["photo"].toMap()["subject"].toString()
+            && home->property("photo").toMap()["image"] == slide["photo"].toMap()["image"];
+    };
+    const auto ordinaryPhotoPoint = [&] {
+        auto photo = item("homeHeroPhoto");
+        return photo->mapToScene(QPointF(photo->width() * 0.7, 40)).toPoint();
+    };
     window->requestActivate();
-    QTest::mouseMove(window,QPoint(10,10));
+    // Hover over the photograph itself must not pause the carousel.
+    QTest::mouseMove(window,ordinaryPhotoPoint());
     item("navHome")->forceActiveFocus(Qt::TabFocusReason);
     QCOMPARE(home->property("slideInterval").toInt(),8000);
     QCOMPARE(home->property("transitionDuration").toInt(),600);
@@ -304,8 +317,9 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QTRY_VERIFY(home->property("photoReady").toBool());
     QTest::qWait(7000);
     QCOMPARE(home->property("currentIndex").toInt(),0);
-    QTRY_COMPARE_WITH_TIMEOUT(home->property("currentIndex").toInt(),1,2500);
-    QTRY_VERIFY(home->property("transitioning").toBool());
+    QTRY_VERIFY_WITH_TIMEOUT(home->property("transitioning").toBool(),2500);
+    QCOMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
     QTest::qWait(180);
     const auto blend=home->property("blend").toReal();
     QVERIFY(blend>0 && blend<1);
@@ -313,27 +327,58 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QVERIFY(first->property("painted").toBool() && second->property("painted").toBool());
     QVERIFY(first->opacity()>0 && second->opacity()>0);
     QVERIFY(std::abs(first->opacity()+second->opacity()-1)<0.01);
+    QCOMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
+    QVERIFY(QDir().mkpath("previews/carousel"));
+    QVERIFY(window->grabWindow().save("previews/carousel/transition-in-progress-1240x820.png"));
     QTRY_COMPARE(home->property("pendingIndex").toInt(),-1);
-    // Accelerate subsequent intervals only after checking the real eight seconds.
-    timer->setProperty("interval",400);
-    QTest::mouseMove(window,home->mapToScene(QPointF(100,100)).toPoint());
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QVERIFY(captionMatches(1));
+    QVERIFY(window->grabWindow().save("previews/carousel/transition-complete-1240x820.png"));
+    // Resume with a full real interval, rather than the remainder before pause.
+    QTest::qWait(1800);
+    auto caption = item("homePhotoCaption");
+    QTest::mouseMove(window,caption->mapToScene(caption->boundingRect().center()).toPoint());
     QTRY_VERIFY(!home->property("autoRunning").toBool());
-    const int hoveredIndex=home->property("currentIndex").toInt();
     QTest::qWait(450);
-    QCOMPARE(home->property("currentIndex").toInt(),hoveredIndex);
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QTest::mouseMove(window,ordinaryPhotoPoint());
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    QTest::qWait(7000);
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QCOMPARE(home->property("pendingIndex").toInt(),-1);
+    QTRY_COMPARE_WITH_TIMEOUT(home->property("pendingIndex").toInt(),2,2500);
+    QTRY_COMPARE(home->property("currentIndex").toInt(),2);
+    QVERIFY(captionMatches(2));
+    // Accelerate only the remaining checks; keep an interval longer than 600 ms.
+    timer->setProperty("interval",1000);
+    QTest::mouseMove(window,home->mapToScene(QPointF(100,100)).toPoint());
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    auto explore = item("homeExploreButton");
+    QTest::mouseMove(window,explore->mapToScene(explore->boundingRect().center()).toPoint());
+    QVERIFY(home->property("autoRunning").toBool());
+    for (const QString &name : {"homePreviousSlide", "homeSlideDot0", "homeNextSlide", "homeCreditsButton"}) {
+        auto control = item(name);
+        QTest::mouseMove(window,control->mapToScene(control->boundingRect().center()).toPoint());
+        QTRY_VERIFY(!home->property("autoRunning").toBool());
+    }
+    QCOMPARE(home->property("currentIndex").toInt(),2);
     QTest::mouseMove(window,QPoint(10,10));
     QTRY_VERIFY(home->property("autoRunning").toBool());
-    QTest::qWait(200);
-    // Manual navigation must start a fresh interval rather than inherit 200 ms.
-    QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,2),Q_ARG(QVariant,true)));
-    QTRY_COMPARE(home->property("currentIndex").toInt(),2);
-    QTest::qWait(230);
+    QTest::qWait(300);
+    // Manual navigation restarts the interval and commits metadata only at end.
+    QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,3),Q_ARG(QVariant,true)));
     QCOMPARE(home->property("currentIndex").toInt(),2);
+    QVERIFY(captionMatches(2));
+    QTRY_COMPARE(home->property("currentIndex").toInt(),3);
+    QVERIFY(captionMatches(3));
+    QTest::qWait(250);
+    QCOMPARE(home->property("pendingIndex").toInt(),-1);
     // Pause for credits independently of keyboard focus.
     QVERIFY(QMetaObject::invokeMethod(dialog,"open"));
     QTRY_VERIFY(!home->property("autoRunning").toBool());
-    QTest::qWait(450);
-    QCOMPARE(home->property("currentIndex").toInt(),2);
+    QTest::qWait(1100);
+    QCOMPARE(home->property("currentIndex").toInt(),3);
     QVERIFY(QMetaObject::invokeMethod(dialog,"close"));
     item("homeNextSlide")->forceActiveFocus(Qt::TabFocusReason);
     QTRY_VERIFY(!home->property("autoRunning").toBool());
@@ -349,7 +394,7 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QTRY_VERIFY(!home->property("windowActive").toBool());
     QTRY_VERIFY(!home->property("autoRunning").toBool());
     QTest::qWait(450);
-    QCOMPARE(home->property("currentIndex").toInt(),2);
+    QCOMPARE(home->property("currentIndex").toInt(),3);
     window->show();window->requestActivate();
     QTRY_VERIFY(home->property("windowActive").toBool());
     window->setProperty("motionEnabled",false);
@@ -360,6 +405,7 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QTRY_COMPARE(home->property("currentIndex").toInt(),3);
     QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,4),Q_ARG(QVariant,true)));
     QTRY_COMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
     home->setVisible(false);
     window->setProperty("motionEnabled",true);
     QVERIFY(!home->property("autoRunning").toBool());

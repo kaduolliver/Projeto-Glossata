@@ -14,3 +14,13 @@ Revisão atual: [2.2.1-A — Início fotográfico](VERSOES/2.2.1-A/README.md), s
 4. Verifique os links e hashes, execute os testes de interface pertinentes e confira as capturas. Capturas não substituem teste de acessibilidade nem inspeção em outros sistemas ou GPUs.
 
 Os PNGs podem conter fotografias e identidade visual com direitos individuais. Seus registros de origem e atribuição continuam nos controles existentes; uma captura não altera o estado de distribuição de qualquer recurso.
+
+## Planejamento das próximas subetapas — Issue #22
+
+Itens registrados para avaliação futura; não implementados na Subetapa 2.2.1-A:
+
+- Refinar visualmente o diálogo de créditos, preservando atribuições, licenças, fontes e acessibilidade.
+- Melhorar as descrições educativas do carrossel por meio da curadoria científica existente, com fontes e revisão das redações concretas. Preservar os textos originais e suas decisões; não substituir ou reaproveitar aprovações indevidamente.
+- Substituir os cartões genéricos da Home por indicadores reais e dinâmicos, derivados dos dados disponíveis e com significado explícito. Não apresentar números estimados como métricas reais.
+
+O detalhamento e a implementação dependem das próximas subetapas da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem antecipar sua conclusão.

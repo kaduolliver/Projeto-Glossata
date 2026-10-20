@@ -2,6 +2,8 @@
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
+- PR #30: legenda sincronizada à conclusão do crossfade; hover restrito à legenda e à barra de controles, sem pausa sobre a fotografia ou outras regiões da Home. Sem mudança de estilo. Testes de transição, intervalo real e retomadas ampliados; propostas futuras registradas no [planejamento](README.md#planejamento-das-próximas-subetapas--issue-22).
+
 - PR #30: removida a superfície sólida da legenda. Título do grupo seminegrito e descrição aparecem sobre a fotografia; nome científico em itálico e Créditos compartilham a linha inferior. Degradê estático desaparece acima e nas laterais, preservando imagens, transições e cantos. Capturas nas três resoluções atualizadas.
 
 - PR #30: foco visual em `UiButton`, `TextAction`, `NavItem` e pontos do carrossel passa a usar `visualFocus`. Destaque dourado preservado por teclado, sem aparecer apenas pelo clique; seleção, hover, cores e navegação inalterados. Capturas reais de mouse e teclado registradas.
