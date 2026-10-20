@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-20T18:30:08.606498+00:00",
+  "captured_at": "2026-10-20T19:05:42.177832+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "application_version": "1.7.0",
-  "binary_sha256": "8d408a6eb55a24a76a5c71da98252e33e79247515b16d2625783028cb11e0a1f",
-  "image_sha256": "f16a0063cd02ee50a845f37302f12e719c3ff9c0fec2405f9d091716f7eabff0",
+  "binary_sha256": "de7381fbf8f586b2cd0a2ba1b8652e66322a4573a1ecc833689a3b35d1f14c2b",
+  "image_sha256": "4f56dbc95244f2636816ced6abdacc15d927c5aa80bedaf6f62f3a6f6a6d356b",
   "width": 1240,
   "height": 820,
-  "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
+  "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production Main.qml and GameController in QtTest; mouse click on Credits, then Escape. No post-capture modifications.",
   "privacy": "Temporary database and default profile; Discord disabled; no player data accessed.",
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
@@ -15,13 +15,21 @@
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
     "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
-    "resources/qml/components/NavItem.qml": "816fb58b5eb2c8458b4037d9774019f4d462e90be509e680f45ac613d8e6a961",
+    "resources/qml/components/NavItem.qml": "d169a6557990bbb6a8b8cd199be1fa860d799554cc703bdd3cc2f42d27543591",
     "resources/qml/components/StatCard.qml": "d9cdde9aa31f62c46ef9f0d3dbf52d21c5e09a44422ec83bddedf1938bc33322",
-    "resources/qml/components/UiButton.qml": "a67306b901be9ee7611fc518bf3af7d86bf61435d212bab4a76aefd3789513e4",
+    "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
     "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
-    "resources/qml/views/HomeView.qml": "be35ba6078d97761c7b955b667c55ea1122282bc3ddf924ffef22174172e4338",
+    "resources/qml/views/HomeView.qml": "1b8ef9058834fa6e8c944a0e7348f77e96c1f0bccdc507f71450f10990d10774",
     "src/presentation/GameController.cpp": "40c77d6026f4bfca7f8ca6789d6981d603902b4c2b8008dc9f7be659068d4c09",
     "src/presentation/GameController.h": "4480cf999b96104297a37455ddc2c70428a86cf41de561e8de0ac9ebb501bd64"
-  }
+  },
+  "production_initial_capture": {
+    "method": "QQuickWindow::grabWindow / running application",
+    "captured_at": "2026-10-20T19:01:25.209917+00:00",
+    "binary_sha256": "2ea69b94fa2c3eba4a89c32a10f16ce99b87aa9dd7eb9dcbe76494bdb19003ad",
+    "image_sha256": "f16a0063cd02ee50a845f37302f12e719c3ff9c0fec2405f9d091716f7eabff0"
+  },
+  "source_frame": "docs/interface/VERSOES/2.2.1-A/capturas/mouse-focus-1240x820.png",
+  "test_source_sha256": "210849e1ac26fb91d7f0ed634896e180049474c693574db9c336faa0a84bcffb"
 }

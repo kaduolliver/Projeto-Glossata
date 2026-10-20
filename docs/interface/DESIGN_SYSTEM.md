@@ -21,6 +21,8 @@ Títulos/subtítulos e fonte científica estão preparados para consumo futuro; 
 
 Foco de teclado com borda dourada de 2 px; seleção da navegação também possui indicador lateral. Estados normal, hover, pressionado e desabilitado usam cores próprias. O texto desabilitado mantém opacidade integral. Transições de cor duram 120 ms, sem escala ao pressionar; transição de página permanece 180 ms. A opção existente “Transições suaves” alimenta `Theme.motionEnabled`: ao desligar, Behaviors ficam inativos e durações vão a zero. Não há detecção automática da preferência de movimento do sistema operacional.
 
+`UiButton`, `TextAction`, `NavItem` e os pontos do carrossel usam `visualFocus` nos destaques de foco. O clique mantém o foco funcional, sem borda dourada; Tab e Shift+Tab exibem o indicador. `activeFocusOnTab` e as verificações funcionais de foco permanecem preservados.
+
 O teste Qt `designSystemStatesAndContrast` verifica contraste por luminância sRGB de pelo menos 4,5:1 entre texto/fundos ativos de UiButton nas variantes primária, secundária e perigo (normal/hover/pressionado), 3:1 entre foco e canvas, navegação Tab, ativação Space, bloqueio do clique desabilitado e redução de movimento. Isso não certifica acessibilidade de todas as telas, escalas ou leitores de tela.
 
 Implementação nativa: [Behavior do Qt Quick](https://doc.qt.io/qt-6/qml-qtquick-behavior.html). Veja os [contratos dos componentes](COMPONENTES.md) e a [revisão com capturas](VERSOES/2.1.2/README.md).

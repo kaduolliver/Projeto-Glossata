@@ -149,6 +149,25 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
         }
     }
     window->resize(1240,820);
+    QTest::qWait(50); // Let the resized layout settle before a real mouse click.
+    auto dot = item("homeSlideDot0");
+    QVERIFY(dot);
+    auto dotBackground = dot->property("background").value<QQuickItem *>();
+    QVERIFY(dotBackground);
+    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+        dot->mapToScene(dot->boundingRect().center()).toPoint());
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QTRY_VERIFY(dot->hasActiveFocus());
+    QVERIFY(!dot->property("visualFocus").toBool());
+    QCOMPARE(QQmlProperty(dotBackground, "border.color").read().value<QColor>().alpha(), 0);
+    QTest::keyClick(window, Qt::Key_Tab);
+    QTRY_VERIFY(item("homeSlideDot1")->hasActiveFocus());
+    QVERIFY(item("homeSlideDot1")->property("visualFocus").toBool());
+    QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+    QTRY_VERIFY(dot->hasActiveFocus());
+    QVERIFY(dot->property("visualFocus").toBool());
+    QVERIFY(QQmlProperty(dotBackground, "border.color").read().value<QColor>().alpha() > 0);
     QVERIFY(click("homeCreditsButton"));
     auto dialog = engine.rootObjects().first()->findChild<QObject *>("homeCreditsDialog");
     QVERIFY(dialog);
@@ -158,6 +177,24 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
     QTest::keyClick(window, Qt::Key_Escape);
     QTRY_VERIFY(!dialog->property("visible").toBool());
     QVERIFY(item("homeCreditsButton")->hasActiveFocus());
+    auto creditButton = item("homeCreditsButton");
+    QTest::mouseMove(window, creditButton->mapToScene(creditButton->boundingRect().center()).toPoint());
+    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+        creditButton->mapToScene(creditButton->boundingRect().center()).toPoint());
+    QTRY_VERIFY(dialog->property("visible").toBool());
+    QTest::keyClick(window, Qt::Key_Escape);
+    QTRY_VERIFY(!dialog->property("visible").toBool());
+    QTRY_VERIFY(creditButton->hasActiveFocus());
+    QVERIFY(!creditButton->property("visualFocus").toBool());
+    item("pageScroll")->setProperty("contentY", 0);
+    QTest::qWait(50);
+    QVERIFY(window->grabWindow().save("previews/carousel/mouse-focus-1240x820.png"));
+    QTest::keyClick(window, Qt::Key_Tab);
+    QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+    QTRY_VERIFY(creditButton->hasActiveFocus());
+    QVERIFY(creditButton->property("visualFocus").toBool());
+    QTest::qWait(50);
+    QVERIFY(window->grabWindow().save("previews/carousel/keyboard-focus-1240x820.png"));
     // Missing presentation media never blocks the navigation routes.
     home->setProperty("slides", QVariantList{});
     QTRY_VERIFY(!item("homeNextSlide")->isEnabled());
@@ -500,9 +537,31 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
     QVERIFY(findVisualItem(window->contentItem(), "themeNav")->hasActiveFocus());
     QTest::keyClick(window, Qt::Key_Tab);
     QVERIFY(findVisualItem(window->contentItem(), "themeAction")->hasActiveFocus());
+    // Mouse focus still operates the buttons; only keyboard focus draws gold.
+    const QColor focusColor = window->property("focusColor").value<QColor>();
+    for (const QString &name : {"themeButton", "themeNav", "themeAction"}) {
+        auto control = findVisualItem(window->contentItem(), name);
+        QVERIFY(control);
+        auto surface = control->property("background").value<QQuickItem *>();
+        QVERIFY(surface);
+        QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+            control->mapToScene(control->boundingRect().center()).toPoint());
+        QTRY_VERIFY(control->hasActiveFocus());
+        QVERIFY(!control->property("visualFocus").toBool());
+        QVERIFY(QQmlProperty(surface, "border.color").read().value<QColor>() != focusColor);
+        QTest::mouseMove(window, QPoint(510,420));
+        if (name == "themeAction") QCOMPARE(surface->property("color").value<QColor>().alpha(), 0);
+        QTest::keyClick(window, Qt::Key_Tab);
+        QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+        QTRY_VERIFY(control->hasActiveFocus());
+        QVERIFY(control->property("visualFocus").toBool());
+        QCOMPARE(QQmlProperty(surface, "border.color").read().value<QColor>(), focusColor);
+        QCOMPARE(QQmlProperty(surface, "border.width").read().toInt(), 2);
+    }
+    QCOMPARE(window->property("activations").toInt(), 2);
     button->setEnabled(false);
     QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, button->mapToScene(QPointF(20,20)).toPoint());
-    QCOMPARE(window->property("activations").toInt(), 1);
+    QCOMPARE(window->property("activations").toInt(), 2);
     window->setProperty("animations", true);
     QVERIFY(window->property("animationDuration").toInt() > 0);
 }

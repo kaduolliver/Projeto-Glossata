@@ -15,8 +15,8 @@ Button {
     background: Rectangle {
         radius: Style.Theme.controlRadius
         color: !control.enabled ? Style.Theme.disabledSurface : control.selected ? Style.Theme.forest : (control.hovered || control.down ? Style.Theme.surfaceHover : "transparent")
-        border.color: control.activeFocus ? Style.Theme.focus : "transparent"
-        border.width: control.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+        border.color: control.visualFocus ? Style.Theme.focus : "transparent"
+        border.width: control.visualFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
         Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
         Rectangle { implicitWidth: 3; implicitHeight: 22; radius: 2; color: Style.Theme.gold; anchors.left: parent.left; anchors.verticalCenter: parent.verticalCenter; visible: control.selected }
     }

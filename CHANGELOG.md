@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- PR #30: destaque de foco dos botões compartilhados e pontos do carrossel usa `visualFocus`; cliques mantêm o funcionamento sem borda amarela, preservada em Tab/Shift+Tab.
+
 - PR #30: corrigida a seleção dos quatro slides em catálogos SQLite com grupos históricos homônimos; indicadores apenas por pontos e botão Créditos compacto à direita, com novas capturas reais.
 
 - PR #30: substituída somente a foto do leão na Home por outra de Panthera leo em 1920 × 1247, com identificação e licença CC BY 2.0 próprias; quatro fotos ativas passam a atender FHD, preservando os cartões e os fallbacks.

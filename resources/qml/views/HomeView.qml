@@ -304,7 +304,7 @@ FocusScope {
                     background: Rectangle {
                         color: "transparent"
                         radius: Style.Theme.controlRadius
-                        border.color: dot.activeFocus ? Style.Theme.focus : "transparent"
+                        border.color: dot.visualFocus ? Style.Theme.focus : "transparent"
                         border.width: Style.Theme.focusWidth
                     }
                     contentItem: Item {
