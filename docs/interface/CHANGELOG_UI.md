@@ -1,5 +1,26 @@
 # Histórico visual
 
+## 2.2.1-A — Início fotográfico — 2026-10-20
+
+- PR #30: `controlsHover` considera apenas a área efetiva dos botões e indicadores; espaços vazios, inclusive entre os pontos, não pausam o avanço. Layout e estilos inalterados.
+
+- PR #30: legenda sincronizada à conclusão do crossfade; hover restrito à legenda e à barra de controles, sem pausa sobre a fotografia ou outras regiões da Home. Sem mudança de estilo. Testes de transição, intervalo real e retomadas ampliados; propostas futuras registradas no [planejamento](README.md#planejamento-das-próximas-subetapas--issue-22).
+
+- PR #30: removida a superfície sólida da legenda. Título do grupo seminegrito e descrição aparecem sobre a fotografia; nome científico em itálico e Créditos compartilham a linha inferior. Degradê estático desaparece acima e nas laterais, preservando imagens, transições e cantos. Capturas nas três resoluções atualizadas.
+
+- PR #30: foco visual em `UiButton`, `TextAction`, `NavItem` e pontos do carrossel passa a usar `visualFocus`. Destaque dourado preservado por teclado, sem aparecer apenas pelo clique; seleção, hover, cores e navegação inalterados. Capturas reais de mouse e teclado registradas.
+
+- Correção no PR #30: quatro slides selecionados pelos identificadores estáveis, inclusive em catálogos locais com grupos históricos homônimos; removida a contagem numérica e alinhado Créditos à direita, com área de foco limitada à largura do botão. Capturas reais atualizadas.
+
+- Complemento FHD no PR #30: foto do leão substituída apenas na Home por outra da mesma espécie em 1920 × 1247; demais slides preservados. Crédito e proveniência independentes, capturas reais atualizadas e fallback anterior mantido.
+
+- Refinamento no PR #30: quatro variantes nativas maiores somente na Home; miniaturas removidas em favor de pontos. Avanço automático de oito segundos, crossfade de 600 ms, pausas por interação/visibilidade e redução de movimento. Legenda compacta com Créditos; informações de atribuição preservadas no diálogo. Capturas e manifesto atualizados na mesma revisão.
+
+- Quatro fotografias existentes, preenchimento proporcional, gradiente, miniaturas, setas e posição; sem avanço automático.
+- Explorar abre a exploração científica; Jogar preserva início, retomada e resultados pendentes. Tema e ícones oficiais preservados.
+- Créditos, fonte educativa e evidência acessíveis por slide; nenhum estado de governança alterado.
+- [Decisões, capturas reais e validação](VERSOES/2.2.1-A/README.md).
+
 ## 2.1.3 — Navegação e estrutura — 2026-10-20
 
 - Ajuste no mesmo PR: restaurada a composição anterior do logotipo, com nome em uma linha e assinatura “APRENDA. EXPLORE.”; capturas reais atualizadas, mantendo as demais alterações.

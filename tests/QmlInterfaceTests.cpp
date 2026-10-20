@@ -20,6 +20,15 @@
 
 namespace {
 QStringList interfaceWarnings;
+double colorContrast(QColor a, QColor b)
+{
+    const auto luminance = [](QColor c) {
+        const auto linear = [](double v) { return v <= 0.04045 ? v / 12.92 : std::pow((v + 0.055) / 1.055, 2.4); };
+        return 0.2126 * linear(c.redF()) + 0.7152 * linear(c.greenF()) + 0.0722 * linear(c.blueF());
+    };
+    const auto x = luminance(a), y = luminance(b);
+    return (qMax(x, y) + 0.05) / (qMin(x, y) + 0.05);
+}
 QString scientificGroup(const QString &name) {
     JsonSpeciesCatalog catalog;
     for(const auto &node : catalog.loadTaxons()) if(node.name==name)return node.id;
@@ -42,12 +51,394 @@ class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
     void designSystemStatesAndContrast();
+    void homeCarouselPhotographsAndNavigation();
+    void homeCarouselTimingAndCrossfade();
     void separateExploreAndPlayPreservesSessions();
     void photographEdgesFadeWithoutHidingTheOrganism();
     void explorationCardsKeepBackgroundProportions();
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+{
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("carousel.sqlite"));
+    const auto slides = controller.homeSlides();
+    QCOMPARE(slides.size(), 4);
+    QSet<QString> images;
+    for (const auto &value : slides) {
+        const auto slide = value.toMap(), photo = slide["photo"].toMap();
+        QVERIFY(!photo["author"].toString().isEmpty());
+        QVERIFY(photo["licenseUrl"].toString().startsWith("https://creativecommons.org/"));
+        QCOMPARE(photo["evidenceSha256"].toString().size(), 64);
+        QVERIFY(photo["width"].toInt() >= 1920);
+        QVERIFY(photo["height"].toInt() >= 1080);
+        QVERIFY(!images.contains(photo["image"].toString()));
+        images.insert(photo["image"].toString());
+        QVERIFY(slide["introduction"].toMap()["text"].toString().startsWith(slide["excerpt"].toString()));
+        QVERIFY(!slide["excerpt"].toString().isEmpty());
+    }
+    DiscordRichPresence presence{QString(), QString()};
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
+    QVERIFY(window);
+    auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto click = [&](const QString &name) {
+        auto button = item(name);
+        if (!button || !button->isVisible() || !button->isEnabled()) return false;
+        button->forceActiveFocus(Qt::TabFocusReason);
+        QTest::keyClick(window, Qt::Key_Space);
+        QTest::qWait(50);
+        return true;
+    };
+    QTRY_VERIFY(item("homeCarousel"));
+    auto home = item("homeCarousel");
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QVERIFY(home->property("transitionDuration").toInt() > 0);
+    QVERIFY(click("homeNextSlide"));
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 1);
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QTRY_COMPARE(home->property("pendingIndex").toInt(), -1);
+    window->setProperty("motionEnabled", false);
+    QCOMPARE(home->property("transitionDuration").toInt(), 0);
+    QVERIFY(click("homePreviousSlide"));
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QVERIFY(click("homePreviousSlide"));
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 3);
+    QTest::keyClick(window, Qt::Key_Right);
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QTest::keyClick(window, Qt::Key_End);
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 3);
+    QTest::keyClick(window, Qt::Key_Home);
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QVERIFY(QDir().mkpath("previews/carousel"));
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        QVERIFY(!item("homeSlidePosition"));
+        QVERIFY(!item("homeSlideDot4"));
+        for (int i = 0; i < slides.size(); ++i) {
+            QVERIFY(item("homeSlideDot" + QString::number(i))->isVisible());
+            QVERIFY(click("homeSlideDot" + QString::number(i)));
+            QTRY_COMPARE(home->property("currentIndex").toInt(), i);
+            QTRY_VERIFY(home->property("photoReady").toBool());
+            // Indicator focus may scroll the document. Capture its top explicitly.
+            item("pageScroll")->setProperty("contentY", 0);
+            QTest::qWait(250);
+            const auto credit = item("homeCreditsButton"), caption = item("homePhotoCaption");
+            QVERIFY(credit && caption);
+            QVERIFY(qAbs(credit->width() - credit->implicitWidth()) < 1);
+            QVERIFY(credit->width() < caption->width() / 2);
+            QVERIFY(qAbs(credit->x() + credit->width() - caption->width()) < 1);
+            const auto title = item("homeCaptionTitle"), description = item("homeCaptionDescription");
+            const auto scientificName = item("homeCaptionScientificName");
+            QVERIFY(title && description && scientificName);
+            QCOMPARE(title->property("text").toString(), slides[i].toMap()["title"].toString());
+            QCOMPARE(description->property("text").toString(), slides[i].toMap()["excerpt"].toString());
+            QCOMPARE(scientificName->property("text").toString(), slides[i].toMap()["photo"].toMap()["subject"].toString());
+            QVERIFY(QQmlProperty(scientificName, "font.italic").read().toBool());
+            QVERIFY(QQmlProperty(title, "font.pixelSize").read().toInt() > QQmlProperty(description, "font.pixelSize").read().toInt());
+            QCOMPARE(QQmlProperty(title, "font.weight").read().toInt(), int(QFont::DemiBold));
+            const auto titleBounds = title->mapRectToScene(title->boundingRect());
+            const auto descriptionBounds = description->mapRectToScene(description->boundingRect());
+            const auto nameBounds = scientificName->mapRectToScene(scientificName->boundingRect());
+            QVERIFY(titleBounds.bottom() <= descriptionBounds.top());
+            QVERIFY(descriptionBounds.bottom() <= nameBounds.top());
+            for (auto text : {title, description, scientificName}) {
+                QVERIFY(!text->property("truncated").toBool());
+                QVERIFY(text->property("paintedHeight").toReal() <= text->height() + 1);
+                const auto bounds = text->mapRectToScene(text->boundingRect());
+                const auto heroBounds = item("homeHeroPhoto")->mapRectToScene(item("homeHeroPhoto")->boundingRect());
+                QVERIFY(heroBounds.contains(bounds));
+            }
+            if (i == 0) {
+                auto shade = item("homeCaptionShade");
+                QVERIFY(shade);
+                auto grab = shade->grabToImage();
+                QVERIFY(grab);
+                QTRY_VERIFY(!grab->image().isNull());
+                const auto veil = grab->image();
+                const int center = veil.width() / 2, bottom = veil.height() - 2;
+                QVERIFY(veil.pixelColor(center, 0).alpha() < 5);
+                QVERIFY(veil.pixelColor(center, bottom).alpha() > 220);
+                QVERIFY(veil.pixelColor(0, bottom).alpha() < 10);
+                QVERIFY(veil.pixelColor(veil.width() - 2, veil.height() / 4).alpha()
+                    < veil.pixelColor(center, bottom).alpha());
+                QVERIFY(veil.pixelColor(center, veil.height() / 3).alpha()
+                    < veil.pixelColor(center, veil.height() * 2 / 3).alpha());
+                // Contrast against a white photo pixel under the actual veil.
+                for (auto text : {title, description, scientificName, credit}) {
+                    const auto point = shade->mapFromItem(text, QPointF(2,
+                        qMin(text->height() / 2, QQmlProperty(text, "font.pixelSize").read().toReal() / 2)));
+                    const auto ink = veil.pixelColor(qBound(0, qRound(point.x() * veil.width() / shade->width()), veil.width() - 1),
+                        qBound(0, qRound(point.y() * veil.height() / shade->height()), veil.height() - 1));
+                    const auto alpha = ink.alphaF();
+                    const auto background = QColor::fromRgbF(ink.redF() * alpha + 1 - alpha,
+                        ink.greenF() * alpha + 1 - alpha, ink.blueF() * alpha + 1 - alpha);
+                    const auto foreground = text == credit
+                        ? credit->property("contentItem").value<QQuickItem *>()->property("color").value<QColor>()
+                        : text->property("color").value<QColor>();
+                    QVERIFY2(colorContrast(foreground, background) >= (text == title ? 3.0 : 4.5),
+                        qPrintable(text->objectName() + " must remain readable over bright photos"));
+                }
+            }
+            const auto hero = item("homeHeroPhoto");
+            const auto frame=window->grabWindow();
+            const auto bounds=hero->mapRectToScene(hero->boundingRect());
+            QSet<QRgb> colors;
+            for(int x=6;x<10;++x)for(int y=1;y<5;++y) {
+                const int px=qRound(bounds.left()+bounds.width()*x/10);
+                const int py=qRound(bounds.top()+bounds.height()*y/10);
+                colors.insert(frame.pixel(px,py));
+            }
+            QVERIFY2(colors.size()>10,"The actual photograph must be rendered, not an empty canvas.");
+            QVERIFY(frame.save(QString("previews/carousel/slide-%1-%2x%3.png")
+                .arg(i).arg(size.width()).arg(size.height())));
+            QVERIFY(hero->width() > home->width() * 0.7);
+            QVERIFY(hero->height() >= 400);
+            for (const auto &name : {"homeExploreButton","homePlayButton","homeCreditsButton"}) {
+                auto control = item(name);
+                QVERIFY(control->isVisible());
+                const auto bounds = control->mapRectToScene(control->boundingRect());
+                QVERIFY(bounds.left() >= 0 && bounds.right() <= size.width());
+            }
+        }
+    }
+    window->resize(1240,820);
+    QTest::qWait(50); // Let the resized layout settle before a real mouse click.
+    auto dot = item("homeSlideDot0");
+    QVERIFY(dot);
+    auto dotBackground = dot->property("background").value<QQuickItem *>();
+    QVERIFY(dotBackground);
+    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+        dot->mapToScene(dot->boundingRect().center()).toPoint());
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QTRY_VERIFY(dot->hasActiveFocus());
+    QVERIFY(!dot->property("visualFocus").toBool());
+    QCOMPARE(QQmlProperty(dotBackground, "border.color").read().value<QColor>().alpha(), 0);
+    QTest::keyClick(window, Qt::Key_Tab);
+    QTRY_VERIFY(item("homeSlideDot1")->hasActiveFocus());
+    QVERIFY(item("homeSlideDot1")->property("visualFocus").toBool());
+    QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+    QTRY_VERIFY(dot->hasActiveFocus());
+    QVERIFY(dot->property("visualFocus").toBool());
+    QVERIFY(QQmlProperty(dotBackground, "border.color").read().value<QColor>().alpha() > 0);
+    QVERIFY(click("homeCreditsButton"));
+    auto dialog = engine.rootObjects().first()->findChild<QObject *>("homeCreditsDialog");
+    QVERIFY(dialog);
+    QVERIFY(dialog->property("visible").toBool());
+    QTest::qWait(100);
+    QVERIFY(window->grabWindow().save("previews/carousel/credits-1240x820.png"));
+    QTest::keyClick(window, Qt::Key_Escape);
+    QTRY_VERIFY(!dialog->property("visible").toBool());
+    QVERIFY(item("homeCreditsButton")->hasActiveFocus());
+    auto creditButton = item("homeCreditsButton");
+    QTest::mouseMove(window, creditButton->mapToScene(creditButton->boundingRect().center()).toPoint());
+    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+        creditButton->mapToScene(creditButton->boundingRect().center()).toPoint());
+    QTRY_VERIFY(dialog->property("visible").toBool());
+    QTest::keyClick(window, Qt::Key_Escape);
+    QTRY_VERIFY(!dialog->property("visible").toBool());
+    QTRY_VERIFY(creditButton->hasActiveFocus());
+    QVERIFY(!creditButton->property("visualFocus").toBool());
+    item("pageScroll")->setProperty("contentY", 0);
+    QTest::qWait(50);
+    QVERIFY(window->grabWindow().save("previews/carousel/mouse-focus-1240x820.png"));
+    QTest::keyClick(window, Qt::Key_Tab);
+    QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+    QTRY_VERIFY(creditButton->hasActiveFocus());
+    QVERIFY(creditButton->property("visualFocus").toBool());
+    QTest::qWait(50);
+    QVERIFY(window->grabWindow().save("previews/carousel/keyboard-focus-1240x820.png"));
+    // Missing presentation media never blocks the navigation routes.
+    home->setProperty("slides", QVariantList{});
+    QTRY_VERIFY(!item("homeNextSlide")->isEnabled());
+    QTRY_VERIFY(!item("homePreviousSlide")->isEnabled());
+    QVERIFY(!item("homeCreditsButton")->isVisible());
+    QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
+    QTRY_VERIFY(!item("homeNextSlide")->isEnabled());
+    QVERIFY(click("homeExploreButton"));
+    QCOMPARE(window->property("page").toString(), QString("explore"));
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homePlayButton"));
+    QCOMPARE(window->property("page").toString(), QString("categories"));
+    QVERIFY(click("categoryButton0"));
+    const auto options = controller.answerOptions();
+    const auto photo = controller.questionPhoto();
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homeExploreButton"));
+    QVERIFY(click("navHome"));
+    QVERIFY(click("homePlayButton"));
+    QCOMPARE(window->property("page").toString(), QString("quiz"));
+    QCOMPARE(controller.answerOptions(), options);
+    QCOMPARE(controller.questionPhoto(), photo);
+}
+
+void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
+{
+    QTemporaryDir directory;
+    GameController controller(nullptr, directory.filePath("carousel-timing.sqlite"));
+    DiscordRichPresence presence{QString(), QString()};
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);
+    auto item=[window](const QString &name) { return findVisualItem(window->contentItem(),name); };
+    auto home=item("homeCarousel");QVERIFY(home);
+    auto timer=window->findChild<QObject *>("homeAdvanceTimer");QVERIFY(timer);
+    auto dialog=window->findChild<QObject *>("homeCreditsDialog");QVERIFY(dialog);
+    const auto slides = controller.homeSlides();
+    const auto captionMatches = [&](int index) {
+        const auto slide = slides[index].toMap();
+        return item("homeCaptionTitle")->property("text").toString() == slide["title"].toString()
+            && item("homeCaptionDescription")->property("text").toString() == slide["excerpt"].toString()
+            && item("homeCaptionScientificName")->property("text").toString() == slide["photo"].toMap()["subject"].toString()
+            && home->property("photo").toMap()["image"] == slide["photo"].toMap()["image"];
+    };
+    const auto ordinaryPhotoPoint = [&] {
+        auto photo = item("homeHeroPhoto");
+        return photo->mapToScene(QPointF(photo->width() * 0.7, 40)).toPoint();
+    };
+    window->requestActivate();
+    // Hover over the photograph itself must not pause the carousel.
+    QTest::mouseMove(window,ordinaryPhotoPoint());
+    item("navHome")->forceActiveFocus(Qt::TabFocusReason);
+    QCOMPARE(home->property("slideInterval").toInt(),8000);
+    QCOMPARE(home->property("transitionDuration").toInt(),600);
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    QTRY_VERIFY(home->property("photoReady").toBool());
+    QTest::qWait(7000);
+    QCOMPARE(home->property("currentIndex").toInt(),0);
+    QTRY_VERIFY_WITH_TIMEOUT(home->property("transitioning").toBool(),2500);
+    QCOMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
+    QTest::qWait(180);
+    const auto blend=home->property("blend").toReal();
+    QVERIFY(blend>0 && blend<1);
+    auto first=item("homeHeroPhoto"),second=item("homeIncomingPhoto");
+    QVERIFY(first->property("painted").toBool() && second->property("painted").toBool());
+    QVERIFY(first->opacity()>0 && second->opacity()>0);
+    QVERIFY(std::abs(first->opacity()+second->opacity()-1)<0.01);
+    QCOMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
+    QVERIFY(QDir().mkpath("previews/carousel"));
+    QVERIFY(window->grabWindow().save("previews/carousel/transition-in-progress-1240x820.png"));
+    QTRY_COMPARE(home->property("pendingIndex").toInt(),-1);
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QVERIFY(captionMatches(1));
+    QVERIFY(window->grabWindow().save("previews/carousel/transition-complete-1240x820.png"));
+    // Resume with a full real interval, rather than the remainder before pause.
+    QTest::qWait(1800);
+    auto caption = item("homePhotoCaption");
+    QTest::mouseMove(window,caption->mapToScene(caption->boundingRect().center()).toPoint());
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    QTest::qWait(450);
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QTest::mouseMove(window,ordinaryPhotoPoint());
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    QTest::qWait(7000);
+    QCOMPARE(home->property("currentIndex").toInt(),1);
+    QCOMPARE(home->property("pendingIndex").toInt(),-1);
+    QTRY_COMPARE_WITH_TIMEOUT(home->property("pendingIndex").toInt(),2,2500);
+    QTRY_COMPARE(home->property("currentIndex").toInt(),2);
+    QVERIFY(captionMatches(2));
+    // Accelerate only the remaining checks; keep an interval longer than 600 ms.
+    timer->setProperty("interval",1000);
+    QTest::mouseMove(window,home->mapToScene(QPointF(100,100)).toPoint());
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    auto explore = item("homeExploreButton");
+    QTest::mouseMove(window,explore->mapToScene(explore->boundingRect().center()).toPoint());
+    QVERIFY(home->property("autoRunning").toBool());
+    const auto bounds = [&](const QString &name) {
+        auto control = item(name);
+        return control->mapRectToScene(control->boundingRect());
+    };
+    const auto previousBounds = bounds("homePreviousSlide"), firstDotBounds = bounds("homeSlideDot0");
+    QVector<QPointF> emptyControlSpaces{
+        QPointF((previousBounds.right() + firstDotBounds.left()) / 2, firstDotBounds.center().y()),
+        QPointF((bounds("homeSlideDot3").right() + bounds("homeNextSlide").left()) / 2, firstDotBounds.center().y())
+    };
+    for (int i = 0; i < 3; ++i) {
+        emptyControlSpaces.append(QPointF((bounds("homeSlideDot" + QString::number(i)).right()
+            + bounds("homeSlideDot" + QString::number(i + 1)).left()) / 2, firstDotBounds.center().y()));
+    }
+    if (firstDotBounds.top() > previousBounds.top())
+        emptyControlSpaces.append(QPointF(firstDotBounds.center().x(),
+            (firstDotBounds.top() + previousBounds.top()) / 2));
+    for (const QString &name : {"homePreviousSlide", "homeSlideDot0", "homeSlideDot1", "homeSlideDot2",
+                               "homeSlideDot3", "homeNextSlide", "homeCreditsButton"}) {
+        auto control = item(name);
+        QTest::mouseMove(window,control->mapToScene(control->boundingRect().center()).toPoint());
+        QTRY_VERIFY(!home->property("autoRunning").toBool());
+        // Empty space inside the same bar must resume, even between two dots.
+        for (const auto &point : emptyControlSpaces) {
+            QTest::mouseMove(window,point.toPoint());
+            QTRY_VERIFY(home->property("autoRunning").toBool());
+            QVERIFY(!home->property("pointerInteracting").toBool());
+        }
+    }
+    QCOMPARE(home->property("currentIndex").toInt(),2);
+    QTest::mouseMove(window,QPoint(10,10));
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    QTest::qWait(300);
+    // Manual navigation restarts the interval and commits metadata only at end.
+    QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,3),Q_ARG(QVariant,true)));
+    QCOMPARE(home->property("currentIndex").toInt(),2);
+    QVERIFY(captionMatches(2));
+    QTRY_COMPARE(home->property("currentIndex").toInt(),3);
+    QVERIFY(captionMatches(3));
+    QTest::qWait(250);
+    QCOMPARE(home->property("pendingIndex").toInt(),-1);
+    // Pause for credits independently of keyboard focus.
+    QVERIFY(QMetaObject::invokeMethod(dialog,"open"));
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    QTest::qWait(1100);
+    QCOMPARE(home->property("currentIndex").toInt(),3);
+    QVERIFY(QMetaObject::invokeMethod(dialog,"close"));
+    item("homeNextSlide")->forceActiveFocus(Qt::TabFocusReason);
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    item("navHome")->forceActiveFocus(Qt::TabFocusReason);
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    QQuickWindow anotherWindow;
+    anotherWindow.show();anotherWindow.requestActivate();
+    QTRY_VERIFY(!home->property("windowActive").toBool());
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    anotherWindow.hide();window->requestActivate();
+    QTRY_VERIFY(home->property("windowActive").toBool());
+    window->hide();
+    QTRY_VERIFY(!home->property("windowActive").toBool());
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    QTest::qWait(450);
+    QCOMPARE(home->property("currentIndex").toInt(),3);
+    window->show();window->requestActivate();
+    QTRY_VERIFY(home->property("windowActive").toBool());
+    window->setProperty("motionEnabled",false);
+    QTRY_VERIFY(!home->property("autoRunning").toBool());
+    QCOMPARE(home->property("transitionDuration").toInt(),0);
+    QTRY_COMPARE(home->property("pendingIndex").toInt(),-1);
+    QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,3),Q_ARG(QVariant,true)));
+    QTRY_COMPARE(home->property("currentIndex").toInt(),3);
+    QVERIFY(QMetaObject::invokeMethod(home,"selectSlide",Q_ARG(QVariant,4),Q_ARG(QVariant,true)));
+    QTRY_COMPARE(home->property("currentIndex").toInt(),0);
+    QVERIFY(captionMatches(0));
+    home->setVisible(false);
+    window->setProperty("motionEnabled",true);
+    QVERIFY(!home->property("autoRunning").toBool());
+    home->setVisible(true);
+    item("navHome")->forceActiveFocus(Qt::TabFocusReason);
+    QTRY_VERIFY(home->property("autoRunning").toBool());
+    window->setProperty("page","explore");
+    QTRY_VERIFY(!item("homeCarousel"));
+    QCOMPARE(controller.answeredCount(),0);
+}
 
 void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
 {
@@ -248,11 +639,6 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
     auto window = qobject_cast<QQuickWindow *>(object.data()); QVERIFY(window);
     auto button = findVisualItem(window->contentItem(), "themeButton"); QVERIFY(button);
     auto background = button->property("background").value<QQuickItem *>(); QVERIFY(background);
-    const auto luminance = [](QColor c) {
-        const auto linear = [](double v) { return v <= 0.04045 ? v/12.92 : std::pow((v+0.055)/1.055, 2.4); };
-        return 0.2126*linear(c.redF()) + 0.7152*linear(c.greenF()) + 0.0722*linear(c.blueF());
-    };
-    const auto contrast = [&](QColor a, QColor b) { const auto x=luminance(a), y=luminance(b); return (qMax(x,y)+0.05)/(qMin(x,y)+0.05); };
     window->setProperty("animations", false);
     QCOMPARE(window->property("animationDuration").toInt(), 0);
     QTest::qWait(180);
@@ -263,22 +649,44 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
             QTest::mouseMove(window, state ? button->mapToScene(QPointF(20,20)).toPoint() : QPoint(510,420));
             button->setProperty("down", state == 2);
             QTest::qWait(1);
-            QVERIFY(contrast(text,background->property("color").value<QColor>()) >= 4.5);
+            QVERIFY(colorContrast(text,background->property("color").value<QColor>()) >= 4.5);
             button->setProperty("down", false);
         }
     }
     button->setProperty("secondary", false); button->setProperty("danger", false);
     button->forceActiveFocus(Qt::TabFocusReason);
     QCOMPARE(QQmlProperty(background, "border.width").read().toInt(), 2);
-    QVERIFY(contrast(window->property("focusColor").value<QColor>(), window->property("canvasColor").value<QColor>()) >= 3.0);
+    QVERIFY(colorContrast(window->property("focusColor").value<QColor>(), window->property("canvasColor").value<QColor>()) >= 3.0);
     QTest::keyClick(window, Qt::Key_Space); QCOMPARE(window->property("activations").toInt(), 1);
     QTest::keyClick(window, Qt::Key_Tab);
     QVERIFY(findVisualItem(window->contentItem(), "themeNav")->hasActiveFocus());
     QTest::keyClick(window, Qt::Key_Tab);
     QVERIFY(findVisualItem(window->contentItem(), "themeAction")->hasActiveFocus());
+    // Mouse focus still operates the buttons; only keyboard focus draws gold.
+    const QColor focusColor = window->property("focusColor").value<QColor>();
+    for (const QString &name : {"themeButton", "themeNav", "themeAction"}) {
+        auto control = findVisualItem(window->contentItem(), name);
+        QVERIFY(control);
+        auto surface = control->property("background").value<QQuickItem *>();
+        QVERIFY(surface);
+        QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier,
+            control->mapToScene(control->boundingRect().center()).toPoint());
+        QTRY_VERIFY(control->hasActiveFocus());
+        QVERIFY(!control->property("visualFocus").toBool());
+        QVERIFY(QQmlProperty(surface, "border.color").read().value<QColor>() != focusColor);
+        QTest::mouseMove(window, QPoint(510,420));
+        if (name == "themeAction") QCOMPARE(surface->property("color").value<QColor>().alpha(), 0);
+        QTest::keyClick(window, Qt::Key_Tab);
+        QTest::keyClick(window, Qt::Key_Backtab, Qt::ShiftModifier);
+        QTRY_VERIFY(control->hasActiveFocus());
+        QVERIFY(control->property("visualFocus").toBool());
+        QCOMPARE(QQmlProperty(surface, "border.color").read().value<QColor>(), focusColor);
+        QCOMPARE(QQmlProperty(surface, "border.width").read().toInt(), 2);
+    }
+    QCOMPARE(window->property("activations").toInt(), 2);
     button->setEnabled(false);
     QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, button->mapToScene(QPointF(20,20)).toPoint());
-    QCOMPARE(window->property("activations").toInt(), 1);
+    QCOMPARE(window->property("activations").toInt(), 2);
     window->setProperty("animations", true);
     QVERIFY(window->property("animationDuration").toInt() > 0);
 }

@@ -20,8 +20,8 @@ Button {
     Accessible.name: text
     background: Rectangle {
         radius: Style.Theme.controlRadius
-        border.width: control.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
-        border.color: control.activeFocus ? Style.Theme.focus : Style.Theme.border
+        border.width: control.visualFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+        border.color: control.visualFocus ? Style.Theme.focus : Style.Theme.border
         color: !control.enabled ? Style.Theme.disabledSurface
              : control.secondary ? (control.down ? Style.Theme.surface : control.hovered ? Style.Theme.surfaceHover : Style.Theme.surfaceRaised)
              : control.danger ? (control.down ? Style.Theme.dangerPressed : control.hovered ? Style.Theme.dangerHover : Style.Theme.danger)

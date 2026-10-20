@@ -67,6 +67,7 @@ def complete_coverage(root):
         if taxon in bindings:continue
         choices=[]
         for key,photo in data['photos'].items():
+            if photo.get('usage')=='home':continue
             organism=by_id.get(photo.get('catalog_species_id'))
             if organism and photo['subject']==organism['name'] and taxon in organism['taxonomy']:
                 choices.append(key)

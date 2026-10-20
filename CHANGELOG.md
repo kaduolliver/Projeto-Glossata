@@ -4,6 +4,22 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- PR #30: hover da barra pausa somente nas áreas dos botões/indicadores, permitindo retomada nos espaçadores e intervalos vazios entre os pontos.
+
+- PR #30: legenda e créditos confirmam o novo slide somente ao concluir o crossfade de 600 ms; hover pausa apenas na legenda e nos controles, preservando teclado, créditos, janela inativa e retomada com oito segundos completos. Refinamentos futuros registrados sem implementação.
+
+- PR #30: legenda científica do carrossel diretamente sobre a fotografia, com degradê inferior suave, título do grupo em destaque, descrição e linha discreta de nome científico/Créditos; capturas reais e testes de contraste/layout atualizados.
+
+- PR #30: destaque de foco dos botões compartilhados e pontos do carrossel usa `visualFocus`; cliques mantêm o funcionamento sem borda amarela, preservada em Tab/Shift+Tab.
+
+- PR #30: corrigida a seleção dos quatro slides em catálogos SQLite com grupos históricos homônimos; indicadores apenas por pontos e botão Créditos compacto à direita, com novas capturas reais.
+
+- PR #30: substituída somente a foto do leão na Home por outra de Panthera leo em 1920 × 1247, com identificação e licença CC BY 2.0 próprias; quatro fotos ativas passam a atender FHD, preservando os cartões e os fallbacks.
+
+- Refinamento do PR #30: variantes fotográficas maiores exclusivas da Home, indicadores sem miniaturas, avanço de oito segundos com pausas e crossfade de 600 ms, créditos compactos e novas capturas reais. Fotos dos cartões/quiz e regras preservadas.
+
+- Subetapa 2.2.1-A (#22): Início com quatro fotografias locais, carrossel manual acessível, créditos e fontes por slide, ações Explorar/Jogar e redução de movimento. Nenhuma nova mídia ou alteração de catálogo.
+
 - Subetapa 2.1.3 (#22): navegação lateral com Explorar separado de Jogar, cabeçalho contextual e shell responsivo; sessões e retornos preservados, com testes de navegação e capturas reais.
 
 - Subetapa 2.1.2 (#22): tokens Qt/QML centralizados, quatro componentes compartilhados com estilos consistentes, foco de teclado e redução de movimento; capturas reais e teste de contraste/estados. Telas, catálogo e regras preservados.

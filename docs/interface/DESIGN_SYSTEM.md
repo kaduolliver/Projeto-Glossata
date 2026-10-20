@@ -2,6 +2,8 @@
 
 Os tokens ficam em `resources/qml/style/Theme.qml`, singleton QML local registrado por `qmldir` e embarcado no QRC. `UiButton`, `NavItem`, `StatCard` e `TextAction` usam os tokens; as demais views conservam seus estilos. Não há dependência nova ou mudança na organização das telas.
 
+Na Subetapa 2.2.1-A, `HomeView` também utiliza esses tokens. A fotografia ocupa a região principal à direita com gradiente; a legenda aparece diretamente sobre um degradê inferior escuro, transparente acima e nas laterais. O título do grupo usa `subtitleSize` e seminegrito; a descrição usa `bodySize`, seguida do nome científico em itálico e de Créditos. Pontos distinguem seleção (verde) e foco por teclado (dourado). O crossfade de 600 ms e o avanço automático de oito segundos usam `homeCrossfadeDuration` e `homeSlideInterval`, com pausa por interação/visibilidade e desativação pela redução de movimento. Os tokens e contratos compartilhados não foram alterados.
+
 | Papel | Tokens/valores |
 | --- | --- |
 | Fundo e superfícies | `canvas` #091A22; `surface` #10262D; `surfaceRaised` #18343C; `surfaceHover` #21444A |
@@ -18,6 +20,8 @@ Títulos/subtítulos e fonte científica estão preparados para consumo futuro; 
 ## Estados e acessibilidade implementados
 
 Foco de teclado com borda dourada de 2 px; seleção da navegação também possui indicador lateral. Estados normal, hover, pressionado e desabilitado usam cores próprias. O texto desabilitado mantém opacidade integral. Transições de cor duram 120 ms, sem escala ao pressionar; transição de página permanece 180 ms. A opção existente “Transições suaves” alimenta `Theme.motionEnabled`: ao desligar, Behaviors ficam inativos e durações vão a zero. Não há detecção automática da preferência de movimento do sistema operacional.
+
+`UiButton`, `TextAction`, `NavItem` e os pontos do carrossel usam `visualFocus` nos destaques de foco. O clique mantém o foco funcional, sem borda dourada; Tab e Shift+Tab exibem o indicador. `activeFocusOnTab` e as verificações funcionais de foco permanecem preservados.
 
 O teste Qt `designSystemStatesAndContrast` verifica contraste por luminância sRGB de pelo menos 4,5:1 entre texto/fundos ativos de UiButton nas variantes primária, secundária e perigo (normal/hover/pressionado), 3:1 entre foco e canvas, navegação Tab, ativação Space, bloqueio do clique desabilitado e redução de movimento. Isso não certifica acessibilidade de todas as telas, escalas ou leitores de tela.
 

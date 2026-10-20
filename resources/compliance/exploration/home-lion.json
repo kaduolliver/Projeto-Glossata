@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "origin": "live_commons_file_metadata",
+  "collected_at": "2026-10-20T16:06:37.900633+00:00",
+  "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo%7Cinfo&iiprop=url%7Csize%7Csha1%7Cextmetadata&iiextmetadatafilter=ObjectName%7CImageDescription%7CArtist%7CCredit%7CLicenseShortName%7CLicenseUrl%7CRestrictions&iiurlwidth=2560&iiurlheight=2560&titles=File%3ALion+waiting+in+Namibia.jpg&maxlag=5",
+  "record": {
+    "page_id": 755560,
+    "revision_id": 1245346029,
+    "file_title": "File:Lion waiting in Namibia.jpg",
+    "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "original_sha1": "326ccde052ef53aa157f05323f612282b5d47ddf",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg",
+    "original_width": 1280,
+    "original_height": 960,
+    "metadata": {
+      "ObjectName": {
+        "value": "Lion waiting in Namibia",
+        "source": "mediawiki-metadata"
+      },
+      "ImageDescription": {
+        "value": "Lion (<i><a href=\"//commons.wikimedia.org/wiki/Category:Panthera_leo\" title=\"Category:Panthera leo\">Panthera leo</a></i>) lying down in Namibia. Photographer's <a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/yaaaay/10142740/in/set-281484#comment2730435\">comment</a>: \"[I was] standing on a viewing platform about 25m away. He wasn't doing much at all other than looking regal. There where<i> [sic] </i>some lionesses down below growling and pacing but they were in the shade so I didn't get very good pictures of them. [...] They were from <a rel=\"nofollow\" class=\"external text\" href=\"http://www.okonjima.com/\">Okonjima</a> <a rel=\"nofollow\" class=\"external text\" href=\"http://www.africat.org/\">AfriCat</a> foundation who look after injured or orphaned cats until they can be returned to the wild. They also educate farmers on practices on how to raise stock with large cats.\"",
+        "source": "commons-desc-page"
+      },
+      "Artist": {
+        "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/27109510@N00\">Kevin Pluck</a>",
+        "source": "commons-desc-page"
+      },
+      "Credit": {
+        "value": "<a href=\"//commons.wikimedia.org/wiki/Flickr\" class=\"mw-redirect\" title=\"Flickr\">Flickr</a>: <a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/27109510@N00/11232963\">The King</a>.",
+        "source": "commons-desc-page"
+      },
+      "LicenseShortName": {
+        "value": "CC BY 2.0",
+        "source": "commons-desc-page",
+        "hidden": ""
+      },
+      "LicenseUrl": {
+        "value": "https://creativecommons.org/licenses/by/2.0",
+        "source": "commons-desc-page"
+      },
+      "Restrictions": {
+        "value": "",
+        "source": "commons-desc-page",
+        "hidden": ""
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
-Revisão atual: [2.1.3 — navegação e estrutura](VERSOES/2.1.3/README.md), sobre o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md) e capturas reais próprias. As versões anteriores permanecem históricas.
+Revisão atual: [2.2.1-A — Início fotográfico](VERSOES/2.2.1-A/README.md), sobre a [navegação 2.1.3](VERSOES/2.1.3/README.md) e o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md) e capturas reais próprias. As versões anteriores permanecem históricas.
 
 1. Antes de alterar QML, crie uma versão em `VERSOES/<identificador>/` com o commit exato da interface e as telas afetadas. Conserve as versões anteriores.
 2. Recompile o aplicativo e gere capturas da **janela real** com banco temporário, registrando método, ambiente, horários, dimensões, hashes do binário e dos PNGs. Se a tela inicial mudar, execute `scripts/capture_home.py` e atualize também `docs/images/tela-inicial.png` e seu registro no **mesmo commit visual**.
@@ -14,3 +14,13 @@ Revisão atual: [2.1.3 — navegação e estrutura](VERSOES/2.1.3/README.md), so
 4. Verifique os links e hashes, execute os testes de interface pertinentes e confira as capturas. Capturas não substituem teste de acessibilidade nem inspeção em outros sistemas ou GPUs.
 
 Os PNGs podem conter fotografias e identidade visual com direitos individuais. Seus registros de origem e atribuição continuam nos controles existentes; uma captura não altera o estado de distribuição de qualquer recurso.
+
+## Planejamento das próximas subetapas — Issue #22
+
+Itens registrados para avaliação futura; não implementados na Subetapa 2.2.1-A:
+
+- Refinar visualmente o diálogo de créditos, preservando atribuições, licenças, fontes e acessibilidade.
+- Melhorar as descrições educativas do carrossel por meio da curadoria científica existente, com fontes e revisão das redações concretas. Preservar os textos originais e suas decisões; não substituir ou reaproveitar aprovações indevidamente.
+- Substituir os cartões genéricos da Home por indicadores reais e dinâmicos, derivados dos dados disponíveis e com significado explícito. Não apresentar números estimados como métricas reais.
+
+O detalhamento e a implementação dependem das próximas subetapas da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem antecipar sua conclusão.

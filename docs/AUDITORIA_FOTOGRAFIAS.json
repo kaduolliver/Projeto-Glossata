@@ -1,5 +1,5 @@
 {
-  "total_photos": 109,
+  "total_photos": 114,
   "bindings": 533,
   "total_cards": 623,
   "documented_pending": 89,
@@ -10051,7 +10051,7 @@
   "taxon_cards": 622,
   "photographed_cards": 534,
   "coverage_percent": 85.71,
-  "total_bytes": 18373503,
+  "total_bytes": 26608370,
   "errors": [],
   "notice": "File-level source evidence and technical checks, not expert scientific review or legal certification.",
   "baseline_commit": "c78e427c0544c1382384385b7c79b40c785dea37",
@@ -10096,8 +10096,8 @@
     "policy": "CC0/CC BY only; at most three eight-result pages and separate CC0 queries; never a complete inventory of available photographs."
   },
   "licensing": {
-    "cc-by": 70,
-    "cc0": 39
+    "cc-by": 72,
+    "cc0": 42
   },
   "selection_notes": {
     "Hassallia byssoidea": "Arquivo de título compatível, mas descrição da fonte o apresenta como fungo e imagem macroscópica não sustenta a identificação como cianobactéria. Descartado por incompatibilidade científica.",
@@ -12602,5 +12602,23 @@
       "subject": "Pseudomonas aeruginosa",
       "reason": "Results include phages, diagrams, culture plates and an unrelated fish; no automated association."
     }
-  ]
+  ],
+  "home_refinement": {
+    "base_commit": "5eb1fc94be8f7570fe188c85101ce9e16128aa7b",
+    "variants": {
+      "lion": "home-lion",
+      "monarch": "home-monarch",
+      "sunflower": "home-sunflower",
+      "amanita": "home-amanita"
+    },
+    "card_bindings_unchanged": true,
+    "note": "Current totals include four Home-only renditions. Baseline preservation and original selection records below remain historical."
+  },
+  "home_fhd_replacement": {
+    "replacements": {
+      "lion": "home-lion-fhd"
+    },
+    "card_bindings_unchanged": true,
+    "scope": "Home only; same catalog species and independently licensed source photo; no human scientific approval recorded."
+  }
 }

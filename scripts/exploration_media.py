@@ -68,9 +68,16 @@ def fetch(url):
         raise
 
 
-def collect_commons(title, identifier, subject, root=ROOT, width=640, identification_category=None):
+def rendition_modifications(download, original):
+    clean=lambda url:urllib.parse.urlsplit(url)._replace(query='',fragment='').geturl()
+    origin='Arquivo original fornecido pelo Wikimedia Commons.' if clean(download)==clean(original) else 'Imagem reduzida fornecida pelo Wikimedia Commons.'
+    return origin+' Na interface: preenchimento proporcional com recorte centrado no ponto focal e gradiente horizontal de transparência; sem retoque do organismo.'
+
+
+def collect_commons(title, identifier, subject, root=ROOT, width=640, identification_category=None, usage='card'):
     if not re.fullmatch(r'[a-z0-9][a-z0-9_-]*',identifier):raise ValueError('Invalid local photograph identifier')
-    if not 320<=width<=1024:raise ValueError('Image width outside budget')
+    budget=3072 if usage=='home' else 1024
+    if not 320<=width<=budget:raise ValueError('Image width outside budget')
     params=dict(action='query',format='json',prop='imageinfo|info',iiprop='url|size|sha1|extmetadata',
                 iiextmetadatafilter='|'.join(FIELDS),iiurlwidth=width,iiurlheight=width,titles=title,maxlag=5)
     if identification_category:
@@ -83,7 +90,9 @@ def collect_commons(title, identifier, subject, root=ROOT, width=640, identifica
     if not author:raise ValueError('Source author credit missing')
     categories=[c['title'] for c in page.get('categories',[])]
     if identification_category and identification_category not in categories:raise ValueError('Requested source identification category not demonstrated')
-    download=urllib.parse.urlsplit(info.get('thumburl',info['url']))._replace(query='',fragment='').geturl()
+    original_size=(info.get('width',0),info.get('height',0))
+    selected=info['url'] if original_size[0] and max(original_size)<=width else info.get('thumburl',info['url'])
+    download=urllib.parse.urlsplit(selected)._replace(query='',fragment='').geturl()
     if urllib.parse.urlparse(download).hostname not in {'upload.wikimedia.org','thumb.wikimedia.org'}:
         raise ValueError('Unexpected image host')
     raw=fetch(download)
@@ -92,7 +101,8 @@ def collect_commons(title, identifier, subject, root=ROOT, width=640, identifica
     temporary=folder/(identifier+'.part');temporary.write_bytes(raw)
     try:
         width,height=image_dimensions(temporary)
-        if min(width,height)<160 or max(width,height)>1024:raise ValueError('Inadequate thumbnail dimensions')
+        if min(width,height)<160 or max(width,height)>budget:raise ValueError('Inadequate thumbnail dimensions')
+        if original_size[0] and (width>original_size[0] or height>original_size[1]):raise ValueError('Upscaled source rejected')
         if image_privacy_findings(temporary):raise ValueError('Sensitive metadata in thumbnail')
         extension='.png' if raw.startswith(b'\x89PNG\r\n\x1a\n') else '.jpg' if raw.startswith(b'\xff\xd8') else None
         if not extension:raise ValueError('Unsupported bitmap format')
@@ -103,6 +113,7 @@ def collect_commons(title, identifier, subject, root=ROOT, width=640, identifica
     evidence={'schema_version':1,'origin':'live_commons_file_metadata','collected_at':collected,'source_url':endpoint,
               'record':{'page_id':page['pageid'],'revision_id':page['lastrevid'],'file_title':page['title'],
                         'original_url':info['url'],'original_sha1':info['sha1'],'download_url':download,
+                        'original_width':original_size[0],'original_height':original_size[1],
                         'metadata':{k:metadata[k] for k in FIELDS if k in metadata}}}
     if identification_category:evidence['record']['identification_category']=identification_category
     proof=f'resources/compliance/exploration/{identifier}.json';save(root/proof,evidence)
@@ -114,8 +125,9 @@ def collect_commons(title, identifier, subject, root=ROOT, width=640, identifica
             'path':path.relative_to(root).as_posix(),'sha256':hashlib.sha256(raw).hexdigest(),
             'width':width,'height':height,'bytes':len(raw),'evidence_path':proof,
             'evidence_sha256':hashlib.sha256((root/proof).read_bytes()).hexdigest(),
-            'modifications':'Imagem reduzida fornecida pelo Wikimedia Commons. Na interface: preenchimento proporcional com recorte centrado no ponto focal e gradiente horizontal de transparência; sem retoque do organismo.',
-            'permission_state':'source_license_evidenced','scientific_review':'source_identification; human review not declared'}
+            'modifications':rendition_modifications(download,info['url']),
+            'permission_state':'source_license_evidenced','scientific_review':'source_identification; human review not declared',
+            **({'usage':'home'} if usage=='home' else {})}
 
 
 def photo_errors(photo, root=ROOT):
@@ -148,9 +160,37 @@ def photo_errors(photo, root=ROOT):
         if photo.get('bytes')!=path.stat().st_size:errors.append('image_size')
         from refine_photos import image_dimensions
         if image_dimensions(path)!=(photo['width'],photo['height']):errors.append('image_dimensions')
-        if min(photo['width'],photo['height'])<160 or max(photo['width'],photo['height'])>1024:errors.append('image_budget')
+        budget=3072 if photo.get('usage')=='home' else 1024
+        if min(photo['width'],photo['height'])<160 or max(photo['width'],photo['height'])>budget:errors.append('image_budget')
+        if photo.get('usage')=='home' and (not record.get('original_width') or not record.get('original_height')
+            or photo['width']>record['original_width'] or photo['height']>record['original_height']):errors.append('unproved_native_resolution')
     except (KeyError,ValueError,TypeError,OSError):errors.append('incomplete_or_invalid_photo')
     return sorted(set(errors))
+
+
+def matching_variant(base, variant, root=ROOT):
+    """A larger rendition must depict the very same source file, not a new identification."""
+    fields=('photo_id','subject','author','license','license_version','license_url','photo_url')
+    if variant.get('usage')!='home' or any(base.get(k)!=variant.get(k) for k in fields):return False
+    try:
+        first=load(local_file(root,base['evidence_path']))['record']
+        second=load(local_file(root,variant['evidence_path']))['record']
+        return bool(first.get('original_sha1')) and first['original_sha1']==second.get('original_sha1')
+    except (KeyError,ValueError,OSError):return False
+
+
+def matching_replacement(base, replacement, root=ROOT):
+    """A different Home photo needs its own evidence, not the base photo's permission or review."""
+    if (replacement.get('usage')!='home' or replacement.get('subject')!=base.get('subject')
+        or replacement.get('catalog_species_id')!=base.get('catalog_species_id')
+        or replacement.get('width',0)<1920 or replacement.get('height',0)<1080):return False
+    try:
+        species=next(s for s in load(root/'resources/data/species.json') if s['id']==replacement['catalog_species_id'])
+        record=load(local_file(root,replacement['evidence_path']))['record']
+        category=record.get('identification_category','')
+        return species['name']==replacement['subject'] and bool(re.match(
+            r'^Category:'+re.escape(species['name'])+r'(?:$|[ (])',category))
+    except (KeyError,ValueError,OSError,StopIteration):return False
 
 
 def audit(root=ROOT):
@@ -160,8 +200,15 @@ def audit(root=ROOT):
     photos=data.get('photos',{})
     for key,photo in photos.items():
         errors += [{'photo':key,'error':e} for e in photo_errors(photo,root)]
+    for base,key in data.get('home_variants',{}).items():
+        if base not in photos or key not in photos or not matching_variant(photos[base],photos[key],root):
+            errors.append({'photo':key,'error':'home_variant_identity'})
+    for base,key in data.get('home_replacements',{}).items():
+        if base not in photos or key not in photos or not matching_replacement(photos[base],photos[key],root):
+            errors.append({'photo':key,'error':'home_replacement_identity'})
     for taxon,photo in data.get('bindings',{}).items():
         if taxon not in nodes or photo not in photos:errors.append({'taxon':taxon,'error':'invalid_binding'})
+        elif photos[photo].get('usage')=='home':errors.append({'taxon':taxon,'error':'home_variant_used_for_card'})
         elif nodes[taxon]['rank']=='species' and photos[photo].get('subject')!=nodes[taxon]['name']:
             errors.append({'taxon':taxon,'error':'representative_species_mismatch'})
         elif photos[photo].get('catalog_species_id') is not None:
@@ -238,8 +285,14 @@ if __name__=='__main__':
             attempts=[]
             for title in [entry['file']]+entry.get('retry_files',[]):
                 try:
-                    photo=collect_commons(title,entry['id'],entry['subject'],width=entry.get('width',640),identification_category=entry.get('identification_category'))
+                    photo=collect_commons(title,entry['id'],entry['subject'],width=entry.get('width',640),identification_category=entry.get('identification_category'),usage=entry.get('usage','card'))
                     photo.update({k:entry[k] for k in ('kind','catalog_species_id','identification_note','scope','focus_x','focus_y','preparation') if k in entry})
+                    if entry.get('variant_of'):
+                        if not matching_variant(photos.get(entry['variant_of'],{}),photo):raise ValueError('Variant source identity differs from archived base')
+                        data.setdefault('home_variants',{})[entry['variant_of']]=entry['id']
+                    if entry.get('replacement_of'):
+                        if not matching_replacement(photos.get(entry['replacement_of'],{}),photo):raise ValueError('Replacement species or source evidence incompatible')
+                        data.setdefault('home_replacements',{})[entry['replacement_of']]=entry['id']
                     photos[entry['id']]=photo
                     save(ROOT/MANIFEST,data) # A bounded interrupted run preserves completed records.
                     print(entry['subject']+': prepared '+title,flush=True)

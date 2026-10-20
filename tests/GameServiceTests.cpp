@@ -167,6 +167,7 @@ private slots:
     void controllerKeepsAnswerUntilNextQuestion();
     void taxonomyFiltersAndIdentificationLevels();
     void explorationShortcutsPreserveHierarchyAndQuizFilters();
+    void homeSlidesIgnoreHomonymousHistoricalGroups();
     void explorationPhotographsFailClosed();
     void newTaxonomicRanksRequireIndependentReview();
     void offlinePhotosHaveAttributionAndDecode();
@@ -734,6 +735,10 @@ void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
     JsonSpeciesCatalog catalog;
     JsonExplorationMediaCatalog media;
     TaxonomyIndex index(catalog,&media);
+    QCOMPARE(index.homeSlides().size(), 4);
+    // No unverified fallback photo is admitted to the home carousel.
+    TaxonomyIndex withoutMedia(catalog);
+    QVERIFY(withoutMedia.homeSlides().isEmpty());
     const auto shortcuts=index.quickAccess();
     QCOMPARE(shortcuts.size(),3);
     const QStringList names{"Animalia","Plantae","Fungi"};
@@ -781,6 +786,46 @@ void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
     QCOMPARE(index.count("domain:Archaea"),0);
 }
 
+void GameServiceTests::homeSlidesIgnoreHomonymousHistoricalGroups()
+{
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+    const QString path = directory.filePath("legacy-home-catalog.sqlite");
+    { SqliteSpeciesCatalog catalog(path); QVERIFY(catalog.isReady()); }
+    const QString connection = "home-legacy-groups-fixture";
+    {
+        auto db = QSqlDatabase::addDatabase("QSQLITE", connection);
+        db.setDatabaseName(path);
+        QVERIFY(db.open());
+        QSqlQuery query(db);
+        // Actual historical group shape, with no photo/intro approvals invented.
+        for (const QString &name : {"Animalia", "Plantae", "Fungi"}) {
+            query.prepare("INSERT INTO taxons(id,scientific_name,rank) VALUES(?,?,'educational_kingdom')");
+            query.addBindValue("edu:" + name);
+            query.addBindValue(name);
+            QVERIFY(query.exec());
+        }
+    }
+    QSqlDatabase::removeDatabase(connection);
+    JsonSpeciesCatalog bundled;
+    JsonExplorationMediaCatalog media;
+    const auto expected = TaxonomyIndex(bundled, &media).homeSlides();
+    QCOMPARE(expected.size(), 4);
+    for (int restart = 0; restart < 3; ++restart) {
+        SqliteSpeciesCatalog reopened(path);
+        QVERIFY(reopened.isReady());
+        QCOMPARE(reopened.loadSpecies().size(), 122);
+        const auto taxons = reopened.loadTaxons();
+        for (const QString &name : {"Animalia", "Plantae", "Fungi"}) {
+            QVERIFY(std::any_of(taxons.begin(), taxons.end(), [&](const Taxon &node) {
+                return node.id == "edu:" + name;
+            }));
+        }
+        // Same order, photographs, sources and reviews as a fresh JSON catalog.
+        QCOMPARE(TaxonomyIndex(reopened, &media).homeSlides(), expected);
+    }
+}
+
 void GameServiceTests::explorationPhotographsFailClosed()
 {
     JsonExplorationMediaCatalog embedded;
@@ -821,6 +866,37 @@ void GameServiceTests::explorationPhotographsFailClosed()
     auto bindings=data["bindings"].toObject();bindings["domain:Bacteria"]="lion";data["bindings"]=bindings;
     QVERIFY(write(lion));JsonExplorationMediaCatalog mismatched(directory.path());
     QVERIFY(mismatched.photoFor("domain:Bacteria").isEmpty());
+    const auto homeLion=data["photos"].toObject()["home-lion"].toObject();
+    for(const auto &key:{"path","evidence_path"}) {
+        const QString path=homeLion[key].toString();
+        QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
+        QVERIFY(QFile::copy(":/"+path,directory.filePath(path)));
+    }
+    QVERIFY(write(lion));JsonExplorationMediaCatalog withVariant(directory.path());
+    const auto card=withVariant.photoFor("clade:Opisthokonta");
+    QCOMPARE(card["width"].toInt(),960);
+    QCOMPARE(card["homeVariant"].toMap()["width"].toInt(),1280);
+    auto changed=homeLion;changed["author"]="Not the source author";
+    auto photographs=data["photos"].toObject();photographs["home-lion"]=changed;data["photos"]=photographs;
+    QVERIFY(write(lion));JsonExplorationMediaCatalog rejectedVariant(directory.path());
+    const auto fallback=rejectedVariant.photoFor("clade:Opisthokonta");
+    QCOMPARE(fallback["image"],card["image"]);
+    QVERIFY(fallback["homeVariant"].toMap().isEmpty());
+    const auto replacement=data["photos"].toObject()["home-lion-fhd"].toObject();
+    for(const auto &key:{"path","evidence_path"}) {
+        const QString path=replacement[key].toString();
+        QDir().mkpath(QFileInfo(directory.filePath(path)).absolutePath());
+        QVERIFY(QFile::copy(":/"+path,directory.filePath(path)));
+    }
+    QVERIFY(write(lion));JsonExplorationMediaCatalog replaced(directory.path());
+    const auto home=replaced.photoFor("clade:Opisthokonta")["homeReplacement"].toMap();
+    QCOMPARE(home["width"].toInt(),1920);
+    QCOMPARE(home["subject"].toString(),QString("Panthera leo"));
+    QCOMPARE(replaced.photoFor("clade:Opisthokonta")["image"],card["image"]);
+    auto wrongSpecies=replacement;wrongSpecies["subject"]="Panthera onca";
+    photographs=data["photos"].toObject();photographs["home-lion-fhd"]=wrongSpecies;data["photos"]=photographs;
+    QVERIFY(write(lion));JsonExplorationMediaCatalog unrelated(directory.path());
+    QVERIFY(unrelated.photoFor("clade:Opisthokonta")["homeReplacement"].toMap().isEmpty());
 }
 
 void GameServiceTests::newTaxonomicRanksRequireIndependentReview()

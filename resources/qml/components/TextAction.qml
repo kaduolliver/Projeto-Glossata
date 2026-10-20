@@ -16,9 +16,9 @@ Button {
     background: Rectangle {
         objectName: "textActionBackground"
         radius: Style.Theme.controlRadius
-        color: !control.enabled ? Style.Theme.disabledSurface : control.down ? Style.Theme.primaryPressed : (control.hovered || control.activeFocus ? Style.Theme.surfaceHover : "transparent")
-        border.color: control.activeFocus ? Style.Theme.focus : "transparent"
-        border.width: control.activeFocus ? Style.Theme.focusWidth : 0
+        color: !control.enabled ? Style.Theme.disabledSurface : control.down ? Style.Theme.primaryPressed : (control.hovered || control.visualFocus ? Style.Theme.surfaceHover : "transparent")
+        border.color: control.visualFocus ? Style.Theme.focus : "transparent"
+        border.width: control.visualFocus ? Style.Theme.focusWidth : 0
         Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
     }
     contentItem: Text {

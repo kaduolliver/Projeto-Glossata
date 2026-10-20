@@ -2309,6 +2309,96 @@
       ],
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "path": "resources/images/exploration/home-lion.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "564e2b276db9c097c0b1496fa2c60e092b971094f9c9de1dfa489f90add1686f",
+      "source": "https://commons.wikimedia.org/wiki/File:Lion_waiting_in_Namibia.jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Kevin Pluck",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-lion.json",
+        "evidence_sha256": "74ef2a2b996df9afb0cf0d3a759ba5c951a08cc6647a6cea2d2ce088fceccab4",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/home-monarch.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "f7c7577d92831748e0767eda97709debe8239f2d010d66d6529345dd49680131",
+      "source": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus_100029190.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "kcthetc1",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-monarch.json",
+        "evidence_sha256": "22ea8326e7cbc31ff73fbd328f63da7df08d124df11c5d06caf6ef0a9fa6e79c",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/home-sunflower.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "e015445d3bba1687866c2be435f92312238a1e11e5ea39457a537be286b9501a",
+      "source": "https://commons.wikimedia.org/wiki/File:Sunflowers_public_domain_helianthus_annuus_IMG_0815.jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "S.G.S.",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-sunflower.json",
+        "evidence_sha256": "1b954f824093989845668ee483f2ca3cb677c11800f9390b6c7a25d3dd13a636",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/home-amanita.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "5daff0348a922f1b8a6657ccd946584cab2bb41634c2892df47b70976b34fa5d",
+      "source": "https://commons.wikimedia.org/wiki/File:Amanita_muscaria_(1)_(8692325426).jpg",
+      "license": "cc0",
+      "license_version": "1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "permission": {
+        "holder": "Bernard Spragg. NZ from Christchurch, New Zealand",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-amanita.json",
+        "evidence_sha256": "10b106a892bb2134566f59c7d95b34ed6acb058956c0346e07405afe5831a742",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
+    },
+    {
+      "path": "resources/images/exploration/home-lion-fhd.jpg",
+      "kind": "exploration_photograph",
+      "sha256": "74231f781a4be5ba216f588a3c1e0718fb750cdd5e6d40ffdbb3d2f69ed3da01",
+      "source": "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_(8603270337).jpg",
+      "license": "cc-by",
+      "license_version": "2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "permission": {
+        "holder": "Ron Knight from Seaford, East Sussex, United Kingdom",
+        "holder_basis": "Crédito indicado pela fonte; não inferido do carregador/observador.",
+        "evidence_path": "resources/compliance/exploration/home-lion-fhd.json",
+        "evidence_sha256": "21e93151a66443314fc64648573550c007ff110bbc273b9a6595af04152f2789",
+        "distribution_allowed": true,
+        "basis": "Licença pública CC0/CC BY por arquivo evidenciada na coleta; sem revisão humana presumida."
+      },
+      "state": "source_license_evidenced"
     }
   ],
   "fonts": {
