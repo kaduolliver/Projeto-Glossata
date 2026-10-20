@@ -7,11 +7,12 @@ Item {
     id: view
     required property var app
     required property var backend
+    property bool browsingOnly: false
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
         width: parent.width; spacing: 18
-        UiButton { objectName: "returnDomainsButton"; text: "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate("categories") }
+        UiButton { objectName: "returnDomainsButton"; text: "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
         Flow {
             Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height; spacing: 4
             Repeater {
@@ -25,8 +26,8 @@ Item {
                 }
             }
         }
-        Label { text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold }
-        Label { text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + " espécies neste grupo"; color: "#91B0B5"; font.pixelSize: 14 }
+        Label { text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + " espécies neste grupo"; color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         ColumnLayout {
             Layout.fillWidth: true; spacing: 4
             Label { text: view.backend.browseTaxon.introduction.text || view.backend.browseTaxon.description || "Introdução científica ainda não disponível para este grupo."; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
@@ -34,9 +35,10 @@ Item {
             TextAction { visible: !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
             TextAction { visible: !!view.backend.browseTaxon.introduction.source_url; text: "Fonte: " + (view.backend.browseTaxon.introduction.source_title || "Referência científica"); onClicked: Qt.openUrlExternally(view.backend.browseTaxon.introduction.source_url) }
         }
-        PlayModeSelector { objectName: "playModeSelector"; app: view.app; backend: view.backend }
-        Label { visible: view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        PlayModeSelector { objectName: "playModeSelector"; visible: !view.browsingOnly; app: view.app; backend: view.backend }
+        Label { visible: !view.browsingOnly && view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
+            visible: !view.browsingOnly
             Layout.fillWidth: true; implicitHeight: controls.implicitHeight + 36
             radius: 16; color: "#17372D"; border.color: "#365C47"
             ColumnLayout {

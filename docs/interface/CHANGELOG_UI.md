@@ -1,5 +1,14 @@
 # Histórico visual
 
+## 2.1.3 — Navegação e estrutura — 2026-10-20
+
+- Ajuste no mesmo PR: restaurada a composição anterior do logotipo, com nome em uma linha e assinatura “APRENDA. EXPLORE.”; capturas reais atualizadas, mantendo as demais alterações.
+
+- Barra lateral com seis destinos e tokens do tema; cabeçalho identifica seção e contexto, inclusive Créditos.
+- Explorar oferece navegação científica sem iniciar partida; Jogar mantém modos, filtros e conclusão. Breadcrumbs e retornos respeitam o contexto.
+- Alternância de seções preserva sessão, dicas, resposta confirmada e resultado pendente. Regressões exercitadas com SQLite temporário.
+- [Registro da revisão e capturas reais](VERSOES/2.1.3/README.md), nas três resoluções solicitadas. Versões anteriores preservadas. Implementação em [`9ee73bbf83310d80171daff1e70b01a366eeb62d`](https://github.com/kaduolliver/Projeto-Glossata/commit/9ee73bbf83310d80171daff1e70b01a366eeb62d), [PR #29](https://github.com/kaduolliver/Projeto-Glossata/pull/29).
+
 ## 2.1.2 — Design system — 2026-10-19
 
 Implementado no commit [`679f7f744c17e5c9f2f28d52ab32105cf0ed8b51`](https://github.com/kaduolliver/Projeto-Glossata/commit/679f7f744c17e5c9f2f28d52ab32105cf0ed8b51), no [PR #28](https://github.com/kaduolliver/Projeto-Glossata/pull/28).
