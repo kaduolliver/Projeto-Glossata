@@ -2,6 +2,8 @@
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
+- Correção no PR #30: quatro slides selecionados pelos identificadores estáveis, inclusive em catálogos locais com grupos históricos homônimos; removida a contagem numérica e alinhado Créditos à direita, com área de foco limitada à largura do botão. Capturas reais atualizadas.
+
 - Complemento FHD no PR #30: foto do leão substituída apenas na Home por outra da mesma espécie em 1920 × 1247; demais slides preservados. Crédito e proveniência independentes, capturas reais atualizadas e fallback anterior mantido.
 
 - Refinamento no PR #30: quatro variantes nativas maiores somente na Home; miniaturas removidas em favor de pontos. Avanço automático de oito segundos, crossfade de 600 ms, pausas por interação/visibilidade e redução de movimento. Legenda compacta com Créditos; informações de atribuição preservadas no diálogo. Capturas e manifesto atualizados na mesma revisão.

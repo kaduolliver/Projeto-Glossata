@@ -167,6 +167,7 @@ private slots:
     void controllerKeepsAnswerUntilNextQuestion();
     void taxonomyFiltersAndIdentificationLevels();
     void explorationShortcutsPreserveHierarchyAndQuizFilters();
+    void homeSlidesIgnoreHomonymousHistoricalGroups();
     void explorationPhotographsFailClosed();
     void newTaxonomicRanksRequireIndependentReview();
     void offlinePhotosHaveAttributionAndDecode();
@@ -783,6 +784,46 @@ void GameServiceTests::explorationShortcutsPreserveHierarchyAndQuizFilters()
     QVERIFY(discoba.contains("image") || discoba.contains("pendingReason"));
     QVERIFY(!index.describe("domain:Archaea")["photo"].toMap().isEmpty());
     QCOMPARE(index.count("domain:Archaea"),0);
+}
+
+void GameServiceTests::homeSlidesIgnoreHomonymousHistoricalGroups()
+{
+    QTemporaryDir directory;
+    QVERIFY(directory.isValid());
+    const QString path = directory.filePath("legacy-home-catalog.sqlite");
+    { SqliteSpeciesCatalog catalog(path); QVERIFY(catalog.isReady()); }
+    const QString connection = "home-legacy-groups-fixture";
+    {
+        auto db = QSqlDatabase::addDatabase("QSQLITE", connection);
+        db.setDatabaseName(path);
+        QVERIFY(db.open());
+        QSqlQuery query(db);
+        // Actual historical group shape, with no photo/intro approvals invented.
+        for (const QString &name : {"Animalia", "Plantae", "Fungi"}) {
+            query.prepare("INSERT INTO taxons(id,scientific_name,rank) VALUES(?,?,'educational_kingdom')");
+            query.addBindValue("edu:" + name);
+            query.addBindValue(name);
+            QVERIFY(query.exec());
+        }
+    }
+    QSqlDatabase::removeDatabase(connection);
+    JsonSpeciesCatalog bundled;
+    JsonExplorationMediaCatalog media;
+    const auto expected = TaxonomyIndex(bundled, &media).homeSlides();
+    QCOMPARE(expected.size(), 4);
+    for (int restart = 0; restart < 3; ++restart) {
+        SqliteSpeciesCatalog reopened(path);
+        QVERIFY(reopened.isReady());
+        QCOMPARE(reopened.loadSpecies().size(), 122);
+        const auto taxons = reopened.loadTaxons();
+        for (const QString &name : {"Animalia", "Plantae", "Fungi"}) {
+            QVERIFY(std::any_of(taxons.begin(), taxons.end(), [&](const Taxon &node) {
+                return node.id == "edu:" + name;
+            }));
+        }
+        // Same order, photographs, sources and reviews as a fresh JSON catalog.
+        QCOMPARE(TaxonomyIndex(reopened, &media).homeSlides(), expected);
+    }
 }
 
 void GameServiceTests::explorationPhotographsFailClosed()

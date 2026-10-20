@@ -111,13 +111,21 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
     QVERIFY(QDir().mkpath("previews/carousel"));
     for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
         window->resize(size);
+        QVERIFY(!item("homeSlidePosition"));
+        QVERIFY(!item("homeSlideDot4"));
         for (int i = 0; i < slides.size(); ++i) {
+            QVERIFY(item("homeSlideDot" + QString::number(i))->isVisible());
             QVERIFY(click("homeSlideDot" + QString::number(i)));
             QTRY_COMPARE(home->property("currentIndex").toInt(), i);
             QTRY_VERIFY(home->property("photoReady").toBool());
             // Indicator focus may scroll the document. Capture its top explicitly.
             item("pageScroll")->setProperty("contentY", 0);
             QTest::qWait(250);
+            const auto credit = item("homeCreditsButton"), caption = item("homePhotoCaption");
+            QVERIFY(credit && caption);
+            QVERIFY(qAbs(credit->width() - credit->implicitWidth()) < 1);
+            QVERIFY(credit->width() < caption->width() / 2);
+            QVERIFY(qAbs(credit->x() + credit->width() - caption->width()) < 1);
             const auto hero = item("homeHeroPhoto");
             const auto frame=window->grabWindow();
             const auto bounds=hero->mapRectToScene(hero->boundingRect());

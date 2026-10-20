@@ -241,6 +241,7 @@ FocusScope {
                 color: Style.Theme.surface
                 ColumnLayout {
                     id: caption
+                    objectName: "homePhotoCaption"
                     anchors.fill: parent
                     anchors.margins: Style.Theme.spaceLg
                     spacing: Style.Theme.spaceXs
@@ -261,7 +262,7 @@ FocusScope {
                     TextAction {
                         id: creditButton
                         objectName: "homeCreditsButton"
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignRight
                         visible: view.slides.length > 0
                         text: "Créditos"
                         Accessible.name: "Ver autor, licença, proveniência e fonte educativa de " + (view.photo.subject || "")
@@ -298,7 +299,7 @@ FocusScope {
                     activeFocusOnTab: true
                     hoverEnabled: true
                     enabled: view.pendingIndex < 0
-                    Accessible.name: "Fotografia " + (index + 1) + ": " + (view.slides[index] ? view.slides[index].photo.subject : "")
+                    Accessible.name: "Fotografia " + (index + 1) + " de " + view.slides.length + ": " + (view.slides[index] ? view.slides[index].photo.subject : "")
                     Accessible.description: view.currentIndex === index ? "Selecionada" : "Mostrar fotografia"
                     background: Rectangle {
                         color: "transparent"
@@ -315,13 +316,6 @@ FocusScope {
                     }
                     onClicked: view.selectSlide(index)
                 }
-            }
-            Label {
-                objectName: "homeSlidePosition"
-                text: view.slides.length ? (view.currentIndex + 1) + " / " + view.slides.length : "0 / 0"
-                color: Style.Theme.textMuted
-                font.pixelSize: Style.Theme.captionSize
-                Accessible.name: "Posição da fotografia: " + text
             }
             Item { Layout.fillWidth: true }
             UiButton {

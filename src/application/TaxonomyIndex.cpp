@@ -98,27 +98,29 @@ QVariantList TaxonomyIndex::homeSlides() const
 {
     QVariantList slides;
     QSet<QString> images;
-    // Explicit representatives, from the same verified associations as exploration.
+    // Stable group IDs avoid homonymous historical nodes retained by SQLite.
+    // These are the same explicit, verified associations used by exploration.
     // EducationalContent only returns introductions with usable existing reviews.
-    for (const QString &name : {"Animalia", "Arthropoda", "Plantae", "Fungi"}) {
-        for (const auto &node : taxons_) if (node.name == name) {
-            auto slide = describe(node.id);
-            auto photo = slide.value("photo").toMap();
-            if (!photo.value("homeReplacement").toMap().isEmpty()) photo = photo.value("homeReplacement").toMap();
-            else if (!photo.value("homeVariant").toMap().isEmpty()) photo = photo.value("homeVariant").toMap();
-            slide.insert("photo", photo);
-            const auto introduction = slide.value("introduction").toMap();
-            const QString image = photo.value("image").toString();
-            const QString state = introduction.value("governance").toMap().value("state").toString();
-            if (image.isEmpty() || (state != "approved_editorial" && state != "approved_expert")
-                || images.contains(image)) break;
-            const QString text = introduction.value("text").toString();
-            const int end = text.indexOf(". ");
-            slide.insert("excerpt", end < 0 ? text : text.left(end + 1));
-            slides.append(slide);
-            images.insert(image);
-            break;
-        }
+    for (const QString &id : {"taxon:cac47417164883d60794",  // Animalia
+                             "taxon:5ad28aa5499d178f4f0d",  // Arthropoda
+                             "taxon:56956496cf600779dc1f",  // Plantae
+                             "taxon:31fdb10b7300d45a9dcf"}) { // Fungi
+        if (!taxons_.contains(id)) continue;
+        auto slide = describe(id);
+        auto photo = slide.value("photo").toMap();
+        if (!photo.value("homeReplacement").toMap().isEmpty()) photo = photo.value("homeReplacement").toMap();
+        else if (!photo.value("homeVariant").toMap().isEmpty()) photo = photo.value("homeVariant").toMap();
+        slide.insert("photo", photo);
+        const auto introduction = slide.value("introduction").toMap();
+        const QString image = photo.value("image").toString();
+        const QString state = introduction.value("governance").toMap().value("state").toString();
+        if (image.isEmpty() || (state != "approved_editorial" && state != "approved_expert")
+            || images.contains(image)) continue;
+        const QString text = introduction.value("text").toString();
+        const int end = text.indexOf(". ");
+        slide.insert("excerpt", end < 0 ? text : text.left(end + 1));
+        slides.append(slide);
+        images.insert(image);
     }
     return slides;
 }
