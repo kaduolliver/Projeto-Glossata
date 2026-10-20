@@ -108,6 +108,8 @@ Validação desta correção: **26/26 suítes CTest aprovadas** (217,01 s); dom�
 
 ## Foco por mouse e teclado
 
+Implementação, testes e capturas no commit [`faeeae89527de29dfa28952d090588d0f8ed0d8d`](https://github.com/kaduolliver/Projeto-Glossata/commit/faeeae89527de29dfa28952d090588d0f8ed0d8d).
+
 As verificações de destaque visual nos três botões compartilhados e nos pontos do carrossel usam `visualFocus`. As verificações funcionais de foco, pausa do carrossel e navegação permanecem intactas. Tab e Shift+Tab preservam o dourado; clicar não o ativa. Nenhuma cor ou outro estado visual foi alterado.
 
 Regressões verificam clique e funcionamento dos botões, ausência da borda pelo mouse e retorno da borda por Tab/Shift+Tab. [Mouse](capturas/mouse-focus-1240x820.png) e [teclado](capturas/keyboard-focus-1240x820.png) têm capturas reais adicionais. A imagem oficial registra a interação com Créditos no mesmo `Main.qml`/controlador, executado pelo QtTest com SQLite temporário; o manifesto identifica esse binário e a fonte do quadro. A captura inicial pelo executável de produção também foi refeita com `scripts/capture_home.py`: o estado em repouso conserva a mesma aparência.
