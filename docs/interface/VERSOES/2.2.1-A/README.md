@@ -84,6 +84,8 @@ O histórico inicial permanece no Git, e as versões baseline/2.1.2/2.1.3 não s
 
 ## Complemento FHD solicitado pelo mantenedor
 
+Substituição e capturas no commit [`7f11c1a9c0c72fb0557512bfb35c3e4a6c37ede8`](https://github.com/kaduolliver/Projeto-Glossata/commit/7f11c1a9c0c72fb0557512bfb35c3e4a6c37ede8).
+
 Entre as quatro fotografias ativas, somente o leão estava abaixo de 1920 × 1080. Foi preparada outra imagem da mesma espécie, [Panthera leo em Etosha, por Ron Knight](https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_(8603270337).jpg), com CC BY 2.0 comprovada no arquivo específico. A fonte identifica a espécie no título e na categoria `Panthera leo of Etosha National Park`, arquivada pelo coletor; isso não constitui revisão por especialista. A imagem passou pela inspeção visual técnica e pela checagem de metadados sensíveis.
 
 `home_replacements` registra esta seleção separadamente de `home_variants`: não é apresentada como outro tamanho da fotografia de Kevin Pluck. A nova imagem exige evidência própria, identidade coincidente com o organismo 126 e categoria identificadora da fonte, além de pelo menos 1920 × 1080 pixels. A permissão e a identificação da foto antiga não são transferidas. O validador continua exigindo o mesmo arquivo-fonte para variantes de resolução. Em caso de falha, mantém o fallback validado; não libera uma imagem sem licença.
