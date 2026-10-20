@@ -5,7 +5,7 @@
 - Barra lateral com seis destinos e tokens do tema; cabeçalho identifica seção e contexto, inclusive Créditos.
 - Explorar oferece navegação científica sem iniciar partida; Jogar mantém modos, filtros e conclusão. Breadcrumbs e retornos respeitam o contexto.
 - Alternância de seções preserva sessão, dicas, resposta confirmada e resultado pendente. Regressões exercitadas com SQLite temporário.
-- [Registro da revisão e capturas reais](VERSOES/2.1.3/README.md), nas três resoluções solicitadas. Versões anteriores preservadas. Commit e PR serão associados após a criação.
+- [Registro da revisão e capturas reais](VERSOES/2.1.3/README.md), nas três resoluções solicitadas. Versões anteriores preservadas. Implementação em [`9ee73bbf83310d80171daff1e70b01a366eeb62d`](https://github.com/kaduolliver/Projeto-Glossata/commit/9ee73bbf83310d80171daff1e70b01a366eeb62d), [PR #29](https://github.com/kaduolliver/Projeto-Glossata/pull/29).
 
 ## 2.1.2 — Design system — 2026-10-19
 

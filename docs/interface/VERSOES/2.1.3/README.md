@@ -1,6 +1,6 @@
 # Revisão 2.1.3 — Navegação e estrutura
 
-Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), baseada em `4449f8468d0e70485b5fa3b90f3814595e6771f9` (PR #28 integrado). O número identifica a etapa da interface, não um lançamento do aplicativo. Commit e PR desta implementação serão registrados após a criação.
+Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), baseada em `4449f8468d0e70485b5fa3b90f3814595e6771f9` (PR #28 integrado). O número identifica a etapa da interface, não um lançamento do aplicativo. Implementação no commit [`9ee73bbf83310d80171daff1e70b01a366eeb62d`](https://github.com/kaduolliver/Projeto-Glossata/commit/9ee73bbf83310d80171daff1e70b01a366eeb62d), no [PR #29](https://github.com/kaduolliver/Projeto-Glossata/pull/29).
 
 ## Decisões e diferenças
 

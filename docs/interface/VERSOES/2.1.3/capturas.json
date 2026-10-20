@@ -1,5 +1,7 @@
 {
   "schema_version": 1,
+  "implementation_commit": "9ee73bbf83310d80171daff1e70b01a366eeb62d",
+  "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/29",
   "base_commit": "4449f8468d0e70485b5fa3b90f3814595e6771f9",
   "rendering": "Qt 6.11.2; Windows 11; offscreen/software; Basic; scale 1; temporary SQLite; Discord disabled",
   "production_home_record": "../../../images/tela-inicial.json",
