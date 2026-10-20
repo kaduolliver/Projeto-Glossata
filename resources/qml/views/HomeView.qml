@@ -23,7 +23,7 @@ FocusScope {
     readonly property bool keyboardInteracting: activeFocus && focusedControl
         && (focusedControl.focusReason === Qt.TabFocusReason || focusedControl.focusReason === Qt.BacktabFocusReason
             || focusedControl.focusReason === Qt.ShortcutFocusReason || focusedControl.focusReason === Qt.OtherFocusReason)
-    readonly property bool pointerInteracting: captionHover.hovered || controlsHover.hovered
+    readonly property bool pointerInteracting: captionHover.hovered || controlsHover.overControl
         || !!(activeFocus && focusedControl && focusedControl.down)
     readonly property bool canAutoAdvance: visible && windowActive && Style.Theme.motionEnabled
         && slides.length > 1 && !pointerInteracting && !keyboardInteracting && !credits.visible
@@ -334,7 +334,21 @@ FocusScope {
             }
         }
         RowLayout {
-            HoverHandler { id: controlsHover }
+            HoverHandler {
+                id: controlsHover
+                readonly property bool overControl: {
+                    if (!hovered) return false
+                    const position = point.position
+                    // Ignore stretch items and gaps, including between dots.
+                    for (const control of parent.children) {
+                        if (control.visible && control.activeFocusOnTab
+                            && position.x >= control.x && position.x < control.x + control.width
+                            && position.y >= control.y && position.y < control.y + control.height)
+                            return true
+                    }
+                    return false
+                }
+            }
             Layout.fillWidth: true
             spacing: Style.Theme.spaceSm
             UiButton {

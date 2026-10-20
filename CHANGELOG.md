@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
+- PR #30: hover da barra pausa somente nas áreas dos botões/indicadores, permitindo retomada nos espaçadores e intervalos vazios entre os pontos.
+
 - PR #30: legenda e créditos confirmam o novo slide somente ao concluir o crossfade de 600 ms; hover pausa apenas na legenda e nos controles, preservando teclado, créditos, janela inativa e retomada com oito segundos completos. Refinamentos futuros registrados sem implementação.
 
 - PR #30: legenda científica do carrossel diretamente sobre a fotografia, com degradê inferior suave, título do grupo em destaque, descrição e linha discreta de nome científico/Créditos; capturas reais e testes de contraste/layout atualizados.

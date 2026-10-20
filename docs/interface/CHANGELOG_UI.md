@@ -2,6 +2,8 @@
 
 ## 2.2.1-A — Início fotográfico — 2026-10-20
 
+- PR #30: `controlsHover` considera apenas a área efetiva dos botões e indicadores; espaços vazios, inclusive entre os pontos, não pausam o avanço. Layout e estilos inalterados.
+
 - PR #30: legenda sincronizada à conclusão do crossfade; hover restrito à legenda e à barra de controles, sem pausa sobre a fotografia ou outras regiões da Home. Sem mudança de estilo. Testes de transição, intervalo real e retomadas ampliados; propostas futuras registradas no [planejamento](README.md#planejamento-das-próximas-subetapas--issue-22).
 
 - PR #30: removida a superfície sólida da legenda. Título do grupo seminegrito e descrição aparecem sobre a fotografia; nome científico em itálico e Créditos compartilham a linha inferior. Degradê estático desaparece acima e nas laterais, preservando imagens, transições e cantos. Capturas nas três resoluções atualizadas.

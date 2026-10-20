@@ -357,10 +357,33 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     auto explore = item("homeExploreButton");
     QTest::mouseMove(window,explore->mapToScene(explore->boundingRect().center()).toPoint());
     QVERIFY(home->property("autoRunning").toBool());
-    for (const QString &name : {"homePreviousSlide", "homeSlideDot0", "homeNextSlide", "homeCreditsButton"}) {
+    const auto bounds = [&](const QString &name) {
+        auto control = item(name);
+        return control->mapRectToScene(control->boundingRect());
+    };
+    const auto previousBounds = bounds("homePreviousSlide"), firstDotBounds = bounds("homeSlideDot0");
+    QVector<QPointF> emptyControlSpaces{
+        QPointF((previousBounds.right() + firstDotBounds.left()) / 2, firstDotBounds.center().y()),
+        QPointF((bounds("homeSlideDot3").right() + bounds("homeNextSlide").left()) / 2, firstDotBounds.center().y())
+    };
+    for (int i = 0; i < 3; ++i) {
+        emptyControlSpaces.append(QPointF((bounds("homeSlideDot" + QString::number(i)).right()
+            + bounds("homeSlideDot" + QString::number(i + 1)).left()) / 2, firstDotBounds.center().y()));
+    }
+    if (firstDotBounds.top() > previousBounds.top())
+        emptyControlSpaces.append(QPointF(firstDotBounds.center().x(),
+            (firstDotBounds.top() + previousBounds.top()) / 2));
+    for (const QString &name : {"homePreviousSlide", "homeSlideDot0", "homeSlideDot1", "homeSlideDot2",
+                               "homeSlideDot3", "homeNextSlide", "homeCreditsButton"}) {
         auto control = item(name);
         QTest::mouseMove(window,control->mapToScene(control->boundingRect().center()).toPoint());
         QTRY_VERIFY(!home->property("autoRunning").toBool());
+        // Empty space inside the same bar must resume, even between two dots.
+        for (const auto &point : emptyControlSpaces) {
+            QTest::mouseMove(window,point.toPoint());
+            QTRY_VERIFY(home->property("autoRunning").toBool());
+            QVERIFY(!home->property("pointerInteracting").toBool());
+        }
     }
     QCOMPARE(home->property("currentIndex").toInt(),2);
     QTest::mouseMove(window,QPoint(10,10));
