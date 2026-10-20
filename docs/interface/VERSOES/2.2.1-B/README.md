@@ -1,6 +1,6 @@
 # 2.2.1-B — Descoberta do Dia e Indicadores Dinâmicos
 
-Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), baseada na `main` em `27294a18ffd0d1e533dcdeb47b44ee0011e97b35` (PR #30 integrado). A versão identifica a revisão visual; aplicativo 1.7.0 e catálogo 2.4.0 continuam em desenvolvimento, sem lançamento. Commit final e PR: pendentes de criação.
+Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), baseada na `main` em `27294a18ffd0d1e533dcdeb47b44ee0011e97b35` (PR #30 integrado). A versão identifica a revisão visual; aplicativo 1.7.0 e catálogo 2.4.0 continuam em desenvolvimento, sem lançamento. Implementação, testes e capturas no commit [`24d1faaedefa077ec9492cba6dd01071ff6095f9`](https://github.com/kaduolliver/Projeto-Glossata/commit/24d1faaedefa077ec9492cba6dd01071ff6095f9), ainda local. PR pendente de publicação da branch e criação.
 
 Telas afetadas: Início, com Descoberta do Dia abaixo do carrossel e três indicadores do catálogo. O carrossel, seu diálogo de créditos, Explorar, Jogar e os textos científicos existentes são preservados. `StatCard` recebe uma descrição opcional, vazia nos usos anteriores.
 
