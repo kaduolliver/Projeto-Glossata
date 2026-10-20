@@ -20,7 +20,11 @@ O nome *Glossata* faz referência a um clado de lepidópteros que inclui a maior
 
 A aplicação disponível atualmente é o **Projeto Glossata**, um programa desktop em português, com catálogo local de organismos, exploração taxonômica, fichas educativas, desafios de identificação e acompanhamento do desempenho. A visão de longo prazo é integrar esses recursos a uma **enciclopédia interativa da natureza**.
 
-![Tela Início real do Projeto Glossata, rolada até a Descoberta do Dia e os indicadores do catálogo.](docs/images/tela-inicial.png)
+![Tela Início real do Projeto Glossata no topo, com o carrossel fotográfico completo e as ações Explorar e Jogar.](docs/interface/VERSOES/2.2.1-B/refinamento-1/capturas/home-production-1240x820.png)
+
+*Home no topo, com o carrossel completo. Captura do aplicativo em execução com perfil temporário. [Origem da captura](docs/interface/VERSOES/2.2.1-B/refinamento-1/captura-producao-inicial.json).*
+
+![Descoberta do Dia e indicadores dinâmicos do catálogo na tela Início real do Projeto Glossata, após rolagem.](docs/images/tela-inicial.png)
 
 *Captura do aplicativo em execução, com perfil temporário e rolagem na Home para mostrar a Descoberta do Dia e os indicadores. [Origem da captura](docs/images/tela-inicial.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
 
