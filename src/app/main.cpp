@@ -12,6 +12,7 @@
 #include <QTextStream>
 #include <QTemporaryDir>
 #include <QQuickWindow>
+#include <QQuickItem>
 #include <memory>
 
 namespace {
@@ -57,6 +58,8 @@ int main(int argc, char *argv[])
     const bool smokeTest = app.arguments().contains(QStringLiteral("--smoke-test"));
     const int captureIndex = app.arguments().indexOf(QStringLiteral("--capture-home"));
     const bool captureHome = captureIndex >= 0;
+    const bool captureDiscovery = app.arguments().contains(QStringLiteral("--capture-home-discovery"));
+    if (captureDiscovery && !captureHome) return 6;
     if (captureHome && (captureIndex + 1 >= app.arguments().size() || smokeTest)) return 6;
     std::unique_ptr<QTemporaryDir> smokeDirectory;
     if (smokeTest || captureHome) {
@@ -86,11 +89,23 @@ int main(int argc, char *argv[])
         if (!window) return 7;
         window->setProperty("motionEnabled", false);
         const QString destination = app.arguments().at(captureIndex + 1);
-        QTimer::singleShot(1200, &app, [window, destination, &app] {
-            const QImage image = window->grabWindow();
-            const bool saved = window->property("page").toString() == QStringLiteral("home")
-                && !image.isNull() && image.save(destination, "PNG");
-            app.exit(saved ? 0 : 8);
+        QTimer::singleShot(1200, &app, [window, destination, captureDiscovery, &app] {
+            if (captureDiscovery) {
+                // Frame the real Home through its existing scroll container.
+                // This runs only in the isolated capture mode, never in play.
+                auto scroll = window->findChild<QQuickItem *>(QStringLiteral("pageScroll"));
+                auto panel = window->findChild<QQuickItem *>(QStringLiteral("dailyDiscoveryPanel"));
+                if (!scroll || !panel) { app.exit(8); return; }
+                const qreal top = scroll->property("contentY").toReal() + panel->mapToItem(scroll, QPointF()).y();
+                const qreal maximum = qMax(0., scroll->property("contentHeight").toReal() - scroll->height());
+                scroll->setProperty("contentY", qBound(0., top, maximum));
+            }
+            QTimer::singleShot(captureDiscovery ? 200 : 0, &app, [window, destination, &app] {
+                const QImage image = window->grabWindow();
+                const bool saved = window->property("page").toString() == QStringLiteral("home")
+                    && !image.isNull() && image.save(destination, "PNG");
+                app.exit(saved ? 0 : 8);
+            });
         });
     }
 

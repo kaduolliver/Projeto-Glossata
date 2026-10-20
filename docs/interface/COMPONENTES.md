@@ -2,9 +2,11 @@
 
 ## Descoberta e indicadores — 2.2.1-B
 
-`HomeView` acrescenta `dailyDiscoveryPanel` abaixo dos controles do carrossel. A foto usa `Image.PreserveAspectFit`, com nome científico acessível, créditos locais e alternativa para falha de carregamento. Nome científico, nome comum disponível e resumo preservam texto simples e quebra de linha. `dailyDiscoverySource` mostra a referência com URL acessível/tooltip; links externos só abrem por ação explícita. `dailyDiscoveryExplore` abre o táxon exato no contexto Explorar, e `dailyDiscoveryCredits` leva à tela de créditos existente. Teclado e rolagem continuam sob os mecanismos do shell.
+`HomeView` acrescenta `dailyDiscoveryPanel` abaixo dos controles do carrossel. A foto usa `Image.PreserveAspectFit`, com nome científico acessível, créditos locais e alternativa para falha de carregamento. Nome científico, nome comum disponível e resumo preservam texto simples e quebra de linha. `dailyDiscoverySource` mantém texto, URL acessível, clique e estados de interação, sem tooltip. `dailyDiscoveryExplore` abre o táxon exato no contexto Explorar. `dailyDiscoveryCredits` abre `dailyDiscoveryCreditsDialog`, com metadados vinculados à descoberta exibida, avisos e links da fotografia; o rodapé mantém acesso aos créditos gerais. Fechar ou Escape devolve foco ao botão. O diálogo do carrossel permanece independente e inalterado.
 
 `StatCard.description` é opcional, vazia por padrão; nesse caso a altura anterior permanece 118 px. Com descrição, a altura acompanha o conteúdo a partir de 154 px. O nome acessível inclui título, valor e descrição. Os três usos novos têm identificadores `homeOrganismCount`, `homeDomainCount` e `homePhotoCount`, ligados a propriedades notificáveis do controlador. Os contratos dos demais usos são preservados.
+
+`StatCard.iconSize` e `iconContainerSize` são opcionais, com padrões anteriores de 23 e 42 px. Somente os três indicadores da Home passam 28 e 48 px. O contêiner fica centralizado verticalmente, com raio proporcional e sem mudança de cores/tipografia. `homePhotoCount` passa a se chamar visualmente “Identificação por espécie”; o valor e os filtros C++ permanecem os mesmos.
 
 ## Início — 2.2.1-A
 

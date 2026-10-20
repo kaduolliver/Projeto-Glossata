@@ -110,7 +110,7 @@ def home_inputs(root=ROOT):
                                    'src/presentation/GameController.h', 'resources/data/species.json',
                                    'src/application/TaxonomyIndex.cpp', 'src/application/TaxonomyIndex.h',
                                    'src/application/EducationalContent.cpp', 'src/application/EducationalContent.h',
-                                   'resources/data/education.json'))
+                                   'resources/data/education.json', 'src/app/main.cpp', 'scripts/capture_home.py'))
     return {p.relative_to(root).as_posix(): sha(p) for p in sorted(paths) if p.is_file()}
 
 

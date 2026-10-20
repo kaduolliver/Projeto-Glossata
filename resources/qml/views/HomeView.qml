@@ -495,8 +495,6 @@ FocusScope {
                             Layout.fillWidth: true
                             text: "Fonte: " + (view.discoveryNote.source_title || "") + " ↗"
                             Accessible.description: view.discoveryNote.source_url || ""
-                            ToolTip.visible: hovered || visualFocus
-                            ToolTip.text: (view.discoveryNote.source_title || "") + "\n" + (view.discoveryNote.source_url || "")
                             onClicked: Qt.openUrlExternally(view.discoveryNote.source_url)
                         }
                         Label {
@@ -515,9 +513,10 @@ FocusScope {
                                 onClicked: { view.app.openExplore(); view.app.openTaxon(view.discovery.taxonId) }
                             }
                             TextAction {
+                                id: discoveryCreditButton
                                 objectName: "dailyDiscoveryCredits"
                                 text: "Foto e créditos"
-                                onClicked: view.app.navigate("credits")
+                                onClicked: discoveryCredits.open()
                             }
                         }
                     }
@@ -532,6 +531,7 @@ FocusScope {
                 objectName: "homeOrganismCount"
                 Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.fillHeight: true
                 title: "Organismos catalogados"; value: String(view.indicators.organisms || 0)
+                iconSize: 28; iconContainerSize: 48
                 description: "Registros únicos do catálogo local."
                 iconName: "butterfly"; accent: Style.Theme.gold
             }
@@ -539,15 +539,129 @@ FocusScope {
                 objectName: "homeDomainCount"
                 Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.fillHeight: true
                 title: "Domínios representados"; value: String(view.indicators.representedDomains || 0)
+                iconSize: 28; iconContainerSize: 48
                 description: view.indicators.domainNames || "Sem organismos classificados por domínio."
                 iconName: "leaf"; accent: Style.Theme.green
             }
             StatCard {
                 objectName: "homePhotoCount"
                 Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.fillHeight: true
-                title: "Cobertura fotográfica"; value: String(view.indicators.identificationPhotos || 0)
-                description: "De " + (view.indicators.organisms || 0) + " organismos, com foto de identificação utilizável no app."
+                title: "Identificação por espécie"; value: String(view.indicators.identificationPhotos || 0)
+                iconSize: 28; iconContainerSize: 48
+                description: "Organismos com foto elegível para identificação no nível de espécie; não é o total de fotos do catálogo."
                 iconName: "shape"; accent: Style.Theme.textMuted
+            }
+        }
+    }
+    Dialog {
+        id: discoveryCredits
+        objectName: "dailyDiscoveryCreditsDialog"
+        readonly property var photo: view.discoveryPhoto
+        readonly property var attribution: photo.attribution || ({})
+        readonly property string licenseVersion: attribution.license_version || ""
+        readonly property string licenseUrl: photo.licenseUrl || attribution.license_url || attribution.license_source_url || ""
+        parent: Overlay.overlay
+        anchors.centerIn: parent
+        width: Math.min(650, parent.width - 40)
+        height: Math.min(650, parent.height - 40)
+        title: "Foto e créditos — Descoberta do Dia"
+        modal: true
+        focus: true
+        onOpened: discoveryCloseButton.forceActiveFocus(Qt.PopupFocusReason)
+        onClosed: discoveryCreditButton.forceActiveFocus(Qt.PopupFocusReason)
+        footer: DialogButtonBox {
+            UiButton {
+                objectName: "dailyDiscoveryAllCredits"
+                text: "Todos os créditos"; secondary: true
+                DialogButtonBox.buttonRole: DialogButtonBox.ActionRole
+                onClicked: { discoveryCredits.close(); view.app.navigate("credits") }
+            }
+            UiButton {
+                id: discoveryCloseButton
+                objectName: "dailyDiscoveryCreditsClose"
+                text: "Fechar"; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole
+            }
+            onRejected: discoveryCredits.close()
+        }
+        contentItem: ScrollView {
+            id: discoveryCreditScroll
+            clip: true
+            contentWidth: availableWidth
+            ColumnLayout {
+                width: discoveryCreditScroll.availableWidth
+                spacing: Style.Theme.spaceMd
+                Label {
+                    objectName: "dailyCreditSubject"
+                    Layout.fillWidth: true
+                    text: view.discovery.scientificName || "Organismo não informado"
+                    font.italic: true; font.pixelSize: Style.Theme.subtitleSize
+                    wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                }
+                Label {
+                    visible: !!text; Layout.fillWidth: true
+                    text: discoveryCredits.photo.title || ""
+                    wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                }
+                Label {
+                    objectName: "dailyCreditAuthor"
+                    Layout.fillWidth: true
+                    text: "Autoria: " + (discoveryCredits.photo.author || "Não documentada")
+                    wrapMode: Text.Wrap; textFormat: Text.PlainText
+                }
+                Label {
+                    objectName: "dailyCreditLicense"
+                    Layout.fillWidth: true
+                    text: "Licença declarada: " + (discoveryCredits.attribution.license || discoveryCredits.photo.license || "Não informada").toUpperCase()
+                        + "\nVersão da licença: " + (discoveryCredits.licenseVersion || "Não comprovada")
+                    wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                }
+                Label {
+                    objectName: "dailyCreditOrigin"
+                    Layout.fillWidth: true
+                    text: "Origem: " + (discoveryCredits.photo.sourceUrl || "Não documentada")
+                    wrapMode: Text.WrapAnywhere; textFormat: Text.PlainText
+                }
+                TextAction {
+                    objectName: "dailyCreditPhotoLink"
+                    visible: !!discoveryCredits.photo.sourceUrl
+                    Layout.fillWidth: true
+                    text: "Fotografia na fonte original ↗"
+                    Accessible.description: discoveryCredits.photo.sourceUrl || ""
+                    onClicked: Qt.openUrlExternally(discoveryCredits.photo.sourceUrl)
+                }
+                TextAction {
+                    objectName: "dailyCreditObservationLink"
+                    visible: !!discoveryCredits.attribution.source && discoveryCredits.attribution.source !== discoveryCredits.photo.sourceUrl
+                    Layout.fillWidth: true
+                    text: "Observação de origem ↗"
+                    Accessible.description: discoveryCredits.attribution.source || ""
+                    onClicked: Qt.openUrlExternally(discoveryCredits.attribution.source)
+                }
+                TextAction {
+                    objectName: "dailyCreditLicenseLink"
+                    visible: !!discoveryCredits.licenseUrl
+                    Layout.fillWidth: true
+                    text: discoveryCredits.licenseVersion ? "Termos da licença ↗" : "Termos informados (versão não comprovada) ↗"
+                    Accessible.description: discoveryCredits.licenseUrl
+                    onClicked: Qt.openUrlExternally(discoveryCredits.licenseUrl)
+                }
+                Label {
+                    objectName: "dailyCreditModifications"
+                    Layout.fillWidth: true
+                    text: "Arquivo: " + (discoveryCredits.photo.modifications || "Modificações não documentadas.")
+                        + "\nApresentação: ajuste proporcional e redimensionamento; arquivo original preservado."
+                    wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                }
+                Label {
+                    objectName: "dailyCreditNotices"
+                    Layout.fillWidth: true
+                    text: "Verificação técnica para uso local não equivale a revisão especializada nem a autorização de distribuição."
+                        + (!discoveryCredits.licenseVersion ? "\nVersão da licença não comprovada; um endereço de termos não comprova a versão aplicável." : "")
+                        + ((discoveryCredits.attribution.rights_issues || []).length ? "\nPermissões com pendências documentadas; distribuição bloqueada até resolução." : "")
+                        + ((discoveryCredits.attribution.scientific_source_issues || []).length ? "\nIdentificação na origem com pendência de revisão." : "")
+                    color: Style.Theme.gold
+                    wrapMode: Text.WordWrap; textFormat: Text.PlainText
+                }
             }
         }
     }

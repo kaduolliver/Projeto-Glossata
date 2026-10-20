@@ -2,6 +2,8 @@
 
 ## 2.2.1-B — Descoberta do Dia e Indicadores Dinâmicos — 2026-10-20
 
+- Refinamento da PR #31: “Identificação por espécie” explicita o alcance do indicador; Foto e créditos abre um diálogo da descoberta, com licença/versão/origem/modificações, avisos e acesso geral. Tooltip da fonte removido, mantendo interação e acessibilidade; ícones dos indicadores em 28/48 px, com padrões anteriores nas outras telas. [Registro e capturas desta revisão](VERSOES/2.2.1-B/refinamento-1/README.md).
+
 - Seção abaixo do carrossel com foto proporcional, nome científico, nome comum disponível, resumo existente, fonte e acesso ao nó da espécie no contexto Explorar. Estado vazio preserva as ações da Home.
 - Cartões passam a mostrar organismos únicos, domínios realmente representados e organismos com foto de identificação utilizável no app. `StatCard` oferece descrição opcional e nome acessível; usos anteriores mantêm a aparência.
 - Data civil local e ordem estável no C++; verificação periódica a cada 30 segundos e ao reativar o aplicativo. Sem rede obrigatória, novos dados, revisão presumida ou escrita em bancos de jogadores.

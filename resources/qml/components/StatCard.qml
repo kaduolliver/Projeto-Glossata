@@ -9,6 +9,8 @@ Rectangle {
     property string value: "0"
     property string description: ""
     property string iconName: "chart"
+    property real iconSize: 23
+    property real iconContainerSize: 42
     property color accent: Style.Theme.green
     implicitHeight: description.length ? Math.max(154, labels.implicitHeight + 2 * Style.Theme.spaceLg) : 118
     implicitWidth: 200
@@ -22,9 +24,12 @@ Rectangle {
         anchors.margins: Style.Theme.spaceLg
         spacing: Style.Theme.spaceMd
         Rectangle {
-            implicitWidth: 42; implicitHeight: 42; radius: 14
+            objectName: "statCardIconContainer"
+            implicitWidth: card.iconContainerSize; implicitHeight: card.iconContainerSize
+            radius: card.iconContainerSize / 3
+            Layout.alignment: Qt.AlignVCenter
             color: Qt.rgba(card.accent.r, card.accent.g, card.accent.b, 0.13)
-            UiIcon { anchors.centerIn: parent; name: card.iconName; ink: card.accent; implicitWidth: 23; implicitHeight: 23 }
+            UiIcon { objectName: "statCardIcon"; anchors.centerIn: parent; name: card.iconName; ink: card.accent; implicitWidth: card.iconSize; implicitHeight: card.iconSize }
         }
         ColumnLayout {
             id: labels

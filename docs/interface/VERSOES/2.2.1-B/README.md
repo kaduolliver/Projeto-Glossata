@@ -4,6 +4,8 @@ Subetapa exclusiva da [Issue #22](https://github.com/kaduolliver/Projeto-Glossat
 
 Telas afetadas: Início, com Descoberta do Dia abaixo do carrossel e três indicadores do catálogo. O carrossel, seu diálogo de créditos, Explorar, Jogar e os textos científicos existentes são preservados. `StatCard` recebe uma descrição opcional, vazia nos usos anteriores.
 
+Revisão mais recente: [quatro refinamentos da PR #31](refinamento-1/README.md), com novas capturas e verificação próprias. As capturas, o manifesto e os resultados iniciais abaixo permanecem como registro histórico, ligados ao commit original.
+
 ## Decisões
 
 - Seleção offline: IDs positivos únicos em ordem crescente, índice igual ao dia civil local (`QDate::toJulianDay`) módulo quantidade elegível. A mesma data e o mesmo catálogo/revisões produzem a mesma descoberta em outra execução. Não há repetição em datas consecutivas quando o conjunto permanece igual e tem pelo menos dois organismos; com apenas um, a repetição é inevitável. Mudanças reais do catálogo ou perda de elegibilidade podem alterar a seleção no mesmo dia; conteúdo inválido não é conservado para sustentar a estabilidade visual.
@@ -12,7 +14,7 @@ Telas afetadas: Início, com Descoberta do Dia abaixo do carrossel e três indic
 - `TaxonomyIndex` produz uma projeção coerente do catálogo; `GameController` publica propriedades com notificação somente ao mudar. Um timer de 30 segundos relê a data local e a projeção, inclusive as revisões dos textos, e a ativação do aplicativo atualiza imediatamente. O catálogo de produção é um snapshot imutável carregado pelo adaptador SQLite: uma atualização do conteúdo instalado é refletida na próxima inicialização. Não há importação em execução, monitoramento de arquivos ou novo banco.
 - A ação da descoberta abre o nó exato da espécie no contexto Explorar existente, sem iniciar ou modificar partida. A interface mantém créditos locais, licença conforme declarada, fonte e aviso de revisão editorial/especializada, além de estado sem conteúdo elegível.
 
-## Verificação e capturas
+## Verificação inicial e capturas históricas
 
 Verificação em 20/10/2026: compilação Release com Qt 6.11.2/GCC 16.2.0 em Windows 11, saída isolada em `build/2.2.1-B-verified`, sem encerrar o aplicativo habitual ou abrir bancos pessoais.
 
@@ -30,7 +32,7 @@ Verificação em 20/10/2026: compilação Release com Qt 6.11.2/GCC 16.2.0 em Wi
 | --- | ---: | --- |
 | Organismos catalogados | 122 | IDs positivos únicos carregados do catálogo |
 | Domínios representados | 2 | Bacteria e Eukaryota; Archaea sem organismo não entra na contagem |
-| Cobertura fotográfica | 20 | Organismos com foto de identificação utilizável no app; imagens de apoio não entram |
+| Identificação por espécie | 20 | Organismos com foto elegível no nível de espécie; imagens de apoio e demais fotos não entram |
 
 Os 122 registros de fotografias tecnicamente válidos e os 40 elegíveis no nível espécie no relatório geral não são esta métrica: o indicador também exige as revisões existentes e exclui o papel `supporting`. Não conta arquivos, fotos de exploração/carrossel nem os representa como novas identificações.
 

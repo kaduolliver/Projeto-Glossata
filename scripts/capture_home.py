@@ -11,7 +11,9 @@ import tempfile
 import release
 
 
-def capture(binary, root=release.ROOT):
+def capture(binary, root=release.ROOT, section='top'):
+    if section not in ('top', 'discovery'):
+        raise ValueError('Enquadramento de captura desconhecido.')
     from distribution import build_inputs
     manifest = release.read(root / 'build/build-manifest.json')
     if manifest.get('inputs') != build_inputs(root) or manifest.get('binary_sha256') != release.sha(binary):
@@ -20,7 +22,9 @@ def capture(binary, root=release.ROOT):
                QT_QUICK_CONTROLS_STYLE='Basic', QT_SCALE_FACTOR='1', QT_FONT_DPI='96')
     with tempfile.TemporaryDirectory(prefix='glossata-home-') as folder:
         png = Path(folder) / 'home.png'
-        result = subprocess.run([str(binary.resolve()), '--capture-home', str(png)],
+        command = [str(binary.resolve()), '--capture-home', str(png)]
+        if section == 'discovery': command.append('--capture-home-discovery')
+        result = subprocess.run(command,
                                 cwd=root, env=env, capture_output=True, timeout=30)
         if result.returncode or not png.is_file():
             raise ValueError(f'A captura real falhou ({result.returncode}): {result.stderr.decode("utf8", errors="replace")}')
@@ -34,6 +38,7 @@ def capture(binary, root=release.ROOT):
     release.write(root / release.CAPTURE, {
         'schema_version': 1, 'captured_at': datetime.now(timezone.utc).isoformat(),
         'method': 'QQuickWindow::grabWindow / running application',
+        'framing': 'Top of Home.' if section == 'top' else 'Real Home scrolled to the discovery and catalog indicators by the production executable.',
         'application_version': release.app_version(root), 'binary_sha256': release.sha(binary),
         'image_sha256': release.sha(destination), 'width': width, 'height': height,
         'rendering': 'Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.',
@@ -45,8 +50,9 @@ def capture(binary, root=release.ROOT):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary', type=Path, default=release.ROOT / 'build/projeto_glossata.exe')
+    parser.add_argument('--section', choices=('top', 'discovery'), default='top', help='Frame the initial view or its discovery section using the production application.')
     args = parser.parse_args()
     try:
-        capture(args.binary)
+        capture(args.binary, section=args.section)
     except (ValueError, OSError, subprocess.TimeoutExpired) as exc:
         parser.exit(1, str(exc) + '\n')

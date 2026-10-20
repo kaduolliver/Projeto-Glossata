@@ -19,7 +19,17 @@
 #include <QScopeGuard>
 #include <QJsonDocument>
 #include <QFile>
+#include <QDesktopServices>
 #include <cmath>
+
+// Intercept actual link activations; never launch a browser during UI tests.
+class TestUrlRecorder : public QObject {
+    Q_OBJECT
+public:
+    QList<QUrl> urls;
+public slots:
+    void capture(const QUrl &url) { urls.append(url); }
+};
 
 namespace {
 QStringList interfaceWarnings;
@@ -69,6 +79,9 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
     interfaceWarnings.clear();
     const auto previousHandler = qInstallMessageHandler(captureMessage);
     const auto restoreHandler = qScopeGuard([previousHandler] { qInstallMessageHandler(previousHandler); });
+    TestUrlRecorder urlRecorder;
+    QDesktopServices::setUrlHandler("https", &urlRecorder, "capture");
+    const auto restoreUrls = qScopeGuard([] { QDesktopServices::unsetUrlHandler("https"); });
     QTemporaryDir directory;
     QDate date = QDate::currentDate();
     GameController controller(nullptr, directory.filePath("daily-interface.sqlite"), [&] { return date; });
@@ -90,6 +103,9 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
     QTRY_VERIFY(item("dailyDiscoveryPanel"));
     QTRY_COMPARE(item("dailyDiscoveryPhoto")->property("status").toInt(), 1);
     const auto indicators = controller.homeCatalogIndicators();
+    QCOMPARE(item("homePhotoCount")->property("title").toString(), QStringLiteral("Identificação por espécie"));
+    QVERIFY(item("homePhotoCount")->property("description").toString().contains("nível de espécie"));
+    QVERIFY(item("homePhotoCount")->property("description").toString().contains("não é o total de fotos"));
     for (const auto &pair : {qMakePair("homeOrganismCount", "organisms"),
                             qMakePair("homeDomainCount", "representedDomains"),
                             qMakePair("homePhotoCount", "identificationPhotos")})
@@ -116,6 +132,18 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
         item("navHome")->forceActiveFocus(Qt::MouseFocusReason);
         item("pageScroll")->setProperty("contentY", 0);
         QTest::qWait(300);
+        for (const QString &name : {"homeOrganismCount", "homeDomainCount", "homePhotoCount"}) {
+            auto card = item(name); QVERIFY(card);
+            auto container = findVisualItem(card, "statCardIconContainer"); QVERIFY(container);
+            auto icon = findVisualItem(container, "statCardIcon"); QVERIFY(icon);
+            QCOMPARE(container->width(), 48.); QCOMPARE(container->height(), 48.);
+            QCOMPARE(icon->width(), 28.); QCOMPARE(icon->height(), 28.);
+            QVERIFY(qAbs(container->mapToItem(card, container->boundingRect().center()).y() - card->height() / 2) < 1);
+            QVERIFY(qAbs(icon->x() + icon->width() / 2 - container->width() / 2) < 1);
+            QVERIFY(qAbs(icon->y() + icon->height() / 2 - container->height() / 2) < 1);
+            QVERIFY(card->boundingRect().contains(container->mapRectToItem(card, container->boundingRect())));
+            QVERIFY(QQmlProperty(card, "Accessible.name", qmlContext(card)).read().toString().contains(card->property("value").toString()));
+        }
         const QString suffix = QString::number(size.width()) + "x" + QString::number(size.height()) + ".png";
         QVERIFY(window->grabWindow().save("previews/daily-discovery/home-" + suffix));
         auto explore = item("dailyDiscoveryExplore"); QVERIFY(explore);
@@ -149,6 +177,68 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
         scroll->setProperty("contentY", qMax(0., scroll->property("contentHeight").toReal() - scroll->height()));
         QTest::qWait(100);
         QVERIFY(window->grabWindow().save("previews/daily-discovery/indicators-" + suffix));
+        auto source = item("dailyDiscoverySource"); QVERIFY(source);
+        QTest::mouseMove(window, source->mapToScene(source->boundingRect().center()).toPoint());
+        QTRY_VERIFY(source->property("hovered").toBool());
+        QTest::qWait(650);
+        QQmlProperty tooltip(source, "ToolTip.visible", qmlContext(source));
+        QVERIFY(tooltip.isValid()); QVERIFY(!tooltip.read().toBool());
+        QVERIFY(source->property("text").toString().contains(controller.dailyDiscovery()["note"].toMap()["source_title"].toString()));
+        QCOMPARE(QQmlProperty(source, "Accessible.description", qmlContext(source)).read().toString(), controller.dailyDiscovery()["note"].toMap()["source_url"].toString());
+        int links = urlRecorder.urls.size();
+        QVERIFY(activate("dailyDiscoverySource"));
+        QCOMPARE(urlRecorder.urls.size(), links + 1);
+        QCOMPARE(urlRecorder.urls.last(), QUrl(controller.dailyDiscovery()["note"].toMap()["source_url"].toString()));
+        QVERIFY(source->property("visualFocus").toBool());
+        QVERIFY(!tooltip.read().toBool());
+        QVERIFY(activate("dailyDiscoveryCredits"));
+        auto dialog = window->findChild<QObject *>("dailyDiscoveryCreditsDialog"); QVERIFY(dialog);
+        QTRY_VERIFY(dialog->property("visible").toBool());
+        QCOMPARE(window->property("page").toString(), QString("home"));
+        QVERIFY(dialog->property("modal").toBool());
+        QVERIFY(!window->findChild<QObject *>("homeCreditsDialog")->property("visible").toBool());
+        QVERIFY(dialog->property("x").toReal() >= 0 && dialog->property("y").toReal() >= 0);
+        QVERIFY(dialog->property("width").toReal() <= window->width());
+        QVERIFY(dialog->property("height").toReal() <= window->height());
+        auto photo = controller.dailyDiscovery()["photo"].toMap();
+        auto attribution = photo["attribution"].toMap();
+        QCOMPARE(item("dailyCreditSubject")->property("text").toString(), controller.dailyDiscovery()["scientificName"].toString());
+        QVERIFY(item("dailyCreditAuthor")->property("text").toString().contains(photo["author"].toString()));
+        QVERIFY(item("dailyCreditOrigin")->property("text").toString().contains(photo["sourceUrl"].toString()));
+        QVERIFY(item("dailyCreditModifications")->property("text").toString().contains(photo["modifications"].toString()));
+        if (attribution["license_version"].toString().isEmpty()) {
+            QVERIFY(item("dailyCreditLicense")->property("text").toString().contains("Não comprovada"));
+            QVERIFY(item("dailyCreditNotices")->property("text").toString().contains("não comprovada"));
+        }
+        if (!attribution["rights_issues"].toList().isEmpty())
+            QVERIFY(item("dailyCreditNotices")->property("text").toString().contains("Permissões com pendências"));
+        // The contextual data follows the displayed discovery if midnight
+        // occurs while the dialog is open; it never adopts carousel credits.
+        date = date.addDays(1); controller.refreshHomeCatalog();
+        QTRY_COMPARE(item("dailyCreditSubject")->property("text").toString(), controller.dailyDiscovery()["scientificName"].toString());
+        date = QDate::currentDate(); controller.refreshHomeCatalog();
+        QTRY_COMPARE(item("dailyCreditSubject")->property("text").toString(), controller.dailyDiscovery()["scientificName"].toString());
+        for (const auto &link : {qMakePair("dailyCreditPhotoLink", photo["sourceUrl"].toString()),
+                                 qMakePair("dailyCreditObservationLink", attribution["source"].toString()),
+                                 qMakePair("dailyCreditLicenseLink", dialog->property("licenseUrl").toString())}) {
+            if (!item(link.first)->isVisible()) continue;
+            links = urlRecorder.urls.size();
+            QVERIFY(activate(link.first));
+            QCOMPARE(urlRecorder.urls.size(), links + 1);
+            QCOMPARE(urlRecorder.urls.last(), QUrl(link.second));
+        }
+        QVERIFY(activate("dailyDiscoveryCreditsClose"));
+        QTRY_VERIFY(!dialog->property("visible").toBool());
+        QTRY_VERIFY(item("dailyDiscoveryCredits")->hasActiveFocus());
+        QVERIFY(activate("dailyDiscoveryCredits"));
+        QTest::keyClick(window, Qt::Key_Tab);
+        QVERIFY(window->activeFocusItem() != item("dailyDiscoveryCredits"));
+        item("dailyDiscoveryCreditsClose")->forceActiveFocus(Qt::TabFocusReason);
+        QTest::qWait(150);
+        QVERIFY(window->grabWindow().save("previews/daily-discovery/credits-" + suffix));
+        QTest::keyClick(window, Qt::Key_Escape);
+        QTRY_VERIFY(!dialog->property("visible").toBool());
+        QTRY_VERIFY(item("dailyDiscoveryCredits")->hasActiveFocus());
     }
     // Enter exploration directly while a quiz is running; preserve its state.
     QVERIFY(activate("navPlay")); QVERIFY(activate("categoryButton0"));
@@ -164,7 +254,8 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
     QVERIFY(activate("navPlay")); QCOMPARE(window->property("page").toString(), QString("quiz"));
     QCOMPARE(controller.answerOptions(), options); QCOMPARE(controller.questionPhoto(), photo);
     QVERIFY(activate("navHome"));
-    QVERIFY(activate("dailyDiscoveryCredits")); QCOMPARE(window->property("page").toString(), QString("credits"));
+    QVERIFY(activate("dailyDiscoveryCredits"));
+    QVERIFY(activate("dailyDiscoveryAllCredits")); QCOMPARE(window->property("page").toString(), QString("credits"));
     QVERIFY(activate("navHome"));
     auto home = item("homeCarousel"); QVERIFY(home);
     home->setProperty("discovery", QVariantMap{});
@@ -746,13 +837,17 @@ void QmlInterfaceTests::designSystemStatesAndContrast()
                 UiButton { objectName: "themeButton"; text: "Explorar"; onClicked: activations++ }
                 NavItem { objectName: "themeNav"; text: "Inicio"; selected: true }
                 TextAction { objectName: "themeAction"; text: "Fontes" }
-                StatCard { title: "Catalogo"; value: "122" }
+                StatCard { objectName: "defaultStatCard"; title: "Catalogo"; value: "122" }
             }
         }
     )", QUrl("qrc:/design-system-test.qml"));
     QScopedPointer<QObject> object(component.create());
     QVERIFY2(object, qPrintable(component.errorString()));
     auto window = qobject_cast<QQuickWindow *>(object.data()); QVERIFY(window);
+    auto defaultCard = findVisualItem(window->contentItem(), "defaultStatCard"); QVERIFY(defaultCard);
+    QCOMPARE(defaultCard->implicitHeight(), 118.);
+    QCOMPARE(findVisualItem(defaultCard, "statCardIconContainer")->implicitWidth(), 42.);
+    QCOMPARE(findVisualItem(defaultCard, "statCardIcon")->implicitWidth(), 23.);
     auto button = findVisualItem(window->contentItem(), "themeButton"); QVERIFY(button);
     auto background = button->property("background").value<QQuickItem *>(); QVERIFY(background);
     window->setProperty("animations", false);
