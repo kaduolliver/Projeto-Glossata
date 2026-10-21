@@ -146,6 +146,7 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void explorationCardsUseReviewedContentAndDocumentedRanks();
     void explorationDebounceKeepsTheCurrentQueryAndFilters();
     void scientificSearchCombinesNamesDomainsAndRanks();
     void scientificSearchHandlesHomonymsDuplicatesAndMissingData();
@@ -235,6 +236,59 @@ void GameServiceTests::explorationDebounceKeepsTheCurrentQueryAndFilters()
     QCOMPARE(controller.exploreQuery(), QString("Escherichia"));
     QCOMPARE(controller.questionPhoto(), photo); QCOMPARE(controller.hints(), hints);
     QCOMPARE(controller.sessionMetrics(), metrics); QVERIFY(controller.recoverableSessions().isEmpty());
+}
+
+void GameServiceTests::explorationCardsUseReviewedContentAndDocumentedRanks()
+{
+    JsonSpeciesCatalog catalog; JsonExplorationMediaCatalog media; EducationalContent content;
+    TaxonomyIndex index(catalog, &media, content);
+    int eligible = 0;
+    const auto all = index.search({});
+    for (const auto &section : {QString("groups"), QString("organisms")})
+        for (const auto &value : all[section].toList()) {
+            const auto entry = value.toMap(), note = entry["educationalNote"].toMap();
+            if (note.isEmpty()) continue;
+            ++eligible;
+            const auto state = note["governance"].toMap()["state"].toString();
+            QVERIFY(state == "approved_editorial" || state == "approved_expert");
+            QVERIFY(!note["source_title"].toString().isEmpty()); QVERIFY(note["source_url"].toString().startsWith("https://"));
+            QCOMPARE(note, index.describe(entry["id"].toString())[entry["kind"] == "organism" ? "summary" : "introduction"].toMap());
+        }
+    QVERIFY(eligible > 4);
+    QCOMPARE(index.search("Papilio machaon")["organisms"].toList().first().toMap()["classificationSummary"].toString(), QStringLiteral("Família: Papilionidae · Gênero: Papilio"));
+    for (const auto &domain : index.domains().mid(1)) {
+        const auto photo = domain.toMap()["photo"].toMap(); QVERIFY(!photo["image"].toString().isEmpty());
+        QCOMPARE(photo["contextualAttribution"].toBool(), photo["license"] == "CC-BY 4.0" || photo["license"] == "CC0 1.0");
+    }
+    for (const auto &entry : index.featuredOrganisms()) QVERIFY(!entry.toMap()["photo"].toMap()["contextualAttribution"].toBool());
+    // Synthetic in-memory taxonomy/review only; never saved to shipped data.
+    MemoryCatalog fixture;
+    const Taxon root{"fixture:root", "Root", "domain"}, family{"fixture:family", "Testus", "family", root.id};
+    const Taxon genus{"fixture:genus", "Testus", "genus", family.id}, species{"fixture:species", "Testus example", "species", genus.id};
+    fixture.nodes = {root, family, genus, species};
+    Species organism; organism.id = 900001; organism.name = species.name; organism.taxonomy = fixture.nodes; fixture.items = {organism};
+    const QJsonObject reviewed{{"state", "approved_editorial"}, {"usable", true}, {"reviewer", "synthetic-test-fixture"},
+        {"reviewed_at", QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
+        {"due_at", QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)}};
+    QJsonObject note{{"text", "Synthetic educational fixture only."}, {"source_url", "https://example.org/fixture"}, {"source_title", "Fixture source"}, {"governance", reviewed}};
+    const auto describe = [&](const QJsonObject &n) {
+        const QJsonObject education{{"species", QJsonObject{{"900001", QJsonObject{{"scientific_name", species.name}, {"summary", n}}}}}};
+        return TaxonomyIndex(fixture, nullptr, EducationalContent(education)).describe(species.id);
+    };
+    QCOMPARE(describe(note)["educationalNote"].toMap(), note.toVariantMap());
+    QCOMPARE(describe(note)["classificationSummary"].toString(), QStringLiteral("Família: Testus · Gênero: Testus"));
+    for (const QString &state : {QString("approved_expert"), QString("draft"), QString("needs_review"), QString("expired"), QString("rejected")}) {
+        auto changed = note, review = reviewed; review["state"] = state; changed["governance"] = review;
+        QCOMPARE(describe(changed)["educationalNote"].toMap().isEmpty(), state != "approved_expert");
+    }
+    for (const QString &field : {QString("source_url"), QString("source_title"), QString("text")}) {
+        auto changed = note; changed[field] = ""; QVERIFY(describe(changed)["educationalNote"].toMap().isEmpty());
+    }
+    auto changed = note, review = reviewed; review["due_at"] = QDateTime::currentDateTimeUtc().addSecs(-1).toString(Qt::ISODateWithMs);
+    changed["governance"] = review; QVERIFY(describe(changed)["educationalNote"].toMap().isEmpty());
+    QVERIFY(describe({})["educationalNote"].toMap().isEmpty());
+    fixture.nodes.remove(1); fixture.nodes[1].parentId = root.id;
+    QCOMPARE(describe({})["classificationSummary"].toString(), QStringLiteral("Gênero: Testus"));
 }
 
 void GameServiceTests::scientificSearchCombinesNamesDomainsAndRanks()

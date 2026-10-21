@@ -274,12 +274,39 @@ QVariantMap TaxonomyIndex::describe(const QString &id) const
         break;
     }
     const auto introduction = content_.introduction(id);
+    auto educationalNote = organism ? summary : introduction;
+    const auto noteState = educationalNote.value("governance").toMap().value("state").toString();
+    const QUrl noteSource(educationalNote.value("source_url").toString());
+    // EducationalContent has already checked the recorded review's usability.
+    // Cards accept only attributed editorial/expert text, never description fallbacks.
+    if ((noteState != "approved_editorial" && noteState != "approved_expert")
+        || educationalNote.value("text").toString().trimmed().isEmpty()
+        || educationalNote.value("source_title").toString().trimmed().isEmpty()
+        || !noteSource.isValid() || noteSource.scheme() != "https" || noteSource.host().isEmpty()) educationalNote.clear();
+    QVector<Taxon> ancestors;
+    QSet<QString> visited;
+    QString parent = taxon.parentId;
+    while (taxons_.contains(parent) && !visited.contains(parent)) {
+        visited.insert(parent);
+        ancestors.prepend(taxons_.value(parent));
+        parent = taxons_.value(parent).parentId;
+    }
+    QVector<Taxon> classification;
+    // Prefer existing family/genus nodes. Rank labels also distinguish homonyms.
+    for (const QString &rank : {QString("family"), QString("genus")})
+        for (auto it = ancestors.crbegin(); it != ancestors.crend(); ++it)
+            if (it->rank == rank) { classification.append(*it); break; }
+    if (classification.isEmpty()) classification = ancestors.mid(qMax<qsizetype>(0, ancestors.size() - 2));
+    QStringList classificationText;
+    for (const auto &node : classification)
+        classificationText.append(taxonomicRankLabel(node.rank) + ": " + node.name);
     const auto review = (summary.isEmpty() ? introduction : summary).value("governance").toMap().value("state").toString();
     for (const Species &s : speciesFor(id)) if (s.taxonomyApproved && s.photoApproved && s.photo.valid && !s.photo.approvedRanks.isEmpty()) {
         if (s.photo.role=="supporting") ++supportingCount; else ++visualCount;
     }
     return {{"id", id}, {"title", taxon.name}, {"rank", taxon.rank},
         {"kind", organism ? "organism" : "group"}, {"commonName", commonName}, {"summary", summary},
+        {"educationalNote", educationalNote}, {"classificationSummary", classificationText.join(QStringLiteral(" · "))},
         {"introductionReviewNotice", review == "approved_expert" ? QStringLiteral("Texto com revisão especializada registrada; consulte o escopo na fonte.")
             : review == "approved_editorial" ? QStringLiteral("Texto com revisão editorial; não equivale a revisão especializada.")
             : QStringLiteral("Introdução sem revisão utilizável registrada para este grupo.")},

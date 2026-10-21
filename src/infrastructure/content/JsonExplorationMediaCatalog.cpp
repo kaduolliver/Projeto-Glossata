@@ -60,7 +60,14 @@ QVariantMap verifiedPhoto(const QJsonObject &photo, const QString &root) {
     if(focusX<0 || focusX>1 || focusY<0 || focusY>1)return {};
     return {{"image",root==":" ? "qrc:/"+path : QUrl::fromLocalFile(root+"/"+path).toString()},
         {"subject",photo["subject"].toString()}, {"author",photo["author"].toString()},
-        {"license",license.toUpper()+" "+version}, {"licenseUrl",licenseUrl},
+        {"license",license.toUpper()+" "+version}, {"licenseVersion",version}, {"licenseUrl",licenseUrl},
+        // A presentation hint for verified, standard contextual attribution;
+        // not permission, scientific approval, or a distribution decision.
+        {"contextualAttribution", (license=="cc0" || (license=="cc-by" && version=="4.0"))
+            && metadata["Attribution"].toObject()["value"].toString().isEmpty()},
+        {"attributionNotice",QTextDocumentFragment::fromHtml(metadata["Attribution"].toObject()["value"].toString()).toPlainText()},
+        {"sourceCredit",QTextDocumentFragment::fromHtml(metadata["Credit"].toObject()["value"].toString()).toPlainText()},
+        {"permissionState",photo["permission_state"].toString()}, {"scientificReview",photo["scientific_review"].toString()},
         {"photoUrl",photo["photo_url"].toString()}, {"kind",photo["kind"].toString()},
         {"identificationNote",photo["identification_note"].toString()},
         {"title",photo["title"].toString()}, {"photoId",photo["photo_id"].toString()},
