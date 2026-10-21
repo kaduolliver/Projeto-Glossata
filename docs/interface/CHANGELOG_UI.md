@@ -4,7 +4,7 @@
 
 - Cartões enciclopédicos compactos, fotografias integrais com molduras discretas e grupos largos em composição horizontal. Galeria de quatro destaques existentes com controles/setas e foco acessíveis, cabeçalho com pesquisa integrada, filtros compactos e limpeza só do texto.
 - Grupos e organismos têm identificação própria, resumo/introdução existentes em destaque e classificação/fontes/proveniência em seções distintas. Atribuições e avisos científicos preservados. Retorno à pesquisa recupera lotes, foco e rolagem; novas consultas reiniciam a paginação. Contratos científicos e telas fora de Explorar permanecem intactos.
-- [Registro e capturas desta rodada](VERSOES/2.2.2/rodada-2/README.md), na mesma [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32). Commit final pendente das verificações. Evidências anteriores preservadas; aviso preexistente da Home continua documentado separadamente.
+- [Registro e capturas desta rodada](VERSOES/2.2.2/rodada-2/README.md), na mesma [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), em [c333578](https://github.com/kaduolliver/Projeto-Glossata/commit/c333578835ee97df0b5d559fcca6d749c3518293). Evidências anteriores preservadas; aviso preexistente da Home continua documentado separadamente.
 
 ## PR #32 — rodada 1 da Subetapa 2.2.2
 

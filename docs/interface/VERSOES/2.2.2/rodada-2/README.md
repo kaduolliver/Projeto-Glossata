@@ -1,6 +1,6 @@
 # PR #32 — rodada 2: Explorar fotográfico
 
-Base: `ce613adcde4d8af30bf4d136c65974b65d928f5d`, na mesma branch `feat/issue-22-explore-2.2.2` e [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22. As [evidências iniciais](../README.md) e da [rodada 1](../rodada-1/README.md) permanecem históricas. Aplicativo 1.8.0 ainda não lançado; catálogo 2.4.0 intacto. Commit final da interface: pendente até a gravação das verificações.
+Base: `ce613adcde4d8af30bf4d136c65974b65d928f5d`, na mesma branch `feat/issue-22-explore-2.2.2` e [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22. As [evidências iniciais](../README.md) e da [rodada 1](../rodada-1/README.md) permanecem históricas. Aplicativo 1.8.0 ainda não lançado; catálogo 2.4.0 intacto. Interface, testes, capturas e evidências em [c333578](https://github.com/kaduolliver/Projeto-Glossata/commit/c333578835ee97df0b5d559fcca6d749c3518293). `release.py check-history` aprovado após o commit, comparando a base desta rodada.
 
 ## Composição e contratos
 
