@@ -3,7 +3,7 @@
 ## 2.2.2 — Modernização da tela Explorar
 
 - Busca científica offline, filtros por domínio/nível, resultados distintos para grupos e organismos e destaques com elegibilidade existente. Cartões fotográficos com nomes científicos, autoria/licença e contagens do catálogo; cabeçalho taxonômico, breadcrumbs, avisos e créditos expansíveis. Somente o contexto Explorar recebe a modernização; a seleção de Jogar mantém sua variante e regras.
-- Aplicativo 1.8.0, catálogo 2.4.0 preservado. Base após merge confirmado da PR #31. [Implementação, contratos, validação e capturas reais](VERSOES/2.2.2/README.md). Commit e PR serão vinculados depois dos checks, sem hash ou aprovação antecipados.
+- Aplicativo 1.8.0, catálogo 2.4.0 preservado. Base após merge confirmado da PR #31. [Implementação, contratos, validação e capturas reais](VERSOES/2.2.2/README.md), com interface/capturas no commit [e4e8bd4](https://github.com/kaduolliver/Projeto-Glossata/commit/e4e8bd4d34167a4fd831dd47fb2dd594047de20d), entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22; sem merge ou lançamento.
 
 ## 2.2.1-B — Descoberta do Dia e Indicadores Dinâmicos — 2026-10-20
 

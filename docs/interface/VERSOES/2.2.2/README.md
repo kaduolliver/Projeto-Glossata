@@ -1,6 +1,6 @@
 # Subetapa 2.2.2 — Modernização da tela Explorar
 
-Base: `9d047910ddb6b56051d1830cba4052ca03a4e520`, merge da [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31) na `main`, confirmado pela API do GitHub antes de qualquer alteração de código. A `main` local foi atualizada por fast-forward e a implementação começou na branch `feat/issue-22-explore-2.2.2`. Vinculada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). Commit final e PR desta entrega: pendentes até concluir a validação.
+Base: `9d047910ddb6b56051d1830cba4052ca03a4e520`, merge da [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31) na `main`, confirmado pela API do GitHub antes de qualquer alteração de código. A `main` local foi atualizada por fast-forward e a implementação começou na branch `feat/issue-22-explore-2.2.2`. Entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem merge ou lançamento. Busca/seleção e testes C++ em [7ded42a](https://github.com/kaduolliver/Projeto-Glossata/commit/7ded42a); interface, testes, versão e capturas em [e4e8bd4](https://github.com/kaduolliver/Projeto-Glossata/commit/e4e8bd4d34167a4fd831dd47fb2dd594047de20d).
 
 ## Composição e escopo
 
@@ -32,7 +32,7 @@ Release recompilada; **26/26 suítes CTest aprovadas**, sem falhas, em **249,59 
 - Lint de todos os QML, escopo Apache, estado derivado do projeto, auditorias técnicas de catálogo/mídias/repositório e comparação da governança com a base aprovados. Dados, imagens, manifesto e os **1.053 eventos de revisão** permanecem idênticos. Metadados/captura oficial e smoke test do executável real aprovados; nenhum perfil pessoal foi utilizado.
 - O [diagnóstico de distribuição](verificacoes/distribution-summary.json) continua bloqueado por pendências científicas/de direitos já existentes, sem erros técnicos ou de dependências nessa consulta. Não é aprovação de lançamento e não foi contornado.
 
-As **27 capturas** abaixo vieram de `scientificExploreSearchFiltersNavigationAndCaptures`, com janela Qt real, QML e controlador de produção; nenhuma imagem foi montada ou retocada. O [manifesto](capturas.json) registra horários UTC reais, dimensões, estado de pesquisa/navegação, hashes dos PNGs, fontes e binários. Créditos individuais continuam nas fontes locais de fotografias e nos avisos visíveis; o manifesto identifica essas fontes sem ampliar permissões.
+As **27 capturas** abaixo vieram de `scientificExploreSearchFiltersNavigationAndCaptures`, com janela Qt real, QML e controlador de produção; nenhuma imagem foi montada ou retocada. O [manifesto](capturas.json) registra horários UTC reais, dimensões, estado de pesquisa/navegação, hashes dos PNGs, fontes e binários. Logs são arquivados em UTF-8/LF, com regra específica em `.gitattributes`, para manter os hashes em checkouts Windows. Créditos individuais continuam nas fontes locais de fotografias e nos avisos visíveis; o manifesto identifica essas fontes sem ampliar permissões.
 
 | Estado real | 1000 × 700 | 1240 × 820 | 1920 × 1080 |
 | --- | --- | --- | --- |

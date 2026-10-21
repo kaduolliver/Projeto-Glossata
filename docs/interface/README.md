@@ -21,7 +21,7 @@ Sequência da evolução visual da Home e das próximas telas:
 
 1. **2.2.1-A — Início fotográfico:** concluída no PR #30, integrado à main em `27294a18ffd0d1e533dcdeb47b44ee0011e97b35`.
 2. **2.2.1-B — Descoberta do Dia e indicadores dinâmicos:** integrada pelo [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), merge `9d047910ddb6b56051d1830cba4052ca03a4e520`. Implementação e verificação na [revisão própria](VERSOES/2.2.1-B/README.md).
-3. **2.2.2 — Explorar:** implementação e evidências nesta [revisão](VERSOES/2.2.2/README.md), para PR independente vinculada à Issue #22; sem merge ou lançamento nesta entrega.
+3. **2.2.2 — Explorar:** entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), independente e vinculada à Issue #22. Implementação e evidências nesta [revisão](VERSOES/2.2.2/README.md); sem merge ou lançamento nesta entrega.
 4. **2.2.3 — Jogar:** futura reformulação, após Explorar e fora do escopo de 2.2.1-B.
 
 Propostas ainda pendentes, sem identificador ou conclusão presumidos:
