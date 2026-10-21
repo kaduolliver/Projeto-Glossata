@@ -1,6 +1,6 @@
 # Subetapa 2.2.2 — Modernização da tela Explorar
 
-Revisão atual da PR #32: [rodada 1 — escalabilidade, sincronização, enquadramento e navegação](rodada-1/README.md). As capturas, os logs e os contratos abaixo registram a entrega inicial e continuam preservados como histórico.
+Revisão atual da PR #32: [rodada 2 — composição fotográfica e retorno aos resultados](rodada-2/README.md), após a [rodada 1 — escalabilidade, sincronização, enquadramento e navegação](rodada-1/README.md). As capturas, os logs e os contratos abaixo registram a entrega inicial e continuam preservados como histórico.
 
 Base: `9d047910ddb6b56051d1830cba4052ca03a4e520`, merge da [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31) na `main`, confirmado pela API do GitHub antes de qualquer alteração de código. A `main` local foi atualizada por fast-forward e a implementação começou na branch `feat/issue-22-explore-2.2.2`. Entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem merge ou lançamento. Busca/seleção e testes C++ em [7ded42a](https://github.com/kaduolliver/Projeto-Glossata/commit/7ded42a); interface, testes, versão e capturas em [e4e8bd4](https://github.com/kaduolliver/Projeto-Glossata/commit/e4e8bd4d34167a4fd831dd47fb2dd594047de20d).
 

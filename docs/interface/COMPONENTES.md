@@ -1,5 +1,13 @@
 # Componentes compartilhados
 
+## PR #32 — rodada 2
+
+`ExploreCard.encyclopedic` compacta molduras e textos; `landscape` dispõe foto/texto lado a lado para grupos com largura ≥450 px. `shortClassification` apresenta somente os dois ancestrais mais próximos do `pathText` existente, sem inferir ranks; o caminho integral permanece acessível. Autoria/licença não são truncadas. A fotografia preserva todo o raster e precisa intersectar os viewports horizontal e vertical para receber `source`; `outerViewport` acompanha a rolagem externa da galeria. A variante padrão permanece visualmente igual em Jogar.
+
+`CategoryView` reúne busca/cabeçalho, `clearExploreQuery` (texto) e `clearExploreSearch` (todos os filtros). `exploreFeaturedGrid` passa a ser um Flickable horizontal com quatro registros existentes, controles `previousFeaturedOrganisms`/`nextFeaturedOrganisms` e setas esquerda/direita nos cartões. `Main.explorePresentation` guarda em memória chave de texto/domínio/rank, limites, rolagem vertical/horizontal e controle de retorno; a view restaura lotes e foco após o Loader recriá-la. Nova consulta/filtro reinicia limites. Contratos C++ e debounce da rodada 1 permanecem iguais.
+
+`TaxonomyView` distingue grupo/organismo, preserva os breadcrumbs e mantém atribuição/avisos visíveis. `exploreClassification` e `exploreSources` expandem classificação e fontes; `explorePhotoCredits` conserva o acesso ao título, modificações e URLs. A origem fotográfica usa `photoUrl || sourceUrl`, conforme o mapa existente. Seções de Jogar e diálogos gerais não são reformulados. [Contratos, capturas e limites atuais](VERSOES/2.2.2/rodada-2/README.md). Os registros abaixo descrevem as entregas anteriores.
+
 ## PR #32 — rodada 1
 
 `CategoryView` mantém limites de apresentação independentes, começando em 12 grupos e 12 organismos, com Carregar mais para cada seção. O prefixo das listas de `TaxonomyIndex` conserva relevância, totais e IDs; edição/filtro reinicia ambos os limites. Voltar de um táxon conserva consulta/filtros e reabre a primeira página. O foco por teclado passa ao primeiro cartão recém-solicitado. Colunas são calculadas pela largura disponível e mínimo de 280 px, com distribuição equilibrada dos quatro destaques; não há novo desenho dos cartões ou da galeria.

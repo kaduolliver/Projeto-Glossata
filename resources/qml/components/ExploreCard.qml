@@ -8,6 +8,9 @@ Button {
     required property var entry
     property bool wide: false
     property bool encyclopedic: false
+    readonly property bool landscape: encyclopedic && entry.kind !== "organism" && width >= 450
+    // Presentation of an existing path, without inferring ranks or ancestry.
+    readonly property string shortClassification: (entry.pathText || "").split(" › ").slice(0, -1).slice(-2).join(" · ")
     property Flickable photoViewport: null
     property bool photoRequested: false
     readonly property real photoFocusX: validFocus(photo.focusX)
@@ -26,6 +29,15 @@ Button {
         const position = modernPhotoFrame.mapToItem(photoViewport, 0, 0)
         photoRequested = visible && position.y < photoViewport.height && position.y + modernPhotoFrame.height > 0
             && position.x < photoViewport.width && position.x + modernPhotoFrame.width > 0
+        let ancestor = photoViewport.parent
+        while (photoRequested && ancestor) {
+            if (ancestor instanceof Flickable) {
+                const outerPosition = modernPhotoFrame.mapToItem(ancestor, 0, 0)
+                photoRequested = outerPosition.y < ancestor.height && outerPosition.y + modernPhotoFrame.height > 0
+                    && outerPosition.x < ancestor.width && outerPosition.x + modernPhotoFrame.width > 0
+            }
+            ancestor = ancestor.parent
+        }
     }
     function schedulePhotoCheck() { if (encyclopedic && photoCheck) photoCheck.restart() }
     Timer {
@@ -41,15 +53,31 @@ Button {
     Connections {
         target: card.photoViewport
         function onContentYChanged() { card.schedulePhotoCheck() }
+        function onContentXChanged() { card.schedulePhotoCheck() }
         function onContentHeightChanged() { card.schedulePhotoCheck() }
         function onWidthChanged() { card.schedulePhotoCheck() }
         function onHeightChanged() { card.schedulePhotoCheck() }
+    }
+    // The nearest viewport may be the horizontal gallery inside the page.
+    property Flickable outerViewport: null
+    function locateOuterViewport() {
+        let ancestor = photoViewport ? photoViewport.parent : null
+        while (ancestor && !(ancestor instanceof Flickable)) ancestor = ancestor.parent
+        outerViewport = ancestor
+    }
+    onPhotoViewportChanged: locateOuterViewport()
+    Connections {
+        target: card.outerViewport
+        function onContentYChanged() { card.schedulePhotoCheck() }
+        function onHeightChanged() { card.schedulePhotoCheck() }
+        function onWidthChanged() { card.schedulePhotoCheck() }
+        function onContentHeightChanged() { card.schedulePhotoCheck() }
     }
     readonly property var photo: entry.photo || ({})
     readonly property string photoCredit: photo.image ? (photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + photo.subject + ". " + photo.author + " · " + photo.license + ". " + (photo.identificationNote || "Representante do grupo; identificação indicada pela fonte.") + " Créditos completos em Perfis e ajustes → Créditos e transparência." : "Ilustração temporária. " + (photo.pendingReason || "Fotografia adequada ainda não disponível.")
     property color accent: entry.kingdom === "Plantae" || entry.kingdom === "Archaeplastida" ? "#7DA88A" : entry.kingdom === "Fungi" ? "#C29580" : entry.kingdom === "Eukaryota" || entry.kingdom === "SAR" ? "#86A9C9" : entry.kingdom === "Bacteria" || entry.kingdom === "Archaea" ? "#7BBABE" : "#D1B17B"
     implicitHeight: encyclopedic ? modernBody.implicitHeight + topPadding + bottomPadding : wide ? 132 : 185
-    padding: encyclopedic ? Style.Theme.spaceMd : 20; hoverEnabled: true
+    padding: encyclopedic ? 10 : 20; hoverEnabled: true
     activeFocusOnTab: true
     Accessible.name: encyclopedic ? entry.title + ", " + (entry.kind === "organism" ? "organismo cadastrado" : entry.rankLabel + ", " + entry.count + (entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo")) : entry.title + ", " + entry.count + (entry.count === 1 ? " espécie" : " espécies")
     Accessible.description: (entry.pathText || entry.description || "") + ". " + photoCredit
@@ -89,16 +117,27 @@ Button {
             Label { text: card.entry.title; color: "#E8F1E9"; font.pixelSize: card.wide ? 24 : 21; font.weight: Font.DemiBold; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { text: card.entry.count === 0 ? "Ainda sem organismos no catálogo" : card.entry.count + (card.entry.count === 1 ? " cadastrada · " : " cadastradas · ") + (card.wide ? card.entry.playableCount + (card.entry.playableCount === 1 ? " disponível neste modo" : " disponíveis neste modo") : (card.entry.supportingCount || 0) > 0 ? card.entry.supportingCount + " com imagem de apoio" : (card.entry.visualCount || 0) + " com foto aprovada"); color: "#91ABB0"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         }
-        ColumnLayout {
+        GridLayout {
             id: modernBody
             visible: card.encyclopedic
             anchors.fill: parent
-            spacing: Style.Theme.spaceXs
+            columns: card.landscape ? 2 : 1
+            columnSpacing: 16; rowSpacing: Style.Theme.spaceXs
             Rectangle {
                 id: modernPhotoFrame
                 objectName: "encyclopediaPhotoFrame"
-                Layout.fillWidth: true; implicitHeight: Math.max(card.entry.kind === "organism" ? 148 : 126, Math.min(220, card.availableWidth * 0.55))
-                color: Style.Theme.surfaceRaised
+                Layout.fillWidth: !card.landscape
+                Layout.preferredWidth: card.landscape ? card.availableWidth * 0.42 : -1
+                Layout.alignment: Qt.AlignTop
+                implicitHeight: card.entry.kind === "organism" ? 160 : 146
+                Layout.maximumHeight: implicitHeight
+                radius: 10; color: Style.Theme.canvas
+                // A restrained surround fills free margins without duplicating,
+                // stretching or cropping the scientific photograph.
+                gradient: Gradient {
+                    GradientStop { position: 0; color: Style.Theme.surfaceRaised }
+                    GradientStop { position: 1; color: Style.Theme.canvas }
+                }
                 onYChanged: card.schedulePhotoCheck()
                 onWidthChanged: card.schedulePhotoCheck()
                 Image {
@@ -106,8 +145,8 @@ Button {
                     objectName: "encyclopediaCardPhoto"
                     // A focal point is not a reviewed crop boundary. Fit the
                     // entire raster, using focus only within the free margins.
-                    readonly property real fittedScale: implicitWidth > 0 && implicitHeight > 0 ? Math.min(parent.width / implicitWidth, parent.height / implicitHeight) : 0
-                    width: implicitWidth * fittedScale; height: implicitHeight * fittedScale
+                    readonly property real fittedScale: sourceSize.width > 0 && sourceSize.height > 0 ? Math.min(parent.width / sourceSize.width, parent.height / sourceSize.height) : 0
+                    width: sourceSize.width * fittedScale; height: sourceSize.height * fittedScale
                     x: Math.max(0, Math.min(parent.width - width, parent.width / 2 - card.photoFocusX * width))
                     y: Math.max(0, Math.min(parent.height - height, parent.height / 2 - card.photoFocusY * height))
                     source: card.encyclopedic && card.photoRequested ? card.photo.image || "" : ""
@@ -115,18 +154,21 @@ Button {
                 }
                 Label { visible: modernPhoto.status !== Image.Ready; anchors.centerIn: parent; width: parent.width - 20; text: modernPhoto.status === Image.Loading ? "Carregando fotografia…" : "Fotografia ainda indisponível"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; horizontalAlignment: Text.AlignHCenter }
             }
-            Label { text: card.entry.kind === "organism" ? "ORGANISMO · " + (card.entry.rankLabel || "") : card.entry.rankLabel || ""; textFormat: Text.PlainText; color: Style.Theme.green; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 0.6; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.topMargin: 4 }
-            Label { objectName: "encyclopediaCardTitle"; text: card.entry.title; textFormat: Text.PlainText; color: Style.Theme.text; font.pixelSize: card.entry.kind === "organism" ? 18 : Style.Theme.subtitleSize; font.italic: card.entry.rank === "species" || card.entry.rank === "genus"; font.weight: Font.DemiBold; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            ColumnLayout {
+            Layout.fillWidth: true; Layout.fillHeight: true; spacing: Style.Theme.spaceXs
+            Label { text: card.entry.kind === "organism" ? "ORGANISMO · " + (card.entry.rankLabel || "") : card.entry.rankLabel || ""; textFormat: Text.PlainText; color: Style.Theme.green; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 0.6; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.topMargin: 2 }
+            Label { objectName: "encyclopediaCardTitle"; text: card.entry.title; textFormat: Text.PlainText; color: Style.Theme.text; font.pixelSize: 18; font.italic: card.entry.rank === "species" || card.entry.rank === "genus"; font.weight: Font.DemiBold; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!card.entry.commonName; text: card.entry.commonName || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            Label { objectName: "encyclopediaCardCount"; text: card.entry.kind === "organism" ? card.entry.pathText || "" : card.entry.count === 0 ? "Sem organismos no catálogo" : card.entry.count + (card.entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
-            Label { visible: !!card.photo.subject && card.entry.kind !== "organism"; text: "Na foto: " + (card.photo.subject || ""); textFormat: Text.PlainText; font.italic: true; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
-            Label { text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { objectName: "encyclopediaCardCount"; text: card.entry.kind === "organism" ? card.shortClassification : card.entry.count === 0 ? "Sem organismos no catálogo" : card.entry.count + (card.entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { visible: !!card.photo.subject && card.entry.kind !== "organism"; text: "Representante: " + (card.photo.subject || ""); textFormat: Text.PlainText; font.italic: true; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { objectName: "encyclopediaCardAttribution"; text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Item { Layout.fillHeight: true; Layout.minimumHeight: 0 }
             RowLayout {
-                Layout.fillWidth: true; Layout.topMargin: 4
-                Label { text: card.entry.kind === "organism" ? "Ver na taxonomia" : "Explorar grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
+                Layout.fillWidth: true; Layout.topMargin: 0
+                Label { text: card.entry.kind === "organism" ? "Conhecer organismo" : "Explorar grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
                 Item { Layout.fillWidth: true }
                 UiIcon { name: "arrow"; ink: Style.Theme.green; implicitWidth: 16; implicitHeight: 16 }
+            }
             }
         }
     }

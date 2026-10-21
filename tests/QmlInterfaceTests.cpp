@@ -65,6 +65,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void photographicExploreNavigationAndCaptures();
     void progressiveExploreNavigationAndCaptures();
     void encyclopedicPhotographsFitAndRespectFocus();
     void encyclopedicCardsHandleLongTextAndUnavailablePhotos();
@@ -79,6 +80,146 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
+{
+    interfaceWarnings.clear();
+    const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    TestUrlRecorder urls; QDesktopServices::setUrlHandler("https", &urls, "capture");
+    const auto restoreLinks = qScopeGuard([] { QDesktopServices::unsetUrlHandler("https"); });
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("explore-round-2.sqlite"));
+    DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled", false); window->requestActivate(); QTest::qWait(100);
+    const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    const auto activate = [&](const QString &name, bool mouse = false) {
+        auto control = item(name); if (!control || !control->isVisible() || !control->isEnabled()) return false;
+        control->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        if (mouse) QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, control->mapToScene(control->boundingRect().center()).toPoint());
+        else QTest::keyClick(window, Qt::Key_Space);
+        QTest::qWait(100); return true;
+    };
+    const auto edit = [&](const QString &query) {
+        auto field = item("exploreSearchField"); if (!field) return false;
+        field->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_A, Qt::ControlModifier);
+        QTest::keyClick(window, Qt::Key_Backspace);
+        for (auto c : query) QTest::keyClick(window, c.toLatin1());
+        return QTest::qWaitFor([&] { return controller.exploreQuery() == query && !controller.exploreSearchPending(); }, 3000);
+    };
+    const auto photoFits = [&] {
+        auto photo = item("exploreTaxonPhoto"); if (!photo || photo->property("status").toInt() != 1) return false;
+        const auto pixels = photo->property("sourceSize").toSize();
+        return !pixels.isEmpty() && photo->width() > 0 && photo->height() > 0
+            && qAbs(photo->width() / photo->height() - double(pixels.width()) / pixels.height()) < 0.001
+            && photo->x() >= 0 && photo->y() >= 0 && photo->x() + photo->width() <= photo->parentItem()->width() + 1
+            && photo->y() + photo->height() <= photo->parentItem()->height() + 1;
+    };
+    QVERIFY(QDir().mkpath("previews/explore-2.2.2-round-2")); QJsonArray captures;
+    const auto capture = [&](const QString &state, QSize size) {
+        QTest::qWait(220);
+        const auto filename = state + "-" + QString::number(size.width()) + "x" + QString::number(size.height()) + ".png";
+        const auto image = window->grabWindow();
+        if (image.size() != size || !image.save("previews/explore-2.2.2-round-2/" + filename)) return false;
+        captures.append(QJsonObject::fromVariantMap({{"file", filename}, {"width", size.width()}, {"height", size.height()},
+            {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}, {"page", window->property("page")},
+            {"query", controller.exploreQuery()}, {"domainId", controller.exploreDomain()}, {"rank", controller.exploreRank()},
+            {"taxonId", controller.browseTaxon()["id"]}, {"scrollY", item("pageScroll")->property("contentY")},
+            {"groupsShown", item("exploreGroupResults") ? item("exploreGroupResults")->property("count") : QVariant()},
+            {"organismsShown", item("exploreOrganismResults") ? item("exploreOrganismResults")->property("count") : QVariant()}}));
+        return true;
+    };
+    for (QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size); controller.setExploreQuery(""); controller.setExploreDomain(""); controller.setExploreRank("");
+        QVERIFY(activate("navExplore")); item("pageScroll")->setProperty("contentY", 0);
+        auto heading = item("exploreHeading"), field = item("exploreSearchField"); QVERIFY(heading && field);
+        const auto headingRect = heading->mapRectToScene(heading->boundingRect()), fieldRect = field->mapRectToScene(field->boundingRect());
+        if (size.width() == 1000) QVERIFY(fieldRect.top() >= headingRect.bottom());
+        else QVERIFY(fieldRect.left() >= headingRect.right());
+        QVERIFY(capture("overview", size));
+        auto gallery = item("exploreFeaturedGrid"); QVERIFY(gallery);
+        item("featuredOrganism0")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(120);
+        for (int i = 0; i < 3; ++i) QTest::keyClick(window, Qt::Key_Right);
+        QTRY_VERIFY(item("featuredOrganism3")->hasActiveFocus());
+        const auto last = item("featuredOrganism3")->mapRectToItem(gallery, item("featuredOrganism3")->boundingRect());
+        QVERIFY(last.left() >= -1 && last.right() <= gallery->width() + 1);
+        QTest::keyClick(window, Qt::Key_Left); QVERIFY(item("featuredOrganism2")->hasActiveFocus());
+        if (gallery->property("contentWidth").toReal() > gallery->width()) {
+            QVERIFY(activate("previousFeaturedOrganisms", true));
+            QVERIFY(activate("nextFeaturedOrganisms"));
+        }
+        item("featuredOrganism0")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(120);
+        auto featured = item("featuredOrganism0");
+        QVERIFY(featured->height() < 400);
+        const auto entry = featured->property("entry").toMap(), photo = entry["photo"].toMap();
+        const auto attribution = findVisualItem(featured, "encyclopediaCardAttribution");
+        QVERIFY(attribution->property("text").toString().contains(photo["author"].toString()));
+        QVERIFY(attribution->property("text").toString().contains(photo["license"].toString()));
+        QVERIFY(!attribution->property("truncated").toBool());
+        const auto path = entry["pathText"].toString();
+        QVERIFY(!findVisualItem(featured, "encyclopediaCardCount")->property("text").toString().contains(path));
+        QVERIFY(capture("gallery", size));
+        QVERIFY(activate("featuredOrganism0", true));
+        QCOMPARE(controller.browseTaxon()["id"], entry["id"]);
+        QVERIFY(item("exploreTaxonKind")->property("text").toString().contains("ORGANISMO"));
+        QTRY_VERIFY(photoFits()); QVERIFY(capture("organism", size));
+        QVERIFY(activate("explorePhotoCredits")); QVERIFY(item("explorePhotoDetails")->isVisible());
+        QVERIFY(item("explorePhotoProvenance")->property("text").toString().contains(controller.browseTaxon()["photo"].toMap()["modifications"].toString()));
+        QVERIFY(activate("explorePhotoOriginal"));
+        const auto fullPhoto = controller.browseTaxon()["photo"].toMap();
+        QCOMPARE(urls.urls.last().toString(), fullPhoto.value("photoUrl", fullPhoto["sourceUrl"]).toString());
+        QVERIFY(activate("explorePhotoLicense")); QCOMPARE(urls.urls.last().toString(), fullPhoto["licenseUrl"].toString());
+        QVERIFY(capture("photo-provenance", size));
+        QVERIFY(activate("exploreClassification")); QVERIFY(item("exploreClassificationDetails")->isVisible());
+        QVERIFY(activate("exploreSources")); QVERIFY(item("exploreSourceDetails")->isVisible());
+        QVERIFY(activate("exploreScientificSource"));
+        QCOMPARE(urls.urls.last().toString(), controller.browseTaxon()["summary"].toMap()["source_url"].toString());
+        QVERIFY(capture("scientific-context", size));
+        QVERIFY(activate("expandTaxonomyBreadcrumbs")); QVERIFY(capture("breadcrumbs-expanded", size));
+        QVERIFY(activate("breadcrumbButton0"));
+        QVERIFY(item("exploreTaxonKind")->property("text").toString().contains("GRUPO"));
+        QVERIFY(!item("exploreSourceDetails")->isVisible());
+        QTRY_VERIFY(photoFits()); QVERIFY(capture("group", size));
+        item("taxonButton0")->forceActiveFocus(Qt::TabFocusReason); QVERIFY(capture("descendants", size));
+        QVERIFY(activate("returnDomainsButton"));
+        QVERIFY(edit("a")); QVERIFY(activate("loadMoreExploreGroups")); QVERIFY(activate("loadMoreExploreOrganisms"));
+        QCOMPARE(item("exploreGroupResults")->property("count").toInt(), 24);
+        QCOMPARE(item("exploreOrganismResults")->property("count").toInt(), 24);
+        item("exploreOrganismResult13")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(160);
+        const auto savedScroll = item("pageScroll")->property("contentY").toReal(); QVERIFY(savedScroll > 0);
+        const auto savedId = item("exploreOrganismResult13")->property("entry").toMap()["id"];
+        QVERIFY(activate("exploreOrganismResult13")); QCOMPARE(controller.browseTaxon()["id"], savedId);
+        QVERIFY(activate("returnDomainsButton"));
+        QCOMPARE(controller.exploreQuery(), QString("a"));
+        QCOMPARE(item("exploreGroupResults")->property("count").toInt(), 24);
+        QCOMPARE(item("exploreOrganismResults")->property("count").toInt(), 24);
+        QTRY_VERIFY(item("exploreOrganismResult13")->hasActiveFocus());
+        QTRY_VERIFY(qAbs(item("pageScroll")->property("contentY").toReal() - savedScroll) <= 1);
+        QVERIFY(capture("restored-results", size));
+        QVERIFY(edit("Panthera")); QCOMPARE(item("exploreGroupResults")->property("count").toInt(), 1);
+        controller.setExploreDomain("domain:Eukaryota"); controller.setExploreRank("species");
+        QVERIFY(activate("clearExploreQuery", true));
+        QCOMPARE(controller.exploreQuery(), QString()); QCOMPARE(controller.exploreDomain(), QString("domain:Eukaryota"));
+        QCOMPARE(controller.exploreRank(), QString("species"));
+        QCOMPARE(item("exploreOrganismResults")->property("count").toInt(), 12);
+        QVERIFY(item("exploreSearchField")->hasActiveFocus());
+        QVERIFY(activate("clearExploreSearch"));
+        QVERIFY(activate("domainButton0")); QCOMPARE(controller.browseTaxon()["count"].toInt(), 0);
+        QVERIFY(!item("explorePhotoAttribution")->property("text").toString().isEmpty());
+        QVERIFY(capture("empty-group", size)); QVERIFY(activate("returnDomainsButton"));
+    }
+    QCOMPARE(controller.answeredCount(), 0); QVERIFY(controller.recoverableSessions().isEmpty());
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+    QFile manifest("previews/explore-2.2.2-round-2/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    manifest.write(QJsonDocument(QJsonObject{{"method", "QQuickWindow::grabWindow / production QML and GameController in QtTest"},
+        {"privacy", "Temporary SQLite databases; Discord disabled; links intercepted without opening a browser."},
+        {"rendering", "Qt offscreen/software, scale 1, 96 DPI; reduced motion for static captures."}, {"captures", captures}}).toJson());
+}
 
 void QmlInterfaceTests::encyclopedicPhotographsFitAndRespectFocus()
 {
@@ -171,9 +312,10 @@ void QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
             if (node->property("encyclopedic").toBool() && node->isVisible()) {
                 auto frame = findVisualItem(node, "encyclopediaPhotoFrame");
                 auto photo = findVisualItem(node, "encyclopediaCardPhoto");
-                if (!frame || !photo || node->property("photoViewport").value<QObject *>() != scroll) return false;
-                const auto bounds = frame->mapRectToItem(scroll, frame->boundingRect());
-                const bool intersects = bounds.intersects(scroll->boundingRect());
+                auto viewport = qobject_cast<QQuickItem *>(node->property("photoViewport").value<QObject *>());
+                if (!frame || !photo || !viewport) return false;
+                const bool intersects = frame->mapRectToItem(scroll, frame->boundingRect()).intersects(scroll->boundingRect())
+                    && frame->mapRectToItem(viewport, frame->boundingRect()).intersects(viewport->boundingRect());
                 const auto source = node->property("photo").toMap()["image"].toString();
                 if (!source.isEmpty() && photo->property("source").toUrl().isEmpty() == intersects) return false;
                 if (!findVisualItem(node, "explorationPhoto")->property("source").toUrl().isEmpty()) return false;

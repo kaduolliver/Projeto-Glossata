@@ -11,6 +11,10 @@ Item {
     property bool browsingOnly: false
     property bool photoDetailsOpen: false
     property bool breadcrumbsExpanded: false
+    property bool sourcesOpen: false
+    property bool classificationOpen: false
+    readonly property bool organism: backend.browseTaxon.kind === "organism"
+    readonly property string originalPhotoUrl: photo.photoUrl || photo.sourceUrl || ""
     readonly property var trail: backend.breadcrumbs
     readonly property int hiddenAncestorCount: Math.max(0, trail.length - 4)
     readonly property var photo: backend.browseTaxon.photo || ({})
@@ -19,7 +23,7 @@ Item {
         backend.exploreTaxon(id)
         if (browsingOnly) returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
     }
-    Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false; view.breadcrumbsExpanded = false } }
+    Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false; view.breadcrumbsExpanded = false; view.sourcesOpen = false; view.classificationOpen = false } }
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
@@ -65,53 +69,99 @@ Item {
         }
         Rectangle {
             visible: view.browsingOnly
-            Layout.fillWidth: true; implicitHeight: overview.implicitHeight + 40
+            objectName: "exploreTaxonOverview"
+            Layout.fillWidth: true; implicitHeight: overview.implicitHeight + 32
             radius: Style.Theme.cardRadius; color: Style.Theme.surface; border.color: Style.Theme.border
             RowLayout {
                 id: overview
-                anchors.fill: parent; anchors.margins: 20; spacing: 24
+                anchors.fill: parent; anchors.margins: 16; spacing: 24
                 ColumnLayout {
                     Layout.fillWidth: true; spacing: 10
-                    Label { text: view.backend.browseTaxon.kind === "organism" ? "ORGANISMO NO CATÁLOGO" : "GRUPO TAXONÔMICO"; color: Style.Theme.green; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.2; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { objectName: "exploreTaxonKind"; text: view.organism ? "ORGANISMO NO CATÁLOGO" : "GRUPO TAXONÔMICO"; color: view.organism ? Style.Theme.gold : Style.Theme.green; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.2; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                     Label { objectName: "exploreTaxonTitle"; text: view.backend.browseTaxon.title || ""; textFormat: Text.PlainText; color: Style.Theme.text; font.pixelSize: Style.Theme.titleSize; font.weight: Font.DemiBold; font.italic: view.backend.browseTaxon.rank === "species" || view.backend.browseTaxon.rank === "genus"; wrapMode: Text.Wrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
                     Label { visible: !!view.backend.browseTaxon.commonName; text: view.backend.browseTaxon.commonName || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                    Label { text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " organismo cadastrado" : " organismos cadastrados"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.labelSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                    Label { text: "Contagem restrita ao catálogo local. Não representa a diversidade total deste táxon."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { text: (view.backend.browseTaxon.rankLabel || "") + (view.organism ? "" : " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " organismo cadastrado" : " organismos cadastrados")); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.labelSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { visible: !view.organism; text: "Contagem do catálogo local; não representa a diversidade total deste táxon."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 }
                 Rectangle {
-                    Layout.preferredWidth: view.width * 0.38; Layout.preferredHeight: 206
-                    color: Style.Theme.surfaceRaised
-                    Image { id: taxonPhoto; objectName: "exploreTaxonPhoto"; anchors.fill: parent; anchors.margins: 6; source: view.photo.image || ""; fillMode: Image.PreserveAspectFit; asynchronous: true; smooth: true; mipmap: true }
+                    Layout.preferredWidth: view.width * (view.organism ? 0.48 : 0.42); Layout.preferredHeight: view.organism ? 260 : 210
+                    radius: 12; color: Style.Theme.surfaceRaised
+                    gradient: Gradient { GradientStop { position: 0; color: Style.Theme.surfaceRaised } GradientStop { position: 1; color: Style.Theme.canvas } }
+                    Image {
+                        id: taxonPhoto; objectName: "exploreTaxonPhoto"
+                        readonly property real fittedScale: sourceSize.width > 0 && sourceSize.height > 0 ? Math.min((parent.width - 12) / sourceSize.width, (parent.height - 12) / sourceSize.height) : 0
+                        function validFocus(value) { return typeof value === "number" && isFinite(value) && value >= 0 && value <= 1 ? value : 0.5 }
+                        width: sourceSize.width * fittedScale; height: sourceSize.height * fittedScale
+                        x: 6 + Math.max(0, Math.min(parent.width - 12 - width, (parent.width - 12) / 2 - validFocus(view.photo.focusX) * width))
+                        y: 6 + Math.max(0, Math.min(parent.height - 12 - height, (parent.height - 12) / 2 - validFocus(view.photo.focusY) * height))
+                        source: view.browsingOnly ? view.photo.image || "" : ""; fillMode: Image.PreserveAspectFit; asynchronous: true; smooth: true; mipmap: true
+                    }
                     Label { visible: taxonPhoto.status !== Image.Ready; anchors.centerIn: parent; width: parent.width - 24; text: taxonPhoto.status === Image.Loading ? "Carregando fotografia…" : "Fotografia ainda indisponível"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; horizontalAlignment: Text.AlignHCenter }
                 }
             }
         }
         ColumnLayout {
             visible: view.browsingOnly; Layout.fillWidth: true; spacing: 6
-            Label { text: view.photo.image ? (view.photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + (view.photo.subject || "") + " · " + (view.photo.author || "Autoria não informada") + " · " + (view.photo.license || "Licença não informada") : view.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { objectName: "explorePhotoAttribution"; text: view.photo.image ? (view.photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + (view.photo.subject || "") + " · " + (view.photo.author || "Autoria não informada") + " · " + (view.photo.license || "Licença não informada") : view.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!view.photo.image; text: view.photo.identificationNote || "Representante do grupo; identificação indicada pela fonte."; textFormat: Text.PlainText; color: Style.Theme.gold; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             TextAction { objectName: "explorePhotoCredits"; visible: !!view.photo.image; text: view.photoDetailsOpen ? "Ocultar foto e créditos ↑" : "Foto, origem e créditos ↓"; Accessible.description: "Expandir os créditos e as limitações desta fotografia na página."; onClicked: view.photoDetailsOpen = !view.photoDetailsOpen }
             ColumnLayout {
                 objectName: "explorePhotoDetails"
                 visible: view.photoDetailsOpen; Layout.fillWidth: true; spacing: 6
-                Label { text: (view.photo.title || "Título não informado") + "\n" + (view.photo.modifications || "Alterações não documentadas.") + "\nOs registros de origem e as permissões mantêm os limites documentados em Créditos e transparência."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "explorePhotoProvenance"; text: (view.photo.title || "Título não informado") + "\n" + (view.photo.modifications || "Alterações não documentadas.") + "\nOs registros de origem e as permissões mantêm os limites documentados em Créditos e transparência."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 Flow {
                     Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height; spacing: 8
-                    TextAction { visible: !!view.photo.photoUrl; text: "Fotografia original ↗"; onClicked: Qt.openUrlExternally(view.photo.photoUrl) }
-                    TextAction { visible: !!view.photo.licenseUrl; text: "Termos da licença ↗"; onClicked: Qt.openUrlExternally(view.photo.licenseUrl) }
+                    TextAction { objectName: "explorePhotoOriginal"; visible: !!view.originalPhotoUrl; text: "Fotografia original ↗"; Accessible.description: view.originalPhotoUrl; onClicked: Qt.openUrlExternally(view.originalPhotoUrl) }
+                    TextAction { objectName: "explorePhotoLicense"; visible: !!view.photo.licenseUrl; text: "Termos da licença ↗"; Accessible.description: view.photo.licenseUrl || ""; onClicked: Qt.openUrlExternally(view.photo.licenseUrl) }
                     TextAction { text: "Créditos e transparência"; onClicked: view.app.navigate("credits") }
                 }
             }
         }
         Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " espécie neste grupo" : " espécies neste grupo"); color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Rectangle {
+            visible: view.browsingOnly
+            Layout.fillWidth: true; implicitHeight: introductionHeading.implicitHeight + 1
+            color: "transparent"
+            Label { id: introductionHeading; text: view.organism ? "Sobre este organismo" : "Conheça este grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+        }
         ColumnLayout {
-            Layout.fillWidth: true; spacing: 4
+            Layout.fillWidth: true; spacing: view.browsingOnly ? 8 : 4
             Label { objectName: "exploreIntroductionText"; text: view.introduction.text || view.backend.browseTaxon.description || "Introdução científica ainda não disponível para este grupo."; textFormat: Text.PlainText; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
             Label { visible: view.browsingOnly; text: view.backend.browseTaxon.introductionReviewNotice || ""; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { text: (view.backend.browseTaxon.rankNote || "") + " " + (view.backend.browseTaxon.placementNotice || ""); color: "#D9BA7D"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            TextAction { visible: !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
-            TextAction { visible: !!view.introduction.source_url; Layout.maximumWidth: view.width; text: "Fonte: " + (view.introduction.source_title || "Referência científica"); Accessible.description: view.introduction.source_url || ""; onClicked: Qt.openUrlExternally(view.introduction.source_url) }
+            TextAction { visible: !view.browsingOnly && !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
+            TextAction { visible: !view.browsingOnly && !!view.introduction.source_url; Layout.maximumWidth: view.width; text: "Fonte: " + (view.introduction.source_title || "Referência científica"); Accessible.description: view.introduction.source_url || ""; onClicked: Qt.openUrlExternally(view.introduction.source_url) }
+        }
+        Rectangle {
+            visible: view.browsingOnly
+            Layout.fillWidth: true; implicitHeight: scientificDetails.implicitHeight + 24
+            color: Style.Theme.surface; radius: Style.Theme.controlRadius; border.color: Style.Theme.border
+            ColumnLayout {
+                id: scientificDetails; anchors.fill: parent; anchors.margins: 12; spacing: 6
+                TextAction { objectName: "exploreClassification"; text: "Classificação taxonômica " + (view.classificationOpen ? "↑" : "↓"); checkable: true; checked: view.classificationOpen; onClicked: view.classificationOpen = !view.classificationOpen }
+                ColumnLayout {
+                    objectName: "exploreClassificationDetails"; visible: view.classificationOpen; Layout.fillWidth: true; spacing: 4
+                    Repeater {
+                        model: view.trail
+                        delegate: Label {
+                            required property var modelData
+                            text: modelData.rankLabel + " · " + modelData.title; textFormat: Text.PlainText
+                            color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true
+                        }
+                    }
+                }
+                TextAction { objectName: "exploreSources"; text: "Fontes e proveniência científica " + (view.sourcesOpen ? "↑" : "↓"); checkable: true; checked: view.sourcesOpen; onClicked: view.sourcesOpen = !view.sourcesOpen }
+                ColumnLayout {
+                    objectName: "exploreSourceDetails"; visible: view.sourcesOpen; Layout.fillWidth: true; spacing: 6
+                    Label { text: view.introduction.source_title || "Referência científica ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Flow {
+                        Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
+                        TextAction { objectName: "exploreScientificSource"; visible: !!view.introduction.source_url; text: "Referência do texto ↗"; Accessible.description: view.introduction.source_url || ""; onClicked: Qt.openUrlExternally(view.introduction.source_url) }
+                        TextAction { objectName: "explorePlacementSource"; visible: !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; Accessible.description: view.backend.browseTaxon.sourceUrl || ""; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
+                    }
+                }
+            }
         }
         PlayModeSelector { objectName: "playModeSelector"; visible: !view.browsingOnly; app: view.app; backend: view.backend }
         Label { visible: !view.browsingOnly && view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }

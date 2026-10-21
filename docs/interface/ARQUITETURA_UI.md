@@ -1,5 +1,11 @@
 # Arquitetura visual
 
+## PR #32 — rodada 2
+
+`GameController` e `TaxonomyIndex` conservam integralmente seus contratos e regras científicas. `Main.explorePresentation` guarda estado efêmero da view, sem persistência: chave de consulta/filtros, limites progressivos, foco e posições de rolagem. `CategoryView` restaura o estado quando a chave coincide e reinicia os limites quando ela muda; timers pertencentes à view aguardam sua recriação. Não há consulta, filtragem científica ou deduplicação nova no QML.
+
+Galeria horizontal e página vertical verificam conjuntamente a visibilidade das fotografias; não há carga por controles fora dos dois viewports. Atributos integrais, avisos de revisão/identificação e metadados permanecem nos mapas existentes. `TaxonomyView` organiza sua apresentação em identificação, conteúdo educativo, classificação e fontes, mantendo origem/URL fotográfica de ambos os mapas existentes. A variante de Jogar permanece isolada por `browsingOnly`/`encyclopedic`. `Main.qml` ganha somente a propriedade de memória; não há mudança visual do shell ou das outras telas. [Contratos e evidências atuais](VERSOES/2.2.2/rodada-2/README.md).
+
 ## PR #32 — rodada 1
 
 Busca e filtros científicos permanecem em `TaxonomyIndex`, sem alteração de ordenação ou deduplicação. A apresentação usa prefixos progressivos de 12 registros por seção em QML. `GameController` recebe a consulta atual a cada edição e separa suas notificações das de domínio/rank; o timer de 220 ms posterga a atualização dos resultados apresentados, sem guardar consultas antigas. Filtros/limpeza finalizam a espera e a consulta permanece em memória ao destruir/recriar a view.
