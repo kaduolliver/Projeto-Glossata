@@ -3,7 +3,7 @@
 ## PR #32 — rodada 1 da Subetapa 2.2.2
 
 - Pesquisa apresentada em lotes de 12 por seção, com totais integrais e Carregar mais; consulta sincronizada e debounce sem restauração de textos anteriores. Fotos enciclopédicas proporcionais sem recorte, carregadas conforme a área visível; colunas adaptativas com mínimo de 280 px; breadcrumbs compactos com todos os níveis expansíveis e singular/plural nos contadores.
-- Alterações restritas à correção estrutural da [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), sem redesenhar cartões, galeria, cabeçalho, créditos ou fichas. [Registro, capturas e validação da rodada](VERSOES/2.2.2/rodada-1/README.md). Evidências anteriores preservadas.
+- Alterações restritas à correção estrutural da [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), sem redesenhar cartões, galeria, cabeçalho, créditos ou fichas. [Registro, capturas e validação da rodada](VERSOES/2.2.2/rodada-1/README.md), com sincronização em [00f2280](https://github.com/kaduolliver/Projeto-Glossata/commit/00f2280990531fab7311e0afe3a420313016a84a) e interface/evidências em [96a25b0](https://github.com/kaduolliver/Projeto-Glossata/commit/96a25b05f4b0c31b29b3366bb8654b263ac9e9a6). Evidências anteriores preservadas; limitação preexistente da Home separada dos testes finais aprovados.
 
 ## 2.2.2 — Modernização da tela Explorar
 

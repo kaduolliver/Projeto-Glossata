@@ -35,7 +35,7 @@ As **27 capturas reais** foram geradas por `progressiveExploreNavigationAndCaptu
 | Retorno com consulta/filtros | [Captura](capturas/return-to-results-1000x700.png) | [Captura](capturas/return-to-results-1240x820.png) | [Captura](capturas/return-to-results-1920x1080.png) |
 | Sem resultados | [Captura](capturas/empty-search-1000x700.png) | [Captura](capturas/empty-search-1240x820.png) | [Captura](capturas/empty-search-1920x1080.png) |
 
-A captura oficial da Home foi reexecutada com `scripts/capture_home.py --binary build/2.2.2-verified/projeto_glossata.exe --section discovery`, atualizando [seu registro](../../../../images/tela-inicial.json). O PNG e seu caminho no README permanecem preservados: a Home não teve mudança visual nesta rodada. Logs usam UTF-8/LF para manter hashes em checkouts Windows. Commits desta revisão serão vinculados depois da gravação, sem antecipar hashes.
+A captura oficial da Home foi reexecutada com `scripts/capture_home.py --binary build/2.2.2-verified/projeto_glossata.exe --section discovery`, atualizando [seu registro](../../../../images/tela-inicial.json). O PNG e seu caminho no README permanecem preservados: a Home não teve mudança visual nesta rodada. Logs usam UTF-8/LF para manter hashes em checkouts Windows. Sincronização/testes C++ e registro da Home em [00f2280](https://github.com/kaduolliver/Projeto-Glossata/commit/00f2280990531fab7311e0afe3a420313016a84a); interface, testes, capturas e evidências em [96a25b0](https://github.com/kaduolliver/Projeto-Glossata/commit/96a25b05f4b0c31b29b3366bb8654b263ac9e9a6).
 
 ```powershell
 cmake --build build -j 4
