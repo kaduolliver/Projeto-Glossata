@@ -6,7 +6,7 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
-Revisão atual: [2.2.2 — Explorar, rodada 2](VERSOES/2.2.2/rodada-2/README.md), preservando a [rodada 1](VERSOES/2.2.2/rodada-1/README.md) e a [entrega inicial](VERSOES/2.2.2/README.md), sobre a [Descoberta do Dia 2.2.1-B](VERSOES/2.2.1-B/README.md), o [Início fotográfico 2.2.1-A](VERSOES/2.2.1-A/README.md), a [navegação 2.1.3](VERSOES/2.1.3/README.md) e o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md). As versões anteriores permanecem históricas.
+Revisão atual: [2.2.2 — refinamentos finais de Explorar](VERSOES/2.2.2/rodada-final/README.md), preservando a [rodada 2](VERSOES/2.2.2/rodada-2/README.md), a [rodada 1](VERSOES/2.2.2/rodada-1/README.md) e a [entrega inicial](VERSOES/2.2.2/README.md), sobre a [Descoberta do Dia 2.2.1-B](VERSOES/2.2.1-B/README.md), o [Início fotográfico 2.2.1-A](VERSOES/2.2.1-A/README.md), a [navegação 2.1.3](VERSOES/2.1.3/README.md) e o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md). As versões anteriores permanecem históricas.
 
 1. Antes de alterar QML, crie uma versão em `VERSOES/<identificador>/` com o commit exato da interface e as telas afetadas. Conserve as versões anteriores.
 2. Recompile o aplicativo e gere capturas da **janela real** com banco temporário, registrando método, ambiente, horários, dimensões, hashes do binário e dos PNGs. Se a tela inicial mudar, execute `scripts/capture_home.py` e atualize também `docs/images/tela-inicial.png` e seu registro no **mesmo commit visual**.
@@ -26,6 +26,7 @@ Sequência da evolução visual da Home e das próximas telas:
 
 Propostas ainda pendentes, sem identificador ou conclusão presumidos:
 
+- **Etapa 3 — Enciclopédia Científica Interativa:** criação e revisão de descrições educativas completas dos grupos e organismos, com fontes e decisões rastreáveis no fluxo de curadoria. A PR #32 apenas reutiliza conteúdo elegível existente; não produz descrições em massa nem antecipa fichas completas.
 - Refinar visualmente o diálogo de créditos, preservando atribuições, licenças, fontes e acessibilidade.
 - Melhorar as descrições educativas do carrossel por meio da curadoria científica existente, com fontes e revisão das redações concretas. Preservar os textos originais e suas decisões; não substituir ou reaproveitar aprovações indevidamente.
 

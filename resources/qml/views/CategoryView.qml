@@ -194,8 +194,9 @@ Item {
             visible: view.browsingOnly && !view.searching; Layout.fillWidth: true
             Label { text: "Organismos em destaque"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.role: Accessible.Heading }
             TextAction { objectName: "allExploreOrganisms"; text: "Ver organismos →"; onClicked: view.backend.exploreRank = "species" }
-            TextAction { objectName: "previousFeaturedOrganisms"; text: "←"; Accessible.name: "Organismos em destaque anteriores"; enabled: featuredGallery.contentX > 1; onClicked: featuredGallery.step(-1) }
-            TextAction { objectName: "nextFeaturedOrganisms"; text: "→"; Accessible.name: "Próximos organismos em destaque"; enabled: featuredGallery.contentX < featuredGallery.contentWidth - featuredGallery.width - 1; onClicked: featuredGallery.step(1) }
+            Label { objectName: "exploreFeaturedRange"; text: featuredGallery.firstVisible + "–" + featuredGallery.lastVisible + " / " + view.featuredEntries.length; Accessible.name: "Destaques visíveis: " + text; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+            TextAction { objectName: "previousFeaturedOrganisms"; text: "‹ Anteriores"; Accessible.name: "Organismos em destaque anteriores"; enabled: featuredGallery.contentX > 1; onClicked: featuredGallery.step(-1) }
+            TextAction { objectName: "nextFeaturedOrganisms"; text: "Próximos ›"; Accessible.name: "Próximos organismos em destaque"; enabled: featuredGallery.contentX < featuredGallery.contentWidth - featuredGallery.width - 1; onClicked: featuredGallery.step(1) }
         }
         Flickable {
             id: featuredGallery
@@ -205,6 +206,8 @@ Item {
             contentWidth: featuredRow.width; contentHeight: height
             clip: true; boundsBehavior: Flickable.StopAtBounds; flickableDirection: Flickable.HorizontalFlick
             readonly property real cardWidth: width >= 1180 ? (width - 48) / 4 : Math.max(280, (width - 32) / 2.6)
+            readonly property int firstVisible: Math.min(view.featuredEntries.length, Math.floor((contentX + 1) / (cardWidth + 16)) + 1)
+            readonly property int lastVisible: Math.min(view.featuredEntries.length, Math.ceil((contentX + width - 1) / (cardWidth + 16)))
             function step(direction) { contentX = Math.max(0, Math.min(contentWidth - width, contentX + direction * (cardWidth + 16))) }
             function reveal(card) {
                 if (card.x < contentX) contentX = card.x
@@ -231,6 +234,7 @@ Item {
                 }
             }
         }
+        Label { objectName: "exploreFeaturedPosition"; visible: view.browsingOnly && !view.searching; text: featuredGallery.firstVisible + "–" + featuredGallery.lastVisible + " de " + view.featuredEntries.length + " destaques" + (featuredGallery.contentX < featuredGallery.contentWidth - featuredGallery.width - 1 ? " · Há mais cartões à direita ›" : featuredGallery.contentX > 1 ? " · ‹ Há cartões à esquerda" : " · Todos visíveis"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { visible: view.browsingOnly && !view.searching; text: "Destaques com fotografia de identificação e resumo elegíveis no catálogo. As contagens representam organismos cadastrados, não a diversidade total dos grupos."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         ColumnLayout {
             visible: view.browsingOnly && view.searching

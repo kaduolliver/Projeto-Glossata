@@ -1,5 +1,11 @@
 # Arquitetura visual
 
+## PR #32 — refinamentos finais
+
+`TaxonomyIndex.describe` acrescenta `educationalNote` e `classificationSummary` aos mapas existentes, conservando API, pesquisa, filtros, IDs e contagens. O primeiro reutiliza nota de `EducationalContent` com revisão utilizável editorial/especializada e fonte completa; o segundo usa apenas ranks/nós existentes e prefere família/gênero. QML limita linhas e organiza a apresentação; não decide elegibilidade científica nem infere classificação. O adaptador de mídia expõe versão/créditos/estado já documentados e uma indicação conservadora de atribuição contextual para fotos verificadas; dados e permissões originais ficam intactos.
+
+Diálogos dos cartões são criados sob demanda e pertencem ao componente, com foco/rolagem internos e ação independente da navegação. O estado efêmero de pesquisa, filtros, lotes, foco e rolagem permanece no contrato da rodada 2. Só Explorar reorganiza seu rodapé, fotografias e créditos. [Registro final](VERSOES/2.2.2/rodada-final/README.md).
+
 ## PR #32 — rodada 2
 
 `GameController` e `TaxonomyIndex` conservam integralmente seus contratos e regras científicas. `Main.explorePresentation` guarda estado efêmero da view, sem persistência: chave de consulta/filtros, limites progressivos, foco e posições de rolagem. `CategoryView` restaura o estado quando a chave coincide e reinicia os limites quando ela muda; timers pertencentes à view aguardam sua recriação. Não há consulta, filtragem científica ou deduplicação nova no QML.

@@ -1,5 +1,11 @@
 # Histórico visual
 
+## PR #32 — refinamentos finais da Subetapa 2.2.2
+
+- Cartões educativos com trechos de notas existentes elegíveis e Fonte, origem e créditos independente da abertura do táxon. Diálogo contextual completo, com atribuição junto à imagem nos casos conservadores; histórico de modificações separado da apresentação atual, sem apagar evidências.
+- Fotos centralizadas sem recorte/ampliação; classificação resumida com níveis documentados; rodapé de classificação/fontes/proveniência após descendentes/estado vazio. Galeria manual com indicação de posição/cartões adicionais. Pesquisa e estado de navegação preservados.
+- [Registro final e capturas](VERSOES/2.2.2/rodada-final/README.md), na mesma [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32). Commit pendente das verificações; rodadas anteriores históricas. Criação/revisão de descrições completas registrada para a Etapa 3.
+
 ## PR #32 — rodada 2 da Subetapa 2.2.2
 
 - Cartões enciclopédicos compactos, fotografias integrais com molduras discretas e grupos largos em composição horizontal. Galeria de quatro destaques existentes com controles/setas e foco acessíveis, cabeçalho com pesquisa integrada, filtros compactos e limpeza só do texto.

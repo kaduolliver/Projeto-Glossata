@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## PR #32 — refinamentos finais
+
+`ExploreCard.educationalNote` apresenta o mapa elegível projetado pelo índice em no máximo duas linhas; não cria resumo alternativo. `shortClassification` lê `entry.classificationSummary`, com ranks fornecidos por C++. `exploreCardCreditsButton` abre um `Dialog` criado sob demanda, separado da ação principal. Mantém autoria/licença/versão, origem, modificações históricas, fontes e avisos. Tab revela os links na rolagem interna; Escape/Fechar devolvem foco ao botão. `photo.contextualAttribution` é indicação conservadora de apresentação para metadados verificados, não aprovação: quando ausente/falsa, a autoria/licença e eventuais atribuições específicas continuam junto à foto. O corpo do diálogo distingue histórico literal e apresentação atual.
+
+Imagens enciclopédicas ficam centralizadas em ambos os eixos com escala máxima 1, sem recorte ou deslocamento por foco. Fotografia de Jogar permanece igual. `TaxonomyView.exploreScientificFooter` fica depois de `taxonChildrenGrid`/estado informativo, com os expansores existentes de classificação, fontes e foto; identificação e conteúdo educativo precedem os descendentes. A galeria mantém seleção/controles/setas, acrescentando intervalo visível e indicação de cartões fora da área. [Contratos, política contextual e evidências](VERSOES/2.2.2/rodada-final/README.md). Os registros abaixo são históricos.
+
 ## PR #32 — rodada 2
 
 `ExploreCard.encyclopedic` compacta molduras e textos; `landscape` dispõe foto/texto lado a lado para grupos com largura ≥450 px. `shortClassification` apresenta somente os dois ancestrais mais próximos do `pathText` existente, sem inferir ranks; o caminho integral permanece acessível. Autoria/licença não são truncadas. A fotografia preserva todo o raster e precisa intersectar os viewports horizontal e vertical para receber `source`; `outerViewport` acompanha a rolagem externa da galeria. A variante padrão permanece visualmente igual em Jogar.

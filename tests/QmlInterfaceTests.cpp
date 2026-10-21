@@ -67,7 +67,7 @@ class QmlInterfaceTests : public QObject {
 private slots:
     void photographicExploreNavigationAndCaptures();
     void progressiveExploreNavigationAndCaptures();
-    void encyclopedicPhotographsFitAndRespectFocus();
+    void encyclopedicPhotographsStayCenteredWithoutCropping();
     void encyclopedicCardsHandleLongTextAndUnavailablePhotos();
     void scientificExploreSearchFiltersNavigationAndCaptures();
     void dailyDiscoveryNavigationIndicatorsAndCaptures();
@@ -118,14 +118,20 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         return !pixels.isEmpty() && photo->width() > 0 && photo->height() > 0
             && qAbs(photo->width() / photo->height() - double(pixels.width()) / pixels.height()) < 0.001
             && photo->x() >= 0 && photo->y() >= 0 && photo->x() + photo->width() <= photo->parentItem()->width() + 1
-            && photo->y() + photo->height() <= photo->parentItem()->height() + 1;
+            && photo->y() + photo->height() <= photo->parentItem()->height() + 1
+            && qAbs(photo->x() - (photo->parentItem()->width() - photo->width()) / 2) < 0.01
+            && qAbs(photo->y() - (photo->parentItem()->height() - photo->height()) / 2) < 0.01
+            && photo->width() <= pixels.width() && photo->height() <= pixels.height();
     };
-    QVERIFY(QDir().mkpath("previews/explore-2.2.2-round-2")); QJsonArray captures;
+    QVERIFY(QDir().mkpath("previews/explore-2.2.2-final")); QJsonArray captures;
     const auto capture = [&](const QString &state, QSize size) {
+        const QSet<QString> states{"overview", "gallery", "group", "descendants", "restored-results", "empty-group",
+            "contextual-credits", "credit-history", "lion", "lion-footer", "monarch", "monarch-footer"};
+        if (!states.contains(state)) return true; // Prior rounds retain their historical screenshots.
         QTest::qWait(220);
         const auto filename = state + "-" + QString::number(size.width()) + "x" + QString::number(size.height()) + ".png";
         const auto image = window->grabWindow();
-        if (image.size() != size || !image.save("previews/explore-2.2.2-round-2/" + filename)) return false;
+        if (image.size() != size || !image.save("previews/explore-2.2.2-final/" + filename)) return false;
         captures.append(QJsonObject::fromVariantMap({{"file", filename}, {"width", size.width()}, {"height", size.height()},
             {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}, {"page", window->property("page")},
             {"query", controller.exploreQuery()}, {"domainId", controller.exploreDomain()}, {"rank", controller.exploreRank()},
@@ -142,6 +148,44 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         if (size.width() == 1000) QVERIFY(fieldRect.top() >= headingRect.bottom());
         else QVERIFY(fieldRect.left() >= headingRect.right());
         QVERIFY(capture("overview", size));
+        const auto domain = item("domainButton0")->property("entry").toMap();
+        auto summary = findVisualItem(item("domainButton0"), "encyclopediaCardSummary");
+        QCOMPARE(summary->property("text").toString(), domain["educationalNote"].toMap()["text"].toString());
+        QCOMPARE(summary->property("maximumLineCount").toInt(), 2);
+        QVERIFY(!findVisualItem(item("domainButton0"), "encyclopediaCardAttribution")->isVisible());
+        const auto previousTaxon = controller.browseTaxon()["id"];
+        QVERIFY(activate("exploreCardCreditsButton", true));
+        QCOMPARE(window->property("page").toString(), QString("explore")); QCOMPARE(controller.browseTaxon()["id"], previousTaxon);
+        QTRY_VERIFY2(item("exploreCardCreditsClose") && item("exploreCardCreditsClose")->isVisible(), qPrintable(interfaceWarnings.join('\n')));
+        const auto metadata = domain["photo"].toMap();
+        QVERIFY(item("exploreCardCreditAuthor")->property("text").toString().contains(metadata["author"].toString()));
+        QVERIFY(item("exploreCardCreditLicense")->property("text").toString().contains(metadata["licenseVersion"].toString()));
+        QVERIFY(capture("contextual-credits", size));
+        QVERIFY(activate("exploreCardOriginalLink")); QCOMPARE(urls.urls.last().toString(), metadata["photoUrl"].toString());
+        QVERIFY(activate("exploreCardLicenseLink")); QCOMPARE(urls.urls.last().toString(), metadata["licenseUrl"].toString());
+        if (!domain["educationalNote"].toMap().isEmpty()) {
+            QVERIFY(activate("exploreCardScientificLink")); QCOMPARE(urls.urls.last().toString(), domain["educationalNote"].toMap()["source_url"].toString());
+        } else {
+            QVERIFY(!summary->isVisible()); QVERIFY(!item("exploreCardScientificLink")->isVisible());
+            QVERIFY(activate("exploreCardPlacementLink")); QCOMPARE(urls.urls.last().toString(), domain["sourceUrl"].toString());
+        }
+        QCOMPARE(item("exploreCardCreditHistory")->property("text").toString(), QStringLiteral("Modificações históricas registradas\n") + metadata["modifications"].toString());
+        QVERIFY(item("exploreCardCreditPresentation")->property("text").toString().contains("sem recorte"));
+        item("exploreCardCreditHistory")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        QVERIFY(capture("credit-history", size));
+        QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(80);
+        QVERIFY(item("exploreCardCreditsButton")->hasActiveFocus());
+        QTest::keyClick(window, Qt::Key_Space); QTest::qWait(80);
+        QVERIFY(item("exploreCardCreditsClose")->hasActiveFocus());
+        for (int tab = 0; tab < 4; ++tab) {
+            QTest::keyClick(window, Qt::Key_Tab); QTest::qWait(40);
+            auto focused = window->activeFocusItem(); QVERIFY(focused);
+            const auto bounds = focused->mapRectToScene(focused->boundingRect());
+            QVERIFY(bounds.top() >= 0 && bounds.bottom() <= window->height() + 1);
+        }
+        QVERIFY(activate("exploreCardCreditsClose", true));
+        QCOMPARE(window->property("page").toString(), QString("explore"));
+        QVERIFY(item("exploreCardCreditsButton")->hasActiveFocus());
         auto gallery = item("exploreFeaturedGrid"); QVERIFY(gallery);
         item("featuredOrganism0")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(120);
         for (int i = 0; i < 3; ++i) QTest::keyClick(window, Qt::Key_Right);
@@ -155,7 +199,7 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         }
         item("featuredOrganism0")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(120);
         auto featured = item("featuredOrganism0");
-        QVERIFY(featured->height() < 400);
+        QVERIFY(featured->height() < 460); // Educational excerpt and an independent credits action.
         const auto entry = featured->property("entry").toMap(), photo = entry["photo"].toMap();
         const auto attribution = findVisualItem(featured, "encyclopediaCardAttribution");
         QVERIFY(attribution->property("text").toString().contains(photo["author"].toString()));
@@ -163,6 +207,15 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(!attribution->property("truncated").toBool());
         const auto path = entry["pathText"].toString();
         QVERIFY(!findVisualItem(featured, "encyclopediaCardCount")->property("text").toString().contains(path));
+        auto featuredCredits = findVisualItem(featured, "exploreCardCreditsButton"); QVERIFY(featuredCredits);
+        featuredCredits->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Space); QTest::qWait(100);
+        QVERIFY(item("exploreCardCreditsClose")->isVisible());
+        QVERIFY(item("exploreCardCreditLicense")->property("text").toString().contains("Não comprovada"));
+        QVERIFY(activate("exploreCardScientificLink")); QCOMPARE(urls.urls.last().toString(), entry["educationalNote"].toMap()["source_url"].toString());
+        QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(80); QVERIFY(featuredCredits->hasActiveFocus());
+        QCOMPARE(window->property("page").toString(), QString("explore"));
+        QVERIFY(item("exploreFeaturedRange")->property("text").toString().endsWith("/ 4"));
+        QVERIFY(item("exploreFeaturedPosition")->property("text").toString().contains(size.width() == 1920 ? "Todos visíveis" : "direita"));
         QVERIFY(capture("gallery", size));
         QVERIFY(activate("featuredOrganism0", true));
         QCOMPARE(controller.browseTaxon()["id"], entry["id"]);
@@ -185,6 +238,8 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(item("exploreTaxonKind")->property("text").toString().contains("GRUPO"));
         QVERIFY(!item("exploreSourceDetails")->isVisible());
         QTRY_VERIFY(photoFits()); QVERIFY(capture("group", size));
+        const auto childrenBottom = item("taxonChildrenGrid")->mapToScene(QPointF(0, item("taxonChildrenGrid")->height())).y();
+        QVERIFY(item("exploreScientificFooter")->mapToScene(QPointF()).y() >= childrenBottom);
         item("taxonButton0")->forceActiveFocus(Qt::TabFocusReason); QVERIFY(capture("descendants", size));
         QVERIFY(activate("returnDomainsButton"));
         QVERIFY(edit("a")); QVERIFY(activate("loadMoreExploreGroups")); QVERIFY(activate("loadMoreExploreOrganisms"));
@@ -212,16 +267,37 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(activate("domainButton0")); QCOMPARE(controller.browseTaxon()["count"].toInt(), 0);
         QVERIFY(!item("explorePhotoAttribution")->property("text").toString().isEmpty());
         QVERIFY(capture("empty-group", size)); QVERIFY(activate("returnDomainsButton"));
+        for (const auto &name : {QString("Panthera leo"), QString("Danaus plexippus")}) {
+            QVERIFY(edit(name)); controller.setExploreRank("species");
+            auto result = item("exploreOrganismResult0"); QVERIFY(result);
+            result->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(100);
+            auto photo = findVisualItem(result, "encyclopediaCardPhoto"), frame = findVisualItem(result, "encyclopediaPhotoFrame");
+            QTRY_COMPARE(photo->property("status").toInt(), 1);
+            QVERIFY2(qAbs(photo->x() - (frame->width() - photo->width()) / 2) < 0.01,
+                qPrintable(QString("photo x=%1 width=%2; frame width=%3").arg(photo->x()).arg(photo->width()).arg(frame->width())));
+            QVERIFY(qAbs(photo->y() - (frame->height() - photo->height()) / 2) < 0.01);
+            const auto note = result->property("entry").toMap()["educationalNote"].toMap();
+            QCOMPARE(findVisualItem(result, "encyclopediaCardSummary")->property("text").toString(), note["text"].toString());
+            QVERIFY(activate("exploreOrganismResult0")); QTRY_VERIFY(photoFits());
+            const auto state = name.startsWith("Panthera") ? QString("lion") : QString("monarch");
+            QVERIFY(capture(state, size));
+            QVERIFY(item("exploreScientificFooter")->mapToScene(QPointF()).y() >= item("exploreDescendantsState")->mapToScene(QPointF(0, item("exploreDescendantsState")->height())).y());
+            QVERIFY(activate("exploreClassification")); QVERIFY(activate("exploreSources")); QVERIFY(activate("explorePhotoCredits"));
+            QVERIFY(item("explorePhotoProvenance")->property("text").toString().contains("Modificações históricas registradas"));
+            QVERIFY(item("explorePhotoPresentation")->property("text").toString().contains("sem recorte"));
+            QVERIFY(capture(state + "-footer", size)); QVERIFY(activate("returnDomainsButton"));
+            QCOMPARE(controller.exploreQuery(), name); QCOMPARE(controller.exploreRank(), QString("species"));
+        }
     }
     QCOMPARE(controller.answeredCount(), 0); QVERIFY(controller.recoverableSessions().isEmpty());
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
-    QFile manifest("previews/explore-2.2.2-round-2/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    QFile manifest("previews/explore-2.2.2-final/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
     manifest.write(QJsonDocument(QJsonObject{{"method", "QQuickWindow::grabWindow / production QML and GameController in QtTest"},
         {"privacy", "Temporary SQLite databases; Discord disabled; links intercepted without opening a browser."},
         {"rendering", "Qt offscreen/software, scale 1, 96 DPI; reduced motion for static captures."}, {"captures", captures}}).toJson());
 }
 
-void QmlInterfaceTests::encyclopedicPhotographsFitAndRespectFocus()
+void QmlInterfaceTests::encyclopedicPhotographsStayCenteredWithoutCropping()
 {
     QQmlEngine engine;
     QQmlComponent component(&engine, QUrl("qrc:/resources/qml/components/ExploreCard.qml"));
@@ -247,8 +323,10 @@ void QmlInterfaceTests::encyclopedicPhotographsFitAndRespectFocus()
             QVERIFY(photo->x() + photo->width() <= frame->width() + 0.01);
             QVERIFY(photo->y() + photo->height() <= frame->height() + 0.01);
             QCOMPARE(photo->property("fillMode").toInt(), 1); // PreserveAspectFit.
-            QVERIFY(qAbs(photo->x() - qBound(0., frame->width() / 2 - focus * photo->width(), frame->width() - photo->width())) < 0.01);
-            QVERIFY(qAbs(photo->y() - qBound(0., frame->height() / 2 - (1. - focus) * photo->height(), frame->height() - photo->height())) < 0.01);
+            QVERIFY2(qAbs(photo->x() - (frame->width() - photo->width()) / 2) < 0.01,
+                qPrintable(QString("x=%1 width=%2 frame=%3 centered=%4").arg(photo->x()).arg(photo->width()).arg(frame->width()).arg(QQmlProperty(photo, "anchors.alignWhenCentered").read().toBool())));
+            QVERIFY(qAbs(photo->y() - (frame->height() - photo->height()) / 2) < 0.01);
+            QVERIFY(photo->width() <= pixels.width() && photo->height() <= pixels.height());
         }
         QVERIFY(findVisualItem(card, "explorationPhoto")->property("source").toUrl().isEmpty());
     }

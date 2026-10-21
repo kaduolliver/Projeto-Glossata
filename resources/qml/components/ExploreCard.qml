@@ -1,21 +1,21 @@
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 import "../style" as Style
 Button {
     id: card
     required property var entry
+    readonly property var containingWindow: Window.window
     property bool wide: false
     property bool encyclopedic: false
     readonly property bool landscape: encyclopedic && entry.kind !== "organism" && width >= 450
-    // Presentation of an existing path, without inferring ranks or ancestry.
-    readonly property string shortClassification: (entry.pathText || "").split(" › ").slice(0, -1).slice(-2).join(" · ")
+    readonly property string shortClassification: entry.classificationSummary || ""
+    readonly property var educationalNote: entry.educationalNote || ({})
+    readonly property bool inlineAttribution: !!photo.image && photo.contextualAttribution !== true
     property Flickable photoViewport: null
     property bool photoRequested: false
-    readonly property real photoFocusX: validFocus(photo.focusX)
-    readonly property real photoFocusY: validFocus(photo.focusY)
-    function validFocus(value) { return typeof value === "number" && isFinite(value) && value >= 0 && value <= 1 ? value : 0.5 }
     function locatePhotoViewport() {
         if (!encyclopedic) return
         let ancestor = parent
@@ -143,12 +143,11 @@ Button {
                 Image {
                     id: modernPhoto
                     objectName: "encyclopediaCardPhoto"
-                    // A focal point is not a reviewed crop boundary. Fit the
-                    // entire raster, using focus only within the free margins.
-                    readonly property real fittedScale: sourceSize.width > 0 && sourceSize.height > 0 ? Math.min(parent.width / sourceSize.width, parent.height / sourceSize.height) : 0
+                    // Center the entire stored raster, without cropping or upscaling.
+                    readonly property real fittedScale: sourceSize.width > 0 && sourceSize.height > 0 ? Math.min(1, parent.width / sourceSize.width, parent.height / sourceSize.height) : 0
                     width: sourceSize.width * fittedScale; height: sourceSize.height * fittedScale
-                    x: Math.max(0, Math.min(parent.width - width, parent.width / 2 - card.photoFocusX * width))
-                    y: Math.max(0, Math.min(parent.height - height, parent.height / 2 - card.photoFocusY * height))
+                    x: (parent.width - width) / 2
+                    y: (parent.height - height) / 2
                     source: card.encyclopedic && card.photoRequested ? card.photo.image || "" : ""
                     fillMode: Image.PreserveAspectFit; asynchronous: true; smooth: true; mipmap: true
                 }
@@ -161,7 +160,14 @@ Button {
             Label { visible: !!card.entry.commonName; text: card.entry.commonName || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { objectName: "encyclopediaCardCount"; text: card.entry.kind === "organism" ? card.shortClassification : card.entry.count === 0 ? "Sem organismos no catálogo" : card.entry.count + (card.entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!card.photo.subject && card.entry.kind !== "organism"; text: "Representante: " + (card.photo.subject || ""); textFormat: Text.PlainText; font.italic: true; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
-            Label { objectName: "encyclopediaCardAttribution"; text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { objectName: "encyclopediaCardSummary"; visible: !!card.educationalNote.text; text: card.educationalNote.text || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; maximumLineCount: 2; elide: Text.ElideRight; Layout.fillWidth: true; Accessible.description: "Trecho do texto existente; conteúdo integral e fonte na página correspondente." }
+            Label { objectName: "encyclopediaCardAttribution"; visible: card.inlineAttribution || !card.photo.image; text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") + (card.photo.attributionNotice ? "\n" + card.photo.attributionNotice : "") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            TextAction {
+                id: creditButton; objectName: card.encyclopedic ? "exploreCardCreditsButton" : ""
+                text: "Fonte, origem e créditos"; Layout.fillWidth: true
+                Accessible.name: text + " — " + card.entry.title
+                onClicked: { const popup = creditsLoader.item as Dialog; if (popup) popup.open(); else creditsLoader.active = true }
+            }
             Item { Layout.fillHeight: true; Layout.minimumHeight: 0 }
             RowLayout {
                 Layout.fillWidth: true; Layout.topMargin: 0
@@ -169,6 +175,69 @@ Button {
                 Item { Layout.fillWidth: true }
                 UiIcon { name: "arrow"; ink: Style.Theme.green; implicitWidth: 16; implicitHeight: 16 }
             }
+            }
+        }
+    }
+    Timer {
+        id: releaseCredits; interval: 0
+        onTriggered: { const popup = creditsLoader.item as Dialog; if (popup && !popup.opened) creditsLoader.active = false }
+    }
+    Loader {
+        id: creditsLoader; active: false
+        onLoaded: { const popup = item as Dialog; if (popup) popup.open() }
+        sourceComponent: Component {
+            Dialog {
+                id: credits
+                objectName: "exploreCardCreditsDialog"
+                readonly property var attribution: card.photo.attribution || ({})
+                readonly property string originalUrl: card.photo.photoUrl || card.photo.sourceUrl || ""
+                readonly property string licenseUrl: card.photo.licenseUrl || attribution.license_url || attribution.license_source_url || ""
+                readonly property string version: card.photo.licenseVersion || attribution.license_version || ""
+                parent: Overlay.overlay; anchors.centerIn: parent
+                width: Math.min(660, parent.width - 40); height: Math.min(660, parent.height - 40)
+                title: "Fonte, origem e créditos"; modal: true; focus: true
+                function revealFocusedLink() {
+                    const control = card.containingWindow ? card.containingWindow.activeFocusItem : null
+                    let ancestor = control
+                    while (ancestor && ancestor !== creditsScroll) ancestor = ancestor.parent
+                    if (!ancestor || !control) return
+                    const viewport = creditsScroll.contentItem as Flickable
+                    if (!viewport) return
+                    const top = control.mapToItem(viewport, 0, 0).y
+                    const bottom = top + control.height
+                    if (top < 8) viewport.contentY = Math.max(0, viewport.contentY + top - 8)
+                    else if (bottom > viewport.height - 8) viewport.contentY = Math.min(viewport.contentHeight - viewport.height, viewport.contentY + bottom - viewport.height + 8)
+                }
+                Timer { id: revealCreditsFocus; interval: 0; onTriggered: credits.revealFocusedLink() }
+                Connections { target: card.containingWindow; function onActiveFocusItemChanged() { if (credits.opened) revealCreditsFocus.restart() } }
+                onOpened: closeCredits.forceActiveFocus(Qt.PopupFocusReason)
+                onClosed: { creditButton.forceActiveFocus(Qt.PopupFocusReason); releaseCredits.restart() }
+                footer: DialogButtonBox {
+                    UiButton { id: closeCredits; objectName: "exploreCardCreditsClose"; text: "Fechar"; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole }
+                    onRejected: credits.close()
+                }
+                contentItem: ScrollView {
+                    id: creditsScroll; objectName: "exploreCardCreditsContent"
+                    clip: true; contentWidth: availableWidth
+                    ColumnLayout {
+                        width: creditsScroll.availableWidth; spacing: Style.Theme.spaceSm
+                        Label { text: card.entry.title; textFormat: Text.PlainText; font.pixelSize: Style.Theme.subtitleSize; font.italic: card.entry.rank === "species" || card.entry.rank === "genus"; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { visible: !!card.photo.subject; text: "Na fotografia: " + (card.photo.subject || ""); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { objectName: "exploreCardCreditAuthor"; text: "Autoria: " + (card.photo.author || "Não documentada") + "\n" + (card.photo.title || "Título não documentado"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { objectName: "exploreCardCreditLicense"; text: "Licença declarada: " + (card.photo.license || "Não informada") + "\nVersão: " + (credits.version || "Não comprovada"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { visible: !!card.photo.sourceCredit || !!card.photo.attributionNotice; text: [card.photo.sourceCredit || "", card.photo.attributionNotice || ""].filter(value => !!value).join("\n"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { text: "Origem: " + (credits.originalUrl || "Não documentada"); textFormat: Text.PlainText; wrapMode: Text.WrapAnywhere; Layout.fillWidth: true }
+                        TextAction { objectName: "exploreCardOriginalLink"; visible: !!credits.originalUrl; text: "Fotografia original ↗"; Accessible.description: credits.originalUrl; onClicked: Qt.openUrlExternally(credits.originalUrl) }
+                        TextAction { objectName: "exploreCardObservationLink"; visible: !!credits.attribution.source && credits.attribution.source !== credits.originalUrl; text: "Observação de origem ↗"; Accessible.description: credits.attribution.source || ""; onClicked: Qt.openUrlExternally(credits.attribution.source) }
+                        TextAction { objectName: "exploreCardLicenseLink"; visible: !!credits.licenseUrl; text: credits.version ? "Termos da licença ↗" : "Termos informados (versão não comprovada) ↗"; Accessible.description: credits.licenseUrl; onClicked: Qt.openUrlExternally(credits.licenseUrl) }
+                        Label { objectName: "exploreCardCreditHistory"; text: "Modificações históricas registradas\n" + (card.photo.modifications || "Não documentadas."); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { objectName: "exploreCardCreditPresentation"; text: "Apresentação atual no Explorar\nImagem inteira, centralizada e proporcional, sem recorte, distorção ou ampliação além dos pixels armazenados. Registros históricos podem descrever apresentações anteriores ou de outras telas; permanecem preservados."; textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { objectName: "exploreCardCreditNotices"; text: (card.photo.identificationNote || card.photo.pendingReason || "Identificação indicada pela fonte; consulte os limites do registro.") + "\n" + (card.photo.scientificReview || "") + "\n" + (card.entry.introductionReviewNotice || "") + "\n" + (card.entry.rankNote || "") + "\n" + (card.entry.placementNotice || "") + (!credits.version && card.photo.image ? "\nVersão da licença não comprovada." : "") + ((credits.attribution.rights_issues || []).length ? "\nPermissões com pendências documentadas." : "") + ((credits.attribution.scientific_source_issues || []).length ? "\nIdentificação na origem com pendência de revisão." : "") + "\nCréditos não implicam endosso. As pendências de distribuição e revisão permanecem vigentes."; textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        Label { text: "Fonte científica\n" + (card.educationalNote.source_title || "Sem descrição educativa elegível para este cartão."); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        TextAction { objectName: "exploreCardScientificLink"; visible: !!card.educationalNote.source_url; text: "Referência do conteúdo educativo ↗"; Accessible.description: card.educationalNote.source_url || ""; onClicked: Qt.openUrlExternally(card.educationalNote.source_url) }
+                        TextAction { objectName: "exploreCardPlacementLink"; visible: !!card.entry.sourceUrl; text: "Fonte do enquadramento ↗"; Accessible.description: card.entry.sourceUrl || ""; onClicked: Qt.openUrlExternally(card.entry.sourceUrl) }
+                    }
+                }
             }
         }
     }
