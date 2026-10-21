@@ -1,5 +1,13 @@
 # Arquitetura visual
 
+## Descoberta e indicadores — Subetapa 2.2.1-B
+
+`TaxonomyIndex.homeCatalog(localDate)` produz conjuntamente a descoberta e os três indicadores a partir de um snapshot de `SpeciesCatalog`. IDs únicos ordenados definem a rotação por dia civil. A elegibilidade reutiliza `approvedForQuiz` no nível espécie, exige foto de identificação e um resumo utilizável de `EducationalContent.profile` com revisão editorial/especializada e fonte. Imagens de apoio não identificam uma espécie e são excluídas dessa cobertura. Domínios só são contados quando ocorrem nos caminhos dos organismos; Archaea vazio não aumenta o indicador.
+
+`GameController` expõe `dailyDiscovery` e `homeCatalogIndicators`, notificando alterações reais. Data local é injetável para testes; na produção vem de `QDate::currentDate`. Um timer de 30 segundos e a ativação da aplicação atualizam a projeção offline; o adaptador SQLite existente conserva o snapshot instalado até nova inicialização. Não há gravação de descoberta, novo banco ou mudança no estado de jogo. `HomeView` apenas apresenta a projeção e abre o nó da espécie usando `openExplore()` seguido de `openTaxon(id)`, preservando sessões. [Critérios, limites e reprodução](VERSOES/2.2.1-B/README.md).
+
+O refinamento da PR #31 cria um diálogo contextual independente, ligado aos metadados da fotografia da descoberta, inclusive se a data mudar enquanto está aberto. Versão de licença ausente continua não comprovada, mesmo havendo um endereço de termos; nenhuma permissão é inferida. A tela geral de créditos permanece no rodapé. O nome “Identificação por espécie” apenas esclarece a métrica já existente; critérios e valores não mudam. [Registro do refinamento](VERSOES/2.2.1-B/refinamento-1/README.md).
+
 ## Início fotográfico — Subetapa 2.2.1-A
 
 `HomeView.qml` mantém o estado transitório do carrossel, sem persistir preferências ou alterar partidas. `GameController.homeSlides` expõe quatro representantes explícitos de `TaxonomyIndex`: Animalia, Arthropoda, Plantae e Fungi, selecionados pelos identificadores estáveis para evitar homônimos históricos preservados no SQLite. A mesma porta `ExplorationMediaCatalog` valida fotos, licenças e evidências já utilizadas na exploração. Introduções passam por `EducationalContent`; só a primeira frase completa do texto utilizável é exibida, com referência preservada. Não há novas afirmações científicas ou aprovação automática.

@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-20T21:46:58.722015+00:00",
+  "captured_at": "2026-10-20T23:22:04.437946+00:00",
   "method": "QQuickWindow::grabWindow / running application",
+  "framing": "Real Home scrolled to the discovery and catalog indicators by the production executable.",
   "application_version": "1.7.0",
-  "binary_sha256": "0b88294ab3de049db3ca9dffbae616f70ee96827cab4187749e2bd87a5b9e0ba",
-  "image_sha256": "c38a2b2ec31dfef8e26b29f490b3368e64a03610b5cac9cf83b3f2cb4b60f290",
+  "binary_sha256": "a9d46e37dbfda1aeeccd472678a177d301101aed955c5fbc9e68342bb2df4829",
+  "image_sha256": "21ab9f90f9e351939b3dacaf9b32bf6cb6a907251d338eb29debb51d88972866",
   "width": 1240,
   "height": 820,
   "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
@@ -12,16 +13,23 @@
   "inputs": {
     "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
     "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/data/education.json": "64df9e92234f4d8818a4737fbf76d7900a9972a901dfdbb5e4dd84f2bc2388ff",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
     "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
     "resources/qml/components/NavItem.qml": "d169a6557990bbb6a8b8cd199be1fa860d799554cc703bdd3cc2f42d27543591",
-    "resources/qml/components/StatCard.qml": "d9cdde9aa31f62c46ef9f0d3dbf52d21c5e09a44422ec83bddedf1938bc33322",
+    "resources/qml/components/StatCard.qml": "11f82ecd0a7c65d12519d106f601fa364031677eacd80e811a0eb19de3e5c588",
     "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
     "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
     "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
-    "resources/qml/views/HomeView.qml": "7759c02f6d20864e901b5ef499c38b0df03b823282583a4192ac21f681ee7b39",
-    "src/presentation/GameController.cpp": "40c77d6026f4bfca7f8ca6789d6981d603902b4c2b8008dc9f7be659068d4c09",
-    "src/presentation/GameController.h": "4480cf999b96104297a37455ddc2c70428a86cf41de561e8de0ac9ebb501bd64"
+    "resources/qml/views/HomeView.qml": "63994b83cdbf90ccdaf252f6048e5674652e6ab258b6f6dba5874f1cd934caba",
+    "scripts/capture_home.py": "66a4489c03199f2e062330e079ae0ca7f7a3514e08c2cdff9d74cf3853d52e0c",
+    "src/app/main.cpp": "19b5b7ced0f1ab73ac60eacb6edf0bd4749a54b688e7591c4e97de86130cbc06",
+    "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
+    "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
+    "src/application/TaxonomyIndex.cpp": "3adc60a86dbfbb6e9916e77d4b805d49e2fd9cab948fd0a1967a8ea099305a43",
+    "src/application/TaxonomyIndex.h": "d4fa55185054ad53ee61430faeb1a5ad31366895129c6e3e5482ab120020d684",
+    "src/presentation/GameController.cpp": "f44c63955db433882ac58ebe65e0c52415c3fc9ce69b4a1a425301c6b91bacea",
+    "src/presentation/GameController.h": "bc57f137d521115fd6b3f7df744f14aa58adfdd72fb585484c54d8665b71f299"
   }
 }

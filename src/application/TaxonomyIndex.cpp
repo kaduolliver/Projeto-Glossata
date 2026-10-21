@@ -1,10 +1,13 @@
 #include "application/TaxonomyIndex.h"
 #include <QSet>
+#include <QMap>
+#include <QUrl>
 #include <algorithm>
 #include "domain/QuizSelection.h"
 
-TaxonomyIndex::TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMediaCatalog *media)
-    : media_(media), species_(catalog.loadSpecies())
+TaxonomyIndex::TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMediaCatalog *media,
+                             const EducationalContent &content)
+    : catalog_(catalog), media_(media), species_(catalog.loadSpecies()), content_(content)
 {
     for (const Taxon &taxon : catalog.loadTaxons()) {
         taxons_.insert(taxon.id, taxon);
@@ -16,6 +19,71 @@ TaxonomyIndex::TaxonomyIndex(const SpeciesCatalog &catalog, const ExplorationMed
         if (!species.educationalKingdom.isEmpty()) counted.insert("edu:" + species.educationalKingdom);
         for (const QString &id : counted) ++counts_[id];
     }
+}
+
+QVariantMap TaxonomyIndex::homeCatalog(const QDate &localDate) const
+{
+    // Read one coherent catalog snapshot. Stable IDs, rather than rows, photos
+    // or historical educational groups, define the three organism counts.
+    QMap<int, Species> organisms;
+    for (const auto &s : catalog_.loadSpecies())
+        if (s.id > 0 && !organisms.contains(s.id)) organisms.insert(s.id, s);
+    QSet<QString> domains;
+    QStringList domainNames;
+    int photographs = 0;
+    QVariantList candidates;
+    for (const auto &s : organisms) {
+        QString speciesTaxon;
+        for (const auto &node : s.taxonomy) {
+            if (node.rank == "domain" && !node.id.isEmpty() && !domains.contains(node.id)) {
+                domains.insert(node.id);
+                domainNames.append(node.name);
+            }
+            if (node.rank == "species" && node.name == s.name && taxons_.contains(node.id)) speciesTaxon = node.id;
+        }
+        // Reuse the existing per-organism eligibility rule, without requiring
+        // four quiz alternatives. Supporting photos never identify a species.
+        if (s.photo.role != "identification" || !approvedForQuiz(s, "species")) continue;
+        ++photographs;
+        const auto profile = content_.profile(s);
+        const auto note = profile.value("summary").toMap();
+        const auto review = note.value("governance").toMap();
+        const auto state = review.value("state").toString();
+        const QUrl source(note.value("source_url").toString());
+        if (speciesTaxon.isEmpty() || note.value("text").toString().trimmed().isEmpty()
+            || note.value("source_title").toString().trimmed().isEmpty()
+            || !source.isValid() || source.scheme() != "https" || source.host().isEmpty()
+            || (state != "approved_editorial" && state != "approved_expert")) continue;
+        const auto &p = s.photo;
+        const auto attribution = p.attribution.toVariantMap();
+        const auto commonName = profile.value("commonName").toString().trimmed();
+        const QString version = attribution.value("license_version").toString();
+        const QString license = p.license.toUpper() + (version.isEmpty()
+            ? QStringLiteral(" · versão não comprovada") : " " + version);
+        candidates.append(QVariantMap{{"speciesId", s.id}, {"taxonId", speciesTaxon},
+            {"scientificName", s.name}, {"commonName", commonName.isEmpty() ? s.commonName : commonName},
+            {"note", note}, {"reviewNotice", state == "approved_expert"
+                ? QStringLiteral("Texto com revisão especializada registrada; consulte a fonte e o escopo.")
+                : QStringLiteral("Texto com revisão editorial; não equivale a revisão especializada.")},
+            {"photo", QVariantMap{{"image", p.image}, {"photoId", p.id}, {"author", p.author},
+                {"title", attribution.value("title")}, {"license", license}, {"licenseUrl", p.licenseUrl},
+                {"sourceUrl", attribution.value("photo_url", p.sourceUrl)}, {"modifications", p.modifications},
+                {"attribution", attribution}, {"width", p.width}, {"height", p.height}}}});
+    }
+    domainNames.sort();
+    QVariantMap discovery;
+    if (localDate.isValid() && !candidates.isEmpty()) {
+        // A fixed cyclic order has no collisions on adjacent dates for n > 1.
+        // QDate's civil day number also works across leap days and DST changes.
+        const qint64 n = candidates.size();
+        const auto index = (localDate.toJulianDay() % n + n) % n;
+        discovery = candidates[index].toMap();
+        discovery.insert("date", localDate.toString(Qt::ISODate));
+        discovery.insert("dateLabel", localDate.toString("dd/MM/yyyy"));
+    }
+    return {{"discovery", discovery}, {"indicators", QVariantMap{
+        {"organisms", organisms.size()}, {"representedDomains", domains.size()},
+        {"domainNames", domainNames.join(QStringLiteral(" · "))}, {"identificationPhotos", photographs}}}};
 }
 
 QVector<Species> TaxonomyIndex::speciesFor(const QString &id) const

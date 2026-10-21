@@ -107,7 +107,10 @@ def home_inputs(root=ROOT):
         paths.update(p for p in path.rglob('*') if p.is_file()) if path.is_dir() else paths.add(path)
     # Home counters and profile defaults are produced by the real controller.
     paths.update(root / p for p in ('src/presentation/GameController.cpp',
-                                   'src/presentation/GameController.h', 'resources/data/species.json'))
+                                   'src/presentation/GameController.h', 'resources/data/species.json',
+                                   'src/application/TaxonomyIndex.cpp', 'src/application/TaxonomyIndex.h',
+                                   'src/application/EducationalContent.cpp', 'src/application/EducationalContent.h',
+                                   'resources/data/education.json', 'src/app/main.cpp', 'scripts/capture_home.py'))
     return {p.relative_to(root).as_posix(): sha(p) for p in sorted(paths) if p.is_file()}
 
 

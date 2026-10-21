@@ -3,13 +3,14 @@
 
 #include <QStandardPaths>
 #include <QCoreApplication>
+#include <QGuiApplication>
 #include <QSet>
 #include <QFile>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <algorithm>
 
-GameController::GameController(QObject *parent, const QString &databasePath)
+GameController::GameController(QObject *parent, const QString &databasePath, std::function<QDate()> localDate)
     : QObject(parent),
       catalog_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_catalog.sqlite")
@@ -18,7 +19,7 @@ GameController::GameController(QObject *parent, const QString &databasePath)
       historyRepository_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_history.sqlite")
           : databasePath),
-      service_(&catalog_, &historyRepository_)
+      service_(&catalog_, &historyRepository_), localDate_(std::move(localDate)), homeRefreshTimer_(this)
 {
     if (historyRepository_.loadPlayerProfiles().isEmpty()) {
         historyRepository_.createPlayer(QStringLiteral("Jogador 1"));
@@ -33,6 +34,25 @@ GameController::GameController(QObject *parent, const QString &databasePath)
     // create a recoverable game merely because the home screen was opened.
     service_.setCheckpointRepository(&historyRepository_);
     initializing_=false;
+    refreshHomeCatalog();
+    // Civil local dates are re-read, including after suspension or timezone
+    // changes. No persistent daily state or writes to the player database.
+    homeRefreshTimer_.setInterval(30000);
+    homeRefreshTimer_.setObjectName("homeCatalogRefreshTimer");
+    connect(&homeRefreshTimer_, &QTimer::timeout, this, &GameController::refreshHomeCatalog);
+    homeRefreshTimer_.start();
+    if (auto app = qobject_cast<QGuiApplication *>(QCoreApplication::instance()))
+        connect(app, &QGuiApplication::applicationStateChanged, this, [this](Qt::ApplicationState state) {
+            if (state == Qt::ApplicationActive) refreshHomeCatalog();
+        });
+}
+
+void GameController::refreshHomeCatalog()
+{
+    const auto snapshot = taxonomy_.homeCatalog(localDate_());
+    if (snapshot == homeCatalog_) return;
+    homeCatalog_ = snapshot;
+    emit homeCatalogChanged();
 }
 
 QVariantMap GameController::legalInformation() const

@@ -24,7 +24,9 @@ namespace {
 class MemoryCatalog final : public SpeciesCatalog {
 public:
     QVector<Species> items;
+    QVector<Taxon> nodes;
     QVector<Species> loadSpecies() const override { return items; }
+    QVector<Taxon> loadTaxons() const override { return nodes; }
 };
 
 class FailingHistory final : public GameHistoryRepository {
@@ -144,6 +146,9 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void homeCatalogDailySelectionAndRealIndicators();
+    void homeCatalogEligibilityAndDataChanges();
+    void homeCatalogClockAndRestart();
     void offlineReviewExpiryAndDrafts();
     void initialLoad_hasSpecies();
     void gameStartsAtFirstRound();
@@ -196,6 +201,162 @@ private slots:
     void scientificHintCoverageWithFourOptions();
     void individualHintReviewsDoNotRequireAggregateApproval();
 };
+
+void GameServiceTests::homeCatalogDailySelectionAndRealIndicators()
+{
+    JsonSpeciesCatalog catalog;
+    TaxonomyIndex index(catalog);
+    EducationalContent content;
+    const QDate date(2026, 10, 20);
+    const auto snapshot = index.homeCatalog(date);
+    const auto indicators = snapshot["indicators"].toMap();
+    QCOMPARE(indicators["organisms"].toInt(), 122);
+    QCOMPARE(indicators["representedDomains"].toInt(), 2);
+    QCOMPARE(indicators["domainNames"].toString(), QStringLiteral("Bacteria · Eukaryota"));
+    int photographs = 0, eligible = 0;
+    for (const auto &s : catalog.loadSpecies()) {
+        if (s.photo.role != "identification" || !approvedForQuiz(s, "species")) continue;
+        ++photographs;
+        const auto note = content.profile(s)["summary"].toMap();
+        const auto state = note["governance"].toMap()["state"].toString();
+        if (state == "approved_editorial" || state == "approved_expert") ++eligible;
+    }
+    QCOMPARE(indicators["identificationPhotos"].toInt(), photographs);
+    QVERIFY(photographs > 0 && photographs < indicators["organisms"].toInt());
+    QVERIFY(eligible > 1);
+    QSet<int> seen;
+    int previous = -1;
+    for (int day = 0; day < eligible + 1; ++day) {
+        const auto discovery = index.homeCatalog(date.addDays(day))["discovery"].toMap();
+        const int id = discovery["speciesId"].toInt();
+        QVERIFY(id > 0 && id != previous);
+        if (day < eligible) QVERIFY(!seen.contains(id));
+        seen.insert(id); previous = id;
+        QCOMPARE(index.homeCatalog(date.addDays(day))["discovery"].toMap(), discovery);
+        QVERIFY(discovery["note"].toMap()["source_url"].toString().startsWith("https://"));
+        QVERIFY(!index.describe(discovery["taxonId"].toString())["title"].toString().isEmpty());
+        const auto all = catalog.loadSpecies();
+        const auto selected = std::find_if(all.begin(), all.end(), [id](const Species &s) { return s.id == id; });
+        QVERIFY(selected != all.end());
+        QCOMPARE(discovery["note"].toMap(), content.profile(*selected)["summary"].toMap());
+        QCOMPARE(discovery["photo"].toMap()["image"].toString(), selected->photo.image);
+    }
+    QCOMPARE(seen.size(), eligible);
+    QVERIFY(index.homeCatalog(QDate())["discovery"].toMap().isEmpty());
+}
+
+void GameServiceTests::homeCatalogEligibilityAndDataChanges()
+{
+    JsonSpeciesCatalog original;
+    MemoryCatalog catalog;
+    catalog.nodes = original.loadTaxons();
+    for (const auto &s : original.loadSpecies())
+        if (s.photo.role == "identification" && approvedForQuiz(s, "species")) {
+            catalog.items.append(s);
+            if (catalog.items.size() == 2) break;
+        }
+    QCOMPARE(catalog.items.size(), 2);
+    // Synthetic review fixture ONLY, in memory, never applied to shipped data.
+    const QJsonObject review{{"state", "approved_editorial"}, {"usable", true},
+        {"reviewer", "synthetic-test-fixture"},
+        {"reviewed_at", QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
+        {"due_at", QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)}};
+    QJsonObject educationSpecies;
+    for (const auto &s : catalog.items)
+        educationSpecies[QString::number(s.id)] = QJsonObject{{"scientific_name", s.name},
+            {"summary", QJsonObject{{"text", "Synthetic educational fixture."},
+                {"source_url", "https://example.org/test-only"}, {"source_title", "Test-only source"},
+                {"governance", review}}}};
+    auto snapshot = [&](const QDate &date = QDate(2024, 2, 28)) {
+        return TaxonomyIndex(catalog, nullptr, EducationalContent(QJsonObject{{"species", educationSpecies}})).homeCatalog(date);
+    };
+    auto originalItems = catalog.items;
+    const auto first = snapshot();
+    catalog.items.append(catalog.items.first());
+    QCOMPARE(snapshot(), first); // One organism is never counted twice.
+    for (const QDate date : {QDate(2024, 2, 28), QDate(2024, 2, 29), QDate(2024, 3, 1), QDate(2026, 12, 31)})
+        QVERIFY(snapshot(date)["discovery"].toMap()["speciesId"] != snapshot(date.addDays(1))["discovery"].toMap()["speciesId"]);
+    const auto excludedId = originalItems.first().id;
+    for (int reason = 0; reason < 5; ++reason) {
+        catalog.items = originalItems;
+        auto &s = catalog.items.first();
+        if (reason == 0) s.photo.valid = false;
+        if (reason == 1) s.photoApproved = false;
+        if (reason == 2) s.taxonomyApproved = false;
+        if (reason == 3) s.photo.role = "supporting";
+        if (reason == 4) s.photo.approvedRanks.clear();
+        QCOMPARE(snapshot()["indicators"].toMap()["identificationPhotos"].toInt(), 1);
+        QVERIFY(snapshot()["discovery"].toMap()["speciesId"].toInt() != excludedId);
+    }
+    catalog.items = {originalItems.first()};
+    const auto one = snapshot();
+    QCOMPARE(one["indicators"].toMap()["organisms"].toInt(), 1);
+    QCOMPARE(one["discovery"].toMap()["speciesId"], snapshot(QDate(2024, 3, 1))["discovery"].toMap()["speciesId"]);
+    auto entry = educationSpecies[QString::number(excludedId)].toObject();
+    const auto approvedEntry = entry;
+    for (const QString &state : {"legacy", "draft", "rejected"}) {
+        auto note = entry["summary"].toObject(), changedReview = review;
+        changedReview["state"] = state; note["governance"] = changedReview; entry["summary"] = note;
+        educationSpecies[QString::number(excludedId)] = entry;
+        QVERIFY(snapshot()["discovery"].toMap().isEmpty());
+    }
+    entry = approvedEntry;
+    auto note = entry["summary"].toObject(), expired = review;
+    expired["due_at"] = QDateTime::currentDateTimeUtc().addSecs(-1).toString(Qt::ISODateWithMs);
+    note["governance"] = expired; entry["summary"] = note;
+    educationSpecies[QString::number(excludedId)] = entry;
+    QVERIFY(snapshot()["discovery"].toMap().isEmpty());
+    educationSpecies[QString::number(excludedId)] = approvedEntry;
+    for (const QString &field : {"text", "source_title", "source_url"}) {
+        entry = approvedEntry; note = entry["summary"].toObject();
+        note[field] = ""; entry["summary"] = note;
+        educationSpecies[QString::number(excludedId)] = entry;
+        QVERIFY(snapshot()["discovery"].toMap().isEmpty());
+        QCOMPARE(snapshot()["indicators"].toMap()["identificationPhotos"].toInt(), 1);
+    }
+    educationSpecies[QString::number(excludedId)] = approvedEntry;
+    catalog.items.first().name = "Wrong identity";
+    QVERIFY(snapshot()["discovery"].toMap().isEmpty());
+    catalog.items = originalItems;
+    TaxonomyIndex live(catalog, nullptr, EducationalContent(QJsonObject{{"species", educationSpecies}}));
+    QCOMPARE(live.homeCatalog(QDate::currentDate())["indicators"].toMap()["organisms"].toInt(), 2);
+    catalog.items.clear();
+    const auto empty = live.homeCatalog(QDate::currentDate());
+    QVERIFY(empty["discovery"].toMap().isEmpty());
+    for (const QString &key : {"organisms", "representedDomains", "identificationPhotos"})
+        QCOMPARE(empty["indicators"].toMap()[key].toInt(), 0);
+}
+
+void GameServiceTests::homeCatalogClockAndRestart()
+{
+    QTemporaryDir directory;
+    QDate date(2026, 10, 20);
+    const auto path = directory.filePath("daily.sqlite");
+    QVariantMap discovery;
+    {
+        GameController first(nullptr, path, [&] { return date; });
+        discovery = first.dailyDiscovery();
+        QVERIFY(!discovery.isEmpty());
+        QSignalSpy spy(&first, &GameController::homeCatalogChanged);
+        first.refreshHomeCatalog();
+        QCOMPARE(spy.size(), 0);
+        auto timer = first.findChild<QTimer *>("homeCatalogRefreshTimer"); QVERIFY(timer);
+        QCOMPARE(timer->interval(), 30000);
+        timer->setInterval(10);
+        date = date.addDays(1);
+        QTRY_COMPARE(first.dailyDiscovery()["date"].toString(), date.toString(Qt::ISODate));
+        QVERIFY(first.dailyDiscovery()["speciesId"] != discovery["speciesId"]);
+        QCOMPARE(spy.size(), 1);
+        date = date.addDays(-1);
+        first.refreshHomeCatalog();
+        QCOMPARE(first.dailyDiscovery(), discovery);
+        QVERIFY(first.recoverableSessions().isEmpty());
+        QCOMPARE(first.answeredCount(), 0);
+    }
+    GameController restarted(nullptr, path, [&] { return date; });
+    QCOMPARE(restarted.dailyDiscovery(), discovery);
+    QVERIFY(restarted.recoverableSessions().isEmpty());
+}
 
 void GameServiceTests::initialLoad_hasSpecies()
 {

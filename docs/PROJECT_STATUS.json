@@ -61,7 +61,7 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "d29cde2b8f156391730f0727dceb2da0dfa1529ea22bfec1a4007a17cfaf5a3a",
+    "CHANGELOG.md": "b0586df5ba2d9a6ce7ab98ad00a4492a681f704b717307fd19a33247f98397d7",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "bb7320d831e7a151aa901c35e7326c752fa2ef5024f30768c42319b8bed171ed",
     "docs/CATALOGO_CHANGELOG.md": "d644a1538a2e9e2d4d1b71568cf1692c79a8ae70c479f6105cab20750f72e376",
@@ -69,7 +69,7 @@
     "resources/data/exploration_photos.json": "81a93aa8b7f03b7c791bf5903c6b4afd94388f19b6566549cf2deab1142f980d",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
-    "src/app/main.cpp": "76a882dbf755b814c84a3219e68ef5fcb7c8b827c1a204f2085fd36a875a96ca",
+    "src/app/main.cpp": "19b5b7ced0f1ab73ac60eacb6edf0bd4749a54b688e7591c4e97de86130cbc06",
     "src/domain/GameConfiguration.h": "54bd17ce644314aa383bc04340141d97e1c2251dfe71a8955517a41648c6d41b",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
     "src/domain/SessionCheckpoint.h": "001a8aa8101f857b4b2698ce581c40ebcb72ae49de37fa7440cf4dfce9c0cc38",

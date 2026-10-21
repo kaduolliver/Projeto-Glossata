@@ -19,6 +19,8 @@ python scripts/capture_home.py
 python scripts/release.py check
 ```
 
+Quando a alteração visual estiver na seção inferior da Home, use `python scripts/capture_home.py --binary build/2.2.1-B-verified/projeto_glossata.exe --section discovery`. O próprio executável faz a rolagem no contêiner real e captura o quadro; o manifesto declara o enquadramento. Sem `--section`, o comportamento anterior de capturar o topo é preservado. A opção existe somente no modo isolado de captura, sem mudar a abertura normal ou os dados dos jogadores. Os quadros de testes deste refinamento têm registros próprios; a imagem oficial usa o executável de produção pelo script.
+
 O script executa **o programa compilado**, com a interface e controlador de produção, perfil temporário e Discord desativado. Usa `QQuickWindow::grabWindow`, backend Qt software/offscreen, e grava `docs/images/tela-inicial.png`. Não redesenha, simula ou gera uma interface por IA. A ilustração decorativa que aparece dentro da janela é um recurso real da interface existente.
 
 `docs/images/tela-inicial.json` registra data real da captura, dimensões, versão e hash do binário, hash da imagem e fontes da tela. Esse registro demonstra rastreabilidade técnica, não direitos sobre a arte. A imagem é da área de conteúdo da janela; o backend offscreen não desenha a moldura do Windows.

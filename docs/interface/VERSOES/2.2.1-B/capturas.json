@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "base_commit": "27294a18ffd0d1e533dcdeb47b44ee0011e97b35",
+  "implementation_commit": "24d1faaedefa077ec9492cba6dd01071ff6095f9",
+  "pull_request": "https://github.com/kaduolliver/Projeto-Glossata/pull/31",
+  "recorded_at": "2026-10-20T22:49:31.250360+00:00",
+  "rendering": "Windows 11; Qt 6.11.2; offscreen/software; Basic; scale 1; 96 DPI",
+  "privacy": "Temporary SQLite and default player profile; Discord disabled; no personal player data accessed.",
+  "production_home_record": "../../../images/tela-inicial.json",
+  "production_binary": {
+    "path": "build/2.2.1-B-verified/projeto_glossata.exe",
+    "sha256": "1f754c3d4ce8f51c79698354452bbb79f2621b35169ff4321fce09faf0f94d2a"
+  },
+  "test_binary": {
+    "path": "build/2.2.1-B-verified/glossata_ui_tests.exe",
+    "sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f"
+  },
+  "source_sha256": {
+    "resources/branding/glossata.ico": "12f8139c5fcacad6451aad1185bdb62ca8c06e5acf90679a44efdf8bb4d93c06",
+    "resources/branding/glossata.png": "6c83e4e175be354ce8e889b6548121ded4e9a1ae9685d2d44327c0a9f63bde4b",
+    "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
+    "resources/data/credits.json": "0e7ed95accb835e4b76356492d3c832ff79bab3cb74c149e12b28c881372183b",
+    "resources/data/education.json": "64df9e92234f4d8818a4737fbf76d7900a9972a901dfdbb5e4dd84f2bc2388ff",
+    "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
+    "resources/qml/Main.qml": "729efb27cc17444c415bcca66651d1c34ad23a3380542d529906b5ffa946618b",
+    "resources/qml/components/KingdomArtwork.qml": "e2fe8c0cc87e597a530657f5f8150be19914ebc284ebed143166a76d5d2076b5",
+    "resources/qml/components/LifeArtwork.qml": "4c33620d73a7c1bdd707e1d9f014662fde80c529b248d1cdf54e77969f6cfacd",
+    "resources/qml/components/NavItem.qml": "d169a6557990bbb6a8b8cd199be1fa860d799554cc703bdd3cc2f42d27543591",
+    "resources/qml/components/StatCard.qml": "09c4baba93717849a393f52908b1761787f114e747f908d9934a58a7688c310b",
+    "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
+    "resources/qml/components/UiIcon.qml": "6e007db92f8ce6d685b7874f7516e62487a1466930b5234a647a4e78bb7c3b28",
+    "resources/qml/views/HomeView.qml": "a3f1c256666418022efbc715419031ec8f552b76e7cd2622dff3206b2a94761b",
+    "scripts/release.py": "e4c27c3d5b6da3fb3477f498b1b6e29033bea87a40b051a5fd5b6d2cef1bb406",
+    "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
+    "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
+    "src/application/TaxonomyIndex.cpp": "3adc60a86dbfbb6e9916e77d4b805d49e2fd9cab948fd0a1967a8ea099305a43",
+    "src/application/TaxonomyIndex.h": "d4fa55185054ad53ee61430faeb1a5ad31366895129c6e3e5482ab120020d684",
+    "src/domain/QuizSelection.h": "2fe408555c0ceccbf8ef925680a71977729f5c6fb0170d9d87c52bbc68ce1736",
+    "src/domain/Species.h": "6d1228293b4de3e32b7da8701cb2289a40a3881723e870442a5110b868129bf6",
+    "src/infrastructure/content/PhotoResolver.cpp": "6e57cba8aa39218a5baa6c7f91765e18419440b3ab7210f6ff65260868f72f74",
+    "src/infrastructure/content/ReviewStatus.h": "effe487f8e093b7b08b6551c4a34409d4beb6f16dd91d1b5ded61de1f5165444",
+    "src/infrastructure/content/SqliteSpeciesCatalog.cpp": "8a745121a4a9b769d6663b4359c921d714241ff4e20dbf8bbc93ecfce0b60424",
+    "src/presentation/GameController.cpp": "f44c63955db433882ac58ebe65e0c52415c3fc9ce69b4a1a425301c6b91bacea",
+    "src/presentation/GameController.h": "bc57f137d521115fd6b3f7df744f14aa58adfdd72fb585484c54d8665b71f299"
+  },
+  "test_source_sha256": {
+    "tests/GameServiceTests.cpp": "ef6d122e82dbd26c21f8895c21573ea20292339d52e95b1f8231d90680dd9293",
+    "tests/QmlInterfaceTests.cpp": "2d4c8dc40758c3d2113751c176485cfbe91b3a88394ad39821a2ed4ce2b47da6"
+  },
+  "observed_catalog_context": {
+    "discovery": {
+      "commonName": "Onça-pintada",
+      "date": "2026-10-20",
+      "dateLabel": "20/10/2026",
+      "note": {
+        "governance": {
+          "claim_scope": "species",
+          "content_sha256": "f76aa2c0b795c17ac088d2319b65493cfa0b4407daffed312bf57fdd8a3164df",
+          "due_at": "2027-10-18T00:00:00+00:00",
+          "evidence": [
+            {
+              "locator": "Geographic Range; Habitat; Physical Description; Food Habits",
+              "supports": "American distribution including Amazon/Pantanal, aquatic habitats and swimming; robust head and body, rosettes and melanism; mammal/reptile prey. Does not assert continuous occupation of the range.",
+              "url": "https://animaldiversity.org/accounts/Panthera_onca/"
+            }
+          ],
+          "label": "Revisão editorial registrada",
+          "limitation": "Revisão editorial não equivale a validação por especialista. Fontes e testes não certificam exatidão.",
+          "reason": "Confirmação editorial expressa do lote 31f94520eae44058541479d9fc70a16546ebe1ebe7b781b424b68281f7b72449. Somente a redação identificada, incluindo o mesmo conteúdo em alias gerado; sem revisão por especialista, aprovação de fotografia, agregado ou grau de assistência.",
+          "review_kind": "editorial",
+          "reviewed_at": "2026-10-18",
+          "reviewer": "Carlos Eduardo Lima de Oliveira",
+          "state": "approved_editorial",
+          "usable": true
+        },
+        "locator": "Geographic Range; Habitat; Physical Description; Food Habits",
+        "reviewed_on": null,
+        "scope_name": "",
+        "source_title": "Animal Diversity Web — Panthera onca",
+        "source_url": "https://animaldiversity.org/accounts/Panthera_onca/",
+        "text": "A onça-pintada é um grande predador das Américas. Sua presença não se limita a floresta seca ou densa: também utiliza ambientes alagados.",
+        "verified": false
+      },
+      "photo": {
+        "attribution": {
+          "author": "(c) William Stephens, some rights reserved (CC BY)",
+          "distribution_exception": false,
+          "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/742746729/large.jpg",
+          "evidence_paths": [
+            "resources/compliance/permissions/0a58e9947411bed5a9c7544e0ad741ed6ebc86df828cfbdc7c01e20dc6d5c242.json"
+          ],
+          "license": "cc-by",
+          "license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "license_version": null,
+          "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+          "organisms": [
+            {
+              "id": 127,
+              "name": "Panthera onca",
+              "role": "identification",
+              "subject": "Panthera onca"
+            }
+          ],
+          "photo_id": "742746729",
+          "photo_url": "https://www.inaturalist.org/photos/742746729",
+          "rights_issues": [
+            "license_version_evidence_missing",
+            "license_version_not_evidenced",
+            "original_collection_date_unknown",
+            "permission_confirmation_missing_or_changed"
+          ],
+          "scientific_source_issues": [],
+          "sha256": "1791c42157ab119dd810623b5ac7bd190b3c6b97950ed67ffb25e06644301539",
+          "source": "https://www.inaturalist.org/observations/404452434",
+          "title": null
+        },
+        "author": "(c) William Stephens, some rights reserved (CC BY)",
+        "height": 683,
+        "image": "qrc:/resources/images/inaturalist/742746729.jpg",
+        "license": "CC-BY · versão não comprovada",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "photoId": "742746729",
+        "sourceUrl": "https://www.inaturalist.org/photos/742746729",
+        "title": null,
+        "width": 1024
+      },
+      "reviewNotice": "Texto com revisão editorial; não equivale a revisão especializada.",
+      "scientificName": "Panthera onca",
+      "speciesId": 127,
+      "taxonId": "taxon:9a4be0d04bb6e5676812"
+    },
+    "indicators": {
+      "domainNames": "Bacteria · Eukaryota",
+      "identificationPhotos": 20,
+      "organisms": 122,
+      "representedDomains": 2
+    }
+  },
+  "limitations": "Real Qt rendering with temporary data paths; no independent scientific/legal approval, screen-reader audit, other GPU/platform or display-scale certification. Existing per-photo permissions remain separate.",
+  "screenshots": [
+    {
+      "path": "capturas/home-1000x700.png",
+      "sha256": "0d9a43847977e17a3d105649b7a69d7c25b8c6b92f3d62e2c9451b6a13e2cb30",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T22:46:24.329532+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Top of Home.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    },
+    {
+      "path": "capturas/home-1240x820.png",
+      "sha256": "bd2e1f05a03519892dc89c512bf2bdd3961be9c1a1ddcb555660400e236e3065",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T22:46:25.103893+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Top of Home.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    },
+    {
+      "path": "capturas/home-1920x1080.png",
+      "sha256": "f88102e987f48cc5f0817bfb8fdcd5c9a2e4faa647f3372c105c232117971d68",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T22:46:26.154096+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Top of Home.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    },
+    {
+      "path": "capturas/discovery-1000x700.png",
+      "sha256": "4c0533e5b8914aad5b3dfc4fd762edcdd9a92dd92e23cb6046dc69f35a1f38a2",
+      "width": 1000,
+      "height": 700,
+      "captured_at": "2026-10-20T22:46:24.565713+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Existing page scroll moved to show the discovery and indicators; keyboard focus retained.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    },
+    {
+      "path": "capturas/discovery-1240x820.png",
+      "sha256": "56933fced89bd70476a99b3b93ba708721348744a45f668ed5608a516e163248",
+      "width": 1240,
+      "height": 820,
+      "captured_at": "2026-10-20T22:46:25.361526+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Existing page scroll moved to show the discovery and indicators; keyboard focus retained.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    },
+    {
+      "path": "capturas/discovery-1920x1080.png",
+      "sha256": "0a799930cdda42d18222923687f25e7886960fcb5c8e23d557861c28bd04bde9",
+      "width": 1920,
+      "height": 1080,
+      "captured_at": "2026-10-20T22:46:26.636912+00:00",
+      "method": "QQuickWindow::grabWindow; real Main.qml/GameController; temporary SQLite; Discord disabled; motion disabled for still capture. Local-date test provider restored to the actual system local date before capture.",
+      "framing": "Existing page scroll moved to show the discovery and indicators; keyboard focus retained.",
+      "binary_sha256": "7bcff03aaa2affe8a0adf2471aa4f1d8cd7b683dd6764e0dd2e561d64a29410f",
+      "modifications": "None after capture. Discovery photo uses proportional fit; carousel uses its existing crop/gradients."
+    }
+  ]
+}

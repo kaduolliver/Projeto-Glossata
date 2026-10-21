@@ -1,0 +1,23 @@
+{
+  "ctest": {
+    "passed_suites": 3,
+    "failed_suites": 0,
+    "seconds": 103.28,
+    "filter": "^(GlossataTests|GlossataInterfaceTests|GlossataReleaseTests)$"
+  },
+  "release_recheck_after_capture_mode": {
+    "passed": true,
+    "seconds": 0.5
+  },
+  "production_smoke_test_exit": 0,
+  "capture_flag_without_capture_mode_exit": 6,
+  "qt_log_sha256": {
+    "core-results.txt": "84a72da85f5bb925afc4b9e0fda8bbaf3858d05f3ac37cd10c7d82f28e8938a2",
+    "ui-test-results.txt": "a7d343f7aa5969d014a566e0b510b2068d2a1999b103a9e5a067d14432daff62"
+  },
+  "original_qt_log_sha256": {
+    "core-results.txt": "e0193bda09add7a7f0a11ce8b9ffa61f5f3748257792e9699be58fcc569f68fb",
+    "ui-test-results.txt": "a57a5259511aff2540857e6871e3e77c0afa3afdf37a7f6ff6694d7c2508e8fa"
+  },
+  "normalization": "Only CRLF to LF, preserving test output content."
+}
