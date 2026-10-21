@@ -146,6 +146,11 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void explorationCardsUseReviewedContentAndDocumentedRanks();
+    void explorationDebounceKeepsTheCurrentQueryAndFilters();
+    void scientificSearchCombinesNamesDomainsAndRanks();
+    void scientificSearchHandlesHomonymsDuplicatesAndMissingData();
+    void scientificNavigationIgnoresHistoricalRowsWithoutDeletingThem();
     void homeCatalogDailySelectionAndRealIndicators();
     void homeCatalogEligibilityAndDataChanges();
     void homeCatalogClockAndRestart();
@@ -201,6 +206,209 @@ private slots:
     void scientificHintCoverageWithFourOptions();
     void individualHintReviewsDoNotRequireAggregateApproval();
 };
+
+void GameServiceTests::explorationDebounceKeepsTheCurrentQueryAndFilters()
+{
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("debounce.sqlite"));
+    QSignalSpy edits(&controller, &GameController::exploreQueryChanged);
+    QSignalSpy presentation(&controller, &GameController::exploreSearchChanged);
+    const auto photo = controller.questionPhoto(); const auto hints = controller.hints();
+    const auto metrics = controller.sessionMetrics();
+    for (const QString &query : {"P", "Pan", "Panthera"}) controller.setExploreQuery(query);
+    QCOMPARE(controller.exploreQuery(), QString("Panthera")); QCOMPARE(edits.count(), 3);
+    QVERIFY(controller.exploreSearchPending());
+    QTRY_VERIFY(!controller.exploreSearchPending());
+    QCOMPARE(presentation.count(), 4); // Three edits, one coalesced completion.
+    QCOMPARE(controller.exploreQuery(), QString("Panthera"));
+    controller.setExploreQuery("Serratia"); QVERIFY(controller.exploreSearchPending());
+    controller.setExploreDomain("domain:Bacteria"); controller.setExploreRank("species");
+    QVERIFY(!controller.exploreSearchPending());
+    QCOMPARE(controller.exploreQuery(), QString("Serratia")); QCOMPARE(edits.count(), 4);
+    const auto expected = controller.exploreResults();
+    QVERIFY(expected["organismCount"].toInt() > 0);
+    QTest::qWait(260); QCOMPARE(controller.exploreResults(), expected);
+    controller.setExploreQuery("Pan"); QVERIFY(controller.exploreSearchPending());
+    controller.setExploreQuery(""); QVERIFY(!controller.exploreSearchPending());
+    QTest::qWait(260); QCOMPARE(controller.exploreQuery(), QString());
+    controller.setExploreQuery("Escherichia"); QVERIFY(controller.exploreSearchPending());
+    controller.flushExploreSearch(); QVERIFY(!controller.exploreSearchPending());
+    QCOMPARE(controller.exploreQuery(), QString("Escherichia"));
+    QCOMPARE(controller.questionPhoto(), photo); QCOMPARE(controller.hints(), hints);
+    QCOMPARE(controller.sessionMetrics(), metrics); QVERIFY(controller.recoverableSessions().isEmpty());
+}
+
+void GameServiceTests::explorationCardsUseReviewedContentAndDocumentedRanks()
+{
+    JsonSpeciesCatalog catalog; JsonExplorationMediaCatalog media; EducationalContent content;
+    TaxonomyIndex index(catalog, &media, content);
+    int eligible = 0;
+    const auto all = index.search({});
+    for (const auto &section : {QString("groups"), QString("organisms")})
+        for (const auto &value : all[section].toList()) {
+            const auto entry = value.toMap(), note = entry["educationalNote"].toMap();
+            if (note.isEmpty()) continue;
+            ++eligible;
+            const auto state = note["governance"].toMap()["state"].toString();
+            QVERIFY(state == "approved_editorial" || state == "approved_expert");
+            QVERIFY(!note["source_title"].toString().isEmpty()); QVERIFY(note["source_url"].toString().startsWith("https://"));
+            QCOMPARE(note, index.describe(entry["id"].toString())[entry["kind"] == "organism" ? "summary" : "introduction"].toMap());
+        }
+    QVERIFY(eligible > 4);
+    QCOMPARE(index.search("Papilio machaon")["organisms"].toList().first().toMap()["classificationSummary"].toString(), QStringLiteral("Família: Papilionidae · Gênero: Papilio"));
+    for (const auto &domain : index.domains().mid(1)) {
+        const auto photo = domain.toMap()["photo"].toMap(); QVERIFY(!photo["image"].toString().isEmpty());
+        QVERIFY(photo["contextualAttribution"].toBool());
+    }
+    for (const auto &entry : index.featuredOrganisms()) {
+        const auto photo = entry.toMap()["photo"].toMap(), attribution = photo["attribution"].toMap();
+        QVERIFY(photo["contextualAttribution"].toBool());
+        QVERIFY(!attribution["evidence_paths"].toList().isEmpty());
+        QVERIFY(attribution["license_version"].toString().isEmpty());
+        QCOMPARE(photo["author"], attribution["author"]); // Supplied copyright credit stays intact.
+    }
+    // Synthetic in-memory taxonomy/review only; never saved to shipped data.
+    MemoryCatalog fixture;
+    const Taxon root{"fixture:root", "Root", "domain"}, family{"fixture:family", "Testus", "family", root.id};
+    const Taxon genus{"fixture:genus", "Testus", "genus", family.id}, species{"fixture:species", "Testus example", "species", genus.id};
+    fixture.nodes = {root, family, genus, species};
+    Species organism; organism.id = 900001; organism.name = species.name; organism.taxonomy = fixture.nodes; fixture.items = {organism};
+    const QJsonObject reviewed{{"state", "approved_editorial"}, {"usable", true}, {"reviewer", "synthetic-test-fixture"},
+        {"reviewed_at", QDateTime::currentDateTimeUtc().addSecs(-60).toString(Qt::ISODateWithMs)},
+        {"due_at", QDateTime::currentDateTimeUtc().addDays(1).toString(Qt::ISODateWithMs)}};
+    QJsonObject note{{"text", "Synthetic educational fixture only."}, {"source_url", "https://example.org/fixture"}, {"source_title", "Fixture source"}, {"governance", reviewed}};
+    const auto describe = [&](const QJsonObject &n) {
+        const QJsonObject education{{"species", QJsonObject{{"900001", QJsonObject{{"scientific_name", species.name}, {"summary", n}}}}}};
+        return TaxonomyIndex(fixture, nullptr, EducationalContent(education)).describe(species.id);
+    };
+    QCOMPARE(describe(note)["educationalNote"].toMap(), note.toVariantMap());
+    QCOMPARE(describe(note)["classificationSummary"].toString(), QStringLiteral("Família: Testus · Gênero: Testus"));
+    for (const QString &state : {QString("approved_expert"), QString("draft"), QString("needs_review"), QString("expired"), QString("rejected")}) {
+        auto changed = note, review = reviewed; review["state"] = state; changed["governance"] = review;
+        QCOMPARE(describe(changed)["educationalNote"].toMap().isEmpty(), state != "approved_expert");
+    }
+    for (const QString &field : {QString("source_url"), QString("source_title"), QString("text")}) {
+        auto changed = note; changed[field] = ""; QVERIFY(describe(changed)["educationalNote"].toMap().isEmpty());
+    }
+    auto changed = note, review = reviewed; review["due_at"] = QDateTime::currentDateTimeUtc().addSecs(-1).toString(Qt::ISODateWithMs);
+    changed["governance"] = review; QVERIFY(describe(changed)["educationalNote"].toMap().isEmpty());
+    QVERIFY(describe({})["educationalNote"].toMap().isEmpty());
+    fixture.nodes.remove(1); fixture.nodes[1].parentId = root.id;
+    QCOMPARE(describe({})["classificationSummary"].toString(), QStringLiteral("Gênero: Testus"));
+}
+
+void GameServiceTests::scientificSearchCombinesNamesDomainsAndRanks()
+{
+    JsonSpeciesCatalog catalog;
+    JsonExplorationMediaCatalog media;
+    TaxonomyIndex index(catalog, &media);
+    const auto all = index.search({});
+    QCOMPARE(all["organismCount"].toInt(), 122);
+    QSet<int> seen;
+    for (const auto &value : all["organisms"].toList()) {
+        const auto entry = value.toMap();
+        QVERIFY(!seen.contains(entry["speciesId"].toInt())); seen.insert(entry["speciesId"].toInt());
+        QCOMPARE(entry["kind"].toString(), QString("organism"));
+        QCOMPARE(entry["rank"].toString(), QString("species"));
+        QCOMPARE(index.describe(entry["id"].toString())["title"], entry["title"]);
+        QVERIFY(!index.breadcrumbs(entry["id"].toString()).isEmpty());
+    }
+    QCOMPARE(index.search("  PANTHERA  "), index.search("panthera"));
+    QVERIFY(index.search("Panthera")["organismCount"].toInt() > 1);
+    QVERIFY(index.search("Panthera")["groupCount"].toInt() >= 1);
+    QCOMPARE(index.search("Panthera", "domain:Bacteria")["total"].toInt(), 0);
+    const auto species = index.search("Panthera", "domain:Eukaryota", "species");
+    QCOMPARE(species["groupCount"].toInt(), 0);
+    QVERIFY(species["organismCount"].toInt() > 1);
+    QCOMPARE(index.search("Archaea", {}, "domain")["groupCount"].toInt(), 1);
+    QCOMPARE(index.search({}, "domain:Archaea")["organismCount"].toInt(), 0);
+    QCOMPARE(index.search("nome inexistente 12345")["total"].toInt(), 0);
+    QCOMPARE(index.search({}, {}, "unknown-rank")["total"].toInt(), 0);
+    for (const auto &entry : index.searchRanks()) QVERIFY(entry.toMap()["id"] != "educational_kingdom");
+    EducationalContent education;
+    bool checkedCommon = false;
+    for (const auto &s : catalog.loadSpecies()) {
+        const auto common = education.profile(s).value("commonName", s.commonName).toString().trimmed();
+        if (common.isEmpty()) continue;
+        const auto found = index.search(common)["organisms"].toList();
+        QVERIFY(std::any_of(found.begin(), found.end(), [&](const auto &v) { return v.toMap()["speciesId"].toInt() == s.id; }));
+        checkedCommon = true; break;
+    }
+    QVERIFY(checkedCommon);
+    const auto featured = index.featuredOrganisms();
+    QVERIFY(!featured.isEmpty()); QVERIFY(featured.size() <= 4);
+    QSet<int> highlighted;
+    for (const auto &entry : featured) {
+        const auto item = entry.toMap();
+        const int id = item["speciesId"].toInt(); QVERIFY(!highlighted.contains(id)); highlighted.insert(id);
+        const auto records = catalog.loadSpecies();
+        const auto record = std::find_if(records.begin(), records.end(), [id](const auto &s) { return s.id == id; });
+        QVERIFY(record != records.end());
+        QVERIFY(approvedForQuiz(*record, "species")); QCOMPARE(record->photo.role, QString("identification"));
+        QCOMPARE(item["photo"].toMap()["image"].toString(), record->photo.image);
+        QVERIFY(!item["photo"].toMap()["author"].toString().isEmpty());
+    }
+}
+
+void GameServiceTests::scientificSearchHandlesHomonymsDuplicatesAndMissingData()
+{
+    MemoryCatalog catalog;
+    const Taxon root{"fixture:domain", "Fixture domain", "domain"};
+    const Taxon empty{"fixture:empty", "Empty domain", "domain"};
+    const Taxon familyA{"fixture:family-a", "Family A", "family", root.id};
+    const Taxon familyB{"fixture:family-b", "Family B", "family", root.id};
+    const Taxon genusA{"fixture:genus-a", "Testus", "genus", familyA.id};
+    const Taxon genusB{"fixture:genus-b", "Testus", "genus", familyB.id};
+    const Taxon alpha{"fixture:alpha", "Testus alpha", "species", genusA.id};
+    const Taxon beta{"fixture:beta", "Testus beta", "species", genusB.id};
+    const Taxon historical{"edu:Testus", "Testus", "educational_kingdom"};
+    catalog.nodes = {root, empty, familyA, familyB, genusA, genusB, alpha, beta, historical, genusA};
+    Species a; a.id = 100001; a.name = alpha.name; a.commonName = QStringLiteral("Águia de teste"); a.taxonomy = {root, familyA, genusA, alpha};
+    Species b; b.id = 100002; b.name = beta.name; b.taxonomy = {root, familyB, genusB, beta};
+    Species incomplete; incomplete.id = 100003; incomplete.name = "Missing path";
+    catalog.items = {a, a, b, incomplete};
+    TaxonomyIndex index(catalog);
+    QCOMPARE(index.count(), 3); QCOMPARE(index.count(root.id), 2);
+    QCOMPARE(index.search("aguia")["organismCount"].toInt(), 1);
+    QCOMPARE(index.search(QString::fromUtf8("A\xCC\x81guia")), index.search(QStringLiteral("ÁGUIA")));
+    const auto groups = index.search("Testus", {}, "genus")["groups"].toList();
+    QCOMPARE(groups.size(), 2); // Homonymous real IDs are not merged by name.
+    QVERIFY(groups[0].toMap()["id"] != groups[1].toMap()["id"]);
+    QVERIFY(groups[0].toMap()["pathText"] != groups[1].toMap()["pathText"]);
+    const auto organisms = index.search("Testus", root.id, "species")["organisms"].toList();
+    QCOMPARE(organisms.size(), 2);
+    QVERIFY(organisms[0].toMap()["photo"].toMap().isEmpty());
+    QCOMPARE(index.search({}, empty.id)["groupCount"].toInt(), 1);
+    QCOMPARE(index.search({}, empty.id)["organismCount"].toInt(), 0);
+    QCOMPARE(index.search("Missing path")["total"].toInt(), 0); // No invented destination.
+    QVERIFY(index.featuredOrganisms().isEmpty());
+}
+
+void GameServiceTests::scientificNavigationIgnoresHistoricalRowsWithoutDeletingThem()
+{
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    const QString path = directory.filePath("scientific-search.sqlite");
+    { SqliteSpeciesCatalog catalog(path); QVERIFY(catalog.isReady()); }
+    const QString connection = "search-historical-fixture";
+    {
+        auto db = QSqlDatabase::addDatabase("QSQLITE", connection); db.setDatabaseName(path); QVERIFY(db.open());
+        QSqlQuery query(db);
+        QVERIFY(query.exec("INSERT INTO taxons(id,scientific_name,rank) VALUES('fixture:old-domain','Eukaryota','domain')"));
+        QVERIFY(query.exec("INSERT INTO taxons(id,scientific_name,rank) VALUES('edu:Animalia','Animalia','educational_kingdom')"));
+    }
+    QSqlDatabase::removeDatabase(connection);
+    JsonSpeciesCatalog bundled;
+    const auto expected = TaxonomyIndex(bundled).search({});
+    for (int restart = 0; restart < 2; ++restart) {
+        SqliteSpeciesCatalog catalog(path); QVERIFY(catalog.isReady());
+        const auto stored = catalog.loadTaxons();
+        QVERIFY(std::any_of(stored.begin(), stored.end(), [](const auto &t) { return t.id == "fixture:old-domain"; }));
+        TaxonomyIndex index(catalog);
+        QCOMPARE(index.search({}), expected);
+        QCOMPARE(index.domains().size(), 4);
+        QCOMPARE(index.search("Eukaryota", {}, "domain")["groupCount"].toInt(), 1);
+    }
+}
 
 void GameServiceTests::homeCatalogDailySelectionAndRealIndicators()
 {

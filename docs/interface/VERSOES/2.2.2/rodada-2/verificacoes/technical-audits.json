@@ -1,0 +1,29 @@
+{
+  "catalog": {
+    "total_species": 122,
+    "valid_photo_records": 122,
+    "eligible_by_rank": {
+      "species": 40,
+      "genus": 100,
+      "family": 100,
+      "order": 100,
+      "class": 120,
+      "phylum": 121,
+      "kingdom": 0,
+      "supergroup": 0,
+      "domain": 0
+    },
+    "competitive_pool": 80,
+    "errors": []
+  },
+  "exploration_media": {
+    "total_photos": 114,
+    "bindings": 533,
+    "total_cards": 623,
+    "photographed_cards": 534,
+    "documented_pending": 89,
+    "coverage_percent": 85.71,
+    "errors": []
+  },
+  "notice": "Technical checks only; no change in scientific eligibility or distribution rights."
+}

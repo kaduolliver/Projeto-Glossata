@@ -1,5 +1,37 @@
 # Arquitetura visual
 
+## PR #32 — dimensionamento e entrada de rolagem
+
+As correções de usabilidade ficam no QML: altura intrínseca compartilhada entre cartões, hover local e estados curtos de indisponibilidade. A ciência continua projetada pelo índice, sem alterar seleção ou dados. `Main.qml` centraliza a faixa da barra e o tratamento exclusivo da roda convencional em Início/Explorar; eventos de precisão e eixos horizontais continuam nativos. O ajuste não aplica animação genérica à restauração de `contentY` e não muda regras de Jogar. [Registro atual](VERSOES/2.2.2/usabilidade/README.md).
+
+## PR #32 — atribuição contextual e interação
+
+O adaptador de mídia projeta atribuição contextual para as versões CC BY verificadas sem pedido adicional, incluindo 2.0/3.0; `featuredOrganisms` projeta a mesma apresentação para os créditos legados CC BY vinculados à evidência individual. Não muda a seleção, a versão declarada nem a decisão de distribuição. QML mantém os avisos e apresenta o conteúdo local no diálogo. A linha de créditos separa a área do botão do espaço inerte; observação passiva de hover evita depender da propagação entre controles aninhados. Nenhuma regra de pesquisa, sessão ou navegação muda. [Decisões e validação](VERSOES/2.2.2/correcoes-creditos/README.md).
+
+## PR #32 — refinamentos finais
+
+`TaxonomyIndex.describe` acrescenta `educationalNote` e `classificationSummary` aos mapas existentes, conservando API, pesquisa, filtros, IDs e contagens. O primeiro reutiliza nota de `EducationalContent` com revisão utilizável editorial/especializada e fonte completa; o segundo usa apenas ranks/nós existentes e prefere família/gênero. QML limita linhas e organiza a apresentação; não decide elegibilidade científica nem infere classificação. O adaptador de mídia expõe versão/créditos/estado já documentados e uma indicação conservadora de atribuição contextual para fotos verificadas; dados e permissões originais ficam intactos.
+
+Diálogos dos cartões são criados sob demanda e pertencem ao componente, com foco/rolagem internos e ação independente da navegação. O estado efêmero de pesquisa, filtros, lotes, foco e rolagem permanece no contrato da rodada 2. Só Explorar reorganiza seu rodapé, fotografias e créditos. [Registro final](VERSOES/2.2.2/rodada-final/README.md).
+
+## PR #32 — rodada 2
+
+`GameController` e `TaxonomyIndex` conservam integralmente seus contratos e regras científicas. `Main.explorePresentation` guarda estado efêmero da view, sem persistência: chave de consulta/filtros, limites progressivos, foco e posições de rolagem. `CategoryView` restaura o estado quando a chave coincide e reinicia os limites quando ela muda; timers pertencentes à view aguardam sua recriação. Não há consulta, filtragem científica ou deduplicação nova no QML.
+
+Galeria horizontal e página vertical verificam conjuntamente a visibilidade das fotografias; não há carga por controles fora dos dois viewports. Atributos integrais, avisos de revisão/identificação e metadados permanecem nos mapas existentes. `TaxonomyView` organiza sua apresentação em identificação, conteúdo educativo, classificação e fontes, mantendo origem/URL fotográfica de ambos os mapas existentes. A variante de Jogar permanece isolada por `browsingOnly`/`encyclopedic`. `Main.qml` ganha somente a propriedade de memória; não há mudança visual do shell ou das outras telas. [Contratos e evidências atuais](VERSOES/2.2.2/rodada-2/README.md).
+
+## PR #32 — rodada 1
+
+Busca e filtros científicos permanecem em `TaxonomyIndex`, sem alteração de ordenação ou deduplicação. A apresentação usa prefixos progressivos de 12 registros por seção em QML. `GameController` recebe a consulta atual a cada edição e separa suas notificações das de domínio/rank; o timer de 220 ms posterga a atualização dos resultados apresentados, sem guardar consultas antigas. Filtros/limpeza finalizam a espera e a consulta permanece em memória ao destruir/recriar a view.
+
+Cartões calculam a interseção da moldura fotográfica com o `Flickable` real antes de fornecer a fonte ao `Image`. A imagem inteira é ajustada proporcionalmente, com foco somente no espaço de margem. Breadcrumbs compactos são uma projeção visual do caminho integral, com expansão e acesso aos mesmos IDs. Os limites de página, as colunas e a expansão são estado de apresentação; não há banco novo, alteração de esquema, modificação de dados ou escrita em sessões. [Registro desta revisão](VERSOES/2.2.2/rodada-1/README.md).
+
+## Explorar — Subetapa 2.2.2
+
+`TaxonomyIndex` usa as leituras `loadCurrentSpecies/loadCurrentTaxons` da porta `SpeciesCatalog`. O adaptador SQLite preserva suas leituras históricas para compatibilidade e oferece o snapshot instalado para a navegação; não remove linhas nem altera esquemas. O índice deduplica IDs, mantém grupos vazios e constrói a pesquisa científica. Consulta por termos em nomes/linhagens, normalização somente para comparação, relevância, filtros por domínio/rank, distinção de grupos/organismos e seleção de destaques pertencem a essa camada. Os destaques reutilizam o predicado da descoberta diária; regras de quiz permanecem no domínio.
+
+`GameController` expõe consulta/filtros em memória e projeções notificáveis. Voltar da taxonomia recupera a consulta anterior sem persistir preferências ou modificar checkpoint/sessão. `CategoryView` aplica uma espera de digitação de 220 ms, apresenta seções de resultados e solicita `openTaxon(id)`. `TaxonomyView` preserva breadcrumbs científicos, mostra fonte/estado/ressalvas existentes e créditos contextuais expansíveis. O shell e o contexto de navegação existentes isolam Explorar de Jogar; `browsingOnly` e `ExploreCard.encyclopedic` limitam a modernização visual. [Contrato, evidências e limites](VERSOES/2.2.2/README.md).
+
 ## Descoberta e indicadores — Subetapa 2.2.1-B
 
 `TaxonomyIndex.homeCatalog(localDate)` produz conjuntamente a descoberta e os três indicadores a partir de um snapshot de `SpeciesCatalog`. IDs únicos ordenados definem a rotação por dia civil. A elegibilidade reutiliza `approvedForQuiz` no nível espécie, exige foto de identificação e um resumo utilizável de `EducationalContent.profile` com revisão editorial/especializada e fonte. Imagens de apoio não identificam uma espécie e são excluídas dessa cobertura. Domínios só são contados quando ocorrem nos caminhos dos organismos; Archaea vazio não aumenta o indicador.

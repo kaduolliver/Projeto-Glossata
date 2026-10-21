@@ -1,0 +1,9 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+QINFO  : QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction() Baseline nested hover: 0 0 0 width: 346 implicit: 151
+FAIL!  : QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction() 'button->width() <= button->implicitWidth() + 1' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(107) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 2 passed, 1 failed, 0 skipped, 0 blacklisted, 2334ms
+********* Finished testing of QmlInterfaceTests *********

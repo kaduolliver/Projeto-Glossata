@@ -56,6 +56,13 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantList categories READ categories CONSTANT)
     Q_PROPERTY(QVariantList quickAccessGroups READ quickAccessGroups CONSTANT)
     Q_PROPERTY(QVariantList homeSlides READ homeSlides CONSTANT)
+    Q_PROPERTY(QVariantList featuredOrganisms READ featuredOrganisms CONSTANT)
+    Q_PROPERTY(QVariantList exploreRanks READ exploreRanks CONSTANT)
+    Q_PROPERTY(QString exploreQuery READ exploreQuery WRITE setExploreQuery NOTIFY exploreQueryChanged)
+    Q_PROPERTY(QString exploreDomain READ exploreDomain WRITE setExploreDomain NOTIFY exploreDomainChanged)
+    Q_PROPERTY(QString exploreRank READ exploreRank WRITE setExploreRank NOTIFY exploreRankChanged)
+    Q_PROPERTY(bool exploreSearchPending READ exploreSearchPending NOTIFY exploreSearchChanged)
+    Q_PROPERTY(QVariantMap exploreResults READ exploreResults NOTIFY exploreSearchChanged)
     Q_PROPERTY(QVariantMap dailyDiscovery READ dailyDiscovery NOTIFY homeCatalogChanged)
     Q_PROPERTY(QVariantMap homeCatalogIndicators READ homeCatalogIndicators NOTIFY homeCatalogChanged)
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
@@ -121,6 +128,16 @@ public:
     QVariantList categories() const;
     QVariantList quickAccessGroups() const { return taxonomy_.quickAccess(); }
     QVariantList homeSlides() const { return taxonomy_.homeSlides(); }
+    QVariantList featuredOrganisms() const { return taxonomy_.featuredOrganisms(); }
+    QVariantList exploreRanks() const { return taxonomy_.searchRanks(); }
+    QString exploreQuery() const { return exploreQuery_; }
+    QString exploreDomain() const { return exploreDomain_; }
+    QString exploreRank() const { return exploreRank_; }
+    bool exploreSearchPending() const { return exploreSearchTimer_.isActive(); }
+    QVariantMap exploreResults() const { return taxonomy_.search(exploreQuery_, exploreDomain_, exploreRank_); }
+    void setExploreQuery(const QString &query);
+    void setExploreDomain(const QString &id);
+    void setExploreRank(const QString &rank);
     QVariantMap dailyDiscovery() const { return homeCatalog_.value("discovery").toMap(); }
     QVariantMap homeCatalogIndicators() const { return homeCatalog_.value("indicators").toMap(); }
     QVariantList categoryStats() const;
@@ -137,6 +154,7 @@ public:
     QString hintSourceUrl() const { return displayedQuestion_.hintSourceUrl; }
 
 public slots:
+    void flushExploreSearch();
     void refreshHomeCatalog();
     bool startGame();
     bool startCategoryGame(const QString &family);
@@ -161,6 +179,10 @@ public slots:
     void loadRanking();
 
 signals:
+    void exploreQueryChanged();
+    void exploreDomainChanged();
+    void exploreRankChanged();
+    void exploreSearchChanged();
     void homeCatalogChanged();
     void questionTextChanged();
     void factTextChanged();
@@ -193,6 +215,7 @@ private:
     QString feedbackText_;
     QString categoryName_;
     QString explorationId_;
+    QString exploreQuery_, exploreDomain_, exploreRank_;
     QString sessionTaxonId_;
     QString identificationRank_ = "species";
     bool answerPending_ = false;
@@ -202,6 +225,7 @@ private:
     EducationalContent content_;
     std::function<QDate()> localDate_;
     QTimer homeRefreshTimer_;
+    QTimer exploreSearchTimer_;
     QVariantMap homeCatalog_;
     int correctStreak_ = 0;
     int bestStreak_ = 0;

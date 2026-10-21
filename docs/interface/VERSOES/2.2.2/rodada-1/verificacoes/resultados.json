@@ -1,0 +1,62 @@
+{
+  "recorded_at": "2026-10-21T01:52:24.435312+00:00",
+  "base_commit": "f51f26e0a748d0c21089bd87d9b91a2016b3a5f9",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "elapsed_seconds": 318.9,
+    "qttest_cases_passed": {
+      "core-results.txt": 60,
+      "ui-test-results.txt": 15,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "src/application/TaxonomyIndex.cpp",
+    "src/application/TaxonomyIndex.h",
+    "docs/interface/VERSOES/2.2.2/capturas.json",
+    "docs/interface/VERSOES/2.2.2/capturas",
+    "docs/interface/VERSOES/2.2.2/verificacoes"
+  ],
+  "binaries": {
+    "production": "bf3bb0f08a1f3c9b3e6aca1bddb353656c50eeb50cfe7018d4df965d42b58c2f",
+    "core_tests": "05020280b577a50920b2420e8e8fe93199c8abf98a782ad9253ff15728649049",
+    "ui_tests": "b4c8c09fbe3edb4a7e551bc8668c865254bb46bc33ed3ebaa9902687a9fc5ece"
+  },
+  "capturas_json_sha256": "4716d37eb06b1de086de9d92760ba0eba69d537b80bec3cdb42d0ee7d6844a8e",
+  "diagnostics_not_acceptance": {
+    "resolved-card-callbacks-before.txt": "Intermediate run before owned timers; fixed and covered by the final passing suite.",
+    "preexisting-home-context.txt": "Zero-frame Home creation/destruction stress. HomeView is byte-identical to base; retained as an out-of-scope finding."
+  },
+  "evidence_sha256": {
+    "core-results.txt": "ffe5355071758ce48acd74227df9527a69218f57084fdb1584fb0927e7e079b8",
+    "ctest-results.txt": "0503f84b554be549bae7741ef5cb40a452493a5384e259ed6fe2e255a117aa15",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "2397d75d8df389dfcb35546ab4eb393794f9c50d632b0f841313713db9701b12",
+    "identity-results.txt": "e011fec4df5fbf1a91af6474c2a2cd4a0ad6019d1289e040a6e62b440ddf9c64",
+    "preexisting-home-context.txt": "69017d8fe8920e602becc70378ffd6cda51343b4a623968311f6a3f0fe78f67b",
+    "recovery-results.txt": "5bbffe5d51f42dc88615e2b59e434ab471c81320d71fc6144b17423be6496df4",
+    "resolved-card-callbacks-before.txt": "d2be265aa8756cc4e20bbeceea9cb6201f6f81e22f00eb123cd621b740b959d5",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "4b139b8eb9b6b65232f4cf24d614bdf81315d5ea99fa5f249bb61d046e661c62"
+  },
+  "archived_text_format": "UTF-8/LF, preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}

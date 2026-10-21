@@ -47,6 +47,7 @@ Canvas {
         case "leaf":
             c.beginPath(); c.moveTo(5, 19); c.bezierCurveTo(0, 10, 7, 3, 21, 3); c.bezierCurveTo(20, 16, 15, 23, 5, 19); c.stroke(); line([4, 21, 15, 10]); break
         case "target": circle(12, 12, 9); circle(12, 12, 5); circle(12, 12, 1); break
+        case "search": circle(10, 10, 6.5); line([15, 15, 21, 21]); break
         case "pin": circle(12, 9, 2); c.beginPath(); c.moveTo(12, 22); c.bezierCurveTo(-2, 7, 5, 2, 12, 2); c.bezierCurveTo(19, 2, 26, 7, 12, 22); c.stroke(); break
         case "hint": circle(12, 9, 6); line([9, 14, 9, 18, 15, 18, 15, 14]); line([10, 21, 14, 21]); break
         case "user": circle(12, 7, 4); c.beginPath(); c.arc(12, 22, 8, Math.PI, Math.PI * 2); c.stroke(); break

@@ -1,0 +1,62 @@
+{
+  "recorded_at": "2026-10-21T03:08:18.570661+00:00",
+  "base_commit": "ce613adcde4d8af30bf4d136c65974b65d928f5d",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "elapsed_seconds": 323.56,
+    "qttest_cases_passed": {
+      "core-results.txt": 60,
+      "ui-test-results.txt": 16,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "src/application/TaxonomyIndex.cpp",
+    "src/application/TaxonomyIndex.h",
+    "docs/interface/VERSOES/2.2.2/capturas.json",
+    "docs/interface/VERSOES/2.2.2/capturas",
+    "docs/interface/VERSOES/2.2.2/verificacoes",
+    "docs/interface/VERSOES/2.2.2/rodada-1",
+    "src/presentation/GameController.cpp",
+    "src/presentation/GameController.h",
+    "resources/qml/views/HomeView.qml"
+  ],
+  "binaries": {
+    "production": "f562dc77f0e13d067e1c67ff6a12813ea1156d3fdfff8564c2ddff0eff6f522a",
+    "core_tests": "d6959767f09130782dddfce839f84e604aee7d4f84db72758e5b87a7502424df",
+    "ui_tests": "0602da782a64569b3a51ba97ead48444a66b082c13d14d2d550a702163b3f226"
+  },
+  "capturas_json_sha256": "67d9afdb0e17d8b7145595ba1830d3e0f77c96c86fc09a51336878c16c0dafc4",
+  "preexisting_diagnostic": "../rodada-1/verificacoes/preexisting-home-context.txt (outside scope; HomeView unchanged)",
+  "evidence_sha256": {
+    "core-results.txt": "41eed6337a551ac4e4bf2dc4db1110d66cf569edfdefb17f1d6ba726d624cd93",
+    "ctest-results.txt": "0389d1f441f28d758ed15e8dcd076fa37176cd29049728ebeef25705a600df82",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "5a71d570eec40365c4bfcec590194333aa8bf1c29320a8319c151eb1c5dd1aa8",
+    "identity-results.txt": "909091a43c155302ae1572607cf7b5071329e20c2e90a698be159dde09504f10",
+    "recovery-results.txt": "b06bfe2e08d735085dd9902b585c7e76478b5626490ef271cf3adc36e14b04b5",
+    "smoke-test.txt": "84071124789952b5c78a09fa649f050a99a59255b6f8bf573dfd1ff068531573",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "77450a4eefde8788aed34580528f8dc867709edbd2f24e5ce2ccf5415efd816d"
+  },
+  "archived_text_format": "UTF-8/LF, preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}

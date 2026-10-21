@@ -1,0 +1,3 @@
+Production smoke test: C:\glossata_game\build\2.2.2-final\projeto_glossata.exe
+Temporary SQLite; Discord disabled by smoke mode.
+Exit code: 0

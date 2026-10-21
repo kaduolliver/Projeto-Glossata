@@ -6,7 +6,7 @@
 <!-- Gerado por scripts/project_status.py; não editar manualmente. -->
 | Informação atual | Valor derivado | Fonte |
 | --- | --- | --- |
-| Aplicativo | **1.7.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
+| Aplicativo | **1.8.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
 | Catálogo | **2.4.0** — não lançado | [Manifesto](resources/data/catalog_manifest.json), [histórico](docs/CATALOGO_CHANGELOG.md) |
 | Regra padrão de pontuação | `identification-v4-progressive` | [Hint.h](src/domain/Hint.h) |
 | Leitura histórica de pontuação | `identification-v3-assistance`, `identification-v2` e `legacy` | [Hint.h](src/domain/Hint.h) |

@@ -1,0 +1,19 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
+PASS   : QmlInterfaceTests::encyclopedicPhotographsFitAndRespectFocus()
+PASS   : QmlInterfaceTests::encyclopedicCardsHandleLongTextAndUnavailablePhotos()
+PASS   : QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
+PASS   : QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
+PASS   : QmlInterfaceTests::designSystemStatesAndContrast()
+PASS   : QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+PASS   : QmlInterfaceTests::homeCarouselTimingAndCrossfade()
+PASS   : QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
+PASS   : QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
+PASS   : QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
+PASS   : QmlInterfaceTests::navigateAndConfirmAnswers()
+PASS   : QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 15 passed, 0 failed, 0 skipped, 0 blacklisted, 124202ms
+********* Finished testing of QmlInterfaceTests *********

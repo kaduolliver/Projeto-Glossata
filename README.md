@@ -50,7 +50,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 <!-- Gerado por scripts/project_status.py; não editar manualmente. -->
 | Informação atual | Valor derivado | Fonte |
 | --- | --- | --- |
-| Aplicativo | **1.7.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
+| Aplicativo | **1.8.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
 | Catálogo | **2.4.0** — não lançado | [Manifesto](resources/data/catalog_manifest.json), [histórico](docs/CATALOGO_CHANGELOG.md) |
 | Regra padrão de pontuação | `identification-v4-progressive` | [Hint.h](src/domain/Hint.h) |
 | Leitura histórica de pontuação | `identification-v3-assistance`, `identification-v2` e `legacy` | [Hint.h](src/domain/Hint.h) |
@@ -73,6 +73,7 @@ A [auditoria de estabilização](docs/AUDITORIA_ESTABILIZACAO.md) registra as ve
 | --- | --- |
 | Interface desktop com Qt Quick/QML | Implementado |
 | Exploração de grupos e níveis taxonômicos | Implementado |
+| Busca científica local e filtros de domínio/nível em Explorar | Implementado; [Subetapa 2.2.2](docs/interface/VERSOES/2.2.2/README.md) |
 | Quiz com quatro alternativas e feedback | Implementado |
 | Modos Livre e Competitivo | Implementado |
 | Dicas estratégicas com pontuação proporcional | Implementado |
@@ -105,11 +106,13 @@ NCBI Taxonomy, LPSN, POWO e MycoBank têm etapas e restrições documentadas par
 
 ### Exploração taxonômica
 
-Navegação por domínios, linhagens, grupos e subgrupos, com caminhos clicáveis, fontes, limitações e níveis de identificação disponíveis conforme a cobertura do catálogo. Ranks ausentes não são inferidos. Animalia, Plantae e Fungi têm acesso rápido, preservando seus caminhos em Opisthokonta ou Archaeplastida. Os controles de quiz mantêm a posição anterior à expansão fotográfica; os grupos filhos aparecem depois dos controles. Os cartões integram fotografias reais e micrografias identificadas ao fundo, em 42% da largura e toda a altura, com recorte proporcional e gradiente horizontal. A auditoria cobre os 623 cartões: 534 com associação fotográfica e 89 com pendência justificada, usando 109 imagens offline; grupos sem foto adequada conservam a ilustração. Autoria, origem, licenças por arquivo e limites estão nos [créditos](docs/PHOTO_CREDITS.md) e na [documentação da exploração](docs/EXPLORACAO_E_FOTOGRAFIAS.md). Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas. Domínio, supergrupo e reino estão sem quiz elegível nesta etapa; os demais níveis disponíveis continuam funcionando.
+Em **Explorar**, pesquise por nome científico, nome comum disponível ou grupo e combine filtros de domínio e nível taxonômico. A busca funciona offline, separa grupos de organismos cadastrados e abre o nó científico correspondente. Resultados aparecem em lotes de até 12 por seção, com Carregar mais e totais preservados. Voltar à pesquisa conserva consulta e filtros. Fotografias proporcionais, organismos em destaque, breadcrumbs compactos/expansíveis, fontes e avisos de revisão organizam a navegação sem iniciar partidas. Contagens representam registros do catálogo; ranks ausentes não são inferidos. Animalia, Plantae e Fungi mantêm seus caminhos em Opisthokonta ou Archaeplastida.
 
-![Tela real da exploração do Projeto Glossata com filtros restaurados e fotografias integradas aos cartões dos três domínios](docs/images/exploracao.png)
+A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos 623 cartões têm associação fotográfica e 89 têm pendência justificada. Autoria, origem, licenças individuais e limites continuam nos [créditos](docs/PHOTO_CREDITS.md). Em **Jogar**, os controles e a variante anterior dos cartões permanecem disponíveis. Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas; domínio, supergrupo e reino continuam sem quiz elegível.
 
-[Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registro da captura real](docs/images/exploracao.json).
+![Explorar real do Projeto Glossata, com cartões uniformes, fotografias completas e hover próprio dos créditos.](docs/interface/VERSOES/2.2.2/usabilidade/capturas/gallery-hover-1920x1080-100.png)
+
+[Capturas e validação de uniformidade e rolagem](docs/interface/VERSOES/2.2.2/usabilidade/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registros anteriores da subetapa](docs/interface/VERSOES/2.2.2/README.md).
 
 ### Projeto Glossata
 

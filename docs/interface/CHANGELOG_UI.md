@@ -1,5 +1,39 @@
 # Histórico visual
 
+## PR #32 — uniformidade, faixa da barra e rolagem
+
+- Hover próprio dos créditos, cartões de altura compartilhada por seção, ações inferiores alinhadas e justificativa extensa de foto ausente no diálogo. Atribuições obrigatórias permanecem integrais, sem teto fixo para o texto.
+- Carregamento com `UiButton` compacto; Loader de páginas respeita faixa constante junto à barra. Roda convencional percorre 110 pixels por incremento em Início/Explorar, com aceitação exclusiva, redução de movimento e interrupção ao mudar foco/página ou interagir com a barra. Eventos contínuos e galeria horizontal continuam nativos.
+- [Capturas, escalas e validação](VERSOES/2.2.2/usabilidade/README.md), com implementação/teste/recaptura da Home em [e897712](https://github.com/kaduolliver/Projeto-Glossata/commit/e897712a6eba59b32d220feab92ea6b3cb201791): 26 suítes aprovadas e 30 capturas nas três resoluções, incluindo fatores Qt 125%/150%. As evidências anteriores permanecem históricas.
+
+## PR #32 — correções de créditos e interação
+
+- Atribuição contextual também para CC BY 2.0/3.0 e créditos legados documentados, com aviso visível de versão não comprovada e fallback para pedidos específicos. Política e evidências individuais registradas sem alterar licenças/permissões.
+- Ação de créditos com largura do texto e padding, alinhada à esquerda; espaços vazios da linha não abrem créditos nem navegam. Hover do cartão observado de forma passiva, independente do hover/foco do botão de créditos, com as transições e a redução de movimento existentes.
+- [Registro, capturas e validação desta correção](VERSOES/2.2.2/correcoes-creditos/README.md). Refinamentos e evidências anteriores preservados.
+
+## PR #32 — refinamentos finais da Subetapa 2.2.2
+
+- Cartões educativos com trechos de notas existentes elegíveis e Fonte, origem e créditos independente da abertura do táxon. Diálogo contextual completo, com atribuição junto à imagem nos casos conservadores; histórico de modificações separado da apresentação atual, sem apagar evidências.
+- Fotos centralizadas sem recorte/ampliação; classificação resumida com níveis documentados; rodapé de classificação/fontes/proveniência após descendentes/estado vazio. Galeria manual com indicação de posição/cartões adicionais. Pesquisa e estado de navegação preservados.
+- [Registro final e capturas](VERSOES/2.2.2/rodada-final/README.md), na mesma [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32): projeções em [88a9421](https://github.com/kaduolliver/Projeto-Glossata/commit/88a94210bf2a1a7aad44587489059fdc5d3d1e07) e interface/evidências em [4014bfa](https://github.com/kaduolliver/Projeto-Glossata/commit/4014bfa9263819cd8a47c2bdc7a8eb4416c5d739). Rodadas anteriores históricas. Criação/revisão de descrições completas registrada para a Etapa 3.
+
+## PR #32 — rodada 2 da Subetapa 2.2.2
+
+- Cartões enciclopédicos compactos, fotografias integrais com molduras discretas e grupos largos em composição horizontal. Galeria de quatro destaques existentes com controles/setas e foco acessíveis, cabeçalho com pesquisa integrada, filtros compactos e limpeza só do texto.
+- Grupos e organismos têm identificação própria, resumo/introdução existentes em destaque e classificação/fontes/proveniência em seções distintas. Atribuições e avisos científicos preservados. Retorno à pesquisa recupera lotes, foco e rolagem; novas consultas reiniciam a paginação. Contratos científicos e telas fora de Explorar permanecem intactos.
+- [Registro e capturas desta rodada](VERSOES/2.2.2/rodada-2/README.md), na mesma [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), em [c333578](https://github.com/kaduolliver/Projeto-Glossata/commit/c333578835ee97df0b5d559fcca6d749c3518293). Evidências anteriores preservadas; aviso preexistente da Home continua documentado separadamente.
+
+## PR #32 — rodada 1 da Subetapa 2.2.2
+
+- Pesquisa apresentada em lotes de 12 por seção, com totais integrais e Carregar mais; consulta sincronizada e debounce sem restauração de textos anteriores. Fotos enciclopédicas proporcionais sem recorte, carregadas conforme a área visível; colunas adaptativas com mínimo de 280 px; breadcrumbs compactos com todos os níveis expansíveis e singular/plural nos contadores.
+- Alterações restritas à correção estrutural da [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), sem redesenhar cartões, galeria, cabeçalho, créditos ou fichas. [Registro, capturas e validação da rodada](VERSOES/2.2.2/rodada-1/README.md), com sincronização em [00f2280](https://github.com/kaduolliver/Projeto-Glossata/commit/00f2280990531fab7311e0afe3a420313016a84a) e interface/evidências em [96a25b0](https://github.com/kaduolliver/Projeto-Glossata/commit/96a25b05f4b0c31b29b3366bb8654b263ac9e9a6). Evidências anteriores preservadas; limitação preexistente da Home separada dos testes finais aprovados.
+
+## 2.2.2 — Modernização da tela Explorar
+
+- Busca científica offline, filtros por domínio/nível, resultados distintos para grupos e organismos e destaques com elegibilidade existente. Cartões fotográficos com nomes científicos, autoria/licença e contagens do catálogo; cabeçalho taxonômico, breadcrumbs, avisos e créditos expansíveis. Somente o contexto Explorar recebe a modernização; a seleção de Jogar mantém sua variante e regras.
+- Aplicativo 1.8.0, catálogo 2.4.0 preservado. Base após merge confirmado da PR #31. [Implementação, contratos, validação e capturas reais](VERSOES/2.2.2/README.md), com interface/capturas no commit [e4e8bd4](https://github.com/kaduolliver/Projeto-Glossata/commit/e4e8bd4d34167a4fd831dd47fb2dd594047de20d), entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22; sem merge ou lançamento.
+
 ## 2.2.1-B — Descoberta do Dia e Indicadores Dinâmicos — 2026-10-20
 
 - Refinamento da PR #31: “Identificação por espécie” explicita o alcance do indicador; Foto e créditos abre um diálogo da descoberta, com licença/versão/origem/modificações, avisos e acesso geral. Tooltip da fonte removido, mantendo interação e acessibilidade; ícones dos indicadores em 28/48 px, com padrões anteriores nas outras telas. [Registro e capturas desta revisão](VERSOES/2.2.1-B/refinamento-1/README.md), implementada em [`c6adcb902afb1b75855db1f46fedbc7894f5186b`](https://github.com/kaduolliver/Projeto-Glossata/commit/c6adcb902afb1b75855db1f46fedbc7894f5186b).

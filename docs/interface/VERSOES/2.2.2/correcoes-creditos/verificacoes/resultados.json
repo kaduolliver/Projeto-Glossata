@@ -1,0 +1,87 @@
+{
+  "recorded_at": "2026-10-21T21:31:59.890045+00:00",
+  "base_commit": "904d13a15dd415a66b8859cc45fe4326fbe1b0bd",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "elapsed_seconds": 416.22,
+    "qttest_cases_passed": {
+      "core-results.txt": 61,
+      "ui-test-results.txt": 17,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "src/application/EducationalContent.cpp",
+    "src/presentation/GameController.cpp",
+    "src/presentation/GameController.h",
+    "docs/interface/VERSOES/2.2.2/capturas.json",
+    "docs/interface/VERSOES/2.2.2/capturas",
+    "docs/interface/VERSOES/2.2.2/verificacoes",
+    "docs/interface/VERSOES/2.2.2/rodada-1",
+    "docs/interface/VERSOES/2.2.2/rodada-2",
+    "docs/interface/VERSOES/2.2.2/rodada-final",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/views/TaxonomyView.qml",
+    "resources/qml/views/CategoryView.qml",
+    "resources/qml/components/TextAction.qml",
+    "resources/qml/Main.qml"
+  ],
+  "binaries": {
+    "production": "ae571ba1f2f3de99a3faf3a997db73b5c8f98feb82a9b5a9bb580f1d70130360",
+    "core_tests": "9fefb4e7171489239ca2d1c6a27a97ede909d861602f2fb87aa90e626aff513d",
+    "ui_tests": "30615aa6a9b40678dcbd4d251068d911f05a4890ba268f8df5254ed5354f19e1"
+  },
+  "capturas_json_sha256": "49345883085500c491f5a2dbf8b03e9f7b75393c05c3b1cb3300de94ffd9acf5",
+  "source_commit": "beee137a54468f6833c694186176c9d2d6c05f5f",
+  "presentation_policy_sha256": "38bd875308e8007e071311b871968e097cc02b716ba8c70194b416aa8f2fc818",
+  "source_logs_sha256": {
+    "build/Testing/Temporary/LastTest.log": "95056a02c3c1cdf7082c046efc0874de4ab205c6518ad48b96e19715f516b41a",
+    "build/tests/core-results.txt": "a377e4530e5429874fb4e0b83c0e4446e2f557344035df1898e4f3356c5cbeb4",
+    "build/tests/ui-test-results.txt": "478bf103a525e9ded8b15386176199790325603cc776d200593bf27bb2205880",
+    "build/tests/identity-results.txt": "4bba2831c8e2fa6e293fd71b16e759af115ee9b553aafcf10c7b1f44e743ad20",
+    "build/tests/recovery-results.txt": "b5ac9279be77167deb8062bd0803ec393406447579076a704b75eed92600c977",
+    "build/tests/credits-targeted.txt": "b1a901f914301b6168d4dbda7024dbc82a7f7a5c3f22de538497f11c59c1f186",
+    "build/tests/credits-baseline.txt": "605a7c78addf3fdb848959a4c912c2cf11f69bd439a4a4d29922bcb57f7e96c2",
+    "build/credits-smoke.txt": "99147595cd11fac7b4e2cb1baf788a44ee7862754e8c6f67b34908d39b21b22c"
+  },
+  "baseline_diagnostic": {
+    "file": "credits-baseline.txt",
+    "expected_failure": "Old credit action exceeds its intrinsic width.",
+    "continuous_hover_reproduced": false,
+    "original_explore_card_sha256": "80c38c94e4146cd60bedbaa126bc844b7874d11f3922e75cd1956d099fafb361"
+  },
+  "preexisting_diagnostic": "../rodada-1/verificacoes/preexisting-home-context.txt (outside scope; HomeView unchanged)",
+  "evidence_sha256": {
+    "core-results.txt": "ec6dd46bd621e19d7144d330f1390761869d1b2d3e6d20835a5ab3768e4773ea",
+    "credits-baseline.txt": "68f287200ed85b10ecebd483a83b7114e36f1b236c615f5aa32f9356f27a4855",
+    "credits-targeted.txt": "a3f8bf53dc9ca4ef0c473ffb724d26960a5161fe3631391c6201b57dca967dad",
+    "ctest-results.txt": "5fc9b0c881511d4cc40bf6b8d9bb4d01f5ac317cd10cb9c18fea503ac7c3e030",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "92bf68378f35effd96e493e9148901136ca3b377c28c9cd3b2a6b67c3df278f8",
+    "identity-results.txt": "a81801cd90aa56a5b3a22ac8734523de166db2e77bdbc8f16828fd708b81cf10",
+    "recovery-results.txt": "f23eba99276e5e8f7edc1d76522bd520c327573247ad5464ddd2daeacc7654e9",
+    "smoke-test.txt": "99147595cd11fac7b4e2cb1baf788a44ee7862754e8c6f67b34908d39b21b22c",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "1a267354ca2aeb3cb838cffb738e3b4146beb28ae41d2dec3101538a0404be8a"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 lines retained, Windows CP1252 subprocess lines transcoded; original log hashes retained. Preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}
