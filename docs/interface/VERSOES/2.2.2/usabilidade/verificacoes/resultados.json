@@ -1,0 +1,119 @@
+{
+  "recorded_at": "2026-10-21T22:45:04.691114+00:00",
+  "base_commit": "7accfddcec72f3c5d20a9df7ab8f957e9b96fe3f",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "test_time_sum_seconds": 442.25,
+    "qttest_cases_passed": {
+      "core-results.txt": 61,
+      "ui-test-results.txt": 18,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "src",
+    "resources.qrc",
+    "VERSION.txt",
+    "src/application/EducationalContent.cpp",
+    "src/presentation/GameController.cpp",
+    "src/presentation/GameController.h",
+    "docs/interface/VERSOES/2.2.2/capturas.json",
+    "docs/interface/VERSOES/2.2.2/capturas",
+    "docs/interface/VERSOES/2.2.2/verificacoes",
+    "docs/interface/VERSOES/2.2.2/rodada-1",
+    "docs/interface/VERSOES/2.2.2/rodada-2",
+    "docs/interface/VERSOES/2.2.2/rodada-final",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/components/TextAction.qml",
+    "resources/qml/components/UiButton.qml",
+    "src/application/TaxonomyIndex.cpp",
+    "src/infrastructure/content/JsonExplorationMediaCatalog.cpp",
+    "docs/interface/VERSOES/2.2.2/correcoes-creditos"
+  ],
+  "binaries": {
+    "production": "c2de6fdca0d5b13bfff56810c258e4159298ec4c7fc4a22e4b7fa0885baab180",
+    "core_tests": "9bb2248fe3a333686002dd6d09590d01e006330a95026dd101c09c79aefa97ef",
+    "ui_tests": "26c77e8654b7f142aeb2785695ff54e8ca07b72d05ebb181e17c99d64a6d62fa"
+  },
+  "capturas_json_sha256": "d26d86179a3042ace3ee99630551b7ae1ff16a30ce9b0e607370ff16ed2a9321",
+  "source_commit": "e897712a6eba59b32d220feab92ea6b3cb201791",
+  "additional_runs": {
+    "usability-dpi-125.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0
+    },
+    "usability-dpi-150.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0
+    }
+  },
+  "scale_validation": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "physical_windows_scaling_changed": false,
+    "physical_touchpad_tested": false,
+    "precise_input": "Synthesized Qt touchpad events with native Flickable reference."
+  },
+  "prior_attribution_policy_sha256": "38bd875308e8007e071311b871968e097cc02b716ba8c70194b416aa8f2fc818",
+  "source_logs_sha256": {
+    "build/Testing/Temporary/LastTest.log": "df0c372418ed13e17c908e69379820cb0415f4e027abae199902b3e451acce54",
+    "build/tests/core-results.txt": "fb05811c42f1c3416a94671c23a8ff44e7100db86c6b7077df10304d1375d6d7",
+    "build/tests/ui-test-results.txt": "bd0b20f77131d02e13af028b4cf60dbe2eba580d65377bbbf117d5ca986bdac2",
+    "build/tests/identity-results.txt": "b0919611fd570ffc1f04d282685648c661ab22e7367d0253a1922f9b00f334ec",
+    "build/tests/recovery-results.txt": "1d6b33f24d8617c325806dcc77183af2608ac13c37d24ff4010a9424b5720cfb",
+    "build/tests/usability-dpi-125.txt": "4ec9a3f9e8aa81d1fd7ae5bd15d12a664a155bc67236af1143f8ed937443e401",
+    "build/tests/usability-dpi-150.txt": "b77fb56a91e46b2f583fccbe683ece8bc85fe0d0f6782989c27917d02b8e55cb",
+    "build/usability-smoke.txt": "82e8d74ae54a957b551448b2ad288b2f67daad8db99c8a0437d3c6267a8c23ae"
+  },
+  "preexisting_diagnostic": "../rodada-1/verificacoes/preexisting-home-context.txt (outside scope; HomeView unchanged)",
+  "evidence_sha256": {
+    "core-results.txt": "eae3e66e776fcccde2d03f2e25bbffb60f39f1fc032c0554544d2fc384b2b2ab",
+    "ctest-results.txt": "9600a13b7dca3a7cb392dcd87fd03072a771513a40a4b81174d71cea85239be2",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "6527baa3f98006cd37670bd4feb9d5e53ae8363f8c2afcf52de1426df66c48ac",
+    "identity-results.txt": "2cb14e3258699134c28aaa66b20b91cf67a89c9884c91c1b47ef04947a6a5294",
+    "recovery-results.txt": "4edbb715570543307006a36b8635107609f3433a4cf449f7bb55608b28bef33e",
+    "smoke-test.txt": "82e8d74ae54a957b551448b2ad288b2f67daad8db99c8a0437d3c6267a8c23ae",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "bd3a6a879039e951c033b51fa4fa20452bc4fa345a2c5a0c6dbd88591743ed88",
+    "usability-dpi-125.txt": "5404fa4367d38894903129bebaf7029689b2c722237e82e6c6db813016dcada1",
+    "usability-dpi-150.txt": "44f6e1866a08784ae1b0e19e20eb2c7a7bb99fd1cc01574e1fd7ba980ae351a7"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 lines retained, Windows CP1252 subprocess lines transcoded; original log hashes retained. Preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}

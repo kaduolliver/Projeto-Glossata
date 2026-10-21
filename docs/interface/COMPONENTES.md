@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## PR #32 — uniformidade e rolagem
+
+`ExploreCard` distingue o hover local dos créditos com fundo/borda, conservando largura, espaço inerte, foco e transições. `encyclopediaCardPhotoState` mostra mensagem curta quando a foto falta; `pendingReason` completo fica no diálogo. Resumos têm duas linhas; atribuições obrigatórias não são elididas. Grids compartilham a maior `implicitHeight` em `cardHeight`/`Layout.preferredHeight`; a galeria usa `RowLayout` e `Layout.fillHeight`. Isso mantém o rodapé alinhado e recalcula a altura ao variar a largura/tipografia, sem um teto fixo que corte texto.
+
+`Main.pageScroll` reserva `contentGutter` para a barra em todas as páginas. Botões de carregamento usam `UiButton.compact`; o componente compartilhado não muda. `pageWheelArea`, uma `MouseArea` atrás do conteúdo e sem captura de botões do mouse, trata somente incrementos verticais convencionais em Início/Explorar: 110 pixels por detente, animação curta opcional e aceitação exclusiva. `scrollGestureEnabled: false` mantém gestos sintetizados nativos; eventos precisos/horizontais são recusados para seguir seu fluxo original. Foco, barra, movimento nativo e troca de página interrompem a animação pendente. [Contratos e validação](VERSOES/2.2.2/usabilidade/README.md).
+
 ## PR #32 — correções de créditos e interação
 
 `photo.contextualAttribution` indica somente a apresentação: fotos CC0/CC BY verificadas sem pedido adicional e os créditos legados CC BY vinculados à evidência usam o diálogo adjacente. Não determina elegibilidade, versão, permissão ou distribuição. Autoria, título, licença, origem e modificações continuam integrais offline. `encyclopediaCardLicenseNotice` preserva o aviso curto de versão não comprovada; ausência da indicação ou pedido adicional mantém o fallback visível.

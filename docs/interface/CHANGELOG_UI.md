@@ -1,5 +1,11 @@
 # Histórico visual
 
+## PR #32 — uniformidade, faixa da barra e rolagem
+
+- Hover próprio dos créditos, cartões de altura compartilhada por seção, ações inferiores alinhadas e justificativa extensa de foto ausente no diálogo. Atribuições obrigatórias permanecem integrais, sem teto fixo para o texto.
+- Carregamento com `UiButton` compacto; Loader de páginas respeita faixa constante junto à barra. Roda convencional percorre 110 pixels por incremento em Início/Explorar, com aceitação exclusiva, redução de movimento e interrupção ao mudar foco/página ou interagir com a barra. Eventos contínuos e galeria horizontal continuam nativos.
+- [Capturas, escalas e validação](VERSOES/2.2.2/usabilidade/README.md), com implementação/teste/recaptura da Home em [e897712](https://github.com/kaduolliver/Projeto-Glossata/commit/e897712a6eba59b32d220feab92ea6b3cb201791): 26 suítes aprovadas e 30 capturas nas três resoluções, incluindo fatores Qt 125%/150%. As evidências anteriores permanecem históricas.
+
 ## PR #32 — correções de créditos e interação
 
 - Atribuição contextual também para CC BY 2.0/3.0 e créditos legados documentados, com aviso visível de versão não comprovada e fallback para pedidos específicos. Política e evidências individuais registradas sem alterar licenças/permissões.
