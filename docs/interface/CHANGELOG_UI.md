@@ -1,5 +1,11 @@
 # Histórico visual
 
+## PR #32 — correções de créditos e interação
+
+- Atribuição contextual também para CC BY 2.0/3.0 e créditos legados documentados, com aviso visível de versão não comprovada e fallback para pedidos específicos. Política e evidências individuais registradas sem alterar licenças/permissões.
+- Ação de créditos com largura do texto e padding, alinhada à esquerda; espaços vazios da linha não abrem créditos nem navegam. Hover do cartão observado de forma passiva, independente do hover/foco do botão de créditos, com as transições e a redução de movimento existentes.
+- [Registro, capturas e validação desta correção](VERSOES/2.2.2/correcoes-creditos/README.md). Refinamentos e evidências anteriores preservados.
+
 ## PR #32 — refinamentos finais da Subetapa 2.2.2
 
 - Cartões educativos com trechos de notas existentes elegíveis e Fonte, origem e créditos independente da abertura do táxon. Diálogo contextual completo, com atribuição junto à imagem nos casos conservadores; histórico de modificações separado da apresentação atual, sem apagar evidências.

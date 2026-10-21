@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## PR #32 — atribuição contextual e interação
+
+O adaptador de mídia projeta atribuição contextual para as versões CC BY verificadas sem pedido adicional, incluindo 2.0/3.0; `featuredOrganisms` projeta a mesma apresentação para os créditos legados CC BY vinculados à evidência individual. Não muda a seleção, a versão declarada nem a decisão de distribuição. QML mantém os avisos e apresenta o conteúdo local no diálogo. A linha de créditos separa a área do botão do espaço inerte; observação passiva de hover evita depender da propagação entre controles aninhados. Nenhuma regra de pesquisa, sessão ou navegação muda. [Decisões e validação](VERSOES/2.2.2/correcoes-creditos/README.md).
+
 ## PR #32 — refinamentos finais
 
 `TaxonomyIndex.describe` acrescenta `educationalNote` e `classificationSummary` aos mapas existentes, conservando API, pesquisa, filtros, IDs e contagens. O primeiro reutiliza nota de `EducationalContent` com revisão utilizável editorial/especializada e fonte completa; o segundo usa apenas ranks/nós existentes e prefere família/gênero. QML limita linhas e organiza a apresentação; não decide elegibilidade científica nem infere classificação. O adaptador de mídia expõe versão/créditos/estado já documentados e uma indicação conservadora de atribuição contextual para fotos verificadas; dados e permissões originais ficam intactos.

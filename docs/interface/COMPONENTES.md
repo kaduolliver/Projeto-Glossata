@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## PR #32 — correções de créditos e interação
+
+`photo.contextualAttribution` indica somente a apresentação: fotos CC0/CC BY verificadas sem pedido adicional e os créditos legados CC BY vinculados à evidência usam o diálogo adjacente. Não determina elegibilidade, versão, permissão ou distribuição. Autoria, título, licença, origem e modificações continuam integrais offline. `encyclopediaCardLicenseNotice` preserva o aviso curto de versão não comprovada; ausência da indicação ou pedido adicional mantém o fallback visível.
+
+`exploreCardCreditsRow` ocupa a largura disponível, mas `exploreCardCreditsButton` ocupa somente `min(implicitWidth, row.width)`, alinhado à esquerda. O espaço restante absorve cliques sem executar nenhuma ação; gestos de rolagem continuam disponíveis ao Flickable. Tab/Space e foco acessível permanecem. Um `HoverHandler` passivo acompanha o cartão enciclopédico inteiro, enquanto o hover automático do `Button` externo fica desativado. O `TextAction` conserva seu hover/foco e animação; o componente compartilhado e a variante Jogar não mudam. [Política por licença, capturas e testes](VERSOES/2.2.2/correcoes-creditos/README.md).
+
 ## PR #32 — refinamentos finais
 
 `ExploreCard.educationalNote` apresenta o mapa elegível projetado pelo índice em no máximo duas linhas; não cria resumo alternativo. `shortClassification` lê `entry.classificationSummary`, com ranks fornecidos por C++. `exploreCardCreditsButton` abre um `Dialog` criado sob demanda, separado da ação principal. Mantém autoria/licença/versão, origem, modificações históricas, fontes e avisos. Tab revela os links na rolagem interna; Escape/Fechar devolvem foco ao botão. `photo.contextualAttribution` é indicação conservadora de apresentação para metadados verificados, não aprovação: quando ausente/falsa, a autoria/licença e eventuais atribuições específicas continuam junto à foto. O corpo do diálogo distingue histórico literal e apresentação atual.

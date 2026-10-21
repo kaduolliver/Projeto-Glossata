@@ -110,9 +110,9 @@ Em **Explorar**, pesquise por nome científico, nome comum disponível ou grupo 
 
 A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos 623 cartões têm associação fotográfica e 89 têm pendência justificada. Autoria, origem, licenças individuais e limites continuam nos [créditos](docs/PHOTO_CREDITS.md). Em **Jogar**, os controles e a variante anterior dos cartões permanecem disponíveis. Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas; domínio, supergrupo e reino continuam sem quiz elegível.
 
-![Explorar real do Projeto Glossata após os refinamentos finais, com cartões educativos, créditos contextuais e fotografias centralizadas.](docs/interface/VERSOES/2.2.2/rodada-final/capturas/gallery-1920x1080.png)
+![Explorar real do Projeto Glossata após os refinamentos finais, com cartões educativos, créditos contextuais e fotografias centralizadas.](docs/interface/VERSOES/2.2.2/correcoes-creditos/capturas/gallery-1920x1080.png)
 
-[Capturas e validação dos refinamentos finais](docs/interface/VERSOES/2.2.2/rodada-final/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registros anteriores da subetapa](docs/interface/VERSOES/2.2.2/README.md).
+[Capturas e validação das correções de créditos e interação](docs/interface/VERSOES/2.2.2/correcoes-creditos/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registros anteriores da subetapa](docs/interface/VERSOES/2.2.2/README.md).
 
 ### Projeto Glossata
 
