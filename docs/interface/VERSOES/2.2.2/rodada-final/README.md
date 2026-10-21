@@ -1,6 +1,6 @@
 # PR #32 — refinamentos finais de Explorar
 
-Base: `0be191949ab194b90027441b43e8196c01ad07ae`, na mesma branch e [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22. Aplicativo 1.8.0 ainda não lançado; catálogo 2.4.0. [Entrega inicial](../README.md), [rodada 1](../rodada-1/README.md) e [rodada 2](../rodada-2/README.md) permanecem históricas. Commit final pendente das verificações.
+Base: `0be191949ab194b90027441b43e8196c01ad07ae`, na mesma branch e [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), vinculada à Issue #22. Aplicativo 1.8.0 ainda não lançado; catálogo 2.4.0. [Entrega inicial](../README.md), [rodada 1](../rodada-1/README.md) e [rodada 2](../rodada-2/README.md) permanecem históricas. Projeções/testes C++ e registro da Home em [88a9421](https://github.com/kaduolliver/Projeto-Glossata/commit/88a94210bf2a1a7aad44587489059fdc5d3d1e07); interface, testes, capturas e evidências em [4014bfa](https://github.com/kaduolliver/Projeto-Glossata/commit/4014bfa9263819cd8a47c2bdc7a8eb4416c5d739). `release.py check-history` aprovado após esses commits, comparando a base da rodada.
 
 ## Alterações
 
