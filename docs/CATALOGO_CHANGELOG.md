@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+PR #32, rodada 1, sem lançamento: correções estruturais de apresentação na versão 1.8.0 ainda não lançada, com o catálogo 2.4.0 preservado. Ordenação, deduplicação e filtros científicos de `TaxonomyIndex` não mudam; paginação é uma fatia de apresentação em QML. As fotografias inteiras são ajustadas à moldura, sem escrever arquivos ou metadados. Nenhuma alteração de licenças, critérios de elegibilidade, taxonomia ou decisões de governança.
+
 Subetapa 2.2.2, sem lançamento: aplicativo **1.8.0** (MINOR pela busca e filtros compatíveis) reutiliza o catálogo **2.4.0** com dados, fotografias, evidências, licenças, manifesto e históricos de governança idênticos à base `9d047910ddb6b56051d1830cba4052ca03a4e520`. A seleção da navegação passa a usar a projeção instalada, sem remover os registros históricos do SQLite. Nenhuma nova aprovação, permissão, reclassificação ou liberação de distribuição. A revisão documental da interface 2.2.2 não é versão SemVer do catálogo.
 
 Complemento do PR #30 em 2026-10-20, sem lançamento: outra fotografia de Panthera leo, por Ron Knight, preparada em 1920 × 1247 exclusivamente para a Home, com nova evidência individual CC BY 2.0 e categoria identificadora da fonte. A foto anterior e seus registros permanecem como fallback; não há transferência de permissão ou revisão humana presumida. Os outros três slides, cartões e organismos não mudam. Manifesto 2.4.0 não lançado regenerado; app 1.7.0 preservado.

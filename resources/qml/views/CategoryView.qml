@@ -10,11 +10,45 @@ Item {
     required property var backend
     property bool browsingOnly: false
     readonly property int columns: width >= 850 ? 3 : 2
+    readonly property int explorationColumns: Math.max(1, Math.floor((width + 16) / (280 + 16)))
+    readonly property int domainColumns: Math.max(1, Math.min(backend.categories.length - 1, explorationColumns))
+    readonly property var featuredEntries: browsingOnly && !searching ? backend.featuredOrganisms : []
+    readonly property int featuredColumns: Math.max(1, Math.ceil(featuredEntries.length / Math.max(1, Math.ceil(featuredEntries.length / explorationColumns))))
+    readonly property int resultBatchSize: 12
+    property int groupLimit: resultBatchSize
+    property int organismLimit: resultBatchSize
+    property var pendingFocusRepeater: null
+    property int pendingFocusIndex: -1
     readonly property bool searching: backend.exploreQuery.trim().length > 0 || !!backend.exploreDomain || !!backend.exploreRank
-    readonly property var results: browsingOnly ? backend.exploreResults : ({})
+    readonly property bool searchPending: backend.exploreSearchPending
+    readonly property var results: browsingOnly && searching && !searchPending ? backend.exploreResults : ({})
+    readonly property var presentedGroups: (results.groups || []).slice(0, groupLimit)
+    readonly property var presentedOrganisms: (results.organisms || []).slice(0, organismLimit)
     readonly property var domains: [{id: "", title: "Todos os domínios"}].concat(backend.categories.slice(1))
-    function commitSearch() { searchDelay.stop(); backend.exploreQuery = searchField.text }
-    Timer { id: searchDelay; interval: 220; onTriggered: view.commitSearch() }
+    Connections {
+        target: view.backend
+        function onExploreSearchChanged() {
+            newResultsFocus.stop(); view.pendingFocusRepeater = null
+            view.groupLimit = view.resultBatchSize; view.organismLimit = view.resultBatchSize
+        }
+    }
+    Timer {
+        id: newResultsFocus
+        interval: 0
+        onTriggered: {
+            const next = view.pendingFocusRepeater ? view.pendingFocusRepeater.itemAt(view.pendingFocusIndex) : null
+            view.pendingFocusRepeater = null
+            if (next) next.forceActiveFocus(Qt.TabFocusReason)
+        }
+    }
+    function loadMore(section, keyboard) {
+        const repeater = section === "groups" ? groupResults : organismResults
+        const firstNew = repeater.count
+        if (section === "groups") groupLimit = Math.min(results.groupCount, groupLimit + resultBatchSize)
+        else organismLimit = Math.min(results.organismCount, organismLimit + resultBatchSize)
+        if (keyboard) { pendingFocusRepeater = repeater; pendingFocusIndex = firstNew; newResultsFocus.restart() }
+    }
+    function countLabel(count, singular, plural) { return count + " " + (count === 1 ? singular : plural) }
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
@@ -39,9 +73,9 @@ Item {
                 font.pixelSize: Style.Theme.labelSize; selectByMouse: true
                 Accessible.name: "Pesquisar no catálogo local"
                 Accessible.description: "Busca por nome científico, nome comum disponível ou grupo taxonômico. Combine com os filtros de domínio e nível."
-                onTextEdited: searchDelay.restart()
-                onAccepted: view.commitSearch()
-                onEditingFinished: view.commitSearch()
+                onTextEdited: view.backend.exploreQuery = text
+                onAccepted: view.backend.flushExploreSearch()
+                onEditingFinished: view.backend.flushExploreSearch()
                 background: Rectangle { color: Style.Theme.surface; radius: Style.Theme.controlRadius; border.color: searchField.activeFocus ? Style.Theme.focus : Style.Theme.border; border.width: searchField.activeFocus ? 2 : 1 }
                 UiIcon { anchors.left: parent.left; anchors.leftMargin: 14; anchors.verticalCenter: parent.verticalCenter; name: "search"; ink: Style.Theme.green; implicitWidth: 18; implicitHeight: 18 }
             }
@@ -58,7 +92,7 @@ Item {
                 Label { text: "Nível taxonômico"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
                 TaxonComboBox { objectName: "exploreRankFilter"; Layout.fillWidth: true; model: view.backend.exploreRanks; textRole: "title"; valueRole: "id"; currentIndex: Math.max(0, view.backend.exploreRanks.map(entry => entry.id).indexOf(view.backend.exploreRank)); Accessible.name: "Filtrar por nível taxonômico"; onActivated: view.backend.exploreRank = currentValue }
             }
-            TextAction { objectName: "clearExploreSearch"; text: "Limpar"; enabled: view.searching; Layout.alignment: Qt.AlignBottom; onClicked: { view.backend.exploreQuery = ""; view.backend.exploreDomain = ""; view.backend.exploreRank = ""; searchField.forceActiveFocus(Qt.TabFocusReason) } }
+            TextAction { objectName: "clearExploreSearch"; text: "Limpar"; enabled: view.searching; Layout.alignment: Qt.AlignBottom; onClicked: { view.backend.exploreQuery = ""; view.backend.exploreDomain = ""; view.backend.exploreRank = ""; view.backend.flushExploreSearch(); searchField.forceActiveFocus(Qt.TabFocusReason) } }
         }
         Label { visible: !view.browsingOnly; text: "Escolha um grupo para jogar"; color: "#EDF6EF"; font.pixelSize: 29; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { visible: !view.browsingOnly; text: "Configure o modo Livre ou comece uma partida competitiva."; color: "#91ACB4"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
@@ -74,7 +108,7 @@ Item {
                     required property int index
                     objectName: "quickAccessButton" + index
                     text: modelData.title
-                    Accessible.description: modelData.pathText + ". " + modelData.count + " organismos; explorar este grupo."
+                    Accessible.description: modelData.pathText + ". " + view.countLabel(modelData.count, "organismo", "organismos") + "; explorar este grupo."
                     ToolTip.visible: hovered || visualFocus
                     ToolTip.delay: 600
                     ToolTip.text: modelData.pathText
@@ -87,9 +121,10 @@ Item {
         GridLayout {
             id: groups
             visible: !view.browsingOnly || !view.searching
-            Layout.fillWidth: true; columns: view.browsingOnly ? 3 : view.columns; columnSpacing: 16; rowSpacing: 16
+            objectName: "exploreDomainsGrid"
+            Layout.fillWidth: true; columns: view.browsingOnly ? view.domainColumns : view.columns; columnSpacing: 16; rowSpacing: 16
             Repeater {
-                model: view.backend.categories.slice(1)
+                model: !view.browsingOnly || !view.searching ? view.backend.categories.slice(1) : []
                 delegate: ExploreCard {
                     required property var modelData
                     required property int index
@@ -97,7 +132,7 @@ Item {
                     entry: modelData
                     encyclopedic: view.browsingOnly
                     Layout.fillWidth: true; Layout.fillHeight: true; Layout.preferredWidth: 1
-                    Layout.columnSpan: !view.browsingOnly && view.columns === 2 && index === 2 ? 2 : 1
+                    Layout.columnSpan: view.browsingOnly ? (index === view.backend.categories.length - 2 ? view.domainColumns - index % view.domainColumns : 1) : view.columns === 2 && index === 2 ? 2 : 1
                     onClicked: view.app.openTaxon(modelData.id)
                 }
             }
@@ -108,10 +143,11 @@ Item {
             TextAction { objectName: "allExploreOrganisms"; text: "Ver organismos →"; onClicked: view.backend.exploreRank = "species" }
         }
         GridLayout {
+            objectName: "exploreFeaturedGrid"
             visible: view.browsingOnly && !view.searching
-            Layout.fillWidth: true; columns: view.width >= 1100 ? 4 : 2; columnSpacing: 16; rowSpacing: 16
+            Layout.fillWidth: true; columns: view.featuredColumns; columnSpacing: 16; rowSpacing: 16
             Repeater {
-                model: view.browsingOnly ? view.backend.featuredOrganisms : []
+                model: view.featuredEntries
                 delegate: ExploreCard {
                     required property var modelData
                     required property int index
@@ -126,13 +162,16 @@ Item {
         ColumnLayout {
             visible: view.browsingOnly && view.searching
             Layout.fillWidth: true; spacing: 16
-            Label { objectName: "exploreResultSummary"; text: (view.results.groupCount || 0) + " grupos taxonômicos · " + (view.results.organismCount || 0) + " organismos cadastrados"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
-            Label { objectName: "exploreEmptyState"; visible: view.results.total === 0; text: "Nenhum resultado para esta combinação. Tente outro nome, domínio ou nível taxonômico. A busca considera somente os dados disponíveis no catálogo local."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            Label { objectName: "exploreResultSummary"; text: view.searchPending ? "Atualizando pesquisa…" : view.countLabel(view.results.groupCount || 0, "grupo taxonômico", "grupos taxonômicos") + " · " + view.countLabel(view.results.organismCount || 0, "organismo cadastrado", "organismos cadastrados"); color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
+            Label { objectName: "exploreEmptyState"; visible: !view.searchPending && view.results.total === 0; text: "Nenhum resultado para esta combinação. Tente outro nome, domínio ou nível taxonômico. A busca considera somente os dados disponíveis no catálogo local."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { visible: view.results.groupCount > 0; text: "Grupos taxonômicos"; color: Style.Theme.green; font.pixelSize: Style.Theme.labelSize; font.weight: Font.DemiBold }
             GridLayout {
-                Layout.fillWidth: true; columns: view.columns; columnSpacing: 16; rowSpacing: 16
+                objectName: "exploreGroupResultsGrid"
+                Layout.fillWidth: true; columns: view.explorationColumns; columnSpacing: 16; rowSpacing: 16
                 Repeater {
-                    model: view.searching ? view.results.groups || [] : []
+                    id: groupResults
+                    objectName: "exploreGroupResults"
+                    model: view.presentedGroups
                     delegate: ExploreCard {
                         required property var modelData
                         required property int index
@@ -143,11 +182,19 @@ Item {
                     }
                 }
             }
+            RowLayout {
+                visible: view.results.groupCount > 0; Layout.fillWidth: true
+                Label { objectName: "exploreGroupsShown"; text: "Exibindo " + groupResults.count + " de " + view.countLabel(view.results.groupCount || 0, "grupo taxonômico", "grupos taxonômicos"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                TextAction { objectName: "loadMoreExploreGroups"; visible: groupResults.count < view.results.groupCount; text: "Carregar mais grupos"; onClicked: view.loadMore("groups", visualFocus) }
+            }
             Label { visible: view.results.organismCount > 0; text: "Organismos cadastrados"; color: Style.Theme.green; font.pixelSize: Style.Theme.labelSize; font.weight: Font.DemiBold }
             GridLayout {
-                Layout.fillWidth: true; columns: view.columns; columnSpacing: 16; rowSpacing: 16
+                objectName: "exploreOrganismResultsGrid"
+                Layout.fillWidth: true; columns: view.explorationColumns; columnSpacing: 16; rowSpacing: 16
                 Repeater {
-                    model: view.searching ? view.results.organisms || [] : []
+                    id: organismResults
+                    objectName: "exploreOrganismResults"
+                    model: view.presentedOrganisms
                     delegate: ExploreCard {
                         required property var modelData
                         required property int index
@@ -157,6 +204,11 @@ Item {
                         onClicked: view.app.openTaxon(modelData.id)
                     }
                 }
+            }
+            RowLayout {
+                visible: view.results.organismCount > 0; Layout.fillWidth: true
+                Label { objectName: "exploreOrganismsShown"; text: "Exibindo " + organismResults.count + " de " + view.countLabel(view.results.organismCount || 0, "organismo cadastrado", "organismos cadastrados"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                TextAction { objectName: "loadMoreExploreOrganisms"; visible: organismResults.count < view.results.organismCount; text: "Carregar mais organismos"; onClicked: view.loadMore("organisms", visualFocus) }
             }
         }
         Label { text: "Três domínios são uma organização didática. Hipóteses de dois domínios situam os eucariotos dentro de Archaea. As relações profundas e os ranks variam conforme a fonte; a navegação não é uma árvore evolutiva completa."; color: view.browsingOnly ? Style.Theme.textMuted : "#91ADB2"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }

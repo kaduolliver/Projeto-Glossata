@@ -1,5 +1,15 @@
 # Componentes compartilhados
 
+## PR #32 — rodada 1
+
+`CategoryView` mantém limites de apresentação independentes, começando em 12 grupos e 12 organismos, com Carregar mais para cada seção. O prefixo das listas de `TaxonomyIndex` conserva relevância, totais e IDs; edição/filtro reinicia ambos os limites. Voltar de um táxon conserva consulta/filtros e reabre a primeira página. O foco por teclado passa ao primeiro cartão recém-solicitado. Colunas são calculadas pela largura disponível e mínimo de 280 px, com distribuição equilibrada dos quatro destaques; não há novo desenho dos cartões ou da galeria.
+
+`GameController` notifica `exploreQuery`, domínio e rank separadamente. O texto atual é armazenado imediatamente; um `QTimer` de 220 ms adia somente a notificação de apresentação, exposta por `exploreSearchPending`. Filtros, Enter, término de edição e limpeza finalizam a espera; não existe cópia antiga do texto para restaurar por timeout. QML apresenta Atualizando pesquisa durante a espera e não mistura cartões antigos com o novo texto. `TaxonomyIndex` continua único responsável pela pesquisa científica.
+
+`ExploreCard` enciclopédico só fornece `source` à imagem quando sua moldura intersecta o `Flickable` ancestral. O `FeatheredPhoto` oculto dessa variante fica sem fonte. A fotografia mantém proporção e raster integral; foco existente é usado apenas para posicionar a imagem nas margens livres. Ponto focal não é evidência de limites seguros para recorte. Verificações de viewport e foco após Carregar mais usam timers filhos dos componentes, cancelados ao destruir a view; não deixam callbacks em contextos QML removidos. A variante de Jogar preserva sua apresentação fotográfica. Contadores e nomes acessíveis flexionam singular/plural.
+
+`TaxonomyView`, no contexto Explorar, mostra domínio, dois ancestrais próximos e nível atual, com controle para expandir os intermediários. Os botões conservam índices/IDs do caminho integral; o nível atual recebe seminegrito e identificação textual/acessível. Expansão admite Tab/Espaço, recolhe ao mudar de táxon e reduz novamente a altura do Flow. A trilha de Jogar permanece integral. [Evidências e limites](VERSOES/2.2.2/rodada-1/README.md).
+
 ## Explorar — 2.2.2
 
 `ExploreCard.encyclopedic: false` preserva a variante anterior. Quando `true`, usa `Theme`, foto proporcional em destaque, rank, título científico com itálico nos níveis espécie/gênero, nome comum disponível, contagem ou caminho e autoria/licença visíveis. Altura acompanha texto, foco por teclado usa `visualFocus` dourado e hover respeita redução de movimento. `entry.kind` distingue `organism` e `group`; `entry.id` é o destino taxonômico e `speciesId` identifica o registro quando disponível. Tooltip extenso permanece somente na variante anterior de Jogar.

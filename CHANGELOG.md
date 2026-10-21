@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.8.0] — Não lançado; exploração enciclopédica
 
+- PR #32, rodada 1: resultados progressivos em lotes de até 12 por seção, fotos enciclopédicas proporcionais com foco nas margens livres e carga condicionada à área visível, breadcrumbs compactos/expansíveis e colunas por largura mínima. Consulta sincronizada imediatamente, atualização visual com debounce de 220 ms e contadores com singular/plural. Correções incorporadas à mesma versão ainda não lançada; catálogo, Jogar e governança preservados. [Registro da rodada](docs/interface/VERSOES/2.2.2/rodada-1/README.md).
 - Subetapa 2.2.2 da Issue #22: Explorar com cartões fotográficos, busca científica local por nomes e linhagens, filtros combináveis de domínio e nível, resultados separados por grupos/organismos e acesso ao nó científico por ID estável. Organismos em destaque reutilizam a elegibilidade da Descoberta do Dia.
 - Navegação científica baseada no catálogo instalado, sem duplicações por nós históricos do SQLite, mantendo esses registros e os bancos dos jogadores. Breadcrumbs, créditos e avisos científicos preservados; pesquisa e filtros sobrevivem ao retorno dos resultados. Jogar conserva seus controles e regras.
 - MINOR pela funcionalidade compatível de busca/filtros. Catálogo 2.4.0 e seus bytes/licenças preservados. Sem lançamento, tag ou autorização de distribuição. Evidências em [2.2.2](docs/interface/VERSOES/2.2.2/README.md).

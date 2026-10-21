@@ -1,0 +1,47 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
+PASS   : QmlInterfaceTests::encyclopedicPhotographsFitAndRespectFocus()
+PASS   : QmlInterfaceTests::encyclopedicCardsHandleLongTextAndUnavailablePhotos()
+PASS   : QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
+FAIL!  : QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures() 'interfaceWarnings.isEmpty()' returned FALSE. (QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff87f1a0, "featuredOrganism0") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff885560, "featuredOrganism1") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff885020, "featuredOrganism2") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff8875c0, "featuredOrganism3") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff886d00, "domainButton0") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff88b140, "domainButton1") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff88c3a0, "domainButton2") is not a function (exception occurred during delayed function evaluation))
+C:/glossata_game/tests/QmlInterfaceTests.cpp(647) : failure location
+PASS   : QmlInterfaceTests::designSystemStatesAndContrast()
+PASS   : QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+PASS   : QmlInterfaceTests::homeCarouselTimingAndCrossfade()
+PASS   : QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
+PASS   : QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
+PASS   : QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
+FAIL!  : QmlInterfaceTests::navigateAndConfirmAnswers() 'interfaceWarnings.isEmpty()' returned FALSE. (QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff87f1a0, "featuredOrganism0") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff885560, "featuredOrganism1") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff885020, "featuredOrganism2") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_392(0x165ff8875c0, "featuredOrganism3") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff886d00, "domainButton0") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff88b140, "domainButton1") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/components/ExploreCard.qml:21: TypeError: Property 'updatePhotoRequest' of object ExploreCard_QMLTYPE_358_QML_390(0x165ff88c3a0, "domainButton2") is not a function (exception occurred during delayed function evaluation))
+C:/glossata_game/tests/QmlInterfaceTests.cpp(1816) : failure location
+PASS   : QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 13 passed, 2 failed, 0 skipped, 0 blacklisted, 129026ms
+********* Finished testing of QmlInterfaceTests *********

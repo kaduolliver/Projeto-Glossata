@@ -1,0 +1,19 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::progressiveExploreNavigationAndCaptures() 'interfaceWarnings.isEmpty()' returned FALSE. (QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/views/HomeView.qml:49: TypeError: Property 'preloadNext' of object HomeView_QMLTYPE_43(0x1970e92e270, "homeCarousel") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/views/HomeView.qml:49: TypeError: Property 'preloadNext' of object HomeView_QMLTYPE_43(0x1970b823c00, "homeCarousel") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/views/HomeView.qml:49: TypeError: Property 'preloadNext' of object HomeView_QMLTYPE_43(0x19708ea5b20, "homeCarousel") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/views/HomeView.qml:49: TypeError: Property 'preloadNext' of object HomeView_QMLTYPE_43(0x1970babbdf0, "homeCarousel") is not a function (exception occurred during delayed function evaluation)
+QQmlVMEMetaObject: Internal error - attempted to evaluate a function in an invalid context
+qrc:/resources/qml/views/HomeView.qml:49: TypeError: Property 'preloadNext' of object HomeView_QMLTYPE_43(0x1970de6a5a0, "homeCarousel") is not a function (exception occurred during delayed function evaluation))
+C:/glossata_game/tests/QmlInterfaceTests.cpp(288) : failure location
+PASS   : QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
+PASS   : QmlInterfaceTests::navigateAndConfirmAnswers()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 4 passed, 1 failed, 0 skipped, 0 blacklisted, 64913ms
+********* Finished testing of QmlInterfaceTests *********

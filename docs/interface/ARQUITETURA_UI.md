@@ -1,5 +1,11 @@
 # Arquitetura visual
 
+## PR #32 — rodada 1
+
+Busca e filtros científicos permanecem em `TaxonomyIndex`, sem alteração de ordenação ou deduplicação. A apresentação usa prefixos progressivos de 12 registros por seção em QML. `GameController` recebe a consulta atual a cada edição e separa suas notificações das de domínio/rank; o timer de 220 ms posterga a atualização dos resultados apresentados, sem guardar consultas antigas. Filtros/limpeza finalizam a espera e a consulta permanece em memória ao destruir/recriar a view.
+
+Cartões calculam a interseção da moldura fotográfica com o `Flickable` real antes de fornecer a fonte ao `Image`. A imagem inteira é ajustada proporcionalmente, com foco somente no espaço de margem. Breadcrumbs compactos são uma projeção visual do caminho integral, com expansão e acesso aos mesmos IDs. Os limites de página, as colunas e a expansão são estado de apresentação; não há banco novo, alteração de esquema, modificação de dados ou escrita em sessões. [Registro desta revisão](VERSOES/2.2.2/rodada-1/README.md).
+
 ## Explorar — Subetapa 2.2.2
 
 `TaxonomyIndex` usa as leituras `loadCurrentSpecies/loadCurrentTaxons` da porta `SpeciesCatalog`. O adaptador SQLite preserva suas leituras históricas para compatibilidade e oferece o snapshot instalado para a navegação; não remove linhas nem altera esquemas. O índice deduplica IDs, mantém grupos vazios e constrói a pesquisa científica. Consulta por termos em nomes/linhagens, normalização somente para comparação, relevância, filtros por domínio/rank, distinção de grupos/organismos e seleção de destaques pertencem a essa camada. Os destaques reutilizam o predicado da descoberta diária; regras de quiz permanecem no domínio.

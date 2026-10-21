@@ -10,6 +10,7 @@
 *.qrc text eol=lf
 *.jsonl text eol=lf
 docs/interface/VERSOES/2.2.2/verificacoes/*.txt text eol=lf
+docs/interface/VERSOES/2.2.2/rodada-1/verificacoes/*.txt text eol=lf
 *.yml text eol=lf
 VERSION.txt text eol=lf
 LICENSE text eol=lf

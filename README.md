@@ -106,13 +106,13 @@ NCBI Taxonomy, LPSN, POWO e MycoBank têm etapas e restrições documentadas par
 
 ### Exploração taxonômica
 
-Em **Explorar**, pesquise por nome científico, nome comum disponível ou grupo e combine filtros de domínio e nível taxonômico. A busca funciona offline, separa grupos de organismos cadastrados e abre o nó científico correspondente. Voltar à pesquisa conserva os filtros. Cartões fotográficos, organismos em destaque, breadcrumbs, fontes e avisos de revisão organizam a navegação sem iniciar partidas. Contagens representam registros do catálogo; ranks ausentes não são inferidos. Animalia, Plantae e Fungi mantêm seus caminhos em Opisthokonta ou Archaeplastida.
+Em **Explorar**, pesquise por nome científico, nome comum disponível ou grupo e combine filtros de domínio e nível taxonômico. A busca funciona offline, separa grupos de organismos cadastrados e abre o nó científico correspondente. Resultados aparecem em lotes de até 12 por seção, com Carregar mais e totais preservados. Voltar à pesquisa conserva consulta e filtros. Fotografias proporcionais, organismos em destaque, breadcrumbs compactos/expansíveis, fontes e avisos de revisão organizam a navegação sem iniciar partidas. Contagens representam registros do catálogo; ranks ausentes não são inferidos. Animalia, Plantae e Fungi mantêm seus caminhos em Opisthokonta ou Archaeplastida.
 
 A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos 623 cartões têm associação fotográfica e 89 têm pendência justificada. Autoria, origem, licenças individuais e limites continuam nos [créditos](docs/PHOTO_CREDITS.md). Em **Jogar**, os controles e a variante anterior dos cartões permanecem disponíveis. Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas; domínio, supergrupo e reino continuam sem quiz elegível.
 
-![Explorar real do Projeto Glossata, com busca científica, filtros e cartões fotográficos dos três domínios.](docs/interface/VERSOES/2.2.2/capturas/explore-1240x820.png)
+![Explorar real do Projeto Glossata após a rodada 1, com busca científica, filtros, colunas adaptativas e fotografias inteiras.](docs/interface/VERSOES/2.2.2/rodada-1/capturas/domains-1240x820.png)
 
-[Capturas nas três resoluções, resultados e método](docs/interface/VERSOES/2.2.2/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registro histórico da apresentação anterior](docs/images/exploracao.json).
+[Capturas e validação da rodada 1](docs/interface/VERSOES/2.2.2/rodada-1/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registros anteriores da subetapa](docs/interface/VERSOES/2.2.2/README.md).
 
 ### Projeto Glossata
 

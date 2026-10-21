@@ -10,30 +10,56 @@ Item {
     required property var backend
     property bool browsingOnly: false
     property bool photoDetailsOpen: false
+    property bool breadcrumbsExpanded: false
+    readonly property var trail: backend.breadcrumbs
+    readonly property int hiddenAncestorCount: Math.max(0, trail.length - 4)
     readonly property var photo: backend.browseTaxon.photo || ({})
     readonly property var introduction: browsingOnly && (backend.browseTaxon.summary || ({})).text ? backend.browseTaxon.summary : backend.browseTaxon.introduction
-    function visit(id) {
+    function visit(id, keyboard) {
         backend.exploreTaxon(id)
-        if (browsingOnly) returnButton.forceActiveFocus(Qt.OtherFocusReason)
+        if (browsingOnly) returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
     }
-    Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false } }
+    Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false; view.breadcrumbsExpanded = false } }
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
         width: parent.width; spacing: 18
         UiButton { id: returnButton; objectName: "returnDomainsButton"; text: view.browsingOnly ? "Voltar à pesquisa e aos domínios" : "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
         Flow {
-            Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height; spacing: 4
+            objectName: "taxonomyBreadcrumbs"
+            Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 4
+            TextAction {
+                objectName: "breadcrumbButton0"
+                readonly property var node: view.trail[0] || ({})
+                text: (node.title || "") + (view.trail.length > 1 ? "  ›" : view.browsingOnly ? " · atual" : "")
+                width: Math.min(implicitWidth, view.width)
+                font.weight: view.browsingOnly && view.trail.length === 1 ? Font.DemiBold : Font.Normal
+                Accessible.description: (node.rankLabel || "") + ". " + (view.trail.length === 1 ? "Nível atual." : "Navegar para este ancestral.")
+                onClicked: view.visit(node.id, visualFocus)
+            }
+            TextAction {
+                objectName: "expandTaxonomyBreadcrumbs"
+                visible: view.browsingOnly && view.hiddenAncestorCount > 0
+                text: view.breadcrumbsExpanded ? "Ocultar níveis ↑" : "… " + view.hiddenAncestorCount + (view.hiddenAncestorCount === 1 ? " nível ↓" : " níveis ↓")
+                checkable: true; checked: view.breadcrumbsExpanded
+                Accessible.name: view.breadcrumbsExpanded ? "Ocultar ancestrais intermediários" : "Mostrar todos os ancestrais intermediários"
+                Accessible.description: view.breadcrumbsExpanded ? "Todos os níveis estão expandidos e disponíveis por teclado." : "Expande " + view.hiddenAncestorCount + " níveis entre o domínio e os ancestrais próximos; cada nível pode ser acessado."
+                onClicked: view.breadcrumbsExpanded = !view.breadcrumbsExpanded
+            }
             Repeater {
-                model: view.backend.breadcrumbs
+                model: view.trail.slice(1)
                 delegate: TextAction {
                     required property var modelData
                     required property int index
-                    objectName: "breadcrumbButton" + index
-                    text: modelData.title + (index < view.backend.breadcrumbs.length - 1 ? "  ›" : "")
+                    readonly property int trailIndex: index + 1
+                    readonly property bool currentLevel: trailIndex === view.trail.length - 1
+                    objectName: "breadcrumbButton" + trailIndex
+                    visible: !view.browsingOnly || view.breadcrumbsExpanded || trailIndex > view.hiddenAncestorCount
+                    text: modelData.title + (currentLevel ? (view.browsingOnly ? " · atual" : "") : "  ›")
+                    font.weight: view.browsingOnly && currentLevel ? Font.DemiBold : Font.Normal
                     width: Math.min(implicitWidth, view.width)
-                    Accessible.description: modelData.rankLabel + ". " + (index === view.backend.breadcrumbs.length - 1 ? "Nível atual." : "Navegar para este ancestral.")
-                    onClicked: view.visit(modelData.id)
+                    Accessible.description: modelData.rankLabel + ". " + (currentLevel ? "Nível atual." : "Navegar para este ancestral.")
+                    onClicked: view.visit(modelData.id, visualFocus)
                 }
             }
         }
@@ -78,7 +104,7 @@ Item {
             }
         }
         Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + " espécies neste grupo"; color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " espécie neste grupo" : " espécies neste grupo"); color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         ColumnLayout {
             Layout.fillWidth: true; spacing: 4
             Label { objectName: "exploreIntroductionText"; text: view.introduction.text || view.backend.browseTaxon.description || "Introdução científica ainda não disponível para este grupo."; textFormat: Text.PlainText; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
@@ -103,14 +129,14 @@ Item {
                     TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; enabled: count > 0; onModelChanged: currentIndex = 0 }
                     UiButton { objectName: "startTaxonButton"; text: "Começar"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
                 }
-                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + " registros elegíveis neste nível; consulte os avisos das fotografias." : "Sem quiz neste nível: são necessárias quatro alternativas distintas e revisões adequadas. Grupos vazios continuam disponíveis para exploração."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " registro elegível neste nível; consulte os avisos das fotografias." : " registros elegíveis neste nível; consulte os avisos das fotografias.") : "Sem quiz neste nível: são necessárias quatro alternativas distintas e revisões adequadas. Grupos vazios continuam disponíveis para exploração."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
         }
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { text: view.backend.browseChildren.length ? "Explore os próximos grupos" : view.browsingOnly && view.backend.browseTaxon.count === 0 ? "Este grupo ainda não tem organismos no catálogo." : "Você chegou ao último nível disponível."; color: view.browsingOnly ? Style.Theme.text : "#BCD1C7"; font.pixelSize: 18; Layout.topMargin: 8; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         GridLayout {
             objectName: "taxonChildrenGrid"
-            Layout.fillWidth: true; columns: view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
+            Layout.fillWidth: true; columns: view.browsingOnly ? Math.max(1, Math.floor((view.width + 14) / (280 + 14))) : view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
             Repeater {
                 model: view.backend.browseChildren
                 delegate: ExploreCard {
@@ -121,7 +147,7 @@ Item {
                     encyclopedic: view.browsingOnly
                     Layout.fillWidth: true; Layout.preferredWidth: 1
                     Layout.alignment: Qt.AlignTop
-                    onClicked: view.visit(modelData.id)
+                    onClicked: view.visit(modelData.id, visualFocus)
                 }
             }
         }

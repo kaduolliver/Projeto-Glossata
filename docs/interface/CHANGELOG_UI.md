@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #32 — rodada 1 da Subetapa 2.2.2
+
+- Pesquisa apresentada em lotes de 12 por seção, com totais integrais e Carregar mais; consulta sincronizada e debounce sem restauração de textos anteriores. Fotos enciclopédicas proporcionais sem recorte, carregadas conforme a área visível; colunas adaptativas com mínimo de 280 px; breadcrumbs compactos com todos os níveis expansíveis e singular/plural nos contadores.
+- Alterações restritas à correção estrutural da [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), sem redesenhar cartões, galeria, cabeçalho, créditos ou fichas. [Registro, capturas e validação da rodada](VERSOES/2.2.2/rodada-1/README.md). Evidências anteriores preservadas.
+
 ## 2.2.2 — Modernização da tela Explorar
 
 - Busca científica offline, filtros por domínio/nível, resultados distintos para grupos e organismos e destaques com elegibilidade existente. Cartões fotográficos com nomes científicos, autoria/licença e contagens do catálogo; cabeçalho taxonômico, breadcrumbs, avisos e créditos expansíveis. Somente o contexto Explorar recebe a modernização; a seleção de Jogar mantém sua variante e regras.
