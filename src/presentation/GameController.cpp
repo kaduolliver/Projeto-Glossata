@@ -19,7 +19,7 @@ GameController::GameController(QObject *parent, const QString &databasePath, std
       historyRepository_(databasePath.isEmpty()
           ? QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QStringLiteral("/glossata_history.sqlite")
           : databasePath),
-      service_(&catalog_, &historyRepository_), localDate_(std::move(localDate)), homeRefreshTimer_(this)
+      service_(&catalog_, &historyRepository_), localDate_(std::move(localDate)), homeRefreshTimer_(this), exploreSearchTimer_(this)
 {
     if (historyRepository_.loadPlayerProfiles().isEmpty()) {
         historyRepository_.createPlayer(QStringLiteral("Jogador 1"));
@@ -35,6 +35,11 @@ GameController::GameController(QObject *parent, const QString &databasePath, std
     service_.setCheckpointRepository(&historyRepository_);
     initializing_=false;
     refreshHomeCatalog();
+    // The current query is never buffered. Only presentation notifications are
+    // coalesced; a timeout cannot restore text from an older edit or page.
+    exploreSearchTimer_.setSingleShot(true);
+    exploreSearchTimer_.setInterval(220);
+    connect(&exploreSearchTimer_, &QTimer::timeout, this, &GameController::exploreSearchChanged);
     // Civil local dates are re-read, including after suspension or timezone
     // changes. No persistent daily state or writes to the player database.
     homeRefreshTimer_.setInterval(30000);
@@ -59,6 +64,9 @@ void GameController::setExploreQuery(const QString &query)
 {
     if (exploreQuery_ == query) return;
     exploreQuery_ = query;
+    if (query.trimmed().isEmpty()) exploreSearchTimer_.stop();
+    else exploreSearchTimer_.start();
+    emit exploreQueryChanged();
     emit exploreSearchChanged();
 }
 
@@ -66,6 +74,8 @@ void GameController::setExploreDomain(const QString &id)
 {
     if (exploreDomain_ == id) return;
     exploreDomain_ = id;
+    exploreSearchTimer_.stop();
+    emit exploreDomainChanged();
     emit exploreSearchChanged();
 }
 
@@ -73,6 +83,15 @@ void GameController::setExploreRank(const QString &rank)
 {
     if (exploreRank_ == rank) return;
     exploreRank_ = rank;
+    exploreSearchTimer_.stop();
+    emit exploreRankChanged();
+    emit exploreSearchChanged();
+}
+
+void GameController::flushExploreSearch()
+{
+    if (!exploreSearchTimer_.isActive()) return;
+    exploreSearchTimer_.stop();
     emit exploreSearchChanged();
 }
 

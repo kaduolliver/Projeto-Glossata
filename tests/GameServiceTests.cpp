@@ -146,6 +146,7 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void explorationDebounceKeepsTheCurrentQueryAndFilters();
     void scientificSearchCombinesNamesDomainsAndRanks();
     void scientificSearchHandlesHomonymsDuplicatesAndMissingData();
     void scientificNavigationIgnoresHistoricalRowsWithoutDeletingThem();
@@ -204,6 +205,37 @@ private slots:
     void scientificHintCoverageWithFourOptions();
     void individualHintReviewsDoNotRequireAggregateApproval();
 };
+
+void GameServiceTests::explorationDebounceKeepsTheCurrentQueryAndFilters()
+{
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("debounce.sqlite"));
+    QSignalSpy edits(&controller, &GameController::exploreQueryChanged);
+    QSignalSpy presentation(&controller, &GameController::exploreSearchChanged);
+    const auto photo = controller.questionPhoto(); const auto hints = controller.hints();
+    const auto metrics = controller.sessionMetrics();
+    for (const QString &query : {"P", "Pan", "Panthera"}) controller.setExploreQuery(query);
+    QCOMPARE(controller.exploreQuery(), QString("Panthera")); QCOMPARE(edits.count(), 3);
+    QVERIFY(controller.exploreSearchPending());
+    QTRY_VERIFY(!controller.exploreSearchPending());
+    QCOMPARE(presentation.count(), 4); // Three edits, one coalesced completion.
+    QCOMPARE(controller.exploreQuery(), QString("Panthera"));
+    controller.setExploreQuery("Serratia"); QVERIFY(controller.exploreSearchPending());
+    controller.setExploreDomain("domain:Bacteria"); controller.setExploreRank("species");
+    QVERIFY(!controller.exploreSearchPending());
+    QCOMPARE(controller.exploreQuery(), QString("Serratia")); QCOMPARE(edits.count(), 4);
+    const auto expected = controller.exploreResults();
+    QVERIFY(expected["organismCount"].toInt() > 0);
+    QTest::qWait(260); QCOMPARE(controller.exploreResults(), expected);
+    controller.setExploreQuery("Pan"); QVERIFY(controller.exploreSearchPending());
+    controller.setExploreQuery(""); QVERIFY(!controller.exploreSearchPending());
+    QTest::qWait(260); QCOMPARE(controller.exploreQuery(), QString());
+    controller.setExploreQuery("Escherichia"); QVERIFY(controller.exploreSearchPending());
+    controller.flushExploreSearch(); QVERIFY(!controller.exploreSearchPending());
+    QCOMPARE(controller.exploreQuery(), QString("Escherichia"));
+    QCOMPARE(controller.questionPhoto(), photo); QCOMPARE(controller.hints(), hints);
+    QCOMPARE(controller.sessionMetrics(), metrics); QVERIFY(controller.recoverableSessions().isEmpty());
+}
 
 void GameServiceTests::scientificSearchCombinesNamesDomainsAndRanks()
 {

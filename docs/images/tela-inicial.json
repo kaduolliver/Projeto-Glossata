@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-21T00:32:50.609005+00:00",
+  "captured_at": "2026-10-21T01:46:36.478487+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "framing": "Real Home scrolled to the discovery and catalog indicators by the production executable.",
   "application_version": "1.8.0",
-  "binary_sha256": "3de1f0838a00fd143fec9ac5c3b759f269606608dc3e0b80d56e89410d00fc21",
+  "binary_sha256": "bf3bb0f08a1f3c9b3e6aca1bddb353656c50eeb50cfe7018d4df965d42b58c2f",
   "image_sha256": "2a2cd6289305abf723f8d3279f14e1185ef74c8d608ac6e5faf48f4ed9e8ebd3",
   "width": 1240,
   "height": 820,
@@ -29,7 +29,7 @@
     "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
     "src/application/TaxonomyIndex.cpp": "e6fb6b3db21a73157d824e359dac3890d349a1e1c358ac1e6a3faed7b5c7295d",
     "src/application/TaxonomyIndex.h": "8a4a6bcfeab6bdd6216a72278c2521a93418742ac3bbacee8954f9560edc1275",
-    "src/presentation/GameController.cpp": "07a8b172fa5b0e5b6aebb2ff0bc5b9ba0db308cc1fc635272dda63a56888b663",
-    "src/presentation/GameController.h": "39729940da5d2409d7f90077612dfd2598b47cf93da17ce824c63176eb10928d"
+    "src/presentation/GameController.cpp": "189f32b9868c528e8ee9ba3bfec4254cf9b8f2d200646c3b8b4b49301e5e96e3",
+    "src/presentation/GameController.h": "013ae18dac547b347196956ee7a425e53522629830353137fcd7e2529ca0ed53"
   }
 }
