@@ -16,6 +16,9 @@ public:
     QVariantList quickAccess() const;
     QVariantList homeSlides() const;
     QVariantMap homeCatalog(const QDate &localDate) const;
+    QVariantList featuredOrganisms() const;
+    QVariantList searchRanks() const;
+    QVariantMap search(const QString &query, const QString &domainId = {}, const QString &rank = {}) const;
     QVariantList kingdoms() const { return domains(); } // Compatibility for older adapters.
     QVariantList children(const QString &id) const;
     QVariantList breadcrumbs(const QString &id) const;
@@ -24,6 +27,9 @@ public:
     QString kingdomFor(const QString &id) const;
     int count(const QString &id = QString()) const;
 private:
+    QVariantList discoveryCandidates(int &organismCount, int &photographs, QStringList &domainNames, bool currentOnly = false) const;
+    QVariantMap navigationEntry(const QString &id) const;
+    void buildSearchIndex() const;
     const SpeciesCatalog &catalog_;
     const ExplorationMediaCatalog *media_;
     QVector<Species> species_;
@@ -32,4 +38,6 @@ private:
     QHash<QString, QVector<QString>> children_;
     EducationalContent content_;
     mutable QHash<QString, QVariantList> levelCache_;
+    mutable QVariantList searchIndex_;
+    mutable bool searchIndexed_ = false;
 };

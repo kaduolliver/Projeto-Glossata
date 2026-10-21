@@ -55,6 +55,27 @@ void GameController::refreshHomeCatalog()
     emit homeCatalogChanged();
 }
 
+void GameController::setExploreQuery(const QString &query)
+{
+    if (exploreQuery_ == query) return;
+    exploreQuery_ = query;
+    emit exploreSearchChanged();
+}
+
+void GameController::setExploreDomain(const QString &id)
+{
+    if (exploreDomain_ == id) return;
+    exploreDomain_ = id;
+    emit exploreSearchChanged();
+}
+
+void GameController::setExploreRank(const QString &rank)
+{
+    if (exploreRank_ == rank) return;
+    exploreRank_ = rank;
+    emit exploreSearchChanged();
+}
+
 QVariantMap GameController::legalInformation() const
 {
     QFile file(":/resources/data/credits.json");

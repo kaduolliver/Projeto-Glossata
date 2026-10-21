@@ -42,6 +42,8 @@ SqliteSpeciesCatalog::SqliteSpeciesCatalog(const QString &databasePath)
     JsonSpeciesCatalog bundled;
     species_ = bundled.loadSpecies();
     taxons_ = bundled.loadTaxons();
+    currentSpecies_ = species_;
+    currentTaxons_ = taxons_;
     if (!QDir().mkpath(QFileInfo(databasePath).absolutePath())) return;
     database_.setDatabaseName(databasePath);
     if (!database_.open()) return;
