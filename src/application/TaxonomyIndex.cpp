@@ -219,6 +219,13 @@ QVariantList TaxonomyIndex::featuredOrganisms() const
         // Keep the eligibility, original photo and attribution used by the
         // daily discovery. No supporting image or new approval is introduced.
         auto photo = item.value("photo").toMap();
+        const auto attribution = photo.value("attribution").toMap();
+        // These legacy photos already pass PhotoResolver's local-use checks.
+        // Move their supplied CC BY credit to the same adjacent offline dialog,
+        // without inferring a version or changing the distribution decision.
+        photo.insert("contextualAttribution", attribution.value("license").toString() == "cc-by"
+            && attribution.value("author") == photo.value("author")
+            && !attribution.value("evidence_paths").toList().isEmpty());
         photo.insert("subject", item.value("scientificName"));
         photo.insert("identificationNote", QStringLiteral("Identificação por espécie elegível no catálogo; consulte origem e limitações."));
         entry.insert("photo", photo);

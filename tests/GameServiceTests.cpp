@@ -258,9 +258,15 @@ void GameServiceTests::explorationCardsUseReviewedContentAndDocumentedRanks()
     QCOMPARE(index.search("Papilio machaon")["organisms"].toList().first().toMap()["classificationSummary"].toString(), QStringLiteral("Família: Papilionidae · Gênero: Papilio"));
     for (const auto &domain : index.domains().mid(1)) {
         const auto photo = domain.toMap()["photo"].toMap(); QVERIFY(!photo["image"].toString().isEmpty());
-        QCOMPARE(photo["contextualAttribution"].toBool(), photo["license"] == "CC-BY 4.0" || photo["license"] == "CC0 1.0");
+        QVERIFY(photo["contextualAttribution"].toBool());
     }
-    for (const auto &entry : index.featuredOrganisms()) QVERIFY(!entry.toMap()["photo"].toMap()["contextualAttribution"].toBool());
+    for (const auto &entry : index.featuredOrganisms()) {
+        const auto photo = entry.toMap()["photo"].toMap(), attribution = photo["attribution"].toMap();
+        QVERIFY(photo["contextualAttribution"].toBool());
+        QVERIFY(!attribution["evidence_paths"].toList().isEmpty());
+        QVERIFY(attribution["license_version"].toString().isEmpty());
+        QCOMPARE(photo["author"], attribution["author"]); // Supplied copyright credit stays intact.
+    }
     // Synthetic in-memory taxonomy/review only; never saved to shipped data.
     MemoryCatalog fixture;
     const Taxon root{"fixture:root", "Root", "domain"}, family{"fixture:family", "Testus", "family", root.id};

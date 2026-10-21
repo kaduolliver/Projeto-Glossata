@@ -65,6 +65,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction();
     void photographicExploreNavigationAndCaptures();
     void progressiveExploreNavigationAndCaptures();
     void encyclopedicPhotographsStayCenteredWithoutCropping();
@@ -80,6 +81,121 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction()
+{
+    interfaceWarnings.clear();
+    const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QQmlEngine engine;
+    QQmlComponent component(&engine);
+    component.setData(R"(
+        import QtQuick
+        import QtQuick.Controls
+        import "qrc:/resources/qml/components"
+        import "qrc:/resources/qml/style" as Style
+        ApplicationWindow {
+            required property var testEntry
+            property bool animations: true
+            onAnimationsChanged: Style.Theme.motionEnabled = animations
+            visible: true; color: Style.Theme.canvas
+            ExploreCard {
+                objectName: "interactionCard"; x: 40; y: 40
+                entry: testEntry; encyclopedic: true
+                width: Math.min(410, parent.width * 0.3); height: implicitHeight
+            }
+        }
+    )", QUrl("qrc:/credits-interaction-test.qml"));
+    JsonSpeciesCatalog catalog; JsonExplorationMediaCatalog media; TaxonomyIndex index(catalog, &media);
+    QVariantList entries{index.domains().at(1), index.featuredOrganisms().first()};
+    QSet<QString> licenses;
+    for (const auto &value : index.search({})["groups"].toList()) {
+        const auto photo = value.toMap()["photo"].toMap(); const auto license = photo["license"].toString();
+        if (!photo["image"].toString().isEmpty() && !licenses.contains(license)) { entries.append(value); licenses.insert(license); }
+    }
+    QVERIFY(licenses.contains("CC-BY 2.0") && licenses.contains("CC-BY 3.0") && licenses.contains("CC-BY 4.0") && licenses.contains("CC0 1.0"));
+    // Only an in-memory presentation fixture; never a shipped attribution or permission.
+    auto special = entries.first().toMap(), specialPhoto = special["photo"].toMap();
+    specialPhoto["contextualAttribution"] = false;
+    specialPhoto["attributionNotice"] = "Synthetic photo-specific attribution request for interaction testing.";
+    special["photo"] = specialPhoto; entries.append(special);
+    QScopedPointer<QObject> object(component.createWithInitialProperties({{"testEntry", entries.first()}}));
+    QVERIFY2(object, qPrintable(component.errorString()));
+    auto window = qobject_cast<QQuickWindow *>(object.data()); QVERIFY(window); window->requestActivate();
+    auto card = findVisualItem(window->contentItem(), "interactionCard"); QVERIFY(card);
+    auto button = findVisualItem(card, "exploreCardCreditsButton"); QVERIFY(button);
+    auto background = findVisualItem(button, "textActionBackground"); QVERIFY(background);
+    auto surface = findVisualItem(card, "encyclopediaCardSurface"); QVERIFY(surface);
+    auto row = findVisualItem(card, "exploreCardCreditsRow"); QVERIFY(row);
+    QSignalSpy buttonHover(button, SIGNAL(hoveredChanged()));
+    QSignalSpy colors(background, SIGNAL(colorChanged()));
+    QSignalSpy surfaceColors(surface, SIGNAL(colorChanged()));
+    QSignalSpy navigations(card, SIGNAL(clicked()));
+    QSignalSpy creditClicks(button, SIGNAL(clicked()));
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size);
+        for (const bool animations : {true, false}) {
+            window->setProperty("animations", animations);
+            for (const auto &value : entries) {
+                window->setProperty("testEntry", value); QTest::qWait(40);
+                const auto entry = value.toMap(), photo = entry["photo"].toMap();
+                QVERIFY(button->width() <= button->implicitWidth() + 1);
+                QVERIFY(button->width() < row->width() - 20);
+                QCOMPARE(button->x(), 0.);
+                const auto center = button->mapToScene(button->boundingRect().center()).toPoint();
+                QTest::mouseMove(window, center); QTest::qWait(220);
+                QVERIFY(button->property("hovered").toBool());
+                buttonHover.clear(); colors.clear(); surfaceColors.clear();
+                const auto still = window->grabWindow().copy(button->mapRectToScene(button->boundingRect()).toAlignedRect());
+                for (int i = 0; i < (entry["kind"] == "organism" ? 40 : 12); ++i) {
+                    QTest::mouseMove(window, center + QPoint(i % 3 - 1, 0)); QTest::qWait(30);
+                }
+                QCOMPARE(buttonHover.count(), 0); QCOMPARE(colors.count(), 0); QCOMPARE(surfaceColors.count(), 0);
+                QCOMPARE(window->grabWindow().copy(button->mapRectToScene(button->boundingRect()).toAlignedRect()), still);
+                // Crossing each edge settles once; neither hover nor geometry oscillates.
+                for (const QPointF edge : {QPointF(-2, button->height()/2), QPointF(button->width()+2, button->height()/2),
+                                          QPointF(button->width()/2, -2), QPointF(button->width()/2, button->height()+2)}) {
+                    QTest::mouseMove(window, button->mapToScene(edge).toPoint()); QTest::qWait(140);
+                    QVERIFY(!button->property("hovered").toBool());
+                    QTest::mouseMove(window, center); QTest::qWait(140);
+                    QVERIFY(button->property("hovered").toBool());
+                }
+                navigations.clear(); creditClicks.clear();
+                // Empty row and the pixel just beyond the action are inert.
+                for (const qreal x : {button->width() + 2, row->width() - 2}) {
+                    QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, row->mapToScene({x, row->height()/2}).toPoint());
+                    QTest::qWait(20); QCOMPARE(navigations.count(), 0); QCOMPARE(creditClicks.count(), 0);
+                    QVERIFY(!item("exploreCardCreditsClose"));
+                }
+                auto inlineCredit = findVisualItem(card, "encyclopediaCardAttribution");
+                QCOMPARE(inlineCredit->isVisible(), !photo["contextualAttribution"].toBool());
+                if (!photo["attributionNotice"].toString().isEmpty())
+                    QVERIFY(inlineCredit->property("text").toString().contains(photo["attributionNotice"].toString()));
+                QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, center);
+                QTRY_VERIFY(item("exploreCardCreditsClose") && item("exploreCardCreditsClose")->isVisible());
+                QCOMPARE(creditClicks.count(), 1); QCOMPARE(navigations.count(), 0);
+                QVERIFY(item("exploreCardCreditAuthor")->property("text").toString().contains(photo["author"].toString()));
+                QVERIFY(item("exploreCardCreditLicense")->property("text").toString().contains(photo["license"].toString()));
+                QCOMPARE(item("exploreCardCreditHistory")->property("text").toString(), QStringLiteral("Modificações históricas registradas\n") + photo["modifications"].toString());
+                QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(40);
+                QVERIFY(button->hasActiveFocus());
+                card->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Tab);
+                QVERIFY(button->hasActiveFocus()); QVERIFY(button->property("visualFocus").toBool());
+                QTest::keyClick(window, Qt::Key_Space);
+                QTRY_VERIFY(item("exploreCardCreditsClose") && item("exploreCardCreditsClose")->isVisible());
+                QCOMPARE(navigations.count(), 0); QCOMPARE(creditClicks.count(), 2);
+                QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(40);
+                card->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Space);
+                QCOMPARE(navigations.count(), 1); QCOMPARE(creditClicks.count(), 2);
+                auto frame = findVisualItem(card, "encyclopediaPhotoFrame");
+                QTest::mouseClick(window, Qt::LeftButton, Qt::NoModifier, frame->mapToScene(frame->boundingRect().center()).toPoint());
+                QCOMPARE(navigations.count(), 2); QCOMPARE(creditClicks.count(), 2);
+            }
+        }
+    }
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
 {
@@ -123,15 +239,14 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
             && qAbs(photo->y() - (photo->parentItem()->height() - photo->height()) / 2) < 0.01
             && photo->width() <= pixels.width() && photo->height() <= pixels.height();
     };
-    QVERIFY(QDir().mkpath("previews/explore-2.2.2-final")); QJsonArray captures;
+    QVERIFY(QDir().mkpath("previews/explore-2.2.2-creditos")); QJsonArray captures;
     const auto capture = [&](const QString &state, QSize size) {
-        const QSet<QString> states{"overview", "gallery", "group", "descendants", "restored-results", "empty-group",
-            "contextual-credits", "credit-history", "lion", "lion-footer", "monarch", "monarch-footer"};
+        const QSet<QString> states{"overview", "gallery", "descendants", "contextual-credits", "credit-history", "featured-credits"};
         if (!states.contains(state)) return true; // Prior rounds retain their historical screenshots.
         QTest::qWait(220);
         const auto filename = state + "-" + QString::number(size.width()) + "x" + QString::number(size.height()) + ".png";
         const auto image = window->grabWindow();
-        if (image.size() != size || !image.save("previews/explore-2.2.2-final/" + filename)) return false;
+        if (image.size() != size || !image.save("previews/explore-2.2.2-creditos/" + filename)) return false;
         captures.append(QJsonObject::fromVariantMap({{"file", filename}, {"width", size.width()}, {"height", size.height()},
             {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}, {"page", window->property("page")},
             {"query", controller.exploreQuery()}, {"domainId", controller.exploreDomain()}, {"rank", controller.exploreRank()},
@@ -202,15 +317,15 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(featured->height() < 460); // Educational excerpt and an independent credits action.
         const auto entry = featured->property("entry").toMap(), photo = entry["photo"].toMap();
         const auto attribution = findVisualItem(featured, "encyclopediaCardAttribution");
-        QVERIFY(attribution->property("text").toString().contains(photo["author"].toString()));
-        QVERIFY(attribution->property("text").toString().contains(photo["license"].toString()));
-        QVERIFY(!attribution->property("truncated").toBool());
+        QVERIFY(!attribution->isVisible());
+        QVERIFY(findVisualItem(featured, "encyclopediaCardLicenseNotice")->isVisible());
         const auto path = entry["pathText"].toString();
         QVERIFY(!findVisualItem(featured, "encyclopediaCardCount")->property("text").toString().contains(path));
         auto featuredCredits = findVisualItem(featured, "exploreCardCreditsButton"); QVERIFY(featuredCredits);
         featuredCredits->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Space); QTest::qWait(100);
         QVERIFY(item("exploreCardCreditsClose")->isVisible());
         QVERIFY(item("exploreCardCreditLicense")->property("text").toString().contains("Não comprovada"));
+        QVERIFY(capture("featured-credits", size));
         QVERIFY(activate("exploreCardScientificLink")); QCOMPARE(urls.urls.last().toString(), entry["educationalNote"].toMap()["source_url"].toString());
         QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(80); QVERIFY(featuredCredits->hasActiveFocus());
         QCOMPARE(window->property("page").toString(), QString("explore"));
@@ -291,7 +406,7 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
     }
     QCOMPARE(controller.answeredCount(), 0); QVERIFY(controller.recoverableSessions().isEmpty());
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
-    QFile manifest("previews/explore-2.2.2-final/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    QFile manifest("previews/explore-2.2.2-creditos/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
     manifest.write(QJsonDocument(QJsonObject{{"method", "QQuickWindow::grabWindow / production QML and GameController in QtTest"},
         {"privacy", "Temporary SQLite databases; Discord disabled; links intercepted without opening a browser."},
         {"rendering", "Qt offscreen/software, scale 1, 96 DPI; reduced motion for static captures."}, {"captures", captures}}).toJson());

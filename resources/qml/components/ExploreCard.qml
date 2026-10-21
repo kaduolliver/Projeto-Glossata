@@ -14,6 +14,7 @@ Button {
     readonly property string shortClassification: entry.classificationSummary || ""
     readonly property var educationalNote: entry.educationalNote || ({})
     readonly property bool inlineAttribution: !!photo.image && photo.contextualAttribution !== true
+    readonly property string photoLicenseVersion: photo.licenseVersion || (photo.attribution || ({})).license_version || ""
     property Flickable photoViewport: null
     property bool photoRequested: false
     function locatePhotoViewport() {
@@ -77,7 +78,10 @@ Button {
     readonly property string photoCredit: photo.image ? (photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + photo.subject + ". " + photo.author + " · " + photo.license + ". " + (photo.identificationNote || "Representante do grupo; identificação indicada pela fonte.") + " Créditos completos em Perfis e ajustes → Créditos e transparência." : "Ilustração temporária. " + (photo.pendingReason || "Fotografia adequada ainda não disponível.")
     property color accent: entry.kingdom === "Plantae" || entry.kingdom === "Archaeplastida" ? "#7DA88A" : entry.kingdom === "Fungi" ? "#C29580" : entry.kingdom === "Eukaryota" || entry.kingdom === "SAR" ? "#86A9C9" : entry.kingdom === "Bacteria" || entry.kingdom === "Archaea" ? "#7BBABE" : "#D1B17B"
     implicitHeight: encyclopedic ? modernBody.implicitHeight + topPadding + bottomPadding : wide ? 132 : 185
-    padding: encyclopedic ? 10 : 20; hoverEnabled: true
+    padding: encyclopedic ? 10 : 20; hoverEnabled: !encyclopedic
+    // Passive, card-wide observation remains stable over the nested action.
+    // Do not arbitrate hover between two QQuickControl instances.
+    HoverHandler { id: cardPointer; enabled: card.encyclopedic }
     activeFocusOnTab: true
     Accessible.name: encyclopedic ? entry.title + ", " + (entry.kind === "organism" ? "organismo cadastrado" : entry.rankLabel + ", " + entry.count + (entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo")) : entry.title + ", " + entry.count + (entry.count === 1 ? " espécie" : " espécies")
     Accessible.description: (entry.pathText || entry.description || "") + ". " + photoCredit
@@ -90,7 +94,8 @@ Button {
         background: Rectangle { color: "#203A43"; radius: 8; border.color: "#4B666C" }
     }
     background: Rectangle {
-        radius: 17; color: card.encyclopedic ? (card.down ? Style.Theme.primaryPressed : card.hovered ? Style.Theme.surfaceHover : Style.Theme.surface) : card.hovered ? "#1C3439" : "#142B33"
+        objectName: card.encyclopedic ? "encyclopediaCardSurface" : ""
+        radius: 17; color: card.encyclopedic ? (card.down ? Style.Theme.primaryPressed : cardPointer.hovered ? Style.Theme.surfaceHover : Style.Theme.surface) : card.hovered ? "#1C3439" : "#142B33"
         Behavior on color { enabled: card.encyclopedic && Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
         FeatheredPhoto {
             id: photograph
@@ -162,11 +167,21 @@ Button {
             Label { visible: !!card.photo.subject && card.entry.kind !== "organism"; text: "Representante: " + (card.photo.subject || ""); textFormat: Text.PlainText; font.italic: true; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { objectName: "encyclopediaCardSummary"; visible: !!card.educationalNote.text; text: card.educationalNote.text || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; maximumLineCount: 2; elide: Text.ElideRight; Layout.fillWidth: true; Accessible.description: "Trecho do texto existente; conteúdo integral e fonte na página correspondente." }
             Label { objectName: "encyclopediaCardAttribution"; visible: card.inlineAttribution || !card.photo.image; text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") + (card.photo.attributionNotice ? "\n" + card.photo.attributionNotice : "") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
-            TextAction {
-                id: creditButton; objectName: card.encyclopedic ? "exploreCardCreditsButton" : ""
-                text: "Fonte, origem e créditos"; Layout.fillWidth: true
-                Accessible.name: text + " — " + card.entry.title
-                onClicked: { const popup = creditsLoader.item as Dialog; if (popup) popup.open(); else creditsLoader.active = true }
+            Label { objectName: "encyclopediaCardLicenseNotice"; visible: !!card.photo.image && !card.photoLicenseVersion; text: "Versão da licença não comprovada."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Item {
+                objectName: "exploreCardCreditsRow"
+                Layout.fillWidth: true; implicitHeight: creditButton.implicitHeight
+                // Empty space on this row is inert, rather than part of either
+                // action. The button above this blocker keeps its own hitbox.
+                MouseArea { anchors.fill: parent; acceptedButtons: Qt.LeftButton }
+                TextAction {
+                    id: creditButton; objectName: card.encyclopedic ? "exploreCardCreditsButton" : ""
+                    text: "Fonte, origem e créditos"
+                    width: Math.min(implicitWidth, parent.width)
+                    anchors.left: parent.left
+                    Accessible.name: text + " — " + card.entry.title
+                    onClicked: { const popup = creditsLoader.item as Dialog; if (popup) popup.open(); else creditsLoader.active = true }
+                }
             }
             Item { Layout.fillHeight: true; Layout.minimumHeight: 0 }
             RowLayout {
@@ -192,7 +207,7 @@ Button {
                 readonly property var attribution: card.photo.attribution || ({})
                 readonly property string originalUrl: card.photo.photoUrl || card.photo.sourceUrl || ""
                 readonly property string licenseUrl: card.photo.licenseUrl || attribution.license_url || attribution.license_source_url || ""
-                readonly property string version: card.photo.licenseVersion || attribution.license_version || ""
+                readonly property string version: card.photoLicenseVersion
                 parent: Overlay.overlay; anchors.centerIn: parent
                 width: Math.min(660, parent.width - 40); height: Math.min(660, parent.height - 40)
                 title: "Fonte, origem e créditos"; modal: true; focus: true
