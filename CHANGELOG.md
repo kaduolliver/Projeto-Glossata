@@ -2,6 +2,12 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.8.0] — Não lançado; exploração enciclopédica
+
+- Subetapa 2.2.2 da Issue #22: Explorar com cartões fotográficos, busca científica local por nomes e linhagens, filtros combináveis de domínio e nível, resultados separados por grupos/organismos e acesso ao nó científico por ID estável. Organismos em destaque reutilizam a elegibilidade da Descoberta do Dia.
+- Navegação científica baseada no catálogo instalado, sem duplicações por nós históricos do SQLite, mantendo esses registros e os bancos dos jogadores. Breadcrumbs, créditos e avisos científicos preservados; pesquisa e filtros sobrevivem ao retorno dos resultados. Jogar conserva seus controles e regras.
+- MINOR pela funcionalidade compatível de busca/filtros. Catálogo 2.4.0 e seus bytes/licenças preservados. Sem lançamento, tag ou autorização de distribuição. Evidências em [2.2.2](docs/interface/VERSOES/2.2.2/README.md).
+
 ## [1.7.0] — Não lançado; curadoria e integridade do projeto
 
 - Refinamentos da PR #31: indicador renomeado para Identificação por espécie, com significado explícito e elegibilidade inalterada; créditos contextuais da fotografia da Descoberta do Dia, acesso aos créditos gerais e avisos preservados; fonte educativa sem tooltip; ícones de 28 px em contêineres de 48 px somente nos indicadores da Home.

@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Explorar — 2.2.2
+
+`ExploreCard.encyclopedic: false` preserva a variante anterior. Quando `true`, usa `Theme`, foto proporcional em destaque, rank, título científico com itálico nos níveis espécie/gênero, nome comum disponível, contagem ou caminho e autoria/licença visíveis. Altura acompanha texto, foco por teclado usa `visualFocus` dourado e hover respeita redução de movimento. `entry.kind` distingue `organism` e `group`; `entry.id` é o destino taxonômico e `speciesId` identifica o registro quando disponível. Tooltip extenso permanece somente na variante anterior de Jogar.
+
+`CategoryView.browsingOnly` acrescenta `exploreSearchField`, `exploreDomainFilter`, `exploreRankFilter`, `clearExploreSearch`, cartões `featuredOrganism*`, `exploreGroupResult*` e `exploreOrganismResult*`, resumo e estado vazio. Busca/filtros são propriedades de `GameController`; não filtrar o catálogo novamente em QML. `TaxonomyView` acrescenta fotografia/cabeçalho e `explorePhotoCredits/explorePhotoDetails`, sem diálogo novo ou mudanças no quiz. Breadcrumbs limitam sua largura à página e mantêm o nome integral acessível; seleção de um ancestral/descendente traz o início da página ao foco.
+
 ## Descoberta e indicadores — 2.2.1-B
 
 `HomeView` acrescenta `dailyDiscoveryPanel` abaixo dos controles do carrossel. A foto usa `Image.PreserveAspectFit`, com nome científico acessível, créditos locais e alternativa para falha de carregamento. Nome científico, nome comum disponível e resumo preservam texto simples e quebra de linha. `dailyDiscoverySource` mantém texto, URL acessível, clique e estados de interação, sem tooltip. `dailyDiscoveryExplore` abre o táxon exato no contexto Explorar. `dailyDiscoveryCredits` abre `dailyDiscoveryCreditsDialog`, com metadados vinculados à descoberta exibida, avisos e links da fotografia; o rodapé mantém acesso aos créditos gerais. Fechar ou Escape devolve foco ao botão. O diálogo do carrossel permanece independente e inalterado.

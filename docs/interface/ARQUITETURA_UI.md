@@ -1,5 +1,11 @@
 # Arquitetura visual
 
+## Explorar — Subetapa 2.2.2
+
+`TaxonomyIndex` usa as leituras `loadCurrentSpecies/loadCurrentTaxons` da porta `SpeciesCatalog`. O adaptador SQLite preserva suas leituras históricas para compatibilidade e oferece o snapshot instalado para a navegação; não remove linhas nem altera esquemas. O índice deduplica IDs, mantém grupos vazios e constrói a pesquisa científica. Consulta por termos em nomes/linhagens, normalização somente para comparação, relevância, filtros por domínio/rank, distinção de grupos/organismos e seleção de destaques pertencem a essa camada. Os destaques reutilizam o predicado da descoberta diária; regras de quiz permanecem no domínio.
+
+`GameController` expõe consulta/filtros em memória e projeções notificáveis. Voltar da taxonomia recupera a consulta anterior sem persistir preferências ou modificar checkpoint/sessão. `CategoryView` aplica uma espera de digitação de 220 ms, apresenta seções de resultados e solicita `openTaxon(id)`. `TaxonomyView` preserva breadcrumbs científicos, mostra fonte/estado/ressalvas existentes e créditos contextuais expansíveis. O shell e o contexto de navegação existentes isolam Explorar de Jogar; `browsingOnly` e `ExploreCard.encyclopedic` limitam a modernização visual. [Contrato, evidências e limites](VERSOES/2.2.2/README.md).
+
 ## Descoberta e indicadores — Subetapa 2.2.1-B
 
 `TaxonomyIndex.homeCatalog(localDate)` produz conjuntamente a descoberta e os três indicadores a partir de um snapshot de `SpeciesCatalog`. IDs únicos ordenados definem a rotação por dia civil. A elegibilidade reutiliza `approvedForQuiz` no nível espécie, exige foto de identificação e um resumo utilizável de `EducationalContent.profile` com revisão editorial/especializada e fonte. Imagens de apoio não identificam uma espécie e são excluídas dessa cobertura. Domínios só são contados quando ocorrem nos caminhos dos organismos; Archaea vazio não aumenta o indicador.

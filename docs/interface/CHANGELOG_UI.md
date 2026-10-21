@@ -1,5 +1,10 @@
 # Histórico visual
 
+## 2.2.2 — Modernização da tela Explorar
+
+- Busca científica offline, filtros por domínio/nível, resultados distintos para grupos e organismos e destaques com elegibilidade existente. Cartões fotográficos com nomes científicos, autoria/licença e contagens do catálogo; cabeçalho taxonômico, breadcrumbs, avisos e créditos expansíveis. Somente o contexto Explorar recebe a modernização; a seleção de Jogar mantém sua variante e regras.
+- Aplicativo 1.8.0, catálogo 2.4.0 preservado. Base após merge confirmado da PR #31. [Implementação, contratos, validação e capturas reais](VERSOES/2.2.2/README.md). Commit e PR serão vinculados depois dos checks, sem hash ou aprovação antecipados.
+
 ## 2.2.1-B — Descoberta do Dia e Indicadores Dinâmicos — 2026-10-20
 
 - Refinamento da PR #31: “Identificação por espécie” explicita o alcance do indicador; Foto e créditos abre um diálogo da descoberta, com licença/versão/origem/modificações, avisos e acesso geral. Tooltip da fonte removido, mantendo interação e acessibilidade; ícones dos indicadores em 28/48 px, com padrões anteriores nas outras telas. [Registro e capturas desta revisão](VERSOES/2.2.1-B/refinamento-1/README.md), implementada em [`c6adcb902afb1b75855db1f46fedbc7894f5186b`](https://github.com/kaduolliver/Projeto-Glossata/commit/c6adcb902afb1b75855db1f46fedbc7894f5186b).

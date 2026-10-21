@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-10-21T00:39:21.748390+00:00",
+  "base_commit": "9d047910ddb6b56051d1830cba4052ca03a4e520",
+  "application_version": "1.8.0",
+  "catalog_version": "2.4.0",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "elapsed_seconds": 249.59,
+    "core_qttest_cases_passed": 59,
+    "interface_qttest_cases_passed": 13,
+    "log": "ctest-results.txt"
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog audit",
+    "Exploration media audit",
+    "Governance history comparison",
+    "Repository audit",
+    "Real production Home capture and release metadata check",
+    "Real production smoke test with temporary SQLite",
+    "git diff --check"
+  ],
+  "distribution": "Blocked by existing scientific/rights issues; not a release acceptance.",
+  "binaries": {
+    "production": "3de1f0838a00fd143fec9ac5c3b759f269606608dc3e0b80d56e89410d00fc21",
+    "core_tests": "f021aa79450604038f5bf07c82d4bc99a9f8bc8df076774fb4585f8f938b3502",
+    "ui_tests": "b059e55fb871dd26a0402fee70f8ee9c44891550bf1d14733587bc75a563761a"
+  },
+  "capturas_json_sha256": "39602ed2189dd890c7a66d9930556b950737b2d7ff19de020fc5d6b31e8c7497",
+  "archived_text_format": "UTF-8 with LF line endings; logs and JSON normalized before hashing to match Git storage.",
+  "evidence_sha256": {
+    "catalog-quality.json": "9cb71f883839303d5f116d762583ccfd20bb96c7e0a11ff13d0336ff76ee96b4",
+    "core-results.txt": "a135b3f92d52f86543dbc58e058ac9598b9b672374abc4c90d423879ec1d83cd",
+    "ctest-results.txt": "86cc93140a9a2d95d0836db99c64e9c28402f048030fa0609bce6985c2803ef7",
+    "distribution-summary.json": "6b92b82a68c07f2d32d665af22bac60a1086c6e9df28896f39cc52d77f55b869",
+    "exploration-media-audit.json": "a45716ba7de5095f68b45bef9cf0ae2cb1921274a4e06ef7430bceb63fd3f032",
+    "governance-history.json": "ff1a9e878d0cdb7a3b05485ac6f5eca5a3de0f08d1da0933dddbef19688bdfa1",
+    "identity-results.txt": "58898d176976d64bcb5c07f1b06234958f0698c05fa8bb373114eb35ea846063",
+    "recovery-results.txt": "5bca72c57bfe73fe7d6b1de7fafd5143302f7781c339ef13d2a154ee13a2b220",
+    "ui-test-results.txt": "71c854ad054bb3ddc8f26ccb008dc5a5bd33f4a08ef6f2ff4bfbc0cbfe451567"
+  },
+  "limitations": "Technical validation, not scientific, legal or universal accessibility certification."
+}
