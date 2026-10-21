@@ -22,6 +22,8 @@
 #include <QDateTime>
 #include <QFile>
 #include <QDesktopServices>
+#include <QWheelEvent>
+#include <QPointingDevice>
 #include <cmath>
 
 // Intercept actual link activations; never launch a browser during UI tests.
@@ -65,6 +67,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void exploreUniformCardsAndComfortableScrolling();
     void encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction();
     void photographicExploreNavigationAndCaptures();
     void progressiveExploreNavigationAndCaptures();
@@ -81,6 +84,227 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
+{
+    interfaceWarnings.clear();
+    const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    GameController controller(nullptr, directory.filePath("usability.sqlite"));
+    DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled", false); window->requestActivate(); QTest::qWait(100);
+    const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto viewport = item("pageScroll"), bar = item("pageScrollBar"); QVERIFY(viewport && bar);
+    auto handler = window->findChild<QObject *>("pageWheelArea"); QVERIFY(handler);
+    const auto activate = [&](QQuickItem *control) {
+        if (!control || !control->isVisible()) return false;
+        control->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(50);
+        QTest::keyClick(window, Qt::Key_Space); QTest::qWait(100); return true;
+    };
+    const auto uniform = [&](const QString &prefix, int count) {
+        auto first = item(prefix + "0"); if (!first || count < 1) return QString("No cards: ") + prefix;
+        for (int i = 0; i < count; ++i) {
+            auto card = item(prefix + QString::number(i));
+            if (!card || qAbs(card->height() - first->height()) > 0.6 || card->height() + 1 < card->implicitHeight())
+                return QString("Unequal/clipped card %1%2: %3, first %4, implicit %5").arg(prefix).arg(i)
+                    .arg(card ? card->height() : -1).arg(first->height()).arg(card ? card->implicitHeight() : -1);
+            auto action = findVisualItem(card, "encyclopediaCardPrimaryAction");
+            if (!action || qAbs(action->mapToItem(card, {0, action->height()}).y()
+                               - (card->height() - card->property("bottomPadding").toReal())) > 1)
+                return QString("Primary action not at bottom: ") + card->objectName();
+        }
+        return QString();
+    };
+    const auto clearance = [&](QQuickItem *control) {
+        return control && control->mapRectToScene(control->boundingRect()).right() <= bar->mapToScene({0,0}).x() - 12;
+    };
+    const auto query = [&](const QString &text) {
+        controller.setExploreQuery(text);
+        return QTest::qWaitFor([&] { return !controller.exploreSearchPending() && item("exploreSearchField")
+            && item("exploreSearchField")->property("text").toString() == text; }, 3000);
+    };
+    const auto wheelPoint = [&] { return viewport->mapToScene({viewport->width() - viewport->property("contentGutter").toReal() / 2, 50}); };
+    const auto resetScroll = [&](qreal y) {
+        QMetaObject::invokeMethod(viewport, "cancelFlick"); viewport->setProperty("contentY", y); QTest::qWait(30);
+    };
+    QPointingDevice touchpad("Synthetic touchpad", 900001, QInputDevice::DeviceType::TouchPad,
+        QPointingDevice::PointerType::Finger, QInputDevice::Capability::Position | QInputDevice::Capability::Scroll
+        | QInputDevice::Capability::PixelScroll, 2, 0);
+    QElapsedTimer gestureTime; gestureTime.start();
+    const auto mouseWheel = [&](QPointF position, QPoint angle) {
+        QWheelEvent event(position, window->mapToGlobal(position), {}, angle, Qt::NoButton, Qt::NoModifier,
+            Qt::NoScrollPhase, false);
+        event.setTimestamp(gestureTime.elapsed() + 1);
+        QCoreApplication::sendEvent(window, &event); QCoreApplication::processEvents();
+    };
+    const auto padEvent = [&](QPointF position, QPoint pixels, Qt::ScrollPhase phase) {
+        // Qt 6.11 treats an angle-less ScrollUpdate following an accepted
+        // event as a compatibility packet. Primary pad packets carry both
+        // deltas; Flickable uses the precise pixels for this source/phase.
+        QWheelEvent event(position, window->mapToGlobal(position), pixels, pixels * 2, Qt::NoButton, Qt::NoModifier,
+            phase, false, Qt::MouseEventSynthesizedBySystem, &touchpad);
+        event.setTimestamp(gestureTime.elapsed() + 1);
+        QCoreApplication::sendEvent(window, &event); QCoreApplication::processEvents();
+    };
+    const QString scale = QString::number(qRound(window->devicePixelRatio() * 100));
+    const QString captureFolder = "previews/explore-2.2.2-usabilidade/" + scale;
+    QVERIFY(QDir().mkpath(captureFolder)); QJsonArray captures;
+    const auto capture = [&](const QString &state, QSize size) {
+        if (scale != "100" && state != "overview" && state != "gallery-hover") return true;
+        QTest::qWait(180);
+        const auto image = window->grabWindow();
+        const auto filename = state + "-" + QString::number(size.width()) + "x" + QString::number(size.height()) + "-" + scale + ".png";
+        if (qAbs(image.width() - size.width() * window->devicePixelRatio()) > 1
+            || qAbs(image.height() - size.height() * window->devicePixelRatio()) > 1 || !image.save(captureFolder + "/" + filename)) return false;
+        captures.append(QJsonObject::fromVariantMap({{"file", filename}, {"width", image.width()}, {"height", image.height()},
+            {"logicalWidth", size.width()}, {"logicalHeight", size.height()}, {"devicePixelRatio", window->devicePixelRatio()},
+            {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}, {"page", window->property("page")},
+            {"query", controller.exploreQuery()}, {"taxonId", controller.browseTaxon()["id"]}, {"scrollY", viewport->property("contentY")}}));
+        return true;
+    };
+    JsonSpeciesCatalog catalog; JsonExplorationMediaCatalog media; TaxonomyIndex index(catalog, &media);
+    QVariantMap unavailable;
+    for (const auto &value : index.search({})["groups"].toList()) {
+        const auto entry = value.toMap(), photo = entry["photo"].toMap();
+        if (photo["image"].toString().isEmpty() && !photo["pendingReason"].toString().isEmpty()) { unavailable = entry; break; }
+    }
+    QVERIFY(!unavailable.isEmpty());
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size); controller.setExploreQuery(""); controller.setExploreDomain(""); controller.setExploreRank("");
+        window->setProperty("explorePresentation", QVariantMap());
+        QVERIFY(activate(item("navExplore"))); resetScroll(0);
+        QCOMPARE(uniform("domainButton", 3), QString());
+        QVERIFY(capture("overview", size));
+        // Long missing-photo reasons stay complete in the dialog, without
+        // changing card height. Fixtures are never captured or persisted.
+        auto domain = item("domainButton0"); const auto original = domain->property("entry").toMap();
+        auto fixture = original; fixture["photo"] = QVariantMap{{"pendingReason", "Short UI fixture."}};
+        domain->setProperty("entry", fixture); QTest::qWait(80); const auto shortHeight = domain->height();
+        const auto longReason = QString("Synthetic unavailable-photo reason for layout verification. ").repeated(80);
+        fixture["photo"] = QVariantMap{{"pendingReason", longReason}}; domain->setProperty("entry", fixture); QTest::qWait(80);
+        QCOMPARE(domain->height(), shortHeight); QCOMPARE(uniform("domainButton", 3), QString());
+        QVERIFY(!findVisualItem(domain, "encyclopediaCardAttribution")->isVisible());
+        QVERIFY(activate(findVisualItem(domain, "exploreCardCreditsButton")));
+        QVERIFY(item("exploreCardCreditNotices")->property("text").toString().contains(longReason));
+        QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(50);
+        fixture = original; auto special = original["photo"].toMap();
+        const auto specialNotice = QString("Synthetic attribution request retained in full. ").repeated(35);
+        special["contextualAttribution"] = false; special["attributionNotice"] = specialNotice; fixture["photo"] = special;
+        domain->setProperty("entry", fixture); QTest::qWait(100);
+        QCOMPARE(uniform("domainButton", 3), QString());
+        auto notice = findVisualItem(domain, "encyclopediaCardAttribution"); QVERIFY(notice->isVisible());
+        QVERIFY(!notice->property("truncated").toBool()); QVERIFY(notice->property("paintedHeight").toReal() <= notice->height() + 1);
+        QVERIFY(notice->property("text").toString().contains(specialNotice));
+        domain->setProperty("entry", original); QTest::qWait(100); QCOMPARE(uniform("domainButton", 3), QString());
+        auto featured = item("featuredOrganism0"); QVERIFY(featured);
+        featured->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80);
+        QCOMPARE(uniform("featuredOrganism", 4), QString());
+        auto credit = findVisualItem(featured, "exploreCardCreditsButton"); QVERIFY(credit);
+        QTest::mouseMove(window, featured->mapToScene({15, 15}).toPoint()); QTest::qWait(180);
+        const auto background = findVisualItem(credit, "textActionBackground");
+        const auto beforeHover = QQmlProperty(background, "border.color").read().value<QColor>();
+        QTest::mouseMove(window, credit->mapToScene(credit->boundingRect().center()).toPoint()); QTest::qWait(180);
+        const auto hoverBorder = QQmlProperty(background, "border.color").read().value<QColor>();
+        const auto surface = findVisualItem(featured, "encyclopediaCardSurface")->property("color").value<QColor>();
+        QVERIFY(hoverBorder != beforeHover); QVERIFY(colorContrast(hoverBorder, surface) >= 3);
+        QVERIFY(capture("gallery-hover", size));
+        QVERIFY(clearance(item("nextFeaturedOrganisms"))); QVERIFY(clearance(item("previousFeaturedOrganisms")));
+        auto gallery = item("exploreFeaturedGrid");
+        if (size.width() == 1920) {
+            QVERIFY(gallery->property("contentWidth").toReal() <= gallery->width());
+            QVERIFY(!item("nextFeaturedOrganisms")->isEnabled());
+            QVERIFY(item("exploreFeaturedPosition")->property("text").toString().contains(QStringLiteral("Todos visíveis")));
+        }
+        if (gallery->property("contentWidth").toReal() > gallery->width() + 1) {
+            gallery->setProperty("contentX", 0); const auto pageY = viewport->property("contentY").toReal();
+            const auto position = gallery->mapToScene({gallery->width()/2, 40});
+            padEvent(position, {}, Qt::ScrollBegin); QTest::qWait(16);
+            for (int n = 0; n < 4; ++n) { padEvent(position, {-12,0}, Qt::ScrollUpdate); QTest::qWait(16); }
+            QTest::qWait(180);
+            QVERIFY(gallery->property("contentX").toReal() > 0);
+            QCOMPARE(viewport->property("contentY").toReal(), pageY);
+            padEvent(position, {}, Qt::ScrollEnd);
+            gallery->setProperty("contentX", 0);
+        }
+        QVERIFY(query("a")); QTest::qWait(80);
+        QCOMPARE(uniform("exploreGroupResult", 12), QString()); QCOMPARE(uniform("exploreOrganismResult", 12), QString());
+        QVERIFY(clearance(item("loadMoreExploreGroups"))); QVERIFY(clearance(item("loadMoreExploreOrganisms")));
+        QVERIFY(activate(item("loadMoreExploreGroups"))); QCOMPARE(uniform("exploreGroupResult", 24), QString());
+        item("loadMoreExploreGroups")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        QVERIFY(capture("search-groups", size));
+        QVERIFY(activate(item("loadMoreExploreOrganisms"))); QCOMPARE(uniform("exploreOrganismResult", 24), QString());
+        item("loadMoreExploreOrganisms")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        QVERIFY(capture("search-organisms", size));
+        const auto position = wheelPoint();
+        resetScroll(200); mouseWheel(position, {0,-120}); QTest::qWait(180);
+        QCOMPARE(qRound(viewport->property("contentY").toReal()), 310);
+        mouseWheel(position, {0,120}); QTest::qWait(180);
+        QCOMPARE(qRound(viewport->property("contentY").toReal()), 200);
+        // Compare fine pixel/angle streams with native Flickable handling.
+        const auto nativePosition = viewport->mapToScene({viewport->width() / 2, viewport->height() / 2});
+        for (bool pixels : {true, false}) {
+            handler->setProperty("enabled", false); resetScroll(300);
+            if (pixels) {
+                padEvent(nativePosition, {}, Qt::ScrollBegin); QTest::qWait(16);
+                for (int n = 0; n < 4; ++n) { padEvent(nativePosition, {0,-9}, Qt::ScrollUpdate); QTest::qWait(16); }
+            } else mouseWheel(nativePosition, {0,-20});
+            QTest::qWait(250); const auto native = viewport->property("contentY").toReal();
+            if (pixels) padEvent(nativePosition, {}, Qt::ScrollEnd);
+            handler->setProperty("enabled", true); resetScroll(300);
+            if (pixels) {
+                padEvent(nativePosition, {}, Qt::ScrollBegin); QTest::qWait(16);
+                for (int n = 0; n < 4; ++n) { padEvent(nativePosition, {0,-9}, Qt::ScrollUpdate); QTest::qWait(16); }
+            } else mouseWheel(nativePosition, {0,-20});
+            QTest::qWait(250);
+            QVERIFY2(native > 300 && native < 410, qPrintable(QString("Native %1 stream ended at %2").arg(pixels ? "pixel" : "angle").arg(native)));
+            QVERIFY2(qAbs(viewport->property("contentY").toReal() - native) < 1,
+                qPrintable(QString("Fine %1 stream changed: native %2, actual %3").arg(pixels ? "pixel" : "angle").arg(native).arg(viewport->property("contentY").toReal())));
+            if (pixels) padEvent(nativePosition, {}, Qt::ScrollEnd);
+        }
+        window->setProperty("motionEnabled", true); resetScroll(200);
+        mouseWheel(position, {0,-120}); mouseWheel(position, {0,-120}); QTest::qWait(220);
+        QCOMPARE(qRound(viewport->property("contentY").toReal()), 420);
+        mouseWheel(position, {0,-120}); QTest::qWait(25);
+        const auto reversingAt = viewport->property("contentY").toReal(); mouseWheel(position, {0,120}); QTest::qWait(180);
+        QVERIFY(qAbs(viewport->property("contentY").toReal() - (reversingAt - 110)) < 3);
+        mouseWheel(position, {0,-120}); QTest::qWait(25);
+        item("exploreSearchField")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(50);
+        const auto focusedY = viewport->property("contentY").toReal(); QTest::qWait(180);
+        QCOMPARE(viewport->property("contentY").toReal(), focusedY);
+        window->setProperty("motionEnabled", false);
+        resetScroll(0); mouseWheel(position, {0,120}); QTest::qWait(50);
+        QCOMPARE(viewport->property("contentY").toReal(), 0.);
+        const auto maximum = viewport->property("contentHeight").toReal() - viewport->height();
+        resetScroll(maximum - 20); mouseWheel(position, {0,-120}); QTest::qWait(50);
+        QCOMPARE(viewport->property("contentY").toReal(), maximum);
+        QVERIFY(query(unavailable["title"].toString())); QTest::qWait(60);
+        QQuickItem *missing = nullptr;
+        for (int i = 0; i < item("exploreGroupResults")->property("count").toInt(); ++i) {
+            auto result = item("exploreGroupResult" + QString::number(i));
+            if (result->property("entry").toMap()["id"] == unavailable["id"]) { missing = result; break; }
+        }
+        QVERIFY(missing); QVERIFY(activate(findVisualItem(missing, "exploreCardCreditsButton")));
+        QVERIFY(item("exploreCardCreditNotices")->property("text").toString().contains(unavailable["photo"].toMap()["pendingReason"].toString()));
+        QVERIFY(capture("unavailable-credits", size)); QTest::keyClick(window, Qt::Key_Escape); QTest::qWait(50);
+        QVERIFY(query("")); QVERIFY(activate(item("domainButton2")));
+        QVERIFY(clearance(item("returnDomainsButton")));
+        QCOMPARE(uniform("taxonButton", controller.browseChildren().size()), QString());
+        item("taxonButton0")->forceActiveFocus(Qt::TabFocusReason); QVERIFY(capture("descendants", size));
+        QVERIFY(activate(item("navHome"))); resetScroll(0);
+        mouseWheel(wheelPoint(), {0,-120}); QTest::qWait(180);
+        QCOMPARE(qRound(viewport->property("contentY").toReal()), qRound(qMin(110., viewport->property("contentHeight").toReal() - viewport->height())));
+    }
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+    QFile manifest(captureFolder + "/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    manifest.write(QJsonDocument(QJsonObject{{"method", "QQuickWindow::grabWindow / production QML and controller"},
+        {"privacy", "Temporary SQLite; Discord disabled. Synthetic layout fixtures restored before every capture."}, {"captures", captures}}).toJson());
+}
 
 void QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction()
 {

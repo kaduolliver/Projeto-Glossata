@@ -142,7 +142,9 @@ Item {
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Label { objectName: "exploreDescendantsState"; text: view.backend.browseChildren.length ? "Explore os próximos grupos" : view.browsingOnly && view.backend.browseTaxon.count === 0 ? "Este grupo ainda não tem organismos no catálogo." : "Você chegou ao último nível disponível."; color: view.browsingOnly ? Style.Theme.text : "#BCD1C7"; font.pixelSize: 18; Layout.topMargin: 8; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         GridLayout {
+            id: childGrid
             objectName: "taxonChildrenGrid"
+            readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
             Layout.fillWidth: true; columns: view.browsingOnly ? Math.max(1, Math.floor((view.width + 14) / (280 + 14))) : view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
             Repeater {
                 model: view.backend.browseChildren
@@ -153,7 +155,9 @@ Item {
                     entry: modelData
                     encyclopedic: view.browsingOnly
                     Layout.fillWidth: true; Layout.preferredWidth: 1
-                    Layout.alignment: Qt.AlignTop
+                    Layout.fillHeight: view.browsingOnly
+                    Layout.preferredHeight: view.browsingOnly ? childGrid.cardHeight : -1
+                    Layout.alignment: view.browsingOnly ? Qt.AlignVCenter : Qt.AlignTop
                     onClicked: view.visit(modelData.id, visualFocus)
                 }
             }

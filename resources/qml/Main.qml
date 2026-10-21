@@ -66,6 +66,7 @@ ApplicationWindow {
         let ancestor = control.parent
         while (ancestor && ancestor !== screen) ancestor = ancestor.parent
         if (!ancestor) return
+        wheelScroll.stop()
         const top = control.mapToItem(scroll, 0, 0).y
         const bottom = top + control.height
         const margin = Style.Theme.spaceSm
@@ -287,13 +288,55 @@ ApplicationWindow {
                 flickableDirection: Flickable.VerticalFlick
                 contentWidth: width
                 contentHeight: screen.height
-                ScrollBar.vertical: ScrollBar { }
+                // Reserve the same gutter on every page, even when the bar is
+                // hidden. Content and focus rings never extend under its track.
+                readonly property real contentGutter: Math.max(Style.Theme.spaceSm, verticalBar.implicitWidth) + Style.Theme.spaceMd
+                readonly property real wheelStep: 110
+                property int wheelDirection: 0
+                function conventionalWheel(delta) {
+                    const direction = Math.sign(delta)
+                    const start = wheelScroll.running && direction === wheelDirection ? wheelScroll.to : contentY
+                    const destination = Math.max(0, Math.min(contentHeight - height, start - delta / 120 * wheelStep))
+                    wheelScroll.stop(); cancelFlick(); wheelDirection = direction
+                    if (Style.Theme.motionEnabled) {
+                        wheelScroll.from = contentY; wheelScroll.to = destination; wheelScroll.start()
+                    } else contentY = destination
+                }
+                onMovementStarted: wheelScroll.stop()
+                ScrollBar.vertical: ScrollBar {
+                    id: verticalBar; objectName: "pageScrollBar"
+                    onPressedChanged: if (pressed) wheelScroll.stop()
+                }
+                MouseArea {
+                    objectName: "pageWheelArea"
+                    // A sibling before the Loader: after its controls in hit
+                    // testing, but before Flickable's native wheel handling.
+                    parent: scroll.contentItem
+                    width: scroll.width; height: scroll.height; y: scroll.contentY
+                    enabled: root.currentSection === "home" || root.currentSection === "explore"
+                    acceptedButtons: Qt.NoButton
+                    // Child controls receive events first. Synthesized gestures
+                    // remain native; ordinary wheel events are accepted below
+                    // only when this area actually changes the page position.
+                    scrollGestureEnabled: false
+                    onWheel: event => {
+                        // Pixel deltas and partial/high-resolution rotations
+                        // retain Flickable's native path, without quantization.
+                        if (event.pixelDelta.x || event.pixelDelta.y || event.angleDelta.x || !event.angleDelta.y
+                                || event.angleDelta.y % 120 !== 0 || event.modifiers !== Qt.NoModifier) {
+                            wheelScroll.stop(); event.accepted = false; return
+                        }
+                        scroll.conventionalWheel(event.angleDelta.y)
+                        event.accepted = true
+                    }
+                }
+                NumberAnimation { id: wheelScroll; target: scroll; property: "contentY"; duration: Style.Theme.durationFast; easing.type: Easing.OutCubic }
                 Loader {
                     id: screen
                     readonly property Item currentView: item as Item
-                    width: scroll.width
+                    width: Math.max(0, scroll.width - scroll.contentGutter)
                     height: Math.max(scroll.height, currentView ? currentView.implicitHeight : 0)
-                    onLoaded: { scroll.contentY = 0; screenFade.restart() }
+                    onLoaded: { wheelScroll.stop(); scroll.cancelFlick(); scroll.contentY = 0; screenFade.restart() }
                     sourceComponent: {
                         switch (root.page) {
                         case "explore": return explorePage

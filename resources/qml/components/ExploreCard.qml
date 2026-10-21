@@ -156,7 +156,7 @@ Button {
                     source: card.encyclopedic && card.photoRequested ? card.photo.image || "" : ""
                     fillMode: Image.PreserveAspectFit; asynchronous: true; smooth: true; mipmap: true
                 }
-                Label { visible: modernPhoto.status !== Image.Ready; anchors.centerIn: parent; width: parent.width - 20; text: modernPhoto.status === Image.Loading ? "Carregando fotografia…" : "Fotografia ainda indisponível"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; horizontalAlignment: Text.AlignHCenter }
+                Label { objectName: "encyclopediaCardPhotoState"; visible: modernPhoto.status !== Image.Ready; anchors.centerIn: parent; width: parent.width - 20; text: modernPhoto.status === Image.Loading ? "Carregando fotografia…" : "Fotografia ainda indisponível"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; horizontalAlignment: Text.AlignHCenter }
             }
             ColumnLayout {
             Layout.fillWidth: true; Layout.fillHeight: true; spacing: Style.Theme.spaceXs
@@ -166,8 +166,9 @@ Button {
             Label { objectName: "encyclopediaCardCount"; text: card.entry.kind === "organism" ? card.shortClassification : card.entry.count === 0 ? "Sem organismos no catálogo" : card.entry.count + (card.entry.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!card.photo.subject && card.entry.kind !== "organism"; text: "Representante: " + (card.photo.subject || ""); textFormat: Text.PlainText; font.italic: true; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { objectName: "encyclopediaCardSummary"; visible: !!card.educationalNote.text; text: card.educationalNote.text || ""; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; maximumLineCount: 2; elide: Text.ElideRight; Layout.fillWidth: true; Accessible.description: "Trecho do texto existente; conteúdo integral e fonte na página correspondente." }
-            Label { objectName: "encyclopediaCardAttribution"; visible: card.inlineAttribution || !card.photo.image; text: card.photo.image ? (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") + (card.photo.attributionNotice ? "\n" + card.photo.attributionNotice : "") : card.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Label { objectName: "encyclopediaCardAttribution"; visible: card.inlineAttribution; text: (card.photo.author || "Autoria não informada") + " · " + (card.photo.license || "Licença não informada") + (card.photo.attributionNotice ? "\n" + card.photo.attributionNotice : ""); textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { objectName: "encyclopediaCardLicenseNotice"; visible: !!card.photo.image && !card.photoLicenseVersion; text: "Versão da licença não comprovada."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: 11; wrapMode: Text.Wrap; Layout.fillWidth: true }
+            Item { Layout.fillHeight: true; Layout.minimumHeight: 0 }
             Item {
                 objectName: "exploreCardCreditsRow"
                 Layout.fillWidth: true; implicitHeight: creditButton.implicitHeight
@@ -180,11 +181,22 @@ Button {
                     width: Math.min(implicitWidth, parent.width)
                     anchors.left: parent.left
                     Accessible.name: text + " — " + card.entry.title
+                    // The card's hover already uses surfaceHover. A separate
+                    // outline remains visible against that surface as well.
+                    background: Rectangle {
+                        objectName: "textActionBackground"
+                        radius: Style.Theme.controlRadius
+                        color: !creditButton.enabled ? Style.Theme.disabledSurface : creditButton.down ? Style.Theme.primaryPressed : (creditButton.hovered || creditButton.visualFocus ? Style.Theme.surfaceRaised : "transparent")
+                        border.color: creditButton.visualFocus ? Style.Theme.focus : creditButton.hovered ? Style.Theme.green : "transparent"
+                        border.width: creditButton.visualFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+                        Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
+                        Behavior on border.color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
+                    }
                     onClicked: { const popup = creditsLoader.item as Dialog; if (popup) popup.open(); else creditsLoader.active = true }
                 }
             }
-            Item { Layout.fillHeight: true; Layout.minimumHeight: 0 }
             RowLayout {
+                objectName: "encyclopediaCardPrimaryAction"
                 Layout.fillWidth: true; Layout.topMargin: 0
                 Label { text: card.entry.kind === "organism" ? "Conhecer organismo" : "Explorar grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
                 Item { Layout.fillWidth: true }

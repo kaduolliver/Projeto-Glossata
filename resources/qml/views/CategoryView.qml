@@ -175,6 +175,7 @@ Item {
             id: groups
             visible: !view.browsingOnly || !view.searching
             objectName: "exploreDomainsGrid"
+            readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
             Layout.fillWidth: true; columns: view.browsingOnly ? view.domainColumns : view.columns; columnSpacing: 16; rowSpacing: 16
             Repeater {
                 model: !view.browsingOnly || !view.searching ? view.backend.categories.slice(1) : []
@@ -185,6 +186,7 @@ Item {
                     entry: modelData
                     encyclopedic: view.browsingOnly
                     Layout.fillWidth: true; Layout.fillHeight: true; Layout.preferredWidth: 1
+                    Layout.preferredHeight: view.browsingOnly ? groups.cardHeight : -1
                     Layout.columnSpan: view.browsingOnly ? (index === view.backend.categories.length - 2 ? view.domainColumns - index % view.domainColumns : 1) : view.columns === 2 && index === 2 ? 2 : 1
                     onClicked: view.browsingOnly ? view.openEntry(modelData.id, objectName) : view.app.openTaxon(modelData.id)
                 }
@@ -205,7 +207,9 @@ Item {
             Layout.fillWidth: true; implicitHeight: featuredRow.implicitHeight
             contentWidth: featuredRow.width; contentHeight: height
             clip: true; boundsBehavior: Flickable.StopAtBounds; flickableDirection: Flickable.HorizontalFlick
-            readonly property real cardWidth: width >= 1180 ? (width - 48) / 4 : Math.max(280, (width - 32) / 2.6)
+            // Whole logical pixels avoid layout rounding creating a phantom
+            // scroll range when all four cards fit in the viewport.
+            readonly property real cardWidth: width >= 1180 ? Math.floor((width - 48) / 4) : Math.max(280, Math.floor((width - 32) / 2.6))
             readonly property int firstVisible: Math.min(view.featuredEntries.length, Math.floor((contentX + 1) / (cardWidth + 16)) + 1)
             readonly property int lastVisible: Math.min(view.featuredEntries.length, Math.ceil((contentX + width - 1) / (cardWidth + 16)))
             function step(direction) { contentX = Math.max(0, Math.min(contentWidth - width, contentX + direction * (cardWidth + 16))) }
@@ -215,7 +219,7 @@ Item {
             }
             onContentXChanged: view.rememberPresentation()
             Behavior on contentX { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationFast } }
-            Row {
+            RowLayout {
                 id: featuredRow; spacing: 16
                 Repeater {
                     id: featuredResults
@@ -225,7 +229,9 @@ Item {
                         required property int index
                         objectName: "featuredOrganism" + index
                         entry: modelData; encyclopedic: true
-                        width: featuredGallery.cardWidth; height: implicitHeight
+                        Layout.preferredWidth: featuredGallery.cardWidth
+                        Layout.minimumWidth: featuredGallery.cardWidth; Layout.maximumWidth: featuredGallery.cardWidth
+                        Layout.fillHeight: true
                         onActiveFocusChanged: if (activeFocus) featuredGallery.reveal(this)
                         Keys.onRightPressed: { const next = featuredResults.itemAt(index + 1); if (next) next.forceActiveFocus(Qt.TabFocusReason) }
                         Keys.onLeftPressed: { const previous = featuredResults.itemAt(index - 1); if (previous) previous.forceActiveFocus(Qt.TabFocusReason) }
@@ -243,7 +249,9 @@ Item {
             Label { objectName: "exploreEmptyState"; visible: !view.searchPending && view.results.total === 0; text: "Nenhum resultado para esta combinação. Tente outro nome, domínio ou nível taxonômico. A busca considera somente os dados disponíveis no catálogo local."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { visible: view.results.groupCount > 0; text: "Grupos taxonômicos"; color: Style.Theme.green; font.pixelSize: Style.Theme.labelSize; font.weight: Font.DemiBold }
             GridLayout {
+                id: groupResultGrid
                 objectName: "exploreGroupResultsGrid"
+                readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
                 Layout.fillWidth: true; columns: view.explorationColumns; columnSpacing: 16; rowSpacing: 16
                 Repeater {
                     id: groupResults
@@ -254,7 +262,8 @@ Item {
                         required property int index
                         objectName: "exploreGroupResult" + index
                         entry: modelData; encyclopedic: true
-                        Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true; Layout.fillHeight: true; Layout.preferredWidth: 1
+                        Layout.preferredHeight: groupResultGrid.cardHeight
                         onClicked: view.openEntry(modelData.id, objectName)
                     }
                 }
@@ -262,11 +271,13 @@ Item {
             RowLayout {
                 visible: view.results.groupCount > 0; Layout.fillWidth: true
                 Label { objectName: "exploreGroupsShown"; text: "Exibindo " + groupResults.count + " de " + view.countLabel(view.results.groupCount || 0, "grupo taxonômico", "grupos taxonômicos"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                TextAction { objectName: "loadMoreExploreGroups"; visible: groupResults.count < view.results.groupCount; text: "Carregar mais grupos"; onClicked: view.loadMore("groups", visualFocus) }
+                UiButton { objectName: "loadMoreExploreGroups"; visible: groupResults.count < view.results.groupCount; text: "Carregar mais grupos"; compact: true; onClicked: view.loadMore("groups", visualFocus) }
             }
             Label { visible: view.results.organismCount > 0; text: "Organismos cadastrados"; color: Style.Theme.green; font.pixelSize: Style.Theme.labelSize; font.weight: Font.DemiBold }
             GridLayout {
+                id: organismResultGrid
                 objectName: "exploreOrganismResultsGrid"
+                readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
                 Layout.fillWidth: true; columns: view.explorationColumns; columnSpacing: 16; rowSpacing: 16
                 Repeater {
                     id: organismResults
@@ -277,7 +288,8 @@ Item {
                         required property int index
                         objectName: "exploreOrganismResult" + index
                         entry: modelData; encyclopedic: true
-                        Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.alignment: Qt.AlignTop
+                        Layout.fillWidth: true; Layout.fillHeight: true; Layout.preferredWidth: 1
+                        Layout.preferredHeight: organismResultGrid.cardHeight
                         onClicked: view.openEntry(modelData.id, objectName)
                     }
                 }
@@ -285,7 +297,7 @@ Item {
             RowLayout {
                 visible: view.results.organismCount > 0; Layout.fillWidth: true
                 Label { objectName: "exploreOrganismsShown"; text: "Exibindo " + organismResults.count + " de " + view.countLabel(view.results.organismCount || 0, "organismo cadastrado", "organismos cadastrados"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                TextAction { objectName: "loadMoreExploreOrganisms"; visible: organismResults.count < view.results.organismCount; text: "Carregar mais organismos"; onClicked: view.loadMore("organisms", visualFocus) }
+                UiButton { objectName: "loadMoreExploreOrganisms"; visible: organismResults.count < view.results.organismCount; text: "Carregar mais organismos"; compact: true; onClicked: view.loadMore("organisms", visualFocus) }
             }
         }
         Label { text: "Três domínios são uma organização didática. Hipóteses de dois domínios situam os eucariotos dentro de Archaea. As relações profundas e os ranks variam conforme a fonte; a navegação não é uma árvore evolutiva completa."; color: view.browsingOnly ? Style.Theme.textMuted : "#91ADB2"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
