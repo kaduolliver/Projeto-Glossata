@@ -152,10 +152,16 @@ void QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
             QVERIFY(count.contains(QString::number(levels[i].toMap()["answers"].toInt())+" alternativas distintas"));
             QCOMPARE(controller.difficulty(),QString("close"));
         }
-        const auto levelRect=rect(level), startRect=rect(start), noticeRect=rect(item("playDifficultyNotice"));
         QVERIFY(capture("configure"));
+        const auto levelRect=rect(level), startRect=rect(start), noticeRect=rect(item("playDifficultyNotice"));
+        const auto infoRect=rect(item("playEligibleCount"));
+        const auto controlsRect=rect(start->parentItem()->parentItem());
         QVERIFY(!levelRect.intersects(startRect)); QVERIFY(!noticeRect.intersects(startRect)); QVERIFY(level->width()<=300);
+        QVERIFY(qAbs(start->width()-start->implicitWidth())<1);
+        QVERIFY(qAbs(infoRect.left()-rect(level->parentItem()).left())<1);
         if(size.width()>=1240) {
+            QVERIFY2(qAbs(startRect.right()-controlsRect.right())<=1,
+                qPrintable(QString("Start button right=%1, panel inner right=%2").arg(startRect.right()).arg(controlsRect.right())));
             QVERIFY2(qAbs(levelRect.center().y()-startRect.center().y())<1,
                 qPrintable(QString("size=%1 panelWidth=%2 level=(%3,%4) start=(%5,%6) notice=(%7,%8)")
                     .arg(size.width()).arg(panel->width()).arg(levelRect.top()).arg(levelRect.height())
