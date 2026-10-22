@@ -67,6 +67,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void compactPlayConfigurationAndContextualSources();
     void playConfigurationReturnsToSelectionContext();
     void playSelectionNavigationAndCaptures();
     void exploreUniformCardsAndComfortableScrolling();
@@ -86,6 +87,152 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
+{
+    interfaceWarnings.clear();
+    const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    TestUrlRecorder urls; QDesktopServices::setUrlHandler("https",&urls,"capture");
+    const auto restoreUrls=qScopeGuard([]{QDesktopServices::unsetUrlHandler("https");});
+    QTemporaryDir directory; QVERIFY(directory.isValid());
+    GameController controller(nullptr,directory.filePath("compact-play.sqlite"));
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);
+    engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY2(!engine.rootObjects().isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const auto activate=[&](const QString &name,bool mouse=false){
+        auto control=item(name); if(!control || !control->isVisible() || !control->isEnabled())return false;
+        control->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        if(mouse)QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,control->mapToScene(control->boundingRect().center()).toPoint());
+        else QTest::keyClick(window,Qt::Key_Space);
+        QTest::qWait(120); return true;
+    };
+    auto scroll=item("pageScroll"); QVERIFY(scroll);
+    const auto fullyVisible=[&](QQuickItem *control){
+        const auto rect=control->mapRectToItem(scroll,control->boundingRect());
+        return rect.top()>=2 && rect.bottom()<=scroll->height()-2 && rect.left()>=0 && rect.right()<=scroll->width();
+    };
+    const auto rect=[](QQuickItem *control){return control->mapRectToScene(control->boundingRect());};
+    const QString folder="previews/play-compact-2.2.3/"+QString::number(qRound(window->devicePixelRatio()*100));
+    QVERIFY(QDir().mkpath(folder)); QJsonArray captures;
+    const auto capture=[&](const QString &state){
+        QTest::qWait(160); const auto image=window->grabWindow();
+        const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";
+        if(!image.save(folder+"/"+file))return false;
+        captures.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},
+            {"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},
+            {"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},
+            {"page",window->property("page").toString()},{"scrollY",scroll->property("contentY").toReal()},
+            {"taxonId",controller.browseTaxon()["id"].toString()}}); return true;
+    };
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        window->resize(size); QVERIFY(activate("navPlay")); QVERIFY(activate("playTab_kingdoms"));
+        auto difficulty=item("difficultySelector"); QVERIFY(difficulty);
+        difficulty->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_End); QTest::qWait(50);
+        QCOMPARE(controller.difficulty(),QString("close"));
+        QVERIFY(activate("playGroupButton0"));
+        QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+        QVERIFY(fullyVisible(item("returnDomainsButton"))); QCOMPARE(scroll->property("contentY").toReal(),0.);
+        auto level=item("identificationLevel"),start=item("startTaxonButton"),panel=item("playConfigurationPanel");
+        QVERIFY(level && start && panel); QVERIFY(level->isEnabled());
+        const auto levels=controller.identificationLevels(); QVERIFY(!levels.isEmpty());
+        QVERIFY(!item("difficultySelector")); QVERIFY(!item("playModeSelector"));
+        level->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60); QTest::keyClick(window,Qt::Key_Home);
+        for(int i=0;i<levels.size();++i) {
+            if(i)QTest::keyClick(window,Qt::Key_Down);
+            QTest::qWait(30); QCOMPARE(level->property("currentIndex").toInt(),i);
+            QCOMPARE(level->property("currentValue"),levels[i].toMap()["id"]);
+            const auto count=item("playEligibleCount")->property("text").toString();
+            QVERIFY(count.contains(QString::number(levels[i].toMap()["count"].toInt())+" organismo"));
+            QVERIFY(count.contains(QString::number(levels[i].toMap()["answers"].toInt())+" alternativas distintas"));
+            QCOMPARE(controller.difficulty(),QString("close"));
+        }
+        const auto levelRect=rect(level), startRect=rect(start), noticeRect=rect(item("playDifficultyNotice"));
+        QVERIFY(capture("configure"));
+        QVERIFY(!levelRect.intersects(startRect)); QVERIFY(!noticeRect.intersects(startRect)); QVERIFY(level->width()<=300);
+        if(size.width()>=1240) {
+            QVERIFY2(qAbs(levelRect.center().y()-startRect.center().y())<1,
+                qPrintable(QString("size=%1 panelWidth=%2 level=(%3,%4) start=(%5,%6) notice=(%7,%8)")
+                    .arg(size.width()).arg(panel->width()).arg(levelRect.top()).arg(levelRect.height())
+                    .arg(startRect.top()).arg(startRect.height()).arg(noticeRect.top()).arg(noticeRect.height())));
+            QVERIFY(qAbs(levelRect.center().y()-noticeRect.center().y())<1);
+            QVERIFY(panel->height()<175);
+        } else { QVERIFY(startRect.top()>=levelRect.bottom()); QVERIFY(panel->height()<230); }
+        QVERIFY(rect(item("playEligibleCount")).top()>=startRect.bottom());
+        QVERIFY(rect(item("taxonChildrenGrid")).top()>=rect(panel).bottom());
+        QVERIFY(activate("playTaxonSourcesButton",true));
+        auto dialog=window->findChild<QObject *>("playTaxonSourcesDialog"); QVERIFY(dialog);
+        QTRY_VERIFY(dialog->property("opened").toBool());
+        auto sourceScroll=item("playTaxonSourcesContent"); QVERIFY(sourceScroll);
+        auto viewport=sourceScroll->property("contentItem").value<QQuickItem *>(); QVERIFY(viewport);
+        const auto taxon=controller.browseTaxon(), intro=taxon["introduction"].toMap(), review=intro["governance"].toMap();
+        QVERIFY(item("playSourceIdentity")->property("text").toString().contains(taxon["id"].toString()));
+        QVERIFY(item("playSourcePlacement")->property("text").toString().contains(taxon["sourceUrl"].toString()));
+        QVERIFY(item("playSourceEducation")->property("text").toString().contains(intro["source_title"].toString()));
+        QVERIFY(item("playSourceReview")->property("text").toString().contains(review["reviewer"].toString()));
+        QVERIFY(item("playSourceProvenance")->property("text").toString().contains(review["content_sha256"].toString()));
+        QVERIFY(item("taxonIntroductionReview")->isVisible());
+        QVERIFY(capture("sources-top"));
+        const auto checkLink=[&](const QString &name,const QString &url){
+            auto link=item(name); if(!link || !link->isVisible())return false;
+            link->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+            const auto area=link->mapRectToItem(viewport,link->boundingRect());
+            if(area.top()<0 || area.bottom()>viewport->height())return false;
+            const auto before=urls.urls.size(); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(50);
+            return urls.urls.size()==before+1 && urls.urls.last()==QUrl(url);
+        };
+        QVERIFY(checkLink("playPlacementSourceLink",taxon["sourceUrl"].toString()));
+        QVERIFY(checkLink("playEducationSourceLink",intro["source_url"].toString()));
+        const auto evidence=review["evidence"].toList(); QVERIFY(!evidence.isEmpty());
+        for(int i=0;i<evidence.size();++i)QVERIFY(checkLink("playSourceEvidenceLink"+QString::number(i),evidence[i].toMap()["url"].toString()));
+        // The modal traps Tab/Backtab and scrolls its links into view, without moving the page.
+        const auto pageY=scroll->property("contentY").toReal();
+        for(int i=0;i<12;++i) {
+            QTest::keyClick(window,Qt::Key_Tab); QTest::qWait(15);
+            auto focused=window->activeFocusItem(); QVERIFY(focused);
+            QVERIFY(focused==item("playTaxonSourcesClose") || sourceScroll->isAncestorOf(focused));
+        }
+        QTest::keyClick(window,Qt::Key_Backtab); QTest::qWait(40);
+        QCOMPARE(scroll->property("contentY").toReal(),pageY);
+        viewport->setProperty("contentY",qMax(0.,viewport->property("contentHeight").toReal()-viewport->height()));
+        QVERIFY(capture("sources-provenance"));
+        QTest::keyClick(window,Qt::Key_Escape); QTRY_VERIFY(!dialog->property("visible").toBool());
+        QTRY_VERIFY(item("playTaxonSourcesButton")->hasActiveFocus());
+        // Exercise normal transitions and the explicit close button as well as reduced motion/Esc.
+        window->setProperty("motionEnabled",true); QVERIFY(activate("playTaxonSourcesButton"));
+        QTRY_VERIFY(dialog->property("opened").toBool()); QVERIFY(activate("playTaxonSourcesClose",true));
+        QTRY_VERIFY(!dialog->property("visible").toBool()); window->setProperty("motionEnabled",false);
+        QVERIFY(item("playTaxonSourcesButton")->hasActiveFocus());
+        // Scrolled descendant/breadcrumb navigation must expose the whole Back button.
+        scroll->setProperty("contentY",qMax(0.,scroll->property("contentHeight").toReal()-scroll->height()));
+        QVERIFY(activate("taxonButton0",true)); QTRY_COMPARE(scroll->property("contentY").toReal(),0.);
+        QVERIFY(fullyVisible(item("returnDomainsButton"))); QVERIFY(capture("return-top"));
+        QVERIFY(activate("breadcrumbButton0")); QTRY_COMPARE(scroll->property("contentY").toReal(),0.);
+        QVERIFY(fullyVisible(item("returnDomainsButton"))); QVERIFY(activate("returnDomainsButton"));
+        QVERIFY(activate("playTab_domains")); QVERIFY(activate("domainButton0"));
+        QVERIFY(!item("identificationLevel")->isEnabled()); QVERIFY(!item("startTaxonButton")->isEnabled());
+        item("playEligibleCount")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60); QVERIFY(capture("empty-group"));
+        QVERIFY(activate("playTaxonSourcesButton")); dialog=window->findChild<QObject *>("playTaxonSourcesDialog");
+        QVERIFY(dialog); QTRY_VERIFY(dialog->property("opened").toBool());
+        QVERIFY(!item("playEducationSourceLink")->isVisible());
+        QVERIFY(item("playSourceEducation")->property("text").toString().contains(QStringLiteral("Sem referência educativa")));
+        QTest::keyClick(window,Qt::Key_Escape); QTRY_VERIFY(!dialog->property("visible").toBool());
+        controller.exploreTaxon(scientificGroup("Mollusca")); QTest::qWait(80);
+        QCOMPARE(controller.browseTaxon()["count"].toInt(),1); QVERIFY(!item("startTaxonButton")->isEnabled());
+        item("playEligibleCount")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60); QVERIFY(capture("limited-group"));
+        QCOMPARE(controller.difficulty(),QString("close")); QCOMPARE(controller.answeredCount(),0);
+        QVERIFY(controller.recoverableSessions().isEmpty()); QVERIFY(activate("returnDomainsButton"));
+    }
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+    QFile manifest(folder+"/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    manifest.write(QJsonDocument(QJsonObject{{"method","QQuickWindow::grabWindow / production QML and GameController"},
+        {"privacy","Temporary SQLite; Discord disabled; shipped catalogue only"},{"captures",captures}}).toJson());
+}
 
 void QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
 {
@@ -154,7 +301,7 @@ void QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
                 QVERIFY(item("playDifficultyNotice")->property("text").toString().contains(
                     QStringList({QStringLiteral("Mais amplas"),QStringLiteral("Equilibradas"),QStringLiteral("Mais próximas")})[option]));
                 auto level=item("identificationLevel"), start=item("startTaxonButton"); QVERIFY(level && start);
-                QVERIFY(level->mapToScene({0,level->height()}).y()<=start->mapToScene({0,0}).y());
+                QVERIFY(level->mapToScene({0,0}).y()<=start->mapToScene({0,0}).y());
                 QCOMPARE(start->isEnabled(),!controller.identificationLevels().isEmpty());
                 if(tab=="kingdoms" && i==0)QVERIFY(capture("configure"));
                 if(tab=="domains" && i==0)QVERIFY(capture("empty-group"));
@@ -2247,7 +2394,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
             const auto level=findVisualItem(window->contentItem(),"identificationLevel");
             const auto start=findVisualItem(window->contentItem(),"startTaxonButton");
             return !selector && !difficulty && !competitive && level && start && later
-                && level->mapToScene({0,level->height()}).y() <= start->mapToScene({0,0}).y()
+                && level->mapToScene({0,0}).y() <= start->mapToScene({0,0}).y()
                 && start->mapToScene({0,start->height()}).y() <= later->mapToScene({0,0}).y();
         }
         if(!selector || !difficulty || !competitive || !later)return false;
