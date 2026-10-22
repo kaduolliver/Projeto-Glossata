@@ -1,5 +1,11 @@
 # Histórico visual
 
+## 2.2.3 — Modernização da tela Jogar
+
+- Seleção fotográfica com Reinos em destaque, Domínios e Grupos avançados, preservando IDs e todos os caminhos taxonômicos. Cartões com alturas compartilhadas, fotografias integrais, foco e créditos contextuais existentes.
+- Livre e Competitivo em painéis próprios, dificuldade do Livre, configuração de identificação e jogo misto preservados. Contagem catalogada separada da disponibilidade por nível, com estado sem partida para grupos vazios/limitados. Nenhuma mudança no Quiz ou nas regras de partidas.
+- Correção localizada do alinhamento dos textos de créditos e ação principal em Explorar. [Capturas, contratos e verificações](VERSOES/2.2.3/README.md). Evidências anteriores preservadas.
+
 ## PR #32 — uniformidade, faixa da barra e rolagem
 
 - Hover próprio dos créditos, cartões de altura compartilhada por seção, ações inferiores alinhadas e justificativa extensa de foto ausente no diálogo. Atribuições obrigatórias permanecem integrais, sem teto fixo para o texto.

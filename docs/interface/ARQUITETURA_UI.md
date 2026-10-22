@@ -1,5 +1,11 @@
 # Arquitetura visual
 
+## Jogar — 2.2.3
+
+`TaxonomyIndex.playEntry/playGroups/playChildren` acrescentam projeções de apresentação usando os IDs, descendentes, atalhos e `identificationLevels` existentes. Não alteram `describe`, busca, critérios científicos nem geração de partidas. `GameController` expõe os mapas/listas; QML escolhe somente qual seção mostrar. Reinos usa os três atalhos reais; Domínios usa as raízes; Grupos avançados mostra os descendentes imediatos de Eukaryota, com acesso aos demais níveis pela árvore original. São entradas de navegação, não uma nova classificação.
+
+`CategoryView` mantém os fluxos de Explorar e Jogar distintos. `ExploreCard.playSelection` opta pela composição fotográfica já existente, com disponibilidade por níveis e ação de seleção; `encyclopedic` conserva a enciclopédia. Não há nova cópia dos créditos ou da política de atribuição. Modos/configuração são apresentados por `PlayModeSelector`; ações de início continuam nos métodos existentes de `Main.qml`/backend, que permanecem sem alteração. Quiz e persistência não são reformulados. [Registro e validação](VERSOES/2.2.3/README.md).
+
 ## PR #32 — dimensionamento e entrada de rolagem
 
 As correções de usabilidade ficam no QML: altura intrínseca compartilhada entre cartões, hover local e estados curtos de indisponibilidade. A ciência continua projetada pelo índice, sem alterar seleção ou dados. `Main.qml` centraliza a faixa da barra e o tratamento exclusivo da roda convencional em Início/Explorar; eventos de precisão e eixos horizontais continuam nativos. O ajuste não aplica animação genérica à restauração de `contentY` e não muda regras de Jogar. [Registro atual](VERSOES/2.2.2/usabilidade/README.md).

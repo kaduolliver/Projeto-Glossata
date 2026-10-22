@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Jogar — 2.2.3
+
+`ExploreCard.playSelection` reutiliza a fotografia integral/centralizada, carregamento por viewport, hover passivo, foco, dimensões intrínsecas e diálogo de créditos da variante moderna. `entry.playLevels` é uma projeção de `identificationLevels`, não uma aprovação. O cartão informa quantidade catalogada e número de níveis disponíveis; o painel `playEligibleCount` mostra a contagem elegível e as respostas distintas no nível escolhido. A dificuldade pode restringir a seleção final, validada pelo backend. Grupos indisponíveis continuam navegáveis. O jogo misto mantém o gênero e sua contagem elegível existentes, com ação explícita de início.
+
+`playTab_kingdoms/domains/advanced` são botões compactos em grupo exclusivo. A grade usa largura mínima de 280 pixels lógicos e a maior altura intrínseca da seção; descendentes usam o mesmo contrato. `PlayModeSelector` apresenta Livre e Competitivo em painéis responsivos com descrições curtas; a dificuldade pertence somente ao Livre e o início competitivo continua global. Os IDs de controles existentes e as APIs de início são preservados. Em Explorar, o botão contextual preserva padding `spaceMd` e a ação principal recebe a mesma margem esquerda, além da margem superior `spaceXs`, alinhando os textos sem ampliar a área clicável. [Capturas e testes](VERSOES/2.2.3/README.md).
+
 ## PR #32 — uniformidade e rolagem
 
 `ExploreCard` distingue o hover local dos créditos com fundo/borda, conservando largura, espaço inerte, foco e transições. `encyclopediaCardPhotoState` mostra mensagem curta quando a foto falta; `pendingReason` completo fica no diálogo. Resumos têm duas linhas; atribuições obrigatórias não são elididas. Grids compartilham a maior `implicitHeight` em `cardHeight`/`Layout.preferredHeight`; a galeria usa `RowLayout` e `Layout.fillHeight`. Isso mantém o rodapé alinhado e recalcula a altura ao variar a largura/tipografia, sem um teto fixo que corte texto.
