@@ -1,5 +1,11 @@
 # Histórico visual
 
+## PR #33 — refinamento da configuração e retorno
+
+- Painéis Livre/Competitivo somente na tela principal; grupo com resumo, configuração direta, dificuldade preservada e início separado antes dos descendentes.
+- Aba, rolagem e origem do foco mantidas em memória, compartilhando o mecanismo de restauração da enciclopédia. Retorno por mouse conserva a rolagem sem impor foco de teclado.
+- [Capturas e validação desta rodada](VERSOES/2.2.3/refinamentos-navegacao/README.md), na mesma [PR #33](https://github.com/kaduolliver/Projeto-Glossata/pull/33). Evidências anteriores preservadas.
+
 ## 2.2.3 — Modernização da tela Jogar — PR #33
 
 - Seleção fotográfica com Reinos em destaque, Domínios e Grupos avançados, preservando IDs e todos os caminhos taxonômicos. Cartões com alturas compartilhadas, fotografias integrais, foco e créditos contextuais existentes.

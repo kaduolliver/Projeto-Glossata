@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## PR #33 — configuração e contexto da seleção
+
+`PlayModeSelector` fica exclusivamente na seleção principal de Jogar. `TaxonomyView`, no contexto de jogo, mostra resumo existente, nível de identificação, `playDifficultyNotice` somente informativo, contagem elegível e início explícito antes dos descendentes. A dificuldade vem do controlador e não é reconfigurada pela navegação.
+
+`Main.playPresentation` guarda em memória aba, rolagem, controle de origem e indicação de foco por teclado. `CategoryView.rememberPresentation` e o timer `restorePresentation` atendem tanto Jogar quanto Explorar, mantendo mapas separados e a chave científica da pesquisa intacta. O retorno por teclado recupera o controle original; o retorno por mouse conserva a posição sem forçar o enquadramento de um cartão parcialmente visível. Posições são limitadas à área disponível após mudança de tamanho da janela. Sem escrita em banco ou alteração de sessões. [Contrato e testes](VERSOES/2.2.3/refinamentos-navegacao/README.md).
+
 ## Jogar — 2.2.3
 
 `ExploreCard.playSelection` reutiliza a fotografia integral/centralizada, carregamento por viewport, hover passivo, foco, dimensões intrínsecas e diálogo de créditos da variante moderna. `entry.playLevels` é uma projeção de `identificationLevels`, não uma aprovação. O cartão informa quantidade catalogada e número de níveis disponíveis; o painel `playEligibleCount` mostra a contagem elegível e as respostas distintas no nível escolhido. A dificuldade pode restringir a seleção final, validada pelo backend. Grupos indisponíveis continuam navegáveis. O jogo misto mantém o gênero e sua contagem elegível existentes, com ação explícita de início.

@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## PR #33 — retorno ao contexto de seleção
+
+O shell conserva `playPresentation` separadamente de `explorePresentation`; ambos são estado efêmero de apresentação, com restauração compartilhada em `CategoryView`. Só a página de seleção grava o mapa de Jogar, impedindo que o reset do Loader em outra tela substitua a rolagem salva. As entradas de grupo e os atalhos registram o contexto antes da navegação. Configuração do grupo não repete os painéis globais nem escreve dificuldade no controlador. Funções de início, regras científicas, persistência e recuperação permanecem intactas. [Evidências](VERSOES/2.2.3/refinamentos-navegacao/README.md).
+
 ## Jogar — 2.2.3
 
 `TaxonomyIndex.playEntry/playGroups/playChildren` acrescentam projeções de apresentação usando os IDs, descendentes, atalhos e `identificationLevels` existentes. Não alteram `describe`, busca, critérios científicos nem geração de partidas. `GameController` expõe os mapas/listas; QML escolhe somente qual seção mostrar. Reinos usa os três atalhos reais; Domínios usa as raízes; Grupos avançados mostra os descendentes imediatos de Eukaryota, com acesso aos demais níveis pela árvore original. São entradas de navegação, não uma nova classificação.
