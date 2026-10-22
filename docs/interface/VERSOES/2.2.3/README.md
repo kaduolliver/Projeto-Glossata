@@ -1,6 +1,6 @@
 # Subetapa 2.2.3 — Modernização da tela Jogar
 
-Base: `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`, integração da PR #32 na `main`, confirmada pela API antes das alterações. Branch `feat/issue-22-play-2.2.3`, vinculada à Issue #22. Referência estética: exclusivamente a região 3 (seleção taxonômica) da imagem fornecida; fotografias, números e classificações da referência não são conteúdo do catálogo.
+Base: `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`, integração da PR #32 na `main`, confirmada pela API antes das alterações. Branch `feat/issue-22-play-2.2.3`, entregue na [PR #33](https://github.com/kaduolliver/Projeto-Glossata/pull/33), vinculada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem merge ou lançamento. Referência estética: exclusivamente a região 3 (seleção taxonômica) da imagem fornecida; fotografias, números e classificações da referência não são conteúdo do catálogo.
 
 Aplicativo **1.9.0 não lançado** (MINOR por seleção compatível); catálogo **2.4.0** inalterado. Escopo: apresentação da seleção de Jogar, modos/configuração, navegação e disponibilidade projetada pelos critérios existentes. Explorar recebe somente o alinhamento das ações dos cartões. Quiz, regras científicas, pontuação, sessões, dados e governança são preservados.
 
