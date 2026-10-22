@@ -1,0 +1,142 @@
+{
+  "recorded_at": "2026-10-22T16:36:02.658308+00:00",
+  "base_commit": "8293408a650ac2f9738d42c4c9c462115919bdfc",
+  "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure -j3",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "test_time_sum_seconds": 546.34,
+    "qttest_cases_passed": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 23,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    },
+    "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+    "binaries": {
+      "ui_tests": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927",
+      "production": "6d9e4a4e01165d16ce14628ce56e2c384a70f0c878294ccd8b7466171f083653"
+    }
+  },
+  "additional_runs": {
+    "quiz-targeted.txt": {
+      "cases_passed_including_setup_cleanup": 4,
+      "failed": 0,
+      "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+      "test_binary_sha256": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927"
+    },
+    "quiz-dpi-125.txt": {
+      "cases_passed_including_setup_cleanup": 4,
+      "failed": 0,
+      "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+      "test_binary_sha256": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927"
+    },
+    "quiz-dpi-150.txt": {
+      "cases_passed_including_setup_cleanup": 4,
+      "failed": 0,
+      "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+      "test_binary_sha256": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927"
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Catalog/media technical audits",
+    "Governance history comparison",
+    "Release metadata and actual production Home capture",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "resources.qrc",
+    "src",
+    "resources/qml/style",
+    "resources/qml/Main.qml",
+    "resources/qml/views/CategoryView.qml",
+    "resources/qml/views/TaxonomyView.qml",
+    "resources/qml/views/FeedbackView.qml",
+    "resources/qml/views/InfoView.qml",
+    "resources/qml/views/ResultsView.qml",
+    "resources/qml/views/StatisticsView.qml",
+    "resources/qml/views/AchievementsView.qml",
+    "resources/qml/views/SettingsView.qml",
+    "resources/qml/views/HomeView.qml",
+    "docs/interface/VERSOES/2.2.1-A",
+    "docs/interface/VERSOES/2.2.1-B",
+    "docs/interface/VERSOES/2.2.2",
+    "docs/interface/VERSOES/2.2.3"
+  ],
+  "binaries": {
+    "production": "6d9e4a4e01165d16ce14628ce56e2c384a70f0c878294ccd8b7466171f083653",
+    "ui_tests": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927",
+    "core_tests": "bb6b8b9ca0e0df11ca468618c73b43b4515a7751b4c7eaa77b9c1e0b216bbb55"
+  },
+  "local_build_manifest_sha256": "0a66a5e0d17c558d175a6232f550d7883cd8fa83f2cd1a6d2762cc28a5a9ffa5",
+  "capturas_json_sha256": "417f538127cc08c967fa7825f95215e766053f7d6cef1a5c3c00cdfbde211961",
+  "capture_count": 36,
+  "scale_validation": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "physical_windows_scaling_changed": false,
+    "physical_touchpad_tested": false
+  },
+  "read_only_cleanup": {
+    "candidate_bytes": 2849271175,
+    "deleted": 0,
+    "pr34_imported": false
+  },
+  "source_logs_sha256": {
+    "build/quiz-full-ctest.log": "57df16963a17256bdac1f84a294d9ea750162de83d015f03695d7bd729028579",
+    "build/tests/core-results.txt": "1ab2a00f75d08ebac8c6c7d819e16861f674c371006e2273d3e7da3bce6422ff",
+    "build/tests/ui-test-results.txt": "8a81387c58bfed9f475c14b2eee49325e77e8134ced3d18970e6113cd3bdfa12",
+    "build/tests/identity-results.txt": "92df0714292db13d72281a76ad52e4c5413e09ed70a207f6f3b65794d42d7db7",
+    "build/tests/recovery-results.txt": "02714ad0c3f9c11020f32568be53b89e4ccc822a4ebb41cae178183b4eeb6a7f",
+    "build/tests/quiz-targeted.txt": "c298ba0cfe4d912b1921f85ffc89f4eb1d0fef817ecd5217c20bdc30bfda1b74",
+    "build/tests/quiz-dpi-125.txt": "92a30275e4aa4e9fdc729a1a7d8f37a0d8cc017839d0860918807107f9594468",
+    "build/tests/quiz-dpi-150.txt": "3513c4c0989a5a316708bab73f0b5b1c254167fad3996242d1ef2ae55999316d",
+    "build/quiz-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quiz-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "evidence_sha256": {
+    "core-results.txt": "10cbfb92537aa965ab2c54b5c42e0bfd6e5c037c967adaf43afe1a9d1983d375",
+    "ctest-results.txt": "51c3f2fcd48d9de73e6bc603e32eb69dde7c5abf72d71709ca9dff06b8ac5f08",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "1f7b2994c817009694949b068db28ad259ee1138285129a6b49d2cf1fc169e00",
+    "identity-results.txt": "7e597cb19d7fa316a1319859f7916aee8e16788cf19c3717fbf3319b855087d4",
+    "inventario-limpeza.json": "daab5a744bf6cba860d1506993895bcd62dd647a0b1aea4d2932bef8813f9848",
+    "qml-lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "quiz-dpi-125.txt": "5f35c8a42ede7f9e38403ebfc38de5f8ed6b2319348cadfc4414fccd2c0a9b01",
+    "quiz-dpi-150.txt": "0ae1e3c7ad2a5e2f40bb5f9d7a62d288811a09e6637c74991c08871dfdc99cf5",
+    "quiz-targeted.txt": "aa54dd489b208475ae8bbdd81064afbba6742b36cc8ba7cbdeab215b35c5f585",
+    "recovery-results.txt": "6c22bb16da5a8bf1f08db7a82e9383a9f88fd5638ca8d39083cdd4f36cc43165",
+    "smoke-test.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "technical-audits.json": "bc4c7408066a6c6ea85deae15f4d9f9ededf4b6b5da4e3966992f2f1e9324f63",
+    "ui-test-results.txt": "55693c731f66701164dcdcbea633460d9cb9ffc218510c7f756d816aeae55c71"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 retained, CP1252 subprocess lines transcoded; original hashes retained.",
+  "limitations": "Software/offscreen capture, not physical Windows display scaling. Existing distribution blocks remain. Tests are not scientific, legal or universal accessibility certification."
+}

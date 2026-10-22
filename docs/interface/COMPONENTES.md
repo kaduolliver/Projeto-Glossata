@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Quiz — 2.3.1
+
+`QuizView` preserva `quizView`, `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. Alternativas têm tamanho intrínseco compartilhado, texto integral e estado de seleção único, independente de hover e foco. `canSelect` protege a apresentação enquanto a pergunta termina, os diálogos estão abertos ou a foto não está pronta. Confirmação continua chamando `answerSelected` e navega ao feedback somente após confirmação do backend.
+
+`SpeciesPortrait.quizPresentation` é `false` por padrão. Apenas o Quiz ativa moldura do tema e escala máxima 1, preservando centralização, proporção, créditos e avisos. Feedback e ficha mantêm a geometria anterior. `HintPanel` usa os valores/classificações existentes, evidencia o teto antes da revelação e conserva fonte, revisão, motivos e relato. Seu scroll acompanha foco; Esc/Voltar devolvem foco à pergunta. [Documentação e testes](VERSOES/2.3.1/README.md).
+
 ## PR #33 — configuração compacta e fontes do grupo
 
 Nas janelas amplas, a dificuldade acompanha o seletor com intervalo de `spaceLg` (20 pixels lógicos), alinhada à esquerda em uma coluna flexível; o espaço excedente fica depois do texto e o início conserva sua largura intrínseca na margem direita. Nas compactas, a dificuldade fica abaixo do seletor, ao lado do início à direita. Os controles de cada linha mantêm alinhamento vertical central. [Verificação atual e escalas](VERSOES/2.2.3/alinhamento-dificuldade/README.md); [evidências anteriores](VERSOES/2.2.3/alinhamento-iniciar/README.md).

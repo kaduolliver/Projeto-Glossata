@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## Quiz — 2.3.1
+
+Modernização restrita à apresentação em `QuizView`, `HintPanel` e à variante opcional `SpeciesPortrait.quizPresentation`. Grupo, nível, alternativas, progresso, pontuação e dicas vêm das APIs existentes. Não há cálculo científico, seleção de questões ou pontuação paralela em QML. O estado local da seleção dura uma pergunta; diálogos não o limpam. O backend continua responsável por aceitação, checkpoint e recuperação. [Contratos e evidências](VERSOES/2.3.1/README.md).
+
 ## PR #33 — painel compacto e fontes contextuais
 
 O ajuste fica em `TaxonomyView.qml`: apresentação adaptativa dos mesmos controles, diálogo local para dados científicos disponíveis e posicionamento inicial da página do grupo. O timer `positionPlayTop` aguarda o layout e cancela a inércia antes de colocar a página taxonômica de Jogar no topo. A margem do botão Voltar conserva sua moldura visível. Não altera `Main`, `CategoryView`, `playPresentation` ou sua restauração; em Explorar, o timer não reposiciona a página. O diálogo não consulta rede para mostrar os dados e não deriva aprovações. [Validação e capturas](VERSOES/2.2.3/configuracao-compacta/README.md).

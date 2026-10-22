@@ -1,5 +1,7 @@
 # Design system — revisão 2.1.2
 
+O Quiz 2.3.1 aplica os tokens existentes: superfície petróleo, seleção verde-floresta, foco dourado, tipografia e espaçamentos. Estados animam apenas cor/borda com `durationFast` e `motionEnabled`, sem deslocar alternativas ou fotografias. Cartões usam texto com quebra e altura compartilhada; fotografia integral tem escala máxima 1 apenas na variante do Quiz. Não há novos tokens, ícones ou arquivos fotográficos. [Registro](VERSOES/2.3.1/README.md).
+
 Na seleção Jogar 2.2.3, os painéis Livre/Competitivo usam `surface`, bordas `green/gold`, tipografia e espaçamentos existentes. Seletores usam `UiButton.compact`, agrupamento exclusivo e foco dourado. Os cartões optam pela composição fotográfica moderna compartilhada; a superfície, o hover e a redução de movimento continuam pelos tokens existentes. Não há novos tokens, ícones, arquivos de fotografia ou regras científicas. [Registro](VERSOES/2.2.3/README.md).
 
 Na rodada de usabilidade da PR #32, somente o botão de créditos ganha fundo `surfaceRaised` e borda `green` no hover; foco mantém `focus` e as transições usam os tokens existentes. Cartões compartilham dimensões intrínsecas por seção e controles ficam na base, sem altura textual fixa. Carregamento progressivo usa `UiButton` compacto. A faixa da barra vertical é comum às páginas e a roda convencional em Início/Explorar recebe deslocamento moderado, preservando precisão nativa e movimento reduzido. [Registro atual](VERSOES/2.2.2/usabilidade/README.md).

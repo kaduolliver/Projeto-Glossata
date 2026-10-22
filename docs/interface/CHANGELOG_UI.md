@@ -1,5 +1,12 @@
 # Histórico visual
 
+## 2.3.1 — Modernização da interface do Quiz
+
+- Cabeçalho e progresso por modo, fotografia ampliada na composição, alternativas uniformes com nomes extensos e estados explícitos, ações e pontuação discretas.
+- Dicas com impacto antes de revelar, consulta compacta na pergunta e textos/fontes/revisão/relato no painel. Seleção e regras preservadas.
+- [PR #35](https://github.com/kaduolliver/Projeto-Glossata/pull/35), implementação e testes no commit [`9ccbd60`](https://github.com/kaduolliver/Projeto-Glossata/commit/9ccbd60), sobre a integração da PR #33 na `main`, vinculada à Issue #22.
+- [Capturas reais e validação](VERSOES/2.3.1/README.md); evidências anteriores intactas.
+
 ## PR #33 — dificuldade junto ao seletor
 
 - Texto da dificuldade a 20 pixels lógicos do seletor nas janelas amplas; abaixo dele nas compactas, sem centralização artificial. Iniciar partida permanece compacto à direita, com altura do painel e contador preservados.
