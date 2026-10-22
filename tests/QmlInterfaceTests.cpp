@@ -67,6 +67,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void playConfigurationReturnsToSelectionContext();
     void playSelectionNavigationAndCaptures();
     void exploreUniformCardsAndComfortableScrolling();
     void encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction();
@@ -85,6 +86,121 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
+{
+    interfaceWarnings.clear();
+    const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir directory; QVERIFY(directory.isValid()); const auto path = directory.filePath("play-context.sqlite");
+    QStringList savedOptions; qint64 savedScore; QVariantMap savedPhoto;
+    {
+        GameController seed(nullptr,path); QVERIFY(seed.startCompetitiveGame());
+        seed.answerSelected(seed.answerOptions().first()); seed.nextQuestion();
+        savedScore=seed.scoreUnits(); savedOptions=seed.answerOptions(); savedPhoto=seed.questionPhoto();
+        QVERIFY(seed.prepareToClose());
+    }
+    GameController controller(nullptr,path); const auto checkpoints=controller.recoverableSessions();
+    QCOMPARE(checkpoints.size(),1);
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);
+    engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    QVERIFY2(!engine.rootObjects().isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const auto activate=[&](const QString &name){
+        auto control=item(name); if(!control || !control->isVisible() || !control->isEnabled())return false;
+        control->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(50);
+        QTest::keyClick(window,Qt::Key_Space); QTest::qWait(120); return true;
+    };
+    auto scroll=item("pageScroll"); QVERIFY(scroll);
+    const QString folder="previews/play-context-2.2.3/"+QString::number(qRound(window->devicePixelRatio()*100));
+    QVERIFY(QDir().mkpath(folder)); QJsonArray captures;
+    const auto capture=[&](const QString &state){
+        QTest::qWait(140); const auto image=window->grabWindow();
+        const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";
+        if(!image.save(folder+"/"+file))return false;
+        captures.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},
+            {"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},
+            {"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},
+            {"page",window->property("page").toString()},{"scrollY",scroll->property("contentY").toReal()},
+            {"playTab",window->property("playPresentation").toMap()["tab"].toString()},
+            {"taxonId",controller.browseTaxon()["id"].toString()}}); return true;
+    };
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        window->resize(size); QVERIFY(activate("navPlay"));
+        for(const QString &tab:{"kingdoms","domains","advanced"}) {
+            QVERIFY(activate("playTab_"+tab));
+            auto difficulty=item("difficultySelector"); QVERIFY(difficulty);
+            difficulty->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(50);
+            QTest::keyClick(window,Qt::Key_Home);
+            const int option=tab=="kingdoms"?0:tab=="domains"?1:2;
+            for(int n=0;n<option;++n)QTest::keyClick(window,Qt::Key_Down);
+            QTest::qWait(60);
+            const auto selectedDifficulty=controller.difficulty();
+            QCOMPARE(selectedDifficulty,QStringList({"broad","balanced","close"})[option]);
+            const auto entries=controller.playGroups()[tab].toList();
+            const auto prefix=tab=="domains"?QString("domainButton"):QString("playGroupButton");
+            for(int i=0;i<entries.size();++i) {
+                const auto name=prefix+QString::number(i); auto card=item(name); QVERIFY(card);
+                card->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80);
+                const auto before=scroll->property("contentY").toReal();
+                QVERIFY(activate(name)); QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+                QVERIFY(!item("playModeSelector")); QVERIFY(!item("startCompetitiveButton")); QVERIFY(!item("difficultySelector"));
+                QCOMPARE(controller.browseTaxon()["id"],entries[i].toMap()["id"]);
+                QCOMPARE(controller.difficulty(),selectedDifficulty);
+                QVERIFY(item("playDifficultyNotice")->property("text").toString().contains(
+                    QStringList({QStringLiteral("Mais amplas"),QStringLiteral("Equilibradas"),QStringLiteral("Mais próximas")})[option]));
+                auto level=item("identificationLevel"), start=item("startTaxonButton"); QVERIFY(level && start);
+                QVERIFY(level->mapToScene({0,level->height()}).y()<=start->mapToScene({0,0}).y());
+                QCOMPARE(start->isEnabled(),!controller.identificationLevels().isEmpty());
+                if(tab=="kingdoms" && i==0)QVERIFY(capture("configure"));
+                if(tab=="domains" && i==0)QVERIFY(capture("empty-group"));
+                QVERIFY(activate("returnDomainsButton"));
+                QVERIFY(item("playTab_"+tab)->property("checked").toBool());
+                QVERIFY(item(name)->hasActiveFocus());
+                QVERIFY2(qAbs(scroll->property("contentY").toReal()-before)<1,
+                    qPrintable(QString("Scroll changed for %1 at %2: %3 -> %4").arg(tab).arg(size.width()).arg(before).arg(scroll->property("contentY").toReal())));
+                QCOMPARE(controller.difficulty(),selectedDifficulty); QCOMPARE(controller.recoverableSessions(),checkpoints);
+            }
+            QVERIFY(capture("return-"+tab));
+        }
+        // Mouse navigation preserves a partially visible card's exact offset;
+        // it must not acquire keyboard focus and pull the page to another row.
+        auto card=item("playGroupButton0"); QVERIFY(card);
+        card->forceActiveFocus(Qt::OtherFocusReason); QTest::qWait(60);
+        window->contentItem()->forceActiveFocus(Qt::OtherFocusReason);
+        const auto maximum=qMax(0.,scroll->property("contentHeight").toReal()-scroll->height());
+        const auto partial=scroll->property("contentY").toReal()+card->mapToItem(scroll,{0,card->height()}).y()-scroll->height()-30;
+        scroll->setProperty("contentY",qBound(0.,partial,maximum)); QTest::qWait(50);
+        const auto before=scroll->property("contentY").toReal();
+        QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,card->mapToScene({20,card->height()/2}).toPoint()); QTest::qWait(100);
+        QCOMPARE(window->property("page").toString(),QString("taxonomy"));
+        QVERIFY(!window->property("playPresentation").toMap()["keyboardFocus"].toBool());
+        QVERIFY(activate("returnDomainsButton")); QVERIFY(qAbs(scroll->property("contentY").toReal()-before)<1);
+        const auto context=window->property("playPresentation").toMap();
+        QVERIFY(activate("navHome")); QVERIFY(activate("navPlay"));
+        QVERIFY(item("playTab_advanced")->property("checked").toBool());
+        QVERIFY(qAbs(scroll->property("contentY").toReal()-context["scrollY"].toReal())<1);
+        QVERIFY(activate("quickAccessButton0"));
+        controller.exploreTaxon(scientificGroup("Mollusca")); QTest::qWait(100);
+        QCOMPARE(controller.browseTaxon()["count"].toInt(),1); QVERIFY(!item("startTaxonButton")->isEnabled());
+        QVERIFY(capture("limited-group")); QVERIFY(activate("returnDomainsButton"));
+        QCOMPARE(controller.recoverableSessions(),checkpoints);
+    }
+    QVERIFY(activate("resumeSessionButton")); QCOMPARE(window->property("page").toString(),QString("quiz"));
+    QCOMPARE(controller.answeredCount(),1); QCOMPARE(controller.scoreUnits(),savedScore);
+    QCOMPARE(controller.answerOptions(),savedOptions); QCOMPARE(controller.questionPhoto(),savedPhoto);
+    const auto hints=controller.hints();
+    QVERIFY(activate("navExplore")); QVERIFY(activate("navHome")); QVERIFY(activate("navPlay"));
+    QCOMPARE(controller.questionPhoto(),savedPhoto); QCOMPARE(controller.hints(),hints); QCOMPARE(controller.scoreUnits(),savedScore);
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+    QFile manifest(folder+"/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+    manifest.write(QJsonDocument(QJsonObject{{"method","QQuickWindow::grabWindow / production QML and GameController"},
+        {"privacy","Temporary SQLite with a real temporary recovery checkpoint; Discord disabled"},{"captures",captures}}).toJson());
+}
 
 void QmlInterfaceTests::playSelectionNavigationAndCaptures()
 {
@@ -122,6 +238,7 @@ void QmlInterfaceTests::playSelectionNavigationAndCaptures()
     for (const QSize size : {QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
         window->resize(size); QVERIFY(activate("navPlay"));
         QCOMPARE(window->property("page").toString(), QString("categories"));
+        QVERIFY(activate("playTab_kingdoms"));
         QVERIFY(item("playTab_kingdoms")->property("checked").toBool());
         auto mixed = item("categoryButton0"); QVERIFY(mixed);
         QVERIFY(QQmlProperty(mixed,"Accessible.name",qmlContext(mixed)).read().toString().contains(QStringLiteral("identificar gêneros")));
@@ -171,7 +288,8 @@ void QmlInterfaceTests::playSelectionNavigationAndCaptures()
         auto level = item("identificationLevel"); QVERIFY(level);
         QCOMPARE(level->property("count").toInt(),controller.identificationLevels().size());
         controller.setDifficulty("close");
-        QCOMPARE(item("difficultySelector")->property("currentValue").toString(),QString("close"));
+        QVERIFY(!item("difficultySelector"));
+        QVERIFY(item("playDifficultyNotice")->property("text").toString().contains(QStringLiteral("Mais próximas")));
         controller.setDifficulty("balanced");
         level->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60); QVERIFY(capture("configure"));
         QVERIFY(activate("startTaxonButton")); QCOMPARE(window->property("page").toString(),QString("quiz"));
@@ -1064,7 +1182,7 @@ void QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
     for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
         window->resize(size); reset(); QVERIFY(activate("navExplore"));
         QCOMPARE(window->property("currentSection").toString(), QString("explore"));
-        QVERIFY(!item("playModeSelector")->isVisible()); QVERIFY(!item("categoryButton0")->isVisible());
+        QVERIFY(!item("playModeSelector") || !item("playModeSelector")->isVisible()); QVERIFY(!item("categoryButton0")->isVisible());
         item("navExplore")->forceActiveFocus(Qt::MouseFocusReason); item("pageScroll")->setProperty("contentY", 0);
         QVERIFY(capture("explore", size));
         for (int i = 0; i < 3; ++i) {
@@ -1765,7 +1883,7 @@ void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
         QTest::keyClick(window, Qt::Key_Space); QTest::qWait(50);
         QCOMPARE(window->property("page").toString(), QString("explore"));
         QVERIFY(selected("navExplore")); QVERIFY(!selected("navPlay"));
-        QVERIFY(!item("playModeSelector")->isVisible());
+        QVERIFY(!item("playModeSelector") || !item("playModeSelector")->isVisible());
         QVERIFY(!item("categoryButton0")->isVisible());
         QVERIFY(capture("explore-" + suffix));
         for (int i = 0; i < 3; ++i) {
@@ -1774,7 +1892,7 @@ void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
             QVERIFY(selected("navExplore"));
             QVERIFY(item("breadcrumbButton0")->isVisible());
             QVERIFY(!item("startTaxonButton")->isVisible());
-            QVERIFY(!item("playModeSelector")->isVisible());
+            QVERIFY(!item("playModeSelector") || !item("playModeSelector")->isVisible());
             QVERIFY(click("returnDomainsButton"));
             QCOMPARE(window->property("page").toString(), QString("explore"));
         }
@@ -2125,6 +2243,13 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
         const auto difficulty=findVisualItem(window->contentItem(),"difficultySelector");
         const auto competitive=findVisualItem(window->contentItem(),"startCompetitiveButton");
         const auto later=findVisualItem(window->contentItem(),taxonomy ? "taxonChildrenGrid" : "quickAccessButton0");
+        if (taxonomy) {
+            const auto level=findVisualItem(window->contentItem(),"identificationLevel");
+            const auto start=findVisualItem(window->contentItem(),"startTaxonButton");
+            return !selector && !difficulty && !competitive && level && start && later
+                && level->mapToScene({0,level->height()}).y() <= start->mapToScene({0,0}).y()
+                && start->mapToScene({0,start->height()}).y() <= later->mapToScene({0,0}).y();
+        }
         if(!selector || !difficulty || !competitive || !later)return false;
         return selector->mapToScene(QPointF(0,selector->height())).y() <= later->mapToScene(QPointF()).y()
             && difficulty->isVisible() && competitive->isVisible();

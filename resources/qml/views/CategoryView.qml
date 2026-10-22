@@ -9,7 +9,7 @@ Item {
     required property var app
     required property var backend
     property bool browsingOnly: false
-    property string playTab: "kingdoms"
+    property string playTab: !browsingOnly ? app.playPresentation.tab || "kingdoms" : "kingdoms"
     readonly property var playEntries: !browsingOnly ? backend.playGroups[playTab] || [] : []
     ButtonGroup { id: playTabs; exclusive: true }
     readonly property int columns: width >= 850 ? 3 : 2
@@ -24,6 +24,7 @@ Item {
     property bool presentationReady: false
     property bool restoring: true
     property string returnFocus: ""
+    property bool returnKeyboard: false
     property var pendingFocusRepeater: null
     property int pendingFocusIndex: -1
     readonly property bool searching: backend.exploreQuery.trim().length > 0 || !!backend.exploreDomain || !!backend.exploreRank
@@ -33,7 +34,7 @@ Item {
     readonly property var presentedOrganisms: (results.organisms || []).slice(0, organismLimit)
     readonly property var domains: [{id: "", title: "Todos os domínios"}].concat(backend.categories.slice(1))
     onPresentationKeyChanged: {
-        if (presentationReady) {
+        if (browsingOnly && presentationReady) {
             newResultsFocus.stop(); view.pendingFocusRepeater = null
             view.groupLimit = view.resultBatchSize; view.organismLimit = view.resultBatchSize
             view.returnFocus = ""
@@ -41,11 +42,19 @@ Item {
         }
     }
     function rememberPresentation() {
-        if (!browsingOnly || !presentationReady || restoring || app.page !== "explore") return
-        app.explorePresentation = {key: presentationKey, groupLimit: groupLimit, organismLimit: organismLimit,
-            scrollY: pageViewport ? pageViewport.contentY : 0, galleryX: featuredGallery.contentX, focusName: returnFocus}
+        if (!presentationReady || restoring) return
+        if (browsingOnly && app.page === "explore") {
+            app.explorePresentation = {key: presentationKey, groupLimit: groupLimit, organismLimit: organismLimit,
+                scrollY: pageViewport ? pageViewport.contentY : 0, galleryX: featuredGallery.contentX, focusName: returnFocus}
+        } else if (!browsingOnly && app.page === "categories") {
+            app.playPresentation = {tab: playTab, scrollY: pageViewport ? pageViewport.contentY : 0,
+                focusName: returnFocus, keyboardFocus: returnKeyboard}
+        }
     }
-    function openEntry(id, name) { returnFocus = name; rememberPresentation(); app.openTaxon(id) }
+    function openEntry(id, name, keyboard) {
+        returnFocus = name; returnKeyboard = !!keyboard
+        rememberPresentation(); app.openTaxon(id)
+    }
     Component.onCompleted: {
         let ancestor = parent
         while (ancestor && !(ancestor instanceof Flickable)) ancestor = ancestor.parent
@@ -61,16 +70,20 @@ Item {
         id: restorePresentation
         interval: 0
         onTriggered: {
-            const saved = view.app.explorePresentation
-            if (view.browsingOnly && saved.key === view.presentationKey) {
+            const saved = view.browsingOnly ? view.app.explorePresentation : view.app.playPresentation
+            if (view.browsingOnly ? saved.key === view.presentationKey : saved.tab === view.playTab) {
                 view.returnFocus = saved.focusName || ""
+                view.returnKeyboard = !!saved.keyboardFocus
                 // Delegates/layouts exist before restoring focus and scroll.
                 let control = null
                 if (view.returnFocus.startsWith("exploreGroupResult")) control = groupResults.itemAt(Number(view.returnFocus.slice(18)))
                 else if (view.returnFocus.startsWith("exploreOrganismResult")) control = organismResults.itemAt(Number(view.returnFocus.slice(21)))
                 else if (view.returnFocus.startsWith("featuredOrganism")) control = featuredResults.itemAt(Number(view.returnFocus.slice(16)))
-                if (control) control.forceActiveFocus(Qt.TabFocusReason)
-                featuredGallery.contentX = Math.max(0, Math.min(saved.galleryX || 0, featuredGallery.contentWidth - featuredGallery.width))
+                else if (!view.browsingOnly && view.returnFocus.startsWith("domainButton")) control = domainResults.itemAt(Number(view.returnFocus.slice(12)))
+                else if (!view.browsingOnly && view.returnFocus.startsWith("playGroupButton")) control = domainResults.itemAt(Number(view.returnFocus.slice(15)))
+                else if (!view.browsingOnly && view.returnFocus.startsWith("quickAccessButton")) control = quickAccessResults.itemAt(Number(view.returnFocus.slice(17)))
+                if (control && (view.browsingOnly || view.returnKeyboard)) control.forceActiveFocus(Qt.TabFocusReason)
+                if (view.browsingOnly) featuredGallery.contentX = Math.max(0, Math.min(saved.galleryX || 0, featuredGallery.contentWidth - featuredGallery.width))
                 if (view.pageViewport) view.pageViewport.contentY = Math.max(0, Math.min(saved.scrollY || 0, view.pageViewport.contentHeight - view.pageViewport.height))
             }
             view.restoring = false
@@ -158,6 +171,7 @@ Item {
             Layout.fillWidth: true; Layout.preferredHeight: childrenRect.height; spacing: 10
             Label { text: "ACESSO RÁPIDO"; color: "#74979D"; font.pixelSize: 10; font.letterSpacing: 1.2; height: 36; verticalAlignment: Text.AlignVCenter }
             Repeater {
+                id: quickAccessResults
                 model: view.backend.quickAccessGroups
                 delegate: TextAction {
                     required property var modelData
@@ -168,7 +182,7 @@ Item {
                     ToolTip.visible: hovered || visualFocus
                     ToolTip.delay: 600
                     ToolTip.text: modelData.pathText
-                    onClicked: view.browsingOnly ? view.openEntry(modelData.id, objectName) : view.app.openTaxon(modelData.id)
+                    onClicked: view.openEntry(modelData.id, objectName, visualFocus)
                 }
             }
         }
@@ -182,7 +196,11 @@ Item {
                     text: modelData.title; compact: true; secondary: view.playTab !== modelData.id
                     checkable: true; checked: view.playTab === modelData.id; ButtonGroup.group: playTabs
                     Accessible.description: "Mostrar " + modelData.title + " para selecionar um grupo; não inicia partida."
-                    onClicked: view.playTab = modelData.id
+                    onClicked: {
+                        view.playTab = modelData.id
+                        view.returnFocus = ""; view.returnKeyboard = false
+                        view.rememberPresentation()
+                    }
                 }
             }
         }
@@ -195,6 +213,7 @@ Item {
             readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
             Layout.fillWidth: true; columns: view.browsingOnly ? view.domainColumns : view.explorationColumns; columnSpacing: 16; rowSpacing: 16
             Repeater {
+                id: domainResults
                 model: !view.browsingOnly ? view.playEntries : !view.searching ? view.backend.categories.slice(1) : []
                 delegate: ExploreCard {
                     required property var modelData
@@ -206,7 +225,7 @@ Item {
                     Layout.fillWidth: true; Layout.fillHeight: true; Layout.preferredWidth: 1
                     Layout.preferredHeight: groups.cardHeight
                     Layout.columnSpan: view.browsingOnly ? (index === view.backend.categories.length - 2 ? view.domainColumns - index % view.domainColumns : 1) : 1
-                    onClicked: view.browsingOnly ? view.openEntry(modelData.id, objectName) : view.app.openTaxon(modelData.id)
+                    onClicked: view.openEntry(modelData.id, objectName, visualFocus)
                 }
             }
         }

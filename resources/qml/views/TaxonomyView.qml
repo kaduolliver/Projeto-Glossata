@@ -120,7 +120,6 @@ Item {
             TextAction { visible: !view.browsingOnly && !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
             TextAction { visible: !view.browsingOnly && !!view.introduction.source_url; Layout.maximumWidth: view.width; text: "Fonte: " + (view.introduction.source_title || "Referência científica"); Accessible.description: view.introduction.source_url || ""; onClicked: Qt.openUrlExternally(view.introduction.source_url) }
         }
-        PlayModeSelector { objectName: "playModeSelector"; visible: !view.browsingOnly; app: view.app; backend: view.backend }
         Label { visible: !view.browsingOnly && view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
             visible: !view.browsingOnly
@@ -130,13 +129,18 @@ Item {
                 id: controls
                 anchors.fill: parent; anchors.margins: 18; spacing: 14
                 Label { text: "Configurar identificação · modo Livre"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "playDifficultyNotice"; text: "Alternativas: " + ({broad: "Mais amplas", balanced: "Equilibradas", close: "Mais próximas"}[view.backend.difficulty] || "") + " · escolha preservada da tela Jogar"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
                 RowLayout {
                     Layout.fillWidth: true
                     Label { text: "Identificar"; color: "#9BB6A9"; font.pixelSize: 12 }
                     TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; Accessible.name: "Nível de identificação no modo Livre"; enabled: count > 0; onModelChanged: currentIndex = 0 }
-                    UiButton { objectName: "startTaxonButton"; text: "Iniciar partida"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
                 }
                 Label { objectName: "playEligibleCount"; text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " organismo elegível neste nível" : " organismos elegíveis neste nível") + " · " + view.backend.identificationLevels[level.currentIndex].answers + " alternativas distintas. A dificuldade escolhida pode limitar a partida; consulte os avisos das fotografias." : "Sem partida disponível: são necessárias quatro alternativas distintas e revisões adequadas. Você pode continuar navegando pelos grupos."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                RowLayout {
+                    Layout.fillWidth: true
+                    Item { Layout.fillWidth: true }
+                    UiButton { objectName: "startTaxonButton"; text: "Iniciar partida"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
+                }
             }
         }
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
