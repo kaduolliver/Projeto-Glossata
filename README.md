@@ -50,7 +50,7 @@ Democratizar o acesso ao conhecimento sobre a biodiversidade por meio de ferrame
 <!-- Gerado por scripts/project_status.py; não editar manualmente. -->
 | Informação atual | Valor derivado | Fonte |
 | --- | --- | --- |
-| Aplicativo | **1.9.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
+| Aplicativo | **1.10.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
 | Catálogo | **2.4.0** — não lançado | [Manifesto](resources/data/catalog_manifest.json), [histórico](docs/CATALOGO_CHANGELOG.md) |
 | Regra padrão de pontuação | `identification-v4-progressive` | [Hint.h](src/domain/Hint.h) |
 | Leitura histórica de pontuação | `identification-v3-assistance`, `identification-v2` e `legacy` | [Hint.h](src/domain/Hint.h) |
@@ -121,6 +121,8 @@ A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos
 ### Projeto Glossata
 
 Cada questão apresenta quatro alternativas de identificação no mesmo nível taxonômico, seleção, confirmação e feedback. A fotografia e os dados utilizados na resposta são preservados para a etapa de revisão.
+
+O [Quiz 2.3.1](docs/interface/VERSOES/2.3.1/README.md) organiza fotografia integral e alternativas lado a lado, com seleção por mouse ou atalhos 1–4, confirmação por Enter e foco visível. O painel de dicas informa o impacto antes de revelar e conserva fontes, revisão e relato local. Progresso, pontuação e recuperação usam as regras existentes.
 
 - **Modo Livre:** exploração contínua, com filtros e diferentes políticas de alternativas; a partida termina quando o jogador decide encerrá-la.
 - **Modo Competitivo:** quantidade fixa de questões indicada no bloco Estado atual, sem repetição de organismos na mesma partida, com condições padronizadas, regras de elegibilidade e ranking específicas.

@@ -2,6 +2,11 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.10.0] — Não lançado; interface do Quiz
+
+- Subetapa 2.3.1: Quiz com fotografia em destaque, alternativas uniformes com quebra de linha, estados de seleção/foco, progresso por modo e acesso compacto às dicas reveladas. Variante fotográfica opcional, sem cortes ou ampliação, exclusiva do Quiz. Regras, pontuação e dados preservados. [Documentação e capturas](docs/interface/VERSOES/2.3.1/README.md).
+- MINOR pela interface e recursos de apresentação compatíveis; catálogo 2.4.0 inalterado. Sem lançamento ou aprovação de distribuição.
+
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar
 
 - PR #33: dificuldade junto ao seletor de identificação, com intervalo de 20 pixels lógicos nas janelas amplas e quebra para a linha seguinte nas compactas; início à direita e altura compacta preservados. [Capturas e escalas](docs/interface/VERSOES/2.2.3/alinhamento-dificuldade/README.md).

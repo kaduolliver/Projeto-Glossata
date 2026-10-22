@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Subetapa 2.3.1, sem lançamento: aplicativo **1.10.0** (MINOR pela interface e recursos de apresentação compatíveis) reutiliza o catálogo **2.4.0** integralmente, sobre `8293408a650ac2f9738d42c4c9c462115919bdfc`. Fotografias, atribuições, fontes, revisões e governança permanecem intactas. Dicas, seus critérios e pontuações não são reclassificados pela apresentação. Nenhuma nova aprovação ou permissão.
+
 Subetapa 2.2.3, sem lançamento: aplicativo **1.9.0** (MINOR pela seleção compatível) reutiliza o catálogo **2.4.0** integralmente. Agrupamentos de apresentação e disponibilidade reutilizam os IDs, descendentes e níveis de identificação existentes; não modificam a taxonomia, os critérios de elegibilidade, as fotografias, as licenças ou os 1.053 eventos de governança da base `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`.
 
 PR #32, rodada 1, sem lançamento: correções estruturais de apresentação na versão 1.8.0 ainda não lançada, com o catálogo 2.4.0 preservado. Ordenação, deduplicação e filtros científicos de `TaxonomyIndex` não mudam; paginação é uma fatia de apresentação em QML. As fotografias inteiras são ajustadas à moldura, sem escrever arquivos ou metadados. Nenhuma alteração de licenças, critérios de elegibilidade, taxonomia ou decisões de governança.
