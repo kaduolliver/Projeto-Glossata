@@ -183,7 +183,10 @@
     "tests/test_rights_investigation.py",
     "tests/test_scientific_sources.py"
   ],
-  "pending_files": {},
+  "pending_files": {
+    "scripts/cleanup_build.py": "Novo script de manutenção: licença/titularidade ainda não incluídas por decisão explícita do mantenedor; revisão pendente.",
+    "tests/test_cleanup_build.py": "Novo teste de manutenção: licença/titularidade ainda não incluídas por decisão explícita do mantenedor; revisão pendente."
+  },
   "exclusions": [
     "All files not expressly listed in files; no automatic grant by directory or extension.",
     "Educational/scientific prose, externally supplied data and excerpts embedded in or loaded by listed programs; technical UI/error labels are part of the own code, not a license of the corpus.",
