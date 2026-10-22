@@ -16,9 +16,22 @@ Item {
     readonly property int mainColumns: width >= 900 ? 4 : 2
     readonly property int metricColumns: width >= 690 ? 3 : 2
     readonly property bool sideBySide: width >= 900
+    readonly property string selectedPanel: app.statisticsPresentation.panel || "taxonomy"
     implicitHeight: statisticsLayout.implicitHeight
 
     function count(value, singular, plural) { return value + " " + (value === 1 ? singular : plural) }
+    function selectPanel(panel) { app.statisticsPresentation = {panel: panel} }
+    function revealPanelFocus() {
+        if (sideBySide) return
+        let focused = app.activeFocusItem
+        while (focused && focused !== view) {
+            if (selectedPanel === "ranking" && focused === taxonomyPanel) { rankingTab.forceActiveFocus(Qt.TabFocusReason); return }
+            if (selectedPanel === "taxonomy" && focused === rankingPanel) { taxonomyTab.forceActiveFocus(Qt.TabFocusReason); return }
+            focused = focused.parent
+        }
+    }
+    onSideBySideChanged: Qt.callLater(revealPanelFocus)
+    onSelectedPanelChanged: Qt.callLater(revealPanelFocus)
 
     component Heading: Label {
         color: Style.Theme.text
@@ -56,10 +69,191 @@ Item {
         width: parent.width
         spacing: Style.Theme.spaceLg
         ColumnLayout {
+            objectName: "statisticsHeader"
             Layout.fillWidth: true
             spacing: Style.Theme.spaceXs
             Heading { text: "Suas estatísticas"; font.pixelSize: Style.Theme.titleSize }
             Note { text: "Acompanhe a partida e consulte o histórico do perfil, sem misturar modalidades." }
+        }
+
+        RowLayout {
+            objectName: "statisticsPanelSelector"
+            visible: !view.sideBySide
+            Layout.fillWidth: true
+            spacing: Style.Theme.spaceMd
+            UiButton {
+                id: taxonomyTab
+                objectName: "statisticsTaxonomyTab"
+                text: "Desempenho taxonômico"
+                compact: true
+                checkable: true
+                autoExclusive: true
+                checked: view.selectedPanel === "taxonomy"
+                secondary: !checked
+                Accessible.role: Accessible.PageTab
+                Accessible.description: "Mostrar os grupos da partida atual"
+                onClicked: view.selectPanel("taxonomy")
+            }
+            UiButton {
+                id: rankingTab
+                objectName: "statisticsRankingTab"
+                text: "Ranking"
+                compact: true
+                checkable: true
+                autoExclusive: true
+                checked: view.selectedPanel === "ranking"
+                secondary: !checked
+                Accessible.role: Accessible.PageTab
+                Accessible.description: "Mostrar o ranking local da modalidade selecionada"
+                onClicked: view.selectPanel("ranking")
+            }
+            Item { Layout.fillWidth: true }
+        }
+
+        GridLayout {
+            objectName: "statisticsTopPanels"
+            Layout.fillWidth: true
+            columns: view.sideBySide ? 2 : 1
+            columnSpacing: Style.Theme.spaceLg
+            rowSpacing: Style.Theme.spaceLg
+            Rectangle {
+                id: taxonomyPanel
+                objectName: "statisticsTaxonomyPanel"
+                visible: view.sideBySide || view.selectedPanel === "taxonomy"
+                Layout.fillWidth: true
+                Layout.preferredWidth: view.sideBySide ? view.width * 0.56 : view.width
+                Layout.alignment: Qt.AlignTop
+                implicitHeight: performanceLayout.implicitHeight + 2 * Style.Theme.spaceLg
+                color: Style.Theme.surface
+                radius: Style.Theme.cardRadius
+                border.color: Style.Theme.border
+                ColumnLayout {
+                    id: performanceLayout
+                    anchors.fill: parent
+                    anchors.margins: Style.Theme.spaceLg
+                    spacing: Style.Theme.spaceMd
+                    Heading { text: "Desempenho taxonômico" }
+                    Note { text: "Somente a partida atual. Grupos e subgrupos das respostas confirmadas." }
+                    Note { objectName: "statisticsTaxonomyEmpty"; visible: view.backend.taxonomicStats.length === 0; text: "Nenhum grupo com respostas nesta partida. Jogue para acompanhar seu desempenho aqui." }
+                    Repeater {
+                        model: view.backend.taxonomicStats
+                        delegate: ColumnLayout {
+                            id: group
+                            required property var modelData
+                            required property int index
+                            objectName: "statisticsTaxon-" + modelData.id
+                            readonly property real accuracy: modelData.answered > 0 ? modelData.correct / modelData.answered : 0
+                            Layout.fillWidth: true
+                            spacing: Style.Theme.spaceSm
+                            RowLayout {
+                                Layout.fillWidth: true
+                                KingdomArtwork { objectName: "performanceIcon" + group.index; kingdom: group.modelData.kingdom; implicitWidth: 38; implicitHeight: 38 }
+                                Heading { text: group.modelData.title; font.pixelSize: Style.Theme.bodySize }
+                                Label { text: group.modelData.answered ? Math.floor(100 * group.modelData.correct / group.modelData.answered) + "%" : "—"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize }
+                            }
+                            Note { text: view.count(group.modelData.correct, "acerto", "acertos") + " em " + view.count(group.modelData.answered, "resposta", "respostas") }
+                            AccuracyBar { ratio: group.accuracy }
+                            Note { visible: group.modelData.answered === 0; text: "Sem respostas neste grupo." }
+                            Repeater {
+                                model: group.modelData.phyla
+                                delegate: ColumnLayout {
+                                    id: phylum
+                                    required property var modelData
+                                    objectName: "statisticsSubtaxon-" + modelData.id
+                                    Layout.fillWidth: true
+                                    Layout.leftMargin: Style.Theme.spaceMd
+                                    spacing: Style.Theme.spaceXs
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        Note { text: phylum.modelData.title }
+                                        Label { text: phylum.modelData.answered ? phylum.modelData.accuracy + "%" : "—"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
+                                    }
+                                    AccuracyBar { ratio: phylum.modelData.answered > 0 ? phylum.modelData.correct / phylum.modelData.answered : 0 }
+                                    Note { text: phylum.modelData.answered ? view.count(phylum.modelData.correct, "acerto", "acertos") + " em " + view.count(phylum.modelData.answered, "resposta", "respostas") : "Sem respostas neste subgrupo." }
+                                }
+                            }
+                            Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Style.Theme.border; Layout.topMargin: Style.Theme.spaceXs }
+                        }
+                    }
+                    UiButton { objectName: "statisticsPlayButton"; text: view.app.playing ? "Continuar partida" : "Começar uma partida"; iconName: "play"; compact: true; onClicked: view.app.openPlay() }
+                }
+            }
+
+            Rectangle {
+                id: rankingPanel
+                objectName: "statisticsRankingPanel"
+                visible: view.sideBySide || view.selectedPanel === "ranking"
+                Layout.fillWidth: true
+                Layout.preferredWidth: view.sideBySide ? view.width * 0.44 : view.width
+                Layout.alignment: Qt.AlignTop
+                implicitHeight: rankingLayout.implicitHeight + 2 * Style.Theme.spaceLg
+                radius: Style.Theme.cardRadius
+                color: Style.Theme.surface
+                border.color: Style.Theme.border
+                ColumnLayout {
+                    id: rankingLayout
+                    anchors.fill: parent
+                    anchors.margins: Style.Theme.spaceLg
+                    spacing: Style.Theme.spaceMd
+                    RowLayout {
+                        Layout.fillWidth: true
+                        UiIcon { name: "trophy"; ink: Style.Theme.gold; implicitWidth: 22; implicitHeight: 22 }
+                        Heading { text: "Ranking local · " + view.rankingContext }
+                    }
+                    RowLayout {
+                        Layout.fillWidth: true
+                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; checked: view.backend.rankingMode === "free"; secondary: !checked; Accessible.description: "Histórico e ranking do modo Livre"; onClicked: view.backend.rankingMode = "free" }
+                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; Accessible.description: "Histórico e ranking competitivo da configuração atual"; onClicked: view.backend.rankingMode = "competitive" }
+                    }
+                    Note { text: "Melhor pontuação de cada jogador · até cinco posições." }
+                    Note { text: view.backend.rankingMode === "competitive" ? view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · conteúdo atual" : "Treinamento contínuo; grupos e durações variáveis." }
+                    Note {
+                        objectName: "statisticsPersonalRecord"
+                        visible: !!view.backend.personalRecord.scoreText
+                        text: "Seu recorde: " + (view.backend.personalRecord.scoreText || "0,00") + " pts · Última: " + (view.backend.personalRecord.lastScoreText || "0,00") + " pts"
+                        color: Style.Theme.green
+                    }
+                    Note { objectName: "statisticsRankingEmpty"; visible: view.backend.ranking.length === 0; text: "Nenhuma partida classificada nesta modalidade. Encerre uma partida elegível para entrar no ranking." }
+                    // The backend bounds this model to five rows. Let the page scroll
+                    // handle their full intrinsic height, including long player names.
+                    Repeater {
+                        model: view.backend.ranking
+                        delegate: FocusScope {
+                            id: rankRow
+                            required property var modelData
+                            required property int index
+                            objectName: "statisticsRank" + index
+                            Layout.fillWidth: true
+                            implicitHeight: rankContent.implicitHeight + 2 * Style.Theme.spaceMd
+                            activeFocusOnTab: true
+                            Accessible.role: Accessible.ListItem
+                            Accessible.name: (index + 1) + ". " + modelData.playerName + ", " + modelData.scoreText + " pontos"
+                            Accessible.description: rankDetail.text + ". Nome na partida mais recente: " + modelData.snapshotName
+                            Rectangle {
+                                anchors.fill: parent
+                                radius: Style.Theme.controlRadius
+                                color: rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
+                                border.width: rankRow.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+                                border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.index < 3 ? Style.Theme.gold : Style.Theme.border
+                            }
+                            RowLayout {
+                                id: rankContent
+                                anchors.fill: parent
+                                anchors.margins: Style.Theme.spaceMd
+                                spacing: Style.Theme.spaceSm
+                                Label { text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? Style.Theme.gold : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    spacing: Style.Theme.spaceXs
+                                    Label { text: rankRow.modelData.playerName; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WrapAnywhere; textFormat: Text.PlainText; Layout.fillWidth: true }
+                                    Note { id: rankDetail; text: (rankRow.modelData.legacyIdentity ? "Legado, vínculo pendente · " : rankRow.modelData.deletedProfile ? "Perfil excluído · " : "") + "Última: " + rankRow.modelData.lastScoreText + " pts · " + rankRow.modelData.lastPlayedAt }
+                                    Label { text: rankRow.modelData.scoreText + " pts"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         ColumnLayout {
@@ -174,147 +368,6 @@ Item {
             }
             Note { objectName: "statisticsHistoryHints"; text: "Dicas por categoria: taxonômicas " + view.history.taxonomic + " · etimológicas " + view.history.etymological + " · morfológicas " + view.history.morphological + "." }
             Note { objectName: "statisticsHistoryEmpty"; visible: view.history.answered === 0; text: "Sem respostas históricas detalhadas neste perfil e modalidade." }
-        }
-
-        GridLayout {
-            Layout.fillWidth: true
-            columns: view.sideBySide ? 2 : 1
-            columnSpacing: Style.Theme.spaceLg
-            rowSpacing: Style.Theme.spaceLg
-            Rectangle {
-                objectName: "statisticsTaxonomyPanel"
-                Layout.fillWidth: true
-                Layout.preferredWidth: view.sideBySide ? view.width * 0.56 : view.width
-                Layout.alignment: Qt.AlignTop
-                implicitHeight: performanceLayout.implicitHeight + 2 * Style.Theme.spaceLg
-                color: Style.Theme.surface
-                radius: Style.Theme.cardRadius
-                border.color: Style.Theme.border
-                ColumnLayout {
-                    id: performanceLayout
-                    anchors.fill: parent
-                    anchors.margins: Style.Theme.spaceLg
-                    spacing: Style.Theme.spaceMd
-                    Heading { text: "Desempenho taxonômico" }
-                    Note { text: "Somente a partida atual. Grupos e subgrupos das respostas confirmadas." }
-                    Note { objectName: "statisticsTaxonomyEmpty"; visible: view.backend.taxonomicStats.length === 0; text: "Nenhum grupo com respostas nesta partida. Jogue para acompanhar seu desempenho aqui." }
-                    Repeater {
-                        model: view.backend.taxonomicStats
-                        delegate: ColumnLayout {
-                            id: group
-                            required property var modelData
-                            required property int index
-                            objectName: "statisticsTaxon-" + modelData.id
-                            readonly property real accuracy: modelData.answered > 0 ? modelData.correct / modelData.answered : 0
-                            Layout.fillWidth: true
-                            spacing: Style.Theme.spaceSm
-                            RowLayout {
-                                Layout.fillWidth: true
-                                KingdomArtwork { objectName: "performanceIcon" + group.index; kingdom: group.modelData.kingdom; implicitWidth: 38; implicitHeight: 38 }
-                                Heading { text: group.modelData.title; font.pixelSize: Style.Theme.bodySize }
-                                Label { text: group.modelData.answered ? Math.floor(100 * group.modelData.correct / group.modelData.answered) + "%" : "—"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize }
-                            }
-                            Note { text: view.count(group.modelData.correct, "acerto", "acertos") + " em " + view.count(group.modelData.answered, "resposta", "respostas") }
-                            AccuracyBar { ratio: group.accuracy }
-                            Note { visible: group.modelData.answered === 0; text: "Sem respostas neste grupo." }
-                            Repeater {
-                                model: group.modelData.phyla
-                                delegate: ColumnLayout {
-                                    id: phylum
-                                    required property var modelData
-                                    objectName: "statisticsSubtaxon-" + modelData.id
-                                    Layout.fillWidth: true
-                                    Layout.leftMargin: Style.Theme.spaceMd
-                                    spacing: Style.Theme.spaceXs
-                                    RowLayout {
-                                        Layout.fillWidth: true
-                                        Note { text: phylum.modelData.title }
-                                        Label { text: phylum.modelData.answered ? phylum.modelData.accuracy + "%" : "—"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
-                                    }
-                                    AccuracyBar { ratio: phylum.modelData.answered > 0 ? phylum.modelData.correct / phylum.modelData.answered : 0 }
-                                    Note { text: phylum.modelData.answered ? view.count(phylum.modelData.correct, "acerto", "acertos") + " em " + view.count(phylum.modelData.answered, "resposta", "respostas") : "Sem respostas neste subgrupo." }
-                                }
-                            }
-                            Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Style.Theme.border; Layout.topMargin: Style.Theme.spaceXs }
-                        }
-                    }
-                    UiButton { objectName: "statisticsPlayButton"; text: view.app.playing ? "Continuar partida" : "Começar uma partida"; iconName: "play"; compact: true; onClicked: view.app.openPlay() }
-                }
-            }
-
-            Rectangle {
-                objectName: "statisticsRankingPanel"
-                Layout.fillWidth: true
-                Layout.preferredWidth: view.sideBySide ? view.width * 0.44 : view.width
-                Layout.alignment: Qt.AlignTop
-                implicitHeight: rankingLayout.implicitHeight + 2 * Style.Theme.spaceLg
-                radius: Style.Theme.cardRadius
-                color: Style.Theme.surface
-                border.color: Style.Theme.border
-                ColumnLayout {
-                    id: rankingLayout
-                    anchors.fill: parent
-                    anchors.margins: Style.Theme.spaceLg
-                    spacing: Style.Theme.spaceMd
-                    RowLayout {
-                        Layout.fillWidth: true
-                        UiIcon { name: "trophy"; ink: Style.Theme.gold; implicitWidth: 22; implicitHeight: 22 }
-                        Heading { text: "Ranking · " + view.rankingContext }
-                    }
-                    RowLayout {
-                        Layout.fillWidth: true
-                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; checked: view.backend.rankingMode === "free"; secondary: !checked; Accessible.description: "Histórico e ranking do modo Livre"; onClicked: view.backend.rankingMode = "free" }
-                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; Accessible.description: "Histórico e ranking competitivo da configuração atual"; onClicked: view.backend.rankingMode = "competitive" }
-                    }
-                    Note { text: "Melhor pontuação de cada jogador · até cinco posições." }
-                    Note { text: view.backend.rankingMode === "competitive" ? view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · conteúdo atual" : "Treinamento contínuo; grupos e durações variáveis." }
-                    Note {
-                        objectName: "statisticsPersonalRecord"
-                        visible: !!view.backend.personalRecord.scoreText
-                        text: "Seu recorde: " + (view.backend.personalRecord.scoreText || "0,00") + " pts · Última: " + (view.backend.personalRecord.lastScoreText || "0,00") + " pts"
-                        color: Style.Theme.green
-                    }
-                    Note { objectName: "statisticsRankingEmpty"; visible: view.backend.ranking.length === 0; text: "Nenhuma partida classificada nesta modalidade. Encerre uma partida elegível para entrar no ranking." }
-                    // The backend bounds this model to five rows. Let the page scroll
-                    // handle their full intrinsic height, including long player names.
-                    Repeater {
-                        model: view.backend.ranking
-                        delegate: FocusScope {
-                            id: rankRow
-                            required property var modelData
-                            required property int index
-                            objectName: "statisticsRank" + index
-                            Layout.fillWidth: true
-                            implicitHeight: rankContent.implicitHeight + 2 * Style.Theme.spaceMd
-                            activeFocusOnTab: true
-                            Accessible.role: Accessible.ListItem
-                            Accessible.name: (index + 1) + ". " + modelData.playerName + ", " + modelData.scoreText + " pontos"
-                            Accessible.description: rankDetail.text + ". Nome na partida mais recente: " + modelData.snapshotName
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: Style.Theme.controlRadius
-                                color: rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
-                                border.width: rankRow.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
-                                border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.index < 3 ? Style.Theme.gold : Style.Theme.border
-                            }
-                            RowLayout {
-                                id: rankContent
-                                anchors.fill: parent
-                                anchors.margins: Style.Theme.spaceMd
-                                spacing: Style.Theme.spaceSm
-                                Label { text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? Style.Theme.gold : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
-                                ColumnLayout {
-                                    Layout.fillWidth: true
-                                    spacing: Style.Theme.spaceXs
-                                    Label { text: rankRow.modelData.playerName; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WrapAnywhere; textFormat: Text.PlainText; Layout.fillWidth: true }
-                                    Note { id: rankDetail; text: (rankRow.modelData.legacyIdentity ? "Legado, vínculo pendente · " : rankRow.modelData.deletedProfile ? "Perfil excluído · " : "") + "Última: " + rankRow.modelData.lastScoreText + " pts · " + rankRow.modelData.lastPlayedAt }
-                                    Label { text: rankRow.modelData.scoreText + " pts"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

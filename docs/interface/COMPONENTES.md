@@ -1,6 +1,12 @@
 # Componentes compartilhados
 
-## Estatísticas — 2.3.2
+## Estatísticas — refinamentos da PR #36
+
+`StatisticsView` apresenta `statisticsTopPanels` depois de `statisticsHeader`, antes dos indicadores e histórico. A partir de 900 pixels úteis, ambos os painéis mantêm proporções e alinhamento superior; abaixo disso, `statisticsTaxonomyTab`/`statisticsRankingTab` alternam sua visibilidade sem remover modelos/dados. `Main.statisticsPresentation.panel` guarda a seleção em memória, conservada ao recriar o Loader e ao redimensionar. Os seletores usam `UiButton.compact`, estado marcado, Tab/Espaço e foco do Design System. Se o redimensionamento ocultar o painel focado, o foco passa ao seletor correspondente ao painel selecionado.
+
+`Main.pageWheelArea` inclui Estatísticas nas mesmas condições existentes de Início/Explorar. Continua usando `conventionalWheel`, 110 pixels por incremento, animação pelos tokens, caminho nativo para pixels/ângulos parciais, interrupção por movimento/foco/pressão da barra e faixa de segurança compartilhada. Não há rolagem interna nos painéis. [Revisão e testes](VERSOES/2.3.2/refinamentos-topo/README.md).
+
+## Estatísticas — 2.3.2 (contrato inicial)
 
 `StatisticsView` mantém `app`/`backend` e apenas projeta contratos existentes. `statisticsAnswered`, `statisticsCorrect`, `statisticsIncorrect` e `statisticsAccuracy` reutilizam `StatCard` sem mudar o componente compartilhado. Desempenho e histórico usam textos decimais do controlador. Os indicadores se reorganizam conforme a largura útil; `statisticsTaxonomyPanel` e `statisticsRankingPanel` empilham abaixo de 900 pixels lógicos. Alturas dos painéis seguem o conteúdo, com a rolagem única do shell.
 

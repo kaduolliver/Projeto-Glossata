@@ -1,5 +1,7 @@
 # 2.3.2 — Modernização da tela Estatísticas
 
+Esta página preserva a entrega inicial aprovada da PR #36, suas 99 capturas e resultados. A apresentação atual está na [revisão dos painéis no topo e rolagem compartilhada](refinamentos-topo/README.md). Nenhuma evidência inicial foi substituída.
+
 Base: `c6db713c9308e2e08cca6b7fea8f6ed214eeb116`, integração da PR #35. Branch: `feat/issue-22-statistics-2.3.2`. Escopo restrito à apresentação de Estatísticas e sua validação. Evidências anteriores preservadas.
 
 [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), relacionada à Issue #22. Código e testes: [`c435304a7243c1bc6396fa4e4d97297fe83426a9`](https://github.com/kaduolliver/Projeto-Glossata/commit/c435304a7243c1bc6396fa4e4d97297fe83426a9). Sem merge, release ou avanço para 2.3.3.

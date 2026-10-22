@@ -20,13 +20,13 @@ O nome *Glossata* faz referência a um clado de lepidópteros que inclui a maior
 
 A aplicação disponível atualmente é o **Projeto Glossata**, um programa desktop em português, com catálogo local de organismos, exploração taxonômica, fichas educativas, desafios de identificação e acompanhamento do desempenho. A visão de longo prazo é integrar esses recursos a uma **enciclopédia interativa da natureza**.
 
-![Tela Início real do Projeto Glossata no topo, com o carrossel fotográfico completo e as ações Explorar e Jogar.](docs/interface/VERSOES/2.2.1-B/refinamento-1/capturas/home-production-1240x820.png)
+![Tela Início real do Projeto Glossata no topo, com o carrossel fotográfico completo e as ações Explorar e Jogar.](docs/images/tela-inicial.png)
 
-*Home no topo, com o carrossel completo. Captura do aplicativo em execução com perfil temporário. [Origem da captura](docs/interface/VERSOES/2.2.1-B/refinamento-1/captura-producao-inicial.json).*
+*Home atual no topo, com o carrossel completo. Captura do aplicativo em execução com perfil temporário, renovada após a alteração do shell compartilhado. [Origem da captura](docs/images/tela-inicial.json) · [Captura histórica do topo](docs/interface/VERSOES/2.2.1-B/refinamento-1/capturas/home-production-1240x820.png).*
 
-![Descoberta do Dia e indicadores dinâmicos do catálogo na tela Início real do Projeto Glossata, após rolagem.](docs/images/tela-inicial.png)
+![Descoberta do Dia e indicadores dinâmicos do catálogo na tela Início real do Projeto Glossata, após rolagem.](docs/interface/VERSOES/2.3.2/refinamentos-topo/anterior-home.png)
 
-*Captura do aplicativo em execução, com perfil temporário e rolagem na Home para mostrar a Descoberta do Dia e os indicadores. [Origem da captura](docs/images/tela-inicial.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
+*Captura anterior preservada, com perfil temporário e rolagem na Home para mostrar a Descoberta do Dia e os indicadores. [Origem da captura](docs/interface/VERSOES/2.3.2/refinamentos-topo/anterior-home.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
 
 ![Quiz real do Projeto Glossata, com fotografia de um leão, quatro alternativas de identificação do gênero, pontuação possível e botão de dica.](docs/images/quiz.png)
 

@@ -1,5 +1,7 @@
 # Design system — revisão 2.1.2
 
+Os refinamentos de Estatísticas na PR #36 preservam cartões, cores, tipografia, proporções e espaçamentos aprovados. Taxonomia/ranking sobem ao topo; os seletores compactos reutilizam `UiButton` e seu foco. A roda usa o mesmo passo/animação do shell, com movimento reduzido e dispositivos de alta precisão preservados. [Revisão atual](VERSOES/2.3.2/refinamentos-topo/README.md).
+
 Estatísticas 2.3.2 reutiliza `Theme`, `StatCard`, `UiButton`, `UiIcon` e `KingdomArtwork`, sem alterar seus padrões globais. Quatro cartões de respostas confirmadas, cartões de desempenho/histórico, dicas compactas e painéis taxonômico/ranking preservam a composição existente, agora adaptável. Verde sinaliza indicadores; dourado destaca posições e recordes, sem classificações decorativas de desempenho. Bordas, textos, foco e espaçamento usam tokens existentes; não há novas animações ou gráficos sem dados. [Registro](VERSOES/2.3.2/README.md).
 
 A revisão atual do Quiz 2.3.1 restaura cores, botões, tipografia, cabeçalho e espaçamentos anteriores à PR #35. Os títulos das dicas usam verde/dourado existentes e a cor discreta da assistência forte já usada no painel; não há novos tokens ou reformulação de cartões. A moldura, o ajuste proporcional e os créditos de `SpeciesPortrait` voltam ao contrato anterior, com rolagem somente na coluna direita do Quiz. [Registro atual](VERSOES/2.3.1/restauracao-visual/README.md); a proposta de modernização anterior foi rejeitada e permanece identificada como histórica.

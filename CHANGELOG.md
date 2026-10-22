@@ -4,6 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.11.0] — Não lançado; interface de Estatísticas
 
+- Refinamentos da PR #36: taxonomia/ranking imediatamente abaixo do cabeçalho, seletores compactos com contexto em memória e rolagem compartilhada com Início/Explorar. [Revisão e evidências](docs/interface/VERSOES/2.3.2/refinamentos-topo/README.md). [Planejamento multiplayer](docs/architecture/ESTATISTICAS_MULTIPLAYER.md) apenas documental, sem servidores, conta online ou alterações de dados/regras.
+
 - Subetapa 2.3.2: cartões de respostas/acertos/erros/precisão, desempenho e dicas com semântica explícita; histórico do perfil separado da partida, taxonomia com proporções reais e ranking por modalidade adaptável. Reutiliza os contratos existentes sem alterar backend, regras, persistência, dados ou licenças. [Diagnóstico, capturas e verificações](docs/interface/VERSOES/2.3.2/README.md).
 - MINOR pelos recursos compatíveis de apresentação e navegação. Catálogo 2.4.0 preservado; sem lançamento ou aprovação de distribuição.
 
