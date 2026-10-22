@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## Quiz — 2.3.1
+
+A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` mantém Morfologia no modelo original de seções à direita, entre Nutrição e Conservação, com fonte e revisão. `speciesDescriptionRegion`, abaixo da foto/créditos, contém apenas a mensagem de indisponibilidade: não consulta tópicos ou resumo e não associa fontes inexistentes. [Correção pontual](VERSOES/2.3.1/descricao-independente/README.md). [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).
+
 ## PR #33 — painel compacto e fontes contextuais
 
 O ajuste fica em `TaxonomyView.qml`: apresentação adaptativa dos mesmos controles, diálogo local para dados científicos disponíveis e posicionamento inicial da página do grupo. O timer `positionPlayTop` aguarda o layout e cancela a inércia antes de colocar a página taxonômica de Jogar no topo. A margem do botão Voltar conserva sua moldura visível. Não altera `Main`, `CategoryView`, `playPresentation` ou sua restauração; em Explorar, o timer não reposiciona a página. O diálogo não consulta rede para mostrar os dados e não deriva aprovações. [Validação e capturas](VERSOES/2.2.3/configuracao-compacta/README.md).

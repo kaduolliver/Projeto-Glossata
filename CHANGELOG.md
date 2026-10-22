@@ -2,6 +2,11 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.10.0] — Não lançado; interface do Quiz
+
+- PR #35 revisada por decisão do mantenedor: composição anterior do Quiz restaurada; títulos das dicas pelo nível efetivo, contadores de acertos/erros e retrato estável com rolagem independente à direita. Na ficha, Morfologia permanece entre Nutrição e Conservação na coluna direita; a estrutura de Descrição educativa abaixo da foto/créditos é independente e informa sua indisponibilidade, sem reutilizar tópicos ou resumo. [Correção e capturas atuais](docs/interface/VERSOES/2.3.1/descricao-independente/README.md).
+- MINOR pelos recursos de apresentação compatíveis; catálogo 2.4.0 inalterado. A proposta visual inicial não foi aprovada e permanece identificada como histórica. Sem lançamento ou aprovação de distribuição.
+
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar
 
 - PR #33: dificuldade junto ao seletor de identificação, com intervalo de 20 pixels lógicos nas janelas amplas e quebra para a linha seguinte nas compactas; início à direita e altura compacta preservados. [Capturas e escalas](docs/interface/VERSOES/2.2.3/alinhamento-dificuldade/README.md).

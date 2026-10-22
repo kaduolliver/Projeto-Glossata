@@ -1,0 +1,95 @@
+{
+  "recorded_at": "2026-10-22T19:48:46.780031+00:00",
+  "source_commit": "b076cfa8289c3dbbfaa070b39684d74da3e91a0f",
+  "base_commit": "d17c68f443e7908fec278f873c1c042368f71415",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure -j3",
+    "passed": 26,
+    "failed": 0,
+    "qt_cases": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 24,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "targeted": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "cases_per_run_including_setup_cleanup": 5,
+    "failed": 0
+  },
+  "captures": 18,
+  "capture_manifest_sha256": "b7f879b9101da417855e9a44a5f2f2b78cc3f36ee7fd99a0895b38db1425a2b8",
+  "scope": {
+    "application_source_changed": [
+      "resources/qml/views/InfoView.qml"
+    ],
+    "preserved_paths": [
+      "src",
+      "resources/data",
+      "resources/compliance",
+      "resources/images",
+      "resources.qrc",
+      "VERSION.txt",
+      "scripts",
+      "AGENTS.md",
+      "resources/qml/views/QuizView.qml",
+      "resources/qml/components/HintPanel.qml",
+      "resources/qml/components/SpeciesPortrait.qml",
+      "resources/qml/Main.qml",
+      "resources/qml/views/CategoryView.qml",
+      "resources/qml/views/TaxonomyView.qml",
+      "docs/images",
+      "docs/interface/VERSOES/2.3.1/restauracao-visual/capturas",
+      "docs/interface/VERSOES/2.3.1/restauracao-visual/capturas.json",
+      "docs/interface/VERSOES/2.3.1/restauracao-visual/verificacoes"
+    ]
+  },
+  "binaries": {
+    "production": "2dcc380d35d8c3a988973bf632a8d7b8049deff6a177ef7fa2b4cbab622fa675",
+    "ui_tests": "c82aa381305ac57e0cbea8acdccc260a6109d0823fb86b08947887df5aadac43"
+  },
+  "checks_passed": [
+    "Release build",
+    "InfoView QML lint",
+    "Production smoke",
+    "Release metadata/history",
+    "Project status",
+    "Code licensing scope",
+    "Git whitespace",
+    "Evidence hashes and source/binary identity"
+  ],
+  "missing_morphology_case": "Presentation-only fixture; 122 existing catalogue notes have text. No catalogue, database, approval or photo changed.",
+  "evidence_sha256": {
+    "auditoria-arquivos.json": "984e36c321454306e2c5ca04aaf6c536122033914c2dce9613d988df7aed4ccb",
+    "core-results.txt": "816e6edaf1b63561bc30896a9c9f7e02c25aace3d1e340f16c7e51dcaee73c3f",
+    "ctest-results.txt": "10c2bfaa0e896c4a83a78f002a26677e25c280f9d556f51c4c0fa2b7437f9307",
+    "description-dpi-125.txt": "3ec7dca7c997e42feba76ef19829b24b90552225c8b4f537cb9171531a6649eb",
+    "description-dpi-150.txt": "6e1144da90b75bcde5568fe6dd64bb9bf8818507fcbc43d1a36696b3a859e7c8",
+    "description-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "description-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "description-targeted.txt": "7db61481171b378d45554208572eec79df94802482c4345a8e8fbcf567099927",
+    "identity-results.txt": "5e74723d4e1a8f525dc4b523dd6973247de9368b7051fc74a7336355d8e79612",
+    "recovery-results.txt": "1b3d2f7384d1733c423442ec85ab4f00962b9e397290484b47e92329f6a11f5f",
+    "ui-test-results.txt": "a41a6741c13e80a68e5ec752ea48843250fd6eb07c1e7e8c7dc564b76e7d2571"
+  },
+  "limitations": "Qt scale factors, not physical Windows scaling or GPU/screen-reader testing. Original licensing/review gaps remain; no scientific/legal approval."
+}

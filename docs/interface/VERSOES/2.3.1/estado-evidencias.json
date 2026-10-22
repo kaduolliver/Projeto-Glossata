@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "pull_request": 35,
+  "current": {
+    "manifest": "descricao-independente/capturas.json",
+    "documentation": "descricao-independente/README.md",
+    "source_commit": "b076cfa",
+    "scope": "InfoView: morphology restored to original right-column topic; prepared description contains only its independent unavailable message.",
+    "unchanged_quiz_manifest": "restauracao-visual/capturas.json",
+    "status": "current_implementation_pending_maintainer_visual_review"
+  },
+  "superseded_info_view": {
+    "manifest": "restauracao-visual/capturas.json",
+    "scope": "InfoView frames only; Quiz frames remain applicable.",
+    "reason": "The former morphology/description association was corrected; previous InfoView captures are retained as historical evidence."
+  },
+  "historical": {
+    "manifest": "capturas.json",
+    "documentation": "proposta-rejeitada.md",
+    "status": "visual_proposal_rejected_by_maintainer",
+    "notice": "Preserved for traceability; does not represent the final implementation or visual, scientific, editorial or legal approval."
+  }
+}

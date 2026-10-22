@@ -1,0 +1,3272 @@
+{
+  "recorded_at": "2026-10-22T18:19:54.204806+00:00",
+  "script_source_commit": "25a882bd87d7d8cfd2fff458d296fa0334f0ee3b",
+  "script_path_at_source": "scripts/cleanup_build.py",
+  "script_sha256": "db8acc767ad870344d1b7dfb6b4e1d946426e8167a0e5abd105c427d2a7620c0",
+  "executed_copy": "build/auditoria-main/scripts/cleanup_build.py",
+  "arguments": [
+    "--root",
+    "C:/glossata_game",
+    "--include-old-builds"
+  ],
+  "reason_for_copy": "PR34 integrated on main after this feature branch; exact committed script executed with explicit workspace root, without merge, reset, rebase or rewrite of remote history.",
+  "script_result": {
+    "mode": "dry-run",
+    "root": "C:\\glossata_game",
+    "candidates": [],
+    "skipped": [
+      {
+        "path": "build/tests/previews/navigation",
+        "category": "generated-previews",
+        "bytes": 6259478,
+        "last_modified": 1792693134,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/carousel",
+        "category": "generated-previews",
+        "bytes": 8766596,
+        "last_modified": 1792693080,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/daily-discovery",
+        "category": "generated-previews",
+        "bytes": 4580734,
+        "last_modified": 1792693063,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2",
+        "category": "generated-previews",
+        "bytes": 6979461,
+        "last_modified": 1792693055,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-1",
+        "category": "generated-previews",
+        "bytes": 6060326,
+        "last_modified": 1792693039,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-creditos",
+        "category": "generated-previews",
+        "bytes": 4809990,
+        "last_modified": 1792693017,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-usabilidade",
+        "category": "generated-previews",
+        "bytes": 12309713,
+        "last_modified": 1792692893,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-2.2.3",
+        "category": "generated-previews",
+        "bytes": 23869432,
+        "last_modified": 1792692868,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-context-2.2.3",
+        "category": "generated-previews",
+        "bytes": 13612445,
+        "last_modified": 1792692842,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-compact-2.2.3",
+        "category": "generated-previews",
+        "bytes": 11153020,
+        "last_modified": 1792692810,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-restored-2.3.1",
+        "category": "generated-previews",
+        "bytes": 44050924,
+        "last_modified": 1792692793,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-2.3.1",
+        "category": "generated-previews",
+        "bytes": 25994339,
+        "last_modified": 1792686410,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-final",
+        "category": "generated-previews",
+        "bytes": 8702303,
+        "last_modified": 1792610175,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-2",
+        "category": "generated-previews",
+        "bytes": 8086062,
+        "last_modified": 1792551808,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.1-B-verified",
+        "category": "old-build-2.2.1",
+        "bytes": 258432440,
+        "last_modified": 1792542045,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-usabilidade",
+        "category": "old-build-2.2.2",
+        "bytes": 258884219,
+        "last_modified": 1792621902,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-creditos",
+        "category": "old-build-2.2.2",
+        "bytes": 258825025,
+        "last_modified": 1792617670,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-final",
+        "category": "old-build-2.2.2",
+        "bytes": 258782544,
+        "last_modified": 1792610052,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.2-round-2",
+        "category": "old-build-2.2.2",
+        "bytes": 258697869,
+        "last_modified": 1792608582,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.2-verified",
+        "category": "old-build-2.2.2",
+        "bytes": 258632217,
+        "last_modified": 1792547193,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-dificuldade",
+        "category": "old-build-2.2.3",
+        "bytes": 259051239,
+        "last_modified": 1792677763,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.3-alinhamento",
+        "category": "old-build-2.2.3",
+        "bytes": 259050215,
+        "last_modified": 1792672241,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.3-compacto",
+        "category": "old-build-2.2.3",
+        "bytes": 259048679,
+        "last_modified": 1792668478,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-contexto",
+        "category": "old-build-2.2.3",
+        "bytes": 258989906,
+        "last_modified": 1792637746,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-verified",
+        "category": "old-build-2.2.3",
+        "bytes": 258958235,
+        "last_modified": 1792631231,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.3.1-restaurado",
+        "category": "old-build-2.3.1",
+        "bytes": 259152701,
+        "last_modified": 1792692691,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.3.1-quiz",
+        "category": "old-build-2.3.1",
+        "bytes": 259119670,
+        "last_modified": 1792686287,
+        "reason": "retained newest"
+      }
+    ],
+    "total_bytes": 0
+  },
+  "deleted": 0,
+  "moved": 0,
+  "manual_inventory": {
+    "scope": "File names, sizes and directory metadata under workspace build plus explicit Python caches. No file contents, SQLite databases or user profile contents read.",
+    "inventory": [
+      {
+        "path": "build/.ninja_deps",
+        "bytes": 1879892,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/.ninja_log",
+        "bytes": 27780,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/.qt",
+        "bytes": 5424,
+        "files": 2,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/2.2.1-B-catalog-audit.txt",
+        "bytes": 622,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/2.2.1-B-distribution.txt",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/2.2.1-B-repository-audit.txt",
+        "bytes": 362,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/2.2.1-B-verified",
+        "bytes": 258432440,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.2-creditos",
+        "bytes": 258825025,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.2-final",
+        "bytes": 258782544,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.2-round-2",
+        "bytes": 258697869,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.2-usabilidade",
+        "bytes": 258884219,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.2-verified",
+        "bytes": 258632217,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.3-alinhamento",
+        "bytes": 259050215,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.3-compacto",
+        "bytes": 259048679,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.3-contexto",
+        "bytes": 258989906,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.3-dificuldade",
+        "bytes": 259051239,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.2.3-verified",
+        "bytes": 258958235,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.3.1-quiz",
+        "bytes": 259119670,
+        "files": 6,
+        "candidate_for_manual_review": true,
+        "reason": "Previous interface runtime; may support historical evidence. Verify provenance and reproducibility before any future cleanup."
+      },
+      {
+        "path": "build/2.3.1-restaurado",
+        "bytes": 259152701,
+        "files": 6,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/__pycache__",
+        "bytes": 145430,
+        "files": 9,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/admit_home_lion_fhd.py",
+        "bytes": 752,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-0.log",
+        "bytes": 77,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-1.log",
+        "bytes": 72,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-10.log",
+        "bytes": 85,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-11.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-2.log",
+        "bytes": 146,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-3.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-4.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-5.log",
+        "bytes": 297,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-6.log",
+        "bytes": 642,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-7.log",
+        "bytes": 316,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-8.log",
+        "bytes": 69,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-check-9.log",
+        "bytes": 69,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-checks.json",
+        "bytes": 2547,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-pr.md",
+        "bytes": 4037,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apache-preservation.json",
+        "bytes": 713,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/app.rc",
+        "bytes": 812,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apply_authorized_official_branding.py",
+        "bytes": 5108,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apply_confirmed_consolidated_texts.py",
+        "bytes": 17624,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apply_confirmed_group_text_batch.py",
+        "bytes": 14022,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apply_confirmed_profile_batch_2.py",
+        "bytes": 14410,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/apply_confirmed_technical_wording.py",
+        "bytes": 9750,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222.py",
+        "bytes": 6469,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222_credits.py",
+        "bytes": 8856,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222_final.py",
+        "bytes": 7248,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222_round_1.py",
+        "bytes": 7379,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222_round_2.py",
+        "bytes": 7140,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_222_usability.py",
+        "bytes": 10195,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_223.py",
+        "bytes": 10830,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_223_compact.py",
+        "bytes": 11259,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_223_context.py",
+        "bytes": 10997,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_223_difficulty_alignment.py",
+        "bytes": 5850,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_223_start_alignment.py",
+        "bytes": 4841,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_caption_fix.py",
+        "bytes": 3034,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_control_hit_fix.py",
+        "bytes": 3307,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_controls_fix.py",
+        "bytes": 3034,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_focus_fix.py",
+        "bytes": 3034,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_home_carousel.py",
+        "bytes": 1794,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_home_refinement.py",
+        "bytes": 2960,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_lion_fhd.py",
+        "bytes": 3026,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_navigation.py",
+        "bytes": 2870,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_quiz231.py",
+        "bytes": 11084,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_quiz_preview.py",
+        "bytes": 2918,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_restored_quiz.py",
+        "bytes": 11436,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/archive_sync_fix.py",
+        "bytes": 3307,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-alternatives.png",
+        "bytes": 3484544,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-Animalia.png",
+        "bytes": 2103700,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-cardui.png",
+        "bytes": 453370,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-final-candidates.png",
+        "bytes": 1455702,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-Fungi.png",
+        "bytes": 2004007,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-Monera.png",
+        "bytes": 1906835,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-new-photos.png",
+        "bytes": 2147999,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-Plantae.png",
+        "bytes": 2223485,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-Protista.png",
+        "bytes": 1875084,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-refinement-adults.png",
+        "bytes": 819650,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit-refinement-alternatives.png",
+        "bytes": 3019681,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/audit_restored_quiz.py",
+        "bytes": 2925,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/auditoria-main",
+        "bytes": 6807,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/baseline-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/botany-algae-reading.txt",
+        "bytes": 219208,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/botany-todo.txt",
+        "bytes": 20764,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/branding-before.json",
+        "bytes": 1224,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/branding-distribution-audit.json",
+        "bytes": 664059,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/branding-final-body.md",
+        "bytes": 3334,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/branding-pr.md",
+        "bytes": 2715,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/build-manifest.json",
+        "bytes": 54886,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/build.ninja",
+        "bytes": 373196,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/cardui-options.json",
+        "bytes": 3912,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/catalog-quality.json",
+        "bytes": 356576,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/catalog-readiness.json",
+        "bytes": 1097054,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_223_compact_evidence.py",
+        "bytes": 1948,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_223_context_evidence.py",
+        "bytes": 1949,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_223_evidence.py",
+        "bytes": 1926,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_cached_observations.py",
+        "bytes": 3273,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_credit_evidence.py",
+        "bytes": 1894,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_final_text_sources.py",
+        "bytes": 7086,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_licensed_article_sections.py",
+        "bytes": 4605,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/check_usability_evidence.py",
+        "bytes": 1938,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/ci-checks",
+        "bytes": 8202405,
+        "files": 14,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/clarify_applied_text_origin.py",
+        "bytes": 917,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/cmake_install.cmake",
+        "bytes": 2194,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/CMakeCache.txt",
+        "bytes": 60942,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/CMakeFiles",
+        "bytes": 66672287,
+        "files": 36,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/collect_pmc_license_metadata.py",
+        "bytes": 2323,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/collect_text_source_metadata.py",
+        "bytes": 1647,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/compile_commands.json",
+        "bytes": 106097,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/compose_profiles.py",
+        "bytes": 68429,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/correct_final_reference_gaps.py",
+        "bytes": 2348,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/correct_last_draft_claims.py",
+        "bytes": 1623,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/correct_rendition_description.py",
+        "bytes": 372,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/correct_reviewed_drafts.py",
+        "bytes": 830,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/credits-smoke.txt",
+        "bytes": 145,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/CTestTestfile.cmake",
+        "bytes": 275,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/curation",
+        "bytes": 39129590,
+        "files": 103,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/current-icon-preview.png",
+        "bytes": 65770,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/daily-core-results.txt",
+        "bytes": 596,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/daily-ui-results.txt",
+        "bytes": 480,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/designsystem-pr.md",
+        "bytes": 1821,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/DICAS_E_PONTUACAO.md",
+        "bytes": 9198,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/dictyota-final.png",
+        "bytes": 572824,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/discord-test.log",
+        "bytes": 127,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/discord.json",
+        "bytes": 100,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/distribution-audit.json",
+        "bytes": 386095,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_applied_profile_batch_2.py",
+        "bytes": 13625,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_confirmed_consolidation.py",
+        "bytes": 18242,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_group_text_proposal.py",
+        "bytes": 8675,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_home_refinement.py",
+        "bytes": 6209,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_issue2_progress.py",
+        "bytes": 13657,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_lion_fhd.py",
+        "bytes": 3446,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/document_technical_wording_application.py",
+        "bytes": 10690,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-0.log",
+        "bytes": 77,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-1.log",
+        "bytes": 72,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-2.log",
+        "bytes": 100,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-3.log",
+        "bytes": 72,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-4.log",
+        "bytes": 49,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-5.log",
+        "bytes": 27,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-6.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-7.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-8.log",
+        "bytes": 642,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-check-9.log",
+        "bytes": 85,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-history-check.json",
+        "bytes": 2063,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-licensing-pr.md",
+        "bytes": 5168,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-policy-prior-evaluation.json",
+        "bytes": 763,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-qmllint.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-remote-distribution",
+        "bytes": 641476,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-remote-validation.log",
+        "bytes": 167007,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/editorial-rights-confirmation.json",
+        "bytes": 2270021,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/exploration-candidates.json",
+        "bytes": 126039,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/exploration-discovery",
+        "bytes": 6473491,
+        "files": 687,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/exploration-media-audit.json",
+        "bytes": 459750,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/exploration-plan.json",
+        "bytes": 5968,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/final-photo-candidates.json",
+        "bytes": 17795,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/final-smoke.txt",
+        "bytes": 142,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/finalize_home_refinement_report.py",
+        "bytes": 2629,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/finalize_lion_fhd_report.py",
+        "bytes": 1003,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/finalize_reference_comparisons.py",
+        "bytes": 817,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/finalize_source_conference.py",
+        "bytes": 17271,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/find_lion_fhd.py",
+        "bytes": 772,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/finish_text_source_checks.py",
+        "bytes": 434,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/fireflies-official-reference.png",
+        "bytes": 2345780,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/glossata_quiz.exe",
+        "bytes": 36628067,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/glossata_quiz_autogen",
+        "bytes": 324592661,
+        "files": 9,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/governance-audit-summary.json",
+        "bytes": 169434,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/governance-audit.json",
+        "bytes": 311279,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/governance-history-summary.json",
+        "bytes": 4128,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/governance-history.json",
+        "bytes": 2656,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/hint-availability-pr21",
+        "bytes": 11128497,
+        "files": 13,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/home-carousel-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/home-carousel-pr.md",
+        "bytes": 6690,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/home-hires-plan.json",
+        "bytes": 1757,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/home-refinement-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/identidade-oficial-pr.md",
+        "bytes": 1894,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/import-cache",
+        "bytes": 440105181,
+        "files": 390,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/indent_restored_quiz.py",
+        "bytes": 455,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/inspect_hires.py",
+        "bytes": 546,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/inspect_sources.py",
+        "bytes": 595,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/inv04",
+        "bytes": 2345,
+        "files": 2,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/inv08",
+        "bytes": 2674490,
+        "files": 4,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/inventory_quiz231.py",
+        "bytes": 4183,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/investigation",
+        "bytes": 7708,
+        "files": 3,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-after-audit.json",
+        "bytes": 664059,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-baseline.json",
+        "bytes": 4382482,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-before-audit.json",
+        "bytes": 640720,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-before.json",
+        "bytes": 4542,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-correction-proposal.json",
+        "bytes": 3506,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-pr.md",
+        "bytes": 2651,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue-2-qmllint.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-confirmed-application",
+        "bytes": 3083307,
+        "files": 2,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-confirmed-fixture",
+        "bytes": 134637863,
+        "files": 1099,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-consolidated-working-draft.json",
+        "bytes": 3079423,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-continuation-audit.json",
+        "bytes": 706808,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-distribution.json",
+        "bytes": 663149,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-history.json",
+        "bytes": 2126,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-pr-body.md",
+        "bytes": 3494,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-pr.md",
+        "bytes": 3636,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-validation.json",
+        "bytes": 8100,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-final-validations.json",
+        "bytes": 2011,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-pr18",
+        "bytes": 8739470,
+        "files": 14,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-replay-before.json",
+        "bytes": 94,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-resolution-pr.md",
+        "bytes": 3330,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2-validation-logs",
+        "bytes": 9641,
+        "files": 22,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_algae_drafts.json",
+        "bytes": 11303,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_bacteria_drafts.json",
+        "bytes": 17522,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_conference_notes.json",
+        "bytes": 235510,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_etymology_drafts.json",
+        "bytes": 10175,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_fungi_drafts.json",
+        "bytes": 15072,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_plants_drafts.json",
+        "bytes": 14510,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_profile_drafts.json",
+        "bytes": 23530,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_remaining_drafts.json",
+        "bytes": 7869,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue2_source_checks.json",
+        "bytes": 947342,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/issue4",
+        "bytes": 73397068,
+        "files": 175,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/licensing-inventory.json",
+        "bytes": 346125,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/link_home_carousel.py",
+        "bytes": 1096,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/link_home_refinement.py",
+        "bytes": 1026,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/link_lion_fhd.py",
+        "bytes": 2144,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lion-fhd-candidate",
+        "bytes": 572283,
+        "files": 3,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lion-fhd-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-applied-curation",
+        "bytes": 2439123,
+        "files": 3,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-applied-distribution.log",
+        "bytes": 107,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-confirmed-envelopes.json",
+        "bytes": 72520,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-curation",
+        "bytes": 2470219,
+        "files": 3,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-distribution-console.log",
+        "bytes": 107,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-00.log",
+        "bytes": 77,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-01.log",
+        "bytes": 72,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-02.log",
+        "bytes": 100,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-03.log",
+        "bytes": 179,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-04.log",
+        "bytes": 72,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-05.log",
+        "bytes": 49,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-06.log",
+        "bytes": 27,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-07.log",
+        "bytes": 84405,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-08.log",
+        "bytes": 2191,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-09.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-10.log",
+        "bytes": 310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-11.log",
+        "bytes": 297,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-12.log",
+        "bytes": 642,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-13.log",
+        "bytes": 316,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-14.log",
+        "bytes": 69,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-15.log",
+        "bytes": 69,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-16.log",
+        "bytes": 85,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-17.log",
+        "bytes": 85,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-18.log",
+        "bytes": 146,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/lote2-validation-results.json",
+        "bytes": 2705,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/micro-reading.txt",
+        "bytes": 474,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/microbial-pages.txt",
+        "bytes": 52768,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/monera-support-candidates.json",
+        "bytes": 4766,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/navigation-pr.md",
+        "bytes": 2316,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/normalization-paths.json",
+        "bytes": 2,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/observation-reference-index.json",
+        "bytes": 23884,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/package-providers-1.4.0",
+        "bytes": 164003859,
+        "files": 1647,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/package-smoke.json",
+        "bytes": 6578,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/package-smoke.stderr.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/package-smoke.stdout.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/panellus-reading.txt",
+        "bytes": 8204,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/photo-reference-reading.json",
+        "bytes": 54932,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/photographic-distribution-check.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/phylogeny-audit.json",
+        "bytes": 45404,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-compact-full-ctest.log",
+        "bytes": 21863,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-compact-smoke.txt",
+        "bytes": 31,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-context-full-ctest.log",
+        "bytes": 21863,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-context-smoke.txt",
+        "bytes": 31,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-difficulty-smoke.txt",
+        "bytes": 31,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-full-ctest.log",
+        "bytes": 21863,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-full-suite-source.json",
+        "bytes": 381,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-smoke.txt",
+        "bytes": 31,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/play-start-alignment-smoke.txt",
+        "bytes": 31,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/politica-branding-pr.md",
+        "bytes": 2391,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-2.2.1-B.md",
+        "bytes": 2873,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-admissao-body.md",
+        "bytes": 2400,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-estabilizacao.md",
+        "bytes": 2456,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-investigative-fixes.md",
+        "bytes": 1893,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-licenciamento-body.md",
+        "bytes": 2211,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr-lote2-body.md",
+        "bytes": 3896,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr12-final-baseline.json",
+        "bytes": 4302120,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr12-final-body.md",
+        "bytes": 5060,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr12-final-governance.json",
+        "bytes": 663659,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr12-final-section.md",
+        "bytes": 2408,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr16-before-review-distribution",
+        "bytes": 641476,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr16-final-review-ci.log",
+        "bytes": 167472,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr16-final-review-distribution",
+        "bytes": 641476,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr16-review-body.md",
+        "bytes": 5455,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr20-distribution",
+        "bytes": 624419,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr20-offline-validation.log",
+        "bytes": 139733,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr21-body-ci-confirmed.md",
+        "bytes": 4250,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr21-metadata-check.json",
+        "bytes": 157,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr30-caption-body.md",
+        "bytes": 3030,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr30-control-hit-body.md",
+        "bytes": 6029,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr30-sync-body.md",
+        "bytes": 5329,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr30-verified",
+        "bytes": 258227268,
+        "files": 6,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr7-ci-failures.txt",
+        "bytes": 83934,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/pr7-ci-verified.txt",
+        "bytes": 311552,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_branding_confirmation.py",
+        "bytes": 3461,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_fhd_archive.py",
+        "bytes": 590,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_final_text_conference.py",
+        "bytes": 8971,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_group_text_replacement.py",
+        "bytes": 13644,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_hint_data.py",
+        "bytes": 5155,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_home_hires.py",
+        "bytes": 600,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_issue2_decisions.py",
+        "bytes": 5670,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_issue2_final.py",
+        "bytes": 6371,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_issue2_technical_wording.py",
+        "bytes": 13619,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_profile_review_view.py",
+        "bytes": 12975,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_profile_text_proposal.py",
+        "bytes": 8941,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_restored_archivers.py",
+        "bytes": 3696,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/prepare_restored_quiz_docs.py",
+        "bytes": 9985,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/preserve_complete_text_draft.py",
+        "bytes": 2638,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/preview_final_text_conference.py",
+        "bytes": 4551,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/profile-observation-sheet.png",
+        "bytes": 3603841,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/profile-source-plants.json",
+        "bytes": 2,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/profile-source-taxa.json",
+        "bytes": 6936193,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/project-review",
+        "bytes": 686752,
+        "files": 4,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/project-status-check.json",
+        "bytes": 157,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/project-status-prepush.json",
+        "bytes": 157,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/projeto_glossata.exe",
+        "bytes": 64205187,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/provider-research",
+        "bytes": 243269,
+        "files": 10,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/qmllint-curation-activation.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/qmllint-curation.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-full-ctest.log",
+        "bytes": 21843,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-qmllint.txt",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-restored-full-ctest.log",
+        "bytes": 21874,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-restored-qmllint.txt",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-restored-smoke.txt",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/quiz-smoke.txt",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/read_article_abstracts.py",
+        "bytes": 1487,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/read_selected_public_sources.py",
+        "bytes": 3808,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_2_2_1_b.py",
+        "bytes": 3747,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_2_2_1_b_refinement.py",
+        "bytes": 5301,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_additional_reference_facts.py",
+        "bytes": 9415,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_applied_profile_lote2_validation.py",
+        "bytes": 5590,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_botanical_source_checks.py",
+        "bytes": 5446,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_botany_final_sources.py",
+        "bytes": 6616,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_closing_source_comparisons.py",
+        "bytes": 7434,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_confirmed_editorial_82.py",
+        "bytes": 3781,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_credit_presentation.py",
+        "bytes": 4314,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_final_specific_sources.py",
+        "bytes": 11373,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_fungal_source_checks.py",
+        "bytes": 3529,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_grouped_source_checks.py",
+        "bytes": 8166,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_more_compared_sources.py",
+        "bytes": 10713,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_mycological_conference.py",
+        "bytes": 7809,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_profile_batch_2_validation.py",
+        "bytes": 5926,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_scope_limited_biology.py",
+        "bytes": 6426,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_source_conference.py",
+        "bytes": 2126,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_visual_reference_checks.py",
+        "bytes": 7179,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/record_zoological_conference.py",
+        "bytes": 6034,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refine_home.py",
+        "bytes": 8335,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refine_new_source_wording.py",
+        "bytes": 1260,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refine_scoped_drafts.py",
+        "bytes": 1314,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refinement-adults.json",
+        "bytes": 7841,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refinement-alternatives.json",
+        "bytes": 26540,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refinement-governance-audit.json",
+        "bytes": 4392,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/refinement-ui-results.txt",
+        "bytes": 541,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/remaining-source-urls.json",
+        "bytes": 4209,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replace_restored_quiz_tests.py",
+        "bytes": 21030,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacement-candidates.json",
+        "bytes": 3320249,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacement-extra-candidates.json",
+        "bytes": 3506140,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-Animalia.png",
+        "bytes": 1246653,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-extra-Animalia.png",
+        "bytes": 2024506,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-extra-Fungi.png",
+        "bytes": 302516,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-extra-Plantae.png",
+        "bytes": 700160,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-extra-Protista.png",
+        "bytes": 1260328,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-Fungi.png",
+        "bytes": 1494388,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-Plantae.png",
+        "bytes": 390576,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/replacements-Protista.png",
+        "bytes": 2246743,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/repository-audit.json",
+        "bytes": 191,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/research-searches.json",
+        "bytes": 6478,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/research_exploration.py",
+        "bytes": 2129,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/research_more_exploration.py",
+        "bytes": 630,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/retained-82-source-check.json",
+        "bytes": 1873,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/review-candidates.json",
+        "bytes": 22254,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/revise_profile_batch_2.py",
+        "bytes": 10967,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/rights-investigation.json",
+        "bytes": 3989316,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/round-1-core-results.txt",
+        "bytes": 479,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/round-1-pre-timer-fix-ui.txt",
+        "bytes": 6260,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/round-1-preexisting-home-context.txt",
+        "bytes": 2246,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/round-2-smoke.txt",
+        "bytes": 144,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/scientific-search-results.txt",
+        "bytes": 651,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/scientific-sources",
+        "bytes": 604429,
+        "files": 72,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/seal_source_conference.py",
+        "bytes": 3112,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/seed_assistance.py",
+        "bytes": 5250,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-ci-pr.log",
+        "bytes": 267064,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-derived-check.py",
+        "bytes": 1692,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-identity-results.txt",
+        "bytes": 5093,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-legacy-results.txt",
+        "bytes": 605,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-project-status.json",
+        "bytes": 157,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-schema-reproduction.txt",
+        "bytes": 1427,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-smoke.stderr.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stabilization-smoke.stdout.log",
+        "bytes": 0,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stage1-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stage2",
+        "bytes": 272424,
+        "files": 47,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/stage2-distribution.log",
+        "bytes": 216,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/technical-wording-reproduction.json",
+        "bytes": 808,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/test-results.txt",
+        "bytes": 2336,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/Testing",
+        "bytes": 22975,
+        "files": 3,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/tests",
+        "bytes": 1565428184,
+        "files": 866,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/text-rights-research",
+        "bytes": 20944937,
+        "files": 752,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/tools",
+        "bytes": 6432768,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/ui-baseline-pr.md",
+        "bytes": 1578,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/ui-test-results.txt",
+        "bytes": 2555,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/unchecked-notes.txt",
+        "bytes": 209060,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/unicode-probe.cpp",
+        "bytes": 347,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/unicode-probe.exe",
+        "bytes": 125530,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update-proposals",
+        "bytes": 102645648,
+        "files": 225,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_carousel_renderer_docs.py",
+        "bytes": 2027,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_carousel_tests.py",
+        "bytes": 1418,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_fhd_audit.py",
+        "bytes": 607,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_issue2_body.py",
+        "bytes": 1680,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_media_audit.py",
+        "bytes": 778,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_restored_quiz_preview.py",
+        "bytes": 1879,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/update_source_conference_report.py",
+        "bytes": 6151,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/usability-smoke.txt",
+        "bytes": 148,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/use_native_carousel_images.py",
+        "bytes": 3941,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/validate-ci-shell.sh",
+        "bytes": 232,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/validate_applied_profile_lote2.py",
+        "bytes": 1743,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/validate_confirmed_texts.py",
+        "bytes": 5310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/validate_group_text_proposal.py",
+        "bytes": 4623,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/verify_apache_preservation.py",
+        "bytes": 2837,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/verify_quiz231.py",
+        "bytes": 2423,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/verify_restored_quiz.py",
+        "bytes": 2452,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/visual-source-comparisons.json",
+        "bytes": 4746,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      },
+      {
+        "path": "build/zoology-reading.txt",
+        "bytes": 133310,
+        "files": 1,
+        "candidate_for_manual_review": false,
+        "reason": "Current build, supporting artifacts or unclassified files: preserved."
+      }
+    ],
+    "caches": [
+      {
+        "path": "scripts/__pycache__",
+        "files": 55,
+        "bytes": 1339620,
+        "candidate_for_manual_review": true,
+        "reason": "Reproducible Python cache; inventory only."
+      },
+      {
+        "path": "tests/__pycache__",
+        "files": 22,
+        "bytes": 578967,
+        "candidate_for_manual_review": true,
+        "reason": "Reproducible Python cache; inventory only."
+      }
+    ],
+    "candidates_bytes": 3108390845,
+    "candidates_gib": 2.895,
+    "possible_duplicates": [
+      {
+        "name": "glossata_discord_tests.exe",
+        "bytes_each": 217103,
+        "paths": [
+          "build/2.2.1-B-verified/glossata_discord_tests.exe",
+          "build/2.2.2-creditos/glossata_discord_tests.exe",
+          "build/2.2.2-final/glossata_discord_tests.exe",
+          "build/2.2.2-round-2/glossata_discord_tests.exe",
+          "build/2.2.2-usabilidade/glossata_discord_tests.exe",
+          "build/2.2.2-verified/glossata_discord_tests.exe",
+          "build/2.2.3-alinhamento/glossata_discord_tests.exe",
+          "build/2.2.3-compacto/glossata_discord_tests.exe",
+          "build/2.2.3-contexto/glossata_discord_tests.exe",
+          "build/2.2.3-dificuldade/glossata_discord_tests.exe",
+          "build/2.2.3-verified/glossata_discord_tests.exe",
+          "build/2.3.1-quiz/glossata_discord_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "glossata_identity_tests.exe",
+        "bytes_each": 786180,
+        "paths": [
+          "build/2.2.1-B-verified/glossata_identity_tests.exe",
+          "build/2.2.2-creditos/glossata_identity_tests.exe",
+          "build/2.2.2-final/glossata_identity_tests.exe",
+          "build/2.2.2-round-2/glossata_identity_tests.exe",
+          "build/2.2.2-usabilidade/glossata_identity_tests.exe",
+          "build/2.2.2-verified/glossata_identity_tests.exe",
+          "build/2.2.3-alinhamento/glossata_identity_tests.exe",
+          "build/2.2.3-compacto/glossata_identity_tests.exe",
+          "build/2.2.3-contexto/glossata_identity_tests.exe",
+          "build/2.2.3-dificuldade/glossata_identity_tests.exe",
+          "build/2.2.3-verified/glossata_identity_tests.exe",
+          "build/2.3.1-quiz/glossata_identity_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "glossata_recovery_tests.exe",
+        "bytes_each": 63637863,
+        "paths": [
+          "build/2.2.2-creditos/glossata_recovery_tests.exe",
+          "build/2.2.2-final/glossata_recovery_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "glossata_recovery_tests.exe",
+        "bytes_each": 63643495,
+        "paths": [
+          "build/2.2.3-alinhamento/glossata_recovery_tests.exe",
+          "build/2.2.3-compacto/glossata_recovery_tests.exe",
+          "build/2.2.3-dificuldade/glossata_recovery_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "glossata_tests.exe",
+        "bytes_each": 64881142,
+        "paths": [
+          "build/2.2.3-contexto/glossata_tests.exe",
+          "build/2.2.3-verified/glossata_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "glossata_tests.exe",
+        "bytes_each": 64883190,
+        "paths": [
+          "build/2.2.3-alinhamento/glossata_tests.exe",
+          "build/2.2.3-compacto/glossata_tests.exe",
+          "build/2.2.3-dificuldade/glossata_tests.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "projeto_glossata.exe",
+        "bytes_each": 64318674,
+        "paths": [
+          "build/2.2.3-contexto/projeto_glossata.exe",
+          "build/2.2.3-verified/projeto_glossata.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      },
+      {
+        "name": "projeto_glossata.exe",
+        "bytes_each": 64320722,
+        "paths": [
+          "build/2.2.3-alinhamento/projeto_glossata.exe",
+          "build/2.2.3-compacto/projeto_glossata.exe",
+          "build/2.2.3-dificuldade/projeto_glossata.exe"
+        ],
+        "basis": "Same file name and size; content identity NOT verified. Not added again to candidate size."
+      }
+    ],
+    "preserved": [
+      "build/2.3.1-restaurado",
+      "build/CMakeFiles",
+      "build/tests",
+      "build/Testing",
+      "build/CMakeCache.txt",
+      "resources",
+      "docs",
+      ".git",
+      "all player data, backups, checkpoints and governance records"
+    ],
+    "errors": [],
+    "limitations": "Logical file sizes, not allocated disk usage or guaranteed recoverable space. Candidate does not mean safe to delete; previous binaries may be useful to reproduce archived evidence. No automatic cleanup authorized or performed."
+  },
+  "notice": "Script candidates and manual inventory differ: recent/protected builds are not eligible for cleanup. Possible duplicates are name/size matches only, not authorization to remove. No user database contents read."
+}

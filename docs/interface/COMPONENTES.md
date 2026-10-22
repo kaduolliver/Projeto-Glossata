@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Quiz — 2.3.1
+
+`QuizView` recupera o layout anterior, preservando `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. A esquerda tem largura limitada de 37%; a direita contém `quizAnswersScroll`, com alternativas e dicas, sem impor sua altura mínima à foto. Dica/Confirmar ficam fixos na base da coluna. Foco local enquadra o controle dentro da rolagem direita. Títulos `revealedHintTitle0..2` consultam assistência/categoria do backend, sem inferir nível pelo índice. `quizAnswerCounts` projeta `correctAnswers` e `answeredCount - correctAnswers`; não escreve no banco.
+
+`SpeciesPortrait` retorna à geometria, cores e `Image.PreserveAspectFit` anteriores, sem variante exclusiva ou recorte. Créditos e avisos permanecem completos. `HintPanel` recupera sua largura de 540 pixels, título, botões e cores anteriores; conserva tetos, fonte, revisão, relato, Esc e retorno do foco. `InfoView.speciesDescriptionRegion` preserva a estrutura abaixo da foto e créditos e mostra somente "Descrição educativa detalhada ainda não disponível." Sem `description`, `hasDescription`, campo persistente ou associação a outro tópico. `profile.morphology` pertence ao modelo original de seções, entre Nutrição e Conservação na coluna direita, preservando ícone, título, nota, referências e revisão. `speciesSummary` continua à direita. [Correção e testes](VERSOES/2.3.1/descricao-independente/README.md). [Documentação atual](VERSOES/2.3.1/restauracao-visual/README.md).
+
 ## PR #33 — configuração compacta e fontes do grupo
 
 Nas janelas amplas, a dificuldade acompanha o seletor com intervalo de `spaceLg` (20 pixels lógicos), alinhada à esquerda em uma coluna flexível; o espaço excedente fica depois do texto e o início conserva sua largura intrínseca na margem direita. Nas compactas, a dificuldade fica abaixo do seletor, ao lado do início à direita. Os controles de cada linha mantêm alinhamento vertical central. [Verificação atual e escalas](VERSOES/2.2.3/alinhamento-dificuldade/README.md); [evidências anteriores](VERSOES/2.2.3/alinhamento-iniciar/README.md).

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-10-22T16:32:28.907376+00:00",
+  "method": "QQuickWindow::grabWindow / production QML and GameController in GlossataInterfaceTests",
+  "application_version": "1.10.0",
+  "application_binary_sha256": "6d9e4a4e01165d16ce14628ce56e2c384a70f0c878294ccd8b7466171f083653",
+  "capture_binary_sha256": "dc65e4e1c2d05e242e60142df7074b74bf746e976d8f15ed2d6bea439e3bb927",
+  "capture_source": "tests/QmlInterfaceTests.cpp: navigateAndConfirmAnswers, snapshot quiz-lion",
+  "capture_source_sha256": "fa15d08f324768ba1e35e510c7f44b83c2cbc0c61337b2d4e3b2c6159d3abbf7",
+  "build_manifest_sha256": "0a66a5e0d17c558d175a6232f550d7883cd8fa83f2cd1a6d2762cc28a5a9ffa5",
+  "image_sha256": "5a5ced4bb0e9751cebf7bad043a5e5ec4cf9b8800bc3bf067c60ff06625be8ab",
+  "width": 1240,
+  "height": 820,
+  "privacy": "Temporary SQLite database and default profile; Discord disabled; no player data accessed.",
+  "view": "Quiz de identificação do gênero, Animalia em Opisthokonta / Eukaryota; fotografia de Panthera leo; quatro alternativas reais.",
+  "modifications": "Captura integral da janela, sem edição posterior. Fotografia integral, centralizada, redimensionada apenas na exibição, sem recorte ou ampliação na variante do Quiz.",
+  "photo": {
+    "photo_id": "748172022",
+    "observation_id": "407163105",
+    "photo_url": "https://www.inaturalist.org/photos/748172022",
+    "observation_url": "https://www.inaturalist.org/observations/407163105",
+    "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/748172022/large.jpg",
+    "credit_as_supplied": "(c) Patrick Jackson, some rights reserved (CC BY)",
+    "title": null,
+    "license": "cc-by",
+    "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "license_version": null,
+    "original_collected_at": null,
+    "evidence_paths": [
+      "resources/compliance/permissions/1433815d70ed6eb14ef8f9cc024897456ec3a3de2859d0acc25dcb283bbe3aec.json"
+    ],
+    "sha256": "f21c3adae008e5b9b20798c058b19b2a8f007c034e268bb12e053518613bbb47",
+    "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+    "permission_state": "legacy_evidence_incomplete",
+    "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+  },
+  "license_notice": "CC BY declarada pela fonte. Versao da licenca e data original de coleta ainda nao comprovadas; esta captura nao concede nem comprova permissao adicional.",
+  "catalog_version": "2.4.0",
+  "source_commit": "9ccbd602db6f14b97ab6eea0c9fe41df6ee16d2a",
+  "inputs": {
+    "VERSION.txt": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
+    "tests/QmlInterfaceTests.cpp": "fa15d08f324768ba1e35e510c7f44b83c2cbc0c61337b2d4e3b2c6159d3abbf7",
+    "resources/qml/Main.qml": "172c439fdf4749599a41d495f42f0f013868c931920f471dbb8f3e99e0d33aa6",
+    "resources/qml/views/QuizView.qml": "01f4cd442e9c03df72fcdd13010bb4d877b01858720977a979accfb18bcd3543",
+    "resources/qml/components/SpeciesPortrait.qml": "9b5496acc85bd6d99d10fbf44ba82649355793d6a758bb18f6c507d75191a8b9",
+    "resources/qml/components/HintPanel.qml": "ee5adf5e3d97579ffe01d071116a912658e928a0beedfb0cfbf1116e71c4cef0",
+    "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c"
+  },
+  "rendering": "Windows 11 / Qt 6.11.2 software/offscreen, scale factor 1.",
+  "previous_evidence": "../interface/VERSOES/2.3.1/referencia-anterior/quiz.json",
+  "capture_timestamp_basis": "UTC modification time of the file saved by QQuickWindow::grabWindow in the passing full UI test.",
+  "limitations": "No scientific/legal approval; original photo provenance and rights gaps are preserved."
+}
