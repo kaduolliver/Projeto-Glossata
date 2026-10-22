@@ -1,5 +1,25 @@
 # Componentes compartilhados
 
+## PR #33 — configuração compacta e fontes do grupo
+
+Nas janelas amplas, a dificuldade acompanha o seletor com intervalo de `spaceLg` (20 pixels lógicos), alinhada à esquerda em uma coluna flexível; o espaço excedente fica depois do texto e o início conserva sua largura intrínseca na margem direita. Nas compactas, a dificuldade fica abaixo do seletor, ao lado do início à direita. Os controles de cada linha mantêm alinhamento vertical central. [Verificação atual e escalas](VERSOES/2.2.3/alinhamento-dificuldade/README.md); [evidências anteriores](VERSOES/2.2.3/alinhamento-iniciar/README.md).
+
+`TaxonomyView.playConfigurationPanel` calcula a altura pelo conteúdo e usa margens de `spaceMd`, título discreto e espaçamento `spaceXs`. Com 820 pixels úteis nos controles, identificação, dificuldade informativa e Iniciar partida ficam lado a lado; abaixo desse limiar, o início passa para uma segunda linha. O campo de identificação fica limitado à largura do conjunto de 360 pixels, sem esticar com a janela. A linha informativa de elegibilidade fica abaixo e pode quebrar sem corte. Modelo, dificuldade, condição de habilitação e chamada de início são os mesmos.
+
+`playTaxonSourcesButton` abre o diálogo local `playTaxonSourcesDialog`, exclusivo da configuração de Jogar. Ele apresenta identificação, enquadramento, referência educativa, estado/limitações de revisão e proveniência já expostos pelo controlador. Os links preservam suas URLs, a rolagem acompanha o foco e Esc/Fechar devolvem o foco ao botão de origem. Sem fotografia própria nesta página, os créditos fotográficos continuam vinculados aos cartões descendentes. Avisos científicos permanecem visíveis fora do diálogo. Os diálogos globais e a apresentação do Explorar não foram reformulados. [Evidências](VERSOES/2.2.3/configuracao-compacta/README.md).
+
+## PR #33 — configuração e contexto da seleção
+
+`PlayModeSelector` fica exclusivamente na seleção principal de Jogar. `TaxonomyView`, no contexto de jogo, mostra resumo existente, nível de identificação, `playDifficultyNotice` somente informativo, contagem elegível e início explícito antes dos descendentes. A dificuldade vem do controlador e não é reconfigurada pela navegação.
+
+`Main.playPresentation` guarda em memória aba, rolagem, controle de origem e indicação de foco por teclado. `CategoryView.rememberPresentation` e o timer `restorePresentation` atendem tanto Jogar quanto Explorar, mantendo mapas separados e a chave científica da pesquisa intacta. O retorno por teclado recupera o controle original; o retorno por mouse conserva a posição sem forçar o enquadramento de um cartão parcialmente visível. Posições são limitadas à área disponível após mudança de tamanho da janela. Sem escrita em banco ou alteração de sessões. [Contrato e testes](VERSOES/2.2.3/refinamentos-navegacao/README.md).
+
+## Jogar — 2.2.3
+
+`ExploreCard.playSelection` reutiliza a fotografia integral/centralizada, carregamento por viewport, hover passivo, foco, dimensões intrínsecas e diálogo de créditos da variante moderna. `entry.playLevels` é uma projeção de `identificationLevels`, não uma aprovação. O cartão informa quantidade catalogada e número de níveis disponíveis; o painel `playEligibleCount` mostra a contagem elegível e as respostas distintas no nível escolhido. A dificuldade pode restringir a seleção final, validada pelo backend. Grupos indisponíveis continuam navegáveis. O jogo misto mantém o gênero e sua contagem elegível existentes, com ação explícita de início.
+
+`playTab_kingdoms/domains/advanced` são botões compactos em grupo exclusivo. A grade usa largura mínima de 280 pixels lógicos e a maior altura intrínseca da seção; descendentes usam o mesmo contrato. `PlayModeSelector` apresenta Livre e Competitivo em painéis responsivos com descrições curtas; a dificuldade pertence somente ao Livre e o início competitivo continua global. Os IDs de controles existentes e as APIs de início são preservados. Em Explorar, o botão contextual preserva padding `spaceMd` e a ação principal recebe a mesma margem esquerda, além da margem superior `spaceXs`, alinhando os textos sem ampliar a área clicável. [Capturas e testes](VERSOES/2.2.3/README.md).
+
 ## PR #32 — uniformidade e rolagem
 
 `ExploreCard` distingue o hover local dos créditos com fundo/borda, conservando largura, espaço inerte, foco e transições. `encyclopediaCardPhotoState` mostra mensagem curta quando a foto falta; `pendingReason` completo fica no diálogo. Resumos têm duas linhas; atribuições obrigatórias não são elididas. Grids compartilham a maior `implicitHeight` em `cardHeight`/`Layout.preferredHeight`; a galeria usa `RowLayout` e `Layout.fillHeight`. Isso mantém o rodapé alinhado e recalcula a altura ao variar a largura/tipografia, sem um teto fixo que corte texto.

@@ -1,0 +1,13 @@
+{
+  "distribution_blocked": true,
+  "repository_distribution_blocked": true,
+  "technical_errors": [],
+  "dependency_errors": [],
+  "review_states": {
+    "legacy": 241,
+    "pending": 91,
+    "needs_review": 275,
+    "draft": 122,
+    "in_review": 1
+  }
+}

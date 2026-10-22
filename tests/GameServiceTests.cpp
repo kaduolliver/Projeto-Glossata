@@ -176,6 +176,7 @@ private slots:
     void categoryQuizUsesOnlySelectedFamily();
     void controllerKeepsAnswerUntilNextQuestion();
     void taxonomyFiltersAndIdentificationLevels();
+    void playSelectionProjectsExistingTaxonomyAndEligibility();
     void explorationShortcutsPreserveHierarchyAndQuizFilters();
     void homeSlidesIgnoreHomonymousHistoricalGroups();
     void explorationPhotographsFailClosed();
@@ -1039,6 +1040,40 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     QVERIFY(controller.answerDetails().isEmpty());
     QVERIFY(controller.categoryStats().isEmpty());
     QVERIFY(!controller.achievements().first().toMap().value("unlocked").toBool());
+}
+
+void GameServiceTests::playSelectionProjectsExistingTaxonomyAndEligibility()
+{
+    JsonSpeciesCatalog catalog; TaxonomyIndex index(catalog);
+    const auto groups = index.playGroups();
+    QCOMPARE(groups["kingdoms"].toList().size(), 3);
+    QCOMPARE(groups["domains"].toList().size(), 3);
+    QCOMPARE(groups["advanced"].toList().size(), index.children("domain:Eukaryota").size());
+    for (const auto &key : {"kingdoms", "domains", "advanced"}) {
+        QSet<QString> ids;
+        for (const auto &value : groups[key].toList()) {
+            auto entry = value.toMap(); const auto id = entry["id"].toString();
+            QVERIFY(!id.isEmpty()); QVERIFY(!ids.contains(id)); ids.insert(id);
+            QCOMPARE(entry["playLevels"].toList(), index.identificationLevels(id));
+            entry.remove("playLevels"); QCOMPARE(entry, index.describe(id));
+        }
+    }
+    QCOMPARE(index.playEntry("domain:Archaea")["count"].toInt(), 0);
+    QVERIFY(index.playEntry("domain:Archaea")["playLevels"].toList().isEmpty());
+    QVERIFY(index.playEntry("clade:Discoba")["playLevels"].toList().isEmpty());
+    const auto children = index.playChildren("domain:Eukaryota");
+    for (int i = 0; i < children.size(); ++i)
+        QCOMPARE(children[i].toMap()["id"], index.children("domain:Eukaryota")[i].toMap()["id"]);
+    const auto mixed = index.playEntry({});
+    QCOMPARE(mixed["playLevels"].toList(), index.identificationLevels({}));
+    QCOMPARE(mixed["playableCount"], index.domains().first().toMap()["playableCount"]);
+    // A single existing organism can be catalogued without supplying four answers.
+    QString leafId;
+    const auto species = catalog.loadSpecies().first();
+    for (const auto &node : species.taxonomy) if (node.rank == "species") leafId = node.id;
+    QVERIFY(!leafId.isEmpty());
+    const auto leaf = index.playEntry(leafId);
+    QVERIFY(leaf["playLevels"].toList().isEmpty());
 }
 
 void GameServiceTests::taxonomyFiltersAndIdentificationLevels()

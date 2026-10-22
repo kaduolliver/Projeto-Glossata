@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "assurances": {
+    "integrity_scope": "Internal SHA-256 linkage; optional byte-prefix comparison with caller-selected Git commit.",
+    "reviewer_identity": "Declared, not authenticated by these checks.",
+    "authorship_authenticated": false,
+    "digital_signatures_verified": false,
+    "independent_review_verified": false,
+    "specialist_qualification_verified": false,
+    "trust_root": "Local files and verifier; for historical comparison, independently selected and retained Git commit."
+  },
+  "errors": [],
+  "files": {
+    "resources/compliance/dependency_reviews.jsonl": {
+      "current": {
+        "events": 0,
+        "tip_sha256": "",
+        "bytes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "present": false
+      },
+      "reference": {
+        "events": 0,
+        "tip_sha256": "",
+        "bytes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "present": false
+      },
+      "reference_preserved": true
+    },
+    "resources/compliance/permission_history.jsonl": {
+      "current": {
+        "events": 0,
+        "tip_sha256": "",
+        "bytes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "present": false
+      },
+      "reference": {
+        "events": 0,
+        "tip_sha256": "",
+        "bytes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "present": false
+      },
+      "reference_preserved": true
+    },
+    "resources/compliance/review_history.jsonl": {
+      "current": {
+        "events": 1053,
+        "tip_sha256": "2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6",
+        "bytes_sha256": "1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576",
+        "present": true
+      },
+      "reference": {
+        "events": 1053,
+        "tip_sha256": "2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6",
+        "bytes_sha256": "1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576",
+        "present": true
+      },
+      "reference_preserved": true
+    },
+    "resources/compliance/review_baseline.json": {
+      "current": {
+        "present": true,
+        "bytes_sha256": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
+      },
+      "reference": {
+        "present": true,
+        "bytes_sha256": "97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6"
+      },
+      "reference_preserved": true
+    }
+  },
+  "comparison": {
+    "status": "prefix_preserved",
+    "commit": "efa28f0888b9c22b82b58837ecac11eb13bbd4cc"
+  },
+  "consistent": true
+}

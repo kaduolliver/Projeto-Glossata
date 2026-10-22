@@ -23,6 +23,9 @@ public:
     QVariantList children(const QString &id) const;
     QVariantList breadcrumbs(const QString &id) const;
     QVariantList identificationLevels(const QString &id) const;
+    QVariantMap playEntry(const QString &id) const;
+    QVariantMap playGroups() const;
+    QVariantList playChildren(const QString &id) const;
     QVariantMap describe(const QString &id) const;
     QString kingdomFor(const QString &id) const;
     int count(const QString &id = QString()) const;

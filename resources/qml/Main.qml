@@ -32,8 +32,9 @@ ApplicationWindow {
     property var presence: discordPresence
     property string page: "home"
     property string taxonomyContext: "play"
-    // Ephemeral Explore presentation only; scientific selection stays in the controller.
+    // Ephemeral navigation presentation only; no player data is persisted here.
     property var explorePresentation: ({})
+    property var playPresentation: ({})
     readonly property bool compactNavigation: width < 1150
     readonly property string currentSection: page === "explore" || (page === "taxonomy" && taxonomyContext === "explore")
                                              ? "explore" : (["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(page) >= 0

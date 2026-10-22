@@ -1,0 +1,136 @@
+{
+  "recorded_at": "2026-10-22T01:09:04.267402+00:00",
+  "base_commit": "1243a8bd47faa19a4a4b765ea432d5eadaef9a15",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "source_commit": "b9d9fd6afa84526f6a70b053fad8db935e65f4ea",
+    "binaries": {
+      "projeto_glossata.exe": "e2e3b1698835c463bae029d975db99a2decba54f963bd9a68e0a6e16ccc42966",
+      "glossata_tests.exe": "6b91fc7f828ccbb815cd5b88a31607c20e9e009a1ff52c4dc3e1a5cfbede397d",
+      "glossata_ui_tests.exe": "51791f65eef6bba61bdb2434d7b468c484e0ebce34405153fa3c17d8a7f9b3dd"
+    },
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "test_time_sum_seconds": 456.04,
+    "qttest_cases_passed": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 19,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "resources.qrc",
+    "src/application/GameService.cpp",
+    "src/domain",
+    "src/infrastructure",
+    "src/presentation/GameController.cpp",
+    "src/app/main.cpp",
+    "resources/qml/Main.qml",
+    "resources/qml/views/QuizView.qml",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/views/FeedbackView.qml",
+    "resources/qml/views/InfoView.qml",
+    "resources/qml/views/ResultsView.qml",
+    "resources/qml/views/StatisticsView.qml",
+    "resources/qml/views/AchievementsView.qml",
+    "resources/qml/components/TextAction.qml",
+    "resources/qml/components/UiButton.qml",
+    "docs/interface/VERSOES/2.2.2"
+  ],
+  "binaries": {
+    "production": "a48164b654e1f4254838b261de995b65f2fb5c8ef58884d198aa5a672a9f3717",
+    "core_tests": "c6ffea81677bc6e85bbb186dfbb4c5bc3608d2f3e12c171b795504dd318d77f7",
+    "ui_tests": "8fc5e3d4963e4b3c73ed3f2b19c38c4eaf90220d6b88a8f82c6bcac0ed7471f9"
+  },
+  "capturas_json_sha256": "6e1fd053b99b5e220802cc608de79036743bb941653e578c1503b7b96729edce",
+  "source_commit": "bd1811cb9d9071231e1d92ee301dca776557e00b",
+  "additional_runs": {
+    "play-final-targeted.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0,
+      "source_commit": "bd1811cb9d9071231e1d92ee301dca776557e00b",
+      "test_binary_sha256": "8fc5e3d4963e4b3c73ed3f2b19c38c4eaf90220d6b88a8f82c6bcac0ed7471f9"
+    },
+    "play-dpi-125.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0,
+      "source_commit": "bd1811cb9d9071231e1d92ee301dca776557e00b",
+      "test_binary_sha256": "8fc5e3d4963e4b3c73ed3f2b19c38c4eaf90220d6b88a8f82c6bcac0ed7471f9"
+    },
+    "play-dpi-150.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0,
+      "source_commit": "bd1811cb9d9071231e1d92ee301dca776557e00b",
+      "test_binary_sha256": "8fc5e3d4963e4b3c73ed3f2b19c38c4eaf90220d6b88a8f82c6bcac0ed7471f9"
+    }
+  },
+  "scale_validation": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "physical_windows_scaling_changed": false,
+    "physical_touchpad_tested": false,
+    "precise_input": "Existing PR32 scrolling regression retained; this stage covers selection mouse/keyboard."
+  },
+  "prior_attribution_policy_sha256": "38bd875308e8007e071311b871968e097cc02b716ba8c70194b416aa8f2fc818",
+  "source_logs_sha256": {
+    "build/play-full-ctest.log": "f3a0e5b3021845573cdf379e323c1eb10555954a7fedc1740f89585a8ecdc81b",
+    "build/tests/core-results.txt": "a2c6e69c98036ef2b86e4b25744d998fe07ffb753672d5b2cb15efb6756d88fb",
+    "build/tests/ui-test-results.txt": "a8593a47dbae8ab1a8316d162e9efa0104ff2d8e457ae1e73b53629608476420",
+    "build/tests/identity-results.txt": "0c7a42a13969d9eddb1c4994f4216eb56297f9c5c28865ed6b5b930e31535f04",
+    "build/tests/recovery-results.txt": "4013af4280e2ffd240ce1612aded57ff0dc6c58b18dfb7ac90fd2ac0d6109f0f",
+    "build/tests/play-final-targeted.txt": "1d4bd8be8534663c21cfb9e3465e44801539b8cb997b4f923b04a2986f12aeea",
+    "build/tests/play-dpi-125.txt": "bb5dc6e43e2682f36b05c28f272db73cb2b94308be6e5bdf5acb27faf9fd8b4a",
+    "build/tests/play-dpi-150.txt": "a6abd9d90c529bcfc5c0fd826a4771cee830dfb5d1423144f103f9e119bda4dc",
+    "build/play-smoke.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82"
+  },
+  "preexisting_diagnostic": "../2.2.2/rodada-1/verificacoes/preexisting-home-context.txt (outside scope; HomeView unchanged)",
+  "evidence_sha256": {
+    "core-results.txt": "f1ebe44744a23d380166316e0271e059c8ea77e75c43f9dfd6c4a6b88cfbd017",
+    "ctest-results.txt": "f35c637594de28b33624c9c357ca0785e3e87d856ff27358c53ace5e176411f5",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "55eb44919171b941190364be7f7f55d10d66ff58dc972c3d36316fe8085c99fc",
+    "identity-results.txt": "a75abeacff71bf5cf14c6f2350311ccbb72dccc6b1c039d93e7b46f2529f3182",
+    "play-dpi-125.txt": "448856066c5f11839bd3bb5b97eaecbc07264658a6177d6f7b1977c4d83b1769",
+    "play-dpi-150.txt": "f95820db3322e13bc981c24d7506940114dc50681225da318d95a4bc3a5f9dd5",
+    "play-final-targeted.txt": "a384e61fa8d476b7583d9c37b3b609f67f66b47703bc569f996c3ef0df657022",
+    "recovery-results.txt": "f25f91549b912717933c3d9d400e48260ebeba4ff9e69b4c8754911e7d1c88f3",
+    "smoke-test.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "7ee4d4386c4983839e78b199acc466ec3027b4c8ea98a99c5ae4942b8e20e5c5"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 lines retained, Windows CP1252 subprocess lines transcoded; original log hashes retained. Preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}

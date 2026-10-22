@@ -1,5 +1,34 @@
 # Histórico visual
 
+## PR #33 — dificuldade junto ao seletor
+
+- Texto da dificuldade a 20 pixels lógicos do seletor nas janelas amplas; abaixo dele nas compactas, sem centralização artificial. Iniciar partida permanece compacto à direita, com altura do painel e contador preservados.
+- [Capturas e testes em 100%, 125% e 150%](VERSOES/2.2.3/alinhamento-dificuldade/README.md), sem alterar funcionalidades ou regras.
+
+## PR #33 — alinhamento do início da partida
+
+- Coluna central flexível e botão Iniciar partida à margem interna direita nas janelas amplas, sem esticar o botão; composição compacta e contador abaixo preservados.
+- [Capturas e testes nas três resoluções](VERSOES/2.2.3/alinhamento-iniciar/README.md). Sem mudança de regras, dificuldade, disponibilidade ou navegação.
+
+## PR #33 — configuração compacta e fontes contextuais
+
+- Controles do Livre em uma linha nas janelas amplas e duas nas compactas, campo com largura limitada e altura do painel derivada do conteúdo.
+- Um único botão de fontes na configuração, com referências, URLs, origem e revisão no diálogo local; avisos científicos permanecem na página.
+- Abertura e mudança de grupo posicionadas no topo para expor integralmente o botão Voltar, sem alterar o contexto salvo da seleção.
+- [Capturas e testes desta revisão](VERSOES/2.2.3/configuracao-compacta/README.md); evidências anteriores preservadas.
+
+## PR #33 — refinamento da configuração e retorno
+
+- Painéis Livre/Competitivo somente na tela principal; grupo com resumo, configuração direta, dificuldade preservada e início separado antes dos descendentes.
+- Aba, rolagem e origem do foco mantidas em memória, compartilhando o mecanismo de restauração da enciclopédia. Retorno por mouse conserva a rolagem sem impor foco de teclado.
+- [Capturas e validação desta rodada](VERSOES/2.2.3/refinamentos-navegacao/README.md), na mesma [PR #33](https://github.com/kaduolliver/Projeto-Glossata/pull/33). Evidências anteriores preservadas.
+
+## 2.2.3 — Modernização da tela Jogar — PR #33
+
+- Seleção fotográfica com Reinos em destaque, Domínios e Grupos avançados, preservando IDs e todos os caminhos taxonômicos. Cartões com alturas compartilhadas, fotografias integrais, foco e créditos contextuais existentes.
+- Livre e Competitivo em painéis próprios, dificuldade do Livre, configuração de identificação e jogo misto preservados. Contagem catalogada separada da disponibilidade por nível, com estado sem partida para grupos vazios/limitados. Nenhuma mudança no Quiz ou nas regras de partidas.
+- Correção localizada do alinhamento dos textos de créditos e ação principal em Explorar. [Capturas, contratos e verificações](VERSOES/2.2.3/README.md), entregues na [PR #33](https://github.com/kaduolliver/Projeto-Glossata/pull/33), vinculada à Issue #22. Evidências anteriores preservadas.
+
 ## PR #32 — uniformidade, faixa da barra e rolagem
 
 - Hover próprio dos créditos, cartões de altura compartilhada por seção, ações inferiores alinhadas e justificativa extensa de foto ausente no diálogo. Atribuições obrigatórias permanecem integrais, sem teto fixo para o texto.

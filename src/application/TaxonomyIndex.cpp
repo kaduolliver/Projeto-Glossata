@@ -413,6 +413,33 @@ QVariantList TaxonomyIndex::breadcrumbs(const QString &id) const
     return list;
 }
 
+QVariantMap TaxonomyIndex::playEntry(const QString &id) const
+{
+    auto entry = id.isEmpty() ? domains().first().toMap() : describe(id);
+    // Presentation of the existing selection policy, not a second eligibility rule.
+    entry.insert("playLevels", identificationLevels(id));
+    return entry;
+}
+
+QVariantList TaxonomyIndex::playChildren(const QString &id) const
+{
+    QVariantList result;
+    for (const auto &entry : children(id)) result.append(playEntry(entry.toMap().value("id").toString()));
+    return result;
+}
+
+QVariantMap TaxonomyIndex::playGroups() const
+{
+    QVariantList kingdoms, roots, advanced;
+    for (const auto &entry : quickAccess()) kingdoms.append(playEntry(entry.toMap().value("id").toString()));
+    for (const auto &entry : domains().mid(1)) {
+        const auto node = entry.toMap();
+        roots.append(playEntry(node.value("id").toString()));
+        if (node.value("id").toString() == "domain:Eukaryota") advanced = playChildren(node.value("id").toString());
+    }
+    return {{"kingdoms", kingdoms}, {"domains", roots}, {"advanced", advanced}};
+}
+
 QVariantList TaxonomyIndex::identificationLevels(const QString &id) const
 {
     if (levelCache_.contains(id)) return levelCache_.value(id);
