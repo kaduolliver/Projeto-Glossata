@@ -32,6 +32,7 @@ Sequência da evolução visual da Home e das próximas telas:
 3. **2.2.2 — Explorar:** entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), independente e vinculada à Issue #22. Implementação e evidências nesta [revisão](VERSOES/2.2.2/README.md); sem merge ou lançamento nesta entrega.
 4. **2.2.3 — Jogar:** implementação e validação na [revisão própria](VERSOES/2.2.3/README.md), após o merge da PR #32, sem avançar para a modernização do Quiz (2.3.1).
 5. **2.3.1 — Quiz:** modernização das perguntas e dicas na [revisão própria](VERSOES/2.3.1/README.md), após a integração da PR #33; preserva regras, fontes e recuperação, sem lançamento ou avanço de etapa.
+6. **2.3.2 — Estatísticas:** [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), sobre o merge da PR #35; [diagnóstico, apresentação e validação](VERSOES/2.3.2/README.md), preservando métricas, modalidades, taxonomia e histórico. Não avança para Conquistas 2.3.3.
 
 Propostas ainda pendentes, sem identificador ou conclusão presumidos:
 

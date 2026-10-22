@@ -1,5 +1,11 @@
 # Histórico visual
 
+## 2.3.2 — Estatísticas
+
+- [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), vinculada à Issue #22, sobre a integração da PR #35 (`c6db713`). Código/testes no commit [`c435304`](https://github.com/kaduolliver/Projeto-Glossata/commit/c435304a7243c1bc6396fa4e4d97297fe83426a9).
+- Mantém a composição existente e moderniza cartões, dicas, taxonomia e ranking; acrescenta erros confirmados e explicita partida atual, histórico parcial por perfil/modalidade e limites do ranking. Layout adaptável, nomes completos e foco nas posições; backend, dados e regras intactos.
+- [Diagnóstico, diferenças, 99 capturas reais e validação](VERSOES/2.3.2/README.md); quatro quadros anteriores preservados. 26 suítes aprovadas, três resoluções e fatores Qt 100%/125%/150%; auditoria de arquivos somente em simulação. Aplicativo 1.11.0 em desenvolvimento, catálogo 2.4.0 preservado; sem merge, release ou avanço de subetapa.
+
 ## PR #35 — Descrição educativa independente
 
 - Morfologia retorna à coluna direita entre Nutrição e Conservação, com o ícone, conteúdo, fontes e indicadores originais.
