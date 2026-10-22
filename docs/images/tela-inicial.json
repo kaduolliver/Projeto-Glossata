@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-21T22:32:55.347937+00:00",
+  "captured_at": "2026-10-22T02:58:41.742168+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "framing": "Real Home scrolled to the discovery and catalog indicators by the production executable.",
-  "application_version": "1.8.0",
-  "binary_sha256": "c2de6fdca0d5b13bfff56810c258e4159298ec4c7fc4a22e4b7fa0885baab180",
-  "image_sha256": "de030e6ac7af90bc9084af584d7ee707bd9f4d740d98992d53f1fc5411a9d673",
+  "application_version": "1.9.0",
+  "binary_sha256": "ee1631f17ac6d314b73102af540004994d46eac4ebf9231d2ba845acbdd38481",
+  "image_sha256": "e21d2d44c54557cd047970722e7794f4a0aab94ae1cfe0a28055aa4d0f58cb71",
   "width": 1240,
   "height": 820,
   "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
@@ -21,15 +21,15 @@
     "resources/qml/components/StatCard.qml": "11f82ecd0a7c65d12519d106f601fa364031677eacd80e811a0eb19de3e5c588",
     "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
     "resources/qml/components/UiIcon.qml": "54fb77f1758380db12292e6186f8775b3c441a8bfcfb69dd54d88cb024aa5c88",
-    "resources/qml/Main.qml": "848a30a926f2c458bd7050e99f9ca8526760ced75800c250b0c8abd52bcab7c9",
+    "resources/qml/Main.qml": "172c439fdf4749599a41d495f42f0f013868c931920f471dbb8f3e99e0d33aa6",
     "resources/qml/views/HomeView.qml": "63994b83cdbf90ccdaf252f6048e5674652e6ab258b6f6dba5874f1cd934caba",
     "scripts/capture_home.py": "66a4489c03199f2e062330e079ae0ca7f7a3514e08c2cdff9d74cf3853d52e0c",
     "src/app/main.cpp": "19b5b7ced0f1ab73ac60eacb6edf0bd4749a54b688e7591c4e97de86130cbc06",
     "src/application/EducationalContent.cpp": "44d953dd7fd27e63761d9ed493895bd763838e5f4fc6915c67add8b2de1b354e",
     "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
-    "src/application/TaxonomyIndex.cpp": "0ee9cc8498e3b93b1500e97bc8baf9d760552ebd8bc87dfef64ea16fe2586bc0",
-    "src/application/TaxonomyIndex.h": "8a4a6bcfeab6bdd6216a72278c2521a93418742ac3bbacee8954f9560edc1275",
+    "src/application/TaxonomyIndex.cpp": "36ba1284927576e34f3bddc015d2bb5655922ba9df682f7ef9f68ebcc43d3331",
+    "src/application/TaxonomyIndex.h": "75a77a14525b476ba871d82c28e6cdc0506b27f78fe75f0a2d428668fdede715",
     "src/presentation/GameController.cpp": "189f32b9868c528e8ee9ba3bfec4254cf9b8f2d200646c3b8b4b49301e5e96e3",
-    "src/presentation/GameController.h": "013ae18dac547b347196956ee7a425e53522629830353137fcd7e2529ca0ed53"
+    "src/presentation/GameController.h": "445a3cae7d07669996984f5a03d88dc3153e17c380b8465d637246ae8f865b66"
   }
 }

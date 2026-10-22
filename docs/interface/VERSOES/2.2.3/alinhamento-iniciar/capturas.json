@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "base_commit": "c914270ca359bf7cd1d750ad6b97e5adaccafbe0",
+  "source_commit": "557afceff027ff8cc1ebb36bac13559cdc9b1640",
+  "method": "QQuickWindow::grabWindow / production QML and GameController in QtTest",
+  "rendering": "Windows 11 / Qt 6.11.2 software/offscreen; Qt scale factor 1",
+  "privacy": "Temporary SQLite; Discord disabled; no player databases",
+  "application_version": "1.9.0",
+  "catalog_version": "2.4.0",
+  "test": "compactPlayConfigurationAndContextualSources",
+  "test_binary_sha256": "4fe6b0c22cc6efefb4566d42bc0ef29b93ad8ce666ad17007fb0bea90333fa4f",
+  "production_binary_sha256": "f175b5a9e5b1afcf2f642da0ffbf3cf77e75a8998557f5c2dfdad4f64e10a019",
+  "attribution_sources": [
+    "resources/data/exploration_photos.json",
+    "resources/data/credits.json",
+    "resources/data/photo_provenance.json",
+    "docs/PHOTO_CREDITS.md"
+  ],
+  "inputs": {
+    "resources/qml/views/TaxonomyView.qml": "d064031c979c5002678e45ee3cc91618383255508a969b0cf2fd00f4efdb6f7a",
+    "tests/QmlInterfaceTests.cpp": "e8e6af9f20d75220d1355b6ca7cdc5928304fbd565b3c7d402b7eae8a606ea2c",
+    "resources/qml/Main.qml": "172c439fdf4749599a41d495f42f0f013868c931920f471dbb8f3e99e0d33aa6",
+    "resources/qml/views/CategoryView.qml": "23f3af9d0d616c8bb5b0f5c035cefee93bba0b1d9c383b7bc1bb776e2145ed53",
+    "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
+    "resources/qml/components/TaxonComboBox.qml": "da3a036ea663f590b585b5bbeece1711bb7802766991e39112dc5c67b14e3048",
+    "resources/qml/style/Theme.qml": "8c82b8cb94cc383a30ef445a6302296e6156788c5cf31ab810196b7d1f562f14",
+    "resources.qrc": "6abe1fdb5b779552a80c58019ce2358264bd79eba6d98404448ecc867dfec9b8",
+    "VERSION.txt": "30f4611383aa30a15753789f40effde81332f2f8714e6d3b2940bf0fc4592377",
+    "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c"
+  },
+  "captures": [
+    {
+      "captured_at": "2026-10-22T12:31:02.836Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/configure-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "page": "taxonomy",
+      "scrollY": 0,
+      "taxonId": "taxon:cac47417164883d60794",
+      "width": 1000,
+      "sha256": "88b3774718fea087aaa7bf36f4a37e6631aa83a7ed6219e34c4b619a29976605"
+    },
+    {
+      "captured_at": "2026-10-22T12:31:08.099Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/configure-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "page": "taxonomy",
+      "scrollY": 0,
+      "taxonId": "taxon:cac47417164883d60794",
+      "width": 1240,
+      "sha256": "b56db0012050c3bf4923bbaa9c602069e5fe12b3d4e24725aa4fe8aba9590cf5"
+    },
+    {
+      "captured_at": "2026-10-22T12:31:13.506Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/configure-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "page": "taxonomy",
+      "scrollY": 0,
+      "taxonId": "taxon:cac47417164883d60794",
+      "width": 1920,
+      "sha256": "658d932f1ae6b04ee4dfbad8893ce154e5146677b2305e251355c8aa4a91b975"
+    }
+  ]
+}

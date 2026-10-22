@@ -6,6 +6,8 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
+Seleção atual de Jogar: [2.2.3 — configuração compacta e fontes contextuais](VERSOES/2.2.3/configuracao-compacta/README.md), preservando a [entrega inicial](VERSOES/2.2.3/README.md) e o [retorno à seleção](VERSOES/2.2.3/refinamentos-navegacao/README.md), sobre a integração da PR #32 em `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`. Os registros abaixo preservam o desenvolvimento da enciclopédia.
+
 Revisão atual: [2.2.2 — uniformidade dos cartões e conforto de rolagem](VERSOES/2.2.2/usabilidade/README.md), preservando as [correções de créditos](VERSOES/2.2.2/correcoes-creditos/README.md), os [refinamentos finais](VERSOES/2.2.2/rodada-final/README.md), a [rodada 2](VERSOES/2.2.2/rodada-2/README.md), a [rodada 1](VERSOES/2.2.2/rodada-1/README.md) e a [entrega inicial](VERSOES/2.2.2/README.md), sobre a [Descoberta do Dia 2.2.1-B](VERSOES/2.2.1-B/README.md), o [Início fotográfico 2.2.1-A](VERSOES/2.2.1-A/README.md), a [navegação 2.1.3](VERSOES/2.1.3/README.md) e o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md). As versões anteriores permanecem históricas.
 
 1. Antes de alterar QML, crie uma versão em `VERSOES/<identificador>/` com o commit exato da interface e as telas afetadas. Conserve as versões anteriores.
@@ -22,7 +24,7 @@ Sequência da evolução visual da Home e das próximas telas:
 1. **2.2.1-A — Início fotográfico:** concluída no PR #30, integrado à main em `27294a18ffd0d1e533dcdeb47b44ee0011e97b35`.
 2. **2.2.1-B — Descoberta do Dia e indicadores dinâmicos:** integrada pelo [PR #31](https://github.com/kaduolliver/Projeto-Glossata/pull/31), merge `9d047910ddb6b56051d1830cba4052ca03a4e520`. Implementação e verificação na [revisão própria](VERSOES/2.2.1-B/README.md).
 3. **2.2.2 — Explorar:** entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), independente e vinculada à Issue #22. Implementação e evidências nesta [revisão](VERSOES/2.2.2/README.md); sem merge ou lançamento nesta entrega.
-4. **2.2.3 — Jogar:** futura reformulação, após Explorar e fora do escopo de 2.2.1-B.
+4. **2.2.3 — Jogar:** implementação e validação na [revisão própria](VERSOES/2.2.3/README.md), após o merge da PR #32, sem avançar para a modernização do Quiz (2.3.1).
 
 Propostas ainda pendentes, sem identificador ou conclusão presumidos:
 

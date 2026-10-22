@@ -1,0 +1,135 @@
+{
+  "recorded_at": "2026-10-22T03:07:04.487174+00:00",
+  "base_commit": "a2197591b48fe877beb0b6cc528c90c5b3836511",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure",
+    "exit_code": 0,
+    "source_commit": "24b225fbdc8e92740605a18ccce7d88334829889",
+    "binaries": {
+      "ui_tests": "a41f3bbbf722820511d63c84f7b01df152d98a28c70988caf40cf6e982bde3b3",
+      "production": "ee1631f17ac6d314b73102af540004994d46eac4ebf9231d2ba845acbdd38481"
+    },
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "test_time_sum_seconds": 489.36,
+    "qttest_cases_passed": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 20,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Technical catalog/media audits",
+    "Governance history comparison",
+    "Production Home capture and release metadata",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "resources.qrc",
+    "VERSION.txt",
+    "src",
+    "resources/qml/components",
+    "resources/qml/style",
+    "resources/qml/views/QuizView.qml",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/views/FeedbackView.qml",
+    "resources/qml/views/InfoView.qml",
+    "resources/qml/views/ResultsView.qml",
+    "resources/qml/views/StatisticsView.qml",
+    "resources/qml/views/AchievementsView.qml",
+    "resources/qml/views/SettingsView.qml",
+    "docs/interface/VERSOES/2.2.2",
+    "docs/interface/VERSOES/2.2.3/capturas",
+    "docs/interface/VERSOES/2.2.3/capturas.json",
+    "docs/interface/VERSOES/2.2.3/verificacoes"
+  ],
+  "binaries": {
+    "production": "ee1631f17ac6d314b73102af540004994d46eac4ebf9231d2ba845acbdd38481",
+    "core_tests": "cd63d3aa7301226f4c1330186fd71612eaadcd551268581d05e4e5bc998b279c",
+    "ui_tests": "a41f3bbbf722820511d63c84f7b01df152d98a28c70988caf40cf6e982bde3b3"
+  },
+  "capturas_json_sha256": "6376364b5d401f8ff4011bdecf6b338ca20349d73e0daffbb6db89205797f725",
+  "source_commit": "24b225fbdc8e92740605a18ccce7d88334829889",
+  "additional_runs": {
+    "play-context-targeted.txt": {
+      "cases_passed_including_setup_cleanup": 4,
+      "failed": 0,
+      "source_commit": "24b225fbdc8e92740605a18ccce7d88334829889",
+      "test_binary_sha256": "a41f3bbbf722820511d63c84f7b01df152d98a28c70988caf40cf6e982bde3b3"
+    },
+    "play-context-dpi-125.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0,
+      "source_commit": "24b225fbdc8e92740605a18ccce7d88334829889",
+      "test_binary_sha256": "a41f3bbbf722820511d63c84f7b01df152d98a28c70988caf40cf6e982bde3b3"
+    },
+    "play-context-dpi-150.txt": {
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0,
+      "source_commit": "24b225fbdc8e92740605a18ccce7d88334829889",
+      "test_binary_sha256": "a41f3bbbf722820511d63c84f7b01df152d98a28c70988caf40cf6e982bde3b3"
+    }
+  },
+  "scale_validation": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "physical_windows_scaling_changed": false,
+    "physical_touchpad_tested": false,
+    "precise_input": "Existing PR32 scrolling regression retained; this stage covers selection mouse/keyboard."
+  },
+  "prior_attribution_policy_sha256": "38bd875308e8007e071311b871968e097cc02b716ba8c70194b416aa8f2fc818",
+  "source_logs_sha256": {
+    "build/play-context-full-ctest.log": "2b27bf1ba7febdf108d3e304441d045047facd7ded8a04e60aa5047dc1a22255",
+    "build/tests/core-results.txt": "0feaf43b5ed2b510efe6675c6599f180bef481ba3a0703fdad0786c0952967f6",
+    "build/tests/ui-test-results.txt": "8dcbca61d05b36881f348fe6cc5bc95d9006a1ddd8bf6081d2f6c575c4a5027d",
+    "build/tests/identity-results.txt": "053ee6a9bf62bc440e65fb638ed13e37480a38c41c242f3cfbfc8ec4e8c62cd7",
+    "build/tests/recovery-results.txt": "a20fea9ba88c7340babd05065c8ac46f2deb4b07b1918aaf982b390675204a19",
+    "build/tests/play-context-targeted.txt": "3cd5105ba16bb0c0a701b5ae91d60ea6bcb69b5a5473ab863de4adbebcbfa6ce",
+    "build/tests/play-context-dpi-125.txt": "200db26c6a7e3bb3d04cb64c3b853863583518256f3380af96c45c6aca32bd9d",
+    "build/tests/play-context-dpi-150.txt": "08823ca9afdcce58071d10443af2841b86993f964038972657254a0f7445768e",
+    "build/play-context-smoke.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82"
+  },
+  "preexisting_diagnostic": "../../2.2.2/rodada-1/verificacoes/preexisting-home-context.txt (outside scope; HomeView unchanged)",
+  "evidence_sha256": {
+    "core-results.txt": "d4bdf7ea8b60664641b4ce5bff304266ba9bbf3a932aaae1c512a9b51912ccb8",
+    "ctest-results.txt": "94c14ed9ef3a0e5340a319e04fc34353c28de428f983cd28ec6749bd43e91af9",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "53a1f66aeb086caffe9333f92aa1c45d31e838d07fbb67c8b49b68c3b13332fa",
+    "identity-results.txt": "9513a88114294b11d4ce7144aaf834562cec30f1f185c89e1a3cb67c064acd8a",
+    "play-context-dpi-125.txt": "6257cd239098a6463ee41cfaeb98043d11238da5b375f9c1971dd71e9992bbe4",
+    "play-context-dpi-150.txt": "72259ea01c92b01e2ca71329b1ce0a5526745c92c883758b7fe83aa358d6e1a9",
+    "play-context-targeted.txt": "abad1b35962284dcec7809671d0eb55db7f301c93feeabf7c4fc2bd5ae0e1019",
+    "recovery-results.txt": "d3519164de567289dfd25384f690f39d76410df3c81785e05267d49ce904fbbc",
+    "smoke-test.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82",
+    "technical-audits.json": "081b86c4dc224653c982b2db0f24563f0cd5c464b3f3289329882fe4f1673a37",
+    "ui-test-results.txt": "deaa3639f9429b24dd5c5fd583a54c1830c9a0338b3fe951148d5479d75bab26"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 lines retained, Windows CP1252 subprocess lines transcoded; original log hashes retained. Preserved by .gitattributes.",
+  "limitations": "Existing distribution blocks and zero-frame Home diagnostic retained. Tests do not certify science, law or universal accessibility."
+}

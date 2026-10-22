@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "application": {
-    "version": "1.8.0",
+    "version": "1.9.0",
     "stage": "development"
   },
   "catalog": {
@@ -61,10 +61,10 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "ba7fe111644f5700d1b4ddae4d0632ddf826639e0f3d5a8b4e75e0aae1b4ff30",
+    "CHANGELOG.md": "c3b87d12653b1873b98fd1984b3c777a1edfd95b606044887be9d99157c28165",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
-    "VERSION.txt": "3eb1ef94b5890ca727158b106142685c8733b0ace5bcb4cf3f0ac14f9f0643f4",
-    "docs/CATALOGO_CHANGELOG.md": "531800f2df4edf9b7fa636a3ce7085a952b3acd7e44fbe8da6bece7ed1d5e173",
+    "VERSION.txt": "30f4611383aa30a15753789f40effde81332f2f8714e6d3b2940bf0fc4592377",
+    "docs/CATALOGO_CHANGELOG.md": "b8e0cbb247f4416a11aa92dbcc3201718b7c793bb2d297d42342fe3042ad151e",
     "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
     "resources/data/exploration_photos.json": "81a93aa8b7f03b7c791bf5903c6b4afd94388f19b6566549cf2deab1142f980d",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",

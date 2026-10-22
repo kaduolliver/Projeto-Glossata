@@ -1,0 +1,53 @@
+{
+  "recorded_at": "2026-10-22T12:32:33.006595+00:00",
+  "base_commit": "c914270ca359bf7cd1d750ad6b97e5adaccafbe0",
+  "source_commit": "557afceff027ff8cc1ebb36bac13559cdc9b1640",
+  "command": "glossata_ui_tests.exe compactPlayConfigurationAndContextualSources playConfigurationReturnsToSelectionContext playSelectionNavigationAndCaptures -o play-start-alignment.txt,txt",
+  "working_directory": "build/tests",
+  "environment": {
+    "QT_QPA_PLATFORM": "offscreen",
+    "QT_QUICK_BACKEND": "software",
+    "QT_QUICK_CONTROLS_STYLE": "Basic"
+  },
+  "exit_code": 0,
+  "cases_passed_including_setup_cleanup": 5,
+  "failed": 0,
+  "full_ctest_repeated": false,
+  "prior_full_suite": "../configuracao-compacta/verificacoes/resultados.json",
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Production smoke",
+    "Project status",
+    "Release metadata/history",
+    "Code licensing scope",
+    "Whitespace and evidence hashes"
+  ],
+  "preserved_paths": [
+    "src",
+    "resources/data",
+    "resources/images",
+    "resources/compliance",
+    "resources/qml/components",
+    "resources/qml/style",
+    "resources/qml/Main.qml",
+    "resources/qml/views/CategoryView.qml",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/views/QuizView.qml",
+    "resources/qml/views/CreditsView.qml",
+    "docs/images",
+    "docs/interface/VERSOES/2.2.2",
+    "docs/interface/VERSOES/2.2.3/capturas",
+    "docs/interface/VERSOES/2.2.3/capturas.json",
+    "docs/interface/VERSOES/2.2.3/verificacoes",
+    "docs/interface/VERSOES/2.2.3/configuracao-compacta",
+    "docs/interface/VERSOES/2.2.3/refinamentos-navegacao"
+  ],
+  "source_log_sha256": "2132361a94dafb1ff7e2a561bca1c4228feb0a49bef91efb864d45ecf5754f14",
+  "capturas_json_sha256": "cb1f2ef243116cb06c54d08aa3beab3eacf088e0220278f49c5faf4143ebb992",
+  "evidence_sha256": {
+    "play-start-alignment.txt": "878998b0b560d9a9bd39fd90996ba1c0373e05dffc4daa12951607bd5858c954",
+    "smoke-test.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82"
+  },
+  "limitations": "Software/offscreen. No physical GPU or screen-reader validation. Existing distribution blocks unchanged; no scientific or rights approval."
+}

@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Layouts
 import "../components"
@@ -13,6 +14,8 @@ Item {
     property bool breadcrumbsExpanded: false
     property bool sourcesOpen: false
     property bool classificationOpen: false
+    property Flickable pageViewport: null
+    readonly property var containingWindow: Window.window
     readonly property bool organism: backend.browseTaxon.kind === "organism"
     readonly property string originalPhotoUrl: photo.photoUrl || photo.sourceUrl || ""
     readonly property var trail: backend.breadcrumbs
@@ -21,14 +24,31 @@ Item {
     readonly property var introduction: browsingOnly && (backend.browseTaxon.summary || ({})).text ? backend.browseTaxon.summary : backend.browseTaxon.introduction
     function visit(id, keyboard) {
         backend.exploreTaxon(id)
-        if (browsingOnly) returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
+        returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
     }
-    Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false; view.breadcrumbsExpanded = false; view.sourcesOpen = false; view.classificationOpen = false } }
+    Component.onCompleted: {
+        let ancestor = parent
+        while (ancestor && !(ancestor instanceof Flickable)) ancestor = ancestor.parent
+        pageViewport = ancestor
+        positionPlayTop.restart()
+    }
+    // Only position this page. The selection's saved tab/scroll is untouched.
+    Timer {
+        id: positionPlayTop; interval: 0
+        onTriggered: if (!view.browsingOnly && view.pageViewport) {
+            view.pageViewport.cancelFlick()
+            view.pageViewport.contentY = 0
+        }
+    }
+    Connections { target: view.backend; function onExplorationChanged() {
+        view.photoDetailsOpen = false; view.breadcrumbsExpanded = false; view.sourcesOpen = false; view.classificationOpen = false
+        playSources.close(); positionPlayTop.restart()
+    } }
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
         width: parent.width; spacing: 18
-        UiButton { id: returnButton; objectName: "returnDomainsButton"; text: view.browsingOnly ? "Voltar à pesquisa e aos domínios" : "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
+        UiButton { id: returnButton; objectName: "returnDomainsButton"; Layout.topMargin: view.browsingOnly ? 0 : Style.Theme.spaceXs; text: view.browsingOnly ? "Voltar à pesquisa e aos domínios" : "Voltar à seleção de grupos"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
         Flow {
             objectName: "taxonomyBreadcrumbs"
             Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 4
@@ -104,8 +124,8 @@ Item {
             Label { objectName: "explorePhotoAttribution"; text: view.photo.image ? (view.photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + (view.photo.subject || "") + " · " + (view.photo.author || "Autoria não informada") + " · " + (view.photo.license || "Licença não informada") : view.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!view.photo.image; text: view.photo.identificationNote || "Representante do grupo; identificação indicada pela fonte."; textFormat: Text.PlainText; color: Style.Theme.gold; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         }
-        Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " espécie neste grupo" : " espécies neste grupo"); color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: Style.Theme.text; font.pixelSize: Style.Theme.titleSize; font.weight: Font.DemiBold; font.italic: view.backend.browseTaxon.rank === "species" || view.backend.browseTaxon.rank === "genus"; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
+        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
             visible: view.browsingOnly
             Layout.fillWidth: true; implicitHeight: introductionHeading.implicitHeight + 1
@@ -115,28 +135,38 @@ Item {
         ColumnLayout {
             Layout.fillWidth: true; spacing: view.browsingOnly ? 8 : 4
             Label { objectName: "exploreIntroductionText"; text: view.introduction.text || view.backend.browseTaxon.description || "Introdução científica ainda não disponível para este grupo."; textFormat: Text.PlainText; color: "#9DB8BC"; font.pixelSize: 13; wrapMode: Text.WordWrap; lineHeight: 1.35; Layout.fillWidth: true }
-            Label { visible: view.browsingOnly; text: view.backend.browseTaxon.introductionReviewNotice || ""; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+            Label { objectName: "taxonIntroductionReview"; text: view.backend.browseTaxon.introductionReviewNotice || ""; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             Label { text: (view.backend.browseTaxon.rankNote || "") + " " + (view.backend.browseTaxon.placementNotice || ""); color: "#D9BA7D"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-            TextAction { visible: !view.browsingOnly && !!view.backend.browseTaxon.sourceUrl; text: "Fonte do enquadramento ↗"; onClicked: Qt.openUrlExternally(view.backend.browseTaxon.sourceUrl) }
-            TextAction { visible: !view.browsingOnly && !!view.introduction.source_url; Layout.maximumWidth: view.width; text: "Fonte: " + (view.introduction.source_title || "Referência científica"); Accessible.description: view.introduction.source_url || ""; onClicked: Qt.openUrlExternally(view.introduction.source_url) }
+            TextAction { id: playSourcesButton; objectName: "playTaxonSourcesButton"; visible: !view.browsingOnly; text: "Fonte, origem e créditos"; Accessible.description: "Consultar fontes deste grupo, origem e estados de revisão; não inicia uma partida."; onClicked: playSources.open() }
         }
-        PlayModeSelector { objectName: "playModeSelector"; visible: !view.browsingOnly; app: view.app; backend: view.backend }
         Label { visible: !view.browsingOnly && view.backend.gameFinished && view.backend.feedbackText.indexOf("alternativas aprovadas") >= 0; text: view.backend.feedbackText; color: "#D9B879"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
+            objectName: "playConfigurationPanel"
             visible: !view.browsingOnly
-            Layout.fillWidth: true; implicitHeight: controls.implicitHeight + 36
-            radius: 16; color: "#17372D"; border.color: "#365C47"
+            Layout.fillWidth: true; implicitHeight: controls.implicitHeight + 2 * Style.Theme.spaceMd
+            radius: Style.Theme.cardRadius; color: Style.Theme.surfaceRaised; border.color: Style.Theme.border
             ColumnLayout {
                 id: controls
-                anchors.fill: parent; anchors.margins: 18; spacing: 14
-                Label { text: "Todas as espécies de " + (view.backend.browseTaxon.title || ""); color: "#E3EEE6"; font.pixelSize: 19; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                RowLayout {
+                anchors.fill: parent; anchors.margins: Style.Theme.spaceMd; spacing: Style.Theme.spaceXs
+                Label { text: "Configurar identificação"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
+                GridLayout {
+                    id: setupControls
+                    // Use available panel space, not the grid's own maximum
+                    // width derived from its capped controls.
+                    readonly property bool wide: controls.width >= 820
+                    columns: wide ? 3 : 2; columnSpacing: Style.Theme.spaceLg; rowSpacing: Style.Theme.spaceXs
                     Layout.fillWidth: true
-                    Label { text: "Identificar"; color: "#9BB6A9"; font.pixelSize: 12 }
-                    TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; enabled: count > 0; onModelChanged: currentIndex = 0 }
-                    UiButton { objectName: "startTaxonButton"; text: "Começar"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
+                    RowLayout {
+                        Layout.row: 0; Layout.column: 0
+                        Layout.columnSpan: setupControls.wide ? 1 : 2; Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+                        Layout.fillWidth: true; Layout.preferredWidth: 330; Layout.maximumWidth: 360; spacing: Style.Theme.spaceXs
+                        Label { text: "Identificar"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+                        TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; Accessible.name: "Nível de identificação no modo Livre"; enabled: count > 0; onModelChanged: currentIndex = 0 }
+                    }
+                    Label { objectName: "playDifficultyNotice"; text: "Livre · alternativas " + ({broad: "Mais amplas", balanced: "Equilibradas", close: "Mais próximas"}[view.backend.difficulty] || ""); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; horizontalAlignment: Text.AlignLeft; Layout.row: setupControls.wide ? 0 : 1; Layout.column: setupControls.wide ? 1 : 0; Layout.fillWidth: true; Accessible.description: "Dificuldade preservada da tela principal de Jogar." }
+                    UiButton { objectName: "startTaxonButton"; text: "Iniciar partida"; iconName: "play"; compact: true; Layout.row: setupControls.wide ? 0 : 1; Layout.column: setupControls.wide ? 2 : 1; Layout.alignment: Qt.AlignRight | Qt.AlignVCenter; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
                 }
-                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " registro elegível neste nível; consulte os avisos das fotografias." : " registros elegíveis neste nível; consulte os avisos das fotografias.") : "Sem quiz neste nível: são necessárias quatro alternativas distintas e revisões adequadas. Grupos vazios continuam disponíveis para exploração."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "playEligibleCount"; text: level.currentIndex >= 0 && level.currentIndex < view.backend.identificationLevels.length ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " organismo elegível neste nível" : " organismos elegíveis neste nível") + " · " + view.backend.identificationLevels[level.currentIndex].answers + " alternativas distintas. A dificuldade escolhida pode limitar a partida; consulte os avisos das fotografias." : "Sem partida disponível: são necessárias quatro alternativas distintas e revisões adequadas. Você pode continuar navegando pelos grupos."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
         }
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
@@ -145,19 +175,19 @@ Item {
             id: childGrid
             objectName: "taxonChildrenGrid"
             readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
-            Layout.fillWidth: true; columns: view.browsingOnly ? Math.max(1, Math.floor((view.width + 14) / (280 + 14))) : view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
+            Layout.fillWidth: true; columns: Math.max(1, Math.floor((view.width + 14) / (280 + 14))); columnSpacing: 14; rowSpacing: 14
             Repeater {
-                model: view.backend.browseChildren
+                model: view.browsingOnly ? view.backend.browseChildren : view.backend.playChildren
                 delegate: ExploreCard {
                     required property var modelData
                     required property int index
                     objectName: "taxonButton" + index
                     entry: modelData
                     encyclopedic: view.browsingOnly
+                    playSelection: !view.browsingOnly
                     Layout.fillWidth: true; Layout.preferredWidth: 1
-                    Layout.fillHeight: view.browsingOnly
-                    Layout.preferredHeight: view.browsingOnly ? childGrid.cardHeight : -1
-                    Layout.alignment: view.browsingOnly ? Qt.AlignVCenter : Qt.AlignTop
+                    Layout.fillHeight: true
+                    Layout.preferredHeight: childGrid.cardHeight
                     onClicked: view.visit(modelData.id, visualFocus)
                 }
             }
@@ -204,6 +234,77 @@ Item {
                     TextAction { text: "Créditos e transparência"; onClicked: view.app.navigate("credits") }
                 }
             }
+            }
+        }
+    }
+    Dialog {
+        id: playSources; objectName: "playTaxonSourcesDialog"
+        readonly property var taxon: view.backend.browseTaxon
+        readonly property var note: view.introduction || ({})
+        readonly property var review: note.governance || ({})
+        parent: Overlay.overlay; anchors.centerIn: parent
+        width: Math.min(680, parent.width - 40); height: Math.min(650, parent.height - 40)
+        title: "Fonte, origem e créditos"; modal: true; focus: true
+        closePolicy: Popup.CloseOnEscape
+        function revealFocusedLink() {
+            const control = view.containingWindow ? view.containingWindow.activeFocusItem : null
+            let ancestor = control
+            while (ancestor && ancestor !== playSourcesScroll) ancestor = ancestor.parent
+            const viewport = playSourcesScroll.contentItem as Flickable
+            if (!ancestor || !control || !viewport) return
+            const top = control.mapToItem(viewport, 0, 0).y
+            const bottom = top + control.height
+            if (top < 8) viewport.contentY = Math.max(0, viewport.contentY + top - 8)
+            else if (bottom > viewport.height - 8) viewport.contentY = Math.min(viewport.contentHeight - viewport.height, viewport.contentY + bottom - viewport.height + 8)
+        }
+        Timer { id: revealSourceFocus; interval: 0; onTriggered: playSources.revealFocusedLink() }
+        Connections { target: view.containingWindow; function onActiveFocusItemChanged() { if (playSources.opened) revealSourceFocus.restart() } }
+        onOpened: {
+            const viewport = playSourcesScroll.contentItem as Flickable
+            if (viewport) viewport.contentY = 0
+            closePlaySources.forceActiveFocus(Qt.PopupFocusReason)
+        }
+        onClosed: if (!view.browsingOnly) playSourcesButton.forceActiveFocus(Qt.PopupFocusReason)
+        footer: DialogButtonBox {
+            UiButton { id: closePlaySources; objectName: "playTaxonSourcesClose"; text: "Fechar"; compact: true; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole }
+            onRejected: playSources.close()
+        }
+        contentItem: ScrollView {
+            id: playSourcesScroll; objectName: "playTaxonSourcesContent"
+            clip: true; contentWidth: availableWidth
+            ColumnLayout {
+                width: playSourcesScroll.availableWidth; spacing: Style.Theme.spaceSm
+                Label { text: "Identificação taxonômica"; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+                Label { objectName: "playSourceIdentity"; text: (playSources.taxon.title || "") + " · " + (playSources.taxon.rankLabel || "") + "\nID local: " + (playSources.taxon.id || ""); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                Label { text: "Enquadramento científico"; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+                Label { objectName: "playSourcePlacement"; text: [playSources.taxon.rankNote || "", playSources.taxon.placementNotice || "", playSources.taxon.sourceUrl || "Referência não disponível para este grupo."].filter(value => !!value).join("\n"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                TextAction { objectName: "playPlacementSourceLink"; visible: !!playSources.taxon.sourceUrl; text: "Abrir fonte do enquadramento ↗"; Accessible.description: playSources.taxon.sourceUrl || ""; onClicked: Qt.openUrlExternally(playSources.taxon.sourceUrl) }
+                Label { text: "Referência educativa"; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+                Label { objectName: "playSourceEducation"; text: [playSources.note.source_title || "Sem referência educativa utilizável registrada para este grupo.", playSources.note.source_url || "", playSources.taxon.introductionReviewNotice || ""].filter(value => !!value).join("\n"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                TextAction { objectName: "playEducationSourceLink"; visible: !!playSources.note.source_url; text: "Abrir referência educativa ↗"; Accessible.description: playSources.note.source_url || ""; onClicked: Qt.openUrlExternally(playSources.note.source_url) }
+                Label {
+                    objectName: "playSourceReview"
+                    text: [["Revisão", playSources.review.label], ["Estado registrado", playSources.review.state], ["Responsável registrado", playSources.review.reviewer], ["Data registrada", playSources.review.reviewed_at], ["Tipo de revisão", playSources.review.review_kind], ["Validade registrada", playSources.review.due_at], ["Escopo", playSources.note.scope_name], ["Limitações", playSources.review.limitation]].filter(field => !!field[1]).map(field => field[0] + ": " + field[1]).join("\n")
+                    textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true
+                }
+                Label { text: "Proveniência"; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+                Label {
+                    objectName: "playSourceProvenance"
+                    text: [["Origem do táxon", playSources.taxon.source], ["Identificador na origem", playSources.taxon.sourceTaxonId], ["Registro da revisão", playSources.review.reason], ["Escopo declarado", playSources.review.claim_scope], ["SHA-256 do conteúdo revisado", playSources.review.content_sha256]].filter(field => !!field[1]).map(field => field[0] + ": " + field[1]).join("\n")
+                    textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true
+                }
+                Repeater {
+                    model: playSources.review.evidence || []
+                    delegate: ColumnLayout {
+                        id: evidenceEntry
+                        required property var modelData
+                        required property int index
+                        Layout.fillWidth: true; spacing: Style.Theme.spaceXs
+                        Label { text: [modelData.url || "", modelData.locator || "", modelData.supports || ""].filter(value => !!value).join("\n"); textFormat: Text.PlainText; wrapMode: Text.Wrap; Layout.fillWidth: true }
+                        TextAction { objectName: "playSourceEvidenceLink" + evidenceEntry.index; visible: !!evidenceEntry.modelData.url; text: "Abrir evidência registrada ↗"; Accessible.description: evidenceEntry.modelData.url || ""; onClicked: Qt.openUrlExternally(evidenceEntry.modelData.url) }
+                    }
+                }
+                Label { text: "Fontes disponíveis no catálogo local, consultáveis offline. Links externos dependem de conexão. As fotografias dos cartões descendentes possuem seus próprios créditos contextuais; nenhuma fotografia é apresentada neste diálogo."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             }
         }
     }

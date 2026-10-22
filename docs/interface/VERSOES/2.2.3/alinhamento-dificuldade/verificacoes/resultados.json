@@ -1,0 +1,74 @@
+{
+  "recorded_at": "2026-10-22T14:05:32.417072+00:00",
+  "base_commit": "bb202b03621732b51521d56d8f925bad18229183",
+  "source_commit": "da23116e837f1cf3de9b30572883748964a058dc",
+  "command": "glossata_ui_tests.exe compactPlayConfigurationAndContextualSources playConfigurationReturnsToSelectionContext playSelectionNavigationAndCaptures -o play-difficulty-alignment.txt,txt",
+  "working_directory": "build/tests",
+  "environment": {
+    "QT_QPA_PLATFORM": "offscreen",
+    "QT_QUICK_BACKEND": "software",
+    "QT_QUICK_CONTROLS_STYLE": "Basic"
+  },
+  "exit_code": 0,
+  "cases_passed_including_setup_cleanup": 5,
+  "failed": 0,
+  "additional_runs": {
+    "play-difficulty-dpi-125.txt": {
+      "source_log_sha256": "7ef77f5aa79b2a20288e80800ef213abd524f4214271323b0382c162bab22dc8",
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0
+    },
+    "play-difficulty-dpi-150.txt": {
+      "source_log_sha256": "b88c517d1e94d3a0a7f1db45951f7d398d8ea8fdebfd0b45260296588644b475",
+      "cases_passed_including_setup_cleanup": 3,
+      "failed": 0
+    }
+  },
+  "qt_scale_factors": [
+    1,
+    1.25,
+    1.5
+  ],
+  "physical_windows_scaling_changed": false,
+  "full_ctest_repeated": false,
+  "prior_full_suite": "../configuracao-compacta/verificacoes/resultados.json",
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Production smoke",
+    "Project status",
+    "Release metadata/history",
+    "Code licensing scope",
+    "Whitespace and evidence hashes"
+  ],
+  "preserved_paths": [
+    "src",
+    "resources/data",
+    "resources/images",
+    "resources/compliance",
+    "resources/qml/components",
+    "resources/qml/style",
+    "resources/qml/Main.qml",
+    "resources/qml/views/CategoryView.qml",
+    "resources/qml/views/HomeView.qml",
+    "resources/qml/views/QuizView.qml",
+    "resources/qml/views/CreditsView.qml",
+    "docs/images",
+    "docs/interface/VERSOES/2.2.2",
+    "docs/interface/VERSOES/2.2.3/capturas",
+    "docs/interface/VERSOES/2.2.3/capturas.json",
+    "docs/interface/VERSOES/2.2.3/verificacoes",
+    "docs/interface/VERSOES/2.2.3/configuracao-compacta",
+    "docs/interface/VERSOES/2.2.3/refinamentos-navegacao",
+    "docs/interface/VERSOES/2.2.3/alinhamento-iniciar"
+  ],
+  "source_log_sha256": "590c035b84355219c3c93b096abf546fb7db9d199f63734e6ff134d1822f15d2",
+  "capturas_json_sha256": "224c2c8a6ee3ba7d6a6ff0c17cc14a95d0d41bd66d78132545be769ca5e4ce63",
+  "evidence_sha256": {
+    "play-difficulty-alignment.txt": "985c0a1302bccd92f5f0d5a6756219df7f8172a29a1c5e4f6e7e8a7c518a6318",
+    "play-difficulty-dpi-125.txt": "14d1f4389e2235e23456e2b55ad99a45c25a70ce79cc881822659702ca2fcd49",
+    "play-difficulty-dpi-150.txt": "f0a87f3706350424bf713d1fd5042c377ac41e953d377c1a8aa6a6854b902b22",
+    "smoke-test.txt": "bc8888f3bfd1640e8215b8bf31bf163ac7d868c105143a47247f44bd80148c82"
+  },
+  "limitations": "Software/offscreen. No physical GPU or screen-reader validation. Existing distribution blocks unchanged; no scientific or rights approval."
+}
