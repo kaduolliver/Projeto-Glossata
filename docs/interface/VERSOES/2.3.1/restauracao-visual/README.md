@@ -1,5 +1,8 @@
 # PR #35 — Interface anterior restaurada e quatro ajustes pontuais
 
+**Correção posterior da ficha:** [Morfologia restaurada à direita e Descrição educativa independente](../descricao-independente/README.md). Este registro e suas capturas da ficha correspondem à implementação anterior à correção; não representam sua apresentação atual. As evidências de Quiz, dicas, contadores e estabilidade do retrato permanecem válidas.
+
+
 Esta é a entrega atual da [PR #35](https://github.com/kaduolliver/Projeto-Glossata/pull/35), relacionada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22). O mantenedor rejeitou a reformulação visual inicial; as [evidências históricas](../proposta-rejeitada.md) permanecem identificadas como proposta rejeitada, sem representar aprovação ou versão final.
 
 A referência é a interface anterior à PR #35, no commit `8293408a650ac2f9738d42c4c9c462115919bdfc`, após a PR #33. Não houve reset da `main`, rebase ou reescrita de histórico. A PR #34 já integrada em `25a882bd87d7d8cfd2fff458d296fa0334f0ee3b` é preservada; nenhuma alteração sua é desfeita ou reimplementada nesta branch.
@@ -14,14 +17,14 @@ Os quatro ajustes ficam na apresentação:
 
 - Cada dica revelada mostra título com a assistência efetiva (`Leve`, `Moderada`, `Forte`) e sua categoria fornecidas pelo backend. Preserva texto integral e ordem do modelo; o índice não determina assistência. Verde/dourado e a cor de assistência forte existente no painel distinguem os títulos sem nova paleta.
 - O painel do jogador conserva nome e pontuação e acrescenta acertos/erros. Acertos vêm de `correctAnswers`; erros são `answeredCount - correctAnswers`. Seleção e revelação de dicas não contam a pergunta atual. Ambos os modos e a recuperação usam os mesmos dados existentes, sem campos novos no banco.
-- `InfoView` reserva `speciesDescriptionRegion` abaixo da fotografia e dos créditos. Reutiliza somente `profile.morphology`, já filtrado pelo controlador conforme fontes e revisão existentes; apresenta o tópico como morfologia, sem alegar descrição enciclopédica completa. O resumo permanece à direita e o tópico de morfologia deixa de se repetir nessa coluna. Fonte, evidências e estado de revisão são preservados; nota ausente ou idêntica ao resumo mostra uma indicação discreta de preparação para a Etapa 3.
+- `InfoView` reserva `speciesDescriptionRegion` abaixo da fotografia e dos créditos. A associação inicial com Morfologia foi corrigida: atualmente a região é independente e mostra apenas "Descrição educativa detalhada ainda não disponível." Morfologia permanece na coluna direita com os demais tópicos, fonte e revisão. [Implementação e capturas atuais da ficha](../descricao-independente/README.md).
 - A coluna direita contém rolagem independente para enunciado, alternativas e dicas. Sua altura mínima não cresce com o texto e sua largura não comprime o retrato. Dica e Confirmar ficam fora dessa rolagem. A altura do Quiz vem do conteúdo estrutural e da área disponível, preservando o retrato enquanto a janela permanece no mesmo tamanho. O foco enquadra o controle dentro da coluna direita; nomes e dicas longos quebram linha, sem elipse.
 
 Confirmação exige pergunta ativa, foto pronta e alternativa válida; a proteção local de reentrada e a aceitação do backend continuam em vigor. Seleção permanece ao consultar dicas/encerramento. Atalhos 1–4, Enter, Tab/Shift+Tab, Esc, foco, redução de movimento, fontes e relato local foram preservados. Nenhuma regra de dicas, pontuação, dificuldade, elegibilidade, seleção de questões, ranking, histórico, checkpoint, recuperação ou identificação científica foi alterada.
 
 ## Etapa 3
 
-Descrições educativas completas exigirão conteúdo e revisão próprios na **Etapa 3 — Enciclopédia Científica Interativa**, com fontes e decisões concretas no fluxo de curadoria. Esta entrega apenas prepara a região e reutiliza uma nota já disponível. Não cria descrição em massa, autor, fonte, licença, revisão especializada ou aprovação fictícia.
+Descrições educativas completas exigirão conteúdo e revisão próprios na **Etapa 3 — Enciclopédia Científica Interativa**, com fontes e decisões concretas no fluxo de curadoria. A estrutura independente apenas prepara a região; os tópicos existentes permanecem em seus contextos originais. Não cria descrição em massa, autor, fonte, licença, revisão especializada ou aprovação fictícia.
 
 ## Comparação e validação
 

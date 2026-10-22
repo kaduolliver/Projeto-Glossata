@@ -2,7 +2,7 @@
 
 ## Quiz — 2.3.1
 
-A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` apresenta a nota de morfologia já validada pela projeção existente abaixo da foto/créditos, preservando resumo, fontes e revisão, sem duplicar o tópico à direita. [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).
+A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` mantém Morfologia no modelo original de seções à direita, entre Nutrição e Conservação, com fonte e revisão. `speciesDescriptionRegion`, abaixo da foto/créditos, contém apenas a mensagem de indisponibilidade: não consulta tópicos ou resumo e não associa fontes inexistentes. [Correção pontual](VERSOES/2.3.1/descricao-independente/README.md). [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).
 
 ## PR #33 — painel compacto e fontes contextuais
 

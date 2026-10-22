@@ -122,7 +122,7 @@ A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos
 
 Cada questão apresenta quatro alternativas de identificação no mesmo nível taxonômico, seleção, confirmação e feedback. A fotografia e os dados utilizados na resposta são preservados para a etapa de revisão.
 
-O [Quiz 2.3.1](docs/interface/VERSOES/2.3.1/restauracao-visual/README.md) preserva sua composição original, com foto à esquerda, alternativas à direita e o painel do jogador. Dicas reveladas recebem títulos com a assistência efetiva; o painel mostra acertos e erros, sem contar a pergunta ainda não confirmada. A rolagem das dicas mantém o retrato estável, e a ficha reutiliza a descrição de morfologia existente abaixo da fotografia. Regras, fontes, pontuação e recuperação permanecem preservadas.
+O [Quiz 2.3.1](docs/interface/VERSOES/2.3.1/restauracao-visual/README.md) preserva sua composição original, com foto à esquerda, alternativas à direita e o painel do jogador. Dicas reveladas recebem títulos com a assistência efetiva; o painel mostra acertos e erros, sem contar a pergunta ainda não confirmada. A rolagem das dicas mantém o retrato estável, e a ficha mantém todos os tópicos científicos à direita. A estrutura independente de Descrição educativa fica abaixo da fotografia, ainda sem conteúdo; Morfologia conserva seu contexto original. Regras, fontes, pontuação e recuperação permanecem preservadas.
 
 - **Modo Livre:** exploração contínua, com filtros e diferentes políticas de alternativas; a partida termina quando o jogador decide encerrá-la.
 - **Modo Competitivo:** quantidade fixa de questões indicada no bloco Estado atual, sem repetição de organismos na mesma partida, com condições padronizadas, regras de elegibilidade e ranking específicas.
