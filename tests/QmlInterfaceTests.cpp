@@ -67,6 +67,8 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void statisticsContextsAndConfirmedMetrics();
+    void statisticsResponsiveRankingAndCaptures();
     void restoredQuizHintsCountersAndStablePortrait();
     void restoredQuizRecoveryAndUnavailableStates();
     void speciesDescriptionStaysIndependentOfMorphology();
@@ -90,6 +92,141 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
+{
+    interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("statistics-context.sqlite");
+    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Perfil Estatísticas"));
+    const auto profileId=controller.currentPlayerId();
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    window->setProperty("page","statistics"); QTest::qWait(100);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const auto value=[&](const QString &name){auto c=item(name);return c?c->property("value").toString():QString();};
+    QCOMPARE(value("statisticsAnswered"),QString("0")); QCOMPARE(value("statisticsIncorrect"),QString("0"));
+    QCOMPARE(value("statisticsAccuracy"),QString("0,0%")); QCOMPARE(value("statisticsAverage"),QString("0,00"));
+    QVERIFY(item("statisticsHistoryEmpty")->isVisible()); QVERIFY(item("statisticsTaxonomyEmpty")->isVisible()); QVERIFY(item("statisticsRankingEmpty")->isVisible());
+    QVERIFY(controller.startTaxonGame({},"genus")); window->setProperty("sessionStarted",true);
+    JsonSpeciesCatalog catalog; const auto organisms=catalog.loadCurrentSpecies();
+    const auto correct=[&](){for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())return s.answerAtRank("genus");return QString();};
+    int revealed=0, hinted=0; QMap<QString,int> categories;
+    for(int question=0;question<3;++question) {
+        const auto before=controller.sessionMetrics(); int used=0;
+        if(question>0) for(const auto &v:controller.hints()) {
+            const auto h=v.toMap(); if(!h["available"].toBool())continue;
+            QVERIFY(controller.revealHintCategory(h["id"].toString())); ++used; ++categories[h["category"].toString()];
+            if(question==1)break;
+        }
+        QCOMPARE(controller.sessionMetrics(),before); QCOMPARE(value("statisticsAnswered"),QString::number(question));
+        if(used)++hinted; revealed+=used;
+        const auto answer=correct(); QVERIFY(!answer.isEmpty());
+        controller.answerSelected(question==2 ? controller.answerOptions()[(controller.answerOptions().indexOf(answer)+1)%4] : answer);
+        controller.answerSelected(answer); // Repeated confirmation must not enter the statistics twice.
+        QTest::qWait(50); QCOMPARE(controller.answeredCount(),question+1);
+        controller.nextQuestion();
+    }
+    QTest::qWait(100); QCOMPARE(controller.correctAnswers(),2);
+    QCOMPARE(value("statisticsAnswered"),QString("3")); QCOMPARE(value("statisticsCorrect"),QString("2")); QCOMPARE(value("statisticsIncorrect"),QString("1"));
+    QCOMPARE(value("statisticsAccuracy"),QString("66,7%"));
+    QCOMPARE(value("statisticsAverage"),controller.sessionMetrics()["average"].toString());
+    QCOMPARE(value("statisticsEfficiency"),controller.sessionMetrics()["efficiency"].toString()+"%");
+    QCOMPARE(controller.sessionMetrics()["hintedQuestions"].toInt(),hinted); QCOMPARE(controller.sessionMetrics()["revealedCategories"].toInt(),revealed);
+    QVERIFY(revealed>0); for(const auto &key:{QString("taxonomic"),QString("etymological"),QString("morphological")})QCOMPARE(item("statisticsHint-"+key)->property("count").toInt(),categories[key]);
+    QCOMPARE(controller.playerMetrics()["answered"].toInt(),0); // Current progress is not completed history.
+    const auto metrics=controller.sessionMetrics(); const auto groups=controller.categoryStats(); const auto options=controller.answerOptions();
+    QVERIFY(controller.prepareToClose());
+    GameController recovered(nullptr,path); QVERIFY(!recovered.recoverableSessions().isEmpty());
+    const auto recoveryId=recovered.recoverableSessions().first().toMap()["id"].toString();
+    QVERIFY(recovered.resumeSession(recoveryId)); QCOMPARE(recovered.sessionMetrics(),metrics); QCOMPARE(recovered.categoryStats(),groups); QCOMPARE(recovered.answerOptions(),options);
+    window->setProperty("backend",QVariant::fromValue(&recovered)); QTest::qWait(100);
+    QCOMPARE(value("statisticsAnswered"),QString("3")); QCOMPARE(value("statisticsAccuracy"),QString("66,7%"));
+    recovered.stopGame(); QTest::qWait(100); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3);
+    QCOMPARE(value("statisticsHistoryAccuracy"),QString("66,7%")); QVERIFY(!item("statisticsHistoryEmpty")->isVisible());
+    const auto session=recovered.sessionMetrics(); const auto score=recovered.scoreUnits(); const auto difficulty=recovered.difficulty();
+    auto competitive=item("competitiveRankingButton"); QVERIFY(competitive); competitive->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(100);
+    QCOMPARE(recovered.rankingMode(),QString("competitive")); QVERIFY(competitive->property("checked").toBool());
+    QCOMPARE(recovered.playerMetrics()["answered"].toInt(),0); QCOMPARE(recovered.sessionMetrics(),session); QCOMPARE(recovered.scoreUnits(),score); QCOMPARE(recovered.difficulty(),difficulty);
+    QVERIFY(item("statisticsHistoryEmpty")->isVisible());
+    auto free=item("freeRankingButton"); free->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(100);
+    QCOMPARE(recovered.rankingMode(),QString("free")); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3);
+    QVERIFY(recovered.addPlayerProfile("Outro perfil")); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),0);
+    QVERIFY(item("statisticsHistoryContext")->property("text").toString().contains("Outro perfil"));
+    recovered.selectPlayerProfile(profileId); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3); QCOMPARE(recovered.sessionMetrics(),session);
+    window->setProperty("backend",QVariant::fromValue(&controller));
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::statisticsResponsiveRankingAndCaptures()
+{
+    interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("statistics-visual.sqlite"); GameController controller(nullptr,path);
+    QVERIFY(controller.addPlayerProfile("Perfil de demonstração"));
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window); window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    window->setProperty("page","statistics"); QTest::qWait(100);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);}; auto scroll=item("pageScroll"); QVERIFY(scroll);
+    const QString folder="previews/statistics-2.3.2/"+QString::number(qRound(window->devicePixelRatio()*100)); QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
+    const auto capture=[&](const QString &state){QTest::qWait(120);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"scrollY",scroll->property("contentY").toReal()},{"session",QJsonObject::fromVariantMap(controller.sessionMetrics())},{"history",QJsonObject::fromVariantMap(controller.playerMetrics())},{"rankingMode",controller.rankingMode()},{"rankingRows",controller.ranking().size()},{"taxonomyGroups",controller.categoryStats().size()}});return true;};
+    const auto reveal=[&](QQuickItem *c){c->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(80);const auto p=c->mapToItem(scroll,QPointF());scroll->setProperty("contentY",qBound(0.0,scroll->property("contentY").toReal()+p.y()-20,qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height())));QTest::qWait(50);};
+    const auto fits=[&](QQuickItem *c){const auto rect=c->mapRectToItem(item("statisticsView"),c->boundingRect());return rect.left()>=-1&&rect.right()<=item("statisticsView")->width()+1&&c->height()>0;};
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);scroll->setProperty("contentY",0);QTest::qWait(80);QVERIFY(capture("empty"));for(const auto &name:{"statisticsAnswered","statisticsCorrect","statisticsIncorrect","statisticsAccuracy","statisticsTaxonomyPanel","statisticsRankingPanel"})QVERIFY2(fits(item(name)),name);}
+    // Test-only repository records exercise partial detailed coverage and deleted profiles.
+    {
+        SqliteGameHistoryRepository history(path);
+        const auto removed=history.createPlayer("Perfil excluído de teste"); QVERIFY(history.saveResult(removed.identity(),120,20)); QVERIFY(history.deletePlayer(removed.id));
+        for(int i=0;i<5;++i){const auto p=history.createPlayer("Participante de teste "+QString::number(i+1));QVERIFY(history.saveResult(p.identity(),96-i*6,16-i));}
+        QVERIFY(history.saveResult(history.profileNamed("Perfil de demonstração").identity(),6,1));
+    }
+    controller.loadRanking(); QCOMPARE(controller.ranking().size(),5); QCOMPARE(controller.playerMetrics()["answered"].toInt(),0); QVERIFY(!controller.personalRecord().isEmpty());
+    QVERIFY(controller.startTaxonGame({},"genus")); window->setProperty("sessionStarted",true);
+    JsonSpeciesCatalog catalog; const auto organisms=catalog.loadCurrentSpecies();
+    for(int i=0;i<30;++i){QString correct;for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())correct=s.answerAtRank("genus");QVERIFY(!correct.isEmpty());if(i%3==0)controller.revealHint();controller.answerSelected(i%4 ? correct : controller.answerOptions()[(controller.answerOptions().indexOf(correct)+1)%4]);controller.nextQuestion();}
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);scroll->setProperty("contentY",0);QTest::qWait(100);QVERIFY(item("statisticsSessionContext")->property("text").toString().contains("Partida em andamento"));QVERIFY(capture("active-game"));}
+    controller.stopGame(); QTest::qWait(100); QCOMPARE(controller.playerMetrics()["answered"].toInt(),30); QVERIFY(controller.categoryStats().size()>1);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        window->resize(size);controller.setRankingMode("free");scroll->setProperty("contentY",0);QTest::qWait(100);
+        QVERIFY(capture("current-game"));
+        reveal(item("statisticsAverage"));QVERIFY(capture("performance-and-hints"));
+        const auto session=controller.sessionMetrics(); const auto counts=controller.categoryStats();
+        for(const auto &name:{"statisticsAnswered","statisticsCorrect","statisticsIncorrect","statisticsAccuracy","statisticsAverage","statisticsEfficiency","statisticsHistoryAverage","statisticsTaxonomyPanel","statisticsRankingPanel"})QVERIFY2(fits(item(name)),name);
+        for(int g=0;g<counts.size();++g){const auto group=counts[g].toMap();QVERIFY(item("statisticsTaxon-"+group["id"].toString()));for(const auto &p:group["phyla"].toList())QVERIFY(item("statisticsSubtaxon-"+p.toMap()["id"].toString()));}
+        reveal(item("statisticsHistoryContext"));QVERIFY(capture("profile-history"));
+        reveal(item("statisticsTaxonomyPanel"));QVERIFY(capture("taxonomy"));
+        reveal(item("statisticsTaxon-"+counts.last().toMap()["id"].toString()));QVERIFY(capture("taxonomy-lower-groups"));
+        auto button=item("freeRankingButton");reveal(button);QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("competitiveRankingButton")->hasActiveFocus());
+        QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);QCOMPARE(controller.rankingMode(),QString("competitive"));QVERIFY(item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("competitive-empty"));
+        QTest::keyClick(window,Qt::Key_Backtab,Qt::ShiftModifier);QTRY_VERIFY(item("freeRankingButton")->hasActiveFocus());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);
+        QCOMPARE(controller.sessionMetrics(),session);QCOMPARE(controller.categoryStats(),counts);
+        QTest::keyClick(window,Qt::Key_Tab);QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("statisticsRank0")->hasActiveFocus());
+        QVERIFY(capture("ranking-free"));QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("statisticsRank1")->hasActiveFocus());
+        auto panel=item("statisticsRankingPanel"); auto taxonomy=item("statisticsTaxonomyPanel");
+        if(item("statisticsView")->property("sideBySide").toBool())QVERIFY(qAbs(panel->y()-taxonomy->y())<1);else QVERIFY(panel->y()>=taxonomy->y()+taxonomy->height());
+        // Marker/name fixture is presentation only; preserve the actual model and IDs.
+        auto view=item("statisticsView");const auto liveBackend=view->property("backend");
+        QVariantMap fixture{{"sessionMetrics",controller.sessionMetrics()},{"playerMetrics",controller.playerMetrics()},{"rankingMode","free"},{"answeredCount",controller.answeredCount()},{"correctAnswers",controller.correctAnswers()},{"gameFinished",true},{"gameMode","free"},{"currentPlayerName",controller.currentPlayerName()},{"identityNotice",controller.identityNotice()},{"competitiveQuestionCount",20},{"personalRecord",controller.personalRecord()},{"taxonomicStats",counts}};
+        fixture["sessionPlayerName"]=controller.sessionPlayerName();
+        auto rows=controller.ranking();auto legacy=rows[0].toMap();legacy["legacyIdentity"]=true;legacy["playerName"]=QString(32,'W');rows[0]=legacy;fixture["ranking"]=rows;
+        view->setProperty("backend",fixture);QTest::qWait(100);QVERIFY(fits(item("statisticsRank0")));QVERIFY(item("statisticsRank0")->height()>60);reveal(item("freeRankingButton"));QVERIFY(capture("ranking-markers-long-name"));
+        auto zeroGroups=counts; auto zero=zeroGroups[0].toMap();zero["answered"]=0;zero["correct"]=0;
+        auto subgroups=zero["phyla"].toList();for(auto &p:subgroups){auto m=p.toMap();m["answered"]=0;m["correct"]=0;m["accuracy"]=0;p=m;}zero["phyla"]=subgroups;zeroGroups[0]=zero;fixture["taxonomicStats"]=zeroGroups;
+        view->setProperty("backend",fixture);QTest::qWait(80);QCOMPARE(item("statisticsTaxon-"+zero["id"].toString())->property("accuracy").toReal(),0.0);
+        view->setProperty("backend",liveBackend);QTest::qWait(100);
+    }
+    QVERIFY(controller.startCompetitiveGame());
+    for(int i=0;i<20;++i){QString correct;for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())correct=s.answerAtRank("genus");QVERIFY(!correct.isEmpty());controller.answerSelected(correct);if(!controller.gameFinished())controller.nextQuestion();}
+    QVERIFY(controller.gameFinished());QCOMPARE(controller.rankingMode(),QString("competitive"));QCOMPARE(controller.playerMetrics()["answered"].toInt(),20);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);QTest::qWait(100);reveal(item("competitiveRankingButton"));QVERIFY(!item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("ranking-competitive"));}
+    QFile manifest(folder+"/frames.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());manifest.close();
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
 {

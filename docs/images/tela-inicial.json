@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-22T16:18:00.582856+00:00",
+  "captured_at": "2026-10-22T21:12:28.299744+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "framing": "Real Home scrolled to the discovery and catalog indicators by the production executable.",
-  "application_version": "1.10.0",
-  "binary_sha256": "6d9e4a4e01165d16ce14628ce56e2c384a70f0c878294ccd8b7466171f083653",
+  "application_version": "1.11.0",
+  "binary_sha256": "2051d7360e898d32f000e497c31fba8672ecb38ed041f2439615295f6e074dfa",
   "image_sha256": "8718b129b9e26b5de5ebe72183905a60fe956ff611dc9164cb2e161c39e6c3c2",
   "width": 1240,
   "height": 820,

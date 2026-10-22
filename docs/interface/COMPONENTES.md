@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Estatísticas — 2.3.2
+
+`StatisticsView` mantém `app`/`backend` e apenas projeta contratos existentes. `statisticsAnswered`, `statisticsCorrect`, `statisticsIncorrect` e `statisticsAccuracy` reutilizam `StatCard` sem mudar o componente compartilhado. Desempenho e histórico usam textos decimais do controlador. Os indicadores se reorganizam conforme a largura útil; `statisticsTaxonomyPanel` e `statisticsRankingPanel` empilham abaixo de 900 pixels lógicos. Alturas dos painéis seguem o conteúdo, com a rolagem única do shell.
+
+`freeRankingButton` e `competitiveRankingButton` preservam os comandos e expõem o estado selecionado. As cinco posições máximas retornadas pelo backend são focáveis (`statisticsRank0..4`), com nome integral, pontuação, último resultado/data, nome registrado na descrição acessível e indicadores de legado/exclusão. Tab/Shift+Tab preservam a ordem visual, com foco visível e enquadramento pelo shell. As barras taxonômicas representam acertos/respostas, sem interpolação animada ou novas classificações. [Semântica e validação](VERSOES/2.3.2/README.md).
+
 ## Quiz — 2.3.1
 
 `QuizView` recupera o layout anterior, preservando `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. A esquerda tem largura limitada de 37%; a direita contém `quizAnswersScroll`, com alternativas e dicas, sem impor sua altura mínima à foto. Dica/Confirmar ficam fixos na base da coluna. Foco local enquadra o controle dentro da rolagem direita. Títulos `revealedHintTitle0..2` consultam assistência/categoria do backend, sem inferir nível pelo índice. `quizAnswerCounts` projeta `correctAnswers` e `answeredCount - correctAnswers`; não escreve no banco.

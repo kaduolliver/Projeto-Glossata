@@ -1,5 +1,7 @@
 # Documentação da interface
 
+Estatísticas: [Subetapa 2.3.2 — diagnóstico, semântica e validação](VERSOES/2.3.2/README.md), sobre a integração da PR #35 (`c6db713`). Preserva o Quiz e as evidências anteriores.
+
 Esta pasta registra a interface Qt 6/QML do Projeto Glossata. A [arquitetura](ARQUITETURA_UI.md) descreve as telas e a navegação; o [design system](DESIGN_SYSTEM.md) inventaria os estilos em uso e as oportunidades de centralização; o [histórico visual](CHANGELOG_UI.md) aponta para as versões documentadas.
 
 A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está ligada ao commit `b201e20c2d83fda6d790bc6a96217c0fdc75307e`. Suas capturas são imagens da janela Qt real, geradas pelo teste de interface com SQLite temporário. O [manifesto de capturas](VERSOES/baseline/capturas.json) registra hashes, dimensões, horário, ambiente e binário usado. O commit desta documentação preserva as imagens; o código da interface se recupera pelo commit de base, sem cópia integral nesta pasta.

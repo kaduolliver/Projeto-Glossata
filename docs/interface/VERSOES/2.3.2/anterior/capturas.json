@@ -1,0 +1,37 @@
+{
+  "source_commit": "c6db713c9308e2e08cca6b7fea8f6ed214eeb116",
+  "method": "QQuickWindow::grabWindow; navigateAndConfirmAnswers; Qt software/offscreen; SQLite temporário; Discord desativado",
+  "application_version": "1.10.0",
+  "test_binary_sha256": "955de8c01734763276f61457d4898c1cbb6a7db779fc7bdf3841a083f06086d8",
+  "source_qml_sha256": "b439d40a6defd3659cf8bac64c282b3bb98eae69d3d369ed557bca54a4f5c99c",
+  "frames": [
+    {
+      "file": "statistics.png",
+      "sha256": "d879d631eeea9625542abaaf832df697cafd457ec78cc5ddd313fc002f62750f",
+      "width": 1240,
+      "height": 820,
+      "captured_at_file_mtime_utc": "2026-10-22T21:02:38.374795+00:00"
+    },
+    {
+      "file": "compact-full-statistics.png",
+      "sha256": "272733c7ce2254b8ce8bcd7b5bc428e2335b279c51e77c0ce0a903cc8745bf44",
+      "width": 1000,
+      "height": 700,
+      "captured_at_file_mtime_utc": "2026-10-22T21:02:51.340204+00:00"
+    },
+    {
+      "file": "compact-statistics-lower-groups.png",
+      "sha256": "42986edc60133fde2777c8e830f353bfab2b19337e24c17980fc3e10e9710f40",
+      "width": 1000,
+      "height": 700,
+      "captured_at_file_mtime_utc": "2026-10-22T21:02:51.446168+00:00"
+    },
+    {
+      "file": "competitive-statistics.png",
+      "sha256": "d9177b7d83a9eb06a85050622da0ee715f419974eee3c38ea45c14c9032d91a9",
+      "width": 1000,
+      "height": 700,
+      "captured_at_file_mtime_utc": "2026-10-22T21:03:03.191604+00:00"
+    }
+  ]
+}

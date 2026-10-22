@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## Estatísticas — 2.3.2
+
+Apresentação localizada em `StatisticsView.qml`, sem alteração de C++, persistência ou componentes compartilhados. `sessionMetrics` e `taxonomicStats` pertencem à partida (cujo jogador é `sessionPlayerName`); `playerMetrics`, `personalRecord` e `ranking` pertencem ao perfil/contexto de ranking selecionado. Alterar `rankingMode` atualiza o histórico/ranking sem trocar os dados da sessão. O diagnóstico registra formatos, arredondamentos, cobertura parcial e limites do backend antes da implementação. [Contrato e evidências](VERSOES/2.3.2/README.md).
+
 ## Quiz — 2.3.1
 
 A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` mantém Morfologia no modelo original de seções à direita, entre Nutrição e Conservação, com fonte e revisão. `speciesDescriptionRegion`, abaixo da foto/créditos, contém apenas a mensagem de indisponibilidade: não consulta tópicos ou resumo e não associa fontes inexistentes. [Correção pontual](VERSOES/2.3.1/descricao-independente/README.md). [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).
