@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #33 — alinhamento do início da partida
+
+- Coluna central flexível e botão Iniciar partida à margem interna direita nas janelas amplas, sem esticar o botão; composição compacta e contador abaixo preservados.
+- [Capturas e testes nas três resoluções](VERSOES/2.2.3/alinhamento-iniciar/README.md). Sem mudança de regras, dificuldade, disponibilidade ou navegação.
+
 ## PR #33 — configuração compacta e fontes contextuais
 
 - Controles do Livre em uma linha nas janelas amplas e duas nas compactas, campo com largura limitada e altura do painel derivada do conteúdo.

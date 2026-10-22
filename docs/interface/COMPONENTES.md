@@ -2,6 +2,8 @@
 
 ## PR #33 — configuração compacta e fontes do grupo
 
+Nas janelas amplas, a coluna central da dificuldade absorve o espaço disponível e centraliza seu texto; o início conserva a largura intrínseca e encosta na margem interna direita. Nas compactas, permanece na segunda linha, à esquerda. Os três controles mantêm alinhamento vertical central. [Verificação do alinhamento](VERSOES/2.2.3/alinhamento-iniciar/README.md).
+
 `TaxonomyView.playConfigurationPanel` calcula a altura pelo conteúdo e usa margens de `spaceMd`, título discreto e espaçamento `spaceXs`. Com 820 pixels úteis nos controles, identificação, dificuldade informativa e Iniciar partida ficam lado a lado; abaixo desse limiar, o início passa para uma segunda linha. O campo de identificação fica limitado à largura do conjunto de 360 pixels, sem esticar com a janela. A linha informativa de elegibilidade fica abaixo e pode quebrar sem corte. Modelo, dificuldade, condição de habilitação e chamada de início são os mesmos.
 
 `playTaxonSourcesButton` abre o diálogo local `playTaxonSourcesDialog`, exclusivo da configuração de Jogar. Ele apresenta identificação, enquadramento, referência educativa, estado/limitações de revisão e proveniência já expostos pelo controlador. Os links preservam suas URLs, a rolagem acompanha o foco e Esc/Fechar devolvem o foco ao botão de origem. Sem fotografia própria nesta página, os créditos fotográficos continuam vinculados aos cartões descendentes. Avisos científicos permanecem visíveis fora do diálogo. Os diálogos globais e a apresentação do Explorar não foram reformulados. [Evidências](VERSOES/2.2.3/configuracao-compacta/README.md).

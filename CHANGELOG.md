@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar
 
+- PR #33: botão Iniciar partida alinhado à margem interna direita nas janelas amplas, com dificuldade central e largura compacta preservada; composição responsiva e mensagem de elegibilidade mantidas. [Capturas](docs/interface/VERSOES/2.2.3/alinhamento-iniciar/README.md).
 - PR #33, ajuste pontual: painel de identificação compacto e adaptativo, fontes do grupo reunidas em diálogo contextual offline e botão Voltar integralmente visível na abertura e navegação taxonômica. Estado da seleção e regras preservados. [Capturas e validação](docs/interface/VERSOES/2.2.3/configuracao-compacta/README.md).
 - PR #33, refinamento compatível: configuração direta do modo Livre na página do grupo, sem repetir os painéis globais; dificuldade preservada. Retorno à aba, rolagem e foco de teclado da seleção em memória, reaproveitando a restauração do Explorar. [Capturas e validação](docs/interface/VERSOES/2.2.3/refinamentos-navegacao/README.md).
 - Subetapa 2.2.3: seleção fotográfica responsiva com Reinos, Domínios e Grupos avançados, IDs existentes e disponibilidade derivada dos níveis já validados pelo backend. Livre, dificuldade, jogo misto e Competitivo com apresentação própria; regras e Quiz preservados. Alinhamento localizado dos créditos e ações do Explorar. [Registro visual](docs/interface/VERSOES/2.2.3/README.md). MINOR por funcionalidade compatível; catálogo 2.4.0 inalterado.
