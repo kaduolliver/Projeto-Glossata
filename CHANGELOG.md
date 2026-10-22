@@ -4,7 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.10.0] — Não lançado; interface do Quiz
 
-- PR #35 revisada por decisão do mantenedor: composição anterior do Quiz restaurada; títulos das dicas pelo nível efetivo, contadores de acertos/erros e retrato estável com rolagem independente à direita. Na ficha, a nota existente de morfologia fica abaixo da foto/créditos, sem duplicar o resumo. [Documentação e capturas atuais](docs/interface/VERSOES/2.3.1/restauracao-visual/README.md).
+- PR #35 revisada por decisão do mantenedor: composição anterior do Quiz restaurada; títulos das dicas pelo nível efetivo, contadores de acertos/erros e retrato estável com rolagem independente à direita. Na ficha, Morfologia permanece entre Nutrição e Conservação na coluna direita; a estrutura de Descrição educativa abaixo da foto/créditos é independente e informa sua indisponibilidade, sem reutilizar tópicos ou resumo. [Correção e capturas atuais](docs/interface/VERSOES/2.3.1/descricao-independente/README.md).
 - MINOR pelos recursos de apresentação compatíveis; catálogo 2.4.0 inalterado. A proposta visual inicial não foi aprovada e permanece identificada como histórica. Sem lançamento ou aprovação de distribuição.
 
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar

@@ -61,10 +61,10 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "4fcfa4c719995ba40051d8abe1983122be31e73498c43289a81e236223cd2f5c",
+    "CHANGELOG.md": "cc18f178d268a74a6cb899b4e9f19ee6a1a67e504a90ec1a802175d1bfa13f69",
     "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
     "VERSION.txt": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
-    "docs/CATALOGO_CHANGELOG.md": "b8ca7f9c98fc9229173c6c6afa2cc9339f81ba12399bebb839d766db6905b651",
+    "docs/CATALOGO_CHANGELOG.md": "5dc4dddc3faabe8d17b85ee847f0df5d6ceb86539d4de782f593f7cc301e9eb6",
     "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
     "resources/data/exploration_photos.json": "81a93aa8b7f03b7c791bf5903c6b4afd94388f19b6566549cf2deab1142f980d",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",

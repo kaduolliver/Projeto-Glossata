@@ -69,7 +69,7 @@ class QmlInterfaceTests : public QObject {
 private slots:
     void restoredQuizHintsCountersAndStablePortrait();
     void restoredQuizRecoveryAndUnavailableStates();
-    void speciesDescriptionReusesExistingReviewedNote();
+    void speciesDescriptionStaysIndependentOfMorphology();
     void compactPlayConfigurationAndContextualSources();
     void playConfigurationReturnsToSelectionContext();
     void playSelectionNavigationAndCaptures();
@@ -198,48 +198,62 @@ void QmlInterfaceTests::restoredQuizRecoveryAndUnavailableStates()
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
-void QmlInterfaceTests::speciesDescriptionReusesExistingReviewedNote()
+void QmlInterfaceTests::speciesDescriptionStaysIndependentOfMorphology()
 {
     interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
     TestUrlRecorder urls;QDesktopServices::setUrlHandler("https",&urls,"capture");const auto restoreUrls=qScopeGuard([]{QDesktopServices::unsetUrlHandler("https");});
-    QTemporaryDir dir;QVERIFY(dir.isValid());GameController controller(nullptr,dir.filePath("species-description.sqlite"));
+    QTemporaryDir dir;QVERIFY(dir.isValid());GameController controller(nullptr,dir.filePath("independent-description.sqlite"));
     JsonSpeciesCatalog catalog;const auto organisms=catalog.loadCurrentSpecies();
-    const auto correct=[&](){for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())return s.answerAtRank("genus");return QString();};
-    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    const auto correct=[&](){for(const auto &species:organisms)if(species.id==controller.questionPhoto()["speciesId"].toInt())return species.answerAtRank("genus");return QString();};
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const std::function<QQuickItem *(QQuickItem *,const QString &)> textItem=[&](QQuickItem *parent,const QString &text)->QQuickItem * {
+        if(parent->property("text").toString()==text)return parent;
+        for(auto child:parent->childItems())if(auto found=textItem(child,text))return found;
+        return nullptr;
+    };
     QVERIFY(controller.startTaxonGame(scientificGroup("Animalia"),"genus"));
     for(int i=0;i<controller.catalogSize()&&controller.questionPhoto()["speciesId"].toInt()!=126;++i){controller.answerSelected(correct());controller.nextQuestion();}
     QCOMPARE(controller.questionPhoto()["speciesId"].toInt(),126);controller.answerSelected(correct());window->setProperty("sessionStarted",true);window->setProperty("page","info");QTest::qWait(100);
-    const auto profile=controller.answerDetails()["profile"].toMap(),note=profile["morphology"].toMap();QVERIFY(!note["text"].toString().isEmpty());QVERIFY(!note["source_url"].toString().isEmpty());
-    const QString folder="previews/quiz-restored-2.3.1/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const auto saved=controller.answerDetails(),profile=saved["profile"].toMap(),note=profile["morphology"].toMap();QVERIFY(!note["text"].toString().isEmpty());QVERIFY(!note["source_url"].toString().isEmpty());
+    const auto pendingText=QStringLiteral("Descrição educativa detalhada ainda não disponível.");
+    const QString folder="previews/species-description-independent-2.3.1/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const auto capture=[&](const QString &state){QTest::qWait(100);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"speciesId",126},{"page","info"},{"scrollY",item("pageScroll")->property("contentY").toReal()}});return true;};
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
-        window->resize(size);QTest::qWait(100);auto portrait=item("speciesInfoPortrait"),region=item("speciesDescriptionRegion"),text=item("speciesDescriptionText");QVERIFY(portrait&&region&&text);
+        window->resize(size);QTest::qWait(100);
+        auto portrait=item("speciesInfoPortrait"),region=item("speciesDescriptionRegion"),pending=item("speciesDescriptionPending"),morphology=item("speciesSection_morphology");QVERIFY(portrait&&region&&pending&&morphology);
         QVERIFY(region->mapToScene(QPointF()).y()>=portrait->mapToScene(QPointF(0,portrait->height())).y());
-        QCOMPARE(text->property("text").toString(),note["text"].toString());QCOMPARE(item("speciesSummary")->property("text").toString(),profile["summary"].toMap()["text"].toString());
-        QVERIFY(!item("speciesDescriptionPending")->isVisible());QVERIFY(text->width()<=region->width());
-        auto link=item("speciesDescriptionSource");QVERIFY(link);link->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QVERIFY(!urls.urls.isEmpty());QCOMPARE(urls.urls.last(),QUrl(note["source_url"].toString()));
-        auto sources=item("speciesSourcesButton");sources->forceActiveFocus();QTest::keyClick(window,Qt::Key_Space);QTest::qWait(40);QVERIFY(item("speciesReviewStatus")->isVisible());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(40);
-        auto scroll=item("pageScroll");QVERIFY(scroll);scroll->setProperty("contentY",0);QTest::qWait(100);const auto image=window->grabWindow();const auto filename="species-description-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";QVERIFY(image.save(folder+"/"+filename));
-        frames.append(QJsonObject{{"file",filename},{"width",image.width()},{"height",image.height()},{"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"speciesId",126},{"page","info"}});
+        QVERIFY(morphology->mapToScene(QPointF()).x()>=portrait->mapToScene(QPointF(portrait->width(),0)).x());
+        auto nutrition=item("speciesSection_nutrition"),conservation=item("speciesSection_conservation");QVERIFY(nutrition&&conservation);
+        QVERIFY(morphology->y()>=nutrition->y()+nutrition->height());QVERIFY(conservation->y()>=morphology->y()+morphology->height());
+        auto morphologyText=textItem(morphology,note["text"].toString());QVERIFY(morphologyText);QVERIFY(textItem(morphology,QStringLiteral("Morfologia · aspectos físicos")));
+        QCOMPARE(item("speciesSummary")->property("text").toString(),profile["summary"].toMap()["text"].toString());
+        QCOMPARE(pending->property("text").toString(),pendingText);QVERIFY(pending->isVisible());QVERIFY(pending->width()<=region->width());
+        QVERIFY(!textItem(region,note["text"].toString()));QVERIFY(!textItem(region,profile["summary"].toMap()["text"].toString()));QVERIFY(!item("speciesDescriptionSource"));
+        auto sources=item("speciesSourcesButton");sources->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);QVERIFY(item("speciesReviewStatus")->isVisible());
+        auto link=textItem(morphology,note["source_title"].toString()+" ↗");QVERIFY(link);link->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QVERIFY(!urls.urls.isEmpty());QCOMPARE(urls.urls.last(),QUrl(note["source_url"].toString()));
+        bool review=false;for(auto label:morphology->findChildren<QObject *>())if(label->property("text").toString().contains(QStringLiteral("Responsável declarado"))){review=true;QVERIFY(label->property("text").toString().contains(note["governance"].toMap()["reviewer"].toString()));}QVERIFY(review);
+        sources->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);
+        auto scroll=item("pageScroll");scroll->setProperty("contentY",0);QVERIFY(capture("species-top"));
         const auto regionTop=region->mapToItem(scroll,QPointF()).y()+scroll->property("contentY").toReal();
-        scroll->setProperty("contentY",qBound(0.0,regionTop-scroll->height()*0.55,qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height())));QTest::qWait(100);
-        const auto reading=window->grabWindow();const auto readingName="species-description-reading-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";QVERIFY(reading.save(folder+"/"+readingName));
-        frames.append(QJsonObject{{"file",readingName},{"width",reading.width()},{"height",reading.height()},{"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"speciesId",126},{"page","info"}});
-        const auto original=text->property("text");text->setProperty("text",original.toString().repeated(40));QTest::qWait(60);QVERIFY(text->height()>scroll->height());QVERIFY(text->width()<=region->width());
-        auto proceed=item("speciesContinueButton");proceed->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);QVERIFY(scroll->property("contentY").toReal()>0);text->setProperty("text",original);
+        const auto morphologyTop=morphology->mapToItem(scroll,QPointF()).y()+scroll->property("contentY").toReal();
+        const auto target=(regionTop+morphologyTop)/2-scroll->height()*0.45;
+        scroll->setProperty("contentY",qBound(0.0,target,qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height())));QVERIFY(capture("morphology-and-description"));
+        // Long text is exercised only in the original morphology section; never in the prepared description.
+        const auto original=morphologyText->property("text");morphologyText->setProperty("text",original.toString().repeated(40));QTest::qWait(60);
+        QVERIFY(morphologyText->height()>scroll->height());QCOMPARE(pending->property("text").toString(),pendingText);QVERIFY(morphologyText->width()<=morphology->width());
+        auto proceed=item("speciesContinueButton");proceed->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);QVERIFY(scroll->property("contentY").toReal()>0);morphologyText->setProperty("text",original);
+        // The catalogue's current morphology notes stay intact. A missing-note fixture changes only this view's input.
+        auto noProfile=profile;noProfile["morphology"]=QVariantMap();auto missing=saved;missing["profile"]=noProfile;auto view=item("infoView");QVERIFY(view);
+        QVERIFY(view->setProperty("backend",QVariantMap{{"answerDetails",missing}}));QTest::qWait(60);
+        QVERIFY(!item("speciesSection_morphology")->isVisible());QCOMPARE(pending->property("text").toString(),pendingText);QVERIFY(pending->isVisible());
+        QVERIFY(item("speciesSection_nutrition")->isVisible());QVERIFY(item("speciesSection_conservation")->isVisible());
+        QVERIFY(view->setProperty("backend",QVariant::fromValue(static_cast<QObject *>(&controller))));QTest::qWait(60);QVERIFY(item("speciesSection_morphology")->isVisible());
+        QCOMPARE(controller.answerDetails(),saved);
     }
-    // Presentation-only missing-note fixture; no catalogue or scientific review is changed.
-    auto view=item("infoView");QVERIFY(view);QVERIFY(view->property("hasDescription").toBool());
-    auto missing=controller.answerDetails();auto noNote=profile;noNote["morphology"]=QVariantMap();missing["profile"]=noNote;
-    // Swap only this view's presentation input; the controller/checkpoint is unchanged.
-    QVERIFY(view->setProperty("backend",QVariantMap{{"answerDetails",missing}}));QTest::qWait(60);
-    QVERIFY(!view->property("hasDescription").toBool());QVERIFY(item("speciesDescriptionPending")->isVisible());
-    QVERIFY(!item("speciesDescriptionText")->isVisible());
-    QVERIFY(view->setProperty("backend",QVariant::fromValue(static_cast<QObject *>(&controller))));QTest::qWait(60);
-    QVERIFY(view->property("hasDescription").toBool());
-    QVERIFY(controller.answerDetails()["profile"].toMap()["morphology"].toMap()==note);
-    QFile manifest(folder+"/species-capturas.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(QJsonObject{{"captures",frames}}).toJson());
+    QFile manifest(folder+"/capturas.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(QJsonObject{{"captures",frames},{"privacy","Temporary SQLite; shipped Panthera leo record; no catalogue changes"}}).toJson());
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 

@@ -11,8 +11,6 @@ Item {
     required property var backend
     readonly property var details: backend.answerDetails
     readonly property var profile: details.profile || ({})
-    readonly property var description: profile.morphology || ({})
-    readonly property bool hasDescription: !!description.text && description.text !== (profile.summary || ({})).text
     property bool showClassification: false
     property bool showSources: false
     function reviewText(note) {
@@ -30,6 +28,7 @@ Item {
     readonly property var sections: [
         {key: "distribution", title: "Distribuição e habitat", note: profile.distribution || ({}), icon: "pin", color: "#67ABEE"},
         {key: "nutrition", title: details.kingdom === "Animalia" ? "Alimentação" : "Nutrição", note: profile.nutrition || ({}), icon: "food", color: "#72D585"},
+        {key: "morphology", title: "Morfologia · aspectos físicos", note: profile.morphology || ({}), icon: "shape", color: "#9EBBEF"},
         {key: "conservation", title: "Conservação", note: profile.conservation || ({}), icon: "shield", color: "#E0B75C"},
         {key: "curiosity", title: "Você sabia?" + (details.curiosityScope ? " · " + details.curiosityScope : ""), note: profile.curiosity || {text: details.fact}, icon: "spark", color: "#E0B75C"},
         {key: "hint", title: "Uma pista para reconhecer", note: profile.hint || {text: details.hint}, icon: "leaf", color: "#A4CE9E"}
@@ -43,7 +42,6 @@ Item {
             else result.push({title: note.source_title || field, fields: field, url: note.source_url})
         }
         add("Apresentação", profile.summary)
-        add("Descrição educativa · morfologia", description)
         for (const section of sections) add(section.title, section.note)
         add("Curiosidade", {source_url: details.curiositySource, source_title: details.curiositySourceTitle})
         add("Dica", {source_url: details.hintSource, source_title: details.hintSourceTitle})
@@ -69,24 +67,7 @@ Item {
                     objectName: "speciesDescriptionRegion"
                     Layout.fillWidth: true; Layout.minimumWidth: 0; spacing: 8
                     Label { text: "Descrição educativa"; color: "#EDF4EE"; font.pixelSize: 14; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                    ColumnLayout {
-                        objectName: "speciesSection_morphology"; visible: view.hasDescription
-                        Layout.fillWidth: true; spacing: 5
-                        Label { text: "Morfologia · aspectos físicos"; color: "#9EBBEF"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                        Label { objectName: "speciesDescriptionText"; text: view.description.text || ""; color: "#91ADB2"; font.pixelSize: 14; lineHeight: 1.3; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true; Layout.minimumWidth: 0 }
-                        Label { visible: view.showSources; text: view.reviewText(view.description); color: "#D0B986"; font.pixelSize: 11; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                        TextAction { objectName: "speciesDescriptionSource"; visible: !!view.description.source_url; Layout.fillWidth: true; text: (view.description.source_title || "Fonte da descrição") + " ↗"; Accessible.description: view.description.source_url || ""; onClicked: Qt.openUrlExternally(view.description.source_url) }
-                        Repeater {
-                            model: view.showSources ? ((view.description.governance || ({})).evidence || []) : []
-                            delegate: TextAction {
-                                required property var modelData
-                                Layout.fillWidth: true
-                                text: "Evidência: " + modelData.locator + " ↗"
-                                onClicked: Qt.openUrlExternally(modelData.url)
-                            }
-                        }
-                    }
-                    Label { objectName: "speciesDescriptionPending"; visible: !view.hasDescription; text: "Descrição detalhada ainda não disponível. Conteúdo completo será desenvolvido e revisado na Etapa 3 — Enciclopédia Científica Interativa."; color: "#86A5AA"; font.pixelSize: 12; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                    Label { objectName: "speciesDescriptionPending"; text: "Descrição educativa detalhada ainda não disponível."; color: "#86A5AA"; font.pixelSize: 12; textFormat: Text.PlainText; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 }
             }
             ColumnLayout {

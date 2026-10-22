@@ -1,6 +1,6 @@
 # Histórico do catálogo científico e das licenças
 
-Subetapa 2.3.1 revisada, sem lançamento: aplicativo **1.10.0** (MINOR pelos recursos de apresentação compatíveis) reutiliza o catálogo **2.4.0** integralmente. A interface anterior é restaurada; descrições reutilizam somente a nota de morfologia já projetada pelo controlador, com as mesmas fontes e estados de revisão. Fotografias, atribuições, licenças, dicas, avaliações, pontuação e governança permanecem intactas. Nenhuma nova aprovação ou permissão.
+Subetapa 2.3.1 revisada, sem lançamento: aplicativo **1.10.0** (MINOR pelos recursos de apresentação compatíveis) reutiliza o catálogo **2.4.0** integralmente. A interface anterior é restaurada; Morfologia mantém seu tópico e fontes originais na coluna direita. Descrição educativa é apenas uma estrutura independente sem conteúdo abaixo da foto, preparada para a Etapa 3, sem novo campo ou esquema. Fotografias, atribuições, licenças, dicas, avaliações, pontuação e governança permanecem intactas. Nenhuma nova aprovação ou permissão.
 
 Subetapa 2.2.3, sem lançamento: aplicativo **1.9.0** (MINOR pela seleção compatível) reutiliza o catálogo **2.4.0** integralmente. Agrupamentos de apresentação e disponibilidade reutilizam os IDs, descendentes e níveis de identificação existentes; não modificam a taxonomia, os critérios de elegibilidade, as fotografias, as licenças ou os 1.053 eventos de governança da base `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`.
 
