@@ -123,6 +123,8 @@ void QmlInterfaceTests::playSelectionNavigationAndCaptures()
         window->resize(size); QVERIFY(activate("navPlay"));
         QCOMPARE(window->property("page").toString(), QString("categories"));
         QVERIFY(item("playTab_kingdoms")->property("checked").toBool());
+        auto mixed = item("categoryButton0"); QVERIFY(mixed);
+        QVERIFY(QQmlProperty(mixed,"Accessible.name",qmlContext(mixed)).read().toString().contains(QStringLiteral("identificar gêneros")));
         scroll->setProperty("contentY",0); QVERIFY(capture("modes"));
         for (const QString &tab : {"kingdoms","domains","advanced"}) {
             QVERIFY(activate("playTab_" + tab));

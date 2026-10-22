@@ -213,6 +213,7 @@ Item {
         ExploreCard {
             objectName: "categoryButton0"; visible: !view.browsingOnly; Layout.fillWidth: true
             entry: view.backend.playMixed; wide: true; playSelection: true
+            Accessible.name: "Jogo misto · identificar gêneros · " + entry.count + " organismos no catálogo"
             enabled: !view.backend.resultPending && (entry.playLevels || []).some(level => level.id === entry.defaultRank)
             onClicked: view.app.beginTaxonGame("", entry.defaultRank)
         }
