@@ -116,7 +116,7 @@ A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos
 
 ![Seleção Jogar real, com cartões fotográficos dos reinos e configuração dos modos.](docs/interface/VERSOES/2.2.3/capturas/kingdoms-1240x820.png)
 
-[Seleção Jogar 2.2.3: capturas, contratos e validação](docs/interface/VERSOES/2.2.3/README.md) · [Configuração direta e retorno à mesma aba e rolagem](docs/interface/VERSOES/2.2.3/refinamentos-navegacao/README.md).
+[Seleção Jogar 2.2.3: capturas, contratos e validação](docs/interface/VERSOES/2.2.3/README.md) · [Configuração compacta, fontes e retorno à seleção](docs/interface/VERSOES/2.2.3/configuracao-compacta/README.md).
 
 ### Projeto Glossata
 

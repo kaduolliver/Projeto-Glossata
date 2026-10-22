@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## PR #33 — painel compacto e fontes contextuais
+
+O ajuste fica em `TaxonomyView.qml`: apresentação adaptativa dos mesmos controles, diálogo local para dados científicos disponíveis e posicionamento inicial da página do grupo. O timer `positionPlayTop` aguarda o layout e cancela a inércia antes de colocar a página taxonômica de Jogar no topo. A margem do botão Voltar conserva sua moldura visível. Não altera `Main`, `CategoryView`, `playPresentation` ou sua restauração; em Explorar, o timer não reposiciona a página. O diálogo não consulta rede para mostrar os dados e não deriva aprovações. [Validação e capturas](VERSOES/2.2.3/configuracao-compacta/README.md).
+
 ## PR #33 — retorno ao contexto de seleção
 
 O shell conserva `playPresentation` separadamente de `explorePresentation`; ambos são estado efêmero de apresentação, com restauração compartilhada em `CategoryView`. Só a página de seleção grava o mapa de Jogar, impedindo que o reset do Loader em outra tela substitua a rolagem salva. As entradas de grupo e os atalhos registram o contexto antes da navegação. Configuração do grupo não repete os painéis globais nem escreve dificuldade no controlador. Funções de início, regras científicas, persistência e recuperação permanecem intactas. [Evidências](VERSOES/2.2.3/refinamentos-navegacao/README.md).

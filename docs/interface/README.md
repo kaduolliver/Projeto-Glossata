@@ -6,7 +6,7 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
-Seleção atual de Jogar: [2.2.3 — configuração direta e preservação de contexto](VERSOES/2.2.3/refinamentos-navegacao/README.md), preservando a [entrega inicial](VERSOES/2.2.3/README.md), sobre a integração da PR #32 em `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`. Os registros abaixo preservam o desenvolvimento da enciclopédia.
+Seleção atual de Jogar: [2.2.3 — configuração compacta e fontes contextuais](VERSOES/2.2.3/configuracao-compacta/README.md), preservando a [entrega inicial](VERSOES/2.2.3/README.md) e o [retorno à seleção](VERSOES/2.2.3/refinamentos-navegacao/README.md), sobre a integração da PR #32 em `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`. Os registros abaixo preservam o desenvolvimento da enciclopédia.
 
 Revisão atual: [2.2.2 — uniformidade dos cartões e conforto de rolagem](VERSOES/2.2.2/usabilidade/README.md), preservando as [correções de créditos](VERSOES/2.2.2/correcoes-creditos/README.md), os [refinamentos finais](VERSOES/2.2.2/rodada-final/README.md), a [rodada 2](VERSOES/2.2.2/rodada-2/README.md), a [rodada 1](VERSOES/2.2.2/rodada-1/README.md) e a [entrega inicial](VERSOES/2.2.2/README.md), sobre a [Descoberta do Dia 2.2.1-B](VERSOES/2.2.1-B/README.md), o [Início fotográfico 2.2.1-A](VERSOES/2.2.1-A/README.md), a [navegação 2.1.3](VERSOES/2.1.3/README.md) e o [design system 2.1.2](VERSOES/2.1.2/README.md), com [contratos dos componentes](COMPONENTES.md). As versões anteriores permanecem históricas.
 

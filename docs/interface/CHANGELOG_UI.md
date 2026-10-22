@@ -1,5 +1,12 @@
 # Histórico visual
 
+## PR #33 — configuração compacta e fontes contextuais
+
+- Controles do Livre em uma linha nas janelas amplas e duas nas compactas, campo com largura limitada e altura do painel derivada do conteúdo.
+- Um único botão de fontes na configuração, com referências, URLs, origem e revisão no diálogo local; avisos científicos permanecem na página.
+- Abertura e mudança de grupo posicionadas no topo para expor integralmente o botão Voltar, sem alterar o contexto salvo da seleção.
+- [Capturas e testes desta revisão](VERSOES/2.2.3/configuracao-compacta/README.md); evidências anteriores preservadas.
+
 ## PR #33 — refinamento da configuração e retorno
 
 - Painéis Livre/Competitivo somente na tela principal; grupo com resumo, configuração direta, dificuldade preservada e início separado antes dos descendentes.
