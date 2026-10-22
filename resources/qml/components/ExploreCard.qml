@@ -181,7 +181,7 @@ Button {
                 TextAction {
                     id: creditButton; objectName: card.modernPresentation ? "exploreCardCreditsButton" : ""
                     text: "Fonte, origem e créditos"
-                    leftPadding: 0
+                    leftPadding: Style.Theme.spaceMd
                     rightPadding: Style.Theme.spaceMd
                     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
                     width: Math.min(implicitWidth, parent.width)
@@ -204,7 +204,7 @@ Button {
             RowLayout {
                 objectName: "encyclopediaCardPrimaryAction"
                 Layout.fillWidth: true; Layout.topMargin: Style.Theme.spaceXs
-                Label { objectName: "exploreCardActionLabel"; text: card.playSelection ? (card.wide ? "Iniciar jogo misto" : "Selecionar grupo") : card.entry.kind === "organism" ? "Conhecer organismo" : "Explorar grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
+                Label { objectName: "exploreCardActionLabel"; Layout.leftMargin: Style.Theme.spaceMd; text: card.playSelection ? (card.wide ? "Iniciar jogo misto" : "Selecionar grupo") : card.entry.kind === "organism" ? "Conhecer organismo" : "Explorar grupo"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
                 Item { Layout.fillWidth: true }
                 UiIcon { name: "arrow"; ink: Style.Theme.green; implicitWidth: 16; implicitHeight: 16 }
             }
