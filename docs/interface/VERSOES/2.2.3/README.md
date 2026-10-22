@@ -1,6 +1,6 @@
 # Subetapa 2.2.3 — Modernização da tela Jogar
 
-Revisão atual da PR #33: [alinhamento do botão Iniciar partida](alinhamento-iniciar/README.md), sobre a [configuração compacta e fontes contextuais](configuracao-compacta/README.md). A [configuração direta e o retorno ao contexto de seleção](refinamentos-navegacao/README.md), assim como as capturas, contratos e resultados abaixo, permanecem preservados como histórico.
+Revisão atual da PR #33: [dificuldade junto ao seletor](alinhamento-dificuldade/README.md), preservando o [alinhamento do botão Iniciar partida](alinhamento-iniciar/README.md), a [configuração compacta e fontes contextuais](configuracao-compacta/README.md) e a [configuração direta e o retorno à seleção](refinamentos-navegacao/README.md). As capturas, contratos e resultados anteriores permanecem como histórico.
 
 Base: `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`, integração da PR #32 na `main`, confirmada pela API antes das alterações. Branch `feat/issue-22-play-2.2.3`, entregue na [PR #33](https://github.com/kaduolliver/Projeto-Glossata/pull/33), vinculada à [Issue #22](https://github.com/kaduolliver/Projeto-Glossata/issues/22), sem merge ou lançamento. Referência estética: exclusivamente a região 3 (seleção taxonômica) da imagem fornecida; fotografias, números e classificações da referência não são conteúdo do catálogo.
 

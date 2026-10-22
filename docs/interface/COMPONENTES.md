@@ -2,7 +2,7 @@
 
 ## PR #33 — configuração compacta e fontes do grupo
 
-Nas janelas amplas, a coluna central da dificuldade absorve o espaço disponível e centraliza seu texto; o início conserva a largura intrínseca e encosta na margem interna direita. Nas compactas, permanece na segunda linha, à esquerda. Os três controles mantêm alinhamento vertical central. [Verificação do alinhamento](VERSOES/2.2.3/alinhamento-iniciar/README.md).
+Nas janelas amplas, a dificuldade acompanha o seletor com intervalo de `spaceLg` (20 pixels lógicos), alinhada à esquerda em uma coluna flexível; o espaço excedente fica depois do texto e o início conserva sua largura intrínseca na margem direita. Nas compactas, a dificuldade fica abaixo do seletor, ao lado do início à direita. Os controles de cada linha mantêm alinhamento vertical central. [Verificação atual e escalas](VERSOES/2.2.3/alinhamento-dificuldade/README.md); [evidências anteriores](VERSOES/2.2.3/alinhamento-iniciar/README.md).
 
 `TaxonomyView.playConfigurationPanel` calcula a altura pelo conteúdo e usa margens de `spaceMd`, título discreto e espaçamento `spaceXs`. Com 820 pixels úteis nos controles, identificação, dificuldade informativa e Iniciar partida ficam lado a lado; abaixo desse limiar, o início passa para uma segunda linha. O campo de identificação fica limitado à largura do conjunto de 360 pixels, sem esticar com a janela. A linha informativa de elegibilidade fica abaixo e pode quebrar sem corte. Modelo, dificuldade, condição de habilitação e chamada de início são os mesmos.
 

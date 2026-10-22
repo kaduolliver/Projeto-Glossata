@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #33 — dificuldade junto ao seletor
+
+- Texto da dificuldade a 20 pixels lógicos do seletor nas janelas amplas; abaixo dele nas compactas, sem centralização artificial. Iniciar partida permanece compacto à direita, com altura do painel e contador preservados.
+- [Capturas e testes em 100%, 125% e 150%](VERSOES/2.2.3/alinhamento-dificuldade/README.md), sem alterar funcionalidades ou regras.
+
 ## PR #33 — alinhamento do início da partida
 
 - Coluna central flexível e botão Iniciar partida à margem interna direita nas janelas amplas, sem esticar o botão; composição compacta e contador abaixo preservados.

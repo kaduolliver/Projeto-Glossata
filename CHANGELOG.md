@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar
 
+- PR #33: dificuldade junto ao seletor de identificação, com intervalo de 20 pixels lógicos nas janelas amplas e quebra para a linha seguinte nas compactas; início à direita e altura compacta preservados. [Capturas e escalas](docs/interface/VERSOES/2.2.3/alinhamento-dificuldade/README.md).
 - PR #33: botão Iniciar partida alinhado à margem interna direita nas janelas amplas, com dificuldade central e largura compacta preservada; composição responsiva e mensagem de elegibilidade mantidas. [Capturas](docs/interface/VERSOES/2.2.3/alinhamento-iniciar/README.md).
 - PR #33, ajuste pontual: painel de identificação compacto e adaptativo, fontes do grupo reunidas em diálogo contextual offline e botão Voltar integralmente visível na abertura e navegação taxonômica. Estado da seleção e regras preservados. [Capturas e validação](docs/interface/VERSOES/2.2.3/configuracao-compacta/README.md).
 - PR #33, refinamento compatível: configuração direta do modo Livre na página do grupo, sem repetir os painéis globais; dificuldade preservada. Retorno à aba, rolagem e foco de teclado da seleção em memória, reaproveitando a restauração do Explorar. [Capturas e validação](docs/interface/VERSOES/2.2.3/refinamentos-navegacao/README.md).
