@@ -4,8 +4,8 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [1.10.0] — Não lançado; interface do Quiz
 
-- Subetapa 2.3.1: Quiz com fotografia em destaque, alternativas uniformes com quebra de linha, estados de seleção/foco, progresso por modo e acesso compacto às dicas reveladas. Variante fotográfica opcional, sem cortes ou ampliação, exclusiva do Quiz. Regras, pontuação e dados preservados. [Documentação e capturas](docs/interface/VERSOES/2.3.1/README.md).
-- MINOR pela interface e recursos de apresentação compatíveis; catálogo 2.4.0 inalterado. Sem lançamento ou aprovação de distribuição.
+- PR #35 revisada por decisão do mantenedor: composição anterior do Quiz restaurada; títulos das dicas pelo nível efetivo, contadores de acertos/erros e retrato estável com rolagem independente à direita. Na ficha, a nota existente de morfologia fica abaixo da foto/créditos, sem duplicar o resumo. [Documentação e capturas atuais](docs/interface/VERSOES/2.3.1/restauracao-visual/README.md).
+- MINOR pelos recursos de apresentação compatíveis; catálogo 2.4.0 inalterado. A proposta visual inicial não foi aprovada e permanece identificada como histórica. Sem lançamento ou aprovação de distribuição.
 
 ## [1.9.0] — Não lançado; seleção taxonômica para jogar
 

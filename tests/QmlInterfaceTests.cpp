@@ -67,8 +67,9 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
-    void modernQuizNavigationHintsAndCaptures();
-    void modernQuizRecoveryAndUnavailableStates();
+    void restoredQuizHintsCountersAndStablePortrait();
+    void restoredQuizRecoveryAndUnavailableStates();
+    void speciesDescriptionReusesExistingReviewedNote();
     void compactPlayConfigurationAndContextualSources();
     void playConfigurationReturnsToSelectionContext();
     void playSelectionNavigationAndCaptures();
@@ -90,11 +91,11 @@ private slots:
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
 
-void QmlInterfaceTests::modernQuizNavigationHintsAndCaptures()
+void QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
 {
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
-    QTemporaryDir dir; QVERIFY(dir.isValid()); GameController controller(nullptr,dir.filePath("modern-quiz.sqlite"));
+    QTemporaryDir dir; QVERIFY(dir.isValid()); GameController controller(nullptr,dir.filePath("restored-quiz.sqlite"));
     JsonSpeciesCatalog catalog; const auto organisms=catalog.loadCurrentSpecies();
     const auto correct=[&](){for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())return s.answerAtRank("genus");return QString();};
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
@@ -105,91 +106,140 @@ void QmlInterfaceTests::modernQuizNavigationHintsAndCaptures()
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name,bool mouse=false){auto c=item(name);if(!c||!c->isVisible()||!c->isEnabled())return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(50);if(mouse)QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,c->mapToScene(c->boundingRect().center()).toPoint());else QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);return true;};
     auto scroll=item("pageScroll"); QVERIFY(scroll);
-    const auto inside=[&](QQuickItem *c){const auto r=c->mapRectToItem(scroll,QRectF(0,0,c->width(),c->height()));return r.left()>=0&&r.right()<=scroll->width()+1&&r.top()>=0&&r.bottom()<=scroll->height()+1;};
-    const QString folder="previews/quiz-2.3.1/"+QString::number(qRound(window->devicePixelRatio()*100)); QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
-    const auto capture=[&](const QString &state){QTest::qWait(160);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"page",window->property("page").toString()},{"speciesId",controller.questionPhoto()["speciesId"].toInt()},{"mode",controller.gameMode()},{"round",controller.round()},{"possibleScore",controller.possibleScoreText()},{"scrollY",scroll->property("contentY").toReal()}});return true;};
+    const auto inside=[&](QQuickItem *c){const auto rect=c->mapRectToItem(scroll,c->boundingRect());return rect.left()>=0&&rect.right()<=scroll->width()+1&&rect.top()>=0&&rect.bottom()<=scroll->height()+1;};
+    const auto counters=[&](){auto c=item("quizAnswerCounts");return c&&c->property("correct").toInt()==controller.correctAnswers()&&c->property("incorrect").toInt()==controller.answeredCount()-controller.correctAnswers();};
+    const QString folder="previews/quiz-restored-2.3.1/"+QString::number(qRound(window->devicePixelRatio()*100)); QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
+    const auto capture=[&](const QString &state){QTest::qWait(120);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;auto portrait=item("questionPortrait");const auto rect=portrait?portrait->mapRectToScene(portrait->boundingRect()):QRectF();frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"page",window->property("page").toString()},{"speciesId",controller.questionPhoto()["speciesId"].toInt()},{"mode",controller.gameMode()},{"correct",controller.correctAnswers()},{"answered",controller.answeredCount()},{"possibleScore",controller.possibleScoreText()},{"portrait",QJsonArray{rect.x(),rect.y(),rect.width(),rect.height()}},{"scrollY",scroll->property("contentY").toReal()}});return true;};
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
         window->resize(size); if(!controller.gameFinished())controller.stopGame();
         QVERIFY(controller.startTaxonGame({},"genus")); window->setProperty("sessionStarted",true); window->setProperty("page","quiz"); QTest::qWait(120);
         const auto three=[&](){const auto h=controller.hints();return h.size()==3&&h[0].toMap()["available"].toBool()&&h[1].toMap()["available"].toBool()&&h[2].toMap()["available"].toBool();};
         for(int i=0;i<controller.catalogSize()&&!three();++i){controller.answerSelected(correct());controller.nextQuestion();}
         QVERIFY(three()); QTRY_VERIFY(item("questionPortrait")->property("hasPhoto").toBool());
-        auto quiz=item("quizView"); QVERIFY(quiz); const auto options=controller.answerOptions(); QCOMPARE(options.size(),4);
-        auto photo=item("speciesPhotoImage"),frame=item("speciesPhotoFrame"); QVERIFY(photo&&frame);
+        auto quiz=item("quizView"); QVERIFY(quiz); const auto options=controller.answerOptions(); QCOMPARE(options.size(),4); QVERIFY(counters());
+        auto portrait=item("questionPortrait"), photo=item("speciesPhotoImage"), frame=item("speciesPhotoFrame"); QVERIFY(photo&&frame);
         const auto pixels=photo->property("sourceSize").toSize(); QVERIFY(!pixels.isEmpty());
-        QVERIFY(qAbs(photo->width()/photo->height()-double(pixels.width())/pixels.height())<0.001);
-        QVERIFY(photo->width()<=pixels.width()&&photo->height()<=pixels.height());
-        QVERIFY(qAbs(photo->x()-(frame->width()-photo->width())/2)<1); QVERIFY(qAbs(photo->y()-(frame->height()-photo->height())/2)<1);
-        const auto height=item("answerOption0")->height();
-        for(int i=0;i<4;++i){auto c=item("answerOption"+QString::number(i));QVERIFY(c&&c->isEnabled());QCOMPARE(c->height(),height);QVERIFY(!c->property("selected").toBool());QVERIFY(findVisualItem(c,"quizOptionText")->property("text").toString()==options[i]);}
+        QVERIFY(qAbs(photo->property("paintedWidth").toReal()/photo->property("paintedHeight").toReal()-double(pixels.width())/pixels.height())<0.001);
+        QCOMPARE(photo->width(),frame->width()-16); QCOMPARE(photo->height(),frame->height()-16);
+        for(int i=0;i<4;++i){auto c=item("answerOption"+QString::number(i));QVERIFY(c&&c->isEnabled());QVERIFY(!c->property("selected").toBool());QVERIFY(findVisualItem(c,"quizOptionText")->property("text").toString()==options[i]);}
         QCOMPARE(item("quizProgress")->property("to").toInt(),qMax(1,controller.catalogSize()));
-        QVERIFY(capture("question-free")); QVERIFY(!item("confirmAnswerButton")->isEnabled());
-        item("answerOption0")->forceActiveFocus(Qt::TabFocusReason);
-        QTest::keyClick(window,Qt::Key_Tab); QTRY_VERIFY(item("answerOption1")->hasActiveFocus());
+        QVERIFY(capture("hints-0")); QVERIFY(!item("confirmAnswerButton")->isEnabled()); QVERIFY(inside(item("hintButton"))); QVERIFY(inside(item("confirmAnswerButton")));
+        // Measure the rendered initial frame, after the new photograph/credits have been polished.
+        const auto fixedPortrait=portrait->mapRectToScene(portrait->boundingRect()); const auto fixedPhoto=photo->mapRectToScene(photo->boundingRect());
+        const auto stable=[&](){return portrait->mapRectToScene(portrait->boundingRect())==fixedPortrait&&photo->mapRectToScene(photo->boundingRect())==fixedPhoto;};
+        item("answerOption0")->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Tab); QTRY_VERIFY(item("answerOption1")->hasActiveFocus());
         QTest::keyClick(window,Qt::Key_Backtab,Qt::ShiftModifier); QTRY_VERIFY(item("answerOption0")->hasActiveFocus());
-        QVERIFY(item("answerOption0")->property("visualFocus").toBool());
         quiz->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_1); QTest::keyClick(window,Qt::Key_2);
-        QCOMPARE(quiz->property("selectedOption").toString(),options[1]);
-        for(int i=0;i<4;++i)QCOMPARE(item("answerOption"+QString::number(i))->property("selected").toBool(),i==1);
+        QCOMPARE(quiz->property("selectedOption").toString(),options[1]); QVERIFY(counters());
+        QCOMPARE(portrait->mapRectToScene(portrait->boundingRect()),fixedPortrait);
+        QCOMPARE(photo->mapRectToScene(photo->boundingRect()),fixedPhoto);
         window->setProperty("motionEnabled",true); auto selected=item("answerOption1"); selected->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
         QTest::mouseMove(window,selected->mapToScene(selected->boundingRect().center()).toPoint()); QTest::qWait(250);
         const auto color=findVisualItem(selected,"quizOptionBackground")->property("color"); QTest::qWait(450);
-        QCOMPARE(findVisualItem(selected,"quizOptionBackground")->property("color"),color);
-        QVERIFY(capture("selected-hover")); window->setProperty("motionEnabled",false);
-        const auto chosen=quiz->property("selectedOption"); QVERIFY(activate("hintButton"));
-        auto panel=window->findChild<QObject *>("hintPanel"); QVERIFY(panel); QTRY_VERIFY(panel->property("opened").toBool());
-        QCOMPARE(controller.possibleScoreText(),QString("1,00")); QVERIFY(capture("hint-offer"));
-        int ceiling=6;
-        for(int i=0;i<3;++i){const auto h=controller.hints()[i].toMap();QVERIFY(item("hintCeiling"+QString::number(i))->property("text").toString().contains(h["pointsText"].toString()));QVERIFY(activate("hintCategory"+QString::number(i)));ceiling=qMin(ceiling,h["ceilingUnits"].toInt());QCOMPARE(controller.possibleScoreText(),formatScore(ceiling));QCOMPARE(item("selectedHintText")->property("text").toString(),controller.hints()[i].toMap()["text"].toString());}
-        QVERIFY(capture("hint-revealed")); QTest::keyClick(window,Qt::Key_Escape); QTRY_VERIFY(!panel->property("visible").toBool());
-        QCOMPARE(quiz->property("selectedOption"),chosen); QVERIFY(item("hintButton")->hasActiveFocus());
-        QVERIFY(activate("backFromQuizButton")); QVERIFY(capture("end-dialog"));
-        QVERIFY(activate("continueGameButton")); QCOMPARE(quiz->property("selectedOption"),chosen);
-        // Numeric selection and Enter must confirm exactly once, with the backend's actual ceiling.
-        const int correctIndex=options.indexOf(correct()); QVERIFY(correctIndex>=0);
-        quiz->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key(Qt::Key_1+correctIndex));
-        auto confirm=item("confirmAnswerButton"); confirm->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60); QVERIFY(inside(confirm));
-        const auto before=controller.scoreUnits();const auto answered=controller.answeredCount();
-        quiz->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Return); QTest::qWait(100);
-        QCOMPARE(window->property("page").toString(),QString("feedback")); QCOMPARE(controller.answeredCount(),answered+1); QCOMPARE(controller.scoreUnits(),before+ceiling);
+        QCOMPARE(findVisualItem(selected,"quizOptionBackground")->property("color"),color); window->setProperty("motionEnabled",false);
+        const auto chosen=quiz->property("selectedOption"); int ceiling=6;
+        for(int i=0;i<3;++i) {
+            QVERIFY(activate("hintButton")); auto panel=window->findChild<QObject *>("hintPanel"); QVERIFY(panel); QTRY_VERIFY(panel->property("opened").toBool());
+            const auto h=controller.hints()[i].toMap(); QVERIFY(item("hintCeiling"+QString::number(i))->property("text").toString().contains(h["pointsText"].toString()));
+            if(i==0)QVERIFY(capture("hint-panel"));
+            QVERIFY(activate("hintCategory"+QString::number(i))); ceiling=qMin(ceiling,h["ceilingUnits"].toInt()); QCOMPARE(controller.possibleScoreText(),formatScore(ceiling));
+            QTest::keyClick(window,Qt::Key_Escape); QTRY_VERIFY(!panel->property("visible").toBool());
+            QCOMPARE(quiz->property("selectedOption"),chosen); QVERIFY(item("hintButton")->hasActiveFocus()); QVERIFY(stable()); QVERIFY(counters());
+            for(int j=0;j<=i;++j){const auto hint=controller.hints()[j].toMap();auto title=item("revealedHintTitle"+QString::number(j)),text=item("revealedHintText"+QString::number(j));QVERIFY(title&&text);QVERIFY(title->property("text").toString().contains(hint["assistance"].toString()));QCOMPARE(text->property("text").toString(),hint["text"].toString());}
+            QVERIFY(inside(item("hintButton"))); QVERIFY(inside(item("confirmAnswerButton"))); QVERIFY(capture("hints-"+QString::number(i+1)));
+        }
+        // Focusing the last full hint scrolls only the right column.
+        item("revealedHintText2")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80); QVERIFY(stable());
+        auto answerScroll=item("quizAnswersScroll"); QVERIFY(answerScroll); QVERIFY(answerScroll->width()<quiz->width()*0.64);
+        QVERIFY(capture("hints-reading")); QVERIFY(activate("backFromQuizButton")); QVERIFY(capture("end-dialog"));
+        QVERIFY(activate("continueGameButton")); QCOMPARE(quiz->property("selectedOption"),chosen); QVERIFY(stable());
+        const int correctIndex=options.indexOf(correct()); QVERIFY(correctIndex>=0); quiz->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key(Qt::Key_1+correctIndex));
+        const auto before=controller.scoreUnits();const auto answered=controller.answeredCount(); const auto right=controller.correctAnswers();
+        QTest::keyClick(window,Qt::Key_Return); QTest::qWait(100);
+        QCOMPARE(window->property("page").toString(),QString("feedback")); QCOMPARE(controller.answeredCount(),answered+1); QCOMPARE(controller.correctAnswers(),right+1); QCOMPARE(controller.scoreUnits(),before+ceiling);
         QTest::keyClick(window,Qt::Key_Return); QCOMPARE(controller.answeredCount(),answered+1); QVERIFY(capture("correct-feedback"));
-        QVERIFY(activate("nextQuestionButton")); QTRY_VERIFY(item("questionPortrait")->property("hasPhoto").toBool());
+        QVERIFY(activate("nextQuestionButton")); QTRY_VERIFY(item("questionPortrait")->property("hasPhoto").toBool()); QVERIFY(counters());
         auto wrong=controller.answerOptions();wrong.removeAll(correct());QVERIFY(!wrong.isEmpty());
         QVERIFY(activate("answerOption"+QString::number(controller.answerOptions().indexOf(wrong.first())),true));
-        const auto noPoints=controller.scoreUnits(); QVERIFY(activate("confirmAnswerButton")); QCOMPARE(controller.scoreUnits(),noPoints); QVERIFY(!controller.answerDetails()["correct"].toBool()); QVERIFY(capture("incorrect-feedback"));
+        const auto noPoints=controller.scoreUnits(); QVERIFY(activate("confirmAnswerButton")); QCOMPARE(controller.scoreUnits(),noPoints); QCOMPARE(controller.correctAnswers(),right+1); QVERIFY(!controller.answerDetails()["correct"].toBool());
+        QVERIFY(activate("nextQuestionButton")); QVERIFY(counters()); QVERIFY(capture("counters-after-answers"));
         controller.stopGame(); QVERIFY(controller.startCompetitiveGame()); window->setProperty("page","quiz"); QTest::qWait(100);
-        QCOMPARE(item("quizProgress")->property("to").toInt(),controller.questionLimit()); QVERIFY(!item("quizCycleLabel")->isVisible());
+        QVERIFY(item("quizQuestionNumber")->property("text").toString().contains(QString::number(controller.questionLimit()))); QVERIFY(!item("quizCycleLabel")->isVisible()); QVERIFY(counters());
         QVERIFY(capture("question-competitive"));
     }
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
     QFile manifest(folder+"/capturas.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(QJsonObject{{"method","QQuickWindow::grabWindow / production QML and GameController"},{"privacy","Temporary SQLite; Discord disabled; shipped catalogue records only"},{"captures",frames}}).toJson());
 }
 
-void QmlInterfaceTests::modernQuizRecoveryAndUnavailableStates()
+void QmlInterfaceTests::restoredQuizRecoveryAndUnavailableStates()
 {
     interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
-    QTemporaryDir dir;QVERIFY(dir.isValid());const auto path=dir.filePath("quiz-recovery.sqlite");QVariantMap savedPhoto;QStringList savedOptions;QVariantList savedHints;QString savedPoints;
-    {GameController seed(nullptr,path);QVERIFY(seed.startCompetitiveGame());for(const auto &h:seed.hints())if(h.toMap()["available"].toBool()){QVERIFY(seed.revealHintCategory(h.toMap()["id"].toString()));break;}savedPhoto=seed.questionPhoto();savedOptions=seed.answerOptions();savedHints=seed.hints();savedPoints=seed.possibleScoreText();QVERIFY(seed.prepareToClose());}
+    QTemporaryDir dir;QVERIFY(dir.isValid());const auto path=dir.filePath("quiz-recovery.sqlite");QVariantMap savedPhoto;QStringList savedOptions;QVariantList savedHints;QString savedPoints;int savedCorrect=0;
+    {GameController seed(nullptr,path);QVERIFY(seed.startCompetitiveGame());seed.answerSelected(seed.answerOptions().first());seed.nextQuestion();for(const auto &h:seed.hints())if(h.toMap()["available"].toBool()){QVERIFY(seed.revealHintCategory(h.toMap()["id"].toString()));break;}savedPhoto=seed.questionPhoto();savedOptions=seed.answerOptions();savedHints=seed.hints();savedPoints=seed.possibleScoreText();savedCorrect=seed.correctAnswers();QVERIFY(seed.prepareToClose());}
     GameController controller(nullptr,path);DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     auto resume=item("resumeSessionButton");QVERIFY(resume);resume->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(150);
-    QCOMPARE(window->property("page").toString(),QString("quiz"));QCOMPARE(controller.questionPhoto(),savedPhoto);QCOMPARE(controller.answerOptions(),savedOptions);QCOMPARE(controller.hints(),savedHints);QCOMPARE(controller.possibleScoreText(),savedPoints);QCOMPARE(controller.answeredCount(),0);
+    QCOMPARE(window->property("page").toString(),QString("quiz"));QCOMPARE(controller.questionPhoto(),savedPhoto);QCOMPARE(controller.answerOptions(),savedOptions);QCOMPARE(controller.hints(),savedHints);QCOMPARE(controller.possibleScoreText(),savedPoints);QCOMPARE(controller.answeredCount(),1);
+    QCOMPARE(item("quizAnswerCounts")->property("correct").toInt(),savedCorrect);QCOMPARE(item("quizAnswerCounts")->property("incorrect").toInt(),1-savedCorrect);
     auto portrait=item("questionPortrait"),quiz=item("quizView");QVERIFY(portrait&&quiz);QTRY_VERIFY(portrait->property("hasPhoto").toBool());
-    // Controlled presentation fixtures only: no catalogue, review or database is changed.
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
         window->resize(size);auto unavailable=savedPhoto;unavailable["image"]=QString();portrait->setProperty("info",unavailable);QTest::qWait(60);
         QVERIFY(!portrait->property("hasPhoto").toBool());for(int i=0;i<4;++i)QVERIFY(!item("answerOption"+QString::number(i))->isEnabled());
-        quiz->forceActiveFocus();QTest::keyClick(window,Qt::Key_1);QTest::keyClick(window,Qt::Key_Return);QCOMPARE(controller.answeredCount(),0);QVERIFY(!item("confirmAnswerButton")->isEnabled());
+        quiz->forceActiveFocus();QTest::keyClick(window,Qt::Key_1);QTest::keyClick(window,Qt::Key_Return);QCOMPARE(controller.answeredCount(),1);QVERIFY(!item("confirmAnswerButton")->isEnabled());
         auto supporting=savedPhoto;supporting["supporting"]=true;portrait->setProperty("info",supporting);QTRY_VERIFY(portrait->property("hasPhoto").toBool());
         bool warning=false;for(auto child:portrait->childItems())if(child->property("text").toString().contains(QStringLiteral("Imagem de apoio"))&&child->isVisible())warning=true;QVERIFY(warning);
-        auto text=findVisualItem(item("answerOption0"),"quizOptionText");QVERIFY(text);const auto original=text->property("text");
-        text->setProperty("text",QString("Alternativa de teste longa, sem dados cientificos: ").repeated(8));QTest::qWait(80);
-        QVERIFY(text->height()>30);QVERIFY(item("answerOption0")->height()>=text->height());
-        const auto h=item("answerOption0")->height();for(int i=1;i<4;++i)QCOMPARE(item("answerOption"+QString::number(i))->height(),h);
+        auto text=findVisualItem(item("answerOption0"),"quizOptionText");QVERIFY(text);const auto original=text->property("text");const auto fixed=portrait->mapRectToScene(portrait->boundingRect());
+        text->setProperty("text",QString("Texto de teste longo, sem dados cientificos: ").repeated(12));QTest::qWait(80);
+        QVERIFY(text->height()>30);QVERIFY(item("answerOption0")->height()>=text->height());QCOMPARE(portrait->mapRectToScene(portrait->boundingRect()),fixed);
         text->setProperty("text",original);QTest::qWait(50);portrait->setProperty("info",savedPhoto);
     }
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::speciesDescriptionReusesExistingReviewedNote()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    TestUrlRecorder urls;QDesktopServices::setUrlHandler("https",&urls,"capture");const auto restoreUrls=qScopeGuard([]{QDesktopServices::unsetUrlHandler("https");});
+    QTemporaryDir dir;QVERIFY(dir.isValid());GameController controller(nullptr,dir.filePath("species-description.sqlite"));
+    JsonSpeciesCatalog catalog;const auto organisms=catalog.loadCurrentSpecies();
+    const auto correct=[&](){for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())return s.answerAtRank("genus");return QString();};
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
+    QVERIFY(controller.startTaxonGame(scientificGroup("Animalia"),"genus"));
+    for(int i=0;i<controller.catalogSize()&&controller.questionPhoto()["speciesId"].toInt()!=126;++i){controller.answerSelected(correct());controller.nextQuestion();}
+    QCOMPARE(controller.questionPhoto()["speciesId"].toInt(),126);controller.answerSelected(correct());window->setProperty("sessionStarted",true);window->setProperty("page","info");QTest::qWait(100);
+    const auto profile=controller.answerDetails()["profile"].toMap(),note=profile["morphology"].toMap();QVERIFY(!note["text"].toString().isEmpty());QVERIFY(!note["source_url"].toString().isEmpty());
+    const QString folder="previews/quiz-restored-2.3.1/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        window->resize(size);QTest::qWait(100);auto portrait=item("speciesInfoPortrait"),region=item("speciesDescriptionRegion"),text=item("speciesDescriptionText");QVERIFY(portrait&&region&&text);
+        QVERIFY(region->mapToScene(QPointF()).y()>=portrait->mapToScene(QPointF(0,portrait->height())).y());
+        QCOMPARE(text->property("text").toString(),note["text"].toString());QCOMPARE(item("speciesSummary")->property("text").toString(),profile["summary"].toMap()["text"].toString());
+        QVERIFY(!item("speciesDescriptionPending")->isVisible());QVERIFY(text->width()<=region->width());
+        auto link=item("speciesDescriptionSource");QVERIFY(link);link->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QVERIFY(!urls.urls.isEmpty());QCOMPARE(urls.urls.last(),QUrl(note["source_url"].toString()));
+        auto sources=item("speciesSourcesButton");sources->forceActiveFocus();QTest::keyClick(window,Qt::Key_Space);QTest::qWait(40);QVERIFY(item("speciesReviewStatus")->isVisible());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(40);
+        auto scroll=item("pageScroll");QVERIFY(scroll);scroll->setProperty("contentY",0);QTest::qWait(100);const auto image=window->grabWindow();const auto filename="species-description-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";QVERIFY(image.save(folder+"/"+filename));
+        frames.append(QJsonObject{{"file",filename},{"width",image.width()},{"height",image.height()},{"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"speciesId",126},{"page","info"}});
+        const auto regionTop=region->mapToItem(scroll,QPointF()).y()+scroll->property("contentY").toReal();
+        scroll->setProperty("contentY",qBound(0.0,regionTop-scroll->height()*0.55,qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height())));QTest::qWait(100);
+        const auto reading=window->grabWindow();const auto readingName="species-description-reading-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";QVERIFY(reading.save(folder+"/"+readingName));
+        frames.append(QJsonObject{{"file",readingName},{"width",reading.width()},{"height",reading.height()},{"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"speciesId",126},{"page","info"}});
+        const auto original=text->property("text");text->setProperty("text",original.toString().repeated(40));QTest::qWait(60);QVERIFY(text->height()>scroll->height());QVERIFY(text->width()<=region->width());
+        auto proceed=item("speciesContinueButton");proceed->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);QVERIFY(scroll->property("contentY").toReal()>0);text->setProperty("text",original);
+    }
+    // Presentation-only missing-note fixture; no catalogue or scientific review is changed.
+    auto view=item("infoView");QVERIFY(view);QVERIFY(view->property("hasDescription").toBool());
+    auto missing=controller.answerDetails();auto noNote=profile;noNote["morphology"]=QVariantMap();missing["profile"]=noNote;
+    // Swap only this view's presentation input; the controller/checkpoint is unchanged.
+    QVERIFY(view->setProperty("backend",QVariantMap{{"answerDetails",missing}}));QTest::qWait(60);
+    QVERIFY(!view->property("hasDescription").toBool());QVERIFY(item("speciesDescriptionPending")->isVisible());
+    QVERIFY(!item("speciesDescriptionText")->isVisible());
+    QVERIFY(view->setProperty("backend",QVariant::fromValue(static_cast<QObject *>(&controller))));QTest::qWait(60);
+    QVERIFY(view->property("hasDescription").toBool());
+    QVERIFY(controller.answerDetails()["profile"].toMap()["morphology"].toMap()==note);
+    QFile manifest(folder+"/species-capturas.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(QJsonObject{{"captures",frames}}).toJson());
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
