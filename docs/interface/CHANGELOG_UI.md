@@ -1,5 +1,12 @@
 # Histórico visual
 
+## PR #36 — painéis no topo, seleção compacta e rolagem
+
+- Preserva o visual aprovado; taxonomia à esquerda/ranking à direita nas amplas, logo abaixo do cabeçalho. Nas compactas, seletores exclusivos conservam contexto/foco e tornam o ranking acessível sem percorrer a árvore.
+- Estatísticas reutiliza o mecanismo de roda de Início/Explorar, com 110 pixels, redução de movimento, caminho nativo de alta precisão e cancelamento pelo arrasto da barra. Nenhum sistema de rolagem paralelo ou contrato C++ novo.
+- [Revisão, 72 capturas atuais e validação](VERSOES/2.3.2/refinamentos-topo/README.md). Código/testes/planejamento no commit [`e2678ef`](https://github.com/kaduolliver/Projeto-Glossata/commit/e2678efc8c422f7d8a42dce4f90b013833ef6796); 26 suítes aprovadas na implementação final, nas resoluções/escalas previstas. [Planejamento multiplayer](../architecture/ESTATISTICAS_MULTIPLAYER.md) apenas documental.
+- Atualiza exclusivamente a [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), mantendo abaixo os registros iniciais aprovados; sem merge, release ou avanço de subetapa.
+
 ## 2.3.2 — Estatísticas
 
 - [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), vinculada à Issue #22, sobre a integração da PR #35 (`c6db713`). Código/testes no commit [`c435304`](https://github.com/kaduolliver/Projeto-Glossata/commit/c435304a7243c1bc6396fa4e4d97297fe83426a9).

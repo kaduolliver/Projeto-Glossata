@@ -1,0 +1,99 @@
+{
+  "recorded_at": "2026-10-22T22:42:18.029740+00:00",
+  "source_commit": "e2678efc8c422f7d8a42dce4f90b013833ef6796",
+  "base_commit": "e02e43bf8bc8f4d2d190402edff3657cdce3524d",
+  "ctest": {
+    "passed": 26,
+    "failed": 0,
+    "qt_cases_including_setup_cleanup": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 27,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "targeted": {
+    "scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "cases_per_run_including_setup_cleanup": 5,
+    "failed": 0
+  },
+  "captures": 72,
+  "scope": {
+    "application_source_changed": [
+      "resources/qml/Main.qml",
+      "resources/qml/views/StatisticsView.qml"
+    ],
+    "preserved_paths": [
+      "src",
+      "scripts",
+      "resources/data",
+      "resources/compliance",
+      "resources/images",
+      "resources.qrc",
+      "resources/qml/components",
+      "resources/qml/style",
+      "resources/qml/views/HomeView.qml",
+      "resources/qml/views/CategoryView.qml",
+      "resources/qml/views/TaxonomyView.qml",
+      "resources/qml/views/QuizView.qml",
+      "resources/qml/views/InfoView.qml",
+      "resources/qml/views/AchievementsView.qml",
+      "docs/interface/VERSOES/2.3.2/capturas",
+      "docs/interface/VERSOES/2.3.2/capturas.json",
+      "docs/interface/VERSOES/2.3.2/verificacoes",
+      "docs/interface/VERSOES/2.3.2/anterior",
+      "docs/interface/VERSOES/2.3.1",
+      "docs/interface/VERSOES/2.2.3",
+      "docs/interface/VERSOES/2.2.2"
+    ]
+  },
+  "capture_manifest_sha256": "b7252a4e1f7df22e5519e5f8001e47e62377cdbcd8340044afd6de45ae9f08f7",
+  "build_manifest_sha256": "96f41a93ec1e23f13bb9c3e75e5329165f11fabe4ba60a92bb5bb82dc60dfda1",
+  "checks_passed": [
+    "python scripts/release.py check",
+    "python scripts/release.py check-history --base e02e43bf8bc8f4d2d190402edff3657cdce3524d",
+    "python scripts/project_status.py check --build build",
+    "python scripts/licensing_inventory.py --check-code",
+    "python scripts/audit_catalog.py --strict",
+    "python scripts/exploration_media.py",
+    "python scripts/content_governance.py audit-history --base e02e43bf8bc8f4d2d190402edff3657cdce3524d",
+    "python scripts/audit_repository.py",
+    "python tests/test_cleanup_build.py"
+  ],
+  "expected_blocked_check": "distribution.py check; existing review/permission gaps",
+  "evidence_sha256": {
+    "auditoria-arquivos.json": "1ebec59cba9be42f37a01490c6259e8a77610d662550f8eaae7d8b1be4771fa0",
+    "core-results.txt": "dc7373725576b850fa16be5619ab9789ec1607fe5526d6cf9af33542bd25b2eb",
+    "ctest-results.txt": "d3906d885ea31a00fd0fa219f79dc946af899654dead3c48948ccc19e6e27b1e",
+    "distribution-summary.json": "ea6141b52b823768cea58588fa09169df06c9ce5d3721b2ab43e6a335718a02d",
+    "governance-history.json": "b34be5b737c6227c918c1e91f12cc3390c633d6ed544d9f80081831ece76c619",
+    "identity-results.txt": "3689ccbd098a37bdfd6fd4f460f51ad4ea866ea00fd9271741684cfbfa74c2ee",
+    "recovery-results.txt": "7fb1a9c840161425f3121f1d4daddc8c73d8f89dd319a6c6fe4a4d47cee100da",
+    "statistics-top-dpi-125.txt": "f55f2b978bb8c9143571628da73ed6498d4c82fc0566b46b52be942eeb8603b1",
+    "statistics-top-dpi-150.txt": "89aaf016281cf491111a5870d9ad57b8edbe153a4847ba3c41de4d2143ba9a55",
+    "statistics-top-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-top-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-top-targeted.txt": "160330194d2f5bb23a59bf019350edc97ec93ef94ffad1727a2dfabc75e559c0",
+    "technical-audits.json": "d898c7c0f160e87e17a081e2b1e58d7b9edcce63b0b2fb4125584637d56c7463",
+    "ui-test-results.txt": "aad4abbb550b9cc1c11a9337a09459e0524ed8045e4deecb401950c3b66e3c33"
+  },
+  "limitations": "Qt scale factors, not physical Windows scaling, GPU or physical screen-reader testing. Existing distribution restrictions preserved; no scientific/legal certification."
+}

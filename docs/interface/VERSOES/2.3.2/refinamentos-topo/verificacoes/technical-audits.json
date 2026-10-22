@@ -1,0 +1,62 @@
+[
+  {
+    "command": "python scripts/release.py check",
+    "exit_code": 0,
+    "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/release.py check-history --base e02e43bf8bc8f4d2d190402edff3657cdce3524d",
+    "exit_code": 0,
+    "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/project_status.py check --build build",
+    "exit_code": 0,
+    "stdout": "{\"consistent\": true, \"errors\": [], \"tests_executed_by_this_command\": false, \"publication_verified\": false, \"distribution_gate_evaluated\": false}",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/licensing_inventory.py --check-code",
+    "exit_code": 0,
+    "stdout": "{'code_license_errors': [], 'ownership_or_scientific_approval': False}",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/audit_catalog.py --strict",
+    "exit_code": 0,
+    "stdout": "{\"total_species\": 122, \"valid_photo_records\": 122, \"eligible_by_rank\": {\"species\": 40, \"genus\": 100, \"family\": 100, \"order\": 100, \"class\": 120, \"phylum\": 121, \"kingdom\": 0, \"supergroup\": 0, \"domain\": 0}, \"competitive_pool\": 80, \"verified_etymology\": 49, \"verified_morphology\": 104, \"taxon_introductions\": 14}",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/exploration_media.py",
+    "exit_code": 0,
+    "stdout": "{'total_photos': 114, 'bindings': 533, 'total_cards': 623, 'documented_pending': 89, 'taxon_cards': 622, 'photographed_cards': 534, 'coverage_percent': 85.71, 'total_bytes': 26608370, 'notice': 'File-level source evidence and technical checks, not expert scientific review or legal certification.'} errors: 0",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/content_governance.py audit-history --base e02e43bf8bc8f4d2d190402edff3657cdce3524d",
+    "exit_code": 0,
+    "stdout": "{\"schema_version\": 1, \"assurances\": {\"integrity_scope\": \"Internal SHA-256 linkage; optional byte-prefix comparison with caller-selected Git commit.\", \"reviewer_identity\": \"Declared, not authenticated by these checks.\", \"authorship_authenticated\": false, \"digital_signatures_verified\": false, \"independent_review_verified\": false, \"specialist_qualification_verified\": false, \"trust_root\": \"Local files and verifier; for historical comparison, independently selected and retained Git commit.\"}, \"errors\": [], \"files\": {\"resources/compliance/dependency_reviews.jsonl\": {\"current\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference_preserved\": true}, \"resources/compliance/permission_history.jsonl\": {\"current\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference_preserved\": true}, \"resources/compliance/review_history.jsonl\": {\"current\": {\"events\": 1053, \"tip_sha256\": \"2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6\", \"bytes_sha256\": \"1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576\", \"present\": true}, \"reference\": {\"events\": 1053, \"tip_sha256\": \"2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6\", \"bytes_sha256\": \"1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576\", \"present\": true}, \"reference_preserved\": true}, \"resources/compliance/review_baseline.json\": {\"current\": {\"present\": true, \"bytes_sha256\": \"97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6\"}, \"reference\": {\"present\": true, \"bytes_sha256\": \"97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6\"}, \"reference_preserved\": true}}, \"comparison\": {\"status\": \"prefix_preserved\", \"commit\": \"e02e43bf8bc8f4d2d190402edff3657cdce3524d\"}, \"consistent\": true}",
+    "stderr": ""
+  },
+  {
+    "command": "python scripts/audit_repository.py",
+    "exit_code": 0,
+    "stdout": "{\"schema_version\": 1, \"scope\": \"Current staged blobs and paths; not a full Git-history or universal secret scan.\", \"tracked_files\": 1848, \"findings\": [], \"values_redacted\": true}",
+    "stderr": ""
+  },
+  {
+    "command": "python tests/test_cleanup_build.py",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "...\r\n----------------------------------------------------------------------\r\nRan 3 tests in 0.021s\r\n\r\nOK"
+  },
+  {
+    "command": "python scripts/distribution.py check",
+    "exit_code": 2,
+    "stdout": "DISTRIBUIÇÃO BLOQUEADA. Permissões/revisões/obrigações pendentes; consulte build/distribution-audit.json.",
+    "stderr": ""
+  }
+]
