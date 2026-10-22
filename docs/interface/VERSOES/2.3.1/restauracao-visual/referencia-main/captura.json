@@ -1,0 +1,14 @@
+{
+  "source_commit": "da23116e837f1cf3de9b30572883748964a058dc",
+  "application_version": "1.9.0",
+  "catalog_version": "2.4.0",
+  "test_binary_sha256": "3fa18858eaf01e9be705d66c27d72118b271f6e0ee74c50000a7cea5ad759b62",
+  "captured_at": "2026-10-22T17:55:12.927081+00:00",
+  "image_sha256": "801410bc31aa1f60649e76c7e7ab0c3586bd7491bebf20f83503a62a7527d271",
+  "method": "QQuickWindow::grabWindow in passing navigateAndConfirmAnswers; existing pre-PR35 binary; temporary SQLite, Discord disabled.",
+  "components_match_main_before_pr35": [
+    "resources/qml/views/QuizView.qml",
+    "resources/qml/components/HintPanel.qml",
+    "resources/qml/components/SpeciesPortrait.qml"
+  ]
+}

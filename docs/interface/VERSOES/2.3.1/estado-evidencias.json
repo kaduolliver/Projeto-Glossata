@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "pull_request": 35,
+  "current": {
+    "manifest": "restauracao-visual/capturas.json",
+    "documentation": "restauracao-visual/README.md",
+    "source_commit": "4ef3ed0",
+    "status": "current_implementation_pending_maintainer_visual_review"
+  },
+  "historical": {
+    "manifest": "capturas.json",
+    "documentation": "proposta-rejeitada.md",
+    "status": "visual_proposal_rejected_by_maintainer",
+    "notice": "Preserved for traceability; does not represent the final implementation or visual, scientific, editorial or legal approval."
+  }
+}

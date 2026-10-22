@@ -2,7 +2,7 @@
 
 ## Quiz — 2.3.1
 
-Modernização restrita à apresentação em `QuizView`, `HintPanel` e à variante opcional `SpeciesPortrait.quizPresentation`. Grupo, nível, alternativas, progresso, pontuação e dicas vêm das APIs existentes. Não há cálculo científico, seleção de questões ou pontuação paralela em QML. O estado local da seleção dura uma pergunta; diálogos não o limpam. O backend continua responsável por aceitação, checkpoint e recuperação. [Contratos e evidências](VERSOES/2.3.1/README.md).
+A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` apresenta a nota de morfologia já validada pela projeção existente abaixo da foto/créditos, preservando resumo, fontes e revisão, sem duplicar o tópico à direita. [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).
 
 ## PR #33 — painel compacto e fontes contextuais
 

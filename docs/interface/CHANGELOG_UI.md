@@ -1,6 +1,13 @@
 # Histórico visual
 
-## 2.3.1 — Modernização da interface do Quiz
+## PR #35 — restauração visual e quatro ajustes pontuais
+
+- Restaura a interface anterior, títulos de assistência nas dicas, acertos/erros junto à pontuação e descrição existente abaixo da foto na ficha.
+- Rolagem independente e colunas limitadas mantêm foto e controles estáveis com zero a três dicas; preserva regras, créditos e acessibilidade.
+- [Entrega atual e capturas](VERSOES/2.3.1/restauracao-visual/README.md). A proposta abaixo foi rejeitada pelo mantenedor e não constitui a versão final aprovada.
+- Implementação e testes no commit [`4ef3ed0`](https://github.com/kaduolliver/Projeto-Glossata/commit/4ef3ed0); 26 suítes e 48 capturas atuais, preservando evidências anteriores como histórico.
+
+## 2.3.1 — Proposta visual rejeitada (histórico)
 
 - Cabeçalho e progresso por modo, fotografia ampliada na composição, alternativas uniformes com nomes extensos e estados explícitos, ações e pontuação discretas.
 - Dicas com impacto antes de revelar, consulta compacta na pergunta e textos/fontes/revisão/relato no painel. Seleção e regras preservadas.

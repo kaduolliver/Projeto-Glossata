@@ -1,0 +1,1997 @@
+{
+  "method": "QQuickWindow::grabWindow / production QML and GameController in QtTest",
+  "privacy": "Temporary SQLite; Discord disabled; shipped catalogue only. No player databases or personal checkpoints accessed.",
+  "rendering": "Windows 11 / Qt 6.11.2 software/offscreen; QT_SCALE_FACTOR 1, 1.25, 1.5. Logical resolutions remain fixed.",
+  "reference": {
+    "base_commit": "8293408a650ac2f9738d42c4c9c462115919bdfc",
+    "record": "referencia-main/captura.json",
+    "scope": "Restore pre-PR35 layout; previous redesign rejected by maintainer."
+  },
+  "captures": [
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:51.117Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-0-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "7f88352acbd1de555cc9c81766587f1f909b6e4546c9c17ec14c817d4075ddee",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:52.217Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hint-panel-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "b541f52f1f4922961f4bf9c5f36b87ee40f7b987f5b90cae724c653f2cd72ea2",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:52.536Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-1-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "8bd76fc637fc9c1da17a70a9d294621ed26f5f4953b69ae3bb8ef55bcf38bf33",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:53.037Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-2-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,50",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "8bd76fc637fc9c1da17a70a9d294621ed26f5f4953b69ae3bb8ef55bcf38bf33",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:53.532Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-3-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "8bd76fc637fc9c1da17a70a9d294621ed26f5f4953b69ae3bb8ef55bcf38bf33",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:53.765Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-reading-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "7940b963a00ac889b0b1833fb7a3405ac3f96eb1017e0582b623414e082c97f6",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:54.080Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/end-dialog-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "2a38bef85b5af08d9791d52b0a4f1aa2d10b9fc590d950226a5f3f7131a6f068",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:54.525Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/correct-feedback-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "feedback",
+      "portrait": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 104,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "0895d445820422df50103db39188c4fb17849f27d11807cb974e84e887c332ab",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dolichospermum lemmermannii",
+      "photo_id": "459952778"
+    },
+    {
+      "answered": 2,
+      "captured_at": "2026-10-22T18:12:55.406Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/counters-after-answers-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 67,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "8db49356864957e08dca87ab569605ab82bab48afbc1281f0b81ccad3d30b7fd",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Trametes versicolor",
+      "photo_id": "27005174"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:56.070Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/question-competitive-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "competitive",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        403
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 19,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "7f5e9303084cf5b52cb00f87ee2c593ebbdcfc64b17c8adff1b9edba4987372d",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Galleria mellonella",
+      "photo_id": "321803659"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:56.487Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-0-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "558ad9a11f445702ef7cc66fab7ff8280261728cc9276ad3d8786835f327c60f",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:57.585Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hint-panel-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "bf459cde24fe7950801a98cad270ab16d618776c451aae3575059d7f1a758b38",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:57.926Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-1-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "7346d6390460d2f7842afe66066a4d66dbbfc4b0e8acb451510fbad9f6347680",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:58.432Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-2-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,50",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "ba75be704ec7e09aa3c76469a87b1ad0bd65707613b4b525ebb44074da6f6102",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:58.948Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-3-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "1e0cf325e7e63746bafb22bef34b46e696b210e7f2ae6025d9cc83f478d8c76d",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:59.195Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-reading-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "bb106f6d11fc4cdd6e508d67e4eb2f5d4747eece2d895f11523608834b8dc671",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:59.517Z",
+      "correct": 1,
+      "devicePixelRatio": 1,
+      "file": "capturas/end-dialog-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "05aa6029766ae05a99df9e6478923507f31d8402f771d8b628c6dac15868e73a",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 2,
+      "captured_at": "2026-10-22T18:12:59.973Z",
+      "correct": 2,
+      "devicePixelRatio": 1,
+      "file": "capturas/correct-feedback-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "feedback",
+      "portrait": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "2e8f1e77182c34734970e136288158517199d5963a247f6d269a14c753d293d3",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "answered": 3,
+      "captured_at": "2026-10-22T18:13:00.998Z",
+      "correct": 2,
+      "devicePixelRatio": 1,
+      "file": "capturas/counters-after-answers-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 44,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "ccd85892fa6dc2dbe2be5c55235652e7f6e627b99e1c584fc3733d33a0749cdc",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Dictyanthus pavonii",
+      "photo_id": "47249680"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:13:01.602Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/question-competitive-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "competitive",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        499
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 16,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "53d13e7d9f84f5f7189bb50953758e7fc3e16dfd981da386fe9563d7ca6374fe",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Papilio ulysses",
+      "photo_id": "45110154"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:02.117Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-0-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "49510e8e7aa85b934337b50de71ba70b4d7d0e60d3a4533be596972239427d6c",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:03.271Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hint-panel-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "a79cafc3a2313c086beedca7069ab5db0a8bbbddadc48c7145a776004caafd6a",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:03.669Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-1-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "2e827fd1d26173cf23de4391a008ee62b0ebc35157b3a73f6821cf63505c0eed",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:04.217Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-2-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,50",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "ad62f2cb9d6009b17b195bc8da23044ff88011bfe36825dcea41197ae59369f1",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:04.768Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-3-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "514045b6239cca4941c73c9d7969f73c2a59442e2455af90c95052088ab4b0e5",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:05.076Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/hints-reading-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "514045b6239cca4941c73c9d7969f73c2a59442e2455af90c95052088ab4b0e5",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 5,
+      "captured_at": "2026-10-22T18:13:05.504Z",
+      "correct": 5,
+      "devicePixelRatio": 1,
+      "file": "capturas/end-dialog-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "e2519a733916fb53f1b9907a4fdddc6a271dbdd807c58a0eddeca899b8c77851",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 6,
+      "captured_at": "2026-10-22T18:13:06.027Z",
+      "correct": 6,
+      "devicePixelRatio": 1,
+      "file": "capturas/correct-feedback-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "feedback",
+      "portrait": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 18,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "113ec4d1b61e0dcd4eea428bd3760c06e46730f46200f42614b72dff24899a0a",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pieris brassicae",
+      "photo_id": "221780102"
+    },
+    {
+      "answered": 7,
+      "captured_at": "2026-10-22T18:13:07.039Z",
+      "correct": 6,
+      "devicePixelRatio": 1,
+      "file": "capturas/counters-after-answers-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 108,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "310d9ad104cb327abe077b1eeaf8f54cd90586d4cedd2225c063420c1b51a179",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Arthrospira jenneri",
+      "photo_id": "241649713"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:13:07.630Z",
+      "correct": 0,
+      "devicePixelRatio": 1,
+      "file": "capturas/question-competitive-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "competitive",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        759
+      ],
+      "possibleScore": "1,00",
+      "scrollY": 0,
+      "speciesId": 82,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "52a6d53f2ccec2ba0b5de284219447b98c355fcd276a5e41d51b351b1ff3e912",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Pseudoboletus parasiticus",
+      "photo_id": "151574414"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:11.346Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "9d626680bedcc9845d85f4f781890bdf2e090ad4925c22a42e96fe30196a762d",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:11.473Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-reading-1000x700.png",
+      "height": 700,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1000,
+      "source_scale": "100",
+      "sha256": "f7a3ac47fed8096dc31d1e20f17ca9082968830e3259bd57f2e7b0480a1938e0",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:11.945Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "ebb72d3b9e4a7f782e5c210a79d018572c3587c147a5be942f8415d462f3678f",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:12.087Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-reading-1240x820.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1240,
+      "source_scale": "100",
+      "sha256": "ff1aac300aa625e1089c85948afd58ee96faac5eb7a304a90c3981b57248b135",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:12.591Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "2820cb92e97e15064b9969cf4dd5b866fde1b83566681db272d550b482ec76b1",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:13:12.763Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/species-description-reading-1920x1080.png",
+      "height": 1080,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1920,
+      "source_scale": "100",
+      "sha256": "44065339ea935f299c62822609896d1b9856374edd103d56af761f4e4c1e838f",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:04.765Z",
+      "correct": 0,
+      "devicePixelRatio": 1.25,
+      "file": "capturas/hints-3-1000x700-125.png",
+      "height": 875,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 125,
+      "width": 1250,
+      "source_scale": "125",
+      "sha256": "031372aecad9cd760d9910ef026c111e64cd9f30e5aa944c4450f732c3365375",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Panthera tigris",
+      "photo_id": "111317641"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:10.165Z",
+      "correct": 0,
+      "devicePixelRatio": 1.25,
+      "file": "capturas/hints-3-1240x820-125.png",
+      "height": 1025,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 145,
+      "width": 1550,
+      "source_scale": "125",
+      "sha256": "48f0e499a8f0cccde0fb3cdd5732b55a02d332d4804f628bd7a48bc84e65026c",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Egregia menziesii",
+      "photo_id": "741404235"
+    },
+    {
+      "answered": 2,
+      "captured_at": "2026-10-22T18:12:16.144Z",
+      "correct": 2,
+      "devicePixelRatio": 1.25,
+      "file": "capturas/hints-3-1920x1080-125.png",
+      "height": 1350,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 71,
+      "width": 2400,
+      "source_scale": "125",
+      "sha256": "a470d488ef969c57353912410fcc6ffc8be5ac529fcab5b8efbd0eb859fc1046",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Marasmius haematocephalus",
+      "photo_id": "606817545"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:22.888Z",
+      "devicePixelRatio": 1.25,
+      "file": "capturas/species-description-reading-1000x700-125.png",
+      "height": 875,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1250,
+      "source_scale": "125",
+      "sha256": "255fa2af1e28d357992e7d460bcbf66cdb3a05d05cc25881767eb989d03c8ebc",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:23.539Z",
+      "devicePixelRatio": 1.25,
+      "file": "capturas/species-description-reading-1240x820-125.png",
+      "height": 1025,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1550,
+      "source_scale": "125",
+      "sha256": "a67305d6cd2978bcd75b2bfe836b638d5dbf1b5cb5c7ec6fdb0bdca2c01f8e3f",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:24.322Z",
+      "devicePixelRatio": 1.25,
+      "file": "capturas/species-description-reading-1920x1080-125.png",
+      "height": 1350,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "page": "info",
+      "speciesId": 126,
+      "width": 2400,
+      "source_scale": "125",
+      "sha256": "8555288a0b505995fe380cbcf47fe54961cdce4ef5aec8d1b57a42a7ee428c88",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:04.864Z",
+      "correct": 1,
+      "devicePixelRatio": 1.5,
+      "file": "capturas/hints-3-1000x700-150.png",
+      "height": 1050,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        220,
+        151,
+        273,
+        388
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 108,
+      "width": 1500,
+      "source_scale": "150",
+      "sha256": "12c67a48c5a26ed83bd1e0a5a41512758e68530e604b90f6d6c1a19d7b0fa112",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Arthrospira jenneri",
+      "photo_id": "241649713"
+    },
+    {
+      "answered": 1,
+      "captured_at": "2026-10-22T18:12:10.491Z",
+      "correct": 1,
+      "devicePixelRatio": 1.5,
+      "file": "capturas/hints-3-1240x820-150.png",
+      "height": 1230,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        346,
+        484
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 73,
+      "width": 1860,
+      "source_scale": "150",
+      "sha256": "1cfdff55ac05248da363d2e3bcf1d0ba595797e34ba7956fad282e1a479f5551",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Coprinus comatus",
+      "photo_id": "93399523"
+    },
+    {
+      "answered": 0,
+      "captured_at": "2026-10-22T18:12:16.563Z",
+      "correct": 0,
+      "devicePixelRatio": 1.5,
+      "file": "capturas/hints-3-1920x1080-150.png",
+      "height": 1620,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "mode": "free",
+      "page": "quiz",
+      "portrait": [
+        252,
+        163,
+        597,
+        744
+      ],
+      "possibleScore": "0,33",
+      "scrollY": 0,
+      "speciesId": 31,
+      "width": 2880,
+      "source_scale": "150",
+      "sha256": "e984b19555e951725f08b0114b7ffab09dbd3ad9e2582509ff8e5f254a6e6e7b",
+      "test": "restoredQuizHintsCountersAndStablePortrait",
+      "catalog_species_name": "Sphaerocoris annulus",
+      "photo_id": "29250775"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:23.553Z",
+      "devicePixelRatio": 1.5,
+      "file": "capturas/species-description-reading-1000x700-150.png",
+      "height": 1050,
+      "logicalHeight": 700,
+      "logicalWidth": 1000,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1500,
+      "source_scale": "150",
+      "sha256": "1aff51216a6da64a71015edea088719aefbe6509826a1dbe8c0ce9d90009177f",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:24.280Z",
+      "devicePixelRatio": 1.5,
+      "file": "capturas/species-description-reading-1240x820-150.png",
+      "height": 1230,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "page": "info",
+      "speciesId": 126,
+      "width": 1860,
+      "source_scale": "150",
+      "sha256": "07f68b3e241b7e65ccf1ea7849de41283ecdf53a51a2b5947d979f9c6f9fcd31",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    },
+    {
+      "captured_at": "2026-10-22T18:12:25.188Z",
+      "devicePixelRatio": 1.5,
+      "file": "capturas/species-description-reading-1920x1080-150.png",
+      "height": 1620,
+      "logicalHeight": 1080,
+      "logicalWidth": 1920,
+      "page": "info",
+      "speciesId": 126,
+      "width": 2880,
+      "source_scale": "150",
+      "sha256": "25e86f65b2b512ef3a8ef2cb073f90127109f8a1040dca4f1c827e3f3f014516",
+      "test": "speciesDescriptionReusesExistingReviewedNote",
+      "catalog_species_name": "Panthera leo",
+      "photo_id": "748172022"
+    }
+  ],
+  "photograph_credits": {
+    "111317641": {
+      "credit": {
+        "photo_id": "111317641",
+        "author": "(c) Morten Ross, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/111317641",
+        "source": "https://www.inaturalist.org/observations/68706928",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/large.jpg",
+        "license": "cc-by",
+        "license_url": null,
+        "license_version": null,
+        "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
+        "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
+        "organisms": [
+          {
+            "id": 125,
+            "name": "Panthera tigris",
+            "role": "identification",
+            "subject": "Panthera tigris"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json"
+        ],
+        "distribution_exception": false,
+        "license_status": "source_declared_version_unverified",
+        "source_declaration_verified": true,
+        "license_source_url": "https://www.inaturalist.org/photos/111317641",
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "111317641",
+        "observation_id": "68706928",
+        "photo_url": "https://www.inaturalist.org/photos/111317641",
+        "observation_url": "https://www.inaturalist.org/observations/68706928",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/111317641/large.jpg",
+        "credit_as_supplied": "(c) Morten Ross, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": null,
+        "license_version": null,
+        "original_collected_at": "2026-10-19T14:01:38.663320+00:00",
+        "evidence_paths": [
+          "resources/compliance/permissions/1bb67e0680870507f743f3b1dc83e055480f36341ba86df8417f30e1a938bd03.json"
+        ],
+        "sha256": "b6125e06c70f5c5475e18d2b1399d7cfa54ed98b497082c7a7bec2227b875646",
+        "modifications": "Variante large fornecida pela fonte; sem recorte ou retoque local.",
+        "permission_state": "pending_version_confirmation",
+        "license_url_note": "CC BY declarada individualmente pela fonte; versão e URL da licença ainda não comprovadas. Nenhuma referência a uma versão específica autoriza distribuição.",
+        "version_verification": {
+          "source_url": "https://www.inaturalist.org/photos/111317641",
+          "state": "unverified",
+          "reason": "Página específica não disponível na consulta; não inferir versão da licença."
+        },
+        "license_status": "source_declared_version_unverified"
+      }
+    },
+    "151574414": {
+      "credit": {
+        "photo_id": "151574414",
+        "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/151574414",
+        "source": "https://www.inaturalist.org/observations/91615355",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/151574414/medium.jpeg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "679a9eb994f821f7f0b619dbf012470c1667cc44ccce90289e60eb41d048b1cb",
+        "organisms": [
+          {
+            "id": 82,
+            "name": "Pseudoboletus parasiticus",
+            "role": "identification",
+            "subject": "Pseudoboletus parasiticus"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/3e7fc1743ae462c8db46e1398d07fe2a5ce2a538f691b0e042d68175cf7241b1.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "151574414",
+        "observation_id": "91615355",
+        "photo_url": "https://www.inaturalist.org/photos/151574414",
+        "observation_url": "https://www.inaturalist.org/observations/91615355",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/151574414/medium.jpeg",
+        "credit_as_supplied": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/3e7fc1743ae462c8db46e1398d07fe2a5ce2a538f691b0e042d68175cf7241b1.json"
+        ],
+        "sha256": "679a9eb994f821f7f0b619dbf012470c1667cc44ccce90289e60eb41d048b1cb",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "221780102": {
+      "credit": {
+        "photo_id": "221780102",
+        "author": "(c) Gianni Del Bufalo bygdb, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/221780102",
+        "source": "https://www.inaturalist.org/observations/130413689",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/221780102/large.jpeg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "58791341775619c2e6765b551f242c478068a34ef14c7311a793831ff794acc9",
+        "organisms": [
+          {
+            "id": 18,
+            "name": "Pieris brassicae",
+            "role": "identification",
+            "subject": "Pieris brassicae"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/ec0ef4f7e78c5e1969779bbb1e0892451537d7212e4b4335b0ca75981e0ba682.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "221780102",
+        "observation_id": "130413689",
+        "photo_url": "https://www.inaturalist.org/photos/221780102",
+        "observation_url": "https://www.inaturalist.org/observations/130413689",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/221780102/large.jpeg",
+        "credit_as_supplied": "(c) Gianni Del Bufalo bygdb, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/ec0ef4f7e78c5e1969779bbb1e0892451537d7212e4b4335b0ca75981e0ba682.json"
+        ],
+        "sha256": "58791341775619c2e6765b551f242c478068a34ef14c7311a793831ff794acc9",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "241649713": {
+      "credit": {
+        "photo_id": "241649713",
+        "author": "(c) crseaquist, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/241649713",
+        "source": "https://www.inaturalist.org/observations/141104251",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/241649713/large.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "ff52e63fbe531c0e47920a8e9c14a878bbac0ab16bdb6e26cecae0ab3be92e70",
+        "organisms": [
+          {
+            "id": 108,
+            "name": "Arthrospira jenneri",
+            "role": "supporting",
+            "subject": "Arthrospira jenneri"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/7f083ff20439dcac475be3fd0b947f34c6653158e469d1f2a8b29985edf29b7c.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "241649713",
+        "observation_id": "141104251",
+        "photo_url": "https://www.inaturalist.org/photos/241649713",
+        "observation_url": "https://www.inaturalist.org/observations/141104251",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/241649713/large.jpg",
+        "credit_as_supplied": "(c) crseaquist, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/7f083ff20439dcac475be3fd0b947f34c6653158e469d1f2a8b29985edf29b7c.json"
+        ],
+        "sha256": "ff52e63fbe531c0e47920a8e9c14a878bbac0ab16bdb6e26cecae0ab3be92e70",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "27005174": {
+      "credit": {
+        "photo_id": "27005174",
+        "author": "Ken Kneidel",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/27005174",
+        "source": "https://www.inaturalist.org/observations/17714364",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/27005174/medium.jpg",
+        "license": "cc0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "72838266acece553c47812e78fcd3bc6974acb5d8df9842a93a7334d2c5d82be",
+        "organisms": [
+          {
+            "id": 67,
+            "name": "Trametes versicolor",
+            "role": "identification",
+            "subject": "Trametes versicolor"
+          }
+        ],
+        "rights_issues": [
+          "credit_differs_from_source",
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/cfb9305136df902c4e7cda3e3c251777017284bce0d507eeef02c3015cb747d5.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "27005174",
+        "observation_id": "17714364",
+        "photo_url": "https://www.inaturalist.org/photos/27005174",
+        "observation_url": "https://www.inaturalist.org/observations/17714364",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/27005174/medium.jpg",
+        "credit_as_supplied": "Ken Kneidel",
+        "title": null,
+        "license": "cc0",
+        "declared_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/cfb9305136df902c4e7cda3e3c251777017284bce0d507eeef02c3015cb747d5.json"
+        ],
+        "sha256": "72838266acece553c47812e78fcd3bc6974acb5d8df9842a93a7334d2c5d82be",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "29250775": {
+      "credit": {
+        "photo_id": "29250775",
+        "author": "(c) Alan Manson, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/29250775",
+        "source": "https://www.inaturalist.org/observations/19068005",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/29250775/medium.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "5bdc6d7fc1b852e8a8dd61e34da62b7e81fb14beb1822597d8898905e2d5161b",
+        "organisms": [
+          {
+            "id": 31,
+            "name": "Sphaerocoris annulus",
+            "role": "identification",
+            "subject": "Sphaerocoris annulus"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/9e7f80e2087447b71b28e99d6aac9b4d3abebc42e8eff0212a9667d842a9af4d.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "29250775",
+        "observation_id": "19068005",
+        "photo_url": "https://www.inaturalist.org/photos/29250775",
+        "observation_url": "https://www.inaturalist.org/observations/19068005",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/29250775/medium.jpg",
+        "credit_as_supplied": "(c) Alan Manson, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/9e7f80e2087447b71b28e99d6aac9b4d3abebc42e8eff0212a9667d842a9af4d.json"
+        ],
+        "sha256": "5bdc6d7fc1b852e8a8dd61e34da62b7e81fb14beb1822597d8898905e2d5161b",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "321803659": {
+      "credit": {
+        "photo_id": "321803659",
+        "author": "(c) SteveM4560, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/321803659",
+        "source": "https://www.inaturalist.org/observations/184361474",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/321803659/medium.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "3c4cc4e39019105d8a46dc4f127199e96370a30b9bc6ca55d05cb8da13d903ca",
+        "organisms": [
+          {
+            "id": 19,
+            "name": "Galleria mellonella",
+            "role": "identification",
+            "subject": "Galleria mellonella"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/d670cfee2c8ff39d7ccef2e10b04464b0f73e2b980f867a775656de0e16cb268.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "321803659",
+        "observation_id": "184361474",
+        "photo_url": "https://www.inaturalist.org/photos/321803659",
+        "observation_url": "https://www.inaturalist.org/observations/184361474",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/321803659/medium.jpg",
+        "credit_as_supplied": "(c) SteveM4560, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/d670cfee2c8ff39d7ccef2e10b04464b0f73e2b980f867a775656de0e16cb268.json"
+        ],
+        "sha256": "3c4cc4e39019105d8a46dc4f127199e96370a30b9bc6ca55d05cb8da13d903ca",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "45110154": {
+      "credit": {
+        "photo_id": "45110154",
+        "author": "(c) Terra Occ, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/45110154",
+        "source": "https://www.inaturalist.org/observations/28921401",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45110154/medium.jpeg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "ec59238ea7ddb958d6801f045dea1ae634400a152ebd7f5593c52660b901d99d",
+        "organisms": [
+          {
+            "id": 16,
+            "name": "Papilio ulysses",
+            "role": "identification",
+            "subject": "Papilio ulysses"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/5a335f685e6bd508722116260c144548accdd98b6524cb90d06ff0798022c6d8.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "45110154",
+        "observation_id": "28921401",
+        "photo_url": "https://www.inaturalist.org/photos/45110154",
+        "observation_url": "https://www.inaturalist.org/observations/28921401",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/45110154/medium.jpeg",
+        "credit_as_supplied": "(c) Terra Occ, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/5a335f685e6bd508722116260c144548accdd98b6524cb90d06ff0798022c6d8.json"
+        ],
+        "sha256": "ec59238ea7ddb958d6801f045dea1ae634400a152ebd7f5593c52660b901d99d",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "459952778": {
+      "credit": {
+        "photo_id": "459952778",
+        "author": "(c) Quentin His, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/459952778",
+        "source": "https://www.inaturalist.org/observations/256522774",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/459952778/medium.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "88df346c60fe3fd4883c53494d18a015cdca8fa93a96776b938644ffb7da57c9",
+        "organisms": [
+          {
+            "id": 104,
+            "name": "Dolichospermum lemmermannii",
+            "role": "supporting",
+            "subject": "Dolichospermum lemmermannii"
+          },
+          {
+            "id": 111,
+            "name": "Anabaena torulosa",
+            "role": "supporting",
+            "subject": "Dolichospermum lemmermannii"
+          },
+          {
+            "id": 117,
+            "name": "Hassallia byssoidea",
+            "role": "supporting",
+            "subject": "Dolichospermum lemmermannii"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/bf8862e6fd5601e5d8e69942acc48fb2d9fd1b30774976de47ee9ed59a8af04c.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "459952778",
+        "observation_id": "256522774",
+        "photo_url": "https://www.inaturalist.org/photos/459952778",
+        "observation_url": "https://www.inaturalist.org/observations/256522774",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/459952778/medium.jpg",
+        "credit_as_supplied": "(c) Quentin His, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/bf8862e6fd5601e5d8e69942acc48fb2d9fd1b30774976de47ee9ed59a8af04c.json"
+        ],
+        "sha256": "88df346c60fe3fd4883c53494d18a015cdca8fa93a96776b938644ffb7da57c9",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "47249680": {
+      "credit": {
+        "photo_id": "47249680",
+        "author": "(c) alejandrozab, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/47249680",
+        "source": "https://www.inaturalist.org/observations/30249730",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/47249680/medium.jpeg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "e16d1a10c573c798ab9c33a5bed978ab625a4e7b75b7b356690b3821831923ab",
+        "organisms": [
+          {
+            "id": 44,
+            "name": "Dictyanthus pavonii",
+            "role": "identification",
+            "subject": "Dictyanthus pavonii"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/b3cd8591114628e926d2d2fabea40118821e92b909e59bb932e4ce80b41693d8.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "47249680",
+        "observation_id": "30249730",
+        "photo_url": "https://www.inaturalist.org/photos/47249680",
+        "observation_url": "https://www.inaturalist.org/observations/30249730",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/47249680/medium.jpeg",
+        "credit_as_supplied": "(c) alejandrozab, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/b3cd8591114628e926d2d2fabea40118821e92b909e59bb932e4ce80b41693d8.json"
+        ],
+        "sha256": "e16d1a10c573c798ab9c33a5bed978ab625a4e7b75b7b356690b3821831923ab",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "606817545": {
+      "credit": {
+        "photo_id": "606817545",
+        "author": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/606817545",
+        "source": "https://www.inaturalist.org/observations/261552464",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/606817545/medium.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "954e18d79e26f39dffa7a9fe8fbfca7482469a65a4a265e19cca181c149aabb6",
+        "organisms": [
+          {
+            "id": 71,
+            "name": "Marasmius haematocephalus",
+            "role": "identification",
+            "subject": "Marasmius haematocephalus"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/7caa96f1addb916d9d4919414f9b170ffe901a1a8aa0d56b661d56043ec6a44c.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "606817545",
+        "observation_id": "261552464",
+        "photo_url": "https://www.inaturalist.org/photos/606817545",
+        "observation_url": "https://www.inaturalist.org/observations/261552464",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/606817545/medium.jpg",
+        "credit_as_supplied": "(c) Alan Rockefeller, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/7caa96f1addb916d9d4919414f9b170ffe901a1a8aa0d56b661d56043ec6a44c.json"
+        ],
+        "sha256": "954e18d79e26f39dffa7a9fe8fbfca7482469a65a4a265e19cca181c149aabb6",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "741404235": {
+      "credit": {
+        "photo_id": "741404235",
+        "author": "(c) Emerson, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/741404235",
+        "source": "https://www.inaturalist.org/observations/403775093",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/741404235/large.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "9412c5d61e27f297aa81ad59678e69095729ebffc6e28ddd5babc4f4026f20ec",
+        "organisms": [
+          {
+            "id": 145,
+            "name": "Egregia menziesii",
+            "role": "identification",
+            "subject": "Egregia menziesii"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/94e1111a61d49bbbc9500e3e0bea7d0027684e7a9b7e847b13c5b26d310de615.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "741404235",
+        "observation_id": "403775093",
+        "photo_url": "https://www.inaturalist.org/photos/741404235",
+        "observation_url": "https://www.inaturalist.org/observations/403775093",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/741404235/large.jpg",
+        "credit_as_supplied": "(c) Emerson, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/94e1111a61d49bbbc9500e3e0bea7d0027684e7a9b7e847b13c5b26d310de615.json"
+        ],
+        "sha256": "9412c5d61e27f297aa81ad59678e69095729ebffc6e28ddd5babc4f4026f20ec",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "748172022": {
+      "credit": {
+        "photo_id": "748172022",
+        "author": "(c) Patrick Jackson, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/748172022",
+        "source": "https://www.inaturalist.org/observations/407163105",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/748172022/large.jpg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "f21c3adae008e5b9b20798c058b19b2a8f007c034e268bb12e053518613bbb47",
+        "organisms": [
+          {
+            "id": 126,
+            "name": "Panthera leo",
+            "role": "identification",
+            "subject": "Panthera leo"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/1433815d70ed6eb14ef8f9cc024897456ec3a3de2859d0acc25dcb283bbe3aec.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "748172022",
+        "observation_id": "407163105",
+        "photo_url": "https://www.inaturalist.org/photos/748172022",
+        "observation_url": "https://www.inaturalist.org/observations/407163105",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/748172022/large.jpg",
+        "credit_as_supplied": "(c) Patrick Jackson, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/1433815d70ed6eb14ef8f9cc024897456ec3a3de2859d0acc25dcb283bbe3aec.json"
+        ],
+        "sha256": "f21c3adae008e5b9b20798c058b19b2a8f007c034e268bb12e053518613bbb47",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    },
+    "93399523": {
+      "credit": {
+        "photo_id": "93399523",
+        "author": "(c) Tom Norton, some rights reserved (CC BY)",
+        "title": null,
+        "photo_url": "https://www.inaturalist.org/photos/93399523",
+        "source": "https://www.inaturalist.org/observations/58497477",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/93399523/medium.jpeg",
+        "license": "cc-by",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "sha256": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
+        "organisms": [
+          {
+            "id": 73,
+            "name": "Coprinus comatus",
+            "role": "identification",
+            "subject": "Coprinus comatus"
+          }
+        ],
+        "rights_issues": [
+          "license_version_evidence_missing",
+          "license_version_not_evidenced",
+          "original_collection_date_unknown",
+          "permission_confirmation_missing_or_changed"
+        ],
+        "evidence_paths": [
+          "resources/compliance/permissions/e9b497b81574aee677d4ca8815a78bca51634285f89c2faeab4482a912e3c0a4.json"
+        ],
+        "distribution_exception": false,
+        "scientific_source_issues": []
+      },
+      "provenance": {
+        "photo_id": "93399523",
+        "observation_id": "58497477",
+        "photo_url": "https://www.inaturalist.org/photos/93399523",
+        "observation_url": "https://www.inaturalist.org/observations/58497477",
+        "download_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/93399523/medium.jpeg",
+        "credit_as_supplied": "(c) Tom Norton, some rights reserved (CC BY)",
+        "title": null,
+        "license": "cc-by",
+        "declared_license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_version": null,
+        "original_collected_at": null,
+        "evidence_paths": [
+          "resources/compliance/permissions/e9b497b81574aee677d4ca8815a78bca51634285f89c2faeab4482a912e3c0a4.json"
+        ],
+        "sha256": "28e25e8e23beb8c964d7615065da479ff4a5f12cce92362d5fd2c05b4580c078",
+        "modifications": "Nenhuma. Arquivo original, sem recorte ou retoque.",
+        "permission_state": "legacy_evidence_incomplete",
+        "note": "Cache antigo arquivado agora; data original e versão da licença não demonstradas. Não é uma nova coleta nem autorização humana."
+      }
+    }
+  },
+  "schema_version": 1,
+  "base_commit": "8293408a650ac2f9738d42c4c9c462115919bdfc",
+  "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+  "application_version": "1.10.0",
+  "catalog_version": "2.4.0",
+  "test_binary": "build/2.3.1-restaurado/glossata_ui_tests.exe",
+  "test_binary_sha256": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b",
+  "production_binary_sha256": "f39554bfec0e2ffeb5e748817c520381113f286fd2e072752c66432c090bcf7c",
+  "inputs": {
+    "VERSION.txt": "4f5ba6a3e380bf810cc968b58d30a8d7163eafe9e2fb1ad19bdc6d9d64a1e549",
+    "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
+    "resources.qrc": "6abe1fdb5b779552a80c58019ce2358264bd79eba6d98404448ecc867dfec9b8",
+    "resources/qml/Main.qml": "172c439fdf4749599a41d495f42f0f013868c931920f471dbb8f3e99e0d33aa6",
+    "resources/qml/style/Theme.qml": "8c82b8cb94cc383a30ef445a6302296e6156788c5cf31ab810196b7d1f562f14",
+    "resources/qml/views/QuizView.qml": "16a6a869c06bcf5ea948b3e984302f8859409acce718a2853a12b5942f41e5fc",
+    "resources/qml/views/InfoView.qml": "67b5b663977f62789833b29e98ea5a3b90e8e537a416f02383cc62cb09e6707d",
+    "resources/qml/components/SpeciesPortrait.qml": "3a980f035c932fe7a4db68f5578538d0bf0cd852d20b088ade101ba97d3c3e0d",
+    "resources/qml/components/HintPanel.qml": "3e905ea5f971cd91359bcf1c0311989cc6a64b05f4f079817842f238962a5e2c",
+    "resources/qml/components/EndGameDialog.qml": "616e19824a2cacc7b3fd05ef53623f1e1a99c9a04edb73f5167ab4a7f7f17ff2",
+    "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
+    "resources/qml/components/UiIcon.qml": "54fb77f1758380db12292e6186f8775b3c441a8bfcfb69dd54d88cb024aa5c88",
+    "resources/qml/components/TextAction.qml": "26cba99204c77e5e5d08689108ddcec3b21d55336858ba6624626afa7c85f2d7",
+    "src/presentation/GameController.cpp": "189f32b9868c528e8ee9ba3bfec4254cf9b8f2d200646c3b8b4b49301e5e96e3",
+    "src/presentation/GameController.h": "445a3cae7d07669996984f5a03d88dc3153e17c380b8465d637246ae8f865b66",
+    "src/application/GameService.cpp": "b25910781dfd1bde15a3fb0e08d1b5fbce1454834595417e6e92ca20675d8a55",
+    "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
+    "src/domain/GameConfiguration.h": "54bd17ce644314aa383bc04340141d97e1c2251dfe71a8955517a41648c6d41b",
+    "tests/QmlInterfaceTests.cpp": "c041f759ac5ca31b94cba5e9a2139d0a80fd140cbc5c3f74a5b1b189e126423a",
+    "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
+    "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
+    "resources/data/education.json": "64df9e92234f4d8818a4737fbf76d7900a9972a901dfdbb5e4dd84f2bc2388ff",
+    "resources/data/credits.json": "0e7ed95accb835e4b76356492d3c832ff79bab3cb74c149e12b28c881372183b",
+    "resources/data/photo_provenance.json": "14ac39718b4c10511630c577907bb1c48a29df769ebf45b0b3ac274a65511ed9",
+    "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c"
+  },
+  "attribution_sources": [
+    "resources/data/credits.json",
+    "resources/data/photo_provenance.json",
+    "resources/compliance",
+    "docs/PHOTO_CREDITS.md"
+  ],
+  "limitations": "Real QML/controller in QtTest window, software/offscreen. No retouch/compositing. Controlled long-label/missing-photo fixtures are tested separately, not archived as scientific captures. No scientific or rights approval inferred."
+}

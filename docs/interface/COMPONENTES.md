@@ -2,9 +2,9 @@
 
 ## Quiz — 2.3.1
 
-`QuizView` preserva `quizView`, `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. Alternativas têm tamanho intrínseco compartilhado, texto integral e estado de seleção único, independente de hover e foco. `canSelect` protege a apresentação enquanto a pergunta termina, os diálogos estão abertos ou a foto não está pronta. Confirmação continua chamando `answerSelected` e navega ao feedback somente após confirmação do backend.
+`QuizView` recupera o layout anterior, preservando `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. A esquerda tem largura limitada de 37%; a direita contém `quizAnswersScroll`, com alternativas e dicas, sem impor sua altura mínima à foto. Dica/Confirmar ficam fixos na base da coluna. Foco local enquadra o controle dentro da rolagem direita. Títulos `revealedHintTitle0..2` consultam assistência/categoria do backend, sem inferir nível pelo índice. `quizAnswerCounts` projeta `correctAnswers` e `answeredCount - correctAnswers`; não escreve no banco.
 
-`SpeciesPortrait.quizPresentation` é `false` por padrão. Apenas o Quiz ativa moldura do tema e escala máxima 1, preservando centralização, proporção, créditos e avisos. Feedback e ficha mantêm a geometria anterior. `HintPanel` usa os valores/classificações existentes, evidencia o teto antes da revelação e conserva fonte, revisão, motivos e relato. Seu scroll acompanha foco; Esc/Voltar devolvem foco à pergunta. [Documentação e testes](VERSOES/2.3.1/README.md).
+`SpeciesPortrait` retorna à geometria, cores e `Image.PreserveAspectFit` anteriores, sem variante exclusiva ou recorte. Créditos e avisos permanecem completos. `HintPanel` recupera sua largura de 540 pixels, título, botões e cores anteriores; conserva tetos, fonte, revisão, relato, Esc e retorno do foco. `InfoView.speciesDescriptionRegion` fica abaixo da foto e créditos, reutiliza `profile.morphology` com fonte/revisão e mantém `speciesSummary` à direita. Remove apenas a repetição do tópico de morfologia; se ausente ou igual ao resumo, mostra preparação para a Etapa 3. [Documentação atual](VERSOES/2.3.1/restauracao-visual/README.md).
 
 ## PR #33 — configuração compacta e fontes do grupo
 

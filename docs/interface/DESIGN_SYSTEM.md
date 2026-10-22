@@ -1,6 +1,6 @@
 # Design system — revisão 2.1.2
 
-O Quiz 2.3.1 aplica os tokens existentes: superfície petróleo, seleção verde-floresta, foco dourado, tipografia e espaçamentos. Estados animam apenas cor/borda com `durationFast` e `motionEnabled`, sem deslocar alternativas ou fotografias. Cartões usam texto com quebra e altura compartilhada; fotografia integral tem escala máxima 1 apenas na variante do Quiz. Não há novos tokens, ícones ou arquivos fotográficos. [Registro](VERSOES/2.3.1/README.md).
+A revisão atual do Quiz 2.3.1 restaura cores, botões, tipografia, cabeçalho e espaçamentos anteriores à PR #35. Os títulos das dicas usam verde/dourado existentes e a cor discreta da assistência forte já usada no painel; não há novos tokens ou reformulação de cartões. A moldura, o ajuste proporcional e os créditos de `SpeciesPortrait` voltam ao contrato anterior, com rolagem somente na coluna direita do Quiz. [Registro atual](VERSOES/2.3.1/restauracao-visual/README.md); a proposta de modernização anterior foi rejeitada e permanece identificada como histórica.
 
 Na seleção Jogar 2.2.3, os painéis Livre/Competitivo usam `surface`, bordas `green/gold`, tipografia e espaçamentos existentes. Seletores usam `UiButton.compact`, agrupamento exclusivo e foco dourado. Os cartões optam pela composição fotográfica moderna compartilhada; a superfície, o hover e a redução de movimento continuam pelos tokens existentes. Não há novos tokens, ícones, arquivos de fotografia ou regras científicas. [Registro](VERSOES/2.2.3/README.md).
 

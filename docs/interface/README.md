@@ -6,7 +6,7 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
-Quiz atual: [2.3.1 — interface das perguntas e dicas](VERSOES/2.3.1/README.md), sobre a integração da PR #33 em `8293408a650ac2f9738d42c4c9c462115919bdfc`.
+Quiz atual: [2.3.1 — interface anterior restaurada e quatro ajustes pontuais](VERSOES/2.3.1/restauracao-visual/README.md), sobre a integração da PR #33 em `8293408a650ac2f9738d42c4c9c462115919bdfc`.
 
 Seleção atual de Jogar: [2.2.3 — configuração compacta e fontes contextuais](VERSOES/2.2.3/configuracao-compacta/README.md), preservando a [entrega inicial](VERSOES/2.2.3/README.md) e o [retorno à seleção](VERSOES/2.2.3/refinamentos-navegacao/README.md), sobre a integração da PR #32 em `1243a8bd47faa19a4a4b765ea432d5eadaef9a15`. Os registros abaixo preservam o desenvolvimento da enciclopédia.
 

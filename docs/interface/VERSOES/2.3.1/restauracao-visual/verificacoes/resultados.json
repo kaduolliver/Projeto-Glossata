@@ -1,0 +1,143 @@
+{
+  "recorded_at": "2026-10-22T18:19:56.419907+00:00",
+  "base_commit": "8293408a650ac2f9738d42c4c9c462115919bdfc",
+  "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure -j3",
+    "exit_code": 0,
+    "suites_passed": 26,
+    "suites_failed": 0,
+    "test_time_sum_seconds": 540.14,
+    "qttest_cases_passed": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 24,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    },
+    "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+    "binaries": {
+      "ui_tests": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b",
+      "production": "f39554bfec0e2ffeb5e748817c520381113f286fd2e072752c66432c090bcf7c"
+    }
+  },
+  "additional_runs": {
+    "quiz-restored-targeted.txt": {
+      "cases_passed_including_setup_cleanup": 5,
+      "failed": 0,
+      "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+      "test_binary_sha256": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b"
+    },
+    "quiz-restored-dpi-125.txt": {
+      "cases_passed_including_setup_cleanup": 5,
+      "failed": 0,
+      "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+      "test_binary_sha256": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b"
+    },
+    "quiz-restored-dpi-150.txt": {
+      "cases_passed_including_setup_cleanup": 5,
+      "failed": 0,
+      "source_commit": "4ef3ed00e6a6805f316c4ecde0f4ef337734fd38",
+      "test_binary_sha256": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b"
+    }
+  },
+  "checks_passed": [
+    "Release build",
+    "QML lint",
+    "Code licensing scope",
+    "Project status",
+    "Catalog/media technical audits",
+    "Governance history comparison",
+    "Release metadata and actual production Home capture",
+    "Production smoke test",
+    "Git whitespace and evidence hash checks"
+  ],
+  "preserved_paths": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "resources.qrc",
+    "src",
+    "resources/qml/style",
+    "resources/qml/Main.qml",
+    "resources/qml/views/CategoryView.qml",
+    "resources/qml/views/TaxonomyView.qml",
+    "resources/qml/views/FeedbackView.qml",
+    "resources/qml/views/ResultsView.qml",
+    "resources/qml/views/StatisticsView.qml",
+    "resources/qml/views/AchievementsView.qml",
+    "resources/qml/views/SettingsView.qml",
+    "resources/qml/views/HomeView.qml",
+    "docs/interface/VERSOES/2.2.1-A",
+    "docs/interface/VERSOES/2.2.1-B",
+    "docs/interface/VERSOES/2.2.2",
+    "docs/interface/VERSOES/2.2.3"
+  ],
+  "binaries": {
+    "production": "f39554bfec0e2ffeb5e748817c520381113f286fd2e072752c66432c090bcf7c",
+    "ui_tests": "0e6c42e2992be8b68241bf209191bface95ad44917152f050e5728a0c8c66e8b",
+    "core_tests": "52f2dd423be8725f591240430f0214a08f875b4c33d23e0bc4331b5c541c358f"
+  },
+  "local_build_manifest_sha256": "7d2ff528f037dfd4f2fa50469dec8b8e4dfba8c88320d86effe20a7dce0ce29c",
+  "capturas_json_sha256": "3cb5f658aaec0023e40149cffd6a5c44d30bc7c3b055fe8ed63dbd734a6f7ede",
+  "capture_count": 48,
+  "scale_validation": {
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qt_scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "physical_windows_scaling_changed": false,
+    "physical_touchpad_tested": false
+  },
+  "read_only_cleanup": {
+    "script_candidate_bytes": 0,
+    "manual_inventory_bytes": 3108390845,
+    "deleted": 0,
+    "script_source_commit": "25a882bd87d7d8cfd2fff458d296fa0334f0ee3b",
+    "main_history_rewritten": false
+  },
+  "source_logs_sha256": {
+    "build/quiz-restored-full-ctest.log": "21d1ad47ce7dc92e0f22113260ce23373a1d58d64af62c0b75c5274b644ee5e6",
+    "build/tests/core-results.txt": "5e1dca90d98faaf384c4886e3b9c4ca61304b2e0832d9ae51a86bcc429b46e2f",
+    "build/tests/ui-test-results.txt": "849af23a8a399077311f1290ac741f55beb4941c731c4c9e8624dcef2338fea9",
+    "build/tests/identity-results.txt": "d987e7b250cdad863497e5c33c671286263bfbf20ee958e51eb71135ad9026f7",
+    "build/tests/recovery-results.txt": "38d44549ef65024e64471028cad46b8e90f67423b212852276c22242f2d78622",
+    "build/tests/quiz-restored-targeted.txt": "47856ae279cd17d32293369b26294f0881de60577bafe199d3fa931011f7d7cc",
+    "build/tests/quiz-restored-dpi-125.txt": "76a94882e0dee06566515f22eb3d83a78eb49f6b403d0b10930c756fa0934ce7",
+    "build/tests/quiz-restored-dpi-150.txt": "811acde41535ddd5f823b948b3974f3e6ac78174aefb661778e0106fba999aac",
+    "build/quiz-restored-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build/quiz-restored-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "evidence_sha256": {
+    "core-results.txt": "99e7478f906938dcfd1248b03f9f2529895f1e3e54c7c3253b3641863811f2a1",
+    "ctest-results.txt": "bcfa6cb41f4d44fb3bed47530c3389f15406782a68370daf224c3e642113c671",
+    "distribution-summary.json": "147ff37d1c5de212cbbcc2f27ab337e015aef5e43143476685f7d07eedc0b4e1",
+    "governance-history.json": "1f7b2994c817009694949b068db28ad259ee1138285129a6b49d2cf1fc169e00",
+    "identity-results.txt": "d4ded8e009cbc3c1c9515257cdfd695ce71502fd59cb5683a75d51fd0d9644df",
+    "inventario-limpeza.json": "db016e312c3d18a756f8c42797f13a21400fafac3965171575a10f2ddb6172d5",
+    "qml-lint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "quiz-restored-dpi-125.txt": "06d137dc43e72e853c99f7a4f4775e637a369ab0dba93fcb2c5c53d9e8d8f73d",
+    "quiz-restored-dpi-150.txt": "26cd79cb82b5656f44064b569f4a649b3b2328b7966e1313011e2f9b5aa5c0fe",
+    "quiz-restored-targeted.txt": "df26345f13e05c68b9216c204af3667ca619c20a6a3e38890d5527c2f29ebebe",
+    "recovery-results.txt": "3d9c0855630919610087369e51744f43388fdd140741f8ab50bd06ec7f860373",
+    "smoke-test.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "technical-audits.json": "bc4c7408066a6c6ea85deae15f4d9f9ededf4b6b5da4e3966992f2f1e9324f63",
+    "ui-test-results.txt": "c16509888b4920cd10a1165c1afb29af032c6cdc882c0f33c48c54ed8a5b9886"
+  },
+  "archived_text_format": "UTF-8/LF; UTF-8 retained, CP1252 subprocess lines transcoded; original hashes retained.",
+  "limitations": "Software/offscreen capture, not physical Windows display scaling. Existing distribution blocks remain. Tests are not scientific, legal or universal accessibility certification."
+}
