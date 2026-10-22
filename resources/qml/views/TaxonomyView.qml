@@ -21,14 +21,14 @@ Item {
     readonly property var introduction: browsingOnly && (backend.browseTaxon.summary || ({})).text ? backend.browseTaxon.summary : backend.browseTaxon.introduction
     function visit(id, keyboard) {
         backend.exploreTaxon(id)
-        if (browsingOnly) returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
+        returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
     }
     Connections { target: view.backend; function onExplorationChanged() { view.photoDetailsOpen = false; view.breadcrumbsExpanded = false; view.sourcesOpen = false; view.classificationOpen = false } }
     implicitHeight: content.implicitHeight
     ColumnLayout {
         id: content
         width: parent.width; spacing: 18
-        UiButton { id: returnButton; objectName: "returnDomainsButton"; text: view.browsingOnly ? "Voltar à pesquisa e aos domínios" : "Voltar aos domínios"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
+        UiButton { id: returnButton; objectName: "returnDomainsButton"; text: view.browsingOnly ? "Voltar à pesquisa e aos domínios" : "Voltar à seleção de grupos"; iconName: "back"; secondary: true; compact: true; onClicked: view.app.navigate(view.browsingOnly ? "explore" : "categories") }
         Flow {
             objectName: "taxonomyBreadcrumbs"
             Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 4
@@ -104,8 +104,8 @@ Item {
             Label { objectName: "explorePhotoAttribution"; text: view.photo.image ? (view.photo.kind === "micrograph" ? "Micrografia: " : "Fotografia: ") + (view.photo.subject || "") + " · " + (view.photo.author || "Autoria não informada") + " · " + (view.photo.license || "Licença não informada") : view.photo.pendingReason || "Fotografia adequada ainda não disponível."; textFormat: Text.PlainText; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.Wrap; Layout.fillWidth: true }
             Label { visible: !!view.photo.image; text: view.photo.identificationNote || "Representante do grupo; identificação indicada pela fonte."; textFormat: Text.PlainText; color: Style.Theme.gold; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         }
-        Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: "#F0F6F0"; font.pixelSize: 30; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " espécie neste grupo" : " espécies neste grupo"); color: "#91B0B5"; font.pixelSize: 14; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { visible: !view.browsingOnly; text: view.backend.browseTaxon.title || ""; color: Style.Theme.text; font.pixelSize: Style.Theme.titleSize; font.weight: Font.DemiBold; font.italic: view.backend.browseTaxon.rank === "species" || view.backend.browseTaxon.rank === "genus"; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.role: Accessible.Heading }
+        Label { visible: !view.browsingOnly; text: (view.backend.browseTaxon.rankLabel || "") + " · " + view.backend.browseTaxon.count + (view.backend.browseTaxon.count === 1 ? " organismo no catálogo" : " organismos no catálogo"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
             visible: view.browsingOnly
             Layout.fillWidth: true; implicitHeight: introductionHeading.implicitHeight + 1
@@ -125,18 +125,18 @@ Item {
         Rectangle {
             visible: !view.browsingOnly
             Layout.fillWidth: true; implicitHeight: controls.implicitHeight + 36
-            radius: 16; color: "#17372D"; border.color: "#365C47"
+            radius: Style.Theme.cardRadius; color: Style.Theme.surfaceRaised; border.color: Style.Theme.border
             ColumnLayout {
                 id: controls
                 anchors.fill: parent; anchors.margins: 18; spacing: 14
-                Label { text: "Todas as espécies de " + (view.backend.browseTaxon.title || ""); color: "#E3EEE6"; font.pixelSize: 19; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { text: "Configurar identificação · modo Livre"; color: Style.Theme.text; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
                 RowLayout {
                     Layout.fillWidth: true
                     Label { text: "Identificar"; color: "#9BB6A9"; font.pixelSize: 12 }
-                    TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; enabled: count > 0; onModelChanged: currentIndex = 0 }
-                    UiButton { objectName: "startTaxonButton"; text: "Começar"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
+                    TaxonComboBox { id: level; objectName: "identificationLevel"; Layout.fillWidth: true; model: view.backend.identificationLevels; textRole: "title"; valueRole: "id"; Accessible.name: "Nível de identificação no modo Livre"; enabled: count > 0; onModelChanged: currentIndex = 0 }
+                    UiButton { objectName: "startTaxonButton"; text: "Iniciar partida"; iconName: "play"; enabled: level.count > 0 && !view.backend.resultPending; onClicked: view.app.beginTaxonGame(view.backend.browseTaxon.id, level.currentValue) }
                 }
-                Label { text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " registro elegível neste nível; consulte os avisos das fotografias." : " registros elegíveis neste nível; consulte os avisos das fotografias.") : "Sem quiz neste nível: são necessárias quatro alternativas distintas e revisões adequadas. Grupos vazios continuam disponíveis para exploração."; color: "#85A894"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "playEligibleCount"; text: view.backend.identificationLevels.length && level.currentIndex >= 0 ? view.backend.identificationLevels[level.currentIndex].count + (view.backend.identificationLevels[level.currentIndex].count === 1 ? " organismo elegível neste nível" : " organismos elegíveis neste nível") + " · " + view.backend.identificationLevels[level.currentIndex].answers + " alternativas distintas. A dificuldade escolhida pode limitar a partida; consulte os avisos das fotografias." : "Sem partida disponível: são necessárias quatro alternativas distintas e revisões adequadas. Você pode continuar navegando pelos grupos."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
         }
         Label { visible: view.backend.browseTaxon.supportingCount > 0; text: "Há imagens de apoio neste grupo. A identificação usa pistas; essas fotos podem representar colônias, sintomas ou organismos relacionados, sem comprovar a espécie."; color: "#91ABB4"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
@@ -145,19 +145,19 @@ Item {
             id: childGrid
             objectName: "taxonChildrenGrid"
             readonly property real cardHeight: Math.max(0, ...Array.from(children, child => child.implicitHeight))
-            Layout.fillWidth: true; columns: view.browsingOnly ? Math.max(1, Math.floor((view.width + 14) / (280 + 14))) : view.width >= 850 ? 3 : 2; columnSpacing: 14; rowSpacing: 14
+            Layout.fillWidth: true; columns: Math.max(1, Math.floor((view.width + 14) / (280 + 14))); columnSpacing: 14; rowSpacing: 14
             Repeater {
-                model: view.backend.browseChildren
+                model: view.browsingOnly ? view.backend.browseChildren : view.backend.playChildren
                 delegate: ExploreCard {
                     required property var modelData
                     required property int index
                     objectName: "taxonButton" + index
                     entry: modelData
                     encyclopedic: view.browsingOnly
+                    playSelection: !view.browsingOnly
                     Layout.fillWidth: true; Layout.preferredWidth: 1
-                    Layout.fillHeight: view.browsingOnly
-                    Layout.preferredHeight: view.browsingOnly ? childGrid.cardHeight : -1
-                    Layout.alignment: view.browsingOnly ? Qt.AlignVCenter : Qt.AlignTop
+                    Layout.fillHeight: true
+                    Layout.preferredHeight: childGrid.cardHeight
                     onClicked: view.visit(modelData.id, visualFocus)
                 }
             }

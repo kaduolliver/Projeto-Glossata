@@ -55,6 +55,9 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantMap answerDetails READ answerDetails NOTIFY answerDetailsChanged)
     Q_PROPERTY(QVariantList categories READ categories CONSTANT)
     Q_PROPERTY(QVariantList quickAccessGroups READ quickAccessGroups CONSTANT)
+    Q_PROPERTY(QVariantMap playGroups READ playGroups CONSTANT)
+    Q_PROPERTY(QVariantMap playMixed READ playMixed CONSTANT)
+    Q_PROPERTY(QVariantList playChildren READ playChildren NOTIFY explorationChanged)
     Q_PROPERTY(QVariantList homeSlides READ homeSlides CONSTANT)
     Q_PROPERTY(QVariantList featuredOrganisms READ featuredOrganisms CONSTANT)
     Q_PROPERTY(QVariantList exploreRanks READ exploreRanks CONSTANT)
@@ -127,6 +130,9 @@ public:
     QVariantMap answerDetails() const { return answerDetails_; }
     QVariantList categories() const;
     QVariantList quickAccessGroups() const { return taxonomy_.quickAccess(); }
+    QVariantMap playGroups() const { return taxonomy_.playGroups(); }
+    QVariantMap playMixed() const { return taxonomy_.playEntry({}); }
+    QVariantList playChildren() const { return taxonomy_.playChildren(explorationId_); }
     QVariantList homeSlides() const { return taxonomy_.homeSlides(); }
     QVariantList featuredOrganisms() const { return taxonomy_.featuredOrganisms(); }
     QVariantList exploreRanks() const { return taxonomy_.searchRanks(); }

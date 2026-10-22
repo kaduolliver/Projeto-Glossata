@@ -2,6 +2,10 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.9.0] — Não lançado; seleção taxonômica para jogar
+
+- Subetapa 2.2.3: seleção fotográfica responsiva com Reinos, Domínios e Grupos avançados, IDs existentes e disponibilidade derivada dos níveis já validados pelo backend. Livre, dificuldade, jogo misto e Competitivo com apresentação própria; regras e Quiz preservados. Alinhamento localizado dos créditos e ações do Explorar. [Registro visual](docs/interface/VERSOES/2.2.3/README.md). MINOR por funcionalidade compatível; catálogo 2.4.0 inalterado.
+
 ## [1.8.0] — Não lançado; exploração enciclopédica
 
 - PR #32, usabilidade na versão ainda não lançada: hover dos créditos distinguível do cartão, alturas intrínsecas uniformes por seção, justificativas de foto indisponível no diálogo, botões compactos para carregar mais e faixa comum junto à barra vertical. Roda convencional de 110 pixels por incremento em Início/Explorar, preservando deltas contínuos, galeria, foco e redução de movimento. [Capturas e validação](docs/interface/VERSOES/2.2.2/usabilidade/README.md).
