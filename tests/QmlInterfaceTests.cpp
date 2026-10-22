@@ -159,16 +159,23 @@ void QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
         QVERIFY(!levelRect.intersects(startRect)); QVERIFY(!noticeRect.intersects(startRect)); QVERIFY(level->width()<=300);
         QVERIFY(qAbs(start->width()-start->implicitWidth())<1);
         QVERIFY(qAbs(infoRect.left()-rect(level->parentItem()).left())<1);
+        QVERIFY2(qAbs(startRect.right()-controlsRect.right())<=1,
+            qPrintable(QString("Start button right=%1, panel inner right=%2").arg(startRect.right()).arg(controlsRect.right())));
         if(size.width()>=1240) {
-            QVERIFY2(qAbs(startRect.right()-controlsRect.right())<=1,
-                qPrintable(QString("Start button right=%1, panel inner right=%2").arg(startRect.right()).arg(controlsRect.right())));
+            const auto gap=noticeRect.left()-levelRect.right();
+            QVERIFY2(gap>=16 && gap<=24,qPrintable(QString("Difficulty gap=%1").arg(gap)));
             QVERIFY2(qAbs(levelRect.center().y()-startRect.center().y())<1,
                 qPrintable(QString("size=%1 panelWidth=%2 level=(%3,%4) start=(%5,%6) notice=(%7,%8)")
                     .arg(size.width()).arg(panel->width()).arg(levelRect.top()).arg(levelRect.height())
                     .arg(startRect.top()).arg(startRect.height()).arg(noticeRect.top()).arg(noticeRect.height())));
             QVERIFY(qAbs(levelRect.center().y()-noticeRect.center().y())<1);
             QVERIFY(panel->height()<175);
-        } else { QVERIFY(startRect.top()>=levelRect.bottom()); QVERIFY(panel->height()<230); }
+        } else {
+            QVERIFY(startRect.top()>=levelRect.bottom());
+            QVERIFY(noticeRect.top()>=levelRect.bottom());
+            QVERIFY(qAbs(noticeRect.center().y()-startRect.center().y())<1);
+            QVERIFY(panel->height()<230);
+        }
         QVERIFY(rect(item("playEligibleCount")).top()>=startRect.bottom());
         QVERIFY(rect(item("taxonChildrenGrid")).top()>=rect(panel).bottom());
         QVERIFY(activate("playTaxonSourcesButton",true));
