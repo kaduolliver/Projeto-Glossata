@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-23T01:47:20.612721+00:00",
+  "mode": "non-destructive inventory",
+  "deleted": 0,
+  "cleanup_script_plans": {
+    "default": {
+      "mode": "dry-run",
+      "root": "C:\\glossata_game",
+      "candidates": [],
+      "skipped": [
+        {
+          "path": "build/tests/previews/navigation",
+          "category": "generated-previews",
+          "bytes": 6259486,
+          "last_modified": 1792714369,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/tests/previews/carousel",
+          "category": "generated-previews",
+          "bytes": 8775464,
+          "last_modified": 1792714309,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/tests/previews/daily-discovery",
+          "category": "generated-previews",
+          "bytes": 4580734,
+          "last_modified": 1792714291,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2",
+          "category": "generated-previews",
+          "bytes": 6979461,
+          "last_modified": 1792714282,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-round-1",
+          "category": "generated-previews",
+          "bytes": 6060357,
+          "last_modified": 1792714266,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-creditos",
+          "category": "generated-previews",
+          "bytes": 4809990,
+          "last_modified": 1792714244,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-usabilidade",
+          "category": "generated-previews",
+          "bytes": 12309713,
+          "last_modified": 1792714116,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-2.3.2",
+          "category": "generated-previews",
+          "bytes": 12530174,
+          "last_modified": 1792714097,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-2.2.3",
+          "category": "generated-previews",
+          "bytes": 23869432,
+          "last_modified": 1792714090,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-top-2.3.2",
+          "category": "generated-previews",
+          "bytes": 7262872,
+          "last_modified": 1792714079,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-context-2.2.3",
+          "category": "generated-previews",
+          "bytes": 13612445,
+          "last_modified": 1792714063,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-colors-hints-2.3.2",
+          "category": "generated-previews",
+          "bytes": 8266804,
+          "last_modified": 1792714059,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-compact-2.2.3",
+          "category": "generated-previews",
+          "bytes": 11153020,
+          "last_modified": 1792714029,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/species-description-independent-2.3.1",
+          "category": "generated-previews",
+          "bytes": 8321373,
+          "last_modified": 1792714010,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/quiz-restored-2.3.1",
+          "category": "generated-previews",
+          "bytes": 46021345,
+          "last_modified": 1792714003,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/quiz-2.3.1",
+          "category": "generated-previews",
+          "bytes": 25994339,
+          "last_modified": 1792686410,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-final",
+          "category": "generated-previews",
+          "bytes": 8702303,
+          "last_modified": 1792610175,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-round-2",
+          "category": "generated-previews",
+          "bytes": 8086062,
+          "last_modified": 1792551808,
+          "reason": "recently modified"
+        }
+      ],
+      "total_bytes": 0
+    },
+    "extended": {
+      "mode": "dry-run",
+      "root": "C:\\glossata_game",
+      "candidates": [],
+      "skipped": [
+        {
+          "path": "build/tests/previews/navigation",
+          "category": "generated-previews",
+          "bytes": 6259486,
+          "last_modified": 1792714369,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/tests/previews/carousel",
+          "category": "generated-previews",
+          "bytes": 8775464,
+          "last_modified": 1792714309,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/tests/previews/daily-discovery",
+          "category": "generated-previews",
+          "bytes": 4580734,
+          "last_modified": 1792714291,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2",
+          "category": "generated-previews",
+          "bytes": 6979461,
+          "last_modified": 1792714282,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-round-1",
+          "category": "generated-previews",
+          "bytes": 6060357,
+          "last_modified": 1792714266,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-creditos",
+          "category": "generated-previews",
+          "bytes": 4809990,
+          "last_modified": 1792714244,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-usabilidade",
+          "category": "generated-previews",
+          "bytes": 12309713,
+          "last_modified": 1792714116,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-2.3.2",
+          "category": "generated-previews",
+          "bytes": 12530174,
+          "last_modified": 1792714097,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-2.2.3",
+          "category": "generated-previews",
+          "bytes": 23869432,
+          "last_modified": 1792714090,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-top-2.3.2",
+          "category": "generated-previews",
+          "bytes": 7262872,
+          "last_modified": 1792714079,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-context-2.2.3",
+          "category": "generated-previews",
+          "bytes": 13612445,
+          "last_modified": 1792714063,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/statistics-colors-hints-2.3.2",
+          "category": "generated-previews",
+          "bytes": 8266804,
+          "last_modified": 1792714059,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/play-compact-2.2.3",
+          "category": "generated-previews",
+          "bytes": 11153020,
+          "last_modified": 1792714029,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/species-description-independent-2.3.1",
+          "category": "generated-previews",
+          "bytes": 8321373,
+          "last_modified": 1792714010,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/quiz-restored-2.3.1",
+          "category": "generated-previews",
+          "bytes": 46021345,
+          "last_modified": 1792714003,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/quiz-2.3.1",
+          "category": "generated-previews",
+          "bytes": 25994339,
+          "last_modified": 1792686410,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-final",
+          "category": "generated-previews",
+          "bytes": 8702303,
+          "last_modified": 1792610175,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/tests/previews/explore-2.2.2-round-2",
+          "category": "generated-previews",
+          "bytes": 8086062,
+          "last_modified": 1792551808,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.1-B-verified",
+          "category": "old-build-2.2.1",
+          "bytes": 258432440,
+          "last_modified": 1792542045,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.2.2-usabilidade",
+          "category": "old-build-2.2.2",
+          "bytes": 258884219,
+          "last_modified": 1792621902,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.2.2-creditos",
+          "category": "old-build-2.2.2",
+          "bytes": 258825025,
+          "last_modified": 1792617670,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.2.2-final",
+          "category": "old-build-2.2.2",
+          "bytes": 258782544,
+          "last_modified": 1792610052,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.2-round-2",
+          "category": "old-build-2.2.2",
+          "bytes": 258697869,
+          "last_modified": 1792608582,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.2-verified",
+          "category": "old-build-2.2.2",
+          "bytes": 258632217,
+          "last_modified": 1792547193,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.3-dificuldade",
+          "category": "old-build-2.2.3",
+          "bytes": 259051239,
+          "last_modified": 1792677763,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.2.3-alinhamento",
+          "category": "old-build-2.2.3",
+          "bytes": 259050215,
+          "last_modified": 1792672241,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.2.3-compacto",
+          "category": "old-build-2.2.3",
+          "bytes": 259048679,
+          "last_modified": 1792668478,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.3-contexto",
+          "category": "old-build-2.2.3",
+          "bytes": 258989906,
+          "last_modified": 1792637746,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.2.3-verified",
+          "category": "old-build-2.2.3",
+          "bytes": 258958235,
+          "last_modified": 1792631231,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.3.1-descricao",
+          "category": "old-build-2.3.1",
+          "bytes": 259158491,
+          "last_modified": 1792698009,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.3.1-restaurado",
+          "category": "old-build-2.3.1",
+          "bytes": 259152701,
+          "last_modified": 1792692691,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.3.1-quiz",
+          "category": "old-build-2.3.1",
+          "bytes": 259119670,
+          "last_modified": 1792686287,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.3.2-cores-dicas",
+          "category": "old-build-2.3.2",
+          "bytes": 259354227,
+          "last_modified": 1792713888,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.3.2-topo",
+          "category": "old-build-2.3.2",
+          "bytes": 259276597,
+          "last_modified": 1792708333,
+          "reason": "retained newest"
+        },
+        {
+          "path": "build/2.3.2-estatisticas",
+          "category": "old-build-2.3.2",
+          "bytes": 259231479,
+          "last_modified": 1792703641,
+          "reason": "recently modified"
+        },
+        {
+          "path": "build/2.3.2-before",
+          "category": "old-build-2.3.2",
+          "bytes": 259158491,
+          "last_modified": 1792702905,
+          "reason": "recently modified"
+        }
+      ],
+      "total_bytes": 0
+    }
+  },
+  "groups": [
+    {
+      "path": "build/local-ranking-history",
+      "bytes": 1919992196,
+      "files": 736,
+      "reason": "Build e testes atuais; capturas reais, logs e scripts locais desta melhoria.",
+      "risk": "Alto: evidências da PR e binários de validação; preservar.",
+      "action": "preserve"
+    },
+    {
+      "path": "build/tests/previews",
+      "bytes": 236193234,
+      "files": 939,
+      "reason": "Capturas locais de etapas anteriores; possíveis cópias de evidências.",
+      "risk": "Alto: rastreabilidade histórica; preservar.",
+      "action": "preserve"
+    },
+    {
+      "path": "build/__pycache__",
+      "bytes": 176360,
+      "files": 11,
+      "reason": "Cache Python de auxiliares locais.",
+      "risk": "Baixo para regeneração; somente candidato, nenhuma autorização de exclusão.",
+      "action": "preserve"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "files": 57,
+      "reason": "Cache Python dos scripts do projeto.",
+      "risk": "Baixo para regeneração; somente candidato, nenhuma autorização de exclusão.",
+      "action": "preserve"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 578967,
+      "files": 22,
+      "reason": "Cache Python dos testes.",
+      "risk": "Baixo para regeneração; somente candidato, nenhuma autorização de exclusão.",
+      "action": "preserve"
+    },
+    {
+      "path": "build/*.{py,txt,log,png,tmp}",
+      "bytes": 40746472,
+      "files": 283,
+      "reason": "Auxiliares, logs e capturas avulsos de tarefas anteriores; inventário por agrupamento, sem classificar como descartáveis.",
+      "risk": "Alto: podem ser evidências únicas; preservar.",
+      "action": "preserve"
+    }
+  ],
+  "duplicate_capture_groups": [
+    {
+      "sha256": "56e3343a1a33378fee0788b85ae0d3d77f6cb090833b3de8492dd4916fa711aa",
+      "paths": [
+        "build/local-ranking-history/tests/previews/local-ranking-history/100/history-next-page-1000x700.png",
+        "build/local-ranking-history/previews/local-ranking-history/100/history-next-page-1000x700.png"
+      ],
+      "bytes_each": 61965,
+      "reason": "Igualdade de bytes em capturas locais; não comprova que sejam descartáveis.",
+      "risk": "Preservar evidências e cópias de captura."
+    },
+    {
+      "sha256": "ab0da0ac8e7371b752fbc743acc551c16c024e7320e194d62eaae5f4229a1b2a",
+      "paths": [
+        "build/local-ranking-history/tests/previews/local-ranking-history/100/history-next-page-1240x820.png",
+        "build/local-ranking-history/previews/local-ranking-history/100/history-next-page-1240x820.png"
+      ],
+      "bytes_each": 72949,
+      "reason": "Igualdade de bytes em capturas locais; não comprova que sejam descartáveis.",
+      "risk": "Preservar evidências e cópias de captura."
+    },
+    {
+      "sha256": "7b3a829c756a323a2c90851dc0af60a96eac405b85d18e5190d6481a3179a6e9",
+      "paths": [
+        "build/local-ranking-history/tests/previews/local-ranking-history/100/history-next-page-1920x1080.png",
+        "build/local-ranking-history/previews/local-ranking-history/100/history-next-page-1920x1080.png"
+      ],
+      "bytes_each": 100402,
+      "reason": "Igualdade de bytes em capturas locais; não comprova que sejam descartáveis.",
+      "risk": "Preservar evidências e cópias de captura."
+    },
+    {
+      "sha256": "aa8baf59ff3067724459dde6224eee7c7b22fe44fd0c9578780b93f15069f48a",
+      "paths": [
+        "build/local-ranking-history/tests/previews/local-ranking-history/100/ranking-current-1000x700.png",
+        "build/local-ranking-history/previews/local-ranking-history/100/ranking-current-1000x700.png"
+      ],
+      "bytes_each": 61723,
+      "reason": "Igualdade de bytes em capturas locais; não comprova que sejam descartáveis.",
+      "risk": "Preservar evidências e cópias de captura."
+    }
+  ],
+  "untracked_nonignored_paths": [
+    "docs/interface/VERSOES/ranking-local-historico/capturas.json",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-competitive-archived-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-competitive-archived-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-competitive-archived-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-first-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-first-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-first-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-next-page-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-next-page-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/history-next-page-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/ranking-current-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/ranking-current-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/100/ranking-current-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-competitive-archived-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-competitive-archived-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-competitive-archived-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-first-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-first-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-first-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-next-page-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-next-page-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/history-next-page-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/ranking-current-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/ranking-current-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/125/ranking-current-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-competitive-archived-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-competitive-archived-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-competitive-archived-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-first-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-first-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-first-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-next-page-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-next-page-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/history-next-page-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/ranking-current-1000x700.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/ranking-current-1240x820.png",
+    "docs/interface/VERSOES/ranking-local-historico/capturas/150/ranking-current-1920x1080.png",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/auditoria-arquivos.json",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/build-manifest.json",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/catalog-audit.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/cleanup-default.json",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/cleanup-extended.json",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/code-licensing.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/core-results.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/ctest.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/governance-history.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/identity-results.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/initial-backend-ctest.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/initial-core-results.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/initial-ui-results.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/project-status.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/qmllint.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/recovery-results.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/release.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/repository-audit.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/resultados.json",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/smoke.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/ui-125.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/ui-150.txt",
+    "docs/interface/VERSOES/ranking-local-historico/verificacoes/ui-results.txt"
+  ],
+  "protected": "resources/, package/, SQLite, usuários, mídias, governança, documentação, capturas/evidências versionadas e manifestos preservados. Nenhum --apply.",
+  "intentional_evidence_copies": "Os 36 PNGs serão copiados do build para a documentação. Essas cópias para rastreabilidade são deliberadas, não candidatas a exclusão."
+}

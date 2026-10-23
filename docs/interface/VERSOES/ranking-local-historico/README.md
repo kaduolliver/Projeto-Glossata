@@ -30,7 +30,50 @@ O contexto é guardado no controlador durante a execução, sem gravar preferên
 
 ## Validação e evidências
 
-Os resultados executados, capturas reais e inventário não destrutivo serão registrados neste diretório após os checks. Todos os testes/capturas desta melhoria usam SQLite temporário e o QML/controlador reais. Não há acesso aos bancos dos jogadores.
+Implementação em dois commits: [consultas e testes de identidade](https://github.com/kaduolliver/Projeto-Glossata/commit/6fa02e4) e [controlador, interface, testes e versão](https://github.com/kaduolliver/Projeto-Glossata/commit/495e9de). Todos os testes/capturas desta melhoria usam SQLite temporário e o QML/controlador reais. Não há acesso aos bancos dos jogadores.
+
+`ctest --test-dir build/local-ranking-history --output-on-failure`: **26/26 suítes aprovadas**, em 774,15 segundos. Os resultados incluem 62 casos de regras/controlador, 35 de identidade, 21 de recuperação e 30 de interface (contagens do QtTest incluem inicialização/finalização). Os três testes de navegação do histórico, painéis/rolagem e cores/pódio também passaram separadamente em 125% e 150%. Lint de todo o QML, smoke test do executável com banco temporário, auditorias do repositório/catálogo, metadados e `release.py check`/`check-history` aprovados. A comparação de governança conserva os 1.053 eventos da base.
+
+| Cenário | Evidência automatizada |
+| --- | --- |
+| Mais de cinco ativos; ativo sem partidas; excluído/legado acima dos ativos; homônimos; nome reutilizado; menos de cinco; nenhum elegível | `PlayerIdentityTests::activeRankingFiltersBeforeLimitAndPreservesHistory` e `activeRankingWithNoEligiblePlayers` |
+| Paginação, limites, nome registrado, datas, pontos, acertos e desempates por nome/UUID | `PlayerIdentityTests::historicalPagesAndStoredTieBreaks` |
+| Livre/Competitivo e contexto independentes; configuração antiga; recorde e métricas por UUID; seleção, sessão e reabertura | `QmlInterfaceTests::localRankingHistoryNavigationAndCaptures`, testes de identidade e regressões de controlador |
+| Recuperação, encerramento após exclusão e reutilização de nome, respostas/checkpoints imutáveis | `GlossataSessionRecoveryTests`, regressões existentes e novo teste de navegação |
+| Pódio, teclado, foco, painéis no topo, seletor compacto e rolagem | `statisticsStableColorsAndPodium`, `statisticsTopPanelsAndSharedScrolling` e regressão completa de interface |
+
+O teste de filtragem inclui seis ativos com resultados e dois registros inelegíveis com pontuação maior: filtrar somente depois de um `LIMIT 5` não produziria as cinco linhas esperadas. Compara ainda os dados de todas as tabelas antes/depois das consultas e após reabrir. Os testes antigos de controlador passam a procurar os resultados excluídos no histórico, mantendo a verificação do UUID, snapshot e métricas originais. As falhas da primeira execução e sua causa ficam nos logs `initial-*`, junto aos resultados finais; não foram apagadas para ocultar resultados.
+
+Os [resultados e hashes](verificacoes/resultados.json), [log completo do CTest](verificacoes/ctest.txt) e [manifesto de capturas](capturas.json) vinculam fontes, binários e evidências. São **36 PNGs reais**, com dados sintéticos declarados, em nove combinações de dimensões lógicas/fator Qt. Não houve imagem simulada nem troca do backend por mapa de apresentação nos quadros novos. Alguns enquadramentos acompanham o foco de teclado e a rolagem, deixando cabeçalhos/linhas fora da área visível; o conteúdo continua acessível pela rolagem da página.
+
+| Resolução lógica | 100% | 125% | 150% |
+| --- | --- | --- | --- |
+| 1000 × 700 | [Histórico](capturas/100/history-first-1000x700.png) | [Histórico](capturas/125/history-first-1000x700.png) | [Histórico](capturas/150/history-first-1000x700.png) |
+| 1240 × 820 | [Histórico](capturas/100/history-first-1240x820.png) | [Histórico](capturas/125/history-first-1240x820.png) | [Histórico](capturas/150/history-first-1240x820.png) |
+| 1920 × 1080 | [Histórico](capturas/100/history-first-1920x1080.png) | [Histórico](capturas/125/history-first-1920x1080.png) | [Histórico](capturas/150/history-first-1920x1080.png) |
+
+Também há quadros de [ranking atual com pódio](capturas/100/ranking-current-1920x1080.png), [classificação competitiva antiga](capturas/150/history-competitive-archived-1240x820.png) e [controles da segunda página](capturas/125/history-next-page-1000x700.png). Backend Qt software/offscreen no Windows 11, Qt 6.11.2, com `QT_SCALE_FACTOR=1`, `1.25` e `1.5`; isso não certifica mudanças físicas entre monitores/DPI do sistema nem acessibilidade universal.
+
+`scripts/capture_home.py --binary build/local-ranking-history/projeto_glossata.exe` renovou a captura oficial real em [docs/images/tela-inicial.png](../../../images/tela-inicial.png) e seu registro. O PNG tem os mesmos pixels anteriores; o registro agora vincula o binário 1.12.0 e os novos hashes do controlador. Não se alteraram pixels artificialmente para gerar diferença no Git. O caminho do README permanece intacto.
+
+## Inventário não destrutivo
+
+O manifesto bruto gerado permanece em `build/build-manifest.json`, com cópia preservada em `build/local-ranking-history/archived-build-manifest.json`; seu hash está em `verificacoes/resultados.json`. A auditoria impediu versionar esse artefato de build, sem alterar suas regras. Os logs versionados desta melhoria usam LF conforme o padrão de `.gitattributes`, preservando os hashes em checkouts Windows/Linux.
+
+Executados **depois dos testes/builds e antes da abertura da PR**: `python scripts/cleanup_build.py` e `python scripts/cleanup_build.py --include-old-builds`, ambos em `dry-run`. Os dois planos retornaram **zero candidatos elegíveis**, por recência/retenção. Nenhum `--apply` ou comando de exclusão foi executado.
+
+O [inventário complementar](verificacoes/auditoria-arquivos.json) registra caminhos, bytes, motivos, riscos e quatro grupos de PNGs locais com bytes iguais. As cópias do build para esta documentação são intencionais. Hash igual não é autorização de exclusão.
+
+| Caminho/agrupamento | Tamanho aproximado | Motivo e risco; ação |
+| --- | --- | --- |
+| `build/local-ranking-history/` | 1,79 GiB | Build atual, scripts locais, capturas e logs; risco alto para a rastreabilidade; preservar. |
+| `build/tests/previews/` | 225,3 MiB | Capturas de etapas anteriores; risco alto; preservar. |
+| `build/__pycache__/` | 172 KiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `scripts/__pycache__/` | 1,30 MiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `tests/__pycache__/` | 565 KiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `build/*.{py,txt,log,png,tmp}` | 38,9 MiB | 283 auxiliares/relatórios/capturas históricos, possivelmente únicos; risco alto; preservar. |
+
+Os [planos padrão](verificacoes/cleanup-default.json) e [estendido](verificacoes/cleanup-extended.json) detalham os builds anteriores e as proteções aplicadas. `resources/`, `package/`, SQLite/dados pessoais, governança, manifestos, documentação e evidências anteriores permanecem preservados. Nenhuma exclusão de arquivo versionado faz parte desta melhoria.
 
 ## Limitações futuras
 

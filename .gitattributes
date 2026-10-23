@@ -28,6 +28,7 @@ docs/interface/VERSOES/2.3.2/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.2/refinamentos-topo/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.2/cores-e-dicas/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.2/anterior/*.txt text eol=lf
+docs/interface/VERSOES/ranking-local-historico/verificacoes/*.txt text eol=lf
 VERSION.txt text eol=lf
 LICENSE text eol=lf
 NOTICE text eol=lf
