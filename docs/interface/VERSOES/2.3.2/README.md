@@ -1,6 +1,6 @@
 # 2.3.2 — Modernização da tela Estatísticas
 
-Esta página preserva a entrega inicial aprovada da PR #36, suas 99 capturas e resultados. A apresentação atual está na [revisão dos painéis no topo e rolagem compartilhada](refinamentos-topo/README.md). Nenhuma evidência inicial foi substituída.
+Esta página preserva a entrega inicial aprovada da PR #36, suas 99 capturas e resultados. A apresentação atual está na [revisão de cores e dicas em andamento](cores-e-dicas/README.md), preservando os [painéis no topo e rolagem compartilhada](refinamentos-topo/README.md). Nenhuma evidência anterior foi substituída.
 
 Base: `c6db713c9308e2e08cca6b7fea8f6ed214eeb116`, integração da PR #35. Branch: `feat/issue-22-statistics-2.3.2`. Escopo restrito à apresentação de Estatísticas e sua validação. Evidências anteriores preservadas.
 

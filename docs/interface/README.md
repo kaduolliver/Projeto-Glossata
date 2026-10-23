@@ -1,6 +1,6 @@
 # Documentação da interface
 
-Estatísticas atual: [painéis no topo, seleção compacta e rolagem compartilhada](VERSOES/2.3.2/refinamentos-topo/README.md), preservando a [entrega inicial aprovada da PR #36](VERSOES/2.3.2/README.md) e suas evidências, sobre a integração da PR #35 (`c6db713`). [Planejamento multiplayer, sem implementação](../architecture/ESTATISTICAS_MULTIPLAYER.md).
+Estatísticas atual: [cores por ID, ranking e dicas em andamento](VERSOES/2.3.2/cores-e-dicas/README.md), preservando [painéis no topo, seleção compacta e rolagem compartilhada](VERSOES/2.3.2/refinamentos-topo/README.md), a [entrega inicial aprovada da PR #36](VERSOES/2.3.2/README.md) e suas evidências, sobre a integração da PR #35 (`c6db713`). [Planejamento multiplayer, sem implementação](../architecture/ESTATISTICAS_MULTIPLAYER.md).
 
 Esta pasta registra a interface Qt 6/QML do Projeto Glossata. A [arquitetura](ARQUITETURA_UI.md) descreve as telas e a navegação; o [design system](DESIGN_SYSTEM.md) inventaria os estilos em uso e as oportunidades de centralização; o [histórico visual](CHANGELOG_UI.md) aponta para as versões documentadas.
 

@@ -12,6 +12,23 @@ Item {
     required property var backend
     readonly property var session: backend.sessionMetrics
     readonly property var history: backend.playerMetrics
+    // Read-only presentation: confirmed metrics plus the active unanswered question.
+    // Feedback still shows that question's hints after they have been consolidated.
+    readonly property var visualHints: {
+        const totals = { hintedQuestions: session.hintedQuestions, revealedCategories: session.revealedCategories,
+                         taxonomic: session.taxonomic, etymological: session.etymological, morphological: session.morphological }
+        if (backend.gameFinished || backend.answerPending) return totals
+        const seen = new Set()
+        for (const hint of backend.hints || []) {
+            if (!hint.available || !hint.revealed || seen.has(hint.id)) continue
+            seen.add(hint.id)
+            ++totals.revealedCategories
+            if (["taxonomic", "etymological", "morphological"].includes(hint.category)) ++totals[hint.category]
+        }
+        if (seen.size > 0) ++totals.hintedQuestions
+        return totals
+    }
+    readonly property var groupPalette: [Style.Theme.green, "#8ABCF0", "#74D3CB", Style.Theme.gold, "#E4A77D", "#BDA5DE"]
     readonly property string rankingContext: backend.rankingMode === "competitive" ? "Competitivo atual" : "Livre"
     readonly property int mainColumns: width >= 900 ? 4 : 2
     readonly property int metricColumns: width >= 690 ? 3 : 2
@@ -20,6 +37,23 @@ Item {
     implicitHeight: statisticsLayout.implicitHeight
 
     function count(value, singular, plural) { return value + " " + (value === 1 ? singular : plural) }
+    function groupColor(id) {
+        // Catalog IDs, independent of names, ranking, counts and delegate order.
+        const mapped = { "taxon:56956496cf600779dc1f": groupPalette[0], // Plantae
+                         "domain:Bacteria": groupPalette[1],
+                         "clade:SAR": groupPalette[2],
+                         "taxon:31fdb10b7300d45a9dcf": groupPalette[3], // Fungi
+                         "taxon:cac47417164883d60794": groupPalette[4], // Animalia
+                         "clade:Amoebozoa": groupPalette[5],
+                         "clade:Discoba": "#A6C4E8" }
+        if (Object.prototype.hasOwnProperty.call(mapped, id)) return mapped[id]
+        let hash = 0
+        for (let i = 0; i < id.length; ++i) hash = (hash * 31 + id.charCodeAt(i)) >>> 0
+        return groupPalette[hash % groupPalette.length]
+    }
+    function podiumColor(position) {
+        return position === 0 ? Style.Theme.gold : position === 1 ? "#C6D0DA" : position === 2 ? "#D6A27B" : Style.Theme.border
+    }
     function selectPanel(panel) { app.statisticsPresentation = {panel: panel} }
     function revealPanelFocus() {
         if (sideBySide) return
@@ -143,16 +177,17 @@ Item {
                             required property int index
                             objectName: "statisticsTaxon-" + modelData.id
                             readonly property real accuracy: modelData.answered > 0 ? modelData.correct / modelData.answered : 0
+                            readonly property color accent: view.groupColor(modelData.id)
                             Layout.fillWidth: true
                             spacing: Style.Theme.spaceSm
                             RowLayout {
                                 Layout.fillWidth: true
                                 KingdomArtwork { objectName: "performanceIcon" + group.index; kingdom: group.modelData.kingdom; implicitWidth: 38; implicitHeight: 38 }
                                 Heading { text: group.modelData.title; font.pixelSize: Style.Theme.bodySize }
-                                Label { text: group.modelData.answered ? Math.floor(100 * group.modelData.correct / group.modelData.answered) + "%" : "—"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize }
+                                Label { text: group.modelData.answered ? Math.floor(100 * group.modelData.correct / group.modelData.answered) + "%" : "—"; color: group.accent; font.pixelSize: Style.Theme.bodySize }
                             }
                             Note { text: view.count(group.modelData.correct, "acerto", "acertos") + " em " + view.count(group.modelData.answered, "resposta", "respostas") }
-                            AccuracyBar { ratio: group.accuracy }
+                            AccuracyBar { objectName: "statisticsTaxonBar-" + group.modelData.id; ratio: group.accuracy; accent: group.accent }
                             Note { visible: group.modelData.answered === 0; text: "Sem respostas neste grupo." }
                             Repeater {
                                 model: group.modelData.phyla
@@ -168,7 +203,7 @@ Item {
                                         Note { text: phylum.modelData.title }
                                         Label { text: phylum.modelData.answered ? phylum.modelData.accuracy + "%" : "—"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize }
                                     }
-                                    AccuracyBar { ratio: phylum.modelData.answered > 0 ? phylum.modelData.correct / phylum.modelData.answered : 0 }
+                                    AccuracyBar { objectName: "statisticsSubtaxonBar-" + phylum.modelData.id; ratio: phylum.modelData.answered > 0 ? phylum.modelData.correct / phylum.modelData.answered : 0; accent: Qt.tint(group.accent, "#18FFFFFF") }
                                     Note { text: phylum.modelData.answered ? view.count(phylum.modelData.correct, "acerto", "acertos") + " em " + view.count(phylum.modelData.answered, "resposta", "respostas") : "Sem respostas neste subgrupo." }
                                 }
                             }
@@ -223,6 +258,7 @@ Item {
                             required property var modelData
                             required property int index
                             objectName: "statisticsRank" + index
+                            readonly property color accent: view.podiumColor(index)
                             Layout.fillWidth: true
                             implicitHeight: rankContent.implicitHeight + 2 * Style.Theme.spaceMd
                             activeFocusOnTab: true
@@ -230,18 +266,19 @@ Item {
                             Accessible.name: (index + 1) + ". " + modelData.playerName + ", " + modelData.scoreText + " pontos"
                             Accessible.description: rankDetail.text + ". Nome na partida mais recente: " + modelData.snapshotName
                             Rectangle {
+                                objectName: "statisticsRankBorder" + rankRow.index
                                 anchors.fill: parent
                                 radius: Style.Theme.controlRadius
                                 color: rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
                                 border.width: rankRow.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
-                                border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.index < 3 ? Style.Theme.gold : Style.Theme.border
+                                border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.accent
                             }
                             RowLayout {
                                 id: rankContent
                                 anchors.fill: parent
                                 anchors.margins: Style.Theme.spaceMd
                                 spacing: Style.Theme.spaceSm
-                                Label { text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? Style.Theme.gold : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
+                                Label { objectName: "statisticsRankPosition" + rankRow.index; text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? rankRow.accent : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
                                 ColumnLayout {
                                     Layout.fillWidth: true
                                     spacing: Style.Theme.spaceXs
@@ -296,6 +333,7 @@ Item {
         }
 
         Rectangle {
+            objectName: "statisticsHintsPanel"
             Layout.fillWidth: true
             implicitHeight: hintsLayout.implicitHeight + 2 * Style.Theme.spaceLg
             color: Style.Theme.surface
@@ -309,8 +347,8 @@ Item {
                 Heading { text: "Dicas na partida" }
                 Note {
                     objectName: "hintMetricsLabel"
-                    text: view.count(view.session.hintedQuestions, "questão com dicas", "questões com dicas") + " · "
-                          + view.count(view.session.revealedCategories, "dica revelada", "dicas reveladas")
+                    text: view.count(view.visualHints.hintedQuestions, "questão com dicas", "questões com dicas") + " · "
+                          + view.count(view.visualHints.revealedCategories, "dica revelada", "dicas reveladas")
                 }
                 GridLayout {
                     Layout.fillWidth: true
@@ -323,7 +361,7 @@ Item {
                             id: hintCategory
                             required property var modelData
                             objectName: "statisticsHint-" + modelData.key
-                            readonly property int count: view.session[modelData.key]
+                            readonly property int count: view.visualHints[modelData.key]
                             Layout.fillWidth: true
                             implicitHeight: hintCategoryRow.implicitHeight + 2 * Style.Theme.spaceSm
                             color: Style.Theme.surfaceRaised
@@ -340,7 +378,7 @@ Item {
                         }
                     }
                 }
-                Note { text: "Categorias das dicas usadas em respostas confirmadas; não indicam níveis de assistência." }
+                Note { objectName: "statisticsHintsNotice"; text: "Inclui dicas da pergunta em andamento. O histórico só registra respostas confirmadas. Categorias não indicam níveis de assistência." }
             }
         }
 

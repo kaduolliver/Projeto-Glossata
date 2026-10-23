@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #36 — cores e dicas em andamento
+
+- Barras e percentuais taxonômicos recebem cores por ID estável; subgrupos usam variações discretas. Reordenação não muda a associação. Ranking mantém layout e recebe ouro, prata e bronze em bordas/números; foco visível permanece prioritário.
+- Dicas na partida incluem a pergunta ainda sem resposta, com categorias por ID e uma contribuição por questão. Confirmação, recuperação, navegação e encerramento recompõem a projeção sem alterar métricas oficiais ou histórico. [Contratos, capturas e verificações](VERSOES/2.3.2/cores-e-dicas/README.md).
+
 ## PR #36 — painéis no topo, seleção compacta e rolagem
 
 - Preserva o visual aprovado; taxonomia à esquerda/ranking à direita nas amplas, logo abaixo do cabeçalho. Nas compactas, seletores exclusivos conservam contexto/foco e tornam o ranking acessível sem percorrer a árvore.

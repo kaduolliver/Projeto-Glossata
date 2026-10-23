@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## Estatísticas — projeção das dicas em andamento
+
+Somente `StatisticsView.qml` muda na revisão de [cores e dicas](VERSOES/2.3.2/cores-e-dicas/README.md). Os contratos existentes distinguem dicas consolidadas (`sessionMetrics`, notificação `scoreChanged`) e dicas da pergunta exibida (`hints`, `extraHintChanged`). Como o feedback mantém essa pergunta, `answerPending` impede somá-la novamente após confirmação. `gameFinished` retira a contribuição sem resposta ao encerrar; recuperação recompõe os valores a partir do checkpoint existente. Nenhum contador acumulado, persistência ou notificação nova é necessário. A paleta por ID e os tons do ranking também são regras locais de apresentação; a proposta multiplayer continua apenas documental.
+
 ## Estatísticas — refinamentos da PR #36
 
 Mudança localizada em `StatisticsView.qml` e no shell `Main.qml`: painéis no topo, alternância compacta com estado efêmero e inclusão de Estatísticas no mecanismo de rolagem existente. A ordem restante é partida, desempenho, dicas e histórico. Nenhuma métrica ou persistência muda; o controlador conserva os mesmos consumidores/contratos.
