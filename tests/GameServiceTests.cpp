@@ -2053,7 +2053,7 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
       QVERIFY(!rows.isEmpty()); QCOMPARE(rows.first().scoreUnits,qint64(6)); }
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
-        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),7);
+        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),8);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
         q.finish();
         // The supported legacy table has no declared FK. Orphans must still be

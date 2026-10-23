@@ -13,6 +13,8 @@ add_executable(glossata_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/AchievementStorage.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/Achievements.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
@@ -44,6 +46,8 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/AchievementStorage.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/Achievements.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
@@ -88,6 +92,8 @@ add_test(NAME GlossataGovernanceConcurrencyTests COMMAND ${Python3_EXECUTABLE} $
 add_executable(glossata_identity_tests
     PlayerIdentityTests.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/AchievementStorage.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/Achievements.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp
@@ -105,6 +111,8 @@ add_executable(glossata_recovery_tests
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/JsonSpeciesCatalog.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/content/PhotoResolver.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/AchievementStorage.cpp
+    ${CMAKE_SOURCE_DIR}/src/application/Achievements.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerIdentityMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/PlayerNameMigration.cpp
     ${CMAKE_SOURCE_DIR}/src/infrastructure/persistence/SessionCheckpointStorage.cpp)

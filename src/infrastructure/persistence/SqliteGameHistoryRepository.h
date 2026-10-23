@@ -5,6 +5,7 @@
 #include "application/ports/SessionCheckpointRepository.h"
 
 #include <QSqlDatabase>
+#include "application/Achievements.h"
 
 class SqliteGameHistoryRepository final : public GameHistoryRepository, public PlayerProfileRepository, public SessionCheckpointRepository {
 public:
@@ -30,6 +31,9 @@ public:
     bool chooseLocalUser(const QString &id);
     PlayerProfile localUser() const;
     bool localUserChoiceRequired() const;
+    bool recordSpeciesVisit(const QString &playerId, const Species &species);
+    bool refreshAchievements(const QString &playerId, const QVector<Species> &catalog, bool retrospective,
+                             QVariantList &rows, QVariantList &newUnlocks);
 
     bool writeCheckpoint(const QJsonObject &, qint64 expectedRevision, qint64 &revision) override;
     QVector<SessionCheckpoint> recoverableSessions() const override;
@@ -44,6 +48,7 @@ public:
     bool deletePlayerProfile(const QString &name);
 
 private:
+    bool achievementEvidence(const QString &playerId, AchievementEvidence &result) const;
     QVector<HistoryEntry> queryResults(const QString &key, int limit, const QString &playerId) const;
     QString databasePath_;
     QSqlDatabase database_;

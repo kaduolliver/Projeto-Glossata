@@ -185,7 +185,11 @@
   ],
   "pending_files": {
     "scripts/cleanup_build.py": "Novo script de manutenção: licença/titularidade ainda não incluídas por decisão explícita do mantenedor; revisão pendente.",
-    "tests/test_cleanup_build.py": "Novo teste de manutenção: licença/titularidade ainda não incluídas por decisão explícita do mantenedor; revisão pendente."
+    "tests/test_cleanup_build.py": "Novo teste de manutenção: licença/titularidade ainda não incluídas por decisão explícita do mantenedor; revisão pendente.",
+    "src/application/Achievements.cpp": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred.",
+    "src/application/Achievements.h": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred.",
+    "src/infrastructure/persistence/AchievementStorage.cpp": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred.",
+    "src/infrastructure/persistence/AchievementStorage.h": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred."
   },
   "exclusions": [
     "All files not expressly listed in files; no automatic grant by directory or extension.",
