@@ -8,7 +8,7 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
-Ranking local: [melhoria independente — Ranking atual e histórico de jogadores](VERSOES/ranking-local-historico/README.md), após a PR #36, preservando o desenho da Subetapa 2.3.2.
+Usuário local: [revisão da PR #37 — identidade única e recordes pessoais](VERSOES/usuario-local-unico/README.md), preservando o desenho da Subetapa 2.3.2. A [proposta anterior de ranking/histórico](VERSOES/ranking-local-historico/README.md) permanece como evidência histórica.
 
 Ficha da espécie: [correção pontual de Morfologia e Descrição educativa independente](VERSOES/2.3.1/descricao-independente/README.md).
 

@@ -2,7 +2,14 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
-## [1.12.0] — Não lançado; ranking local e histórico de jogadores
+## [2.0.0] — Não lançado; usuário local único
+
+- Revisão da PR #37 por decisão do mantenedor: uma identidade local por instalação, sem gerenciamento permanente de múltiplos perfis. Instalações antigas com vários perfis exigem escolha única por UUID; resultados e sessões de outras identidades permanecem preservados.
+- Meu perfil mantém edição do nome, animações, Discord e créditos. Estatísticas apresenta somente recordes pessoais e indicadores legítimos do usuário local por modalidade/configuração. A interface de histórico de identidades antigas e sua paginação foram retiradas da proposta.
+- SQLite 7 acrescenta vínculo local imutável e seus gatilhos, sem reescrever resultados ou remover os mecanismos históricos de identidade, ranking e checkpoints. Backups continuam preservando e verificando os dados.
+- MAJOR pela retirada incompatível do gerenciamento de múltiplos perfis; catálogo 2.4.0 inalterado. Sem autenticação, release ou avanço da Subetapa 2.3.3. [Decisão, transição e validação](docs/interface/VERSOES/usuario-local-unico/README.md).
+
+## [1.12.0] — Proposta anterior não lançada; substituída na revisão da PR #37
 
 - Ranking atual limitado no SQL a cinco perfis ativos; histórico independente de recordes registrados, com paginação, UUID, nome registrado e situação da identidade. Livre/Competitivo e Ranking atual/Histórico são seleções independentes em memória.
 - Histórico competitivo inclui classificações armazenadas anteriores, sem recalcular pontuações; recordes pessoais, métricas e recuperação de sessões continuam vinculados ao UUID. Contratos mistos anteriores e esquema SQLite preservados.

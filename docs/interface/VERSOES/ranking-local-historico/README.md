@@ -1,5 +1,7 @@
 # Ranking local e histórico de jogadores
 
+**Proposta anterior, substituída na revisão da PR #37.** A decisão vigente é [usuário local único](../usuario-local-unico/README.md). Este diretório conserva integralmente o diagnóstico, as capturas e os resultados daquela implementação para rastreabilidade; seus seletores e sua paginação não pertencem mais à interface atual.
+
 Melhoria independente após a PR #36/Subetapa 2.3.2, baseada em `adbf100`. Aplicativo **1.12.0** (MINOR pela nova consulta e navegação compatíveis), catálogo **2.4.0** inalterado. Sem lançamento ou início da Subetapa 2.3.3.
 
 ## Diagnóstico

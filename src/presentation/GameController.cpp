@@ -21,15 +21,11 @@ GameController::GameController(QObject *parent, const QString &databasePath, std
           : databasePath),
       service_(&catalog_, &historyRepository_), localDate_(std::move(localDate)), homeRefreshTimer_(this), exploreSearchTimer_(this)
 {
-    if (historyRepository_.loadPlayerProfiles().isEmpty()) {
-        historyRepository_.createPlayer(QStringLiteral("Jogador 1"));
-    }
-    const auto profiles = historyRepository_.profiles();
-    if (!profiles.isEmpty()) {
-        currentPlayerName_ = profiles.first().displayName;
-        currentPlayerId_ = profiles.first().id;
-    }
+    historyRepository_.initializeLocalUser();
+    const auto local = historyRepository_.localUser();
+    if (local.selectable()) { currentPlayerId_=local.id; currentPlayerName_=local.displayName; }
     startGame();
+    if (!localUserReady()) loadRanking();
     // Constructor preview supplies the existing home counters, but does not
     // create a recoverable game merely because the home screen was opened.
     service_.setCheckpointRepository(&historyRepository_);
@@ -141,42 +137,33 @@ QStringList GameController::answerOptions() const
     return displayedQuestion_.options;
 }
 
-QStringList GameController::playerProfiles() const
-{
-    return historyRepository_.loadPlayerProfiles();
-}
+QString GameController::currentPlayerName() const { return currentPlayerName_; }
 
-QString GameController::currentPlayerName() const
-{
-    return currentPlayerName_;
-}
-
-void GameController::setCurrentPlayerName(const QString &name)
-{
-    selectPlayerProfile(historyRepository_.profileNamed(name).id);
-}
-
-void GameController::selectPlayerProfile(const QString &id)
-{
-    const auto profile = historyRepository_.player(id);
-    if (!profile.selectable() || currentPlayerId_ == id) return;
-    currentPlayerId_ = profile.id;
-    currentPlayerName_ = profile.displayName;
-    emit currentPlayerNameChanged();
-    loadRanking();
-}
-
-QVariantList GameController::playerProfileItems() const
+QVariantList GameController::localUserCandidates() const
 {
     QVariantList result;
-    for (const auto &p : historyRepository_.profiles()) result.append(QVariantMap{{"playerId",p.id},{"name",p.displayName}});
+    if (localUserChoiceRequired()) for (const auto &p:historyRepository_.profiles())
+        result.append(QVariantMap{{"playerId",p.id},{"name",p.displayName}});
     return result;
 }
 
-QString GameController::identityNotice() const
+QString GameController::localUserError() const
 {
-    const int count = historyRepository_.unresolvedLegacyPlayers();
-    return count ? QStringLiteral("Há %1 conjunto(s) de resultados anteriores à identificação permanente. Permanecem no Histórico de recordes como legado, sem vínculo presumido com perfis atuais. As métricas pessoais incluem somente o ID deste perfil.").arg(count) : QString();
+    return localUserReady() || localUserChoiceRequired() ? QString()
+        : QStringLiteral("Não foi possível abrir a identidade local. O banco original foi preservado. Feche o aplicativo e verifique o armazenamento antes de tentar novamente.");
+}
+
+bool GameController::chooseLocalUser(const QString &id)
+{
+    if (localUserReady() || !localUserChoiceRequired() || !historyRepository_.chooseLocalUser(id)) return false;
+    const auto local=historyRepository_.localUser();
+    if (!local.selectable()) return false;
+    currentPlayerId_=local.id; currentPlayerName_=local.displayName;
+    // Same preview as a normal opening; selecting an identity is not a new game.
+    service_.setCheckpointRepository(nullptr); initializing_=true; startGame();
+    initializing_=false; service_.setCheckpointRepository(&historyRepository_);
+    emit currentPlayerNameChanged(); emit localUserChanged(); emit recoveryChanged(); loadRanking();
+    return true;
 }
 
 qint64 GameController::scoreUnits() const
@@ -191,7 +178,7 @@ int GameController::round() const
 
 bool GameController::gameFinished() const
 {
-    return service_.isFinished();
+    return !localUserReady() || service_.isFinished();
 }
 
 QString GameController::feedbackText() const
@@ -288,7 +275,7 @@ bool GameController::startWithConfiguration(const GameConfiguration &configurati
     }
     const auto player = historyRepository_.player(currentPlayerId_);
     if (!player.selectable()) {
-        feedbackText_ = QStringLiteral("Selecione um perfil ativo antes de iniciar a partida.");
+        feedbackText_ = QStringLiteral("Defina o usuário local antes de iniciar a partida.");
         emit feedbackTextChanged(); return false;
     }
     identificationRank_ = rank;
@@ -395,6 +382,7 @@ void GameController::answerSelected(const QString &selectedOption)
 
 void GameController::nextQuestion()
 {
+    if (!localUserReady()) return;
     if (!answerPending_) return;
     if (service_.isFinished()) { answerPending_ = false; emit answerDetailsChanged(); return; }
     answerPending_ = false;
@@ -459,6 +447,7 @@ QVariantMap GameController::hintReport(const QString &id,const QString &problem)
 
 void GameController::stopGame()
 {
+    if (!localUserReady()) return;
     if (service_.isFinished()) {
         return;
     }
@@ -488,7 +477,9 @@ void GameController::retrySaveResult()
 QVariantList GameController::recoverableSessions() const
 {
     QVariantList rows;
+    if (!localUserReady()) return rows;
     for (const auto &s:historyRepository_.recoverableSessions()) {
+        if (s.playerId!=currentPlayerId_) continue;
         if (service_.hasCheckpoint() && service_.sessionId()==s.id && service_.checkpointError().isEmpty()) continue;
         const auto owner=historyRepository_.player(s.playerId);
         const QString name=owner.id.isEmpty() ? s.payload["player_name"].toString() : owner.displayName;
@@ -502,7 +493,7 @@ QVariantList GameController::recoverableSessions() const
 
 bool GameController::resumeSession(const QString &id)
 {
-    if (resultPending_) return false;
+    if (resultPending_ || !localUserReady() || historyRepository_.checkpoint(id).playerId!=currentPlayerId_) return false;
     if (!service_.recoverSession(id)) { feedbackText_=service_.checkpointError(); emit feedbackTextChanged(); emit recoveryChanged(); return false; }
     const auto c=service_.configuration(); identificationRank_=c.rank; rankingMode_=c.modeKey(); difficulty_=c.difficultyKey();
     sessionTaxonId_=taxonomy_.describe(c.group).value("title").toString().isEmpty() ? QString() : c.group;
@@ -510,7 +501,6 @@ bool GameController::resumeSession(const QString &id)
     displayedQuestion_=service_.currentQuestion(); displayedRevealedHints_=service_.revealedHints();
     answerPending_=false; answerDetails_.clear(); correctStreak_=bestStreak_=0;
     for (const auto &a:service_.answers()) { correctStreak_=a.correct ? correctStreak_+1 : 0; bestStreak_=std::max(bestStreak_,correctStreak_); }
-    selectPlayerProfile(service_.sessionPlayer().id); // Retired owners remain retired; ownership never changes.
     feedbackText_=QStringLiteral("Partida recuperada. Respostas e dicas confirmadas foram preservadas.");
     if (service_.isFinished()) retrySaveResult();
     emit questionTextChanged(); emit factTextChanged(); emit extraHintChanged(); emit answerOptionsChanged();
@@ -521,7 +511,7 @@ bool GameController::resumeSession(const QString &id)
 bool GameController::abandonSession(const QString &id)
 {
     const auto s=historyRepository_.checkpoint(id);
-    if (s.id.isEmpty() || !historyRepository_.abandonCheckpoint(id,s.revision)) return false;
+    if (!localUserReady() || s.playerId!=currentPlayerId_ || s.id.isEmpty() || !historyRepository_.abandonCheckpoint(id,s.revision)) return false;
     feedbackText_=QStringLiteral("Sessão abandonada. O checkpoint foi conservado e o ranking não foi alterado.");
     emit feedbackTextChanged(); emit recoveryChanged(); return true;
 }
@@ -539,67 +529,22 @@ void GameController::retryCheckpoint()
     emit recoveryChanged();
 }
 
-QVariantMap GameController::presentHistoryEntry(const HistoryEntry &entry)
+void GameController::loadRanking()
 {
+    const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
+    auto row = [](const HistoryEntry &entry) {
         return QVariantMap{{"playerName",entry.playerName},{"playerId",entry.playerId},{"snapshotName",entry.snapshotName},
             {"legacyIdentity",entry.legacyIdentity},{"deletedProfile",entry.deletedProfile},{"scoreUnits",entry.scoreUnits},
             {"scoreText",formatScore(entry.scoreUnits)},{"correctAnswers",entry.correctAnswers},
             {"playedAt",entry.playedAt.toString("dd/MM/yyyy")},{"lastScoreText",formatScore(entry.lastScoreUnits)},
             {"lastScoreUnits",entry.lastScoreUnits},{"lastCorrectAnswers",entry.lastCorrectAnswers},
-            {"lastPlayedAt",entry.lastPlayedAt.toString("dd/MM/yyyy")},
-            {"playedAtIso",entry.playedAt.toString(Qt::ISODateWithMs)},
-            {"lastPlayedAtIso",entry.lastPlayedAt.toString(Qt::ISODateWithMs)},
-            {"rankingKey",entry.rankingKey},{"identityOrigin",entry.identityOrigin},{"deletedAt",entry.deletedAt},
-            {"identityStatus",entry.legacyIdentity ? QStringLiteral("Legado — identidade não vinculada")
-                : entry.deletedProfile ? QStringLiteral("Perfil excluído") : QStringLiteral("Jogador ativo")}};
-}
-
-void GameController::setRankingContext(const QString &context)
-{
-    if ((context != "current" && context != "history") || context == rankingContext_) return;
-    rankingContext_ = context;
-    if (context == "history") loadRecordHistory();
-    else emit recordHistoryChanged();
-}
-
-void GameController::loadRecordHistory()
-{
-    constexpr int pageSize = 20;
-    // History includes stored competitive configurations, including older rules/content.
-    const QString key = rankingMode_;
-    const auto entries = historyRepository_.loadRecordHistory(key, pageSize + 1, recordHistoryPage_ * pageSize);
-    recordHistoryHasMore_ = entries.size() > pageSize;
-    recordHistory_.clear();
-    for (int i = 0; i < qMin(pageSize, int(entries.size())); ++i)
-        recordHistory_.append(presentHistoryEntry(entries[i]));
-    emit recordHistoryChanged();
-}
-
-void GameController::nextRecordHistoryPage()
-{
-    if (rankingContext_ != "history" || !recordHistoryHasMore_) return;
-    ++recordHistoryPage_;
-    loadRecordHistory();
-}
-
-void GameController::previousRecordHistoryPage()
-{
-    if (rankingContext_ != "history" || recordHistoryPage_ == 0) return;
-    --recordHistoryPage_;
-    loadRecordHistory();
-}
-
-void GameController::loadRanking()
-{
-    const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
+            {"lastPlayedAt",entry.lastPlayedAt.toString("dd/MM/yyyy")}};
+    };
     ranking_.clear();
-    for (const auto &entry : historyRepository_.loadActiveRanking(key,5)) ranking_.append(presentHistoryEntry(entry));
     const auto personal = historyRepository_.loadPlayerResult(key,currentPlayerId_);
-    personalRecord_ = personal.isEmpty() ? QVariantMap{} : presentHistoryEntry(personal.first());
+    personalRecord_ = personal.isEmpty() ? QVariantMap{} : row(personal.first());
+    if (!personalRecord_.isEmpty()) ranking_.append(personalRecord_); // C++ compatibility: only the local UUID.
     playerMetrics_ = presentMetrics(historyRepository_.playerMetrics(key,currentPlayerId_));
-    recordHistoryPage_ = 0;
-    if (rankingContext_ == "history") loadRecordHistory();
-    else { recordHistory_.clear(); recordHistoryHasMore_ = false; emit recordHistoryChanged(); }
     emit rankingChanged();
 }
 
@@ -639,23 +584,6 @@ QVariantList GameController::achievements() const
     return list;
 }
 
-bool GameController::addPlayerProfile(const QString &name)
-{
-    const QString profileName = name.trimmed();
-    const auto created = historyRepository_.createPlayer(profileName);
-    if (!created.selectable()) {
-        feedbackText_ = QStringLiteral("Nome inválido ou já cadastrado.");
-        emit feedbackTextChanged();
-        return false;
-    }
-
-    emit playerProfilesChanged();
-    selectPlayerProfile(created.id);
-    feedbackText_ = QStringLiteral("Perfil criado.");
-    emit feedbackTextChanged();
-    return true;
-}
-
 bool GameController::renameCurrentPlayerProfile(const QString &name)
 {
     const QString profileName = name.trimmed();
@@ -669,27 +597,7 @@ bool GameController::renameCurrentPlayerProfile(const QString &name)
     currentPlayerName_ = profileName;
     emit currentPlayerNameChanged();
     loadRanking();
-    emit playerProfilesChanged();
     feedbackText_ = QStringLiteral("Perfil renomeado.");
-    emit feedbackTextChanged();
-    return true;
-}
-
-bool GameController::deleteCurrentPlayerProfile()
-{
-    if (playerProfiles().size() <= 1 || !historyRepository_.deletePlayer(currentPlayerId_)) {
-        feedbackText_ = QStringLiteral("Mantenha ao menos um perfil cadastrado.");
-        emit feedbackTextChanged();
-        return false;
-    }
-
-    const auto next = historyRepository_.profiles().first();
-    currentPlayerName_ = next.displayName;
-    currentPlayerId_ = next.id;
-    emit currentPlayerNameChanged();
-    loadRanking();
-    emit playerProfilesChanged();
-    feedbackText_ = QStringLiteral("Perfil removido.");
     emit feedbackTextChanged();
     return true;
 }

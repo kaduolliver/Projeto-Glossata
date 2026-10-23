@@ -167,7 +167,7 @@ private slots:
     void emptyGameIsNotSaved();
     void failedSaveCanBeRetried();
     void gameKeepsStartingPlayer();
-    void permanentIdentitySurvivesRenameDeleteAndSelectionDuringGame();
+    void localUserTransitionKeepsOwnersAndSessions();
     void sessionWithoutIdentityCannotChooseAnOwnerAtSaveTime();
     void controllerCanRetrySqliteFailure();
     void rankingUpdatesExistingPlayer();
@@ -794,57 +794,51 @@ void GameServiceTests::failedSaveCanBeRetried()
 
 void GameServiceTests::gameKeepsStartingPlayer()
 {
-    QTemporaryDir directory;
-    QVERIFY(directory.isValid());
-    GameController controller(nullptr, directory.filePath("profiles.sqlite"));
-    const QString startingPlayer = controller.currentPlayerName();
+    QTemporaryDir dir; const auto path=dir.filePath("local-name.sqlite");
+    GameController controller(nullptr,path); const auto id=controller.currentPlayerId();
+    const auto name=controller.sessionPlayerName();
     controller.answerSelected(controller.answerOptions().first());
-    QVERIFY(controller.addPlayerProfile("Ada"));
-    QCOMPARE(controller.currentPlayerName(), QString("Ada"));
-    QCOMPARE(controller.sessionPlayerName(), startingPlayer);
-    QVERIFY(controller.renameCurrentPlayerProfile("Lia"));
-    controller.stopGame();
-    QCOMPARE(controller.ranking().size(), 1);
-    QCOMPARE(controller.ranking().first().toMap().value("playerName").toString(), startingPlayer);
-    controller.startGame();
-    QCOMPARE(controller.sessionPlayerName(), QString("Lia"));
-    controller.answerSelected(controller.answerOptions().first());
-    QVERIFY(controller.deleteCurrentPlayerProfile());
-    controller.stopGame();
-    bool foundLia = false;
-    for (const QVariant &row : controller.ranking()) QVERIFY(!row.toMap()["deletedProfile"].toBool());
-    controller.setRankingContext("history");
-    for (const QVariant &row : controller.recordHistory()) {
-        foundLia |= row.toMap().value("playerName").toString() == "Lia";
-    }
-    QVERIFY(foundLia);
+    QVERIFY(controller.renameCurrentPlayerProfile("Ada"));
+    QCOMPARE(controller.currentPlayerId(),id); QCOMPARE(controller.sessionPlayerName(),name);
+    controller.stopGame(); QCOMPARE(controller.personalRecord()["playerId"].toString(),id);
+    QCOMPARE(controller.personalRecord()["snapshotName"].toString(),name);
+    QVERIFY(controller.startGame()); QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
+    controller.answerSelected(controller.answerOptions().first()); controller.stopGame();
+    SqliteGameHistoryRepository repo(path); QCOMPARE(repo.profiles().size(),1);
+    QCOMPARE(repo.playerMetrics("free",id).answered,2);
+    GameController reopened(nullptr,path); QCOMPARE(reopened.currentPlayerId(),id);
+    QCOMPARE(reopened.currentPlayerName(),QString("Ada"));
 }
 
-void GameServiceTests::permanentIdentitySurvivesRenameDeleteAndSelectionDuringGame()
+void GameServiceTests::localUserTransitionKeepsOwnersAndSessions()
 {
-    QTemporaryDir dir; const auto path=dir.filePath("session-identity.sqlite");
-    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Ada"));
-    controller.startGame(); const auto owner=controller.sessionPlayerId();
-    QCOMPARE(owner,controller.currentPlayerId()); QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
-    controller.answerSelected(controller.answerOptions().first());
-    QVERIFY(controller.renameCurrentPlayerProfile("Lia")); QCOMPARE(controller.currentPlayerId(),owner);
-    QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
-    QVERIFY(controller.addPlayerProfile("Bia")); QVERIFY(controller.currentPlayerId()!=owner);
-    controller.selectPlayerProfile(owner); QVERIFY(controller.deleteCurrentPlayerProfile());
-    QVERIFY(controller.addPlayerProfile("Lia")); const auto replacement=controller.currentPlayerId(); QVERIFY(replacement!=owner);
-    controller.stopGame(); QVERIFY(!controller.resultPending());
-    QVERIFY(controller.ranking().isEmpty());
-    controller.setRankingContext("history"); QCOMPARE(controller.recordHistory().size(),1);
-    const auto result=controller.recordHistory().first().toMap();
-    QCOMPARE(result["playerId"].toString(),owner); QCOMPARE(result["snapshotName"].toString(),QString("Ada"));
-    QVERIFY(result["deletedProfile"].toBool()); QVERIFY(controller.personalRecord().isEmpty());
-    QCOMPARE(controller.playerMetrics()["answered"].toInt(),0);
-    controller.startGame(); QCOMPARE(controller.sessionPlayerId(),replacement);
-    controller.answerSelected(controller.answerOptions().first()); controller.stopGame();
-    QCOMPARE(controller.ranking().size(),1); QCOMPARE(controller.recordHistory().size(),2);
-    SqliteGameHistoryRepository inspection(path);
-    QCOMPARE(inspection.playerMetrics("free",owner).answered,1);
-    QCOMPARE(inspection.playerMetrics("free",replacement).answered,1);
+    QTemporaryDir dir; const auto path=dir.filePath("transition.sqlite");
+    QString owner,other,ownSession,otherSession; QJsonObject otherPayload;
+    {
+        SqliteGameHistoryRepository repo(path); SqliteSpeciesCatalog catalog(path+".catalog.sqlite");
+        auto a=repo.createPlayer("Ada"),b=repo.createPlayer("Bia");owner=a.id;other=b.id;
+        QVERIFY(repo.saveResult(b.identity(),60,10));
+        GameService own(&catalog,&repo);own.setCheckpointRepository(&repo);
+        own.startNewGame({},"genus",a.identity()); QVERIFY(own.submitAnswer(own.currentQuestion().correctAnswer)); ownSession=own.sessionId();
+        GameService foreign(&catalog,&repo);foreign.setCheckpointRepository(&repo);
+        foreign.startNewGame({},"genus",b.identity());otherSession=foreign.sessionId();otherPayload=repo.checkpoint(otherSession).payload;
+    }
+    {
+        GameController controller(nullptr,path); QVERIFY(!controller.localUserReady()); QVERIFY(controller.localUserChoiceRequired());
+        QVERIFY(controller.recoverableSessions().isEmpty()); QVERIFY(controller.personalRecord().isEmpty()); QVERIFY(!controller.startGame());
+        QVERIFY(controller.chooseLocalUser(owner)); QVERIFY(!controller.chooseLocalUser(other));
+        QCOMPARE(controller.currentPlayerId(),owner); QCOMPARE(controller.recoverableSessions().size(),1);
+        QVERIFY(!controller.resumeSession(otherSession)); QVERIFY(!controller.abandonSession(otherSession));
+        QVERIFY2(controller.resumeSession(ownSession),qPrintable(controller.feedbackText())); QCOMPARE(controller.sessionPlayerId(),owner); QCOMPARE(controller.answeredCount(),1);
+        QVERIFY(controller.renameCurrentPlayerProfile("Lia")); QCOMPARE(controller.sessionPlayerName(),QString("Ada"));
+        controller.stopGame(); QCOMPARE(controller.personalRecord()["playerId"].toString(),owner);
+        QCOMPARE(controller.playerMetrics()["answered"].toInt(),1);
+    }
+    GameController reopened(nullptr,path); QCOMPARE(reopened.currentPlayerId(),owner); QVERIFY(!reopened.localUserChoiceRequired());
+    QVERIFY(reopened.recoverableSessions().isEmpty()); QVERIFY(!reopened.resumeSession(otherSession));
+    SqliteGameHistoryRepository repo(path); QCOMPARE(repo.profiles().size(),2);
+    QCOMPARE(repo.checkpoint(otherSession).payload,otherPayload); QCOMPARE(repo.loadPlayerResult("free",other).first().scoreUnits,qint64(60));
+    QVERIFY(!repo.deletePlayer(owner));
 }
 
 void GameServiceTests::sessionWithoutIdentityCannotChooseAnOwnerAtSaveTime()
@@ -2059,7 +2053,7 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
       QVERIFY(!rows.isEmpty()); QCOMPARE(rows.first().scoreUnits,qint64(6)); }
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
-        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),6);
+        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),7);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
         q.finish();
         // The supported legacy table has no declared FK. Orphans must still be
