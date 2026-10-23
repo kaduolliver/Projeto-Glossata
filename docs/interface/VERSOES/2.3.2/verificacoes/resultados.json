@@ -1,0 +1,95 @@
+{
+  "recorded_at": "2026-10-22T21:23:24.500727+00:00",
+  "source_commit": "c435304a7243c1bc6396fa4e4d97297fe83426a9",
+  "base_commit": "c6db713c9308e2e08cca6b7fea8f6ed214eeb116",
+  "ctest": {
+    "passed": 26,
+    "failed": 0,
+    "qt_cases_including_setup_cleanup": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 26,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "targeted": {
+    "scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "cases_per_run_including_setup_cleanup": 4,
+    "failed": 0
+  },
+  "captures": 99,
+  "scope": {
+    "application_source_changed": [
+      "resources/qml/views/StatisticsView.qml"
+    ],
+    "preserved_paths": [
+      "src",
+      "scripts",
+      "resources/data",
+      "resources/compliance",
+      "resources/images",
+      "resources.qrc",
+      "resources/qml/components",
+      "resources/qml/style",
+      "resources/qml/Main.qml",
+      "resources/qml/views/HomeView.qml",
+      "resources/qml/views/CategoryView.qml",
+      "resources/qml/views/TaxonomyView.qml",
+      "resources/qml/views/QuizView.qml",
+      "resources/qml/views/InfoView.qml",
+      "resources/qml/views/AchievementsView.qml",
+      "docs/interface/VERSOES/2.3.1",
+      "docs/interface/VERSOES/2.2.3",
+      "docs/interface/VERSOES/2.2.2"
+    ]
+  },
+  "capture_manifest_sha256": "b7f9d8a1f1d568813e41cb1ab4b65a97eb285cb0f2f30d6fa6eb2758cff9081c",
+  "build_manifest_sha256": "628d3eb78ef969fd6cd3d82e676c25bc0f113010ca870a16f25d4f55f25f49fe",
+  "checks_passed": [
+    "python scripts/release.py check",
+    "python scripts/release.py check-history --base c6db713c9308e2e08cca6b7fea8f6ed214eeb116",
+    "python scripts/project_status.py check --build build",
+    "python scripts/licensing_inventory.py --check-code",
+    "python scripts/audit_catalog.py --strict",
+    "python scripts/exploration_media.py",
+    "python scripts/content_governance.py audit-history --base c6db713c9308e2e08cca6b7fea8f6ed214eeb116",
+    "python scripts/audit_repository.py",
+    "python tests/test_cleanup_build.py"
+  ],
+  "expected_blocked_check": "distribution.py check; existing review/permission gaps",
+  "evidence_sha256": {
+    "auditoria-arquivos.json": "ac7554965c74c395fb0b163f016ebbc599173b6a81601f1e1d85b3d42a02e275",
+    "core-results.txt": "c5ff82500b4efd2909a598532d3373d23f0edd515e2f15285d43d893a304901c",
+    "ctest-results.txt": "c26db16637a79ad5aaa1edc5662b4e43b108d0ae183152c0ffc25cb9e02c17b1",
+    "distribution-summary.json": "ea6141b52b823768cea58588fa09169df06c9ce5d3721b2ab43e6a335718a02d",
+    "governance-history.json": "a5aa0af9ffcd0c04d1c5be4e4572a65ae063e878d82d9e6617bd5c5ec078212e",
+    "identity-results.txt": "3e2e31d0ce0e494011286977be574fd78a16ef4ed901b584400a82a87883fdbd",
+    "recovery-results.txt": "635283933e864ccd9b22f7bd8fb872ec8aca36150713aff115bfc48ae2e1edeb",
+    "statistics-dpi-125.txt": "4ce4e7f064df90b78134b4ce7a7e944366d5ec34b541c665e6c9e1a0455efa63",
+    "statistics-dpi-150.txt": "1617b4f6ef116262b8253cbf110cbc2f26b3e8b8a4d684de085cd9a1785f2686",
+    "statistics-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-targeted.txt": "0b68b9430b290e3647a2ab72cbc342961fc7d5bc34339302b22111a644875548",
+    "technical-audits.json": "4754feb8ba7fb762b1804b96d6eca4ec4b3ada05a8cdc010a9dd1c20598819ac",
+    "ui-test-results.txt": "d1281ba3717a3771dddafa8ee95eb527f06106f7c332d91b471c789e981ff047"
+  },
+  "limitations": "Qt scale factors, not physical Windows scaling, GPU or physical screen-reader testing. Existing distribution restrictions preserved; no scientific/legal certification."
+}

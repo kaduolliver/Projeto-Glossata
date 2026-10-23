@@ -1,5 +1,7 @@
 # Documentação da interface
 
+Estatísticas atual: [cores por ID, ranking e dicas em andamento](VERSOES/2.3.2/cores-e-dicas/README.md), preservando [painéis no topo, seleção compacta e rolagem compartilhada](VERSOES/2.3.2/refinamentos-topo/README.md), a [entrega inicial aprovada da PR #36](VERSOES/2.3.2/README.md) e suas evidências, sobre a integração da PR #35 (`c6db713`). [Planejamento multiplayer, sem implementação](../architecture/ESTATISTICAS_MULTIPLAYER.md).
+
 Esta pasta registra a interface Qt 6/QML do Projeto Glossata. A [arquitetura](ARQUITETURA_UI.md) descreve as telas e a navegação; o [design system](DESIGN_SYSTEM.md) inventaria os estilos em uso e as oportunidades de centralização; o [histórico visual](CHANGELOG_UI.md) aponta para as versões documentadas.
 
 A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está ligada ao commit `b201e20c2d83fda6d790bc6a96217c0fdc75307e`. Suas capturas são imagens da janela Qt real, geradas pelo teste de interface com SQLite temporário. O [manifesto de capturas](VERSOES/baseline/capturas.json) registra hashes, dimensões, horário, ambiente e binário usado. O commit desta documentação preserva as imagens; o código da interface se recupera pelo commit de base, sem cópia integral nesta pasta.
@@ -30,6 +32,7 @@ Sequência da evolução visual da Home e das próximas telas:
 3. **2.2.2 — Explorar:** entregue na [PR #32](https://github.com/kaduolliver/Projeto-Glossata/pull/32), independente e vinculada à Issue #22. Implementação e evidências nesta [revisão](VERSOES/2.2.2/README.md); sem merge ou lançamento nesta entrega.
 4. **2.2.3 — Jogar:** implementação e validação na [revisão própria](VERSOES/2.2.3/README.md), após o merge da PR #32, sem avançar para a modernização do Quiz (2.3.1).
 5. **2.3.1 — Quiz:** modernização das perguntas e dicas na [revisão própria](VERSOES/2.3.1/README.md), após a integração da PR #33; preserva regras, fontes e recuperação, sem lançamento ou avanço de etapa.
+6. **2.3.2 — Estatísticas:** [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pull/36), sobre o merge da PR #35; [diagnóstico, apresentação e validação](VERSOES/2.3.2/README.md), preservando métricas, modalidades, taxonomia e histórico. Não avança para Conquistas 2.3.3.
 
 Propostas ainda pendentes, sem identificador ou conclusão presumidos:
 

@@ -35,6 +35,7 @@ ApplicationWindow {
     // Ephemeral navigation presentation only; no player data is persisted here.
     property var explorePresentation: ({})
     property var playPresentation: ({})
+    property var statisticsPresentation: ({panel: "taxonomy"})
     readonly property bool compactNavigation: width < 1150
     readonly property string currentSection: page === "explore" || (page === "taxonomy" && taxonomyContext === "explore")
                                              ? "explore" : (["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(page) >= 0
@@ -314,7 +315,7 @@ ApplicationWindow {
                     // testing, but before Flickable's native wheel handling.
                     parent: scroll.contentItem
                     width: scroll.width; height: scroll.height; y: scroll.contentY
-                    enabled: root.currentSection === "home" || root.currentSection === "explore"
+                    enabled: root.currentSection === "home" || root.currentSection === "explore" || root.currentSection === "statistics"
                     acceptedButtons: Qt.NoButton
                     // Child controls receive events first. Synthesized gestures
                     // remain native; ordinary wheel events are accepted below

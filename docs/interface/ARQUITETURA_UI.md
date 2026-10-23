@@ -1,5 +1,19 @@
 # Arquitetura visual
 
+## Estatísticas — projeção das dicas em andamento
+
+Somente `StatisticsView.qml` muda na revisão de [cores e dicas](VERSOES/2.3.2/cores-e-dicas/README.md). Os contratos existentes distinguem dicas consolidadas (`sessionMetrics`, notificação `scoreChanged`) e dicas da pergunta exibida (`hints`, `extraHintChanged`). Como o feedback mantém essa pergunta, `answerPending` impede somá-la novamente após confirmação. `gameFinished` retira a contribuição sem resposta ao encerrar; recuperação recompõe os valores a partir do checkpoint existente. Nenhum contador acumulado, persistência ou notificação nova é necessário. A paleta por ID e os tons do ranking também são regras locais de apresentação; a proposta multiplayer continua apenas documental.
+
+## Estatísticas — refinamentos da PR #36
+
+Mudança localizada em `StatisticsView.qml` e no shell `Main.qml`: painéis no topo, alternância compacta com estado efêmero e inclusão de Estatísticas no mecanismo de rolagem existente. A ordem restante é partida, desempenho, dicas e histórico. Nenhuma métrica ou persistência muda; o controlador conserva os mesmos consumidores/contratos.
+
+O [planejamento multiplayer](../architecture/ESTATISTICAS_MULTIPLAYER.md) distingue a arquitetura local existente de propostas de conta, API, validação, sincronização e privacidade. Não cria abstrações, serviços, esquemas ou opções de interface online. [Evidências desta revisão](VERSOES/2.3.2/refinamentos-topo/README.md); os registros iniciais abaixo permanecem históricos.
+
+## Estatísticas — 2.3.2
+
+Apresentação localizada em `StatisticsView.qml`, sem alteração de C++, persistência ou componentes compartilhados. `sessionMetrics` e `taxonomicStats` pertencem à partida (cujo jogador é `sessionPlayerName`); `playerMetrics`, `personalRecord` e `ranking` pertencem ao perfil/contexto de ranking selecionado. Alterar `rankingMode` atualiza o histórico/ranking sem trocar os dados da sessão. O diagnóstico registra formatos, arredondamentos, cobertura parcial e limites do backend antes da implementação. [Contrato e evidências](VERSOES/2.3.2/README.md).
+
 ## Quiz — 2.3.1
 
 A PR #35 restaura a composição anterior de `QuizView`, `HintPanel` e `SpeciesPortrait`. Uma rolagem local na coluna direita contém alternativas e dicas, com largura limitada e crescimento independente da foto. Dica e Confirmar ficam fora dessa rolagem. Títulos usam assistência/categoria efetivas, contadores usam `correctAnswers` e `answeredCount`; aceitação, pontuação, seleção de questões, checkpoint e recuperação continuam no backend. `InfoView` mantém Morfologia no modelo original de seções à direita, entre Nutrição e Conservação, com fonte e revisão. `speciesDescriptionRegion`, abaixo da foto/créditos, contém apenas a mensagem de indisponibilidade: não consulta tópicos ou resumo e não associa fontes inexistentes. [Correção pontual](VERSOES/2.3.1/descricao-independente/README.md). [Contratos e evidências atuais](VERSOES/2.3.1/restauracao-visual/README.md).

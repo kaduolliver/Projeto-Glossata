@@ -2,6 +2,15 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.11.0] — Não lançado; interface de Estatísticas
+
+- PR #36, ajustes pontuais: cores taxonômicas por ID estável, ouro/prata/bronze no ranking e indicadores visuais de dicas que incluem a pergunta em andamento sem duplicar respostas confirmadas. Backend, pontuação e histórico preservados. [Contratos e evidências](docs/interface/VERSOES/2.3.2/cores-e-dicas/README.md).
+
+- Refinamentos da PR #36: taxonomia/ranking imediatamente abaixo do cabeçalho, seletores compactos com contexto em memória e rolagem compartilhada com Início/Explorar. [Revisão e evidências](docs/interface/VERSOES/2.3.2/refinamentos-topo/README.md). [Planejamento multiplayer](docs/architecture/ESTATISTICAS_MULTIPLAYER.md) apenas documental, sem servidores, conta online ou alterações de dados/regras.
+
+- Subetapa 2.3.2: cartões de respostas/acertos/erros/precisão, desempenho e dicas com semântica explícita; histórico do perfil separado da partida, taxonomia com proporções reais e ranking por modalidade adaptável. Reutiliza os contratos existentes sem alterar backend, regras, persistência, dados ou licenças. [Diagnóstico, capturas e verificações](docs/interface/VERSOES/2.3.2/README.md).
+- MINOR pelos recursos compatíveis de apresentação e navegação. Catálogo 2.4.0 preservado; sem lançamento ou aprovação de distribuição.
+
 ## [1.10.0] — Não lançado; interface do Quiz
 
 - PR #35 revisada por decisão do mantenedor: composição anterior do Quiz restaurada; títulos das dicas pelo nível efetivo, contadores de acertos/erros e retrato estável com rolagem independente à direita. Na ficha, Morfologia permanece entre Nutrição e Conservação na coluna direita; a estrutura de Descrição educativa abaixo da foto/créditos é independente e informa sua indisponibilidade, sem reutilizar tópicos ou resumo. [Correção e capturas atuais](docs/interface/VERSOES/2.3.1/descricao-independente/README.md).

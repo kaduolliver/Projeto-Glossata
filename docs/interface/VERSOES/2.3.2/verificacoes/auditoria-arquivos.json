@@ -1,0 +1,805 @@
+{
+  "recorded_at": "2026-10-22T21:23:24.488174+00:00",
+  "script_sha256": "db8acc767ad870344d1b7dfb6b4e1d946426e8167a0e5abd105c427d2a7620c0",
+  "default_dry_run": {
+    "mode": "dry-run",
+    "root": "C:\\glossata_game",
+    "candidates": [],
+    "skipped": [
+      {
+        "path": "build/tests/previews/navigation",
+        "category": "generated-previews",
+        "bytes": 6258389,
+        "last_modified": 1792704094,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/carousel",
+        "category": "generated-previews",
+        "bytes": 8762620,
+        "last_modified": 1792704036,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/daily-discovery",
+        "category": "generated-previews",
+        "bytes": 4580734,
+        "last_modified": 1792704018,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2",
+        "category": "generated-previews",
+        "bytes": 6979461,
+        "last_modified": 1792704009,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-1",
+        "category": "generated-previews",
+        "bytes": 6060326,
+        "last_modified": 1792703992,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-creditos",
+        "category": "generated-previews",
+        "bytes": 4809990,
+        "last_modified": 1792703970,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-usabilidade",
+        "category": "generated-previews",
+        "bytes": 12309713,
+        "last_modified": 1792703844,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-2.2.3",
+        "category": "generated-previews",
+        "bytes": 23869432,
+        "last_modified": 1792703819,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-context-2.2.3",
+        "category": "generated-previews",
+        "bytes": 13612445,
+        "last_modified": 1792703794,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-compact-2.2.3",
+        "category": "generated-previews",
+        "bytes": 11153020,
+        "last_modified": 1792703760,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/species-description-independent-2.3.1",
+        "category": "generated-previews",
+        "bytes": 8321373,
+        "last_modified": 1792703743,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-restored-2.3.1",
+        "category": "generated-previews",
+        "bytes": 46802604,
+        "last_modified": 1792703736,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/statistics-2.3.2",
+        "category": "generated-previews",
+        "bytes": 12236560,
+        "last_modified": 1792703719,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-2.3.1",
+        "category": "generated-previews",
+        "bytes": 25994339,
+        "last_modified": 1792686410,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-final",
+        "category": "generated-previews",
+        "bytes": 8702303,
+        "last_modified": 1792610175,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-2",
+        "category": "generated-previews",
+        "bytes": 8086062,
+        "last_modified": 1792551808,
+        "reason": "recently modified"
+      }
+    ],
+    "total_bytes": 0
+  },
+  "extended_dry_run": {
+    "mode": "dry-run",
+    "root": "C:\\glossata_game",
+    "candidates": [],
+    "skipped": [
+      {
+        "path": "build/tests/previews/navigation",
+        "category": "generated-previews",
+        "bytes": 6258389,
+        "last_modified": 1792704094,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/carousel",
+        "category": "generated-previews",
+        "bytes": 8762620,
+        "last_modified": 1792704036,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/daily-discovery",
+        "category": "generated-previews",
+        "bytes": 4580734,
+        "last_modified": 1792704018,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2",
+        "category": "generated-previews",
+        "bytes": 6979461,
+        "last_modified": 1792704009,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-1",
+        "category": "generated-previews",
+        "bytes": 6060326,
+        "last_modified": 1792703992,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-creditos",
+        "category": "generated-previews",
+        "bytes": 4809990,
+        "last_modified": 1792703970,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-usabilidade",
+        "category": "generated-previews",
+        "bytes": 12309713,
+        "last_modified": 1792703844,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-2.2.3",
+        "category": "generated-previews",
+        "bytes": 23869432,
+        "last_modified": 1792703819,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-context-2.2.3",
+        "category": "generated-previews",
+        "bytes": 13612445,
+        "last_modified": 1792703794,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/play-compact-2.2.3",
+        "category": "generated-previews",
+        "bytes": 11153020,
+        "last_modified": 1792703760,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/species-description-independent-2.3.1",
+        "category": "generated-previews",
+        "bytes": 8321373,
+        "last_modified": 1792703743,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-restored-2.3.1",
+        "category": "generated-previews",
+        "bytes": 46802604,
+        "last_modified": 1792703736,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/statistics-2.3.2",
+        "category": "generated-previews",
+        "bytes": 12236560,
+        "last_modified": 1792703719,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/quiz-2.3.1",
+        "category": "generated-previews",
+        "bytes": 25994339,
+        "last_modified": 1792686410,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-final",
+        "category": "generated-previews",
+        "bytes": 8702303,
+        "last_modified": 1792610175,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2-round-2",
+        "category": "generated-previews",
+        "bytes": 8086062,
+        "last_modified": 1792551808,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.1-B-verified",
+        "category": "old-build-2.2.1",
+        "bytes": 258432440,
+        "last_modified": 1792542045,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-usabilidade",
+        "category": "old-build-2.2.2",
+        "bytes": 258884219,
+        "last_modified": 1792621902,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-creditos",
+        "category": "old-build-2.2.2",
+        "bytes": 258825025,
+        "last_modified": 1792617670,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.2-final",
+        "category": "old-build-2.2.2",
+        "bytes": 258782544,
+        "last_modified": 1792610052,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.2-round-2",
+        "category": "old-build-2.2.2",
+        "bytes": 258697869,
+        "last_modified": 1792608582,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.2-verified",
+        "category": "old-build-2.2.2",
+        "bytes": 258632217,
+        "last_modified": 1792547193,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-dificuldade",
+        "category": "old-build-2.2.3",
+        "bytes": 259051239,
+        "last_modified": 1792677763,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.3-alinhamento",
+        "category": "old-build-2.2.3",
+        "bytes": 259050215,
+        "last_modified": 1792672241,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.2.3-compacto",
+        "category": "old-build-2.2.3",
+        "bytes": 259048679,
+        "last_modified": 1792668478,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-contexto",
+        "category": "old-build-2.2.3",
+        "bytes": 258989906,
+        "last_modified": 1792637746,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.2.3-verified",
+        "category": "old-build-2.2.3",
+        "bytes": 258958235,
+        "last_modified": 1792631231,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.3.1-descricao",
+        "category": "old-build-2.3.1",
+        "bytes": 259158491,
+        "last_modified": 1792698009,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.3.1-restaurado",
+        "category": "old-build-2.3.1",
+        "bytes": 259152701,
+        "last_modified": 1792692691,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.3.1-quiz",
+        "category": "old-build-2.3.1",
+        "bytes": 259119670,
+        "last_modified": 1792686287,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/2.3.2-estatisticas",
+        "category": "old-build-2.3.2",
+        "bytes": 259231479,
+        "last_modified": 1792703641,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/2.3.2-before",
+        "category": "old-build-2.3.2",
+        "bytes": 259158491,
+        "last_modified": 1792702905,
+        "reason": "retained newest"
+      }
+    ],
+    "total_bytes": 0
+  },
+  "supplementary": [
+    {
+      "path": "build/2.2.1-B-verified",
+      "bytes": 258432440,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.2-creditos",
+      "bytes": 258825025,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.2-final",
+      "bytes": 258782544,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.2-round-2",
+      "bytes": 258697869,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.2-usabilidade",
+      "bytes": 258884219,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.2-verified",
+      "bytes": 258632217,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.3-alinhamento",
+      "bytes": 259050215,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.3-compacto",
+      "bytes": 259048679,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.3-contexto",
+      "bytes": 258989906,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.3-dificuldade",
+      "bytes": 259051239,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.2.3-verified",
+      "bytes": 258958235,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.3.1-descricao",
+      "bytes": 259158491,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.3.1-quiz",
+      "bytes": 259119670,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.3.1-restaurado",
+      "bytes": 259152701,
+      "files": 6,
+      "manual_candidate": true,
+      "reason": "Build de subetapa anterior, retido para reprodução",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/2.3.2-before",
+      "bytes": 259158491,
+      "files": 6,
+      "manual_candidate": false,
+      "reason": "Build atual ou referência anterior desta subetapa; preservar",
+      "risk": "Alto: compilação/evidências em uso"
+    },
+    {
+      "path": "build/2.3.2-estatisticas",
+      "bytes": 259231479,
+      "files": 6,
+      "manual_candidate": false,
+      "reason": "Build atual ou referência anterior desta subetapa; preservar",
+      "risk": "Alto: compilação/evidências em uso"
+    },
+    {
+      "path": "build/__pycache__",
+      "bytes": 176360,
+      "files": 11,
+      "manual_candidate": true,
+      "reason": "Cache Python regenerável",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/carousel",
+      "bytes": 8762620,
+      "files": 17,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/daily-discovery",
+      "bytes": 4580734,
+      "files": 14,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2",
+      "bytes": 6979461,
+      "files": 28,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-creditos",
+      "bytes": 4809990,
+      "files": 19,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-final",
+      "bytes": 8702303,
+      "files": 37,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-round-1",
+      "bytes": 6060326,
+      "files": 28,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-round-2",
+      "bytes": 8086062,
+      "files": 31,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-usabilidade",
+      "bytes": 12309713,
+      "files": 33,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/navigation",
+      "bytes": 6258389,
+      "files": 18,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/play-2.2.3",
+      "bytes": 23869432,
+      "files": 75,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/play-compact-2.2.3",
+      "bytes": 11153020,
+      "files": 57,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/play-context-2.2.3",
+      "bytes": 13612445,
+      "files": 57,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/quiz-2.3.1",
+      "bytes": 25994339,
+      "files": 75,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/quiz-restored-2.3.1",
+      "bytes": 46802604,
+      "files": 114,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/species-description-independent-2.3.1",
+      "bytes": 8321373,
+      "files": 21,
+      "manual_candidate": true,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "build/tests/previews/statistics-2.3.2",
+      "bytes": 12236560,
+      "files": 102,
+      "manual_candidate": false,
+      "reason": "Capturas locais de testes; comparar com manifestos versionados, podem ser evidências únicas",
+      "risk": "Alto: compilação/evidências em uso"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1351306,
+      "files": 56,
+      "manual_candidate": true,
+      "reason": "Cache Python regenerável",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 578967,
+      "files": 22,
+      "manual_candidate": true,
+      "reason": "Cache Python regenerável",
+      "risk": "Alto: verificar rastreabilidade, backups e necessidade de reprodução; não excluir durante PR aberta"
+    }
+  ],
+  "manual_candidate_bytes": 3823192894,
+  "possible_duplicates_by_name_size_only": [
+    {
+      "name": "glossata_discord_tests.exe",
+      "bytes_each": 217103,
+      "paths": [
+        "build/2.2.1-B-verified/glossata_discord_tests.exe",
+        "build/2.2.2-creditos/glossata_discord_tests.exe",
+        "build/2.2.2-final/glossata_discord_tests.exe",
+        "build/2.2.2-round-2/glossata_discord_tests.exe",
+        "build/2.2.2-usabilidade/glossata_discord_tests.exe",
+        "build/2.2.2-verified/glossata_discord_tests.exe",
+        "build/2.2.3-alinhamento/glossata_discord_tests.exe",
+        "build/2.2.3-compacto/glossata_discord_tests.exe",
+        "build/2.2.3-contexto/glossata_discord_tests.exe",
+        "build/2.2.3-dificuldade/glossata_discord_tests.exe",
+        "build/2.2.3-verified/glossata_discord_tests.exe",
+        "build/2.3.1-descricao/glossata_discord_tests.exe",
+        "build/2.3.1-quiz/glossata_discord_tests.exe",
+        "build/2.3.1-restaurado/glossata_discord_tests.exe",
+        "build/2.3.2-before/glossata_discord_tests.exe",
+        "build/2.3.2-estatisticas/glossata_discord_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_identity_tests.exe",
+      "bytes_each": 786180,
+      "paths": [
+        "build/2.2.1-B-verified/glossata_identity_tests.exe",
+        "build/2.2.2-creditos/glossata_identity_tests.exe",
+        "build/2.2.2-final/glossata_identity_tests.exe",
+        "build/2.2.2-round-2/glossata_identity_tests.exe",
+        "build/2.2.2-usabilidade/glossata_identity_tests.exe",
+        "build/2.2.2-verified/glossata_identity_tests.exe",
+        "build/2.2.3-alinhamento/glossata_identity_tests.exe",
+        "build/2.2.3-compacto/glossata_identity_tests.exe",
+        "build/2.2.3-contexto/glossata_identity_tests.exe",
+        "build/2.2.3-dificuldade/glossata_identity_tests.exe",
+        "build/2.2.3-verified/glossata_identity_tests.exe",
+        "build/2.3.1-descricao/glossata_identity_tests.exe",
+        "build/2.3.1-quiz/glossata_identity_tests.exe",
+        "build/2.3.1-restaurado/glossata_identity_tests.exe",
+        "build/2.3.2-before/glossata_identity_tests.exe",
+        "build/2.3.2-estatisticas/glossata_identity_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_recovery_tests.exe",
+      "bytes_each": 63637863,
+      "paths": [
+        "build/2.2.2-creditos/glossata_recovery_tests.exe",
+        "build/2.2.2-final/glossata_recovery_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_recovery_tests.exe",
+      "bytes_each": 63643495,
+      "paths": [
+        "build/2.2.3-alinhamento/glossata_recovery_tests.exe",
+        "build/2.2.3-compacto/glossata_recovery_tests.exe",
+        "build/2.2.3-dificuldade/glossata_recovery_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_tests.exe",
+      "bytes_each": 64883190,
+      "paths": [
+        "build/2.2.3-alinhamento/glossata_tests.exe",
+        "build/2.2.3-compacto/glossata_tests.exe",
+        "build/2.2.3-dificuldade/glossata_tests.exe"
+      ]
+    },
+    {
+      "name": "projeto_glossata.exe",
+      "bytes_each": 64320722,
+      "paths": [
+        "build/2.2.3-alinhamento/projeto_glossata.exe",
+        "build/2.2.3-compacto/projeto_glossata.exe",
+        "build/2.2.3-dificuldade/projeto_glossata.exe"
+      ]
+    },
+    {
+      "name": "glossata_tests.exe",
+      "bytes_each": 64881142,
+      "paths": [
+        "build/2.2.3-contexto/glossata_tests.exe",
+        "build/2.2.3-verified/glossata_tests.exe"
+      ]
+    },
+    {
+      "name": "projeto_glossata.exe",
+      "bytes_each": 64318674,
+      "paths": [
+        "build/2.2.3-contexto/projeto_glossata.exe",
+        "build/2.2.3-verified/projeto_glossata.exe"
+      ]
+    },
+    {
+      "name": "glossata_recovery_tests.exe",
+      "bytes_each": 63645543,
+      "paths": [
+        "build/2.3.1-descricao/glossata_recovery_tests.exe",
+        "build/2.3.1-quiz/glossata_recovery_tests.exe",
+        "build/2.3.1-restaurado/glossata_recovery_tests.exe",
+        "build/2.3.2-before/glossata_recovery_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_tests.exe",
+      "bytes_each": 64884726,
+      "paths": [
+        "build/2.3.1-descricao/glossata_tests.exe",
+        "build/2.3.2-before/glossata_tests.exe"
+      ]
+    },
+    {
+      "name": "glossata_ui_tests.exe",
+      "bytes_each": 65302681,
+      "paths": [
+        "build/2.3.1-descricao/glossata_ui_tests.exe",
+        "build/2.3.2-before/glossata_ui_tests.exe"
+      ]
+    },
+    {
+      "name": "projeto_glossata.exe",
+      "bytes_each": 64322258,
+      "paths": [
+        "build/2.3.1-descricao/projeto_glossata.exe",
+        "build/2.3.2-before/projeto_glossata.exe"
+      ]
+    },
+    {
+      "name": "glossata_tests.exe",
+      "bytes_each": 64885238,
+      "paths": [
+        "build/2.3.1-quiz/glossata_tests.exe",
+        "build/2.3.1-restaurado/glossata_tests.exe"
+      ]
+    },
+    {
+      "name": "projeto_glossata.exe",
+      "bytes_each": 64322770,
+      "paths": [
+        "build/2.3.1-quiz/projeto_glossata.exe",
+        "build/2.3.1-restaurado/projeto_glossata.exe"
+      ]
+    },
+    {
+      "name": "explore-1000x700.png",
+      "bytes_each": 143027,
+      "paths": [
+        "build/tests/previews/explore-2.2.2/explore-1000x700.png",
+        "build/tests/previews/navigation/explore-1000x700.png"
+      ]
+    },
+    {
+      "name": "correct-feedback-1000x700.png",
+      "bytes_each": 124549,
+      "paths": [
+        "build/tests/previews/quiz-2.3.1/100/correct-feedback-1000x700.png",
+        "build/tests/previews/quiz-restored-2.3.1/100/correct-feedback-1000x700.png"
+      ]
+    }
+  ],
+  "duplicate_content_verified": false,
+  "deleted": 0,
+  "protected": "Active build, parent reference build, all scientific/media/licensing/governance files, user SQLite/backups, package, documentation, versioned captures and traceability manifests; no cleanup policy change."
+}

@@ -1,5 +1,23 @@
 # Componentes compartilhados
 
+## Estatísticas — cores e dicas em andamento
+
+`StatisticsView.groupColor(id)` usa os IDs do catálogo e um fallback determinístico, sem consultar a posição dos grupos. Barras principais e percentuais recebem a cor do grupo; subgrupos usam um clareamento discreto da mesma cor. Nomes, contagens e taxas continuam presentes. `statisticsRankBorder0..4` e `statisticsRankPosition0..4` identificam bordas/números: ouro, prata, bronze e padrão. O foco substitui a borda por `Theme.focus`/`focusWidth`, sem alterar a ordem ou os marcadores.
+
+`visualHints` é uma projeção derivada de `sessionMetrics`, `hints`, `answerPending` e `gameFinished`. Soma apenas dicas disponíveis e reveladas, distintas por ID, da pergunta ativa ainda sem resposta; incrementa questões com dicas uma única vez. `extraHintChanged`, `scoreChanged`, `answerDetailsChanged` e `gameFinishedChanged` invalidam as dependências existentes, sem acumulador, novos sinais ou escritas. Durante feedback ou após encerramento, usa somente os totais confirmados. Recuperar ou recriar a página recompõe a projeção. `statisticsHintsNotice` informa essa distinção; histórico e demais métricas continuam consolidados. [Decisões e validação](VERSOES/2.3.2/cores-e-dicas/README.md).
+
+## Estatísticas — refinamentos da PR #36
+
+`StatisticsView` apresenta `statisticsTopPanels` depois de `statisticsHeader`, antes dos indicadores e histórico. A partir de 900 pixels úteis, ambos os painéis mantêm proporções e alinhamento superior; abaixo disso, `statisticsTaxonomyTab`/`statisticsRankingTab` alternam sua visibilidade sem remover modelos/dados. `Main.statisticsPresentation.panel` guarda a seleção em memória, conservada ao recriar o Loader e ao redimensionar. Os seletores usam `UiButton.compact`, estado marcado, Tab/Espaço e foco do Design System. Se o redimensionamento ocultar o painel focado, o foco passa ao seletor correspondente ao painel selecionado.
+
+`Main.pageWheelArea` inclui Estatísticas nas mesmas condições existentes de Início/Explorar. Continua usando `conventionalWheel`, 110 pixels por incremento, animação pelos tokens, caminho nativo para pixels/ângulos parciais, interrupção por movimento/foco/pressão da barra e faixa de segurança compartilhada. Não há rolagem interna nos painéis. [Revisão e testes](VERSOES/2.3.2/refinamentos-topo/README.md).
+
+## Estatísticas — 2.3.2 (contrato inicial)
+
+`StatisticsView` mantém `app`/`backend` e apenas projeta contratos existentes. `statisticsAnswered`, `statisticsCorrect`, `statisticsIncorrect` e `statisticsAccuracy` reutilizam `StatCard` sem mudar o componente compartilhado. Desempenho e histórico usam textos decimais do controlador. Os indicadores se reorganizam conforme a largura útil; `statisticsTaxonomyPanel` e `statisticsRankingPanel` empilham abaixo de 900 pixels lógicos. Alturas dos painéis seguem o conteúdo, com a rolagem única do shell.
+
+`freeRankingButton` e `competitiveRankingButton` preservam os comandos e expõem o estado selecionado. As cinco posições máximas retornadas pelo backend são focáveis (`statisticsRank0..4`), com nome integral, pontuação, último resultado/data, nome registrado na descrição acessível e indicadores de legado/exclusão. Tab/Shift+Tab preservam a ordem visual, com foco visível e enquadramento pelo shell. As barras taxonômicas representam acertos/respostas, sem interpolação animada ou novas classificações. [Semântica e validação](VERSOES/2.3.2/README.md).
+
 ## Quiz — 2.3.1
 
 `QuizView` recupera o layout anterior, preservando `answerOption0..3`, `questionPortrait`, `possibleScoreLabel`, `hintButton`, `confirmAnswerButton` e `backFromQuizButton`. A esquerda tem largura limitada de 37%; a direita contém `quizAnswersScroll`, com alternativas e dicas, sem impor sua altura mínima à foto. Dica/Confirmar ficam fixos na base da coluna. Foco local enquadra o controle dentro da rolagem direita. Títulos `revealedHintTitle0..2` consultam assistência/categoria do backend, sem inferir nível pelo índice. `quizAnswerCounts` projeta `correctAnswers` e `answeredCount - correctAnswers`; não escreve no banco.
