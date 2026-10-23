@@ -28,7 +28,55 @@ A seção “Meu perfil” permite alterar o nome e informa uso local/offline. N
 
 ## Validação
 
-As verificações executadas e as capturas reais desta revisão serão registradas neste diretório após a compilação e os testes, usando exclusivamente bancos temporários. As evidências anteriores continuam preservadas nos diretórios originais.
+Implementação em [17d8492](https://github.com/kaduolliver/Projeto-Glossata/commit/17d8492) (vínculo local, migração, backups e testes) e [88b3813](https://github.com/kaduolliver/Projeto-Glossata/commit/88b3813) (controlador, interface, versão e captura oficial). A PR continua sendo [#37](https://github.com/kaduolliver/Projeto-Glossata/pull/37).
+
+`ctest --test-dir build/single-local-user --output-on-failure`: **26/26 suítes aprovadas**, em **563,92 segundos**. QtTest registra 62 casos de regras/controlador, 36 de identidade, 21 de recuperação e 30 de interface, incluindo inicialização/finalização. Seis testes de Estatísticas/transição também passaram separadamente nos fatores Qt 100%, 125% e 150%. Todos os bancos são temporários; não há teste ou captura sobre dados pessoais reais.
+
+| Requisito | Verificação |
+| --- | --- |
+| Primeira execução, UUID estável, reabertura e renomeação | `localUserFirstOpenAndStableBinding`, `gameKeepsStartingPlayer` |
+| Instalação SQLite 6 com um perfil, UUID/resultados preservados e esquema 7 | `localUserSchema6PreservesSingleProfile`, migrações anteriores e backups |
+| Vários perfis, escolha explícita única, rejeição de legado e disputa entre instâncias | `localUserExplicitChoiceAndGuards`, `localUserTransitionKeepsOwnersAndSessions` |
+| Proteção do vínculo contra update/delete/replace e perfis inelegíveis | Gatilhos verificados em SQLite temporário; banco incompleto recusado na reabertura |
+| Sessão própria recuperável; sessão de terceiro invisível, não recuperável e não abandonável | `localUserTransitionKeepsOwnersAndSessions`, suíte de recuperação; comparação do payload alheio antes/depois |
+| Recordes e métricas por UUID; nenhuma herança da pontuação maior do outro perfil | Testes de transição e `singleLocalUserSettingsRecordsAndCaptures` |
+| Modalidades/configurações separadas, conteúdo competitivo completo e ausência de métricas inventadas | `personalCompetitiveConfigurationStaysSeparate`, `statisticsContextsAndConfirmedMetrics` |
+| Meu perfil, ausência de criação/seleção/exclusão permanente, teclado, foco, painéis e rolagem | Testes Qt/QML em nove combinações de resolução/fator |
+| Quiz, dicas, taxonomia, exploração, conquistas e demais fluxos existentes | Suíte completa de regras/interface, testes de dicas e recuperação |
+
+A primeira execução encontrou uma fixture de recuperação que usava o catálogo JSON, enquanto o controlador usa SQLite, e uma expectativa antiga de esquema 6. A fixture passou a usar o mesmo catálogo da produção e a expectativa passou a 7; as regras de integridade/recuperação não foram relaxadas. Os logs `initial-*` preservam essa execução, ao lado dos testes finais aprovados e do teste direcionado após a correção.
+
+Lint de todo o QML, smoke test isolado do executável, auditorias do repositório/catálogo/licenças, metadados e `release.py check`/`check-history` passaram. A comparação de governança preserva os 1.053 eventos da base. [Resultados e hashes](verificacoes/resultados.json), [CTest](verificacoes/ctest.txt), [identidades](verificacoes/identity-results.txt) e [recuperação](verificacoes/recovery-results.txt) registram os limites técnicos dessas verificações; não concedem aprovação científica/jurídica ou autorização de distribuição.
+
+## Capturas reais
+
+O [manifesto](capturas.json) contém **36 capturas reais**, dimensões, horários e hashes de fontes/binários/PNGs. Usa `QQuickWindow::grabWindow` sobre QML e controlador de produção, com registros sintéticos em SQLite temporário e Discord desativado. Não houve mockup ou substituição por mapa de apresentação. Ambiente Windows 11, Qt 6.11.2, backend software/offscreen e `QT_SCALE_FACTOR` nos fatores abaixo; não é certificação de mudanças físicas entre monitores/DPI.
+
+| Resolução lógica | 100% | 125% | 150% |
+| --- | --- | --- | --- |
+| 1000 × 700 | [Recordes](capturas/100/personal-free-1000x700.png) | [Recordes](capturas/125/personal-free-1000x700.png) | [Recordes](capturas/150/personal-free-1000x700.png) |
+| 1240 × 820 | [Recordes](capturas/100/personal-free-1240x820.png) | [Recordes](capturas/125/personal-free-1240x820.png) | [Recordes](capturas/150/personal-free-1240x820.png) |
+| 1920 × 1080 | [Recordes](capturas/100/personal-free-1920x1080.png) | [Recordes](capturas/125/personal-free-1920x1080.png) | [Recordes](capturas/150/personal-free-1920x1080.png) |
+
+Também há imagens da [escolha pontual sem pré-seleção](capturas/100/transition-1000x700.png), de [Meu perfil](capturas/125/my-profile-1240x820.png) e do [Competitivo sem recorde elegível](capturas/150/personal-competitive-empty-1240x820.png). A captura oficial da Home e seu registro foram renovados por `scripts/capture_home.py --binary build/single-local-user/projeto_glossata.exe`, no mesmo commit das alterações visuais. [O caminho oficial](../../../images/tela-inicial.png) permanece no README.
+
+Os binários e manifestos brutos de build continuam locais. `verificacoes/resultados.json` identifica por hash o manifesto `build/build-manifest.json`, sem versionar um artefato gerado proibido pela auditoria. As capturas e resultados da direção anterior da PR #37 foram preservados integralmente; seu README recebeu apenas um aviso de substituição.
+
+## Inventário não destrutivo
+
+Após os testes/builds, foram executados `python scripts/cleanup_build.py` e `python scripts/cleanup_build.py --include-old-builds`, **somente em dry-run**, conforme solicitado. Ambos retornaram zero candidatos elegíveis por recência/retenção. A PR permanece aberta: não houve `--apply` nem limpeza/exclusão de arquivos.
+
+| Caminho/agrupamento | Tamanho aproximado | Motivo e risco; ação |
+| --- | --- | --- |
+| `build/single-local-user/` | 1,78 GiB | Compilação, capturas, scripts locais e logs atuais; alto risco para a rastreabilidade; preservar. |
+| `build/local-ranking-history/` | 1,79 GiB | Binários e evidências da direção anterior da PR; alto risco; preservar. |
+| `build/tests/previews/` | 225,3 MiB | Capturas históricas; alto risco; preservar. |
+| `build/__pycache__/` | 172 KiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `scripts/__pycache__/` | 1,30 MiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `tests/__pycache__/` | 565 KiB | Cache regenerável; candidato potencial de baixo risco, sem autorização de exclusão; preservar. |
+| `build/*.{py,txt,log,png,tmp}` | 38,9 MiB | 283 auxiliares, relatórios e capturas avulsos, possivelmente únicos; alto risco; preservar. |
+
+O [inventário completo](verificacoes/auditoria-arquivos.json) informa bytes, caminhos, motivos, riscos, planos e arquivos não versionados. Não encontrou duplicações adicionais no escopo das novas capturas; as cópias dos 36 PNGs para a documentação são intencionais. Os quatro grupos identificados no [inventário anterior](../ranking-local-historico/verificacoes/auditoria-arquivos.json) continuam preservados. Igualdade de bytes não autoriza exclusão. `resources/`, `package/`, SQLite/dados pessoais, mídias, governança, manifestos, documentação e evidências anteriores não foram usados como alvo de limpeza.
 
 ## Evolução futura
 
