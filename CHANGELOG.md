@@ -2,6 +2,12 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [1.12.0] — Não lançado; ranking local e histórico de jogadores
+
+- Ranking atual limitado no SQL a cinco perfis ativos; histórico independente de recordes registrados, com paginação, UUID, nome registrado e situação da identidade. Livre/Competitivo e Ranking atual/Histórico são seleções independentes em memória.
+- Histórico competitivo inclui classificações armazenadas anteriores, sem recalcular pontuações; recordes pessoais, métricas e recuperação de sessões continuam vinculados ao UUID. Contratos mistos anteriores e esquema SQLite preservados.
+- MINOR pela consulta e navegação compatíveis; catálogo 2.4.0 integralmente preservado. Melhoria independente após a Subetapa 2.3.2, sem iniciar a 2.3.3, criar tag ou publicar release. [Diagnóstico e validação](docs/interface/VERSOES/ranking-local-historico/README.md).
+
 ## [1.11.0] — Não lançado; interface de Estatísticas
 
 - PR #36, ajustes pontuais: cores taxonômicas por ID estável, ouro/prata/bronze no ranking e indicadores visuais de dicas que incluem a pergunta em andamento sem duplicar respostas confirmadas. Backend, pontuação e histórico preservados. [Contratos e evidências](docs/interface/VERSOES/2.3.2/cores-e-dicas/README.md).

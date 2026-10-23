@@ -29,7 +29,8 @@ Item {
         return totals
     }
     readonly property var groupPalette: [Style.Theme.green, "#8ABCF0", "#74D3CB", Style.Theme.gold, "#E4A77D", "#BDA5DE"]
-    readonly property string rankingContext: backend.rankingMode === "competitive" ? "Competitivo atual" : "Livre"
+    readonly property string rankingContext: backend.rankingMode === "competitive" ? (isRecordHistory ? "Competitivo" : "Competitivo atual") : "Livre"
+    readonly property bool isRecordHistory: backend.rankingContext === "history"
     readonly property int mainColumns: width >= 900 ? 4 : 2
     readonly property int metricColumns: width >= 690 ? 3 : 2
     readonly property bool sideBySide: width >= 900
@@ -232,44 +233,49 @@ Item {
                     spacing: Style.Theme.spaceMd
                     RowLayout {
                         Layout.fillWidth: true
-                        UiIcon { name: "trophy"; ink: Style.Theme.gold; implicitWidth: 22; implicitHeight: 22 }
-                        Heading { text: "Ranking local · " + view.rankingContext }
+                        UiIcon { name: view.isRecordHistory ? "book" : "trophy"; ink: view.isRecordHistory ? Style.Theme.textMuted : Style.Theme.gold; implicitWidth: 22; implicitHeight: 22 }
+                        Heading { text: (view.isRecordHistory ? "Histórico local · " : "Ranking local · ") + view.rankingContext }
                     }
                     RowLayout {
                         Layout.fillWidth: true
-                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; checked: view.backend.rankingMode === "free"; secondary: !checked; Accessible.description: "Histórico e ranking do modo Livre"; onClicked: view.backend.rankingMode = "free" }
-                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; Accessible.description: "Histórico e ranking competitivo da configuração atual"; onClicked: view.backend.rankingMode = "competitive" }
+                        UiButton { objectName: "currentRankingButton"; text: "Ranking atual"; compact: true; checkable: true; autoExclusive: true; checked: !view.isRecordHistory; secondary: !checked; Accessible.description: "Até cinco perfis ativos nesta modalidade"; onClicked: view.backend.rankingContext = "current" }
+                        UiButton { objectName: "recordHistoryButton"; text: "Histórico"; compact: true; checkable: true; autoExclusive: true; checked: view.isRecordHistory; secondary: !checked; Accessible.description: "Recordes registrados de perfis ativos, excluídos e identidades legadas"; onClicked: view.backend.rankingContext = "history" }
                     }
-                    Note { text: "Melhor pontuação de cada jogador · até cinco posições." }
-                    Note { text: view.backend.rankingMode === "competitive" ? view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · conteúdo atual" : "Treinamento contínuo; grupos e durações variáveis." }
+                    RowLayout {
+                        Layout.fillWidth: true
+                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; autoExclusive: true; checked: view.backend.rankingMode === "free"; secondary: !checked; Accessible.description: "Histórico e ranking do modo Livre"; onClicked: view.backend.rankingMode = "free" }
+                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; autoExclusive: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; Accessible.description: view.isRecordHistory ? "Recordes das configurações competitivas registradas" : "Ranking competitivo da configuração atual"; onClicked: view.backend.rankingMode = "competitive" }
+                    }
+                    Note { text: view.isRecordHistory ? "Histórico de recordes registrados. Não é uma lista de todas as partidas. Pontuações e classificação originais, sem recálculo." : "Melhor pontuação de cada jogador ativo · até cinco posições." }
+                    Note { text: view.backend.rankingMode === "competitive" ? (view.isRecordHistory ? "Inclui configurações competitivas anteriores. Cada recorde conserva sua classificação registrada." : view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · conteúdo atual") : "Treinamento contínuo; grupos e durações variáveis." }
                     Note {
                         objectName: "statisticsPersonalRecord"
                         visible: !!view.backend.personalRecord.scoreText
                         text: "Seu recorde: " + (view.backend.personalRecord.scoreText || "0,00") + " pts · Última: " + (view.backend.personalRecord.lastScoreText || "0,00") + " pts"
                         color: Style.Theme.green
                     }
-                    Note { objectName: "statisticsRankingEmpty"; visible: view.backend.ranking.length === 0; text: "Nenhuma partida classificada nesta modalidade. Encerre uma partida elegível para entrar no ranking." }
-                    // The backend bounds this model to five rows. Let the page scroll
-                    // handle their full intrinsic height, including long player names.
+                    Note { objectName: "statisticsRankingEmpty"; visible: view.isRecordHistory ? view.backend.recordHistory.length === 0 : view.backend.ranking.length === 0; text: view.isRecordHistory ? "Nenhum recorde registrado nesta modalidade." : "Nenhum jogador ativo com resultado elegível nesta modalidade. Encerre uma partida elegível para entrar no ranking." }
+                    // SQL selects five active rows or a bounded historical page.
+                    // The existing page scroll handles their full intrinsic height.
                     Repeater {
-                        model: view.backend.ranking
+                        model: view.isRecordHistory ? view.backend.recordHistory : view.backend.ranking
                         delegate: FocusScope {
                             id: rankRow
                             required property var modelData
                             required property int index
-                            objectName: "statisticsRank" + index
-                            readonly property color accent: view.podiumColor(index)
+                            objectName: (view.isRecordHistory ? "statisticsHistoryRecord" : "statisticsRank") + index
+                            readonly property color accent: view.isRecordHistory ? Style.Theme.border : view.podiumColor(index)
                             Layout.fillWidth: true
                             implicitHeight: rankContent.implicitHeight + 2 * Style.Theme.spaceMd
                             activeFocusOnTab: true
                             Accessible.role: Accessible.ListItem
-                            Accessible.name: (index + 1) + ". " + modelData.playerName + ", " + modelData.scoreText + " pontos"
+                            Accessible.name: (view.isRecordHistory ? modelData.identityStatus + ". " : (index + 1) + ". ") + modelData.playerName + ", " + modelData.scoreText + " pontos"
                             Accessible.description: rankDetail.text + ". Nome na partida mais recente: " + modelData.snapshotName
                             Rectangle {
                                 objectName: "statisticsRankBorder" + rankRow.index
                                 anchors.fill: parent
                                 radius: Style.Theme.controlRadius
-                                color: rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
+                                color: !view.isRecordHistory && rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
                                 border.width: rankRow.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
                                 border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.accent
                             }
@@ -278,16 +284,28 @@ Item {
                                 anchors.fill: parent
                                 anchors.margins: Style.Theme.spaceMd
                                 spacing: Style.Theme.spaceSm
-                                Label { objectName: "statisticsRankPosition" + rankRow.index; text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? rankRow.accent : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
+                                Label { objectName: "statisticsRankPosition" + rankRow.index; visible: !view.isRecordHistory; text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? rankRow.accent : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
                                 ColumnLayout {
                                     Layout.fillWidth: true
                                     spacing: Style.Theme.spaceXs
                                     Label { text: rankRow.modelData.playerName; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WrapAnywhere; textFormat: Text.PlainText; Layout.fillWidth: true }
-                                    Note { id: rankDetail; text: (rankRow.modelData.legacyIdentity ? "Legado, vínculo pendente · " : rankRow.modelData.deletedProfile ? "Perfil excluído · " : "") + "Última: " + rankRow.modelData.lastScoreText + " pts · " + rankRow.modelData.lastPlayedAt }
+                                    Note { visible: view.isRecordHistory; text: rankRow.modelData.identityStatus || ""; color: rankRow.modelData.legacyIdentity || rankRow.modelData.deletedProfile ? Style.Theme.gold : Style.Theme.textMuted }
+                                    Note { visible: view.isRecordHistory; text: "Recorde: " + rankRow.modelData.playedAt + " · " + rankRow.modelData.correctAnswers + " acerto(s)" }
+                                    Note { id: rankDetail; text: "Última: " + rankRow.modelData.lastScoreText + " pts · " + rankRow.modelData.lastPlayedAt }
                                     Label { text: rankRow.modelData.scoreText + " pts"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold }
+                                    Note { visible: view.isRecordHistory; text: "ID: " + rankRow.modelData.playerId; wrapMode: Text.WrapAnywhere }
+                                    Note { visible: view.isRecordHistory && view.backend.rankingMode === "competitive"; text: "Classificação: " + (rankRow.modelData.rankingKey || ""); wrapMode: Text.WrapAnywhere }
                                 }
                             }
                         }
+                    }
+                    Note { visible: view.isRecordHistory; text: "O nome exibido é o registrado no recorde, mesmo após renomear o perfil. IDs distintos não são vinculados por nome." }
+                    RowLayout {
+                        visible: view.isRecordHistory
+                        Layout.fillWidth: true
+                        UiButton { objectName: "recordHistoryPrevious"; text: "Anterior"; compact: true; secondary: true; enabled: view.isRecordHistory && view.backend.recordHistoryPage > 0; onClicked: view.backend.previousRecordHistoryPage() }
+                        Note { text: view.isRecordHistory ? "Página " + (view.backend.recordHistoryPage + 1) : ""; horizontalAlignment: Text.AlignHCenter }
+                        UiButton { objectName: "recordHistoryNext"; text: "Próxima"; compact: true; secondary: true; enabled: view.isRecordHistory && view.backend.recordHistoryHasMore; Accessible.description: "Carregar a próxima página de até vinte recordes"; onClicked: view.backend.nextRecordHistoryPage() }
                     }
                 }
             }
@@ -386,7 +404,7 @@ Item {
             Layout.fillWidth: true
             spacing: Style.Theme.spaceSm
             Heading { text: "Histórico do perfil" }
-            Note { objectName: "statisticsHistoryContext"; text: view.backend.currentPlayerName + " · " + view.rankingContext + ". Partidas concluídas com respostas detalhadas disponíveis." }
+            Note { objectName: "statisticsHistoryContext"; text: view.backend.currentPlayerName + " · " + (view.backend.rankingMode === "competitive" ? "Competitivo atual" : "Livre") + ". Partidas concluídas com respostas detalhadas disponíveis." }
             Note { text: "Registros antigos podem não ter detalhamento. Estes indicadores não representam necessariamente toda a atividade do perfil." }
             Note { visible: !!view.backend.identityNotice; text: view.backend.identityNotice; color: Style.Theme.gold }
             GridLayout {

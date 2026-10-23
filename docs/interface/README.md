@@ -8,6 +8,8 @@ A [linha de base anterior à reformulação](VERSOES/baseline/README.md) está l
 
 ## Como registrar uma mudança futura
 
+Ranking local: [melhoria independente — Ranking atual e histórico de jogadores](VERSOES/ranking-local-historico/README.md), após a PR #36, preservando o desenho da Subetapa 2.3.2.
+
 Ficha da espécie: [correção pontual de Morfologia e Descrição educativa independente](VERSOES/2.3.1/descricao-independente/README.md).
 
 Quiz atual: [2.3.1 — interface anterior restaurada e quatro ajustes pontuais](VERSOES/2.3.1/restauracao-visual/README.md), sobre a integração da PR #33 em `8293408a650ac2f9738d42c4c9c462115919bdfc`.

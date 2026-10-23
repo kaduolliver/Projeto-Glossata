@@ -68,6 +68,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void localRankingHistoryNavigationAndCaptures();
     void statisticsLiveHintsAndRecovery();
     void statisticsStableColorsAndPodium();
     void statisticsTopPanelsAndSharedScrolling();
@@ -96,6 +97,138 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::localRankingHistoryNavigationAndCaptures()
+{
+    interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("local-records.sqlite");
+    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Nome original"));
+    const auto owner=controller.currentPlayerId(); QString legacyId,retiredId;
+    {
+        SqliteGameHistoryRepository repo(path);
+        QVERIFY(repo.saveResult(repo.player(owner).identity(),6,1));
+        QVERIFY(repo.renamePlayer(owner,"Nome atual"));
+        const auto retired=repo.createPlayer("Nome reutilizado"); retiredId=retired.id;
+        QVERIFY(repo.saveResult(retired.identity(),60,10)); QVERIFY(repo.deletePlayer(retired.id));
+        QVERIFY(repo.createPlayer("Nome reutilizado").selectable());
+        for(int i=0;i<22;++i) {
+            const auto p=repo.createPlayer(QString("Participante %1").arg(i,2,10,QChar('0')));
+            QVERIFY(repo.saveResult(p.identity(),3,1));
+        }
+        // Test fixture only: an unresolved identity with the same recorded name as the active owner.
+        const auto connection=QUuid::createUuid().toString();
+        {
+            auto db=QSqlDatabase::addDatabase("QSQLITE",connection); db.setDatabaseName(path); QVERIFY(db.open());
+            QSqlQuery q(db); legacyId=QUuid::createUuid().toString(QUuid::WithoutBraces);
+            q.prepare("INSERT INTO player_profiles(id,name,name_key,origin,legacy_name_key) VALUES(?,'Nome original','Nome original','legacy_unresolved','Nome original')");
+            q.addBindValue(legacyId); QVERIFY(q.exec());
+            q.prepare("INSERT INTO ranking_records VALUES('free',?,'Nome original',120,20,'2026-01-01T00:00:00Z',60,10,'2026-01-02T00:00:00Z')");
+            q.addBindValue(legacyId); QVERIFY(q.exec());
+            q.prepare("INSERT INTO ranking_records SELECT 'competitive|20||genus|balanced|archived-rules|archived-content',player_id,player_name,best_units,best_correct,best_played_at,last_units,last_correct,last_played_at FROM ranking_records WHERE player_id=?");
+            q.addBindValue(legacyId); QVERIFY(q.exec());
+            db.close();
+        }
+        QSqlDatabase::removeDatabase(connection);
+    }
+    controller.loadRanking(); QCOMPARE(controller.ranking().size(),5);
+    controller.selectPlayerProfile(owner);
+    const auto personal=controller.personalRecord(); const auto metrics=controller.playerMetrics();
+    QCOMPARE(personal["scoreUnits"].toLongLong(),qint64(6));
+    for(const auto &v:controller.ranking()) { QVERIFY(!v.toMap()["deletedProfile"].toBool()); QVERIFY(!v.toMap()["legacyIdentity"].toBool()); }
+    QVERIFY(controller.startTaxonGame({},"genus"));
+    JsonSpeciesCatalog catalog; QString correct;
+    for(const auto &s:catalog.loadCurrentSpecies()) if(s.id==controller.questionPhoto()["speciesId"].toInt())correct=s.answerAtRank("genus");
+    QVERIFY(!correct.isEmpty()); controller.answerSelected(correct); controller.nextQuestion();
+    const auto session=controller.sessionMetrics(); const auto groups=controller.categoryStats();
+    const auto options=controller.answerOptions(); const auto sessionOwner=controller.sessionPlayerId();
+    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    window->setProperty("page","statistics"); QTest::qWait(100);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    auto scroll=item("pageScroll"); QVERIFY(scroll);
+    const auto activate=[&](const QString &name) {
+        auto target=item(name); if(!target)return false;
+        target->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(80); return true;
+    };
+    const auto reveal=[&](QQuickItem *target) {
+        target->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        const auto y=target->mapToItem(scroll,QPointF()).y();
+        scroll->setProperty("contentY",qBound(0.0,scroll->property("contentY").toReal()+y-16,
+            qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height()))); QTest::qWait(60);
+    };
+    const auto fits=[&](QQuickItem *target) {
+        const auto p=target->mapToItem(window->contentItem(),QPointF());
+        return p.x()>=-1 && p.x()+target->width()<=window->width()+1 && target->width()>0 && target->height()>0;
+    };
+    const QString folder="previews/local-ranking-history/"+QString::number(qRound(window->devicePixelRatio()*100));
+    QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
+    const auto capture=[&](const QString &state) {
+        QTest::qWait(100); const auto image=window->grabWindow();
+        const auto name=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";
+        if(!image.save(folder+"/"+name))return false;
+        frames.append(QJsonObject{{"file",name},{"width",image.width()},{"height",image.height()},
+            {"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},
+            {"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},
+            {"rankingContext",controller.rankingContext()},{"rankingMode",controller.rankingMode()},
+            {"page",controller.recordHistoryPage()},{"rows",controller.recordHistory().size()}}); return true;
+    };
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        window->resize(size); window->setProperty("statisticsPresentation",QVariantMap{{"panel","ranking"}}); QTest::qWait(90);
+        controller.setRankingMode("free"); controller.setRankingContext("current");
+        QVERIFY(activate("currentRankingButton")); QVERIFY(item("currentRankingButton")->property("checked").toBool());
+        QVERIFY(activate("freeRankingButton")); QVERIFY(item("freeRankingButton")->property("checked").toBool());
+        reveal(item("currentRankingButton")); QVERIFY(fits(item("currentRankingButton"))); QVERIFY(fits(item("recordHistoryButton")));
+        for(int i=0;i<3;++i) {
+            QCOMPARE(item("statisticsRank"+QString::number(i))->property("accent").value<QColor>(),QColor(i==0?"#E2C477":i==1?"#C6D0DA":"#D6A27B"));
+        }
+        QVERIFY(capture("ranking-current"));
+        QVERIFY(activate("recordHistoryButton")); QCOMPARE(controller.rankingContext(),QString("history"));
+        QCOMPARE(controller.recordHistory().size(),20); QVERIFY(controller.recordHistoryHasMore());
+        QCOMPARE(controller.recordHistory()[0].toMap()["playerId"].toString(),legacyId);
+        QCOMPARE(controller.recordHistory()[1].toMap()["playerId"].toString(),retiredId);
+        QCOMPARE(controller.recordHistory()[2].toMap()["snapshotName"].toString(),QString("Nome original"));
+        QVERIFY(!item("statisticsRankPosition0")->isVisible());
+        QCOMPARE(controller.recordHistory()[0].toMap()["identityStatus"].toString(),QString("Legado — identidade não vinculada"));
+        QCOMPARE(controller.recordHistory()[1].toMap()["identityStatus"].toString(),QString("Perfil excluído"));
+        QCOMPARE(controller.recordHistory()[2].toMap()["identityStatus"].toString(),QString("Jogador ativo"));
+        reveal(item("recordHistoryButton")); QVERIFY(fits(item("statisticsHistoryRecord0"))); QVERIFY(capture("history-first"));
+        // Keyboard order reaches the independent modality selectors, with visible focus.
+        QTest::keyClick(window,Qt::Key_Tab); QTRY_VERIFY(item("freeRankingButton")->hasActiveFocus());
+        QTest::keyClick(window,Qt::Key_Tab); QTRY_VERIFY(item("competitiveRankingButton")->hasActiveFocus());
+        QTest::keyClick(window,Qt::Key_Space); QTest::qWait(80);
+        QCOMPARE(controller.rankingContext(),QString("history")); QCOMPARE(controller.recordHistory().size(),1);
+        QVERIFY(controller.recordHistory().first().toMap()["rankingKey"].toString().contains("archived-rules"));
+        QVERIFY(controller.ranking().isEmpty()); QVERIFY(controller.personalRecord().isEmpty());
+        reveal(item("competitiveRankingButton")); QVERIFY(capture("history-competitive-archived"));
+        QVERIFY(activate("currentRankingButton")); QVERIFY(controller.ranking().isEmpty());
+        QVERIFY(item("statisticsRankingEmpty")->isVisible());
+        QVERIFY(activate("recordHistoryButton")); QVERIFY(activate("freeRankingButton"));
+        QCOMPARE(controller.personalRecord(),personal); QCOMPARE(controller.playerMetrics(),metrics);
+        auto next=item("recordHistoryNext"); QVERIFY(next->isEnabled()); reveal(next);
+        QVERIFY(activate("recordHistoryNext")); QCOMPARE(controller.recordHistoryPage(),1);
+        QCOMPARE(controller.recordHistory().size(),5); QVERIFY(!controller.recordHistoryHasMore());
+        QVERIFY(!item("recordHistoryNext")->isEnabled()); reveal(item("recordHistoryPrevious")); QVERIFY(capture("history-next-page"));
+        window->setProperty("page","home"); QTest::qWait(150); window->setProperty("page","statistics"); QTest::qWait(100);
+        QCOMPARE(controller.rankingContext(),QString("history")); QCOMPARE(controller.recordHistoryPage(),1);
+        QVERIFY(activate("recordHistoryPrevious")); QCOMPARE(controller.recordHistoryPage(),0);
+        QCOMPARE(controller.currentPlayerId(),owner); QCOMPARE(controller.sessionPlayerId(),sessionOwner);
+        QCOMPARE(controller.sessionMetrics(),session); QCOMPARE(controller.categoryStats(),groups); QCOMPARE(controller.answerOptions(),options);
+        QVERIFY(activate("currentRankingButton"));
+    }
+    QVERIFY(controller.prepareToClose());
+    GameController reopened(nullptr,path); QVERIFY(!reopened.recoverableSessions().isEmpty());
+    QVERIFY(reopened.resumeSession(reopened.recoverableSessions().first().toMap()["id"].toString()));
+    QCOMPARE(reopened.sessionPlayerId(),owner); QCOMPARE(reopened.sessionMetrics(),session); QCOMPARE(reopened.answerOptions(),options);
+    reopened.selectPlayerProfile(owner); reopened.setRankingMode("free");
+    QCOMPARE(reopened.personalRecord(),personal); QCOMPARE(reopened.playerMetrics(),metrics);
+    reopened.setRankingContext("history"); QCOMPARE(reopened.recordHistory().first().toMap()["playerId"].toString(),legacyId);
+    QFile manifest(folder+"/frames.json"); QVERIFY(manifest.open(QIODevice::WriteOnly)); manifest.write(QJsonDocument(frames).toJson());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::statisticsLiveHintsAndRecovery()
 {

@@ -812,7 +812,9 @@ void GameServiceTests::gameKeepsStartingPlayer()
     QVERIFY(controller.deleteCurrentPlayerProfile());
     controller.stopGame();
     bool foundLia = false;
-    for (const QVariant &row : controller.ranking()) {
+    for (const QVariant &row : controller.ranking()) QVERIFY(!row.toMap()["deletedProfile"].toBool());
+    controller.setRankingContext("history");
+    for (const QVariant &row : controller.recordHistory()) {
         foundLia |= row.toMap().value("playerName").toString() == "Lia";
     }
     QVERIFY(foundLia);
@@ -831,13 +833,15 @@ void GameServiceTests::permanentIdentitySurvivesRenameDeleteAndSelectionDuringGa
     controller.selectPlayerProfile(owner); QVERIFY(controller.deleteCurrentPlayerProfile());
     QVERIFY(controller.addPlayerProfile("Lia")); const auto replacement=controller.currentPlayerId(); QVERIFY(replacement!=owner);
     controller.stopGame(); QVERIFY(!controller.resultPending());
-    QCOMPARE(controller.ranking().size(),1); const auto result=controller.ranking().first().toMap();
+    QVERIFY(controller.ranking().isEmpty());
+    controller.setRankingContext("history"); QCOMPARE(controller.recordHistory().size(),1);
+    const auto result=controller.recordHistory().first().toMap();
     QCOMPARE(result["playerId"].toString(),owner); QCOMPARE(result["snapshotName"].toString(),QString("Ada"));
     QVERIFY(result["deletedProfile"].toBool()); QVERIFY(controller.personalRecord().isEmpty());
     QCOMPARE(controller.playerMetrics()["answered"].toInt(),0);
     controller.startGame(); QCOMPARE(controller.sessionPlayerId(),replacement);
     controller.answerSelected(controller.answerOptions().first()); controller.stopGame();
-    QCOMPARE(controller.ranking().size(),2);
+    QCOMPARE(controller.ranking().size(),1); QCOMPARE(controller.recordHistory().size(),2);
     SqliteGameHistoryRepository inspection(path);
     QCOMPARE(inspection.playerMetrics("free",owner).answered,1);
     QCOMPARE(inspection.playerMetrics("free",replacement).answered,1);

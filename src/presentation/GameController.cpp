@@ -176,7 +176,7 @@ QVariantList GameController::playerProfileItems() const
 QString GameController::identityNotice() const
 {
     const int count = historyRepository_.unresolvedLegacyPlayers();
-    return count ? QStringLiteral("Há %1 conjunto(s) de resultados anteriores à identificação permanente. Permanecem no ranking como legado, sem vínculo presumido com perfis atuais. As métricas pessoais incluem somente o ID deste perfil.").arg(count) : QString();
+    return count ? QStringLiteral("Há %1 conjunto(s) de resultados anteriores à identificação permanente. Permanecem no Histórico de recordes como legado, sem vínculo presumido com perfis atuais. As métricas pessoais incluem somente o ID deste perfil.").arg(count) : QString();
 }
 
 qint64 GameController::scoreUnits() const
@@ -206,7 +206,7 @@ QVariantList GameController::ranking() const
 
 void GameController::setRankingMode(const QString &mode)
 {
-    if (mode != "free" && mode != "competitive") return;
+    if ((mode != "free" && mode != "competitive") || mode == rankingMode_) return;
     rankingMode_ = mode;
     loadRanking();
 }
@@ -539,22 +539,67 @@ void GameController::retryCheckpoint()
     emit recoveryChanged();
 }
 
-void GameController::loadRanking()
+QVariantMap GameController::presentHistoryEntry(const HistoryEntry &entry)
 {
-    const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
-    auto row = [](const HistoryEntry &entry) {
         return QVariantMap{{"playerName",entry.playerName},{"playerId",entry.playerId},{"snapshotName",entry.snapshotName},
             {"legacyIdentity",entry.legacyIdentity},{"deletedProfile",entry.deletedProfile},{"scoreUnits",entry.scoreUnits},
             {"scoreText",formatScore(entry.scoreUnits)},{"correctAnswers",entry.correctAnswers},
             {"playedAt",entry.playedAt.toString("dd/MM/yyyy")},{"lastScoreText",formatScore(entry.lastScoreUnits)},
             {"lastScoreUnits",entry.lastScoreUnits},{"lastCorrectAnswers",entry.lastCorrectAnswers},
-            {"lastPlayedAt",entry.lastPlayedAt.toString("dd/MM/yyyy")}};
-    };
+            {"lastPlayedAt",entry.lastPlayedAt.toString("dd/MM/yyyy")},
+            {"playedAtIso",entry.playedAt.toString(Qt::ISODateWithMs)},
+            {"lastPlayedAtIso",entry.lastPlayedAt.toString(Qt::ISODateWithMs)},
+            {"rankingKey",entry.rankingKey},{"identityOrigin",entry.identityOrigin},{"deletedAt",entry.deletedAt},
+            {"identityStatus",entry.legacyIdentity ? QStringLiteral("Legado — identidade não vinculada")
+                : entry.deletedProfile ? QStringLiteral("Perfil excluído") : QStringLiteral("Jogador ativo")}};
+}
+
+void GameController::setRankingContext(const QString &context)
+{
+    if ((context != "current" && context != "history") || context == rankingContext_) return;
+    rankingContext_ = context;
+    if (context == "history") loadRecordHistory();
+    else emit recordHistoryChanged();
+}
+
+void GameController::loadRecordHistory()
+{
+    constexpr int pageSize = 20;
+    // History includes stored competitive configurations, including older rules/content.
+    const QString key = rankingMode_;
+    const auto entries = historyRepository_.loadRecordHistory(key, pageSize + 1, recordHistoryPage_ * pageSize);
+    recordHistoryHasMore_ = entries.size() > pageSize;
+    recordHistory_.clear();
+    for (int i = 0; i < qMin(pageSize, int(entries.size())); ++i)
+        recordHistory_.append(presentHistoryEntry(entries[i]));
+    emit recordHistoryChanged();
+}
+
+void GameController::nextRecordHistoryPage()
+{
+    if (rankingContext_ != "history" || !recordHistoryHasMore_) return;
+    ++recordHistoryPage_;
+    loadRecordHistory();
+}
+
+void GameController::previousRecordHistoryPage()
+{
+    if (rankingContext_ != "history" || recordHistoryPage_ == 0) return;
+    --recordHistoryPage_;
+    loadRecordHistory();
+}
+
+void GameController::loadRanking()
+{
+    const QString key = rankingMode_ == "competitive" ? GameService::competitiveConfiguration().rankingKey() : QString("free");
     ranking_.clear();
-    for (const auto &entry : historyRepository_.loadRanking(key,5)) ranking_.append(row(entry));
+    for (const auto &entry : historyRepository_.loadActiveRanking(key,5)) ranking_.append(presentHistoryEntry(entry));
     const auto personal = historyRepository_.loadPlayerResult(key,currentPlayerId_);
-    personalRecord_ = personal.isEmpty() ? QVariantMap{} : row(personal.first());
+    personalRecord_ = personal.isEmpty() ? QVariantMap{} : presentHistoryEntry(personal.first());
     playerMetrics_ = presentMetrics(historyRepository_.playerMetrics(key,currentPlayerId_));
+    recordHistoryPage_ = 0;
+    if (rankingContext_ == "history") loadRecordHistory();
+    else { recordHistory_.clear(); recordHistoryHasMore_ = false; emit recordHistoryChanged(); }
     emit rankingChanged();
 }
 

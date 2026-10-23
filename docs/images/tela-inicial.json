@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-22T22:32:49.037845+00:00",
+  "captured_at": "2026-10-23T01:32:53.873444+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "framing": "Top of Home.",
-  "application_version": "1.11.0",
-  "binary_sha256": "d0b406c2de4ef83b6d6c4f98277a3f0599034386e476d6d089b8e2dced1a7e44",
+  "application_version": "1.12.0",
+  "binary_sha256": "02b2323ec71f43fe3aa45188d3807e5862f99c6ab8bdb7eccd731e6277e7e930",
   "image_sha256": "e0427b7e100ca35890489fb0e5a96ff52419c2b2c56b670819d6305cdb10bc44",
   "width": 1240,
   "height": 820,
@@ -29,7 +29,7 @@
     "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
     "src/application/TaxonomyIndex.cpp": "36ba1284927576e34f3bddc015d2bb5655922ba9df682f7ef9f68ebcc43d3331",
     "src/application/TaxonomyIndex.h": "75a77a14525b476ba871d82c28e6cdc0506b27f78fe75f0a2d428668fdede715",
-    "src/presentation/GameController.cpp": "189f32b9868c528e8ee9ba3bfec4254cf9b8f2d200646c3b8b4b49301e5e96e3",
-    "src/presentation/GameController.h": "445a3cae7d07669996984f5a03d88dc3153e17c380b8465d637246ae8f865b66"
+    "src/presentation/GameController.cpp": "20887c0097d50916d119099f4d8367ce9b4e55db44ee6f363b6cd2b192e135e1",
+    "src/presentation/GameController.h": "6eb5c7b7bffc0affeeae5790d8dd4c63f459f38d0b5d0a6a2579eab2daa7fabf"
   }
 }
