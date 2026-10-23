@@ -1,5 +1,9 @@
 # Histórico do catálogo científico e das licenças
 
+Revisão da PR #37, sem lançamento: aplicativo **2.0.0** (MAJOR pela retirada do gerenciamento permanente de múltiplos perfis) reutiliza o catálogo **2.4.0** integralmente. A migração de identidade local não modifica ciência, fotografias, licenças, evidências ou decisões de governança. O vínculo com uma futura conta remota dependerá de decisão explícita e verificação de propriedade; não há autorização científica/jurídica ou de distribuição criada por esta revisão.
+
+Melhoria independente do ranking local, sem lançamento: aplicativo **1.12.0** reutiliza o catálogo **2.4.0** integralmente. Consultas locais e apresentação do histórico não alteram dados científicos, mídias, licenças, evidências ou decisões de governança. Testes não concedem aprovação científica/jurídica nem autorização de distribuição.
+
 Subetapa 2.3.2, sem lançamento: aplicativo **1.11.0** reutiliza o catálogo **2.4.0** integralmente. A apresentação de Estatísticas não altera conteúdo, mídias, licenças, revisões, evidências ou permissões. Nenhuma aprovação científica/jurídica é criada por testes ou capturas.
 
 Subetapa 2.3.1 revisada, sem lançamento: aplicativo **1.10.0** (MINOR pelos recursos de apresentação compatíveis) reutiliza o catálogo **2.4.0** integralmente. A interface anterior é restaurada; Morfologia mantém seu tópico e fontes originais na coluna direita. Descrição educativa é apenas uma estrutura independente sem conteúdo abaixo da foto, preparada para a Etapa 3, sem novo campo ou esquema. Fotografias, atribuições, licenças, dicas, avaliações, pontuação e governança permanecem intactas. Nenhuma nova aprovação ou permissão.

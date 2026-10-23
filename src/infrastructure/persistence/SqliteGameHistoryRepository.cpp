@@ -20,11 +20,11 @@
 namespace {
 int connectionCounter = 0;
 
-bool validCurrentSchema(const QSqlDatabase &database)
+bool validCurrentSchema(const QSqlDatabase &database, bool withLocalUser = false)
 {
     // user_version identifies a migration, not proof that its tables/guards
     // survived. Refuse incomplete stores; never rebuild them over player data.
-    const QMap<QString, QString> tables{
+    QMap<QString, QString> tables{
         {"player_profiles", "id,name,name_key,origin,deleted_at,legacy_name_key"},
         {"history", "id,player_id,player_name,score_units,correct_answers,played_at"},
         {"ranking_records", "ranking_key,player_id,player_name,best_units,best_correct,best_played_at,last_units,last_correct,last_played_at"},
@@ -36,6 +36,7 @@ bool validCurrentSchema(const QSqlDatabase &database)
         {"player_name_migration", "player_id,name_snapshot,old_key,new_key,policy_version,unicode_version,migrated_at,active_collision"},
         {"session_checkpoints", "id,player_id,state,revision,payload,sha256,created_at,updated_at"}
     };
+    if (withLocalUser) tables.insert("local_user_binding", "id,player_id,selected_at,selection_reason");
     QSqlQuery q(database);
     auto object = [&](const QString &name, const QString &type, const QString &table) {
         q.prepare("SELECT 1 FROM sqlite_master WHERE name=? AND type=? AND tbl_name=?");
@@ -47,17 +48,23 @@ bool validCurrentSchema(const QSqlDatabase &database)
             || !q.exec("SELECT "+it.value()+" FROM \""+it.key()+"\" LIMIT 0")) return false;
         q.finish();
     }
-    const QMap<QString, QString> guards{
+    QMap<QString, QString> guards{
         {"player_identity_immutable","player_profiles"}, {"player_identity_retained","player_profiles"},
         {"player_name_insert","player_profiles"}, {"player_name_update","player_profiles"},
         {"game_owner_required","game_runs"}, {"game_owner_immutable","game_runs"},
         {"game_name_snapshot_immutable","game_runs"},
         {"checkpoint_identity_immutable","session_checkpoints"}, {"checkpoint_retained","session_checkpoints"}
     };
+    if (withLocalUser) {
+        guards.insert("local_user_insert_once","local_user_binding");
+        guards.insert("local_user_immutable","local_user_binding");
+        guards.insert("local_user_retained","local_user_binding");
+        guards.insert("local_user_profile_retained","player_profiles");
+    }
     for (auto it=guards.cbegin(); it!=guards.cend(); ++it)
         if (!object(it.key(),"trigger",it.value())) return false;
     if (!object("player_name_conflicts","view","player_name_conflicts")) return false;
-    const QMap<QString, QString> references{
+    QMap<QString, QString> references{
         {"history","player_id:player_profiles:id"}, {"ranking_records","player_id:player_profiles:id"},
         {"game_runs","player_id:player_profiles:id"},
         {"session_checkpoints","player_id:player_profiles:id"},
@@ -65,6 +72,7 @@ bool validCurrentSchema(const QSqlDatabase &database)
         {"player_name_migration","player_id:player_profiles:id"},
         {"legacy_history_results","player_id:player_profiles:id"}
     };
+    if (withLocalUser) references.insert("local_user_binding","player_id:player_profiles:id");
     for (auto it=references.cbegin(); it!=references.cend(); ++it) {
         if (!q.exec("PRAGMA foreign_key_list(\""+it.key()+"\")")) return false;
         bool found=false;
@@ -75,7 +83,22 @@ bool validCurrentSchema(const QSqlDatabase &database)
     // actual relation without rebuilding the table or rewriting legacy rows.
     if (!q.exec("SELECT 1 FROM answer_records a LEFT JOIN game_runs g ON g.id=a.game_id WHERE g.id IS NULL LIMIT 1")) return false;
     const bool orphan=q.next(); q.finish();
-    return !orphan;
+    if (orphan) return false;
+    if (withLocalUser) {
+        if (!q.exec("SELECT 1 FROM local_user_binding b LEFT JOIN player_profiles p ON p.id=b.player_id WHERE b.id<>1 OR p.id IS NULL OR p.origin<>'profile' OR p.deleted_at IS NOT NULL LIMIT 1")) return false;
+        if (q.next()) return false;
+    }
+    return true;
+}
+
+bool migrateLocalUser(const QSqlDatabase &database)
+{
+    QSqlQuery q(database);
+    return q.exec("CREATE TABLE IF NOT EXISTS local_user_binding(id INTEGER PRIMARY KEY CHECK(id=1),player_id TEXT NOT NULL UNIQUE REFERENCES player_profiles(id),selected_at TEXT NOT NULL,selection_reason TEXT NOT NULL CHECK(selection_reason IN ('new_installation','single_existing','explicit_transition')))")
+        && q.exec("CREATE TRIGGER IF NOT EXISTS local_user_insert_once BEFORE INSERT ON local_user_binding WHEN EXISTS(SELECT 1 FROM local_user_binding) OR NOT EXISTS(SELECT 1 FROM player_profiles WHERE id=NEW.player_id AND origin='profile' AND deleted_at IS NULL) BEGIN SELECT RAISE(ABORT,'local user binding is permanent and requires an active identity'); END")
+        && q.exec("CREATE TRIGGER IF NOT EXISTS local_user_immutable BEFORE UPDATE ON local_user_binding BEGIN SELECT RAISE(ABORT,'local user binding is immutable'); END")
+        && q.exec("CREATE TRIGGER IF NOT EXISTS local_user_retained BEFORE DELETE ON local_user_binding BEGIN SELECT RAISE(ABORT,'retain local user binding'); END")
+        && q.exec("CREATE TRIGGER IF NOT EXISTS local_user_profile_retained BEFORE UPDATE OF origin,deleted_at ON player_profiles WHEN OLD.id=(SELECT player_id FROM local_user_binding WHERE id=1) AND (NEW.origin<>'profile' OR NEW.deleted_at IS NOT NULL) BEGIN SELECT RAISE(ABORT,'retain active local identity'); END");
 }
 
 QString answerSnapshot(const AnswerRecord &answer)
@@ -196,15 +219,15 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 6) { database_.close(); return; }
+    if (version > 7) { database_.close(); return; }
     if (version < 0) { database_.close(); return; }
-    if (version == 6) {
-        if (!validCurrentSchema(database_) || !validatePlayerNames(database_)
+    if (version >= 6) {
+        if (!validCurrentSchema(database_, version == 7) || !validatePlayerNames(database_)
             || !query.exec("PRAGMA foreign_key_check") || query.next()) {
             qWarning() << "Incompatible or incomplete player database; original retained";
-            database_.close();
+            database_.close(); return;
         }
-        return;
+        if (version == 7) return;
     }
     if (!database_.transaction()) { database_.close(); return; }
     auto exec = [&](const QString &sql) { return query.exec(sql); };
@@ -266,13 +289,13 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         if (ok) ok = migratePlayerIdentity(database_);
     }
     if (ok && version<5) ok = migratePlayerNames(database_);
-    if (ok) ok = validatePlayerNames(database_) && migrateSessionCheckpoints(database_) && validCurrentSchema(database_);
+    if (ok) ok = validatePlayerNames(database_) && (version>=6 || migrateSessionCheckpoints(database_)) && validCurrentSchema(database_) && migrateLocalUser(database_) && validCurrentSchema(database_,true);
     if (ok) {
         ok = exec("PRAGMA foreign_key_check");
         if (query.next()) ok = false;
         query.finish();
     }
-    ok = ok && exec("PRAGMA user_version=6");
+    ok = ok && exec("PRAGMA user_version=7");
     if (!ok || !database_.commit()) {
         qWarning() << "Não foi possível migrar o histórico:" << query.lastError().text() << database_.lastError().text();
         database_.rollback(); database_.close();
@@ -563,4 +586,49 @@ int SqliteGameHistoryRepository::unresolvedLegacyPlayers() const
     if (!database_.isOpen()) return 0;
     QSqlQuery q(database_);
     return q.exec("SELECT COUNT(*) FROM player_profiles WHERE origin='legacy_unresolved'") && q.next() ? q.value(0).toInt() : 0;
+}
+
+PlayerProfile SqliteGameHistoryRepository::localUser() const
+{
+    if (!database_.isOpen()) return {};
+    QSqlQuery q(database_);
+    if (!q.exec("SELECT player_id FROM local_user_binding WHERE id=1") || !q.next()) return {};
+    return player(q.value(0).toString());
+}
+
+bool SqliteGameHistoryRepository::localUserChoiceRequired() const
+{
+    return database_.isOpen() && localUser().id.isEmpty() && profiles().size()>1;
+}
+
+bool SqliteGameHistoryRepository::initializeLocalUser()
+{
+    if (!database_.isOpen()) return false;
+    QSqlQuery q(database_);
+    if (!q.exec("BEGIN IMMEDIATE")) return false;
+    const auto existing=localUser();
+    if (!existing.id.isEmpty()) { database_.rollback(); return existing.selectable(); }
+    const auto candidates=profiles();
+    if (candidates.size()>1) { database_.rollback(); return false; }
+    const auto chosen=candidates.isEmpty() ? createPlayer(QStringLiteral("Jogador 1")) : candidates.first();
+    if (!chosen.selectable()) { database_.rollback(); return false; }
+    q.prepare("INSERT INTO local_user_binding VALUES(1,?,?,?)");
+    q.addBindValue(chosen.id); q.addBindValue(QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs));
+    q.addBindValue(candidates.isEmpty() ? "new_installation" : "single_existing");
+    if (!q.exec() || !database_.commit()) { database_.rollback(); return false; }
+    return true;
+}
+
+bool SqliteGameHistoryRepository::chooseLocalUser(const QString &id)
+{
+    if (!database_.isOpen()) return false;
+    QSqlQuery q(database_);
+    if (!q.exec("BEGIN IMMEDIATE")) return false;
+    const auto existing=localUser();
+    if (!existing.id.isEmpty()) { database_.rollback(); return existing.selectable() && existing.id==id; }
+    if (!player(id).selectable()) { database_.rollback(); return false; }
+    q.prepare("INSERT INTO local_user_binding VALUES(1,?,?,'explicit_transition')");
+    q.addBindValue(id); q.addBindValue(QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs));
+    if (!q.exec() || !database_.commit()) { database_.rollback(); return false; }
+    return true;
 }

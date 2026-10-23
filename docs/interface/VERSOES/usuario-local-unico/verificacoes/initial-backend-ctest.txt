@@ -1,0 +1,21 @@
+Test project C:/glossata_game/build/single-local-user
+    Start  1: GlossataTests
+1/3 Test  #1: GlossataTests ....................***Failed   28.53 sec
+
+    Start 20: GlossataPlayerIdentityTests
+2/3 Test #20: GlossataPlayerIdentityTests ......   Passed    2.92 sec
+    Start 21: GlossataSessionRecoveryTests
+3/3 Test #21: GlossataSessionRecoveryTests .....   Passed   14.09 sec
+
+67% tests passed, 1 tests failed out of 3
+
+Total Test time (real) =  45.55 sec
+
+The following tests FAILED:
+	  1 - GlossataTests (Failed)
+ctest : Errors while running CTest
+No linha:2 caractere:199
++ ... EXITCODE }; ctest --test-dir build/single-local-user -R '^(GlossataTe ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Errors while running CTest:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError

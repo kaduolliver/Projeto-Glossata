@@ -25,6 +25,12 @@ public:
     bool renamePlayer(const QString &id, const QString &name) override;
     bool deletePlayer(const QString &id) override;
     int unresolvedLegacyPlayers() const;
+    // Installation binding is separate from historical identities and never reassigns results.
+    bool initializeLocalUser();
+    bool chooseLocalUser(const QString &id);
+    PlayerProfile localUser() const;
+    bool localUserChoiceRequired() const;
+
     bool writeCheckpoint(const QJsonObject &, qint64 expectedRevision, qint64 &revision) override;
     QVector<SessionCheckpoint> recoverableSessions() const override;
     SessionCheckpoint checkpoint(const QString &id) const override;

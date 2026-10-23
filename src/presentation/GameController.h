@@ -21,12 +21,13 @@ class GameController : public QObject {
     Q_PROPERTY(QString extraHint READ extraHint NOTIFY extraHintChanged)
     Q_PROPERTY(bool hintRevealed READ hintRevealed NOTIFY extraHintChanged)
     Q_PROPERTY(QStringList answerOptions READ answerOptions NOTIFY answerOptionsChanged)
-    Q_PROPERTY(QStringList playerProfiles READ playerProfiles NOTIFY playerProfilesChanged)
-    Q_PROPERTY(QVariantList playerProfileItems READ playerProfileItems NOTIFY playerProfilesChanged)
+    Q_PROPERTY(bool localUserReady READ localUserReady NOTIFY localUserChanged)
+    Q_PROPERTY(bool localUserChoiceRequired READ localUserChoiceRequired NOTIFY localUserChanged)
+    Q_PROPERTY(QVariantList localUserCandidates READ localUserCandidates NOTIFY localUserChanged)
+    Q_PROPERTY(QString localUserError READ localUserError NOTIFY localUserChanged)
     Q_PROPERTY(QString currentPlayerId READ currentPlayerId NOTIFY currentPlayerNameChanged)
     Q_PROPERTY(QString sessionPlayerId READ sessionPlayerId NOTIFY gameFinishedChanged)
-    Q_PROPERTY(QString identityNotice READ identityNotice NOTIFY rankingChanged)
-    Q_PROPERTY(QString currentPlayerName READ currentPlayerName WRITE setCurrentPlayerName NOTIFY currentPlayerNameChanged)
+    Q_PROPERTY(QString currentPlayerName READ currentPlayerName NOTIFY currentPlayerNameChanged)
     Q_PROPERTY(QString sessionPlayerName READ sessionPlayerName NOTIFY gameFinishedChanged)
     Q_PROPERTY(bool resultPending READ resultPending NOTIFY resultPendingChanged)
     Q_PROPERTY(QVariantList recoverableSessions READ recoverableSessions NOTIFY recoveryChanged)
@@ -40,7 +41,6 @@ class GameController : public QObject {
     Q_PROPERTY(int round READ round NOTIFY roundChanged)
     Q_PROPERTY(bool gameFinished READ gameFinished NOTIFY gameFinishedChanged)
     Q_PROPERTY(QString feedbackText READ feedbackText NOTIFY feedbackTextChanged)
-    Q_PROPERTY(QVariantList ranking READ ranking NOTIFY rankingChanged)
     Q_PROPERTY(QString rankingMode READ rankingMode WRITE setRankingMode NOTIFY rankingChanged)
     Q_PROPERTY(QVariantMap personalRecord READ personalRecord NOTIFY rankingChanged)
     Q_PROPERTY(QVariantMap sessionMetrics READ sessionMetrics NOTIFY scoreChanged)
@@ -93,18 +93,18 @@ public:
     QString extraHint() const;
     bool hintRevealed() const;
     QStringList answerOptions() const;
-    QStringList playerProfiles() const;
-    QVariantList playerProfileItems() const;
+    bool localUserReady() const { return !currentPlayerId_.isEmpty(); }
+    bool localUserChoiceRequired() const { return historyRepository_.localUserChoiceRequired(); }
+    QVariantList localUserCandidates() const;
+    QString localUserError() const;
     QString currentPlayerId() const { return currentPlayerId_; }
     QString sessionPlayerId() const { return service_.sessionPlayer().id; }
-    QString identityNotice() const;
     QString currentPlayerName() const;
     QString sessionPlayerName() const { return service_.sessionPlayer().displayName; }
     bool resultPending() const { return resultPending_; }
     QVariantList recoverableSessions() const;
     QString progressError() const { return service_.checkpointError(); }
     bool canRetryCheckpoint() const { return service_.hasCheckpoint(); }
-    void setCurrentPlayerName(const QString &name);
     qint64 scoreUnits() const;
     QString scoreText() const { return formatScore(scoreUnits()); }
     int correctAnswers() const { return service_.correctAnswers(); }
@@ -178,13 +178,12 @@ public slots:
     bool abandonSession(const QString &id);
     bool prepareToClose();
     void retryCheckpoint();
-    bool addPlayerProfile(const QString &name);
-    void selectPlayerProfile(const QString &id);
+    bool chooseLocalUser(const QString &id);
     bool renameCurrentPlayerProfile(const QString &name);
-    bool deleteCurrentPlayerProfile();
     void loadRanking();
 
 signals:
+    void localUserChanged();
     void exploreQueryChanged();
     void exploreDomainChanged();
     void exploreRankChanged();
@@ -194,7 +193,6 @@ signals:
     void factTextChanged();
     void extraHintChanged();
     void answerOptionsChanged();
-    void playerProfilesChanged();
     void currentPlayerNameChanged();
     void scoreChanged();
     void roundChanged();

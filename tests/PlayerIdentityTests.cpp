@@ -46,6 +46,9 @@ QStringList schema(const QSqlDatabase &db)
 class PlayerIdentityTests : public QObject {
     Q_OBJECT
 private slots:
+    void localUserFirstOpenAndStableBinding();
+    void localUserSchema6PreservesSingleProfile();
+    void localUserExplicitChoiceAndGuards();
     void createRenameReopenAndKeepOwnership();
     void retireAndReuseNameWithoutInheritingResults();
     void sameGameCannotChangeOwner();
@@ -68,6 +71,48 @@ private slots:
     void incompleteCurrentSchemaFailsClosed();
     void incompleteV5MigrationRollsBackAndKeepsResults();
 };
+
+void PlayerIdentityTests::localUserFirstOpenAndStableBinding()
+{
+    QTemporaryDir dir;const auto path=dir.filePath("new-local.sqlite");QString id;
+    { SqliteGameHistoryRepository repo(path);QVERIFY(repo.initializeLocalUser());id=repo.localUser().id;
+      QVERIFY(!QUuid(id).isNull());QCOMPARE(repo.profiles().size(),1);QVERIFY(repo.saveResult(repo.localUser().identity(),12,2));
+      QVERIFY(repo.renamePlayer(id,"Meu nome"));QVERIFY(repo.initializeLocalUser());QCOMPARE(repo.localUser().id,id); }
+    SqliteGameHistoryRepository repo(path);QVERIFY(repo.initializeLocalUser());QCOMPARE(repo.localUser().id,id);
+    QCOMPARE(repo.localUser().displayName,QString("Meu nome"));QCOMPARE(repo.loadPlayerResult("free",id).first().scoreUnits,qint64(12));
+    Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("PRAGMA foreign_key_check"));QVERIFY(!q.next());
+    QVERIFY(q.exec("SELECT selection_reason FROM local_user_binding"));QVERIFY(q.next());QCOMPARE(q.value(0).toString(),QString("new_installation"));
+}
+
+void PlayerIdentityTests::localUserSchema6PreservesSingleProfile()
+{
+    QTemporaryDir dir;const auto path=dir.filePath("old-single.sqlite");QString id;
+    {SqliteGameHistoryRepository repo(path);auto p=repo.createPlayer("Ada");id=p.id;QVERIFY(repo.saveResult(p.identity(),18,3,{},"original-game"));}
+    {Inspection i(path);QSqlQuery q(i.db);
+     for(const auto &sql:QStringList{"DROP TRIGGER local_user_insert_once","DROP TRIGGER local_user_immutable","DROP TRIGGER local_user_retained","DROP TRIGGER local_user_profile_retained","DROP TABLE local_user_binding","PRAGMA user_version=6"})QVERIFY(q.exec(sql));}
+    SqliteGameHistoryRepository repo(path);QVERIFY(repo.initializeLocalUser());QCOMPARE(repo.localUser().id,id);
+    QCOMPARE(repo.loadPlayerResult("free",id).first().scoreUnits,qint64(18));
+    Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("SELECT player_id,score_units FROM game_runs WHERE id='original-game'"));QVERIFY(q.next());
+    QCOMPARE(q.value(0).toString(),id);QCOMPARE(q.value(1).toInt(),18);q.finish();
+    QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),7);
+}
+
+void PlayerIdentityTests::localUserExplicitChoiceAndGuards()
+{
+    QTemporaryDir dir;const auto path=dir.filePath("choice.sqlite");QVERIFY(seedV3(path));QString selected,other,legacy;
+    {SqliteGameHistoryRepository repo(path);selected=repo.profileNamed("Ada").id;other=repo.createPlayer("Bia").id;
+     legacy=repo.loadRanking("free").first().playerId;QVERIFY(repo.localUserChoiceRequired());QVERIFY(!repo.initializeLocalUser());
+     QVERIFY(repo.localUser().id.isEmpty());QVERIFY(!repo.chooseLocalUser(legacy));QVERIFY(!repo.chooseLocalUser("unknown"));
+     SqliteGameHistoryRepository simultaneous(path);QVERIFY(repo.chooseLocalUser(selected));QVERIFY(!simultaneous.chooseLocalUser(other));
+     QVERIFY(repo.chooseLocalUser(selected));QVERIFY(!repo.deletePlayer(selected));
+     QVERIFY(repo.loadPlayerResult("free",selected).isEmpty());QCOMPARE(repo.loadPlayerResult("free",legacy).first().scoreUnits,qint64(12));}
+    SqliteGameHistoryRepository reopened(path);QVERIFY(reopened.initializeLocalUser());QCOMPARE(reopened.localUser().id,selected);
+    QVERIFY(!reopened.localUserChoiceRequired());QCOMPARE(reopened.profiles().size(),2);
+    Inspection i(path);QSqlQuery q(i.db);QVERIFY(!q.exec("DELETE FROM local_user_binding"));
+    q.prepare("UPDATE local_user_binding SET player_id=?");q.addBindValue(other);QVERIFY(!q.exec());
+    q.prepare("INSERT OR REPLACE INTO local_user_binding VALUES(1,?,'unchanged','explicit_transition')");q.addBindValue(other);QVERIFY(!q.exec());
+    QCOMPARE(reopened.localUser().id,selected);QVERIFY(q.exec("PRAGMA foreign_key_check"));QVERIFY(!q.next());
+}
 
 void PlayerIdentityTests::createRenameReopenAndKeepOwnership()
 {
@@ -160,7 +205,7 @@ void PlayerIdentityTests::migrateV3PreservesUnresolvedRecordsAndSnapshots()
     QCOMPARE(repo.loadAnswers("old-run").first().awardedUnits,6);
     QVERIFY(!repo.saveResult(repo.player(result.playerId).identity(),6,1));
     Inspection inspection(path); QSqlQuery q(inspection.db);
-    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),6);
+    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),7);
     QVERIFY(q.exec("SELECT player_name,score_units,correct_answers,played_at FROM legacy_history_v3")); QVERIFY(q.next());
     QCOMPARE(q.value(0).toString(),QString("Ada")); QCOMPARE(q.value(1).toInt(),6);
     QVERIFY(q.exec("SELECT best_units,last_units FROM legacy_ranking_records_v3")); QVERIFY(q.next());
@@ -412,6 +457,7 @@ void PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed()
 void PlayerIdentityTests::incompleteCurrentSchemaFailsClosed_data()
 {
     QTest::addColumn<QString>("damage");
+    QTest::newRow("missing-local-binding-guard") << QString("DROP TRIGGER local_user_immutable");
     QTest::newRow("missing-name-guard") << QString("DROP TRIGGER player_name_insert");
     QTest::newRow("missing-checkpoint-guard") << QString("DROP TRIGGER checkpoint_identity_immutable");
     QTest::newRow("missing-checkpoint-table") << QString("DROP TABLE session_checkpoints");

@@ -68,11 +68,12 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void singleLocalUserSettingsRecordsAndCaptures();
     void statisticsLiveHintsAndRecovery();
-    void statisticsStableColorsAndPodium();
+    void statisticsStableTaxonomicColors();
     void statisticsTopPanelsAndSharedScrolling();
     void statisticsContextsAndConfirmedMetrics();
-    void statisticsResponsiveRankingAndCaptures();
+    void personalCompetitiveConfigurationStaysSeparate();
     void restoredQuizHintsCountersAndStablePortrait();
     void restoredQuizRecoveryAndUnavailableStates();
     void speciesDescriptionStaysIndependentOfMorphology();
@@ -97,12 +98,61 @@ private slots:
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
 
+void QmlInterfaceTests::singleLocalUserSettingsRecordsAndCaptures()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;const auto path=dir.filePath("transition-ui.sqlite");QString owner,other;
+    {SqliteGameHistoryRepository repo(path);auto a=repo.createPlayer("Ada"),b=repo.createPlayer("Bia");owner=a.id;other=b.id;
+     QVERIFY(repo.saveResult(a.identity(),6,1));QVERIFY(repo.saveResult(b.identity(),60,10));}
+    GameController controller(nullptr,path);QVERIFY(controller.localUserChoiceRequired());QVERIFY(controller.currentPlayerId().isEmpty());
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(150);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(80);return true;};
+    auto dialog=window->findChild<QObject*>("localUserTransition");QVERIFY(dialog);QVERIFY(dialog->property("visible").toBool());
+    QVERIFY(!item("confirmLocalUser")->isEnabled());QTest::keyClick(window,Qt::Key_Escape);QVERIFY(dialog->property("visible").toBool());
+    const QString folder="previews/single-local-user/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const auto capture=[&](const QString &state){QTest::qWait(100);auto image=window->grabWindow();auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"temporary_database",true},{"state",state}});return true;};
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);QTest::qWait(80);QVERIFY(capture("transition"));}
+    QVERIFY(activate("transitionChoice-"+owner));QVERIFY(activate("confirmLocalUser"));QVERIFY(controller.localUserReady());QVERIFY(!dialog->property("visible").toBool());
+    QCOMPARE(controller.currentPlayerId(),owner);QVERIFY(!controller.chooseLocalUser(other));QVERIFY(controller.localUserCandidates().isEmpty());
+    QCOMPARE(controller.personalRecord()["scoreUnits"].toLongLong(),qint64(6));
+    QVERIFY(controller.metaObject()->indexOfMethod("addPlayerProfile(QString)")<0);QVERIFY(controller.metaObject()->indexOfMethod("selectPlayerProfile(QString)")<0);
+    QVERIFY(controller.metaObject()->indexOfMethod("deleteCurrentPlayerProfile()")<0);QVERIFY(controller.metaObject()->indexOfProperty("recordHistory")<0);
+    window->setProperty("page","settings");QTest::qWait(100);QVERIFY(!item("playerSelector"));
+    item("profileNameField")->setProperty("text","Meu nome");QVERIFY(activate("renameLocalUserButton"));QCOMPARE(controller.currentPlayerName(),QString("Meu nome"));QCOMPARE(controller.currentPlayerId(),owner);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);item("pageScroll")->setProperty("contentY",0);QTest::qWait(80);QVERIFY(capture("my-profile"));}
+    QVERIFY(controller.startTaxonGame({},"genus"));JsonSpeciesCatalog catalog;
+    for(int i=0;i<2;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);controller.nextQuestion();}
+    controller.stopGame();QCOMPARE(controller.playerMetrics()["answered"].toInt(),2);QCOMPARE(controller.personalRecord()["scoreUnits"].toLongLong(),qint64(12));
+    const auto personal=controller.personalRecord(),metrics=controller.playerMetrics(),session=controller.sessionMetrics();
+    window->setProperty("page","statistics");QTest::qWait(100);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
+        window->resize(size);window->setProperty("statisticsPresentation",QVariantMap{{"panel","ranking"}});QTest::qWait(70);item("pageScroll")->setProperty("contentY",0);QTest::qWait(70);
+        QVERIFY(!item("recordHistoryButton"));QVERIFY(!item("recordHistoryNext"));QVERIFY(!item("statisticsRank0"));
+        QVERIFY(item("statisticsPersonalRecordCard")->isVisible());QVERIFY(capture("personal-free"));
+        auto button=item("freeRankingButton");button->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("competitiveRankingButton")->hasActiveFocus());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(70);
+        QCOMPARE(controller.rankingMode(),QString("competitive"));QVERIFY(controller.personalRecord().isEmpty());QVERIFY(item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("personal-competitive-empty"));
+        QTest::keyClick(window,Qt::Key_Backtab,Qt::ShiftModifier);QTRY_VERIFY(item("freeRankingButton")->hasActiveFocus());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(70);
+        QCOMPARE(controller.personalRecord(),personal);QCOMPARE(controller.playerMetrics(),metrics);QCOMPARE(controller.sessionMetrics(),session);
+        if(item("statisticsView")->property("sideBySide").toBool())QVERIFY(qAbs(item("statisticsRankingPanel")->y()-item("statisticsTaxonomyPanel")->y())<1);
+        const auto point=item("statisticsRankingPanel")->mapToItem(window->contentItem(),QPointF());QVERIFY(point.x()>=0);QVERIFY(point.x()+item("statisticsRankingPanel")->width()<=window->width()+1);
+    }
+    GameController reopened(nullptr,path);QCOMPARE(reopened.currentPlayerId(),owner);QCOMPARE(reopened.currentPlayerName(),QString("Meu nome"));QVERIFY(!reopened.localUserChoiceRequired());QCOMPARE(reopened.personalRecord(),personal);
+    SqliteGameHistoryRepository repo(path);QCOMPARE(repo.loadPlayerResult("free",other).first().scoreUnits,qint64(60));QCOMPARE(repo.profiles().size(),2);
+    QFile manifest(folder+"/frames.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
 void QmlInterfaceTests::statisticsLiveHintsAndRecovery()
 {
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
     QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("live-hints.sqlite");
-    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Dicas em andamento"));
+    GameController controller(nullptr,path); QVERIFY(controller.renameCurrentPlayerProfile("Dicas em andamento"));
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
     engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
@@ -211,218 +261,45 @@ void QmlInterfaceTests::statisticsLiveHintsAndRecovery()
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
-void QmlInterfaceTests::statisticsStableColorsAndPodium()
+void QmlInterfaceTests::statisticsStableTaxonomicColors()
 {
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
-    QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("statistics-colors.sqlite");
-    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Cores de desempenho"));
-    // Only temporary local players/results, through the existing repository contract.
-    {SqliteGameHistoryRepository history(path);for(int i=0;i<5;++i){auto p=history.createPlayer("Participante "+QString::number(i+1));QVERIFY(history.saveResult(p.identity(),300-i*12,50-i*2));}}
-    controller.loadRanking(); QCOMPARE(controller.ranking().size(),5);
-    QVERIFY(controller.startTaxonGame({},"genus")); JsonSpeciesCatalog catalog; const auto organisms=catalog.loadCurrentSpecies();
-    for(int i=0;i<40;++i){QString answer;for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(i%4?answer:controller.answerOptions()[(controller.answerOptions().indexOf(answer)+1)%4]);controller.nextQuestion();}
-    controller.stopGame(); const auto groups=controller.categoryStats(), ranking=controller.ranking(); const auto official=controller.sessionMetrics();
-    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
+    QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
-    window->setProperty("sessionStarted",true);window->setProperty("page","statistics");QTest::qWait(100);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
-    QMap<QString,QColor> colors; QSet<QRgb> distinct;
-    for(const auto &row:groups){
-        const auto g=row.toMap();const auto id=g["id"].toString();auto bar=item("statisticsTaxonBar-"+id);QVERIFY(bar);
-        const auto color=bar->property("accent").value<QColor>();colors[id]=color;distinct.insert(color.rgb());
-        QVERIFY(colorContrast(color,QColor("#18343C"))>=4.5);QCOMPARE(bar->property("ratio").toReal(),double(g["correct"].toInt())/g["answered"].toInt());
-        for(const auto &sub:g["phyla"].toList()){
-            const auto p=sub.toMap();auto child=item("statisticsSubtaxonBar-"+p["id"].toString());QVERIFY(child);
-            const auto variation=child->property("accent").value<QColor>();QVERIFY(variation!=color);QVERIFY(colorContrast(variation,QColor("#18343C"))>=4.5);
-            QVERIFY(qAbs(variation.red()-color.red())<=25&&qAbs(variation.green()-color.green())<=25&&qAbs(variation.blue()-color.blue())<=25);
-            QCOMPARE(child->property("ratio").toReal(),double(p["correct"].toInt())/p["answered"].toInt());
-        }
-    }
-    QVERIFY(groups.size()>=6);QCOMPARE(distinct.size(),groups.size());
-    auto view=item("statisticsView"); const auto liveBackend=view->property("backend");
-    QVariantMap fixture{{"sessionMetrics",official},{"playerMetrics",controller.playerMetrics()},{"rankingMode","free"},{"answeredCount",controller.answeredCount()},{"correctAnswers",controller.correctAnswers()},{"gameFinished",true},{"gameMode","free"},{"currentPlayerName",controller.currentPlayerName()},{"sessionPlayerName",controller.sessionPlayerName()},{"identityNotice",controller.identityNotice()},{"competitiveQuestionCount",20},{"personalRecord",controller.personalRecord()},{"ranking",ranking}};
-    auto reordered=groups;std::reverse(reordered.begin(),reordered.end());
-    auto fallback=groups.first().toMap();fallback["id"]="test:unmapped-stable-color";fallback["phyla"]=QVariantList{};reordered.prepend(fallback);
-    fixture["taxonomicStats"]=reordered;view->setProperty("backend",fixture);QTest::qWait(70);
-    const auto fallbackColor=item("statisticsTaxonBar-test:unmapped-stable-color")->property("accent");
+    QVERIFY(controller.startTaxonGame({},"genus"));JsonSpeciesCatalog catalog;
+    for(int i=0;i<12;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");controller.answerSelected(answer);controller.nextQuestion();}
+    controller.stopGame();window->setProperty("page","statistics");QTest::qWait(100);
+    QMap<QString,QColor> colors;
+    for(const auto &g:controller.categoryStats()){auto id=g.toMap()["id"].toString();auto bar=item("statisticsTaxonBar-"+id);QVERIFY(bar);colors[id]=bar->property("accent").value<QColor>();}
+    QVERIFY(!colors.isEmpty());controller.setRankingMode("competitive");controller.setRankingMode("free");QTest::qWait(70);
     for(auto it=colors.cbegin();it!=colors.cend();++it)QCOMPARE(item("statisticsTaxonBar-"+it.key())->property("accent").value<QColor>(),it.value());
-    std::reverse(reordered.begin(),reordered.end());fixture["taxonomicStats"]=reordered;view->setProperty("backend",fixture);QTest::qWait(70);
-    QCOMPARE(item("statisticsTaxonBar-test:unmapped-stable-color")->property("accent"),fallbackColor);
-    for(auto it=colors.cbegin();it!=colors.cend();++it)QCOMPARE(item("statisticsTaxonBar-"+it.key())->property("accent").value<QColor>(),it.value());
-    view->setProperty("backend",liveBackend);QTest::qWait(80);
-    const QString folder="previews/statistics-colors-hints-2.3.2/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
-    const auto capture=[&](const QString &state){QTest::qWait(120);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;QJsonObject mapped;for(auto it=colors.cbegin();it!=colors.cend();++it)mapped[it.key()]=it.value().name();frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"scrollY",item("pageScroll")->property("contentY").toReal()},{"session",QJsonObject::fromVariantMap(official)},{"groupColors",mapped},{"ranking",QJsonArray::fromVariantList(ranking)}});return true;};
-    const QList<QColor> podium{QColor("#E2C477"),QColor("#C6D0DA"),QColor("#D6A27B"),QColor("#45646A"),QColor("#45646A")};
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
-        window->resize(size);window->setProperty("statisticsPresentation",QVariantMap{{"panel","taxonomy"}});QTest::qWait(90);
-        item("statisticsView")->forceActiveFocus();item("pageScroll")->setProperty("contentY",0);QTest::qWait(50);QVERIFY(capture("taxonomy-colors"));
-        window->setProperty("statisticsPresentation",QVariantMap{{"panel","ranking"}});QTest::qWait(80);
-        item("freeRankingButton")->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(80);QVERIFY(capture("ranking-podium"));
-        for(int i=0;i<5;++i){
-            item("freeRankingButton")->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(50);
-            auto row=item("statisticsRank"+QString::number(i)),border=item("statisticsRankBorder"+QString::number(i));QVERIFY(row&&border);
-            QCOMPARE(QQmlProperty(border,"border.color").read().value<QColor>(),podium[i]);
-            QCOMPARE(item("statisticsRankPosition"+QString::number(i))->property("color").value<QColor>(),i<3?podium[i]:QColor("#B4C9CA"));
-            if(i<3)QVERIFY(colorContrast(podium[i],border->property("color").value<QColor>())>=4.5);
-            row->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(80);QVERIFY(row->hasActiveFocus());
-            QCOMPARE(QQmlProperty(border,"border.color").read().value<QColor>(),QColor("#F1D58B"));
-            QCOMPARE(QQmlProperty(border,"border.width").read().toInt(),2);
-            if(i==1)QVERIFY(capture("ranking-keyboard-focus"));
-            QTest::keyClick(window,Qt::Key_Tab);QTest::qWait(50);if(i<4)QVERIFY(item("statisticsRank"+QString::number(i+1))->hasActiveFocus());
-            QCOMPARE(QQmlProperty(border,"border.color").read().value<QColor>(),podium[i]);
-        }
-    }
-    QCOMPARE(controller.categoryStats(),groups);QCOMPARE(controller.ranking(),ranking);QCOMPARE(controller.sessionMetrics(),official);
-    QFile manifest(folder+"/color-frames.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
-    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+    QVERIFY(!item("statisticsRankPosition0"));QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
 void QmlInterfaceTests::statisticsTopPanelsAndSharedScrolling()
 {
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
-    QTemporaryDir dir; QVERIFY(dir.isValid()); GameController controller(nullptr,dir.filePath("statistics-top.sqlite"));
-    QVERIFY(controller.addPlayerProfile("Teste de navegação"));
-    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("gameController",&controller);
-    engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
-    window->setProperty("page","statistics"); QTest::qWait(100);
+    QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
-    auto viewport=item("pageScroll"), bar=item("pageScrollBar"); QVERIFY(viewport&&bar);
-    auto handler=window->findChild<QObject *>("pageWheelArea"); QVERIFY(handler&&handler->property("enabled").toBool());
-    const auto activate=[&](const QString &name,bool mouse=false){
-        auto c=item(name); if(!c||!c->isVisible()||!c->isEnabled())return false;
-        c->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(50);
-        if(mouse)QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,c->mapToScene(c->boundingRect().center()).toPoint());
-        else QTest::keyClick(window,Qt::Key_Space);
-        QTest::qWait(80);return true;
-    };
-    const auto select=[&](const QString &panel){
-        if(item("statisticsView")->property("sideBySide").toBool())return true;
-        const auto name=panel=="ranking"?"statisticsRankingTab":"statisticsTaxonomyTab";
-        return activate(name)&&item(name)->property("checked").toBool();
-    };
-    const auto resetScroll=[&](qreal y){
-        window->contentItem()->forceActiveFocus();QTest::qWait(30);
-        QMetaObject::invokeMethod(viewport,"cancelFlick");viewport->setProperty("contentY",y);QTest::qWait(30);
-    };
-    const auto inside=[&](QQuickItem *c){const auto r=c->mapRectToItem(viewport,c->boundingRect());return r.left()>=0&&r.right()<=viewport->width()&&r.top()>=0&&r.bottom()<=viewport->height();};
-    const QString folder="previews/statistics-top-2.3.2/"+QString::number(qRound(window->devicePixelRatio()*100));
-    QVERIFY(QDir().mkpath(folder));QJsonArray frames;
-    const auto capture=[&](const QString &state){
-        QTest::qWait(120);const auto image=window->grabWindow();const auto name=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";
-        if(!image.save(folder+"/"+name))return false;
-        frames.append(QJsonObject{{"file",name},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},
-            {"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},
-            {"scrollY",viewport->property("contentY").toReal()},{"selectedPanel",item("statisticsView")->property("selectedPanel").toString()},
-            {"sideBySide",item("statisticsView")->property("sideBySide").toBool()},{"rankingMode",controller.rankingMode()},
-            {"session",QJsonObject::fromVariantMap(controller.sessionMetrics())},{"history",QJsonObject::fromVariantMap(controller.playerMetrics())},
-            {"taxonomyGroups",controller.categoryStats().size()},{"rankingRows",controller.ranking().size()}});return true;
-    };
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
-        window->resize(size);QTest::qWait(80);QVERIFY(select("taxonomy"));resetScroll(0);QVERIFY(capture("empty-taxonomy"));
-        QVERIFY(item("statisticsTaxonomyEmpty")->isVisible());QVERIFY(select("ranking"));resetScroll(0);
-        QVERIFY(item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("empty-ranking"));
+    window->setProperty("page","statistics");QTest::qWait(80);auto scroll=item("pageScroll");QVERIFY(scroll);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
+        window->resize(size);QTest::qWait(80);scroll->setProperty("contentY",0);
+        if(item("statisticsView")->property("sideBySide").toBool())QVERIFY(qAbs(item("statisticsRankingPanel")->y()-item("statisticsTaxonomyPanel")->y())<1);
+        else {auto button=item("statisticsRankingTab");button->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(70);QVERIFY(item("statisticsRankingPanel")->isVisible());QVERIFY(!item("statisticsTaxonomyPanel")->isVisible());}
+        scroll->setProperty("contentY",0);const auto point=scroll->mapToScene({scroll->width()/2,scroll->height()/2});
+        QWheelEvent wheel(point,window->mapToGlobal(point.toPoint()),{},QPoint(0,-120),Qt::NoButton,Qt::NoModifier,Qt::NoScrollPhase,false);
+        QCoreApplication::sendEvent(window,&wheel);QTest::qWait(90);QCOMPARE(qRound(scroll->property("contentY").toReal()),110);
     }
-    QVERIFY(controller.startTaxonGame({},"genus"));window->setProperty("sessionStarted",true);
-    JsonSpeciesCatalog catalog;const auto species=catalog.loadCurrentSpecies();
-    for(int i=0;i<30;++i){
-        QString answer;for(const auto &s:species)if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");
-        QVERIFY(!answer.isEmpty());if(i%3==0)controller.revealHint();
-        controller.answerSelected(i%4?answer:controller.answerOptions()[(controller.answerOptions().indexOf(answer)+1)%4]);controller.nextQuestion();
-    }
-    controller.stopGame();QVERIFY(controller.gameFinished());QCOMPARE(controller.answeredCount(),30);
-    const auto session=controller.sessionMetrics();const auto taxonomy=controller.categoryStats();const auto history=controller.playerMetrics();
-    QVERIFY(taxonomy.size()>1);const auto difficulty=controller.difficulty();const auto score=controller.scoreUnits();
-    QPointingDevice pad("Statistics synthetic touchpad",900002,QInputDevice::DeviceType::TouchPad,QPointingDevice::PointerType::Finger,
-        QInputDevice::Capability::Position|QInputDevice::Capability::Scroll|QInputDevice::Capability::PixelScroll,2,0);
-    QElapsedTimer time;time.start();
-    const auto wheel=[&](QPointF position,QPoint delta){
-        QWheelEvent event(position,window->mapToGlobal(position),{},delta,Qt::NoButton,Qt::NoModifier,Qt::NoScrollPhase,false);
-        event.setTimestamp(time.elapsed()+1);QCoreApplication::sendEvent(window,&event);QCoreApplication::processEvents();
-    };
-    const auto padEvent=[&](QPointF position,QPoint pixels,Qt::ScrollPhase phase){
-        QWheelEvent event(position,window->mapToGlobal(position),pixels,pixels*2,Qt::NoButton,Qt::NoModifier,phase,false,Qt::MouseEventSynthesizedBySystem,&pad);
-        event.setTimestamp(time.elapsed()+1);QCoreApplication::sendEvent(window,&event);QCoreApplication::processEvents();
-    };
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
-        window->resize(size);window->setProperty("statisticsPresentation",QVariantMap{{"panel","taxonomy"}});QTest::qWait(100);resetScroll(0);
-        auto view=item("statisticsView"), header=item("statisticsHeader"), panels=item("statisticsTopPanels");QVERIFY(view&&header&&panels);
-        const bool wide=view->property("sideBySide").toBool();QCOMPARE(wide,size.width()!=1000);
-        QVERIFY(panels->y()>=header->y()+header->height());
-        QVERIFY(item("statisticsMainIndicators")->mapToItem(view,{0,0}).y()>=panels->y()+panels->height());
-        QVERIFY(qAbs(item("statisticsTaxonomyPanel")->mapToItem(view,{0,0}).y()-panels->y())<1);
-        if(wide){QVERIFY(!item("statisticsPanelSelector")->isVisible());QVERIFY(item("statisticsRankingPanel")->isVisible());QVERIFY(qAbs(item("statisticsRankingPanel")->y()-item("statisticsTaxonomyPanel")->y())<1);}
-        else {QVERIFY(inside(item("statisticsTaxonomyTab")));QVERIFY(inside(item("statisticsRankingTab")));QVERIFY(!item("statisticsRankingPanel")->isVisible());}
-        QVERIFY(capture("top-taxonomy"));
-        for(const auto &g:taxonomy){const auto group=g.toMap();QVERIFY(item("statisticsTaxon-"+group["id"].toString()));for(const auto &p:group["phyla"].toList())QVERIFY(item("statisticsSubtaxon-"+p.toMap()["id"].toString()));}
-        if(!wide){
-            item("statisticsTaxonomyTab")->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Tab);
-            QTRY_VERIFY(item("statisticsRankingTab")->hasActiveFocus());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(80);
-            QVERIFY(item("statisticsRankingTab")->property("checked").toBool());QVERIFY(item("statisticsRankingTab")->property("visualFocus").toBool());
-            QVERIFY(activate("statisticsRankingTab"));QVERIFY(item("statisticsRankingTab")->property("checked").toBool());
-            QVERIFY(!item("statisticsTaxonomyPanel")->isVisible());QVERIFY(item("statisticsRankingPanel")->isVisible());
-            QVERIFY(qAbs(item("statisticsRankingPanel")->mapToItem(view,{0,0}).y()-panels->y())<1);
-        }
-        resetScroll(0);QVERIFY(capture("top-ranking-free"));
-        QVERIFY(activate("competitiveRankingButton"));QCOMPARE(controller.rankingMode(),QString("competitive"));
-        QVERIFY(item("statisticsRankingEmpty")->isVisible());resetScroll(0);QVERIFY(capture("top-ranking-competitive"));
-        QVERIFY(activate("freeRankingButton",true));QCOMPARE(controller.rankingMode(),QString("free"));
-        QCOMPARE(controller.playerMetrics(),history);QCOMPARE(controller.sessionMetrics(),session);QCOMPARE(controller.categoryStats(),taxonomy);
-        // Selection is presentation-only and survives Loader recreation and resizing.
-        window->setProperty("statisticsPresentation",QVariantMap{{"panel","ranking"}});
-        QVERIFY(activate("navAchievements"));QVERIFY(activate("navStatistics"));
-        QCOMPARE(item("statisticsView")->property("selectedPanel").toString(),QString("ranking"));
-        if(!wide){QVERIFY(item("statisticsRankingPanel")->isVisible());QVERIFY(!item("statisticsTaxonomyPanel")->isVisible());}
-        else {
-            item("statisticsPlayButton")->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);window->resize(1000,700);QTest::qWait(100);
-            QTRY_VERIFY(item("statisticsRankingTab")->hasActiveFocus());QVERIFY(inside(item("statisticsRankingTab")));
-            window->resize(size);QTest::qWait(100);
-        }
-        QVERIFY(select("taxonomy"));resetScroll(0);
-        for(const auto &name:{"statisticsTaxonomyPanel","statisticsRankingPanel","statisticsAnswered","statisticsHistoryAverage"}) {
-            auto c=item(name);if(!c->isVisible())continue;
-            QVERIFY(c->mapRectToScene(c->boundingRect()).right()<=bar->mapToScene({0,0}).x()-12);
-        }
-        const auto wheelPoint=viewport->mapToScene({viewport->width()-viewport->property("contentGutter").toReal()/2,50});
-        resetScroll(200);wheel(wheelPoint,{0,-120});QCOMPARE(qRound(viewport->property("contentY").toReal()),310);
-        wheel(wheelPoint,{0,120});QCOMPARE(qRound(viewport->property("contentY").toReal()),200);
-        // Compare high precision streams directly with the native Flickable path.
-        const auto nativePoint=viewport->mapToScene({viewport->width()/2,viewport->height()/2});
-        for(bool pixels:{true,false}) {
-            handler->setProperty("enabled",false);resetScroll(300);
-            if(pixels){padEvent(nativePoint,{},Qt::ScrollBegin);QTest::qWait(16);for(int n=0;n<4;++n){padEvent(nativePoint,{0,-9},Qt::ScrollUpdate);QTest::qWait(16);}}
-            else wheel(nativePoint,{0,-20});
-            QTest::qWait(250);const auto nativeY=viewport->property("contentY").toReal();if(pixels)padEvent(nativePoint,{},Qt::ScrollEnd);
-            handler->setProperty("enabled",true);resetScroll(300);
-            if(pixels){padEvent(nativePoint,{},Qt::ScrollBegin);QTest::qWait(16);for(int n=0;n<4;++n){padEvent(nativePoint,{0,-9},Qt::ScrollUpdate);QTest::qWait(16);}}
-            else wheel(nativePoint,{0,-20});
-            QTest::qWait(250);QVERIFY(nativeY>300&&nativeY<410);QVERIFY(qAbs(viewport->property("contentY").toReal()-nativeY)<1);
-            if(pixels)padEvent(nativePoint,{},Qt::ScrollEnd);
-        }
-        window->setProperty("motionEnabled",true);resetScroll(200);
-        wheel(wheelPoint,{0,-120});wheel(wheelPoint,{0,-120});QTest::qWait(220);QCOMPARE(qRound(viewport->property("contentY").toReal()),420);
-        resetScroll(200);wheel(wheelPoint,{0,-120});QTest::qWait(25);
-        const auto moving=viewport->property("contentY").toReal();QVERIFY(moving>=200&&moving<310);
-        const auto available=bar->property("availableHeight").toReal();
-        const auto thumb=bar->mapToScene({bar->width()/2,bar->property("topPadding").toReal()+available*(bar->property("visualPosition").toReal()+bar->property("visualSize").toReal()/2)}).toPoint();
-        QTest::mousePress(window,Qt::LeftButton,Qt::NoModifier,thumb);QTRY_VERIFY(bar->property("pressed").toBool());
-        const auto held=viewport->property("contentY").toReal();QTest::qWait(180);QCOMPARE(viewport->property("contentY").toReal(),held);
-        QTest::mouseMove(window,thumb+QPoint(0,40),40);QTest::qWait(80);QVERIFY(viewport->property("contentY").toReal()>held);
-        QTest::mouseRelease(window,Qt::LeftButton,Qt::NoModifier,thumb+QPoint(0,40));QTest::qWait(150);
-        const auto dragged=viewport->property("contentY").toReal();QTest::qWait(150);QCOMPARE(viewport->property("contentY").toReal(),dragged);
-        window->setProperty("motionEnabled",false);QVERIFY(capture("scrollbar-drag"));
-        item("statisticsHistoryContext")->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(80);QVERIFY(inside(item("statisticsHistoryContext")));QVERIFY(capture("profile-history"));
-        QCOMPARE(controller.sessionMetrics(),session);QCOMPARE(controller.difficulty(),difficulty);QCOMPARE(controller.scoreUnits(),score);
-    }
-    QFile manifest(folder+"/frames.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());manifest.close();
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
@@ -431,7 +308,7 @@ void QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
     QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("statistics-context.sqlite");
-    GameController controller(nullptr,path); QVERIFY(controller.addPlayerProfile("Perfil Estatísticas"));
+    GameController controller(nullptr,path); QVERIFY(controller.renameCurrentPlayerProfile("Perfil Estatísticas"));
     const auto profileId=controller.currentPlayerId();
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
@@ -487,77 +364,29 @@ void QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
     QVERIFY(item("statisticsHistoryEmpty")->isVisible());
     auto free=item("freeRankingButton"); free->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window,Qt::Key_Space); QTest::qWait(100);
     QCOMPARE(recovered.rankingMode(),QString("free")); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3);
-    QVERIFY(recovered.addPlayerProfile("Outro perfil")); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),0);
+    QVERIFY(recovered.renameCurrentPlayerProfile("Outro perfil")); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3);
     QVERIFY(item("statisticsHistoryContext")->property("text").toString().contains("Outro perfil"));
-    recovered.selectPlayerProfile(profileId); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3); QCOMPARE(recovered.sessionMetrics(),session);
+    QCOMPARE(recovered.currentPlayerId(),profileId); QTest::qWait(70); QCOMPARE(recovered.playerMetrics()["answered"].toInt(),3); QCOMPARE(recovered.sessionMetrics(),session);
     window->setProperty("backend",QVariant::fromValue(&controller));
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 
-void QmlInterfaceTests::statisticsResponsiveRankingAndCaptures()
+void QmlInterfaceTests::personalCompetitiveConfigurationStaysSeparate()
 {
     interfaceWarnings.clear(); const auto oldHandler=qInstallMessageHandler(captureMessage);
     const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
-    QTemporaryDir dir; QVERIFY(dir.isValid()); const auto path=dir.filePath("statistics-visual.sqlite"); GameController controller(nullptr,path);
-    QVERIFY(controller.addPlayerProfile("Perfil de demonstração"));
-    DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window); window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
-    window->setProperty("page","statistics"); QTest::qWait(100);
-    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);}; auto scroll=item("pageScroll"); QVERIFY(scroll);
-    const QString folder="previews/statistics-2.3.2/"+QString::number(qRound(window->devicePixelRatio()*100)); QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
-    const auto capture=[&](const QString &state){QTest::qWait(120);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"scrollY",scroll->property("contentY").toReal()},{"session",QJsonObject::fromVariantMap(controller.sessionMetrics())},{"history",QJsonObject::fromVariantMap(controller.playerMetrics())},{"rankingMode",controller.rankingMode()},{"rankingRows",controller.ranking().size()},{"taxonomyGroups",controller.categoryStats().size()}});return true;};
-    const auto reveal=[&](QQuickItem *c){if(!c->isVisible()){const auto n=c->objectName();window->setProperty("statisticsPresentation",QVariantMap{{"panel",n.startsWith("statisticsTaxon")?"taxonomy":"ranking"}});QTest::qWait(60);}c->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(80);const auto p=c->mapToItem(scroll,QPointF());scroll->setProperty("contentY",qBound(0.0,scroll->property("contentY").toReal()+p.y()-20,qMax(0.0,scroll->property("contentHeight").toReal()-scroll->height())));QTest::qWait(50);};
-    const auto fits=[&](QQuickItem *c){if(!c->isVisible())return true;const auto rect=c->mapRectToItem(item("statisticsView"),c->boundingRect());return rect.left()>=-1&&rect.right()<=item("statisticsView")->width()+1&&c->height()>0;};
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);scroll->setProperty("contentY",0);QTest::qWait(80);QVERIFY(capture("empty"));for(const auto &name:{"statisticsAnswered","statisticsCorrect","statisticsIncorrect","statisticsAccuracy","statisticsTaxonomyPanel","statisticsRankingPanel"})QVERIFY2(fits(item(name)),name);}
-    // Test-only repository records exercise partial detailed coverage and deleted profiles.
-    {
-        SqliteGameHistoryRepository history(path);
-        const auto removed=history.createPlayer("Perfil excluído de teste"); QVERIFY(history.saveResult(removed.identity(),120,20)); QVERIFY(history.deletePlayer(removed.id));
-        for(int i=0;i<5;++i){const auto p=history.createPlayer("Participante de teste "+QString::number(i+1));QVERIFY(history.saveResult(p.identity(),96-i*6,16-i));}
-        QVERIFY(history.saveResult(history.profileNamed("Perfil de demonstração").identity(),6,1));
-    }
-    controller.loadRanking(); QCOMPARE(controller.ranking().size(),5); QCOMPARE(controller.playerMetrics()["answered"].toInt(),0); QVERIFY(!controller.personalRecord().isEmpty());
-    QVERIFY(controller.startTaxonGame({},"genus")); window->setProperty("sessionStarted",true);
-    JsonSpeciesCatalog catalog; const auto organisms=catalog.loadCurrentSpecies();
-    for(int i=0;i<30;++i){QString correct;for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())correct=s.answerAtRank("genus");QVERIFY(!correct.isEmpty());if(i%3==0)controller.revealHint();controller.answerSelected(i%4 ? correct : controller.answerOptions()[(controller.answerOptions().indexOf(correct)+1)%4]);controller.nextQuestion();}
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);scroll->setProperty("contentY",0);QTest::qWait(100);QVERIFY(item("statisticsSessionContext")->property("text").toString().contains("Partida em andamento"));QVERIFY(capture("active-game"));}
-    controller.stopGame(); QTest::qWait(100); QCOMPARE(controller.playerMetrics()["answered"].toInt(),30); QVERIFY(controller.categoryStats().size()>1);
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
-        window->resize(size);controller.setRankingMode("free");scroll->setProperty("contentY",0);QTest::qWait(100);
-        QVERIFY(capture("current-game"));
-        reveal(item("statisticsAverage"));QVERIFY(capture("performance-and-hints"));
-        const auto session=controller.sessionMetrics(); const auto counts=controller.categoryStats();
-        for(const auto &name:{"statisticsAnswered","statisticsCorrect","statisticsIncorrect","statisticsAccuracy","statisticsAverage","statisticsEfficiency","statisticsHistoryAverage","statisticsTaxonomyPanel","statisticsRankingPanel"})QVERIFY2(fits(item(name)),name);
-        for(int g=0;g<counts.size();++g){const auto group=counts[g].toMap();QVERIFY(item("statisticsTaxon-"+group["id"].toString()));for(const auto &p:group["phyla"].toList())QVERIFY(item("statisticsSubtaxon-"+p.toMap()["id"].toString()));}
-        reveal(item("statisticsHistoryContext"));QVERIFY(capture("profile-history"));
-        reveal(item("statisticsTaxonomyPanel"));QVERIFY(capture("taxonomy"));
-        reveal(item("statisticsTaxon-"+counts.last().toMap()["id"].toString()));QVERIFY(capture("taxonomy-lower-groups"));
-        auto button=item("freeRankingButton");reveal(button);QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("competitiveRankingButton")->hasActiveFocus());
-        QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);QCOMPARE(controller.rankingMode(),QString("competitive"));QVERIFY(item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("competitive-empty"));
-        QTest::keyClick(window,Qt::Key_Backtab,Qt::ShiftModifier);QTRY_VERIFY(item("freeRankingButton")->hasActiveFocus());QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);
-        QCOMPARE(controller.sessionMetrics(),session);QCOMPARE(controller.categoryStats(),counts);
-        QTest::keyClick(window,Qt::Key_Tab);QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("statisticsRank0")->hasActiveFocus());
-        QVERIFY(capture("ranking-free"));QTest::keyClick(window,Qt::Key_Tab);QTRY_VERIFY(item("statisticsRank1")->hasActiveFocus());
-        auto panel=item("statisticsRankingPanel"); auto taxonomy=item("statisticsTaxonomyPanel");
-        if(item("statisticsView")->property("sideBySide").toBool())QVERIFY(qAbs(panel->y()-taxonomy->y())<1);else {QVERIFY(panel->isVisible());QVERIFY(!taxonomy->isVisible());}
-        // Marker/name fixture is presentation only; preserve the actual model and IDs.
-        auto view=item("statisticsView");const auto liveBackend=view->property("backend");
-        QVariantMap fixture{{"sessionMetrics",controller.sessionMetrics()},{"playerMetrics",controller.playerMetrics()},{"rankingMode","free"},{"answeredCount",controller.answeredCount()},{"correctAnswers",controller.correctAnswers()},{"gameFinished",true},{"gameMode","free"},{"currentPlayerName",controller.currentPlayerName()},{"identityNotice",controller.identityNotice()},{"competitiveQuestionCount",20},{"personalRecord",controller.personalRecord()},{"taxonomicStats",counts}};
-        fixture["sessionPlayerName"]=controller.sessionPlayerName();
-        auto rows=controller.ranking();auto legacy=rows[0].toMap();legacy["legacyIdentity"]=true;legacy["playerName"]=QString(32,'W');rows[0]=legacy;fixture["ranking"]=rows;
-        view->setProperty("backend",fixture);QTest::qWait(100);QVERIFY(fits(item("statisticsRank0")));QVERIFY(item("statisticsRank0")->height()>60);reveal(item("freeRankingButton"));QVERIFY(capture("ranking-markers-long-name"));
-        auto zeroGroups=counts; auto zero=zeroGroups[0].toMap();zero["answered"]=0;zero["correct"]=0;
-        auto subgroups=zero["phyla"].toList();for(auto &p:subgroups){auto m=p.toMap();m["answered"]=0;m["correct"]=0;m["accuracy"]=0;p=m;}zero["phyla"]=subgroups;zeroGroups[0]=zero;fixture["taxonomicStats"]=zeroGroups;
-        view->setProperty("backend",fixture);QTest::qWait(80);QCOMPARE(item("statisticsTaxon-"+zero["id"].toString())->property("accuracy").toReal(),0.0);
-        view->setProperty("backend",liveBackend);QTest::qWait(100);
-    }
-    QVERIFY(controller.startCompetitiveGame());
-    for(int i=0;i<20;++i){QString correct;for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())correct=s.answerAtRank("genus");QVERIFY(!correct.isEmpty());controller.answerSelected(correct);if(!controller.gameFinished())controller.nextQuestion();}
-    QVERIFY(controller.gameFinished());QCOMPARE(controller.rankingMode(),QString("competitive"));QCOMPARE(controller.playerMetrics()["answered"].toInt(),20);
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {window->resize(size);QTest::qWait(100);reveal(item("competitiveRankingButton"));QVERIFY(!item("statisticsRankingEmpty")->isVisible());QVERIFY(capture("ranking-competitive"));}
-    QFile manifest(folder+"/frames.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());manifest.close();
+    QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    QVERIFY(controller.startCompetitiveGame());JsonSpeciesCatalog catalog;
+    for(int i=0;i<20;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);if(!controller.gameFinished())controller.nextQuestion();}
+    QCOMPARE(controller.personalRecord()["playerId"].toString(),controller.currentPlayerId());QCOMPARE(controller.personalRecord()["scoreUnits"].toLongLong(),qint64(120));
+    window->setProperty("page","statistics");QTest::qWait(90);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);window->setProperty("statisticsPresentation",QVariantMap{{"panel","ranking"}});QTest::qWait(80);QVERIFY(item("statisticsPersonalRecordCard")->isVisible());QVERIFY(!item("statisticsRankingEmpty")->isVisible());}
+    const auto record=controller.personalRecord();controller.setRankingMode("free");QVERIFY(controller.personalRecord().isEmpty());controller.setRankingMode("competitive");QCOMPARE(controller.personalRecord(),record);
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }
 

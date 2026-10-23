@@ -20,7 +20,7 @@ def inspect(path):
         if db.execute('PRAGMA foreign_key_check').fetchall():
             raise ValueError('SQLite foreign key check failed')
         version = db.execute('PRAGMA user_version').fetchone()[0]
-        if not 0 <= version <= 6:
+        if not 0 <= version <= 7:
             raise ValueError('Unsupported database schema; preserve original')
         return version
 
@@ -48,7 +48,7 @@ def verify(path):
     manifest = json.loads(manifest_path(path).read_text(encoding='utf8'))
     if (not isinstance(manifest, dict) or type(manifest.get('schema')) is not int
             or manifest['schema'] != 1 or type(manifest.get('sqlite_schema')) is not int
-            or not 0 <= manifest['sqlite_schema'] <= 6
+            or not 0 <= manifest['sqlite_schema'] <= 7
             or not isinstance(manifest.get('sha256'), str)
             or not re.fullmatch(r'[0-9a-f]{64}', manifest['sha256'])):
         raise ValueError('Invalid backup manifest structure')

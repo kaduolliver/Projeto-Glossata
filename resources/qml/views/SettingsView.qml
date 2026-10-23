@@ -8,42 +8,24 @@ Item {
     id: view
     required property var app
     required property var backend
-    implicitHeight: 780
+    objectName: "settingsView"
+    implicitHeight: settingsLayout.implicitHeight
     Connections {
         target: view.backend
         function onCurrentPlayerNameChanged() { profileName.text = view.backend.currentPlayerName }
     }
     ColumnLayout {
-        anchors.fill: parent; spacing: 22
+        id: settingsLayout
+        width: parent.width; spacing: 22
         Label { text: "Seu espaço"; color: "#EDF7F0"; font.pixelSize: 30; font.weight: Font.DemiBold }
-        Label { text: "Escolha seu perfil e deixe a próxima descoberta com a sua cara."; color: "#8EAAB1"; font.pixelSize: 13; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+        Label { text: "Seu usuário neste computador e as configurações do aplicativo."; color: "#8EAAB1"; font.pixelSize: 13; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         Rectangle {
-            Layout.fillWidth: true; implicitHeight: 340; radius: 18; color: "#112831"; border.color: "#28424C"
+            Layout.fillWidth: true; implicitHeight: 300; radius: 18; color: "#112831"; border.color: "#28424C"
             ColumnLayout {
                 anchors.fill: parent; anchors.margins: 28; spacing: 16
-                RowLayout { UiIcon { name: "user"; ink: "#6BD49A"; implicitWidth: 23; implicitHeight: 23 } Label { text: "Perfis de jogador"; color: "#DDEDE3"; font.pixelSize: 20; font.weight: Font.DemiBold } }
-                Label { text: "O perfil selecionado vale para a próxima partida. A partida em andamento mantém seu jogador original."; color: "#7F9FA6"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-                RowLayout {
-                    Layout.fillWidth: true; spacing: 20
-                    Label { text: "Perfil selecionado"; color: "#A9C2C7"; font.pixelSize: 13 }
-                    TaxonComboBox {
-                        id: playerSelector
-                        objectName: "playerSelector"
-                        Layout.fillWidth: true
-                        Layout.maximumWidth: 330
-                        implicitHeight: 42
-                        model: view.backend.playerProfileItems
-                        textRole: "name"
-                        valueRole: "playerId"
-                        currentIndex: {
-                            const items = view.backend.playerProfileItems
-                            for (let i = 0; i < items.length; ++i)
-                                if (items[i].playerId === view.backend.currentPlayerId) return i
-                            return -1
-                        }
-                        onActivated: view.backend.selectPlayerProfile(currentValue)
-                    }
-                }
+                RowLayout { UiIcon { name: "user"; ink: "#6BD49A"; implicitWidth: 23; implicitHeight: 23 } Label { text: "Meu perfil"; color: "#DDEDE3"; font.pixelSize: 20; font.weight: Font.DemiBold } }
+                Label { text: "Uso local e offline. Este perfil não é uma conta autenticada. Alterar o nome mantém sua identidade e seus resultados."; color: "#7F9FA6"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { text: "Nome de exibição · Usuário local"; color: "#A9C2C7"; font.pixelSize: 13 }
                 TextField {
                     id: profileName
                     objectName: "profileNameField"
@@ -51,7 +33,7 @@ Item {
                     implicitHeight: 46
                     text: view.backend.currentPlayerName
                     maximumLength: 32
-                    placeholderText: "Nome do perfil"
+                    placeholderText: "Nome de exibição"
                     placeholderTextColor: "#61828C"
                     color: "#DEF0E3"
                     padding: 14
@@ -60,10 +42,8 @@ Item {
                 }
                 RowLayout {
                     Layout.fillWidth: true; spacing: 12
-                    UiButton { text: "Criar perfil"; iconName: "user"; compact: true; onClicked: { if (view.backend.addPlayerProfile(profileName.text)) profileName.text = view.backend.currentPlayerName } }
-                    UiButton { text: "Renomear"; secondary: true; compact: true; onClicked: { if (view.backend.renameCurrentPlayerProfile(profileName.text)) profileName.text = view.backend.currentPlayerName } }
+                    UiButton { objectName: "renameLocalUserButton"; text: "Alterar nome"; secondary: true; compact: true; onClicked: { if (view.backend.renameCurrentPlayerProfile(profileName.text)) profileName.text = view.backend.currentPlayerName } }
                     Item { Layout.fillWidth: true }
-                    UiButton { text: "Excluir perfil"; secondary: true; compact: true; enabled: view.backend.playerProfiles.length > 1; onClicked: deleteDialog.open() }
                 }
                 Label { text: view.backend.feedbackText; color: "#A9C5AF"; font.pixelSize: 12; wrapMode: Text.WordWrap; Layout.fillWidth: true }
             }
@@ -97,19 +77,5 @@ Item {
         Label { text: "Projeto Glossata · Aprender sobre a natureza, uma espécie por vez."; color: "#527782"; font.pixelSize: 11; wrapMode: Text.WordWrap; Layout.fillWidth: true }
         TextAction { objectName: "creditsButton"; text: "Créditos, fontes e transparência"; onClicked: view.app.navigate("credits") }
         Item { Layout.fillHeight: true }
-    }
-    Dialog {
-        id: deleteDialog
-        width: 400
-        anchors.centerIn: parent
-        modal: true
-        title: "Excluir este perfil?"
-        footer: DialogButtonBox {
-            UiButton { text: "Cancelar"; secondary: true; DialogButtonBox.buttonRole: DialogButtonBox.RejectRole }
-            UiButton { text: "Excluir"; danger: true; DialogButtonBox.buttonRole: DialogButtonBox.AcceptRole }
-        }
-        background: Rectangle { radius: 16; color: "#18313B"; border.color: "#38535B" }
-        contentItem: Label { text: "Os resultados e a identidade deste perfil serão mantidos no histórico. Outro perfil com o mesmo nome terá uma identidade nova e não herdará esses resultados."; color: "#B3C9C7"; wrapMode: Text.WordWrap }
-        onAccepted: { view.backend.deleteCurrentPlayerProfile(); profileName.text = view.backend.currentPlayerName }
     }
 }

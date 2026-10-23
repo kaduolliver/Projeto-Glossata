@@ -131,14 +131,14 @@ Item {
             UiButton {
                 id: rankingTab
                 objectName: "statisticsRankingTab"
-                text: "Ranking"
+                text: "Recordes pessoais"
                 compact: true
                 checkable: true
                 autoExclusive: true
                 checked: view.selectedPanel === "ranking"
                 secondary: !checked
                 Accessible.role: Accessible.PageTab
-                Accessible.description: "Mostrar o ranking local da modalidade selecionada"
+                Accessible.description: "Mostrar recordes pessoais locais da modalidade selecionada"
                 onClicked: view.selectPanel("ranking")
             }
             Item { Layout.fillWidth: true }
@@ -221,74 +221,50 @@ Item {
                 Layout.fillWidth: true
                 Layout.preferredWidth: view.sideBySide ? view.width * 0.44 : view.width
                 Layout.alignment: Qt.AlignTop
-                implicitHeight: rankingLayout.implicitHeight + 2 * Style.Theme.spaceLg
+                implicitHeight: recordsLayout.implicitHeight + 2 * Style.Theme.spaceLg
                 radius: Style.Theme.cardRadius
                 color: Style.Theme.surface
                 border.color: Style.Theme.border
                 ColumnLayout {
-                    id: rankingLayout
+                    id: recordsLayout
                     anchors.fill: parent
                     anchors.margins: Style.Theme.spaceLg
                     spacing: Style.Theme.spaceMd
                     RowLayout {
                         Layout.fillWidth: true
                         UiIcon { name: "trophy"; ink: Style.Theme.gold; implicitWidth: 22; implicitHeight: 22 }
-                        Heading { text: "Ranking local · " + view.rankingContext }
+                        Heading { text: "Recordes pessoais · " + view.rankingContext }
                     }
+                    Note { text: "Somente seus resultados neste computador. Dados vinculados ao seu usuário local." }
                     RowLayout {
                         Layout.fillWidth: true
-                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; checked: view.backend.rankingMode === "free"; secondary: !checked; Accessible.description: "Histórico e ranking do modo Livre"; onClicked: view.backend.rankingMode = "free" }
-                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; Accessible.description: "Histórico e ranking competitivo da configuração atual"; onClicked: view.backend.rankingMode = "competitive" }
+                        UiButton { objectName: "freeRankingButton"; text: "Livre"; compact: true; checkable: true; autoExclusive: true; checked: view.backend.rankingMode === "free"; secondary: !checked; onClicked: view.backend.rankingMode = "free" }
+                        UiButton { objectName: "competitiveRankingButton"; text: "Competitivo"; compact: true; checkable: true; autoExclusive: true; checked: view.backend.rankingMode === "competitive"; secondary: !checked; onClicked: view.backend.rankingMode = "competitive" }
                     }
-                    Note { text: "Melhor pontuação de cada jogador · até cinco posições." }
-                    Note { text: view.backend.rankingMode === "competitive" ? view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · conteúdo atual" : "Treinamento contínuo; grupos e durações variáveis." }
-                    Note {
-                        objectName: "statisticsPersonalRecord"
+                    Note { text: view.backend.rankingMode === "competitive" ? view.backend.competitiveQuestionCount + " questões · gênero · equilibrado · regras e conteúdo atuais. Outras configurações não são comparadas." : "Livre: grupos e durações variáveis. O recorde não compara condições de partidas diferentes." }
+                    Note { objectName: "statisticsRankingEmpty"; visible: !view.backend.personalRecord.scoreText; text: "Ainda não há recorde pessoal disponível nesta modalidade e configuração." }
+                    FocusScope {
+                        objectName: "statisticsPersonalRecordCard"
                         visible: !!view.backend.personalRecord.scoreText
-                        text: "Seu recorde: " + (view.backend.personalRecord.scoreText || "0,00") + " pts · Última: " + (view.backend.personalRecord.lastScoreText || "0,00") + " pts"
-                        color: Style.Theme.green
-                    }
-                    Note { objectName: "statisticsRankingEmpty"; visible: view.backend.ranking.length === 0; text: "Nenhuma partida classificada nesta modalidade. Encerre uma partida elegível para entrar no ranking." }
-                    // The backend bounds this model to five rows. Let the page scroll
-                    // handle their full intrinsic height, including long player names.
-                    Repeater {
-                        model: view.backend.ranking
-                        delegate: FocusScope {
-                            id: rankRow
-                            required property var modelData
-                            required property int index
-                            objectName: "statisticsRank" + index
-                            readonly property color accent: view.podiumColor(index)
-                            Layout.fillWidth: true
-                            implicitHeight: rankContent.implicitHeight + 2 * Style.Theme.spaceMd
-                            activeFocusOnTab: true
-                            Accessible.role: Accessible.ListItem
-                            Accessible.name: (index + 1) + ". " + modelData.playerName + ", " + modelData.scoreText + " pontos"
-                            Accessible.description: rankDetail.text + ". Nome na partida mais recente: " + modelData.snapshotName
-                            Rectangle {
-                                objectName: "statisticsRankBorder" + rankRow.index
-                                anchors.fill: parent
-                                radius: Style.Theme.controlRadius
-                                color: rankRow.index === 0 ? Style.Theme.forest : Style.Theme.surfaceRaised
-                                border.width: rankRow.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
-                                border.color: rankRow.activeFocus ? Style.Theme.focus : rankRow.accent
-                            }
-                            RowLayout {
-                                id: rankContent
-                                anchors.fill: parent
-                                anchors.margins: Style.Theme.spaceMd
-                                spacing: Style.Theme.spaceSm
-                                Label { objectName: "statisticsRankPosition" + rankRow.index; text: String(rankRow.index + 1).padStart(2, "0"); color: rankRow.index < 3 ? rankRow.accent : Style.Theme.textMuted; font.pixelSize: Style.Theme.subtitleSize; font.weight: Font.DemiBold }
-                                ColumnLayout {
-                                    Layout.fillWidth: true
-                                    spacing: Style.Theme.spaceXs
-                                    Label { text: rankRow.modelData.playerName; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; wrapMode: Text.WrapAnywhere; textFormat: Text.PlainText; Layout.fillWidth: true }
-                                    Note { id: rankDetail; text: (rankRow.modelData.legacyIdentity ? "Legado, vínculo pendente · " : rankRow.modelData.deletedProfile ? "Perfil excluído · " : "") + "Última: " + rankRow.modelData.lastScoreText + " pts · " + rankRow.modelData.lastPlayedAt }
-                                    Label { text: rankRow.modelData.scoreText + " pts"; color: Style.Theme.green; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold }
-                                }
-                            }
+                        Layout.fillWidth: true
+                        implicitHeight: recordContent.implicitHeight + 2 * Style.Theme.spaceMd
+                        activeFocusOnTab: true
+                        Accessible.role: Accessible.ListItem
+                        Accessible.name: "Recorde pessoal: " + (view.backend.personalRecord.scoreText || "0,00") + " pontos"
+                        Rectangle { anchors.fill: parent; radius: Style.Theme.controlRadius; color: Style.Theme.surfaceRaised; border.width: parent.activeFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth; border.color: parent.activeFocus ? Style.Theme.focus : Style.Theme.border }
+                        ColumnLayout {
+                            id: recordContent
+                            anchors.fill: parent
+                            anchors.margins: Style.Theme.spaceMd
+                            spacing: Style.Theme.spaceSm
+                            Note { text: "Melhor pontuação disponível" }
+                            Label { objectName: "statisticsPersonalRecord"; text: (view.backend.personalRecord.scoreText || "0,00") + " pts"; color: Style.Theme.green; font.pixelSize: Style.Theme.titleSize; font.weight: Font.DemiBold }
+                            Note { text: (view.backend.personalRecord.correctAnswers || 0) + " acerto(s) · " + (view.backend.personalRecord.playedAt || "") }
+                            Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Style.Theme.border }
+                            Note { objectName: "statisticsLastScore"; text: "Última pontuação: " + (view.backend.personalRecord.lastScoreText || "0,00") + " pts · " + (view.backend.personalRecord.lastPlayedAt || "") }
                         }
                     }
+                    Note { text: "As pontuações são preservadas como registradas. Registros de outras identidades permanecem armazenados e não entram nos seus indicadores." }
                 }
             }
         }
@@ -385,10 +361,9 @@ Item {
         ColumnLayout {
             Layout.fillWidth: true
             spacing: Style.Theme.spaceSm
-            Heading { text: "Histórico do perfil" }
+            Heading { text: "Histórico do usuário local" }
             Note { objectName: "statisticsHistoryContext"; text: view.backend.currentPlayerName + " · " + view.rankingContext + ". Partidas concluídas com respostas detalhadas disponíveis." }
             Note { text: "Registros antigos podem não ter detalhamento. Estes indicadores não representam necessariamente toda a atividade do perfil." }
-            Note { visible: !!view.backend.identityNotice; text: view.backend.identityNotice; color: Style.Theme.gold }
             GridLayout {
                 Layout.fillWidth: true
                 columns: view.metricColumns

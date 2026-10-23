@@ -1,5 +1,15 @@
 # Histórico visual
 
+## Revisão da PR #37 — usuário local único
+
+- A decisão atual substitui a proposta abaixo: Meu perfil, edição do nome e recordes pessoais por UUID. Instalações com múltiplos perfis antigos exigem uma escolha única; não há gerenciamento permanente de perfis nem histórico de outras identidades na interface.
+- [Transição, contratos e verificações](VERSOES/usuario-local-unico/README.md). Aplicativo 2.0.0 ainda não lançado; catálogo 2.4.0 preservado. Capturas anteriores conservadas, sem avanço da Subetapa 2.3.3.
+
+## Melhoria independente — Ranking local e histórico de jogadores
+
+- Ranking atual exibe até cinco perfis ativos, com filtro SQL anterior ao limite e ouro/prata/bronze preservados. Histórico apresenta páginas de recordes registrados, nomes originais, situação e UUID, sem pódio. Seletores de contexto e modalidade independentes, com estado em memória e teclado preservados.
+- [Diagnóstico, contratos e verificações](VERSOES/ranking-local-historico/README.md). Aplicativo 1.12.0, catálogo 2.4.0 preservado; posterior à PR #36, sem início da 2.3.3 ou lançamento.
+
 ## PR #36 — cores e dicas em andamento
 
 - Barras e percentuais taxonômicos recebem cores por ID estável; subgrupos usam variações discretas. Reordenação não muda a associação. Ranking mantém layout e recebe ouro, prata e bronze em bordas/números; foco visível permanece prioritário.

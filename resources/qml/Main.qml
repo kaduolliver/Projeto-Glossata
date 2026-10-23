@@ -52,11 +52,62 @@ ApplicationWindow {
     property string abandonedSessionId: ""
     readonly property real accuracy: backend.answeredCount > 0 ? Math.round(100 * backend.correctAnswers / backend.answeredCount) : 0
     readonly property bool playing: sessionStarted && !backend.gameFinished
-    readonly property var pageTitles: ({home: "Início", explore: "Explorar", categories: "Jogar", taxonomy: taxonomyContext === "explore" ? "Explorar" : "Jogar", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Estatísticas", achievements: "Conquistas", settings: "Perfis e ajustes", credits: "Créditos e transparência"})
+    readonly property var pageTitles: ({home: "Início", explore: "Explorar", categories: "Jogar", taxonomy: taxonomyContext === "explore" ? "Explorar" : "Jogar", quiz: "Em jogo", feedback: "Continue descobrindo", info: "Ficha da espécie", results: "Resultado da partida", statistics: "Estatísticas", achievements: "Conquistas", settings: "Perfil e ajustes", credits: "Créditos e transparência"})
     readonly property string sectionContext: page === "taxonomy" ? (backend.browseTaxon.title || "Grupos taxonômicos")
                                            : currentSection === "explore" ? "Domínios e linhagens · navegação científica"
                                            : currentSection === "play" ? (playing ? "Partida em andamento · progresso salvo por checkpoint" : "Modos Livre e Competitivo")
                                            : page === "home" ? "Aprenda. Explore. Descubra." : "Dados locais · funcionamento offline"
+
+    property string transitionPlayerId: ""
+    Dialog {
+        id: localUserTransition
+        objectName: "localUserTransition"
+        anchors.centerIn: parent
+        width: Math.min(620, root.width - 48)
+        modal: true
+        closePolicy: Popup.NoAutoClose
+        visible: root.backend.localUserChoiceRequired
+        title: "Definir usuário deste computador"
+        background: Rectangle { color: Style.Theme.surface; radius: Style.Theme.cardRadius; border.color: Style.Theme.border }
+        contentItem: ColumnLayout {
+            spacing: Style.Theme.spaceMd
+            Label { Layout.fillWidth: true; text: "Esta instalação tem mais de um perfil antigo. Escolha qual identidade continuará como seu usuário local. A escolha é única e será mantida ao reabrir o aplicativo."; color: Style.Theme.text; wrapMode: Text.WordWrap }
+            Label { Layout.fillWidth: true; text: "Os resultados e as sessões das outras identidades serão preservados, sem transferência para o usuário escolhido."; color: Style.Theme.textMuted; wrapMode: Text.WordWrap }
+            ScrollView {
+                Layout.fillWidth: true
+                implicitHeight: Math.min(280, candidateList.implicitHeight)
+                clip: true
+                ColumnLayout {
+                    id: candidateList
+                    width: parent.width
+                    Repeater {
+                        model: root.backend.localUserCandidates
+                        delegate: ColumnLayout {
+                            id: candidateRow
+                            required property var modelData
+                            Layout.fillWidth: true
+                            UiButton { objectName: "transitionChoice-" + candidateRow.modelData.playerId; text: candidateRow.modelData.name; Layout.fillWidth: true; checkable: true; checked: root.transitionPlayerId === candidateRow.modelData.playerId; secondary: !checked; onClicked: root.transitionPlayerId = candidateRow.modelData.playerId }
+                            Label { Layout.fillWidth: true; text: "ID local: " + candidateRow.modelData.playerId; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; wrapMode: Text.WrapAnywhere }
+                        }
+                    }
+                }
+            }
+            UiButton { objectName: "confirmLocalUser"; text: "Definir usuário local"; enabled: root.transitionPlayerId !== ""; onClicked: root.backend.chooseLocalUser(root.transitionPlayerId) }
+        }
+    }
+    Dialog {
+        objectName: "localUserUnavailable"
+        anchors.centerIn: parent
+        width: Math.min(560, root.width - 48)
+        modal: true
+        closePolicy: Popup.NoAutoClose
+        visible: !root.backend.localUserReady && !root.backend.localUserChoiceRequired
+        title: "Identidade local indisponível"
+        contentItem: ColumnLayout {
+            Label { Layout.fillWidth: true; text: root.backend.localUserError; color: Style.Theme.text; wrapMode: Text.WordWrap }
+            UiButton { text: "Fechar aplicativo"; onClicked: { root.forceClose = true; root.close() } }
+        }
+    }
 
     function navigate(destination) { page = destination }
     // Keep keyboard focus visible inside the scrolling page without moving
@@ -79,6 +130,7 @@ ApplicationWindow {
     }
     function openExplore() { taxonomyContext = "explore"; page = "explore" }
     function openPlay() {
+        if (!backend.localUserReady) return
         taxonomyContext = "play"
         if (backend.resultPending) page = "results"
         else if (playing) page = backend.answerPending ? (lastGamePage === "info" ? "info" : "feedback") : "quiz"
@@ -186,7 +238,7 @@ ApplicationWindow {
                 NavItem { objectName: "navAchievements"; Layout.fillWidth: true; text: "Conquistas"; iconName: "trophy"; selected: root.currentSection === "achievements"; onClicked: root.navigate("achievements") }
                 Item { Layout.preferredHeight: Style.Theme.spaceMd }
                 Label { text: "SEU ESPAÇO"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize; font.letterSpacing: 1.6; Layout.leftMargin: Style.Theme.navPadding; Layout.bottomMargin: Style.Theme.spaceXs }
-                NavItem { objectName: "navSettings"; Layout.fillWidth: true; text: "Perfis e ajustes"; iconName: "settings"; selected: root.currentSection === "settings"; onClicked: root.navigate("settings") }
+                NavItem { objectName: "navSettings"; Layout.fillWidth: true; text: "Perfil e ajustes"; iconName: "settings"; selected: root.currentSection === "settings"; onClicked: root.navigate("settings") }
                 Item { Layout.fillHeight: true }
                 Rectangle {
                     Layout.fillWidth: true
@@ -199,8 +251,8 @@ ApplicationWindow {
                         Rectangle { implicitWidth: 32; implicitHeight: 32; radius: Style.Theme.cardRadius; color: Style.Theme.forest; UiIcon { anchors.centerIn: parent; name: "user"; ink: Style.Theme.green; implicitWidth: 18; implicitHeight: 18 } }
                         ColumnLayout {
                             Layout.fillWidth: true; spacing: 4
-                            Label { text: root.backend.currentPlayerName || "Sem perfil"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize; font.weight: Font.DemiBold; elide: Text.ElideRight; Layout.fillWidth: true }
-                            Label { text: "Perfil selecionado"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize }
+                            Label { text: root.backend.currentPlayerName || "Definição pendente"; color: Style.Theme.text; font.pixelSize: Style.Theme.captionSize; font.weight: Font.DemiBold; elide: Text.ElideRight; Layout.fillWidth: true }
+                            Label { text: "Usuário local"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.sectionLabelSize }
                         }
                     }
                 }
@@ -224,7 +276,7 @@ ApplicationWindow {
                 TextAction { objectName: "headerResumeGame"; visible: root.playing && root.currentSection !== "play"; text: "Retomar partida"; onClicked: root.openPlay() }
                 Rectangle {
                     implicitWidth: 116; implicitHeight: 28; radius: Style.Theme.controlRadius; color: Style.Theme.forest; border.color: Style.Theme.border
-                    Row { anchors.centerIn: parent; spacing: Style.Theme.spaceXs; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: Style.Theme.green; anchors.verticalCenter: parent.verticalCenter } Label { text: "Ranking local"; color: Style.Theme.text; font.pixelSize: Style.Theme.sectionLabelSize } }
+                    Row { anchors.centerIn: parent; spacing: Style.Theme.spaceXs; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: Style.Theme.green; anchors.verticalCenter: parent.verticalCenter } Label { text: "Dados locais"; color: Style.Theme.text; font.pixelSize: Style.Theme.sectionLabelSize } }
                 }
             }
             Rectangle {

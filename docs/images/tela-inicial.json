@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-10-22T22:32:49.037845+00:00",
+  "captured_at": "2026-10-23T02:58:37.657002+00:00",
   "method": "QQuickWindow::grabWindow / running application",
   "framing": "Top of Home.",
-  "application_version": "1.11.0",
-  "binary_sha256": "d0b406c2de4ef83b6d6c4f98277a3f0599034386e476d6d089b8e2dced1a7e44",
-  "image_sha256": "e0427b7e100ca35890489fb0e5a96ff52419c2b2c56b670819d6305cdb10bc44",
+  "application_version": "2.0.0",
+  "binary_sha256": "2f6cc708a6345c9fa95cd3420aee5fd3277218640fbc1118661f3923c98ccdb8",
+  "image_sha256": "d3e291df2738b46ce8d117ee172cb0f53fb5ebdc754b208423f32a93a40e86ae",
   "width": 1240,
   "height": 820,
   "rendering": "Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.",
@@ -21,7 +21,7 @@
     "resources/qml/components/StatCard.qml": "11f82ecd0a7c65d12519d106f601fa364031677eacd80e811a0eb19de3e5c588",
     "resources/qml/components/UiButton.qml": "82516d1df8e32108965e0910ed4540f112b924dd4a4c7d715b2c53d4465b4937",
     "resources/qml/components/UiIcon.qml": "54fb77f1758380db12292e6186f8775b3c441a8bfcfb69dd54d88cb024aa5c88",
-    "resources/qml/Main.qml": "323b3fad13fff84b03bda22a45e826f6f8fb8663160525391ab4ed21ab348d42",
+    "resources/qml/Main.qml": "1aa673235b5a4061134cff0bd3e1f30621383f1907794b6494f1a5b54d73819c",
     "resources/qml/views/HomeView.qml": "63994b83cdbf90ccdaf252f6048e5674652e6ab258b6f6dba5874f1cd934caba",
     "scripts/capture_home.py": "66a4489c03199f2e062330e079ae0ca7f7a3514e08c2cdff9d74cf3853d52e0c",
     "src/app/main.cpp": "19b5b7ced0f1ab73ac60eacb6edf0bd4749a54b688e7591c4e97de86130cbc06",
@@ -29,7 +29,7 @@
     "src/application/EducationalContent.h": "ede510935496b2dd3a43e38701e5407f4123858d036a095ef4170fc01d84857d",
     "src/application/TaxonomyIndex.cpp": "36ba1284927576e34f3bddc015d2bb5655922ba9df682f7ef9f68ebcc43d3331",
     "src/application/TaxonomyIndex.h": "75a77a14525b476ba871d82c28e6cdc0506b27f78fe75f0a2d428668fdede715",
-    "src/presentation/GameController.cpp": "189f32b9868c528e8ee9ba3bfec4254cf9b8f2d200646c3b8b4b49301e5e96e3",
-    "src/presentation/GameController.h": "445a3cae7d07669996984f5a03d88dc3153e17c380b8465d637246ae8f865b66"
+    "src/presentation/GameController.cpp": "45b251758ca963a342013d7143c3db76008c770312cd29f357230676e6f5965d",
+    "src/presentation/GameController.h": "fe8a06a8a4973d6fe11ba78604006b89dd3faec366eeac75bb6cfb5e09787f11"
   }
 }
