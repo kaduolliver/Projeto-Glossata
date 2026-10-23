@@ -1,0 +1,102 @@
+{
+  "recorded_at": "2026-10-23T00:14:05.249491+00:00",
+  "source_commit": "79ccb7067dccfcb02677d42a9a7554a04108b3f4",
+  "base_commit": "3429e09b82f4a7a1f7a98ba8282701d30c02d007",
+  "ctest": {
+    "passed": 26,
+    "failed": 0,
+    "qt_cases_including_setup_cleanup": {
+      "core-results.txt": 62,
+      "ui-test-results.txt": 29,
+      "identity-results.txt": 32,
+      "recovery-results.txt": 21
+    }
+  },
+  "targeted": {
+    "scale_factors": [
+      1,
+      1.25,
+      1.5
+    ],
+    "logical_resolutions": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "cases_per_run_including_setup_cleanup": 7,
+    "failed": 0
+  },
+  "captures": 72,
+  "scope": {
+    "application_source_changed": [
+      "resources/qml/views/StatisticsView.qml"
+    ],
+    "preserved_paths": [
+      "resources/qml/Main.qml",
+      "docs/images",
+      "docs/architecture/ESTATISTICAS_MULTIPLAYER.md",
+      "docs/interface/VERSOES/2.3.2/refinamentos-topo",
+      "src",
+      "scripts",
+      "resources/data",
+      "resources/compliance",
+      "resources/images",
+      "resources.qrc",
+      "resources/qml/components",
+      "resources/qml/style",
+      "resources/qml/views/HomeView.qml",
+      "resources/qml/views/CategoryView.qml",
+      "resources/qml/views/TaxonomyView.qml",
+      "resources/qml/views/QuizView.qml",
+      "resources/qml/views/InfoView.qml",
+      "resources/qml/views/AchievementsView.qml",
+      "docs/interface/VERSOES/2.3.2/capturas",
+      "docs/interface/VERSOES/2.3.2/capturas.json",
+      "docs/interface/VERSOES/2.3.2/verificacoes",
+      "docs/interface/VERSOES/2.3.2/anterior",
+      "docs/interface/VERSOES/2.3.1",
+      "docs/interface/VERSOES/2.2.3",
+      "docs/interface/VERSOES/2.2.2"
+    ]
+  },
+  "capture_manifest_sha256": "6f1c8242b12e294b9840eb7dc05f73b6b92c2d671ac118e7d0ff7ca426b283ec",
+  "build_manifest_sha256": "be5f24163b4aabd57117fab466c16bc9d1af6e2cb4a7987820d91f4c439eda2c",
+  "checks_passed": [
+    "python scripts/release.py check",
+    "python scripts/release.py check-history --base 3429e09b82f4a7a1f7a98ba8282701d30c02d007",
+    "python scripts/project_status.py check --build build",
+    "python scripts/licensing_inventory.py --check-code",
+    "python scripts/audit_catalog.py --strict",
+    "python scripts/exploration_media.py",
+    "python scripts/content_governance.py audit-history --base 3429e09b82f4a7a1f7a98ba8282701d30c02d007",
+    "python scripts/audit_repository.py",
+    "python tests/test_cleanup_build.py"
+  ],
+  "expected_blocked_check": "distribution.py check; existing review/permission gaps",
+  "evidence_sha256": {
+    "auditoria-arquivos.json": "e1fe8ce10b00876a4c696ecb7ecedef78909de3778356f0b1bfab36a5d84cbcf",
+    "core-results.txt": "c567e077540a8393c42b0062f3b4bd899d72b485f969cb379e4b2a6471dc549f",
+    "ctest-results.txt": "a84f3e0097f49fda037d5bf0f2445bdf0b7fefc33687bd121d8adb75c59c7893",
+    "distribution-summary.json": "ea6141b52b823768cea58588fa09169df06c9ce5d3721b2ab43e6a335718a02d",
+    "governance-history.json": "a8245bd59ab58fec04adf56fb9ca05ac58874a4f841e9d18c96c318a81d01403",
+    "identity-results.txt": "a9447cfcf72e485fdfdad196197a18557c6d228c71d9f3646879be795ff60a7b",
+    "recovery-results.txt": "6c1f542e2121e4031faac2d928e8cf55fde081aeeff60425d8175fd62b330cc8",
+    "statistics-colors-dpi-125.txt": "fba7ab639d8e99220a81ba92ad0a294c326dbf6f538991d13f92bf7136254dcf",
+    "statistics-colors-dpi-150.txt": "f2b312d0a9c313df4376bb14de3a7db2557ceda76309152b8fe3e28253690585",
+    "statistics-colors-qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-colors-smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "statistics-colors-targeted.txt": "c3849f9c3423ecacdab80781b9e9e911bb535b6dd9570b44645cdd9a69179c6d",
+    "technical-audits.json": "8fdf61e136c4cccc1dabd0f187ab3e05809e491ee2bb05557568015b212eab4d",
+    "ui-test-results.txt": "408399f890cbd84228f5efb3cb381f164f1a64abee534cb3a552c920353863c5"
+  },
+  "limitations": "Qt scale factors, not physical Windows scaling, GPU or physical screen-reader testing. Existing distribution restrictions preserved; no scientific/legal certification."
+}

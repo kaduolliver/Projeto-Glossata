@@ -4,7 +4,7 @@ Revisão pontual da [PR #36](https://github.com/kaduolliver/Projeto-Glossata/pul
 
 Escopo: cores taxonômicas estáveis por ID, ouro/prata/bronze no ranking e projeção visual das dicas ainda não confirmadas. Somente `StatisticsView.qml` muda no código da aplicação. Backend, banco, pontuação, checkpoints, catálogo, fotografias, licenças e planejamento multiplayer permanecem intactos.
 
-Aplicativo 1.11.0 ainda não lançado; catálogo 2.4.0 preservado. Capturas e resultados desta revisão serão registrados após recompilação e testes, sem substituir evidências anteriores.
+Aplicativo 1.11.0 ainda não lançado; catálogo 2.4.0 preservado. Implementação e testes no commit [`79ccb7067dccfcb02677d42a9a7554a04108b3f4`](https://github.com/kaduolliver/Projeto-Glossata/commit/79ccb7067dccfcb02677d42a9a7554a04108b3f4). Esta revisão registra 72 capturas reais e seus resultados, sem substituir evidências anteriores. A Home e seu registro oficial permanecem intactos, pois o shell e os componentes compartilhados não mudaram.
 
 ## Decisões de apresentação
 
@@ -41,3 +41,44 @@ Build Release/Ninja/GCC 16.2.0, Qt 6.11.2 em Windows 11; lint de todos os QML e 
 `statisticsStableColorsAndPodium` verifica IDs/cores/proporções reais, contraste mínimo de 4,5:1 dos tons apresentados contra suas superfícies, variações discretas nos subgrupos, reordenação com os mesmos IDs e fallback estável. Confere as cinco bordas/números, foco por Tab, cor/espessura prioritárias e retorno à borda normal. A reordenação e o ID não mapeado são fixtures de apresentação isoladas, restauradas antes das capturas. O ranking publicado contém cinco perfis/resultados temporários inseridos pelo repositório de teste, sem dados de jogadores reais.
 
 Os três testes anteriores de Estatísticas foram preservados integralmente e repetidos: painéis/seletores/rolagem, contextos/métricas confirmadas e ranking responsivo. A suíte completa também verifica Quiz, ficha científica, Jogar, Explorar, Início, identidades, sessões e governança. Não houve alterações nessas telas ou nos componentes compartilhados.
+
+[CTest completo](verificacoes/ctest-results.txt), [interface](verificacoes/ui-test-results.txt), [resumo verificável](verificacoes/resultados.json). Casos QtTest incluindo preparação/limpeza: domínio 62, interface 29, identidade 32 e recuperação 21. Execuções direcionadas: [100%](verificacoes/statistics-colors-targeted.txt), [125%](verificacoes/statistics-colors-dpi-125.txt), [150%](verificacoes/statistics-colors-dpi-150.txt).
+
+Passaram status/metadados/histórico, licenciamento do código, catálogo, mídias e auditoria do repositório, além dos testes do inventário de arquivos. Os 1.053 eventos de governança foram preservados. [Comandos e retornos](verificacoes/technical-audits.json), [comparação histórica](verificacoes/governance-history.json). O gate de distribuição continua bloqueado pelas pendências anteriores de permissões/revisões, com retorno 2 esperado, sem erros técnicos/de dependências: [registro](verificacoes/distribution-summary.json). Testes não certificam curadoria ou conformidade jurídica.
+
+Comandos principais, com Qt no PATH:
+
+```powershell
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=C:/glossata_game/build/2.3.2-cores-dicas
+cmake --build build -j3
+ctest --test-dir build --output-on-failure -j3
+```
+
+Em `build/tests`, executar `../2.3.2-cores-dicas/glossata_ui_tests.exe` com os cinco métodos `statisticsLiveHintsAndRecovery`, `statisticsStableColorsAndPodium`, `statisticsTopPanelsAndSharedScrolling`, `statisticsContextsAndConfirmedMetrics` e `statisticsResponsiveRankingAndCaptures`. As execuções usam `QT_QPA_PLATFORM=offscreen`, `QT_QUICK_BACKEND=software`, `QT_QUICK_CONTROLS_STYLE=Basic` e `QT_SCALE_FACTOR=1`, `1.25` ou `1.5`.
+
+## Capturas reais
+
+**72 PNGs da janela Qt real**, gerados por `QQuickWindow::grabWindow()` com QML/controlador de produção, SQLite temporário e Discord desativado. Os dois testes novos produzem 63 quadros; nove enquadramentos dos grupos inferiores vêm do teste responsivo anterior, executado com esta mesma implementação. O [manifesto](capturas.json) registra commit, hashes de fontes/binários/PNGs, timestamps UTC, dimensões físicas/lógicas, escala, rolagem, métricas oficiais e, quando aplicável, dicas atuais/cores/ranking. Não há edição de pixels, dados de jogador real ou alteração científica nas capturas.
+
+| Estado — 100% | 1000×700 | 1240×820 | 1920×1080 |
+| --- | --- | --- | --- |
+| Cores taxonômicas no topo | [PNG](capturas/taxonomy-colors-1000x700.png) | [PNG](capturas/taxonomy-colors-1240x820.png) | [PNG](capturas/taxonomy-colors-1920x1080.png) |
+| Grupos inferiores | [PNG](capturas/taxonomy-lower-groups-1000x700.png) | [PNG](capturas/taxonomy-lower-groups-1240x820.png) | [PNG](capturas/taxonomy-lower-groups-1920x1080.png) |
+| Ouro, prata e bronze | [PNG](capturas/ranking-podium-1000x700.png) | [PNG](capturas/ranking-podium-1240x820.png) | [PNG](capturas/ranking-podium-1920x1080.png) |
+| Foco por teclado | [PNG](capturas/ranking-keyboard-focus-1000x700.png) | [PNG](capturas/ranking-keyboard-focus-1240x820.png) | [PNG](capturas/ranking-keyboard-focus-1920x1080.png) |
+| Três dicas, pergunta em andamento | [PNG](capturas/live-three-hints-1000x700.png) | [PNG](capturas/live-three-hints-1240x820.png) | [PNG](capturas/live-three-hints-1920x1080.png) |
+| Resposta confirmada, sem duplicação | [PNG](capturas/confirmed-hints-1000x700.png) | [PNG](capturas/confirmed-hints-1240x820.png) | [PNG](capturas/confirmed-hints-1920x1080.png) |
+| Recuperação com dicas abertas | [PNG](capturas/recovered-live-hints-1000x700.png) | [PNG](capturas/recovered-live-hints-1240x820.png) | [PNG](capturas/recovered-live-hints-1920x1080.png) |
+| Encerramento, somente confirmadas | [PNG](capturas/stopped-confirmed-only-1000x700.png) | [PNG](capturas/stopped-confirmed-only-1240x820.png) | [PNG](capturas/stopped-confirmed-only-1920x1080.png) |
+
+Todos os estados em 125%/150% têm sufixos `-125.png`/`-150.png`, registrados individualmente no manifesto. Exemplos: [cores em 125%](capturas/taxonomy-colors-1240x820-125.png), [dicas em 150%](capturas/live-three-hints-1000x700-150.png), [foco no ranking em 150%](capturas/ranking-keyboard-focus-1920x1080-150.png). Os quadros de dicas e grupos inferiores têm rolagem intencional; o cabeçalho continua acessível no topo da página.
+
+Limitações: renderização software/offscreen e fatores Qt, sem ensaio de GPU, escala física do Windows ou leitor de tela físico. Os testes verificam foco/teclado e exposição dos controles, sem certificar uma combinação específica de tecnologia assistiva. O fallback de cores pode repetir tons para IDs futuros; nomes, taxas e contagens continuam distinguindo os grupos.
+
+## Auditoria de arquivos — somente simulação
+
+Após os testes, `python scripts/cleanup_build.py` e a execução complementar com `--include-old-builds` foram usados em **dry-run**. A idade/retenção e as proteções resultaram em **zero bytes automaticamente elegíveis**. Nenhuma política foi alterada; nenhum arquivo foi excluído ou movido.
+
+O [inventário complementar](verificacoes/auditoria-arquivos.json) registra **3.822.437.609 bytes (3,56 GiB)** para revisão manual, com caminhos, tamanhos, motivos e riscos de builds antigos, caches e capturas locais. Os 16 grupos de possíveis duplicações usam somente nome/tamanho, sem afirmar igualdade de conteúdo ou espaço recuperável confirmado. Exemplos retidos: `build/2.3.1-descricao`, `build/2.3.1-restaurado`, `build/2.2.3-dificuldade` e pastas anteriores de `build/tests/previews`.
+
+Todos os builds `build/2.3.2-*`, as capturas locais atuais/de referência e os arquivos de rastreabilidade permanecem protegidos, assim como dados/perfis/SQLite, backups, `resources`, `package`, licenças, governança e evidências versionadas. A PR #36 continua aberta, sem merge, release ou avanço para 2.3.3.
