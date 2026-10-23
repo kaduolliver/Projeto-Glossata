@@ -1,0 +1,86 @@
+Test project C:/glossata_game/build/achievements-2-3-3
+      Start  1: GlossataTests
+      Start  2: GlossataInterfaceTests
+      Start  3: GlossataDiscordTests
+      Start  4: GlossataImportTests
+ 1/26 Test  #3: GlossataDiscordTests .................   Passed    0.35 sec
+      Start  5: GlossataGovernanceTests
+ 2/26 Test  #5: GlossataGovernanceTests ..............   Passed    3.24 sec
+      Start  6: GlossataReleaseTests
+ 3/26 Test  #6: GlossataReleaseTests .................   Passed    0.64 sec
+      Start  7: GlossataPhylogenyTests
+ 4/26 Test  #7: GlossataPhylogenyTests ...............   Passed    0.73 sec
+      Start  8: GlossataExplorationMediaTests
+ 5/26 Test  #8: GlossataExplorationMediaTests ........   Passed   17.97 sec
+      Start  9: GlossataScientificSourceTests
+ 6/26 Test  #9: GlossataScientificSourceTests ........   Passed    2.19 sec
+      Start 10: GlossataRepositoryAuditTests
+ 7/26 Test #10: GlossataRepositoryAuditTests .........   Passed    1.86 sec
+      Start 11: GlossataProgressiveHintTests
+ 8/26 Test #11: GlossataProgressiveHintTests .........   Passed    2.53 sec
+      Start 12: GlossataCurationQueueTests
+ 9/26 Test #12: GlossataCurationQueueTests ...........   Passed    0.65 sec
+      Start 13: GlossataCurationGitHubTests
+10/26 Test #13: GlossataCurationGitHubTests ..........   Passed    0.34 sec
+      Start 14: GlossataCurationDecisionTests
+11/26 Test #14: GlossataCurationDecisionTests ........   Passed    1.02 sec
+      Start 15: GlossataCurationAutomationTests
+12/26 Test #15: GlossataCurationAutomationTests ......   Passed    0.30 sec
+      Start 16: GlossataRepositoryProtectionTests
+13/26 Test #16: GlossataRepositoryProtectionTests ....   Passed    0.28 sec
+      Start 17: GlossataMaintenanceHttpTests
+14/26 Test #17: GlossataMaintenanceHttpTests .........   Passed    0.75 sec
+      Start 18: GlossataPermissionRecoveryTests
+15/26 Test #18: GlossataPermissionRecoveryTests ......   Passed   11.84 sec
+      Start 19: GlossataGovernanceConcurrencyTests
+16/26 Test #19: GlossataGovernanceConcurrencyTests ...   Passed   11.36 sec
+      Start 20: GlossataPlayerIdentityTests
+17/26 Test #20: GlossataPlayerIdentityTests ..........   Passed    1.93 sec
+      Start 21: GlossataSessionRecoveryTests
+18/26 Test  #1: GlossataTests ........................***Failed   62.00 sec
+
+      Start 22: GlossataPlayerBackupTests
+19/26 Test #22: GlossataPlayerBackupTests ............   Passed    1.66 sec
+      Start 23: GlossataProjectStatusTests
+20/26 Test #23: GlossataProjectStatusTests ...........   Passed    2.24 sec
+      Start 24: GlossataGovernanceHistoryTests
+21/26 Test  #4: GlossataImportTests ..................   Passed   71.86 sec
+      Start 25: GlossataRightsInvestigationTests
+22/26 Test #24: GlossataGovernanceHistoryTests .......   Passed   11.81 sec
+      Start 26: GlossataCatalogAdmissionTests
+23/26 Test #21: GlossataSessionRecoveryTests .........   Passed   24.35 sec
+24/26 Test #25: GlossataRightsInvestigationTests .....***Failed   12.99 sec
+.F...............................................................
+======================================================================
+FAIL: test_actual_apache_scope_and_canonical_license_are_consistent (__main__.InvestigationTests.test_actual_apache_scope_and_canonical_license_are_consistent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:/glossata_game/tests/test_rights_investigation.py", line 958, in test_actual_apache_scope_and_canonical_license_are_consistent
+    self.assertEqual(licensing_inventory.check_code_license(), [])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['code_scope_inventory_differs'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'code_scope_inventory_differs'
+
+- ['code_scope_inventory_differs']
++ []
+
+----------------------------------------------------------------------
+Ran 65 tests in 12.526s
+
+FAILED (failures=1)
+
+25/26 Test #26: GlossataCatalogAdmissionTests ........   Passed    8.76 sec
+26/26 Test  #2: GlossataInterfaceTests ...............***Failed  425.33 sec
+
+
+88% tests passed, 3 tests failed out of 26
+
+Total Test time (real) = 425.39 sec
+
+The following tests FAILED:
+	  1 - GlossataTests (Failed)
+	  2 - GlossataInterfaceTests (Failed)
+	 25 - GlossataRightsInvestigationTests (Failed)

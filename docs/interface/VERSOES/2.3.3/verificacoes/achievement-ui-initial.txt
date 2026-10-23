@@ -1,0 +1,32 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures() 'interfaceWarnings.isEmpty()' returned FALSE. (qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/first_answer.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/first_correct.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/first_game.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/first_competitive.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/first_hint.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/correct_5.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/correct_10.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/correct_20.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/correct_50.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/correct_100.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/streak_3.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/perfect_game.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/no_hint_game.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/group_10.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/group_50.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/groups_3.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/species_10.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/cycle.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/visit_1.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/visit_10.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/visit_25.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/visit_groups_3.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/answered_10.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/answered_100.svg: Unsupported image format
+qrc:/resources/qml/views/AchievementsView.qml:125:25: QML QQuickImage*: Error decoding: qrc:/resources/icons/achievements/answered_25
+C:/glossata_game/tests/QmlInterfaceTests.cpp(145) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 2 passed, 1 failed, 0 skipped, 0 blacklisted, 6866ms
+********* Finished testing of QmlInterfaceTests *********
