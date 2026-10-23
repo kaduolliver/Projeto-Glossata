@@ -19,6 +19,9 @@ struct HistoryEntry {
     QString snapshotName;
     bool legacyIdentity = false;
     bool deletedProfile = false;
+    QString rankingKey;
+    QString identityOrigin;
+    QString deletedAt;
 };
 
 class GameHistoryRepository {
@@ -37,4 +40,10 @@ public:
     virtual QVector<HistoryEntry> loadRanking(const QString &key, int limit = 10) const {
         return key == "free" ? loadTopResults(limit) : QVector<HistoryEntry>{};
     }
+    // Explicit local views. Unsupported consumers fail closed; never filter a
+    // previously limited mixed ranking or infer identity from a display name.
+    virtual QVector<HistoryEntry> loadActiveRanking(const QString &, int = 5) const { return {}; }
+    // Historical key "competitive" includes stored competitive configurations;
+    // an exact classification key (including "free") selects only that key.
+    virtual QVector<HistoryEntry> loadRecordHistory(const QString &, int = 20, int = 0) const { return {}; }
 };

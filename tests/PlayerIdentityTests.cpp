@@ -5,6 +5,9 @@
 #include <QTemporaryDir>
 #include <QSqlQuery>
 #include <QUuid>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QSqlRecord>
 
 namespace {
 struct Inspection {
@@ -14,6 +17,22 @@ struct Inspection {
     }
     ~Inspection() { const auto name=db.connectionName(); db.close(); db={}; QSqlDatabase::removeDatabase(name); }
 };
+QStringList contents(const QSqlDatabase &db)
+{
+    QStringList result, tables;
+    QSqlQuery q(db);
+    if (!q.exec("SELECT name,sql FROM sqlite_master WHERE type='table' ORDER BY name")) return {};
+    while (q.next()) { tables.append(q.value(0).toString()); result.append(q.value(1).toString()); }
+    for (const auto &table : tables) {
+        if (!q.exec("SELECT * FROM \"" + table + "\" ORDER BY rowid")) return {};
+        while (q.next()) {
+            QVariantList values;
+            for (int i=0; i<q.record().count(); ++i) values.append(q.value(i));
+            result.append(table + ":" + QString::fromUtf8(QJsonDocument(QJsonArray::fromVariantList(values)).toJson(QJsonDocument::Compact)));
+        }
+    }
+    return result;
+}
 bool seedV3(const QString &path)
 {
     Inspection inspection(path); QSqlQuery q(inspection.db);
@@ -67,7 +86,115 @@ private slots:
     void incompleteCurrentSchemaFailsClosed_data();
     void incompleteCurrentSchemaFailsClosed();
     void incompleteV5MigrationRollsBackAndKeepsResults();
+    void activeRankingFiltersBeforeLimitAndPreservesHistory();
+    void historicalPagesAndStoredTieBreaks();
+    void activeRankingWithNoEligiblePlayers();
 };
+
+void PlayerIdentityTests::activeRankingFiltersBeforeLimitAndPreservesHistory()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("active-ranking.sqlite"); QVERIFY(seedV3(path));
+    QString legacyId, retiredId, reusedId;
+    QStringList expected, before;
+    {
+        SqliteGameHistoryRepository repo(path);
+        legacyId=repo.loadRanking("free").first().playerId;
+        for (int i=0; i<6; ++i) {
+            const auto p=i==0 ? repo.profileNamed("Ada") : repo.createPlayer(QString("Ativo %1").arg(i));
+            QVERIFY(p.selectable()); QVERIFY(repo.saveResult(p.identity(),6-i,1)); expected.append(p.id);
+        }
+        QVERIFY(repo.createPlayer("Sem partidas").selectable());
+        auto retired=repo.createPlayer("Nome reutilizado"); retiredId=retired.id;
+        QVERIFY(repo.saveResult(retired.identity(),60,10)); QVERIFY(repo.deletePlayer(retired.id));
+        auto reused=repo.createPlayer("Nome reutilizado"); reusedId=reused.id;
+        QVERIFY(reused.selectable()); QVERIFY(reused.id!=retiredId);
+        QVERIFY(repo.loadPlayerResult("free",reusedId).isEmpty());
+        Inspection inspection(path); before=contents(inspection.db); QVERIFY(!before.isEmpty());
+        const auto top=repo.loadActiveRanking("free"); QCOMPARE(top.size(),5);
+        for (int i=0;i<5;++i) {
+            QCOMPARE(top[i].playerId,expected[i]); QVERIFY(!top[i].deletedProfile); QVERIFY(!top[i].legacyIdentity);
+        }
+        QCOMPARE(repo.loadActiveRanking("free",100).size(),6);
+        QCOMPARE(repo.loadRanking("free").first().playerId,retiredId); // Existing mixed contract retained.
+        const auto history=repo.loadRecordHistory("free"); QCOMPARE(history.size(),8);
+        QCOMPARE(history[0].playerId,retiredId); QVERIFY(history[0].deletedProfile);
+        QCOMPARE(history[1].playerId,legacyId); QVERIFY(history[1].legacyIdentity);
+        QCOMPARE(history[1].snapshotName,QString("Ada")); QCOMPARE(history[1].scoreUnits,qint64(12));
+        QCOMPARE(history[1].playedAt,QDateTime::fromString("2026-01-01T00:00:00Z",Qt::ISODate));
+        QCOMPARE(history[1].identityOrigin,QString("legacy_unresolved")); QCOMPARE(history[1].rankingKey,QString("free"));
+        QCOMPARE(repo.loadPlayerResult("free",expected[0]).first().scoreUnits,qint64(6));
+        QCOMPARE(repo.playerMetrics("free",expected[0]).answered,0);
+        QVERIFY(repo.loadPlayerResult("free",reusedId).isEmpty());
+        QCOMPARE(repo.playerMetrics("free",reusedId).answered,0);
+        QCOMPARE(repo.playerMetrics("free",legacyId).answered,1);
+        QCOMPARE(contents(inspection.db),before); // Queries do not rewrite scores, provenance, games or schema.
+    }
+    SqliteGameHistoryRepository reopened(path);
+    QCOMPARE(reopened.loadActiveRanking("free").first().playerId,expected[0]);
+    QCOMPARE(reopened.loadRecordHistory("free").first().playerId,retiredId);
+    QVERIFY(reopened.loadPlayerResult("free",reusedId).isEmpty());
+    Inspection inspection(path); QCOMPARE(contents(inspection.db),before);
+    for (int i=0;i<4;++i) QVERIFY(reopened.deletePlayer(expected[i]));
+    QCOMPARE(reopened.loadActiveRanking("free").size(),2);
+    QCOMPARE(reopened.loadRecordHistory("free").size(),8);
+}
+
+void PlayerIdentityTests::historicalPagesAndStoredTieBreaks()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("history-pages.sqlite"); SqliteGameHistoryRepository repo(path);
+    Inspection inspection(path); QSqlQuery q(inspection.db);
+    QStringList expected;
+    // Score, correct answers, oldest best date, case-insensitive name, exact name, UUID.
+    const QStringList names{"Score", "Correct", "Oldest", "Ana", "Zeta"};
+    for (int i=0;i<25;++i) {
+        const auto name=i<5 ? names[i] : QString("Tail %1").arg(i,2,10,QChar('0'));
+        const auto p=repo.createPlayer(name); QVERIFY(p.selectable()); expected.append(p.id);
+        q.prepare("INSERT INTO ranking_records VALUES('free',?,?,?, ?,?,3,1,'2026-01-09T00:00:00Z')");
+        q.addBindValue(p.id); q.addBindValue(name); q.addBindValue(i==0 ? 30 : i<5 ? 24 : 6);
+        q.addBindValue(i==1 ? 5 : 4); q.addBindValue(i==2 ? "2026-01-01T00:00:00Z" : "2026-01-02T00:00:00Z");
+        QVERIFY(q.exec());
+    }
+    const auto before=contents(inspection.db);
+    QStringList paged;
+    for (int offset=0;offset<25;offset+=7) {
+        const auto page=repo.loadRecordHistory("free",7,offset); QVERIFY(page.size()<=7);
+        for (const auto &entry:page) { paged.append(entry.playerId); QCOMPARE(entry.lastScoreUnits,qint64(3)); }
+    }
+    QCOMPARE(paged,expected);
+    auto top=repo.loadActiveRanking("free"); for(int i=0;i<5;++i)QCOMPARE(top[i].playerId,expected[i]);
+    QVERIFY(repo.loadRecordHistory("free",7,25).isEmpty());
+    QVERIFY(repo.loadRecordHistory("free",0).isEmpty()); QVERIFY(repo.loadRecordHistory("free",-1).isEmpty());
+    QVERIFY(repo.loadRecordHistory("free",5,-1).isEmpty()); QVERIFY(repo.loadActiveRanking("free",-1).isEmpty());
+    QVERIFY(repo.loadRecordHistory("competitive|old-stored-configuration").isEmpty());
+    QCOMPARE(contents(inspection.db),before);
+    QVERIFY(repo.renamePlayer(expected[0],"Renamed"));
+    QCOMPARE(repo.loadActiveRanking("free").first().playerName,QString("Renamed"));
+    QCOMPARE(repo.loadRecordHistory("free").first().playerName,QString("Score"));
+    // Stored competitive keys remain independently queryable; no current-rule recalculation.
+    QVERIFY(q.exec("INSERT INTO ranking_records SELECT 'competitive|old-stored-configuration',player_id,player_name,best_units,best_correct,best_played_at,last_units,last_correct,last_played_at FROM ranking_records"));
+    QCOMPARE(repo.loadRecordHistory("competitive|old-stored-configuration",100).size(),25);
+    QCOMPARE(repo.loadRecordHistory("competitive",100).size(),25);
+    QCOMPARE(repo.loadActiveRanking("competitive|old-stored-configuration").first().scoreUnits,qint64(30));
+    QStringList exactTie;
+    const QStringList snapshots{"ana", "Ana", "Ana"};
+    for (int i=0;i<3;++i) {
+        q.prepare("INSERT INTO ranking_records VALUES('competitive|ties',?,?,12,2,'2026-01-01T00:00:00Z',6,1,'2026-01-02T00:00:00Z')");
+        q.addBindValue(expected[i]); q.addBindValue(snapshots[i]); QVERIFY(q.exec());
+        if(i>0)exactTie.append(expected[i]);
+    }
+    exactTie.sort(); exactTie.append(expected[0]);
+    const auto ties=repo.loadRecordHistory("competitive|ties");
+    for(int i=0;i<3;++i)QCOMPARE(ties[i].playerId,exactTie[i]);
+}
+
+void PlayerIdentityTests::activeRankingWithNoEligiblePlayers()
+{
+    QTemporaryDir dir; const auto path=dir.filePath("no-active.sqlite"); QVERIFY(seedV3(path));
+    SqliteGameHistoryRepository repo(path); QVERIFY(repo.loadActiveRanking("free").isEmpty());
+    QVERIFY(repo.loadActiveRanking("competitive").isEmpty()); QCOMPARE(repo.loadRecordHistory("free").size(),1);
+    auto p=repo.createPlayer("Retired"); QVERIFY(repo.saveResult(p.identity(),18,3)); QVERIFY(repo.deletePlayer(p.id));
+    QVERIFY(repo.loadActiveRanking("free").isEmpty()); QCOMPARE(repo.loadRecordHistory("free").size(),2);
+}
 
 void PlayerIdentityTests::createRenameReopenAndKeepOwnership()
 {

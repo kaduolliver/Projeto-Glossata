@@ -16,6 +16,8 @@ public:
     bool saveConfiguredResult(const PlayerIdentity &, qint64, int, const QVector<AnswerRecord> &,
                               const QString &, const GameConfiguration &) override;
     QVector<HistoryEntry> loadRanking(const QString &key, int limit = 10) const override;
+    QVector<HistoryEntry> loadActiveRanking(const QString &key, int limit = 5) const override;
+    QVector<HistoryEntry> loadRecordHistory(const QString &key, int limit = 20, int offset = 0) const override;
     QVector<HistoryEntry> loadPlayerResult(const QString &key, const QString &playerId) const;
     QVector<AnswerRecord> loadAnswers(const QString &gameId) const;
     SessionMetrics playerMetrics(const QString &key, const QString &playerId) const override;
@@ -38,7 +40,9 @@ public:
     bool deletePlayerProfile(const QString &name);
 
 private:
-    QVector<HistoryEntry> queryResults(const QString &key, int limit, const QString &playerId) const;
+    enum class ResultScope { All, Active, Historical };
+    QVector<HistoryEntry> queryResults(const QString &key, int limit, const QString &playerId,
+                                     ResultScope scope = ResultScope::All, int offset = 0) const;
     QString databasePath_;
     QSqlDatabase database_;
 };

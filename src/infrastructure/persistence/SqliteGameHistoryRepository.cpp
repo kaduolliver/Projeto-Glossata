@@ -422,11 +422,22 @@ QVector<HistoryEntry> SqliteGameHistoryRepository::loadRanking(const QString &ke
 {
     return queryResults(key, limit, {});
 }
+QVector<HistoryEntry> SqliteGameHistoryRepository::loadActiveRanking(const QString &key, int limit) const
+{
+    if (limit <= 0) return {};
+    return queryResults(key, qMin(limit, 100), {}, ResultScope::Active);
+}
+QVector<HistoryEntry> SqliteGameHistoryRepository::loadRecordHistory(const QString &key, int limit, int offset) const
+{
+    if (limit <= 0 || offset < 0) return {};
+    return queryResults(key, qMin(limit, 100), {}, ResultScope::Historical, offset);
+}
 QVector<HistoryEntry> SqliteGameHistoryRepository::loadPlayerResult(const QString &key, const QString &playerId) const
 {
     return playerId.isEmpty() ? QVector<HistoryEntry>{} : queryResults(key, 1, playerId);
 }
-QVector<HistoryEntry> SqliteGameHistoryRepository::queryResults(const QString &key, int limit, const QString &playerId) const
+QVector<HistoryEntry> SqliteGameHistoryRepository::queryResults(const QString &key, int limit, const QString &playerId,
+                                                            ResultScope scope, int offset) const
 {
     QVector<HistoryEntry> results;
     if (!database_.isOpen()) {
@@ -434,10 +445,23 @@ QVector<HistoryEntry> SqliteGameHistoryRepository::queryResults(const QString &k
     }
 
     QSqlQuery query(database_);
-    query.prepare(QStringLiteral("SELECT CASE WHEN p.origin='legacy_unresolved' THEN r.player_name ELSE p.name END AS display_name,r.best_units,r.best_correct,r.best_played_at,r.last_units,r.last_correct,r.last_played_at,r.player_id,r.player_name,p.origin,p.deleted_at FROM ranking_records r JOIN player_profiles p ON p.id=r.player_id WHERE r.ranking_key=:key AND (:id='' OR r.player_id=:id) ORDER BY r.best_units DESC,r.best_correct DESC,r.best_played_at ASC,display_name COLLATE NOCASE ASC,display_name ASC,r.player_id ASC LIMIT :limit"));
+    const QString displayName = scope == ResultScope::Historical ? QStringLiteral("r.player_name")
+        : QStringLiteral("CASE WHEN p.origin='legacy_unresolved' THEN r.player_name ELSE p.name END");
+    const QString eligibility = scope == ResultScope::Active
+        ? QStringLiteral(" AND p.origin='profile' AND p.deleted_at IS NULL") : QString();
+    const QString classification = scope == ResultScope::Historical
+        ? QStringLiteral("(r.ranking_key=:key OR (:key='competitive' AND r.ranking_key LIKE 'competitive|%'))")
+        : QStringLiteral("r.ranking_key=:key");
+    query.prepare("SELECT " + displayName + " AS display_name,r.best_units,r.best_correct,r.best_played_at,"
+        "r.last_units,r.last_correct,r.last_played_at,r.player_id,r.player_name,p.origin,p.deleted_at,r.ranking_key "
+        "FROM ranking_records r JOIN player_profiles p ON p.id=r.player_id "
+        "WHERE " + classification + " AND (:id='' OR r.player_id=:id)" + eligibility +
+        " ORDER BY r.best_units DESC,r.best_correct DESC,r.best_played_at ASC,display_name COLLATE NOCASE ASC,"
+        "display_name ASC,r.player_id ASC,r.ranking_key ASC LIMIT :limit OFFSET :offset");
     query.bindValue(":key", key);
     query.bindValue(":id", playerId.isEmpty() ? QStringLiteral("") : playerId);
     query.bindValue(QStringLiteral(":limit"), limit);
+    query.bindValue(":offset", offset);
     if (!query.exec()) {
         return results;
     }
@@ -454,6 +478,9 @@ QVector<HistoryEntry> SqliteGameHistoryRepository::queryResults(const QString &k
         entry.playerId=query.value(7).toString(); entry.snapshotName=query.value(8).toString();
         entry.legacyIdentity=query.value(9).toString()=="legacy_unresolved";
         entry.deletedProfile=!query.value(10).isNull();
+        entry.identityOrigin=query.value(9).toString();
+        entry.deletedAt=query.value(10).toString();
+        entry.rankingKey=query.value(11).toString();
         results.push_back(entry);
     }
 
