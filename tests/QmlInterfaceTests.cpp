@@ -68,6 +68,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void achievementsFiltersDetailsKeyboardAndCaptures();
     void singleLocalUserSettingsRecordsAndCaptures();
     void statisticsLiveHintsAndRecovery();
     void statisticsStableTaxonomicColors();
@@ -97,6 +98,55 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;GameController controller(nullptr,dir.filePath("achievements-ui.sqlite"));
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();QTest::qWait(150);
+    window->setProperty("motionEnabled",false);window->setProperty("page","achievements");QTest::qWait(100);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);return true;};
+    QVERIFY(item("achievementSummary"));QCOMPARE(item("achievementSummary")->property("text").toString(),QString("0 / 30"));
+    const QString folder="previews/achievements/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const auto capture=[&](const QString &state){QTest::qWait(100);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"temporary_database",true},{"state",state}});return true;};
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("locked"));}
+    QVERIFY(controller.startTaxonGame({},"genus"));JsonSpeciesCatalog catalog;
+    for(int i=0;i<7;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);controller.nextQuestion();}
+    controller.stopGame();
+    QSignalSpy unlocks(&controller,&GameController::achievementUnlocked);
+    window->setProperty("taxonomyContext","explore");controller.exploreTaxon("domain:Eukaryota");window->setProperty("page","taxonomy");QTest::qWait(80);
+    QString organism;for(const auto &s:catalog.loadCurrentSpecies()){for(const auto &t:s.taxonomy)if(t.rank=="species" && t.name==s.name){organism=t.id;break;}if(!organism.isEmpty())break;}
+    controller.exploreTaxon(organism);QTest::qWait(80);QCOMPARE(unlocks.size(),1);
+    window->setProperty("page","achievements");QTest::qWait(80);const auto count=unlocks.size();
+    auto dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
+        window->resize(size);QTest::qWait(60);
+        QVERIFY(activate("achievementState-Todas"));item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("overview"));
+        QVERIFY(activate("achievementState-Desbloqueadas"));QVERIFY(item("achievementCard-first_answer"));QVERIFY(!item("achievementCard-correct_100"));
+        auto card=item("achievementCard-first_answer");card->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);QVERIFY(card->property("visualFocus").toBool());QVERIFY(capture("unlocked-focus"));
+        QTest::keyClick(window,Qt::Key_Return);QTest::qWait(80);QVERIFY(dialog->property("visible").toBool());
+        auto detailScroll=item("achievementDetailScroll"),detailDate=item("achievementDetailDate");QVERIFY(detailScroll && detailDate);
+        QVERIFY(detailDate->mapToItem(detailScroll,{0,detailDate->height()}).y()<=detailScroll->height()+1);
+        QVERIFY(capture("details"));
+        QTest::keyClick(window,Qt::Key_Escape);QTest::qWait(80);QVERIFY(!dialog->property("visible").toBool());QVERIFY(card->hasActiveFocus());
+        QVERIFY(activate("achievementState-Bloqueadas"));QVERIFY(!item("achievementCard-first_answer"));
+        auto partial=item("achievementCard-correct_10");QVERIFY(partial);partial->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(70);QVERIFY(capture("partial"));
+        const auto point=partial->mapToItem(item("pageScroll"),QPointF());QVERIFY(point.y()>=-1);QVERIFY(point.y()+partial->height()<=item("pageScroll")->height()+1);
+    }
+    QVERIFY(activate("achievementCategory-Exploração"));QVERIFY(!item("achievementCard-correct_10"));QVERIFY(item("achievementCard-visit_10"));
+    window->setProperty("page","statistics");QTest::qWait(80);window->setProperty("page","achievements");QTest::qWait(80);
+    QVERIFY(!item("achievementCard-first_answer"));QVERIFY(item("achievementCard-visit_10"));QCOMPARE(unlocks.size(),count);
+    window->setProperty("motionEnabled",true);auto badge=item("achievementBadge-visit_10");QVERIFY(badge);auto card=item("achievementCard-visit_10");
+    card->setProperty("down",true);QTRY_VERIFY(badge->scale()<1);card->setProperty("down",false);QTRY_COMPARE(badge->scale(),1.0);
+    window->setProperty("motionEnabled",false);card->setProperty("down",true);QCOMPARE(badge->scale(),1.0);card->setProperty("down",false);
+    QFile manifest(folder+"/captures.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::singleLocalUserSettingsRecordsAndCaptures()
 {

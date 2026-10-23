@@ -146,6 +146,10 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void achievementCriteriaAndInvalidEvents();
+    void achievementsPersistRecoverAndEmitOnce();
+    void achievementHintsAndCompletion();
+    void achievementExplorationAndHistoricalRecognition();
     void explorationCardsUseReviewedContentAndDocumentedRanks();
     void explorationDebounceKeepsTheCurrentQueryAndFilters();
     void scientificSearchCombinesNamesDomainsAndRanks();
@@ -1037,7 +1041,7 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     QVERIFY(!controller.answerPending());
     QVERIFY(controller.answerDetails().isEmpty());
     QVERIFY(controller.categoryStats().isEmpty());
-    QVERIFY(!controller.achievements().first().toMap().value("unlocked").toBool());
+    QVERIFY(controller.achievements().first().toMap().value("unlocked").toBool());
 }
 
 void GameServiceTests::playSelectionProjectsExistingTaxonomyAndEligibility()
@@ -2394,6 +2398,8 @@ void GameServiceTests::scientificHintCoverageWithFourOptions()
         {"context","Same eligible pool and seeded four-option contexts; no adaptive resampling."},
         {"education_sha256",QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex())},{"rows",rows}}).toJson());
 }
+
+#include "AchievementCases.h"
 
 QTEST_MAIN(GameServiceTests)
 #include "GameServiceTests.moc"

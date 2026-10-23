@@ -166,3 +166,6 @@ Implementado no commit [`679f7f744c17e5c9f2f28d52ab32105cf0ed8b51`](https://gith
 - Documentação entregue no [PR #27](https://github.com/kaduolliver/Projeto-Glossata/pull/27), iniciada no commit `31fd668`; o commit de base acima permite recuperar a interface anterior.
 
 Para cada alteração futura, acrescentar data real, commit e PR, telas afetadas, diferença observável, capturas e método de validação. Manter os registros anteriores sem substituir suas imagens.
+# Subetapa 2.3.3 — Conquistas
+
+Coleção persistente de 30 conquistas, resumo dinâmico, filtros combinados, 30 badges vetoriais nativos, progresso por cartão e detalhes em diálogo integrado. Estados textuais, foco por teclado, rolagem compartilhada e redução de movimento. [Arquitetura e critérios](../CONQUISTAS.md); [verificações e capturas](VERSOES/2.3.3/README.md). Sem notificações da etapa 2.3.4.

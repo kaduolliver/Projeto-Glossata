@@ -401,5 +401,7 @@
         <file>resources/compliance/exploration/home-amanita.json</file>
         <file>resources/images/exploration/home-lion-fhd.jpg</file>
         <file>resources/compliance/exploration/home-lion-fhd.json</file>
+        <file>resources/qml/components/AchievementBadge.qml</file>
+        <file>resources/qml/components/AchievementBadgePaths.js</file>
     </qresource>
 </RCC>

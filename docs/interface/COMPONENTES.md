@@ -1,5 +1,9 @@
 # Componentes compartilhados
 
+## Conquistas — 2.3.3
+
+`AchievementBadge.qml` recebe `glyph`, com geometria/cor em `AchievementBadgePaths.js`. Desenha moldura, fitas e glifo em coordenadas normalizadas, escaladas pela menor dimensão; fallback para folha, sem animação interna nem validação de progresso. A view define tamanho, atenuação e resposta à pressão. `AchievementsView` reutiliza `UiButton`, `UiIcon`, `Theme`, `Dialog` e `ScrollView`; filtros e cartões possuem nomes acessíveis, foco visível e ativação por teclado. O diálogo devolve foco ao cartão de origem. [Evidências](VERSOES/2.3.3/README.md).
+
 ## Estatísticas — cores e dicas em andamento
 
 `StatisticsView.groupColor(id)` usa os IDs do catálogo e um fallback determinístico, sem consultar a posição dos grupos. Barras principais e percentuais recebem a cor do grupo; subgrupos usam um clareamento discreto da mesma cor. Nomes, contagens e taxas continuam presentes. `statisticsRankBorder0..4` e `statisticsRankPosition0..4` identificam bordas/números: ouro, prata, bronze e padrão. O foco substitui a borda por `Theme.focus`/`focusWidth`, sem alterar a ordem ou os marcadores.

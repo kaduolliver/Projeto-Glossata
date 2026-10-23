@@ -30,6 +30,7 @@ GameController::GameController(QObject *parent, const QString &databasePath, std
     // create a recoverable game merely because the home screen was opened.
     service_.setCheckpointRepository(&historyRepository_);
     initializing_=false;
+    refreshAchievements(true);
     refreshHomeCatalog();
     // The current query is never buffered. Only presentation notifications are
     // coalesced; a timeout cannot restore text from an older edit or page.
@@ -162,6 +163,7 @@ bool GameController::chooseLocalUser(const QString &id)
     // Same preview as a normal opening; selecting an identity is not a new game.
     service_.setCheckpointRepository(nullptr); initializing_=true; startGame();
     initializing_=false; service_.setCheckpointRepository(&historyRepository_);
+    refreshAchievements(true);
     emit currentPlayerNameChanged(); emit localUserChanged(); emit recoveryChanged(); loadRanking();
     return true;
 }
@@ -233,6 +235,28 @@ void GameController::exploreTaxon(const QString &taxonId)
     if (taxonomy_.describe(taxonId).value("title").toString().isEmpty()) return;
     explorationId_ = taxonId;
     emit explorationChanged();
+}
+
+bool GameController::recordAnswerSpeciesVisit()
+{
+    if (!localUserReady() || !answerPending_ || displayedQuestion_.species.id<=0) return false;
+    if (!historyRepository_.recordSpeciesVisit(currentPlayerId_,displayedQuestion_.species)) return false;
+    refreshAchievements();return achievementsError_.isEmpty();
+}
+
+bool GameController::recordExplorationVisit(const QString &taxonId)
+{
+    if (!localUserReady() || taxonId!=explorationId_ || taxonomy_.describe(taxonId).value("kind")!="organism") return false;
+    for (const auto &s : taxonomy_.speciesFor(taxonId)) {
+        for (const auto &node : s.taxonomy) if (node.id==taxonId && node.rank=="species" && node.name==s.name) {
+            if (!historyRepository_.recordSpeciesVisit(currentPlayerId_,s)) {
+                achievementsError_=QStringLiteral("Não foi possível registrar esta consulta. Reabra a ficha para tentar novamente.");
+                emit achievementsChanged();return false;
+            }
+            refreshAchievements();return achievementsError_.isEmpty();
+        }
+    }
+    return false;
 }
 
 QVariantMap GameController::questionPhoto() const
@@ -365,6 +389,7 @@ void GameController::answerSelected(const QString &selectedOption)
     answerDetails_.insert("classification", lineage.join(" · "));
     correctStreak_ = correct ? correctStreak_ + 1 : 0;
     bestStreak_ = std::max(bestStreak_, correctStreak_);
+    refreshAchievements();
     emit scoreChanged();
     emit roundChanged();
     feedbackText_ = correct
@@ -422,7 +447,7 @@ bool GameController::revealHintCategory(const QString &category)
         if(hint.id!=category && hintKey(hint.type)!=category)continue;
         if(displayedRevealedHints_&(1<<i))return true;
         if(!service_.revealHintSlot(i)) { emit recoveryChanged(); return false; }
-        displayedRevealedHints_=service_.revealedHints();emit extraHintChanged();emit recoveryChanged();return true;
+        displayedRevealedHints_=service_.revealedHints();refreshAchievements();emit extraHintChanged();emit recoveryChanged();return true;
     }
     return false;
 }
@@ -465,6 +490,7 @@ void GameController::retrySaveResult()
         return;
     }
     resultPending_ = service_.saveCurrentResult() == GameService::SaveStatus::Failed;
+    refreshAchievements();
     feedbackText_ = resultPending_
         ? QStringLiteral("Não foi possível salvar a pontuação. Tente salvar novamente antes de fechar o jogo.")
         : QStringLiteral("Partida encerrada. Pontuação: %1.").arg(scoreText());
@@ -567,21 +593,21 @@ QVariantList GameController::categoryStats() const
 
 QVariantList GameController::achievements() const
 {
-    QVariantList list;
-    const auto add = [&list](const QString &name, const QString &description, const QString &icon, int value, int target) {
-        list.append(QVariantMap{
-            {QStringLiteral("title"), name}, {QStringLiteral("description"), description},
-            {QStringLiteral("icon"), icon}, {QStringLiteral("progress"), std::min(value, target)},
-            {QStringLiteral("target"), target}, {QStringLiteral("unlocked"), value >= target}
-        });
-    };
-    add(QStringLiteral("Primeiro voo"), QStringLiteral("Responda sua primeira pergunta."), "leaf", answeredCount(), 1);
-    add(QStringLiteral("Olhar atento"), QStringLiteral("Acerte cinco perguntas."), "target", correctAnswers(), 5);
-    add(QStringLiteral("Explorador"), QStringLiteral("Responda dez perguntas."), "butterfly", answeredCount(), 10);
-    add(QStringLiteral("Em sequência"), QStringLiteral("Faça três acertos seguidos."), "spark", bestStreak_, 3);
-    add(QStringLiteral("Conhecedor"), QStringLiteral("Acerte vinte perguntas."), "book", correctAnswers(), 20);
-    add(QStringLiteral("Um ciclo completo"), QStringLiteral("Explore todo o grupo escolhido."), "trophy", answeredCount(), std::max(1, catalogSize()));
-    return list;
+    return achievements_;
+}
+
+void GameController::refreshAchievements(bool retrospective)
+{
+    if (!localUserReady()) return;
+    QVariantList rows, unlocked;
+    if (!historyRepository_.refreshAchievements(currentPlayerId_,catalog_.loadCurrentSpecies(),retrospective,rows,unlocked)) {
+        achievementsError_=QStringLiteral("Não foi possível atualizar as conquistas. O histórico foi preservado; tente novamente após verificar o acesso ao banco.");
+        emit achievementsChanged();return;
+    }
+    const bool changed=rows!=achievements_ || !achievementsError_.isEmpty();
+    achievements_=rows;achievementsError_.clear();
+    if (changed) emit achievementsChanged();
+    for (const auto &row : unlocked) emit achievementUnlocked(row.toMap());
 }
 
 bool GameController::renameCurrentPlayerProfile(const QString &name)
