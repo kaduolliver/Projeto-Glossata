@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [2.2.0] — Não lançado; notificações de conquistas
 
+- Refinamento da PR #39: notificações no canto superior direito, abaixo da geometria real do cabeçalho, com FIFO de cima para baixo e reorganização após dispensa. Largura, animações, foco e persistência preservados. Efeitos sonoros configuráveis registrados como requisito futuro de Perfil e ajustes, sem implementação de áudio. [Capturas e verificações](docs/interface/VERSOES/2.3.4/topo-direito/README.md).
 - Subetapa 2.3.4: notificações informativas no shell, consumindo somente `achievementUnlocked` após persistência. Reutilizam as quatro badges existentes e não alteram desbloqueios, quiz, pontuação, identidade ou SQLite.
 - Fila FIFO de sessão, até duas notificações, deduplicação por UUID/conquista e fechamento manual/automático. Cinco segundos de leitura, transições curtas e movimento reduzido; suspensão durante popups, erros críticos e inatividade, com expiração explícita após 60 segundos de suspensão/idade do evento.
 - MINOR por funcionalidade compatível. Aplicativo 2.2.0 ainda não lançado, catálogo 2.4.0 e SQLite 8 preservados; componentes novos com decisão de licença pendente. [Arquitetura, políticas, testes e capturas](docs/interface/VERSOES/2.3.4/README.md). Sem release ou tag.

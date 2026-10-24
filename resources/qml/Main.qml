@@ -205,6 +205,7 @@ ApplicationWindow {
     }
 
     RowLayout {
+        id: mainLayout
         anchors.fill: parent
         spacing: 0
         Rectangle {
@@ -261,11 +262,13 @@ ApplicationWindow {
             }
         }
         ColumnLayout {
+            id: pageColumn
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.margins: root.compactNavigation ? Style.Theme.pageCompactMargin : Style.Theme.pageMargin
             spacing: Style.Theme.spaceLg
             RowLayout {
+                id: sectionHeader
                 objectName: "sectionHeader"
                 Layout.fillWidth: true
                 spacing: Style.Theme.spaceMd
@@ -276,6 +279,7 @@ ApplicationWindow {
                 }
                 TextAction { objectName: "headerResumeGame"; visible: root.playing && root.currentSection !== "play"; text: "Retomar partida"; onClicked: root.openPlay() }
                 Rectangle {
+                    objectName: "localDataIndicator"
                     implicitWidth: 116; implicitHeight: 28; radius: Style.Theme.controlRadius; color: Style.Theme.forest; border.color: Style.Theme.border
                     Row { anchors.centerIn: parent; spacing: Style.Theme.spaceXs; Rectangle { implicitWidth: 5; implicitHeight: 5; radius: 3; color: Style.Theme.green; anchors.verticalCenter: parent.verticalCenter } Label { text: "Dados locais"; color: Style.Theme.text; font.pixelSize: Style.Theme.sectionLabelSize } }
                 }
@@ -416,6 +420,8 @@ ApplicationWindow {
         anchors.fill: parent
         z: 100
         app: root; backend: root.backend
+        // Sum the real ancestor positions in the window, including layout margins.
+        headerBottom: mainLayout.y + pageColumn.y + sectionHeader.y + sectionHeader.height
         surfaceAvailable: !root.Overlay.overlay.visible
     }
     NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationPage }

@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #39 — notificações no topo direito
+
+- Coluna ancorada 20 px abaixo da borda real do cabeçalho, com 20 px à direita e 10 px entre cartões. A primeira notificação fica acima da segunda; remoções reorganizam a FIFO sem recriar o shell.
+- Cartões, largura, entrada/saída, leitura, movimento reduzido e suspensão preservados. Testes ampliados para geometria do cabeçalho, controles, redimensionamento e rolagem. Áudio configurável documentado para Perfil e ajustes, sem código ou arquivos sonoros. [Capturas e validação atuais](VERSOES/2.3.4/topo-direito/README.md).
+
 ## Subetapa 2.3.4 — notificações de conquistas
 
 - Camada informativa no shell com duas notificações, FIFO, deduplicação por identidade/conquista e cinco segundos de leitura. Badges/metadados existentes, entrada/saída curtas e respeito a movimento reduzido.

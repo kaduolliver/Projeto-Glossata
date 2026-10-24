@@ -119,6 +119,42 @@ QString notificationVisitTaxon()
         if(taxon.rank=="species" && taxon.name==species.name)return taxon.id;
     return {};
 }
+QStringList activeNotificationIds(const QSignalSpy &presented, const QSignalSpy &completed)
+{
+    QSet<QString> finished;
+    for (const auto &event : completed) finished.insert(event[0].toString());
+    QStringList ids;
+    for (const auto &event : presented) if (!finished.contains(event[0].toString())) ids << event[0].toString();
+    return ids;
+}
+QString notificationPlacementFailure(QQuickWindow *window, const QStringList &ids)
+{
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto header = item("sectionHeader");
+    if (!header || ids.size() > 2) return "Missing header or more than two notifications";
+    const auto headerRect = header->mapRectToScene(header->boundingRect());
+    qreal expectedTop = headerRect.bottom() + 20;
+    for (const auto &id : ids) {
+        auto card = item("achievementNotification-" + id);
+        if (!card) return id + " missing from FIFO";
+        const auto rect = card->mapRectToScene(card->boundingRect());
+        if (rect.left() < 20 || rect.bottom() > window->height() - 20
+            || qAbs(rect.right() - (window->width() - 20)) > 1 || qAbs(card->width() - 440) > 1)
+            return id + " outside window or card width changed";
+        if (qAbs(rect.top() - expectedTop) > 1)
+            return id + " incorrect top/FIFO position: " + QString::number(rect.top()) + " expected " + QString::number(expectedTop);
+        for (const auto &name : {"sectionHeader", "localDataIndicator", "headerResumeGame"}) {
+            auto control = item(name);
+            if (control && control->isVisible() && rect.intersects(control->mapRectToScene(control->boundingRect())))
+                return id + " overlaps " + name;
+        }
+        auto title = item("notificationTitle-" + id);
+        if (!title || title->property("truncated").toBool() || title->property("contentHeight").toReal() > title->height() + 1)
+            return id + " title geometry";
+        expectedTop = rect.bottom() + 10;
+    }
+    return {};
+}
 }
 
 void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
@@ -138,6 +174,8 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     QVERIFY(presented.isValid() && discarded.isValid() && completed.isValid());
     QVERIFY(controller.startTaxonGame({},"genus"));controller.answerSelected(notificationAnswer(controller));
     QCOMPARE(events.size(),2);QCOMPARE(layer->property("activeCount").toInt(),2);
+    const auto placementFailure=[&]{return notificationPlacementFailure(window,activeNotificationIds(presented,completed));};
+    QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
     const auto first=events[0][0].toMap();const auto rows=controller.achievements();
     controller.achievementUnlocked(first);auto malformed=first;malformed.remove("title");controller.achievementUnlocked(malformed);
     malformed=first;malformed["retrospective"]=true;controller.achievementUnlocked(malformed);
@@ -158,6 +196,8 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     QVERIFY(!hint.isEmpty());QVERIFY(controller.revealHintCategory(hint));
     QCOMPARE(layer->property("activeCount").toInt(),2);QTRY_VERIFY(!item("achievementNotification-"+first["id"].toString()));
     window->setProperty("motionEnabled",false);
+    // Closing the top card moves the second up and appends the next FIFO entry below it.
+    QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
     // Drain through real close controls. Each completion advances the FIFO once.
     for(int guard=0;layer->property("activeCount").toInt()>0 && guard<40;++guard){
         QTest::qWait(60);
@@ -166,6 +206,7 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
         QVERIFY(button);
         QTRY_VERIFY(button->mapToScene({button->width()/2,button->height()/2}).y()<window->height());
         QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,button->mapToScene({button->width()/2,button->height()/2}).toPoint());QTest::qWait(20);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
     }
     QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
     QStringList expected,actual;QSet<QString> unique;
@@ -255,9 +296,11 @@ void QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
         auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(size);window->requestActivate();
         const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
         auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
-        folder="previews/achievement-notifications/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));
+        QSignalSpy presented(layer,SIGNAL(notificationPresented(QString))),completed(layer,SIGNAL(notificationCompleted(QString,QString)));
+        QVERIFY(presented.isValid() && completed.isValid());
+        folder="previews/achievement-notifications-top-right/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));
         const auto capture=[&](const QString &state){QTest::qWait(100);const auto image=window->grabWindow();const auto name=state+"-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";if(!image.save(folder+"/"+name))return false;frames.append(QJsonObject{{"file",name},{"state",state},{"width",image.width()},{"height",image.height()},{"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},{"temporary_database",true},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});return true;};
-        QVERIFY(controller.startCompetitiveGame());window->setProperty("page","quiz");QTest::qWait(120);
+        QVERIFY(controller.startCompetitiveGame());window->setProperty("sessionStarted",true);window->setProperty("page","quiz");QTest::qWait(120);
         controller.answerSelected(notificationAnswer(controller));auto first=item("achievementNotification-first_answer");QVERIFY(first);
         QVERIFY(first->property("reveal").toReal()<1);QVERIFY(capture("entering"));
         controller.nextQuestion();
@@ -266,18 +309,30 @@ void QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
         QTest::qWait(300);QVERIFY(capture("two-on-quiz"));
         QString boundsFailure;
         const auto checkBounds=[&] {
-            QList<QRectF> boxes;
-            for(const auto &value:controller.achievements()) {
-                const auto id=value.toMap()["id"].toString();auto card=item("achievementNotification-"+id);if(!card)continue;
-                const auto rect=card->mapRectToScene(card->boundingRect());
-                if(rect.left()<0 || rect.top()<0 || rect.right()>window->width()-19 || rect.bottom()>window->height()-19){boundsFailure=id+" outside window: "+QString::number(rect.top());return false;}
-                auto title=item("notificationTitle-"+id);if(!title || title->property("truncated").toBool() || title->property("contentHeight").toReal()>title->height()+1){boundsFailure=id+" title geometry";return false;}
-                for(const auto &other:boxes)if(rect.intersects(other)){boundsFailure=id+" overlaps another card";return false;}boxes<<rect;
-            }
-            boundsFailure=QString("visible %1, active %2").arg(boxes.size()).arg(layer->property("activeCount").toInt());
-            return boxes.size()==layer->property("activeCount").toInt() && boxes.size()<=2;
+            const auto ids=activeNotificationIds(presented,completed);
+            boundsFailure=notificationPlacementFailure(window,ids);
+            return boundsFailure.isEmpty() && ids.size()==layer->property("activeCount").toInt();
         };
-        QVERIFY(checkBounds());
+        QTRY_VERIFY2(checkBounds(),qPrintable(boundsFailure));
+        const auto idsBefore=activeNotificationIds(presented,completed);
+        const auto pendingBefore=layer->property("pendingCount");
+        // Live resizing crosses the compact-navigation breakpoint without rebuilding the queue.
+        for(const QSize resized:{QSize(1920,1080),QSize(1000,700),QSize(1240,820),size}) {
+            window->resize(resized);QTRY_VERIFY2(checkBounds(),qPrintable(boundsFailure));
+            QCOMPARE(activeNotificationIds(presented,completed),idsBefore);QCOMPARE(layer->property("pendingCount"),pendingBefore);
+            QCOMPARE(item("achievementNotification-first_answer"),first);
+        }
+        QVERIFY(capture("resized-back"));
+        window->setProperty("page","home");QTest::qWait(60);
+        QVERIFY(item("headerResumeGame")->isVisible());QTRY_VERIFY2(checkBounds(),qPrintable(boundsFailure));
+        QVERIFY(capture("home-with-resume"));
+        auto scroll=item("pageScroll");QVERIFY(scroll);
+        QTRY_VERIFY(scroll->property("contentHeight").toReal()>scroll->height()+100);
+        const auto fixedPosition=first->mapToScene(QPointF());
+        scroll->setProperty("contentY",100);QTest::qWait(40);
+        QCOMPARE(first->mapToScene(QPointF()),fixedPosition);QVERIFY(checkBounds());QVERIFY(capture("scrolled-home"));
+        QCOMPARE(activeNotificationIds(presented,completed),idsBefore);QCOMPARE(layer->property("pendingCount"),pendingBefore);
+        window->setProperty("page","quiz");QTest::qWait(40);
         auto modal=window->findChild<QObject*>("abandonRecoveryDialog");QVERIFY(modal);QVERIFY(QMetaObject::invokeMethod(modal,"open"));
         QTRY_VERIFY(!layer->property("presentationAllowed").toBool());QVERIFY(capture("modal-suspended"));
         QVERIFY(QMetaObject::invokeMethod(modal,"close"));QTRY_VERIFY(layer->property("presentationAllowed").toBool());
@@ -1873,6 +1928,9 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(capture("restored-results", size));
         QVERIFY(edit("Panthera")); QCOMPARE(item("exploreGroupResults")->property("count").toInt(), 1);
         controller.setExploreDomain("domain:Eukaryota"); controller.setExploreRank("species");
+        // Test the search control once it is visible, after the real unlock toast expires.
+        auto notifications=item("achievementNotificationLayer");QVERIFY(notifications);
+        QTRY_VERIFY_WITH_TIMEOUT(notifications->property("activeCount").toInt()==0 && notifications->property("pendingCount").toInt()==0,12000);
         QVERIFY(activate("clearExploreQuery", true));
         QCOMPARE(controller.exploreQuery(), QString()); QCOMPARE(controller.exploreDomain(), QString("domain:Eukaryota"));
         QCOMPARE(controller.exploreRank(), QString("species"));

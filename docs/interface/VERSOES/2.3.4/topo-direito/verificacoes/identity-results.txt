@@ -1,0 +1,64 @@
+********* Start testing of PlayerIdentityTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : PlayerIdentityTests::initTestCase()
+QWARN  : PlayerIdentityTests::achievementsSchema7MigrationAndOwnership() Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::achievementsSchema7MigrationAndOwnership()
+PASS   : PlayerIdentityTests::achievementWriteFailureRollsBack()
+PASS   : PlayerIdentityTests::localUserFirstOpenAndStableBinding()
+PASS   : PlayerIdentityTests::localUserSchema6PreservesSingleProfile()
+PASS   : PlayerIdentityTests::localUserExplicitChoiceAndGuards()
+PASS   : PlayerIdentityTests::createRenameReopenAndKeepOwnership()
+PASS   : PlayerIdentityTests::retireAndReuseNameWithoutInheritingResults()
+PASS   : PlayerIdentityTests::sameGameCannotChangeOwner()
+PASS   : PlayerIdentityTests::renameAndReusePreviousNameKeepDistinctRankings()
+PASS   : PlayerIdentityTests::invalidIdentityAndNamesAreRefused()
+PASS   : PlayerIdentityTests::migrateV3PreservesUnresolvedRecordsAndSnapshots()
+PASS   : PlayerIdentityTests::migrationIsIdempotentWithoutNewIdsOrNotes()
+QWARN  : PlayerIdentityTests::migrationRollbackPreservesOldSchemaAndRecords() Identity migration failed: "synthetic migration interruption Unable to fetch row"
+QWARN  : PlayerIdentityTests::migrationRollbackPreservesOldSchemaAndRecords() Não foi possível migrar o histórico: "" ""
+PASS   : PlayerIdentityTests::migrationRollbackPreservesOldSchemaAndRecords()
+PASS   : PlayerIdentityTests::legacyUnicodeProfilesStaySeparate()
+PASS   : PlayerIdentityTests::migrationDoesNotClaimRenamedDeletedOrReusedNames()
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(portuguese)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(ascii)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(canonical-decomposition)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(greek)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(cyrillic)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(supplementary-deseret)
+PASS   : PlayerIdentityTests::unicodeEquivalentNames(external-whitespace)
+PASS   : PlayerIdentityTests::unicodeDistinctionsAndDisplaySpelling()
+PASS   : PlayerIdentityTests::unicodeRenameConflictAndOwnCaseChange()
+PASS   : PlayerIdentityTests::migrateV4AuditsConflictsWithoutChangingOwners()
+QWARN  : PlayerIdentityTests::migrateV4FailureRollsBackKeysAndGuards() Não foi possível migrar o histórico: "" ""
+PASS   : PlayerIdentityTests::migrateV4FailureRollsBackKeysAndGuards()
+PASS   : PlayerIdentityTests::migrateV4RetiredProfilesKeepNamesAndResults()
+QWARN  : PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed() Unsupported player name policy; explicit migration required
+QWARN  : PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed() Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed() Player name key inconsistent; retain database and investigate by ID
+QWARN  : PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed() Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::unsupportedPolicyAndInconsistentKeysFailClosed()
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-local-binding-guard) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-local-binding-guard) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-local-binding-guard)
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-name-guard) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-name-guard) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-name-guard)
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-guard) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-guard) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-guard)
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-table) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-table) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-checkpoint-table)
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-answer-column) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-answer-column) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(missing-answer-column)
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(foreign-key-violation) Incompatible or incomplete player database; original retained
+QWARN  : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(foreign-key-violation) Incompatible or incomplete player database; original retained
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(foreign-key-violation)
+PASS   : PlayerIdentityTests::incompleteCurrentSchemaFailsClosed(future-schema)
+QWARN  : PlayerIdentityTests::incompleteV5MigrationRollsBackAndKeepsResults() Não foi possível migrar o histórico: "" ""
+QWARN  : PlayerIdentityTests::incompleteV5MigrationRollsBackAndKeepsResults() Não foi possível migrar o histórico: "" ""
+PASS   : PlayerIdentityTests::incompleteV5MigrationRollsBackAndKeepsResults()
+PASS   : PlayerIdentityTests::cleanupTestCase()
+Totals: 38 passed, 0 failed, 0 skipped, 0 blacklisted, 1483ms
+********* Finished testing of PlayerIdentityTests *********

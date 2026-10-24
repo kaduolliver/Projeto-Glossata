@@ -1,5 +1,7 @@
 # Subetapa 2.3.4 — notificações de conquistas
 
+**Atualização da PR #39:** [reposicionamento superior direito, capturas e verificações atuais](topo-direito/README.md). A revisão conserva a versão 2.2.0 ainda não lançada; registra efeitos sonoros configuráveis para a modernização futura de Perfil e ajustes, sem implementar áudio. As evidências da implementação inicial no canto inferior direito permanecem preservadas abaixo.
+
 Base: `9297b00e35d406888fb548284c17052881f8b6d9`, integração da PR #38 na `main`, conferida pela API do GitHub e por `git fetch origin main`. Branch `feat/achievement-notifications-2-3-4`. Aplicativo **2.2.0 ainda não lançado**: MINOR por funcionalidade compatível. Catálogo **2.4.0**, SQLite **8** e critérios/badges da 2.3.3 preservados.
 
 ## Integração
@@ -27,7 +29,7 @@ Antes de enfileirar, a camada exige os campos reais `id`, `title`, `description`
 
 Entrada de **280 ms**, curva `OutCubic`, deslocamento de **26 px** e opacidade. Saída de **200 ms**, curva `InCubic`. Desligar `Theme.motionEnabled` conclui as transições imediatamente, remove deslocamento/reflexo e conserva o tempo de leitura. Interromper a entrada por suspensão não destrói o cartão; a saída já solicitada termina sem iniciar outra enquanto a apresentação estiver bloqueada.
 
-A coluna fica no canto inferior direito, com margem de 20 px, espaçamento de 10 px e largura de até 440 px, limitada pela janela. Títulos e nomes de nível usam quebra de linha; a badge mantém proporções. O layout da página e a rolagem não se movem para acomodar a coluna.
+A coluna fica no canto superior direito, com margem de 20 px a partir da borda inferior real do cabeçalho, 20 px à direita, espaçamento de 10 px e largura de até 440 px, limitada pela janela. Títulos e nomes de nível usam quebra de linha; a badge mantém proporções. O layout da página e a rolagem não se movem para acomodar a coluna. [Geometria e evidências atualizadas](topo-direito/README.md).
 
 Não há foco automático, interceptação de teclas, clique no corpo ou navegação para Conquistas. Só o botão de dispensa recebe interação. O clique nele não solicita foco; Tab permite alcançá-lo explicitamente. Se o usuário tiver levado o foco para uma notificação, sua conclusão devolve o foco ao último controle disponível da atividade, sem interferir em um popup ou janela inativa. Textos e descrição têm nomes acessíveis, complementando material e cor.
 
@@ -50,7 +52,7 @@ python scripts/capture_home.py --binary build/achievements-refinements/projeto_g
 
 Os bancos/identidades são temporários e o Discord está desativado. Capturas usam o controlador/QML reais, respostas competitivas efetivamente confirmadas e desbloqueios persistidos; não substituem o modelo nem fabricam badges. Eventos negativos do teste reutilizam um evento observado para verificar duplicação, campos ausentes, retroatividade e identidade incorreta; não são usados nas evidências visuais. O teste de expiração avança somente o argumento da verificação da fila, sem mudar relógio do banco ou do sistema.
 
-## Validação e evidências
+## Validação e evidências da implementação inicial
 
 | Verificação | Resultado |
 | --- | --- |
@@ -84,7 +86,7 @@ Os relatórios iniciais também foram preservados. Identificaram a precondição
 
 [Duas sobre o Quiz compacto](capturas/100/two-on-quiz-1000x700.png), [quadro durante entrada](capturas/125/entering-1240x820.png) e [suspensão por modal](capturas/150/modal-suspended-1920x1080.png). Exemplos nas demais telas: [Início](capturas/100/page-home-1240x820.png), [Explorar](capturas/100/page-explore-1240x820.png), [Jogar](capturas/100/page-categories-1240x820.png), [Resultados](capturas/100/page-results-1240x820.png), [Estatísticas](capturas/100/page-statistics-1240x820.png), [Conquistas](capturas/100/page-achievements-1240x820.png) e [Perfil e ajustes](capturas/100/page-settings-1240x820.png).
 
-O [manifesto](capturas.json) registra datas reais, dimensões lógicas/físicas, escalas, hashes das imagens/fontes/binários e o commit da implementação. A [captura oficial da Home](../../../images/tela-inicial.png) e seu [registro](../../../images/tela-inicial.json) foram renovados por `scripts/capture_home.py`, com perfil temporário, no mesmo commit da alteração de `Main.qml`. Essa imagem oficial conserva a abertura normal sem gerar eventos artificiais; a evidência de notificação sobre a Home está no quadro de teste acima. Todas as evidências anteriores da 2.3.3 permanecem preservadas.
+O [manifesto inicial](capturas.json) registra datas reais, dimensões lógicas/físicas, escalas, hashes das imagens/fontes/binários e o commit da implementação inicial. A captura oficial dessa implementação permanece no [histórico do commit `f6d8f80`](https://github.com/kaduolliver/Projeto-Glossata/blob/f6d8f809e742f0308ea41eef996e84fd2e7f2c26/docs/images/tela-inicial.png). A [captura oficial atual da Home](../../../images/tela-inicial.png) e seu [registro](../../../images/tela-inicial.json) acompanham o [refinamento superior direito](topo-direito/README.md), com o enquadramento real da Descoberta do Dia. Ambas as rodadas usam `scripts/capture_home.py`, perfil temporário e o commit da respectiva alteração visual. As notificações são demonstradas nas capturas de teste; nenhuma foi fabricada na captura oficial. Todas as evidências anteriores da 2.3.3 permanecem preservadas.
 
 ## Arquivos
 

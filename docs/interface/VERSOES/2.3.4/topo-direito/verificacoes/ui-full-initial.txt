@@ -1,0 +1,41 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
+PASS   : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+PASS   : QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
+PASS   : QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
+PASS   : QmlInterfaceTests::singleLocalUserSettingsRecordsAndCaptures()
+PASS   : QmlInterfaceTests::statisticsLiveHintsAndRecovery()
+PASS   : QmlInterfaceTests::statisticsStableTaxonomicColors()
+PASS   : QmlInterfaceTests::statisticsTopPanelsAndSharedScrolling()
+PASS   : QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
+PASS   : QmlInterfaceTests::personalCompetitiveConfigurationStaysSeparate()
+PASS   : QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
+PASS   : QmlInterfaceTests::restoredQuizRecoveryAndUnavailableStates()
+PASS   : QmlInterfaceTests::speciesDescriptionStaysIndependentOfMorphology()
+PASS   : QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
+PASS   : QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
+PASS   : QmlInterfaceTests::playSelectionNavigationAndCaptures()
+PASS   : QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
+PASS   : QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction()
+FAIL!  : QmlInterfaceTests::photographicExploreNavigationAndCaptures() Compared values are not the same
+   Actual   (controller.exploreQuery()): "Panthera"
+   Expected (QString())                : ""
+C:/glossata_game/tests/QmlInterfaceTests.cpp(1932) : failure location
+PASS   : QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
+PASS   : QmlInterfaceTests::encyclopedicPhotographsStayCenteredWithoutCropping()
+PASS   : QmlInterfaceTests::encyclopedicCardsHandleLongTextAndUnavailablePhotos()
+PASS   : QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
+PASS   : QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
+PASS   : QmlInterfaceTests::designSystemStatesAndContrast()
+PASS   : QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+PASS   : QmlInterfaceTests::homeCarouselTimingAndCrossfade()
+PASS   : QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
+PASS   : QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
+PASS   : QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
+PASS   : QmlInterfaceTests::navigateAndConfirmAnswers()
+PASS   : QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 33 passed, 1 failed, 0 skipped, 0 blacklisted, 459627ms
+********* Finished testing of QmlInterfaceTests *********

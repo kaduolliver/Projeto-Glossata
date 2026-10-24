@@ -8,6 +8,7 @@ Item {
     id: layer
     required property var app
     required property var backend
+    required property real headerBottom
     property bool surfaceAvailable: true
     readonly property bool presentationAllowed: app.active && app.visible && app.visibility !== Window.Minimized
         && surfaceAvailable && backend.localUserReady && !backend.localUserChoiceRequired
@@ -116,7 +117,11 @@ Item {
     ListModel { id: active; dynamicRoles: true }
     Column {
         id: notices
-        anchors { right: parent.right; bottom: parent.bottom; margins: Style.Theme.spaceLg }
+        anchors {
+            right: parent.right; top: parent.top
+            rightMargin: Style.Theme.spaceLg
+            topMargin: layer.headerBottom + Style.Theme.spaceLg
+        }
         width: Math.min(440, Math.max(0, layer.width - 2 * Style.Theme.spaceLg))
         spacing: Style.Theme.spaceSm
         Repeater {

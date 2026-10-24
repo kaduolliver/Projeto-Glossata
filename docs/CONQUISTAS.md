@@ -125,6 +125,8 @@ Bronze usa moldura simples; Prata acrescenta contorno e pequenos losangos; Ouro 
 
 ## Notificações da Subetapa 2.3.4
 
+As notificações ficam no canto superior direito, abaixo do cabeçalho real, com até duas instâncias em FIFO de cima para baixo. [Reposicionamento e validação](interface/VERSOES/2.3.4/topo-direito/README.md). **Requisito futuro:** adicionar efeitos sonoros configuráveis aos desbloqueios durante a modernização de Perfil e ajustes; [requisitos planejados](interface/VERSOES/2.3.4/topo-direito/README.md#efeitos-sonoros--requisito-futuro). A PR #39 não implementa áudio.
+
 O sinal persistido `achievementUnlocked(QVariantMap)` é consumido uma vez pelo shell. Uma fila temporária apresenta até duas notificações com as badges existentes, sem reconstruir o histórico ao abrir telas ou reiniciar. Reconhecimentos retroativos, eventos incompletos/duplicados e identidades diferentes são recusados. Nenhuma regra, persistência ou meta é recalculada pela interface. [Arquitetura e políticas detalhadas](interface/VERSOES/2.3.4/README.md).
 
 ## Filtro por nível e acabamento final da Platina

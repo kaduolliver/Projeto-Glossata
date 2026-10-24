@@ -1,0 +1,204 @@
+{
+  "recorded_at": "2026-10-24T20:48:50.885738+00:00",
+  "application_version": "2.2.0",
+  "catalog_version": "2.4.0",
+  "sqlite_schema": 8,
+  "ctest": {
+    "initial": {
+      "passed": 24,
+      "failed": 2,
+      "seconds": 459.72,
+      "report": "ctest-initial.txt"
+    },
+    "affected_groups_rerun": {
+      "passed": 2,
+      "failed": 0,
+      "seconds": 558.65,
+      "report": "ctest-rerun.txt"
+    },
+    "final_passed_groups": 26,
+    "aggregation": "24 unchanged groups passed initially; Interface and ProjectStatus passed after the documented test/metadata corrections."
+  },
+  "qt_test_totals": {
+    "core-results.txt": 86,
+    "ui-test-results.txt": 34,
+    "identity-results.txt": 38,
+    "recovery-results.txt": 21
+  },
+  "source_report_encodings": {
+    "core-results.txt": "cp1252",
+    "ui-test-results.txt": "utf8",
+    "identity-results.txt": "cp1252",
+    "recovery-results.txt": "cp1252"
+  },
+  "report_storage": "UTF-8/LF; Windows CP1252 reports transcoded without changing their content.",
+  "notification_scales": [
+    1,
+    1.25,
+    1.5
+  ],
+  "logical_resolutions": [
+    [
+      1000,
+      700
+    ],
+    [
+      1240,
+      820
+    ],
+    [
+      1920,
+      1080
+    ]
+  ],
+  "generated_capture_frames": 153,
+  "versioned_capture_frames": 54,
+  "checks": {
+    "release": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.8
+    },
+    "project-status": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/project_status.py",
+        "write",
+        "--build",
+        "build/achievements-refinements"
+      ],
+      "exit_code": 0,
+      "seconds": 0.28,
+      "initial_failure": "project-status-initial.txt; generated CHANGELOG.md hash updated with the existing generator"
+    },
+    "code-licensing": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "exit_code": 0,
+      "seconds": 1.08
+    },
+    "governance-history": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/content_governance.py",
+        "audit-history",
+        "--base",
+        "9297b00e35d406888fb548284c17052881f8b6d9"
+      ],
+      "exit_code": 0,
+      "seconds": 0.44
+    },
+    "smoke": {
+      "command": [
+        "C:\\glossata_game\\build\\achievements-refinements\\projeto_glossata.exe",
+        "--smoke-test"
+      ],
+      "exit_code": 0,
+      "seconds": 2.59
+    },
+    "release-final": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    "project-status-final": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "build/achievements-refinements"
+      ],
+      "exit_code": 0
+    },
+    "qmllint": {
+      "command": [
+        "qmllint",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementBadge.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementNotification.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementNotificationLayer.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\EndGameDialog.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\ExploreCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\FeatheredPhoto.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\HintPanel.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\KingdomArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\LifeArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\NavItem.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\PlayModeSelector.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesPortrait.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\StatCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TaxonComboBox.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TextAction.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiButton.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiIcon.qml",
+        "C:\\glossata_game\\resources\\qml\\Main.qml",
+        "C:\\glossata_game\\resources\\qml\\style\\Theme.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\AchievementsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CategoryView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CreditsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\FeedbackView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\HomeView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\InfoView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\QuizView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\ResultsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\SettingsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\StatisticsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "exit_code": 0
+    },
+    "staged-audit": {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/audit_repository.py",
+        "--staged"
+      ],
+      "exit_code": 0,
+      "report": "staged-audit.json"
+    }
+  },
+  "reports_sha256": {
+    "code-licensing.txt": "dba017e5eb70cacb67c08ff424fa3aaee5f38d6537c8cff2d9db36d9433695b5",
+    "core-results.txt": "760537eaf8fcd887e3eb1a53697b0eca58b887c9e9636d1a3ac7cde972d1001c",
+    "ctest-initial.txt": "fa11778052172b45d064b91b1682f795bd10c7079421895e8355074041d6e2c1",
+    "ctest-rerun.txt": "6f408575f30330bb31d8a7e4daf119357e5e8fcd7bb25af7fc3acee566785a44",
+    "explore-geometry-run.txt": "ce1e41bcab2067e19a1d96b4e9477276efffdef92546df92f21e6e82036071ee",
+    "explore-initial.txt": "922b70d842c5dfbdaf0df1bc743c6b03dddf10d642296a9f93a90487ce0557a6",
+    "governance-history.txt": "6937a18190e81d760b7bd30db2751c123c7224e5d76fbb16a604e3e2b4f208fa",
+    "identity-results.txt": "387dd7df6402375f2c56cd24e16f6fd686c29f55ceb310138b09bb477cac62e7",
+    "project-status-final.txt": "9340a4340c6895d9f43f94281c77a72e91384e4ce16219833eec8864f1d389e3",
+    "project-status-initial.txt": "d1085213af3a877885d37792c850740fba431297e5facc3b807b842c09620c3d",
+    "project-status.txt": "9340a4340c6895d9f43f94281c77a72e91384e4ce16219833eec8864f1d389e3",
+    "qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "recovery-results.txt": "7851d346f094b431395eab6185163f8f2dffd73e9599519f46888b4a9a6ae4cf",
+    "release-final.txt": "1cb902a41876ad06a5f8898804f4aee94eb6cbefd945a74b1f30cce83cc0c259",
+    "release.txt": "1cb902a41876ad06a5f8898804f4aee94eb6cbefd945a74b1f30cce83cc0c259",
+    "smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ui-100-initial.txt": "a553b49c41be4bee9657689029aa1291f39e5538de32ff853840b828b55cb1c5",
+    "ui-100.txt": "616cf4d43a75ef3d717897ec7f5485226c57d33e1cd943835f40d2f1dd89bf77",
+    "ui-125-initial.txt": "ba854dd3b50ee455f2897fea11f7e85928844c0df713761bad15706de0fdc0db",
+    "ui-125.txt": "41f296e4b0275ff21ceaa16ebbe4cbe8fdc210feaca7f2af2745e0100bcb6e4b",
+    "ui-150-initial.txt": "513fe51eae32dbd5383078d752ae766bc833923991e8655cca1f56fec6799ffb",
+    "ui-150.txt": "a37f36be0f3ecb00ba9ce7154182f068fda590738f921fc9f16784064c07d005",
+    "ui-full-initial.txt": "a533d103509f7402e85ae395d1f32bba898e13e126215c09253e9b302c72492b",
+    "ui-test-results.txt": "63099166fe74a59947755931af658bfe671c60a1b12fe4c7c722e53be4eb82fb"
+  },
+  "capture_manifest_sha256": "14f14b59833061cc399095e7ba9b0f5896f401f5d649a7a37e2b9b28b6a1b90a",
+  "inventory_only": true,
+  "deleted_files": 0,
+  "player_save_mutations": 0,
+  "staged_audit_sha256": "10470d72bd4d5042fcdea84319443498bf2edd38f38296ec9b2ce2d9c2cb5b13"
+}
