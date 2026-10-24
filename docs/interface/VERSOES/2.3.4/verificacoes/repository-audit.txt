@@ -1,0 +1,1 @@
+{"schema_version": 1, "scope": "Current staged blobs and paths; not a full Git-history or universal secret scan.", "tracked_files": 2692, "findings": [], "values_redacted": true}

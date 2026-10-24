@@ -1,0 +1,12 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::achievementNotificationQueueAndLifecycle() 'controller.recordExplorationVisit(notificationVisitTaxon())' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(169) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence() 'controller.recordExplorationVisit(notificationVisitTaxon())' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(227) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationVisualsAndCaptures() 'checkBounds()' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(287) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 2 passed, 3 failed, 0 skipped, 0 blacklisted, 12058ms
+********* Finished testing of QmlInterfaceTests *********

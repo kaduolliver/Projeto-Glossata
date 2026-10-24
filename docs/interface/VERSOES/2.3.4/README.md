@@ -52,18 +52,63 @@ Os bancos/identidades são temporários e o Discord está desativado. Capturas u
 
 ## Validação e evidências
 
-Resultados e comparações serão consolidados após a execução final.
+| Verificação | Resultado |
+| --- | --- |
+| CTest completo após os ajustes finais | **26/26**, zero falhas, 486.39 s |
+| Regras/controlador | **86 casos** aprovados |
+| Interface completa | **34 casos** aprovados, incluindo três novos de notificações |
+| Identidade/migrações | **38 casos** aprovados |
+| Recuperação | **21 casos** aprovados |
+| Cenários específicos de notificações | Aprovados em **100%, 125% e 150%** |
+| Capturas reais | **126 imagens**, 42 por escala, nas três resoluções |
+| qmllint, smoke, auditoria de repositório/código, status e versão | Aprovados |
+| Histórico/catálogo estrito | Aprovados; 122 organismos e 1.053 eventos de governança preservados |
+| Distribuição | Pendências existentes de permissões/revisões; zero erros técnicos/dependências |
+
+[Resultados e comandos](verificacoes/resultados.json), [CTest completo](verificacoes/notifications-ctest.txt), [interface](verificacoes/ui-test-results.txt), [regras](verificacoes/core-results.txt), [identidade](verificacoes/identity-results.txt), [recuperação](verificacoes/recovery-results.txt) e [resumo do gate de distribuição](verificacoes/distribution-summary.json). A [auditoria staged final](verificacoes/notifications-final-staged-audit.txt) e o [gate de histórico/captura](verificacoes/notifications-final-history.txt) também passaram.
+
+O cenário de fila confirma desbloqueio real/simultâneo, ordem FIFO, máximo de duas instâncias, evento recebido durante saída, dispensa manual, cinco segundos de leitura, suspensão por modal/minimização, expiração explícita, conservação do banco e ausência de reapresentação ao navegar/reiniciar. Recusa duplicata, campo ausente, retroatividade, identidade incorreta, data e material inválidos. O cenário do Quiz provoca rollback de conquistas por trigger em banco temporário e verifica zero eventos/notificações; após recuperação, compara seleção, foco, pontos, dicas, rodada, métricas, foto e checkpoint antes/depois da notificação. Teclas numéricas/Enter continuam selecionando e confirmando respostas; dispensa por teclado devolve foco à atividade.
+
+Os três testes específicos passaram em [100%](verificacoes/notifications-ui-1.txt), [125%](verificacoes/notifications-ui-1.25.txt) e [150%](verificacoes/notifications-ui-1.5.txt). O teste visual percorre 1000×700, 1240×820 e 1920×1080, verifica limites/não sobreposição, nomes sem corte e os quatro materiais. As oito telas solicitadas aparecem nas evidências: Quiz antes de concluir a partida, demais telas com notificações da conclusão real. O resumo/fluxo das páginas não é substituído para produzir imagens.
+
+Os relatórios iniciais também foram preservados. Identificaram a precondição de selecionar o organismo antes de registrar uma consulta e cliques anteriores à conclusão do layout no teste. A automação final aguarda a geometria real e confirma o início da saída manual. Os resultados completos acima correspondem à recompilação e execução após esses ajustes.
+
+### Capturas
+
+| Material | 1000×700 / 100% | 1240×820 / 125% | 1920×1080 / 150% |
+| --- | --- | --- | --- |
+| Bronze | [Inicial](capturas/100/level-initial-1000x700.png) | [Inicial](capturas/125/level-initial-1240x820.png) | [Inicial](capturas/150/level-initial-1920x1080.png) |
+| Prata | [Intermediário](capturas/100/level-intermediate-1000x700.png) | [Intermediário](capturas/125/level-intermediate-1240x820.png) | [Intermediário](capturas/150/level-intermediate-1920x1080.png) |
+| Ouro | [Avançado](capturas/100/level-advanced-1000x700.png) | [Avançado](capturas/125/level-advanced-1240x820.png) | [Avançado](capturas/150/level-advanced-1920x1080.png) |
+| Platina | [Especial](capturas/100/level-special-1000x700.png) | [Especial](capturas/125/level-special-1240x820.png) | [Especial](capturas/150/level-special-1920x1080.png) |
+
+[Duas sobre o Quiz compacto](capturas/100/two-on-quiz-1000x700.png), [quadro durante entrada](capturas/125/entering-1240x820.png) e [suspensão por modal](capturas/150/modal-suspended-1920x1080.png). Exemplos nas demais telas: [Início](capturas/100/page-home-1240x820.png), [Explorar](capturas/100/page-explore-1240x820.png), [Jogar](capturas/100/page-categories-1240x820.png), [Resultados](capturas/100/page-results-1240x820.png), [Estatísticas](capturas/100/page-statistics-1240x820.png), [Conquistas](capturas/100/page-achievements-1240x820.png) e [Perfil e ajustes](capturas/100/page-settings-1240x820.png).
+
+O [manifesto](capturas.json) registra datas reais, dimensões lógicas/físicas, escalas, hashes das imagens/fontes/binários e o commit da implementação. A [captura oficial da Home](../../../images/tela-inicial.png) e seu [registro](../../../images/tela-inicial.json) foram renovados por `scripts/capture_home.py`, com perfil temporário, no mesmo commit da alteração de `Main.qml`. Essa imagem oficial conserva a abertura normal sem gerar eventos artificiais; a evidência de notificação sobre a Home está no quadro de teste acima. Todas as evidências anteriores da 2.3.3 permanecem preservadas.
 
 ## Arquivos
 
 - Criados: `resources/qml/components/AchievementNotification.qml` e `AchievementNotificationLayer.qml`.
 - Integração: `resources/qml/Main.qml` e `resources.qrc`.
 - Testes: três cenários específicos em `tests/QmlInterfaceTests.cpp`.
-- Versão, changelogs, status derivado, design/componentes, escopo pendente e captura oficial: rastreabilidade da versão não lançada.
+- Metadados: `VERSION.txt`, `CHANGELOG.md`, `docs/CATALOGO_CHANGELOG.md`, `docs/ESCOPO_LICENCIAMENTO.json`, `docs/PROJECT_STATUS.json` e os blocos derivados em `README.md`/`PROJECT_CONTEXT.md`.
+- Documentação: `docs/CONQUISTAS.md`, `docs/interface/CHANGELOG_UI.md`, `COMPONENTES.md`, `DESIGN_SYSTEM.md` e este registro com capturas/relatórios. `.gitattributes` conserva LF nos novos relatórios textuais.
+- Captura oficial: `docs/images/tela-inicial.png` e `docs/images/tela-inicial.json`, no mesmo commit do shell.
 
 ## Inventário sem limpeza
 
-O inventário dry-run será registrado após terminar builds e testes. Nenhuma exclusão ou movimentação será feita nesta tarefa.
+Inventário executado somente após encerrar builds/testes: [dry-run padrão](verificacoes/cleanup-dry-run.json), [builds antigos em dry-run](verificacoes/cleanup-old-builds-dry-run.json) e [inventário ampliado](verificacoes/inventario-local.json). Nenhum arquivo foi excluído ou movido; não foi usado `--apply`.
+
+| Caminho | Tamanho na varredura | Motivo e risco |
+| --- | --- | --- |
+| `build/achievements-refinements` | 1.928.879.080 bytes | Build e evidências recentes/anteriores; risco alto, preservar |
+| `build/achievements-2-3-3` | 1.910.145.166 bytes | Build e evidências recentes/anteriores; risco alto, preservar |
+| `previews/achievement-notifications` | 36.916.834 bytes | Capturas locais, originais das evidências; risco médio de rastreabilidade, preservar |
+| `build/achievements-refinements/tests/previews/achievement-notifications` | 8.314.213 bytes | Capturas locais, originais das evidências; risco médio de rastreabilidade, preservar |
+| `scripts/__pycache__` | 1.363.308 bytes | Cache recompilável; risco baixo, candidato apenas a limpeza futura autorizada |
+| `tests/__pycache__` | 585.884 bytes | Cache recompilável; risco baixo, candidato apenas a limpeza futura autorizada |
+
+Entradas aninhadas se sobrepõem; os tamanhos não devem ser somados. Hashes iguais/duplicação de capturas não autorizam exclusão. Recursos, dados pessoais, SQLite, builds recentes, evidências e histórico foram preservados.
 
 ## Limites
 
