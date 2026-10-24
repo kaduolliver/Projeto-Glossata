@@ -15,9 +15,11 @@ struct AchievementEvidence {
     QVector<AchievementRun> runs;
     QMap<int, QString> visits;
 };
+enum class AchievementLevel { Initial, Intermediate, Advanced, Special };
 struct AchievementDefinition {
     QString id, title, description, category, metric, icon;
     int target;
+    AchievementLevel level;
 };
 namespace Achievements {
 const QVector<AchievementDefinition> &definitions();

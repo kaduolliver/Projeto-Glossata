@@ -47,24 +47,36 @@ bool SqliteGameHistoryRepository::achievementEvidence(const QString &playerId, A
 {
     result={};
     QSqlQuery q(database_);
-    q.prepare("SELECT id,mode,question_limit,is_complete,answered_count FROM game_runs WHERE player_id=? ORDER BY id");q.addBindValue(playerId);
+    q.prepare("SELECT id,mode,question_limit,is_complete,answered_count,score_units,correct_answers,rules_version FROM game_runs WHERE player_id=? ORDER BY id");q.addBindValue(playerId);
     if (!q.exec()) return false;
     QSet<QString> runs;
     while (q.next()) {
-        AchievementRun run; run.id=q.value(0).toString(); runs.insert(run.id);
+        AchievementRun run; run.id=q.value(0).toString();
         run.answers=loadAnswers(run.id);
-        // Aggregate-only legacy totals cannot prove individual answers or hint use.
+        // Consume the ID only after accepting detailed evidence. Otherwise a
+        // valid checkpoint can still supply confirmed answers, never totals.
         if (run.answers.isEmpty() || run.answers.size()!=q.value(4).toInt()) continue;
+        qint64 units=0; int correct=0; bool valid=true;
+        for (const auto &answer : run.answers) {
+            units+=answer.awardedUnits; correct+=answer.correct;
+            valid=valid && validAnswerScoring(answer,q.value(7).toString());
+        }
+        if (!valid || q.value(5).isNull() || q.value(6).isNull()
+            || units!=q.value(5).toLongLong() || correct!=q.value(6).toInt()) continue;
         run.competitive=q.value(1)=="competitive";
         run.complete=q.value(3).toBool() && (!run.competitive || run.answers.size()==q.value(2).toInt());
         const auto saved=checkpoint(run.id);
-        if (saved.error.isEmpty() && saved.playerId==playerId && saved.state=="finalized") {
+        QJsonArray detailed;
+        for (const auto &answer : run.answers) detailed.append(SessionSnapshot::answer(answer));
+        if (saved.error.isEmpty() && saved.playerId==playerId && saved.state=="finalized"
+            && saved.payload["answers"].toArray()==detailed) {
             run.hintsKnown=true; run.pendingHints=saved.payload["revealed"].toInt();
             run.cycleSize=saved.payload["species_order"].toArray().size();
         }
         // Complete competitive runs cannot have an unanswered trailing question.
         if (run.competitive && run.complete) run.hintsKnown=true;
         result.runs.append(run);
+        runs.insert(run.id);
     }
     q.finish();
     q.prepare("SELECT id FROM session_checkpoints WHERE player_id=? ORDER BY id");q.addBindValue(playerId);
@@ -81,7 +93,8 @@ bool SqliteGameHistoryRepository::achievementEvidence(const QString &playerId, A
             AnswerRecord a; if (!SessionSnapshot::readAnswer(v.toObject(),a)) return false;
             run.answers.append(a);
         }
-        // Finished checkpoints await result consolidation; abandoned ones never count as games.
+        // Fallback proves answers/hints, not a consolidated completion. This also
+        // applies to finalized checkpoints whose result has insufficient detail.
         result.runs.append(run);
     }
     q.prepare("SELECT species_id,scientific_name FROM species_visits WHERE player_id=?");q.addBindValue(playerId);

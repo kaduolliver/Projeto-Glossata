@@ -7,6 +7,9 @@
 #include <QTemporaryDir>
 #include <QFile>
 #include <QSqlQuery>
+#include <QSqlRecord>
+#include <QScopeGuard>
+#include <QUuid>
 #include <QImageReader>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -147,6 +150,10 @@ class GameServiceTests : public QObject {
 
 private slots:
     void achievementCriteriaAndInvalidEvents();
+    void achievementSpeciesIdentity_data();
+    void achievementSpeciesIdentity();
+    void achievementEvidencePriority_data();
+    void achievementEvidencePriority();
     void achievementsPersistRecoverAndEmitOnce();
     void achievementHintsAndCompletion();
     void achievementExplorationAndHistoricalRecognition();
