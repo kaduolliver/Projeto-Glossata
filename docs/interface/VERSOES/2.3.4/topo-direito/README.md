@@ -1,5 +1,7 @@
 # PR #39 — notificações no canto superior direito
 
+**Registro histórico do reposicionamento.** O [refinamento contextual atual](../quiz-compacto/README.md) limita o Quiz a uma notificação compacta e preserva até duas completas nas demais páginas. Os quadros e resultados abaixo documentam a rodada anterior; a captura oficial correspondente permanece no [commit `6cd7e7a`](https://github.com/kaduolliver/Projeto-Glossata/blob/6cd7e7a8216b10754a1618373b84f57af44ab72e/docs/images/tela-inicial.png). O requisito futuro de áudio continua válido.
+
 Refinamento da Subetapa 2.3.4 na branch `feat/achievement-notifications-2-3-4`, sobre `f6d8f809e742f0308ea41eef996e84fd2e7f2c26`. Correção compatível incorporada ao aplicativo **2.2.0 ainda não lançado**, sem release ou tag. Catálogo **2.4.0**, SQLite **8** e as 30 conquistas preservados.
 
 ## Posicionamento e comportamento

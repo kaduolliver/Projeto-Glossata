@@ -9,6 +9,8 @@ Item {
     id: notice
     required property var achievement
     property bool presentationAllowed: true
+    property bool compactMode: false
+    readonly property int contentPadding: compactMode ? Style.Theme.spaceXs : Style.Theme.spaceMd
     readonly property color metal: BadgePaths.levels[achievement.visualLevel].rim
     property real reveal: 0
     property bool entered: false
@@ -18,7 +20,7 @@ Item {
     property double readingStartedAt: 0
     signal finished(string reason)
     objectName: "achievementNotification-" + achievement.id
-    implicitHeight: Math.max(94, contents.implicitHeight + 24)
+    implicitHeight: Math.max(compactMode ? 0 : 94, contents.implicitHeight + 2 * contentPadding)
     visible: presentationAllowed
     opacity: reveal
     transform: Translate { x: Style.Theme.motionEnabled ? 26 * (1 - notice.reveal) : 0 }
@@ -100,18 +102,19 @@ Item {
     }
     RowLayout {
         id: contents
-        anchors { left: parent.left; right: parent.right; top: parent.top; margins: 12 }
-        spacing: 12
+        anchors { left: parent.left; right: parent.right; top: parent.top; margins: notice.contentPadding }
+        spacing: notice.compactMode ? Style.Theme.spaceXs : Style.Theme.spaceMd
         AchievementBadge {
             glyph: notice.achievement.badge; visualLevel: notice.achievement.visualLevel; unlocked: true
-            Layout.preferredWidth: 64; Layout.preferredHeight: 70
+            Layout.preferredWidth: notice.compactMode ? 40 : 64; Layout.preferredHeight: notice.compactMode ? 44 : 70
             Accessible.ignored: true
         }
-        ColumnLayout {
-            Layout.fillWidth: true; spacing: 4
-            Label { text: "Conquista desbloqueada!"; color: Style.Theme.green; font.pixelSize: Style.Theme.captionSize; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
-            Label { objectName: "notificationTitle-" + notice.achievement.id; text: notice.achievement.title; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
-            Label { text: notice.achievement.visualLevelName; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
+        GridLayout {
+            Layout.fillWidth: true; columns: notice.compactMode ? 2 : 1
+            rowSpacing: notice.compactMode ? 2 : 4; columnSpacing: Style.Theme.spaceXs
+            Label { objectName: "notificationUnlock-" + notice.achievement.id; text: "Conquista desbloqueada!"; color: Style.Theme.green; font.pixelSize: Style.Theme.captionSize; Layout.row: 0; Layout.column: 0; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
+            Label { objectName: "notificationTitle-" + notice.achievement.id; text: notice.achievement.title; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold; Layout.row: 1; Layout.column: 0; Layout.columnSpan: notice.compactMode ? 2 : 1; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
+            Label { objectName: "notificationLevel-" + notice.achievement.id; text: notice.achievement.visualLevelName; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; Layout.row: notice.compactMode ? 0 : 2; Layout.column: notice.compactMode ? 1 : 0; Layout.fillWidth: true; wrapMode: Text.WordWrap; Accessible.ignored: true }
         }
         ToolButton {
             id: closeNotice

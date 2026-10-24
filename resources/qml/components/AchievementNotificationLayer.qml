@@ -9,12 +9,15 @@ Item {
     required property var app
     required property var backend
     required property real headerBottom
+    property bool compactMode: false
+    readonly property int presentationLimit: compactMode ? 1 : 2
     property bool surfaceAvailable: true
     readonly property bool presentationAllowed: app.active && app.visible && app.visibility !== Window.Minimized
         && surfaceAvailable && backend.localUserReady && !backend.localUserChoiceRequired
         && !backend.localUserError && !backend.progressError && !backend.achievementsError && !backend.resultPending
     readonly property string ownerId: backend.currentPlayerId
     readonly property int activeCount: active.count
+    readonly property int visibleCount: presentationAllowed ? Math.min(activeCount, presentationLimit) : 0
     readonly property int pendingCount: pending.length
     property var pending: []
     property var seen: ({})
@@ -55,7 +58,7 @@ Item {
     }
     function pump() {
         if (!presentationAllowed) return
-        while (active.count < 2 && pending.length) {
+        while (active.count < presentationLimit && pending.length) {
             const entry = pending[0]; pending = pending.slice(1)
             active.append(entry)
             notificationPresented(entry.achievement.id)
@@ -96,6 +99,7 @@ Item {
         if (presentationAllowed) pump()
     }
     onOwnerIdChanged: if (initialized) clear("identity-changed")
+    onPresentationLimitChanged: if (initialized) pump()
     onBackendChanged: if (initialized) { clear("backend-changed"); seen = ({}) }
     Component.onCompleted: { initialized = true; pump() }
     Connections {
@@ -128,8 +132,10 @@ Item {
             model: active
             delegate: AchievementNotification {
                 required property string token
+                required property int index
                 width: notices.width
-                presentationAllowed: layer.presentationAllowed
+                compactMode: layer.compactMode
+                presentationAllowed: layer.presentationAllowed && index < layer.presentationLimit
                 onFinished: reason => layer.complete(token, reason)
             }
         }

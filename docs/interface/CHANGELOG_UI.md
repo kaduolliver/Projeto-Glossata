@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #39 — modo compacto contextual no Quiz
+
+- No Quiz, um cartão compacto visível, com badge 40×44, margens/intervalos internos menores e metadados em duas linhas; fontes de 12/14 px preservadas e altura intrínseca com quebra de texto.
+- Fora do Quiz, até dois cartões completos. A segunda instância retida pausa a leitura, continua na FIFO e volta a aparecer quando houver espaço; o primeiro cartão conserva animação e relógio durante a troca de contexto. [Capturas comparativas, testes e limites](VERSOES/2.3.4/quiz-compacto/README.md).
+
 ## PR #39 — notificações no topo direito
 
 - Coluna ancorada 20 px abaixo da borda real do cabeçalho, com 20 px à direita e 10 px entre cartões. A primeira notificação fica acima da segunda; remoções reorganizam a FIFO sem recriar o shell.

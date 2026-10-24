@@ -1,0 +1,120 @@
+{
+  "recorded_at": "2026-10-24T23:00:24.723965+00:00",
+  "checks": {
+    "qmllint": {
+      "command": [
+        "qmllint",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementBadge.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementNotification.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementNotificationLayer.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\EndGameDialog.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\ExploreCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\FeatheredPhoto.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\HintPanel.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\KingdomArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\LifeArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\NavItem.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\PlayModeSelector.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesPortrait.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\StatCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TaxonComboBox.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TextAction.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiButton.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiIcon.qml",
+        "C:\\glossata_game\\resources\\qml\\Main.qml",
+        "C:\\glossata_game\\resources\\qml\\style\\Theme.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\AchievementsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CategoryView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CreditsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\FeedbackView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\HomeView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\InfoView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\QuizView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\ResultsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\SettingsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\StatisticsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "exit_code": 0,
+      "seconds": 2.78,
+      "source_encoding": "utf8"
+    },
+    "capture-home": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/capture_home.py",
+        "--binary",
+        "build/achievements-refinements/projeto_glossata.exe"
+      ],
+      "exit_code": 0,
+      "seconds": 4.25,
+      "source_encoding": "utf8"
+    },
+    "release": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 1.02,
+      "source_encoding": "cp1252"
+    },
+    "project-status": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "build/achievements-refinements"
+      ],
+      "exit_code": 0,
+      "seconds": 0.48,
+      "source_encoding": "utf8"
+    },
+    "code-licensing": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "exit_code": 0,
+      "seconds": 0.99,
+      "source_encoding": "utf8"
+    },
+    "governance-history": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/content_governance.py",
+        "audit-history",
+        "--base",
+        "9297b00e35d406888fb548284c17052881f8b6d9"
+      ],
+      "exit_code": 0,
+      "seconds": 0.79,
+      "source_encoding": "utf8"
+    },
+    "smoke": {
+      "command": [
+        "C:\\glossata_game\\build\\achievements-refinements\\projeto_glossata.exe",
+        "--smoke-test"
+      ],
+      "exit_code": 0,
+      "seconds": 3.73,
+      "source_encoding": "utf8"
+    }
+  },
+  "staged-audit": {
+    "command": [
+      "python",
+      "scripts/audit_repository.py",
+      "--staged"
+    ],
+    "exit_code": 0,
+    "seconds": 6.53,
+    "report": "staged-audit.json"
+  }
+}

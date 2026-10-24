@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-24T23:17:12.860480+00:00",
+  "capture_hashes_verified": 33,
+  "test_source_sha256": "93c973ec9ff3a992b51a31f096907d3a31526823bd5a52e73fa7e86607adc013",
+  "test_binary_sha256": "2d4eb1db204688000b58c196516c778bf7a1af55389fba1e942c70d49101dae8",
+  "unchanged_since_base": [
+    "src",
+    "resources/data",
+    "resources/compliance",
+    "resources/qml/components/AchievementBadge.qml",
+    "resources/qml/components/AchievementBadgePaths.js",
+    "resources/qml/style",
+    "resources/qml/views/QuizView.qml",
+    "CMakeLists.txt",
+    "resources.qrc",
+    "VERSION.txt",
+    "docs/CATALOGO_CHANGELOG.md"
+  ],
+  "base": "6cd7e7a8216b10754a1618373b84f57af44ab72e",
+  "production_binary_unchanged_after_full_ctest": true
+}

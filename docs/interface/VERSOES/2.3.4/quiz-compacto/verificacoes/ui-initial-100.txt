@@ -1,0 +1,24 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
+PASS   : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1000x700) Compared values are not the same
+   Actual   (layer->property("visibleCount").toInt()): 1
+   Expected (2)                                      : 2
+C:/glossata_game/tests/QmlInterfaceTests.cpp(370) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1240x820) Compared values are not the same
+   Actual   (layer->property("visibleCount").toInt()): 1
+   Expected (2)                                      : 2
+C:/glossata_game/tests/QmlInterfaceTests.cpp(370) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1920x1080) Compared values are not the same
+   Actual   (layer->property("visibleCount").toInt()): 1
+   Expected (2)                                      : 2
+C:/glossata_game/tests/QmlInterfaceTests.cpp(370) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationVisualsAndCaptures() Compared values are not the same
+   Actual   (layer->property("visibleCount").toInt()): 1
+   Expected (2)                                      : 2
+C:/glossata_game/tests/QmlInterfaceTests.cpp(456) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 4 passed, 4 failed, 0 skipped, 0 blacklisted, 46175ms
+********* Finished testing of QmlInterfaceTests *********

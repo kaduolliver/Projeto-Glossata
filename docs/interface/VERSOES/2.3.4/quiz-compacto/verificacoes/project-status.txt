@@ -1,0 +1,1 @@
+{"consistent": true, "errors": [], "tests_executed_by_this_command": false, "publication_verified": false, "distribution_gate_evaluated": false}

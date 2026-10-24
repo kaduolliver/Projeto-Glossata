@@ -1,0 +1,22 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::achievementNotificationVisualsAndCaptures() 'title->property("lineCount").toInt()>1' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(472) : failure location
+PASS   : QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
+PASS   : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1000x700) Compared values are not the same
+   Actual   (completed[0][1].toString()): "timeout"
+   Expected (QString("manual"))         : "manual"
+C:/glossata_game/tests/QmlInterfaceTests.cpp(377) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1240x820) Compared values are not the same
+   Actual   (completed[0][1].toString()): "timeout"
+   Expected (QString("manual"))         : "manual"
+C:/glossata_game/tests/QmlInterfaceTests.cpp(377) : failure location
+FAIL!  : QmlInterfaceTests::achievementNotificationContextTransitions(1920x1080) Compared values are not the same
+   Actual   (completed[0][1].toString()): "timeout"
+   Expected (QString("manual"))         : "manual"
+C:/glossata_game/tests/QmlInterfaceTests.cpp(377) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 4 passed, 4 failed, 0 skipped, 0 blacklisted, 45740ms
+********* Finished testing of QmlInterfaceTests *********

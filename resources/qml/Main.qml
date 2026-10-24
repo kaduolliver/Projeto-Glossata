@@ -420,6 +420,7 @@ ApplicationWindow {
         anchors.fill: parent
         z: 100
         app: root; backend: root.backend
+        compactMode: root.page === "quiz"
         // Sum the real ancestor positions in the window, including layout margins.
         headerBottom: mainLayout.y + pageColumn.y + sectionHeader.y + sectionHeader.height
         surfaceAvailable: !root.Overlay.overlay.visible
