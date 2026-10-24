@@ -1,5 +1,10 @@
 # Histórico visual
 
+## PR #38 — reorganização dos filtros de Conquistas
+
+- Painel com Estado segmentado e menus de Categoria/Nível; rótulos, alvos de 44 px e distribuição conforme a largura útil, sem preencher desnecessariamente a linha.
+- Contador efetivo e limpeza conjunta visível apenas com restrições. Seleção AND e conservação em memória preservadas. Menus nativos Qt Quick Controls com foco/teclado/Escape, limites da janela e transições reduzíveis. [Implementação, testes e comparações](VERSOES/2.3.3/barra-filtros/README.md).
+
 ## Refinamentos finais da PR #38 — filtro por nível e Platina
 
 - Três filtros combinados com AND; seleção em memória, contador filtrado e estado vazio preservados. Grupo compacto de botões com teclado, mouse e foco/check acessível.

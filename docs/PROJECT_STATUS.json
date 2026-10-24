@@ -61,7 +61,7 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "7134fd10f8c78991ff8ea6863fabd9c2ebbc1ac2f8e369505b2cf4d8a0d41981",
+    "CHANGELOG.md": "17b2d25f5169b9e60378dacab275521f6e1ef9069b043a20c2db101bfece6313",
     "CMakeLists.txt": "2a7da39ee96b5b25565e0c45769648c7cf29aab8ffb5a5831824c48cfe0d7e0a",
     "VERSION.txt": "c89b87c262e9d5ffd20e73aac74a1772adcc9f5a21682cc33adcf5086e5fef5c",
     "docs/CATALOGO_CHANGELOG.md": "b868be8a7a5929b291b390e0e6c212137bcd4d0ead65bedf117c7d6f03241691",
