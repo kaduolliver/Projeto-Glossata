@@ -104,7 +104,7 @@ Item {
                     Layout.fillHeight: true
                     padding: 18
                     hoverEnabled: true; focusPolicy: Qt.StrongFocus
-                    Accessible.name: modelData.title + ". " + (modelData.unlocked ? "Desbloqueada. " : "Bloqueada. ") + modelData.description + " Progresso " + modelData.progress + " de " + modelData.target
+                    Accessible.name: modelData.title + ". Nível " + modelData.visualLevelName + ". " + (modelData.unlocked ? "Desbloqueada. " : "Bloqueada. ") + modelData.description + " Progresso " + modelData.progress + " de " + modelData.target
                     onClicked: view.openDetails(modelData, card)
                     Keys.onReturnPressed: clicked()
                     background: Rectangle {
@@ -125,12 +125,14 @@ Item {
                         AchievementBadge {
                             objectName: "achievementBadge-" + card.modelData.id
                             glyph: card.modelData.badge
+                            visualLevel: card.modelData.visualLevel
+                            unlocked: card.modelData.unlocked
                             Layout.preferredWidth: 96; Layout.preferredHeight: 106; Layout.alignment: Qt.AlignHCenter
-                            opacity: card.modelData.unlocked ? 1 : 0.4
                             scale: card.down && Style.Theme.motionEnabled ? 0.96 : 1
                             Behavior on opacity { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationPage } }
                             Behavior on scale { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationFast } }
                         }
+                        Label { objectName: "achievementLevel-" + card.modelData.id; text: card.modelData.visualLevelName; color: Style.Theme.textMuted; font.pixelSize: 11; Layout.fillWidth: true; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap }
                         Label { Layout.fillWidth: true; text: card.modelData.title; color: Style.Theme.text; font.pixelSize: 17; font.weight: Font.DemiBold; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap }
                         Label { Layout.fillWidth: true; text: card.modelData.description; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; horizontalAlignment: Text.AlignHCenter; wrapMode: Text.WordWrap }
                         Item { Layout.fillHeight: true; implicitHeight: 4 }
@@ -170,8 +172,9 @@ Item {
             ColumnLayout {
                 id: detailContent
                 width: parent.width; spacing: 16
-                AchievementBadge { glyph: view.selected.badge || "leaf"; Layout.preferredWidth: 144; Layout.preferredHeight: 158; Layout.alignment: Qt.AlignHCenter; opacity: view.selected.unlocked ? 1 : 0.4 }
+                AchievementBadge { glyph: view.selected.badge || "leaf"; visualLevel: view.selected.visualLevel || "initial"; unlocked: !!view.selected.unlocked; Layout.preferredWidth: 144; Layout.preferredHeight: 158; Layout.alignment: Qt.AlignHCenter }
                 Label { text: view.selected.category || ""; color: Style.Theme.gold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
+                Label { objectName: "achievementDetailLevel"; text: view.selected.visualLevelName || ""; color: Style.Theme.textMuted; wrapMode: Text.WordWrap; Layout.fillWidth: true; Accessible.name: "Nível da conquista: " + text }
                 Label { text: view.selected.description || ""; color: Style.Theme.text; wrapMode: Text.WordWrap; Layout.fillWidth: true; font.pixelSize: 16 }
                 Label { text: (view.selected.unlocked ? "Desbloqueada" : "Bloqueada") + " · " + (view.selected.progress || 0) + " / " + (view.selected.target || 1); color: Style.Theme.green; Layout.fillWidth: true; wrapMode: Text.WordWrap }
                 Label { objectName: "achievementDetailDate"; text: view.dateText(view.selected); color: Style.Theme.textMuted; Layout.fillWidth: true; wrapMode: Text.WordWrap }

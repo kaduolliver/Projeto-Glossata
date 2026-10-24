@@ -31,6 +31,7 @@ docs/interface/VERSOES/2.3.2/anterior/*.txt text eol=lf
 docs/interface/VERSOES/ranking-local-historico/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/usuario-local-unico/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.3/verificacoes/*.txt text eol=lf
+docs/interface/VERSOES/2.3.3/refinamentos/verificacoes/*.txt text eol=lf
 resources/qml/components/AchievementBadgePaths.js text eol=lf
 VERSION.txt text eol=lf
 LICENSE text eol=lf

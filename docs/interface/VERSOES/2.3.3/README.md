@@ -1,5 +1,7 @@
 # Subetapa 2.3.3 — Conquistas
 
+Os [refinamentos posteriores na mesma PR #38](refinamentos/README.md) corrigem a identidade de organismos/seleção de evidências e acrescentam quatro classes visuais. Os relatórios e capturas abaixo registram a primeira implementação e permanecem preservados.
+
 Aplicativo **2.1.0**, ainda não lançado; catálogo **2.4.0** preservado. Base: `0e007ace1cc64c67d72441ac833c3af979b6a4fd`, integração da PR #37. Branch `feat/conquistas-2-3-3`.
 
 O sistema anterior tinha seis indicadores efêmeros da partida. A implementação oferece **30 conquistas persistentes em seis categorias**, com badges geométricos próprios, metas transparentes, filtros combinados, progresso e detalhes em diálogo Qt Quick. A lista completa, a migração SQLite **7 → 8**, os critérios de reconhecimento retroativo e o procedimento de extensão estão em [CONQUISTAS.md](../../../CONQUISTAS.md).

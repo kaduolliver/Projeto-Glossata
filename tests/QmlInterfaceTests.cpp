@@ -112,18 +112,42 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);return true;};
     QVERIFY(item("achievementSummary"));QCOMPARE(item("achievementSummary")->property("text").toString(),QString("0 / 30"));
-    const QString folder="previews/achievements/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const QString folder="previews/achievements-refinements/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
     const auto capture=[&](const QString &state){QTest::qWait(100);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"temporary_database",true},{"state",state}});return true;};
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("locked"));}
+    auto dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
+    const auto captureLevels=[&](bool unlocked) {
+        window->resize({1240,820}); QTest::qWait(60);
+        const QStringList ids{"first_answer","correct_20","perfect_game","competitive_perfect"};
+        const QStringList levels{"initial","intermediate","advanced","special"};
+        for(int i=0;i<ids.size();++i) {
+            const auto name="achievementCard-"+ids[i]; auto card=item(name); if(!card)return false;
+            auto badge=item("achievementBadge-"+ids[i]),label=item("achievementLevel-"+ids[i]);
+            if(!badge || !label || badge->property("visualLevel")!=levels[i] || badge->property("unlocked").toBool()!=unlocked)return false;
+            if(colorContrast(label->property("color").value<QColor>(),QColor("#10282e"))<4.5)return false;
+            card->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+            QTest::keyClick(window,Qt::Key_Return); QTest::qWait(80);
+            if(!dialog->property("visible").toBool() || item("achievementDetailLevel")->property("text")!=label->property("text"))return false;
+            if(!capture((unlocked ? "level-unlocked-" : "level-locked-")+levels[i]))return false;
+            QTest::keyClick(window,Qt::Key_Escape); QTest::qWait(60);
+            if(!card->hasActiveFocus())return false;
+        }
+        return true;
+    };
+    QVERIFY(captureLevels(false));
     QVERIFY(controller.startTaxonGame({},"genus"));JsonSpeciesCatalog catalog;
-    for(int i=0;i<7;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);controller.nextQuestion();}
+    for(int i=0;i<10;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);controller.nextQuestion();}
     controller.stopGame();
+    QVERIFY(controller.startCompetitiveGame());
+    for(int i=0;i<controller.competitiveQuestionCount();++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);controller.nextQuestion();}
     QSignalSpy unlocks(&controller,&GameController::achievementUnlocked);
     window->setProperty("taxonomyContext","explore");controller.exploreTaxon("domain:Eukaryota");window->setProperty("page","taxonomy");QTest::qWait(80);
     QString organism;for(const auto &s:catalog.loadCurrentSpecies()){for(const auto &t:s.taxonomy)if(t.rank=="species" && t.name==s.name){organism=t.id;break;}if(!organism.isEmpty())break;}
     controller.exploreTaxon(organism);QTest::qWait(80);QCOMPARE(unlocks.size(),1);
     window->setProperty("page","achievements");QTest::qWait(80);const auto count=unlocks.size();
-    auto dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
+    // Navigation recreates the page and its dialog; never retain the old QObject.
+    dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
+    QVERIFY(captureLevels(true));
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
         window->resize(size);QTest::qWait(60);
         QVERIFY(activate("achievementState-Todas"));item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("overview"));
@@ -135,7 +159,7 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
         QVERIFY(capture("details"));
         QTest::keyClick(window,Qt::Key_Escape);QTest::qWait(80);QVERIFY(!dialog->property("visible").toBool());QVERIFY(card->hasActiveFocus());
         QVERIFY(activate("achievementState-Bloqueadas"));QVERIFY(!item("achievementCard-first_answer"));
-        auto partial=item("achievementCard-correct_10");QVERIFY(partial);partial->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(70);QVERIFY(capture("partial"));
+        auto partial=item("achievementCard-correct_50");QVERIFY(partial);partial->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(70);QVERIFY(capture("partial"));
         const auto point=partial->mapToItem(item("pageScroll"),QPointF());QVERIFY(point.y()>=-1);QVERIFY(point.y()+partial->height()<=item("pageScroll")->height()+1);
     }
     QVERIFY(activate("achievementCategory-Exploração"));QVERIFY(!item("achievementCard-correct_10"));QVERIFY(item("achievementCard-visit_10"));

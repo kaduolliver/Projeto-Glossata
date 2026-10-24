@@ -1,5 +1,39 @@
 // Own geometric drawings created for substep 2.3.3; rights decision pending.
 .pragma library
+// Static materials and geometry; no statistical rarity or unlock criteria here.
+var levels = {
+    initial: {
+        light: "#edc69e", metal: "#b87d50", shade: "#69432e", rim: "#d8a477",
+        outer: "M60 5L105 31L108 80L60 109L12 80L15 31Z",
+        inner: "M60 12L99 35L101 76L60 101L19 76L21 35Z",
+        ribbon: "M39 96L33 122L48 116L56 125L60 105L64 125L72 116L87 122L81 96",
+        engraving: "", ornaments: "M60 8L63 13L60 18L57 13Z"
+    },
+    intermediate: {
+        light: "#f1f8fc", metal: "#a7becb", shade: "#526a7c", rim: "#d4e4ec",
+        outer: "M60 4L105 30L109 80L60 110L11 80L15 30Z",
+        inner: "M60 11L99 34L102 76L60 102L18 76L21 34Z",
+        ribbon: "M28 91L21 127L39 118L49 129L56 98M64 98L71 129L81 118L99 127L92 91",
+        engraving: "M60 17L93 37L96 73L60 95L24 73L27 37Z",
+        ornaments: "M15 39L9 45L15 51L21 45ZM105 39L111 45L105 51L99 45ZM55 10L58 14L55 18L52 14ZM65 10L68 14L65 18L62 14Z"
+    },
+    advanced: {
+        light: "#fff0b6", metal: "#e2b853", shade: "#836025", rim: "#f3d486",
+        outer: "M60 3L106 29L110 81L60 112L10 81L14 29Z",
+        inner: "M60 11L99 34L102 76L60 103L18 76L21 34Z",
+        ribbon: "M28 91L21 127L39 118L49 129L56 98M64 98L71 129L81 118L99 127L92 91",
+        engraving: "M60 17L93 37L96 73L60 96L24 73L27 37ZM29 99L29 115M91 99L91 115",
+        ornaments: "M11 71Q0 65 4 56Q13 60 11 71ZM11 84Q0 80 3 71Q12 73 11 84ZM17 95Q5 94 6 85Q16 85 17 95ZM109 71Q120 65 116 56Q107 60 109 71ZM109 84Q120 80 117 71Q108 73 109 84ZM103 95Q115 94 114 85Q104 85 103 95ZM50 9L53 14L50 19L47 14ZM60 5L63 10L60 15L57 10ZM70 9L73 14L70 19L67 14Z"
+    },
+    special: {
+        light: "#f0ffff", metal: "#b7e8e3", shade: "#537e90", rim: "#c2fbf1",
+        outer: "M60 2L96 21L110 34L114 77L104 90L60 115L16 90L6 77L10 34L24 21Z",
+        inner: "M60 11L99 34L103 77L60 104L17 77L21 34Z",
+        ribbon: "M26 90L15 127L35 119L46 130L56 100M64 100L74 130L85 119L105 127L94 90",
+        engraving: "M60 17L93 37L97 74L60 97L23 74L27 37ZM9 37L16 42M104 42L111 37M11 77L18 73M102 73L109 77M25 96L21 114M95 96L99 114",
+        ornaments: "M60 0L65 8L60 16L55 8ZM12 24L17 32L12 40L7 32ZM108 24L113 32L108 40L103 32ZM8 78L13 86L8 94L3 86ZM112 78L117 86L112 94L107 86ZM60 107L65 115L60 123L55 115Z"
+    }
+}
 var drawings = {
     "leaf": {
         "color": "#91e3ac",

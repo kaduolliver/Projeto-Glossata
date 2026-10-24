@@ -21,7 +21,7 @@ Migração **7 → 8**, transacional e aditiva: `achievement_progress(player_id,
 
 Somente o UUID de `local_user_binding` pode registrar consultas ou atualizar conquistas. Renomear não muda esse vínculo. Resultados, checkpoints e perfis anteriores permanecem com os proprietários originais. Não há login, seleção permanente de perfis, servidor ou vinculação remota automática.
 
-A avaliação lê `game_runs` e seus `answer_records` válidos; um `game_id` já consolidado não é contado novamente pelo checkpoint. Checkpoints válidos ainda não consolidados contribuem somente com respostas confirmadas/dicas; inclusive respostas de uma sessão abandonada permanecem fatos reais. Partidas abandonadas ou em finalização pendente não contam como concluídas. IDs de pergunta repetidos/entradas inválidas não aumentam contagem; o serviço e a persistência continuam sendo a primeira validação de eventos.
+A avaliação prioriza `game_runs` com `answer_records` detalhados válidos, sequenciais e compatíveis com contagem, pontos, acertos e versão de regras do resultado. Somente então o `game_id` é reservado para deduplicação. Se o resultado for agregado, incompleto ou inconsistente, o checkpoint correspondente ainda pode fornecer respostas confirmadas/dicas, com digest, regras e UUID validados pelo mecanismo existente. Não se somam as duas fontes. Um checkpoint abandonado, ativo, em finalização ou usado como fallback de resultado insuficiente não prova conclusão consolidada. Sem nenhuma fonte válida, não há novo progresso; o progresso persistido anteriormente é preservado. IDs de pergunta repetidos/entradas inválidas não aumentam contagem.
 
 No modo Livre, encerrar uma partida com ao menos uma resposta é a conclusão definida pelo comportamento existente. No Competitivo, todas as perguntas configuradas devem estar respondidas e o resultado salvo. “Precisão em campo” e “Olhar independente” exigem adicionalmente dez respostas. Uma dica em pergunta não respondida permanece no checkpoint e impede “sem dicas”; não se torna acerto. Regras de pontos, ranking, dicas e recuperação não mudam.
 
@@ -31,7 +31,7 @@ Progresso é calculado, limitado à meta e conservado pelo máximo persistido. A
 
 ## Compatibilidade e reconhecimento retroativo
 
-Respostas detalhadas validadas podem reconhecer quantidade, acertos, sequência por sessão, organismos e diversidade científica compatível com IDs/nomes do catálogo instalado. Uma classificação atual não é prova da classificação histórica; nomes divergentes ou taxonomia indisponível são excluídos das metas de grupo. Progresso já consolidado é conservado.
+Respostas detalhadas validadas podem reconhecer quantidade, acertos e sequência por sessão. Para `species_10`, o organismo deve existir no catálogo instalado com ID positivo e nome científico não vazio e idêntico ao registro. IDs inexistentes/reutilizados, nomes divergentes ou ausentes não entram na contagem de organismos distintos. A identidade de um organismo não depende da aprovação da sua classificação; as metas de grupos exigem adicionalmente `taxonomyApproved` e um grupo científico disponível. Uma classificação atual não prova a classificação histórica. Progresso já consolidado é conservado, inclusive após a correção: não se revogam desbloqueios nem se reescrevem respostas/pontos.
 
 Partidas completas com respostas detalhadas podem reconhecer conclusão/perfeição. “Sem dicas” em Livre exige checkpoint finalizado que também prove ausência de dica na pergunta pendente; histórico sem essa evidência não concede o feito. Competitivo completo não possui pergunta pendente. “Um ciclo completo” exige o tamanho original do conjunto no checkpoint. Totais antigos sem respostas detalhadas não provam eventos individuais e não são somados a estes, evitando duplicação.
 
@@ -39,7 +39,7 @@ Consultas começam nesta implementação. Não se infere visita pelo quiz, acert
 
 ## Extensão e limites
 
-Para acrescentar uma conquista: crie uma definição com ID permanente em `Achievements::definitions`, reutilize uma métrica ou acrescente um fato verificável ao avaliador/porta; forneça um glifo distinto no mapa de desenhos; cubra limiar, duplicação, falhas e reabertura. Não recicle IDs nem altere metas retroativamente sem decisão/migração. UI, filtros, totais e categorias são derivados das definições. Não é necessário editar seletores independentes.
+Para acrescentar uma conquista: crie uma definição com ID permanente e `AchievementLevel` explícito em `Achievements::definitions`, reutilize uma métrica ou acrescente um fato verificável ao avaliador/porta; forneça um glifo distinto no mapa de desenhos; cubra limiar, duplicação, falhas e reabertura. Não recicle IDs nem altere metas retroativamente sem decisão/migração. UI, filtros, totais e categorias são derivados das definições. Não é necessário editar seletores independentes.
 
 A avaliação relê o histórico local nas ações relevantes. É uma solução simples para o volume atual; históricos muito extensos podem justificar uma projeção incremental futura com os mesmos IDs e transações. Não há certificação antitrapaça: um SQLite local não prova autoria autenticada. Não há revisão científica nova, transferência de dados entre identidades ou liberação de distribuição.
 
@@ -81,3 +81,44 @@ As metas abaixo são acumuladas por UUID, salvo quando o próprio critério exig
 | `competitive_perfect` | Desafio perfeito | Desafios especiais | Conclua uma partida competitiva sem erros. |
 | `competitive_no_hint` | Autonomia competitiva | Desafios especiais | Conclua uma partida competitiva sem revelar nenhuma dica. |
 | `correct_500` | Horizonte do conhecimento | Desafios especiais | Acerte quinhentas perguntas. |
+
+## Níveis visuais de complexidade
+
+Cada definição recebe um `AchievementLevel` explícito, projetado como `visualLevel`/`visualLevelName`. O nível é estático, independe do bloqueio e não altera a métrica ou a meta. Não mede dificuldade das perguntas nem raridade estatística. A classificação combina volume, diversidade e condições dentro de uma mesma partida; é uma decisão de apresentação, sem alegar calibração empírica.
+
+Bronze usa moldura simples; Prata acrescenta contorno e pequenos losangos; Ouro acrescenta louros e três marcas; Platina usa contorno facetado e cristais geométricos com acabamento luminoso estático. Todas mantêm a família hexagonal e os 30 símbolos vetoriais anteriores. Texto, geometria e nomes acessíveis complementam a cor. SQLite permanece no esquema 8: metadados de apresentação não exigem migração.
+
+| ID | Conquista | Nível visual | Justificativa pelo requisito |
+| --- | --- | --- | --- |
+| `first_answer` | Primeiro voo | I · Inicial · Bronze | Primeira resposta, sem condição de acerto. |
+| `first_correct` | Primeira descoberta | I · Inicial · Bronze | Primeiro acerto confirmado. |
+| `first_game` | Uma jornada | I · Inicial · Bronze | Primeira conclusão livre, sem desempenho exigido. |
+| `first_competitive` | Novo desafio | II · Intermediário · Prata | Conclusão integral de um modo com regras fixas. |
+| `first_hint` | Uma pista | I · Inicial · Bronze | Primeira interação com dicas. |
+| `correct_5` | Olhar atento | I · Inicial · Bronze | Marco inicial de acertos. |
+| `correct_10` | Naturalista iniciante | I · Inicial · Bronze | Marco inicial de aprendizagem. |
+| `correct_20` | Conhecedor | II · Intermediário · Prata | Acertos acumulados de maior extensão. |
+| `correct_50` | Naturalista | II · Intermediário · Prata | Repetição consistente de acertos. |
+| `correct_100` | Especialista | III · Avançado · Ouro | Marco amplo de conhecimento. |
+| `streak_3` | Em sequência | II · Intermediário · Prata | Sequência de acertos na mesma partida. |
+| `perfect_game` | Precisão em campo | III · Avançado · Ouro | Precisão integral em pelo menos dez respostas da mesma partida. |
+| `no_hint_game` | Olhar independente | III · Avançado · Ouro | Autonomia durante uma partida de pelo menos dez respostas. |
+| `group_10` | Uma linhagem | II · Intermediário · Prata | Concentração de acertos em um grupo científico. |
+| `group_50` | Raízes do conhecimento | III · Avançado · Ouro | Conhecimento prolongado de um mesmo grupo. |
+| `groups_3` | Diversidade da vida | II · Intermediário · Prata | Diversidade científica em três grupos. |
+| `species_10` | Dez descobertas | II · Intermediário · Prata | Reconhecimento de dez organismos distintos. |
+| `cycle` | Um ciclo completo | II · Intermediário · Prata | Percurso de todo o conjunto selecionado numa sessão. |
+| `visit_1` | Primeira ficha | I · Inicial · Bronze | Primeira consulta científica. |
+| `visit_10` | Explorador de espécies | II · Intermediário · Prata | Exploração de dez fichas distintas. |
+| `visit_25` | Caderno de campo | III · Avançado · Ouro | Pesquisa ampliada em vinte e cinco organismos. |
+| `visit_groups_3` | Além de uma linhagem | II · Intermediário · Prata | Exploração abrangendo três grupos científicos. |
+| `answered_10` | Explorador | I · Inicial · Bronze | Participação inicial, independente de precisão. |
+| `answered_100` | Prática constante | II · Intermediário · Prata | Prática acumulada regular. |
+| `answered_250` | Longa jornada | III · Avançado · Ouro | Prática acumulada extensa. |
+| `games_10` | Dez jornadas | II · Intermediário · Prata | Continuidade por várias conclusões. |
+| `games_25` | Dedicação à ciência | III · Avançado · Ouro | Continuidade ampla por vinte e cinco conclusões. |
+| `competitive_perfect` | Desafio perfeito | IV · Especial · Platina | Precisão integral no conjunto competitivo. |
+| `competitive_no_hint` | Autonomia competitiva | IV · Especial · Platina | Autonomia integral no conjunto competitivo. |
+| `correct_500` | Horizonte do conhecimento | IV · Especial · Platina | Marco mais elevado de acertos da coleção. |
+
+[Validação e capturas das quatro classes](interface/VERSOES/2.3.3/refinamentos/README.md). A versão 2.1.0 ainda não lançada é completada na mesma PR; catálogo 2.4.0 preservado.

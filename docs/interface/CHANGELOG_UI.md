@@ -1,5 +1,10 @@
 # Histórico visual
 
+## Refinamento da PR #38 — níveis de conquistas
+
+- Bronze, Prata, Ouro e Platina identificam a complexidade do requisito, com molduras e ornamentos próprios, texto de nível e identificação acessível. Os 30 glifos e os critérios são preservados; bloqueio atenua o desenho sem ocultar a classe. Não há raridade estatística ou animação contínua.
+- [Correções, classificação e evidências reais](VERSOES/2.3.3/refinamentos/README.md).
+
 ## Revisão da PR #37 — usuário local único
 
 - A decisão atual substitui a proposta abaixo: Meu perfil, edição do nome e recordes pessoais por UUID. Instalações com múltiplos perfis antigos exigem uma escolha única; não há gerenciamento permanente de perfis nem histórico de outras identidades na interface.

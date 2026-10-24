@@ -6,6 +6,9 @@ import "AchievementBadgePaths.js" as BadgePaths
 Item {
     id: badge
     property string glyph: "leaf"
+    property string visualLevel: "initial"
+    property bool unlocked: false
+    readonly property var material: BadgePaths.levels[visualLevel] || BadgePaths.levels.initial
     readonly property var drawing: BadgePaths.drawings[glyph] || BadgePaths.drawings.leaf
     implicitWidth: 96
     implicitHeight: 106
@@ -16,24 +19,27 @@ Item {
         transformOrigin: Item.TopLeft
         Shape {
             anchors.fill: parent
+            opacity: badge.unlocked ? 1 : 0.65
             preferredRendererType: Shape.CurveRenderer
-            ShapePath { strokeColor: badge.drawing.color; strokeWidth: 1.5; fillColor: "#183c32"; PathSvg { path: "M28 91L21 127L39 118L49 129L56 98M64 98L71 129L81 118L99 127L92 91" } }
+            ShapePath { strokeColor: badge.material.rim; strokeWidth: 1.5; fillColor: "#183c32"; PathSvg { path: badge.material.ribbon } }
             ShapePath {
                 strokeWidth: 0
                 fillGradient: LinearGradient {
                     x1: 10; y1: 4; x2: 110; y2: 110
-                    GradientStop { position: 0; color: "#fff1bd" }
-                    GradientStop { position: 0.4; color: badge.drawing.color }
-                    GradientStop { position: 1; color: "#79592c" }
+                    GradientStop { position: 0; color: badge.material.light }
+                    GradientStop { position: 0.35; color: badge.material.metal }
+                    GradientStop { position: 0.55; color: badge.material.light }
+                    GradientStop { position: 1; color: badge.material.shade }
                 }
-                PathSvg { path: "M60 4L105 30L109 80L60 110L11 80L15 30Z" }
+                PathSvg { path: badge.material.outer }
             }
-            ShapePath { strokeColor: "#f5dda0"; strokeWidth: 1; fillColor: "#102b2c"; PathSvg { path: "M60 10L100 33L103 77L60 103L17 77L20 33Z" } }
-            ShapePath { strokeColor: badge.drawing.color; strokeWidth: 0.5; fillColor: "transparent"; PathSvg { path: "M60 16L94 36L97 74L60 96L23 74L26 36Z" } }
-            ShapePath { strokeWidth: 0; fillColor: "#fff0b9"; PathSvg { path: "M60 8L63 13L60 18L57 13Z" } }
+            ShapePath { strokeColor: badge.material.rim; strokeWidth: 1; fillColor: "#102b2c"; PathSvg { path: badge.material.inner } }
+            ShapePath { strokeColor: badge.material.rim; strokeWidth: 0.7; fillColor: "transparent"; PathSvg { path: badge.material.engraving } }
+            ShapePath { strokeColor: badge.material.shade; strokeWidth: 0.4; fillColor: badge.material.light; PathSvg { path: badge.material.ornaments } }
         }
         Shape {
             x: 17; y: 15; width: 100; height: 100; scale: 0.86; transformOrigin: Item.TopLeft
+            opacity: badge.unlocked ? 1 : 0.5
             preferredRendererType: Shape.CurveRenderer
             ShapePath {
                 strokeColor: badge.drawing.color; strokeWidth: 3; fillColor: "transparent"

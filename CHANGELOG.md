@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [2.1.0] — Não lançado; conquistas persistentes
 
+- Refinamento da PR #38: validação de identidade antes de contar organismos distintos; prioridade de resultados detalhados válidos com fallback conservador para checkpoints. Quatro níveis visuais explícitos (Inicial/Bronze, Intermediário/Prata, Avançado/Ouro e Especial/Platina), sem mudar metas, pontuação ou esquema SQLite.
 - Subetapa 2.3.3: 30 conquistas em seis categorias, progresso acumulado por UUID, badges vetoriais próprios, filtros de estado/categoria, detalhes e navegação por teclado. Animações seguem a configuração de movimento existente.
 - SQLite 8 acrescenta progresso/desbloqueios e consultas distintas a fichas. Respostas validadas e checkpoints existentes são reutilizados sem duplicar sessões, transferir identidades ou alterar pontos. Reconhecimento retroativo conservador, sem presumir visitas ou dicas ausentes.
 - Evento C++ somente após desbloqueio persistido, preparado para a etapa futura; sem notificações flutuantes. Backups aceitam o novo esquema.
