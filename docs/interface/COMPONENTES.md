@@ -1,5 +1,9 @@
 # Componentes compartilhados
 
+## Notificações — 2.3.4
+
+`AchievementNotificationLayer` pertence ao shell, recebe `achievementUnlocked` por `Connections`, valida os campos, mantém FIFO/deduplicação temporárias e apresenta até duas instâncias de `AchievementNotification`. `ListModel` preserva as instâncias ativas ao adicionar/remover outras notificações. Não varre conquistas para detectar desbloqueios. O cartão usa `AchievementBadge` e as cores de material existentes, quebra textos e limita interação ao `ToolButton` de dispensa. Popups e erros críticos suspendem a apresentação; perda de atividade/minimização não força ativação da janela. [Políticas, ciclo de vida e validação](VERSOES/2.3.4/README.md).
+
 ## Conquistas — 2.3.3
 
 O [painel de filtros](VERSOES/2.3.3/barra-filtros/README.md) combina estado/categoria/`visualLevel` com AND, guardados em `Main.achievementsPresentation` durante a navegação. `GridLayout` considera a largura útil da página e reorganiza três grupos em uma, duas ou três linhas. `UiButton` forma o Estado segmentado; dois `TaxonComboBox` recebem apenas estilo local, margens no popup e transições vinculadas ao tema. `TextAction` limpa os três valores, aparece somente com restrições e devolve foco a Todas. Resumo/progresso global são independentes do contador filtrado; não há preferências novas no SQLite. A Platina acrescenta placas facetadas e reflexos estáticos em `QtQuick.Shapes`; os três outros materiais e os 30 glifos permanecem iguais. [Filtro e comparação Prata/Platina](VERSOES/2.3.3/filtros-nivel-platina/README.md).

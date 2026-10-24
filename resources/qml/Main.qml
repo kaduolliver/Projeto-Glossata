@@ -412,6 +412,12 @@ ApplicationWindow {
             }
         }
     }
+    AchievementNotificationLayer {
+        anchors.fill: parent
+        z: 100
+        app: root; backend: root.backend
+        surfaceAvailable: !root.Overlay.overlay.visible
+    }
     NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationPage }
     Component { id: homePage; HomeView { app: root; backend: root.backend } }
     Component { id: categoriesPage; CategoryView { app: root; backend: root.backend } }

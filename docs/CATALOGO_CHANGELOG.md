@@ -1,5 +1,7 @@
 # Histórico do catálogo científico e das licenças
 
+Subetapa 2.3.4, sem lançamento: aplicativo **2.2.0** (MINOR por notificações compatíveis) reutiliza o catálogo **2.4.0** e SQLite **8**, sem alterar ciência, dados, fotografias, badges, critérios ou decisões de governança. Os dois componentes QML novos têm inclusão de licença pendente, sem concessões automáticas ou autoria/revisão humana presumida. Não há recursos externos novos. [Políticas e evidências](interface/VERSOES/2.3.4/README.md).
+
 Subetapa 2.3.3, sem lançamento: aplicativo **2.1.0** reutiliza o catálogo **2.4.0** sem modificar dados, fotografias, revisões, licenças ou evidências. As conquistas consultam IDs e grupos científicos existentes. Novos módulos constam como pendentes no inventário de escopo; os desenhos geométricos foram produzidos nesta implementação com assistência de IA, sem material gráfico externo importado e sem decisão humana de licença/autoria presumida. A referência visual orienta composição, sem copiar suas fotografias ou badges. [Registro e limites](CONQUISTAS.md).
 
 Revisão da PR #37, sem lançamento: aplicativo **2.0.0** (MAJOR pela retirada do gerenciamento permanente de múltiplos perfis) reutiliza o catálogo **2.4.0** integralmente. A migração de identidade local não modifica ciência, fotografias, licenças, evidências ou decisões de governança. O vínculo com uma futura conta remota dependerá de decisão explícita e verificação de propriedade; não há autorização científica/jurídica ou de distribuição criada por esta revisão.

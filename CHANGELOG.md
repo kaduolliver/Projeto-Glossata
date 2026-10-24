@@ -2,6 +2,12 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [2.2.0] — Não lançado; notificações de conquistas
+
+- Subetapa 2.3.4: notificações informativas no shell, consumindo somente `achievementUnlocked` após persistência. Reutilizam as quatro badges existentes e não alteram desbloqueios, quiz, pontuação, identidade ou SQLite.
+- Fila FIFO de sessão, até duas notificações, deduplicação por UUID/conquista e fechamento manual/automático. Cinco segundos de leitura, transições curtas e movimento reduzido; suspensão durante popups, erros críticos e inatividade, com expiração explícita após 60 segundos de suspensão/idade do evento.
+- MINOR por funcionalidade compatível. Aplicativo 2.2.0 ainda não lançado, catálogo 2.4.0 e SQLite 8 preservados; componentes novos com decisão de licença pendente. [Arquitetura, políticas, testes e capturas](docs/interface/VERSOES/2.3.4/README.md). Sem release ou tag.
+
 ## [2.1.0] — Não lançado; conquistas persistentes
 
 - PR #38: painel “Filtrar conquistas” com Estado segmentado, menus de Categoria/Nível, contador e limpeza conjunta. Layout conforme a largura útil, menus Qt Quick Controls com teclado/Escape e limites da janela; seleção em memória, regras, badges e dados preservados. [Organização e evidências](docs/interface/VERSOES/2.3.3/barra-filtros/README.md).

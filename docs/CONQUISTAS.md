@@ -123,6 +123,10 @@ Bronze usa moldura simples; Prata acrescenta contorno e pequenos losangos; Ouro 
 
 [Validação e capturas das quatro classes](interface/VERSOES/2.3.3/refinamentos/README.md). A versão 2.1.0 ainda não lançada é completada na mesma PR; catálogo 2.4.0 preservado.
 
+## Notificações da Subetapa 2.3.4
+
+O sinal persistido `achievementUnlocked(QVariantMap)` é consumido uma vez pelo shell. Uma fila temporária apresenta até duas notificações com as badges existentes, sem reconstruir o histórico ao abrir telas ou reiniciar. Reconhecimentos retroativos, eventos incompletos/duplicados e identidades diferentes são recusados. Nenhuma regra, persistência ou meta é recalculada pela interface. [Arquitetura e políticas detalhadas](interface/VERSOES/2.3.4/README.md).
+
 ## Filtro por nível e acabamento final da Platina
 
 As opções “Todos os níveis”, “Inicial — Bronze”, “Intermediário — Prata”, “Avançado — Ouro” e “Especial — Platina” usam os valores `visualLevel` existentes. O predicado combina estado **e** categoria **e** nível; o contador de seleção acompanha o resultado e o resumo global continua derivado das 30 definições. Uma combinação vazia mantém a mensagem de seleção vazia.

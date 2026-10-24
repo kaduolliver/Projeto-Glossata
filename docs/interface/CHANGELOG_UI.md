@@ -1,5 +1,10 @@
 # Histórico visual
 
+## Subetapa 2.3.4 — notificações de conquistas
+
+- Camada informativa no shell com duas notificações, FIFO, deduplicação por identidade/conquista e cinco segundos de leitura. Badges/metadados existentes, entrada/saída curtas e respeito a movimento reduzido.
+- Suspensão segura durante popups, erros críticos e inatividade; expiração explícita de eventos antigos, foco e comandos do Quiz preservados. [Arquitetura, testes e capturas reais](VERSOES/2.3.4/README.md).
+
 ## PR #38 — reorganização dos filtros de Conquistas
 
 - Painel com Estado segmentado e menus de Categoria/Nível; rótulos, alvos de 44 px e distribuição conforme a largura útil, sem preencher desnecessariamente a linha.
