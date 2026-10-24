@@ -69,7 +69,8 @@ class GameController : public QObject {
     Q_PROPERTY(QVariantMap dailyDiscovery READ dailyDiscovery NOTIFY homeCatalogChanged)
     Q_PROPERTY(QVariantMap homeCatalogIndicators READ homeCatalogIndicators NOTIFY homeCatalogChanged)
     Q_PROPERTY(QVariantList categoryStats READ categoryStats NOTIFY scoreChanged)
-    Q_PROPERTY(QVariantList achievements READ achievements NOTIFY scoreChanged)
+    Q_PROPERTY(QVariantList achievements READ achievements NOTIFY achievementsChanged)
+    Q_PROPERTY(QString achievementsError READ achievementsError NOTIFY achievementsChanged)
     Q_PROPERTY(QString categoryName READ categoryName NOTIFY gameFinishedChanged)
     Q_PROPERTY(QVariantMap browseTaxon READ browseTaxon NOTIFY explorationChanged)
     Q_PROPERTY(QVariantList browseChildren READ browseChildren NOTIFY explorationChanged)
@@ -148,6 +149,7 @@ public:
     QVariantMap homeCatalogIndicators() const { return homeCatalog_.value("indicators").toMap(); }
     QVariantList categoryStats() const;
     QVariantList achievements() const;
+    QString achievementsError() const { return achievementsError_; }
     QString categoryName() const { return categoryName_; }
     QVariantMap browseTaxon() const { return taxonomy_.describe(explorationId_); }
     QVariantList browseChildren() const { return taxonomy_.children(explorationId_); }
@@ -167,6 +169,8 @@ public slots:
     bool startTaxonGame(const QString &taxonId, const QString &rank);
     bool startCompetitiveGame();
     void exploreTaxon(const QString &taxonId);
+    bool recordExplorationVisit(const QString &taxonId);
+    bool recordAnswerSpeciesVisit();
     void nextQuestion();
     void answerSelected(const QString &selectedOption);
     void revealHint();
@@ -183,6 +187,8 @@ public slots:
     void loadRanking();
 
 signals:
+    void achievementsChanged();
+    void achievementUnlocked(const QVariantMap &achievement);
     void localUserChanged();
     void exploreQueryChanged();
     void exploreDomainChanged();
@@ -206,6 +212,9 @@ signals:
     void recoveryChanged();
 
 private:
+    void refreshAchievements(bool retrospective = false);
+    QVariantList achievements_;
+    QString achievementsError_;
     bool startWithConfiguration(const GameConfiguration &configuration);
     bool initializing_ = true;
     SqliteSpeciesCatalog catalog_;

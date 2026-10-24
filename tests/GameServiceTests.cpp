@@ -7,6 +7,9 @@
 #include <QTemporaryDir>
 #include <QFile>
 #include <QSqlQuery>
+#include <QSqlRecord>
+#include <QScopeGuard>
+#include <QUuid>
 #include <QImageReader>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -146,6 +149,14 @@ class GameServiceTests : public QObject {
     Q_OBJECT
 
 private slots:
+    void achievementCriteriaAndInvalidEvents();
+    void achievementSpeciesIdentity_data();
+    void achievementSpeciesIdentity();
+    void achievementEvidencePriority_data();
+    void achievementEvidencePriority();
+    void achievementsPersistRecoverAndEmitOnce();
+    void achievementHintsAndCompletion();
+    void achievementExplorationAndHistoricalRecognition();
     void explorationCardsUseReviewedContentAndDocumentedRanks();
     void explorationDebounceKeepsTheCurrentQueryAndFilters();
     void scientificSearchCombinesNamesDomainsAndRanks();
@@ -1037,7 +1048,7 @@ void GameServiceTests::controllerKeepsAnswerUntilNextQuestion()
     QVERIFY(!controller.answerPending());
     QVERIFY(controller.answerDetails().isEmpty());
     QVERIFY(controller.categoryStats().isEmpty());
-    QVERIFY(!controller.achievements().first().toMap().value("unlocked").toBool());
+    QVERIFY(controller.achievements().first().toMap().value("unlocked").toBool());
 }
 
 void GameServiceTests::playSelectionProjectsExistingTaxonomyAndEligibility()
@@ -2053,7 +2064,7 @@ void GameServiceTests::versionedMigrationReconstructsKnownRecords()
       QVERIFY(!rows.isEmpty()); QCOMPARE(rows.first().scoreUnits,qint64(6)); }
     auto db=QSqlDatabase::addDatabase("QSQLITE","v2-inspect");db.setDatabaseName(path);QVERIFY(db.open());
     {
-        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),7);
+        QSqlQuery q(db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),8);
         QVERIFY(q.exec("SELECT COUNT(*) FROM answer_records"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);
         q.finish();
         // The supported legacy table has no declared FK. Orphans must still be
@@ -2394,6 +2405,8 @@ void GameServiceTests::scientificHintCoverageWithFourOptions()
         {"context","Same eligible pool and seeded four-option contexts; no adaptive resampling."},
         {"education_sha256",QString::fromLatin1(QCryptographicHash::hash(bytes,QCryptographicHash::Sha256).toHex())},{"rows",rows}}).toJson());
 }
+
+#include "AchievementCases.h"
 
 QTEST_MAIN(GameServiceTests)
 #include "GameServiceTests.moc"

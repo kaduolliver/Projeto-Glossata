@@ -27,6 +27,7 @@ Item {
         returnButton.forceActiveFocus(keyboard ? Qt.TabFocusReason : Qt.OtherFocusReason)
     }
     Component.onCompleted: {
+        if (browsingOnly && organism) backend.recordExplorationVisit(backend.browseTaxon.id)
         let ancestor = parent
         while (ancestor && !(ancestor instanceof Flickable)) ancestor = ancestor.parent
         pageViewport = ancestor
@@ -41,6 +42,7 @@ Item {
         }
     }
     Connections { target: view.backend; function onExplorationChanged() {
+        if (view.browsingOnly && view.organism) view.backend.recordExplorationVisit(view.backend.browseTaxon.id)
         view.photoDetailsOpen = false; view.breadcrumbsExpanded = false; view.sourcesOpen = false; view.classificationOpen = false
         playSources.close(); positionPlayTop.restart()
     } }

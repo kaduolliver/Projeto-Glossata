@@ -1,5 +1,9 @@
 # Arquitetura visual
 
+## Conquistas — 2.3.3
+
+`AchievementsView` projeta `GameController.achievements`, atualizado por `achievementsChanged`, sem avaliar critérios em QML. `Main.achievementsPresentation` conserva estado/categoria enquanto o aplicativo está aberto. Fichas reais de `TaxonomyView` no contexto Explorar e `InfoView` após resposta solicitam ao backend o registro validado/deduplicado da consulta. O shell reutiliza sua rolagem e enquadramento do foco. `AchievementBadge` desenha o mapa vetorial local de glifos, sem leitor SVG. O sinal `achievementUnlocked` não tem consumidor visual nesta etapa. [Persistência e reconhecimento](../CONQUISTAS.md).
+
 ## Estatísticas — projeção das dicas em andamento
 
 Somente `StatisticsView.qml` muda na revisão de [cores e dicas](VERSOES/2.3.2/cores-e-dicas/README.md). Os contratos existentes distinguem dicas consolidadas (`sessionMetrics`, notificação `scoreChanged`) e dicas da pergunta exibida (`hints`, `extraHintChanged`). Como o feedback mantém essa pergunta, `answerPending` impede somá-la novamente após confirmação. `gameFinished` retira a contribuição sem resposta ao encerrar; recuperação recompõe os valores a partir do checkpoint existente. Nenhum contador acumulado, persistência ou notificação nova é necessário. A paleta por ID e os tons do ranking também são regras locais de apresentação; a proposta multiplayer continua apenas documental.

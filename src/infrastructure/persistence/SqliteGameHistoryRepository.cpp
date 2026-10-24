@@ -2,6 +2,7 @@
 #include "PlayerIdentityMigration.h"
 #include "PlayerNameMigration.h"
 #include "SessionCheckpointStorage.h"
+#include "AchievementStorage.h"
 #include "domain/PlayerNamePolicy.h"
 
 #include <QDir>
@@ -219,15 +220,15 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
     }
     const int version = query.value(0).toInt();
     query.finish();
-    if (version > 7) { database_.close(); return; }
+    if (version > 8) { database_.close(); return; }
     if (version < 0) { database_.close(); return; }
     if (version >= 6) {
-        if (!validCurrentSchema(database_, version == 7) || !validatePlayerNames(database_)
+        if (!validCurrentSchema(database_, version >= 7) || (version==8 && !validAchievementSchema(database_)) || !validatePlayerNames(database_)
             || !query.exec("PRAGMA foreign_key_check") || query.next()) {
             qWarning() << "Incompatible or incomplete player database; original retained";
             database_.close(); return;
         }
-        if (version == 7) return;
+        if (version == 8) return;
     }
     if (!database_.transaction()) { database_.close(); return; }
     auto exec = [&](const QString &sql) { return query.exec(sql); };
@@ -295,7 +296,7 @@ SqliteGameHistoryRepository::SqliteGameHistoryRepository(const QString &database
         if (query.next()) ok = false;
         query.finish();
     }
-    ok = ok && exec("PRAGMA user_version=7");
+    ok = ok && migrateAchievements(database_) && validAchievementSchema(database_) && exec("PRAGMA user_version=8");
     if (!ok || !database_.commit()) {
         qWarning() << "Não foi possível migrar o histórico:" << query.lastError().text() << database_.lastError().text();
         database_.rollback(); database_.close();

@@ -1,0 +1,10 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures() Level filter check: special at 1000x700
+C:/glossata_game/tests/QmlInterfaceTests.cpp(173) : failure location
+FAIL!  : QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures() 'checkLevelFilters(true)' returned FALSE. ()
+C:/glossata_game/tests/QmlInterfaceTests.cpp(216) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 2 passed, 1 failed, 0 skipped, 0 blacklisted, 20392ms
+********* Finished testing of QmlInterfaceTests *********

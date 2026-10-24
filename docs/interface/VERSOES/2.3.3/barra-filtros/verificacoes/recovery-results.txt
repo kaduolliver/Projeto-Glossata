@@ -1,0 +1,27 @@
+********* Start testing of SessionRecoveryTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : SessionRecoveryTests::initTestCase()
+PASS   : SessionRecoveryTests::recoverHintsAnswersAndExactQuestionOrder()
+PASS   : SessionRecoveryTests::recoveredCompetitiveCompletionIsAtomicAndIdempotent()
+PASS   : SessionRecoveryTests::failedCheckpointDoesNotConfirmAnAnswerOrRevealAHint()
+QWARN  : SessionRecoveryTests::failedFinalizationLeavesRecoverableFinishedSession() Não foi possível salvar o resultado: ""
+PASS   : SessionRecoveryTests::failedFinalizationLeavesRecoverableFinishedSession()
+PASS   : SessionRecoveryTests::abandonmentAndStaleWritersCannotChangeRanking()
+PASS   : SessionRecoveryTests::invalidSnapshotsAndChangedContentAreRetainedAndRefused()
+PASS   : SessionRecoveryTests::transitionsCannotEraseAnswersOrHints()
+PASS   : SessionRecoveryTests::v5MigrationPreservesIdsResultsAndCanRepeat()
+PASS   : SessionRecoveryTests::abruptProcess(hint)
+PASS   : SessionRecoveryTests::abruptProcess(answer)
+PASS   : SessionRecoveryTests::abruptProcess(final)
+PASS   : SessionRecoveryTests::abruptProcess(uncommitted)
+PASS   : SessionRecoveryTests::consistentBackupRestoresAValidSession()
+QWARN  : SessionRecoveryTests::failedInitialWriteAndMigrationPreserveExistingResults() Não foi possível migrar o histórico: "" ""
+PASS   : SessionRecoveryTests::failedInitialWriteAndMigrationPreserveExistingResults()
+PASS   : SessionRecoveryTests::retiredOwnerAndReusedNameRemainSeparateAfterRecovery()
+PASS   : SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved(total)
+PASS   : SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved(generator)
+PASS   : SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved(photo)
+PASS   : SessionRecoveryTests::inconsistentSnapshotWithMatchingDigestIsPreserved(rules)
+PASS   : SessionRecoveryTests::cleanupTestCase()
+Totals: 21 passed, 0 failed, 0 skipped, 0 blacklisted, 16893ms
+********* Finished testing of SessionRecoveryTests *********

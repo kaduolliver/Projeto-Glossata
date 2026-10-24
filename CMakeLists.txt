@@ -30,6 +30,8 @@ add_executable(glossata_quiz
     src/infrastructure/content/PhotoResolver.cpp
     src/infrastructure/content/JsonExplorationMediaCatalog.cpp
     src/infrastructure/persistence/SqliteGameHistoryRepository.cpp
+    src/infrastructure/persistence/AchievementStorage.cpp
+    src/application/Achievements.cpp
     src/infrastructure/persistence/PlayerIdentityMigration.cpp
     src/infrastructure/persistence/PlayerNameMigration.cpp
     src/infrastructure/persistence/SessionCheckpointStorage.cpp

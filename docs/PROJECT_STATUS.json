@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "application": {
-    "version": "2.0.0",
+    "version": "2.1.0",
     "stage": "development"
   },
   "catalog": {
@@ -16,7 +16,7 @@
     "competitive_questions": 20
   },
   "storage": {
-    "history_schema": 7,
+    "history_schema": 8,
     "catalog_schema": 2,
     "checkpoint_snapshot": 1
   },
@@ -61,10 +61,10 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "3e9845d453e30bbd089bfe15c447177a53827a9d6ba45881a7187b3665e5dd63",
-    "CMakeLists.txt": "516e89270ad4d1e847aa9f8a263defb2c1c92889f12c0e22c39ada7b6f360cb8",
-    "VERSION.txt": "c28fcca53637bc88e124af1725df13cb98c69dedefd62fb3cdbe1cdb6b760624",
-    "docs/CATALOGO_CHANGELOG.md": "ad890684836b0d205548ee9b259ded4fab41c09fab18fbfa6df97ca1a43f4bf3",
+    "CHANGELOG.md": "17b2d25f5169b9e60378dacab275521f6e1ef9069b043a20c2db101bfece6313",
+    "CMakeLists.txt": "2a7da39ee96b5b25565e0c45769648c7cf29aab8ffb5a5831824c48cfe0d7e0a",
+    "VERSION.txt": "c89b87c262e9d5ffd20e73aac74a1772adcc9f5a21682cc33adcf5086e5fef5c",
+    "docs/CATALOGO_CHANGELOG.md": "b868be8a7a5929b291b390e0e6c212137bcd4d0ead65bedf117c7d6f03241691",
     "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
     "resources/data/exploration_photos.json": "81a93aa8b7f03b7c791bf5903c6b4afd94388f19b6566549cf2deab1142f980d",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
@@ -74,8 +74,8 @@
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
     "src/domain/SessionCheckpoint.h": "001a8aa8101f857b4b2698ce581c40ebcb72ae49de37fa7440cf4dfce9c0cc38",
     "src/infrastructure/content/SqliteSpeciesCatalog.cpp": "3e03a19f72651afed4dbaf40d7e5e3edc721d6c8c42c4450398d909c18630dff",
-    "src/infrastructure/persistence/SqliteGameHistoryRepository.cpp": "1b6a1b2a821156b5da53743c2d4dc7c47070816c78d52480005e50a2a92d7207",
-    "tests/CMakeLists.txt": "118536b28d9a4484f60e16867a939e5b3952c26309a62ca1c8ddeb2b2c92ea7d"
+    "src/infrastructure/persistence/SqliteGameHistoryRepository.cpp": "9998e5069bb842c591a8c17f25b387feb02625cb24b586a6b73b76a258a56e63",
+    "tests/CMakeLists.txt": "fd039e64fd58d7da10106c8b9374095361f9128113a1a1fee19a8ae21e193f69"
   },
   "limitations": "Source metadata and registered tests, not execution results, publication evidence or distribution/scientific approval."
 }

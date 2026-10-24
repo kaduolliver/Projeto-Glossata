@@ -1,5 +1,11 @@
 # Componentes compartilhados
 
+## Conquistas — 2.3.3
+
+O [painel de filtros](VERSOES/2.3.3/barra-filtros/README.md) combina estado/categoria/`visualLevel` com AND, guardados em `Main.achievementsPresentation` durante a navegação. `GridLayout` considera a largura útil da página e reorganiza três grupos em uma, duas ou três linhas. `UiButton` forma o Estado segmentado; dois `TaxonComboBox` recebem apenas estilo local, margens no popup e transições vinculadas ao tema. `TextAction` limpa os três valores, aparece somente com restrições e devolve foco a Todas. Resumo/progresso global são independentes do contador filtrado; não há preferências novas no SQLite. A Platina acrescenta placas facetadas e reflexos estáticos em `QtQuick.Shapes`; os três outros materiais e os 30 glifos permanecem iguais. [Filtro e comparação Prata/Platina](VERSOES/2.3.3/filtros-nivel-platina/README.md).
+
+`AchievementBadge.qml` recebe `glyph`, `visualLevel` e `unlocked`, com geometria/cor e quatro materiais em `AchievementBadgePaths.js`. A view consome nível e nome projetados pelo backend; não decide classe por posição, nome ou progresso. Desenha moldura, fitas e glifo em coordenadas normalizadas, escaladas pela menor dimensão; fallback para folha, sem animação interna nem validação de progresso. A view define tamanho e resposta à pressão; o componente atenua separadamente moldura e símbolo quando bloqueado, preservando os ornamentos da classe. `AchievementsView` reutiliza `UiButton`, `UiIcon`, `Theme`, `Dialog` e `ScrollView`; filtros e cartões possuem nomes acessíveis, foco visível e ativação por teclado. O diálogo devolve foco ao cartão de origem. [Evidências](VERSOES/2.3.3/README.md).
+
 ## Estatísticas — cores e dicas em andamento
 
 `StatisticsView.groupColor(id)` usa os IDs do catálogo e um fallback determinístico, sem consultar a posição dos grupos. Barras principais e percentuais recebem a cor do grupo; subgrupos usam um clareamento discreto da mesma cor. Nomes, contagens e taxas continuam presentes. `statisticsRankBorder0..4` e `statisticsRankPosition0..4` identificam bordas/números: ouro, prata, bronze e padrão. O foco substitui a borda por `Theme.focus`/`focusWidth`, sem alterar a ordem ou os marcadores.

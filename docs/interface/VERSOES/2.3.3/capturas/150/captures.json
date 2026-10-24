@@ -1,0 +1,167 @@
+[
+    {
+        "captured_at": "2026-10-23T23:36:32.204Z",
+        "devicePixelRatio": 1.5,
+        "file": "locked-1000x700.png",
+        "height": 1050,
+        "logicalHeight": 700,
+        "logicalWidth": 1000,
+        "state": "locked",
+        "temporary_database": true,
+        "width": 1500
+    },
+    {
+        "captured_at": "2026-10-23T23:36:32.375Z",
+        "devicePixelRatio": 1.5,
+        "file": "locked-1240x820.png",
+        "height": 1230,
+        "logicalHeight": 820,
+        "logicalWidth": 1240,
+        "state": "locked",
+        "temporary_database": true,
+        "width": 1860
+    },
+    {
+        "captured_at": "2026-10-23T23:36:32.594Z",
+        "devicePixelRatio": 1.5,
+        "file": "locked-1920x1080.png",
+        "height": 1620,
+        "logicalHeight": 1080,
+        "logicalWidth": 1920,
+        "state": "locked",
+        "temporary_database": true,
+        "width": 2880
+    },
+    {
+        "captured_at": "2026-10-23T23:36:33.727Z",
+        "devicePixelRatio": 1.5,
+        "file": "overview-1000x700.png",
+        "height": 1050,
+        "logicalHeight": 700,
+        "logicalWidth": 1000,
+        "state": "overview",
+        "temporary_database": true,
+        "width": 1500
+    },
+    {
+        "captured_at": "2026-10-23T23:36:34.027Z",
+        "devicePixelRatio": 1.5,
+        "file": "unlocked-focus-1000x700.png",
+        "height": 1050,
+        "logicalHeight": 700,
+        "logicalWidth": 1000,
+        "state": "unlocked-focus",
+        "temporary_database": true,
+        "width": 1500
+    },
+    {
+        "captured_at": "2026-10-23T23:36:34.269Z",
+        "devicePixelRatio": 1.5,
+        "file": "details-1000x700.png",
+        "height": 1050,
+        "logicalHeight": 700,
+        "logicalWidth": 1000,
+        "state": "details",
+        "temporary_database": true,
+        "width": 1500
+    },
+    {
+        "captured_at": "2026-10-23T23:36:34.674Z",
+        "devicePixelRatio": 1.5,
+        "file": "partial-1000x700.png",
+        "height": 1050,
+        "logicalHeight": 700,
+        "logicalWidth": 1000,
+        "state": "partial",
+        "temporary_database": true,
+        "width": 1500
+    },
+    {
+        "captured_at": "2026-10-23T23:36:35.017Z",
+        "devicePixelRatio": 1.5,
+        "file": "overview-1240x820.png",
+        "height": 1230,
+        "logicalHeight": 820,
+        "logicalWidth": 1240,
+        "state": "overview",
+        "temporary_database": true,
+        "width": 1860
+    },
+    {
+        "captured_at": "2026-10-23T23:36:35.324Z",
+        "devicePixelRatio": 1.5,
+        "file": "unlocked-focus-1240x820.png",
+        "height": 1230,
+        "logicalHeight": 820,
+        "logicalWidth": 1240,
+        "state": "unlocked-focus",
+        "temporary_database": true,
+        "width": 1860
+    },
+    {
+        "captured_at": "2026-10-23T23:36:35.575Z",
+        "devicePixelRatio": 1.5,
+        "file": "details-1240x820.png",
+        "height": 1230,
+        "logicalHeight": 820,
+        "logicalWidth": 1240,
+        "state": "details",
+        "temporary_database": true,
+        "width": 1860
+    },
+    {
+        "captured_at": "2026-10-23T23:36:35.995Z",
+        "devicePixelRatio": 1.5,
+        "file": "partial-1240x820.png",
+        "height": 1230,
+        "logicalHeight": 820,
+        "logicalWidth": 1240,
+        "state": "partial",
+        "temporary_database": true,
+        "width": 1860
+    },
+    {
+        "captured_at": "2026-10-23T23:36:36.421Z",
+        "devicePixelRatio": 1.5,
+        "file": "overview-1920x1080.png",
+        "height": 1620,
+        "logicalHeight": 1080,
+        "logicalWidth": 1920,
+        "state": "overview",
+        "temporary_database": true,
+        "width": 2880
+    },
+    {
+        "captured_at": "2026-10-23T23:36:36.802Z",
+        "devicePixelRatio": 1.5,
+        "file": "unlocked-focus-1920x1080.png",
+        "height": 1620,
+        "logicalHeight": 1080,
+        "logicalWidth": 1920,
+        "state": "unlocked-focus",
+        "temporary_database": true,
+        "width": 2880
+    },
+    {
+        "captured_at": "2026-10-23T23:36:37.139Z",
+        "devicePixelRatio": 1.5,
+        "file": "details-1920x1080.png",
+        "height": 1620,
+        "logicalHeight": 1080,
+        "logicalWidth": 1920,
+        "state": "details",
+        "temporary_database": true,
+        "width": 2880
+    },
+    {
+        "captured_at": "2026-10-23T23:36:37.686Z",
+        "devicePixelRatio": 1.5,
+        "file": "partial-1920x1080.png",
+        "height": 1620,
+        "logicalHeight": 1080,
+        "logicalWidth": 1920,
+        "state": "partial",
+        "temporary_database": true,
+        "width": 2880
+    }
+]
