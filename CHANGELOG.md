@@ -2,6 +2,17 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [2.1.0] — Não lançado; conquistas persistentes
+
+- PR #38: painel “Filtrar conquistas” com Estado segmentado, menus de Categoria/Nível, contador e limpeza conjunta. Layout conforme a largura útil, menus Qt Quick Controls com teclado/Escape e limites da janela; seleção em memória, regras, badges e dados preservados. [Organização e evidências](docs/interface/VERSOES/2.3.3/barra-filtros/README.md).
+
+- Refinamentos finais da PR #38: filtro por nível combinado com estado/categoria, seleção preservada na navegação e Platina com silhueta escalonada, facetas/cristais e reflexos frios. Bronze, Prata, Ouro, símbolos, níveis, critérios e persistência permanecem os mesmos.
+- Refinamento da PR #38: validação de identidade antes de contar organismos distintos; prioridade de resultados detalhados válidos com fallback conservador para checkpoints. Quatro níveis visuais explícitos (Inicial/Bronze, Intermediário/Prata, Avançado/Ouro e Especial/Platina), sem mudar metas, pontuação ou esquema SQLite.
+- Subetapa 2.3.3: 30 conquistas em seis categorias, progresso acumulado por UUID, badges vetoriais próprios, filtros de estado/categoria, detalhes e navegação por teclado. Animações seguem a configuração de movimento existente.
+- SQLite 8 acrescenta progresso/desbloqueios e consultas distintas a fichas. Respostas validadas e checkpoints existentes são reutilizados sem duplicar sessões, transferir identidades ou alterar pontos. Reconhecimento retroativo conservador, sem presumir visitas ou dicas ausentes.
+- Evento C++ somente após desbloqueio persistido, preparado para a etapa futura; sem notificações flutuantes. Backups aceitam o novo esquema.
+- MINOR por funcionalidades compatíveis; catálogo 2.4.0 preservado. Novos arquivos de código e desenhos têm pendências explícitas de escopo/licenciamento, sem concessões inferidas. [Arquitetura, critérios e validação](docs/CONQUISTAS.md). Sem release ou tag.
+
 ## [2.0.0] — Não lançado; usuário local único
 
 - Revisão da PR #37 por decisão do mantenedor: uma identidade local por instalação, sem gerenciamento permanente de múltiplos perfis. Instalações antigas com vários perfis exigem escolha única por UUID; resultados e sessões de outras identidades permanecem preservados.

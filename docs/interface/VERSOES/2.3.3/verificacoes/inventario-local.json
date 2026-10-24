@@ -1,0 +1,521 @@
+{
+  "recorded_at": "2026-10-23T23:38:04.657317+00:00",
+  "mode": "read-only inventory",
+  "deleted_files": 0,
+  "no_apply": true,
+  "note": "Linhas aninhadas se sobrepõem; não somar todos os bytes.",
+  "entries": [
+    {
+      "path": "build/.qt",
+      "bytes": 5430,
+      "file_count": 2,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.1-B-verified",
+      "bytes": 258432440,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.2-creditos",
+      "bytes": 258825025,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.2-final",
+      "bytes": 258782544,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.2-round-2",
+      "bytes": 258697869,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.2-usabilidade",
+      "bytes": 258884219,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.2-verified",
+      "bytes": 258632217,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.3-alinhamento",
+      "bytes": 259050215,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.3-compacto",
+      "bytes": 259048679,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.3-contexto",
+      "bytes": 258989906,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.3-dificuldade",
+      "bytes": 259051239,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.2.3-verified",
+      "bytes": 258958235,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.1-descricao",
+      "bytes": 259158491,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.1-quiz",
+      "bytes": 259119670,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.1-restaurado",
+      "bytes": 259152701,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.2-before",
+      "bytes": 259158491,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.2-cores-dicas",
+      "bytes": 259354227,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.2-estatisticas",
+      "bytes": 259231479,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/2.3.2-topo",
+      "bytes": 259276597,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/achievements-2-3-3",
+      "bytes": 1909719788,
+      "file_count": 634,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/auditoria-main",
+      "bytes": 6807,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/ci-checks",
+      "bytes": 8202405,
+      "file_count": 14,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/CMakeFiles",
+      "bytes": 66697735,
+      "file_count": 36,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/curation",
+      "bytes": 39129590,
+      "file_count": 103,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/editorial-remote-distribution",
+      "bytes": 641476,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/exploration-discovery",
+      "bytes": 6473491,
+      "file_count": 687,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/glossata_quiz_autogen",
+      "bytes": 324604888,
+      "file_count": 9,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/hint-availability-pr21",
+      "bytes": 11128497,
+      "file_count": 13,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/import-cache",
+      "bytes": 440105181,
+      "file_count": 390,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/inv04",
+      "bytes": 2345,
+      "file_count": 2,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/inv08",
+      "bytes": 2674490,
+      "file_count": 4,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/investigation",
+      "bytes": 7708,
+      "file_count": 3,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/issue2-confirmed-application",
+      "bytes": 3083307,
+      "file_count": 2,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/issue2-confirmed-fixture",
+      "bytes": 134637863,
+      "file_count": 1099,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/issue2-pr18",
+      "bytes": 8739470,
+      "file_count": 14,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/issue2-validation-logs",
+      "bytes": 9641,
+      "file_count": 22,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/issue4",
+      "bytes": 73397068,
+      "file_count": 175,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/lion-fhd-candidate",
+      "bytes": 572283,
+      "file_count": 3,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/local-ranking-history",
+      "bytes": 1920037652,
+      "file_count": 740,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/lote2-applied-curation",
+      "bytes": 2439123,
+      "file_count": 3,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/lote2-curation",
+      "bytes": 2470219,
+      "file_count": 3,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/package-providers-1.4.0",
+      "bytes": 164003859,
+      "file_count": 1647,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/pr16-before-review-distribution",
+      "bytes": 641476,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/pr16-final-review-distribution",
+      "bytes": 641476,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/pr20-distribution",
+      "bytes": 624419,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/pr30-verified",
+      "bytes": 258227268,
+      "file_count": 6,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/project-review",
+      "bytes": 686752,
+      "file_count": 4,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/provider-research",
+      "bytes": 243269,
+      "file_count": 10,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/scientific-sources",
+      "bytes": 604429,
+      "file_count": 72,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/single-local-user",
+      "bytes": 1911598001,
+      "file_count": 627,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/stage2",
+      "bytes": 272424,
+      "file_count": 47,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/Testing",
+      "bytes": 1245,
+      "file_count": 3,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/tests",
+      "bytes": 1603495886,
+      "file_count": 1138,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/text-rights-research",
+      "bytes": 20944937,
+      "file_count": 752,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/tools",
+      "bytes": 6432768,
+      "file_count": 1,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/update-proposals",
+      "bytes": 102645648,
+      "file_count": 225,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/__pycache__",
+      "bytes": 176360,
+      "file_count": 11,
+      "reason": "Build/cache ou artefatos de validação local; pode incluir evidências e dados de teste.",
+      "risk": "Alto: build recente/ativo ou conteúdo ainda não classificado; não excluir.",
+      "action": "preserved"
+    },
+    {
+      "path": "previews",
+      "bytes": 14024204,
+      "file_count": 81,
+      "reason": "Capturas locais; algumas cópias correspondem às evidências versionadas.",
+      "risk": "Médio: preservar originais e rastreabilidade.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/achievements-2-3-3/artefatos-locais",
+      "bytes": 1597850,
+      "file_count": 34,
+      "reason": "30 protótipos SVG e quatro relatórios gerados nesta tarefa, movidos sem exclusão.",
+      "risk": "Baixo para execução; médio para evidência do processo.",
+      "action": "preserved"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "file_count": 57,
+      "reason": "Cache Python recompilável.",
+      "risk": "Baixo; somente candidato a futura limpeza autorizada.",
+      "action": "preserved"
+    },
+    {
+      "path": "scripts/scientific_sources/__pycache__",
+      "bytes": 221517,
+      "file_count": 23,
+      "reason": "Cache Python recompilável.",
+      "risk": "Baixo; somente candidato a futura limpeza autorizada.",
+      "action": "preserved"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 585884,
+      "file_count": 22,
+      "reason": "Cache Python recompilável.",
+      "risk": "Baixo; somente candidato a futura limpeza autorizada.",
+      "action": "preserved"
+    },
+    {
+      "path": "build/achievements-2-3-3/tests/previews/achievements",
+      "bytes": 1436972,
+      "file_count": 16,
+      "reason": "Capturas da suíte completa anteriores ao ajuste final da altura do diálogo.",
+      "risk": "Médio: histórico de verificação preservado.",
+      "action": "preserved"
+    },
+    {
+      "path": "previews/achievements",
+      "bytes": 6299625,
+      "file_count": 48,
+      "reason": "Originais das 45 capturas finais também copiadas para documentação.",
+      "risk": "Médio: duplicação identificada não autoriza exclusão.",
+      "action": "preserved"
+    }
+  ]
+}

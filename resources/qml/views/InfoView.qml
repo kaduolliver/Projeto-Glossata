@@ -9,6 +9,7 @@ Item {
     objectName: "infoView"
     required property var app
     required property var backend
+    Component.onCompleted: backend.recordAnswerSpeciesVisit()
     readonly property var details: backend.answerDetails
     readonly property var profile: details.profile || ({})
     property bool showClassification: false

@@ -1,0 +1,28 @@
+********* Start testing of GameServiceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : GameServiceTests::initTestCase()
+PASS   : GameServiceTests::achievementSpeciesIdentity(valid)
+PASS   : GameServiceTests::achievementSpeciesIdentity(duplicate_answer)
+PASS   : GameServiceTests::achievementSpeciesIdentity(same_organism)
+PASS   : GameServiceTests::achievementSpeciesIdentity(unapproved_taxonomy)
+PASS   : GameServiceTests::achievementSpeciesIdentity(missing_organism)
+PASS   : GameServiceTests::achievementSpeciesIdentity(reused_id)
+PASS   : GameServiceTests::achievementSpeciesIdentity(divergent_name)
+PASS   : GameServiceTests::achievementSpeciesIdentity(missing_name)
+PASS   : GameServiceTests::achievementSpeciesIdentity(missing_catalog_name)
+PASS   : GameServiceTests::achievementSpeciesIdentity(invalid_score)
+PASS   : GameServiceTests::achievementEvidencePriority(detailed_result_and_checkpoint)
+PASS   : GameServiceTests::achievementEvidencePriority(missing_details_valid_checkpoint)
+FAIL!  : GameServiceTests::achievementEvidencePriority(invalid_details_valid_checkpoint) 'q.exec("UPDATE answer_records SET awarded_units=999 WHERE question_number=1")' returned FALSE. ()
+C:/glossata_game/tests/AchievementCases.h(133) : failure location
+PASS   : GameServiceTests::achievementEvidencePriority(totals_disagree_valid_checkpoint)
+PASS   : GameServiceTests::achievementEvidencePriority(missing_details_invalid_checkpoint)
+PASS   : GameServiceTests::achievementEvidencePriority(active_with_aggregate_result)
+PASS   : GameServiceTests::achievementEvidencePriority(abandoned_with_aggregate_result)
+PASS   : GameServiceTests::achievementEvidencePriority(recovered_session)
+PASS   : GameServiceTests::achievementEvidencePriority(competitive_incomplete)
+PASS   : GameServiceTests::achievementEvidencePriority(other_owner_checkpoint)
+PASS   : GameServiceTests::achievementCriteriaAndInvalidEvents()
+PASS   : GameServiceTests::cleanupTestCase()
+Totals: 22 passed, 1 failed, 0 skipped, 0 blacklisted, 4544ms
+********* Finished testing of GameServiceTests *********

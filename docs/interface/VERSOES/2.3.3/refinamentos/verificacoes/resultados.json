@@ -1,0 +1,164 @@
+{
+  "recorded_at": "2026-10-24T00:44:57.535189+00:00",
+  "application_version": "2.1.0",
+  "catalog_version": "2.4.0",
+  "sqlite_schema": 8,
+  "checks": {
+    "qmllint": {
+      "command": [
+        "qmllint",
+        "C:\\glossata_game\\resources\\qml\\Main.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\AchievementBadge.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\EndGameDialog.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\ExploreCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\FeatheredPhoto.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\HintPanel.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\KingdomArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\LifeArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\NavItem.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\PlayModeSelector.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesArtwork.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\SpeciesPortrait.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\StatCard.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TaxonComboBox.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\TextAction.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiButton.qml",
+        "C:\\glossata_game\\resources\\qml\\components\\UiIcon.qml",
+        "C:\\glossata_game\\resources\\qml\\style\\Theme.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\AchievementsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CategoryView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\CreditsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\FeedbackView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\HomeView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\InfoView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\QuizView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\ResultsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\SettingsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\StatisticsView.qml",
+        "C:\\glossata_game\\resources\\qml\\views\\TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "exit_code": 0,
+      "seconds": 4.71
+    },
+    "catalog-audit": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/audit_catalog.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "seconds": 7.25
+    },
+    "code-licensing": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "exit_code": 0,
+      "seconds": 1.02
+    },
+    "repository-audit": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/audit_repository.py"
+      ],
+      "exit_code": 0,
+      "seconds": 6.81
+    },
+    "project-status": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "C:\\glossata_game\\build\\achievements-refinements"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4
+    },
+    "release": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 6.23
+    },
+    "governance-history": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/content_governance.py",
+        "audit-history",
+        "--base",
+        "0e007ace1cc64c67d72441ac833c3af979b6a4fd"
+      ],
+      "exit_code": 0,
+      "seconds": 0.91
+    },
+    "smoke": {
+      "command": [
+        "C:\\glossata_game\\build\\achievements-refinements\\projeto_glossata.exe",
+        "--smoke-test"
+      ],
+      "exit_code": 0,
+      "seconds": 3.82
+    },
+    "distribution": {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\python.exe",
+        "scripts/distribution.py",
+        "check"
+      ],
+      "exit_code": 2,
+      "seconds": 4.35
+    },
+    "release-history": {
+      "command": [
+        "python",
+        "scripts/release.py",
+        "check-history",
+        "--base",
+        "1f74fe1be112efd5c3d73925b277cff231b81f05"
+      ],
+      "exit_code": 0
+    }
+  },
+  "original_30_glyphs_unchanged": true,
+  "captures": 69,
+  "full_ctest": {
+    "passed": 26,
+    "failed": 0,
+    "core_cases": 86,
+    "interface_cases": 31,
+    "identity_cases": 38,
+    "recovery_cases": 21
+  },
+  "reports_sha256": {
+    "catalog-audit.txt": "55c10ca6f57b5e8d7792792a8f61c25d8a14f7507bbb6c02da01d593038280eb",
+    "code-licensing.txt": "dba017e5eb70cacb67c08ff424fa3aaee5f38d6537c8cff2d9db36d9433695b5",
+    "core-results.txt": "26bac8c1e03ae97420301338015ce2f68c859eb04aed9fdf6e8e5d5576a8d8e6",
+    "ctest-final.txt": "0bf61fd8b75455f21d83a4add0c588189f562443845d72bf714dc62863eea774",
+    "distribution.txt": "8a34d04405e91691c35c2ded55c9bfcfcb8b01b0fb08baf97bddbbe863748617",
+    "governance-history.txt": "664708edfdf880274c328f84f8f03017172f49574c3c7f223200612829e7c725",
+    "identity-results.txt": "9fdbd39e0c4bbd3ede42e8be8ef3e8fec220e32adfbfb76291f1c9bf7649e6a7",
+    "project-status.txt": "9340a4340c6895d9f43f94281c77a72e91384e4ce16219833eec8864f1d389e3",
+    "qmllint.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "recovery-results.txt": "69c232315d946aabaf75681a7c056a86cbbef99a69b6d60fccf2549131937d05",
+    "release-history.txt": "1cb902a41876ad06a5f8898804f4aee94eb6cbefd945a74b1f30cce83cc0c259",
+    "release.txt": "1cb902a41876ad06a5f8898804f4aee94eb6cbefd945a74b1f30cce83cc0c259",
+    "repository-audit.txt": "71872ffa3eced20c6770ca00d3b48e0488a85dc358a63160d54b3f4992cd1a13",
+    "smoke.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "targeted-core-final.txt": "d107cfcc4c2ac2b6370c557e102aa0017a658d4f2f4ea91c39b27351ebfc26ed",
+    "targeted-core.txt": "08cb52845c5498c1e7a01777b25620c1c84844f8a4e45cafd1c8dd2650bec7d1",
+    "targeted-ui-final.txt": "3d1babcca693167c840740f72904b1802a024d786c0f11fd7acdce0f23096ae8",
+    "targeted-ui.txt": "da5b86c2e297bde9612c147d8e4bbacc36808b1794bce2a51bd55d98aba13f9b",
+    "ui-scale-1.25.txt": "ea35bcdb622a5814fff77f7fb1bd43258a1bdc0749d61a5b4639a29e919071d5",
+    "ui-scale-1.5.txt": "4e3576ffe2e8e8442daac964354ddc682b3fa89b3e46f1bd9ce82b0ae4a05fa2",
+    "ui-test-results.txt": "a5573cc4a680e8fca7c9001dbba4b3e3164b8af164bba54734344a365cebd8ee"
+  },
+  "limitations": "Offscreen scaling is not physical monitor/screen-reader certification; distribution gate pending. Static materials are not rarity. Earlier evidence retained."
+}

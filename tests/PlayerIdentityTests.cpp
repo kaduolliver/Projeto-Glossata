@@ -46,6 +46,8 @@ QStringList schema(const QSqlDatabase &db)
 class PlayerIdentityTests : public QObject {
     Q_OBJECT
 private slots:
+    void achievementsSchema7MigrationAndOwnership();
+    void achievementWriteFailureRollsBack();
     void localUserFirstOpenAndStableBinding();
     void localUserSchema6PreservesSingleProfile();
     void localUserExplicitChoiceAndGuards();
@@ -72,6 +74,54 @@ private slots:
     void incompleteV5MigrationRollsBackAndKeepsResults();
 };
 
+void PlayerIdentityTests::achievementsSchema7MigrationAndOwnership()
+{
+    QTemporaryDir dir;const auto path=dir.filePath("v7-achievements.sqlite");QString owner,other;
+    {SqliteGameHistoryRepository repo(path);const auto a=repo.createPlayer("Ada"),b=repo.createPlayer("Bia");owner=a.id;other=b.id;
+     QVERIFY(repo.chooseLocalUser(owner));QVERIFY(repo.saveResult(a.identity(),12,2,{},"retained-history"));}
+    {Inspection i(path);QSqlQuery q(i.db);
+     QVERIFY(q.exec("DROP TABLE achievement_progress"));QVERIFY(q.exec("DROP TABLE species_visits"));QVERIFY(q.exec("PRAGMA user_version=7"));}
+    {
+        SqliteGameHistoryRepository repo(path);QVERIFY(repo.initializeLocalUser());QCOMPARE(repo.localUser().id,owner);
+        QCOMPARE(repo.loadPlayerResult("free",owner).first().scoreUnits,qint64(12));
+        QVariantList rows,events;QVERIFY(repo.refreshAchievements(owner,{},true,rows,events));QVERIFY(events.isEmpty());
+        // Aggregate-only historical totals are not fabricated answer events.
+        for(const auto &row:rows)QVERIFY(!row.toMap().value("unlocked").toBool());
+        QVERIFY(!repo.refreshAchievements(other,{},false,rows,events));
+        Species s;s.id=1;s.name="Synthetic organism";
+        QVERIFY(repo.recordSpeciesVisit(owner,s));QVERIFY(!repo.recordSpeciesVisit(other,s));
+        QVERIFY(repo.refreshAchievements(owner,{s},false,rows,events));QCOMPARE(events.size(),1);
+        QVERIFY(repo.refreshAchievements(owner,{s},false,rows,events));QVERIFY(events.isEmpty());
+        QVERIFY(repo.renamePlayer(owner,"Renamed"));
+        Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),8);q.finish();
+        QVERIFY(!q.exec("UPDATE achievement_progress SET player_id='another-owner'"));
+        QVERIFY(!q.exec("UPDATE achievement_progress SET progress=0 WHERE achievement_id='visit_1'"));
+        QVERIFY(!q.exec("UPDATE achievement_progress SET unlocked_at=NULL WHERE achievement_id='visit_1'"));
+        QVERIFY(!q.exec("DELETE FROM achievement_progress"));QVERIFY(!q.exec("DELETE FROM species_visits"));
+        QVERIFY(q.exec("PRAGMA foreign_key_check"));QVERIFY(!q.next());
+    }
+    {SqliteGameHistoryRepository repo(path);QCOMPARE(repo.localUser().id,owner);QVariantList rows,events;
+     QVERIFY(repo.refreshAchievements(owner,{},true,rows,events));QVERIFY(events.isEmpty());}
+    {Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("DROP TRIGGER achievement_progress_monotonic"));}
+    {SqliteGameHistoryRepository repo(path);QVERIFY(!repo.initializeLocalUser());}
+    {Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("SELECT count(*) FROM game_runs WHERE id='retained-history'"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),1);}
+}
+
+void PlayerIdentityTests::achievementWriteFailureRollsBack()
+{
+    QTemporaryDir dir;const auto path=dir.filePath("achievement-failure.sqlite");
+    SqliteGameHistoryRepository repo(path);QVERIFY(repo.initializeLocalUser());const auto id=repo.localUser().id;
+    QVariantList rows,events;QVERIFY(repo.refreshAchievements(id,{},true,rows,events));const auto original=rows;
+    Species s;s.id=1;s.name="Synthetic organism";QVERIFY(repo.recordSpeciesVisit(id,s));
+    Inspection inspection(path);QSqlQuery q(inspection.db);
+    QVERIFY(q.exec("CREATE TRIGGER synthetic_write_failure BEFORE UPDATE ON achievement_progress WHEN NEW.achievement_id='correct_500' BEGIN SELECT RAISE(ABORT,'synthetic failure'); END"));
+    QVERIFY(!repo.refreshAchievements(id,{s},false,rows,events));QVERIFY(rows.isEmpty());QVERIFY(events.isEmpty());
+    QVERIFY(q.exec("SELECT count(*) FROM achievement_progress WHERE unlocked_at IS NOT NULL"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),0);q.finish();
+    QVERIFY(q.exec("DROP TRIGGER synthetic_write_failure"));
+    QVERIFY(repo.refreshAchievements(id,{s},false,rows,events));QCOMPARE(events.size(),1);QVERIFY(rows!=original);
+    SqliteGameHistoryRepository second(path);QVERIFY(second.refreshAchievements(id,{s},false,rows,events));QVERIFY(events.isEmpty());
+}
+
 void PlayerIdentityTests::localUserFirstOpenAndStableBinding()
 {
     QTemporaryDir dir;const auto path=dir.filePath("new-local.sqlite");QString id;
@@ -94,7 +144,7 @@ void PlayerIdentityTests::localUserSchema6PreservesSingleProfile()
     QCOMPARE(repo.loadPlayerResult("free",id).first().scoreUnits,qint64(18));
     Inspection i(path);QSqlQuery q(i.db);QVERIFY(q.exec("SELECT player_id,score_units FROM game_runs WHERE id='original-game'"));QVERIFY(q.next());
     QCOMPARE(q.value(0).toString(),id);QCOMPARE(q.value(1).toInt(),18);q.finish();
-    QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),7);
+    QVERIFY(q.exec("PRAGMA user_version"));QVERIFY(q.next());QCOMPARE(q.value(0).toInt(),8);
 }
 
 void PlayerIdentityTests::localUserExplicitChoiceAndGuards()
@@ -205,7 +255,7 @@ void PlayerIdentityTests::migrateV3PreservesUnresolvedRecordsAndSnapshots()
     QCOMPARE(repo.loadAnswers("old-run").first().awardedUnits,6);
     QVERIFY(!repo.saveResult(repo.player(result.playerId).identity(),6,1));
     Inspection inspection(path); QSqlQuery q(inspection.db);
-    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),7);
+    QVERIFY(q.exec("PRAGMA user_version")); QVERIFY(q.next()); QCOMPARE(q.value(0).toInt(),8);
     QVERIFY(q.exec("SELECT player_name,score_units,correct_answers,played_at FROM legacy_history_v3")); QVERIFY(q.next());
     QCOMPARE(q.value(0).toString(),QString("Ada")); QCOMPARE(q.value(1).toInt(),6);
     QVERIFY(q.exec("SELECT best_units,last_units FROM legacy_ranking_records_v3")); QVERIFY(q.next());

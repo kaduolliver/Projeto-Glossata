@@ -6,12 +6,12 @@
 <!-- Gerado por scripts/project_status.py; não editar manualmente. -->
 | Informação atual | Valor derivado | Fonte |
 | --- | --- | --- |
-| Aplicativo | **2.0.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
+| Aplicativo | **2.1.0** — em desenvolvimento; não lançado | [VERSION.txt](VERSION.txt), [CHANGELOG](CHANGELOG.md) |
 | Catálogo | **2.4.0** — não lançado | [Manifesto](resources/data/catalog_manifest.json), [histórico](docs/CATALOGO_CHANGELOG.md) |
 | Regra padrão de pontuação | `identification-v4-progressive` | [Hint.h](src/domain/Hint.h) |
 | Leitura histórica de pontuação | `identification-v3-assistance`, `identification-v2` e `legacy` | [Hint.h](src/domain/Hint.h) |
 | Competitivo | 20 questões | [GameConfiguration.h](src/domain/GameConfiguration.h) |
-| SQLite e snapshots | histórico 7; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
+| SQLite e snapshots | histórico 8; catálogo 2; checkpoint 1 | [Fontes e verificação](docs/ESTADO_DO_PROJETO.md) |
 | Organismos e imagens do quiz | 122 registros; 120 arquivos distintos | [Catálogo](resources/data/species.json) |
 | Domínios | Archaea: 0; Bacteria: 20; Eukaryota: 102 | [Taxonomia](resources/data/taxonomy.json) |
 | Testes registrados | **26 suítes CTest**; não representa resultado de execução | [Inventário gerado](docs/PROJECT_STATUS.json), [CMake](tests/CMakeLists.txt) |

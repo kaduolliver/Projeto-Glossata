@@ -36,6 +36,21 @@ class PlayerBackupTests(unittest.TestCase):
         with closing(sqlite3.connect(restored)) as db:
             self.assertEqual(db.execute('SELECT id,name,units FROM players JOIN results ON id=player_id').fetchall(), [('permanent-id', 'João', 17)])
 
+    def test_schema8_backup_preserves_achievements_and_visits(self):
+        self.db.executescript("""PRAGMA user_version=8;
+            CREATE TABLE achievement_progress(player_id TEXT, achievement_id TEXT, progress INTEGER, unlocked_at TEXT, retrospective INTEGER);
+            CREATE TABLE species_visits(player_id TEXT, species_id INTEGER, scientific_name TEXT, visited_at TEXT);
+            INSERT INTO achievement_progress VALUES('permanent-id','visit_1',1,'synthetic-date',0);
+            INSERT INTO species_visits VALUES('permanent-id',1,'Synthetic organism','synthetic-date');""")
+        self.db.commit()
+        backup, restored = self.root / 'v8-backup.sqlite', self.root / 'v8-restored.sqlite'
+        player_backup.create(self.source, backup)
+        self.assertEqual(player_backup.verify(backup)['sqlite_schema'], 8)
+        player_backup.restore(backup, restored)
+        with closing(sqlite3.connect(restored)) as db:
+            for table in ('players', 'results', 'achievement_progress', 'species_visits'):
+                self.assertEqual(db.execute('SELECT * FROM ' + table).fetchall(), self.db.execute('SELECT * FROM ' + table).fetchall())
+
     def test_existing_destination_and_source_are_never_overwritten(self):
         backup = self.root / 'backup.sqlite'
         player_backup.create(self.source, backup)

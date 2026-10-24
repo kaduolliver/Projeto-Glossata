@@ -1,5 +1,20 @@
 # Histórico visual
 
+## PR #38 — reorganização dos filtros de Conquistas
+
+- Painel com Estado segmentado e menus de Categoria/Nível; rótulos, alvos de 44 px e distribuição conforme a largura útil, sem preencher desnecessariamente a linha.
+- Contador efetivo e limpeza conjunta visível apenas com restrições. Seleção AND e conservação em memória preservadas. Menus nativos Qt Quick Controls com foco/teclado/Escape, limites da janela e transições reduzíveis. [Implementação, testes e comparações](VERSOES/2.3.3/barra-filtros/README.md).
+
+## Refinamentos finais da PR #38 — filtro por nível e Platina
+
+- Três filtros combinados com AND; seleção em memória, contador filtrado e estado vazio preservados. Grupo compacto de botões com teclado, mouse e foco/check acessível.
+- Platina com silhueta escalonada, facetas profundas, cristais superiores/laterais e reflexos branco-azulados estáticos. Bronze, Prata, Ouro e símbolos anteriores preservados. [Evidências finais](VERSOES/2.3.3/filtros-nivel-platina/README.md).
+
+## Refinamento da PR #38 — níveis de conquistas
+
+- Bronze, Prata, Ouro e Platina identificam a complexidade do requisito, com molduras e ornamentos próprios, texto de nível e identificação acessível. Os 30 glifos e os critérios são preservados; bloqueio atenua o desenho sem ocultar a classe. Não há raridade estatística ou animação contínua.
+- [Correções, classificação e evidências reais](VERSOES/2.3.3/refinamentos/README.md).
+
 ## Revisão da PR #37 — usuário local único
 
 - A decisão atual substitui a proposta abaixo: Meu perfil, edição do nome e recordes pessoais por UUID. Instalações com múltiplos perfis antigos exigem uma escolha única; não há gerenciamento permanente de perfis nem histórico de outras identidades na interface.
@@ -166,3 +181,6 @@ Implementado no commit [`679f7f744c17e5c9f2f28d52ab32105cf0ed8b51`](https://gith
 - Documentação entregue no [PR #27](https://github.com/kaduolliver/Projeto-Glossata/pull/27), iniciada no commit `31fd668`; o commit de base acima permite recuperar a interface anterior.
 
 Para cada alteração futura, acrescentar data real, commit e PR, telas afetadas, diferença observável, capturas e método de validação. Manter os registros anteriores sem substituir suas imagens.
+# Subetapa 2.3.3 — Conquistas
+
+Coleção persistente de 30 conquistas, resumo dinâmico, filtros combinados, 30 badges vetoriais nativos, progresso por cartão e detalhes em diálogo integrado. Estados textuais, foco por teclado, rolagem compartilhada e redução de movimento. [Arquitetura e critérios](../CONQUISTAS.md); [verificações e capturas](VERSOES/2.3.3/README.md). Sem notificações da etapa 2.3.4.
