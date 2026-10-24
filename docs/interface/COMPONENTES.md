@@ -2,6 +2,8 @@
 
 ## Conquistas — 2.3.3
 
+O refinamento final combina filtros de estado/categoria/`visualLevel` com AND, persistidos em `Main.achievementsPresentation` durante a navegação. A Platina acrescenta placas facetadas e reflexos estáticos em `QtQuick.Shapes`; os três outros materiais e os 30 glifos permanecem iguais. [Filtro e comparação Prata/Platina](VERSOES/2.3.3/filtros-nivel-platina/README.md).
+
 `AchievementBadge.qml` recebe `glyph`, `visualLevel` e `unlocked`, com geometria/cor e quatro materiais em `AchievementBadgePaths.js`. A view consome nível e nome projetados pelo backend; não decide classe por posição, nome ou progresso. Desenha moldura, fitas e glifo em coordenadas normalizadas, escaladas pela menor dimensão; fallback para folha, sem animação interna nem validação de progresso. A view define tamanho e resposta à pressão; o componente atenua separadamente moldura e símbolo quando bloqueado, preservando os ornamentos da classe. `AchievementsView` reutiliza `UiButton`, `UiIcon`, `Theme`, `Dialog` e `ScrollView`; filtros e cartões possuem nomes acessíveis, foco visível e ativação por teclado. O diálogo devolve foco ao cartão de origem. [Evidências](VERSOES/2.3.3/README.md).
 
 ## Estatísticas — cores e dicas em andamento

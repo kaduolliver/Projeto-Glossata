@@ -122,3 +122,11 @@ Bronze usa moldura simples; Prata acrescenta contorno e pequenos losangos; Ouro 
 | `correct_500` | Horizonte do conhecimento | IV · Especial · Platina | Marco mais elevado de acertos da coleção. |
 
 [Validação e capturas das quatro classes](interface/VERSOES/2.3.3/refinamentos/README.md). A versão 2.1.0 ainda não lançada é completada na mesma PR; catálogo 2.4.0 preservado.
+
+## Filtro por nível e acabamento final da Platina
+
+As opções “Todos os níveis”, “Inicial — Bronze”, “Intermediário — Prata”, “Avançado — Ouro” e “Especial — Platina” usam os valores `visualLevel` existentes. O predicado combina estado **e** categoria **e** nível; o contador de seleção acompanha o resultado e o resumo global continua derivado das 30 definições. Uma combinação vazia mantém a mensagem de seleção vazia.
+
+`achievementsPresentation` guarda `state`, `category` e `level` durante a execução; o valor `all` representa ausência de restrição de nível. Não se grava preferência no SQLite. Os botões usam os controles existentes, agrupados com espaçamento compacto, foco/check acessíveis, mouse e teclado. A classificação e os requisitos não são alterados.
+
+A Platina final conserva o símbolo central e ganha uma silhueta com ombros escalonados, cristais no topo e placas laterais facetadas. Camadas vetoriais de sombra/reflexo branco-azulado dão profundidade estática e distinguem sua geometria da Prata, inclusive bloqueada. Bronze, Prata e Ouro mantêm suas geometrias/paletas anteriores. Não há dependência gráfica nova ou animação contínua. [Capturas e verificações finais](interface/VERSOES/2.3.3/filtros-nivel-platina/README.md).

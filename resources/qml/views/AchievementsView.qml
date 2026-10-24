@@ -16,12 +16,21 @@ Item {
     readonly property var categories: ["Todas as categorias"].concat(all.map(a => a.category).filter((c, i, a) => a.indexOf(c) === i))
     property string stateFilter: app.achievementsPresentation.state || "Todas"
     property string categoryFilter: app.achievementsPresentation.category || "Todas as categorias"
-    readonly property var filtered: all.filter(a => (stateFilter === "Todas" || a.unlocked === (stateFilter === "Desbloqueadas")) && (categoryFilter === "Todas as categorias" || a.category === categoryFilter))
+    property string levelFilter: app.achievementsPresentation.level || "all"
+    readonly property var levels: [
+        {value: "all", label: "Todos os níveis"},
+        {value: "initial", label: "Inicial — Bronze"},
+        {value: "intermediate", label: "Intermediário — Prata"},
+        {value: "advanced", label: "Avançado — Ouro"},
+        {value: "special", label: "Especial — Platina"}
+    ]
+    readonly property var filtered: all.filter(a => (stateFilter === "Todas" || a.unlocked === (stateFilter === "Desbloqueadas")) && (categoryFilter === "Todas as categorias" || a.category === categoryFilter) && (levelFilter === "all" || a.visualLevel === levelFilter))
     property string selectedId: ""
     readonly property var selected: all.find(a => a.id === selectedId) || ({})
     property var previousFocus: null
     implicitHeight: content.implicitHeight
-    function remember() { app.achievementsPresentation = {state: stateFilter, category: categoryFilter} }
+    function remember() { app.achievementsPresentation = {state: stateFilter, category: categoryFilter, level: levelFilter} }
+    Component.onCompleted: if (!app.achievementsPresentation.level) remember()
     function openDetails(achievement, control) { selectedId = achievement.id; previousFocus = control; details.open() }
     function dateText(a) {
         return a.unlockedAt ? (a.retrospective ? "Reconhecida em " : "Desbloqueada em ") + new Date(a.unlockedAt).toLocaleDateString(Qt.locale("pt_BR"), "dd/MM/yyyy") : "Ainda bloqueada"
@@ -62,27 +71,51 @@ Item {
             }
         }
         Label { visible: view.backend.achievementsError !== ""; text: view.backend.achievementsError; color: Style.Theme.gold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        Flow {
-            Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
-            Repeater {
-                model: ["Todas", "Desbloqueadas", "Bloqueadas"]
-                delegate: UiButton {
-                    required property string modelData
-                    objectName: "achievementState-" + modelData
-                    text: modelData; compact: true; checkable: true; checked: view.stateFilter === modelData; secondary: !checked
-                    onClicked: { view.stateFilter = modelData; view.remember() }
+        ColumnLayout {
+            Layout.fillWidth: true
+            spacing: 8
+            Flow {
+                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
+                Repeater {
+                    model: ["Todas", "Desbloqueadas", "Bloqueadas"]
+                    delegate: UiButton {
+                        required property string modelData
+                        objectName: "achievementState-" + modelData
+                        text: modelData; compact: true; checkable: true; autoExclusive: true; checked: view.stateFilter === modelData; secondary: !checked
+                        onClicked: { view.stateFilter = modelData; view.remember() }
+                    }
                 }
             }
-        }
-        Flow {
-            Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
-            Repeater {
-                model: view.categories
-                delegate: UiButton {
-                    required property string modelData
-                    objectName: "achievementCategory-" + modelData
-                    text: modelData; compact: true; checkable: true; checked: view.categoryFilter === modelData; secondary: !checked
-                    onClicked: { view.categoryFilter = modelData; view.remember() }
+            Flow {
+                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
+                Repeater {
+                    model: view.categories
+                    delegate: UiButton {
+                        required property string modelData
+                        objectName: "achievementCategory-" + modelData
+                        text: modelData; compact: true; checkable: true; autoExclusive: true; checked: view.categoryFilter === modelData; secondary: !checked
+                        onClicked: { view.categoryFilter = modelData; view.remember() }
+                    }
+                }
+            }
+            Flow {
+                objectName: "achievementLevelFilters"
+                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
+                Accessible.role: Accessible.Grouping
+                Accessible.name: "Filtrar por nível da conquista"
+                Repeater {
+                    model: view.levels
+                    delegate: UiButton {
+                        required property var modelData
+                        objectName: "achievementLevelFilter-" + modelData.value
+                        text: modelData.label; compact: true; checkable: true; autoExclusive: true
+                        checked: view.levelFilter === modelData.value; secondary: !checked
+                        font.pixelSize: Style.Theme.captionSize
+                        leftPadding: 12; rightPadding: 12
+                        implicitWidth: Math.max(100, implicitContentWidth + 24)
+                        Accessible.name: "Nível da conquista: " + modelData.label
+                        onClicked: { view.levelFilter = modelData.value; view.remember() }
+                    }
                 }
             }
         }
@@ -150,7 +183,7 @@ Item {
                 }
             }
         }
-        Label { visible: view.filtered.length === 0; text: "Nenhuma conquista nesta seleção. Experimente outra categoria ou estado."; color: Style.Theme.textMuted; Layout.fillWidth: true; wrapMode: Text.WordWrap; Layout.topMargin: 24; Layout.bottomMargin: 24 }
+        Label { objectName: "achievementEmptyState"; visible: view.filtered.length === 0; text: "Nenhuma conquista nesta seleção. Experimente outra categoria, estado ou nível."; color: Style.Theme.textMuted; Layout.fillWidth: true; wrapMode: Text.WordWrap; Layout.topMargin: 24; Layout.bottomMargin: 24 }
         Label { text: "Seu progresso é salvo neste computador e permanece entre partidas."; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; Layout.fillWidth: true; wrapMode: Text.WordWrap }
     }
     Dialog {

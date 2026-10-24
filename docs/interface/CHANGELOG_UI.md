@@ -1,5 +1,10 @@
 # Histórico visual
 
+## Refinamentos finais da PR #38 — filtro por nível e Platina
+
+- Três filtros combinados com AND; seleção em memória, contador filtrado e estado vazio preservados. Grupo compacto de botões com teclado, mouse e foco/check acessível.
+- Platina com silhueta escalonada, facetas profundas, cristais superiores/laterais e reflexos branco-azulados estáticos. Bronze, Prata, Ouro e símbolos anteriores preservados. [Evidências finais](VERSOES/2.3.3/filtros-nivel-platina/README.md).
+
 ## Refinamento da PR #38 — níveis de conquistas
 
 - Bronze, Prata, Ouro e Platina identificam a complexidade do requisito, com molduras e ornamentos próprios, texto de nível e identificação acessível. Os 30 glifos e os critérios são preservados; bloqueio atenua o desenho sem ocultar a classe. Não há raridade estatística ou animação contínua.

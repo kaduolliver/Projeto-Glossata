@@ -112,9 +112,74 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);return true;};
     QVERIFY(item("achievementSummary"));QCOMPARE(item("achievementSummary")->property("text").toString(),QString("0 / 30"));
-    const QString folder="previews/achievements-refinements/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
+    const QString folder="previews/achievements-levels-final/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));QJsonArray frames;
     const auto capture=[&](const QString &state){QTest::qWait(100);const auto image=window->grabWindow();const auto file=state+"-"+QString::number(window->width())+"x"+QString::number(window->height())+".png";if(!image.save(folder+"/"+file))return false;frames.append(QJsonObject{{"file",file},{"width",image.width()},{"height",image.height()},{"logicalWidth",window->width()},{"logicalHeight",window->height()},{"devicePixelRatio",window->devicePixelRatio()},{"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)},{"temporary_database",true},{"state",state}});return true;};
-    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){window->resize(size);item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("locked"));}
+    const auto checkLevelFilters=[&](bool unlocked) {
+        QString filterCase;
+        const auto filterFailure=[&](int line) {
+            QTest::qFail(qPrintable(QString("Level filter check: %1 at %2x%3").arg(filterCase).arg(window->width()).arg(window->height())),__FILE__,line);
+            return false;
+        };
+        const auto summary=item("achievementSummary")->property("text");
+        if(!activate("achievementCategory-Todas as categorias") || !activate(unlocked ? "achievementState-Desbloqueadas" : "achievementState-Todas"))return filterFailure(__LINE__);
+        const QStringList levels{"all","initial","intermediate","advanced","special"};
+        for(const auto &level:levels) {
+            filterCase=level;
+            if(!activate("achievementLevelFilter-"+level))return filterFailure(__LINE__);
+            int expectedCount=0;
+            for(const auto &value:controller.achievements()) {
+                const auto row=value.toMap();
+                const bool expected=(level=="all" || row["visualLevel"]==level) && (!unlocked || row["unlocked"].toBool());
+                if(bool(item("achievementCard-"+row["id"].toString()))!=expected)return filterFailure(__LINE__);
+                expectedCount+=expected;
+            }
+            if(!item("achievementLevelFilter-"+level)->property("checked").toBool()
+                || item("achievementSummary")->property("text")!=summary
+                || !item("achievementFilterCount")->property("text").toString().startsWith(QString::number(expectedCount)+" "))return filterFailure(__LINE__);
+            const auto flow=item("achievementLevelFilters");
+            for(const auto &key:levels) {
+                const auto button=item("achievementLevelFilter-"+key);
+                if(button->x() < 0 || button->x()+button->width()>flow->width()+1
+                    || button->property("implicitContentWidth").toReal()>button->property("availableWidth").toReal()+1)return filterFailure(__LINE__);
+            }
+            if(level=="intermediate" || level=="special") {
+                for(const auto &value:controller.achievements()) {
+                    const auto candidate=item("achievementCard-"+value.toMap()["id"].toString());
+                    if(candidate) {candidate->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);break;}
+                }
+                if(!capture((unlocked ? "filtered-unlocked-" : "filtered-locked-")+level))return filterFailure(__LINE__);
+            }
+        }
+        if(!activate("achievementLevelFilter-initial"))return filterFailure(__LINE__);
+        QTest::keyClick(window,Qt::Key_Tab);QTest::qWait(30);
+        if(!item("achievementLevelFilter-intermediate")->hasActiveFocus())return filterFailure(__LINE__);
+        QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);
+        if(!item("achievementLevelFilter-intermediate")->property("checked").toBool())return filterFailure(__LINE__);
+        auto allLevels=item("achievementLevelFilter-all");allLevels->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(40);
+        QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,allLevels->mapToScene({allLevels->width()/2,allLevels->height()/2}).toPoint());QTest::qWait(60);
+        if(!allLevels->property("checked").toBool())return filterFailure(__LINE__);
+        if(unlocked) {
+            if(!activate("achievementCategory-Desempenho") || !activate("achievementLevelFilter-advanced"))return filterFailure(__LINE__);
+            if(!item("achievementCard-perfect_game") || !item("achievementCard-no_hint_game") || item("achievementCard-correct_100"))return filterFailure(__LINE__);
+            if(!item("achievementFilterCount")->property("text").toString().startsWith("2 ") || !capture("combined-filters"))return filterFailure(__LINE__);
+            if(!activate("achievementState-Bloqueadas") || !item("achievementCard-correct_100") || item("achievementCard-perfect_game"))return filterFailure(__LINE__);
+            if(!activate("achievementCategory-Desafios especiais") || !item("achievementEmptyState")->isVisible()
+                || !item("achievementFilterCount")->property("text").toString().startsWith("0 ") || !capture("empty-filters"))return filterFailure(__LINE__);
+            if(!activate("achievementState-Desbloqueadas") || !activate("achievementCategory-Desempenho"))return filterFailure(__LINE__);
+            const auto saved=window->property("achievementsPresentation").toMap();
+            if(saved.value("level")!="advanced" || saved.value("state")!="Desbloqueadas" || saved.value("category")!="Desempenho")return filterFailure(__LINE__);
+            window->setProperty("page","statistics");QTest::qWait(80);window->setProperty("page","achievements");QTest::qWait(80);
+            if(!capture("restored-filters"))return filterFailure(__LINE__);
+            if(window->property("achievementsPresentation").toMap()!=saved || !item("achievementLevelFilter-advanced")->property("checked").toBool()
+                || !item("achievementCategory-Desempenho")->property("checked").toBool() || !item("achievementState-Desbloqueadas")->property("checked").toBool()
+                || !item("achievementCard-perfect_game") || item("achievementCard-correct_100"))return filterFailure(__LINE__);
+        }
+        if(item("achievementSummary")->property("text")!=summary)return filterFailure(__LINE__);
+        return activate("achievementState-Todas") && activate("achievementCategory-Todas as categorias") && activate("achievementLevelFilter-all");
+    };
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
+        window->resize(size);item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("locked"));QVERIFY(checkLevelFilters(false));
+    }
     auto dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
     const auto captureLevels=[&](bool unlocked) {
         window->resize({1240,820}); QTest::qWait(60);
@@ -150,6 +215,8 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     QVERIFY(captureLevels(true));
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
         window->resize(size);QTest::qWait(60);
+        QVERIFY(checkLevelFilters(true));
+        dialog=window->findChild<QObject*>("achievementDetails");QVERIFY(dialog);
         QVERIFY(activate("achievementState-Todas"));item("pageScroll")->setProperty("contentY",0);QVERIFY(capture("overview"));
         QVERIFY(activate("achievementState-Desbloqueadas"));QVERIFY(item("achievementCard-first_answer"));QVERIFY(!item("achievementCard-correct_100"));
         auto card=item("achievementCard-first_answer");card->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(60);QVERIFY(card->property("visualFocus").toBool());QVERIFY(capture("unlocked-focus"));
@@ -165,9 +232,11 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     QVERIFY(activate("achievementCategory-Exploração"));QVERIFY(!item("achievementCard-correct_10"));QVERIFY(item("achievementCard-visit_10"));
     window->setProperty("page","statistics");QTest::qWait(80);window->setProperty("page","achievements");QTest::qWait(80);
     QVERIFY(!item("achievementCard-first_answer"));QVERIFY(item("achievementCard-visit_10"));QCOMPARE(unlocks.size(),count);
-    window->setProperty("motionEnabled",true);auto badge=item("achievementBadge-visit_10");QVERIFY(badge);auto card=item("achievementCard-visit_10");
+    window->setProperty("motionEnabled",true);QVERIFY(activate("achievementLevelFilter-intermediate"));
+    auto badge=item("achievementBadge-visit_10");QVERIFY(badge);auto card=item("achievementCard-visit_10");
     card->setProperty("down",true);QTRY_VERIFY(badge->scale()<1);card->setProperty("down",false);QTRY_COMPARE(badge->scale(),1.0);
     window->setProperty("motionEnabled",false);card->setProperty("down",true);QCOMPARE(badge->scale(),1.0);card->setProperty("down",false);
+    QVERIFY(activate("achievementLevelFilter-all"));QVERIFY(item("achievementCard-visit_10"));
     QFile manifest(folder+"/captures.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
 }

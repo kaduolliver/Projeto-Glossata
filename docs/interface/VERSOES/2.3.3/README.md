@@ -1,5 +1,7 @@
 # Subetapa 2.3.3 — Conquistas
 
+Os [refinamentos finais](filtros-nivel-platina/README.md) acrescentam filtro por nível e diferenciam a Platina da Prata. As evidências desta primeira implementação e dos refinamentos anteriores continuam preservadas.
+
 Os [refinamentos posteriores na mesma PR #38](refinamentos/README.md) corrigem a identidade de organismos/seleção de evidências e acrescentam quatro classes visuais. Os relatórios e capturas abaixo registram a primeira implementação e permanecem preservados.
 
 Aplicativo **2.1.0**, ainda não lançado; catálogo **2.4.0** preservado. Base: `0e007ace1cc64c67d72441ac833c3af979b6a4fd`, integração da PR #37. Branch `feat/conquistas-2-3-3`.

@@ -38,6 +38,24 @@ Item {
             ShapePath { strokeColor: badge.material.shade; strokeWidth: 0.4; fillColor: badge.material.light; PathSvg { path: badge.material.ornaments } }
         }
         Shape {
+            anchors.fill: parent
+            visible: badge.visualLevel === "special"
+            opacity: badge.unlocked ? 1 : 0.65
+            preferredRendererType: Shape.CurveRenderer
+            ShapePath {
+                strokeColor: badge.material.shade; strokeWidth: 0.5
+                fillGradient: LinearGradient {
+                    x1: 8; y1: 30; x2: 110; y2: 100
+                    GradientStop { position: 0; color: "#b6d5e6" }
+                    GradientStop { position: 0.3; color: "#54758f" }
+                    GradientStop { position: 0.65; color: "#abc8dc" }
+                    GradientStop { position: 1; color: "#38566f" }
+                }
+                PathSvg { path: badge.material.facets || "" }
+            }
+            ShapePath { strokeWidth: 0; fillColor: "#e7f6ff"; PathSvg { path: badge.material.reflections || "" } }
+        }
+        Shape {
             x: 17; y: 15; width: 100; height: 100; scale: 0.86; transformOrigin: Item.TopLeft
             opacity: badge.unlocked ? 1 : 0.5
             preferredRendererType: Shape.CurveRenderer
