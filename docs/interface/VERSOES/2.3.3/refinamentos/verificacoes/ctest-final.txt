@@ -1,0 +1,57 @@
+Test project C:/glossata_game/build/achievements-refinements
+      Start  1: GlossataTests
+      Start  2: GlossataInterfaceTests
+      Start  3: GlossataDiscordTests
+      Start  4: GlossataImportTests
+ 1/26 Test  #3: GlossataDiscordTests .................   Passed    0.43 sec
+      Start  5: GlossataGovernanceTests
+ 2/26 Test  #5: GlossataGovernanceTests ..............   Passed    2.05 sec
+      Start  6: GlossataReleaseTests
+ 3/26 Test  #6: GlossataReleaseTests .................   Passed    0.88 sec
+      Start  7: GlossataPhylogenyTests
+ 4/26 Test  #7: GlossataPhylogenyTests ...............   Passed    1.01 sec
+      Start  8: GlossataExplorationMediaTests
+ 5/26 Test  #8: GlossataExplorationMediaTests ........   Passed   32.64 sec
+      Start  9: GlossataScientificSourceTests
+ 6/26 Test  #9: GlossataScientificSourceTests ........   Passed    1.02 sec
+      Start 10: GlossataRepositoryAuditTests
+ 7/26 Test #10: GlossataRepositoryAuditTests .........   Passed    2.11 sec
+      Start 11: GlossataProgressiveHintTests
+ 8/26 Test #11: GlossataProgressiveHintTests .........   Passed    2.30 sec
+      Start 12: GlossataCurationQueueTests
+ 9/26 Test #12: GlossataCurationQueueTests ...........   Passed    0.62 sec
+      Start 13: GlossataCurationGitHubTests
+10/26 Test #13: GlossataCurationGitHubTests ..........   Passed    0.48 sec
+      Start 14: GlossataCurationDecisionTests
+11/26 Test #14: GlossataCurationDecisionTests ........   Passed    1.22 sec
+      Start 15: GlossataCurationAutomationTests
+12/26 Test #15: GlossataCurationAutomationTests ......   Passed    0.39 sec
+      Start 16: GlossataRepositoryProtectionTests
+13/26 Test #16: GlossataRepositoryProtectionTests ....   Passed    0.40 sec
+      Start 17: GlossataMaintenanceHttpTests
+14/26 Test #17: GlossataMaintenanceHttpTests .........   Passed    1.13 sec
+      Start 18: GlossataPermissionRecoveryTests
+15/26 Test #18: GlossataPermissionRecoveryTests ......   Passed   17.89 sec
+      Start 19: GlossataGovernanceConcurrencyTests
+16/26 Test  #1: GlossataTests ........................   Passed   65.60 sec
+      Start 20: GlossataPlayerIdentityTests
+17/26 Test #20: GlossataPlayerIdentityTests ..........   Passed    2.43 sec
+      Start 21: GlossataSessionRecoveryTests
+18/26 Test  #4: GlossataImportTests ..................   Passed   71.07 sec
+      Start 22: GlossataPlayerBackupTests
+19/26 Test #22: GlossataPlayerBackupTests ............   Passed    1.95 sec
+      Start 23: GlossataProjectStatusTests
+20/26 Test #23: GlossataProjectStatusTests ...........   Passed    4.72 sec
+      Start 24: GlossataGovernanceHistoryTests
+21/26 Test #19: GlossataGovernanceConcurrencyTests ...   Passed   13.25 sec
+      Start 25: GlossataRightsInvestigationTests
+22/26 Test #24: GlossataGovernanceHistoryTests .......   Passed   11.98 sec
+      Start 26: GlossataCatalogAdmissionTests
+23/26 Test #25: GlossataRightsInvestigationTests .....   Passed   14.52 sec
+24/26 Test #21: GlossataSessionRecoveryTests .........   Passed   26.17 sec
+25/26 Test #26: GlossataCatalogAdmissionTests ........   Passed   12.26 sec
+26/26 Test  #2: GlossataInterfaceTests ...............   Passed  428.29 sec
+
+100% tests passed out of 26
+
+Total Test time (real) = 428.31 sec
