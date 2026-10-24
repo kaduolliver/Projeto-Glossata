@@ -25,11 +25,34 @@ Item {
         {value: "special", label: "Especial — Platina"}
     ]
     readonly property var filtered: all.filter(a => (stateFilter === "Todas" || a.unlocked === (stateFilter === "Desbloqueadas")) && (categoryFilter === "Todas as categorias" || a.category === categoryFilter) && (levelFilter === "all" || a.visualLevel === levelFilter))
+    readonly property bool hasFilters: stateFilter !== "Todas" || categoryFilter !== "Todas as categorias" || levelFilter !== "all"
     property string selectedId: ""
     readonly property var selected: all.find(a => a.id === selectedId) || ({})
     property var previousFocus: null
     implicitHeight: content.implicitHeight
     function remember() { app.achievementsPresentation = {state: stateFilter, category: categoryFilter, level: levelFilter} }
+    function clearFilters() {
+        stateFilter = "Todas"; categoryFilter = "Todas as categorias"; levelFilter = "all"; remember()
+    }
+    component FilterMenu: TaxonComboBox {
+        id: menu
+        property bool filtered: false
+        implicitHeight: Style.Theme.compactHeight + 4
+        font.family: Style.Theme.fontFamily; font.pixelSize: Style.Theme.labelSize
+        palette.window: Style.Theme.surface; palette.text: Style.Theme.text
+        palette.button: Style.Theme.surfaceRaised; palette.mid: Style.Theme.border
+        palette.light: Style.Theme.focus; palette.highlight: Style.Theme.primary
+        popup.margins: 8
+        popup.enter: Transition { NumberAnimation { property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationFast } }
+        popup.exit: Transition { NumberAnimation { property: "opacity"; from: 1; to: 0; duration: Style.Theme.durationFast } }
+        background: Rectangle {
+            radius: Style.Theme.controlRadius
+            color: menu.down ? Style.Theme.surface : menu.hovered ? Style.Theme.surfaceHover : Style.Theme.surface
+            border.color: menu.visualFocus ? Style.Theme.focus : menu.filtered ? Style.Theme.green : Style.Theme.border
+            border.width: menu.visualFocus ? Style.Theme.focusWidth : Style.Theme.borderWidth
+            Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
+        }
+    }
     Component.onCompleted: if (!app.achievementsPresentation.level) remember()
     function openDetails(achievement, control) { selectedId = achievement.id; previousFocus = control; details.open() }
     function dateText(a) {
@@ -66,60 +89,116 @@ Item {
                 }
                 Rectangle {
                     Layout.fillWidth: true; implicitHeight: 7; radius: 4; color: Style.Theme.surfaceRaised
-                    Rectangle { width: parent.width * view.percent / 100; height: parent.height; radius: 4; color: Style.Theme.green; Behavior on width { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationPage } } }
+                    Rectangle { objectName: "achievementGlobalProgress"; width: parent.width * view.percent / 100; height: parent.height; radius: 4; color: Style.Theme.green; Behavior on width { enabled: Style.Theme.motionEnabled; NumberAnimation { duration: Style.Theme.durationPage } } }
                 }
             }
         }
         Label { visible: view.backend.achievementsError !== ""; text: view.backend.achievementsError; color: Style.Theme.gold; wrapMode: Text.WordWrap; Layout.fillWidth: true }
-        ColumnLayout {
+        Rectangle {
+            id: filterPanel
+            objectName: "achievementFilterPanel"
             Layout.fillWidth: true
-            spacing: 8
-            Flow {
-                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
-                Repeater {
-                    model: ["Todas", "Desbloqueadas", "Bloqueadas"]
-                    delegate: UiButton {
-                        required property string modelData
-                        objectName: "achievementState-" + modelData
-                        text: modelData; compact: true; checkable: true; autoExclusive: true; checked: view.stateFilter === modelData; secondary: !checked
-                        onClicked: { view.stateFilter = modelData; view.remember() }
+            implicitHeight: filterContent.implicitHeight + 24
+            radius: Style.Theme.cardRadius
+            color: Style.Theme.surfaceRaised
+            border.color: Style.Theme.border
+            ColumnLayout {
+                id: filterContent
+                anchors { left: parent.left; right: parent.right; top: parent.top; margins: 12 }
+                spacing: 8
+                Label { text: "Filtrar conquistas"; color: Style.Theme.text; font.pixelSize: Style.Theme.bodySize; font.weight: Font.DemiBold; Accessible.role: Accessible.Heading }
+                GridLayout {
+                    id: filterGrid
+                    objectName: "achievementFilterGrid"
+                    Layout.alignment: Qt.AlignLeft
+                    columnSpacing: 12; rowSpacing: 10
+                    columns: filterContent.width >= stateGroup.implicitWidth + categoryGroup.implicitWidth + levelGroup.implicitWidth + 24 ? 3
+                             : filterContent.width >= categoryGroup.implicitWidth + levelGroup.implicitWidth + 12 ? 2 : 1
+                    ColumnLayout {
+                        id: stateGroup
+                        objectName: "achievementStateGroup"
+                        Layout.columnSpan: filterGrid.columns === 2 ? 2 : 1
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                        spacing: 6
+                        Label { text: "Estado"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+                        Rectangle {
+                            implicitWidth: stateSegments.implicitWidth + 4
+                            implicitHeight: Style.Theme.compactHeight + 4
+                            radius: Style.Theme.controlRadius; color: Style.Theme.surface
+                            border.color: Style.Theme.border
+                            Row {
+                                id: stateSegments
+                                x: 2; y: 2; spacing: 0
+                                Repeater {
+                                    id: stateButtons
+                                    model: ["Todas", "Desbloqueadas", "Bloqueadas"]
+                                    delegate: UiButton {
+                                        id: segment
+                                        required property string modelData
+                                        objectName: "achievementState-" + modelData
+                                        text: modelData; compact: true; checkable: true; autoExclusive: true
+                                        checked: view.stateFilter === modelData
+                                        font.pixelSize: Style.Theme.labelSize
+                                        implicitWidth: Math.max(88, implicitContentWidth + 24)
+                                        background: Rectangle {
+                                            radius: Style.Theme.controlRadius - 2
+                                            color: segment.down ? Style.Theme.primaryPressed : segment.checked ? Style.Theme.primary : segment.hovered ? Style.Theme.surfaceHover : "transparent"
+                                            border.width: segment.visualFocus ? Style.Theme.focusWidth : 0
+                                            border.color: Style.Theme.focus
+                                            Behavior on color { enabled: Style.Theme.motionEnabled; ColorAnimation { duration: Style.Theme.durationFast } }
+                                        }
+                                        onClicked: { view.stateFilter = modelData; view.remember() }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ColumnLayout {
+                        id: categoryGroup
+                        objectName: "achievementCategoryGroup"
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                        spacing: 6
+                        Label { text: "Categoria"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+                        FilterMenu {
+                            objectName: "achievementCategoryMenu"
+                            implicitWidth: 264
+                            model: view.categories
+                            currentIndex: Math.max(0, view.categories.indexOf(view.categoryFilter))
+                            filtered: view.categoryFilter !== "Todas as categorias"
+                            Accessible.name: "Filtrar conquistas por categoria"
+                            onActivated: { view.categoryFilter = currentText; view.remember() }
+                        }
+                    }
+                    ColumnLayout {
+                        id: levelGroup
+                        objectName: "achievementLevelGroup"
+                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                        spacing: 6
+                        Label { text: "Nível"; color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
+                        FilterMenu {
+                            objectName: "achievementLevelMenu"
+                            implicitWidth: 220
+                            model: view.levels; textRole: "label"; valueRole: "value"
+                            currentIndex: Math.max(0, view.levels.map(entry => entry.value).indexOf(view.levelFilter))
+                            filtered: view.levelFilter !== "all"
+                            Accessible.name: "Filtrar conquistas por nível"
+                            onActivated: { view.levelFilter = currentValue; view.remember() }
+                        }
                     }
                 }
-            }
-            Flow {
-                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
-                Repeater {
-                    model: view.categories
-                    delegate: UiButton {
-                        required property string modelData
-                        objectName: "achievementCategory-" + modelData
-                        text: modelData; compact: true; checkable: true; autoExclusive: true; checked: view.categoryFilter === modelData; secondary: !checked
-                        onClicked: { view.categoryFilter = modelData; view.remember() }
-                    }
-                }
-            }
-            Flow {
-                objectName: "achievementLevelFilters"
-                Layout.fillWidth: true; Layout.preferredHeight: implicitHeight; spacing: 8
-                Accessible.role: Accessible.Grouping
-                Accessible.name: "Filtrar por nível da conquista"
-                Repeater {
-                    model: view.levels
-                    delegate: UiButton {
-                        required property var modelData
-                        objectName: "achievementLevelFilter-" + modelData.value
-                        text: modelData.label; compact: true; checkable: true; autoExclusive: true
-                        checked: view.levelFilter === modelData.value; secondary: !checked
-                        font.pixelSize: Style.Theme.captionSize
-                        leftPadding: 12; rightPadding: 12
-                        implicitWidth: Math.max(100, implicitContentWidth + 24)
-                        Accessible.name: "Nível da conquista: " + modelData.label
-                        onClicked: { view.levelFilter = modelData.value; view.remember() }
+                RowLayout {
+                    Layout.fillWidth: true
+                    Layout.minimumHeight: Style.Theme.actionHeight
+                    Label { objectName: "achievementFilterCount"; text: view.filtered.length + (view.filtered.length === 1 ? " conquista encontrada" : " conquistas encontradas"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize; Layout.fillWidth: true; wrapMode: Text.WordWrap }
+                    TextAction {
+                        objectName: "achievementClearFilters"
+                        text: "Limpar filtros"
+                        visible: view.hasFilters
+                        onClicked: { view.clearFilters(); stateButtons.itemAt(0).forceActiveFocus(Qt.TabFocusReason) }
                     }
                 }
             }
         }
-        Label { objectName: "achievementFilterCount"; text: view.filtered.length + (view.filtered.length === 1 ? " conquista nesta seleção" : " conquistas nesta seleção"); color: Style.Theme.textMuted; font.pixelSize: Style.Theme.captionSize }
         GridLayout {
             id: grid
             Layout.fillWidth: true
