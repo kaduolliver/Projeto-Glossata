@@ -4,6 +4,10 @@
 #include <QIcon>
 #include <QtTest/QtTest>
 #include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QScopedPointer>
+#include <QPointer>
+#include <QFont>
 #include <QQmlContext>
 #include <QQuickWindow>
 #include <QQuickItem>
@@ -16,6 +20,7 @@
 #include <QQmlProperty>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSqlRecord>
 #include <QScopeGuard>
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -68,6 +73,11 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void achievementNotificationQueueAndLifecycle();
+    void achievementNotificationQuizFocusAndPersistence();
+    void achievementNotificationContextTransitions_data();
+    void achievementNotificationContextTransitions();
+    void achievementNotificationVisualsAndCaptures();
     void achievementsFiltersDetailsKeyboardAndCaptures();
     void singleLocalUserSettingsRecordsAndCaptures();
     void statisticsLiveHintsAndRecovery();
@@ -98,6 +108,410 @@ private slots:
     void navigateAndConfirmAnswers();
     void recoveryControlsResumeAndAbandonWithoutChangingScores();
 };
+
+
+namespace {
+QString notificationAnswer(const GameController &controller)
+{
+    JsonSpeciesCatalog catalog;
+    for(const auto &species:catalog.loadCurrentSpecies())
+        if(species.id==controller.questionPhoto()["speciesId"].toInt())return species.answerAtRank("genus");
+    return {};
+}
+QString notificationVisitTaxon()
+{
+    JsonSpeciesCatalog catalog;
+    for(const auto &species:catalog.loadCurrentSpecies())for(const auto &taxon:species.taxonomy)
+        if(taxon.rank=="species" && taxon.name==species.name)return taxon.id;
+    return {};
+}
+QStringList activeNotificationIds(const QSignalSpy &presented, const QSignalSpy &completed)
+{
+    QSet<QString> finished;
+    for (const auto &event : completed) finished.insert(event[0].toString());
+    QStringList ids;
+    for (const auto &event : presented) if (!finished.contains(event[0].toString())) ids << event[0].toString();
+    return ids;
+}
+QString notificationPlacementFailure(QQuickWindow *window, const QStringList &ids)
+{
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    auto header = item("sectionHeader");
+    if (!header || ids.size() > 2) return "Missing header or more than two notifications";
+    const auto headerRect = header->mapRectToScene(header->boundingRect());
+    const bool compact = window->property("page").toString() == "quiz";
+    int visibleCount = 0;
+    qreal expectedTop = headerRect.bottom() + 20;
+    for (const auto &id : ids) {
+        auto card = item("achievementNotification-" + id);
+        if (!card) return id + " missing from FIFO";
+        if (!card->isVisible()) continue;
+        ++visibleCount;
+        if (card->property("compactMode").toBool() != compact) return id + " incorrect contextual mode";
+        const auto rect = card->mapRectToScene(card->boundingRect());
+        if (rect.left() < 20 || rect.bottom() > window->height() - 20
+            || qAbs(rect.right() - (window->width() - 20)) > 1 || qAbs(card->width() - 440) > 1)
+            return id + " outside window or card width changed";
+        if (qAbs(rect.top() - expectedTop) > 1)
+            return id + " incorrect top/FIFO position: " + QString::number(rect.top()) + " expected " + QString::number(expectedTop);
+        for (const auto &name : {"sectionHeader", "localDataIndicator", "headerResumeGame"}) {
+            auto control = item(name);
+            if (control && control->isVisible() && rect.intersects(control->mapRectToScene(control->boundingRect())))
+                return id + " overlaps " + name;
+        }
+        for (const auto &prefix : {"notificationTitle-", "notificationUnlock-", "notificationLevel-"}) {
+            auto text = item(prefix + id);
+            if (!text || text->property("truncated").toBool() || text->property("contentHeight").toReal() > text->height() + 1
+                || text->property("contentWidth").toReal() > text->width() + 1
+                || text->property("font").value<QFont>().pixelSize() < 12)
+                return id + " text geometry/font: " + prefix;
+        }
+        if (compact) {
+            for (const auto &name : {"quizPrompt", "backFromQuizButton", "answerOption0", "answerOption1", "answerOption2", "answerOption3", "hintButton", "confirmAnswerButton"}) {
+                auto control = item(name);
+                if (control && control->isVisible() && rect.intersects(control->mapRectToScene(control->boundingRect())))
+                    return id + " overlaps essential quiz control " + name;
+            }
+        }
+        expectedTop = rect.bottom() + 10;
+    }
+    auto layer = item("achievementNotificationLayer");
+    if (!layer || visibleCount != layer->property("visibleCount").toInt() || visibleCount > (compact ? 1 : 2))
+        return "Incorrect visible notification count";
+    return {};
+}
+}
+
+void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;const auto path=dir.filePath("notification-queue.sqlite");
+    GameController controller(nullptr,path);DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    auto layer=item("achievementNotificationLayer");QVERIFY(layer);window->setProperty("motionEnabled",false);
+    QTRY_VERIFY(layer->property("presentationAllowed").toBool());QCOMPARE(layer->property("activeCount").toInt(),0);
+    QSignalSpy events(&controller,&GameController::achievementUnlocked);
+    QSignalSpy presented(layer,SIGNAL(notificationPresented(QString))),discarded(layer,SIGNAL(notificationDiscarded(QString,QString))),completed(layer,SIGNAL(notificationCompleted(QString,QString)));
+    QVERIFY(presented.isValid() && discarded.isValid() && completed.isValid());
+    QVERIFY(controller.startTaxonGame({},"genus"));controller.answerSelected(notificationAnswer(controller));
+    QCOMPARE(events.size(),2);QCOMPARE(layer->property("activeCount").toInt(),2);
+    const auto placementFailure=[&]{return notificationPlacementFailure(window,activeNotificationIds(presented,completed));};
+    QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+    const auto first=events[0][0].toMap();const auto rows=controller.achievements();
+    controller.achievementUnlocked(first);auto malformed=first;malformed.remove("title");controller.achievementUnlocked(malformed);
+    malformed=first;malformed["retrospective"]=true;controller.achievementUnlocked(malformed);
+    malformed=first;malformed["playerId"]="another-local-identity";controller.achievementUnlocked(malformed);
+    malformed=first;malformed["visualLevel"]="constructor";controller.achievementUnlocked(malformed);
+    malformed=first;malformed["unlockedAt"]="invalid-date";controller.achievementUnlocked(malformed);
+    QCOMPARE(discarded.size(),6);QCOMPARE(presented.size(),2);QCOMPARE(controller.achievements(),rows);
+    controller.nextQuestion();
+    for(int i=1;i<5;++i){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
+    QVERIFY(layer->property("pendingCount").toInt()>0);
+    window->setProperty("motionEnabled",true);
+    auto close=item("dismissAchievement-"+first["id"].toString());QVERIFY(close);
+    QTRY_VERIFY(close->mapToScene({close->width()/2,close->height()/2}).y()<window->height());
+    QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,close->mapToScene({close->width()/2,close->height()/2}).toPoint());
+    QVERIFY(item("achievementNotification-"+first["id"].toString()));
+    QVERIFY(item("achievementNotification-"+first["id"].toString())->property("leaving").toBool());
+    QString hint;for(const auto &h:controller.hints())if(h.toMap()["available"].toBool()){hint=h.toMap()["id"].toString();break;}
+    QVERIFY(!hint.isEmpty());QVERIFY(controller.revealHintCategory(hint));
+    QCOMPARE(layer->property("activeCount").toInt(),2);QTRY_VERIFY(!item("achievementNotification-"+first["id"].toString()));
+    window->setProperty("motionEnabled",false);
+    // Closing the top card moves the second up and appends the next FIFO entry below it.
+    QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+    // Drain through real close controls. Each completion advances the FIFO once.
+    for(int guard=0;layer->property("activeCount").toInt()>0 && guard<40;++guard){
+        QTest::qWait(60);
+        QQuickItem *button=nullptr;
+        for(const auto &row:controller.achievements())if((button=item("dismissAchievement-"+row.toMap()["id"].toString())))break;
+        QVERIFY(button);
+        QTRY_VERIFY(button->mapToScene({button->width()/2,button->height()/2}).y()<window->height());
+        QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,button->mapToScene({button->width()/2,button->height()/2}).toPoint());QTest::qWait(20);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+    }
+    QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
+    QStringList expected,actual;QSet<QString> unique;
+    for(const auto &event:events){const auto id=event[0].toMap()["id"].toString();if(!unique.contains(id)){unique.insert(id);expected<<id;}}
+    for(const auto &event:presented)actual<<event[0].toString();QCOMPARE(actual,expected);
+    controller.exploreTaxon(notificationVisitTaxon());QVERIFY(controller.recordExplorationVisit(notificationVisitTaxon()));QCOMPARE(layer->property("activeCount").toInt(),1);
+    auto notice=item("achievementNotification-visit_1");QVERIFY(notice);QCOMPARE(notice->property("reveal").toReal(),1.0);
+    auto modal=window->findChild<QObject*>("abandonRecoveryDialog");QVERIFY(modal);QVERIFY(QMetaObject::invokeMethod(modal,"open"));
+    QTRY_VERIFY(!layer->property("presentationAllowed").toBool());QVERIFY(!notice->isVisible());
+    QTest::qWait(200);QCOMPARE(layer->property("activeCount").toInt(),1);
+    QVERIFY(QMetaObject::invokeMethod(modal,"close"));QTRY_VERIFY(layer->property("presentationAllowed").toBool());QVERIFY(notice->isVisible());
+    QElapsedTimer elapsed;elapsed.start();QTRY_COMPARE_WITH_TIMEOUT(layer->property("activeCount").toInt(),0,6000);
+    QVERIFY(elapsed.elapsed()>=4700);QCOMPARE(completed.last()[1].toString(),QString("timeout"));
+    for(int i=5;i<10;++i){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
+    QVERIFY(layer->property("activeCount").toInt()>0);
+    window->setVisibility(QWindow::Minimized);QTRY_VERIFY(!layer->property("presentationAllowed").toBool());
+    const auto saved=controller.achievements();
+    // Advance only the queue's expiry check, without waiting a minute or changing the database clock.
+    QVERIFY(QMetaObject::invokeMethod(layer,"expireSuspended",Q_ARG(QVariant,QDateTime::currentMSecsSinceEpoch()+60001)));
+    QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
+    QCOMPARE(discarded.last()[1].toString(),QString("suspension-expired"));QCOMPARE(controller.achievements(),saved);
+    window->showNormal();window->requestActivate();QTRY_VERIFY(layer->property("presentationAllowed").toBool());
+    window->setProperty("page","statistics");QTest::qWait(40);window->setProperty("page","achievements");QTest::qWait(40);
+    QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
+    // A new controller/engine reads persisted unlocks and never reconstructs notification history.
+    GameController restarted(nullptr,path);QQmlApplicationEngine reopened;
+    reopened.rootContext()->setContextProperty("gameController",&restarted);reopened.rootContext()->setContextProperty("discordPresence",&presence);
+    reopened.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!reopened.rootObjects().isEmpty());
+    auto newWindow=qobject_cast<QQuickWindow*>(reopened.rootObjects().first());QVERIFY(newWindow);
+    auto empty=findVisualItem(newWindow->contentItem(),"achievementNotificationLayer");QVERIFY(empty);
+    QCOMPARE(empty->property("activeCount").toInt(),0);QCOMPARE(empty->property("pendingCount").toInt(),0);
+    QCOMPARE(restarted.currentPlayerId(),controller.currentPlayerId());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;const auto path=dir.filePath("notification-failure.sqlite");GameController controller(nullptr,path);
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();window->setProperty("motionEnabled",false);
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
+    auto db=QSqlDatabase::addDatabase("QSQLITE","notification-failure");db.setDatabaseName(path);QVERIFY(db.open());
+    const auto removeDb=qScopeGuard([&]{db.close();db={};QSqlDatabase::removeDatabase("notification-failure");});
+    {QSqlQuery q(db);QVERIFY(q.exec("CREATE TRIGGER reject_notification_unlock BEFORE UPDATE ON achievement_progress BEGIN SELECT RAISE(ABORT,'test persistence failure'); END"));}
+    QSignalSpy events(&controller,&GameController::achievementUnlocked);QVERIFY(controller.startTaxonGame({},"genus"));
+    controller.answerSelected(notificationAnswer(controller));QVERIFY(!controller.achievementsError().isEmpty());
+    QCOMPARE(events.size(),0);QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
+    {QSqlQuery q(db);QVERIFY(q.exec("DROP TRIGGER reject_notification_unlock"));}
+    controller.nextQuestion();controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();
+    QVERIFY(controller.achievementsError().isEmpty());QCOMPARE(events.size(),2);
+    window->setProperty("page","quiz");QTest::qWait(150);auto quiz=item("quizView");QVERIFY(quiz);QTRY_VERIFY(quiz->property("canSelect").toBool());
+    auto option=item("answerOption0");QVERIFY(option);option->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);
+    QCOMPARE(quiz->property("selectedOption").toString(),controller.answerOptions()[0]);
+    const auto selected=quiz->property("selectedOption");const auto hints=controller.hints();
+    const auto metrics=controller.sessionMetrics(),photo=controller.questionPhoto();
+    const auto score=controller.scoreUnits();const auto round=controller.round();const auto answered=controller.answeredCount();const auto focus=window->activeFocusItem();
+    const auto checkpoints=[&]{QVariantList values;QSqlQuery q(db);if(!q.exec("SELECT * FROM session_checkpoints ORDER BY rowid"))return values;while(q.next()){QVariantList row;for(int i=0;i<q.record().count();++i)row<<q.value(i);values<<QVariant(row);}return values;};
+    const auto before=checkpoints();QVERIFY(!before.isEmpty());
+    controller.exploreTaxon(notificationVisitTaxon());QVERIFY(controller.recordExplorationVisit(notificationVisitTaxon()));QTest::qWait(100);
+    QCOMPARE(window->activeFocusItem(),focus);QCOMPARE(quiz->property("selectedOption"),selected);
+    QCOMPARE(controller.scoreUnits(),score);QCOMPARE(controller.round(),round);QCOMPARE(controller.answeredCount(),answered);
+    QCOMPARE(controller.hints(),hints);QCOMPARE(controller.sessionMetrics(),metrics);QCOMPARE(controller.questionPhoto(),photo);QCOMPARE(checkpoints(),before);
+    // Explicit keyboard focus on Dismiss is returned to the activity when its card is removed.
+    auto dismiss=item("dismissAchievement-first_answer");QVERIFY(dismiss);dismiss->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);
+    QTRY_COMPARE(window->activeFocusItem(),focus);QCOMPARE(checkpoints(),before);
+    const auto correct=controller.answerOptions().indexOf(notificationAnswer(controller));QVERIFY(correct>=0);
+    QTest::keyClick(window,Qt::Key(Qt::Key_1+correct));QCOMPARE(quiz->property("selectedOption").toString(),controller.answerOptions()[correct]);
+    QTest::keyClick(window,Qt::Key_Return);QCOMPARE(controller.answeredCount(),answered+1);QCOMPARE(controller.scoreUnits(),score+6);
+    QCOMPARE(window->property("page").toString(),QString("feedback"));QVERIFY(controller.answerPending());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::achievementNotificationContextTransitions_data()
+{
+    QTest::addColumn<QSize>("windowSize");
+    QTest::newRow("1000x700") << QSize(1000,700);
+    QTest::newRow("1240x820") << QSize(1240,820);
+    QTest::newRow("1920x1080") << QSize(1920,1080);
+}
+
+void QmlInterfaceTests::achievementNotificationContextTransitions()
+{
+    QFETCH(QSize,windowSize);
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;GameController controller(nullptr,dir.filePath("context.sqlite"));
+    DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(windowSize);window->requestActivate();
+    const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+    auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
+    QSignalSpy events(&controller,&GameController::achievementUnlocked);
+    QSignalSpy presented(layer,SIGNAL(notificationPresented(QString))),completed(layer,SIGNAL(notificationCompleted(QString,QString))),discarded(layer,SIGNAL(notificationDiscarded(QString,QString)));
+    QVERIFY(controller.startTaxonGame({},"genus"));window->setProperty("sessionStarted",true);
+    controller.answerSelected(notificationAnswer(controller));QCOMPARE(events.size(),2);
+    const auto firstId=events[0][0].toMap()["id"].toString(),secondId=events[1][0].toMap()["id"].toString();
+    auto first=item("achievementNotification-"+firstId),second=item("achievementNotification-"+secondId);QVERIFY(first && second);
+    QCOMPARE(layer->property("activeCount").toInt(),2);QCOMPARE(layer->property("visibleCount").toInt(),2);
+    QVERIFY(!first->property("entered").toBool());const auto entering=first->property("reveal").toReal();
+    window->setProperty("page","quiz");QTest::qWait(40);
+    QCOMPARE(item("achievementNotification-"+firstId),first);QVERIFY(first->property("reveal").toReal()>=entering);
+    QTRY_VERIFY(first->property("entered").toBool());QCOMPARE(first->property("reveal").toReal(),1.0);
+    QCOMPARE(layer->property("activeCount").toInt(),2);QCOMPARE(layer->property("visibleCount").toInt(),1);
+    QVERIFY(first->isVisible());QVERIFY(!second->isVisible());
+    const auto firstStarted=first->property("readingStartedAt");
+    const auto compactHeight=first->height();
+    window->setProperty("page","home");QTest::qWait(80);
+    QCOMPARE(layer->property("visibleCount").toInt(),2);QVERIFY(second->isVisible());
+    QVERIFY(first->height()>compactHeight);QCOMPARE(first->property("readingStartedAt"),firstStarted);
+    QTest::qWait(250);
+    const auto expectedRemaining=second->property("remainingMs").toReal()-(QDateTime::currentMSecsSinceEpoch()-second->property("readingStartedAt").toDouble());
+    window->setProperty("page","quiz");QTest::qWait(60);
+    QVERIFY(!second->isVisible());QCOMPARE(first->property("readingStartedAt"),firstStarted);
+    const auto suspendedRemaining=second->property("remainingMs").toReal();
+    QVERIFY(suspendedRemaining>0 && suspendedRemaining<4900);QVERIFY(qAbs(suspendedRemaining-expectedRemaining)<100);
+    QTest::qWait(200);QCOMPARE(second->property("remainingMs").toReal(),suspendedRemaining);
+    controller.exploreTaxon(notificationVisitTaxon());QVERIFY(controller.recordExplorationVisit(notificationVisitTaxon()));
+    QCOMPARE(events.size(),3);QCOMPARE(layer->property("pendingCount").toInt(),1);
+    auto modal=window->findChild<QObject*>("abandonRecoveryDialog");QVERIFY(modal);QVERIFY(QMetaObject::invokeMethod(modal,"open"));
+    QTRY_COMPARE(layer->property("visibleCount").toInt(),0);QCOMPARE(layer->property("activeCount").toInt(),2);
+    QTest::qWait(150);QCOMPARE(second->property("remainingMs").toReal(),suspendedRemaining);
+    QSignalSpy modalClosed(modal,SIGNAL(closed()));QVERIFY(modalClosed.isValid());
+    QVERIFY(QMetaObject::invokeMethod(modal,"close"));QTRY_COMPARE(modalClosed.size(),1);QTRY_COMPARE(layer->property("visibleCount").toInt(),1);QTest::qWait(60);
+    auto dismiss=item("dismissAchievement-"+firstId);QVERIFY(dismiss);
+    QSignalSpy clicked(dismiss,SIGNAL(clicked()));QVERIFY(clicked.isValid());
+    QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,dismiss->mapToScene(dismiss->boundingRect().center()).toPoint());
+    QCOMPARE(clicked.size(),1);QVERIFY(first->property("leaving").toBool());
+    QTRY_VERIFY(!item("achievementNotification-"+firstId));QVERIFY(second->isVisible());
+    QCOMPARE(item("achievementNotification-"+secondId),second);QCOMPARE(second->property("remainingMs").toReal(),suspendedRemaining);
+    QCOMPARE(second->property("reveal").toReal(),1.0);QCOMPARE(presented.size(),2);
+    QCOMPARE(layer->property("activeCount").toInt(),1);QCOMPARE(layer->property("pendingCount").toInt(),1);
+    QElapsedTimer resumed;resumed.start();const auto secondStarted=second->property("readingStartedAt");
+    window->setProperty("page","home");QTest::qWait(80);
+    QCOMPARE(layer->property("visibleCount").toInt(),2);QCOMPARE(presented.size(),3);
+    QCOMPARE(second->property("readingStartedAt"),secondStarted);QCOMPARE(second->property("remainingMs").toReal(),suspendedRemaining);
+    auto visit=item("dismissAchievement-visit_1");QVERIFY(visit);
+    QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,visit->mapToScene(visit->boundingRect().center()).toPoint());
+    QTRY_VERIFY(!item("achievementNotification-visit_1"));
+    QTRY_VERIFY_WITH_TIMEOUT(!item("achievementNotification-"+secondId),6000);
+    QVERIFY(resumed.elapsed()>=suspendedRemaining-150);QVERIFY(resumed.elapsed()<suspendedRemaining+1000);
+    QCOMPARE(completed[0][0].toString(),firstId);QCOMPARE(completed[0][1].toString(),QString("manual"));
+    QCOMPARE(completed.last()[0].toString(),secondId);QCOMPARE(completed.last()[1].toString(),QString("timeout"));QCOMPARE(completed.size(),3);
+    window->setProperty("motionEnabled",false);
+    QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);QCOMPARE(discarded.size(),0);
+    for(int i=0;i<events.size();++i)QCOMPARE(presented[i][0].toString(),events[i][0].toMap()["id"].toString());
+    // The existing suspension expiry still includes a retained, context-hidden card.
+    controller.nextQuestion();for(int i=1;i<5;++i){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
+    QCOMPARE(layer->property("activeCount").toInt(),2);window->setProperty("page","quiz");QTest::qWait(40);
+    QCOMPARE(layer->property("visibleCount").toInt(),1);const auto saved=controller.achievements();
+    window->setVisibility(QWindow::Minimized);QTRY_VERIFY(!layer->property("presentationAllowed").toBool());
+    QVERIFY(QMetaObject::invokeMethod(layer,"expireSuspended",Q_ARG(QVariant,QDateTime::currentMSecsSinceEpoch()+60001)));
+    QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);
+    QVERIFY(discarded.size()>=2);QCOMPARE(controller.achievements(),saved);
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
+{
+    interfaceWarnings.clear();const auto oldHandler=qInstallMessageHandler(captureMessage);
+    const auto restore=qScopeGuard([oldHandler]{qInstallMessageHandler(oldHandler);});
+    QTemporaryDir dir;QJsonArray frames;QString folder;
+    for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
+        GameController controller(nullptr,dir.filePath(QString::number(size.width())+".sqlite"));DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
+        engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
+        engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+        auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(size);window->requestActivate();window->setProperty("motionEnabled",false);
+        const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
+        auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
+        QSignalSpy events(&controller,&GameController::achievementUnlocked);
+        QSignalSpy presented(layer,SIGNAL(notificationPresented(QString))),completed(layer,SIGNAL(notificationCompleted(QString,QString))),discarded(layer,SIGNAL(notificationDiscarded(QString,QString)));
+        QVERIFY(presented.isValid() && completed.isValid() && discarded.isValid());
+        folder="previews/achievement-notifications-quiz-compact/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));
+        const auto capture=[&](const QString &state) {
+            // Freeze only reading while recording the frame; lifecycle tests use the real five-second clock.
+            QList<QPointer<QQuickItem>> held;
+            for(const auto &id:activeNotificationIds(presented,completed)) {
+                auto card=item("achievementNotification-"+id);
+                if(card && card->isVisible() && !card->property("leaving").toBool()) {
+                    if(!QMetaObject::invokeMethod(card,"pauseReading"))return false;
+                    held.append(card);
+                }
+            }
+            const auto resume=qScopeGuard([&]{for(const auto &card:held)if(card)QMetaObject::invokeMethod(card,"startReading");});
+            QTest::qWait(100);const auto image=window->grabWindow();
+            const auto name=state+"-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";
+            if(!image.save(folder+"/"+name))return false;
+            QJsonArray cards;
+            for(const auto &id:activeNotificationIds(presented,completed)) {
+                auto card=item("achievementNotification-"+id);if(!card)return false;
+                const auto r=card->mapRectToScene(card->boundingRect());
+                cards.append(QJsonObject{{"id",id},{"visible",card->isVisible()},{"compact",card->property("compactMode").toBool()},
+                    {"x",r.x()},{"y",r.y()},{"width",r.width()},{"height",r.height()},{"storedRemainingMs",card->property("remainingMs").toReal()}});
+            }
+            frames.append(QJsonObject{{"file",name},{"state",state},{"width",image.width()},{"height",image.height()},
+                {"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},
+                {"modelCount",layer->property("activeCount").toInt()},{"visibleCount",layer->property("visibleCount").toInt()},
+                {"pendingCount",layer->property("pendingCount").toInt()},{"cards",cards},{"temporary_database",true},{"reading_paused_for_capture",true},
+                {"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});return true;
+        };
+        const auto placementFailure=[&]{return notificationPlacementFailure(window,activeNotificationIds(presented,completed));};
+        QVERIFY(controller.startCompetitiveGame());window->setProperty("sessionStarted",true);
+        controller.answerSelected(notificationAnswer(controller));QCOMPARE(events.size(),2);
+        const auto firstId=events[0][0].toMap()["id"].toString(),secondId=events[1][0].toMap()["id"].toString();
+        auto first=item("achievementNotification-"+firstId),second=item("achievementNotification-"+secondId);QVERIFY(first && second);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));QCOMPARE(layer->property("visibleCount").toInt(),2);
+        const auto normalHeight=first->height();QVERIFY(capture("normal-two"));
+        window->setProperty("page","quiz");QTest::qWait(80);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+        QCOMPARE(layer->property("activeCount").toInt(),2);QCOMPARE(layer->property("visibleCount").toInt(),1);
+        QCOMPARE(item("achievementNotification-"+firstId),first);QVERIFY(!second->isVisible());
+        QVERIFY(first->height()<normalHeight*0.75);QVERIFY(capture("compact-one"));
+        const auto idsBefore=activeNotificationIds(presented,completed);const auto pendingBefore=layer->property("pendingCount");
+        for(const QSize resized:{QSize(1920,1080),QSize(1000,700),QSize(1240,820),size}) {
+            window->resize(resized);QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+            QCOMPARE(activeNotificationIds(presented,completed),idsBefore);QCOMPARE(layer->property("pendingCount"),pendingBefore);
+            QCOMPARE(item("achievementNotification-"+firstId),first);
+        }
+        QVERIFY(capture("compact-resized"));
+        controller.nextQuestion();for(int i=1;i<5;++i){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
+        QVERIFY(layer->property("pendingCount").toInt()>0);QCOMPARE(layer->property("visibleCount").toInt(),1);
+        QVERIFY(capture("compact-pending"));
+        auto close=item("dismissAchievement-"+firstId);QVERIFY(close);
+        QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,close->mapToScene(close->boundingRect().center()).toPoint());QTest::qWait(20);
+        QVERIFY(!item("achievementNotification-"+firstId));QVERIFY(second->isVisible());QCOMPARE(layer->property("activeCount").toInt(),1);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));QVERIFY(capture("compact-next"));
+        auto modal=window->findChild<QObject*>("abandonRecoveryDialog");QVERIFY(modal);QVERIFY(QMetaObject::invokeMethod(modal,"open"));
+        QTRY_COMPARE(layer->property("visibleCount").toInt(),0);QCOMPARE(layer->property("activeCount").toInt(),1);
+        QVERIFY(capture("compact-modal"));QVERIFY(QMetaObject::invokeMethod(modal,"close"));QTRY_COMPARE(layer->property("visibleCount").toInt(),1);
+        const auto secondStarted=second->property("readingStartedAt");
+        window->setProperty("page","home");QTest::qWait(60);QCOMPARE(layer->property("visibleCount").toInt(),2);
+        QCOMPARE(item("achievementNotification-"+secondId),second);QCOMPARE(second->property("readingStartedAt"),secondStarted);
+        QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));QVERIFY(capture("normal-after-quiz"));
+        while(!controller.gameFinished()){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
+        // A new real round keeps the Quiz active while earned events from the completed game drain.
+        QVERIFY(controller.startTaxonGame({},"genus"));window->setProperty("page","quiz");QTest::qWait(60);
+        // Stress the same component with a real observed title at larger text size; never capture this fixture.
+        {
+            QVariantMap longest;
+            for(const auto &event:events)if(event[0].toMap()["title"].toString().size()>longest["title"].toString().size())longest=event[0].toMap();
+            const auto saved=controller.achievements();QQmlComponent component(&engine,QUrl("qrc:/resources/qml/components/AchievementNotification.qml"));
+            QVERIFY2(component.isReady(),qPrintable(component.errorString()));
+            QScopedPointer<QObject> object(component.createWithInitialProperties({{"achievement",longest},{"compactMode",true},{"width",440}}));
+            auto stress=qobject_cast<QQuickItem*>(object.data());QVERIFY(stress);stress->setParentItem(window->contentItem());stress->setX(-1000);
+            auto title=findVisualItem(stress,"notificationTitle-"+longest["id"].toString());QVERIFY(title);
+            auto font=title->property("font").value<QFont>();font.setPixelSize(font.pixelSize()*3);title->setProperty("font",font);QTest::qWait(60);
+            QVERIFY(title->property("lineCount").toInt()>1);QVERIFY(stress->height()>56);
+            QVERIFY(!title->property("truncated").toBool());QVERIFY(title->property("contentHeight").toReal()<=title->height()+1);
+            QVERIFY(stress->boundingRect().contains(title->mapRectToItem(stress,title->boundingRect())));QCOMPARE(controller.achievements(),saved);
+        }
+        QSet<QString> captured;
+        for(int guard=0;layer->property("activeCount").toInt()>0 && guard<40;++guard) {
+            QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
+            QQuickItem *visible=nullptr;QString id;
+            for(const auto &candidate:activeNotificationIds(presented,completed)) {
+                auto card=item("achievementNotification-"+candidate);if(card && card->isVisible()){visible=card;id=candidate;break;}
+            }
+            QVERIFY(visible);QCOMPARE(layer->property("visibleCount").toInt(),1);
+            QString level;for(const auto &row:controller.achievements())if(row.toMap()["id"].toString()==id)level=row.toMap()["visualLevel"].toString();
+            QVERIFY(!level.isEmpty());if(!captured.contains(level)){QVERIFY(capture("compact-level-"+level));captured.insert(level);}
+            auto button=item("dismissAchievement-"+id);
+            if(!button) {
+                bool timedOut=false;for(const auto &event:completed)if(event[0].toString()==id && event[1].toString()=="timeout")timedOut=true;
+                QVERIFY(timedOut);continue;
+            }
+            QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,button->mapToScene(button->boundingRect().center()).toPoint());QTest::qWait(20);
+        }
+        QCOMPARE(captured,QSet<QString>({"initial","intermediate","advanced","special"}));
+        QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);QCOMPARE(layer->property("visibleCount").toInt(),0);
+        QCOMPARE(discarded.size(),0);QCOMPARE(presented.size(),events.size());QCOMPARE(completed.size(),events.size());
+        for(int i=0;i<events.size();++i)QCOMPARE(presented[i][0].toString(),events[i][0].toMap()["id"].toString());
+    }
+    QFile manifest(folder+"/captures.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
+    QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
+}
 
 void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
 {
@@ -1666,6 +2080,9 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
         QVERIFY(capture("restored-results", size));
         QVERIFY(edit("Panthera")); QCOMPARE(item("exploreGroupResults")->property("count").toInt(), 1);
         controller.setExploreDomain("domain:Eukaryota"); controller.setExploreRank("species");
+        // Test the search control once it is visible, after the real unlock toast expires.
+        auto notifications=item("achievementNotificationLayer");QVERIFY(notifications);
+        QTRY_VERIFY_WITH_TIMEOUT(notifications->property("activeCount").toInt()==0 && notifications->property("pendingCount").toInt()==0,12000);
         QVERIFY(activate("clearExploreQuery", true));
         QCOMPARE(controller.exploreQuery(), QString()); QCOMPARE(controller.exploreDomain(), QString("domain:Eukaryota"));
         QCOMPARE(controller.exploreRank(), QString("species"));

@@ -1,0 +1,42 @@
+[
+    {
+        "height": 36,
+        "target": "clearExploreQuery",
+        "visible": true,
+        "width": 36,
+        "x": 917,
+        "y": 104
+    },
+    {
+        "height": 17,
+        "target": "exploreSearchField",
+        "visible": true,
+        "width": 52,
+        "x": 220,
+        "y": 107.5
+    },
+    {
+        "height": 49,
+        "target": "sectionHeader",
+        "visible": true,
+        "width": 760,
+        "x": 220,
+        "y": 20
+    },
+    {
+        "height": 36,
+        "target": "dismissAchievement-visit_1",
+        "visible": true,
+        "width": 36,
+        "x": 932,
+        "y": 101
+    },
+    {
+        "height": 94,
+        "target": "achievementNotification-visit_1",
+        "visible": true,
+        "width": 440,
+        "x": 540,
+        "y": 89
+    }
+]

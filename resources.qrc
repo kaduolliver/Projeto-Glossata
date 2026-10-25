@@ -10,6 +10,8 @@
         <file>resources/qml/style/qmldir</file>
         <file>resources/qml/style/Theme.qml</file>
         <file>resources/qml/components/UiIcon.qml</file>
+        <file>resources/qml/components/AchievementNotification.qml</file>
+        <file>resources/qml/components/AchievementNotificationLayer.qml</file>
         <file>resources/qml/components/HintPanel.qml</file>
         <file>resources/qml/components/PlayModeSelector.qml</file>
         <file>resources/qml/components/UiButton.qml</file>

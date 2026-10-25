@@ -123,6 +123,12 @@ Bronze usa moldura simples; Prata acrescenta contorno e pequenos losangos; Ouro 
 
 [Validação e capturas das quatro classes](interface/VERSOES/2.3.3/refinamentos/README.md). A versão 2.1.0 ainda não lançada é completada na mesma PR; catálogo 2.4.0 preservado.
 
+## Notificações da Subetapa 2.3.4
+
+As notificações ficam no canto superior direito, abaixo do cabeçalho real. No Quiz, somente uma é visível, com desenho compacto; nas demais páginas, até duas usam o desenho completo. A segunda instância já apresentada fica oculta com leitura pausada durante o Quiz e conserva a posição FIFO e o tempo restante. [Modo compacto e validação](interface/VERSOES/2.3.4/quiz-compacto/README.md); [reposicionamento anterior](interface/VERSOES/2.3.4/topo-direito/README.md). **Requisito futuro:** adicionar efeitos sonoros configuráveis aos desbloqueios durante a modernização de Perfil e ajustes; [requisitos planejados](interface/VERSOES/2.3.4/topo-direito/README.md#efeitos-sonoros--requisito-futuro). A PR #39 não implementa áudio.
+
+O sinal persistido `achievementUnlocked(QVariantMap)` é consumido uma vez pelo shell. Uma fila temporária apresenta até duas notificações com as badges existentes, sem reconstruir o histórico ao abrir telas ou reiniciar. Reconhecimentos retroativos, eventos incompletos/duplicados e identidades diferentes são recusados. Nenhuma regra, persistência ou meta é recalculada pela interface. [Arquitetura e políticas detalhadas](interface/VERSOES/2.3.4/README.md).
+
 ## Filtro por nível e acabamento final da Platina
 
 As opções “Todos os níveis”, “Inicial — Bronze”, “Intermediário — Prata”, “Avançado — Ouro” e “Especial — Platina” usam os valores `visualLevel` existentes. O predicado combina estado **e** categoria **e** nível; o contador de seleção acompanha o resultado e o resumo global continua derivado das 30 definições. Uma combinação vazia mantém a mensagem de seleção vazia.

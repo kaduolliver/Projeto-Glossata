@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-24T20:50:10.915011+00:00",
+  "capture_hashes_verified": 54,
+  "test_source_and_binaries_match": true,
+  "documentation_links_valid": true,
+  "unchanged_since_base": [
+    "src",
+    "resources/data",
+    "resources/compliance",
+    "resources/qml/components/AchievementNotification.qml",
+    "resources/qml/components/AchievementBadge.qml",
+    "resources/qml/components/AchievementBadgePaths.js",
+    "resources/qml/style",
+    "CMakeLists.txt",
+    "resources.qrc",
+    "VERSION.txt",
+    "docs/CATALOGO_CHANGELOG.md"
+  ],
+  "base": "f6d8f809e742f0308ea41eef996e84fd2e7f2c26",
+  "player_databases_accessed_by_this_check": false,
+  "test_source_sha256": "6302313d8007f196f50e5e81fe026bd46cfcd17dac8189f96b4c21c8369b456f",
+  "test_binary_sha256": "0b5effdf1a6d31b6285efe4c52ebc83440414f459f6215aec893496e2cbef1ec"
+}

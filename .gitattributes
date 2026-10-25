@@ -49,3 +49,7 @@ CMakeLists.txt text eol=lf
 
 .githooks/* text eol=lf
 .gitattributes text eol=lf
+
+docs/interface/VERSOES/2.3.4/verificacoes/*.txt text eol=lf
+docs/interface/VERSOES/2.3.4/topo-direito/verificacoes/*.txt text eol=lf
+docs/interface/VERSOES/2.3.4/quiz-compacto/verificacoes/*.txt text eol=lf

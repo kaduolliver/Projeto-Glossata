@@ -1,0 +1,16 @@
+{
+  "assurances": {
+    "integrity_scope": "Internal SHA-256 linkage; optional byte-prefix comparison with caller-selected Git commit.",
+    "reviewer_identity": "Declared, not authenticated by these checks.",
+    "authorship_authenticated": false,
+    "digital_signatures_verified": false,
+    "independent_review_verified": false,
+    "specialist_qualification_verified": false,
+    "trust_root": "Local files and verifier; for historical comparison, independently selected and retained Git commit."
+  },
+  "technical_errors": [],
+  "dependency_errors": [],
+  "distribution_blocked": true,
+  "repository_distribution_blocked": true,
+  "scope": "Automated evidence/integrity checks, not legal or scientific certification."
+}

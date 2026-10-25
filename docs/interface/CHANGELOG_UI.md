@@ -1,5 +1,20 @@
 # Histórico visual
 
+## PR #39 — modo compacto contextual no Quiz
+
+- No Quiz, um cartão compacto visível, com badge 40×44, margens/intervalos internos menores e metadados em duas linhas; fontes de 12/14 px preservadas e altura intrínseca com quebra de texto.
+- Fora do Quiz, até dois cartões completos. A segunda instância retida pausa a leitura, continua na FIFO e volta a aparecer quando houver espaço; o primeiro cartão conserva animação e relógio durante a troca de contexto. [Capturas comparativas, testes e limites](VERSOES/2.3.4/quiz-compacto/README.md).
+
+## PR #39 — notificações no topo direito
+
+- Coluna ancorada 20 px abaixo da borda real do cabeçalho, com 20 px à direita e 10 px entre cartões. A primeira notificação fica acima da segunda; remoções reorganizam a FIFO sem recriar o shell.
+- Cartões, largura, entrada/saída, leitura, movimento reduzido e suspensão preservados. Testes ampliados para geometria do cabeçalho, controles, redimensionamento e rolagem. Áudio configurável documentado para Perfil e ajustes, sem código ou arquivos sonoros. [Capturas e validação atuais](VERSOES/2.3.4/topo-direito/README.md).
+
+## Subetapa 2.3.4 — notificações de conquistas
+
+- Camada informativa no shell com duas notificações, FIFO, deduplicação por identidade/conquista e cinco segundos de leitura. Badges/metadados existentes, entrada/saída curtas e respeito a movimento reduzido.
+- Suspensão segura durante popups, erros críticos e inatividade; expiração explícita de eventos antigos, foco e comandos do Quiz preservados. [Arquitetura, testes e capturas reais](VERSOES/2.3.4/README.md).
+
 ## PR #38 — reorganização dos filtros de Conquistas
 
 - Painel com Estado segmentado e menus de Categoria/Nível; rótulos, alvos de 44 px e distribuição conforme a largura útil, sem preencher desnecessariamente a linha.

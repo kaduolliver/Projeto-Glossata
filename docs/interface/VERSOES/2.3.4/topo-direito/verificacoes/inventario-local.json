@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-10-24T20:48:50.640083+00:00",
+  "mode": "inventory-only",
+  "deleted_files": 0,
+  "moved_files": 0,
+  "entries": [
+    {
+      "path": "build/achievements-refinements",
+      "bytes": 1941665969,
+      "files": 888,
+      "reason": "Compilação recente e originais de evidências",
+      "risk": "alto; preservar"
+    },
+    {
+      "path": "previews/achievement-notifications-top-right",
+      "bytes": 52434733,
+      "files": 156,
+      "reason": "153 quadros locais, incluindo originais das capturas versionadas",
+      "risk": "médio; preservar rastreabilidade"
+    },
+    {
+      "path": "build/achievements-refinements/tests/previews/achievement-notifications-top-right",
+      "bytes": 12559882,
+      "files": 52,
+      "reason": "Quadros gerados pela suíte completa",
+      "risk": "médio; preservar rastreabilidade"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "files": 57,
+      "reason": "Cache Python recompilável",
+      "risk": "baixo; candidato apenas a limpeza futura autorizada"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 585884,
+      "files": 22,
+      "reason": "Cache Python recompilável",
+      "risk": "baixo; candidato apenas a limpeza futura autorizada"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "recorded_at": "2026-10-24T23:08:35.300958+00:00",
+  "test_source_sha256": "757f9c5c8fc0880e74e98a58ccdff9bdda031cceb4d67993d62cd63923b86d96",
+  "test_binary_sha256": "370e9d6c25c9ba691b05ed8d83e151cb7985e3f39e8d0ed73f3e0a8530cc4e9f",
+  "production_binary_sha256": "4ac775baac0ba71f6d73fcb7bea5df6d14aee9e907a47853244f3a55ccdaaa83",
+  "notice": "Full CTest input snapshot before a capture-only harness adjustment. Production QML/executable remain unchanged."
+}

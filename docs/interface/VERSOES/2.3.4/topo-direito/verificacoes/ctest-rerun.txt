@@ -1,0 +1,9 @@
+Test project C:/glossata_game/build/achievements-refinements
+    Start  2: GlossataInterfaceTests
+    Start 23: GlossataProjectStatusTests
+1/2 Test #23: GlossataProjectStatusTests .......   Passed    2.53 sec
+2/2 Test  #2: GlossataInterfaceTests ...........   Passed  558.64 sec
+
+100% tests passed out of 2
+
+Total Test time (real) = 558.65 sec

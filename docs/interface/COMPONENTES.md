@@ -1,5 +1,13 @@
 # Componentes compartilhados
 
+## Notificações — 2.3.4
+
+`Main` fornece `compactMode: page === "quiz"`. A camada usa `presentationLimit` de um/dois para admitir eventos e `index` para ocultar a segunda instância já existente durante o Quiz. `activeCount` conta instâncias no modelo; `visibleCount` conta as apresentações permitidas no contexto, incluindo a suspensão global; `pendingCount` continua contando somente eventos ainda não instanciados. O mesmo cartão recebe `compactMode` e reutiliza seu temporizador, `remainingMs` e estado de animação. [Comportamento contextual e validação](VERSOES/2.3.4/quiz-compacto/README.md).
+
+Na revisão da PR #39, `Main` fornece `headerBottom` a partir das posições e altura reais do cabeçalho e seus layouts ancestrais. A coluna usa essa borda mais `Theme.spaceLg` no topo, `spaceLg` à direita e `spaceSm` entre cartões. A ordem do `ListModel` corresponde à ordem de cima para baixo; remover um item reorganiza os restantes sem recriar a camada. [Geometria, testes e capturas atuais](VERSOES/2.3.4/topo-direito/README.md).
+
+`AchievementNotificationLayer` pertence ao shell, recebe `achievementUnlocked` por `Connections`, valida os campos, mantém FIFO/deduplicação temporárias e apresenta até duas instâncias de `AchievementNotification`. `ListModel` preserva as instâncias ativas ao adicionar/remover outras notificações. Não varre conquistas para detectar desbloqueios. O cartão usa `AchievementBadge` e as cores de material existentes, quebra textos e limita interação ao `ToolButton` de dispensa. Popups e erros críticos suspendem a apresentação; perda de atividade/minimização não força ativação da janela. [Políticas, ciclo de vida e validação](VERSOES/2.3.4/README.md).
+
 ## Conquistas — 2.3.3
 
 O [painel de filtros](VERSOES/2.3.3/barra-filtros/README.md) combina estado/categoria/`visualLevel` com AND, guardados em `Main.achievementsPresentation` durante a navegação. `GridLayout` considera a largura útil da página e reorganiza três grupos em uma, duas ou três linhas. `UiButton` forma o Estado segmentado; dois `TaxonComboBox` recebem apenas estilo local, margens no popup e transições vinculadas ao tema. `TextAction` limpa os três valores, aparece somente com restrições e devolve foco a Todas. Resumo/progresso global são independentes do contador filtrado; não há preferências novas no SQLite. A Platina acrescenta placas facetadas e reflexos estáticos em `QtQuick.Shapes`; os três outros materiais e os 30 glifos permanecem iguais. [Filtro e comparação Prata/Platina](VERSOES/2.3.3/filtros-nivel-platina/README.md).

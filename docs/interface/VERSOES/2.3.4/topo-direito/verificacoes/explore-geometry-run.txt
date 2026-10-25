@@ -1,0 +1,10 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::photographicExploreNavigationAndCaptures() Compared values are not the same
+   Actual   (controller.exploreQuery()): "Panthera"
+   Expected (QString())                : ""
+C:/glossata_game/tests/QmlInterfaceTests.cpp(1943) : failure location
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 2 passed, 1 failed, 0 skipped, 0 blacklisted, 10046ms
+********* Finished testing of QmlInterfaceTests *********

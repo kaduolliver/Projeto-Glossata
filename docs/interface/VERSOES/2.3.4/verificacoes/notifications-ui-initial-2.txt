@@ -1,0 +1,10 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+FAIL!  : QmlInterfaceTests::achievementNotificationQueueAndLifecycle() 'interfaceWarnings.isEmpty()' returned FALSE. (Mouse event at 1190, 830 occurs outside target window (1240x820).)
+C:/glossata_game/tests/QmlInterfaceTests.cpp(196) : failure location
+PASS   : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+PASS   : QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 4 passed, 1 failed, 0 skipped, 0 blacklisted, 28645ms
+********* Finished testing of QmlInterfaceTests *********

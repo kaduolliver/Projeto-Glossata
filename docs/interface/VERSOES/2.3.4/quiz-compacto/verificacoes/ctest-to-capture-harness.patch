@@ -1,0 +1,49 @@
+--- full-ctest-tests-source
++++ final-capture-harness
+@@ -6,6 +6,7 @@
+ #include <QQmlApplicationEngine>
+ #include <QQmlComponent>
+ #include <QScopedPointer>
++#include <QPointer>
+ #include <QFont>
+ #include <QQmlContext>
+ #include <QQuickWindow>
+@@ -410,6 +411,16 @@
+         QVERIFY(presented.isValid() && completed.isValid() && discarded.isValid());
+         folder="previews/achievement-notifications-quiz-compact/"+QString::number(qRound(window->devicePixelRatio()*100));QVERIFY(QDir().mkpath(folder));
+         const auto capture=[&](const QString &state) {
++            // Freeze only reading while recording the frame; lifecycle tests use the real five-second clock.
++            QList<QPointer<QQuickItem>> held;
++            for(const auto &id:activeNotificationIds(presented,completed)) {
++                auto card=item("achievementNotification-"+id);
++                if(card && card->isVisible() && !card->property("leaving").toBool()) {
++                    if(!QMetaObject::invokeMethod(card,"pauseReading"))return false;
++                    held.append(card);
++                }
++            }
++            const auto resume=qScopeGuard([&]{for(const auto &card:held)if(card)QMetaObject::invokeMethod(card,"startReading");});
+             QTest::qWait(100);const auto image=window->grabWindow();
+             const auto name=state+"-"+QString::number(size.width())+"x"+QString::number(size.height())+".png";
+             if(!image.save(folder+"/"+name))return false;
+@@ -423,7 +434,7 @@
+             frames.append(QJsonObject{{"file",name},{"state",state},{"width",image.width()},{"height",image.height()},
+                 {"logicalWidth",size.width()},{"logicalHeight",size.height()},{"devicePixelRatio",window->devicePixelRatio()},
+                 {"modelCount",layer->property("activeCount").toInt()},{"visibleCount",layer->property("visibleCount").toInt()},
+-                {"pendingCount",layer->property("pendingCount").toInt()},{"cards",cards},{"temporary_database",true},
++                {"pendingCount",layer->property("pendingCount").toInt()},{"cards",cards},{"temporary_database",true},{"reading_paused_for_capture",true},
+                 {"captured_at",QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});return true;
+         };
+         const auto placementFailure=[&]{return notificationPlacementFailure(window,activeNotificationIds(presented,completed));};
+@@ -486,7 +497,11 @@
+             QVERIFY(visible);QCOMPARE(layer->property("visibleCount").toInt(),1);
+             QString level;for(const auto &row:controller.achievements())if(row.toMap()["id"].toString()==id)level=row.toMap()["visualLevel"].toString();
+             QVERIFY(!level.isEmpty());if(!captured.contains(level)){QVERIFY(capture("compact-level-"+level));captured.insert(level);}
+-            auto button=item("dismissAchievement-"+id);QVERIFY(button);
++            auto button=item("dismissAchievement-"+id);
++            if(!button) {
++                bool timedOut=false;for(const auto &event:completed)if(event[0].toString()==id && event[1].toString()=="timeout")timedOut=true;
++                QVERIFY(timedOut);continue;
++            }
+             QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,button->mapToScene(button->boundingRect().center()).toPoint());QTest::qWait(20);
+         }
+         QCOMPARE(captured,QSet<QString>({"initial","intermediate","advanced","special"}));

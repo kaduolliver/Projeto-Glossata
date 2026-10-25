@@ -1,0 +1,43 @@
+{
+  "recorded_at": "2026-10-24T23:19:10.035468+00:00",
+  "mode": "inventory-only",
+  "deleted_files": 0,
+  "moved_files": 0,
+  "entries": [
+    {
+      "path": "build/achievements-refinements",
+      "bytes": 1956474997,
+      "files": 922,
+      "reason": "Compilação recente e evidências",
+      "risk": "alto; preservar"
+    },
+    {
+      "path": "previews/achievement-notifications-quiz-compact",
+      "bytes": 48571001,
+      "files": 102,
+      "reason": "Originais das capturas desta rodada",
+      "risk": "médio; preservar rastreabilidade"
+    },
+    {
+      "path": "build/achievements-refinements/tests/previews/achievement-notifications-quiz-compact",
+      "bytes": 12475941,
+      "files": 34,
+      "reason": "Capturas da suíte completa",
+      "risk": "médio; preservar rastreabilidade"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "files": 57,
+      "reason": "Cache recompilável",
+      "risk": "baixo; somente limpeza futura autorizada"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 585884,
+      "files": 22,
+      "reason": "Cache recompilável",
+      "risk": "baixo; somente limpeza futura autorizada"
+    }
+  ]
+}
