@@ -1,0 +1,41 @@
+{
+  "mode": "non-destructive inventory only",
+  "measured_at": "2026-10-26T21:57:51.849154+00:00",
+  "pr_state": "PR #40 open; no cleanup applied",
+  "eligible_candidates": 0,
+  "entries": [
+    {
+      "path": "build/profile-settings-2-4-1",
+      "bytes": 323675715,
+      "files": 7,
+      "reason": "Recompiled application/tests and capture provenance.",
+      "risk": "high",
+      "action": "preserve; no deletion authorized"
+    },
+    {
+      "path": "previews/profile-settings-persistence-fix",
+      "bytes": 672008,
+      "files": 14,
+      "reason": "Original targeted UI captures; four selected frames are versioned.",
+      "risk": "medium",
+      "action": "preserve; no deletion authorized"
+    },
+    {
+      "path": "build/tests/previews/profile-settings-persistence-fix",
+      "bytes": 671875,
+      "files": 14,
+      "reason": "Full CTest UI capture evidence for the same error scenarios.",
+      "risk": "medium",
+      "action": "preserve; no deletion authorized"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "files": 57,
+      "reason": "Regenerable Python bytecode cache.",
+      "risk": "low",
+      "action": "preserve; no deletion authorized"
+    }
+  ],
+  "cleanup_applied": false
+}

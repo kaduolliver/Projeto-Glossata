@@ -1,3 +1,4 @@
+#include "TestAppServices.h"
 #include "presentation/GameController.h"
 #include "infrastructure/content/JsonSpeciesCatalog.h"
 #include "infrastructure/discord/DiscordRichPresence.h"
@@ -26,6 +27,7 @@
 #include <QJsonArray>
 #include <QDateTime>
 #include <QFile>
+#include <QSettings>
 #include <QDesktopServices>
 #include <QWheelEvent>
 #include <QPointingDevice>
@@ -73,6 +75,11 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void achievementPreviewBusyFeedback();
+    void settingsPersistenceRecovery_data();
+    void settingsPersistenceRecovery();
+    void profileSettingsPreferencesKeyboardAndCaptures();
+    void achievementSoundsFollowPresentationOnly();
     void achievementNotificationQueueAndLifecycle();
     void achievementNotificationQuizFocusAndPersistence();
     void achievementNotificationContextTransitions_data();
@@ -189,10 +196,10 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     QTemporaryDir dir;const auto path=dir.filePath("notification-queue.sqlite");
     GameController controller(nullptr,path);DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
-    auto layer=item("achievementNotificationLayer");QVERIFY(layer);window->setProperty("motionEnabled",false);
+    auto layer=item("achievementNotificationLayer");QVERIFY(layer);setMotionEnabled(window, false);
     QTRY_VERIFY(layer->property("presentationAllowed").toBool());QCOMPARE(layer->property("activeCount").toInt(),0);
     QSignalSpy events(&controller,&GameController::achievementUnlocked);
     QSignalSpy presented(layer,SIGNAL(notificationPresented(QString))),discarded(layer,SIGNAL(notificationDiscarded(QString,QString))),completed(layer,SIGNAL(notificationCompleted(QString,QString)));
@@ -211,7 +218,7 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     controller.nextQuestion();
     for(int i=1;i<5;++i){controller.answerSelected(notificationAnswer(controller));controller.nextQuestion();}
     QVERIFY(layer->property("pendingCount").toInt()>0);
-    window->setProperty("motionEnabled",true);
+    setMotionEnabled(window, true);
     auto close=item("dismissAchievement-"+first["id"].toString());QVERIFY(close);
     QTRY_VERIFY(close->mapToScene({close->width()/2,close->height()/2}).y()<window->height());
     QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,close->mapToScene({close->width()/2,close->height()/2}).toPoint());
@@ -220,7 +227,7 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     QString hint;for(const auto &h:controller.hints())if(h.toMap()["available"].toBool()){hint=h.toMap()["id"].toString();break;}
     QVERIFY(!hint.isEmpty());QVERIFY(controller.revealHintCategory(hint));
     QCOMPARE(layer->property("activeCount").toInt(),2);QTRY_VERIFY(!item("achievementNotification-"+first["id"].toString()));
-    window->setProperty("motionEnabled",false);
+    setMotionEnabled(window, false);
     // Closing the top card moves the second up and appends the next FIFO entry below it.
     QTRY_VERIFY2(placementFailure().isEmpty(),qPrintable(placementFailure()));
     // Drain through real close controls. Each completion advances the FIFO once.
@@ -259,7 +266,7 @@ void QmlInterfaceTests::achievementNotificationQueueAndLifecycle()
     // A new controller/engine reads persisted unlocks and never reconstructs notification history.
     GameController restarted(nullptr,path);QQmlApplicationEngine reopened;
     reopened.rootContext()->setContextProperty("gameController",&restarted);reopened.rootContext()->setContextProperty("discordPresence",&presence);
-    reopened.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!reopened.rootObjects().isEmpty());
+    installTestAppServices(reopened); reopened.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!reopened.rootObjects().isEmpty());
     auto newWindow=qobject_cast<QQuickWindow*>(reopened.rootObjects().first());QVERIFY(newWindow);
     auto empty=findVisualItem(newWindow->contentItem(),"achievementNotificationLayer");QVERIFY(empty);
     QCOMPARE(empty->property("activeCount").toInt(),0);QCOMPARE(empty->property("pendingCount").toInt(),0);
@@ -274,8 +281,8 @@ void QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
     QTemporaryDir dir;const auto path=dir.filePath("notification-failure.sqlite");GameController controller(nullptr,path);
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();window->setProperty("motionEnabled",false);
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();setMotionEnabled(window, false);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
     auto db=QSqlDatabase::addDatabase("QSQLITE","notification-failure");db.setDatabaseName(path);QVERIFY(db.open());
@@ -325,7 +332,7 @@ void QmlInterfaceTests::achievementNotificationContextTransitions()
     QTemporaryDir dir;GameController controller(nullptr,dir.filePath("context.sqlite"));
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(windowSize);window->requestActivate();
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
@@ -380,7 +387,7 @@ void QmlInterfaceTests::achievementNotificationContextTransitions()
     QVERIFY(resumed.elapsed()>=suspendedRemaining-150);QVERIFY(resumed.elapsed()<suspendedRemaining+1000);
     QCOMPARE(completed[0][0].toString(),firstId);QCOMPARE(completed[0][1].toString(),QString("manual"));
     QCOMPARE(completed.last()[0].toString(),secondId);QCOMPARE(completed.last()[1].toString(),QString("timeout"));QCOMPARE(completed.size(),3);
-    window->setProperty("motionEnabled",false);
+    setMotionEnabled(window, false);
     QCOMPARE(layer->property("activeCount").toInt(),0);QCOMPARE(layer->property("pendingCount").toInt(),0);QCOMPARE(discarded.size(),0);
     for(int i=0;i<events.size();++i)QCOMPARE(presented[i][0].toString(),events[i][0].toMap()["id"].toString());
     // The existing suspension expiry still includes a retained, context-hidden card.
@@ -402,8 +409,8 @@ void QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}) {
         GameController controller(nullptr,dir.filePath(QString::number(size.width())+".sqlite"));DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
         engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-        engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-        auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(size);window->requestActivate();window->setProperty("motionEnabled",false);
+        installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+        auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->resize(size);window->requestActivate();setMotionEnabled(window, false);
         const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
         auto layer=item("achievementNotificationLayer");QVERIFY(layer);QTRY_VERIFY(layer->property("presentationAllowed").toBool());
         QSignalSpy events(&controller,&GameController::achievementUnlocked);
@@ -520,9 +527,9 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     QTemporaryDir dir;GameController controller(nullptr,dir.filePath("achievements-ui.sqlite"));
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->requestActivate();QTest::qWait(150);
-    window->setProperty("motionEnabled",false);window->setProperty("page","achievements");QTest::qWait(100);
+    setMotionEnabled(window, false);window->setProperty("page","achievements");QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(60);return true;};
     QVERIFY(item("achievementSummary"));QCOMPARE(item("achievementSummary")->property("text").toString(),QString("0 / 30"));
@@ -706,10 +713,10 @@ void QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
     QVERIFY(category("Exploração"));QVERIFY(!item("achievementCard-correct_10"));QVERIFY(item("achievementCard-visit_10"));
     window->setProperty("page","statistics");QTest::qWait(80);window->setProperty("page","achievements");QTest::qWait(80);
     QVERIFY(!item("achievementCard-first_answer"));QVERIFY(item("achievementCard-visit_10"));QCOMPARE(unlocks.size(),count);
-    window->setProperty("motionEnabled",true);QVERIFY(level("intermediate"));
+    setMotionEnabled(window, true);QVERIFY(level("intermediate"));
     auto badge=item("achievementBadge-visit_10");QVERIFY(badge);auto card=item("achievementCard-visit_10");
     card->setProperty("down",true);QTRY_VERIFY(badge->scale()<1);card->setProperty("down",false);QTRY_COMPARE(badge->scale(),1.0);
-    window->setProperty("motionEnabled",false);card->setProperty("down",true);QCOMPARE(badge->scale(),1.0);card->setProperty("down",false);
+    setMotionEnabled(window, false);card->setProperty("down",true);QCOMPARE(badge->scale(),1.0);card->setProperty("down",false);
     QVERIFY(level("all"));QVERIFY(item("achievementCard-visit_10"));
     QFile manifest(folder+"/captures.json");QVERIFY(manifest.open(QIODevice::WriteOnly));manifest.write(QJsonDocument(frames).toJson());
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
@@ -725,8 +732,8 @@ void QmlInterfaceTests::singleLocalUserSettingsRecordsAndCaptures()
     GameController controller(nullptr,path);QVERIFY(controller.localUserChoiceRequired());QVERIFY(controller.currentPlayerId().isEmpty());
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(150);
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(150);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name){auto c=item(name);if(!c)return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(80);return true;};
     auto dialog=window->findChild<QObject*>("localUserTransition");QVERIFY(dialog);QVERIFY(dialog->property("visible").toBool());
@@ -772,9 +779,9 @@ void QmlInterfaceTests::statisticsLiveHintsAndRecovery()
     GameController controller(nullptr,path); QVERIFY(controller.renameCurrentPlayerProfile("Dicas em andamento"));
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     window->setProperty("page","statistics"); QTest::qWait(80);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto matches=[&](const QVariantMap &expected){
@@ -885,8 +892,8 @@ void QmlInterfaceTests::statisticsStableTaxonomicColors()
     QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     QVERIFY(controller.startTaxonGame({},"genus"));JsonSpeciesCatalog catalog;
     for(int i=0;i<12;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");controller.answerSelected(answer);controller.nextQuestion();}
@@ -905,8 +912,8 @@ void QmlInterfaceTests::statisticsTopPanelsAndSharedScrolling()
     QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     window->setProperty("page","statistics");QTest::qWait(80);auto scroll=item("pageScroll");QVERIFY(scroll);
     for(const QSize size:{QSize(1000,700),QSize(1240,820),QSize(1920,1080)}){
@@ -929,9 +936,9 @@ void QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
     const auto profileId=controller.currentPlayerId();
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     window->setProperty("page","statistics"); QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto value=[&](const QString &name){auto c=item(name);return c?c->property("value").toString():QString();};
@@ -995,8 +1002,8 @@ void QmlInterfaceTests::personalCompetitiveConfigurationStaysSeparate()
     QTemporaryDir dir;const auto path=dir.filePath("personal.sqlite");GameController controller(nullptr,path);
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow*>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(100);
     const auto item=[&](const QString &name){return findVisualItem(window->contentItem(),name);};
     QVERIFY(controller.startCompetitiveGame());JsonSpeciesCatalog catalog;
     for(int i=0;i<20;++i){QString answer;for(const auto &s:catalog.loadCurrentSpecies())if(s.id==controller.questionPhoto()["speciesId"].toInt())answer=s.answerAtRank("genus");QVERIFY(!answer.isEmpty());controller.answerSelected(answer);if(!controller.gameFinished())controller.nextQuestion();}
@@ -1016,9 +1023,9 @@ void QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
     const auto correct=[&](){for(const auto &s:organisms)if(s.id==controller.questionPhoto()["speciesId"].toInt())return s.answerAtRank("genus");return QString();};
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name,bool mouse=false){auto c=item(name);if(!c||!c->isVisible()||!c->isEnabled())return false;c->forceActiveFocus(Qt::TabFocusReason);QTest::qWait(50);if(mouse)QTest::mouseClick(window,Qt::LeftButton,Qt::NoModifier,c->mapToScene(c->boundingRect().center()).toPoint());else QTest::keyClick(window,Qt::Key_Space);QTest::qWait(100);return true;};
     auto scroll=item("pageScroll"); QVERIFY(scroll);
@@ -1049,10 +1056,10 @@ void QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
         QCOMPARE(quiz->property("selectedOption").toString(),options[1]); QVERIFY(counters());
         QCOMPARE(portrait->mapRectToScene(portrait->boundingRect()),fixedPortrait);
         QCOMPARE(photo->mapRectToScene(photo->boundingRect()),fixedPhoto);
-        window->setProperty("motionEnabled",true); auto selected=item("answerOption1"); selected->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
+        setMotionEnabled(window, true); auto selected=item("answerOption1"); selected->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(60);
         QTest::mouseMove(window,selected->mapToScene(selected->boundingRect().center()).toPoint()); QTest::qWait(250);
         const auto color=findVisualItem(selected,"quizOptionBackground")->property("color"); QTest::qWait(450);
-        QCOMPARE(findVisualItem(selected,"quizOptionBackground")->property("color"),color); window->setProperty("motionEnabled",false);
+        QCOMPARE(findVisualItem(selected,"quizOptionBackground")->property("color"),color); setMotionEnabled(window, false);
         const auto chosen=quiz->property("selectedOption"); int ceiling=6;
         for(int i=0;i<3;++i) {
             QVERIFY(activate("hintButton")); auto panel=window->findChild<QObject *>("hintPanel"); QVERIFY(panel); QTRY_VERIFY(panel->property("opened").toBool());
@@ -1093,8 +1100,8 @@ void QmlInterfaceTests::restoredQuizRecoveryAndUnavailableStates()
     QTemporaryDir dir;QVERIFY(dir.isValid());const auto path=dir.filePath("quiz-recovery.sqlite");QVariantMap savedPhoto;QStringList savedOptions;QVariantList savedHints;QString savedPoints;int savedCorrect=0;
     {GameController seed(nullptr,path);QVERIFY(seed.startCompetitiveGame());seed.answerSelected(seed.answerOptions().first());seed.nextQuestion();for(const auto &h:seed.hints())if(h.toMap()["available"].toBool()){QVERIFY(seed.revealHintCategory(h.toMap()["id"].toString()));break;}savedPhoto=seed.questionPhoto();savedOptions=seed.answerOptions();savedHints=seed.hints();savedPoints=seed.possibleScoreText();savedCorrect=seed.correctAnswers();QVERIFY(seed.prepareToClose());}
     GameController controller(nullptr,path);DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     auto resume=item("resumeSessionButton");QVERIFY(resume);resume->forceActiveFocus(Qt::TabFocusReason);QTest::keyClick(window,Qt::Key_Space);QTest::qWait(150);
     QCOMPARE(window->property("page").toString(),QString("quiz"));QCOMPARE(controller.questionPhoto(),savedPhoto);QCOMPARE(controller.answerOptions(),savedOptions);QCOMPARE(controller.hints(),savedHints);QCOMPARE(controller.possibleScoreText(),savedPoints);QCOMPARE(controller.answeredCount(),1);
@@ -1122,8 +1129,8 @@ void QmlInterfaceTests::speciesDescriptionStaysIndependentOfMorphology()
     JsonSpeciesCatalog catalog;const auto organisms=catalog.loadCurrentSpecies();
     const auto correct=[&](){for(const auto &species:organisms)if(species.id==controller.questionPhoto()["speciesId"].toInt())return species.answerAtRank("genus");return QString();};
     DiscordRichPresence presence{QString(),QString()};QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
-    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);window->setProperty("motionEnabled",false);window->requestActivate();QTest::qWait(100);
+    engine.rootContext()->setContextProperty("gameController",&controller);engine.rootContext()->setContextProperty("discordPresence",&presence);installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));QVERIFY(!engine.rootObjects().isEmpty());
+    auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);setMotionEnabled(window, false);window->requestActivate();QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     const std::function<QQuickItem *(QQuickItem *,const QString &)> textItem=[&](QQuickItem *parent,const QString &text)->QQuickItem * {
         if(parent->property("text").toString()==text)return parent;
@@ -1185,10 +1192,10 @@ void QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);
     engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(),qPrintable(interfaceWarnings.join('\n')));
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name,bool mouse=false){
         auto control=item(name); if(!control || !control->isVisible() || !control->isEnabled())return false;
@@ -1302,9 +1309,9 @@ void QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
         QTest::keyClick(window,Qt::Key_Escape); QTRY_VERIFY(!dialog->property("visible").toBool());
         QTRY_VERIFY(item("playTaxonSourcesButton")->hasActiveFocus());
         // Exercise normal transitions and the explicit close button as well as reduced motion/Esc.
-        window->setProperty("motionEnabled",true); QVERIFY(activate("playTaxonSourcesButton"));
+        setMotionEnabled(window, true); QVERIFY(activate("playTaxonSourcesButton"));
         QTRY_VERIFY(dialog->property("opened").toBool()); QVERIFY(activate("playTaxonSourcesClose",true));
-        QTRY_VERIFY(!dialog->property("visible").toBool()); window->setProperty("motionEnabled",false);
+        QTRY_VERIFY(!dialog->property("visible").toBool()); setMotionEnabled(window, false);
         QVERIFY(item("playTaxonSourcesButton")->hasActiveFocus());
         // Scrolled descendant/breadcrumb navigation must expose the whole Back button.
         scroll->setProperty("contentY",qMax(0.,scroll->property("contentHeight").toReal()-scroll->height()));
@@ -1350,10 +1357,10 @@ void QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller);
     engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(),qPrintable(interfaceWarnings.join('\n')));
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled",false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item=[window](const QString &name){return findVisualItem(window->contentItem(),name);};
     const auto activate=[&](const QString &name){
         auto control=item(name); if(!control || !control->isVisible() || !control->isEnabled())return false;
@@ -1457,10 +1464,10 @@ void QmlInterfaceTests::playSelectionNavigationAndCaptures()
     DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     const auto activate = [&](const QString &name) {
         auto control = item(name); if (!control || !control->isVisible() || !control->isEnabled()) return false;
@@ -1559,8 +1566,8 @@ void QmlInterfaceTests::playSelectionNavigationAndCaptures()
         auto label = findVisualItem(card,"exploreCardActionLabel"); QVERIFY(credit && label);
         QCOMPARE(credit->mapToItem(card,{credit->property("leftPadding").toReal(),0}).x(),label->mapToItem(card,{0,0}).x());
         QVERIFY(capture("explore-alignment"));
-        window->setProperty("motionEnabled",true); QTest::qWait(180);
-        QVERIFY(activate("navPlay")); window->setProperty("motionEnabled",false);
+        setMotionEnabled(window, true); QTest::qWait(180);
+        QVERIFY(activate("navPlay")); setMotionEnabled(window, false);
     }
     QVERIFY2(interfaceWarnings.isEmpty(),qPrintable(interfaceWarnings.join('\n')));
     QFile manifest(folder+"/capturas.json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
@@ -1578,10 +1585,10 @@ void QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
     DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     auto viewport = item("pageScroll"), bar = item("pageScrollBar"); QVERIFY(viewport && bar);
     auto handler = window->findChild<QObject *>("pageWheelArea"); QVERIFY(handler);
@@ -1750,7 +1757,7 @@ void QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
                 qPrintable(QString("Fine %1 stream changed: native %2, actual %3").arg(pixels ? "pixel" : "angle").arg(native).arg(viewport->property("contentY").toReal())));
             if (pixels) padEvent(nativePosition, {}, Qt::ScrollEnd);
         }
-        window->setProperty("motionEnabled", true); resetScroll(200);
+        setMotionEnabled(window, true); resetScroll(200);
         mouseWheel(position, {0,-120}); mouseWheel(position, {0,-120}); QTest::qWait(220);
         QCOMPARE(qRound(viewport->property("contentY").toReal()), 420);
         mouseWheel(position, {0,-120}); QTest::qWait(25);
@@ -1760,7 +1767,7 @@ void QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
         item("exploreSearchField")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(50);
         const auto focusedY = viewport->property("contentY").toReal(); QTest::qWait(180);
         QCOMPARE(viewport->property("contentY").toReal(), focusedY);
-        window->setProperty("motionEnabled", false);
+        setMotionEnabled(window, false);
         resetScroll(0); mouseWheel(position, {0,120}); QTest::qWait(50);
         QCOMPARE(viewport->property("contentY").toReal(), 0.);
         const auto maximum = viewport->property("contentHeight").toReal() - viewport->height();
@@ -1916,10 +1923,10 @@ void QmlInterfaceTests::photographicExploreNavigationAndCaptures()
     DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false); window->requestActivate(); QTest::qWait(100);
+    setMotionEnabled(window, false); window->requestActivate(); QTest::qWait(100);
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     const auto activate = [&](const QString &name, bool mouse = false) {
         auto control = item(name); if (!control || !control->isVisible() || !control->isEnabled()) return false;
@@ -2169,10 +2176,10 @@ void QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
     DiscordRichPresence presence{QString(), QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false); window->requestActivate();
+    setMotionEnabled(window, false); window->requestActivate();
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     const auto activate = [&](const QString &name) {
         auto control = item(name); if (!control || !control->isVisible() || !control->isEnabled()) return false;
@@ -2381,10 +2388,10 @@ void QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false); window->requestActivate();
+    setMotionEnabled(window, false); window->requestActivate();
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     const auto activate = [&](const QString &name) {
         auto control = item(name); if (!control || !control->isVisible() || !control->isEnabled()) return false;
@@ -2523,7 +2530,7 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
     const auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
@@ -2532,7 +2539,7 @@ void QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
         control->forceActiveFocus(Qt::TabFocusReason);
         QTest::keyClick(window, Qt::Key_Space); QTest::qWait(50); return true;
     };
-    window->setProperty("motionEnabled", false);
+    setMotionEnabled(window, false);
     window->requestActivate();
     QTRY_VERIFY(item("dailyDiscoveryPanel"));
     QTRY_COMPARE(item("dailyDiscoveryPhoto")->property("status").toInt(), 1);
@@ -2725,7 +2732,7 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY(!engine.rootObjects().isEmpty());
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
     QVERIFY(window);
@@ -2746,7 +2753,7 @@ void QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
     QTRY_COMPARE(home->property("currentIndex").toInt(), 1);
     QTRY_VERIFY(home->property("photoReady").toBool());
     QTRY_COMPARE(home->property("pendingIndex").toInt(), -1);
-    window->setProperty("motionEnabled", false);
+    setMotionEnabled(window, false);
     QCOMPARE(home->property("transitionDuration").toInt(), 0);
     QVERIFY(click("homePreviousSlide"));
     QTRY_COMPARE(home->property("currentIndex").toInt(), 0);
@@ -2929,7 +2936,7 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first());QVERIFY(window);
     auto item=[window](const QString &name) { return findVisualItem(window->contentItem(),name); };
@@ -3061,7 +3068,7 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QCOMPARE(home->property("currentIndex").toInt(),3);
     window->show();window->requestActivate();
     QTRY_VERIFY(home->property("windowActive").toBool());
-    window->setProperty("motionEnabled",false);
+    setMotionEnabled(window, false);
     QTRY_VERIFY(!home->property("autoRunning").toBool());
     QCOMPARE(home->property("transitionDuration").toInt(),0);
     QTRY_COMPARE(home->property("pendingIndex").toInt(),-1);
@@ -3071,7 +3078,7 @@ void QmlInterfaceTests::homeCarouselTimingAndCrossfade()
     QTRY_COMPARE(home->property("currentIndex").toInt(),0);
     QVERIFY(captionMatches(0));
     home->setVisible(false);
-    window->setProperty("motionEnabled",true);
+    setMotionEnabled(window, true);
     QVERIFY(!home->property("autoRunning").toBool());
     home->setVisible(true);
     item("navHome")->forceActiveFocus(Qt::TabFocusReason);
@@ -3090,11 +3097,11 @@ void QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     QVERIFY(!engine.rootObjects().isEmpty());
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
     QVERIFY(window);
-    window->setProperty("motionEnabled", false);
+    setMotionEnabled(window, false);
     auto item = [window](const QString &name) { return findVisualItem(window->contentItem(), name); };
     auto click = [&](const QString &name) {
         auto button = item(name);
@@ -3410,7 +3417,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml"));
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml"));
     qInstallMessageHandler(previousHandler);
     QVERIFY2(!engine.rootObjects().isEmpty(), qPrintable(interfaceWarnings.join('\n')));
     auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
@@ -3421,7 +3428,7 @@ void QmlInterfaceTests::navigateAndConfirmAnswers()
     QDir().mkpath("previews");
     QVERIFY(applicationIcon.pixmap(256, 256).toImage().save("previews/window-icon.png"));
     window->setIcon(applicationIcon);
-    window->setProperty("motionEnabled", false);
+    setMotionEnabled(window, false);
     QDir().mkpath("previews");
     auto snapshot = [window](const QString &name) {
         QTest::qWait(80);
@@ -3901,9 +3908,9 @@ void QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
     GameController second(nullptr,path);
     DiscordRichPresence presence{QString(),QString()}; QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController",&controller); engine.rootContext()->setContextProperty("discordPresence",&presence);
-    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    installTestAppServices(engine); engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
     auto window=qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
-    window->setProperty("motionEnabled", false);
+    setMotionEnabled(window, false);
     // Exploration does not consume, replace or hide a recoverable session.
     QVERIFY(QDir().mkpath("previews/navigation"));
     for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
@@ -3935,5 +3942,330 @@ void QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
     QVERIFY(window->close());
 }
 
-QTEST_MAIN(QmlInterfaceTests)
+void QmlInterfaceTests::profileSettingsPreferencesKeyboardAndCaptures()
+{
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; const auto path = dir.filePath("settings.sqlite");
+    GameController controller(nullptr, path); DiscordRichPresence presence{QString(), QString()};
+    // Confirm real progress before creating the notification subscriber.
+    QVERIFY(controller.startTaxonGame({}, "genus")); controller.answerSelected(notificationAnswer(controller));
+    controller.nextQuestion(); controller.stopGame();
+    QVERIFY(controller.startTaxonGame({}, "genus")); controller.answerSelected(notificationAnswer(controller));
+    const auto owner = controller.currentPlayerId(), sessionOwner = controller.sessionPlayerId();
+    const auto sessionName = controller.sessionPlayerName();
+    const auto achievements = controller.achievements(); const auto metrics = controller.playerMetrics();
+    const auto score = controller.scoreUnits(); const auto sessionMetrics = controller.sessionMetrics();
+    const auto recordScore = controller.personalRecord()["scoreUnits"];
+    const auto connection = QStringLiteral("settings-preservation");
+    auto db = QSqlDatabase::addDatabase("QSQLITE", connection); db.setDatabaseName(path); QVERIFY(db.open());
+    const auto checkpointSnapshot = [&] {
+        QVariantList rows; QSqlQuery query(db);
+        if (!query.exec("SELECT id,player_id,state,revision,payload,sha256,created_at,updated_at FROM session_checkpoints ORDER BY id")) return rows;
+        while (query.next()) { QVariantList row; for (int i = 0; i < 8; ++i) row << query.value(i); rows << QVariant(row); }
+        return rows;
+    };
+    const auto checkpoints = checkpointSnapshot(); QVERIFY(!checkpoints.isEmpty());
+    AppPreferences preferences(dir.filePath("preferences.ini"));
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get();
+    AchievementAudio audio(preferences, std::move(output));
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences);
+    engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->requestActivate(); QTest::qWait(100); window->setProperty("page", "settings");
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    QTRY_VERIFY(item("profileNameField")); QTRY_VERIFY(audio.presentationAllowed());
+    const auto activate = [&](const QString &name) {
+        auto control = item(name); if (!control) return false;
+        control->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80);
+        QTest::keyClick(window, Qt::Key_Space); return true;
+    };
+    item("profileNameField")->setProperty("text", "   "); QVERIFY(activate("renameLocalUserButton"));
+    QCOMPARE(controller.currentPlayerId(), owner); QVERIFY(controller.currentPlayerName() != "   ");
+    item("profileNameField")->setProperty("text", "Meu Glossata"); QVERIFY(activate("renameLocalUserButton"));
+    QCOMPARE(controller.currentPlayerName(), QString("Meu Glossata")); QCOMPARE(controller.currentPlayerId(), owner);
+    QCOMPARE(controller.sessionPlayerId(), sessionOwner); QCOMPARE(controller.sessionPlayerName(), sessionName);
+    QCOMPARE(controller.achievements(), achievements); QCOMPARE(controller.playerMetrics(), metrics);
+    QCOMPARE(controller.personalRecord()["scoreUnits"], recordScore); QCOMPARE(controller.scoreUnits(), score);
+    QCOMPARE(controller.sessionMetrics(), sessionMetrics); QCOMPARE(checkpointSnapshot(), checkpoints);
+    QSqlQuery version(db); QVERIFY(version.exec("PRAGMA user_version")); QVERIFY(version.next()); QCOMPARE(version.value(0).toInt(), 8);
+    version.finish(); db.close(); db = QSqlDatabase(); QSqlDatabase::removeDatabase(connection);
+
+    QVERIFY(activate("motionSwitch")); QTRY_VERIFY(!preferences.motionEnabled());
+    QCOMPARE(window->property("motionEnabled").toBool(), false);
+    QTest::keyClick(window, Qt::Key_Tab); QTRY_VERIFY(item("achievementSoundsSwitch")->hasActiveFocus());
+    QTest::keyClick(window, Qt::Key_Space); QTRY_VERIFY(preferences.achievementSoundsEnabled());
+    QTest::keyClick(window, Qt::Key_Tab); QTRY_VERIFY(item("effectsVolumeSlider")->hasActiveFocus());
+    auto slider = item("effectsVolumeSlider"); QVERIFY(slider->property("visualFocus").toBool());
+    QTest::keyClick(window, Qt::Key_Home); QTRY_COMPARE(preferences.effectsVolume(), 0);
+    QVERIFY(!item("previewAchievementSoundButton")->isEnabled());
+    QTest::keyClick(window, Qt::Key_End); QTRY_COMPARE(preferences.effectsVolume(), 100);
+    QTest::keyClick(window, Qt::Key_Left); QTRY_COMPARE(preferences.effectsVolume(), 99);
+    preferences.setEffectsVolume(35); preferences.setAchievementSoundsEnabled(false);
+    QVERIFY(activate("previewAchievementSoundButton")); QCOMPARE(device->plays, 1); QCOMPARE(device->lastVolume, 0.35f);
+    QCOMPARE(controller.achievements(), achievements); QCOMPARE(controller.currentPlayerId(), owner);
+    QVERIFY(preferences.flush());
+    { AppPreferences reopened(dir.filePath("preferences.ini")); QVERIFY(!reopened.motionEnabled());
+      QVERIFY(!reopened.achievementSoundsEnabled()); QCOMPARE(reopened.effectsVolume(), 35); }
+    window->setProperty("page", "home"); QTest::qWait(100); window->setProperty("page", "settings");
+    QTRY_VERIFY(item("motionSwitch")); QVERIFY(!item("motionSwitch")->property("checked").toBool());
+
+    const auto folder = "previews/profile-settings/" + QString::number(qRound(window->devicePixelRatio() * 100));
+    QVERIFY(QDir().mkpath(folder)); QJsonArray frames;
+    const auto capture = [&](const QString &state) {
+        QTest::qWait(100); const auto image = window->grabWindow();
+        const auto file = state + "-" + QString::number(window->width()) + "x" + QString::number(window->height()) + ".png";
+        if (image.isNull() || !image.save(folder + "/" + file)) return false;
+        frames.append(QJsonObject{{"file", file}, {"state", state}, {"logicalWidth", window->width()}, {"logicalHeight", window->height()},
+            {"width", image.width()}, {"height", image.height()}, {"devicePixelRatio", window->devicePixelRatio()},
+            {"temporary_database", true}, {"temporary_preferences", true}, {"audio_output", "recording-fake"},
+            {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});
+        return true;
+    };
+    for (const QSize size : {QSize(1000,700), QSize(1240,820), QSize(1920,1080)}) {
+        window->resize(size); QTest::qWait(100);
+        qreal previousBottom = -1;
+        for (const auto &name : {"settingsProfileSection", "settingsInterfaceSection", "settingsAudioSection", "settingsIntegrationsSection", "settingsInformationSection"}) {
+            auto section = item(name); QVERIFY(section); const auto rect = section->mapRectToItem(item("settingsView"), section->boundingRect());
+            QVERIFY(rect.top() > previousBottom); previousBottom = rect.bottom();
+            QVERIFY(rect.left() >= 0); QVERIFY(rect.right() < window->width());
+        }
+        auto scroll = item("pageScroll"); QVERIFY(scroll); scroll->setProperty("contentY", 0);
+        QVERIFY(capture("profile-top"));
+        slider = item("effectsVolumeSlider"); slider->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(100);
+        const auto sliderBounds = slider->mapRectToScene(slider->boundingRect());
+        const auto viewport = scroll->mapRectToScene(scroll->boundingRect());
+        QVERIFY(viewport.contains(sliderBounds));
+        auto handle = slider->property("handle").value<QQuickItem *>(); QVERIFY(handle);
+        QCOMPARE(QQmlProperty(handle, "border.color").read().value<QColor>(), QColor("#F1D58B"));
+        QVERIFY(capture("audio-keyboard-focus"));
+        item("creditsButton")->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(100);
+        QVERIFY(viewport.contains(item("creditsButton")->mapRectToScene(item("creditsButton")->boundingRect())));
+        const auto motionRight = item("motionSwitch")->mapRectToScene(item("motionSwitch")->boundingRect()).right();
+        const auto soundRight = item("achievementSoundsSwitch")->mapRectToScene(item("achievementSoundsSwitch")->boundingRect()).right();
+        const auto discordRight = item("discordPresenceSwitch")->mapRectToScene(item("discordPresenceSwitch")->boundingRect()).right();
+        QVERIFY(qAbs(motionRight - soundRight) < 1); QVERIFY(qAbs(soundRight - discordRight) < 1);
+        QVERIFY(capture("information-bottom"));
+    }
+    QFile manifest(folder + "/captures.json"); QVERIFY(manifest.open(QIODevice::WriteOnly)); manifest.write(QJsonDocument(frames).toJson());
+    QVERIFY(activate("creditsButton")); QTRY_COMPARE(window->property("page").toString(), QString("credits"));
+    QVERIFY(!presence.enabled()); QCOMPARE(controller.achievements(), achievements);
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::achievementSoundsFollowPresentationOnly()
+{
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; const auto path = dir.filePath("audio-notifications.sqlite");
+    GameController controller(nullptr, path); DiscordRichPresence presence{QString(), QString()};
+    AppPreferences preferences(dir.filePath("preferences.ini")); preferences.setAchievementSoundsEnabled(true);
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get();
+    qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller); engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences); engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window); window->requestActivate();
+    setMotionEnabled(window, false); auto layer = findVisualItem(window->contentItem(), "achievementNotificationLayer"); QVERIFY(layer);
+    QTRY_VERIFY(audio.presentationAllowed()); QCOMPARE(device->plays, 0);
+    QSignalSpy presented(layer, SIGNAL(notificationPresented(QString))); QSignalSpy unlocked(&controller, &GameController::achievementUnlocked);
+    QVERIFY(controller.startTaxonGame({}, "genus")); controller.answerSelected(notificationAnswer(controller));
+    QCOMPARE(unlocked.size(), 2); QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1);
+    controller.achievementUnlocked(unlocked.first().first().toMap()); QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1);
+    now += AchievementAudio::MinimumIntervalMs;
+    layer->setProperty("surfaceAvailable", false); QTRY_VERIFY(!audio.presentationAllowed());
+    controller.exploreTaxon(notificationVisitTaxon());
+    QVERIFY(controller.recordExplorationVisit(notificationVisitTaxon())); QCOMPARE(unlocked.size(), 4);
+    QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1);
+    layer->setProperty("surfaceAvailable", true); QTRY_VERIFY(audio.presentationAllowed());
+    QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1); // Queued behind two existing cards.
+    const auto first = unlocked.first().first().toMap(); const auto key = controller.currentPlayerId() + ":" + first["id"].toString();
+    QVERIFY(QMetaObject::invokeMethod(layer, "complete", Q_ARG(QVariant, key), Q_ARG(QVariant, "manual")));
+    QCOMPARE(presented.size(), 3); QCOMPARE(device->plays, 2);
+    window->hide(); QTRY_VERIFY(!audio.presentationAllowed()); window->show(); window->requestActivate();
+    QTRY_VERIFY(audio.presentationAllowed()); QCOMPARE(device->plays, 2);
+    window->setProperty("page", "quiz"); window->setProperty("page", "achievements");
+    QTest::qWait(80); QCOMPARE(presented.size(), 3); QCOMPARE(device->plays, 2);
+    // Reopening the actual controller re-evaluates history without unlock events/audio.
+    GameController reopened(nullptr, path); QSignalSpy historical(&reopened, &GameController::achievementUnlocked);
+    engine.rootContext()->setContextProperty("gameController", &reopened); window->setProperty("backend", QVariant::fromValue(&reopened));
+    QTest::qWait(80); QCOMPARE(historical.size(), 0); QCOMPARE(device->plays, 2);
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::settingsPersistenceRecovery_data()
+{
+    QTest::addColumn<QString>("fixture");
+    for (const auto &name : {"valid", "invalid-volume", "invalid-boolean", "multiple-invalid", "malformed", "write-failure"})
+        QTest::newRow(name) << QString::fromLatin1(name);
+}
+
+void QmlInterfaceTests::settingsPersistenceRecovery()
+{
+    QFETCH(QString, fixture);
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; const auto folder = dir.filePath("settings"); QVERIFY(QDir().mkdir(folder));
+    const auto path = folder + "/preferences.ini";
+    const bool malformed = fixture == "malformed", writeFailure = fixture == "write-failure";
+    const bool recoverable = fixture.startsWith("invalid-") || fixture == "multiple-invalid";
+    const bool expectedMotion = malformed || fixture == "invalid-boolean" || fixture == "multiple-invalid";
+    const bool expectedSounds = !malformed && fixture != "multiple-invalid";
+    const int expectedVolume = malformed || fixture == "invalid-volume" || fixture == "multiple-invalid" ? 35 : writeFailure ? 64 : 72;
+    if (malformed) {
+        QFile file(path); QVERIFY(file.open(QIODevice::WriteOnly)); file.write("[broken\nkey=value\n");
+    } else {
+        QSettings settings(path, QSettings::IniFormat);
+        settings.setValue("interface/motionEnabled", expectedMotion ? QVariant("maybe") : QVariant(false));
+        settings.setValue("audio/achievementSoundsEnabled", fixture == "multiple-invalid" ? QVariant("yes") : QVariant(true));
+        settings.setValue("audio/effectsVolume", expectedVolume == 35 ? QVariant(-1) : QVariant(72));
+        settings.setValue("future/untouched", "keep"); settings.sync(); QCOMPARE(settings.status(), QSettings::NoError);
+    }
+    QByteArray original;
+    { QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); original = file.readAll(); }
+    AppPreferences preferences(path);
+    const auto backup = dir.filePath("preserved-settings");
+    if (writeFailure) {
+        QVERIFY(QDir().rename(folder, backup));
+        { QFile blocker(folder); QVERIFY(blocker.open(QIODevice::WriteOnly)); blocker.write("temporary write blocker"); }
+        preferences.setEffectsVolume(64); QVERIFY(!preferences.flush());
+    }
+    GameController controller(nullptr, dir.filePath("settings-recovery.sqlite"));
+    const auto owner = controller.currentPlayerId(); const auto achievements = controller.achievements();
+    QSignalSpy unlocked(&controller, &GameController::achievementUnlocked);
+    DiscordRichPresence presence{QString(), QString()};
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get();
+    AchievementAudio audio(preferences, std::move(output));
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences);
+    engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->requestActivate(); QTest::qWait(100); window->setProperty("page", "settings");
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    QTRY_VERIFY(item("settingsPersistenceError")); QTest::qWait(300);
+    auto message = item("settingsPersistenceError"), retry = item("retryPreferencesSaveButton"); QVERIFY(message && retry);
+    QCOMPARE(message->isVisible(), fixture != "valid");
+    QCOMPARE(retry->isVisible(), recoverable || writeFailure);
+    QCOMPARE(preferences.recoveryPending(), recoverable);
+    QCOMPARE(preferences.canRetryPersistence(), recoverable || writeFailure);
+    QCOMPARE(preferences.motionEnabled(), expectedMotion); QCOMPARE(preferences.achievementSoundsEnabled(), expectedSounds);
+    QCOMPARE(preferences.effectsVolume(), expectedVolume);
+    QCOMPARE(message->property("text").toString(), preferences.persistenceError());
+    auto scroll = item("pageScroll"); QVERIFY(scroll);
+    scroll->setProperty("contentY", qMax(0., scroll->property("contentHeight").toReal() - scroll->height()));
+    const QString captures = "previews/profile-settings-persistence-fix"; QVERIFY(QDir().mkpath(captures)); QJsonArray frames;
+    const auto capture = [&](const QString &state) {
+        QTest::qWait(100); const auto image = window->grabWindow(); const auto file = fixture + "-" + state + ".png";
+        if (image.isNull() || !image.save(captures + "/" + file)) return false;
+        frames.append(QJsonObject{{"file", file}, {"logicalWidth", window->width()}, {"logicalHeight", window->height()},
+            {"width", image.width()}, {"height", image.height()}, {"devicePixelRatio", window->devicePixelRatio()},
+            {"temporary_database", true}, {"temporary_preferences", true}, {"audio_output", "recording-fake"},
+            {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});
+        return true;
+    };
+    if (fixture != "valid") QVERIFY(capture("before"));
+    if (recoverable || writeFailure) {
+        if (writeFailure) {
+            QVERIFY(preferences.persistenceError().contains(QStringLiteral("Não foi possível salvar")));
+            QVERIFY(QFile::rename(folder, dir.filePath("preserved-write-blocker"))); QVERIFY(QDir().rename(backup, folder));
+        } else {
+            QVERIFY(preferences.persistenceError().contains(QStringLiteral("temporários")));
+            QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); QCOMPARE(file.readAll(), original);
+        }
+        // Activate the real QML button by keyboard, without changing a preference.
+        retry->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80); QTest::keyClick(window, Qt::Key_Space);
+        QTRY_VERIFY(preferences.persistenceError().isEmpty()); QVERIFY(!preferences.recoveryPending());
+        QVERIFY(!preferences.canRetryPersistence()); QTRY_VERIFY(!retry->isVisible()); QVERIFY(!message->isVisible());
+        QCOMPARE(controller.currentPlayerId(), owner); QCOMPARE(controller.achievements(), achievements);
+        AppPreferences reopened(path);
+        QCOMPARE(reopened.motionEnabled(), expectedMotion); QCOMPARE(reopened.achievementSoundsEnabled(), expectedSounds);
+        QCOMPARE(reopened.effectsVolume(), expectedVolume); QVERIFY(reopened.persistenceError().isEmpty());
+        QCOMPARE(QSettings(path, QSettings::IniFormat).value("future/untouched").toString(), QString("keep"));
+        QVERIFY(capture("saved"));
+    } else {
+        QCOMPARE(preferences.retrySave(), !malformed);
+        QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); QCOMPARE(file.readAll(), original);
+        if (malformed) QVERIFY(preferences.persistenceError().contains(QStringLiteral("fora do aplicativo")));
+    }
+    if (!frames.isEmpty()) {
+        QFile manifest(captures + "/" + fixture + ".json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+        manifest.write(QJsonDocument(frames).toJson());
+    }
+    QCOMPARE(device->plays, 0); QCOMPARE(unlocked.size(), 0); QVERIFY(!presence.enabled());
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::achievementPreviewBusyFeedback()
+{
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; GameController controller(nullptr, dir.filePath("preview.sqlite"));
+    DiscordRichPresence presence{QString(), QString()}; AppPreferences preferences(dir.filePath("preferences.ini"));
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get(); device->simulatePlayback = true;
+    AchievementAudio audio(preferences, std::move(output)); QSignalSpy ended(&audio, &AchievementAudio::playbackEnded);
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller); engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences); engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->requestActivate(); QTest::qWait(100); window->setProperty("page", "settings");
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    QTRY_VERIFY(item("previewAchievementSoundButton")); auto button = item("previewAchievementSoundButton");
+    QTRY_VERIFY(button->isEnabled()); const auto width = button->width(), sliderWidth = item("effectsVolumeSlider")->width();
+    const auto owner = controller.currentPlayerId(); const auto achievements = controller.achievements();
+    button->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80); QTest::keyClick(window, Qt::Key_Space);
+    QTRY_COMPARE(device->plays, 1); QTRY_VERIFY(!button->isEnabled()); QVERIFY(audio.playing());
+    QCOMPARE(button->property("text").toString(), QStringLiteral("Reproduzindo…"));
+    QTest::keyClick(window, Qt::Key_Space); QVERIFY(!audio.preview()); QCOMPARE(device->plays, 1); QCOMPARE(device->stops, 0);
+    QCOMPARE(button->width(), width); QCOMPARE(item("effectsVolumeSlider")->width(), sliderWidth);
+    QVERIFY(QDir().mkpath("previews/audio-refinement"));
+    QTest::qWait(150); // Let the existing page fade finish before recording the real busy state.
+    QVERIFY(window->grabWindow().save("previews/audio-refinement/preview-playing.png"));
+    device->finishNaturally(); QCOMPARE(ended.first()[0].toString(), QString("finished"));
+    QCOMPARE(button->property("text").toString(), QStringLiteral("Aguarde…")); QVERIFY(!button->isEnabled());
+    QTRY_VERIFY_WITH_TIMEOUT(button->isEnabled(), AchievementAudio::MinimumIntervalMs + 1000);
+    QCOMPARE(button->property("text").toString(), QString("Testar som"));
+    button->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Space); QCOMPARE(device->plays, 2);
+    preferences.setEffectsVolume(0); QCOMPARE(device->stops, 1); QCOMPARE(ended.last()[0].toString(), QString("volume-zero"));
+    QVERIFY(!button->isEnabled()); QCOMPARE(controller.currentPlayerId(), owner); QCOMPARE(controller.achievements(), achievements);
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+// Opt-in interactive use of the production QML/controller/audio path, with
+// temporary databases/preferences and Discord never started. CTest does not
+// enter this branch; its audio tests keep using RecordingEffectOutput.
+int main(int argc, char *argv[])
+{
+    QGuiApplication app(argc, argv);
+    app.setAttribute(Qt::AA_Use96Dpi, true); // Preserve the previous QTEST_MAIN setup.
+    if (app.arguments().contains(QStringLiteral("--manual-audio"))) {
+        qputenv("QT_QUICK_CONTROLS_STYLE", "Basic"); qputenv("GLOSSATA_AUDIO_TRACE", "1");
+        app.setApplicationName(QStringLiteral("glossata_audio_diagnostic"));
+        QTemporaryDir dir; if (!dir.isValid()) return 4;
+        GameController controller(nullptr, dir.filePath("manual.sqlite"));
+        AppPreferences preferences(dir.filePath("preferences.ini"));
+        DiscordRichPresence presence{QString(), QString()}; AchievementAudio audio(preferences);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, &preferences, &AppPreferences::flush);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, &controller, &GameController::prepareToClose);
+        QQmlApplicationEngine engine;
+        engine.rootContext()->setContextProperty("gameController", &controller); engine.rootContext()->setContextProperty("discordPresence", &presence);
+        engine.rootContext()->setContextProperty("appPreferences", &preferences); engine.rootContext()->setContextProperty("achievementAudio", &audio);
+        engine.setInitialProperties({{"page", QStringLiteral("settings")}});
+        engine.load(QUrl("qrc:/resources/qml/Main.qml")); if (engine.rootObjects().isEmpty()) return 5;
+        engine.rootObjects().first()->setProperty("title", QStringLiteral("Glossata · diagnóstico de áudio · dados temporários"));
+        if (app.arguments().contains(QStringLiteral("--smoke-test"))) QTimer::singleShot(600, &app, &QCoreApplication::quit);
+        return app.exec();
+    }
+    QmlInterfaceTests tests;
+    QTEST_SET_MAIN_SOURCE_PATH
+    return QTest::qExec(&tests, argc, argv);
+}
 #include "QmlInterfaceTests.moc"

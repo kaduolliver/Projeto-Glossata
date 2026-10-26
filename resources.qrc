@@ -1,4 +1,7 @@
 <RCC>
+  <qresource prefix="/">
+    <file>resources/audio/achievement.wav</file>
+  </qresource>
     <qresource prefix="/">
         <file>resources/data/species.json</file>
         <file>resources/data/catalog_manifest.json</file>

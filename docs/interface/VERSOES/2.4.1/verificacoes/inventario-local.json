@@ -1,0 +1,67 @@
+{
+  "mode": "non-destructive inventory",
+  "measured_at": "2026-10-26T17:33:49.173867+00:00",
+  "cleanup_applied": false,
+  "automatic_deletion_authorized": false,
+  "default_dry_run_eligible_candidates": 0,
+  "include_old_builds_dry_run_eligible_candidates": 0,
+  "entries": [
+    {
+      "path": "build/profile-settings-2-4-1",
+      "bytes": 323617479,
+      "files": 7,
+      "reason": "Executables used for final verification and capture provenance.",
+      "risk": "high",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "build/profile-settings-package",
+      "bytes": 329033997,
+      "files": 2211,
+      "reason": "Initial local package and diagnosed QML import failure; preserved evidence.",
+      "risk": "high",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "build/profile-settings-package-verified",
+      "bytes": 329034060,
+      "files": 2211,
+      "reason": "Fresh package produced by the corrected script; isolated smoke evidence.",
+      "risk": "high",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "build/2.3.2-cores-dicas",
+      "bytes": 323614407,
+      "files": 7,
+      "reason": "Initial build inherited a previous runtime output directory; recent redundant binaries requiring review.",
+      "risk": "high",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "previews/profile-settings",
+      "bytes": 3024532,
+      "files": 30,
+      "reason": "Original 27 capture frames, also copied to versioned documentation; duplicate evidence.",
+      "risk": "medium",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1363308,
+      "files": 57,
+      "reason": "Regenerable Python bytecode cache.",
+      "risk": "low",
+      "action": "preserve; explicit user authorization required before cleanup"
+    },
+    {
+      "path": "scripts/scientific_sources/__pycache__",
+      "bytes": 221517,
+      "files": 23,
+      "reason": "Regenerable Python bytecode cache.",
+      "risk": "low",
+      "action": "preserve; explicit user authorization required before cleanup"
+    }
+  ],
+  "protected": "resources/, package/, user data/SQLite, governance history and all versioned documents/captures remain preserved."
+}

@@ -1,0 +1,176 @@
+{
+  "mode": "dry-run",
+  "root": "C:\\glossata_game",
+  "candidates": [],
+  "skipped": [
+    {
+      "path": "build/tests/previews/navigation",
+      "category": "generated-previews",
+      "bytes": 6427331,
+      "last_modified": 1793055755,
+      "reason": "retained newest"
+    },
+    {
+      "path": "build/tests/previews/carousel",
+      "category": "generated-previews",
+      "bytes": 9623760,
+      "last_modified": 1793055697,
+      "reason": "retained newest"
+    },
+    {
+      "path": "build/tests/previews/daily-discovery",
+      "category": "generated-previews",
+      "bytes": 5338784,
+      "last_modified": 1793055679,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2",
+      "category": "generated-previews",
+      "bytes": 6906133,
+      "last_modified": 1793055671,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-round-1",
+      "category": "generated-previews",
+      "bytes": 6094828,
+      "last_modified": 1793055655,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-creditos",
+      "category": "generated-previews",
+      "bytes": 4812851,
+      "last_modified": 1793055634,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-usabilidade",
+      "category": "generated-previews",
+      "bytes": 12302588,
+      "last_modified": 1793055507,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/play-2.2.3",
+      "category": "generated-previews",
+      "bytes": 23860109,
+      "last_modified": 1793055482,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/play-context-2.2.3",
+      "category": "generated-previews",
+      "bytes": 13605384,
+      "last_modified": 1793055457,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/play-compact-2.2.3",
+      "category": "generated-previews",
+      "bytes": 11146673,
+      "last_modified": 1793055425,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/species-description-independent-2.3.1",
+      "category": "generated-previews",
+      "bytes": 8406393,
+      "last_modified": 1793055409,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/quiz-restored-2.3.1",
+      "category": "generated-previews",
+      "bytes": 47381809,
+      "last_modified": 1793055403,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/statistics-colors-hints-2.3.2",
+      "category": "generated-previews",
+      "bytes": 8396840,
+      "last_modified": 1793055379,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/single-local-user",
+      "category": "generated-previews",
+      "bytes": 2086637,
+      "last_modified": 1793055374,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/achievements-filterbar",
+      "category": "generated-previews",
+      "bytes": 5261738,
+      "last_modified": 1793055369,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/achievement-notifications-quiz-compact",
+      "category": "generated-previews",
+      "bytes": 10812866,
+      "last_modified": 1793055299,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/profile-settings",
+      "category": "generated-previews",
+      "bytes": 714898,
+      "last_modified": 1793055256,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/profile-settings-persistence-fix",
+      "category": "generated-previews",
+      "bytes": 671790,
+      "last_modified": 1793055252,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/audio-refinement",
+      "category": "generated-previews",
+      "bytes": 71819,
+      "last_modified": 1793055244,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/statistics-2.3.2",
+      "category": "generated-previews",
+      "bytes": 12530174,
+      "last_modified": 1792714097,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/statistics-top-2.3.2",
+      "category": "generated-previews",
+      "bytes": 7262872,
+      "last_modified": 1792714079,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/quiz-2.3.1",
+      "category": "generated-previews",
+      "bytes": 25994339,
+      "last_modified": 1792686410,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-final",
+      "category": "generated-previews",
+      "bytes": 8702303,
+      "last_modified": 1792610175,
+      "reason": "recently modified"
+    },
+    {
+      "path": "build/tests/previews/explore-2.2.2-round-2",
+      "category": "generated-previews",
+      "bytes": 8086062,
+      "last_modified": 1792551808,
+      "reason": "recently modified"
+    }
+  ],
+  "total_bytes": 0
+}

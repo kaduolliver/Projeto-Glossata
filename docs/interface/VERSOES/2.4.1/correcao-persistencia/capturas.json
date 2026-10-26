@@ -1,0 +1,72 @@
+{
+  "method": "QQuickWindow::grabWindow of production QML/controller in the isolated Qt UI test harness",
+  "recorded_at": "2026-10-26T21:48:47.944442+00:00",
+  "base_pr_commit": "1d390721af009543e04719c16b75450aac172354",
+  "application_version": "2.3.0",
+  "rendering": "Qt offscreen/software, Basic controls, scale 1",
+  "production_binary_sha256": "9656881f01df31b86cdc0d7008f9b4eb3892f43c01ae61c55457984e17de18c7",
+  "ui_test_binary_sha256": "f8a7316aa6c4cac2e7e0c1f920d12681b944b0dd023617ed9f206acea1fad8cc",
+  "source_sha256": {
+    "src/presentation/AppPreferences.cpp": "9f1fd33057f4520c44dfc22bc12382cf48d3ea28d8f3797c36992d56401775f4",
+    "src/presentation/AppPreferences.h": "d5222874e31d123e76b76e3fec353b332321fdff7eb7110f57afb3ccea492d97",
+    "resources/qml/views/SettingsView.qml": "ddbb6a21c6bc1f1af907adc84ca32d686e283a63a0f12d64b7b523c457d1b613",
+    "resources/qml/Main.qml": "98fd11a7d02f8429380df5264cf49d9ce43b4be3ab160c8e4e1b438d600d212f",
+    "resources/qml/style/Theme.qml": "8c82b8cb94cc383a30ef445a6302296e6156788c5cf31ab810196b7d1f562f14",
+    "tests/PreferencesAudioTests.cpp": "bcec5c4ca8becccca347531b72db7532f10f4f2000ca63e6029e6689f96cac7c",
+    "tests/QmlInterfaceTests.cpp": "ef9511b70580b153ba2a200921c57176ce8aa443448b1640fae9685650ffe5e9"
+  },
+  "frames": [
+    {
+      "audio_output": "recording-fake",
+      "captured_at": "2026-10-26T21:38:59.295Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/invalid-volume-before.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "temporary_database": true,
+      "temporary_preferences": true,
+      "width": 1240,
+      "sha256": "07537f164079ae04171a11377bb4a497d328d0abe86577e0c5352ecc81b6aabb"
+    },
+    {
+      "audio_output": "recording-fake",
+      "captured_at": "2026-10-26T21:38:59.525Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/invalid-volume-saved.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "temporary_database": true,
+      "temporary_preferences": true,
+      "width": 1240,
+      "sha256": "492d8ef33330b3ad5eaaa087b99403779d82e9a44e5e3c408f0174e621823a99"
+    },
+    {
+      "audio_output": "recording-fake",
+      "captured_at": "2026-10-26T21:39:03.126Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/malformed-before.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "temporary_database": true,
+      "temporary_preferences": true,
+      "width": 1240,
+      "sha256": "d3cab78ba2b961d3e346e79b94b8a37d16553255947f05c2c52d07833a109303"
+    },
+    {
+      "audio_output": "recording-fake",
+      "captured_at": "2026-10-26T21:39:04.135Z",
+      "devicePixelRatio": 1,
+      "file": "capturas/write-failure-before.png",
+      "height": 820,
+      "logicalHeight": 820,
+      "logicalWidth": 1240,
+      "temporary_database": true,
+      "temporary_preferences": true,
+      "width": 1240,
+      "sha256": "458c0108c9eb7c42a699698623e265f78e83fd056f7818977f079d1914c96069"
+    }
+  ]
+}

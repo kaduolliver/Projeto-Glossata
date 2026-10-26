@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Program Files\\Python311\\python.exe",
+    "scripts/distribution.py",
+    "check",
+    "--package",
+    "build/profile-settings-package-verified"
+  ],
+  "exit_code": 2,
+  "stdout": "DISTRIBUIÇÃO BLOQUEADA. Permissões/revisões/obrigações pendentes; consulte build/distribution-audit.json.",
+  "stderr": "",
+  "finding_counts": {
+    "technical_errors": 0,
+    "photo_licensing": 120,
+    "asset_licensing": 0,
+    "unbundled_media": 2,
+    "scientific_findings": 730,
+    "assistance_findings": 290,
+    "dependency_errors": 283,
+    "scientific_release_blocks": 275
+  },
+  "distribution_blocked": true,
+  "new_audio_and_code_licensing_decision_pending": true
+}

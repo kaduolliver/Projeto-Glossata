@@ -1,0 +1,142 @@
+{
+  "recorded_at": "2026-10-26T21:57:51.850156+00:00",
+  "base_pr_commit": "1d390721af009543e04719c16b75450aac172354",
+  "application_version": "2.3.0 (unreleased)",
+  "catalog_version": "2.4.0",
+  "sqlite_schema": 8,
+  "ctest": {
+    "passed": 28,
+    "total": 28,
+    "failed": 0,
+    "seconds": 681.47,
+    "report": "persistencia-ctest-completo.txt"
+  },
+  "qt_cases": {
+    "preferences_audio": 22,
+    "affected_interface": 10,
+    "full_interface": 45,
+    "core": 86,
+    "identity": 38,
+    "recovery": 21
+  },
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "build"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"consistent\": true, \"errors\": [], \"tests_executed_by_this_command\": false, \"publication_verified\": false, \"distribution_gate_evaluated\": false}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "exit_code": 0,
+      "stdout": "{'code_license_errors': [], 'ownership_or_scientific_approval': False}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "qmllint",
+        "resources\\qml\\components\\AchievementBadge.qml",
+        "resources\\qml\\components\\AchievementNotification.qml",
+        "resources\\qml\\components\\AchievementNotificationLayer.qml",
+        "resources\\qml\\components\\EndGameDialog.qml",
+        "resources\\qml\\components\\ExploreCard.qml",
+        "resources\\qml\\components\\FeatheredPhoto.qml",
+        "resources\\qml\\components\\HintPanel.qml",
+        "resources\\qml\\components\\KingdomArtwork.qml",
+        "resources\\qml\\components\\LifeArtwork.qml",
+        "resources\\qml\\components\\NavItem.qml",
+        "resources\\qml\\components\\PlayModeSelector.qml",
+        "resources\\qml\\components\\SpeciesArtwork.qml",
+        "resources\\qml\\components\\SpeciesPortrait.qml",
+        "resources\\qml\\components\\StatCard.qml",
+        "resources\\qml\\components\\TaxonComboBox.qml",
+        "resources\\qml\\components\\TextAction.qml",
+        "resources\\qml\\components\\UiButton.qml",
+        "resources\\qml\\components\\UiIcon.qml",
+        "resources\\qml\\Main.qml",
+        "resources\\qml\\style\\Theme.qml",
+        "resources\\qml\\views\\AchievementsView.qml",
+        "resources\\qml\\views\\CategoryView.qml",
+        "resources\\qml\\views\\CreditsView.qml",
+        "resources\\qml\\views\\FeedbackView.qml",
+        "resources\\qml\\views\\HomeView.qml",
+        "resources\\qml\\views\\InfoView.qml",
+        "resources\\qml\\views\\QuizView.qml",
+        "resources\\qml\\views\\ResultsView.qml",
+        "resources\\qml\\views\\SettingsView.qml",
+        "resources\\qml\\views\\StatisticsView.qml",
+        "resources\\qml\\views\\TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "protected_paths_unchanged": [
+    "resources/data",
+    "resources/compliance",
+    "resources/audio",
+    "src/infrastructure",
+    "src/domain",
+    "src/application",
+    "src/presentation/GameController.cpp",
+    "src/presentation/GameController.h",
+    "src/presentation/AchievementAudio.cpp",
+    "src/presentation/AchievementAudio.h",
+    "src/presentation/EffectOutput.cpp",
+    "src/presentation/EffectOutput.h",
+    "resources/qml/Main.qml",
+    "resources/qml/style",
+    "resources/qml/components",
+    "src/app",
+    "CMakeLists.txt",
+    "tests/CMakeLists.txt",
+    "scripts",
+    "VERSION.txt",
+    "docs/images"
+  ],
+  "governance_events_preserved": 1053,
+  "distribution_gate": {
+    "command": [
+      "C:\\Program Files\\Python311\\python.exe",
+      "scripts/distribution.py",
+      "check"
+    ],
+    "exit_code": 2,
+    "stdout": "DISTRIBUIÇÃO BLOQUEADA. Permissões/revisões/obrigações pendentes; consulte build/distribution-audit.json.",
+    "stderr": ""
+  },
+  "cleanup_applied": false,
+  "cleanup_eligible_candidates": 0,
+  "production_binary_sha256": "9656881f01df31b86cdc0d7008f9b4eb3892f43c01ae61c55457984e17de18c7",
+  "ui_test_binary_sha256": "f8a7316aa6c4cac2e7e0c1f920d12681b944b0dd023617ed9f206acea1fad8cc",
+  "preferences_test_binary_sha256": "484da30c8a14fe21d813dbc29a8a097ccae19d2e80d21270d238c5b7660a73b6",
+  "limitations": [
+    "Malformed INI requires external intervention and application restart.",
+    "Pending semantic recovery also requires explicit confirmation for other preference edits in that session.",
+    "External edits are not monitored during execution.",
+    "Existing distribution/licensing blocks remain unchanged."
+  ]
+}

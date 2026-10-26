@@ -41,9 +41,10 @@ ApplicationWindow {
     readonly property string currentSection: page === "explore" || (page === "taxonomy" && taxonomyContext === "explore")
                                              ? "explore" : (["categories", "taxonomy", "quiz", "feedback", "info", "results"].indexOf(page) >= 0
                                              ? "play" : (page === "credits" ? "settings" : page))
-    property bool motionEnabled: true
-    onMotionEnabledChanged: Style.Theme.motionEnabled = motionEnabled
-    Component.onCompleted: Style.Theme.motionEnabled = motionEnabled
+    property var preferences: appPreferences
+    property var effects: achievementAudio
+    readonly property bool motionEnabled: preferences.motionEnabled
+    Binding { target: Style.Theme; property: "motionEnabled"; value: root.motionEnabled }
     property bool sessionStarted: false
     property string lastGamePage: "quiz"
     onPageChanged: {
@@ -417,6 +418,7 @@ ApplicationWindow {
         }
     }
     AchievementNotificationLayer {
+        id: notificationLayer
         anchors.fill: parent
         z: 100
         app: root; backend: root.backend
@@ -424,7 +426,9 @@ ApplicationWindow {
         // Sum the real ancestor positions in the window, including layout margins.
         headerBottom: mainLayout.y + pageColumn.y + sectionHeader.y + sectionHeader.height
         surfaceAvailable: !root.Overlay.overlay.visible
+        onNotificationPresented: achievementId => root.effects.present(achievementId)
     }
+    Binding { target: root.effects; property: "presentationAllowed"; value: notificationLayer.presentationAllowed }
     NumberAnimation { id: screenFade; target: screen; property: "opacity"; from: 0; to: 1; duration: Style.Theme.durationPage }
     Component { id: homePage; HomeView { app: root; backend: root.backend } }
     Component { id: categoriesPage; CategoryView { app: root; backend: root.backend } }

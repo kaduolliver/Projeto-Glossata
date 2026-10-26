@@ -1,4 +1,5 @@
-param([string]$QtBin = 'C:\msys64\ucrt64\bin', [switch]$Development)
+param([string]$QtBin = 'C:\msys64\ucrt64\bin', [switch]$Development,
+      [string]$BuildBinary = '', [string]$PackageDirectory = '')
 
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -6,13 +7,23 @@ if (!$Development) {
     & python (Join-Path $PSScriptRoot 'distribution.py') check
     if ($LASTEXITCODE -ne 0) { throw 'Distribuição bloqueada por pendências de evidência. -Development prepara somente um pacote local de teste.' }
 }
-$packagePath = Join-Path $projectRoot 'package'
+$packagePath = if ($PackageDirectory) { [System.IO.Path]::GetFullPath($PackageDirectory) } else { Join-Path $projectRoot 'package' }
+if ($PackageDirectory) {
+    $workspacePrefix = [System.IO.Path]::GetFullPath($projectRoot).TrimEnd('\') + '\'
+    if (!$packagePath.StartsWith($workspacePrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw 'O diretório alternativo de validação deve permanecer dentro do projeto.'
+    }
+    if (Test-Path -LiteralPath $packagePath) {
+        throw 'Use um diretório alternativo novo para preservar pacotes e artefatos existentes.'
+    }
+}
 $executable = Join-Path $packagePath 'projeto_glossata.exe'
 $deployTool = Join-Path $QtBin 'windeployqt6.exe'
 $objdump = Join-Path $QtBin 'objdump.exe'
 New-Item -ItemType Directory -Path $packagePath -Force | Out-Null
 Set-Content -LiteralPath (Join-Path $packagePath 'LOCAL_DEVELOPMENT_ONLY.txt') -Encoding UTF8 -Value 'Pacote em preparação ou uso local de desenvolvimento. Não redistribuir sem concluir o gate de permissões e obrigações.'
-Copy-Item -LiteralPath (Join-Path $projectRoot 'build/projeto_glossata.exe') -Destination $executable -Force
+$sourceExecutable = if ($BuildBinary) { [System.IO.Path]::GetFullPath($BuildBinary) } else { Join-Path $projectRoot 'build/projeto_glossata.exe' }
+Copy-Item -LiteralPath $sourceExecutable -Destination $executable -Force
 Copy-Item -LiteralPath (Join-Path $projectRoot 'resources/data/discord.json') -Destination (Join-Path $packagePath 'discord.json') -Force
 $shortcutShell = New-Object -ComObject WScript.Shell
 $iconSource = Join-Path $projectRoot 'resources/branding/glossata.ico'
@@ -37,6 +48,12 @@ if (-not ('GlossataShellNotify' -as [type])) {
 [GlossataShellNotify]::SHChangeNotify(0x08000000, 0, $null, [IntPtr]::Zero)
 & $deployTool --release --verbose 0 --include-plugins qoffscreen --exclude-plugins qsqlibase,qsqlmysql,qsqlodbc,qsqlpsql --qmldir (Join-Path $projectRoot 'resources/qml') $executable
 if ($LASTEXITCODE -ne 0) { throw 'Falha no windeployqt6.' }
+if (!(Test-Path -LiteralPath (Join-Path $packagePath 'Qt6Multimedia.dll'))) {
+    throw 'Qt Multimedia ausente no pacote.'
+}
+# MSYS2's compiled import prefix points at its installation. Keep the package
+# relocatable and let the isolated smoke test resolve only deployed QML/plugins.
+Set-Content -LiteralPath (Join-Path $packagePath 'qt.conf') -Encoding Ascii -Value @('[Paths]', 'Prefix=.', 'Plugins=.', 'QmlImports=qml')
 
 # Remove unused SQL plugins left by earlier deployments; the game uses QSQLITE.
 foreach ($unusedDriver in 'qsqlibase.dll', 'qsqlmysql.dll', 'qsqlodbc.dll', 'qsqlpsql.dll') {

@@ -1,0 +1,57 @@
+{
+  "baseline_commit": "a2938f5d5609b1776b6373312a810374b4b280fb",
+  "before": {
+    "sha256": "dc62f483eb235b58ae59edf0e3a89f99e1cc6203a3a1ca58e2e9abf0a50b1e21",
+    "duration_seconds": 0.85,
+    "frames": 37485,
+    "bytes": 75014,
+    "peak_dbfs": -8.874,
+    "rms_dbfs": -21.15,
+    "clipped_samples": 0,
+    "first_sample": 0,
+    "last_sample": 0,
+    "max_adjacent_step": 0.045196533203125,
+    "trailing_zero_ms": 5.782,
+    "energy_quantile_seconds": {
+      "0.5": 0.130998,
+      "0.9": 0.28941,
+      "0.95": 0.342653,
+      "0.99": 0.465193
+    }
+  },
+  "after": {
+    "sha256": "08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80",
+    "duration_seconds": 1.2,
+    "frames": 52920,
+    "bytes": 105884,
+    "peak_dbfs": -8.874,
+    "rms_dbfs": -21.531,
+    "clipped_samples": 0,
+    "first_sample": 0,
+    "last_sample": 0,
+    "max_adjacent_step": 0.0491943359375,
+    "trailing_zero_ms": 6.825,
+    "energy_quantile_seconds": {
+      "0.5": 0.231134,
+      "0.9": 0.481814,
+      "0.95": 0.584989,
+      "0.99": 0.798231
+    }
+  },
+  "fundamental_dtft_dbfs": {
+    "before": {
+      "523.251": -25.376,
+      "659.255": -28.284,
+      "880": -29.969
+    },
+    "after": {
+      "523.251": -24.741,
+      "659.255": -27.042,
+      "880": -28.57
+    }
+  },
+  "hypothesis_A": "Valid complete PCM with no clipping. Fast exponential decay concentrates 95 percent of the old energy before 343 ms. New body and release are extended without appended silence. Perceptual approval still requires human listening.",
+  "hypothesis_B": "The previous output-list callback always stopped playback. It is now guarded by the effective default device ID. This possible interruption was identified in code; its occurrence on the user hardware has not been confirmed. Existing critical suspension/user interruption rules are preserved.",
+  "physical_auditory_validation_performed": false,
+  "pcm_analysis_method": "16-bit little-endian PCM normalized by 32768; RMS in 50 ms windows; energy quantiles; direct DTFT at listed frequencies; no physical audibility inference."
+}

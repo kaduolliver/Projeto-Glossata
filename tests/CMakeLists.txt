@@ -55,7 +55,7 @@ add_executable(glossata_ui_tests
     ${CMAKE_SOURCE_DIR}/resources.qrc
 )
 target_include_directories(glossata_ui_tests PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_link_libraries(glossata_ui_tests PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Test Qt6::Network)
+target_link_libraries(glossata_ui_tests PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Test Qt6::Network glossata_preferences)
 add_test(NAME GlossataInterfaceTests COMMAND glossata_ui_tests -o ${CMAKE_CURRENT_BINARY_DIR}/ui-test-results.txt,txt)
 set_tests_properties(GlossataInterfaceTests PROPERTIES
     ENVIRONMENT "QT_QPA_PLATFORM=offscreen;QT_QUICK_BACKEND=software;QT_QUICK_CONTROLS_STYLE=Basic"
@@ -126,3 +126,8 @@ add_test(NAME GlossataProjectStatusTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_C
 add_test(NAME GlossataGovernanceHistoryTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_governance_history.py)
 add_test(NAME GlossataRightsInvestigationTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_rights_investigation.py)
 add_test(NAME GlossataCatalogAdmissionTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_catalog_admission.py)
+
+add_executable(glossata_preferences_tests PreferencesAudioTests.cpp ${CMAKE_SOURCE_DIR}/resources.qrc)
+target_link_libraries(glossata_preferences_tests PRIVATE glossata_preferences Qt6::Test)
+add_test(NAME GlossataPreferencesAudioTests COMMAND glossata_preferences_tests)
+add_test(NAME GlossataAchievementSoundTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_achievement_sound.py)

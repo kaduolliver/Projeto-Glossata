@@ -1,0 +1,26 @@
+********* Start testing of PreferencesAudioTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : PreferencesAudioTests::initTestCase()
+PASS   : PreferencesAudioTests::defaultsDoNotCreateAFile()
+PASS   : PreferencesAudioTests::validFileRemainsUntouched()
+PASS   : PreferencesAudioTests::changesSurviveReopeningAndAvoidRedundantWrites()
+PASS   : PreferencesAudioTests::debounceAndShutdownFlush()
+PASS   : PreferencesAudioTests::invalidValues(-1)
+PASS   : PreferencesAudioTests::invalidValues(101)
+PASS   : PreferencesAudioTests::invalidValues(loud)
+PASS   : PreferencesAudioTests::invalidValues(35.5)
+PASS   : PreferencesAudioTests::invalidValues(nan)
+PASS   : PreferencesAudioTests::invalidValues(999999999999)
+PASS   : PreferencesAudioTests::invalidValues(invalid-motion)
+PASS   : PreferencesAudioTests::invalidValues(invalid-sounds)
+PASS   : PreferencesAudioTests::invalidValues(multiple-invalid-values)
+PASS   : PreferencesAudioTests::pendingRecoveryNeverAutosaves()
+PASS   : PreferencesAudioTests::recoveryWriteFailureAndRetry()
+PASS   : PreferencesAudioTests::malformedFileIsPreserved()
+PASS   : PreferencesAudioTests::persistenceFailureAndRetry()
+PASS   : PreferencesAudioTests::audioEnabledDisabledVolumeAndPreview()
+PASS   : PreferencesAudioTests::audioBurstDuplicatesSuspensionAndUnavailableOutput()
+PASS   : PreferencesAudioTests::bundledAudioHasPcmWaveHeader()
+PASS   : PreferencesAudioTests::cleanupTestCase()
+Totals: 22 passed, 0 failed, 0 skipped, 0 blacklisted, 4407ms
+********* Finished testing of PreferencesAudioTests *********

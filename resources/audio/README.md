@@ -1,0 +1,17 @@
+# Efeito de conquista do Glossata
+
+`achievement.wav` foi produzido nesta subetapa por síntese aditiva determinística em `scripts/generate_achievement_sound.py`. Não utiliza gravações, samples, downloads, sons de plataformas de jogos ou modelos de áudio externos. Não se atribuem autoria humana, titularidade exclusiva ou revisão jurídica por inferência.
+
+O gerador combina três vozes senoidais de 523,251 Hz, 659,255 Hz e 880 Hz, com entradas em 0, 110 e 220 ms, ataque suave de 24 ms, sustentação de 40 ms após o ataque, decaimento exponencial de 3,2/s e finalização global de 300 ms com seno ao quadrado. Os harmônicos exatos 2× e 3× têm ganhos 0,14 e 0,04. WAV PCM mono, 16 bits, 44.100 Hz e **1,20 segundo** (52.920 frames, 105.884 bytes). Pico aproximado de −8,874 dBFS; RMS de −21,531 dBFS. Primeiro e último samples são zero, sem clipping; não há silêncio acrescentado ao final. Esses valores não medem o volume físico das caixas de som.
+
+Reprodução: `python scripts/generate_achievement_sound.py`; conferência sem alteração: `python scripts/generate_achievement_sound.py --check`. O JSON ao lado do WAV registra parâmetros e SHA-256, sem datas ou créditos fictícios.
+
+SHA-256 atual: `08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80`. A revisão 2 preserva a identidade das três notas e o pico moderado. [Diagnóstico, comparação e validação manual no Windows](../../docs/interface/VERSOES/2.4.1/refinamento-audio/README.md). O [WAV anterior de 0,85 s](../../docs/interface/VERSOES/2.4.1/refinamento-audio/anterior/achievement.wav), seus metadados, gerador e medidas permanecem arquivados com referência ao commit de origem.
+
+O arquivo anterior estava completo e sem clipping; 95% da energia já se concentrava antes de 343 ms. O refinamento prolonga o corpo: esse ponto agora ocorre em 585 ms. Testes independentes em `tests/test_achievement_sound.py` verificam PCM/cabeçalho/duração, clipping, continuidade, ataque, cauda, extremidades, três fundamentais, ausência de padding silencioso e reprodução determinística do recurso, sem dispositivo físico ou novas dependências.
+
+A prévia e os desbloqueios reutilizam a mesma saída. O intervalo mínimo passou a 1.300 ms, e um efeito ainda ativo nunca é reiniciado por outro clique. O botão mostra o estado de reprodução/espera. Somente mudanças efetivas do ID da saída padrão justificam reaplicar o dispositivo; mudanças de lista com o mesmo ID não interrompem o efeito. Interrupções por suspensão, desativação e volume zero continuam respeitadas. Há rastreamento opcional `GLOSSATA_AUDIO_TRACE=1`, sem novas preferências persistentes.
+
+**Licenciamento pendente:** o WAV gerado e seu procedimento estão documentados, mas não há nesta subetapa uma concessão expressa do mantenedor para esse novo recurso de áudio. A licença Apache-2.0 do escopo explícito de código não é aplicada automaticamente ao áudio. O gerador e os novos componentes têm sua pendência registrada separadamente em `docs/ESCOPO_LICENCIAMENTO.json`. A decisão sobre direitos disponíveis e condições de distribuição permanece humana. Nenhuma aprovação científica/jurídica ou permissão de distribuição é declarada.
+
+O recurso é incorporado por `resources.qrc` e carregado por `QSoundEffect` em `qrc:/resources/audio/achievement.wav`; funciona offline. O gate de distribuição existente permanece obrigatório, incluindo as obrigações das dependências Qt Multimedia e do pacote efetivamente produzido.

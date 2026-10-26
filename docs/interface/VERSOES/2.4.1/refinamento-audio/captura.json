@@ -1,0 +1,39 @@
+{
+  "method": "Unmodified QQuickWindow::grabWindow PNG of production QML/controller in the isolated Qt UI test harness",
+  "base_pr_commit": "a2938f5d5609b1776b6373312a810374b4b280fb",
+  "application_version": "2.3.0 (unreleased)",
+  "rendering": "Qt 6.11.2 offscreen/software, Basic controls, scale 1",
+  "source_sha256": {
+    "src/presentation/AchievementAudio.cpp": "c6f31b2b369afff05546eda83e86a15afbd314c9db0a4bbc20a9d94778e687b5",
+    "src/presentation/AchievementAudio.h": "8cdc48e415639afb24516738770a351e193bc1324d9c586819a1cd33c4d8af37",
+    "src/presentation/EffectOutput.cpp": "3cb1074ebc3e601be77721c5c34a3c5f34c08c593544810c609f49118468c362",
+    "src/presentation/EffectOutput.h": "85b7347c99394b54008860aae6abf455cd415eaaaf15f9c798c1f93d32fa49c0",
+    "resources/qml/views/SettingsView.qml": "221c31ab724c4702d2007dffcb70dc1c0cf8cb9c9a3b5d65621b86e2f379a4a8",
+    "resources/qml/Main.qml": "98fd11a7d02f8429380df5264cf49d9ce43b4be3ab160c8e4e1b438d600d212f",
+    "resources/audio/achievement.wav": "08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80",
+    "scripts/generate_achievement_sound.py": "87d0a028e16d3e29a3969fa90f201ca471c5fb4b098c167995a4c333b0b67c9c",
+    "tests/QmlInterfaceTests.cpp": "7e54d52420524a63652528f531b6d57a0bc81deb70b7a692c8f563e62ce7655b",
+    "tests/PreferencesAudioTests.cpp": "502e0444fc2620d25b1510ade885d816c1cecb50c3b7f727ce98e47f2e9ba083",
+    "tests/RecordingEffectOutput.h": "8ddbd468ce2e700ef18ae5a0b033f5b27b5ba16f4d9c3e1017292c1a44371183"
+  },
+  "production_binary_sha256": "b4836bec1e6f32f87d542bfef8f01cddc70a9b5d80d25a76041c1ae2e5a654a6",
+  "ui_test_binary_sha256": "0f7b9f3b93952489b9afa794669458890c6647f34dd67a2f55a2d06169c2d64c",
+  "frames": [
+    {
+      "file": "preview-playing.png",
+      "width": 1240,
+      "height": 820,
+      "logical_width": 1240,
+      "logical_height": 820,
+      "device_pixel_ratio": 1,
+      "sha256": "2e492c643aac6d235227683e8edacd1a14eb22b93fbe59e25e7eb126c407060f",
+      "saved_file_mtime_utc": "2026-10-26T23:07:55.721633+00:00",
+      "timestamp_method": "Filesystem LastWriteTimeUtc observed after passing capture test; not an in-frame timestamp",
+      "temporary_database": true,
+      "temporary_preferences": true,
+      "audio_output": "recording-fake",
+      "state": "Preview playing at volume 35, automatic sounds off; simulated playback, no physical audio"
+    }
+  ],
+  "test_only_change_after_full_suite": "Added 150 ms wait before screenshot to let the existing page fade finish; rebuilt UI test and re-ran the affected case. Product sources unchanged. Full-run hashes preserved in audio-full-run-inputs.json."
+}

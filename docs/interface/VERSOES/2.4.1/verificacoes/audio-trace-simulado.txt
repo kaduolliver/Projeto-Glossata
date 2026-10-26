@@ -1,0 +1,29 @@
+********* Start testing of PreferencesAudioTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : PreferencesAudioTests::initTestCase()
+QINFO  : PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview() GlossataAudio 0 requested=preview volume= 35
+QINFO  : PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview() GlossataAudio 2 ended=finished
+QINFO  : PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview() GlossataAudio 2 requested=preview volume= 25
+QINFO  : PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview() GlossataAudio 3 ended=finished
+PASS   : PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview()
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(sounds-disabled) GlossataAudio 0 requested=confirmed-unlock volume= 35
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(sounds-disabled) GlossataAudio 0 stop-requested=sounds-disabled
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(sounds-disabled) GlossataAudio 0 ended=sounds-disabled
+PASS   : PreferencesAudioTests::audioExplicitInterruptions(sounds-disabled)
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(volume-zero) GlossataAudio 0 requested=confirmed-unlock volume= 35
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(volume-zero) GlossataAudio 0 stop-requested=volume-zero
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(volume-zero) GlossataAudio 0 ended=volume-zero
+PASS   : PreferencesAudioTests::audioExplicitInterruptions(volume-zero)
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(presentation-suspended) GlossataAudio 0 requested=confirmed-unlock volume= 35
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(presentation-suspended) GlossataAudio 0 stop-requested=presentation-suspended
+QINFO  : PreferencesAudioTests::audioExplicitInterruptions(presentation-suspended) GlossataAudio 0 ended=presentation-suspended
+PASS   : PreferencesAudioTests::audioExplicitInterruptions(presentation-suspended)
+QINFO  : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt() GlossataAudio 0 requested=live-unlock volume= 35
+QINFO  : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt() GlossataAudio 0 ended=finished
+QINFO  : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt() GlossataAudio 0 requested=preview volume= 35
+QINFO  : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt() GlossataAudio 0 stop-requested=device-changed
+QINFO  : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt() GlossataAudio 0 ended=device-changed
+PASS   : PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt()
+PASS   : PreferencesAudioTests::cleanupTestCase()
+Totals: 7 passed, 0 failed, 0 skipped, 0 blacklisted, 44ms
+********* Finished testing of PreferencesAudioTests *********

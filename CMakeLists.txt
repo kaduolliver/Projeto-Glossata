@@ -15,8 +15,17 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Sql Network)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Quick Sql Network Multimedia)
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+add_library(glossata_preferences STATIC
+    src/presentation/AppPreferences.cpp
+    src/presentation/AchievementAudio.cpp
+    src/presentation/EffectOutput.cpp
+    src/presentation/EffectOutput.h
+)
+target_include_directories(glossata_preferences PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+target_link_libraries(glossata_preferences PUBLIC Qt6::Core Qt6::Multimedia)
 
 add_executable(glossata_quiz
     src/app/main.cpp
@@ -47,7 +56,7 @@ target_include_directories(glossata_quiz PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/presentation
 )
 
-target_link_libraries(glossata_quiz PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Network)
+target_link_libraries(glossata_quiz PRIVATE Qt6::Core Qt6::Gui Qt6::Quick Qt6::Sql Qt6::Network glossata_preferences)
 target_compile_definitions(glossata_quiz PRIVATE GLOSSATA_APP_VERSION="${PROJECT_VERSION}")
 set_target_properties(glossata_quiz PROPERTIES OUTPUT_NAME projeto_glossata)
 add_custom_command(TARGET glossata_quiz POST_BUILD

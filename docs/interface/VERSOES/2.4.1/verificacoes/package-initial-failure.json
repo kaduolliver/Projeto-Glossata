@@ -1,0 +1,10 @@
+{
+  "source": "Observed stderr and exit code from the initial isolated package smoke, before qt.conf was added.",
+  "exit_code": -1,
+  "errors": [
+    "module QtQuick.Layouts is not installed",
+    "module QtQuick.Controls is not installed"
+  ],
+  "resolution": "Relative QmlImports/plugins paths in qt.conf, followed by a fresh complete packaging run and isolated smoke success.",
+  "original_package_preserved": "build/profile-settings-package"
+}

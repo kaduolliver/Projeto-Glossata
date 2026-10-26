@@ -46,6 +46,7 @@ CMakeLists.txt text eol=lf
 *.jpg binary
 *.jpeg binary
 *.ico binary
+*.wav binary
 
 .githooks/* text eol=lf
 .gitattributes text eol=lf
@@ -53,3 +54,4 @@ CMakeLists.txt text eol=lf
 docs/interface/VERSOES/2.3.4/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.4/topo-direito/verificacoes/*.txt text eol=lf
 docs/interface/VERSOES/2.3.4/quiz-compacto/verificacoes/*.txt text eol=lf
+docs/interface/VERSOES/2.4.1/verificacoes/*.txt text eol=lf

@@ -1,0 +1,8 @@
+{
+  "build/profile-settings-2-4-1/glossata_ui_tests.exe": "6850946202cbc577845d95a5a8a926ca965da1e249cfd7ff82a4a2e54128cee6",
+  "tests/QmlInterfaceTests.cpp": "85e6f433f61b1824d3a5cc0aee65dfd6f7ec939beb0b5783244c37a1c8205ed6",
+  "src/presentation/AchievementAudio.cpp": "c6f31b2b369afff05546eda83e86a15afbd314c9db0a4bbc20a9d94778e687b5",
+  "src/presentation/EffectOutput.cpp": "3cb1074ebc3e601be77721c5c34a3c5f34c08c593544810c609f49118468c362",
+  "resources/qml/views/SettingsView.qml": "221c31ab724c4702d2007dffcb70dc1c0cf8cb9c9a3b5d65621b86e2f379a4a8",
+  "resources/audio/achievement.wav": "08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80"
+}
