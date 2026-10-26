@@ -45,11 +45,12 @@ AppPreferences::AppPreferences(const QString &filePath, QObject *parent)
         && volume >= 0 && volume <= 100) volume_ = volume;
     else invalid = true;
     if (settings.status() != QSettings::NoError) {
-        malformed_ = settings.status() == QSettings::FormatError;
         motion_ = true; sounds_ = false; volume_ = 35;
-        setError(QStringLiteral("Não foi possível ler as preferências. Usando os valores padrão; o arquivo foi preservado."));
+        if (settings.status() == QSettings::FormatError) preserveMalformedFile();
+        else setError(QStringLiteral("Não foi possível ler as preferências. Usando os valores padrão; o arquivo foi preservado."));
     } else if (invalid) {
-        setError(QStringLiteral("Há preferências inválidas. Os valores afetados foram substituídos pelos padrões nesta execução."));
+        recoveryPending_ = true;
+        setError(QStringLiteral("Algumas preferências eram inválidas e usam valores padrão temporários. Use Tentar salvar preferências para guardar as correções."));
     }
 }
 
@@ -62,7 +63,23 @@ void AppPreferences::setError(const QString &message)
     emit persistenceErrorChanged();
 }
 
-void AppPreferences::scheduleSave() { dirty_ = true; saveTimer_.start(); }
+void AppPreferences::scheduleSave()
+{
+    const bool couldRetry = canRetryPersistence();
+    dirty_ = true;
+    // Recovering invalid values requires the explicit save action, including
+    // when another preference is changed while that recovery is pending.
+    if (!recoveryPending_ && !malformed_) saveTimer_.start();
+    if (couldRetry != canRetryPersistence()) emit persistenceStateChanged();
+}
+
+void AppPreferences::preserveMalformedFile()
+{
+    malformed_ = true;
+    recoveryPending_ = false;
+    setError(QStringLiteral("O arquivo de preferências está danificado e foi preservado. É necessário corrigir o arquivo fora do aplicativo e reabrir o Glossata."));
+    emit persistenceStateChanged();
+}
 
 void AppPreferences::setMotionEnabled(bool enabled)
 {
@@ -85,23 +102,35 @@ void AppPreferences::setEffectsVolume(int volume)
 
 bool AppPreferences::flush()
 {
+    return save(false);
+}
+
+bool AppPreferences::retrySave()
+{
+    return save(true);
+}
+
+bool AppPreferences::save(bool allowRecovery)
+{
     saveTimer_.stop();
-    if (!dirty_) return error_.isEmpty();
+    // Qt shares parsed INI data between instances; a second instance may no
+    // longer report the original FormatError. Keep that failure latched.
+    if (malformed_) return false;
+    if (recoveryPending_ && !allowRecovery) return false;
+    if (!dirty_ && !recoveryPending_) return error_.isEmpty();
     const auto failed = [this] {
         setError(QStringLiteral("Não foi possível salvar as preferências. As alterações valem nesta execução; tente salvar novamente."));
         return false;
     };
-    // Qt shares parsed INI data between instances; a second instance may no
-    // longer report the original FormatError. Keep that failure latched.
-    if (malformed_) {
-        setError(QStringLiteral("O arquivo de preferências tem formato inválido e foi preservado. Corrija-o e reabra o aplicativo."));
-        return false;
-    }
     if (path_.isEmpty() || !QDir().mkpath(QFileInfo(path_).absolutePath())) return failed();
     QSettings settings(path_, QSettings::IniFormat);
     settings.setFallbacksEnabled(false);
     // Force parsing before writing. Never rewrite a malformed settings file.
     settings.allKeys();
+    if (settings.status() == QSettings::FormatError) {
+        preserveMalformedFile();
+        return false;
+    }
     if (settings.status() != QSettings::NoError || !settings.isWritable()) return failed();
     settings.setValue("interface/motionEnabled", motion_);
     settings.setValue("audio/achievementSoundsEnabled", sounds_);
@@ -109,6 +138,8 @@ bool AppPreferences::flush()
     settings.sync(); // Atomic INI replacement remains required (Qt default).
     if (settings.status() != QSettings::NoError) return failed();
     dirty_ = false;
+    recoveryPending_ = false;
+    emit persistenceStateChanged();
     setError({});
     return true;
 }

@@ -209,7 +209,7 @@ Item {
             Layout.fillWidth: true
             visible: view.app.preferences.persistenceError.length > 0
             Description { objectName: "settingsPersistenceError"; text: view.app.preferences.persistenceError; Accessible.role: Accessible.AlertMessage }
-            UiButton { objectName: "retryPreferencesSaveButton"; text: "Tentar salvar preferências"; secondary: true; compact: true; onClicked: view.app.preferences.flush() }
+            UiButton { objectName: "retryPreferencesSaveButton"; text: "Tentar salvar preferências"; visible: view.app.preferences.canRetryPersistence; secondary: true; compact: true; onClicked: view.app.preferences.retrySave() }
         }
     }
 }

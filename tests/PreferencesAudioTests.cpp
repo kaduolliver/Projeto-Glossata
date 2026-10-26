@@ -7,14 +7,25 @@
 #include <QFile>
 #include <QDir>
 
+namespace {
+QByteArray fileContents(const QString &path)
+{
+    QFile file(path);
+    return file.open(QIODevice::ReadOnly) ? file.readAll() : QByteArray();
+}
+}
+
 class PreferencesAudioTests : public QObject {
     Q_OBJECT
 private slots:
     void defaultsDoNotCreateAFile();
+    void validFileRemainsUntouched();
     void changesSurviveReopeningAndAvoidRedundantWrites();
     void debounceAndShutdownFlush();
     void invalidValues_data();
     void invalidValues();
+    void pendingRecoveryNeverAutosaves();
+    void recoveryWriteFailureAndRetry();
     void malformedFileIsPreserved();
     void persistenceFailureAndRetry();
     void audioEnabledDisabledVolumeAndPreview();
@@ -28,7 +39,28 @@ void PreferencesAudioTests::defaultsDoNotCreateAFile()
     AppPreferences preferences(path);
     QVERIFY(preferences.motionEnabled()); QVERIFY(!preferences.achievementSoundsEnabled());
     QCOMPARE(preferences.effectsVolume(), 35); QVERIFY(preferences.persistenceError().isEmpty());
-    QVERIFY(preferences.flush()); QVERIFY(!QFile::exists(path));
+    QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.canRetryPersistence());
+    QVERIFY(preferences.flush()); QVERIFY(preferences.retrySave()); QVERIFY(!QFile::exists(path));
+}
+
+void PreferencesAudioTests::validFileRemainsUntouched()
+{
+    QTemporaryDir dir; const auto path = dir.filePath("preferences.ini");
+    { QSettings settings(path, QSettings::IniFormat);
+      settings.setValue("interface/motionEnabled", false); settings.setValue("audio/achievementSoundsEnabled", true);
+      settings.setValue("audio/effectsVolume", 72); settings.setValue("future/untouched", "keep"); settings.sync();
+      QCOMPARE(settings.status(), QSettings::NoError); }
+    { QFile file(path); QVERIFY(file.open(QIODevice::ReadWrite));
+      QVERIFY(file.setFileTime(QDateTime::currentDateTimeUtc().addSecs(-120), QFileDevice::FileModificationTime)); }
+    const auto bytes = fileContents(path); const auto modified = QFileInfo(path).lastModified(); QVERIFY(!bytes.isEmpty());
+    { AppPreferences preferences(path);
+      QVERIFY(!preferences.motionEnabled()); QVERIFY(preferences.achievementSoundsEnabled()); QCOMPARE(preferences.effectsVolume(), 72);
+      QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.canRetryPersistence());
+      QVERIFY(preferences.persistenceError().isEmpty()); QTest::qWait(300);
+      QVERIFY(preferences.flush()); QVERIFY(preferences.retrySave());
+      preferences.setMotionEnabled(false); preferences.setAchievementSoundsEnabled(true); preferences.setEffectsVolume(72);
+      QVERIFY(preferences.flush()); }
+    QCOMPARE(fileContents(path), bytes); QCOMPARE(QFileInfo(path).lastModified(), modified);
 }
 
 void PreferencesAudioTests::changesSurviveReopeningAndAvoidRedundantWrites()
@@ -65,24 +97,85 @@ void PreferencesAudioTests::debounceAndShutdownFlush()
 
 void PreferencesAudioTests::invalidValues_data()
 {
+    QTest::addColumn<QVariant>("motion");
+    QTest::addColumn<QVariant>("sounds");
     QTest::addColumn<QVariant>("volume");
+    QTest::addColumn<bool>("expectedMotion");
+    QTest::addColumn<bool>("expectedSounds");
+    QTest::addColumn<int>("expectedVolume");
     for (const auto &value : QVariantList{-1, 101, QString("loud"), QString("35.5"), QString("nan"), QString("999999999999")})
-        QTest::newRow(qPrintable(value.toString())) << value;
+        QTest::newRow(qPrintable(value.toString())) << QVariant(false) << QVariant(true) << value << false << true << 35;
+    QTest::newRow("invalid-motion") << QVariant("maybe") << QVariant(true) << QVariant(72) << true << true << 72;
+    QTest::newRow("invalid-sounds") << QVariant(false) << QVariant("yes") << QVariant(72) << false << false << 72;
+    QTest::newRow("multiple-invalid-values") << QVariant("maybe") << QVariant("yes") << QVariant("loud") << true << false << 35;
 }
 
 void PreferencesAudioTests::invalidValues()
 {
-    QFETCH(QVariant, volume);
+    QFETCH(QVariant, motion); QFETCH(QVariant, sounds); QFETCH(QVariant, volume);
+    QFETCH(bool, expectedMotion); QFETCH(bool, expectedSounds); QFETCH(int, expectedVolume);
     QTemporaryDir dir; const auto path = dir.filePath("preferences.ini");
     { QSettings settings(path, QSettings::IniFormat);
-      settings.setValue("interface/motionEnabled", "maybe"); settings.setValue("audio/achievementSoundsEnabled", "yes");
-      settings.setValue("audio/effectsVolume", volume); settings.setValue("future/untouched", "keep"); settings.sync(); }
-    AppPreferences preferences(path);
-    QVERIFY(preferences.motionEnabled()); QVERIFY(!preferences.achievementSoundsEnabled());
-    QCOMPARE(preferences.effectsVolume(), 35); QVERIFY(!preferences.persistenceError().isEmpty());
-    preferences.setEffectsVolume(40); QVERIFY(preferences.flush()); QVERIFY(preferences.persistenceError().isEmpty());
+      settings.setValue("interface/motionEnabled", motion); settings.setValue("audio/achievementSoundsEnabled", sounds);
+      settings.setValue("audio/effectsVolume", volume); settings.setValue("future/untouched", "keep");
+      settings.setValue("future/effectsVolume", 900); settings.sync(); QCOMPARE(settings.status(), QSettings::NoError); }
+    const auto original = fileContents(path); const auto modified = QFileInfo(path).lastModified(); QVERIFY(!original.isEmpty());
+    { AppPreferences preferences(path);
+      QCOMPARE(preferences.motionEnabled(), expectedMotion); QCOMPARE(preferences.achievementSoundsEnabled(), expectedSounds);
+      QCOMPARE(preferences.effectsVolume(), expectedVolume); QVERIFY(!preferences.persistenceError().isEmpty());
+      QVERIFY(preferences.recoveryPending()); QVERIFY(preferences.canRetryPersistence());
+      QTest::qWait(300); QVERIFY(!preferences.flush());
+      QCOMPARE(fileContents(path), original); QCOMPARE(QFileInfo(path).lastModified(), modified); }
+    QCOMPARE(fileContents(path), original); // Closing without explicit recovery preserves the original.
+    AppPreferences preferences(path); QVERIFY(preferences.recoveryPending());
+    QVERIFY(preferences.retrySave()); // No preference setter or manual edit is needed.
+    QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.canRetryPersistence()); QVERIFY(preferences.persistenceError().isEmpty());
+    QCOMPARE(preferences.motionEnabled(), expectedMotion); QCOMPARE(preferences.achievementSoundsEnabled(), expectedSounds);
+    QCOMPARE(preferences.effectsVolume(), expectedVolume);
     QCOMPARE(QSettings(path, QSettings::IniFormat).value("future/untouched").toString(), QString("keep"));
-    AppPreferences reopened(path); QCOMPARE(reopened.effectsVolume(), 40); QVERIFY(reopened.persistenceError().isEmpty());
+    QCOMPARE(QSettings(path, QSettings::IniFormat).value("future/effectsVolume").toInt(), 900);
+    { QFile file(path); QVERIFY(file.open(QIODevice::ReadWrite));
+      QVERIFY(file.setFileTime(QDateTime::currentDateTimeUtc().addSecs(-120), QFileDevice::FileModificationTime)); }
+    const auto corrected = fileContents(path); const auto savedAt = QFileInfo(path).lastModified();
+    QVERIFY(preferences.retrySave()); QVERIFY(preferences.flush());
+    QCOMPARE(fileContents(path), corrected); QCOMPARE(QFileInfo(path).lastModified(), savedAt);
+    AppPreferences reopened(path);
+    QCOMPARE(reopened.motionEnabled(), expectedMotion); QCOMPARE(reopened.achievementSoundsEnabled(), expectedSounds);
+    QCOMPARE(reopened.effectsVolume(), expectedVolume); QVERIFY(reopened.persistenceError().isEmpty()); QVERIFY(!reopened.recoveryPending());
+}
+
+void PreferencesAudioTests::pendingRecoveryNeverAutosaves()
+{
+    QTemporaryDir dir; const auto path = dir.filePath("preferences.ini");
+    { QSettings settings(path, QSettings::IniFormat);
+      settings.setValue("interface/motionEnabled", false); settings.setValue("audio/effectsVolume", -1); settings.sync(); }
+    const auto original = fileContents(path);
+    { AppPreferences preferences(path); preferences.setMotionEnabled(true);
+      QVERIFY(preferences.recoveryPending()); QTest::qWait(350); QVERIFY(!preferences.flush());
+      QCOMPARE(fileContents(path), original); }
+    QCOMPARE(fileContents(path), original); // Shutdown flush cannot silently repair the file either.
+    AppPreferences preferences(path); QVERIFY(!preferences.motionEnabled());
+    preferences.setMotionEnabled(true); QVERIFY(preferences.retrySave());
+    AppPreferences reopened(path); QVERIFY(reopened.motionEnabled()); QCOMPARE(reopened.effectsVolume(), 35);
+}
+
+void PreferencesAudioTests::recoveryWriteFailureAndRetry()
+{
+    QTemporaryDir dir; const auto folder = dir.filePath("settings"); QVERIFY(QDir().mkdir(folder));
+    const auto path = folder + "/preferences.ini";
+    { QSettings settings(path, QSettings::IniFormat);
+      settings.setValue("interface/motionEnabled", false); settings.setValue("audio/effectsVolume", -1);
+      settings.setValue("future/untouched", "keep"); settings.sync(); }
+    AppPreferences preferences(path); QVERIFY(preferences.recoveryPending());
+    const auto backup = dir.filePath("preserved-settings"); QVERIFY(QDir().rename(folder, backup));
+    { QFile blocker(folder); QVERIFY(blocker.open(QIODevice::WriteOnly)); blocker.write("temporary write blocker"); }
+    QVERIFY(!preferences.retrySave()); QVERIFY(preferences.recoveryPending()); QVERIFY(preferences.canRetryPersistence());
+    QVERIFY(preferences.persistenceError().contains(QStringLiteral("Não foi possível salvar")));
+    QVERIFY(QFile::rename(folder, dir.filePath("preserved-write-blocker"))); QVERIFY(QDir().rename(backup, folder));
+    QVERIFY(preferences.retrySave()); QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.canRetryPersistence());
+    AppPreferences reopened(path); QVERIFY(!reopened.motionEnabled()); QCOMPARE(reopened.effectsVolume(), 35);
+    QVERIFY(reopened.persistenceError().isEmpty());
+    QCOMPARE(QSettings(path, QSettings::IniFormat).value("future/untouched").toString(), QString("keep"));
 }
 
 void PreferencesAudioTests::malformedFileIsPreserved()
@@ -90,9 +183,13 @@ void PreferencesAudioTests::malformedFileIsPreserved()
     QTemporaryDir dir; const auto path = dir.filePath("preferences.ini");
     const QByteArray malformed("[broken\nkey=value\n");
     { QFile file(path); QVERIFY(file.open(QIODevice::WriteOnly)); file.write(malformed); }
-    AppPreferences preferences(path); QVERIFY(!preferences.persistenceError().isEmpty());
-    preferences.setEffectsVolume(20); QVERIFY(!preferences.flush());
-    QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); QCOMPARE(file.readAll(), malformed);
+    { AppPreferences preferences(path); QVERIFY(!preferences.persistenceError().isEmpty());
+      QVERIFY(preferences.persistenceError().contains(QStringLiteral("fora do aplicativo")));
+      QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.canRetryPersistence());
+      QVERIFY(!preferences.retrySave()); preferences.setEffectsVolume(20);
+      QVERIFY(!preferences.canRetryPersistence()); QVERIFY(!preferences.flush()); QTest::qWait(300);
+      QCOMPARE(fileContents(path), malformed); }
+    QCOMPARE(fileContents(path), malformed);
 }
 
 void PreferencesAudioTests::persistenceFailureAndRetry()
@@ -101,9 +198,10 @@ void PreferencesAudioTests::persistenceFailureAndRetry()
     QVERIFY(QDir().mkdir(path)); // Deterministic failure, independent of OS permissions/root.
     AppPreferences preferences(path); QVERIFY(!preferences.persistenceError().isEmpty());
     preferences.setMotionEnabled(false); preferences.setEffectsVolume(64);
-    QVERIFY(!preferences.flush()); QVERIFY(!preferences.motionEnabled()); QCOMPARE(preferences.effectsVolume(), 64);
+    QVERIFY(!preferences.flush()); QVERIFY(!preferences.retrySave()); QVERIFY(preferences.canRetryPersistence());
+    QVERIFY(!preferences.recoveryPending()); QVERIFY(!preferences.motionEnabled()); QCOMPARE(preferences.effectsVolume(), 64);
     QVERIFY(QDir().rename(path, dir.filePath("preserved-blocking-directory")));
-    QVERIFY(preferences.flush()); QVERIFY(preferences.persistenceError().isEmpty());
+    QVERIFY(preferences.retrySave()); QVERIFY(preferences.persistenceError().isEmpty()); QVERIFY(!preferences.canRetryPersistence());
     AppPreferences reopened(path); QVERIFY(!reopened.motionEnabled()); QCOMPARE(reopened.effectsVolume(), 64);
 }
 

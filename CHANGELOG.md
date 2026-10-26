@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [2.3.0] — Não lançado; Perfil e ajustes
 
+- Correção pontual na PR #40: preferências semanticamente inválidas ficam pendentes de recuperação explícita pelo botão Tentar salvar preferências, sem exigir outra alteração. Valores válidos e chaves futuras são preservados; INI estruturalmente malformado permanece protegido e não oferece tentativa insegura de gravação. [Estados, testes e evidências](docs/interface/VERSOES/2.4.1/correcao-persistencia/README.md).
 - Subetapa 2.4.1: cinco seções na página Perfil e ajustes, com UUID local visível, renomeação existente, teclado/foco e rolagem compartilhada.
 - Preferências locais centralizadas em QSettings/INI, separadas do SQLite: transições suaves, sons de conquistas e volume dos efeitos. Padrões: movimento ativado, sons desativados e volume 35%; validação, gravação reunida e aviso/nova tentativa em caso de falha.
 - Efeito original sintetizado por código, WAV local de 0,85 s, Qt Multimedia/QSoundEffect e prévia explícita. Gatilho exclusivo na apresentação válida; uma saída, intervalo de 1,2 s e nenhum som retroativo/adiado. FIFO e redução de movimento preservados.

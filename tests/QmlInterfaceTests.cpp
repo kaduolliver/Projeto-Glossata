@@ -27,6 +27,7 @@
 #include <QJsonArray>
 #include <QDateTime>
 #include <QFile>
+#include <QSettings>
 #include <QDesktopServices>
 #include <QWheelEvent>
 #include <QPointingDevice>
@@ -74,6 +75,8 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void settingsPersistenceRecovery_data();
+    void settingsPersistenceRecovery();
     void profileSettingsPreferencesKeyboardAndCaptures();
     void achievementSoundsFollowPresentationOnly();
     void achievementNotificationQueueAndLifecycle();
@@ -4091,6 +4094,111 @@ void QmlInterfaceTests::achievementSoundsFollowPresentationOnly()
     GameController reopened(nullptr, path); QSignalSpy historical(&reopened, &GameController::achievementUnlocked);
     engine.rootContext()->setContextProperty("gameController", &reopened); window->setProperty("backend", QVariant::fromValue(&reopened));
     QTest::qWait(80); QCOMPARE(historical.size(), 0); QCOMPARE(device->plays, 2);
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+void QmlInterfaceTests::settingsPersistenceRecovery_data()
+{
+    QTest::addColumn<QString>("fixture");
+    for (const auto &name : {"valid", "invalid-volume", "invalid-boolean", "multiple-invalid", "malformed", "write-failure"})
+        QTest::newRow(name) << QString::fromLatin1(name);
+}
+
+void QmlInterfaceTests::settingsPersistenceRecovery()
+{
+    QFETCH(QString, fixture);
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; const auto folder = dir.filePath("settings"); QVERIFY(QDir().mkdir(folder));
+    const auto path = folder + "/preferences.ini";
+    const bool malformed = fixture == "malformed", writeFailure = fixture == "write-failure";
+    const bool recoverable = fixture.startsWith("invalid-") || fixture == "multiple-invalid";
+    const bool expectedMotion = malformed || fixture == "invalid-boolean" || fixture == "multiple-invalid";
+    const bool expectedSounds = !malformed && fixture != "multiple-invalid";
+    const int expectedVolume = malformed || fixture == "invalid-volume" || fixture == "multiple-invalid" ? 35 : writeFailure ? 64 : 72;
+    if (malformed) {
+        QFile file(path); QVERIFY(file.open(QIODevice::WriteOnly)); file.write("[broken\nkey=value\n");
+    } else {
+        QSettings settings(path, QSettings::IniFormat);
+        settings.setValue("interface/motionEnabled", expectedMotion ? QVariant("maybe") : QVariant(false));
+        settings.setValue("audio/achievementSoundsEnabled", fixture == "multiple-invalid" ? QVariant("yes") : QVariant(true));
+        settings.setValue("audio/effectsVolume", expectedVolume == 35 ? QVariant(-1) : QVariant(72));
+        settings.setValue("future/untouched", "keep"); settings.sync(); QCOMPARE(settings.status(), QSettings::NoError);
+    }
+    QByteArray original;
+    { QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); original = file.readAll(); }
+    AppPreferences preferences(path);
+    const auto backup = dir.filePath("preserved-settings");
+    if (writeFailure) {
+        QVERIFY(QDir().rename(folder, backup));
+        { QFile blocker(folder); QVERIFY(blocker.open(QIODevice::WriteOnly)); blocker.write("temporary write blocker"); }
+        preferences.setEffectsVolume(64); QVERIFY(!preferences.flush());
+    }
+    GameController controller(nullptr, dir.filePath("settings-recovery.sqlite"));
+    const auto owner = controller.currentPlayerId(); const auto achievements = controller.achievements();
+    QSignalSpy unlocked(&controller, &GameController::achievementUnlocked);
+    DiscordRichPresence presence{QString(), QString()};
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get();
+    AchievementAudio audio(preferences, std::move(output));
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller);
+    engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences);
+    engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->requestActivate(); QTest::qWait(100); window->setProperty("page", "settings");
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    QTRY_VERIFY(item("settingsPersistenceError")); QTest::qWait(300);
+    auto message = item("settingsPersistenceError"), retry = item("retryPreferencesSaveButton"); QVERIFY(message && retry);
+    QCOMPARE(message->isVisible(), fixture != "valid");
+    QCOMPARE(retry->isVisible(), recoverable || writeFailure);
+    QCOMPARE(preferences.recoveryPending(), recoverable);
+    QCOMPARE(preferences.canRetryPersistence(), recoverable || writeFailure);
+    QCOMPARE(preferences.motionEnabled(), expectedMotion); QCOMPARE(preferences.achievementSoundsEnabled(), expectedSounds);
+    QCOMPARE(preferences.effectsVolume(), expectedVolume);
+    QCOMPARE(message->property("text").toString(), preferences.persistenceError());
+    auto scroll = item("pageScroll"); QVERIFY(scroll);
+    scroll->setProperty("contentY", qMax(0., scroll->property("contentHeight").toReal() - scroll->height()));
+    const QString captures = "previews/profile-settings-persistence-fix"; QVERIFY(QDir().mkpath(captures)); QJsonArray frames;
+    const auto capture = [&](const QString &state) {
+        QTest::qWait(100); const auto image = window->grabWindow(); const auto file = fixture + "-" + state + ".png";
+        if (image.isNull() || !image.save(captures + "/" + file)) return false;
+        frames.append(QJsonObject{{"file", file}, {"logicalWidth", window->width()}, {"logicalHeight", window->height()},
+            {"width", image.width()}, {"height", image.height()}, {"devicePixelRatio", window->devicePixelRatio()},
+            {"temporary_database", true}, {"temporary_preferences", true}, {"audio_output", "recording-fake"},
+            {"captured_at", QDateTime::currentDateTimeUtc().toString(Qt::ISODateWithMs)}});
+        return true;
+    };
+    if (fixture != "valid") QVERIFY(capture("before"));
+    if (recoverable || writeFailure) {
+        if (writeFailure) {
+            QVERIFY(preferences.persistenceError().contains(QStringLiteral("Não foi possível salvar")));
+            QVERIFY(QFile::rename(folder, dir.filePath("preserved-write-blocker"))); QVERIFY(QDir().rename(backup, folder));
+        } else {
+            QVERIFY(preferences.persistenceError().contains(QStringLiteral("temporários")));
+            QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); QCOMPARE(file.readAll(), original);
+        }
+        // Activate the real QML button by keyboard, without changing a preference.
+        retry->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80); QTest::keyClick(window, Qt::Key_Space);
+        QTRY_VERIFY(preferences.persistenceError().isEmpty()); QVERIFY(!preferences.recoveryPending());
+        QVERIFY(!preferences.canRetryPersistence()); QTRY_VERIFY(!retry->isVisible()); QVERIFY(!message->isVisible());
+        QCOMPARE(controller.currentPlayerId(), owner); QCOMPARE(controller.achievements(), achievements);
+        AppPreferences reopened(path);
+        QCOMPARE(reopened.motionEnabled(), expectedMotion); QCOMPARE(reopened.achievementSoundsEnabled(), expectedSounds);
+        QCOMPARE(reopened.effectsVolume(), expectedVolume); QVERIFY(reopened.persistenceError().isEmpty());
+        QCOMPARE(QSettings(path, QSettings::IniFormat).value("future/untouched").toString(), QString("keep"));
+        QVERIFY(capture("saved"));
+    } else {
+        QCOMPARE(preferences.retrySave(), !malformed);
+        QFile file(path); QVERIFY(file.open(QIODevice::ReadOnly)); QCOMPARE(file.readAll(), original);
+        if (malformed) QVERIFY(preferences.persistenceError().contains(QStringLiteral("fora do aplicativo")));
+    }
+    if (!frames.isEmpty()) {
+        QFile manifest(captures + "/" + fixture + ".json"); QVERIFY(manifest.open(QIODevice::WriteOnly));
+        manifest.write(QJsonDocument(frames).toJson());
+    }
+    QCOMPARE(device->plays, 0); QCOMPARE(unlocked.size(), 0); QVERIFY(!presence.enabled());
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }
 

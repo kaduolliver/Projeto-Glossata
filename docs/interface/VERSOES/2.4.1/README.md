@@ -2,6 +2,8 @@
 
 Base: `origin/main` em `4a2e2e4510f058eecd8388f7260d5ce93b2ac9df`, integração da PR #39. Branch `feat/profile-settings-2-4-1`. Aplicativo **2.3.0 ainda não lançado** (MINOR por preferências e áudio configuráveis), catálogo **2.4.0** e SQLite **8** preservados. O número da subetapa é independente da versão semântica do aplicativo. Sem merge, release ou tag.
 
+A [correção pontual de persistência na mesma PR #40](correcao-persistencia/README.md) separa valores recuperáveis, alterações do usuário e arquivos malformados. O botão permite salvar as correções sem editar outra preferência e fica oculto quando o arquivo requer intervenção externa. Os registros da implementação inicial abaixo permanecem preservados; a correção possui suas próprias evidências.
+
 ## Organização e identidade
 
 A página usa cinco seções compactas dentro da superfície do tema: Meu perfil; Interface e acessibilidade; Áudio e notificações; Integrações; Informações. Alturas seguem o conteúdo, com limite de leitura de 1.000 px, divisores discretos, tipografia/ícones existentes, switches com foco e slider acessível por teclado. A rolagem e o enquadramento automático do foco continuam no shell existente.
@@ -22,7 +24,9 @@ Persistência: `QSettings::IniFormat`, fallbacks desativados e sincronização a
 | `audio/achievementSoundsEnabled` | `false` | booleano ou representação `true/false/1/0` |
 | `audio/effectsVolume` | `35` | inteiro de 0 a 100 |
 
-Ausência de arquivo/chave não provoca gravação inicial. Valores inválidos usam o padrão da opção e mostram aviso. Falha de leitura/formato usa padrões seguros e preserva o arquivo; um arquivo malformado não é regravado. Valores fora do intervalo nos setters são limitados a 0–100. Setters sem mudança não gravam. Alterações são reunidas durante 250 ms e sincronizadas ao sair; chaves desconhecidas permanecem preservadas. Falhas mantêm os valores da execução, exibem aviso e oferecem uma nova tentativa de gravação. Um arquivo malformado exige correção externa; não há restauração destrutiva automática.
+Ausência de arquivo/chave não provoca gravação inicial. Valores semanticamente inválidos usam o padrão da opção, mostram aviso e marcam `recoveryPending`, separado de `dirty_`. A ação `retrySave()` do botão confirma explicitamente a gravação das correções, preservando valores válidos e chaves desconhecidas. Enquanto essa confirmação estiver pendente, gravações automáticas por timer ou fechamento aguardam a ação do usuário, inclusive para outras alterações da sessão.
+
+Preferências válidas mantêm gravação reunida em 250 ms e sincronização ao sair; setters sem mudança e novas tentativas após sucesso não regravam. Os setters continuam limitando volume a 0–100. Falhas de gravação mantêm os valores da sessão e permitem nova tentativa. Arquivo estruturalmente malformado mantém a proteção retida, usa padrões seguros e exige correção externa seguida de reabertura; `canRetryPersistence` é falso e o botão fica oculto. Não há restauração destrutiva automática.
 
 Testes, smoke e captura recebem caminhos temporários explícitos. Os testes de interface usam uma saída gravadora em memória, sem criar `QSoundEffect` ou exigir dispositivo físico.
 
@@ -87,6 +91,8 @@ O renderizador offscreen produz quadros reais do programa, mas não comprova flu
 
 ## Resultados consolidados
 
+Registro da implementação inicial, até `1d39072`. Os resultados da correção pontual estão no [registro específico](correcao-persistencia/README.md).
+
 [Resumo técnico e hashes](verificacoes/resultados.json). A execução CTest completa aprovou 27 dos 28 grupos em 701,09 s; o caso de reabertura da interface criava um segundo engine sem os novos serviços temporários. Após corrigir esse caso, a **suíte inteira de interface** foi repetida e aprovada em 509,78 s, com **39 casos, zero falhas e zero ignorados**. Consolidam-se assim **28 grupos distintos aprovados**, sem falhas pendentes. [Execução inicial](verificacoes/ctest-initial.txt), [interface inicial](verificacoes/ui-full-initial.txt), [reexecução CTest](verificacoes/ctest-interface-final.txt) e [interface final](verificacoes/ui-full-final.txt).
 
 | Área | Resultado |
@@ -107,7 +113,7 @@ O [gate de distribuição](verificacoes/distribution-gate.json) retorna **2 — 
 
 ## Arquivos alterados
 
-[Lista completa de caminhos desta entrega](verificacoes/arquivos-modificados.txt). Os grupos principais são `AppPreferences`, `AchievementAudio` e `EffectOutput`; `SettingsView` e ligação em `Main`/`main.cpp`; recurso WAV/gerador; testes e serviços isolados; CMake/CI/empacotamento; versões, documentação, capturas e relatórios. `GameController`, catálogo, persistência SQLite, regras e pontuação não foram modificados.
+[Lista de caminhos da entrega inicial](verificacoes/arquivos-modificados.txt). Os grupos principais são `AppPreferences`, `AchievementAudio` e `EffectOutput`; `SettingsView` e ligação em `Main`/`main.cpp`; recurso WAV/gerador; testes e serviços isolados; CMake/CI/empacotamento; versões, documentação, capturas e relatórios. `GameController`, catálogo, persistência SQLite, regras e pontuação não foram modificados. O [registro da correção](correcao-persistencia/README.md) identifica seus arquivos adicionais.
 
 ## Inventário sem exclusões
 
