@@ -192,7 +192,15 @@
     "src/infrastructure/persistence/AchievementStorage.h": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred.",
     "resources/qml/components/AchievementBadge.qml": "New own code for substep 2.3.3; explicit inclusion in the code license scope remains pending. No automatic grant inferred.",
     "resources/qml/components/AchievementNotification.qml": "New own presentation code for substep 2.3.4; explicit inclusion in the code license scope remains pending. No automatic grant or human authorship/review inferred.",
-    "resources/qml/components/AchievementNotificationLayer.qml": "New own presentation code for substep 2.3.4; explicit inclusion in the code license scope remains pending. No automatic grant or human authorship/review inferred."
+    "resources/qml/components/AchievementNotificationLayer.qml": "New own presentation code for substep 2.3.4; explicit inclusion in the code license scope remains pending. No automatic grant or human authorship/review inferred.",
+    "src/presentation/AppPreferences.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "src/presentation/AppPreferences.h": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "src/presentation/AchievementAudio.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "src/presentation/AchievementAudio.h": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "src/presentation/EffectOutput.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "src/presentation/EffectOutput.h": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "scripts/generate_achievement_sound.py": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "tests/PreferencesAudioTests.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred."
   },
   "exclusions": [
     "All files not expressly listed in files; no automatic grant by directory or extension.",
