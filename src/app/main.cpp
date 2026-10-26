@@ -1,5 +1,7 @@
 #include "presentation/GameController.h"
 #include "infrastructure/discord/DiscordRichPresence.h"
+#include "presentation/AppPreferences.h"
+#include "presentation/AchievementAudio.h"
 
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
@@ -74,10 +76,15 @@ int main(int argc, char *argv[])
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &presence, &DiscordRichPresence::stop);
 
     GameController controller(nullptr, smokeDirectory ? smokeDirectory->filePath("smoke.sqlite") : QString());
+    AppPreferences preferences(smokeDirectory ? smokeDirectory->filePath("preferences.ini") : AppPreferences::installationPath());
+    AchievementAudio effects(preferences);
+    QObject::connect(&app, &QCoreApplication::aboutToQuit, &preferences, &AppPreferences::flush);
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &controller, &GameController::prepareToClose);
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("gameController", &controller);
     engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences);
+    engine.rootContext()->setContextProperty("achievementAudio", &effects);
     engine.load(QUrl(QStringLiteral("qrc:/resources/qml/Main.qml")));
 
     if (engine.rootObjects().isEmpty()) {
@@ -87,7 +94,7 @@ int main(int argc, char *argv[])
     if (captureHome) {
         auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first());
         if (!window) return 7;
-        window->setProperty("motionEnabled", false);
+        preferences.setMotionEnabled(false);
         const QString destination = app.arguments().at(captureIndex + 1);
         QTimer::singleShot(1200, &app, [window, destination, captureDiscovery, &app] {
             if (captureDiscovery) {

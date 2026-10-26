@@ -2,6 +2,13 @@
 
 Este arquivo registra mudanças do aplicativo com versionamento semântico. A versão do catálogo e o histórico de dados/licenças estão em [CATALOGO_CHANGELOG.md](docs/CATALOGO_CHANGELOG.md). Datas de revisão científica pertencem aos registros de revisão, não à data de lançamento.
 
+## [2.3.0] — Não lançado; Perfil e ajustes
+
+- Subetapa 2.4.1: cinco seções na página Perfil e ajustes, com UUID local visível, renomeação existente, teclado/foco e rolagem compartilhada.
+- Preferências locais centralizadas em QSettings/INI, separadas do SQLite: transições suaves, sons de conquistas e volume dos efeitos. Padrões: movimento ativado, sons desativados e volume 35%; validação, gravação reunida e aviso/nova tentativa em caso de falha.
+- Efeito original sintetizado por código, WAV local de 0,85 s, Qt Multimedia/QSoundEffect e prévia explícita. Gatilho exclusivo na apresentação válida; uma saída, intervalo de 1,2 s e nenhum som retroativo/adiado. FIFO e redução de movimento preservados.
+- MINOR compatível; catálogo 2.4.0, SQLite 8, identidade, progresso, estatísticas e ranking preservados. Discord mantém a política de inicialização e o controle por sessão existentes. Licença do áudio e inclusão dos novos arquivos no escopo de código permanecem pendentes de decisão humana. [Arquitetura, testes e capturas](docs/interface/VERSOES/2.4.1/README.md). Sem release ou tag.
+
 ## [2.2.0] — Não lançado; notificações de conquistas
 
 - Refinamento final da PR #39: uma notificação compacta durante o Quiz; nas demais páginas, até duas no desenho completo. A segunda instância já apresentada fica oculta com leitura pausada e retoma sem duplicar eventos ou reiniciar o primeiro cartão. Altura conforme o conteúdo, fontes preservadas e validação contra enunciado/controles. [Comparativos e testes](docs/interface/VERSOES/2.3.4/quiz-compacto/README.md).

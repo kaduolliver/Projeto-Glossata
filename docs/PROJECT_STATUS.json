@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "application": {
-    "version": "2.2.0",
+    "version": "2.3.0",
     "stage": "development"
   },
   "catalog": {
@@ -30,8 +30,9 @@
     }
   },
   "tests": {
-    "registered_count": 26,
+    "registered_count": 28,
     "registered_names": [
+      "GlossataAchievementSoundTests",
       "GlossataCatalogAdmissionTests",
       "GlossataCurationAutomationTests",
       "GlossataCurationDecisionTests",
@@ -49,6 +50,7 @@
       "GlossataPhylogenyTests",
       "GlossataPlayerBackupTests",
       "GlossataPlayerIdentityTests",
+      "GlossataPreferencesAudioTests",
       "GlossataProgressiveHintTests",
       "GlossataProjectStatusTests",
       "GlossataReleaseTests",
@@ -61,21 +63,21 @@
     ]
   },
   "inputs": {
-    "CHANGELOG.md": "fcc1c34020d15ee664e5c1ad577d78d21b259f5dd97879d63c89503d418a9b80",
-    "CMakeLists.txt": "2a7da39ee96b5b25565e0c45769648c7cf29aab8ffb5a5831824c48cfe0d7e0a",
-    "VERSION.txt": "c4a2383a03bdb6739d16a0e24058e4b9c7da4e63d203e0be2f448868cc03c530",
-    "docs/CATALOGO_CHANGELOG.md": "d695fde74b454557a95362da92d593a7baa94d9e1dbd656bb75b458790d29361",
+    "CHANGELOG.md": "347749cc399cda77612faf21445b073021a64d9437531b4b60733377e95762e6",
+    "CMakeLists.txt": "f3281f8f8452036fff9965abf7398570336c1e98a3422931e4aea48dae231030",
+    "VERSION.txt": "a42caf4a54bbbe27aa45b6efbc6356c5e299b19763e728b6cdb7201b02ebbe36",
+    "docs/CATALOGO_CHANGELOG.md": "9c0feaaa7dca8622756aa655b8d3edddea04c04a3fa12581bc4f5b33eab2086f",
     "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
     "resources/data/exploration_photos.json": "81a93aa8b7f03b7c791bf5903c6b4afd94388f19b6566549cf2deab1142f980d",
     "resources/data/species.json": "a9965d8028388b81e026747c5addfcf11e50f194feb0a6499154b98ddf60987d",
     "resources/data/taxonomy.json": "fe4c4af883fa2d80796802d0da8b8b35b89c80f3953bb2afbd087f98f53ce54a",
-    "src/app/main.cpp": "19b5b7ced0f1ab73ac60eacb6edf0bd4749a54b688e7591c4e97de86130cbc06",
+    "src/app/main.cpp": "614076d446238c5148761c45079fc025faf6ebef8c0fb3fe65efb14c4ea990d0",
     "src/domain/GameConfiguration.h": "54bd17ce644314aa383bc04340141d97e1c2251dfe71a8955517a41648c6d41b",
     "src/domain/Hint.h": "ac1bf8e36cd1dd146344b2477914720645367ab51d3e5747f3d52e6af1d13f11",
     "src/domain/SessionCheckpoint.h": "001a8aa8101f857b4b2698ce581c40ebcb72ae49de37fa7440cf4dfce9c0cc38",
     "src/infrastructure/content/SqliteSpeciesCatalog.cpp": "3e03a19f72651afed4dbaf40d7e5e3edc721d6c8c42c4450398d909c18630dff",
     "src/infrastructure/persistence/SqliteGameHistoryRepository.cpp": "9998e5069bb842c591a8c17f25b387feb02625cb24b586a6b73b76a258a56e63",
-    "tests/CMakeLists.txt": "fd039e64fd58d7da10106c8b9374095361f9128113a1a1fee19a8ae21e193f69"
+    "tests/CMakeLists.txt": "ac8380cd4850b3b9acb35b373bd7827fdafa13e280b69fda58edac1db474f3fc"
   },
   "limitations": "Source metadata and registered tests, not execution results, publication evidence or distribution/scientific approval."
 }

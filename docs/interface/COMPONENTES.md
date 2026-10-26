@@ -1,5 +1,9 @@
 # Componentes compartilhados
 
+## Perfil e ajustes — 2.4.1
+
+`SettingsView` utiliza componentes inline locais para título de seção, descrição, divisor e switch, além de `UiButton`, `TextAction` e `UiIcon`. Os componentes locais não ampliam o design system sem necessidade. `Main` recebe `appPreferences` e `achievementAudio` da inicialização; projeta a única preferência de movimento e encaminha o sinal de apresentação existente. [Contratos e políticas](VERSOES/2.4.1/README.md).
+
 ## Notificações — 2.3.4
 
 `Main` fornece `compactMode: page === "quiz"`. A camada usa `presentationLimit` de um/dois para admitir eventos e `index` para ocultar a segunda instância já existente durante o Quiz. `activeCount` conta instâncias no modelo; `visibleCount` conta as apresentações permitidas no contexto, incluindo a suspensão global; `pendingCount` continua contando somente eventos ainda não instanciados. O mesmo cartão recebe `compactMode` e reutiliza seu temporizador, `remainingMs` e estado de animação. [Comportamento contextual e validação](VERSOES/2.3.4/quiz-compacto/README.md).
