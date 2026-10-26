@@ -1,0 +1,192 @@
+{
+  "recorded_at": "2026-10-26T17:37:38.623109+00:00",
+  "base_commit": "4a2e2e4510f058eecd8388f7260d5ce93b2ac9df",
+  "implementation_commits": [
+    "01945f8",
+    "953912c"
+  ],
+  "application_version": "2.3.0",
+  "catalog_version": "2.4.0",
+  "sqlite_schema": 8,
+  "ctest_initial": {
+    "total": 28,
+    "passed": 27,
+    "failed": [
+      "GlossataInterfaceTests"
+    ],
+    "seconds": 701.09,
+    "report": "ctest-initial.txt"
+  },
+  "ctest_interface_rerun": {
+    "passed": 1,
+    "failed": 0,
+    "seconds": 509.78,
+    "report": "ctest-interface-final.txt"
+  },
+  "consolidated_ctest": {
+    "distinct_groups_passed": 28,
+    "unresolved_failures": 0,
+    "note": "27 groups passed in the complete run; the entire corrected interface group then passed on rerun."
+  },
+  "qt_cases": {
+    "core": 86,
+    "identity": 38,
+    "recovery": 21,
+    "preferences_audio": 16,
+    "interface": 39
+  },
+  "matrix": {
+    "logical_sizes": [
+      [
+        1000,
+        700
+      ],
+      [
+        1240,
+        820
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "scales": [
+      1,
+      1.25,
+      1.5
+    ],
+    "passed_combinations": 9,
+    "real_pngs": 27,
+    "physical_audio_device_required": false
+  },
+  "package_smoke": {
+    "exit_code": 0,
+    "external_msys2_modules_loaded": false,
+    "report": "package-smoke.json"
+  },
+  "source_preservation": {
+    "unchanged_prefixes_and_paths": [
+      "resources/data",
+      "resources/compliance",
+      "src/infrastructure/persistence",
+      "src/presentation/GameController.cpp",
+      "src/presentation/GameController.h",
+      "src/application/Achievements.cpp",
+      "src/application/Achievements.h",
+      "src/domain"
+    ],
+    "changes": [],
+    "governance_events_preserved": 1053
+  },
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "exit_code": 0,
+      "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/release.py",
+        "check-history",
+        "--base",
+        "4a2e2e4510f058eecd8388f7260d5ce93b2ac9df"
+      ],
+      "exit_code": 0,
+      "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "build"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"consistent\": true, \"errors\": [], \"tests_executed_by_this_command\": false, \"publication_verified\": false, \"distribution_gate_evaluated\": false}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "exit_code": 0,
+      "stdout": "{'code_license_errors': [], 'ownership_or_scientific_approval': False}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/audit_catalog.py",
+        "--strict"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"total_species\": 122, \"valid_photo_records\": 122, \"eligible_by_rank\": {\"species\": 40, \"genus\": 100, \"family\": 100, \"order\": 100, \"class\": 120, \"phylum\": 121, \"kingdom\": 0, \"supergroup\": 0, \"domain\": 0}, \"competitive_pool\": 80, \"verified_etymology\": 49, \"verified_morphology\": 104, \"taxon_introductions\": 14}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "qmllint",
+        "resources\\qml\\components\\AchievementBadge.qml",
+        "resources\\qml\\components\\AchievementNotification.qml",
+        "resources\\qml\\components\\AchievementNotificationLayer.qml",
+        "resources\\qml\\components\\EndGameDialog.qml",
+        "resources\\qml\\components\\ExploreCard.qml",
+        "resources\\qml\\components\\FeatheredPhoto.qml",
+        "resources\\qml\\components\\HintPanel.qml",
+        "resources\\qml\\components\\KingdomArtwork.qml",
+        "resources\\qml\\components\\LifeArtwork.qml",
+        "resources\\qml\\components\\NavItem.qml",
+        "resources\\qml\\components\\PlayModeSelector.qml",
+        "resources\\qml\\components\\SpeciesArtwork.qml",
+        "resources\\qml\\components\\SpeciesPortrait.qml",
+        "resources\\qml\\components\\StatCard.qml",
+        "resources\\qml\\components\\TaxonComboBox.qml",
+        "resources\\qml\\components\\TextAction.qml",
+        "resources\\qml\\components\\UiButton.qml",
+        "resources\\qml\\components\\UiIcon.qml",
+        "resources\\qml\\Main.qml",
+        "resources\\qml\\style\\Theme.qml",
+        "resources\\qml\\views\\AchievementsView.qml",
+        "resources\\qml\\views\\CategoryView.qml",
+        "resources\\qml\\views\\CreditsView.qml",
+        "resources\\qml\\views\\FeedbackView.qml",
+        "resources\\qml\\views\\HomeView.qml",
+        "resources\\qml\\views\\InfoView.qml",
+        "resources\\qml\\views\\QuizView.qml",
+        "resources\\qml\\views\\ResultsView.qml",
+        "resources\\qml\\views\\SettingsView.qml",
+        "resources\\qml\\views\\StatisticsView.qml",
+        "resources\\qml\\views\\TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "sha256": {
+    "build/profile-settings-2-4-1/projeto_glossata.exe": "90b3b93b8591d70ea94e7b10b6a730646f7f36eb5c6b8f85ff3de57fa8fba579",
+    "build/profile-settings-2-4-1/glossata_ui_tests.exe": "a055e4d0aa73d25566d79ac2b844371ea7051485a8229fc032d7a8d8cc9cbd2b",
+    "build/profile-settings-2-4-1/glossata_preferences_tests.exe": "c8b7d1a86277178a779d17bc78c6aa846cd40d6ab9c797fcaac03b41a135cc86",
+    "resources/data/catalog_manifest.json": "1ca9ef2af096ae1f42169710661266945326e36dc4a00d67dac9002e2e6b0f9c",
+    "resources/audio/achievement.wav": "dc62f483eb235b58ae59edf0e3a89f99e1cc6203a3a1ca58e2e9abf0a50b1e21"
+  },
+  "distribution_allowed": false,
+  "licensing_pending": [
+    "new synthesized WAV",
+    "new code explicit scope inclusion",
+    "additional dependency obligations including FFmpeg"
+  ],
+  "cleanup_applied": false
+}

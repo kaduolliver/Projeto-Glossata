@@ -1,0 +1,18 @@
+Start testing: Oct 26 14:22 Hora oficial do Brasil
+----------------------------------------------------------
+2/28 Testing: GlossataInterfaceTests
+2/28 Test: GlossataInterfaceTests
+Command: "C:/glossata_game/build/profile-settings-2-4-1/glossata_ui_tests.exe" "-o" "C:/glossata_game/build/tests/ui-test-results.txt,txt"
+Directory: C:/glossata_game/build/tests
+"GlossataInterfaceTests" start time: Oct 26 14:22 Hora oficial do Brasil
+Output:
+----------------------------------------------------------
+<end of output>
+Test time = 509.78 sec
+----------------------------------------------------------
+Test Passed.
+"GlossataInterfaceTests" end time: Oct 26 14:31 Hora oficial do Brasil
+"GlossataInterfaceTests" time elapsed: 00:08:29
+----------------------------------------------------------
+
+End testing: Oct 26 14:31 Hora oficial do Brasil

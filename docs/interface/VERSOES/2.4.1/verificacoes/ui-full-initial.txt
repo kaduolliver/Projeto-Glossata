@@ -1,0 +1,47 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::profileSettingsPreferencesKeyboardAndCaptures()
+PASS   : QmlInterfaceTests::achievementSoundsFollowPresentationOnly()
+FAIL!  : QmlInterfaceTests::achievementNotificationQueueAndLifecycle() 'interfaceWarnings.isEmpty()' returned FALSE. (qrc:/resources/qml/Main.qml:46: TypeError: Cannot read property 'motionEnabled' of undefined
+qrc:/resources/qml/Main.qml:44: ReferenceError: appPreferences is not defined
+qrc:/resources/qml/Main.qml:431:15: Unable to assign [undefined] to QObject*
+qrc:/resources/qml/Main.qml:45: ReferenceError: achievementAudio is not defined)
+C:/glossata_game/tests/QmlInterfaceTests.cpp(270) : failure location
+PASS   : QmlInterfaceTests::achievementNotificationQuizFocusAndPersistence()
+PASS   : QmlInterfaceTests::achievementNotificationContextTransitions(1000x700)
+PASS   : QmlInterfaceTests::achievementNotificationContextTransitions(1240x820)
+PASS   : QmlInterfaceTests::achievementNotificationContextTransitions(1920x1080)
+PASS   : QmlInterfaceTests::achievementNotificationVisualsAndCaptures()
+PASS   : QmlInterfaceTests::achievementsFiltersDetailsKeyboardAndCaptures()
+PASS   : QmlInterfaceTests::singleLocalUserSettingsRecordsAndCaptures()
+PASS   : QmlInterfaceTests::statisticsLiveHintsAndRecovery()
+PASS   : QmlInterfaceTests::statisticsStableTaxonomicColors()
+PASS   : QmlInterfaceTests::statisticsTopPanelsAndSharedScrolling()
+PASS   : QmlInterfaceTests::statisticsContextsAndConfirmedMetrics()
+PASS   : QmlInterfaceTests::personalCompetitiveConfigurationStaysSeparate()
+PASS   : QmlInterfaceTests::restoredQuizHintsCountersAndStablePortrait()
+PASS   : QmlInterfaceTests::restoredQuizRecoveryAndUnavailableStates()
+PASS   : QmlInterfaceTests::speciesDescriptionStaysIndependentOfMorphology()
+PASS   : QmlInterfaceTests::compactPlayConfigurationAndContextualSources()
+PASS   : QmlInterfaceTests::playConfigurationReturnsToSelectionContext()
+PASS   : QmlInterfaceTests::playSelectionNavigationAndCaptures()
+PASS   : QmlInterfaceTests::exploreUniformCardsAndComfortableScrolling()
+PASS   : QmlInterfaceTests::encyclopedicCreditsHaveIndependentPointerAndKeyboardInteraction()
+PASS   : QmlInterfaceTests::photographicExploreNavigationAndCaptures()
+PASS   : QmlInterfaceTests::progressiveExploreNavigationAndCaptures()
+PASS   : QmlInterfaceTests::encyclopedicPhotographsStayCenteredWithoutCropping()
+PASS   : QmlInterfaceTests::encyclopedicCardsHandleLongTextAndUnavailablePhotos()
+PASS   : QmlInterfaceTests::scientificExploreSearchFiltersNavigationAndCaptures()
+PASS   : QmlInterfaceTests::dailyDiscoveryNavigationIndicatorsAndCaptures()
+PASS   : QmlInterfaceTests::designSystemStatesAndContrast()
+PASS   : QmlInterfaceTests::homeCarouselPhotographsAndNavigation()
+PASS   : QmlInterfaceTests::homeCarouselTimingAndCrossfade()
+PASS   : QmlInterfaceTests::separateExploreAndPlayPreservesSessions()
+PASS   : QmlInterfaceTests::photographEdgesFadeWithoutHidingTheOrganism()
+PASS   : QmlInterfaceTests::explorationCardsKeepBackgroundProportions()
+PASS   : QmlInterfaceTests::navigateAndConfirmAnswers()
+PASS   : QmlInterfaceTests::recoveryControlsResumeAndAbandonWithoutChangingScores()
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 38 passed, 1 failed, 0 skipped, 0 blacklisted, 514959ms
+********* Finished testing of QmlInterfaceTests *********

@@ -84,3 +84,43 @@ foreach ($scale in '1','1.25','1.5') {
 ```
 
 O renderizador offscreen produz quadros reais do programa, mas não comprova fluidez física, audibilidade, comportamento de todos os dispositivos ou leitores de tela. A percepção estética do som ainda deve ser avaliada pelo mantenedor em hardware real. Nenhuma aprovação jurídica ou científica é inferida dos testes.
+
+## Resultados consolidados
+
+[Resumo técnico e hashes](verificacoes/resultados.json). A execução CTest completa aprovou 27 dos 28 grupos em 701,09 s; o caso de reabertura da interface criava um segundo engine sem os novos serviços temporários. Após corrigir esse caso, a **suíte inteira de interface** foi repetida e aprovada em 509,78 s, com **39 casos, zero falhas e zero ignorados**. Consolidam-se assim **28 grupos distintos aprovados**, sem falhas pendentes. [Execução inicial](verificacoes/ctest-initial.txt), [interface inicial](verificacoes/ui-full-initial.txt), [reexecução CTest](verificacoes/ctest-interface-final.txt) e [interface final](verificacoes/ui-full-final.txt).
+
+| Área | Resultado |
+| --- | --- |
+| Regras/controlador, Quiz, Conquistas, Estatísticas e Ranking | 86 casos aprovados |
+| Identidade local | 38 casos aprovados |
+| Recuperação/checkpoints | 21 casos aprovados |
+| Preferências e política de áudio | [16 casos aprovados](verificacoes/unit-final.txt), incluindo valores inválidos, arquivo malformado preservado e falha/nova tentativa de gravação |
+| Interface completa | 39 casos aprovados |
+| Perfil/áudio em escala | 100%, 125% e 150% aprovados; três resoluções por execução |
+| QML/metadados/escopo de código/catálogo | Lint, release check, project status, inventário de código e auditoria técnica aprovados |
+| Governança | [1.053 eventos e baseline preservados byte a byte](verificacoes/governance-history.json) frente à base da PR #39 |
+| Pacote Windows local | [Smoke com PATH isolado aprovado](verificacoes/package-smoke.json), 91 módulos carregados, nenhum do MSYS2 externo |
+
+Os relatórios iniciais foram mantidos. O teste de arquivo malformado identificou o cache compartilhado de parsing do QSettings; a falha de formato agora fica retida para impedir regravação do arquivo. Home/End foram implementados explicitamente no slider. Os ajustes restantes de teste tratam contexto de exploração, geometria em coordenadas da página, callbacks pendentes da Home e instalação dos serviços no engine de reabertura. A primeira falha de pacote por caminhos QML está [registrada](verificacoes/package-initial-failure.json). Uma tentativa de link encontrou o executável de teste em uso; o link foi repetido sem concorrência, e a matriz final foi refeita com o binário final.
+
+O [gate de distribuição](verificacoes/distribution-gate.json) retorna **2 — bloqueado**, preservando as pendências de permissões, revisões e obrigações, inclusive as dependências adicionais. A nova licença do WAV e a inclusão expressa dos arquivos novos no escopo de código continuam pendentes. Integração de desenvolvimento e testes não liberam distribuição. Não há merge, tag, release ou implementação da 2.4.2.
+
+## Arquivos alterados
+
+[Lista completa de caminhos desta entrega](verificacoes/arquivos-modificados.txt). Os grupos principais são `AppPreferences`, `AchievementAudio` e `EffectOutput`; `SettingsView` e ligação em `Main`/`main.cpp`; recurso WAV/gerador; testes e serviços isolados; CMake/CI/empacotamento; versões, documentação, capturas e relatórios. `GameController`, catálogo, persistência SQLite, regras e pontuação não foram modificados.
+
+## Inventário sem exclusões
+
+A varredura foi executada após encerrar builds e testes, antes de abrir a PR: [dry-run padrão](verificacoes/cleanup-dry-run.json), [inclusão de builds antigos](verificacoes/cleanup-old-builds-dry-run.json) e [inventário com tamanho/motivo/risco](verificacoes/inventario-local.json). Ambos os dry-runs encontraram **zero candidatos elegíveis** pelas proteções de idade e retenção. Nenhuma limpeza foi aplicada; os artefatos abaixo permanecem preservados para revisão humana.
+
+| Caminho | Bytes | Motivo | Risco |
+| --- | ---: | --- | --- |
+| `build/profile-settings-2-4-1` | 323617479 | Executáveis usados na verificação e rastreabilidade | alto |
+| `build/profile-settings-package` | 329033997 | Pacote inicial e diagnóstico de importação QML | alto |
+| `build/profile-settings-package-verified` | 329034060 | Pacote corrigido e evidência do smoke isolado | alto |
+| `build/2.3.2-cores-dicas` | 323614407 | Binários da primeira compilação, que herdou o diretório anterior do cache | alto |
+| `previews/profile-settings` | 3024532 | Originais locais das capturas também versionadas nesta pasta | médio |
+| `scripts/__pycache__` | 1363308 | Cache Python regenerável | baixo |
+| `scripts/scientific_sources/__pycache__` | 221517 | Cache Python regenerável | baixo |
+
+`resources/`, `package/`, dados de jogadores, SQLite, documentação, capturas, manifestos e histórico permanecem protegidos. Sem autorização explícita para exclusão, sem `--apply` e sem uso de limpeza para alterar resultados de governança.
