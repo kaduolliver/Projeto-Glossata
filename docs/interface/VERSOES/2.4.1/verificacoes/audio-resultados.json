@@ -1,0 +1,189 @@
+{
+  "recorded_at": "2026-10-26T23:09:39.986815+00:00",
+  "base_pr_commit": "a2938f5d5609b1776b6373312a810374b4b280fb",
+  "application_version": "2.3.0 (unreleased)",
+  "catalog_version": "2.4.0",
+  "sqlite_schema": 8,
+  "ctest": {
+    "command": "ctest --test-dir build --output-on-failure --output-log C:/glossata_game/build/audio-refinement-ctest.txt",
+    "passed": 28,
+    "total": 28,
+    "failed": 0,
+    "seconds": 687.41,
+    "report": "audio-ctest-completo.txt"
+  },
+  "qt_cases": {
+    "preferences_audio": 28,
+    "affected_interface": 11,
+    "full_interface": 46,
+    "core": 86,
+    "identity": 38,
+    "recovery": 21,
+    "fake_trace": 7,
+    "final_capture_retest": 3
+  },
+  "python_pcm_tests": 7,
+  "checks": [
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/project_status.py",
+        "check",
+        "--build",
+        "build"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "{\"consistent\": true, \"errors\": [], \"tests_executed_by_this_command\": false, \"publication_verified\": false, \"distribution_gate_evaluated\": false}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/licensing_inventory.py",
+        "--check-code"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "{'code_license_errors': [], 'ownership_or_scientific_approval': False}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/release.py",
+        "check"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "Metadados/histórico íntegros. Isso não libera distribuição nem certifica curadoria.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/generate_achievement_sound.py",
+        "--check"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"sample_rate\": 44100,\n  \"channels\": 1,\n  \"bits_per_sample\": 16,\n  \"duration_seconds\": 1.2,\n  \"peak_dbfs\": -8.874,\n  \"rms_dbfs\": -21.531,\n  \"first_sample\": 0,\n  \"last_sample\": 0,\n  \"synthesis_revision\": 2,\n  \"synthesis\": {\n    \"method\": \"additive sine voices; no samples or random noise\",\n    \"notes\": [\n      {\n        \"frequency_hz\": 523.251,\n        \"start_seconds\": 0.0,\n        \"gain\": 1.0\n      },\n      {\n        \"frequency_hz\": 659.255,\n        \"start_seconds\": 0.11,\n        \"gain\": 0.78\n      },\n      {\n        \"frequency_hz\": 880.0,\n        \"start_seconds\": 0.22,\n        \"gain\": 0.67\n      }\n    ],\n    \"attack_seconds\": 0.024,\n    \"hold_seconds\": 0.04,\n    \"decay_per_second\": 3.2,\n    \"release_seconds\": 0.3,\n    \"harmonics\": [\n      {\n        \"ratio\": 1,\n        \"gain\": 1\n      },\n      {\n        \"ratio\": 2,\n        \"gain\": 0.14\n      },\n      {\n        \"ratio\": 3,\n        \"gain\": 0.04\n      }\n    ],\n    \"peak_target\": 0.36\n  },\n  \"external_samples\": false,\n  \"licensing_status\": \"pending-maintainer-decision\",\n  \"sha256\": \"08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "tests/test_achievement_sound.py"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.186s\n\nOK\n"
+    },
+    {
+      "command": [
+        "C:\\msys64\\ucrt64\\bin\\qmllint.exe",
+        "resources/qml/components/AchievementBadge.qml",
+        "resources/qml/components/AchievementNotification.qml",
+        "resources/qml/components/AchievementNotificationLayer.qml",
+        "resources/qml/components/EndGameDialog.qml",
+        "resources/qml/components/ExploreCard.qml",
+        "resources/qml/components/FeatheredPhoto.qml",
+        "resources/qml/components/HintPanel.qml",
+        "resources/qml/components/KingdomArtwork.qml",
+        "resources/qml/components/LifeArtwork.qml",
+        "resources/qml/components/NavItem.qml",
+        "resources/qml/components/PlayModeSelector.qml",
+        "resources/qml/components/SpeciesArtwork.qml",
+        "resources/qml/components/SpeciesPortrait.qml",
+        "resources/qml/components/StatCard.qml",
+        "resources/qml/components/TaxonComboBox.qml",
+        "resources/qml/components/TextAction.qml",
+        "resources/qml/components/UiButton.qml",
+        "resources/qml/components/UiIcon.qml",
+        "resources/qml/Main.qml",
+        "resources/qml/style/Theme.qml",
+        "resources/qml/views/AchievementsView.qml",
+        "resources/qml/views/CategoryView.qml",
+        "resources/qml/views/CreditsView.qml",
+        "resources/qml/views/FeedbackView.qml",
+        "resources/qml/views/HomeView.qml",
+        "resources/qml/views/InfoView.qml",
+        "resources/qml/views/QuizView.qml",
+        "resources/qml/views/ResultsView.qml",
+        "resources/qml/views/SettingsView.qml",
+        "resources/qml/views/StatisticsView.qml",
+        "resources/qml/views/TaxonomyView.qml",
+        "--unqualified",
+        "disable"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "scripts/content_governance.py",
+        "audit-history",
+        "--base",
+        "a2938f5d5609b1776b6373312a810374b4b280fb"
+      ],
+      "expected_exit_code": 0,
+      "exit_code": 0,
+      "stdout": "{\"schema_version\": 1, \"assurances\": {\"integrity_scope\": \"Internal SHA-256 linkage; optional byte-prefix comparison with caller-selected Git commit.\", \"reviewer_identity\": \"Declared, not authenticated by these checks.\", \"authorship_authenticated\": false, \"digital_signatures_verified\": false, \"independent_review_verified\": false, \"specialist_qualification_verified\": false, \"trust_root\": \"Local files and verifier; for historical comparison, independently selected and retained Git commit.\"}, \"errors\": [], \"files\": {\"resources/compliance/dependency_reviews.jsonl\": {\"current\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference_preserved\": true}, \"resources/compliance/permission_history.jsonl\": {\"current\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference\": {\"events\": 0, \"tip_sha256\": \"\", \"bytes_sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"present\": false}, \"reference_preserved\": true}, \"resources/compliance/review_history.jsonl\": {\"current\": {\"events\": 1053, \"tip_sha256\": \"2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6\", \"bytes_sha256\": \"1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576\", \"present\": true}, \"reference\": {\"events\": 1053, \"tip_sha256\": \"2bce8ae7cbe0f2cae197eaecc421b5a923bb0abe09fb902d18cf3f28c8de4ad6\", \"bytes_sha256\": \"1d37c6986dbeaebbe3796312f55cb5da2748375b7a4acc29c00317edc306f576\", \"present\": true}, \"reference_preserved\": true}, \"resources/compliance/review_baseline.json\": {\"current\": {\"present\": true, \"bytes_sha256\": \"97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6\"}, \"reference\": {\"present\": true, \"bytes_sha256\": \"97b500f9b18539e9b67d631f53fddcc4a272ae499173d5a494719f3e9c6667a6\"}, \"reference_preserved\": true}}, \"comparison\": {\"status\": \"prefix_preserved\", \"commit\": \"a2938f5d5609b1776b6373312a810374b4b280fb\"}, \"consistent\": true}\n",
+      "stderr": ""
+    }
+  ],
+  "distribution_gate": {
+    "command": [
+      "C:\\Program Files\\Python311\\python.exe",
+      "scripts/distribution.py",
+      "check"
+    ],
+    "expected_exit_code": 2,
+    "exit_code": 2,
+    "stdout": "DISTRIBUIÇÃO BLOQUEADA. Permissões/revisões/obrigações pendentes; consulte build/distribution-audit.json.\n",
+    "stderr": ""
+  },
+  "protected_paths_unchanged": [
+    "resources/data",
+    "resources/compliance",
+    "resources/images",
+    "resources/branding",
+    "src/application",
+    "src/domain",
+    "src/infrastructure",
+    "src/app",
+    "src/presentation/GameController.cpp",
+    "src/presentation/GameController.h",
+    "src/presentation/AppPreferences.cpp",
+    "src/presentation/AppPreferences.h",
+    "resources/qml/Main.qml",
+    "resources/qml/components",
+    "resources/qml/style",
+    "CMakeLists.txt",
+    "VERSION.txt",
+    "docs/images"
+  ],
+  "governance_events_preserved": 1053,
+  "cleanup_applied": false,
+  "cleanup_eligible_candidates": 0,
+  "production_binary_sha256": "b4836bec1e6f32f87d542bfef8f01cddc70a9b5d80d25a76041c1ae2e5a654a6",
+  "final_ui_test_binary_sha256": "0f7b9f3b93952489b9afa794669458890c6647f34dd67a2f55a2d06169c2d64c",
+  "preferences_test_binary_sha256": "45f44044797ba32f35c7f26639424f134cf11656d0d37e32bb5d998f7cb70320",
+  "test_only_change_after_full_suite": "150 ms wait before capture; affected case rechecked after rebuild. Full-suite product sources match final product sources. See audio-full-run-inputs.json for earlier UI test executable/source hashes.",
+  "additional_run_failure": "The first final-capture repetition omitted Basic/offscreen env and failed solely on native-style QML customization warnings; preserved audio-preview-estilo-incorreto.txt. Same binary passed with the CTest environment in audio-preview-final.txt. No product fix was needed.",
+  "limitations": [
+    "No physical auditory validation performed. Digital waveform checks and fake output do not certify perceived sound or driver behavior.",
+    "Manual isolated real-QSoundEffect mode startup smoke passed without triggering playback; physical device not required by automated tests.",
+    "Default-device ID guard does not certify every internal driver/format mutation retaining that ID.",
+    "Qt end status without own stop request does not prove that hardware emitted all samples.",
+    "Existing code/audio licensing decisions and distribution blocks remain pending."
+  ],
+  "source_commit": "ac71a419fd1a6592ab728d4ebc6447d9745ee1c9",
+  "full_run_product_hashes_match_final": true,
+  "historical_generator_metadata_wav_match_base_commit": true,
+  "documentation_local_links_valid": true
+}

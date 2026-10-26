@@ -1,0 +1,64 @@
+{
+  "mode": "read-only inventory",
+  "cleanup_applied": false,
+  "local_paths": [
+    {
+      "path": "build/profile-settings-2-4-1",
+      "bytes": 323918990,
+      "files": 7,
+      "reason": "Active app/test binaries; preserve for this open PR",
+      "risk": "high: active validation build; not a deletion candidate",
+      "deleted": false
+    },
+    {
+      "path": "previews/audio-refinement",
+      "bytes": 74533,
+      "files": 1,
+      "reason": "Direct affected-test capture, copied into versioned evidence",
+      "risk": "review provenance before any future removal",
+      "deleted": false
+    },
+    {
+      "path": "build/tests/previews/audio-refinement",
+      "bytes": 71819,
+      "files": 1,
+      "reason": "Full-suite capture during existing entry transition",
+      "risk": "preserve full-run evidence; visually different capture is intentional",
+      "deleted": false
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 1378071,
+      "files": 59,
+      "reason": "Regenerable Python import cache",
+      "risk": "low after tests; preserve now, no deletion authorized",
+      "deleted": false
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 585884,
+      "files": 22,
+      "reason": "Regenerable Python test import cache",
+      "risk": "low after tests; preserve now, no deletion authorized",
+      "deleted": false
+    },
+    {
+      "path": "build/audio-refinement-* and build/record_audio_refinement.py",
+      "bytes": 29430,
+      "files": 11,
+      "reason": "Local analysis/logs and recording helper; evidence copied where applicable",
+      "risk": "Preserve reproducibility and full-run inputs until PR review; no deletion authorized",
+      "deleted": false
+    },
+    {
+      "path": "docs/interface/VERSOES/2.4.1/refinamento-audio/anterior/__pycache__",
+      "bytes": 6933,
+      "files": 1,
+      "reason": "Generated while importing the archived synthesizer to verify exact historical bytes",
+      "risk": "Regenerable cache, separate from preserved historical sources; no deletion authorized",
+      "deleted": false
+    }
+  ],
+  "script_eligible_candidates": [],
+  "protected": "resources/, package/, personal data, SQLite, media, history, versioned captures and evidence preserved"
+}

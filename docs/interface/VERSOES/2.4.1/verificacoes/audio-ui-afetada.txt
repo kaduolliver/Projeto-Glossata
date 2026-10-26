@@ -1,0 +1,15 @@
+********* Start testing of QmlInterfaceTests *********
+Config: Using QtTest library 6.11.2, Qt 6.11.2 (x86_64-little_endian-llp64 shared (dynamic) release build; by GCC 16.2.0), windows 11
+PASS   : QmlInterfaceTests::initTestCase()
+PASS   : QmlInterfaceTests::achievementPreviewBusyFeedback()
+PASS   : QmlInterfaceTests::achievementSoundsFollowPresentationOnly()
+PASS   : QmlInterfaceTests::profileSettingsPreferencesKeyboardAndCaptures()
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(valid)
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(invalid-volume)
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(invalid-boolean)
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(multiple-invalid)
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(malformed)
+PASS   : QmlInterfaceTests::settingsPersistenceRecovery(write-failure)
+PASS   : QmlInterfaceTests::cleanupTestCase()
+Totals: 11 passed, 0 failed, 0 skipped, 0 blacklisted, 14477ms
+********* Finished testing of QmlInterfaceTests *********

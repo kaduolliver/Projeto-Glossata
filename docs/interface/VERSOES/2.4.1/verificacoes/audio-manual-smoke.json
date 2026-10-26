@@ -1,0 +1,6 @@
+{
+  "exit_code": 0,
+  "mode": "isolated manual bootstrap, offscreen smoke; automatic sounds off; no playback triggered",
+  "stdout": "",
+  "stderr": "qt.multimedia.ffmpeg: Using Qt multimedia with FFmpeg version 9.0.1 GPL version 3 or later\r\n"
+}

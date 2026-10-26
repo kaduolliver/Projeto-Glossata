@@ -1,0 +1,13 @@
+{
+  "sample_rate": 44100,
+  "channels": 1,
+  "bits_per_sample": 16,
+  "duration_seconds": 0.85,
+  "peak_dbfs": -8.874,
+  "rms_dbfs": -21.15,
+  "first_sample": 0,
+  "last_sample": 0,
+  "external_samples": false,
+  "licensing_status": "pending-maintainer-decision",
+  "sha256": "dc62f483eb235b58ae59edf0e3a89f99e1cc6203a3a1ca58e2e9abf0a50b1e21"
+}
