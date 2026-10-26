@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QFile>
 #include <QDir>
+#include <QtEndian>
 
 namespace {
 QByteArray fileContents(const QString &path)
@@ -30,6 +31,11 @@ private slots:
     void persistenceFailureAndRetry();
     void audioEnabledDisabledVolumeAndPreview();
     void audioBurstDuplicatesSuspensionAndUnavailableOutput();
+    void audioNaturalCompletionAndConsecutivePreview();
+    void audioExplicitInterruptions_data();
+    void audioExplicitInterruptions();
+    void audioDeviceRefreshDoesNotInterrupt();
+    void audioPreviewCooldownNotifies();
     void bundledAudioHasPcmWaveHeader();
 };
 
@@ -209,19 +215,20 @@ void PreferencesAudioTests::audioEnabledDisabledVolumeAndPreview()
 {
     QTemporaryDir dir; AppPreferences preferences(dir.filePath("preferences.ini"));
     auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get();
+    device->simulatePlayback = true;
     qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
     QSignalSpy requested(&audio, &AchievementAudio::playbackRequested);
     audio.setPresentationAllowed(true);
     QVERIFY(!audio.present("muted")); QCOMPARE(device->plays, 0);
     QVERIFY(audio.preview()); QCOMPARE(device->plays, 1); QCOMPARE(device->lastVolume, 0.35f);
     QCOMPARE(requested.first()[0].toString(), QString("preview"));
-    preferences.setAchievementSoundsEnabled(true); now += 1200;
+    preferences.setAchievementSoundsEnabled(true); now += AchievementAudio::MinimumIntervalMs;
     QVERIFY(!audio.present("muted")); // Enabling never replays a consumed event.
     preferences.setEffectsVolume(0); QVERIFY(!audio.present("zero")); QVERIFY(!audio.preview());
     preferences.setEffectsVolume(100); QVERIFY(audio.present("maximum")); QCOMPARE(device->lastVolume, 1.f);
     preferences.setEffectsVolume(19); QCOMPARE(device->lastVolume, 0.19f);
     preferences.setAchievementSoundsEnabled(false); QVERIFY(device->stops > 0);
-    now += 1200; QVERIFY(audio.preview()); QCOMPARE(device->lastVolume, 0.19f);
+    now += AchievementAudio::MinimumIntervalMs; QVERIFY(audio.preview()); QCOMPARE(device->lastVolume, 0.19f);
 }
 
 void PreferencesAudioTests::audioBurstDuplicatesSuspensionAndUnavailableOutput()
@@ -231,10 +238,10 @@ void PreferencesAudioTests::audioBurstDuplicatesSuspensionAndUnavailableOutput()
     qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
     audio.setPresentationAllowed(true);
     QVERIFY(audio.present("first")); QVERIFY(!audio.present("second")); QVERIFY(!audio.present("third"));
-    QCOMPARE(device->plays, 1); now = 1199; QVERIFY(!audio.preview());
-    now = 1200; QVERIFY(!audio.present("first")); QVERIFY(!audio.present("second"));
+    QCOMPARE(device->plays, 1); now = AchievementAudio::MinimumIntervalMs - 1; QVERIFY(!audio.preview());
+    now = AchievementAudio::MinimumIntervalMs; QVERIFY(!audio.present("first")); QVERIFY(!audio.present("second"));
     QVERIFY(audio.present("fourth")); QCOMPARE(device->plays, 2);
-    now += 1200; device->playing_ = true; QVERIFY(!audio.present("busy"));
+    now += AchievementAudio::MinimumIntervalMs; device->playing_ = true; QVERIFY(!audio.present("busy"));
     audio.setPresentationAllowed(false); QVERIFY(!device->playing_); QVERIFY(!audio.present("suspended")); QVERIFY(!audio.preview());
     audio.setPresentationAllowed(true); QVERIFY(!audio.present("suspended")); QCOMPARE(device->plays, 2);
     device->ready_ = false; QVERIFY(!audio.present("unavailable")); QVERIFY(!audio.preview());
@@ -247,7 +254,94 @@ void PreferencesAudioTests::bundledAudioHasPcmWaveHeader()
 {
     QFile file(":/resources/audio/achievement.wav"); QVERIFY(file.open(QIODevice::ReadOnly));
     const auto data = file.readAll(); QCOMPARE(data.first(4), QByteArray("RIFF"));
-    QCOMPARE(data.mid(8, 4), QByteArray("WAVE")); QCOMPARE(data.size(), 75014);
+    QCOMPARE(data.mid(8, 4), QByteArray("WAVE"));
+    QVERIFY(data.size() >= 44);
+    QCOMPARE(qFromLittleEndian<quint32>(data.constData() + 4) + 8, quint32(data.size()));
+    QCOMPARE(qFromLittleEndian<quint16>(data.constData() + 20), quint16(1)); // PCM, not compressed.
+    QCOMPARE(qFromLittleEndian<quint16>(data.constData() + 22), quint16(1));
+    QCOMPARE(qFromLittleEndian<quint32>(data.constData() + 24), quint32(44100));
+    QCOMPARE(qFromLittleEndian<quint16>(data.constData() + 34), quint16(16));
+    const auto durationMs = 1000. * (data.size() - 44) / (44100 * 2);
+    QCOMPARE(durationMs, 1200.);
+    QVERIFY(AchievementAudio::MinimumIntervalMs >= durationMs + 100);
+}
+
+void PreferencesAudioTests::audioNaturalCompletionAndConsecutivePreview()
+{
+    QTemporaryDir dir; AppPreferences preferences(dir.filePath("preferences.ini"));
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get(); device->simulatePlayback = true;
+    qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
+    QSignalSpy ended(&audio, &AchievementAudio::playbackEnded);
+    QSignalSpy interrupted(device, &EffectOutput::interruptionRequested);
+    QVERIFY(!audio.previewReady()); audio.setPresentationAllowed(true); QVERIFY(audio.previewReady());
+    QVERIFY(audio.preview()); QVERIFY(audio.playing()); QVERIFY(audio.previewBusy()); QVERIFY(!audio.previewReady());
+    QVERIFY(!audio.preview()); audio.setPresentationAllowed(true); QCOMPARE(device->stops, 0); QCOMPARE(device->plays, 1);
+    preferences.setEffectsVolume(25); QCOMPARE(device->lastVolume, .25f); QCOMPARE(device->stops, 0);
+    now = 1200; device->finishNaturally();
+    QCOMPARE(ended.size(), 1); QCOMPARE(ended.first()[0].toString(), QString("finished")); QCOMPARE(device->stops, 0);
+    QVERIFY(!audio.playing()); QVERIFY(audio.previewBusy()); QVERIFY(!audio.preview());
+    now = AchievementAudio::MinimumIntervalMs; QVERIFY(audio.previewReady()); QVERIFY(audio.preview());
+    QCOMPARE(device->plays, 2);
+    now += AchievementAudio::MinimumIntervalMs; QVERIFY(!audio.preview()); // Elapsed cooldown cannot restart a playing effect.
+    device->finishNaturally(); QCOMPARE(ended.size(), 2); QCOMPARE(device->stops, 0); QCOMPARE(interrupted.size(), 0);
+}
+
+void PreferencesAudioTests::audioExplicitInterruptions_data()
+{
+    QTest::addColumn<QString>("reason");
+    for (const auto &reason : {"sounds-disabled", "volume-zero", "presentation-suspended"})
+        QTest::newRow(reason) << QString::fromLatin1(reason);
+}
+
+void PreferencesAudioTests::audioExplicitInterruptions()
+{
+    QFETCH(QString, reason);
+    QTemporaryDir dir; AppPreferences preferences(dir.filePath("preferences.ini")); preferences.setAchievementSoundsEnabled(true);
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get(); device->simulatePlayback = true;
+    qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
+    audio.setPresentationAllowed(true); QSignalSpy ended(&audio, &AchievementAudio::playbackEnded);
+    QSignalSpy interrupted(device, &EffectOutput::interruptionRequested);
+    QVERIFY(audio.present("confirmed-unlock")); QVERIFY(audio.playing());
+    if (reason == "sounds-disabled") preferences.setAchievementSoundsEnabled(false);
+    else if (reason == "volume-zero") preferences.setEffectsVolume(0);
+    else audio.setPresentationAllowed(false);
+    QCOMPARE(device->stops, 1); QCOMPARE(ended.size(), 1); QCOMPARE(ended.first()[0].toString(), reason);
+    QCOMPARE(interrupted.size(), 1); QCOMPARE(interrupted.first()[0].toString(), reason);
+    QVERIFY(!audio.playing()); preferences.setAchievementSoundsEnabled(true); preferences.setEffectsVolume(35); audio.setPresentationAllowed(true);
+    now = AchievementAudio::MinimumIntervalMs; QVERIFY(!audio.present("confirmed-unlock")); QCOMPARE(device->plays, 1);
+    // Idle preference/suspension changes do not issue unnecessary stop calls.
+    preferences.setAchievementSoundsEnabled(false); preferences.setEffectsVolume(0); audio.setPresentationAllowed(false);
+    QCOMPARE(device->stops, 1); QCOMPARE(ended.size(), 1);
+}
+
+void PreferencesAudioTests::audioDeviceRefreshDoesNotInterrupt()
+{
+    QTemporaryDir dir; AppPreferences preferences(dir.filePath("preferences.ini")); preferences.setAchievementSoundsEnabled(true);
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get(); device->simulatePlayback = true;
+    QVERIFY(device->selectDevice("device-A")); QCOMPARE(device->deviceApplications, 1);
+    qint64 now = 0; AchievementAudio audio(preferences, std::move(output), nullptr, [&] { return now; });
+    audio.setPresentationAllowed(true); QSignalSpy ended(&audio, &AchievementAudio::playbackEnded);
+    QVERIFY(audio.present("live-unlock"));
+    for (int i = 0; i < 3; ++i) QVERIFY(!device->selectDevice("device-A"));
+    QVERIFY(audio.playing()); QCOMPARE(device->stops, 0); QCOMPARE(device->deviceApplications, 1);
+    device->finishNaturally(); QCOMPARE(ended.first()[0].toString(), QString("finished"));
+    now += AchievementAudio::MinimumIntervalMs; QVERIFY(audio.preview());
+    QVERIFY(device->selectDevice("device-B")); QCOMPARE(device->stops, 1); QCOMPARE(device->deviceApplications, 2);
+    QCOMPARE(ended.last()[0].toString(), QString("device-changed")); QVERIFY(!audio.playing()); QCOMPARE(device->plays, 2);
+    QVERIFY(!device->selectDevice("device-B")); QCOMPARE(device->stops, 1);
+    QVERIFY(device->selectDevice({})); device->ready_ = false; device->stateChanged();
+    now += AchievementAudio::MinimumIntervalMs; QVERIFY(!audio.preview()); QCOMPARE(device->stops, 1);
+    QVERIFY(device->selectDevice("device-C")); device->ready_ = true; device->stateChanged();
+    QVERIFY(!audio.present("live-unlock")); QCOMPARE(device->plays, 2); // No replay on reconnection.
+}
+
+void PreferencesAudioTests::audioPreviewCooldownNotifies()
+{
+    QTemporaryDir dir; AppPreferences preferences(dir.filePath("preferences.ini"));
+    AchievementAudio audio(preferences, std::make_unique<RecordingEffectOutput>()); audio.setPresentationAllowed(true);
+    QVERIFY(audio.preview()); QVERIFY(!audio.previewReady()); QSignalSpy state(&audio, &AchievementAudio::outputChanged);
+    QTRY_VERIFY_WITH_TIMEOUT(!state.isEmpty(), AchievementAudio::MinimumIntervalMs + 1000);
+    QVERIFY(audio.previewReady()); QVERIFY(!audio.previewBusy());
 }
 
 QTEST_GUILESS_MAIN(PreferencesAudioTests)

@@ -4,6 +4,8 @@ Base: `origin/main` em `4a2e2e4510f058eecd8388f7260d5ce93b2ac9df`, integração 
 
 A [correção pontual de persistência na mesma PR #40](correcao-persistencia/README.md) separa valores recuperáveis, alterações do usuário e arquivos malformados. O botão permite salvar as correções sem editar outra preferência e fica oculto quando o arquivo requer intervenção externa. Os registros da implementação inicial abaixo permanecem preservados; a correção possui suas próprias evidências.
 
+O [refinamento sonoro na mesma PR](refinamento-audio/README.md) documenta a análise do WAV completo, o decaimento originalmente rápido e a possibilidade de parada indevida em mudanças da lista de dispositivos. O WAV atual tem 1,20 s; prévias informam reprodução/espera, com intervalo de 1,3 s e sem reiniciar um efeito ativo. Síntese, recursos anteriores e validação manual estão registrados separadamente.
+
 ## Organização e identidade
 
 A página usa cinco seções compactas dentro da superfície do tema: Meu perfil; Interface e acessibilidade; Áudio e notificações; Integrações; Informações. Alturas seguem o conteúdo, com limite de leitura de 1.000 px, divisores discretos, tipografia/ícones existentes, switches com foco e slider acessível por teclado. A rolagem e o enquadramento automático do foco continuam no shell existente.
@@ -36,7 +38,7 @@ Testes, smoke e captura recebem caminhos temporários explícitos. Os testes de 
 
 Único gatilho de conquistas: `AchievementNotificationLayer.notificationPresented(achievementId)`. Validação do evento, reconhecimento retroativo, deduplicação e FIFO continuam na camada existente. Não há novo observador de desbloqueios. O áudio ainda consome cada ID uma única vez na execução como defesa contra repetição do sinal. Não carrega conquistas antigas nem toca ao abrir Conquistas.
 
-Há uma saída, sem sobreposição, e intervalo mínimo de **1.200 ms** entre solicitações, inclusive prévias. Em um lote apresentado simultaneamente, somente a primeira elegível toca. As demais são consumidas silenciosamente, sem fila de áudio ou repetição posterior. Uma notificação que só alcançar uma vaga visual mais tarde poderá tocar naquele momento, respeitando a limitação. A fila visual, sua ordem e seus tempos não são alterados.
+Há uma saída, sem sobreposição, e intervalo mínimo de **1.300 ms** entre solicitações, inclusive prévias, com proteção adicional pelo estado real de reprodução. Em um lote apresentado simultaneamente, somente a primeira elegível toca. As demais são consumidas silenciosamente, sem fila de áudio ou repetição posterior. Uma notificação que só alcançar uma vaga visual mais tarde poderá tocar naquele momento, respeitando a limitação. A fila visual, sua ordem e seus tempos não são alterados. O botão exibe reprodução/espera e fica indisponível enquanto não pode iniciar outra prévia.
 
 A permissão de apresentação da camada controla também o áudio. Modal, minimização/inatividade e demais suspensões interrompem o som corrente. Cartões que já tocaram não tocam ao reaparecer. Eventos pendentes só podem tocar quando realmente apresentados; eventos expirados nunca chegam ao gatilho. Se a saída estiver indisponível ou carregando, a oportunidade é descartada, sem áudio atrasado.
 

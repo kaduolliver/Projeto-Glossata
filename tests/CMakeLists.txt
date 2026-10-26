@@ -130,4 +130,4 @@ add_test(NAME GlossataCatalogAdmissionTests COMMAND ${Python3_EXECUTABLE} ${CMAK
 add_executable(glossata_preferences_tests PreferencesAudioTests.cpp ${CMAKE_SOURCE_DIR}/resources.qrc)
 target_link_libraries(glossata_preferences_tests PRIVATE glossata_preferences Qt6::Test)
 add_test(NAME GlossataPreferencesAudioTests COMMAND glossata_preferences_tests)
-add_test(NAME GlossataAchievementSoundTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/generate_achievement_sound.py --check)
+add_test(NAME GlossataAchievementSoundTests COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_achievement_sound.py)

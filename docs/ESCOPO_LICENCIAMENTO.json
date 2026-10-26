@@ -200,7 +200,8 @@
     "src/presentation/EffectOutput.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
     "src/presentation/EffectOutput.h": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
     "scripts/generate_achievement_sound.py": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
-    "tests/PreferencesAudioTests.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred."
+    "tests/PreferencesAudioTests.cpp": "New code for substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, human authorship or legal review inferred.",
+    "tests/test_achievement_sound.py": "New technical acceptance tests for the original sound refinement in substep 2.4.1; explicit inclusion in the code license scope remains pending. No automatic grant, authorship or legal approval inferred."
   },
   "exclusions": [
     "All files not expressly listed in files; no automatic grant by directory or extension.",

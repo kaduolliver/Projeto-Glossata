@@ -177,7 +177,7 @@ Item {
                                 border.width: volume.visualFocus ? Style.Theme.focusWidth : 1
                             }
                         }
-                        UiButton { objectName: "previewAchievementSoundButton"; text: "Testar som"; iconName: "play"; secondary: true; compact: true; enabled: view.app.effects.available && view.app.preferences.effectsVolume > 0; onClicked: view.app.effects.preview() }
+                        UiButton { objectName: "previewAchievementSoundButton"; text: view.app.effects.playing ? "Reproduzindo…" : view.app.effects.previewBusy ? "Aguarde…" : "Testar som"; implicitWidth: 180; iconName: "play"; secondary: true; compact: true; enabled: view.app.effects.previewReady; onClicked: view.app.effects.preview() }
                     }
                     Description { text: "A prévia usa o volume escolhido, mesmo com os sons de conquistas desativados. Em 0%, o áudio fica silencioso." }
                     Description { objectName: "settingsAudioStatus"; visible: text.length > 0; text: view.app.effects.statusText }

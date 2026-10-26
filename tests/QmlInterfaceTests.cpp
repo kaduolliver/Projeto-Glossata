@@ -75,6 +75,7 @@ void captureMessage(QtMsgType type, const QMessageLogContext &, const QString &m
 class QmlInterfaceTests : public QObject {
     Q_OBJECT
 private slots:
+    void achievementPreviewBusyFeedback();
     void settingsPersistenceRecovery_data();
     void settingsPersistenceRecovery();
     void profileSettingsPreferencesKeyboardAndCaptures();
@@ -4076,7 +4077,7 @@ void QmlInterfaceTests::achievementSoundsFollowPresentationOnly()
     QVERIFY(controller.startTaxonGame({}, "genus")); controller.answerSelected(notificationAnswer(controller));
     QCOMPARE(unlocked.size(), 2); QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1);
     controller.achievementUnlocked(unlocked.first().first().toMap()); QCOMPARE(presented.size(), 2); QCOMPARE(device->plays, 1);
-    now += 1200;
+    now += AchievementAudio::MinimumIntervalMs;
     layer->setProperty("surfaceAvailable", false); QTRY_VERIFY(!audio.presentationAllowed());
     controller.exploreTaxon(notificationVisitTaxon());
     QVERIFY(controller.recordExplorationVisit(notificationVisitTaxon())); QCOMPARE(unlocked.size(), 4);
@@ -4202,5 +4203,69 @@ void QmlInterfaceTests::settingsPersistenceRecovery()
     QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
 }
 
-QTEST_MAIN(QmlInterfaceTests)
+void QmlInterfaceTests::achievementPreviewBusyFeedback()
+{
+    interfaceWarnings.clear(); const auto oldHandler = qInstallMessageHandler(captureMessage);
+    const auto restore = qScopeGuard([oldHandler] { qInstallMessageHandler(oldHandler); });
+    QTemporaryDir dir; GameController controller(nullptr, dir.filePath("preview.sqlite"));
+    DiscordRichPresence presence{QString(), QString()}; AppPreferences preferences(dir.filePath("preferences.ini"));
+    auto output = std::make_unique<RecordingEffectOutput>(); auto device = output.get(); device->simulatePlayback = true;
+    AchievementAudio audio(preferences, std::move(output)); QSignalSpy ended(&audio, &AchievementAudio::playbackEnded);
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("gameController", &controller); engine.rootContext()->setContextProperty("discordPresence", &presence);
+    engine.rootContext()->setContextProperty("appPreferences", &preferences); engine.rootContext()->setContextProperty("achievementAudio", &audio);
+    engine.load(QUrl("qrc:/resources/qml/Main.qml")); QVERIFY(!engine.rootObjects().isEmpty());
+    auto window = qobject_cast<QQuickWindow *>(engine.rootObjects().first()); QVERIFY(window);
+    window->requestActivate(); QTest::qWait(100); window->setProperty("page", "settings");
+    const auto item = [&](const QString &name) { return findVisualItem(window->contentItem(), name); };
+    QTRY_VERIFY(item("previewAchievementSoundButton")); auto button = item("previewAchievementSoundButton");
+    QTRY_VERIFY(button->isEnabled()); const auto width = button->width(), sliderWidth = item("effectsVolumeSlider")->width();
+    const auto owner = controller.currentPlayerId(); const auto achievements = controller.achievements();
+    button->forceActiveFocus(Qt::TabFocusReason); QTest::qWait(80); QTest::keyClick(window, Qt::Key_Space);
+    QTRY_COMPARE(device->plays, 1); QTRY_VERIFY(!button->isEnabled()); QVERIFY(audio.playing());
+    QCOMPARE(button->property("text").toString(), QStringLiteral("Reproduzindo…"));
+    QTest::keyClick(window, Qt::Key_Space); QVERIFY(!audio.preview()); QCOMPARE(device->plays, 1); QCOMPARE(device->stops, 0);
+    QCOMPARE(button->width(), width); QCOMPARE(item("effectsVolumeSlider")->width(), sliderWidth);
+    QVERIFY(QDir().mkpath("previews/audio-refinement"));
+    QTest::qWait(150); // Let the existing page fade finish before recording the real busy state.
+    QVERIFY(window->grabWindow().save("previews/audio-refinement/preview-playing.png"));
+    device->finishNaturally(); QCOMPARE(ended.first()[0].toString(), QString("finished"));
+    QCOMPARE(button->property("text").toString(), QStringLiteral("Aguarde…")); QVERIFY(!button->isEnabled());
+    QTRY_VERIFY_WITH_TIMEOUT(button->isEnabled(), AchievementAudio::MinimumIntervalMs + 1000);
+    QCOMPARE(button->property("text").toString(), QString("Testar som"));
+    button->forceActiveFocus(Qt::TabFocusReason); QTest::keyClick(window, Qt::Key_Space); QCOMPARE(device->plays, 2);
+    preferences.setEffectsVolume(0); QCOMPARE(device->stops, 1); QCOMPARE(ended.last()[0].toString(), QString("volume-zero"));
+    QVERIFY(!button->isEnabled()); QCOMPARE(controller.currentPlayerId(), owner); QCOMPARE(controller.achievements(), achievements);
+    QVERIFY2(interfaceWarnings.isEmpty(), qPrintable(interfaceWarnings.join('\n')));
+}
+
+// Opt-in interactive use of the production QML/controller/audio path, with
+// temporary databases/preferences and Discord never started. CTest does not
+// enter this branch; its audio tests keep using RecordingEffectOutput.
+int main(int argc, char *argv[])
+{
+    QGuiApplication app(argc, argv);
+    app.setAttribute(Qt::AA_Use96Dpi, true); // Preserve the previous QTEST_MAIN setup.
+    if (app.arguments().contains(QStringLiteral("--manual-audio"))) {
+        qputenv("QT_QUICK_CONTROLS_STYLE", "Basic"); qputenv("GLOSSATA_AUDIO_TRACE", "1");
+        app.setApplicationName(QStringLiteral("glossata_audio_diagnostic"));
+        QTemporaryDir dir; if (!dir.isValid()) return 4;
+        GameController controller(nullptr, dir.filePath("manual.sqlite"));
+        AppPreferences preferences(dir.filePath("preferences.ini"));
+        DiscordRichPresence presence{QString(), QString()}; AchievementAudio audio(preferences);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, &preferences, &AppPreferences::flush);
+        QObject::connect(&app, &QCoreApplication::aboutToQuit, &controller, &GameController::prepareToClose);
+        QQmlApplicationEngine engine;
+        engine.rootContext()->setContextProperty("gameController", &controller); engine.rootContext()->setContextProperty("discordPresence", &presence);
+        engine.rootContext()->setContextProperty("appPreferences", &preferences); engine.rootContext()->setContextProperty("achievementAudio", &audio);
+        engine.setInitialProperties({{"page", QStringLiteral("settings")}});
+        engine.load(QUrl("qrc:/resources/qml/Main.qml")); if (engine.rootObjects().isEmpty()) return 5;
+        engine.rootObjects().first()->setProperty("title", QStringLiteral("Glossata · diagnóstico de áudio · dados temporários"));
+        if (app.arguments().contains(QStringLiteral("--smoke-test"))) QTimer::singleShot(600, &app, &QCoreApplication::quit);
+        return app.exec();
+    }
+    QmlInterfaceTests tests;
+    QTEST_SET_MAIN_SOURCE_PATH
+    return QTest::qExec(&tests, argc, argv);
+}
 #include "QmlInterfaceTests.moc"

@@ -2,7 +2,7 @@
 
 ## Perfil e ajustes — 2.4.1
 
-`SettingsView` organiza as cinco seções usando os tokens existentes e a rolagem/foco do shell. `AppPreferences` centraliza as três preferências em QSettings/INI, fora do SQLite; `Main.motionEnabled` é uma projeção somente leitura ligada ao mesmo `Theme.motionEnabled`. `AchievementAudio` recebe exclusivamente `notificationPresented`, respeita suspensão e limita solicitações a uma por 1.200 ms, sem alterar a fila. `EffectOutput` isola QSoundEffect da política e dos testes. Identidade, renomeação, Discord e créditos usam os contratos existentes. [Persistência, áudio, decisões e evidências](VERSOES/2.4.1/README.md).
+`SettingsView` organiza as cinco seções usando os tokens existentes e a rolagem/foco do shell. `AppPreferences` centraliza as três preferências em QSettings/INI, fora do SQLite; `Main.motionEnabled` é uma projeção somente leitura ligada ao mesmo `Theme.motionEnabled`. `AchievementAudio` recebe exclusivamente `notificationPresented`, respeita suspensão e limita solicitações a uma por 1.300 ms, sem alterar a fila; o estado do efeito também impede reinício e informa a prévia. `EffectOutput` isola QSoundEffect, diferencia fim observado/parada explícita e evita reaplicar a mesma saída padrão. Identidade, renomeação, Discord e créditos usam os contratos existentes. [Persistência e evidências](VERSOES/2.4.1/README.md), [refinamento sonoro](VERSOES/2.4.1/refinamento-audio/README.md).
 
 ## Conquistas — 2.3.3
 

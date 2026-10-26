@@ -2,12 +2,52 @@
   "sample_rate": 44100,
   "channels": 1,
   "bits_per_sample": 16,
-  "duration_seconds": 0.85,
+  "duration_seconds": 1.2,
   "peak_dbfs": -8.874,
-  "rms_dbfs": -21.15,
+  "rms_dbfs": -21.531,
   "first_sample": 0,
   "last_sample": 0,
+  "synthesis_revision": 2,
+  "synthesis": {
+    "method": "additive sine voices; no samples or random noise",
+    "notes": [
+      {
+        "frequency_hz": 523.251,
+        "start_seconds": 0.0,
+        "gain": 1.0
+      },
+      {
+        "frequency_hz": 659.255,
+        "start_seconds": 0.11,
+        "gain": 0.78
+      },
+      {
+        "frequency_hz": 880.0,
+        "start_seconds": 0.22,
+        "gain": 0.67
+      }
+    ],
+    "attack_seconds": 0.024,
+    "hold_seconds": 0.04,
+    "decay_per_second": 3.2,
+    "release_seconds": 0.3,
+    "harmonics": [
+      {
+        "ratio": 1,
+        "gain": 1
+      },
+      {
+        "ratio": 2,
+        "gain": 0.14
+      },
+      {
+        "ratio": 3,
+        "gain": 0.04
+      }
+    ],
+    "peak_target": 0.36
+  },
   "external_samples": false,
   "licensing_status": "pending-maintainer-decision",
-  "sha256": "dc62f483eb235b58ae59edf0e3a89f99e1cc6203a3a1ca58e2e9abf0a50b1e21"
+  "sha256": "08c32793a11ffbe38147d733ea62f0d9a97df2a987973070ed7e5becdffbea80"
 }
