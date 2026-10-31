@@ -22,15 +22,19 @@ A aplicação disponível atualmente é o **Projeto Glossata**, um programa desk
 
 ![Tela Início real do Projeto Glossata no topo, com o carrossel fotográfico completo e as ações Explorar e Jogar.](docs/images/tela-inicial.png)
 
-*Home atual no topo, com o carrossel completo. Captura do aplicativo em execução com perfil temporário, renovada após a alteração do shell compartilhado. [Origem da captura](docs/images/tela-inicial.json) · [Captura histórica do topo](docs/interface/VERSOES/2.2.1-B/refinamento-1/capturas/home-production-1240x820.png).*
+***Início.** Topo da Home, com carrossel fotográfico, identidade visual e ações principais. Captura atual do executável de produção com perfil temporário. [Origem da captura](docs/images/tela-inicial.json) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Captura histórica do topo](docs/interface/VERSOES/2.2.1-B/refinamento-1/capturas/home-production-1240x820.png).*
 
-![Descoberta do Dia e indicadores dinâmicos do catálogo na tela Início real do Projeto Glossata, após rolagem.](docs/interface/VERSOES/2.3.2/refinamentos-topo/anterior-home.png)
+![Explorar real do Projeto Glossata, com navegação taxonômica, cartões fotográficos e organismos em destaque.](docs/interface/VERSOES/2.2.2/usabilidade/capturas/gallery-hover-1920x1080-100.png)
 
-*Captura anterior preservada, com perfil temporário e rolagem na Home para mostrar a Descoberta do Dia e os indicadores. [Origem da captura](docs/interface/VERSOES/2.3.2/refinamentos-topo/anterior-home.json) · [Como atualizar a captura e preparar lançamentos](docs/VERSIONAMENTO.md).*
+***Explorar.** Navegação científica e cartões fotográficos. Captura real histórica reutilizada, com perfil temporário. [Origem e hashes](docs/interface/VERSOES/2.2.2/usabilidade/capturas.json) · [Créditos das fotografias](docs/PHOTO_CREDITS.md).*
 
 ![Quiz real do Projeto Glossata, com fotografia de um leão, quatro alternativas de identificação do gênero, pontuação possível e botão de dica.](docs/images/quiz.png)
 
-*Quiz em execução com perfil temporário. Fotografia: Patrick Jackson, conforme o crédito da fonte; licença declarada [CC BY](https://creativecommons.org/licenses/by/4.0/), com versão ainda não comprovada. [Foto original](https://www.inaturalist.org/photos/748172022) · [Origem da captura e atribuição](docs/images/quiz.json). A proveniência legada da foto mantém as [pendências documentadas](docs/RELATORIO_CONFORMIDADE.md).*
+***Jogar.** Quiz em execução com perfil temporário; captura real histórica reutilizada. Fotografia: Patrick Jackson, conforme o crédito da fonte; licença declarada [CC BY](https://creativecommons.org/licenses/by/4.0/), com versão ainda não comprovada. [Foto original](https://www.inaturalist.org/photos/748172022) · [Origem da captura e atribuição](docs/images/quiz.json). A proveniência legada da foto mantém as [pendências documentadas](docs/RELATORIO_CONFORMIDADE.md).*
+
+![Descoberta do Dia e indicadores dinâmicos do catálogo na tela Início real do Projeto Glossata, após rolagem.](docs/images/descoberta-do-dia.png)
+
+***Descoberta do Dia.** Seção inferior da Home e indicadores do catálogo, capturados pelo executável de produção com perfil temporário. [Origem da captura](docs/images/descoberta-do-dia.json) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Histórico da correção](docs/interface/capturas-readme/README.md) · [Como atualizar e verificar as capturas](docs/VERSIONAMENTO.md).*
 
 ### Missão
 
@@ -109,8 +113,6 @@ NCBI Taxonomy, LPSN, POWO e MycoBank têm etapas e restrições documentadas par
 Em **Explorar**, pesquise por nome científico, nome comum disponível ou grupo e combine filtros de domínio e nível taxonômico. A busca funciona offline, separa grupos de organismos cadastrados e abre o nó científico correspondente. Resultados aparecem em lotes de até 12 por seção, com Carregar mais e totais preservados. Voltar à pesquisa conserva consulta e filtros. Fotografias proporcionais, organismos em destaque, breadcrumbs compactos/expansíveis, fontes e avisos de revisão organizam a navegação sem iniciar partidas. Contagens representam registros do catálogo; ranks ausentes não são inferidos. Animalia, Plantae e Fungi mantêm seus caminhos em Opisthokonta ou Archaeplastida.
 
 A cobertura fotográfica e os dados científicos permanecem preservados: 534 dos 623 cartões têm associação fotográfica e 89 têm pendência justificada. Autoria, origem, licenças individuais e limites continuam nos [créditos](docs/PHOTO_CREDITS.md). Em **Jogar**, cartões fotográficos organizam os reinos em destaque, domínios e linhagens avançadas; a configuração separa quantidade catalogada e disponibilidade no nível escolhido. Livre, dificuldade, jogo misto e Competitivo mantêm as regras existentes. Os níveis de quiz exigem revisão adequada, aprovação fotográfica no nível e quatro alternativas distintas; domínio, supergrupo e reino continuam sem quiz elegível.
-
-![Explorar real do Projeto Glossata, com cartões uniformes, fotografias completas e hover próprio dos créditos.](docs/interface/VERSOES/2.2.2/usabilidade/capturas/gallery-hover-1920x1080-100.png)
 
 [Capturas e validação de uniformidade e rolagem](docs/interface/VERSOES/2.2.2/usabilidade/README.md) · [Créditos das fotografias](docs/PHOTO_CREDITS.md) · [Registros anteriores da subetapa](docs/interface/VERSOES/2.2.2/README.md).
 

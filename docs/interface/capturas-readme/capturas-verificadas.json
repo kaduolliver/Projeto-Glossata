@@ -1,0 +1,78 @@
+{
+  "recorded_at": "2026-10-31T23:40:39.945907+00:00",
+  "base_commit": "d4224c8415a1aeaa6982b3417ae99025da8d1cc9",
+  "captures": [
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "scripts/capture_home.py",
+        "--binary",
+        "build/profile-settings-2-4-1/projeto_glossata.exe",
+        "--section",
+        "top"
+      ],
+      "exit_code": 0,
+      "stdout": "Captura real salva: docs/images/tela-inicial.png (1240x820). Registro: docs/images/tela-inicial.json.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "scripts/capture_home.py",
+        "--binary",
+        "build/profile-settings-2-4-1/projeto_glossata.exe",
+        "--section",
+        "discovery"
+      ],
+      "exit_code": 0,
+      "stdout": "Captura real salva: docs/images/descoberta-do-dia.png (1240x820). Registro: docs/images/descoberta-do-dia.json.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Program Files\\Python311\\python.exe",
+        "-X",
+        "utf8",
+        "scripts/capture_home.py",
+        "--binary",
+        "build/profile-settings-2-4-1/projeto_glossata.exe",
+        "--section",
+        "top"
+      ],
+      "exit_code": 0,
+      "stdout": "Captura real salva: docs/images/tela-inicial.png (1240x820). Registro: docs/images/tela-inicial.json.\n",
+      "stderr": ""
+    }
+  ],
+  "isolation_checks": [
+    {
+      "captured_section": "discovery",
+      "protected_before": {
+        "docs/images/tela-inicial.png": "74dd5b061f3c7129bf36fdc5ac345a48c7929da2bb0561a80c26f455f76fc793",
+        "docs/images/tela-inicial.json": "d19af77ca06f0dfc0ccce222c8a953fc8fa36c975b53d647acdca0ac5de4bcca"
+      },
+      "protected_after": {
+        "docs/images/tela-inicial.png": "74dd5b061f3c7129bf36fdc5ac345a48c7929da2bb0561a80c26f455f76fc793",
+        "docs/images/tela-inicial.json": "d19af77ca06f0dfc0ccce222c8a953fc8fa36c975b53d647acdca0ac5de4bcca"
+      },
+      "unchanged": true
+    },
+    {
+      "captured_section": "top",
+      "protected_before": {
+        "docs/images/descoberta-do-dia.png": "d327bbdbf4fa7a28af58d46d9c44b8882beafb134fe171711d80e5d702087aa0",
+        "docs/images/descoberta-do-dia.json": "07f9729261e9b92a5acc98139301a4d7ae0a45d86ba8d73db4b940f1837b5832"
+      },
+      "protected_after": {
+        "docs/images/descoberta-do-dia.png": "d327bbdbf4fa7a28af58d46d9c44b8882beafb134fe171711d80e5d702087aa0",
+        "docs/images/descoberta-do-dia.json": "07f9729261e9b92a5acc98139301a4d7ae0a45d86ba8d73db4b940f1837b5832"
+      },
+      "unchanged": true
+    }
+  ],
+  "final_home_errors": []
+}

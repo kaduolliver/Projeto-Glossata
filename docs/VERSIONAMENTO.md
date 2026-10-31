@@ -10,24 +10,38 @@
 
 O diretório interno `glossata_quiz` e os bancos dos jogadores permanecem estáveis. Os testes, o smoke test e a captura utilizam bancos temporários. Nenhum dos scripts de lançamento faz push nem cria uma release no GitHub.
 
-## Captura real da tela inicial
+## Capturas reais da tela inicial
 
 Após compilar, execute na raiz, com Qt no PATH:
 
 ```powershell
 python scripts/capture_home.py
+python scripts/capture_home.py --section discovery
 python scripts/release.py check
 ```
 
-Quando a alteração visual estiver na seção inferior da Home, use `python scripts/capture_home.py --binary build/2.2.1-B-verified/projeto_glossata.exe --section discovery`. O próprio executável faz a rolagem no contêiner real e captura o quadro; o manifesto declara o enquadramento. Sem `--section`, o comportamento anterior de capturar o topo é preservado. A opção existe somente no modo isolado de captura, sem mudar a abertura normal ou os dados dos jogadores. Os quadros de testes deste refinamento têm registros próprios; a imagem oficial usa o executável de produção pelo script.
+Cada seção tem destinos fixos e independentes:
 
-O script executa **o programa compilado**, com a interface e controlador de produção, perfil temporário e Discord desativado. Usa `QQuickWindow::grabWindow`, backend Qt software/offscreen, e grava `docs/images/tela-inicial.png`. Não redesenha, simula ou gera uma interface por IA. A ilustração decorativa que aparece dentro da janela é um recurso real da interface existente.
+| Seção | Comando | Imagem | Registro de origem |
+| --- | --- | --- | --- |
+| Topo, incluindo carrossel | `python scripts/capture_home.py --section top` | `docs/images/tela-inicial.png` | `docs/images/tela-inicial.json` |
+| Descoberta do Dia e indicadores | `python scripts/capture_home.py --section discovery` | `docs/images/descoberta-do-dia.png` | `docs/images/descoberta-do-dia.json` |
 
-`docs/images/tela-inicial.json` registra data real da captura, dimensões, versão e hash do binário, hash da imagem e fontes da tela. Esse registro demonstra rastreabilidade técnica, não direitos sobre a arte. A imagem é da área de conteúdo da janela; o backend offscreen não desenha a moldura do Windows.
+Sem `--section`, o padrão continua sendo `top`. Para outro diretório de build, acrescente `--binary build/SEU-BUILD/projeto_glossata.exe`; o manifesto de build precisa corresponder ao executável e aos fontes atuais. `discovery` faz a rolagem no contêiner real antes da captura. Uma seção nunca escreve o PNG ou o JSON da outra. O enquadramento permanece em 1240×820, escala 1 e 96 DPI; esta separação não introduz Full HD.
+
+O script executa **o programa compilado**, com a interface e controlador de produção, perfil temporário e Discord desativado. Usa `QQuickWindow::grabWindow` e backend Qt software/offscreen. Não redesenha, simula ou gera uma interface por IA. A opção existe somente no modo isolado de captura, sem mudar a abertura normal ou os dados dos jogadores.
+
+Cada JSON registra seção (`top` ou `discovery`), enquadramento, data real da captura, dimensões, versão e hash do binário, hash da imagem e fontes da tela. Esse registro demonstra rastreabilidade técnica, não direitos sobre a arte. A imagem é da área de conteúdo da janela; o backend offscreen não desenha a moldura do Windows. Créditos, referências, licenças e pendências das fotografias continuam nos registros próprios e em `docs/PHOTO_CREDITS.md`.
 
 **Sempre inclua o PNG atualizado e seu registro no mesmo commit de uma alteração visual relevante da tela inicial**, preservando o caminho. O controle é conservador para `Main.qml`, `HomeView.qml`, componentes compartilhados e branding. Mudanças sem efeito visual que acionem esse controle devem ser reorganizadas ou justificadas por uma revisão humana; não altere pixels artificialmente para satisfazer o Git. Se não for possível executar/capturar, registre a pendência e não use mockup como substituto.
 
-CI confere a correspondência dos hashes e, em pushes/PRs, os commits do intervalo enviado. Não compara pixels entre sistemas operacionais/fontes diferentes. Alterações visuais produzidas indiretamente por dados ou C++ também precisam de captura conforme a regra editorial, mesmo quando não reconhecidas pelo detector de caminhos.
+Atualize o topo após mudanças no carrossel, identidade, ações principais ou shell compartilhado; atualize a Descoberta após mudanças no cartão, indicadores ou seu enquadramento. Mudanças compartilhadas e alterações nas fontes rastreadas exigem regenerar os dois pares para manter `inputs` atuais. A atualização da Descoberta não substitui a obrigação de manter a evidência do topo no commit visual.
+
+`python scripts/release.py check` valida os dois pares: existência, PNG, hashes, dimensões, origem do executável, fontes atuais e correspondência exata de seção/enquadramento com o destino. Também rejeita imagens iguais para topo e Descoberta, verifica os links locais do README e os registros/hashes dos PNGs exibidos, incluindo manifestos históricos compartilhados. `python tests/test_release.py` cobre a regressão das duas opções e do padrão, usando somente fixtures temporárias de teste.
+
+CI já executa essas verificações e, em pushes/PRs, `python scripts/release.py check-history --base COMMIT_BASE` exige PNG e JSON do topo no mesmo commit visual. Não compara pixels entre sistemas operacionais/fontes diferentes. Alterações visuais produzidas indiretamente por dados ou C++ também precisam de captura conforme a regra editorial, mesmo quando não reconhecidas pelo detector de caminhos. Os metadados não comprovam sozinhos a composição visível: confira visualmente cada imagem real.
+
+Antes de substituir uma evidência que precisa permanecer consultável, preserve PNG e JSON juntos em um diretório histórico documentado, mantendo os bytes, hashes, datas e enquadramento originais. Registre o commit de origem separadamente. Não reescreva registros antigos para fazê-los parecer recentes nem apague capturas históricas. A evidência anterior desta correção está em [capturas-readme](interface/capturas-readme/README.md); Explorar e Quiz reutilizados no README mantêm seus registros históricos.
 
 ## Sequência de trabalho
 

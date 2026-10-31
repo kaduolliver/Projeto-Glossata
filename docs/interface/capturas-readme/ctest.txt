@@ -1,0 +1,13 @@
+Test project C:/glossata_game/build
+    Start  6: GlossataReleaseTests
+1/4 Test  #6: GlossataReleaseTests ...............   Passed    1.37 sec
+    Start 10: GlossataRepositoryAuditTests
+2/4 Test #10: GlossataRepositoryAuditTests .......   Passed    1.30 sec
+    Start 23: GlossataProjectStatusTests
+3/4 Test #23: GlossataProjectStatusTests .........   Passed    3.31 sec
+    Start 25: GlossataRightsInvestigationTests
+4/4 Test #25: GlossataRightsInvestigationTests ...   Passed    9.56 sec
+
+100% tests passed out of 4
+
+Total Test time (real) =  15.56 sec
