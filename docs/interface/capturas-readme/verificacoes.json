@@ -1,0 +1,650 @@
+{
+  "recorded_at": "2026-10-31T23:44:11.647260+00:00",
+  "base_commit": "d4224c8415a1aeaa6982b3417ae99025da8d1cc9",
+  "application_version": "2.3.0",
+  "catalog_version": "2.4.0",
+  "tests": {
+    "release_regression": {
+      "command": "python -X utf8 tests/test_release.py",
+      "passed": 21,
+      "failed": 0
+    },
+    "ctest": {
+      "command": "ctest --test-dir build --output-on-failure -R 'Glossata(Release|ProjectStatus|RepositoryAudit|RightsInvestigation)Tests' --output-log C:/glossata_game/build/capturas-readme-ctest.txt",
+      "passed": 4,
+      "failed": 0,
+      "seconds": 15.56,
+      "log": "ctest.txt"
+    },
+    "scope": "Only the four related CTest suites were executed for this correction; not the full suite."
+  },
+  "checks_passed": [
+    "python -X utf8 scripts/release.py check",
+    "python -X utf8 scripts/project_status.py check --build build",
+    "python -X utf8 scripts/licensing_inventory.py --check-code",
+    "python -X utf8 scripts/audit_repository.py",
+    "git diff --check"
+  ],
+  "final_home_pairs": {
+    "top": {
+      "docs/images/tela-inicial.png": "74dd5b061f3c7129bf36fdc5ac345a48c7929da2bb0561a80c26f455f76fc793",
+      "docs/images/tela-inicial.json": "565bd56c08db9a68f0c19bc43002ff9bb63aa88fa195414728d3939169ff3e41"
+    },
+    "discovery": {
+      "docs/images/descoberta-do-dia.png": "d327bbdbf4fa7a28af58d46d9c44b8882beafb134fe171711d80e5d702087aa0",
+      "docs/images/descoberta-do-dia.json": "07f9729261e9b92a5acc98139301a4d7ae0a45d86ba8d73db4b940f1837b5832"
+    }
+  },
+  "historical_copy": {
+    "docs/interface/capturas-readme/anterior-home.png": {
+      "sha256": "d3d84bfbf149451fd5e48af4fe051cfdc6c866ce4a44450dc39425f706c96faa",
+      "matches_base_blob": true
+    },
+    "docs/interface/capturas-readme/anterior-home.json": {
+      "sha256": "5f0ccc3ef794d6cfe960270d0d29cf86ce03ffd9e633f07e340bc167ba0425b9",
+      "matches_base_blob": true
+    }
+  },
+  "protected_paths_unchanged": [
+    "src",
+    "resources",
+    "VERSION.txt",
+    "CMakeLists.txt",
+    "resources.qrc",
+    "docs/CATALOGO_CHANGELOG.md"
+  ],
+  "build": {
+    "configure": "cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release",
+    "command": "cmake --build build --target glossata_quiz --parallel 4",
+    "binary": "build/profile-settings-2-4-1/projeto_glossata.exe",
+    "built_at": "2026-10-31T23:40:13.013082+00:00",
+    "binary_sha256": "c0e8b9e72b8b05c35d2e7394ef723dbc4af234bbed72a70ff780a64eb05d7503",
+    "manifest_sha256": "51cc16f5d4b1a0c56f4e42b8a9feac0ee5a45157a451eaa99ee0300098d778aa"
+  },
+  "distribution": {
+    "command": [
+      "C:\\Program Files\\Python311\\python.exe",
+      "-X",
+      "utf8",
+      "scripts/distribution.py",
+      "check"
+    ],
+    "exit_code": 2,
+    "stdout": "DISTRIBUIÇÃO BLOQUEADA. Permissões/revisões/obrigações pendentes; consulte build/distribution-audit.json.\n",
+    "stderr": "",
+    "blocked": true,
+    "technical_errors": [],
+    "notice": "Existing rights/review obligations remain; no permissions, scientific records or release gates were modified."
+  },
+  "hygiene": {
+    "mode": "dry-run only; no deletion",
+    "plans": [
+      {
+        "command": "python scripts/cleanup_build.py",
+        "candidates": [],
+        "total_bytes": 0,
+        "preserved_count": 24
+      },
+      {
+        "command": "python scripts/cleanup_build.py --include-old-builds",
+        "candidates": [],
+        "total_bytes": 0,
+        "preserved_count": 42
+      }
+    ],
+    "preserved_examples": [
+      {
+        "path": "build/tests/previews/navigation",
+        "category": "generated-previews",
+        "bytes": 6427331,
+        "last_modified": 1793055755,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/carousel",
+        "category": "generated-previews",
+        "bytes": 9623760,
+        "last_modified": 1793055697,
+        "reason": "retained newest"
+      },
+      {
+        "path": "build/tests/previews/daily-discovery",
+        "category": "generated-previews",
+        "bytes": 5338784,
+        "last_modified": 1793055679,
+        "reason": "recently modified"
+      },
+      {
+        "path": "build/tests/previews/explore-2.2.2",
+        "category": "generated-previews",
+        "bytes": 6906133,
+        "last_modified": 1793055671,
+        "reason": "recently modified"
+      }
+    ],
+    "local_generated_artifacts": [
+      {
+        "path": "scripts/__pycache__",
+        "bytes": 1397853,
+        "reason": "Python cache",
+        "risk": "Possible recompilation cost or loss of capture provenance; preserve until explicit cleanup authorization."
+      },
+      {
+        "path": "tests/__pycache__",
+        "bytes": 585884,
+        "reason": "Python cache",
+        "risk": "Possible recompilation cost or loss of capture provenance; preserve until explicit cleanup authorization."
+      },
+      {
+        "path": "build/profile-settings-2-4-1",
+        "bytes": 323918990,
+        "reason": "Production executable used in the captures; retained build",
+        "risk": "Possible recompilation cost or loss of capture provenance; preserve until explicit cleanup authorization."
+      },
+      {
+        "path": "build/capturas-readme-cleanup-dry-run.json",
+        "bytes": 10502,
+        "reason": "Local check log or dry-run inventory for this task",
+        "risk": "Validation traceability; keep without cleanup authorization."
+      },
+      {
+        "path": "build/capturas-readme-cleanup-extended.json",
+        "bytes": 17392,
+        "reason": "Local check log or dry-run inventory for this task",
+        "risk": "Validation traceability; keep without cleanup authorization."
+      },
+      {
+        "path": "build/capturas-readme-ctest.txt",
+        "bytes": 568,
+        "reason": "Local check log or dry-run inventory for this task",
+        "risk": "Validation traceability; keep without cleanup authorization."
+      }
+    ],
+    "duplicate_preview_groups": [
+      {
+        "paths": [
+          "build/tests/previews/domain-0.png",
+          "build/tests/previews/play-2.2.3/100/empty-group-1240x820.png"
+        ],
+        "bytes": 123516,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-one-1000x700.png",
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-resized-1000x700.png"
+        ],
+        "bytes": 377874,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-one-1240x820.png",
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-resized-1240x820.png"
+        ],
+        "bytes": 518424,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-one-1920x1080.png",
+          "build/tests/previews/achievement-notifications-quiz-compact/100/compact-resized-1920x1080.png"
+        ],
+        "bytes": 1041412,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievements-filterbar/100/cleared-filters-1000x700.png",
+          "build/tests/previews/achievements-filterbar/100/overview-1000x700.png"
+        ],
+        "bytes": 163216,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievements-filterbar/100/cleared-filters-1240x820.png",
+          "build/tests/previews/achievements-filterbar/100/overview-1240x820.png"
+        ],
+        "bytes": 184606,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/achievements-filterbar/100/cleared-filters-1920x1080.png",
+          "build/tests/previews/achievements-filterbar/100/overview-1920x1080.png"
+        ],
+        "bytes": 298576,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/carousel/slide-0-1240x820.png",
+          "build/tests/previews/daily-discovery/home-1240x820.png"
+        ],
+        "bytes": 1149432,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/carousel/slide-0-1920x1080.png",
+          "build/tests/previews/daily-discovery/home-1920x1080.png"
+        ],
+        "bytes": 1993600,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/daily-discovery/discovery-1000x700.png",
+          "build/tests/previews/daily-discovery/indicators-1000x700.png"
+        ],
+        "bytes": 303782,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/daily-discovery/discovery-1240x820.png",
+          "build/tests/previews/daily-discovery/indicators-1240x820.png"
+        ],
+        "bytes": 477386,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/daily-discovery/discovery-1920x1080.png",
+          "build/tests/previews/daily-discovery/indicators-1920x1080.png"
+        ],
+        "bytes": 1643426,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/explore-1000x700.png",
+          "build/tests/previews/explore-2.2.2-creditos/overview-1000x700.png",
+          "build/tests/previews/explore-2.2.2-round-1/domains-1000x700.png",
+          "build/tests/previews/explore-2.2.2-usabilidade/100/overview-1000x700-100.png",
+          "build/tests/previews/navigation/explore-1000x700.png"
+        ],
+        "bytes": 713270,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/explore-1240x820.png",
+          "build/tests/previews/explore-2.2.2-round-1/domains-1240x820.png"
+        ],
+        "bytes": 501360,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/explore-1920x1080.png",
+          "build/tests/previews/explore-2.2.2-creditos/overview-1920x1080.png",
+          "build/tests/previews/explore-2.2.2-round-1/domains-1920x1080.png"
+        ],
+        "bytes": 1572108,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/featured-1000x700.png",
+          "build/tests/previews/explore-2.2.2-round-1/fitted-featured-1000x700.png"
+        ],
+        "bytes": 535540,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/featured-1240x820.png",
+          "build/tests/previews/explore-2.2.2-round-1/fitted-featured-1240x820.png"
+        ],
+        "bytes": 630702,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/featured-1920x1080.png",
+          "build/tests/previews/explore-2.2.2-round-1/fitted-featured-1920x1080.png"
+        ],
+        "bytes": 1050892,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/taxon-1000x700.png",
+          "build/tests/previews/explore-2.2.2-round-1/compact-breadcrumbs-1000x700.png"
+        ],
+        "bytes": 519266,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2/taxon-1920x1080.png",
+          "build/tests/previews/explore-2.2.2-round-1/compact-breadcrumbs-1920x1080.png"
+        ],
+        "bytes": 545164,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2-creditos/descendants-1920x1080.png",
+          "build/tests/previews/explore-2.2.2-usabilidade/100/descendants-1920x1080-100.png"
+        ],
+        "bytes": 934606,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/explore-2.2.2-usabilidade/100/gallery-hover-1000x700-100.png",
+          "build/tests/previews/play-2.2.3/100/explore-alignment-1000x700.png"
+        ],
+        "bytes": 556346,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/profile-settings/100/information-bottom-1920x1080.png",
+          "build/tests/previews/profile-settings/100/profile-top-1920x1080.png"
+        ],
+        "bytes": 189244,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/100/hints-1-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/100/hints-2-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/100/hints-3-1000x700.png"
+        ],
+        "bytes": 398958,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/100/hints-3-1920x1080.png",
+          "build/tests/previews/quiz-restored-2.3.1/100/hints-reading-1920x1080.png"
+        ],
+        "bytes": 1346602,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/125/hints-1-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/125/hints-2-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/125/hints-3-1000x700.png"
+        ],
+        "bytes": 762429,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/125/hints-3-1920x1080.png",
+          "build/tests/previews/quiz-restored-2.3.1/125/hints-reading-1920x1080.png"
+        ],
+        "bytes": 1445604,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/125/species-description-1000x700.png",
+          "build/tests/previews/species-description-independent-2.3.1/125/species-top-1000x700.png"
+        ],
+        "bytes": 552470,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/150/hints-1-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/150/hints-2-1000x700.png",
+          "build/tests/previews/quiz-restored-2.3.1/150/hints-3-1000x700.png"
+        ],
+        "bytes": 1032699,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/150/hints-3-1920x1080.png",
+          "build/tests/previews/quiz-restored-2.3.1/150/hints-reading-1920x1080.png"
+        ],
+        "bytes": 2392896,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/quiz-restored-2.3.1/150/species-description-1000x700.png",
+          "build/tests/previews/species-description-independent-2.3.1/150/species-top-1000x700.png"
+        ],
+        "bytes": 738800,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/100/performance-and-hints-1240x820.png",
+          "build/tests/previews/statistics-2.3.2/100/profile-history-1240x820.png"
+        ],
+        "bytes": 162946,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/100/performance-and-hints-1920x1080.png",
+          "build/tests/previews/statistics-2.3.2/100/profile-history-1920x1080.png"
+        ],
+        "bytes": 210518,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/125/performance-and-hints-1240x820.png",
+          "build/tests/previews/statistics-2.3.2/125/profile-history-1240x820.png"
+        ],
+        "bytes": 233746,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/125/performance-and-hints-1920x1080.png",
+          "build/tests/previews/statistics-2.3.2/125/profile-history-1920x1080.png"
+        ],
+        "bytes": 301794,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/150/performance-and-hints-1240x820.png",
+          "build/tests/previews/statistics-2.3.2/150/profile-history-1240x820.png"
+        ],
+        "bytes": 291914,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-2.3.2/150/performance-and-hints-1920x1080.png",
+          "build/tests/previews/statistics-2.3.2/150/profile-history-1920x1080.png"
+        ],
+        "bytes": 379390,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-colors-hints-2.3.2/100/confirmed-hints-1000x700.png",
+          "build/tests/previews/statistics-colors-hints-2.3.2/100/live-three-hints-1000x700.png"
+        ],
+        "bytes": 169858,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-colors-hints-2.3.2/100/confirmed-hints-1240x820.png",
+          "build/tests/previews/statistics-colors-hints-2.3.2/100/live-three-hints-1240x820.png"
+        ],
+        "bytes": 189776,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-colors-hints-2.3.2/150/confirmed-hints-1000x700.png",
+          "build/tests/previews/statistics-colors-hints-2.3.2/150/live-three-hints-1000x700.png"
+        ],
+        "bytes": 262588,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-colors-hints-2.3.2/150/confirmed-hints-1240x820.png",
+          "build/tests/previews/statistics-colors-hints-2.3.2/150/live-three-hints-1240x820.png"
+        ],
+        "bytes": 292328,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/100/empty-ranking-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/100/empty-taxonomy-1240x820.png"
+        ],
+        "bytes": 173278,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/100/empty-ranking-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/100/empty-taxonomy-1920x1080.png"
+        ],
+        "bytes": 212470,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/100/top-ranking-free-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/100/top-taxonomy-1240x820.png"
+        ],
+        "bytes": 167636,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/100/top-ranking-free-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/100/top-taxonomy-1920x1080.png"
+        ],
+        "bytes": 201404,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/125/empty-ranking-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/125/empty-taxonomy-1240x820.png"
+        ],
+        "bytes": 249812,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/125/empty-ranking-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/125/empty-taxonomy-1920x1080.png"
+        ],
+        "bytes": 306318,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/125/top-ranking-free-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/125/top-taxonomy-1240x820.png"
+        ],
+        "bytes": 241494,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/125/top-ranking-free-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/125/top-taxonomy-1920x1080.png"
+        ],
+        "bytes": 294398,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/150/empty-ranking-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/150/empty-taxonomy-1240x820.png"
+        ],
+        "bytes": 313490,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/150/empty-ranking-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/150/empty-taxonomy-1920x1080.png"
+        ],
+        "bytes": 384192,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/150/top-ranking-free-1240x820.png",
+          "build/tests/previews/statistics-top-2.3.2/150/top-taxonomy-1240x820.png"
+        ],
+        "bytes": 307532,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      },
+      {
+        "paths": [
+          "build/tests/previews/statistics-top-2.3.2/150/top-ranking-free-1920x1080.png",
+          "build/tests/previews/statistics-top-2.3.2/150/top-taxonomy-1920x1080.png"
+        ],
+        "bytes": 375330,
+        "reason": "Identical bytes in generated previews; not permission to delete",
+        "risk": "May document distinct states or test runs; preserve."
+      }
+    ]
+  }
+}

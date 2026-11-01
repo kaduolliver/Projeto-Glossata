@@ -11,6 +11,7 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import release
 import distribution
+import capture_home
 
 
 class ReleaseTests(unittest.TestCase):
@@ -27,11 +28,15 @@ class ReleaseTests(unittest.TestCase):
         self.put('resources.qrc', '<RCC><qresource/></RCC>\n')
         release.refresh_catalog('1.0.0', self.root)
         # A tiny PNG is a unit-test fixture only; capture_home never uses it.
-        png = base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=')
-        path = self.root / release.SCREENSHOT; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(png)
-        release.write(self.root / release.CAPTURE, {
-            'image_sha256': release.sha(path), 'inputs': release.home_inputs(self.root),
-            'method': 'QQuickWindow::grabWindow / running application', 'captured_at': '2026-01-01T00:00:00+00:00'})
+        self.pngs = dict(zip(('top', 'discovery'), map(base64.b64decode, (
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=',
+            'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZXsAAAAASUVORK5CYII='))))
+        for section, (image, evidence, framing) in release.HOME_CAPTURES.items():
+            path = self.root / image; path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(self.pngs[section])
+            release.write(self.root / evidence, {
+                'section': section, 'framing': framing, 'width': 1, 'height': 1,
+                'image_sha256': release.sha(path), 'inputs': release.home_inputs(self.root),
+                'method': 'QQuickWindow::grabWindow / running application', 'captured_at': '2026-01-01T00:00:00+00:00'})
 
     def put(self, path, text):
         target = self.root / path; target.parent.mkdir(parents=True, exist_ok=True)
@@ -76,7 +81,123 @@ class ReleaseTests(unittest.TestCase):
         self.put('resources/qml/Main.qml', '// changed home\n')
         self.assertTrue(release.screenshot_errors(self.root))
         self.put(release.SCREENSHOT, 'invalid PNG')
-        self.assertIn('Captura não é PNG válido.', release.screenshot_errors(self.root))
+        self.assertTrue(any('Captura não é PNG válido.' in e for e in release.screenshot_errors(self.root)))
+
+    def test_capture_cli_sections_never_overwrite_the_other_pair(self):
+        binary = self.root / 'app.exe'; binary.write_bytes(b'fixture-binary')
+        distribution.record_build(binary, self.root)
+
+        def running_fixture(command, **kwargs):
+            # Only this isolated unit test substitutes subprocess; never published evidence.
+            section = 'discovery' if '--capture-home-discovery' in command else 'top'
+            Path(command[2]).write_bytes(self.pngs[section])
+            self.assertEqual(command[:2], [str(binary.resolve()), '--capture-home'])
+            self.assertEqual(kwargs['env']['QT_QPA_PLATFORM'], 'offscreen')
+            return subprocess.CompletedProcess(command, 0, stderr=b'')
+
+        for section in ('discovery', 'top', None):
+            with self.subTest(section=section):
+                selected = section or 'top'
+                other = 'top' if selected == 'discovery' else 'discovery'
+                protected = [self.root / name for name in release.HOME_CAPTURES[other][:2]]
+                before = [(p.read_bytes(), p.stat().st_mtime_ns) for p in protected]
+                args = ['--binary', str(binary)] + (['--section', section] if section else [])
+                with mock.patch.object(release, 'ROOT', self.root), \
+                     mock.patch.object(capture_home.subprocess, 'run', side_effect=running_fixture) as run, \
+                     mock.patch('builtins.print'):
+                    capture_home.main(args)
+                run.assert_called_once()
+                self.assertEqual([(p.read_bytes(), p.stat().st_mtime_ns) for p in protected], before)
+                self.assertEqual(release.screenshot_errors(self.root), [])
+
+    def test_stale_binary_and_invalid_section_do_not_write_any_capture(self):
+        binary = self.root / 'app.exe'; binary.write_bytes(b'fixture-binary')
+        distribution.record_build(binary, self.root)
+        binary.write_bytes(b'stale-binary')
+        paths = [self.root / name for row in release.HOME_CAPTURES.values() for name in row[:2]]
+        before = [p.read_bytes() for p in paths]
+        with mock.patch.object(capture_home.subprocess, 'run') as run:
+            with self.assertRaisesRegex(ValueError, 'Recompile'):
+                capture_home.capture(binary, self.root, 'discovery')
+            with self.assertRaises(ValueError):
+                capture_home.capture(binary, self.root, 'unknown')
+            run.assert_not_called()
+        self.assertEqual([p.read_bytes() for p in paths], before)
+
+    def test_failed_or_truncated_application_output_preserves_both_pairs(self):
+        binary = self.root / 'app.exe'; binary.write_bytes(b'fixture-binary')
+        distribution.record_build(binary, self.root)
+        paths = [self.root / name for row in release.HOME_CAPTURES.values() for name in row[:2]]
+        before = [p.read_bytes() for p in paths]
+        for status in (1, 0):
+            def failed_capture(command, **kwargs):
+                Path(command[2]).write_bytes(b'\x89PNG\r\n\x1a\n')
+                return subprocess.CompletedProcess(command, status, stderr=b'fixture failure')
+            with self.subTest(status=status), mock.patch.object(capture_home.subprocess, 'run', side_effect=failed_capture):
+                with self.assertRaises(ValueError): capture_home.capture(binary, self.root, 'discovery')
+            self.assertEqual([p.read_bytes() for p in paths], before)
+
+    def test_home_destinations_reject_swapped_sections_even_with_matching_hashes(self):
+        paths = [self.root / row[1] for row in release.HOME_CAPTURES.values()]
+        records = [release.read(path) for path in paths]
+        for path, original, swapped in zip(paths, records, reversed(records)):
+            release.write(path, dict(original, section=swapped['section'], framing=swapped['framing']))
+        errors = release.screenshot_errors(self.root)
+        self.assertEqual(sum('seção/enquadramento' in e for e in errors), 2)
+        self.assertFalse(any('Hash' in e for e in errors))
+
+    def test_home_pair_requires_distinct_images(self):
+        image, evidence, _ = release.HOME_CAPTURES['discovery']
+        (self.root / image).write_bytes(self.pngs['top'])
+        record = release.read(self.root / evidence)
+        release.write(self.root / evidence, dict(record, image_sha256=release.sha(self.root / image)))
+        self.assertTrue(any('mesmo PNG' in e for e in release.screenshot_errors(self.root)))
+
+    def test_both_home_sections_require_png_json_hash_dimensions_and_origin(self):
+        for section, (image, evidence, _) in release.HOME_CAPTURES.items():
+            path = self.root / evidence
+            original = path.read_text(encoding='utf8')
+            for change, message in (({'image_sha256': 'wrong'}, 'Hash'),
+                                    ({'width': 2}, 'Dimensões'),
+                                    ({'captured_at': ''}, 'Origem'),
+                                    ({'inputs': {}}, 'desatualizada'),
+                                    ({'section': ''}, 'seção/enquadramento')):
+                with self.subTest(section=section, change=change):
+                    release.write(path, dict(json.loads(original), **change))
+                    self.assertTrue(any(message in e for e in release.screenshot_errors(self.root)))
+            for invalid in ('not JSON', '[]'):
+                path.write_text(invalid, encoding='utf8')
+                self.assertTrue(any('registro de origem ausente ou inválido' in e for e in release.screenshot_errors(self.root)))
+            path.unlink()
+            self.assertTrue(any('registro de origem ausente' in e for e in release.screenshot_errors(self.root)))
+            path.write_text(original, encoding='utf8')
+            png = self.root / image; png.unlink()
+            self.assertTrue(any('PNG da captura ausente' in e for e in release.screenshot_errors(self.root)))
+            png.write_bytes(self.pngs[section])
+
+    def test_readme_checks_local_links_and_individual_capture_records(self):
+        with (self.root / 'README.md').open('a', encoding='utf8') as stream:
+            stream.write('[Missing](docs/missing.md)\n![Captured quiz](docs/images/quiz.png)\n')
+        self.assertEqual(len(release.readme_errors(self.root)), 2)
+        image = self.root / 'docs/images/quiz.png'; image.write_bytes(self.pngs['top'])
+        self.assertTrue(any('registro de origem ausente' in e for e in release.readme_errors(self.root)))
+        release.write(image.with_suffix('.json'), release.read(self.root / release.CAPTURE))
+        self.put('docs/missing.md', 'Present now\n')
+        self.assertEqual(release.readme_errors(self.root), [])
+        image.write_bytes(self.pngs['discovery'])
+        self.assertTrue(any('Hash' in e for e in release.readme_errors(self.root)))
+
+    def test_readme_uses_original_shared_historical_manifest(self):
+        name, evidence = next(iter(release.README_CAPTURE_MANIFESTS.items()))
+        image = self.root / name; image.parent.mkdir(parents=True, exist_ok=True); image.write_bytes(self.pngs['top'])
+        self.put('README.md', f'![Historical real capture]({name})\n[Origin]({evidence})\n')
+        release.write(self.root / evidence, {
+            'method': 'QQuickWindow::grabWindow / production QML and GameController in QtTest',
+            'captures': [{'file': 'capturas/' + image.name, 'width': 1, 'height': 1,
+                          'sha256': release.sha(image), 'captured_at': '2026-01-01T00:00:00+00:00'}]})
+        self.assertEqual(release.readme_errors(self.root), [])
+        image.write_bytes(self.pngs['discovery'])
+        self.assertTrue(any('Hash' in e for e in release.readme_errors(self.root)))
 
     def test_failed_mandatory_check_never_creates_tag(self):
         with mock.patch.object(release, 'git', return_value=''), \
@@ -125,6 +246,9 @@ class ReleaseTests(unittest.TestCase):
             self.assertTrue(release.visual_history_errors(self.root, 'base'))
         with mock.patch.object(release, 'git', side_effect=['abcdef123456', 'resources/qml/views/HomeView.qml\n' + release.SCREENSHOT + '\n' + release.CAPTURE]):
             self.assertEqual(release.visual_history_errors(self.root, 'base'), [])
+        discovery_paths = '\n'.join(release.HOME_CAPTURES['discovery'][:2])
+        with mock.patch.object(release, 'git', side_effect=['abcdef123456', 'resources/qml/views/HomeView.qml\n' + discovery_paths]):
+            self.assertTrue(release.visual_history_errors(self.root, 'base'))
 
     def test_tag_history_prevents_reusing_version_even_if_manifest_state_was_reset(self):
         old = release.read(self.root / release.CATALOG); old['content_sha256'] = 'old hash'

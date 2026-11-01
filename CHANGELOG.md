@@ -4,6 +4,7 @@ Este arquivo registra mudanças do aplicativo com versionamento semântico. A ve
 
 ## [2.3.0] — Não lançado; Perfil e ajustes
 
+- Correção das capturas do README: destinos separados para topo e Descoberta do Dia, validação de seção/enquadramento, dimensões, hashes e links locais, com regressões contra sobrescritas. Somente documentação e ferramentas; versões do executável e catálogo preservadas. [Diagnóstico e evidências](docs/interface/capturas-readme/README.md).
 - Refinamento sonoro na PR #40: WAV original ampliado para 1,20 s, com sustentação curta, decaimento gradual e cauda de 300 ms; pico mantido e nenhum sample externo. Mudanças de lista com a mesma saída padrão não chamam stop; interrupções intencionais permanecem. Intervalo de 1,3 s, prévia com feedback de espera e diagnóstico manual isolado. [Análise, comparação e testes](docs/interface/VERSOES/2.4.1/refinamento-audio/README.md).
 - Correção pontual na PR #40: preferências semanticamente inválidas ficam pendentes de recuperação explícita pelo botão Tentar salvar preferências, sem exigir outra alteração. Valores válidos e chaves futuras são preservados; INI estruturalmente malformado permanece protegido e não oferece tentativa insegura de gravação. [Estados, testes e evidências](docs/interface/VERSOES/2.4.1/correcao-persistencia/README.md).
 - Subetapa 2.4.1: cinco seções na página Perfil e ajustes, com UUID local visível, renomeação existente, teclado/foco e rolagem compartilhada.

@@ -12,8 +12,9 @@ import release
 
 
 def capture(binary, root=release.ROOT, section='top'):
-    if section not in ('top', 'discovery'):
+    if section not in release.HOME_CAPTURES:
         raise ValueError('Enquadramento de captura desconhecido.')
+    image_path, record_path, framing = release.HOME_CAPTURES[section]
     from distribution import build_inputs
     manifest = release.read(root / 'build/build-manifest.json')
     if manifest.get('inputs') != build_inputs(root) or manifest.get('binary_sha256') != release.sha(binary):
@@ -29,30 +30,34 @@ def capture(binary, root=release.ROOT, section='top'):
         if result.returncode or not png.is_file():
             raise ValueError(f'A captura real falhou ({result.returncode}): {result.stderr.decode("utf8", errors="replace")}')
         image = png.read_bytes()
-        if not image.startswith(b'\x89PNG\r\n\x1a\n'):
+        if not image.startswith(b'\x89PNG\r\n\x1a\n') or len(image) < 24:
             raise ValueError('O programa não produziu PNG válido.')
         width, height = struct.unpack('>II', image[16:24])
-        destination = root / release.SCREENSHOT
+        destination = root / image_path
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(png, destination)
-    release.write(root / release.CAPTURE, {
+    release.write(root / record_path, {
         'schema_version': 1, 'captured_at': datetime.now(timezone.utc).isoformat(),
         'method': 'QQuickWindow::grabWindow / running application',
-        'framing': 'Top of Home.' if section == 'top' else 'Real Home scrolled to the discovery and catalog indicators by the production executable.',
+        'section': section, 'framing': framing,
         'application_version': release.app_version(root), 'binary_sha256': release.sha(binary),
         'image_sha256': release.sha(destination), 'width': width, 'height': height,
         'rendering': 'Qt offscreen/software, scale 1, 96 DPI; real production QML and controller.',
         'privacy': 'Temporary database and default profile; Discord disabled; no player data accessed.',
         'inputs': release.home_inputs(root)})
-    print(f'Captura real salva: {release.SCREENSHOT} ({width}x{height}).')
+    print(f'Captura real salva: {image_path} ({width}x{height}). Registro: {record_path}.')
 
 
-if __name__ == '__main__':
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary', type=Path, default=release.ROOT / 'build/projeto_glossata.exe')
     parser.add_argument('--section', choices=('top', 'discovery'), default='top', help='Frame the initial view or its discovery section using the production application.')
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     try:
-        capture(args.binary, section=args.section)
+        capture(args.binary, root=release.ROOT, section=args.section)
     except (ValueError, OSError, subprocess.TimeoutExpired) as exc:
         parser.exit(1, str(exc) + '\n')
+
+
+if __name__ == '__main__':
+    main()

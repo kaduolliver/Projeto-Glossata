@@ -5,8 +5,10 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import struct
 import subprocess
 import sys
+from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 from governance_storage import LOCK_RELATIVE
 
@@ -14,6 +16,18 @@ ROOT = Path(__file__).resolve().parents[1]
 CATALOG = 'resources/data/catalog_manifest.json'
 SCREENSHOT = 'docs/images/tela-inicial.png'
 CAPTURE = 'docs/images/tela-inicial.json'
+HOME_CAPTURES = {
+    'top': (SCREENSHOT, CAPTURE, 'Top of Home.'),
+    'discovery': ('docs/images/descoberta-do-dia.png', 'docs/images/descoberta-do-dia.json',
+                  'Real Home scrolled to the discovery and catalog indicators by the production executable.'),
+}
+# Historical captures keep their original shared manifests and dates.
+README_CAPTURE_MANIFESTS = {
+    'docs/interface/VERSOES/2.2.2/usabilidade/capturas/gallery-hover-1920x1080-100.png':
+        'docs/interface/VERSOES/2.2.2/usabilidade/capturas.json',
+    'docs/interface/VERSOES/2.2.3/capturas/kingdoms-1240x820.png':
+        'docs/interface/VERSOES/2.2.3/capturas.json',
+}
 SEMVER = re.compile(r'(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)\Z')
 # Conservative list: shared components may affect the home screen.
 HOME_PATHS = ('resources/qml/Main.qml', 'resources/qml/views/HomeView.qml',
@@ -114,20 +128,76 @@ def home_inputs(root=ROOT):
     return {p.relative_to(root).as_posix(): sha(p) for p in sorted(paths) if p.is_file()}
 
 
-def screenshot_errors(root=ROOT):
+def image_record_errors(png, record):
+    """Check image bytes against either an individual or a historical record."""
     errors = []
-    png = root / SCREENSHOT
-    evidence = root / CAPTURE
-    if not png.is_file() or not evidence.is_file():
-        return ['Captura real da tela inicial ou seu registro de origem ausente.']
-    record = read(evidence)
+    if not png.is_file():
+        return ['PNG da captura ausente.']
     data = png.read_bytes()
     if not data.startswith(b'\x89PNG\r\n\x1a\n') or len(data) < 24:
         errors.append('Captura não é PNG válido.')
-    if record.get('image_sha256') != sha(png) or record.get('inputs') != home_inputs(root):
-        errors.append('Captura desatualizada: execute scripts/capture_home.py e inclua-a no commit visual.')
-    if record.get('method') != 'QQuickWindow::grabWindow / running application' or not record.get('captured_at'):
+    elif struct.unpack('>II', data[16:24]) != (record.get('width'), record.get('height')):
+        errors.append('Dimensões do PNG divergem do registro da captura.')
+    if record.get('image_sha256', record.get('sha256')) != sha(png):
+        errors.append('Hash do PNG diverge do registro da captura.')
+    if not str(record.get('method', '')).startswith('QQuickWindow::grabWindow / ') or not record.get('captured_at'):
         errors.append('Origem da captura real não documentada.')
+    return errors
+
+
+def screenshot_errors(root=ROOT):
+    errors = []
+    hashes = []
+    for section, (image, evidence, framing) in HOME_CAPTURES.items():
+        try:
+            record = read(root / evidence)
+            if not isinstance(record, dict):
+                raise ValueError('O registro deve ser um objeto JSON.')
+        except (OSError, ValueError) as exc:
+            errors.append(f'{evidence}: registro de origem ausente ou inválido: {exc}')
+            continue
+        errors.extend(f'{image}: {error}' for error in image_record_errors(root / image, record))
+        if record.get('section') != section or record.get('framing') != framing:
+            errors.append(f'{evidence}: seção/enquadramento incompatível com o destino {section}.')
+        if record.get('inputs') != home_inputs(root):
+            errors.append(f'{image}: Captura desatualizada: execute scripts/capture_home.py --section {section} e inclua-a no commit visual.')
+        if record.get('method') != 'QQuickWindow::grabWindow / running application':
+            errors.append(f'{evidence}: captura deve vir do executável de produção.')
+        if (root / image).is_file():
+            hashes.append(sha(root / image))
+    if len(hashes) == 2 and hashes[0] == hashes[1]:
+        errors.append('Topo e Descoberta do Dia não podem usar o mesmo PNG.')
+    return errors
+
+
+def readme_errors(root=ROOT):
+    """Validate local Markdown targets and the evidence of displayed PNGs."""
+    errors = []
+    readme = (root / 'README.md').read_text(encoding='utf8')
+    home_images = {entry[0] for entry in HOME_CAPTURES.values()}
+    for match in re.finditer(r'(!?)\[[^\]\n]*\]\((<[^>]+>|[^\s)]+)(?:\s+"[^"]*")?\)', readme):
+        target = urlsplit(match[2].strip('<>'))
+        if target.scheme or target.netloc or not target.path:
+            continue
+        name = unquote(target.path)
+        path = (root / name).resolve()
+        if not path.is_relative_to(root.resolve()) or not path.exists():
+            errors.append(f'README: referência local ausente ou fora do projeto: {name}')
+            continue
+        if not match[1] or path.suffix.lower() != '.png' or name in home_images:
+            continue
+        evidence = root / README_CAPTURE_MANIFESTS.get(name, str(Path(name).with_suffix('.json')))
+        try:
+            record = read(evidence)
+            if not isinstance(record, dict):
+                raise ValueError('O registro deve ser um objeto JSON.')
+            if 'captures' in record:
+                frame = next(row for row in record['captures']
+                             if (evidence.parent / row['file']).resolve() == path)
+                record = dict(record, **frame)
+            errors.extend(f'{name}: {error}' for error in image_record_errors(path, record))
+        except (OSError, ValueError, KeyError, StopIteration, TypeError) as exc:
+            errors.append(f'{name}: registro de origem ausente ou inválido ({evidence.relative_to(root)}): {exc}')
     return errors
 
 
@@ -148,7 +218,7 @@ def check_metadata(root=ROOT):
     readme = (root / 'README.md').read_text(encoding='utf8')
     if not re.search(r'!\[[^\]]{15,}\]\(docs/images/tela-inicial\.png\)', readme):
         errors.append('README sem captura relativa e texto alternativo descritivo.')
-    return errors + screenshot_errors(root)
+    return errors + screenshot_errors(root) + readme_errors(root)
 
 
 def git(root, *args):
